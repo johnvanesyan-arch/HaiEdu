@@ -1,5 +1,7 @@
 # English 7 Unit 3 — current-programme registration
 
+**Current C45 · 2026-10-26:** John accepts the complete C44 policy and nine exact v1 materials. All eight guides and W01 are published through the normal signed-in MFA workflow, with the exact writing-task projection verified. Configuration preparation and actual-database rollback rehearsal pass 29 checks; 471 prepared rows cover 52/40/60 core pools, five 20-question forms and four policies. All 117 table fingerprints restore after rehearsal. C43 question approvals, C44 curriculum and prior content/audio review remain intact. Source-protection/specialist dispositions, final qualification and the separate learner-release decision remain; Unit3 stays draft with seven pending gates. [Delivery](english-7-unit-03-release-preparation.md).
+
 **Sprint 16.1C.44 · 26 October 2026 · technically complete.** Unit3 now has a registered current-programme source, **twelve programme outcomes plus one separate written-interaction standard target**, thirteen skills and 160 item-family mappings. The approved questions, sources, nine material drafts, Unit1/2 records and existing learner history are preserved by the transaction. No numerical policy or learner release is adopted.
 
 ## Source chain and scope

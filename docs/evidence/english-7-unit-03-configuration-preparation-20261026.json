@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "haiedu-english-unit-configuration-evidence-v1",
+  "checkpoint": "16.1C.45",
+  "date": "2026-10-26",
+  "sourceCommit": "69dc34776565537a4c05f0db59e877cde83e3ee3",
+  "checks": [
+    {
+      "name": "exact_diagnostic_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_practice_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_mastery_check_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_chapter_review_snapshot",
+      "passed": true
+    },
+    {
+      "name": "all_117_tables_restored",
+      "passed": true
+    },
+    {
+      "name": "specialist_pending",
+      "passed": true
+    },
+    {
+      "name": "global_lifecycle_unchanged",
+      "passed": true
+    },
+    {
+      "name": "three_scoped_pools",
+      "passed": true
+    },
+    {
+      "name": "152_core_pool_memberships",
+      "passed": true
+    },
+    {
+      "name": "100_assessment_form_slots",
+      "passed": true
+    },
+    {
+      "name": "five_draft_forms",
+      "passed": true
+    },
+    {
+      "name": "source_protection_pending",
+      "passed": true
+    },
+    {
+      "name": "runtime_timing_evidence_current",
+      "passed": true
+    },
+    {
+      "name": "60_mastery_versions_exact",
+      "passed": true
+    },
+    {
+      "name": "reject_active_release",
+      "passed": true
+    },
+    {
+      "name": "reject_missing_item",
+      "passed": true
+    },
+    {
+      "name": "reject_changed_version",
+      "passed": true
+    },
+    {
+      "name": "rollback_only",
+      "passed": true
+    },
+    {
+      "name": "accepted_nine_versions_published",
+      "passed": true
+    },
+    {
+      "name": "writing_projection_exact",
+      "passed": true
+    },
+    {
+      "name": "nine_real_mfa_publication_events",
+      "passed": true
+    },
+    {
+      "name": "material_content_and_saved_qa_preserved",
+      "passed": true
+    },
+    {
+      "name": "release_stays_draft_seven_gates_pending",
+      "passed": true
+    },
+    {
+      "name": "draft_materials_block_publication_preflight",
+      "passed": true
+    },
+    {
+      "name": "missing_writing_projection_blocks",
+      "passed": true
+    },
+    {
+      "name": "mismatched_writing_projection_blocks",
+      "passed": true
+    },
+    {
+      "name": "reject_new_material_version",
+      "passed": true
+    },
+    {
+      "name": "reject_stale_material_fingerprint",
+      "passed": true
+    },
+    {
+      "name": "reject_failed_material_qa",
+      "passed": true
+    }
+  ],
+  "checkCount": 29,
+  "rehearsal": {
+    "actualDatabaseValidatorsPassed": true,
+    "exactPolicySnapshots": 4,
+    "masteryVersions": 60,
+    "preservationTables": 117,
+    "independentRollbackRestored": true,
+    "transactionTimeBaseline": true,
+    "specialistGate": "pending",
+    "globalLifecyclePointerUnchanged": true
+  },
+  "publication": {
+    "route": "normal signed-in reviewer UI with secure credential/MFA handoff",
+    "materialsApproved": 9,
+    "newVersions": 0,
+    "storedAal2Events": 9,
+    "writingProjection": 1,
+    "materialPublicationPreflight": {
+      "acceptedVersionsExact": true,
+      "publishedMaterials": 9,
+      "expectedMaterials": 9,
+      "writingProjectionValid": true,
+      "materialPublicationReady": true,
+      "observedAt": "2026-10-26T12:50:03.801897+00:00",
+      "approvalAudit": false
+    },
+    "repeatHumanReviewPerformed": false,
+    "questionApprovalsTouched": false
+  },
+  "metadataRefresh": {
+    "items": 160,
+    "assessmentVersionsMatched": 100,
+    "canonicalAndPostgresHashesDistinguished": true,
+    "sourceFamilies": 20,
+    "recordings": 10,
+    "newQaRuns": 0
+  },
+  "sourceHashes": {
+    "docs/content/english-7-unit-03-policy-proposal.json": "f2bfeea3c4b13c548068520ece7ad7f59bc584bede10ca9980ac174dc712bf52",
+    "docs/evidence/english-7-unit-03-policy-material-acceptance-20261026.json": "656de8a19047aad88e559695e3fead034004f6d6d5d4ec4711fe06807e25931c",
+    "scripts/releases/prepare-english-7-unit-03-configuration.py": "2183bf12f4a0328178144fc38fcf4e4aade5de5d1f1077c7e7edf60dcae787d8",
+    "docs/content/english-7-unit-03-configuration-summary.json": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254"
+  },
+  "privateEvidenceHashes": {
+    "inventory.json": "8fc485e9b15aadcbddb1b4ffd2948c563e72741fe0f78d8c64586b9fb0a2ed6a",
+    "preflight.json": "54d10a82929453196137799247a02476215a2ff9127695a40fc5ae483266353a",
+    "guards.json": "73f92f76864710d1d4385f056bd64e5b1715713d27dc9955f4a7a43a045b76b3",
+    "after-guards.json": "73f92f76864710d1d4385f056bd64e5b1715713d27dc9955f4a7a43a045b76b3",
+    "prepared/configuration.json": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+    "prepared/rehearse.sql": "0890c2486ce8eb3ba1ab137599e78f92887bfa184da95953884796166709becb",
+    "rehearsal-result.json": "c610569db275f2f6ff195b00ef942192ca7f926da40aabb84c60bd0b2d6ad214",
+    "material-publication.json": "b030c5f4d67b92fd300cc3154c2303dbf2fe729b407a575b5bbf00ce16c17084",
+    "material-publication-after.json": "f4376d2fd1f1613e2d1f6aaca5312ef67394fa005986bf83eab432637cc0a48a"
+  },
+  "connectorRecovery": {
+    "firstLargeRequest": "Invalid or expired requestState; no successful rehearsal claimed",
+    "recovery": "Reduced repeated row fields; bounded request succeeds with identical intended configuration, and rollback verified"
+  },
+  "unchangedEvidenceReused": [
+    "C39 whole-bank comparison/grading",
+    "C41/C42 registered sources and owner audio acceptance",
+    "C43 question approvals",
+    "C44 curriculum and 36 scoring/readiness checks",
+    "C12 runtime capabilities with C26 audio timing repair and Unit1/2 learner evidence"
+  ],
+  "limits": [
+    "Prepared configuration has no permanent bindings or learner allocation",
+    "No independent SME, unseen-exposure or empirical-equivalence claim",
+    "Material publication does not activate the curriculum release"
+  ],
+  "next": "Prepare the bounded Unit3 source-protection/specialist disposition and final learner-release/acceptance packet.",
+  "retainedPrivateEvidence": {
+    "libraryFileId": "libfile_c9205ca9dac88191b00817b6f17aa0e9",
+    "filename": "haiedu-english7-unit3-configuration-evidence-20261026.zip",
+    "sha256": "dd6c3e9d9eabdd11ca35727c5ba6fadf14eab6ee798fc2f7e399db0b1cac0222",
+    "bytes": 228561,
+    "files": 14
+  }
+}
