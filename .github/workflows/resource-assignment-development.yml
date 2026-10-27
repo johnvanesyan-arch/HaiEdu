@@ -35,6 +35,7 @@ jobs:
       - name: Syntax and QA dependency graph
         run: |
           node scripts/check-web-syntax.mjs
+          node --check scripts/resource-assignments-acceptance.mjs
           node scripts/check-browser-qa-triggers.mjs
       - name: Contract and handler on PostgreSQL 17
         run: node --test tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs tests/privacy-role-inventory.test.mjs
