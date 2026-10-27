@@ -11,7 +11,17 @@ async function surface(t,f,{actor=20,width=1280}={}){
  await page.addInitScript('window.__baseStudent=('+installStudentHomeFixture.toString()+')('+JSON.stringify({contexts,actorId:id(actor)})+');');
  await page.addInitScript(({actor,identity,token})=>{
   const listeners=[];let session={user:{id:identity}};window.__assignmentCalls=[];
-  const base=window.__baseStudent;const client=actor===10?base:{auth:{getSession:async()=>({data:{session}}),onAuthStateChange:fn=>{listeners.push(fn);return {data:{subscription:{unsubscribe(){const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);}}}}}};
+  const base=window.__baseStudent;
+  const teacherAuth={
+   getSession:async()=>({data:{session}}),
+   onAuthStateChange:fn=>{
+    listeners.push(fn);
+    return {data:{subscription:{unsubscribe(){
+     const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);
+    }}}};
+   }
+  };
+  const client=actor===10?base:{auth:teacherAuth};
   const oldInvoke=base.functions.invoke;
   client.functions={invoke:async(name,{body})=>{
    if(!['manage-resource-assignments','manage-supplementary-resources'].includes(name))return oldInvoke(name,{body});
