@@ -559,3 +559,5 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.roster-group-archived>summary,.year-group-archived>summary{cursor:pointer;padding:14px;border:1px solid #ccd7e4;border-radius:12px;overflow-wrap:anywhere}.roster-group-archived>summary:focus-visible,.year-group-archived>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}

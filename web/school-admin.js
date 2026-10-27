@@ -478,11 +478,11 @@ function teacherCard(teacher, schoolId) {
 
 function appendRosterGroup(container, titleText, teachers, schoolId, archived = false) {
   if (!teachers.length) return;
-  const group = document.createElement("section");
+  const group = document.createElement(archived ? "details" : "section");
   group.className = `roster-group${archived ? " roster-group-archived" : ""}`;
-  const title = document.createElement("h3");
+  const title = document.createElement(archived ? "summary" : "h3");
   title.className = "roster-group-title";
-  title.textContent = titleText;
+  title.textContent = `${titleText} · ${teachers.length}`;
   group.append(title);
   for (const teacher of teachers) group.append(teacherCard(teacher, schoolId));
   container.append(group);
@@ -597,11 +597,11 @@ async function loadYears() {
   const today = new Date().toISOString().slice(0, 10);
   for (const [titleText, years, archived] of groups) {
     if (!years.length) continue;
-    const group = document.createElement("section");
+    const group = document.createElement(archived ? "details" : "section");
     group.className = `year-group${archived ? " year-group-archived" : ""}`;
-    const title = document.createElement("h3");
+    const title = document.createElement(archived ? "summary" : "h3");
     title.className = "year-group-title";
-    title.textContent = titleText;
+    title.textContent = `${titleText} · ${years.length}`;
     group.append(title);
     for (const year of years) {
       const item = document.createElement("article");

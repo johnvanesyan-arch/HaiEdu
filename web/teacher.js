@@ -1,3 +1,4 @@
+import {renderArchive} from './archive-browser.mjs';
 import { mountWrittenWork } from './written-work.mjs';
 import {assessmentResultMarkup} from './assessment-reporting.mjs';
 import { contractMarkup } from "./analytics-provenance.mjs";
@@ -296,7 +297,7 @@ function createClassListButton(klass) {
   btn.type = "button";
   btn.innerHTML = `
     <strong>${escapeHtml(klass.name)}</strong>
-    <span>${escapeHtml(klass.academicYear ?? "")}</span>
+    <span>${escapeHtml([klass.subjectName, klass.schoolName, klass.academicYear].filter(Boolean).join(" · "))}</span>
     <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
   btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true, navigate: true }));
   return btn;
@@ -312,7 +313,12 @@ function renderClassList() {
   const archivedClasses = classes.filter((klass) => !klass.isActive);
 
   activeClasses.forEach((klass) => activeList.appendChild(createClassListButton(klass)));
-  archivedClasses.forEach((klass) => archivedList.appendChild(createClassListButton(klass)));
+  if (archivedClasses.length) renderArchive(archivedList, {
+    items: archivedClasses,
+    groupLabel: klass => klass.academicYear || "Տարին նշված չէ",
+    searchText: klass => [klass.name, klass.academicYear, klass.subjectName, klass.schoolName].filter(Boolean).join(" "),
+    renderItem: createClassListButton,
+  });
   $("activeClassCount").textContent = activeClasses.length;
   $("archivedClassCount").textContent = archivedClasses.length;
 

@@ -10,6 +10,7 @@ on:
       - supabase/functions/manage-student-invitation/index.ts
       - web/teacher.html
       - web/teacher.js
+      - web/archive-browser.mjs
       - web/analytics-provenance.mjs
       - web/role-layout.js
       - web/teacher.css

@@ -33,7 +33,7 @@ test("teacher classroom rendering separates active and archived data", () => {
   assert.match(js, /const activeClasses = classes\.filter\(\(klass\) => klass\.isActive\)/);
   assert.match(js, /const archivedClasses = classes\.filter\(\(klass\) => !klass\.isActive\)/);
   assert.match(js, /activeList\.appendChild\(createClassListButton\(klass\)\)/);
-  assert.match(js, /archivedList\.appendChild\(createClassListButton\(klass\)\)/);
+  assert.match(js, /renderArchive\(archivedList/);
   assert.match(js, /url\.searchParams\.set\("source", klass\.isActive \? "classes" : "archive"\)/);
   assert.match(js, /renderTeacherView\("class"\)/);
 });

@@ -4,6 +4,25 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let state = null;
+let accountEpoch = 0;
+let accountRequest = 0;
+let accountActor;
+const accountHomes = {student:"./index.html",teacher:"./teacher.html?view=home",school_admin:"./school-admin.html",admin:"./admin.html",content_admin:"./content.html"};
+
+function clearAccount(signedOut = false) {
+  state = null;
+  document.body.removeAttribute("data-haiedu-student");
+  document.documentElement.removeAttribute("data-haiedu-student-root");
+  document.body.toggleAttribute("data-forest-surface", signedOut);
+  document.body.toggleAttribute("data-account-pending", !signedOut);
+  $("accountHomeLink").href = "./index.html";
+  $("content").classList.add("hidden");
+  $("signOutBtn").classList.add("hidden");
+  $("signedOut").classList.toggle("hidden", !signedOut);
+  $("loading").classList.toggle("hidden", signedOut);
+  $("loading").textContent = "Տվյալները բեռնվում են…";
+}
+
 
 function setMessage(id, text, bad = false) {
   const el = $(id);
@@ -109,6 +128,9 @@ function deletionLabel(request) {
 
 function render(data) {
   state = data;
+  document.body.removeAttribute("data-account-pending");
+  document.body.removeAttribute("data-forest-surface");
+  $("accountHomeLink").href = accountHomes[data.account.role] || "./index.html";
   document.body.toggleAttribute("data-haiedu-student", data.account.role === "student");
   document.documentElement.toggleAttribute("data-haiedu-student-root", data.account.role === "student");
   $("loading").classList.add("hidden");
@@ -150,16 +172,20 @@ function render(data) {
 }
 
 async function refresh() {
-  const { data: sessionData } = await supabase.auth.getSession();
-  if (!sessionData.session) {
-    $("loading").classList.add("hidden");
-    $("content").classList.add("hidden");
-    $("signedOut").classList.remove("hidden");
-    return;
-  }
+  const epoch = accountEpoch, request = ++accountRequest;
+  const current = () => epoch === accountEpoch && request === accountRequest;
   try {
-    render(await invoke("get-my-privacy"));
+    const { data: sessionData, error } = await supabase.auth.getSession();
+    if (!current()) return;
+    if (error) throw error;
+    const actor = sessionData.session?.user?.id || null;
+    if (!actor) { accountActor = null; clearAccount(true); return; }
+    accountActor = actor;
+    const data = await invoke("get-my-privacy");
+    if (current() && accountActor === actor) render(data);
   } catch (err) {
+    if (!current()) return;
+    clearAccount();
     $("loading").textContent = err.message || "Չհաջողվեց բեռնել տվյալները։";
   }
 }
@@ -255,12 +281,14 @@ $("signOutBtn").addEventListener("click", async () => {
 });
 
 supabase.auth.onAuthStateChange((_event, session) => {
-  if (!session) {
-    document.body.removeAttribute("data-haiedu-student");
-    document.documentElement.removeAttribute("data-haiedu-student-root");
-    $("content").classList.add("hidden");
-    $("signedOut").classList.remove("hidden");
-  }
+  const actor = session?.user?.id || null;
+  if (actor === accountActor) return;
+  accountActor = actor;
+  accountEpoch++;
+  accountRequest++;
+  clearAccount(!actor);
+  // Do not await Supabase methods from its authentication callback.
+  if (actor) queueMicrotask(() => { void refresh(); });
 });
 
 refresh();
