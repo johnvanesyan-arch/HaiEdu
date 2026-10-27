@@ -1,5 +1,29 @@
 # Learning API contract
 
+## Resource assignments — 16.5B.8
+
+Implementation candidate; required CI and production acceptance are recorded in [resource assignments](resource-assignments.md). This shared core endpoint does not alter assessments, bank approvals or publication authority.
+
+`POST /functions/v1/manage-resource-assignments` accepts JSON `{action, context, payload}` under the verified live user session. The request body is bounded to 32 KiB. Actor IDs and session IDs never come from client JSON. Every action repeats current role/context/session checks in the service-only RPC.
+
+| Action | Context and payload | Result |
+| --- | --- | --- |
+| `catalog` | Teacher assignment/release/unit; optional `offset` | Published, QA-passed platform materials in that programme/release/unit, at most 50 |
+| `preview` | Teacher assignment/release/unit; `materialId`, optional `offset,search` | Exact material fingerprint, current roster fingerprint, bounded roster, total/matched counts, nextOffset/hasMore |
+| `assign` | Same context; `materialId,fingerprint,rosterFingerprint,requestId,mode,enrollmentIds,instructions` | Durable assignment ID/time, immutable version and recipient count; `replayed` for identical retries |
+| `list` | Same teacher context; `offset,state` (current/history) | Bounded own sent assignments and readOnly flag |
+| `inbox` | Student context `{}`; `offset,state` | Only exact recipient assignments in currently authorized enrollments; no roster or other recipient count |
+| `get` | Teacher assignment or learner enrollment, release, unit; `id` | Scoped assignment; teacher also receives own recipient names and audit events |
+| `cancel` | Current teacher context; `id,revision,reason` | Audited, idempotent cancellation; original receipt/count retained |
+| `open` | Exact authorized teacher or recipient context; `id` | Revalidated external HTTPS destination or private PDF attachment with no-store, digest/size checks and final authorization recheck |
+
+Teacher materials require the original teacher/assignment context; platform materials keep their existing publication audience. Class mode sends an empty enrollmentIds array and captures the current eligible roster; selected mode sends 1–500 unique exact enrollment IDs from that roster. Changed roster/material requires fresh preview; identical request IDs/payloads resolve to the same receipt, changed payloads conflict. Instructions are at most 2,000 characters; cancellation reasons 1–1,000. Pages contain at most 50 candidates, with nextOffset used even when revoked contexts are filtered. Roster search is literal, at most 120 characters. Current contexts must still be authorized when a later page or resource is opened.
+
+Publishing a successor does not change an assigned version; logical withdrawal revokes earlier assigned versions permanently, including after republishing. Canceling a task does not withdraw the source from its optional library. Historical teacher reads may be read-only; assigning/canceling requires current write authority. Later joiners require explicit assignment. Assignment audience is separate from the existing library audience and is explained before sending.
+
+Responses distinguish 401 authentication, 403 authority/session, 404 unavailable, 409 stale preview/conflict, 400 invalid input/recipient limit and 503 service/file failure. Three ledger tables use RLS with no direct client or service table privileges; only the guarded service RPC is executable by service_role. Account inventory adds role-specific materialAssignmentsReceived/materialAssignmentsSent counts. New recipient rows cascade when an existing authorized deletion removes their enrollment/profile; existing institutional deletion restrictions remain in force. No due-date, read receipt, Done marker or mastery/grade/submission mutation is introduced.
+
+
 **16.5B.6 navigation and assignment boundary, 2026-10-27:** writing remains the same authorized `course.html?tab=writing` workspace but belongs to My work in desktop/mobile navigation and context-preserving return links. No API/schema/authorization or writing/scoring change. S45 `publish` creates optional class-library availability, not a homework assignment, per-student recipient, deadline, notification or My work task. Those resource-assignment contracts are explicitly planned under [16.5B.8](cross-role-workspace-sprints.md), including server-validated recipients, immutable version binding, idempotency, audit and learner delivery; they are not active endpoints.
 
 **2026-10-27 teacher UX clarification:** this repair changes presentation only. Supplementary-resource contexts and every write remain bound to the authenticated teacher’s active subject authorization and assignment, class/year, programme, release and unit. Dedicated multi-subject QA accounts legitimately return both subjects. Collapsed archives preserve existing restore/read actions; no general permanent-delete endpoint is added. [Delivery record](teacher-workspace-corrections.md).

@@ -33,6 +33,7 @@ async function invokePrivacy(role) {
   };
   const client = {
     rpc: async (name, args) => {
+      if(name==='service_resource_assignment_privacy_counts'){assert.ok(['teacher','student'].includes(role));assert.equal(args.p_user_id,'user-a');return {data:{materialAssignmentsReceived:4,materialAssignmentsSent:2},error:null};}
       assert.equal(name, 'service_unit_material_privacy_counts');
       assert.equal(args.p_user_id, 'user-a');
       return {data:{materialVersions:2,materialReviews:3,materialEvents:5},error:null};
@@ -86,6 +87,8 @@ test("student privacy inventory includes learning data and both enrollment syste
   assert.equal(result.status, 200);
   for (const table of studentTables) assert.ok(result.reads.includes(table), table);
   assert.equal(result.payload.dataInventory.kind, "student");
+  assert.equal(result.payload.dataInventory.materialAssignmentsReceived,4);
+  assert.equal(result.payload.dataInventory.materialAssignmentsSent,undefined);
   assert.equal(result.payload.dataInventory.classMemberships, 3);
   assert.equal(result.payload.dataInventory.invitationsReceived, 3);
   assert.equal(result.reads.includes("security_audit_log"), false);
@@ -117,6 +120,7 @@ test("teacher inventory reports only teacher-owned institutional records", async
     kind: "teacher",
     institutionalMemberships: 1,
     teachingAssignments: 8,
+    materialAssignmentsSent: 2,
     writtenReviews: 0,
     invitationRecords: 12,
     auditEvents: 10,

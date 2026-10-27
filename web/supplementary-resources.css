@@ -6,3 +6,9 @@
 @media(max-width:1000px){.resource-welcome-art{display:none}.resource-filter-grid,.resource-form-grid{grid-template-columns:1fr}.resource-search{align-items:stretch;flex-direction:column}}
 
 .resource-history{grid-column:1/-1;border:1px solid #ccd7e4;border-radius:14px;padding:16px;min-width:0}.resource-history>summary{cursor:pointer;font-weight:700;overflow-wrap:anywhere}.resource-history>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}.resource-history[open]>.resource-grid{margin-top:16px}
+
+/* Keep library headings and send actions inside the column at enlarged text. */
+.resource-list-heading h2{min-width:0;max-width:100%;overflow-wrap:anywhere}
+[data-resource-assignment-history],[data-resource-assign]{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+
+.resource-purpose button,.resource-card-body button{max-width:100%;min-width:0;overflow-wrap:anywhere}
