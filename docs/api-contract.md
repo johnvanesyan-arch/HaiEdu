@@ -1,5 +1,7 @@
 # Learning API contract
 
+**Sprint 16.5B.4 — subject artwork and Forest first-paint corrections, 2026-10-27.** The review candidate restores English/Physics illustrations, adds six subject symbols through a versioned decorative registry, keeps account loading in Forest without assigning a role, and recolours the public landing page. Required release CI and exact-production verification remain pending. All 45 capability mappings, subject-release gates and the English C47 bookmark remain unchanged. [Visual correction delivery](student-visual-corrections.md).
+
 ## Supplementary materials — 16.5B.3
 
 `POST /functions/v1/manage-supplementary-resources` uses the authenticated session and current authorized programme/release/unit context. JSON requests are `{action, context, payload}`; context accepts `enrollmentId` for learners or `assignmentId` for teachers plus `curriculumReleaseId` and `unitId`. `contexts` returns the actor's allowed selector data. Client selectors never grant authority.

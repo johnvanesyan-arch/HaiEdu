@@ -145,3 +145,19 @@ test('Home supports reduced motion, keyboard skip and larger text',async t=>{
   assert.ok(metrics.scrollWidth<=metrics.width+1);assert.equal(metrics.focus,'mainContent');
   assert.equal(metrics.transition,'0s');assert.deepEqual(errors,[]);
 });
+
+for(const view of ['courses','work'])test(`all eight subject illustrations and unknown fallback render in ${view}`,async t=>{
+ const {page,errors}=await fixture(t,{view,allSubjects:true,width:360});
+ const art=await page.locator('.student-card-art svg').evaluateAll(nodes=>nodes.map(n=>({key:n.dataset.subjectArt,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height,hidden:n.getAttribute('aria-hidden'),paths:n.innerHTML})));
+ assert.equal(art.length,9);assert.deepEqual(art.map(a=>a.key).sort(),['english','physics','mathematics','armenian','chemistry','geography','biology','history','generic'].sort());
+ assert.equal(new Set(art.map(a=>a.paths)).size,9);assert.ok(art.every(a=>a.width>=150&&a.height>=90&&a.hidden==='true'),JSON.stringify(art));
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);
+});
+for(const width of [320,768,1280])test(`public landing uses Forest at ${width}px with unchanged access routes`,async t=>{
+ const {page,errors}=await fixture(t,{signedOut:true,width});
+ const colors=await page.evaluate(()=>({canvas:getComputedStyle(document.querySelector('#publicEntry')).backgroundColor,ink:getComputedStyle(document.querySelector('#publicEntry')).color,button:getComputedStyle(document.querySelector('.public-button')).backgroundColor,title:getComputedStyle(document.querySelector('#publicTitle')).color,overflow:document.documentElement.scrollWidth>innerWidth+1}));
+ assert.deepEqual(colors,{canvas:'rgb(245, 246, 239)',ink:'rgb(35, 57, 47)',button:'rgb(40, 91, 69)',title:'rgb(35, 57, 47)',overflow:false});
+ assert.ok(await page.locator('.public-entry a[href="./account-access"]').count()>=4);
+ assert.equal(await page.locator('.public-entry a[href="./account-access?view=register"]').count(),2);
+ assert.deepEqual(errors,[]);
+});

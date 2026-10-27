@@ -27,7 +27,7 @@ Use a calm, clear, age-appropriate interface with enough visual interest to make
 - Pair every learning state with readable text; the green brand colour does not mean that a student has mastered something.
 - Use illustrations to identify a course or material purpose. Supply a neutral fallback. Avoid childish mascots, competitive rankings or rewards that the product has not adopted.
 - Keep account, school/year and selected-course context visible where it affects the action. Never infer a current grade from a course title.
-- Use the existing approved logo asset. Its blue/gold brand colours are retained; this student palette does not authorize a logo redesign or a staff-dashboard recolour.
+- Use the existing approved logo asset. Its blue/gold brand colours are retained; the logo and staff dashboards retain their existing branding. The owner-requested 16.5B.4 correction extends Forest to the public landing page and the shared account surface from first paint, independently of account role.
 
 ## 3. Colour system
 
@@ -171,7 +171,7 @@ See the 45-entry matrix for the full dependency mapping. The student shell is sh
 
 Use the existing outlined SVG vocabulary with rounded caps/joins, approximately 20–24 px and a consistent 1.7–2 px stroke. Give icon-only controls a readable accessible name. Decorative SVGs use `aria-hidden="true"`; informative images receive an equivalent text alternative. Do not use emoji as the primary navigation icon system.
 
-Use simple book, sound, science or neutral learning illustrations with forest/sage accents. Bind any illustration choice to optional presentation metadata with a neutral fallback. Avoid implying that all courses share a fixed visual or all progress is automatically assessed.
+Use simple book, sound, science or neutral learning illustrations with forest/sage accents. Bind illustration choice to optional presentation metadata with a neutral fallback. `web/subject-visuals.mjs` declares `haiedu-subject-art-v1`, keyed by governed `subjectCode`: English book/sound, Physics atom, Mathematics set square, Armenian letter/book, Chemistry flask, Geography globe, Biology plant/DNA and History classical building. Artwork is decorative and never activates a course; unknown subjects use the neutral book. Use the dedicated 160 × 98 px artwork sizing, not the 20 px navigation-icon flex basis. Avoid implying that all courses share a fixed visual or all progress is automatically assessed.
 
 | Motion | v1 limit |
 | --- | --- |

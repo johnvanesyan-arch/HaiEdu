@@ -1,5 +1,7 @@
 # Student dashboard acceptance — 27 October 2026
 
+**16.5B.4 follow-up:** owner-reported subject symbols and account first-paint defects are being corrected together with the public Forest palette. This is an evidenced follow-up to available-scope technical acceptance; final owner usability sign-off is not claimed. [Correction record](student-visual-corrections.md).
+
 The complete implemented dashboard, including S45 «Հավելյալ նյութեր», has passed technical acceptance for the currently available Physics/English programmes and designated institutional fixtures. The deployed source is `ace33de8d0f82795614ed7b49ea4eef816be4baa` ([PR311](https://github.com/johnvanesyan-arch/HaiEdu/pull/311)). [Release evidence](evidence/student-supplementary-release-20261027.json) contains exact CI, backend, asset and authenticated-run receipts.
 
 This is the final technical handoff for the current dashboard implementation. **Final owner usability sign-off on the live implementation is not inferred from earlier design approval. Full 16.5C/four-subject acceptance remains open** until Mathematics/Armenian and the formal cross-subject gate can actually be exercised. No new decision is needed to retain those existing dependencies; Sprint17 remains gated. Full browser zoom/device and broader usability/accessibility review also remain part of the formal gate; 200% text reflow is recorded accurately below.

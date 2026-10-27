@@ -401,15 +401,17 @@ body[data-student-page="home"]:not(.amp-student-shell-active):not([data-role-rou
   display: none;
 }
 .public-entry {
-  --public-blue: #244f88;
-  --public-line: #d7e3f3;
-  --public-muted: #607087;
-  --public-soft: #eef4fd;
+  --public-accent: #285b45;
+  --public-line: #dce4da;
+  --public-muted: #58695f;
+  --public-soft: #e6f0e6;
+  font-family: "Noto Sans Armenian", "Noto Sans", Arial, sans-serif;
   min-height: 100vh;
-  background: #f7faff;
-  color: #1c293b;
+  background: #f5f6ef;
+  color: #23392f;
 }
-.public-entry a:focus-visible { outline: 3px solid #9bc5ff; outline-offset: 3px; }
+.public-entry :is(h1,h2) { color:inherit; letter-spacing:normal; overflow-wrap:anywhere; }
+.public-entry a:focus-visible { outline: 3px solid #7a4718; outline-offset: 3px; }
 .public-header, .public-footer { background: #fff; border-color: var(--public-line); }
 .public-header {
   display: flex;
@@ -423,7 +425,7 @@ body[data-student-page="home"]:not(.amp-student-shell-active):not([data-role-rou
 .public-brand img { display: block; width: 100%; height: auto; }
 .public-header nav, .public-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
 .public-header nav a, .public-text-link, .public-steps a, .public-access a {
-  color: var(--public-blue);
+  color: var(--public-accent);
   text-decoration: none;
   font-weight: 600;
 }
@@ -431,32 +433,32 @@ body[data-student-page="home"]:not(.amp-student-shell-active):not([data-role-rou
 .public-entry .public-button {
   display: inline-flex;
   justify-content: center;
-  border: 1px solid var(--public-blue);
+  border: 1px solid var(--public-accent);
   border-radius: 10px;
-  background: var(--public-blue);
+  background: var(--public-accent);
   color: #fff;
   padding: 11px 18px;
   text-decoration: none;
   font-weight: 700;
 }
-.public-entry .public-button:hover { background: #193f71; text-decoration: none; }
+.public-entry .public-button:hover { background: #214c3a; text-decoration: none; }
 .public-body { max-width: 1120px; margin: auto; padding: 50px 24px 46px; }
 .public-hero { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: clamp(26px, 5vw, 70px); }
-.public-kicker { font-size: .82rem; font-weight: 700; letter-spacing: .09em; color: var(--public-blue); }
+.public-kicker { font-size: .82rem; font-weight: 700; letter-spacing: normal; color: var(--public-accent); }
 .public-hero h1 { margin: 14px 0 16px; font-size: clamp(2.35rem, 4.7vw, 3.8rem); line-height: 1.16; }
 .public-hero-copy > p:not(.public-kicker, .public-pilot) { color: var(--public-muted); font-size: 1.13rem; line-height: 1.65; }
 .public-actions { margin: 25px 0 17px; }
 .public-pilot { display: inline-block; background: #fff7e7; color: #79562a; padding: 10px 13px; border-radius: 8px; font-size: .9rem; }
-.public-preview { transform: rotate(1deg); border: 1px solid var(--public-line); border-radius: 16px; background: #fff; box-shadow: 0 15px 36px #1c36551a; overflow: hidden; }
+.public-preview { transform: rotate(1deg); border: 1px solid var(--public-line); border-radius: 16px; background: #fff; box-shadow: 0 15px 36px #23392f1a; overflow: hidden; }
 .public-preview-header { border-bottom: 1px solid var(--public-line); padding: 16px 20px; color: var(--public-muted); }
-.public-preview-header span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--public-blue); margin-right: 8px; }
+.public-preview-header span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--public-accent); margin-right: 8px; }
 .public-preview-content { display: grid; gap: 13px; padding: 26px; }
 .public-preview-content strong { font-size: 1.35rem; line-height: 1.3; margin-bottom: 5px; }
-.public-preview-content > div { display: flex; justify-content: space-between; gap: 12px; padding: 13px 14px; border-radius: 9px; background: #f7faff; }
+.public-preview-content > div { display: flex; justify-content: space-between; gap: 12px; padding: 13px 14px; border-radius: 9px; background: #f5f6ef; }
 .public-preview-content > div span:last-child { color: var(--public-muted); text-align: right; }
 .public-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 52px 0 25px; }
 .public-steps article { border-top: 1px solid var(--public-line); padding: 17px 4px; }
-.public-steps article > span { color: var(--public-blue); font-weight: 700; }
+.public-steps article > span { color: var(--public-accent); font-weight: 700; }
 .public-steps h2 { font-size: 1.25rem; margin: 10px 0 6px; }
 .public-steps p { min-height: 3.2em; color: var(--public-muted); line-height: 1.55; }
 .public-steps article > div { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -482,3 +484,6 @@ body[data-student-page="home"]:not(.amp-student-shell-active):not([data-role-rou
   .public-hero h1 { font-size: clamp(2rem, 9vw, 2.9rem); }
   .public-footer { padding: 18px 20px; }
 }
+
+/* Keep the unresolved identity route in the same palette before JS runs. */
+html:has(body[data-student-page="home"]), body[data-student-page="home"] { background:#f5f6ef; }
