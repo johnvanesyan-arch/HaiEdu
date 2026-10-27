@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "slice": "16.5B.1",
+  "status": "delivered_bounded_slice",
+  "ownerAcceptance": "student-dashboard-approval-20261027.json",
+  "capabilityIdsPreserved": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S32",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S40",
+    "S41",
+    "S42",
+    "S43",
+    "S44",
+    "S45"
+  ],
+  "implementationPullRequest": 307,
+  "implementationCommit": "a5f9f09218b1220bb8793f21381858dc0ad786ed",
+  "requiredCi": {
+    "pullRequestRun": 40471733942,
+    "mainRun": 40472096861,
+    "unitIntegrationTests": 1454,
+    "nativeBrowserTests": 139,
+    "jobs": {
+      "test": "success",
+      "role-layout-browser": "success",
+      "institutional-concurrency": "success",
+      "phase3-postgres-17": "success",
+      "Platform release checks": "success"
+    }
+  },
+  "production": {
+    "origin": "https://www.haiedu.am",
+    "commit": "a5f9f09218b1220bb8793f21381858dc0ad786ed",
+    "vercelStatus": "success",
+    "vercelDeploymentUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/9L1sG9y7XpQ3zF4KwbkCtTxHge55",
+    "assetReadback": [
+      {
+        "path": "app.js",
+        "bytes": 30444,
+        "sha256": "8e8f899c817fb8c0e0b671887df44a4f0bf5da8c4dad17bf0e463f2ba2ad1fee",
+        "matchesLocal": true
+      },
+      {
+        "path": "course-gate.js",
+        "bytes": 2024,
+        "sha256": "3d33709583005a9f2d27281eb89ee97fdfaeb54909c26cdd70c69f4f80c4d891",
+        "matchesLocal": true
+      },
+      {
+        "path": "index.html",
+        "bytes": 16187,
+        "sha256": "9dda8ace8fc6ed4d846ffce18b6ca9d83c58ba6dc5ab78c696dfbf70716e77a8",
+        "matchesLocal": true
+      },
+      {
+        "path": "learning-navigation.mjs",
+        "bytes": 3179,
+        "sha256": "d500a81e08d64d95e96e869f64fc346734961eaa510c4c362973bb2d55468a11",
+        "matchesLocal": true
+      },
+      {
+        "path": "multi-subject-home.js",
+        "bytes": 11743,
+        "sha256": "0e6ca9c3dc6b3e20474fa997af4a2d41809d27f774504fb6c4e368bc8b5d5064",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-courses.js",
+        "bytes": 2025,
+        "sha256": "f463c8ceeee3ed0c6b53f105f20ca35eda4387b66d6719232c55390af9b23dfb",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-forest.css",
+        "bytes": 15052,
+        "sha256": "d9b8d1ad010138606b77e66891f7fa92cf2b2e2c1ad9345e3fcce1aafacfd71d",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-home-model.mjs",
+        "bytes": 2636,
+        "sha256": "5840f8288a89eabd4e1ed91fb03790995a5005e1ac96b87c27c54b87d5d9f4eb",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-shell.js",
+        "bytes": 8164,
+        "sha256": "76463f17de61e76d35bd9b3c0ac6badd034b80c454cbb685c4f85529e06ff038",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-signout.mjs",
+        "bytes": 1826,
+        "sha256": "4a7bc2540f420c6e49ca834ca03b71e65cdee7f6ce1083108e2d830726020793",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-visuals.mjs",
+        "bytes": 1909,
+        "sha256": "7c0166db45760e6118cb7cc224d144d4ed5705de3fc95ff5a97c3efc776dbd9e",
+        "matchesLocal": true
+      },
+      {
+        "path": "assets/fonts/noto-sans-armenian-variable.ttf",
+        "bytes": 221936,
+        "sha256": "0870908d8318435a5daf1cd280ae15063f990cd9ad60f3e94c734ce9e1ffef71",
+        "matchesLocal": true
+      }
+    ],
+    "readAcceptance": [
+      {
+        "name": "Physics Chapters I–VI",
+        "run": 40472096794,
+        "checks": 324,
+        "evidence": "student-home-physics-read-20261027.json"
+      },
+      {
+        "name": "English Unit3 and preserved programme reads",
+        "run": 40473669603,
+        "checks": 154,
+        "evidence": "student-home-english-read-20261027.json"
+      },
+      {
+        "name": "Staff analytics",
+        "run": 40472096949,
+        "checks": 10,
+        "evidence": "student-home-analytics-20261027.json"
+      }
+    ]
+  },
+  "browserEvidence": {
+    "serviceMode": "real browser modules with synthetic Auth/read fixtures",
+    "iframeWidths": [
+      320,
+      360,
+      768,
+      1280
+    ],
+    "contentWidths": [
+      305,
+      345,
+      753,
+      1265
+    ],
+    "noHorizontalOverflow": true,
+    "noClippedControls": true,
+    "textEnlargementPercent": 200,
+    "actualBrowserZoomClaimed": false,
+    "before": "haiedu-home-before-20261027.jpg",
+    "after": "haiedu-home-forest-20261027.jpg"
+  },
+  "releaseControl": {
+    "requiredAggregate": "passed",
+    "persistentVercelBlockingCheck": "prior independently verified configuration reused from docs/reliability-stage1.md; unchanged by this slice",
+    "currentManagementReadback": "not re-attested: Vercel connector 403 for the existing project team",
+    "bypassOrConfigurationChange": false
+  },
+  "queueRecovery": {
+    "automaticEnglishRun": 40472096888,
+    "automaticStatus": "cancelled before any job by the existing shared fixture concurrency group",
+    "connectorRetry": "403: this workflow run cannot be retried",
+    "recovery": "existing signed-in GitHub Run workflow control on reviewed main; same guards and exact source",
+    "replacementRun": 40473669603
+  },
+  "preservation": {
+    "schemaChanges": false,
+    "edgeChanges": false,
+    "contentChanges": false,
+    "learningPolicyChanges": false,
+    "staffLayoutChanges": false,
+    "newLearningAttemptsByReadAcceptance": false,
+    "unchangedBinaryAssetsPreserved": true
+  },
+  "remaining": [
+    "Remaining course/assessment/progress components",
+    "Remaining work/account surfaces",
+    "S45 complete teacher/platform authoring and protected delivery",
+    "Future features retain owning-service dependencies",
+    "Full 16.5C and four-subject 16.4 acceptance before Sprint17",
+    "English resumes after C47 at Unit3 learner/audio/writing acceptance, then Units4–6"
+  ],
+  "limitations": [
+    "Read-only production acceptance does not replace full learner attempts or Unit3 action acceptance.",
+    "No independent specialist approval, engagement gain, full WCAG/device certification or four-subject closure is claimed.",
+    "The hidden legacy single-subject Home renderer remains separately recorded migration debt."
+  ]
+}
