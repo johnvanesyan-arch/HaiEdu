@@ -77,7 +77,7 @@ export function createSupplementaryResourcesHandler({createAdmin,hasActiveLiveSe
    await live();return reply(data);
   }catch(error){
    if(uploaded&&!attached)await admin?.storage.from('supplementary-materials').remove([uploaded]).catch(()=>{});
-   let code=String(error?.message??'');
+   let code=String(error?.message??'').split('\n')[0].trim();
    if(['learning_context_unavailable','written_context_unavailable','written_read_only'].includes(code))code='resource_forbidden';
    const known=['resource_request_invalid','resource_definition_invalid','resource_reason_required','resource_url_invalid','resource_file_invalid','resource_too_large','resource_forbidden','resource_unavailable','resource_conflict','resource_read_only','resource_mfa_required','resource_qa_required','resource_storage_unavailable'];
    if(!known.includes(code))return reply({error:'service_unavailable'},503);
