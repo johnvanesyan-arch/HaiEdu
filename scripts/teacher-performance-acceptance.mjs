@@ -19,7 +19,7 @@ try{
   stage=side+': login';const email=process.env[`QA_SCHOOL_${side}_TEACHER_EMAIL`],password=process.env[`QA_SCHOOL_${side}_TEACHER_PASSWORD`];
   check(side+': credentials configured',Boolean(email&&password));
   const login=await fetch(`${url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({email,password}),signal:AbortSignal.timeout(30000)});
-  const session=await login.json();check(side+': designated teacher identity',login.ok&&session.user?.id===fixture[side].teacherId);sessions.push(session);
+  const session=await login.json();session.expires_at??=Math.floor(Date.now()/1000)+Number(session.expires_in);check(side+': designated teacher identity',login.ok&&session.user?.id===fixture[side].teacherId);sessions.push(session);
   const base=await api(session.access_token,'get-teacher-dashboard',{});check(side+': initial authorized directory',base.status===200&&base.data.classes.some(c=>c.id===fixture[side].classId));
   report.checks.push({label:side+': fixture size',active:base.data.classes.filter(c=>c.isActive).length,archived:base.data.classes.filter(c=>!c.isActive).length});
   const klass=base.data.classes.find(c=>c.id===fixture[side].classId);
