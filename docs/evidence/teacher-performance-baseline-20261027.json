@@ -1,0 +1,3929 @@
+{
+  "scope": "Read-only teacher performance",
+  "phase": "baseline",
+  "revision": "7124984b27e91af1210ad3c9e36edfecb0f859bb",
+  "startedAt": "2026-10-27T18:32:41.773Z",
+  "status": "passed",
+  "samples": [
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "cold-home",
+      "ms": 14744.043006000022,
+      "requestCount": 3,
+      "bytes": 29053,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 448.732,
+          "status": 200,
+          "bytes": 581,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 12056.241,
+          "status": 200,
+          "bytes": 27585,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 8887.15,
+          "status": 200,
+          "bytes": 887,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "warm-home",
+      "ms": 9332.29402500001,
+      "requestCount": 3,
+      "bytes": 29589,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 402.202,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7151.741,
+          "status": 200,
+          "bytes": 27811,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1850.904,
+          "status": 200,
+          "bytes": 850,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "classes",
+      "ms": 8778.20970799998,
+      "requestCount": 3,
+      "bytes": 29591,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 393.95,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6634.002,
+          "status": 200,
+          "bytes": 27812,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1845.721,
+          "status": 200,
+          "bytes": 851,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "archive",
+      "ms": 13795.494835999998,
+      "requestCount": 3,
+      "bytes": 29584,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 237.033,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 11457.155,
+          "status": 200,
+          "bytes": 27785,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2136.638,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "selected-class",
+      "ms": 35.34164600001532,
+      "requestCount": 1,
+      "bytes": 878,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1870.181,
+          "status": 200,
+          "bytes": 878,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "unit-switch",
+      "ms": 11419.864394000004,
+      "requestCount": 2,
+      "bytes": 26882,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 11359.771,
+          "status": 200,
+          "bytes": 26031,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2102.035,
+          "status": 200,
+          "bytes": 851,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "review",
+      "ms": 1370.4384889999928,
+      "requestCount": 1,
+      "bytes": 892,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1160.347,
+          "status": 200,
+          "bytes": 892,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "cold-home",
+      "ms": 12555.132551000017,
+      "requestCount": 3,
+      "bytes": 29076,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 389.094,
+          "status": 200,
+          "bytes": 581,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 10174.135,
+          "status": 200,
+          "bytes": 27585,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1747.152,
+          "status": 200,
+          "bytes": 910,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "warm-home",
+      "ms": 9830.406725000008,
+      "requestCount": 3,
+      "bytes": 29613,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.439,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7768.414,
+          "status": 200,
+          "bytes": 27809,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1685.57,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "classes",
+      "ms": 9792.088920999988,
+      "requestCount": 3,
+      "bytes": 29559,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.623,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7744.598,
+          "status": 200,
+          "bytes": 27784,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2881.356,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "archive",
+      "ms": 11272.745597000001,
+      "requestCount": 3,
+      "bytes": 29559,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 198.748,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9162.64,
+          "status": 200,
+          "bytes": 27782,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2344.753,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "selected-class",
+      "ms": 32.6023259999929,
+      "requestCount": 1,
+      "bytes": 875,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 963.886,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "unit-switch",
+      "ms": 7881.827043000027,
+      "requestCount": 2,
+      "bytes": 26874,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7813.561,
+          "status": 200,
+          "bytes": 26027,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1801.353,
+          "status": 200,
+          "bytes": 847,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "review",
+      "ms": 1357.6140790000209,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1313.719,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "cold-home",
+      "ms": 8532.249745999987,
+      "requestCount": 3,
+      "bytes": 29442,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 186.445,
+          "status": 200,
+          "bytes": 941,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6484.381,
+          "status": 200,
+          "bytes": 27590,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1295.103,
+          "status": 200,
+          "bytes": 911,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "warm-home",
+      "ms": 8324.743813999987,
+      "requestCount": 3,
+      "bytes": 29587,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 169.473,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6349.144,
+          "status": 200,
+          "bytes": 27811,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1280.25,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "classes",
+      "ms": 8766.792854,
+      "requestCount": 3,
+      "bytes": 29617,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 175.911,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6492.465,
+          "status": 200,
+          "bytes": 27815,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1172.185,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "archive",
+      "ms": 8250.000751000014,
+      "requestCount": 3,
+      "bytes": 29586,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 154.779,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6304.218,
+          "status": 200,
+          "bytes": 27810,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1828.256,
+          "status": 200,
+          "bytes": 847,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "selected-class",
+      "ms": 59.92909200000577,
+      "requestCount": 1,
+      "bytes": 878,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1169.228,
+          "status": 200,
+          "bytes": 878,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "unit-switch",
+      "ms": 7880.084887000034,
+      "requestCount": 2,
+      "bytes": 26850,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7797.192,
+          "status": 200,
+          "bytes": 26005,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1630.016,
+          "status": 200,
+          "bytes": 845,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "review",
+      "ms": 1861.487496000016,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1721.141,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "cold-home",
+      "ms": 14599.162223000021,
+      "requestCount": 3,
+      "bytes": 29409,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 358.442,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 12364.491,
+          "status": 200,
+          "bytes": 27583,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2031.517,
+          "status": 200,
+          "bytes": 883,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "warm-home",
+      "ms": 11349.019489000028,
+      "requestCount": 3,
+      "bytes": 29618,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 363.398,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9386.954,
+          "status": 200,
+          "bytes": 27813,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1603.532,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "classes",
+      "ms": 9788.868197000003,
+      "requestCount": 3,
+      "bytes": 29584,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.381,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7572.694,
+          "status": 200,
+          "bytes": 27811,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1492.751,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "archive",
+      "ms": 10277.30210500001,
+      "requestCount": 3,
+      "bytes": 29558,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.129,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8321.783,
+          "status": 200,
+          "bytes": 27782,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1318.443,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "selected-class",
+      "ms": 51.19321699999273,
+      "requestCount": 1,
+      "bytes": 846,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1216.566,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "unit-switch",
+      "ms": 9390.677065999946,
+      "requestCount": 2,
+      "bytes": 26846,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8946.028,
+          "status": 200,
+          "bytes": 26001,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1029.006,
+          "status": 200,
+          "bytes": 845,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "review",
+      "ms": 1866.5605959999957,
+      "requestCount": 1,
+      "bytes": 891,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1594.757,
+          "status": 200,
+          "bytes": 891,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "cold-home",
+      "ms": 8552.339324,
+      "requestCount": 3,
+      "bytes": 29078,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 209.33,
+          "status": 200,
+          "bytes": 580,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6497.814,
+          "status": 200,
+          "bytes": 27589,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1591.91,
+          "status": 200,
+          "bytes": 909,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "warm-home",
+      "ms": 10339.592213999946,
+      "requestCount": 3,
+      "bytes": 29586,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 266.766,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8539.593,
+          "status": 200,
+          "bytes": 27786,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1423.908,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "classes",
+      "ms": 9769.924196000036,
+      "requestCount": 3,
+      "bytes": 29587,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 401.635,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7684.824,
+          "status": 200,
+          "bytes": 27783,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1772.328,
+          "status": 200,
+          "bytes": 878,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "archive",
+      "ms": 9264.392180000024,
+      "requestCount": 3,
+      "bytes": 29610,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 251.427,
+          "status": 200,
+          "bytes": 924,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6879.394,
+          "status": 200,
+          "bytes": 27813,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1503.826,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "selected-class",
+      "ms": 56.74726999999257,
+      "requestCount": 1,
+      "bytes": 848,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1509.485,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "unit-switch",
+      "ms": 9388.643521999998,
+      "requestCount": 2,
+      "bytes": 26907,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9033.051,
+          "status": 200,
+          "bytes": 26030,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1029.6,
+          "status": 200,
+          "bytes": 877,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "review",
+      "ms": 1872.6649340000004,
+      "requestCount": 1,
+      "bytes": 919,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1556.689,
+          "status": 200,
+          "bytes": 919,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "cold-home",
+      "ms": 14045.88126600004,
+      "requestCount": 3,
+      "bytes": 29447,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 419.038,
+          "status": 200,
+          "bytes": 945,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 11794.185,
+          "status": 200,
+          "bytes": 27591,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2540.957,
+          "status": 200,
+          "bytes": 911,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "warm-home",
+      "ms": 9317.43941500003,
+      "requestCount": 3,
+      "bytes": 29583,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 198.145,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7482.1,
+          "status": 200,
+          "bytes": 27810,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1663.303,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "classes",
+      "ms": 9280.247533000016,
+      "requestCount": 3,
+      "bytes": 29609,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 160.759,
+          "status": 200,
+          "bytes": 925,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6995.085,
+          "status": 200,
+          "bytes": 27808,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1367.722,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "archive",
+      "ms": 9754.674017999903,
+      "requestCount": 3,
+      "bytes": 29557,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 189.909,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7632.523,
+          "status": 200,
+          "bytes": 27781,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1085.452,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "selected-class",
+      "ms": 30.11033099994529,
+      "requestCount": 1,
+      "bytes": 876,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1030.303,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "unit-switch",
+      "ms": 8892.627773999935,
+      "requestCount": 2,
+      "bytes": 26901,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8749.621,
+          "status": 200,
+          "bytes": 26026,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1412.4,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "review",
+      "ms": 1872.4486449999968,
+      "requestCount": 1,
+      "bytes": 919,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1340.071,
+          "status": 200,
+          "bytes": 919,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "cold-home",
+      "ms": 9555.689647999941,
+      "requestCount": 3,
+      "bytes": 29073,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 202.457,
+          "status": 200,
+          "bytes": 578,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6671.898,
+          "status": 200,
+          "bytes": 27586,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1030.489,
+          "status": 200,
+          "bytes": 909,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "warm-home",
+      "ms": 8334.439967999933,
+      "requestCount": 3,
+      "bytes": 29616,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.884,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6589.574,
+          "status": 200,
+          "bytes": 27812,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1138.736,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "classes",
+      "ms": 8270.746746000019,
+      "requestCount": 3,
+      "bytes": 29613,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 177.031,
+          "status": 200,
+          "bytes": 930,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6394.741,
+          "status": 200,
+          "bytes": 27808,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1082.062,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "archive",
+      "ms": 8258.784738000017,
+      "requestCount": 3,
+      "bytes": 29610,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 154.566,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6234.575,
+          "status": 200,
+          "bytes": 27810,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1064.427,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "selected-class",
+      "ms": 61.78732000000309,
+      "requestCount": 1,
+      "bytes": 848,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1902.84,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "unit-switch",
+      "ms": 14938.62085800001,
+      "requestCount": 2,
+      "bytes": 26879,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 14533.211,
+          "status": 200,
+          "bytes": 26002,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 4838.023,
+          "status": 200,
+          "bytes": 877,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "review",
+      "ms": 1873.2533489998896,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1641.826,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "cold-home",
+      "ms": 10076.946696000057,
+      "requestCount": 3,
+      "bytes": 29053,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 254.776,
+          "status": 200,
+          "bytes": 583,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7721.966,
+          "status": 200,
+          "bytes": 27587,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1193.023,
+          "status": 200,
+          "bytes": 883,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "warm-home",
+      "ms": 8837.157615000033,
+      "requestCount": 3,
+      "bytes": 29560,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 162.257,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6799.211,
+          "status": 200,
+          "bytes": 27785,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2324.683,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "classes",
+      "ms": 8260.806753999903,
+      "requestCount": 3,
+      "bytes": 29560,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.439,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6266.976,
+          "status": 200,
+          "bytes": 27783,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1006.646,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "archive",
+      "ms": 9270.568806999945,
+      "requestCount": 3,
+      "bytes": 29563,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 273.604,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7137.359,
+          "status": 200,
+          "bytes": 27786,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2645.758,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "selected-class",
+      "ms": 42.93310899997596,
+      "requestCount": 1,
+      "bytes": 876,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1141.721,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "unit-switch",
+      "ms": 9394.279829000006,
+      "requestCount": 2,
+      "bytes": 26879,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9230.694,
+          "status": 200,
+          "bytes": 26002,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1052.143,
+          "status": 200,
+          "bytes": 877,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "review",
+      "ms": 1365.4084929999663,
+      "requestCount": 1,
+      "bytes": 921,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1002.303,
+          "status": 200,
+          "bytes": 921,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "cold-home",
+      "ms": 9259.838715000078,
+      "requestCount": 3,
+      "bytes": 29080,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 187.084,
+          "status": 200,
+          "bytes": 579,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6679.439,
+          "status": 200,
+          "bytes": 27592,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1055.815,
+          "status": 200,
+          "bytes": 909,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "warm-home",
+      "ms": 8333.16531099996,
+      "requestCount": 3,
+      "bytes": 29586,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 184.36,
+          "status": 200,
+          "bytes": 925,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6380.005,
+          "status": 200,
+          "bytes": 27814,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1049.535,
+          "status": 200,
+          "bytes": 847,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "classes",
+      "ms": 8270.94695699995,
+      "requestCount": 3,
+      "bytes": 29610,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.251,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6320.04,
+          "status": 200,
+          "bytes": 27808,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 894.013,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "archive",
+      "ms": 9260.952201000066,
+      "requestCount": 3,
+      "bytes": 29560,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.062,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7407.414,
+          "status": 200,
+          "bytes": 27784,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1355.255,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "selected-class",
+      "ms": 39.5692379999673,
+      "requestCount": 1,
+      "bytes": 850,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1591.175,
+          "status": 200,
+          "bytes": 850,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "unit-switch",
+      "ms": 9903.778679999989,
+      "requestCount": 2,
+      "bytes": 26876,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9581.932,
+          "status": 200,
+          "bytes": 26028,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1464.356,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "review",
+      "ms": 1368.71925799991,
+      "requestCount": 1,
+      "bytes": 892,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1328.974,
+          "status": 200,
+          "bytes": 892,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "cold-home",
+      "ms": 10546.507279000012,
+      "requestCount": 3,
+      "bytes": 29048,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 403.487,
+          "status": 200,
+          "bytes": 581,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8344.608,
+          "status": 200,
+          "bytes": 27582,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1349.767,
+          "status": 200,
+          "bytes": 885,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "warm-home",
+      "ms": 9317.486800999963,
+      "requestCount": 3,
+      "bytes": 29589,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.736,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7369.991,
+          "status": 200,
+          "bytes": 27786,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1055.588,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "classes",
+      "ms": 8786.07002799993,
+      "requestCount": 3,
+      "bytes": 29554,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.256,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6800.256,
+          "status": 200,
+          "bytes": 27779,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1358.795,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "archive",
+      "ms": 12785.36929599999,
+      "requestCount": 3,
+      "bytes": 29561,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.512,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 10706.529,
+          "status": 200,
+          "bytes": 27785,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1806.001,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "selected-class",
+      "ms": 36.41233199997805,
+      "requestCount": 1,
+      "bytes": 847,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1146.377,
+          "status": 200,
+          "bytes": 847,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "unit-switch",
+      "ms": 9391.33358700003,
+      "requestCount": 2,
+      "bytes": 26880,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8907.612,
+          "status": 200,
+          "bytes": 26029,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1148.922,
+          "status": 200,
+          "bytes": 851,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "review",
+      "ms": 1359.656753999996,
+      "requestCount": 1,
+      "bytes": 890,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1247.78,
+          "status": 200,
+          "bytes": 890,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "cold-home",
+      "ms": 9625.133858999936,
+      "requestCount": 3,
+      "bytes": 16130,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 442.531,
+          "status": 200,
+          "bytes": 581,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7106.763,
+          "status": 200,
+          "bytes": 14666,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1672.533,
+          "status": 200,
+          "bytes": 883,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "warm-home",
+      "ms": 9325.291680000024,
+      "requestCount": 3,
+      "bytes": 16678,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 183.917,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7190.116,
+          "status": 200,
+          "bytes": 14899,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1949.882,
+          "status": 200,
+          "bytes": 850,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "classes",
+      "ms": 8776.583778999979,
+      "requestCount": 3,
+      "bytes": 16649,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.762,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6492.643,
+          "status": 200,
+          "bytes": 14874,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1331.107,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "archive",
+      "ms": 8247.063513999921,
+      "requestCount": 3,
+      "bytes": 16704,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.929,
+          "status": 200,
+          "bytes": 930,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6079.376,
+          "status": 200,
+          "bytes": 14902,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1109.483,
+          "status": 200,
+          "bytes": 872,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "selected-class",
+      "ms": 46.275061999913305,
+      "requestCount": 1,
+      "bytes": 875,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1062.141,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "unit-switch",
+      "ms": 9391.141820000019,
+      "requestCount": 2,
+      "bytes": 14680,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9020.589,
+          "status": 200,
+          "bytes": 13807,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1112.567,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "review",
+      "ms": 1365.7593529999722,
+      "requestCount": 1,
+      "bytes": 922,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1252.013,
+          "status": 200,
+          "bytes": 922,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "cold-home",
+      "ms": 8550.23438499996,
+      "requestCount": 3,
+      "bytes": 16157,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 201.052,
+          "status": 200,
+          "bytes": 584,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6162.122,
+          "status": 200,
+          "bytes": 14662,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2509.173,
+          "status": 200,
+          "bytes": 911,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "warm-home",
+      "ms": 9309.73171600001,
+      "requestCount": 3,
+      "bytes": 16682,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 626.15,
+          "status": 200,
+          "bytes": 931,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6852.965,
+          "status": 200,
+          "bytes": 14899,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1380.086,
+          "status": 200,
+          "bytes": 852,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "classes",
+      "ms": 8761.719291000045,
+      "requestCount": 3,
+      "bytes": 16678,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 199.553,
+          "status": 200,
+          "bytes": 930,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6844.552,
+          "status": 200,
+          "bytes": 14875,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1150.245,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "archive",
+      "ms": 8263.977546000038,
+      "requestCount": 3,
+      "bytes": 16701,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 198.887,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6200.136,
+          "status": 200,
+          "bytes": 14899,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1034.725,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "selected-class",
+      "ms": 34.21044399996754,
+      "requestCount": 1,
+      "bytes": 848,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1308.463,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "unit-switch",
+      "ms": 7371.943406000035,
+      "requestCount": 2,
+      "bytes": 14651,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7234.952,
+          "status": 200,
+          "bytes": 13805,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1248.77,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "review",
+      "ms": 1363.2807320000138,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1166.831,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "cold-home",
+      "ms": 8558.131246999954,
+      "requestCount": 3,
+      "bytes": 16143,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 374.661,
+          "status": 200,
+          "bytes": 603,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6468.362,
+          "status": 200,
+          "bytes": 14657,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1320.104,
+          "status": 200,
+          "bytes": 883,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "warm-home",
+      "ms": 8824.186901999987,
+      "requestCount": 3,
+      "bytes": 16651,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.765,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6866.718,
+          "status": 200,
+          "bytes": 14874,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1185.885,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "classes",
+      "ms": 8759.550248999964,
+      "requestCount": 3,
+      "bytes": 16676,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 184.987,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6529.473,
+          "status": 200,
+          "bytes": 14875,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1374.426,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "archive",
+      "ms": 8253.87877099996,
+      "requestCount": 3,
+      "bytes": 16703,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 160.885,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6062.993,
+          "status": 200,
+          "bytes": 14900,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1004.197,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "selected-class",
+      "ms": 40.76393200003076,
+      "requestCount": 1,
+      "bytes": 871,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1004.449,
+          "status": 200,
+          "bytes": 871,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "unit-switch",
+      "ms": 7380.839244000032,
+      "requestCount": 2,
+      "bytes": 14649,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7198.229,
+          "status": 200,
+          "bytes": 13801,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1104.546,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "review",
+      "ms": 1363.3398809999926,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1176.103,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "cold-home",
+      "ms": 8042.302754000062,
+      "requestCount": 3,
+      "bytes": 16515,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 216.652,
+          "status": 200,
+          "bytes": 940,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5907.257,
+          "status": 200,
+          "bytes": 14665,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 997.554,
+          "status": 200,
+          "bytes": 910,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "warm-home",
+      "ms": 11355.570622000028,
+      "requestCount": 3,
+      "bytes": 16702,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 184.164,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 9604.215,
+          "status": 200,
+          "bytes": 14899,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1605.843,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "classes",
+      "ms": 10275.116561000119,
+      "requestCount": 3,
+      "bytes": 16681,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 237.176,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8194.809,
+          "status": 200,
+          "bytes": 14880,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1141.699,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "archive",
+      "ms": 8764.982149000047,
+      "requestCount": 3,
+      "bytes": 16706,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 206.106,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6462.336,
+          "status": 200,
+          "bytes": 14902,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1103.026,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "selected-class",
+      "ms": 40.736969999969006,
+      "requestCount": 1,
+      "bytes": 873,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 2114.467,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "unit-switch",
+      "ms": 8885.926108000102,
+      "requestCount": 2,
+      "bytes": 14649,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8428.053,
+          "status": 200,
+          "bytes": 13776,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1510.416,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "review",
+      "ms": 1883.2904949998483,
+      "requestCount": 1,
+      "bytes": 918,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1341.548,
+          "status": 200,
+          "bytes": 918,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "cold-home",
+      "ms": 9517.316612000111,
+      "requestCount": 3,
+      "bytes": 16489,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 216.297,
+          "status": 200,
+          "bytes": 941,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7489.486,
+          "status": 200,
+          "bytes": 14666,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1080.759,
+          "status": 200,
+          "bytes": 882,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "warm-home",
+      "ms": 7819.353118000086,
+      "requestCount": 3,
+      "bytes": 16679,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 169.026,
+          "status": 200,
+          "bytes": 930,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6004.838,
+          "status": 200,
+          "bytes": 14871,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1230.751,
+          "status": 200,
+          "bytes": 878,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "classes",
+      "ms": 8279.567810999928,
+      "requestCount": 3,
+      "bytes": 16675,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 162.411,
+          "status": 200,
+          "bytes": 925,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6304.293,
+          "status": 200,
+          "bytes": 14875,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 999.562,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "archive",
+      "ms": 7763.542611999903,
+      "requestCount": 3,
+      "bytes": 16672,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 205.48,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5870.4,
+          "status": 200,
+          "bytes": 14871,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1214.052,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "selected-class",
+      "ms": 30.09549899981357,
+      "requestCount": 1,
+      "bytes": 846,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1071.466,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "unit-switch",
+      "ms": 6869.952469000127,
+      "requestCount": 2,
+      "bytes": 14679,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6714.686,
+          "status": 200,
+          "bytes": 13804,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1158.482,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "review",
+      "ms": 1369.642533000093,
+      "requestCount": 1,
+      "bytes": 888,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1112.458,
+          "status": 200,
+          "bytes": 888,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "cold-home",
+      "ms": 21089.149609999964,
+      "requestCount": 3,
+      "bytes": 16484,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 3606.944,
+          "status": 200,
+          "bytes": 939,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 15625.921,
+          "status": 200,
+          "bytes": 14660,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1761.173,
+          "status": 200,
+          "bytes": 885,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "warm-home",
+      "ms": 10356.040990000125,
+      "requestCount": 3,
+      "bytes": 16652,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 266.56,
+          "status": 200,
+          "bytes": 930,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 8464.257,
+          "status": 200,
+          "bytes": 14874,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1694.865,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "classes",
+      "ms": 9299.270386999939,
+      "requestCount": 3,
+      "bytes": 16709,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 199.146,
+          "status": 200,
+          "bytes": 931,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6934.531,
+          "status": 200,
+          "bytes": 14904,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1209.018,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "archive",
+      "ms": 8749.486848999979,
+      "requestCount": 3,
+      "bytes": 16686,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 183.913,
+          "status": 200,
+          "bytes": 932,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6552.457,
+          "status": 200,
+          "bytes": 14879,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1079.169,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "selected-class",
+      "ms": 51.81595299998298,
+      "requestCount": 1,
+      "bytes": 846,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1083.408,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "unit-switch",
+      "ms": 7885.939464000054,
+      "requestCount": 2,
+      "bytes": 14649,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7481.25,
+          "status": 200,
+          "bytes": 13774,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1074.336,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "review",
+      "ms": 1369.6210399998818,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1069.404,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "cold-home",
+      "ms": 8020.646870000055,
+      "requestCount": 3,
+      "bytes": 16486,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 201.09,
+          "status": 200,
+          "bytes": 940,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6129.969,
+          "status": 200,
+          "bytes": 14664,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1355.653,
+          "status": 200,
+          "bytes": 882,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "warm-home",
+      "ms": 7830.901927999919,
+      "requestCount": 3,
+      "bytes": 16677,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.272,
+          "status": 200,
+          "bytes": 931,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5928.396,
+          "status": 200,
+          "bytes": 14901,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1102.221,
+          "status": 200,
+          "bytes": 845,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "classes",
+      "ms": 7787.422511000186,
+      "requestCount": 3,
+      "bytes": 16709,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.736,
+          "status": 200,
+          "bytes": 931,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5749.129,
+          "status": 200,
+          "bytes": 14906,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 955.781,
+          "status": 200,
+          "bytes": 872,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "archive",
+      "ms": 7762.527000000002,
+      "requestCount": 3,
+      "bytes": 16676,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 175.938,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5839.33,
+          "status": 200,
+          "bytes": 14874,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 994.349,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "selected-class",
+      "ms": 46.32409100001678,
+      "requestCount": 1,
+      "bytes": 876,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 849.572,
+          "status": 200,
+          "bytes": 876,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "unit-switch",
+      "ms": 7360.179478000151,
+      "requestCount": 2,
+      "bytes": 14621,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7175.508,
+          "status": 200,
+          "bytes": 13774,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 999.943,
+          "status": 200,
+          "bytes": 847,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "review",
+      "ms": 1363.0611049998552,
+      "requestCount": 1,
+      "bytes": 892,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1212.002,
+          "status": 200,
+          "bytes": 892,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "cold-home",
+      "ms": 10040.274556000018,
+      "requestCount": 3,
+      "bytes": 16123,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 366.183,
+          "status": 200,
+          "bytes": 580,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7668.885,
+          "status": 200,
+          "bytes": 14659,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1185.6,
+          "status": 200,
+          "bytes": 884,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "warm-home",
+      "ms": 8307.942033000058,
+      "requestCount": 3,
+      "bytes": 16707,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.815,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6320.002,
+          "status": 200,
+          "bytes": 14903,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1139.848,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "classes",
+      "ms": 9263.102155999979,
+      "requestCount": 3,
+      "bytes": 16677,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.701,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7310.4,
+          "status": 200,
+          "bytes": 14900,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1098.126,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "archive",
+      "ms": 7742.684570000041,
+      "requestCount": 3,
+      "bytes": 16680,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.741,
+          "status": 200,
+          "bytes": 929,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5697.457,
+          "status": 200,
+          "bytes": 14900,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1072.246,
+          "status": 200,
+          "bytes": 851,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "selected-class",
+      "ms": 29.60142600000836,
+      "requestCount": 1,
+      "bytes": 875,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1170.718,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "unit-switch",
+      "ms": 7370.714156999951,
+      "requestCount": 2,
+      "bytes": 14678,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7213.485,
+          "status": 200,
+          "bytes": 13804,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 932.794,
+          "status": 200,
+          "bytes": 874,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "review",
+      "ms": 1358.8854689998552,
+      "requestCount": 1,
+      "bytes": 924,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1219.687,
+          "status": 200,
+          "bytes": 924,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "cold-home",
+      "ms": 8055.640092000132,
+      "requestCount": 3,
+      "bytes": 16145,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 187.308,
+          "status": 200,
+          "bytes": 578,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 5952.179,
+          "status": 200,
+          "bytes": 14657,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 930.515,
+          "status": 200,
+          "bytes": 910,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "warm-home",
+      "ms": 7824.271967000095,
+      "requestCount": 3,
+      "bytes": 16680,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.96,
+          "status": 200,
+          "bytes": 931,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6035.471,
+          "status": 200,
+          "bytes": 14901,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1117.224,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "classes",
+      "ms": 8761.51990199997,
+      "requestCount": 3,
+      "bytes": 16648,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 169.118,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6672.606,
+          "status": 200,
+          "bytes": 14872,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 999.864,
+          "status": 200,
+          "bytes": 849,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "archive",
+      "ms": 8749.534255000064,
+      "requestCount": 3,
+      "bytes": 16646,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 161.912,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6641.368,
+          "status": 200,
+          "bytes": 14872,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1080.185,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "selected-class",
+      "ms": 58.53929899982177,
+      "requestCount": 1,
+      "bytes": 846,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1132.974,
+          "status": 200,
+          "bytes": 846,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "unit-switch",
+      "ms": 7870.661116000032,
+      "requestCount": 2,
+      "bytes": 14651,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7602.924,
+          "status": 200,
+          "bytes": 13776,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1134.526,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "review",
+      "ms": 1362.3634269998875,
+      "requestCount": 1,
+      "bytes": 892,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1253.84,
+          "status": 200,
+          "bytes": 892,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "cold-home",
+      "ms": 8495.959445999935,
+      "requestCount": 3,
+      "bytes": 16513,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 224.574,
+          "status": 200,
+          "bytes": 939,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6572.812,
+          "status": 200,
+          "bytes": 14665,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1425.116,
+          "status": 200,
+          "bytes": 909,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "warm-home",
+      "ms": 8801.188378999941,
+      "requestCount": 3,
+      "bytes": 16701,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 206.509,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7077.061,
+          "status": 200,
+          "bytes": 14901,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1065.947,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "classes",
+      "ms": 8758.132959000068,
+      "requestCount": 3,
+      "bytes": 16673,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.744,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6499.864,
+          "status": 200,
+          "bytes": 14874,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1045.225,
+          "status": 200,
+          "bytes": 872,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "archive",
+      "ms": 8746.032116000075,
+      "requestCount": 3,
+      "bytes": 16677,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 176.161,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6740.137,
+          "status": 200,
+          "bytes": 14877,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1267.851,
+          "status": 200,
+          "bytes": 873,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "selected-class",
+      "ms": 35.50086500006728,
+      "requestCount": 1,
+      "bytes": 848,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 1218.598,
+          "status": 200,
+          "bytes": 848,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "unit-switch",
+      "ms": 7369.230092999991,
+      "requestCount": 2,
+      "bytes": 14674,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 7241.326,
+          "status": 200,
+          "bytes": 13799,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/manage-student-invitation",
+          "ms": 978.427,
+          "status": 200,
+          "bytes": 875,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "review",
+      "ms": 1369.069521999918,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1087.825,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "label": "reviewed main and designated two-school fixtures",
+      "passed": true
+    },
+    {
+      "label": "A: credentials configured",
+      "passed": true
+    },
+    {
+      "label": "A: designated teacher identity",
+      "passed": true
+    },
+    {
+      "label": "A: initial authorized directory",
+      "passed": true
+    },
+    {
+      "label": "A: fixture size",
+      "active": 3,
+      "archived": 29
+    },
+    {
+      "label": "A: unit-switch fixture exists",
+      "passed": true
+    },
+    {
+      "label": "A: foreign class denied",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 0",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 1",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 2",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 3",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 4",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 5",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 6",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 7",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 8",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 9",
+      "passed": true
+    },
+    {
+      "label": "B: credentials configured",
+      "passed": true
+    },
+    {
+      "label": "B: designated teacher identity",
+      "passed": true
+    },
+    {
+      "label": "B: initial authorized directory",
+      "passed": true
+    },
+    {
+      "label": "B: fixture size",
+      "active": 2,
+      "archived": 26
+    },
+    {
+      "label": "B: unit-switch fixture exists",
+      "passed": true
+    },
+    {
+      "label": "B: foreign class denied",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 0",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 1",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 2",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 3",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 4",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 5",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 6",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 7",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 8",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 9",
+      "passed": true
+    }
+  ],
+  "profile": {
+    "browser": "Chromium",
+    "runner": "GitHub ubuntu-latest",
+    "viewport": "1365x950",
+    "cpu": "unthrottled shared runner",
+    "network": "CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up",
+    "cold": "fresh browser context and HTTP cache",
+    "warm": "same context reload",
+    "iterations": 10
+  },
+  "budgets": {
+    "usefulHomeP95Ms": 3000,
+    "selectedClassP95Ms": 2000,
+    "loadedNavigationP95Ms": 200
+  },
+  "summary": [
+    {
+      "side": "A",
+      "scenario": "cold-home",
+      "n": 10,
+      "p50Ms": 10076.946696000057,
+      "p95Ms": 14744.043006000022,
+      "medianRequests": 3,
+      "medianBytes": 29076
+    },
+    {
+      "side": "A",
+      "scenario": "warm-home",
+      "n": 10,
+      "p50Ms": 9317.43941500003,
+      "p95Ms": 11349.019489000028,
+      "medianRequests": 3,
+      "medianBytes": 29587
+    },
+    {
+      "side": "A",
+      "scenario": "classes",
+      "n": 10,
+      "p50Ms": 8778.20970799998,
+      "p95Ms": 9792.088920999988,
+      "medianRequests": 3,
+      "medianBytes": 29587
+    },
+    {
+      "side": "A",
+      "scenario": "archive",
+      "n": 10,
+      "p50Ms": 9270.568806999945,
+      "p95Ms": 13795.494835999998,
+      "medianRequests": 3,
+      "medianBytes": 29561
+    },
+    {
+      "side": "A",
+      "scenario": "selected-class",
+      "n": 10,
+      "p50Ms": 39.5692379999673,
+      "p95Ms": 61.78732000000309,
+      "medianRequests": 1,
+      "medianBytes": 850
+    },
+    {
+      "side": "A",
+      "scenario": "unit-switch",
+      "n": 10,
+      "p50Ms": 9390.677065999946,
+      "p95Ms": 14938.62085800001,
+      "medianRequests": 2,
+      "medianBytes": 26879
+    },
+    {
+      "side": "A",
+      "scenario": "review",
+      "n": 10,
+      "p50Ms": 1370.4384889999928,
+      "p95Ms": 1873.2533489998896,
+      "medianRequests": 1,
+      "medianBytes": 893
+    },
+    {
+      "side": "B",
+      "scenario": "cold-home",
+      "n": 10,
+      "p50Ms": 8550.23438499996,
+      "p95Ms": 21089.149609999964,
+      "medianRequests": 3,
+      "medianBytes": 16157
+    },
+    {
+      "side": "B",
+      "scenario": "warm-home",
+      "n": 10,
+      "p50Ms": 8801.188378999941,
+      "p95Ms": 11355.570622000028,
+      "medianRequests": 3,
+      "medianBytes": 16679
+    },
+    {
+      "side": "B",
+      "scenario": "classes",
+      "n": 10,
+      "p50Ms": 8761.51990199997,
+      "p95Ms": 10275.116561000119,
+      "medianRequests": 3,
+      "medianBytes": 16676
+    },
+    {
+      "side": "B",
+      "scenario": "archive",
+      "n": 10,
+      "p50Ms": 8253.87877099996,
+      "p95Ms": 8764.982149000047,
+      "medianRequests": 3,
+      "medianBytes": 16680
+    },
+    {
+      "side": "B",
+      "scenario": "selected-class",
+      "n": 10,
+      "p50Ms": 40.736969999969006,
+      "p95Ms": 58.53929899982177,
+      "medianRequests": 1,
+      "medianBytes": 848
+    },
+    {
+      "side": "B",
+      "scenario": "unit-switch",
+      "n": 10,
+      "p50Ms": 7371.943406000035,
+      "p95Ms": 9391.141820000019,
+      "medianRequests": 2,
+      "medianBytes": 14651
+    },
+    {
+      "side": "B",
+      "scenario": "review",
+      "n": 10,
+      "p50Ms": 1363.3398809999926,
+      "p95Ms": 1883.2904949998483,
+      "medianRequests": 1,
+      "medianBytes": 893
+    }
+  ],
+  "finishedAt": "2026-10-27T18:56:48.206Z"
+}
