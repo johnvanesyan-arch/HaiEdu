@@ -60,6 +60,10 @@ The review selector includes returning/multiple subjects; new learner/diagnostic
 
 These are suggestions, not silently approved gamification or new backend scope. The preview uses the first idea as a presentation of sample evidence and shows the existing writing workflow. Goals, avatars, push notifications and badges are not represented as live functionality.
 
+## Style guide handoff
+
+The owner-requested [student style guide v1.0](student-style-guide.md), [visual guide](design/student-dashboard/haiedu-student-style-guide.html) and [namespaced CSS reference](design/student-dashboard/student-style-tokens.css) consolidate the selected Forest direction. They distinguish retained decisions from v1 implementation refinements: larger essential labels, normalized spacing/radii, stronger essential control edges and target sizes, and hover/error tokens. The existing dashboard review is unchanged. Guide-only evidence covers 27 contrast pairs, four iframe widths and ten specimen interactions; production font delivery, actual-viewport/zoom checks and authenticated acceptance remain open.
+
 ## Delivery gates and next action
 
 **Historical 27 October colour/navigation evidence:** [visual options](student-dashboard-visual-options.md) and [evidence](evidence/student-dashboard-colors-20261027.json) record three palettes, 93 responsive layout checks, 18 interaction checks and 18 targeted contrast pairs (minimum 4.78:1). All pass. A mobile readiness-ring caption overflow seen in visual review was corrected by retaining the count in the ring and its explanation beside it. Palette changes preserve course/tab/filter/draft state. The owner requested global Progress removal. John subsequently selected Forest/cream; the current preview fixes that palette and adds clearly labelled sidebar/account logout actions. See the [targeted revision evidence](evidence/student-dashboard-forest-logout-20261027.json). Complete design acceptance remains pending. Original palette comparisons remain historical evidence, not a persistent theme feature.

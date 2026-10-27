@@ -1,0 +1,316 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5A style-guide documentation and local component specimen; no dashboard/runtime change",
+  "source_base": "94f3bfe5ac103ed402d1d5d3a167c816887762be",
+  "artifacts": [
+    {
+      "path": "docs/student-style-guide.md",
+      "sha256": "f24a5c50baafdc70d78491af4299041e2caa206896ddf0d31b4952a439e310f2"
+    },
+    {
+      "path": "docs/design/student-dashboard/haiedu-student-style-guide.html",
+      "sha256": "053d917916497e7ef72d0fd0d1058f2a895046c5c785b8c565fc0e00adee60ee"
+    },
+    {
+      "path": "docs/design/student-dashboard/student-style-tokens.css",
+      "sha256": "5a77c246fe8cb9961b47f68668bf480d1c7e2889b35715ba1341392b1fb9bbb0"
+    }
+  ],
+  "browser": {
+    "interactions": [
+      {
+        "name": "dialog_keyboard_open",
+        "pass": true
+      },
+      {
+        "name": "dialog_escape_focus_return",
+        "pass": true
+      },
+      {
+        "name": "required_field_error_and_focus",
+        "pass": true
+      },
+      {
+        "name": "local_validation_retains_answer",
+        "pass": true
+      },
+      {
+        "name": "reduced_motion_removes_animation",
+        "pass": true
+      },
+      {
+        "name": "motion_default_restored",
+        "pass": true
+      },
+      {
+        "name": "journey_keyboard_disclosure",
+        "pass": true
+      },
+      {
+        "name": "logout_sample_explains_preview",
+        "pass": true
+      },
+      {
+        "name": "compact_dialog_fits",
+        "pass": true
+      },
+      {
+        "name": "compact_dialog_escape_closes",
+        "pass": true
+      }
+    ],
+    "layouts": [
+      {
+        "clipped": [],
+        "contentWidth": 305,
+        "horizontalOverflow": false,
+        "outside": [],
+        "smallButtons": [],
+        "viewport": 320,
+        "pass": true
+      },
+      {
+        "clipped": [],
+        "contentWidth": 345,
+        "horizontalOverflow": false,
+        "outside": [],
+        "smallButtons": [],
+        "viewport": 360,
+        "pass": true
+      },
+      {
+        "clipped": [],
+        "contentWidth": 753,
+        "horizontalOverflow": false,
+        "outside": [],
+        "smallButtons": [],
+        "viewport": 768,
+        "pass": true
+      },
+      {
+        "clipped": [],
+        "contentWidth": 1265,
+        "horizontalOverflow": false,
+        "outside": [],
+        "smallButtons": [],
+        "viewport": 1280,
+        "pass": true
+      }
+    ]
+  },
+  "contrast_pairs": [
+    {
+      "foreground": "ink",
+      "background": "canvas",
+      "ratio": 11.374496776853839,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "ink",
+      "background": "surface",
+      "ratio": 12.369216596752425,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "ink",
+      "background": "quiet",
+      "ratio": 10.847908409926925,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "muted",
+      "background": "canvas",
+      "ratio": 5.363006691527125,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "muted",
+      "background": "surface",
+      "ratio": 5.8320110927738185,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "muted",
+      "background": "quiet",
+      "ratio": 5.114723449559341,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "accent",
+      "background": "canvas",
+      "ratio": 7.225646075386491,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "accent",
+      "background": "surface",
+      "ratio": 7.8575415784372575,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "accent",
+      "background": "selected",
+      "ratio": 6.595628451429083,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "on-accent",
+      "background": "accent",
+      "ratio": 7.8575415784372575,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "on-accent",
+      "background": "accent-hover",
+      "ratio": 9.72428938814854,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "hero-ink",
+      "background": "hero",
+      "ratio": 8.886342905841058,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "hero-muted",
+      "background": "hero",
+      "ratio": 5.614596786459695,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "success",
+      "background": "success-bg",
+      "ratio": 5.162184484027972,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "attention",
+      "background": "attention-bg",
+      "ratio": 4.9717546050299415,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "feedback",
+      "background": "feedback-bg",
+      "ratio": 5.1001018578612936,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "error",
+      "background": "error-bg",
+      "ratio": 6.046120693331533,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "foreground": "border-control",
+      "background": "canvas",
+      "ratio": 3.6867450897177387,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "border-control",
+      "background": "surface",
+      "ratio": 4.009157455170128,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "border-control",
+      "background": "selected",
+      "ratio": 3.3652908754748454,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "border-control",
+      "background": "hero",
+      "ratio": 3.430935449942928,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "border-control",
+      "background": "quiet",
+      "ratio": 3.516065268521529,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "canvas",
+      "ratio": 7.04274330503869,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "surface",
+      "ratio": 7.658643637986676,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "selected",
+      "ratio": 6.42867331643285,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "hero",
+      "ratio": 6.554073330834876,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "foreground": "focus",
+      "background": "quiet",
+      "ratio": 6.716695764787721,
+      "minimum": 3,
+      "pass": true
+    }
+  ],
+  "static_checks": [
+    "Inline JavaScript syntax passed",
+    "Token colours in visual guide are embedded from the CSS reference",
+    "Existing source files matched merged Git blob hashes before edits"
+  ],
+  "reused": [
+    "PR305 dashboard preview remains byte-for-byte unchanged",
+    "Previous colour/navigation/logout and accepted learning/content/audio evidence"
+  ],
+  "limitations": [
+    "Guide viewport checks use same-origin iframes; not actual mobile devices or production UI",
+    "No OS preference change, screen-reader audit or 200% browser-zoom acceptance performed",
+    "Named font is not bundled; actual font delivery/glyph coverage remains implementation work",
+    "Token contrast pairs do not establish WCAG conformance",
+    "Complete design acceptance, 16.5B implementation and 16.5C/four-subject acceptance remain open"
+  ],
+  "screenshot": "docs/design/student-dashboard/haiedu-student-style-guide-cover-20261027.jpg",
+  "references": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html"
+  ]
+}
