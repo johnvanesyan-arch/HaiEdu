@@ -40,6 +40,8 @@ No resource table, endpoint, storage policy, upload action, notification or live
 
 ## Review preview and evidence
 
+The later [colour/navigation review](student-dashboard-visual-options.md) applies the three review palettes consistently to materials discovery, cards and dialogs. It keeps this section directly below My work in both navigation layouts. Search/filter state survives palette switching; these review controls create no persistent learner preference or resource API change.
+
 The [interactive preview](design/student-dashboard/haiedu-student-review-2026-10-26.html) contains five explicitly fictional English and Physics examples with illustrated cards, search, practice/reading chips, three disclosed filters, learning-goal details, optional estimates/recommendations, a My work/course shortcut and empty/withdrawn states. This illustrates the common component contract; it does not restrict the feature to those subjects. Network requests remain blocked and there are no real files, external links, credentials or learner records in the preview.
 
 The original [26 October evidence](evidence/student-dashboard-design-20261026.json) and [27 October addition record](evidence/student-materials-design-20261027.json) remain historical. The [current refinement evidence](evidence/student-materials-engagement-20261027.json) covers 57 responsive layout checks and 21 interactions. The design aims to help students choose purposeful optional practice; no improvement in engagement or learning outcomes is claimed without student evidence. Actual file delivery, teacher publishing and production isolation remain unimplemented and unverified.
