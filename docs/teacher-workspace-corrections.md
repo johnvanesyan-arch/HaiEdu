@@ -1,5 +1,7 @@
 # Teacher account consistency, archives and design direction
 
+**Subsequent owner decision, 2026-10-27:** John accepts the cross-role direction and authorizes its decomposition/implementation. The earlier proposal below is retained as history; current sequencing, delivery contracts and the pre-subject-work hold are in [B.6–B.12](cross-role-workspace-sprints.md). B.5 remains delivered; the expanded design is not marked implemented by this acceptance.
+
 2026-10-27 · Sprint 16.5B.5 · bounded implementation delivered at `69a8ae3aaf6af70394395bed8588021ba64753f0`; final reflow correction included in closure; broader design remains a proposal.
 
 ## Findings and bounded repair
