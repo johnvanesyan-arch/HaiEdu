@@ -134,7 +134,7 @@ jobs:
       - name: Verify supplementary material lifecycle, authorization and PDF delivery
         run: node --test tests/supplementary-resources.test.mjs tests/supplementary-resources-handler.test.mjs
       - name: Verify resource assignment recipients, delivery and handler
-        run: node --test tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs
+        run: node --test --test-concurrency=1 tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs
       - name: Verify resource assignment races
         run: python tests/resource-assignments-concurrency.py
       - name: Verify supplementary publication and delivery races
