@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-27 · owner-authorized scope and priority · roadmap 4.96.
+2026-10-27 · owner-authorized scope and priority · roadmap 4.97.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -9,8 +9,8 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | Slice | Deliverable | Dependencies | Current state |
 | --- | --- | --- | --- |
 | 16.5B.6 | Correct My work navigation; trace the reported resource; establish this task map | B.1–B.5 | Delivered; evidence below |
-| 16.5B.7 | Measured teacher performance repair | B.6 | Next |
-| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Planned; new service contract required |
+| 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
+| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Next; new service contract required |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Planned; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
@@ -64,7 +64,7 @@ Remove repeated headings and oversized sections; keep necessary status explanati
 
 Provide pending reviews, recent/selected classes and Continue reviewing with stable return context. Add subject artwork and compact class summaries linked to their exact filters. A cross-class review count requires a scoped, paginated backend projection with timestamps and explicit partial/error states. Never present a selected-class count as all-class coverage. Recently used context must be actor scoped and reauthorized; shared devices must not inherit another teacher's state. Do not add per-class fan-out that reverses B.7 performance gains.
 
-Acceptance: nonzero/zero/unknown queues, multiple subjects/schools, oldest/next review navigation, reviewed item removal, reload, revocation and account switch. No student rankings or fabricated percentages. Measure finding/opening the next submission against the B.7 baseline.
+Acceptance: nonzero/zero/unknown queues, multiple subjects/schools, oldest/next review navigation, reviewed item removal, reload, revocation and account switch. No student rankings or fabricated percentages. Measure finding/opening the next submission against the B.7 baseline. PERF-02 carries the measured selected-class/unit delay (detail median/p95 5.87/7.88 s; unit switch 6.84/8.86 s): profile and batch exact evidence reads while preserving final authorization. Resolve and remeasure the Home/detail target gaps before closing B.12 performance acceptance.
 
 ## B.11 — Rubric and feedback ergonomics
 
@@ -84,8 +84,12 @@ Acceptance: edit/save/return/assess/revise feedback, stale-tab conflict, interru
 
 Batch related code, tests and documentation within each capability slice; one primary agent. Reuse source-verified unchanged evidence. Add meaningful regression coverage for the reported failure; no production credentials in isolated tests. Preserve release/MFA/content-review controls and run-owned QA cleanup. Align project-status, roadmap, backlog, API and coverage notes as applicable, merge evidence and source-verify Notion while preserving native child pages. No invented dates or duration estimates are attached to these slices.
 
-## B.6 delivery evidence
+## Historical B.6 delivery evidence
 
 [PR317](https://github.com/johnvanesyan-arch/HaiEdu/pull/317) implements NAV-01. Required [PR CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40550515844) and [main CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40551181197) pass all five jobs: 1,465 unit/integration and 187 native browser checks. The two new real-page journeys use synthetic services at 360/1280 px and cover draft/submitted/reviewed lists, chapter switches, reload/return, ordinary Courses, account switching and absence of learning writes. The closing batch adds an empty writing-list journey matching the reported Physics case; its required native gate is additional coverage, not a new learner/backend action.
 
-Production `f9d366bf47dcd4a387df35d0f2906bbe2a3ac2fd` and `course.html`, `course-page.js`, `student-courses.js` match exactly. The closing documentation/test change leaves those frontend files unchanged. [Evidence](evidence/cross-role-workspace-triage-20261027.json) retains the read-only resource findings, source-confirmed performance candidates and reused unchanged service evidence. Persistent Vercel blocking configuration is reused from its independently verified reliability record, not inferred from a successful build. B.7–B.12 remain open; no performance improvement, new assignment endpoint or completed staff redesign is claimed.
+Production `f9d366bf47dcd4a387df35d0f2906bbe2a3ac2fd` and `course.html`, `course-page.js`, `student-courses.js` match exactly. The closing documentation/test change leaves those frontend files unchanged. [Evidence](evidence/cross-role-workspace-triage-20261027.json) retains the read-only resource findings, source-confirmed performance candidates and reused unchanged service evidence. Persistent Vercel blocking configuration is reused from its independently verified reliability record, not inferred from a successful build. At that B.6 checkpoint B.7–B.12 remained open; its evidence did not claim a performance improvement, new assignment endpoint or completed staff redesign. B.7 is now delivered below.
+
+## B.7 delivery evidence
+
+**2026-10-27 — 16.5B.7 teacher loading repair delivered and measured.** [PR320](https://github.com/johnvanesyan-arch/HaiEdu/pull/320) adds bounded class discovery, on-demand detail/invitations, paged archive search and in-page navigation. Same-fixture production measurements pass **140 before + 140 after**: cold Home p95 **14.74 s → 4.61 s**, Classes **9.79 s → 0.04 s**. Class detail now loads on demand; remaining timing-target gaps and the trade-off are explicit in the [performance report](teacher-performance.md). Required PR/main gates pass **1,474 unit/integration and 195 native browser checks**; exact frontend, Edge v22 and SQL source parity are verified. Current-source staff acceptance passes **147/147**, with run-owned cleanup; fresh English compatibility passes **154/154**. [Release evidence](evidence/teacher-performance-release-20261027.json). **Next: B.8 class/student resource assignments**, then B.9–B.12. All 45 capabilities, English C47 hold and full four-subject gates remain.

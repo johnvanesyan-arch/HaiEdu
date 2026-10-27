@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "slice": "16.5B.7",
+  "status": "bounded_teacher_loading_repair_delivered_with_measured_limits",
+  "originalRuntimeSource": "935e8f242f4181a35a7ffc5458e0f0039f83bf47",
+  "baselineSource": "7124984b27e91af1210ad3c9e36edfecb0f859bb",
+  "implementationPullRequest": 320,
+  "reviewedImplementationHead": "99e1b1f4bbf0b4a4736af8a3885e98a2a6b11118",
+  "implementationMerge": "b41220423561b444269d78df24cd93e3b2c92662",
+  "acceptanceSource": "d507a495d291936ca926ce893304a9a061dd043f",
+  "acceptanceWorkflowPullRequest": 322,
+  "requiredCi": {
+    "implementationPullRequestRun": 40561321205,
+    "implementationMainRun": 40565437039,
+    "acceptanceWorkflowPullRequestRun": 40566087108,
+    "acceptanceWorkflowMainRun": 40567034986,
+    "allFiveRequiredJobs": "success",
+    "unitIntegrationTests": 1474,
+    "nativeBrowserTests": 195
+  },
+  "frontend": {
+    "revision": "b41220423561b444269d78df24cd93e3b2c92662",
+    "files": [
+      {
+        "path": "teacher.html",
+        "sha256": "37773645364f8aadfced4c8df0d63211b84eb3dea88cf976ff7af2fc77652cc2",
+        "matchesImplementation": true
+      },
+      {
+        "path": "teacher.js",
+        "sha256": "e61f684be28e3f58611e10ebbb815733c8a961f0c7d7b257e7959236389ba532",
+        "matchesImplementation": true
+      }
+    ]
+  },
+  "edge": {
+    "project": "xzyjvwiiibuarpotppid",
+    "name": "get-teacher-dashboard",
+    "affectedSharedConsumers": [
+      "get-teacher-dashboard"
+    ],
+    "version": 22,
+    "verifyJwt": true,
+    "files": [
+      {
+        "path": "get-teacher-dashboard/index.ts",
+        "match": true,
+        "sha256": "375776c5b8a00b25a945ff3a2dbc278924807a386d1d2233915159fc87b05d81"
+      },
+      {
+        "path": "_shared/initial-diagnostic.ts",
+        "match": true,
+        "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07"
+      },
+      {
+        "path": "_shared/auth.ts",
+        "match": true,
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+      },
+      {
+        "path": "_shared/curriculum-release.ts",
+        "match": true,
+        "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+      },
+      {
+        "path": "_shared/institutional-teacher-dashboard.ts",
+        "match": true,
+        "sha256": "c3e43e334ff7b9214bb79a601a6289786ebc68f18005aa15d03e6d4cce4278ab"
+      },
+      {
+        "path": "_shared/academic-context.ts",
+        "match": true,
+        "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff"
+      },
+      {
+        "path": "_shared/institutional-teacher-analytics.ts",
+        "match": true,
+        "sha256": "08b597f99cbf83edb9600f6d1cfa4dda4df7d6e8fe21cba3b55bf4fe15ab01a0"
+      },
+      {
+        "path": "_shared/analytics-evidence.mjs",
+        "match": true,
+        "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+      }
+    ],
+    "sourceHead": "99e1b1f4bbf0b4a4736af8a3885e98a2a6b11118",
+    "implementationMerge": "b41220423561b444269d78df24cd93e3b2c92662",
+    "bundleSha256": "6be745b59beb57a703e098432fcd4dc87101bb88d136bce971cc9f1b96fa9678"
+  },
+  "database": {
+    "sourceMigration": "20261027175521_teacher_dashboard_directory.sql",
+    "appliedMigrationVersion": "20261027190048",
+    "parity": {
+      "prosecdef": false,
+      "provolatile": "s",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true,
+      "bodySha256": "c259f85e4183435ef342ee7ba7e46b0df9f8ffcb8f4033ebb792fbe7ba64c2b8",
+      "exactBodyMatch": true
+    },
+    "timingReceipt": "teacher-performance-sql-20261027.json"
+  },
+  "pairedBrowser": {
+    "baselineRun": 40560639878,
+    "baselineArtifact": 12761414378,
+    "baselineArtifactSha256": "ee4e2d93db36497e489b20832424c7febe11a76e5519b9dc481b9f7b5c24b13a",
+    "afterRun": 40567034922,
+    "samplesPerPhase": 140,
+    "samplesPerScenarioPerActor": 10,
+    "profile": {
+      "browser": "Chromium",
+      "runner": "GitHub ubuntu-latest",
+      "viewport": "1365x950",
+      "cpu": "unthrottled shared runner",
+      "network": "CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up",
+      "cold": "fresh browser context and HTTP cache",
+      "warm": "same context reload",
+      "iterations": 10
+    },
+    "fixturesUnchanged": [
+      {
+        "label": "A: fixture size",
+        "active": 3,
+        "archived": 29
+      },
+      {
+        "label": "B: fixture size",
+        "active": 2,
+        "archived": 26
+      }
+    ],
+    "baselineReceipt": "teacher-performance-baseline-20261027.json",
+    "afterReceipt": "teacher-performance-after-20261027.json",
+    "comparisonReceipt": "teacher-performance-comparison-20261027.json",
+    "afterArtifact": {
+      "id": 12764523625,
+      "run": 40567034922,
+      "sha256": "a9ef0b30192c2dcb701902b3840ffcb4512c30caf55a1ad7e8b004da8a3d5613",
+      "source": "d507a495d291936ca926ce893304a9a061dd043f"
+    }
+  },
+  "staffAcceptance": {
+    "run": 40567034922,
+    "passed": 147,
+    "failed": 0,
+    "receipt": "teacher-performance-staff-20261027.json",
+    "cleanup": {
+      "classes": [
+        {
+          "id": "7b5104ff-b589-465d-bd4d-2fd087067c4d",
+          "archived": true
+        },
+        {
+          "id": "01264bc7-4100-4527-a1a6-64263e76ebe1",
+          "archived": true
+        },
+        {
+          "id": "f61d025c-1870-4c99-8e58-c1f00aa5ae70",
+          "archived": true
+        },
+        {
+          "id": "da47553c-cb10-4c8d-94a4-a0adb2aea0c2",
+          "archived": true
+        }
+      ],
+      "memberships": [
+        {
+          "id": "1a1e20e8-e8b0-47c3-a45f-5dc4bdd378cd",
+          "ended": true
+        },
+        {
+          "id": "addf8110-3362-42d5-b0d4-65e7c9bae833",
+          "ended": true
+        }
+      ]
+    }
+  },
+  "compatibility": {
+    "english3": {
+      "run": 40565437041,
+      "status": "passed",
+      "checks": 154,
+      "source": "b41220423561b444269d78df24cd93e3b2c92662",
+      "receipt": "teacher-performance-english-20261027.json"
+    },
+    "physicsFreshRun": {
+      "run": 40565437120,
+      "status": "superseded_revision_guard_not_full_pass",
+      "passed": 323,
+      "total": 324,
+      "expectedSource": "b41220423561b444269d78df24cd93e3b2c92662",
+      "observedFinalSource": "d507a495d291936ca926ce893304a9a061dd043f",
+      "reason": "The final production-revision guard observed the workflow-only PR322 deployment; no functional failure was observed. This is not counted as a full pass."
+    },
+    "retainedUnchangedPhysicsEvidence": "student-subpages-release-20261027.json"
+  },
+  "vercel": {
+    "implementationDeployment": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/7DSzt9xbN9cNmG2qz9NgKkfVsHdL",
+    "acceptanceDeployment": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/3gP4jHERPdr912HuhjdCKHbtHk4A",
+    "state": "success",
+    "persistentBlockingControl": "Reuse independently verified configuration in vercel-deployment-check-verification-20261020.json. Current team settings read returns 403; no configuration change or fresh settings re-attestation claimed."
+  },
+  "measurementLimits": [
+    "Two designated teachers with 2/3 active and 26/29 archived classes; ten samples per scenario and actor, twenty pooled. Synthetic tests cover 1/1000 archives, not production load testing.",
+    "Fresh browser context is not a proven cold Edge/database process. Shared runner and network variation are included.",
+    "Application API request/response counts exclude static assets and authentication traffic.",
+    "Class detail now loads on demand; the old fast class click followed expensive eager Home loading.",
+    "Original full dashboard API remains compatible and retains its eager-read cost; primary teacher browser uses directory/class reads.",
+    "Initial timing targets are reported individually; passing workflow means completed guarded journeys, not that all targets were met.",
+    "No learner-content/scoring/audio/writing rules, resource assignments or staff redesign are included."
+  ],
+  "sequence": {
+    "next": "16.5B.8 class/student resource assignments",
+    "english": "Paused after C47",
+    "capabilitiesPreserved": 45,
+    "fullFourSubjectGate": "16.4/16.5C remains open before Sprint17"
+  },
+  "openPerformanceFollowup": {
+    "id": "PERF-02",
+    "ownerSlice": "B.10\u2013B.12 performance acceptance",
+    "classDetailMedianMs": 5865.5,
+    "classDetailP95Ms": 7879.8,
+    "unitSwitchMedianMs": 6844.8,
+    "unitSwitchP95Ms": 8862.6,
+    "homeP95TargetMs": 3000,
+    "detailP95TargetMs": 2000,
+    "targetsMet": false,
+    "nextAction": "Profile and batch exact class/unit evidence reads; preserve final session/grant/context checks and remeasure before closing B.12 performance acceptance."
+  }
+}

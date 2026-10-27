@@ -1,0 +1,121 @@
+[
+  {
+    "scenario": "cold-home",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 9517.3,
+      "p95Ms": 14744.0,
+      "medianApiRequests": 3,
+      "medianApiBytes": 16515
+    },
+    "after": {
+      "p50Ms": 3560.3,
+      "p95Ms": 4610.6,
+      "medianApiRequests": 2,
+      "medianApiBytes": 2253
+    },
+    "p95ChangePercent": -68.7
+  },
+  {
+    "scenario": "warm-home",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 8837.2,
+      "p95Ms": 11349.0,
+      "medianApiRequests": 3,
+      "medianApiBytes": 16707
+    },
+    "after": {
+      "p50Ms": 3313.7,
+      "p95Ms": 3812.8,
+      "medianApiRequests": 2,
+      "medianApiBytes": 2797
+    },
+    "p95ChangePercent": -66.4
+  },
+  {
+    "scenario": "classes",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 8766.8,
+      "p95Ms": 9792.1,
+      "medianApiRequests": 3,
+      "medianApiBytes": 16709
+    },
+    "after": {
+      "p50Ms": 32.9,
+      "p95Ms": 43.7,
+      "medianApiRequests": 0,
+      "medianApiBytes": 0
+    },
+    "p95ChangePercent": -99.6
+  },
+  {
+    "scenario": "archive",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 8749.5,
+      "p95Ms": 12785.4,
+      "medianApiRequests": 3,
+      "medianApiBytes": 16706
+    },
+    "after": {
+      "p50Ms": 1847.6,
+      "p95Ms": 1853.0,
+      "medianApiRequests": 1,
+      "medianApiBytes": 3795
+    },
+    "p95ChangePercent": -85.5
+  },
+  {
+    "scenario": "selected-class",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 40.7,
+      "p95Ms": 59.9,
+      "medianApiRequests": 1,
+      "medianApiBytes": 850
+    },
+    "after": {
+      "p50Ms": 5865.5,
+      "p95Ms": 7879.8,
+      "medianApiRequests": 1,
+      "medianApiBytes": 5521
+    },
+    "p95ChangePercent": 13054.9
+  },
+  {
+    "scenario": "unit-switch",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 7885.9,
+      "p95Ms": 11419.9,
+      "medianApiRequests": 2,
+      "medianApiBytes": 14680
+    },
+    "after": {
+      "p50Ms": 6844.8,
+      "p95Ms": 8862.6,
+      "medianApiRequests": 1,
+      "medianApiBytes": 4744
+    },
+    "p95ChangePercent": -22.4
+  },
+  {
+    "scenario": "review",
+    "nPerPhase": 20,
+    "before": {
+      "p50Ms": 1368.7,
+      "p95Ms": 1873.3,
+      "medianApiRequests": 1,
+      "medianApiBytes": 893
+    },
+    "after": {
+      "p50Ms": 1358.5,
+      "p95Ms": 1362.5,
+      "medianApiRequests": 1,
+      "medianApiBytes": 895
+    },
+    "p95ChangePercent": -27.3
+  }
+]
