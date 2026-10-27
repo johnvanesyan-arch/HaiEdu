@@ -1,4 +1,5 @@
 import { groupLearningContexts, readLearningSelection, resolveNavigationContext, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
+import { resourceHref } from './resource-navigation.mjs';
 import { studentIcon } from './student-visuals.mjs';
 const page = document.body.dataset.studentPage;
 function render(detail = {}) {
@@ -8,10 +9,9 @@ function render(detail = {}) {
   try { selection = readLearningSelection(location.search); } catch { selection = {}; }
   const selected = resolveNavigationContext(contexts, selection, document.body.dataset.learningExtension);
   const requestedView = new URLSearchParams(location.search).get('view');
-  const view = page === 'home' ? (['courses', 'work'].includes(requestedView) ? requestedView : 'home') : 'courses';
-  const main = [['home','Գլխավոր','home'], ['courses','Դասընթացներ','courses'], ['work','Իմ աշխատանքները','work']];
-  const link = ([key,label,icon], mobile = false) => `<a class="${mobile ? 'amp-mobile-link' : 'amp-nav-link'}" href="${esc(studentHomeHref(key, selected))}"${key === view ? ' aria-current="page"' : ''}>${studentIcon(icon)}<span>${label}</span></a>`;
-  // Materials navigation is enabled with its complete authorized service.
+  const view = page === 'materials' ? 'materials' : page === 'home' ? (['courses', 'work'].includes(requestedView) ? requestedView : 'home') : 'courses';
+  const main = [['home','Գլխավոր','home'], ['courses','Դասընթացներ','courses'], ['work','Իմ աշխատանքները','work'], ['materials','Հավելյալ նյութեր','courses']];
+  const link = ([key,label,icon], mobile = false) => `<a class="${mobile ? 'amp-mobile-link' : 'amp-nav-link'}" href="${esc(key === 'materials' ? resourceHref(selected) : studentHomeHref(key, selected))}"${key === 'materials' ? ' aria-label="Հավելյալ նյութեր"' : ''}${key === view ? ' aria-current="page"' : ''}>${studentIcon(icon)}<span>${mobile && key === 'materials' ? 'Նյութեր' : label}</span></a>`;
   const items = main.map(item => link(item));
   const nav = document.querySelector('.amp-nav-list');
   if (nav) nav.innerHTML = items.join('');

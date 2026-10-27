@@ -99,6 +99,7 @@ on:
       - web/role-router.js
       - web/session-watchdog.js
       - web/student-courses.js
+      - web/resource-navigation.mjs
       - web/student-shell.css
       - web/student-shell.js
       - web/student-home-model.mjs
