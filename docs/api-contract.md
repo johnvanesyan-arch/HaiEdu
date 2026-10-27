@@ -1,5 +1,22 @@
 # Learning API contract
 
+## Supplementary materials — 16.5B.3
+
+`POST /functions/v1/manage-supplementary-resources` uses the authenticated session and current authorized programme/release/unit context. JSON requests are `{action, context, payload}`; context accepts `enrollmentId` for learners or `assignmentId` for teachers plus `curriculumReleaseId` and `unitId`. `contexts` returns the actor's allowed selector data. Client selectors never grant authority.
+
+| Action | Contract |
+| --- | --- |
+| `list` | Paged authorized metadata; `offset`; students receive only current published resources, with provenance and safe display fields |
+| `get` | Staff-only exact version, immutable history and events; payload `id` |
+| `create` / `revise` | Complete definition; revisions also require exact `id`, `fingerprint` and reason; metadata is immutable |
+| `qa` / `publish` / `withdraw` | Exact `id` and `fingerprint`; QA binds the definition/file; withdrawal requires reason; platform publish/withdraw require AAL2 |
+| `upload` | Multipart `request` JSON and `file`; PDF up to 5,242,880 bytes, validated MIME/envelope; immutable private object, SHA-256 and permission recheck |
+| `open` | Fresh authorization before/after preparation; PDF bytes as attachment with no-store/nosniff/sandbox CSP, or validated external HTTPS URL for the destination dialog |
+
+The definition includes title, description, optional goal/topic, locale, practice/reading purpose, pdf/link format, source reference, rights and assessment-safe confirmations, optional whole-minute estimate (1–240), and teacher-only explicit recommendation. Student listings omit source/rights confirmations and destination URLs. Teachers manage only their own active current assignment/class; admin/content_admin manage declared platform audiences. School administrators receive no content authority. New drafts retain the prior publication until replacement; withdrawal hides the logical resource including any prior published version. No student upload, historical write, public/signed file URL, protected assessment-material selector or mastery/activity mutation is added.
+
+Errors distinguish 401 authentication, 403 permission/MFA, 404 unavailable, 409 conflict/read-only/QA prerequisite, 400 invalid input, 413 size and 503 service/storage failure. RLS tables have no direct client grants; the service-only RPC repeats live-session and context checks. PDF envelope validation is not malware scanning. [Implementation](student-supplementary-materials-implementation.md) and [release evidence](evidence/student-supplementary-release-20261027.json) state exact deployed verification, including the isolated-only platform publication scope.
+
 **16.5B.2 student presentation:** all existing student subpages and the shared identity gateway use the Forest style system. No API, policy, permission or payload change. Student-only account/writing styles preserve staff consumers. [Scope and verification](student-subpages-implementation.md) · [Exact-production release evidence](evidence/student-subpages-release-20261027.json).
 
 **Student shell/Home — 16.5B.1, 2026-10-27:** uses existing authorized `get-student-classes` and `get-student-dashboard` contracts. Home requests a dashboard only for an explicitly selected authorized enrollment/release/unit (or a sole context); it never starts a session. Continuation preserves the active mode and target skill through the existing governed or registered-extension route. The readiness ring counts only required skills whose `ready` values are known; it is not verified mastery. My work links to each course's existing writing tab without an aggregate projection or invented work count. Shared logout uses existing Auth signout and per-page cleanup, deduplicates clicks and rejects stale-account cleanup. No schema, Edge endpoint, scoring, replay allowance or teacher-marking change. S45 and future account/history/assignment/AI services retain their dependencies. [Acceptance and release scope](student-home-implementation.md) · [Exact-production evidence](evidence/student-home-release-20261027.json).

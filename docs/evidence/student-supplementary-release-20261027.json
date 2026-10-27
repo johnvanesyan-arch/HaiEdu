@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "slice": "16.5B.3",
+  "status": "delivered_bounded_slice",
+  "implementationPullRequest": 311,
+  "implementationCommit": "ace33de8d0f82795614ed7b49ea4eef816be4baa",
+  "reviewedHead": "e169ee6dc22d341cc7ff253754609dc22c39c9d4",
+  "requiredCi": {
+    "pullRequestRun": 40501442378,
+    "unitIntegrationTests": 1464,
+    "nativeBrowserTests": 169,
+    "mainRun": 40502112292,
+    "jobs": {
+      "test": "success",
+      "role-layout-browser": "success",
+      "phase3-postgres-17": "success",
+      "institutional-concurrency": "success",
+      "Platform release checks": "success"
+    }
+  },
+  "capabilityIdsPreserved": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S32",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S40",
+    "S41",
+    "S42",
+    "S43",
+    "S44",
+    "S45"
+  ],
+  "remaining": [
+    "Full four-subject 16.4/16.5C gate before Sprint17",
+    "Future S31–S44 owning-service dependencies",
+    "English resumes at Unit3 full learner/audio/writing acceptance, then Units4–6"
+  ],
+  "production": {
+    "origin": "https://www.haiedu.am",
+    "commit": "ace33de8d0f82795614ed7b49ea4eef816be4baa",
+    "assetReadback": [
+      {
+        "path": "supplementary-resources.mjs",
+        "bytes": 26620,
+        "sha256": "07d205a91ffadfcba9b6ebc60472fe4a1b6b2a6f0f95966fd2509db1ae4893ec",
+        "matchesLocal": true
+      },
+      {
+        "path": "resource-navigation.mjs",
+        "bytes": 153,
+        "sha256": "a99c86ba427f4a2223a933431eae3c090eff3c702c0f44c1d46f9176dbd1009d",
+        "matchesLocal": true
+      },
+      {
+        "path": "multi-subject-home.js",
+        "bytes": 11860,
+        "sha256": "da2c1fc14dfa5dc5d15c24724a26dc331b18e46571e878077f8d99be3b6afd42",
+        "matchesLocal": true
+      },
+      {
+        "path": "materials-page.js",
+        "bytes": 672,
+        "sha256": "e9e029dadeaf1cc45dee77d17c81e3998efbe2d773cce2f8c5e565ef5f300b0b",
+        "matchesLocal": true
+      },
+      {
+        "path": "course-page.js",
+        "bytes": 14434,
+        "sha256": "d3a277bd8e308d3a5ba625e84f0555368d5470e85d243b9a8808b1b8f824d6a8",
+        "matchesLocal": true
+      },
+      {
+        "path": "supplementary-resources.css",
+        "bytes": 5944,
+        "sha256": "2904847776a92deeb479deaa83892da65e69a3e6f6ed4a4c7941606b2501f097",
+        "matchesLocal": true
+      },
+      {
+        "path": "materials.html",
+        "bytes": 1517,
+        "sha256": "072e5b9a680f29f40f540c830da9b3b23d392cd19a9e0081cb5eea634a9808cf",
+        "matchesLocal": true
+      },
+      {
+        "path": "role-layout.js",
+        "bytes": 20638,
+        "sha256": "5826e8fc459d363c20917ec5f55f675f323cdaf00104eb65bcd8d4df662df8b8",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-courses.js",
+        "bytes": 2279,
+        "sha256": "261aad2c9c427c02d8b66099065d145a998705b61f9163f1d690166f518beb20",
+        "matchesLocal": true
+      },
+      {
+        "path": "resource-library.html",
+        "bytes": 1436,
+        "sha256": "231a376f09a31df6df2de91480b4dbf55371a2c56e4ee41521b34a1dee12be46",
+        "matchesLocal": true
+      },
+      {
+        "path": "teacher.js",
+        "bytes": 74046,
+        "sha256": "63b24018e7245b1557d133964ca619273e1e3065f1acf3012a7837cda17dd883",
+        "matchesLocal": true
+      }
+    ],
+    "vercelStatus": "success",
+    "vercelDeploymentUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/2QQjTHZoS3SaJwhC6Fsb6oefaDim",
+    "materialsAcceptance": {
+      "run": 40502331986,
+      "checks": 73,
+      "isolationBefore": 54,
+      "isolationAfter": 54,
+      "cleanup": [
+        {
+          "resourceId": "9940b221-8e8d-48ed-9a84-6802d1405ef2",
+          "withdrawn": true
+        },
+        {
+          "resourceId": "fd8c5f26-9a2f-4b52-92b8-60081c9fe917",
+          "withdrawn": true
+        }
+      ],
+      "evidence": "student-supplementary-live-20261027.json"
+    },
+    "readAcceptance": [
+      {
+        "name": "English Unit3 and preserved programme reads",
+        "run": 40504378898,
+        "checks": 154,
+        "evidence": "student-supplementary-english-read-20261027.json"
+      },
+      {
+        "name": "Staff actions",
+        "run": 40502112158,
+        "checks": 143,
+        "evidence": "student-supplementary-staff-actions-20261027.json"
+      },
+      {
+        "name": "Physics Chapters I–VI (reused)",
+        "run": 40488926093,
+        "checks": 324,
+        "commit": "e7efc028d90e351270bec6606078b6867546db8c",
+        "evidence": "student-subpages-physics-read-20261027.json",
+        "evidenceUse": "unchanged Physics read/runtime and subpage evidence reused; current shared navigation covered by 169 native regressions and fresh English/preserved-context reads"
+      },
+      {
+        "name": "Staff analytics (reused)",
+        "run": 40491187762,
+        "checks": 10,
+        "commit": "e7efc028d90e351270bec6606078b6867546db8c",
+        "evidence": "student-subpages-analytics-20261027.json",
+        "evidenceUse": "unchanged analytics contract reused; current teacher navigation/actions freshly pass 143 checks"
+      }
+    ],
+    "cleanupReadback": [
+      {
+        "resourceId": "9940b221-8e8d-48ed-9a84-6802d1405ef2",
+        "versions": [
+          "v1 superseded",
+          "v2 withdrawn"
+        ],
+        "publishedVersions": 0
+      },
+      {
+        "resourceId": "fd8c5f26-9a2f-4b52-92b8-60081c9fe917",
+        "versions": [
+          "v1 superseded",
+          "v2 withdrawn"
+        ],
+        "publishedVersions": 0
+      }
+    ]
+  },
+  "preservation": {
+    "existingAssessmentAudioContentAndScoringChanged": false,
+    "newTablesOnly": true,
+    "existingSharedAuthHelperChanged": false,
+    "unchangedLearningRuntimeFiles": [
+      {
+        "path": "web/learning-player.mjs",
+        "sha256": "27c521f34899ef133461c9d7c1c6015403e841cc6eba8b58add072c5b02ddb41"
+      },
+      {
+        "path": "web/learning-audio.mjs",
+        "sha256": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9"
+      },
+      {
+        "path": "web/written-work.mjs",
+        "sha256": "e91fdc7c264c47db70ede18d14db2a2f6a6e01171a67118d4bcff5a06ca73822"
+      },
+      {
+        "path": "web/student-forest.css",
+        "sha256": "8ca6519c050d3d8846d2840a41eb3b79bfd34cf1479df6633076d137ee18dac4"
+      },
+      {
+        "path": "web/student-surfaces.css",
+        "sha256": "64da70cc4a2cb3474aef1c9dbdb19c2f22d7c223f66193c3f06769010ef799e5"
+      },
+      {
+        "path": "web/student-course-presentation.mjs",
+        "sha256": "2efe31691a7d4300e65cd271adabae9cc36716d1317ef59978011e3ffe43b895"
+      }
+    ]
+  },
+  "limitations": [
+    "No four-subject, independent SME, measured engagement improvement or full WCAG/device certification claim.",
+    "PDF envelope checks are not malware scanning; downloaded files cannot be recalled.",
+    "Platform AAL2 publication is covered by isolated SQL/handler tests and the existing MFA flow, not a new live platform content approval."
+  ],
+  "backend": {
+    "functions": [
+      {
+        "schema": "private",
+        "name": "supplementary_public",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "supplementary_fingerprint",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "supplementary_guard",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "supplementary_session",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "supplementary_context",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "supplementary_definition",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres"
+        ]
+      },
+      {
+        "schema": "private",
+        "name": "service_supplementary_resources",
+        "exact": true,
+        "securityDefiner": true,
+        "config": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "acl": [
+          "postgres=X/postgres",
+          "service_role=X/postgres"
+        ]
+      },
+      {
+        "schema": "public",
+        "name": "service_supplementary_resources",
+        "exact": true,
+        "securityDefiner": false,
+        "config": [
+          "search_path=\"\""
+        ],
+        "acl": [
+          "postgres=X/postgres",
+          "service_role=X/postgres"
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "acl": [
+          "postgres=arwdDxtm/postgres"
+        ],
+        "rls": true,
+        "name": "supplementary_resource_events"
+      },
+      {
+        "acl": [
+          "postgres=arwdDxtm/postgres"
+        ],
+        "rls": true,
+        "name": "supplementary_resource_versions"
+      }
+    ],
+    "bucket": {
+      "id": "supplementary-materials",
+      "name": "supplementary-materials",
+      "type": "STANDARD",
+      "owner": null,
+      "public": false,
+      "owner_id": null,
+      "created_at": "2026-10-27T12:12:46.543571+00:00",
+      "updated_at": "2026-10-27T12:12:46.543571+00:00",
+      "file_size_limit": 5242880,
+      "versioning_status": "DISABLED",
+      "allowed_mime_types": [
+        "application/pdf"
+      ],
+      "avif_autodetection": false,
+      "lifecycle_configuration": null,
+      "lifecycle_configuration_generation": null
+    },
+    "policies": [],
+    "edge": {
+      "name": "manage-supplementary-resources",
+      "version": 1,
+      "sourceMatches": [
+        {
+          "name": "functions/manage-supplementary-resources/index.ts",
+          "exact": true
+        },
+        {
+          "name": "functions/_shared/auth.ts",
+          "exact": true
+        },
+        {
+          "name": "functions/_shared/supplementary-resources-handler.mjs",
+          "exact": true
+        }
+      ]
+    },
+    "advisoryDelta": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "detail": "Table \\`public.supplementary_resource_events\\` has RLS enabled, but no policies exist",
+        "metadata": {
+          "name": "supplementary_resource_events",
+          "type": "table",
+          "schema": "public"
+        }
+      },
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "detail": "Table \\`public.supplementary_resource_versions\\` has RLS enabled, but no policies exist",
+        "metadata": {
+          "name": "supplementary_resource_versions",
+          "type": "table",
+          "schema": "public"
+        }
+      }
+    ],
+    "migration": "20261027121246_sprint_16_5b_supplementary_materials.sql",
+    "originalReviewedFilename": "20261027112748_sprint_16_5b_supplementary_materials.sql",
+    "canonicalMigrationVersion": "20261027121246",
+    "migrationBodyUnchanged": true
+  },
+  "releaseControl": {
+    "persistentVercelBlockingCheck": "Prior independently verified configuration reused from docs/reliability-stage1.md; unchanged.",
+    "currentManagementReadback": "Not re-attested: known connector team-scope limitation.",
+    "bypassOrConfigurationChange": false
+  },
+  "browserEvidence": {
+    "newCases": 4,
+    "nativeTotal": 169,
+    "widths": [
+      360,
+      768,
+      1280
+    ],
+    "text200PercentWidths": [
+      360,
+      640,
+      768,
+      1280
+    ],
+    "keyboardFocusAndReducedMotion": true,
+    "staleAccountAndEditorReadRegressions": true,
+    "sampleScreenshot": "haiedu-materials-cards-20261027.jpg",
+    "sampleContentIsSynthetic": true,
+    "signedOutProductionRoutesVerified": [
+      "https://www.haiedu.am/materials",
+      "https://www.haiedu.am/resource-library"
+    ],
+    "fullBrowserZoomOrWcagCertificationClaimed": false
+  },
+  "queueRecovery": {
+    "cancelledAutomaticRuns": [
+      40502112207,
+      40502112219,
+      40502112096,
+      40502112259,
+      40502112241,
+      40502112140,
+      40502112223,
+      40502112303,
+      40502112298
+    ],
+    "cause": "Shared designated-fixture concurrency group permits one running and one pending; excess pending workflows were canceled before jobs.",
+    "materialsReplacement": 40502331986,
+    "englishReplacement": 40504378898,
+    "unchangedEvidenceReuse": "Prior Physics and analytics checks retained; no repeated full learner/audio/writing attempts."
+  }
+}

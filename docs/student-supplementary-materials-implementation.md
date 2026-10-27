@@ -1,6 +1,6 @@
 # Supplementary materials implementation — S45 / 16.5B.3
 
-Implementation candidate, 2026-10-27. Release and final acceptance evidence are recorded separately after required checks and production readback. This document makes the approved S45 direction concrete; it does not close the four-subject 16.5C gate.
+Deployed 2026-10-27 through [PR311](https://github.com/johnvanesyan-arch/HaiEdu/pull/311), source `ace33de8d0f82795614ed7b49ea4eef816be4baa`. [Release evidence](evidence/student-supplementary-release-20261027.json) and [dashboard acceptance](student-dashboard-acceptance.md) record verified scope and remaining gates. This completes S45 delivery; it does not close the four-subject 16.5C gate.
 
 ## Product and audience
 
@@ -27,3 +27,11 @@ Metadata versions are immutable. QA is bound to the exact definition/file finger
 Isolated tests exercise actual SQL and Edge code for teacher/platform lifecycle, MFA, cross-class/school denial, revocation, PDF digest delivery, orphan cleanup, revision conflicts, withdrawal during delivery and wall-clock expiry after lock waits. Native Chromium tests exercise the actual author/student pages, uploads/downloads, filters, stale-account response suppression, Armenian responsive layouts, enlarged text and reduced motion. The existing required platform CI and release checks remain mandatory.
 
 The final dashboard review must trace all 45 capability mappings and preserve the dependencies of S31–S44. The available Physics/English flows can be accepted technically; **the original four-subject 16.5C criterion remains open** until the other subjects are genuinely available. English content remains paused after C47.
+
+## Release acceptance
+
+All five required PR/main jobs pass: 1,464 unit/integration tests and 169 native Chromium checks, including four new materials browser cases and five PostgreSQL 17 concurrency races. The backend source readback matches all eight SQL functions and all three Edge files. The new handler has one runtime consumer; the existing shared auth helper is unchanged. The reviewed migration file is renamed to the actual recorded Supabase version `20261027121246` without changing its SQL bytes; no migration-history row is rewritten. Both tables have RLS and no client/direct service-role table grants; only the guarded service RPC is callable. Storage is private with PDF MIME and 5 MiB restrictions and no direct object policies. The two new informational RLS-without-policy advisories describe this deliberate deny-by-default design; no new security warning/error was introduced.
+
+[Production materials run 40502331986](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40502331986) passes 73 outer checks, plus existing tenant-isolation checks before/after. It uses ordinary designated teacher/student sessions in two schools, verifies hidden drafts, uploaded bytes, QA/publication, authorized PDF digest/attachment headers, other-school denial, replacement-link delivery and withdrawal. Both newly created synthetic resources are withdrawn; immutable audit/file history remains private. No actual teaching materials are automatically seeded or approved. Platform AAL2 publication is isolated-test evidence, not a live human platform approval.
+
+The new regression prevents a delayed editor read from replacing a newer unsaved draft; account/context changes invalidate stale responses. Native layouts cover 360/768/1280 px and 200% text at 360/640/768/1280 px, keyboard focus, Armenian wrapping and reduced motion. The sample-card screenshot is synthetic visual evidence, not a production-content inventory. Full browser-zoom/device and four-subject usability acceptance remain with the formal gate.
