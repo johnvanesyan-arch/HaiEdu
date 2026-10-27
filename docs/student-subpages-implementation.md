@@ -1,5 +1,7 @@
 # Sprint 16.5B.2 — Forest student subpages
 
+**Current delivery — 2026-10-27:** Home, all existing student subpages and complete S45 supplementary materials are deployed under 16.5B.1–B.3. See [current dashboard acceptance](student-dashboard-acceptance.md) and the [authoritative status](project-status.md). Earlier remaining-work statements below describe their dated checkpoint. Final owner usability sign-off and full four-subject 16.5C remain separate.
+
 **27 October 2026 · Asia/Yerevan · Delivered bounded slice; full dashboard acceptance remains open.**
 
 John requests the next course/assessment/progress redesign and explicitly includes all associated student subpages. The approved style guide and 45-entry capability map remain the contract. This shared-core presentation slice introduces no curriculum, content, backend, scoring, replay, entitlement or release-policy change.

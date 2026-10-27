@@ -2,7 +2,7 @@
 
 **Owner request:** 2026-10-27 Asia/Yerevan. John requests a section below «Իմ աշխատանքները» for additional practice materials supplied by teachers or the platform for each subject.
 
-**Status:** Added to the 16.5A review design and coverage matrix as S45; refined on 2026-10-27 with illustrated cards, discovery controls and restrained motion. This is an accepted feature direction, now included in the owner-accepted complete dashboard design; it is not a live upload/delivery implementation. English remains paused after C47.
+**Status:** S45 is deployed under 16.5B.3: student library, teacher sharing, platform publication, protected PDFs and HTTPS delivery. [Implementation and exact production verification](student-supplementary-materials-implementation.md) supersede the design-only statements below. English remains paused after C47 for the dashboard handoff; full four-subject acceptance remains separate.
 
 ## Student experience
 
@@ -15,9 +15,9 @@
 - Distinguish no published materials, no filter matches, loading, failed loading, withdrawn material and lost access. Preserve filter focus and discard stale responses after context/account changes.
 - These are optional supplementary resources. Opening or downloading a file is not a completed learning attempt or mastery evidence. Required assignments, due dates, submissions and teacher feedback remain in My work through their governed workflows. Existing unit guides keep their own publication and assessment-access rules.
 
-## Recommended first delivery
+## Implemented first delivery
 
-Start with **PDF worksheets/reference sheets and external HTTPS links**. These formats are a proposed bounded MVP default; the exact file allowlist/size limit is selected in the implementation contract. Later add audio, video or interactive resources through declared media capabilities. Existing protected listening recordings and assessed content do not become downloadable supplementary files.
+Use **PDF worksheets/reference sheets up to 5 MiB and external HTTPS links**. The implementation contract enforces this bounded MVP allowlist. Later add audio, video or interactive resources through declared media capabilities. Existing protected listening recordings and assessed content do not become downloadable supplementary files.
 
 Teachers prepare, preview and share resources with their authorized subject classes. Teacher-shared material is visibly identified as such; it does not acquire platform-reviewed status by being uploaded. HaiEdu-authored material follows the existing platform content review/publication controls and its declared curriculum audience. The student page exposes published, currently authorized versions only. Publishing and withdrawal must be explicit, auditable operations.
 
@@ -25,18 +25,18 @@ The student library, teacher upload/manage/share surface and platform author/rev
 
 ## Delivery and integration requirements
 
-This is a subject-neutral resource capability under **16.5B**, with end-to-end acceptance under **16.5C**. Its resource service and authoring surfaces must be implemented as a separate bounded slice under the now-accepted dashboard design. The layout can be reviewed now; ordinary production must not expose a working materials control before authorized delivery exists. No new top-level sprint or formal-pilot gate is introduced by this design addition.
+This is a subject-neutral resource capability under **16.5B**, with end-to-end acceptance under **16.5C**. Its complete resource service and authoring surfaces are deployed as the bounded 16.5B.3 slice. Student navigation is enabled now that authorized delivery exists. No new top-level sprint or formal-pilot gate is introduced by this design addition.
 
-The implementation contract must cover:
+The deployed implementation contract covers:
 
-1. Versioned resource metadata, explicit provider provenance, curriculum context and publication state. Include purpose and learning-goal authoring, optional validated approximate duration and an explicit provider recommendation with class/audience scope; omit unsupported optional values. These are proposed implementation fields, not an existing schema. Preserve replacement/withdrawal audit history and avoid orphaned student links.
+1. Versioned resource metadata, explicit provider provenance, curriculum context and publication state. Include purpose and learning-goal authoring, optional validated approximate duration and an explicit provider recommendation with class/audience scope; omit unsupported optional values. These fields are implemented in immutable version metadata. Preserve replacement/withdrawal audit history and avoid orphaned student links.
 2. Teacher assignment/class audience checks, platform publication entitlement and server-enforced list/detail/download access. An audience cannot be inferred from a filename, subject title or client filter. Cross-school and unauthorized class access must be denied.
-3. Protected file storage with a scoped upload flow, type/size validation and safe delivery. External links must have validated schemes and clear destinations; arbitrary active documents are not rendered inside the application. The final file policy belongs to the implementation review.
+3. Protected file storage with a scoped upload flow, type/size validation and safe delivery. External links must have validated schemes and clear destinations; arbitrary active documents are not rendered inside the application. The implemented file policy is PDF-only, 5 MiB, download attachment with no public/signed URLs.
 4. Class/year/context changes, removal and stale-tab behavior. Prior-year availability follows the separate 18.5 history policy; this feature does not authorize historical writes or broaden access to old class files.
 5. Compatibility with existing guide visibility, learner assessment/help restrictions and content/release gates. General material sharing must not expose protected question-bank answers or assessed stimuli.
 6. Teacher and platform publication, learner filtering/opening/download, revision/withdrawal, denied access, empty/error states, Armenian labels, keyboard and 360/768/1280 px/200% zoom evidence before production acceptance.
 
-No resource table, endpoint, storage policy, upload action, notification or live resource is created in this design delivery. API names and payloads remain to be designed; the frontend must not assume an existing all-subject materials API.
+The historical design delivery created no runtime resources. B.3 now adds the guarded `manage-supplementary-resources` endpoint, two version/event tables and a private bucket. It does not add notifications or student uploads; see the [API contract](api-contract.md).
 
 ## Review preview and evidence
 
@@ -44,4 +44,4 @@ The later [colour/navigation review](student-dashboard-visual-options.md) applie
 
 The [interactive preview](design/student-dashboard/haiedu-student-review-2026-10-26.html) contains five explicitly fictional English and Physics examples with illustrated cards, search, practice/reading chips, three disclosed filters, learning-goal details, optional estimates/recommendations, a My work/course shortcut and empty/withdrawn states. This illustrates the common component contract; it does not restrict the feature to those subjects. Network requests remain blocked and there are no real files, external links, credentials or learner records in the preview.
 
-The original [26 October evidence](evidence/student-dashboard-design-20261026.json) and [27 October addition record](evidence/student-materials-design-20261027.json) remain historical. The [current refinement evidence](evidence/student-materials-engagement-20261027.json) covers 57 responsive layout checks and 21 interactions. The design aims to help students choose purposeful optional practice; no improvement in engagement or learning outcomes is claimed without student evidence. Actual file delivery, teacher publishing and production isolation remain unimplemented and unverified.
+The original [26 October evidence](evidence/student-dashboard-design-20261026.json) and [27 October addition record](evidence/student-materials-design-20261027.json) remain historical. The [current refinement evidence](evidence/student-materials-engagement-20261027.json) covers 57 responsive layout checks and 21 interactions. The design aims to help students choose purposeful optional practice; no improvement in engagement or learning outcomes is claimed without student evidence. Those historical preview checks are supplemented by B.3 deployed file delivery, teacher publishing and production isolation evidence linked above.

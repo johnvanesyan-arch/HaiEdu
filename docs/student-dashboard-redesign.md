@@ -1,5 +1,7 @@
 # Sprint 16.5A — Student dashboard design review
 
+**Current delivery — 2026-10-27:** Home, all existing student subpages and complete S45 supplementary materials are deployed under 16.5B.1–B.3. See [current dashboard acceptance](student-dashboard-acceptance.md) and the [authoritative status](project-status.md). Earlier remaining-work statements below describe their dated checkpoint. Final owner usability sign-off and full four-subject 16.5C remain separate.
+
 **Date:** 2026-10-26; owner acceptance recorded 2026-10-27 Asia/Yerevan · **Status:** Full dashboard design, style guide and all 45 capabilities/dependencies accepted at source `feb82ce0116a8ae3b75d0147327661861f91c833`. 16.5B.1 implementation and remaining gates are tracked in [delivery](student-home-implementation.md).
 
 ## Priority and subject checkpoint

@@ -1,5 +1,7 @@
 # Sprint 16.5B.1 — Shared student shell, Home and course navigation
 
+**Current delivery — 2026-10-27:** Home, all existing student subpages and complete S45 supplementary materials are deployed under 16.5B.1–B.3. See [current dashboard acceptance](student-dashboard-acceptance.md) and the [authoritative status](project-status.md). Earlier remaining-work statements below describe their dated checkpoint. Final owner usability sign-off and full four-subject 16.5C remain separate.
+
 **27 October 2026 · Asia/Yerevan · Bounded slice delivered; remaining 16.5B/16.5C gates open.**
 
 John explicitly accepts the complete Forest dashboard design and style guide, preserving all 45 capabilities and their dependencies. The [acceptance record](evidence/student-dashboard-approval-20261027.json) pins the accepted documents to `feb82ce0116a8ae3b75d0147327661861f91c833`. This closes 16.5A and authorizes bounded implementation; it does not close all of 16.5B or 16.5C.
