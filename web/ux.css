@@ -98,7 +98,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 }
 input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #a62f37 !important; box-shadow: 0 0 0 2px rgba(166,47,55,.14); }
 .field-error { margin: 6px 0 0; color: #8f2731; font-size: .84rem; font-weight: 600; }
-.skip-link { position: fixed; top: 8px; left: 8px; z-index: 1000; transform: translateY(-140%); background: #10253f; color: #fff; padding: 10px 14px; border-radius: 8px; text-decoration: none; }
+.skip-link { box-sizing: border-box; max-width: calc(100vw - 16px); overflow-wrap: anywhere; position: fixed; top: 8px; left: 8px; z-index: 1000; transform: translateY(-140%); background: #10253f; color: #fff; padding: 10px 14px; border-radius: 8px; text-decoration: none; }
 .skip-link:focus { transform: translateY(0); }
 .ux-status { position: fixed; right: 14px; bottom: 14px; z-index: 1000; max-width: min(440px, calc(100vw - 28px)); background: #10253f; color: #fff; padding: 12px 14px; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.18); }
 .ux-status.error { background: #7d2530; }
@@ -210,3 +210,6 @@ pre { white-space: pre-wrap; }
   .band-dot, .progress-bar, .session-progress-bar, .mini-progress-bar { forced-color-adjust: none; }
   button, .option, .card { border: 1px solid CanvasText; }
 }
+
+/* Long Armenian notices must reflow with enlarged text in every role. */
+.notice{overflow-wrap:anywhere}.notice>*{min-width:0}
