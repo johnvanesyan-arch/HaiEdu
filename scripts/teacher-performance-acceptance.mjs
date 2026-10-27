@@ -34,10 +34,10 @@ try{
     const allowed=['get-teacher-dashboard','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action));
     if(req.method()==='OPTIONS'||allowed)return route.continue();blocked++;return route.abort();});
    const page=await context.newPage();page.setDefaultTimeout(45000);
-   const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:1600000/8,uploadThroughput:750000/8});
-   page.on('requestfinished',req=>{const p=new URL(req.url()).pathname;if(p.includes('/functions/v1/')||p.includes('/rest/v1/'))requests.push(req);});
+   const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.setCacheDisabled',{cacheDisabled:false});await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:1600000/8,uploadThroughput:750000/8});
+   page.on('request',req=>{const p=new URL(req.url()).pathname;if(p.includes('/functions/v1/')||p.includes('/rest/v1/'))requests.push(req);});
    async function measure(scenario,action,ready){stage=`${side}:${iteration}:${scenario}`;requests=[];const start=performance.now();await action();await ready();const ms=performance.now()-start;
-    const calls=[];for(const req of requests){const res=await req.response();const size=await req.sizes().catch(()=>({responseBodySize:0}));calls.push({endpoint:new URL(req.url()).pathname,ms:req.timing().responseEnd,status:res?.status(),bytes:size.responseBodySize,serverTiming:await res?.headerValue('server-timing')});}
+    const calls=[];for(const req of requests){const res=await req.response();await res?.finished();const size=await req.sizes().catch(()=>({responseBodySize:0}));calls.push({endpoint:new URL(req.url()).pathname,ms:req.timing().responseEnd,status:res?.status(),bytes:size.responseBodySize,serverTiming:await res?.headerValue('server-timing')});}
     report.samples.push({side,iteration,scenario,ms,requestCount:calls.length,bytes:calls.reduce((n,c)=>n+c.bytes,0),calls});await save();
    }
    const homeReady=()=>expect(page.locator('#dashboardPanel')).toBeVisible();
