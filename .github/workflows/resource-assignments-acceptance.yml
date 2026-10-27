@@ -1,6 +1,17 @@
 name: Resource assignment production acceptance
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - web/**
+      - supabase/functions/**
+      - supabase/migrations/**
+      - scripts/**
+      - package.json
+      - package-lock.json
+      - vercel.json
+      - .github/workflows/resource-assignments-acceptance.yml
 permissions:
   contents: read
 concurrency:
@@ -20,6 +31,8 @@ jobs:
       - run: npm ci
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Wait for the intended production revision
+        run: node scripts/wait-for-production-release.mjs
       - name: Verify class and selected assignment delivery with dedicated fixtures
         run: node scripts/resource-assignments-acceptance.mjs
         env:

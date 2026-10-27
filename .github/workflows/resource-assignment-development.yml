@@ -38,6 +38,7 @@ jobs:
           node --check scripts/resource-assignments-acceptance.mjs
           node --check tests/browser/resource-assignments.browser.test.mjs
           node scripts/check-browser-qa-triggers.mjs
+      # Reflow regression includes narrow screen and enlarged text.
       # Unchanged SQL/privacy and races passed in 40579507902.
       - name: Strict handler regressions
         run: node --test tests/resource-assignments-handler.test.mjs
