@@ -5,7 +5,7 @@
   "baseline": "086281df60619da0d353907db1f88aa781e2a3c2",
   "ownerScope": "B.6–B.12 before additional subjects or chapters",
   "implementation": "writing navigation ownership and authorized collection return link",
-  "status": "prepared_pending_required_ci_and_production",
+  "status": "B.6_navigation_delivered_B.7_to_B.12_planned",
   "resourceInvestigation": {
     "mode": "read_only",
     "resourceTitle": "my hobbies",
@@ -22,7 +22,10 @@
     "sameLearnerAlsoEnrolledInRecipientClass": true,
     "activeRecipientEnrollmentsAtRead": 1,
     "limitation": "Metadata and assignment mapping verified; no fresh signed-in file download. Publication is not individual task assignment.",
-    "userResourceMutated": false
+    "userResourceMutated": false,
+    "privateStorageObjectPresent": true,
+    "recordedFileBytes": 4798188,
+    "bucketPublic": false
   },
   "performanceInvestigation": {
     "status": "source-confirmed candidates; no end-to-end timing claim",
@@ -57,7 +60,8 @@
       "writing tab entry from a course",
       "account change removes prior context",
       "no learning or writing mutations from browsing"
-    ]
+    ],
+    "additionalClosureJourney": "empty writing list remains under My work; required closure native gate"
   },
   "preservation": {
     "studentCapabilityIds": 45,
@@ -75,7 +79,7 @@
     "englishReads": 40510817011,
     "physicsReads": 40488926093
   },
-  "newCiAndProduction": "pending; close with exact source and retained evidence",
+  "newCiAndProduction": "implementation passed; final documentation/test source must pass required CI and production stamp verification before Notion sync",
   "localValidation": {
     "unitIntegration": {
       "passed": 1465,
@@ -83,6 +87,44 @@
     },
     "javascriptSyntax": "passed",
     "browserDependencyTriggers": "all nine guarded acceptance graphs covered",
-    "nativeBrowser": "required CI; Chromium not installed locally, no install attempted"
-  }
+    "nativeBrowser": "required CI; Chromium not installed locally, no install attempted",
+    "typecheck": "passed"
+  },
+  "implementationPullRequest": 317,
+  "implementationCommit": "f9d366bf47dcd4a387df35d0f2906bbe2a3ac2fd",
+  "requiredCi": {
+    "pr": 40550515844,
+    "main": 40551181197,
+    "allFiveJobs": "passed",
+    "unitIntegrationPassed": 1465,
+    "nativePassed": 187
+  },
+  "production": {
+    "expectedCommit": "f9d366bf47dcd4a387df35d0f2906bbe2a3ac2fd",
+    "stamp": {
+      "schemaVersion": 1,
+      "commit": "f9d366bf47dcd4a387df35d0f2906bbe2a3ac2fd"
+    },
+    "assets": [
+      {
+        "path": "course-page.js",
+        "bytes": 15075,
+        "sha256": "e8407e00dce7fbd5265aa0d9616edb30f7fb6c58986b98978d23c28f941e3794",
+        "matchesLocal": true
+      },
+      {
+        "path": "course.html",
+        "bytes": 2644,
+        "sha256": "c8fba2f863c641e3afc77b5335c6ba998e4e8270bbd3480c3b970653148b1678",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-courses.js",
+        "bytes": 2454,
+        "sha256": "cf874adc1cf280f10d47222c16fae398cccc3ecec96854d191bf3d969d214b6b",
+        "matchesLocal": true
+      }
+    ]
+  },
+  "closureRuntimeChanges": false
 }

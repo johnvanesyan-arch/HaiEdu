@@ -145,6 +145,19 @@ for(const width of [360,1280])test(`My work owns the complete writing journey at
   assert.equal(await page.locator('#courseCollectionLink').getAttribute('href'),'./index.html?view=work');
   assert.deepEqual(errors,[]);
 });
+test('a subject without published writing stays in My work and explains its empty state',async t=>{
+  const {page,errors}=await fixture(t,{view:'work',width:360,active:false});
+  await page.locator('.amp-subject-card').filter({hasText:'Ֆիզիկա'}).getByRole('link',{name:'Բացել գրավոր աշխատանքները',exact:true}).click();
+  await page.getByText('Այս գլխի համար գրավոր առաջադրանք դեռ չի հրապարակվել։',{exact:true}).waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('tab'),'writing');
+  assert.equal(new URL(page.url()).searchParams.get('enrollment'),id(1));
+  assert.match(await page.locator('.amp-mobile-nav a[aria-current="page"]').innerText(),/Իմ աշխատանքները/);
+  assert.equal(await page.locator('.course-mode-card').count(),0);
+  assert.equal(await page.locator('.written-list article').count(),0);
+  await page.locator('#courseCollectionLink').click();await page.locator('.amp-subject-card').first().waitFor();
+  const back=new URL(page.url());assert.equal(back.searchParams.get('view'),'work');assert.equal(back.searchParams.get('enrollment'),id(1));
+  assert.deepEqual(errors,[]);
+});
 test('empty, failed and recovered course access are distinct; signed-out Home stays public',async t=>{
   const empty=await fixture(t,{empty:true});assert.match(await empty.page.locator('#multiSubjectHome').innerText(),/Հասանելի դասընթացներ դեռ չկան/);
   const failed=await fixture(t,{error:true});await failed.page.locator('[data-retry-access]').waitFor();
