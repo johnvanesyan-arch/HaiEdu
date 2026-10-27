@@ -1,6 +1,6 @@
 # Sprint 16.5B.4 — subject artwork and Forest continuity
 
-Date: 2026-10-27. Base: `020c94f015bf40cc51d5d7a8d0ea7e92d9e32222`. State: implementation candidate; release checks pending.
+Date: 2026-10-27. Base: `020c94f015bf40cc51d5d7a8d0ea7e92d9e32222`. State: delivered under [PR313](https://github.com/johnvanesyan-arch/HaiEdu/pull/313), production `5c0683a2d81f292ab371b3aceddb7e157eb19d8b`.
 
 The owner reported generic/tiny subject symbols and a blue account page before its Forest design loaded, and requested a Forest public landing page.
 
@@ -14,8 +14,17 @@ The owner reported generic/tiny subject symbols and a blue account page before i
 
 ## Validation and release
 
-Local typecheck, core parity, JavaScript syntax and the browser dependency guard pass. Isolated Chromium regressions add all eight subject symbols plus unknown fallback in Courses/My work, illustration dimensions, delayed student/staff account first paint, failed/signed-out account styling, and Forest landing-page routes/reflow at 320/768/1280 px. The preview uses real frontend modules with synthetic service data. Required CI, production commit/assets and affected live acceptance will be recorded after release; none are claimed from a preview.
+Local typecheck, core parity, JavaScript syntax and the browser dependency guard pass. Isolated Chromium regressions add all eight subject symbols plus unknown fallback in Courses/My work, illustration dimensions, delayed student/staff account first paint, failed/signed-out account styling, and Forest landing-page routes/reflow at 320/768/1280 px. The preview uses real frontend modules with synthetic service data. Required PR CI [40510069063](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40510069063) and main CI [40510541321](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40510541321) pass all five jobs, with 1,464 unit/integration tests and 177 native Chromium checks. Vercel production is successful; release.json and all seven changed frontend files match source byte-for-byte. Live public landing and signed-out account screens show Forest. [Production screenshot](evidence/student-forest-landing-20261027.jpg).
 
 Unchanged S45 backend acceptance (73 checks plus two-school isolation), learner/audio/writing controls and prior subject acceptance are retained under the preceding evidence. The persistent Vercel production blocking configuration is reused from the independently verified reliability record; the existing connector scope limitation remains, and no deployment-control change is made.
 
 All 45 capability mappings and planned dependencies remain. New symbols do not claim available releases for the six future subjects. Owner usability sign-off and full four-subject 16.5C acceptance remain open. English remains paused after C47, then resumes with Unit3 learner/audio/writing acceptance and Units4–6.
+
+## Production handoff evidence
+
+- English Unit3 and preserved programme reads: [40510817011](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40510817011), **154/154**, exact implementation source. Read-only learning acceptance; no full learner attempt is claimed. [Receipt](evidence/student-visual-english-20261027.json).
+- School analytics: [40510541374](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40510541374), **10/10**, including two-school denial and session cleanup. [Receipt](evidence/student-visual-analytics-20261027.json).
+- Reused: Physics I–VI 324 checks (40488926093), S45 73 checks plus isolation (40502331986), staff actions 143 checks (40502112158). Their backend/learning behavior is unchanged; shared presentation has fresh required native coverage and English/context acceptance. Existing owner content/audio approvals are retained.
+- Serialized production QA automatically canceled superseded pending reads. The untouched Chapter III run 40510541324 was canceled while waiting, and the intended English3 read was dispatched through the existing guarded main workflow. No required CI check was canceled.
+
+[Machine-readable release evidence](evidence/student-visual-release-20261027.json). Documentation closure preserves the tested frontend and scripts; its required CI remains required. Notion must be synchronized to the final merged documentation source and read back with every native child page preserved.

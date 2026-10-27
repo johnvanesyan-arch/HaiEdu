@@ -1,6 +1,6 @@
 # Learning API contract
 
-**Sprint 16.5B.4 — subject artwork and Forest first-paint corrections, 2026-10-27.** The review candidate restores English/Physics illustrations, adds six subject symbols through a versioned decorative registry, keeps account loading in Forest without assigning a role, and recolours the public landing page. Required release CI and exact-production verification remain pending. All 45 capability mappings, subject-release gates and the English C47 bookmark remain unchanged. [Visual correction delivery](student-visual-corrections.md).
+**Sprint 16.5B.4 — subject illustrations and Forest continuity delivered, 2026-10-27.** [PR313](https://github.com/johnvanesyan-arch/HaiEdu/pull/313) restores English/Physics art and adds Mathematics, Armenian, Chemistry, Geography, Biology and History symbols. Account loading is Forest from first paint; the public landing page also uses Forest/cream. Required PR/main CI passes all five jobs (**1,464 unit/integration tests; 177 native browser checks**). Production `5c0683a2d81f292ab371b3aceddb7e157eb19d8b` and all seven changed frontend files match; fresh English/preserved-programme reads pass **154/154**, staff analytics **10/10**. All 45 capability mappings and release gates remain; future symbols do not activate subjects. Final owner usability sign-off and full four-subject 16.5C remain open. [Delivery](student-visual-corrections.md) · [Evidence](evidence/student-visual-release-20261027.json).
 
 ## Supplementary materials — 16.5B.3
 

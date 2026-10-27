@@ -1,6 +1,6 @@
 # Student dashboard acceptance — 27 October 2026
 
-**16.5B.4 follow-up:** owner-reported subject symbols and account first-paint defects are being corrected together with the public Forest palette. This is an evidenced follow-up to available-scope technical acceptance; final owner usability sign-off is not claimed. [Correction record](student-visual-corrections.md).
+**16.5B.4 follow-up:** owner-reported subject symbols and account first-paint defects are corrected and deployed together with the public Forest palette. PR/main CI passes 1,464 unit/integration tests and 177 native-browser checks; seven changed production files match and fresh English/analytics checks pass. This is an evidenced follow-up to available-scope technical acceptance; final owner usability sign-off is not claimed. [Correction record](student-visual-corrections.md).
 
 The complete implemented dashboard, including S45 «Հավելյալ նյութեր», has passed technical acceptance for the currently available Physics/English programmes and designated institutional fixtures. The deployed source is `ace33de8d0f82795614ed7b49ea4eef816be4baa` ([PR311](https://github.com/johnvanesyan-arch/HaiEdu/pull/311)). [Release evidence](evidence/student-supplementary-release-20261027.json) contains exact CI, backend, asset and authenticated-run receipts.
 

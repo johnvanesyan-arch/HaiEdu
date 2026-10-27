@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "slice": "16.5B.4",
+  "status": "delivered_bounded_slice",
+  "implementationPullRequest": 313,
+  "implementationCommit": "5c0683a2d81f292ab371b3aceddb7e157eb19d8b",
+  "reviewedHead": "b0125e6779d85ab95d55995b0713fd42e38a7a2c",
+  "requiredCi": {
+    "pullRequestRun": 40510069063,
+    "mainRun": 40510541321,
+    "unitIntegrationTests": 1464,
+    "nativeBrowserTests": 177,
+    "jobs": {
+      "test": "success",
+      "role-layout-browser": "success",
+      "phase3-postgres-17": "success",
+      "institutional-concurrency": "success",
+      "Platform release checks": "success"
+    }
+  },
+  "production": {
+    "commit": "5c0683a2d81f292ab371b3aceddb7e157eb19d8b",
+    "assetReadback": [
+      {
+        "path": "multi-subject-home.js",
+        "bytes": 11909,
+        "sha256": "a3106ba857c4712b8ca8e6e8f1c235a3c0b6facebea7bd260937fd6fc76f8201",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-course-presentation.mjs",
+        "bytes": 3313,
+        "sha256": "2ef43a783c51b82c353ec82a4cbfea6bf113ed774a6ce37b990292133db522e2",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-forest.css",
+        "bytes": 18402,
+        "sha256": "cd7f30daadf9a18e264dc7160902c61a4099b867ac64bfcdb0e27e2ef95aad6d",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-surfaces.css",
+        "bytes": 16102,
+        "sha256": "af5a5af247ca4513fd62ea1b4eec673c03955a8435efdb392e56e308f905d35d",
+        "matchesLocal": true
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 8222,
+        "sha256": "622d622ea5a557a7bc885787413d43ed635432538c4dd0a51e48d7791a065423",
+        "matchesLocal": true
+      },
+      {
+        "path": "subject-visuals.mjs",
+        "bytes": 3111,
+        "sha256": "a04660dd3ce99b07e4c4e74e806917abddb325455eb3c8ac6f88393205fae4c1",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-shell.css",
+        "bytes": 15152,
+        "sha256": "f8c5e2e5b1053f4c569468cef98250af693d02ab7eb443a992b82b4f2c5b07e4",
+        "matchesLocal": true
+      }
+    ],
+    "publicBrowser": {
+      "landing": "https://www.haiedu.am/",
+      "canvas": "rgb(245, 246, 239)",
+      "heading": "rgb(35, 57, 47)",
+      "button": "rgb(40, 91, 69)",
+      "account": "https://www.haiedu.am/privacy",
+      "accountCanvas": "rgb(245, 246, 239)",
+      "staticForestAttribute": true,
+      "signedOutHasStudentRole": false
+    }
+  },
+  "vercel": {
+    "state": "success",
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/5fESNwRcGCQKhRVgH6VcxY7ozG8m",
+    "persistentBlockingControl": "reused independently verified configuration from docs/reliability-stage1.md; current management connector remains scope-limited; no change/bypass"
+  },
+  "isolatedVisual": {
+    "date": "2026-10-27",
+    "sourceHead": "b0125e6779d85ab95d55995b0713fd42e38a7a2c",
+    "kind": "real-frontend-synthetic-services",
+    "subjectArtwork": {
+      "keys": [
+        "english",
+        "physics",
+        "mathematics",
+        "armenian",
+        "chemistry",
+        "geography",
+        "biology",
+        "history",
+        "generic"
+      ],
+      "width": 160,
+      "height": 98
+    },
+    "accountHeldProfile": {
+      "viewportWidth": 360,
+      "canvas": "rgb(245, 246, 239)",
+      "header": "rgb(230, 240, 230)",
+      "headerHeight": 256.734375,
+      "studentRoleAssignedBeforeResponse": false
+    },
+    "automatedAcceptance": {
+      "workflowRun": 40510069063,
+      "nativeBrowserTests": 177,
+      "passed": 177,
+      "failures": 0
+    },
+    "limits": [
+      "synthetic services, not real student content",
+      "future subjects artwork does not release curriculum",
+      "full four-subject acceptance remains open"
+    ]
+  },
+  "live": {
+    "english": {
+      "run": 40510817011,
+      "passed": 154,
+      "receipt": "student-visual-english-20261027.json"
+    },
+    "analytics": {
+      "run": 40510541374,
+      "passed": 10,
+      "receipt": "student-visual-analytics-20261027.json"
+    }
+  },
+  "reusedEvidence": [
+    {
+      "run": 40488926093,
+      "scope": "Physics I\u2013VI",
+      "checks": 324
+    },
+    {
+      "run": 40502331986,
+      "scope": "S45 lifecycle plus tenant isolation",
+      "checks": 73
+    },
+    {
+      "run": 40502112158,
+      "scope": "staff actions",
+      "checks": 143
+    }
+  ],
+  "scope": {
+    "subjectAwareExtension": "haiedu-subject-art-v1",
+    "artworkSubjects": [
+      "english",
+      "physics",
+      "mathematics",
+      "armenian",
+      "chemistry",
+      "geography",
+      "biology",
+      "history"
+    ],
+    "neutralFallback": true,
+    "capabilitiesPreserved": 45,
+    "backendChanged": false,
+    "learningOrReleaseGatesChanged": false,
+    "englishBookmark": "C47; Unit3 learner/audio/writing next, then Units4\u20136",
+    "ownerUsabilitySignoffClaimed": false,
+    "fullFourSubjectAcceptanceClaimed": false
+  },
+  "serializedQa": {
+    "manuallyCancelledBeforeExecution": 40510541324,
+    "replacementEnglish": 40510817011,
+    "requiredCiCancelled": false
+  }
+}
