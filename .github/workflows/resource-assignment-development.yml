@@ -16,6 +16,10 @@ jobs:
           node-version: 22
       - run: npm ci
       - name: Check the new handler
-        run: node --check supabase/functions/_shared/resource-assignments-handler.mjs
+        run: |
+          node --check supabase/functions/_shared/resource-assignments-handler.mjs
+          node --check web/resource-assignments.mjs
+          node --check web/supplementary-resources.mjs
+          node --check web/multi-subject-home.js
       - name: Exercise the actual SQL and recipient contract in disposable PGlite
-        run: node --test tests/resource-assignments.test.mjs
+        run: node --test tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs tests/privacy-role-inventory.test.mjs

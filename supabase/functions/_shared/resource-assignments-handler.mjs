@@ -24,7 +24,7 @@ export function createResourceAssignmentsHandler({createAdmin,hasActiveLiveSessi
    let claims;try{claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));}catch{fail('assignment_forbidden');}
    if(!UUID.test(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');
    const live=async()=>{if(!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');};
-   const body=await bodyJSON(request),keys={preview:['materialId','offset','search'],assign:['materialId','fingerprint','requestId','rosterFingerprint','mode','enrollmentIds','instructions'],list:['offset','state'],inbox:['offset','state'],get:['id'],cancel:['id','revision','reason'],open:['id']};
+   const body=await bodyJSON(request),keys={catalog:['offset'],preview:['materialId','offset','search'],assign:['materialId','fingerprint','requestId','rosterFingerprint','mode','enrollmentIds','instructions'],list:['offset','state'],inbox:['offset','state'],get:['id'],cancel:['id','revision','reason'],open:['id']};
    if(!shape(body,['action','context','payload'])||!keys[body.action]||!shape(body.context??{},['assignmentId','enrollmentId','curriculumReleaseId','unitId'])||!shape(body.payload??{},keys[body.action]))fail('assignment_request_invalid');
    const {action,context={},payload={}}=body;
    if(Object.values(context).some(x=>typeof x!=='string'||!UUID.test(x)))fail('assignment_request_invalid');

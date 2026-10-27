@@ -21,6 +21,12 @@ async function materialInventory(admin: any, userId: string) {
   return data;
 }
 
+async function assignmentInventory(admin: any, userId: string) {
+  const { data, error } = await admin.rpc('service_resource_assignment_privacy_counts', { p_user_id: userId });
+  if (error) throw new Error('assignment_inventory_failed');
+  return data;
+}
+
 async function getDataInventory(admin: any, role: string, userId: string) {
   if (role === "student") {
     const [
@@ -36,6 +42,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       audioDeliveries,
       assessedAudioRecordings,
       sourceFamilyExposures,
+      assignments,
     ] = await Promise.all([
       countRows(admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId), "class_memberships_count_failed"),
       countRows(admin.from("institutional_class_enrollments").select("id", { count: "exact", head: true }).eq("student_id", userId), "institutional_enrollments_count_failed"),
@@ -49,6 +56,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       countRows(admin.from("learning_audio_deliveries").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"audio_deliveries_count_failed"),
       countRows(admin.from("learning_assessed_audio").select("session_id", {count:"exact",head:true}).eq("student_id",userId),"assessed_audio_count_failed"),
       countRows(admin.from("learning_source_family_exposures").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"source_family_exposures_count_failed"),
+      assignmentInventory(admin, userId),
     ]);
     return {
       kind: "student",
@@ -63,6 +71,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       audioDeliveries,
       assessedAudioRecordings,
       sourceFamilyExposures,
+      materialAssignmentsReceived: assignments.materialAssignmentsReceived,
     };
   }
 
@@ -84,10 +93,11 @@ async function getDataInventory(admin: any, role: string, userId: string) {
         "teacher_assignments_count_failed",
       )
       : 0;
-    const [emailInvitations, joinCodes, writtenReviews] = await Promise.all([
+    const [emailInvitations, joinCodes, writtenReviews, assignments] = await Promise.all([
       countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_invitations_count_failed"),
       countRows(admin.from("institutional_join_codes").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_join_codes_count_failed"),
       countRows(admin.from("written_reviews").select("id", { count: "exact", head: true }).eq("assessor_id", userId), "written_reviews_count_failed"),
+      assignmentInventory(admin, userId),
     ]);
     return {
       kind: "teacher",
@@ -95,6 +105,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       teachingAssignments,
       invitationRecords: emailInvitations + joinCodes,
       writtenReviews,
+      materialAssignmentsSent: assignments.materialAssignmentsSent,
       auditEvents,
     };
   }

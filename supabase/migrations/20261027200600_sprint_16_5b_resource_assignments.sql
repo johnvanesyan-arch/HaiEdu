@@ -134,7 +134,7 @@ declare role_name text;ctx jsonb;roster jsonb;stamp text;entries jsonb:='[]';res
 begin
  if jsonb_typeof(p_context) is distinct from 'object' or jsonb_typeof(p_payload) is distinct from 'object'
  or exists(select 1 from jsonb_object_keys(p_context) k where k not in ('assignmentId','enrollmentId','curriculumReleaseId','unitId'))
- or p_action not in ('preview','assign','list','inbox','get','cancel','open') then raise exception 'assignment_request_invalid';end if;
+ or p_action not in ('catalog','preview','assign','list','inbox','get','cancel','open') then raise exception 'assignment_request_invalid';end if;
  role_name:=private.supplementary_session(p_actor_id,p_auth_session_id);
  if role_name not in ('teacher','student') then raise exception 'assignment_forbidden';end if;
  off:=coalesce((p_payload->>'offset')::integer,0);state_filter:=coalesce(p_payload->>'state','current');
@@ -175,7 +175,17 @@ begin
   e:=private.lock_student_learning_context(p_actor_id,p_auth_session_id,enr,rel,unt);ta:=e.teacher_assignment_id;
   ctx:=jsonb_build_object('schoolId',e.school_id,'academicYearId',e.academic_year_id,'classId',e.class_id,'subjectProgramId',e.subject_program_id,'readOnly',false);
  end if;
- if p_action in ('preview','assign') then
+ if p_action='catalog' then
+  if role_name<>'teacher' or exists(select 1 from jsonb_object_keys(p_payload) k where k<>'offset') then raise exception 'assignment_request_invalid';end if;
+  rows_n:=0;
+  for m in select * from public.supplementary_resource_versions where provider='platform' and status='published'
+   and subject_program_id=(ctx->>'subjectProgramId')::uuid and curriculum_release_id=rel and unit_id=unt
+   and qa->>'passed'='true' and qa->>'fingerprint'=fingerprint order by published_at desc,id offset off limit 51
+  loop
+   rows_n:=rows_n+1;if rows_n>50 then exit;end if;entries:=entries||jsonb_build_array(private.supplementary_public(m));
+  end loop;
+  result:=jsonb_build_object('materials',entries,'hasMore',rows_n>50,'nextOffset',off+50);
+ elsif p_action in ('preview','assign') then
   if role_name<>'teacher' then raise exception 'assignment_forbidden';end if;
   if p_action='assign' then
    if exists(select 1 from jsonb_object_keys(p_payload) k where k not in ('materialId','fingerprint','requestId','rosterFingerprint','mode','enrollmentIds','instructions'))

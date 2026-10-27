@@ -4,11 +4,14 @@ import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref,
 import { subjectArtwork } from './subject-visuals.mjs';
 import { studentIcon, learningArtwork } from './student-visuals.mjs';
 import { homeLearningSummary } from './student-home-model.mjs';
+import { mountStudentResourceAssignments } from './resource-assignments.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const panel = document.getElementById('modePanel');
 const requestedView = new URLSearchParams(location.search).get('view');
 const view = ['courses', 'work'].includes(requestedView) ? requestedView : 'home';
 let root, contexts = [], courses = [], selected = null, requestedCourse = '';
+let assignmentView = null;
+function clearAssignments() { assignmentView?.dispose(); assignmentView = null; }
 let epoch = 0, accessSignature = null, actorId = null;
 
 function ensureRoot() {
@@ -40,13 +43,15 @@ function courseCards() {
   }).join('')}</div></section>`;
 }
 function render() {
+  clearAssignments();
   const welcome = view === 'work'
     ? ['Ձեր աշխատանքներն ու ուսուցչի արձագանքը', 'Ընտրեք դասընթացն ու բաժինը՝ ձեր սևագրերը, ուղարկված աշխատանքները և ուսուցչի մեկնաբանությունները տեսնելու համար։']
     : view === 'courses'
       ? ['Բացեք նոր էջ ձեր ուսուցման մեջ', 'Ընտրեք դասընթացը և շարունակեք ձեր աշխատանքը։']
       : ['Բարի գալուստ։ Շարունակե՞նք սովորել։', 'Ընտրեք դասընթացն ու բաժինը։ Ձեր ընթացիկ աշխատանքը կհայտնվի այստեղ։'];
-  root.innerHTML = `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>${view === 'home' ? selectorMarkup() + '<div id="studentNextStep" aria-live="polite" aria-atomic="true"></div>' : ''}${view==='work'?'<p><a class="button-link ghost" href="./materials.html">Հավելյալ նյութեր</a></p>':''}${courseCards()}`;
+  root.innerHTML = `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>${view === 'home' ? selectorMarkup() + '<div id="studentNextStep" aria-live="polite" aria-atomic="true"></div>' : ''}${view==='work'?'<p><a class="button-link ghost" href="./materials.html">Հավելյալ նյութեր</a></p>':''}${view==='work'?'<div id="studentResourceAssignments"></div>':''}${courseCards()}`;
   if (view === 'home') void loadSelected();
+  if (view === 'work') assignmentView = mountStudentResourceAssignments({root:root.querySelector('#studentResourceAssignments'),client:supabase});
 }
 function syncSelectionUrl() {
   const url = new URL(studentHomeHref(view, selected), location.href);
@@ -87,7 +92,7 @@ function updateAccess(detail = {}) {
   if (!ensureRoot()) return;
   const signature = JSON.stringify([detail.accessStatus ?? '', detail.contexts ?? null]);
   if (signature === accessSignature) return;
-  accessSignature = signature; ++epoch;
+  accessSignature = signature; ++epoch; clearAssignments();
   contexts = Array.isArray(detail.contexts) ? detail.contexts : [];
   courses = groupLearningContexts(contexts);
   contexts = courses.flatMap(course => course.units);
@@ -130,7 +135,7 @@ supabase.auth.onAuthStateChange((event, session) => {
   const next = session?.user?.id ?? null;
   if (event === 'INITIAL_SESSION') { actorId = next; return; }
   if (next === actorId && event !== 'SIGNED_OUT') return;
-  actorId = next; ++epoch; accessSignature = null; selected = null; contexts = []; courses = [];
+  actorId = next; ++epoch; clearAssignments(); accessSignature = null; selected = null; contexts = []; courses = [];
   if (root) root.innerHTML = state('Դասընթացները բեռնվում են…', 'Ստուգում ենք հաշվի հասանելիությունը։');
 });
 window.addEventListener('haiedu-course-access', event => updateAccess(event.detail));

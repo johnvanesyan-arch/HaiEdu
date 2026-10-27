@@ -11,9 +11,9 @@ async function surface(t,f,actor=10,width=1280){const bc=await browser.newContex
  await page.route('**/*',async route=>{const req=route.request(),u=new URL(req.url());
   if(u.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
-  if(u.pathname==='/fixture/manage-supplementary-resources'){
+  if(['/fixture/manage-supplementary-resources','/fixture/manage-resource-assignments'].includes(u.pathname)){
    const action=req.headers()['content-type']?.startsWith('multipart/')?'upload':req.postDataJSON().action;
-   const response=await f.handle(new Request('https://fixture.invalid/materials',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}));
+   const response=await (u.pathname.endsWith('manage-resource-assignments')?f.handleAssignments:f.handle)(new Request('https://fixture.invalid/materials',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}));
    if(held?.action===action){const slot=held;held=null;await new Promise(resolve=>{slot.release=resolve;});}
    return route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:Buffer.from(await response.arrayBuffer())});
   }

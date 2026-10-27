@@ -54,6 +54,7 @@ function inventoryPresentation(role, inventory) {
       rows: [
         ["Դասարանային անդամակցություններ", inventory.classMemberships ?? 0],
         ["Ստացված հրավերների գրառումներ", inventory.invitationsReceived ?? 0],
+        ["Ուսուցչից ստացված նյութային առաջադրանքներ", inventory.materialAssignmentsReceived ?? 0],
         ["Պատասխանների փորձեր", inventory.attempts ?? 0],
         ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
         ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
@@ -71,6 +72,7 @@ function inventoryPresentation(role, inventory) {
       rows: [
         ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
         ["Դասավանդման նշանակումներ", inventory.teachingAssignments ?? 0],
+        ["Ուղարկված նյութային առաջադրանքներ", inventory.materialAssignmentsSent ?? 0],
         ["Գրավոր աշխատանքների գնահատումներ և մեկնաբանություններ", inventory.writtenReviews ?? 0],
         ["Ստեղծված հրավերներ և կոդեր", inventory.invitationRecords ?? 0],
         ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],

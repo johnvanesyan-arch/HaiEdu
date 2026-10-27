@@ -82,10 +82,10 @@ test('foreign school, teacher, unit, grant, role and revoked enrollment cannot a
 });
 test('paged literal roster search keeps one fingerprint and account/enrollment deletion cannot expose others',async t=>{
  const db=await database();t.after(()=>db.close());const m=await published(db);
- for(let n=13;n<66;n++)await addLearner(db,n);
+ for(let n=100;n<153;n++)await addLearner(db,n);
  const p=await call(db,'preview',{materialId:m.id}),second=await call(db,'preview',{materialId:m.id,offset:50});
  assert.equal(p.total,55);assert.equal(p.roster.length,50);assert.equal(second.roster.length,5);assert.equal(second.rosterFingerprint,p.rosterFingerprint);
- const search=await call(db,'preview',{materialId:m.id,search:'learner 65'});assert.equal(search.roster.length,1);assert.equal(search.rosterFingerprint,p.rosterFingerprint);
+ const search=await call(db,'preview',{materialId:m.id,search:'learner 152'});assert.equal(search.roster.length,1);assert.equal(search.rosterFingerprint,p.rosterFingerprint);
  assert.equal((await call(db,'preview',{materialId:m.id,search:'%'})).matched,0);
  const a=(await call(db,'assign',await prepared(db,m))).assignment;
  await db.query('delete from institutional_class_enrollments where id=$1',[id(9112)]);
