@@ -14,8 +14,8 @@ This is the reusable design specification for student Home, courses, assessments
 | --- | --- |
 | Owner-selected | Forest/cream palette; four main destinations; Progress inside each course; supplementary materials below My work. |
 | Retained design | Illustrated continuation/course cards, progressive disclosure, explicit logout and reduced-motion behavior from the current review. |
-| v1 specification refinement | The normalized type/spacing scale, stronger control border, hover/error tokens and 44 px standalone-control target below. These are implementation specifications prepared by this request, not a claim of separate owner acceptance or existing production behavior. |
-| Still gated | Complete dashboard design acceptance, 16.5B implementation, 16.5C production/four-subject acceptance, and future feature backends. |
+| Owner-approved v1 specification | The normalized type/spacing scale, stronger control border, hover/error tokens and 44 px standalone-control target below. John accepts these specifications with the full design on 27 October 2026. Their implementation is tracked by capability slice, not inferred from the specimen. |
+| Still gated | Remaining 16.5B implementation, 16.5C production/four-subject acceptance, and future feature backends. |
 
 The original dashboard preview remains unchanged by this guide. The visual guide is a separate, local specimen with fictional data and no service calls. The CSS file is a reference under `docs/`, not a stylesheet imported into production. English stays paused after C47; existing owner content/audio acceptance is reused.
 
@@ -212,3 +212,7 @@ The CSS reference is namespaced under `[data-haiedu-student]`, contains no subje
 Project sources are pinned to the baseline at the top: [redesign](student-dashboard-redesign.md), [visual decision](student-dashboard-visual-options.md), [coverage matrix](student-dashboard-function-coverage.md), [supplementary materials](student-supplementary-materials.md), and the [authoritative status](project-status.md). Historical browser checks: [palette](evidence/student-dashboard-colors-20261027.json) and [Forest/logout](evidence/student-dashboard-forest-logout-20261027.json). This guide's artifact/token checks are in [style-guide evidence](evidence/student-style-guide-20261027.json).
 
 Primary accessibility references, consulted 27 October 2026: [W3C text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html), [non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html), [minimum target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html), and [reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html). The 44 px target and typography/spacing/motion values are HaiEdu design choices, not quotations from these standards.
+
+## 16.5B.1 implementation trace — 27 October 2026
+
+Full design/style-guide acceptance is bound to source `feb82ce0116a8ae3b75d0147327661861f91c833`; see the [owner record](evidence/student-dashboard-approval-20261027.json). The shared student shell/Home implementation uses `web/student-forest.css`, a locally delivered OFL Noto Sans Armenian variable font and native SVG outline artwork. The reference under `docs/` remains a specimen. The implemented desktop rail is 248 px (224 px at the medium breakpoint), adjusted to fit Armenian labels; the mobile navigation stacks long labels without clipping. Materials stays in the approved fourth slot but has no live entry until its complete service slice. Other course/work/account component refinements remain to be completed. [Delivery and evidence](student-home-implementation.md).

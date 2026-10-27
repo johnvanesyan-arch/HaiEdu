@@ -111,14 +111,14 @@ async function fixture(t,{holdFirst=false,player=false,retired=false,completeAft
 test('one course spans independently released chapters without changing either release identity',async t=>{
  const {page,errors}=await fixture(t,{splitReleases:true});
  await page.waitForSelector('.course-chapters a');
- assert.equal(await page.locator('.amp-course-link').count(),1);
+ assert.equal(await page.locator('.amp-nav-list a[href*="view=courses"]').count(),1);
  const chapters=page.locator('.course-chapters a');assert.equal(await chapters.count(),2);
  assert.equal(new URL(await chapters.nth(0).getAttribute('href'),origin).searchParams.get('release'),id(2));
  assert.equal(new URL(await chapters.nth(1).getAttribute('href'),origin).searchParams.get('release'),id(20));
  await chapters.nth(1).click();
  await page.waitForFunction(()=>document.getElementById('courseTitle').textContent.includes('Գլուխ Բ'));
  assert.equal(new URL(page.url()).searchParams.get('release'),id(20));
- assert.equal(await page.locator('.amp-course-link').count(),1);
+ assert.equal(await page.locator('.amp-nav-list a[href*="view=courses"]').count(),1);
  assert.equal(await page.locator('.course-chapters a[aria-current=page]').innerText(),'Գլուխ Բ');
  assert.equal(await page.evaluate(()=>window.__requests.filter(x=>x.name==='get-student-dashboard').at(-1).body.curriculumReleaseId),id(20));
  assert.deepEqual(errors,[]);

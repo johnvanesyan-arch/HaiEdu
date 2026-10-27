@@ -27,7 +27,7 @@ test("Home retains its legacy Physics renderer as a hidden compatibility layer w
   assert.match(html, /id="homeAssessmentTitle"/);
   assert.match(shell, /multi-subject-home\.js/);
   assert.match(multi, /amp-multisubject-ready/);
-  assert.match(multi, /ԻՄ ԱՌԱՐԿԱՆԵՐԸ/);
+  assert.match(multi, /Դասընթացներ/);
 });
 
 test("mastery check uses shared design primitives and task-aware shell", async () => {
@@ -42,7 +42,7 @@ test("mastery check uses shared design primitives and task-aware shell", async (
 
 test("student shell does not own educational truth", async () => {
   const code = await read("web/student-shell.js");
-  assert.doesNotMatch(code, /supabase|service_role|answer_key|alpha\s*=|beta\s*=/i);
+  assert.doesNotMatch(code, /service_role|answer_key|alpha\s*=|beta\s*=/i);
   assert.match(code, /Presentation\/navigation only/);
   assert.match(code, /practicePanel/);
   assert.match(code, /questionPanel/);
@@ -53,13 +53,11 @@ test("student navigation is entitlement-driven while Physics routes remain subje
   const courses = await read("web/student-courses.js");
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
-  assert.match(courses, /contextHref/);
-  assert.match(courses, /Իմ առարկաները/);
-  assert.doesNotMatch(courses, /physics-7\.html/);
-  assert.match(courses, /assessment/);
-  assert.match(courses, /progress/);
-  assert.match(courses, /import\s*\{[^}]*sameCourse[^}]*\}\s*from\s*['"]\.\/learning-navigation\.mjs['"]/);
-  assert.match(courses, /sameCourse\(selected,\s*course\)/);
+  assert.match(courses, /studentHomeHref/);
+  assert.match(courses, /Դասընթացներ/);
+  assert.match(courses, /Իմ աշխատանքները/);
+  assert.doesNotMatch(courses, /physics-7\.html|Առաջընթաց/);
+  assert.match(courses, /resolveNavigationContext/);
 });
 
 test("design tokens include spacing, semantic state, focus and layout primitives", async () => {

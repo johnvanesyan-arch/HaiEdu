@@ -20,10 +20,11 @@ test("Sprint 10.5F student routes remain available inside the entitlement-driven
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
   assert.doesNotMatch(courses, /physics-7\.html/);
-  assert.match(courses, /assessment/);
-  assert.match(courses, /progress/);
-  assert.match(courses, /import\s*\{[^}]*sameCourse[^}]*\}\s*from\s*['"]\.\/learning-navigation\.mjs['"]/);
-  assert.match(courses, /sameCourse\(selected,\s*course\)/);
+  const page = await read("web/course-page.js");
+  assert.match(page, /assessment/);
+  assert.match(page, /progress/);
+  assert.match(courses, /resolveNavigationContext/);
+  assert.match(courses, /studentHomeHref/);
   assert.match(shell, /responsive-qa\.css/);
 });
 

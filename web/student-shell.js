@@ -2,6 +2,8 @@
    Presentation/navigation only. It does not own authentication, mastery,
    recommendation, grading, session eligibility, or authorization truth. */
 
+import { studentIcon } from './student-visuals.mjs';
+import { signOutStudent } from './student-signout.mjs';
 const page = document.body.dataset.studentPage || "";
 const focusedByPage = document.body.dataset.focusedTask === "true";
 
@@ -43,6 +45,26 @@ function ensureQaStylesheet() {
   document.head.appendChild(link);
 }
 
+function ensureStudentStylesheet() {
+  if (document.querySelector('link[data-student-forest]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet'; link.href = './student-forest.css'; link.dataset.studentForest = 'true';
+  document.head.appendChild(link);
+}
+
+function ensureAccountEntry() {
+  const topbar = document.querySelector('main.shell .topbar');
+  if (!topbar || topbar.querySelector('.student-account-link')) return;
+  let actions = topbar.querySelector(':scope > .row');
+  if (!actions) { actions = document.createElement('div'); actions.className = 'row'; topbar.append(actions); }
+  const account = actions.querySelector('a[href="./privacy.html"]') || document.createElement('a');
+  account.href = './privacy.html';
+  account.className = 'student-account-link';
+  account.setAttribute('aria-label', 'Իմ հաշիվը');
+  account.innerHTML = studentIcon('account') + '<span>Իմ հաշիվը</span>';
+  actions.append(account);
+}
+
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
   const className = mobile ? "amp-mobile-link" : "amp-nav-link";
@@ -73,7 +95,8 @@ function ensureNavigation() {
     </div>
     <div class="amp-nav-utility">
       <a href="./join.html">Միանալ դասարանին՝ կոդով</a>
-      <a href="./privacy.html">Գաղտնիություն և հաշիվ</a>
+      <a href="./privacy.html">Իմ հաշիվը</a>
+      <button type="button" data-student-signout>${studentIcon('logout')}<span>Դուրս գալ</span></button>
     </div>`;
 
   const mobile = document.createElement("nav");
@@ -83,6 +106,14 @@ function ensureNavigation() {
 
   document.body.prepend(side);
   document.body.append(mobile);
+  side.querySelector('[data-student-signout]').addEventListener('click', async () => {
+    const existing = document.getElementById('signOutBtn');
+    if (existing) { existing.click(); return; }
+    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    const { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } = await import('./config.js');
+    const client = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    await signOutStudent(client);
+  });
 }
 
 function inferAuthenticated() {
@@ -108,19 +139,27 @@ function inferFocusedTask() {
 
 function syncHomeHeader(authenticated) {
   if (page !== "home") return;
+  const skip = document.querySelector('.skip-link');
+  const target = authenticated ? '#mainContent' : '#publicEntry';
+  if (skip && skip.getAttribute('href') !== target) skip.setAttribute('href', target);
+  document.getElementById('mainContent')?.setAttribute('tabindex', '-1');
   const heading = document.querySelector(".topbar h1");
   const subtitle = document.querySelector(".topbar p.subtle");
-  if (heading) heading.textContent = authenticated ? "Գլխավոր" : "Ուսուցման հարթակ";
+  const view = new URLSearchParams(location.search).get('view');
+  const titles = { courses: 'Դասընթացներ', work: 'Իմ աշխատանքները' };
+  if (heading) heading.textContent = authenticated ? (titles[view] || "Գլխավոր") : "Ուսուցման հարթակ";
   if (subtitle) {
     subtitle.textContent = !authenticated
       ? "Ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք ձեր առկա հաշվով։"
-      : "Ձեր առարկաները, առաջընթացը և հաջորդ առաջարկվող քայլերը մեկ վայրում։";
+      : "Ձեր ուսուցումը՝ քայլ առ քայլ։";
   }
 }
 
 function syncShellState() {
   const authenticated = inferAuthenticated();
   document.body.classList.toggle("amp-student-shell-active", authenticated);
+  document.body.toggleAttribute('data-haiedu-student', authenticated);
+  document.documentElement.toggleAttribute('data-haiedu-student-root', authenticated);
   document.body.classList.toggle("amp-focused-task", authenticated && inferFocusedTask());
   const publicEntry = document.getElementById("publicEntry");
   if (publicEntry) publicEntry.classList.toggle("hidden", authenticated);
@@ -130,7 +169,9 @@ function syncShellState() {
 ensureBrandAssets();
 ensurePublicBrand();
 ensureQaStylesheet();
+ensureStudentStylesheet();
 ensureNavigation();
+ensureAccountEntry();
 syncShellState();
 
 const observed = [
@@ -151,5 +192,6 @@ if (observed.length) {
 
 window.addEventListener("haiedu-course-access", syncShellState);
 window.addEventListener("pageshow", syncShellState);
+window.addEventListener("DOMContentLoaded", syncShellState);
 
 import("./student-courses.js").then(() => import("./course-gate.js"));

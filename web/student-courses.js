@@ -1,4 +1,5 @@
-import { groupLearningContexts, courseLabel, contextHref, sameCourse, readLearningSelection, resolveNavigationContext, escapeHtml as esc } from './learning-navigation.mjs';
+import { groupLearningContexts, readLearningSelection, resolveNavigationContext, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
+import { studentIcon } from './student-visuals.mjs';
 const page = document.body.dataset.studentPage;
 function render(detail = {}) {
   const contexts = detail.contexts ?? [];
@@ -6,23 +7,21 @@ function render(detail = {}) {
   let selection;
   try { selection = readLearningSelection(location.search); } catch { selection = {}; }
   const selected = resolveNavigationContext(contexts, selection, document.body.dataset.learningExtension);
-  const home = `<a class="amp-nav-link" href="./index.html"${page === 'home' ? ' aria-current="page"' : ''}><span class="amp-nav-icon">⌂</span><span>Գլխավոր</span></a>`;
-  const items = [home];
-  if (courses.length) items.push('<div class="amp-nav-section-label">Իմ առարկաները</div>');
-  for (const course of courses) {
-    const active = sameCourse(selected,course);
-    const unit = active ? selected : course.units[0];
-    items.push(`<a class="amp-nav-link amp-course-link" data-course-key="${esc(course.key)}" href="${esc(contextHref(unit))}"><span class="amp-nav-icon">▦</span><span>${esc(courseLabel(course))}<small>${esc(course.className)} · ${esc(course.schoolName)}</small></span></a>`);
-    if (active) items.push(`<div class="amp-course-sublinks">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([tab,label]) => `<a class="amp-course-sublink" href="${esc(contextHref(unit,tab))}"${new URLSearchParams(location.search).get('tab') === tab ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</div>`);
-  }
+  const requestedView = new URLSearchParams(location.search).get('view');
+  const view = page === 'home' ? (['courses', 'work'].includes(requestedView) ? requestedView : 'home') : 'courses';
+  const main = [['home','Գլխավոր','home'], ['courses','Դասընթացներ','courses'], ['work','Իմ աշխատանքները','work']];
+  const link = ([key,label,icon], mobile = false) => `<a class="${mobile ? 'amp-mobile-link' : 'amp-nav-link'}" href="${esc(studentHomeHref(key, selected))}"${key === view ? ' aria-current="page"' : ''}>${studentIcon(icon)}<span>${label}</span></a>`;
+  // Materials navigation is enabled with its complete authorized service.
+  const items = main.map(item => link(item));
   const nav = document.querySelector('.amp-nav-list');
   if (nav) nav.innerHTML = items.join('');
   const mobile = document.querySelector('.amp-mobile-nav');
-  if (mobile) mobile.innerHTML = `<a class="amp-mobile-link" href="./index.html">Գլխավոր</a><a class="amp-mobile-link" href="./index.html#mySubjects">Առարկաներ</a>${selected ? `<a class="amp-mobile-link" href="${esc(contextHref(selected))}">${esc(courseLabel(selected))}</a>` : ''}`;
+  if (mobile) mobile.innerHTML = main.map(item => link(item, true)).join('');
   window.HaiEduCourses = courses;
   window.dispatchEvent(new CustomEvent('haiedu-courses-rendered', { detail: { courses, contexts, selected } }));
 }
 window.addEventListener('haiedu-course-access', event => render(event.detail));
+window.addEventListener('haiedu-home-selection', () => render(window.HaiEduCourseAccess));
 window.addEventListener('pageshow', () => render(window.HaiEduCourseAccess));
 render(window.HaiEduCourseAccess);
 if (page === 'home') import('./multi-subject-home.js');

@@ -2,7 +2,7 @@
 
 **Owner request:** 2026-10-27 Asia/Yerevan. Replace the dominant dashboard blue with alternatives, make the interface more visual/dynamic, and remove the duplicate main-menu «Առաջընթաց» entry.
 
-**Status:** John selects **Forest green + warm cream** on 2026-10-27: “Let’s go with forest green.” The navigation correction and colour direction are decided; complete dashboard design acceptance remains pending. This does not implement production UI, stored preferences or new services. English remains paused after C47.
+**Status:** John selects **Forest green + warm cream** on 2026-10-27: “Let’s go with forest green.” The navigation correction and colour direction are decided; the full dashboard design and style guide are now owner-accepted at `feb82ce0116a8ae3b75d0147327661861f91c833`. This does not implement production UI, stored preferences or new services. English remains paused after C47.
 
 ## Options for comparison
 

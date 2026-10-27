@@ -1,0 +1,195 @@
+/* Sprint 16.5B.1: student-only Forest foundation. Staff and public pages keep
+   their existing tokens. Unmodified OFL font, pinned in assets/fonts/README.md. */
+@font-face {
+  font-family: "Noto Sans Armenian";
+  src: url("./assets/fonts/noto-sans-armenian-variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+html[data-haiedu-student-root] { font-size: 100%; background: #f5f6ef; }
+body[data-haiedu-student] {
+  --student-canvas: #f5f6ef;
+  --student-surface: #fff;
+  --student-ink: #23392f;
+  --student-muted: #58695f;
+  --student-accent: #285b45;
+  --student-accent-hover: #214c3a;
+  --student-selected: #e3eee5;
+  --student-hero: #e6f0e6;
+  --student-hero-ink: #234734;
+  --student-hero-muted: #4a6353;
+  --student-art: #c1d8bc;
+  --student-quiet: #eef1eb;
+  --student-divider: #dce4da;
+  --student-border-control: #6f8476;
+  --student-focus: #7a4718;
+  --student-success: #167263;
+  --student-success-bg: #e7f5ee;
+  --student-attention: #975b15;
+  --student-attention-bg: #fff2de;
+  --student-feedback: #7453a5;
+  --student-feedback-bg: #f0ebfa;
+  --student-error: #9e3636;
+  --student-error-bg: #fcecec;
+  --amp-color-bg: var(--student-canvas);
+  --amp-color-bg-subtle: var(--student-quiet);
+  --amp-color-surface: var(--student-surface);
+  --amp-color-text: var(--student-ink);
+  --amp-color-text-muted: var(--student-muted);
+  --amp-color-primary: var(--student-accent);
+  --amp-color-primary-hover: var(--student-accent-hover);
+  --amp-color-primary-soft: var(--student-selected);
+  --amp-color-border: var(--student-divider);
+  --amp-color-focus: var(--student-focus);
+  --amp-font-size-md: 1rem;
+  --amp-font-size-sm: .875rem;
+  --amp-font-size-xs: .875rem;
+  --amp-nav-width: 15.5rem;
+  --amp-content-max: 80rem;
+  font-family: "Noto Sans Armenian", "Noto Sans", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: var(--student-canvas);
+  color: var(--student-ink);
+}
+body[data-haiedu-student] :focus-visible { outline: 3px solid var(--student-focus); outline-offset: 3px; }
+body[data-haiedu-student] :is(h1,h2,h3,p,label,a,button,summary) { letter-spacing: normal; overflow-wrap: anywhere; }
+body[data-haiedu-student] :is(button,input,select,textarea) { font: inherit; }
+body[data-haiedu-student] :is(input:not([type=radio],[type=checkbox]),select,textarea) {
+  min-width: 0; max-width: 100%; border: 1px solid var(--student-border-control); border-radius: .75rem;
+  color: var(--student-ink); background: var(--student-surface);
+}
+body[data-haiedu-student] :is(button,.button-link) {
+  min-height: 2.75rem; white-space: normal; line-height: 1.5; border-radius: .75rem;
+}
+body[data-haiedu-student] :is(button:not(.ghost,.secondary),.button-link:not(.ghost,.secondary)) {
+  background: var(--student-accent); border-color: var(--student-accent); color: #fff;
+}
+body[data-haiedu-student] :is(button.ghost,button.secondary,.button-link.ghost,.button-link.secondary) {
+  background: var(--student-surface); border: 1px solid var(--student-border-control); color: var(--student-accent);
+}
+body[data-haiedu-student] > main.shell {
+  width: auto; max-width: 80rem; min-width: 0;
+  margin: 0 auto 0 calc(var(--amp-nav-width) + max(0px, (100vw - var(--amp-nav-width) - 80rem) / 2));
+  padding: 2rem; gap: 1.5rem;
+}
+body[data-haiedu-student] .topbar { align-items: center; gap: 1.5rem; padding-bottom: 1.5rem; }
+body[data-haiedu-student] .topbar > div { min-width: 0; }
+body[data-haiedu-student] .topbar h1 { font-size: 2rem; line-height: 1.3; color: var(--student-ink); }
+body[data-haiedu-student] .topbar .eyebrow { display: none; }
+body[data-haiedu-student] .topbar p { margin-bottom: 0; font-size: .875rem; }
+body[data-haiedu-student] .topbar > .row { flex-shrink: 0; gap: .5rem; }
+body[data-haiedu-student] .student-account-link {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .5rem .75rem;
+  color: var(--student-accent); background: var(--student-surface); border: 1px solid var(--student-divider);
+  border-radius: 999px; text-decoration: none; font-size: .875rem; font-weight: 600;
+}
+.student-icon { width: 1.25rem; height: 1.25rem; flex: 0 0 1.25rem; }
+body[data-haiedu-student] .amp-side-nav {
+  width: var(--amp-nav-width); background: var(--student-surface); color: var(--student-ink);
+  padding: 2rem 1rem 1rem; gap: 1.5rem; border-right: 1px solid var(--student-divider);
+}
+body[data-haiedu-student] .amp-nav-brand { padding: 0 .5rem 1.5rem; border-bottom: 1px solid var(--student-divider); }
+body[data-haiedu-student] .amp-brand-link { background: transparent; padding: 0; box-shadow: none; }
+body[data-haiedu-student] .amp-nav-brand span { color: var(--student-muted); font-size: .75rem; line-height: 1.5; }
+body[data-haiedu-student] .amp-nav-list { gap: .5rem; scrollbar-width: thin; }
+body[data-haiedu-student] .amp-nav-link { padding: .75rem; color: var(--student-muted); font-weight: 600; font-size: 1rem; border-radius: .75rem; line-height: 1.5; }
+body[data-haiedu-student] .amp-nav-link:hover { background: var(--student-quiet); color: var(--student-accent); }
+body[data-haiedu-student] .amp-nav-link[aria-current=page] { background: var(--student-selected); color: var(--student-accent); box-shadow: inset 3px 0 var(--student-accent); }
+body[data-haiedu-student] .amp-course-link { font-size: .875rem; align-items: flex-start; }
+body[data-haiedu-student] .amp-course-link small { display: block; font-size: .75rem; opacity: 1; color: var(--student-muted); margin-top: .25rem; }
+body[data-haiedu-student] .amp-nav-section-label { color: var(--student-muted); font-size: .75rem; letter-spacing: normal; margin: 1rem .75rem .25rem; }
+body[data-haiedu-student] .amp-course-sublinks { display: grid; }
+body[data-haiedu-student] .amp-course-sublink { color: var(--student-muted); font-size: .875rem; min-height: 2.75rem; padding: .65rem .75rem; }
+body[data-haiedu-student] .amp-course-sublink:is(:hover,[aria-current=page]) { color: var(--student-accent); background: var(--student-selected); }
+body[data-haiedu-student] .amp-nav-utility { border-top: 1px solid var(--student-divider); gap: .25rem; }
+body[data-haiedu-student] .amp-nav-utility a { display: flex; align-items: center; min-height: 2.75rem; color: var(--student-muted); font-size: .875rem; padding: .5rem .75rem; }
+body[data-haiedu-student] .amp-nav-utility [data-student-signout] { display: flex; gap: .75rem; align-items: center; border: 0; background: transparent; color: var(--student-ink); text-align: left; padding: .75rem; }
+body[data-haiedu-student] .amp-mobile-nav { padding-bottom: env(safe-area-inset-bottom, 0px); background: var(--student-surface); border-color: var(--student-divider); }
+body[data-haiedu-student] .amp-mobile-link { grid-template-columns: minmax(0,1fr); color: var(--student-muted); font-size: .875rem; line-height: 1.4; padding: .6rem .3rem; gap: .3rem; min-height: 4.5rem; }
+body[data-haiedu-student] .amp-mobile-link > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+body[data-haiedu-student] .amp-mobile-link[aria-current=page] { background: var(--student-selected); color: var(--student-accent); }
+body[data-haiedu-student] .notice { background: var(--student-attention-bg); color: var(--student-attention); border-color: #e9d6b9; border-radius: .75rem; font-size: .875rem; }
+body[data-haiedu-student] .notice span { color: inherit; }
+body[data-haiedu-student] .card { border-color: var(--student-divider); border-radius: 1rem; box-shadow: 0 4px 16px rgb(35 57 47 / .05); }
+body[data-haiedu-student] .mode-kicker { color: var(--student-accent); letter-spacing: normal; font-size: .875rem; font-weight: 600; text-transform: none; }
+body[data-haiedu-student] .student-home-main { display: grid; gap: 1.5rem; min-width: 0; }
+body[data-haiedu-student] .student-home-welcome { display: grid; grid-template-columns: minmax(0,1fr) 12rem; align-items: center; gap: 1rem; padding: 1.5rem 2rem; border-radius: 1.25rem; background: var(--student-hero); color: var(--student-hero-ink); }
+body[data-haiedu-student] .student-home-welcome h2 { font-size: 1.75rem; line-height: 1.4; margin: .25rem 0 .5rem; color: inherit; }
+body[data-haiedu-student] .student-home-welcome p { color: var(--student-hero-muted); margin: 0; max-width: 42rem; }
+.student-learning-art { display: block; width: 100%; max-height: 10rem; }
+body[data-haiedu-student] .student-selection { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+body[data-haiedu-student] .student-selection label { display: grid; gap: .5rem; min-width: 0; font-size: .875rem; font-weight: 600; }
+body[data-haiedu-student] .student-selection select { width: 100%; padding: .75rem; min-height: 3rem; text-overflow: ellipsis; }
+body[data-haiedu-student] .student-next { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1.5rem; align-items: center; padding: 1.5rem; border-left: 4px solid var(--student-accent); }
+body[data-haiedu-student] .student-next > * { min-width: 0; }
+body[data-haiedu-student] .student-next h3 { margin: .5rem 0; font-size: 1.375rem; line-height: 1.4; }
+body[data-haiedu-student] .student-next p { margin: .5rem 0; }
+body[data-haiedu-student] .student-next .button-link { display: inline-flex; align-items: center; gap: .75rem; margin-top: .75rem; text-decoration: none; }
+body[data-haiedu-student] .student-context { font-size: .875rem; color: var(--student-muted); }
+body[data-haiedu-student] .student-readiness { display: grid; justify-items: center; text-align: center; width: 9rem; gap: .5rem; color: var(--student-accent); text-decoration: none; font-size: .875rem; line-height: 1.5; }
+body[data-haiedu-student] .student-readiness-ring { width: 5.5rem; height: 5.5rem; padding: .45rem; border-radius: 50%; background: conic-gradient(var(--student-accent) var(--ready-angle,0deg),var(--student-selected) 0); }
+body[data-haiedu-student] .student-readiness-ring strong { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; background: #fff; font-size: 1.125rem; }
+body[data-haiedu-student] .student-help-link { margin-top: .75rem; display: inline-block; color: var(--student-accent); text-underline-offset: .2em; }
+body[data-haiedu-student] .amp-subject-grid { grid-template-columns: repeat(auto-fit,minmax(min(17rem,100%),1fr)); gap: 1.5rem; }
+body[data-haiedu-student] .amp-subject-card { padding: 1.5rem; gap: 1rem; align-content: start; }
+body[data-haiedu-student] .student-card-art { height: 5rem; border-radius: .75rem; background: var(--student-quiet); display: flex; align-items: center; justify-content: center; color: var(--student-accent); }
+body[data-haiedu-student] .student-card-art .student-icon { width: 3rem; height: 3rem; stroke-width: 1; }
+body[data-haiedu-student] .amp-subject-card h3 { font-size: 1.125rem; margin: 0; line-height: 1.5; }
+body[data-haiedu-student] .amp-subject-card p { margin: 0; font-size: .875rem; color: var(--student-muted); }
+body[data-haiedu-student] .amp-subject-card .button-link { justify-self: stretch; width: 100%; text-align: center; }
+body[data-haiedu-student] .student-unit-links { border-top: 1px solid var(--student-divider); padding-top: .5rem; min-width: 0; }
+body[data-haiedu-student] .student-unit-links summary { cursor: pointer; min-height: 2.75rem; padding: .5rem 0; color: var(--student-accent); font-size: .875rem; }
+body[data-haiedu-student] .student-unit-links .amp-subject-class-list { padding: .5rem 0; gap: .5rem; }
+body[data-haiedu-student] .student-unit-links a { display: block; color: var(--student-accent); padding: .5rem; min-height: 2.75rem; }
+body[data-haiedu-student] .student-state { padding: 1.5rem; }
+body[data-haiedu-student] .student-state h3 { margin-top: 0; }
+body[data-haiedu-student] .student-state button { margin-top: .5rem; }
+body[data-haiedu-student] .student-error { border-left: 4px solid var(--student-error); }
+body[data-haiedu-student] .student-error p { color: var(--student-error); }
+body[data-haiedu-student] #modePanel > .home-heading { display: none; }
+body[data-haiedu-student] #studentSignOutMessage { color: var(--student-error); background: var(--student-error-bg); padding: 1rem; }
+body[data-haiedu-student].amp-focused-task > main.shell { max-width: 61.25rem; margin: auto; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  body[data-haiedu-student] .amp-subject-card { transition: transform 140ms ease, box-shadow 140ms ease; }
+  body[data-haiedu-student] .amp-subject-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgb(35 57 47 / .09); }
+}
+@media (max-width:1100px) {
+  body[data-haiedu-student] { --amp-nav-width: 14rem; }
+  body[data-haiedu-student] > main.shell { padding: 1.5rem; }
+  body[data-haiedu-student] .amp-side-nav { padding-inline: .75rem; }
+  body[data-haiedu-student] .student-home-welcome { padding: 1.5rem; grid-template-columns: minmax(0,1fr) 9rem; }
+}
+@media (min-width:761px) {
+  body[data-haiedu-student]:not(.amp-focused-task) .amp-side-nav { display: flex; }
+  body[data-haiedu-student] .amp-mobile-nav { display: none; }
+}
+@media (max-width:760px) {
+  body[data-haiedu-student] .amp-side-nav { display: none; }
+  body[data-haiedu-student] > main.shell { width: 100%; margin: 0; padding: 1.5rem 1rem calc(6rem + env(safe-area-inset-bottom,0px)); }
+  body[data-haiedu-student] .amp-mobile-nav { display: grid; }
+  body[data-haiedu-student] .topbar { gap: 1rem; }
+  body[data-haiedu-student] .topbar h1 { font-size: 1.75rem; }
+  body[data-haiedu-student] .topbar > .row > #signOutBtn { display: none; }
+  body[data-haiedu-student] .student-home-welcome h2 { font-size: 1.5rem; }
+  body[data-haiedu-student] .student-selection { grid-template-columns: 1fr; }
+  body[data-haiedu-student] .student-next { gap: 1rem; }
+  body[data-haiedu-student] .amp-subject-grid { grid-template-columns: 1fr; }
+}
+@media (max-width:500px) {
+  body[data-haiedu-student] .topbar { align-items: flex-start; }
+  body[data-haiedu-student] .student-account-link { width: 2.75rem; padding: .65rem; justify-content: center; }
+  body[data-haiedu-student] .student-account-link span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  body[data-haiedu-student] .student-home-welcome { grid-template-columns: 1fr; gap: .5rem; padding: 1rem; }
+  body[data-haiedu-student] .student-learning-art { justify-self: end; width: 8rem; max-height: 6rem; }
+  body[data-haiedu-student] .student-next { grid-template-columns: 1fr; padding: 1rem; }
+  body[data-haiedu-student] .student-readiness { width: 100%; grid-template-columns: auto 1fr; text-align: left; align-items: center; justify-items: start; }
+  body[data-haiedu-student] .student-next .button-link { width: 100%; justify-content: center; }
+  body[data-haiedu-student] .amp-subject-card { padding: 1rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-haiedu-student] *, body[data-haiedu-student] *::before, body[data-haiedu-student] *::after {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important;
+  }
+}
