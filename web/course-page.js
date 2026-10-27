@@ -1,3 +1,4 @@
+import {courseHero,modeIcon,readinessBadge,skillEvidence} from './student-course-presentation.mjs';
 import {assessmentRules,assessmentResultMarkup} from './assessment-reporting.mjs';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
@@ -19,7 +20,7 @@ function completionDate(value) {
   }).formatToParts(date).map(({type,value}) => [type,value]));
   return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
-function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
+function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
 async function load() {
   if (disposeWriting.flush && !(await disposeWriting.flush())) return;
   const request = ++version;
@@ -65,9 +66,10 @@ async function load() {
       const final = ['mastery_passed','mastery_failed_final'].includes(state);
       const disabled = Boolean(active) || !enabled || locked || done || (mode === 'mastery_check' && (masteryBlocked || final));
       const minima = Object.entries(spec?.minimumCorrectBySkill ?? {}).map(([id,min]) => `${data.skills.find(s=>s.id===id)?.code ?? id}: ${min}`).join(' · ');
-      return `<article class="card course-mode-card"><h3>${label}</h3><p>${enabled ? `${spec.questions} հարց${spec.hintsAllowed ? ' · օգնությունը հասանելի է' : ' · առանց օգնության'}` : 'Կանոնները դեռ չեն ակտիվացվել։'}</p>${spec?.minimumPercent != null ? `<p>Անցողիկ շեմ՝ ${spec.minimumPercent}%</p><p class="subtle">Հմտությունների նվազագույն ճիշտ պատասխաններ՝ ${esc(minima)}</p>` : ''}${assessmentRules(spec,data.skills)}${done ? '<p>Ախտորոշիչն ավարտված է։</p>' : locked ? '<p>Նախ ավարտեք այս գլխի ախտորոշիչը։</p>' : masteryBlocked && mode==='mastery_check' ? '<p>Նախ ամրապնդեք պահանջվող հմտությունները կամ ավարտեք պարտադիր կրկնությունը։</p>' : ''}${disabled ? '' : `<a class="button-link" href="${esc(action(mode,spec))}">Բացել</a>`}</article>`;
+      const rules = assessmentRules(spec,data.skills);
+      return `<article class="card course-mode-card">${modeIcon(mode)}<h3>${label}</h3><p>${enabled ? `${spec.questions} հարց${spec.hintsAllowed ? ' · օգնությունը հասանելի է' : ' · առանց օգնության'}` : 'Կանոնները դեռ չեն ակտիվացվել։'}</p>${spec?.minimumPercent != null ? `<p>Անցողիկ շեմ՝ ${spec.minimumPercent}%</p><p class="subtle">Հմտությունների նվազագույն ճիշտ պատասխաններ՝ ${esc(minima)}</p>` : ''}${rules ? `<details class="student-rule-details" open><summary>Կանոններ և գնահատում</summary>${rules}</details>` : ''}${done ? '<p>Ախտորոշիչն ավարտված է։</p>' : locked ? '<p>Նախ ավարտեք այս գլխի ախտորոշիչը։</p>' : masteryBlocked && mode==='mastery_check' ? '<p>Նախ ամրապնդեք պահանջվող հմտությունները կամ ավարտեք պարտադիր կրկնությունը։</p>' : ''}${disabled ? '' : `<a class="button-link" aria-label="Բացել՝ ${label}" href="${esc(action(mode,spec))}">Բացել</a>`}</article>`;
     }).join('');
-    const skills = data.skills.map(s=>`<tr><td>${esc(s.code)} — ${esc(s.nameHy)}</td><td>${s.mastery ? `${s.mastery.percent}% · ${s.mastery.evidenceCount} պատասխան` : 'Տվյալը հասանելի չէ'}</td><td>${s.requiredForReadiness === false ? 'Չի սահմանափակում ստուգարքի հասանելիությունը · ' : ''}${s.ready === true ? 'Պատրաստ է' : s.ready === false ? 'Ամրապնդում է պետք' : '—'}</td>${tab === 'progress' ? '' : `<td>${data.practiceAccess.unlocked && ['configured','registered_legacy'].includes(data.modes.practice.status) ? `<a href="${esc(action('practice',data.modes.practice,s.id))}">Վարժանք</a>` : ''}</td>`}</tr>`).join('');
+    const skills = data.skills.map(s=>`<tr><td>${esc(s.code)} — ${esc(s.nameHy)}</td><td>${skillEvidence(s)}</td><td>${s.requiredForReadiness === false ? 'Չի սահմանափակում ստուգարքի հասանելիությունը · ' : ''}${readinessBadge(s)}</td>${tab === 'progress' ? '' : `<td>${data.practiceAccess.unlocked && ['configured','registered_legacy'].includes(data.modes.practice.status) ? `<a href="${esc(action('practice',data.modes.practice,s.id))}">Վարժանք</a>` : ''}</td>`}</tr>`).join('');
     const legacyCourse = registeredExtensionHref(context.extensionKey,'course',context);
     const history = data.history.map(s=>`<tr><td>${esc(modes[s.mode])}</td><td>${assessmentResultMarkup(s.assessmentResult) || `${s.correct}/${s.answered}${s.percent==null?'':` · ${s.percent}%`}`}</td><td><time datetime="${esc(s.completedAt)}" title="Տեղական ժամով">${esc(completionDate(s.completedAt))}</time></td><td><details><summary>Սկզբնական տարբերակները</summary><p>Թողարկում՝ ${esc(s.curriculumReleaseId)}<br>Սեսիա՝ ${esc(s.id)}<br>Հարցաշար՝ ${esc(s.blueprintId)}<br>Կանոնների կապ՝ ${esc(s.policyBindingId || 'Հին գրանցված կանոններ')}<br>Մոդել՝ ${esc(s.modelId || 'Չգրանցված')}<br>Կոդի տարբերակ՝ ${esc(s.runtimeBuildId || 'Չգրանցված')}<br>Փորձերի կանոններ՝ ${esc(s.academicMasteryPolicyId || 'Չգրանցված')}<br>Ծագման կարգավիճակ՝ ${esc(s.provenanceStatus)}</p></details></td></tr>`).join('');
     const skillHeader = `<thead><tr><th scope="col" class="course-skill-name">Հմտություն</th><th scope="col">Ուսումնական ապացույց</th><th scope="col">Պատրաստություն</th>${tab === 'progress' ? '' : '<th scope="col">Գործողություն</th>'}</tr></thead>`;
@@ -77,19 +79,19 @@ async function load() {
       : `${active ? '' : `<div class="amp-subject-grid">${modeCards}</div>`}${tab === 'course' ? `<section class="card course-data-section"><h2>Հմտություններ</h2>${skillTable}</section>` : ''}`;
     const chapters = navigation.contexts.filter(c=>sameCourse(c,context)).sort((a,b)=>a.unitSequence-b.unitSequence);
     const chapterLinks = chapters.length>1 ? `<nav class="row course-chapters" aria-label="Դասընթացի գլուխներ">${chapters.map(c=>`<a class="button-link ghost" href="${esc(contextHref(c,tab))}"${sameContext(c,context)?' aria-current="page"':''}>${esc(c.unitTitleHy)}</a>`).join('')}</nav>` : '';
-    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['guides','Ուղեցույցներ'],['progress','Առաջընթաց'],['writing','Գրավոր աշխատանքներ']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
+    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['guides','Ուղեցույցներ'],['progress','Առաջընթաց'],['writing','Գրավոր աշխատանքներ']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>${courseHero(tab,data)}
       <section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline?.assessmentResult ? assessmentResultMarkup(data.baseline.assessmentResult) : data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
       ${resume}${legacyCourse ? `<div><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></div>` : ''}<div id="learningPlayer"></div>${learningContent}
       <section class="card course-data-section" aria-labelledby="courseHistoryTitle"><h2 id="courseHistoryTitle">Ավարտված աշխատանքներ</h2><div class="matrix-wrap" tabindex="0" role="region" aria-label="Ավարտված աշխատանքների պատմություն"><table class="course-table"><thead><tr><th scope="col">Տեսակ</th><th scope="col">Արդյունք</th><th scope="col">Ավարտ</th><th scope="col">Տվյալներ</th></tr></thead><tbody>${history || '<tr><td colspan="4">Ավարտված աշխատանք դեռ չկա։</td></tr>'}</tbody></table></div></section>`;
     if (tab === 'guides') {
-      root.querySelectorAll(':scope > :not(nav)').forEach(node => node.remove());
+      root.querySelectorAll(':scope > :not(nav):not(.student-course-hero)').forEach(node => node.remove());
       const guidesRoot = document.createElement('div');
       root.append(guidesRoot);
       disposeGuides = mountUnitGuides({root:guidesRoot,supabase,context:selection,isCurrent:valid});
       return;
     }
     if (tab === 'writing') {
-      root.querySelectorAll(':scope > :not(nav)').forEach(node => node.remove());
+      root.querySelectorAll(':scope > :not(nav):not(.student-course-hero)').forEach(node => node.remove());
       const writingRoot = document.createElement('div');
       root.append(writingRoot);
       disposeWriting = mountWrittenWork({root:writingRoot,supabase,context:selection,actorId:auth.session.user.id,isCurrent:valid});
@@ -97,6 +99,7 @@ async function load() {
     }
     const requestedMode = new URLSearchParams(location.search).get('action');
     if (requestedMode && Object.hasOwn(modes,requestedMode) && (data.modes[requestedMode]?.status==='configured' || active?.policyBindingId)) {
+      document.body.dataset.studentPlayer = 'active';
       disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,skills:data.skills,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');window.history.replaceState({},'',url);load(); }});
     }
   } catch(error) {

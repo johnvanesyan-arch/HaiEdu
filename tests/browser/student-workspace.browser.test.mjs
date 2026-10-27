@@ -36,6 +36,11 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       window.__calls.push({name,body});
       if(name==='get-student-classes') return { data:{ contexts:denied?[]:contexts, navigationVersion:'v1' } };
       if(name==='get-student-dashboard') return { data:body.navigation?{contexts:denied?[]:contexts,navigationVersion:'v1'}:dashboard() };
+      if(name==='get-unit-guides') return {data:{guidesVersion:'unit-guides-v1',availability:'available',guides:[{id:'guide',schemaVersion:'teaching-guide-v1',locale:'en',title:'Read for meaning',text:'Identify the main idea, then find details.',workedExample:'Compare the reasons given by the speakers.'}]}};
+      if(name==='manage-written-work') {
+        if(body.action==='tasks')return {data:{version:'written-work-v1',tasks:[{id:'task',title:'My view',locale:'en',available:true,state:'changes_requested'}]}};
+        if(body.action==='open')return {data:{version:'written-work-v1',task:{definition:{title:'My view',locale:'en',prompt:'Explain your view with reasons.',minWords:40,maxWords:70,assistance:{spellcheck:false},criteria:[{key:'meaning',label:'Meaning',descriptors:['Developing','Clear']}] }},work:{state:'changes_requested'},draftText:'My draft.',submissions:[{version:1,text:'My first response.',wordCount:3,submittedAt:'2026-10-01T10:00:00Z',reviews:[{decision:'return',feedback:'Give one more reason.',createdAt:'2026-10-02T10:00:00Z'}]}]}};
+      }
       if(name==='start-learning-session') return { data:{ session:{ id:'player-fixture', mode:body.mode } } };
       if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ plannedQuestionCount:8, hintsAllowed:true } } };
       if(name==='get-chapter-mastery-lifecycle') return {data:{lifecycleState:'not_started',attemptsUsed:0}};
@@ -194,7 +199,7 @@ const studentRoutes=[
   ['mastery.html','#stateCard'],
   ['practice.html','#practicePanel:not(.hidden) input[type=radio]']
 ];
-for(const width of [360,1280]) for(const [route,ready] of studentRoutes) test(`student route ${route} retains its complete interface at ${width}px`,async t=>{
+for(const width of [320,360,1280]) for(const [route,ready] of studentRoutes) test(`student route ${route} retains its complete interface at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{width,route,manySkills:true});
   await page.waitForSelector(ready,{state:'visible'});
   if(route==='mastery.html') await page.waitForFunction(()=>document.getElementById('masteryStateBadge').textContent!=='Բեռնվում է');
@@ -226,4 +231,34 @@ test('shared assessment entry presents a styled diagnostic prerequisite without 
   assert.match(await page.locator('.course-mode-card a').getAttribute('href'),/action=diagnostic/);
   await capture(page,'assessment-locked-360',{});
   assert.deepEqual(errors,[]);
+});
+
+for(const tab of ['guides','writing'])test(`Forest ${tab} keeps accessible disclosure and authored content at 320px`,async t=>{
+ const {page,errors}=await fixture(t,{width:320,tab,contextIndex:1,active:false});
+ if(tab==='guides'){
+  await page.locator('.unit-guide summary').waitFor();await page.locator('.unit-guide summary').focus();await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.unit-guide-content p').first().isVisible(),true);
+ }else{
+  await page.locator('[data-writing-open]').click();await page.locator('[data-writing-text]').waitFor();
+  assert.equal(await page.locator('[data-writing-text]').inputValue(),'My draft.');
+  assert.match(await page.locator('.written-feedback').first().innerText(),/Give one more reason/);
+  assert.equal(await page.locator('.written-feedback').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(240, 235, 250)');
+  await page.locator('.written-rubric summary').focus();await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.written-rubric section').isVisible(),true);
+ }
+ assert.equal(await page.locator('.student-course-hero').isVisible(),true);
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session'||(c.name==='manage-written-work'&&!['tasks','open'].includes(c.body.action)))),false);
+ assert.deepEqual(errors,[]);
+});
+test('generic focused player retains readable rules and suppresses competing overview',async t=>{
+ const {page,errors}=await fixture(t,{width:768,active:false,player:true,contextIndex:1});
+ await page.locator('#learningPlayer form').waitFor();
+ assert.equal(await page.locator('.student-course-hero').isVisible(),false);
+ assert.equal(await page.locator('.amp-side-nav').isVisible(),false);
+ assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),'');
+ await page.locator('#learningPlayer summary').focus();await page.keyboard.press('Enter');
+ assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),null);
+ assert.equal(await page.locator('#learningPlayer button[type=submit]').isVisible(),true);
+ assert.deepEqual(errors,[]);
 });

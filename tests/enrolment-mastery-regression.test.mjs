@@ -130,6 +130,10 @@ test('course outage shows unknown status even when all practice skills are compl
 });
 test('selected course preserves baseline without inferring mastery from missing evidence', async () => {
   const source=await read('web/course-page.js');
-  assert.match(source,/data\.baseline\.percent/);assert.match(source,/s\.ready === true/);assert.match(source,/s\.ready === false/);
-  assert.match(source,/Տվյալը հասանելի չէ/);assert.match(source,/policyBindingId/);
+  assert.match(source,/data\.baseline\.percent/);assert.match(source,/s\.ready === true/);
+  const {readinessBadge,skillEvidence}=await import("../web/student-course-presentation.mjs");
+  assert.match(readinessBadge({ready:false}),/Ամրապնդում է պետք/);
+  assert.match(readinessBadge({ready:null}),/Տվյալը դեռ չկա/);
+  assert.equal(skillEvidence({}),"Տվյալը հասանելի չէ");
+  assert.match(source,/policyBindingId/);
 });

@@ -1,3 +1,4 @@
+@import "./student-surfaces.css";
 /* Sprint 16.5B.1: student-only Forest foundation. Staff and public pages keep
    their existing tokens. Unmodified OFL font, pinned in assets/fonts/README.md. */
 @font-face {
@@ -7,7 +8,7 @@
   font-weight: 100 900;
   font-display: swap;
 }
-html[data-haiedu-student-root] { font-size: 100%; background: #f5f6ef; }
+html[data-haiedu-student-root], html:has(body[data-haiedu-student]) { font-size: 100%; background: #f5f6ef; }
 body[data-haiedu-student] {
   --student-canvas: #f5f6ef;
   --student-surface: #fff;
