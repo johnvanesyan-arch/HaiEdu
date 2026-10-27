@@ -1,6 +1,7 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
+import { subjectArtwork } from './subject-visuals.mjs';
 import { studentIcon, learningArtwork } from './student-visuals.mjs';
 import { homeLearningSummary } from './student-home-model.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
@@ -35,7 +36,7 @@ function courseCards() {
   return `<section id="mySubjects" aria-labelledby="mySubjectsTitle"><div class="amp-subjects-heading"><div><h2 id="mySubjectsTitle">${writing ? 'Գրավոր աշխատանքներ՝ ըստ դասընթացի' : 'Իմ դասընթացները'}</h2></div><a class="student-help-link" href="./join.html">Միանալ դասարանին</a></div><div class="amp-subject-grid">${courses.map(course => {
     const unit = selected && courseKey(selected) === course.key ? selected : course.units[0];
     const tab = writing ? 'writing' : 'course';
-    return `<article class="card amp-subject-card"><div class="student-card-art" aria-hidden="true">${studentIcon(writing ? 'work' : 'courses')}</div><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)}<br>${esc(course.academicYearLabel)}</p><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">${writing ? 'Բացել գրավոր աշխատանքները' : 'Բացել դասընթացը'}</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></article>`;
+    return `<article class="card amp-subject-card"><div class="student-card-art" aria-hidden="true">${subjectArtwork(course.subjectCode)}</div><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)}<br>${esc(course.academicYearLabel)}</p><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">${writing ? 'Բացել գրավոր աշխատանքները' : 'Բացել դասընթացը'}</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></article>`;
   }).join('')}</div></section>`;
 }
 function render() {

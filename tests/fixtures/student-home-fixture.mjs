@@ -3,12 +3,16 @@
 export function installStudentHomeFixture(options = {}) {
   const id = n => `76000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
   const all = [
-    { enrollmentId:id(1), curriculumReleaseId:id(2), unitId:id(3), subjectProgramId:id(4), unitSequence:1, subjectNameHy:'Ֆիզիկա', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Բնության ուսումնասիրության ֆիզիկական մեթոդները', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1, extensionKey:'legacy-physics7-u01-v1' },
-    { enrollmentId:id(1), curriculumReleaseId:id(20), unitId:id(5), subjectProgramId:id(4), unitSequence:2, subjectNameHy:'Ֆիզիկա', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Նյութի կառուցվածքը և հատկությունները', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:2 },
-    { enrollmentId:id(6), curriculumReleaseId:id(7), unitId:id(8), subjectProgramId:id(9), unitSequence:1, subjectNameHy:'Անգլերեն', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Ես աշխարհում․ իմ բնավորությունն ու հագուստի ոճը', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1 },
-    { enrollmentId:id(6), curriculumReleaseId:id(7), unitId:id(10), subjectProgramId:id(9), unitSequence:2, subjectNameHy:'Անգլերեն', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Երաժշտությունը մեր կյանքում', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1 },
-    { enrollmentId:id(11), curriculumReleaseId:id(12), unitId:id(13), subjectProgramId:id(14), unitSequence:1, subjectNameHy:'Մաթեմատիկա', gradeLabelHy:'8-րդ դասարան', gradeNumber:8, unitTitleHy:'Կիրառական խնդիրների լուծում և համեմատություն', className:'8Բ', schoolName:'Փորձնական դպրոց Բ՝ երկար անվանումով', academicYearLabel:'2027–2028', releaseNumber:3 },
+    { enrollmentId:id(1), curriculumReleaseId:id(2), unitId:id(3), subjectProgramId:id(4), unitSequence:1, subjectCode:'physics', subjectNameHy:'Ֆիզիկա', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Բնության ուսումնասիրության ֆիզիկական մեթոդները', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1, extensionKey:'legacy-physics7-u01-v1' },
+    { enrollmentId:id(1), curriculumReleaseId:id(20), unitId:id(5), subjectProgramId:id(4), unitSequence:2, subjectCode:'physics', subjectNameHy:'Ֆիզիկա', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Նյութի կառուցվածքը և հատկությունները', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:2 },
+    { enrollmentId:id(6), curriculumReleaseId:id(7), unitId:id(8), subjectProgramId:id(9), unitSequence:1, subjectCode:'english', subjectNameHy:'Անգլերեն', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Ես աշխարհում․ իմ բնավորությունն ու հագուստի ոճը', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1 },
+    { enrollmentId:id(6), curriculumReleaseId:id(7), unitId:id(10), subjectProgramId:id(9), unitSequence:2, subjectCode:'english', subjectNameHy:'Անգլերեն', gradeLabelHy:'7-րդ դասարան', gradeNumber:7, unitTitleHy:'Երաժշտությունը մեր կյանքում', className:'7Ա', schoolName:'Փորձնական դպրոց Ա', academicYearLabel:'2026–2027', releaseNumber:1 },
+    { enrollmentId:id(11), curriculumReleaseId:id(12), unitId:id(13), subjectProgramId:id(14), unitSequence:1, subjectCode:'mathematics', subjectNameHy:'Մաթեմատիկա', gradeLabelHy:'8-րդ դասարան', gradeNumber:8, unitTitleHy:'Կիրառական խնդիրների լուծում և համեմատություն', className:'8Բ', schoolName:'Փորձնական դպրոց Բ՝ երկար անվանումով', academicYearLabel:'2027–2028', releaseNumber:3 },
   ];
+  if(options.allSubjects) {
+    const codes=['english','physics','mathematics','armenian','chemistry','geography','biology','history','unknown'];
+    all.splice(0,all.length,...codes.map((code,n)=>({...all[4],subjectCode:code,subjectNameHy:'Առարկա '+code,enrollmentId:id(200+n),subjectProgramId:id(300+n)})));
+  }
   let contexts = options.empty ? [] : options.single ? [all[2]] : all;
   let session = options.signedOut ? null : { user:{id:id(90)}, access_token:'synthetic-only' };
   let failed = Boolean(options.error), held = Boolean(options.held);

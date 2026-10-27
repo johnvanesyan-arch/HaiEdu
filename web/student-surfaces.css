@@ -86,26 +86,26 @@ body[data-haiedu-student] .written-response { background:var(--student-quiet); b
 body[data-haiedu-student] .written-feedback { background:var(--student-feedback-bg); border-color:var(--student-feedback); color:var(--student-feedback); padding:1.25rem; }
 body[data-haiedu-student] .written-error { color:var(--student-error); }
 body[data-haiedu-student] .written-work textarea { min-height:14rem; color:var(--student-ink); }
-/* Shared privacy route retains staff styles until a server-resolved student role. */
+/* Shared account colour is static; student-only sections still require the resolved role. */
 .student-account-sections,.student-account-symbol { display:none; }
-body[data-haiedu-student][data-student-utility] > main.shell { max-width:72rem; margin-inline:auto; padding:2rem; }
-body[data-haiedu-student][data-student-utility] .topbar { display:flex; flex-wrap:wrap; align-items:start; padding:1.5rem; background:var(--student-hero); border-radius:1.25rem; }
-body[data-haiedu-student][data-student-utility] .topbar > div:first-child { flex:1 1 30rem; }
-body[data-haiedu-student][data-student-utility] .topbar > .row > #signOutBtn:not(.hidden) { display:inline-flex; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility] > main.shell { max-width:72rem; margin-inline:auto; padding:2rem; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility] .topbar { display:flex; flex-direction:row; flex-wrap:wrap; align-items:start; padding:1.5rem; background:var(--student-hero); border-radius:1.25rem; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility] .topbar > div:first-child { flex:1 1 30rem; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility] .topbar > .row > #signOutBtn:not(.hidden) { display:inline-flex; }
 body[data-haiedu-student] .student-account-sections { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0; }
 body[data-haiedu-student] .student-account-sections a { padding:.75rem 1rem; min-height:2.75rem; background:var(--student-surface); border:1px solid var(--student-border-control); border-radius:.75rem; }
-body[data-haiedu-student] :is(.privacy-card,.privacy-security-form) { padding:1.5rem; border-radius:1rem; }
-body[data-haiedu-student] :is(.privacy-toggle,.privacy-state,.privacy-security-form) { background:var(--student-quiet); border-color:var(--student-divider); }
-body[data-haiedu-student] :is(.privacy-list dt,.privacy-toggle small) { color:var(--student-muted); }
-body[data-haiedu-student] .privacy-list > div { border-color:var(--student-divider); }
-body[data-haiedu-student] .privacy-list dd { overflow-wrap:anywhere; min-width:0; }
-body[data-haiedu-student] .danger-zone { border-color:var(--student-error); }
-body[data-haiedu-student] .danger-zone :is(.mode-kicker,h2) { color:var(--student-error); }
-body[data-haiedu-student] button.danger-btn { color:var(--student-error); border:1px solid var(--student-error); background:var(--student-surface); }
-body[data-haiedu-student] .privacy-toggle { min-height:2.75rem; }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.privacy-card,.privacy-security-form) { padding:1.5rem; border-radius:1rem; }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.privacy-toggle,.privacy-state,.privacy-security-form) { background:var(--student-quiet); border-color:var(--student-divider); }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.privacy-list dt,.privacy-toggle small) { color:var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) .privacy-list > div { border-color:var(--student-divider); }
+body:is([data-haiedu-student],[data-forest-surface]) .privacy-list dd { overflow-wrap:anywhere; min-width:0; }
+body:is([data-haiedu-student],[data-forest-surface]) .danger-zone { border-color:var(--student-error); }
+body:is([data-haiedu-student],[data-forest-surface]) .danger-zone :is(.mode-kicker,h2) { color:var(--student-error); }
+body:is([data-haiedu-student],[data-forest-surface]) button.danger-btn { color:var(--student-error); border:1px solid var(--student-error); background:var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .privacy-toggle { min-height:2.75rem; }
 body[data-haiedu-student] .join-card { max-width:40rem; margin:1.5rem auto; padding:2rem; }
 body[data-haiedu-student] #joinCode { font-size:1.5rem; letter-spacing:.15em; }
-body[data-haiedu-student] :is(.privacy-card,.unit-guide,.written-rubric,.written-history) { scroll-margin-block:1.5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.privacy-card,.unit-guide,.written-rubric,.written-history) { scroll-margin-block:1.5rem; }
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
  body[data-haiedu-student] :is(.course-mode-card,.written-list article,.student-account-sections a) { transition:box-shadow 140ms ease, border-color 140ms ease; }
  body[data-haiedu-student] :is(.course-mode-card,.written-list article):hover { box-shadow:0 6px 20px rgb(35 57 47 / .08); border-color:var(--student-border-control); }
@@ -118,25 +118,25 @@ body[data-haiedu-student] :is(.privacy-card,.unit-guide,.written-rubric,.written
  body[data-haiedu-student] .course-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
  body[data-haiedu-student] .course-tabs a:first-child { grid-column:1/-1; }
  body[data-haiedu-student] .course-chapters { display:grid; grid-template-columns:1fr; }
- body[data-haiedu-student] :is(.student-course-hero,.student-task-card,.course-mode-card,.course-data-section,.unit-guides,.written-work,.privacy-card,.privacy-security-form,.join-card) { padding:1rem; }
+ body:is([data-haiedu-student],[data-forest-surface]) :is(.student-course-hero,.student-task-card,.course-mode-card,.course-data-section,.unit-guides,.written-work,.privacy-card,.privacy-security-form,.join-card) { padding:1rem; }
  body[data-haiedu-student] .student-course-hero h2 { font-size:1.5rem; }
- body[data-haiedu-student][data-student-utility] > main.shell { padding:1rem; }
+ body:is([data-haiedu-student],[data-forest-surface])[data-student-utility] > main.shell { padding:1rem; }
  body[data-haiedu-student] .student-account-sections { display:grid; grid-template-columns:1fr 1fr; }
  body[data-haiedu-student] .student-account-sections a { font-size:.875rem; }
  body[data-haiedu-student][data-student-player=active] > main.shell { padding-bottom:1.5rem; }
 }
 
-body[data-haiedu-student][data-student-utility=access] .auth-card { max-width:42rem; width:100%; padding:2rem; }
-body[data-haiedu-student][data-student-utility=access] .auth-card label { margin-block:1rem; }
-body[data-haiedu-student][data-student-utility=access] .student-consent { color:var(--student-ink); }
-body[data-haiedu-student][data-student-utility=access] .topbar { align-items:center; }
-body[data-haiedu-student][data-student-utility=access] .topbar a { max-width:100%; }
-@media(max-width:760px) { body[data-haiedu-student][data-student-utility=access] .auth-card { padding:1rem; } }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .auth-card { max-width:42rem; width:100%; padding:2rem; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .auth-card label { margin-block:1rem; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .student-consent { color:var(--student-ink); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .topbar { align-items:center; }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .topbar a { max-width:100%; }
+@media(max-width:760px) { body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .auth-card { padding:1rem; } }
 
 /* One shared identity gateway: preserve every role/recovery route, use the same
    accessible controls for learners returning from their account page. */
-body[data-haiedu-student][data-student-utility=access] .account-copy :is(h1,.eyebrow) { color:var(--student-ink); }
-body[data-haiedu-student][data-student-utility=access] .account-copy > p { color:var(--student-muted); }
-body[data-haiedu-student][data-student-utility=access] .account-invite-note { background:var(--student-hero); }
-body[data-haiedu-student][data-student-utility=access] .account-invite-note span { color:var(--student-hero-muted); }
-body[data-haiedu-student][data-student-utility=access] #loginPanel input { background:var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-copy :is(h1,.eyebrow) { color:var(--student-ink); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-copy > p { color:var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-invite-note { background:var(--student-hero); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-invite-note span { color:var(--student-hero-muted); }
+body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] #loginPanel input { background:var(--student-surface); }
