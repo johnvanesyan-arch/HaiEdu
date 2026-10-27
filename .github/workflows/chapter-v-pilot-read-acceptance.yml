@@ -83,6 +83,8 @@ on:
       - web/student-signout.mjs
       - web/student-visuals.mjs
       - web/student-forest.css
+      - web/student-surfaces.css
+      - web/student-course-presentation.mjs
       - web/assets/fonts/**
       - web/styles.css
       - web/tokens.css

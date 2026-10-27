@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./privacy.css" />
   <link rel="stylesheet" href="./role-layout.css" />
+  <link rel="stylesheet" href="./student-forest.css" data-student-forest />
 </head>
-<body>
+<body data-student-utility="account">
   <main class="shell privacy-shell" id="mainContent">
     <header class="topbar">
       <div>
@@ -31,10 +32,11 @@
     </section>
 
     <div id="content" class="hidden">
+      <nav class="student-account-sections" aria-label="Հաշվի բաժիններ"><a href="#studentIdentity">Հաշիվ</a><a href="#accountSecurityTitle">Մուտքի տվյալներ</a><a href="#studentPrivacy">Գաղտնիություն</a><a href="#studentDeletion">Ջնջման հարցում</a></nav>
       <section class="privacy-grid">
-        <article class="card privacy-card">
+        <article class="card privacy-card" id="studentIdentity">
           <span class="mode-kicker">Հաշիվ</span>
-          <h2 id="accountTitle">—</h2>
+          <span class="student-feature-icon student-account-symbol" aria-hidden="true"><svg class="student-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></svg></span><h2 id="accountTitle">—</h2>
           <dl class="privacy-list">
             <div><dt>Դեր</dt><dd id="accountRole">—</dd></div>
             <div><dt>Կարգավիճակ</dt><dd id="accountStatus">—</dd></div>
@@ -47,7 +49,7 @@
           <p id="nameMessage" class="message" aria-live="polite"></p>
         </article>
 
-        <article class="card privacy-card">
+        <article class="card privacy-card" id="studentInventory">
           <span class="mode-kicker">Տվյալների նվազեցում</span>
           <h2 id="inventoryTitle">Ինչ տվյալներ ենք պահում</h2>
           <p id="inventoryDescription">Պահվող տվյալների նկարագրությունը բեռնվում է…</p>
@@ -79,7 +81,7 @@
 
       <section class="card privacy-card">
         <span class="mode-kicker">Ընտրովի օգտագործումներ</span>
-        <h2>Գաղտնիության ընտրություններ</h2>
+        <h2 id="studentPrivacy">Գաղտնիության ընտրություններ</h2>
         <p class="subtle">Այս երկու ընտրությունները լռելյայն անջատված են։ Դրանք պահում են ձեր համաձայնության նախապատվությունը և չեն նշանակում, որ առանձին վերլուծական կամ հետազոտական համակարգ արդեն ակտիվ է։</p>
         <label class="privacy-toggle"><input id="analyticsOptIn" type="checkbox" /> <span><strong>Ընտրովի արտադրանքի վերլուծություն</strong><small>Թույլատրել ապագայում հաստատված պիլոտային վերլուծության համար ոչ անհրաժեշտ օգտագործումը։</small></span></label>
         <label class="privacy-toggle"><input id="researchOptIn" type="checkbox" /> <span><strong>Ընտրովի հետազոտական օգտագործում</strong><small>Թույլատրել առանձին հաստատված հետազոտական օգտագործումը՝ համապատասխան ընթացակարգերի դեպքում։</small></span></label>
@@ -89,7 +91,7 @@
 
       <section class="card privacy-card danger-zone">
         <span class="mode-kicker">Հաշվի ջնջում</span>
-        <h2>Ջնջման հարցում</h2>
+        <h2 id="studentDeletion">Ջնջման հարցում</h2>
         <p>Ուսանողական հաշվի հաստատված ջնջումը հեռացնում է ուսումնական փորձերը, սեսիաները, mastery-ի տվյալները և դասարանային անդամակցությունները, ապա ջնջում է մուտքի հաշիվը։</p>
         <p class="subtle">Ուսուցչի կամ ադմինի հաշիվների համար պահանջվում է առանձին offboarding, որովհետև կարող են լինել դասարաններ կամ այլ պատասխանատվություններ, որոնք նախ պետք է փոխանցվեն։</p>
         <div id="deletionState" class="privacy-state">—</div>

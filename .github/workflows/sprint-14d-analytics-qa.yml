@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
     paths:
+      - 'web/student-forest.css'
+      - 'web/student-surfaces.css'
+      - 'web/assets/fonts/**'
       - scripts/sprint-14d-analytics-qa.mjs
       - scripts/wait-for-production-release.mjs
       - scripts/stamp-release.mjs

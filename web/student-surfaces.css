@@ -1,0 +1,142 @@
+/* 16.5B.2 — all existing student learning surfaces. Imported before Forest
+   tokens; every rule is scoped, including shared writing/account consumers. */
+body[data-haiedu-student] {
+  --amp-color-info-soft: var(--student-quiet);
+  --amp-color-success: var(--student-success);
+  --amp-color-success-soft: var(--student-success-bg);
+  --amp-color-warning: var(--student-attention);
+  --amp-color-warning-soft: var(--student-attention-bg);
+  --amp-radius-md: 1rem;
+  --amp-radius-sm: .75rem;
+  accent-color: var(--student-accent);
+}
+body[data-haiedu-student] :is(.subtle,.small,.stat-label,.skill-code) { color:var(--student-muted); }
+body[data-haiedu-student] :is(.small,small,.stat-label,.skill-code) { font-size:.875rem; line-height:1.6; }
+body[data-haiedu-student] :is(a:not(.button-link,.amp-nav-link,.amp-mobile-link),summary) { color:var(--student-accent); text-underline-offset:.2em; }
+body[data-haiedu-student] :is(button,.button-link):disabled { opacity:1; background:var(--student-quiet); color:var(--student-muted); border-color:var(--student-border-control); cursor:not-allowed; }
+body[data-haiedu-student] :is(h2,h3) { color:var(--student-ink); line-height:1.45; }
+body[data-haiedu-student] h2 { font-size:1.375rem; }
+body[data-haiedu-student] h3 { font-size:1.125rem; }
+body[data-haiedu-student] :is(section,article,form,fieldset) { min-width:0; }
+body[data-haiedu-student] :is(input:not([type=radio],[type=checkbox]),select,textarea) { padding:.75rem; min-height:2.75rem; }
+body[data-haiedu-student] :is(input[type=radio],input[type=checkbox]) { width:1.125rem; height:1.125rem; flex:0 0 1.125rem; min-height:0; }
+body[data-haiedu-student] :is(fieldset,.options) { min-width:0; }
+body[data-haiedu-student] fieldset { border:0; padding:0; margin:1.5rem 0; }
+body[data-haiedu-student] .option { display:flex; align-items:flex-start; gap:.75rem; min-height:3.25rem; padding:1rem; margin:.75rem 0; border:1px solid var(--student-border-control); border-radius:.75rem; background:var(--student-surface); color:var(--student-ink); font-size:1rem; line-height:1.6; }
+body[data-haiedu-student] .option input { margin:.25rem 0 0; }
+body[data-haiedu-student] .option:has(input:checked) { background:var(--student-selected); border-color:var(--student-accent); box-shadow:inset 3px 0 var(--student-accent); }
+body[data-haiedu-student] .option:has(input:focus-visible) { outline:3px solid var(--student-focus); outline-offset:3px; }
+body[data-haiedu-student] .student-feature-icon { display:grid; place-items:center; width:3rem; height:3rem; border-radius:.875rem; background:var(--student-selected); color:var(--student-accent); flex:0 0 auto; }
+body[data-haiedu-student] .student-feature-icon .student-icon { width:1.65rem; height:1.65rem; }
+body[data-haiedu-student] #courseContent:not(.hidden) { display:grid; gap:1.5rem; }
+body[data-haiedu-student] .course-chapters { padding:1rem; background:var(--student-quiet); border-radius:1rem; gap:.5rem; }
+body[data-haiedu-student] .course-chapters .button-link { font-size:.875rem; }
+body[data-haiedu-student] .course-tabs { display:flex; gap:.5rem; padding:.5rem; border:1px solid var(--student-divider); border-radius:1rem; background:var(--student-surface); }
+body[data-haiedu-student] .course-tabs a { flex:1 1 auto; text-align:center; font-size:.875rem; }
+body[data-haiedu-student] :is(.course-tabs,.course-chapters) .button-link[aria-current=page] { background:var(--student-accent); color:var(--student-surface); border-color:var(--student-accent); }
+body[data-haiedu-student] .student-course-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2rem; padding:2rem; border-radius:1.25rem; background:var(--student-hero); color:var(--student-hero-ink); }
+body[data-haiedu-student] .student-course-hero h2 { font-size:1.75rem; margin:.75rem 0 .5rem; }
+body[data-haiedu-student] .student-course-hero p { margin:0; max-width:44rem; color:var(--student-hero-muted); }
+body[data-haiedu-student] .student-course-readiness { width:14rem; display:grid; gap:.5rem; font-size:.875rem; padding:1.25rem; background:var(--student-surface); border-radius:1rem; }
+body[data-haiedu-student] .student-course-readiness strong { font-size:2rem; line-height:1.2; }
+body[data-haiedu-student] meter { display:block; width:100%; height:.75rem; margin-top:.5rem; accent-color:var(--student-accent); }
+body[data-haiedu-student] meter::-webkit-meter-bar { background:var(--student-quiet); border:0; border-radius:1rem; }
+body[data-haiedu-student] meter::-webkit-meter-optimum-value { background:var(--student-accent); border-radius:1rem; }
+body[data-haiedu-student] .student-skill-evidence { display:block; min-width:6rem; }
+body[data-haiedu-student] .student-evidence-badge { display:inline-flex; padding:.4rem .65rem; border-radius:.65rem; font-size:.875rem; line-height:1.5; background:var(--student-quiet); color:var(--student-muted); }
+body[data-haiedu-student] [data-readiness=ready] { background:var(--student-success-bg); color:var(--student-success); }
+body[data-haiedu-student] [data-readiness=developing] { background:var(--student-attention-bg); color:var(--student-attention); }
+body[data-haiedu-student] :is(.course-mode-card,.course-data-section,.course-overview,.assessment-card,.assessment-history,.progress-skills) { padding:1.5rem; }
+body[data-haiedu-student] .course-mode-card { gap:1rem; }
+body[data-haiedu-student] .course-mode-card .button-link { align-self:stretch; text-align:center; }
+body[data-haiedu-student] .course-table { font-size:.875rem; }
+body[data-haiedu-student] .course-table :is(td,th) { padding:1rem; overflow-wrap:anywhere; }
+body[data-haiedu-student] .course-table th { color:var(--student-muted); background:var(--student-quiet); }
+body[data-haiedu-student] .course-table :is(summary,a) { display:inline-block; min-height:2.75rem; padding:.5rem 0; }
+body[data-haiedu-student] .matrix-wrap { max-width:100%; overflow-x:auto; border:1px solid var(--student-divider); border-radius:.75rem; }
+body[data-haiedu-student] .student-rule-details { padding:.75rem 1rem; border:1px solid var(--student-divider); border-radius:.75rem; background:var(--student-quiet); }
+body[data-haiedu-student] .student-rule-details summary { min-height:2.75rem; padding:.5rem 0; cursor:pointer; font-weight:600; }
+body[data-haiedu-student] .student-rule-details[open] summary { margin-bottom:.75rem; }
+body[data-haiedu-student] .student-rule-details p { margin:.5rem 0; }
+body[data-haiedu-student] :is(.course-active-session,.assessment-active-banner,.progress-next,.recommendation-card) { background:var(--student-hero); border-color:var(--student-divider); border-inline-start:4px solid var(--student-accent); padding:1.5rem; }
+body[data-haiedu-student] :is(.assessment-rules,.assessment-rule,.assessment-neutral-note) { background:var(--student-quiet); color:var(--student-muted); border-color:var(--student-divider); }
+body[data-haiedu-student] .status-badge { font-size:.875rem; line-height:1.5; border-radius:.65rem; padding:.35rem .65rem; white-space:normal; }
+body[data-haiedu-student] .status-badge.neutral { background:var(--student-quiet); color:var(--student-muted); }
+body[data-haiedu-student] :is(.status-badge.ready,.status-badge.success,.status-badge.passed) { background:var(--student-success-bg); color:var(--student-success); }
+body[data-haiedu-student] :is(.status-badge.warning,.status-badge.locked) { background:var(--student-attention-bg); color:var(--student-attention); }
+body[data-haiedu-student] :is(.progress-track,.mini-progress) { background:var(--student-quiet); }
+body[data-haiedu-student] :is(.progress-bar,.mini-progress-bar) { background:var(--student-accent); }
+body[data-haiedu-student] :is(.progress-summary-card,.assessment-skill-result,.practice-completion-stats .stat) { padding:1.5rem; background:var(--student-surface); border-color:var(--student-divider); border-radius:1rem; }
+body[data-haiedu-student] :is(.progress-skill-row.recommended,.skill-card.recommended) { border-color:var(--student-accent); }
+body[data-haiedu-student] .progress-skill-label { text-transform:none; letter-spacing:normal; }
+body[data-haiedu-student] .student-task-card { padding:2rem; }
+body[data-haiedu-student] #learningPlayer { max-width:51.25rem; width:100%; margin-inline:auto; }
+body[data-haiedu-student][data-student-player=active] :is(.amp-side-nav,.amp-mobile-nav) { display:none; }
+body[data-haiedu-student][data-student-player=active] > main.shell { max-width:61.25rem; margin-inline:auto; }
+body[data-haiedu-student][data-student-player=active] #courseContent > :is(.student-course-hero,.course-overview,.course-active-session,.amp-subject-grid,.course-data-section,.course-chapters) { display:none; }
+body[data-haiedu-student] :is(.practice-prompt,.assessment-question-card #prompt,.student-task-card > h2) { font-size:1.375rem; line-height:1.6; }
+body[data-haiedu-student] :is(.feedback,.help-card,[data-feedback]:not(:empty),[data-help-content]:not(:empty)) { padding:1rem; border-radius:.75rem; background:var(--student-quiet); color:var(--student-ink); margin-block:1rem; }
+body[data-haiedu-student] [data-feedback] button { display:block; margin-top:1rem; }
+body[data-haiedu-student] audio { max-width:100%; width:100%; }
+body[data-haiedu-student] :is(.learning-stimulus,.reading-passage,.unit-guide-content) { line-height:1.8; }
+body[data-haiedu-student] :is(.unit-guides,.written-work) { padding:1.5rem; background:var(--student-surface); border-radius:1rem; }
+body[data-haiedu-student] :is(.unit-guide,.written-rubric,.written-history,.written-list article) { padding:1.25rem; border:1px solid var(--student-divider); border-radius:1rem; background:var(--student-surface); }
+body[data-haiedu-student] :is(.unit-guide,.written-rubric,.written-history) summary { min-height:2.75rem; padding:.5rem 0; }
+body[data-haiedu-student] .written-response { background:var(--student-quiet); border-color:var(--student-accent); color:var(--student-ink); }
+body[data-haiedu-student] .written-feedback { background:var(--student-feedback-bg); border-color:var(--student-feedback); color:var(--student-feedback); padding:1.25rem; }
+body[data-haiedu-student] .written-error { color:var(--student-error); }
+body[data-haiedu-student] .written-work textarea { min-height:14rem; color:var(--student-ink); }
+/* Shared privacy route retains staff styles until a server-resolved student role. */
+.student-account-sections,.student-account-symbol { display:none; }
+body[data-haiedu-student][data-student-utility] > main.shell { max-width:72rem; margin-inline:auto; padding:2rem; }
+body[data-haiedu-student][data-student-utility] .topbar { display:flex; flex-wrap:wrap; align-items:start; padding:1.5rem; background:var(--student-hero); border-radius:1.25rem; }
+body[data-haiedu-student][data-student-utility] .topbar > div:first-child { flex:1 1 30rem; }
+body[data-haiedu-student][data-student-utility] .topbar > .row > #signOutBtn:not(.hidden) { display:inline-flex; }
+body[data-haiedu-student] .student-account-sections { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0; }
+body[data-haiedu-student] .student-account-sections a { padding:.75rem 1rem; min-height:2.75rem; background:var(--student-surface); border:1px solid var(--student-border-control); border-radius:.75rem; }
+body[data-haiedu-student] :is(.privacy-card,.privacy-security-form) { padding:1.5rem; border-radius:1rem; }
+body[data-haiedu-student] :is(.privacy-toggle,.privacy-state,.privacy-security-form) { background:var(--student-quiet); border-color:var(--student-divider); }
+body[data-haiedu-student] :is(.privacy-list dt,.privacy-toggle small) { color:var(--student-muted); }
+body[data-haiedu-student] .privacy-list > div { border-color:var(--student-divider); }
+body[data-haiedu-student] .privacy-list dd { overflow-wrap:anywhere; min-width:0; }
+body[data-haiedu-student] .danger-zone { border-color:var(--student-error); }
+body[data-haiedu-student] .danger-zone :is(.mode-kicker,h2) { color:var(--student-error); }
+body[data-haiedu-student] button.danger-btn { color:var(--student-error); border:1px solid var(--student-error); background:var(--student-surface); }
+body[data-haiedu-student] .privacy-toggle { min-height:2.75rem; }
+body[data-haiedu-student] .join-card { max-width:40rem; margin:1.5rem auto; padding:2rem; }
+body[data-haiedu-student] #joinCode { font-size:1.5rem; letter-spacing:.15em; }
+body[data-haiedu-student] :is(.privacy-card,.unit-guide,.written-rubric,.written-history) { scroll-margin-block:1.5rem; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+ body[data-haiedu-student] :is(.course-mode-card,.written-list article,.student-account-sections a) { transition:box-shadow 140ms ease, border-color 140ms ease; }
+ body[data-haiedu-student] :is(.course-mode-card,.written-list article):hover { box-shadow:0 6px 20px rgb(35 57 47 / .08); border-color:var(--student-border-control); }
+}
+@media (max-width:1100px) {
+ body[data-haiedu-student] .student-course-hero { grid-template-columns:1fr; gap:1.25rem; }
+ body[data-haiedu-student] .student-course-readiness { width:100%; }
+}
+@media (max-width:760px) {
+ body[data-haiedu-student] .course-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+ body[data-haiedu-student] .course-tabs a:first-child { grid-column:1/-1; }
+ body[data-haiedu-student] .course-chapters { display:grid; grid-template-columns:1fr; }
+ body[data-haiedu-student] :is(.student-course-hero,.student-task-card,.course-mode-card,.course-data-section,.unit-guides,.written-work,.privacy-card,.privacy-security-form,.join-card) { padding:1rem; }
+ body[data-haiedu-student] .student-course-hero h2 { font-size:1.5rem; }
+ body[data-haiedu-student][data-student-utility] > main.shell { padding:1rem; }
+ body[data-haiedu-student] .student-account-sections { display:grid; grid-template-columns:1fr 1fr; }
+ body[data-haiedu-student] .student-account-sections a { font-size:.875rem; }
+ body[data-haiedu-student][data-student-player=active] > main.shell { padding-bottom:1.5rem; }
+}
+
+body[data-haiedu-student][data-student-utility=access] .auth-card { max-width:42rem; width:100%; padding:2rem; }
+body[data-haiedu-student][data-student-utility=access] .auth-card label { margin-block:1rem; }
+body[data-haiedu-student][data-student-utility=access] .student-consent { color:var(--student-ink); }
+body[data-haiedu-student][data-student-utility=access] .topbar { align-items:center; }
+body[data-haiedu-student][data-student-utility=access] .topbar a { max-width:100%; }
+@media(max-width:760px) { body[data-haiedu-student][data-student-utility=access] .auth-card { padding:1rem; } }
+
+/* One shared identity gateway: preserve every role/recovery route, use the same
+   accessible controls for learners returning from their account page. */
+body[data-haiedu-student][data-student-utility=access] .account-copy :is(h1,.eyebrow) { color:var(--student-ink); }
+body[data-haiedu-student][data-student-utility=access] .account-copy > p { color:var(--student-muted); }
+body[data-haiedu-student][data-student-utility=access] .account-invite-note { background:var(--student-hero); }
+body[data-haiedu-student][data-student-utility=access] .account-invite-note span { color:var(--student-hero-muted); }
+body[data-haiedu-student][data-student-utility=access] #loginPanel input { background:var(--student-surface); }

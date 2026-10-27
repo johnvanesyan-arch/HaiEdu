@@ -109,6 +109,8 @@ function deletionLabel(request) {
 
 function render(data) {
   state = data;
+  document.body.toggleAttribute("data-haiedu-student", data.account.role === "student");
+  document.documentElement.toggleAttribute("data-haiedu-student-root", data.account.role === "student");
   $("loading").classList.add("hidden");
   $("signedOut").classList.add("hidden");
   $("content").classList.remove("hidden");
@@ -254,6 +256,8 @@ $("signOutBtn").addEventListener("click", async () => {
 
 supabase.auth.onAuthStateChange((_event, session) => {
   if (!session) {
+    document.body.removeAttribute("data-haiedu-student");
+    document.documentElement.removeAttribute("data-haiedu-student-root");
     $("content").classList.add("hidden");
     $("signedOut").classList.remove("hidden");
   }
