@@ -3,7 +3,7 @@ import {courseHero,modeIcon,readinessBadge,skillEvidence} from './student-course
 import {assessmentRules,assessmentResultMarkup} from './assessment-reporting.mjs';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
-import { readLearningSelection, sameContext, sameCourse, contextHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
+import { readLearningSelection, sameContext, sameCourse, contextHref, studentHomeHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
 import { registeredExtensionHref } from './learning-extensions.mjs';
 import { mountLearningPlayer } from './learning-player.mjs';
 import { mountWrittenWork } from './written-work.mjs';
@@ -11,6 +11,16 @@ import { mountUnitGuides } from './unit-guides.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const root = document.getElementById('courseContent');
 let version = 0, accountId = null, disposePlayer = () => {}, disposeWriting = () => {}, disposeGuides = () => {};
+function collectionNavigation(tab, context = null) {
+  const writing = tab === 'writing';
+  const link = document.getElementById('courseCollectionLink');
+  if (link) {
+    link.href = studentHomeHref(writing ? 'work' : 'courses', context);
+    link.textContent = writing ? 'Իմ աշխատանքները' : 'Դասընթացներ';
+  }
+  const label = document.getElementById('courseCollectionLabel');
+  if (label) label.textContent = writing ? 'ԻՄ ԱՇԽԱՏԱՆՔՆԵՐԸ' : 'ԻՄ ԴԱՍԸՆԹԱՑՆԵՐԸ';
+}
 function completionDate(value) {
   const date = new Date(value);
   if (!value || !Number.isFinite(date.getTime())) return '—';
@@ -21,11 +31,12 @@ function completionDate(value) {
   }).formatToParts(date).map(({type,value}) => [type,value]));
   return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
-function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
+function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
 async function load() {
   if (disposeWriting.flush && !(await disposeWriting.flush())) return;
   const request = ++version;
   clear();
+  const tab = new URLSearchParams(location.search).get('tab') || 'course';
   root.classList.remove('hidden');
   document.getElementById('courseLoading').classList.remove('hidden');
   const valid = () => request === version;
@@ -40,13 +51,13 @@ async function load() {
     if (!valid()) return;
     const context = navigation?.contexts?.find(c => sameContext(c,selection));
     if (accessError || !context) throw new Error('Ընտրված դասընթացն այս պահին հասանելի չէ։');
+    collectionNavigation(tab, context);
     const { data, error } = await supabase.functions.invoke('get-student-dashboard',{body:selection});
     if (!valid()) return;
     if (error || !data?.dashboardVersion) throw new Error('Չհաջողվեց բեռնել տվյալները։ Փորձեք նորից։');
     document.getElementById('courseTitle').textContent = `${courseLabel(context)} · ${context.unitTitleHy}`;
     document.getElementById('courseSubtitle').textContent = `${context.schoolName} · ${context.className} · ${context.academicYearLabel} · Թողարկում ${context.releaseNumber}`;
     const modes = { diagnostic:'Ախտորոշիչ', practice:'Վարժանք', mastery_check:'Յուրացման ստուգում', chapter_review:'Գլխի կրկնություն' };
-    const tab = new URLSearchParams(location.search).get('tab') || 'course';
     const action = (mode, spec, skillId) => {
       const legacy = registeredExtensionHref(spec.extensionKey,mode,context);
       if (legacy && skillId) { const url=new URL(legacy,location.href);url.searchParams.set('skill',skillId);return url.href; }

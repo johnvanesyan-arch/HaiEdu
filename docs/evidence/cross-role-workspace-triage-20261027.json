@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "slice": "16.5B.6",
+  "baseline": "086281df60619da0d353907db1f88aa781e2a3c2",
+  "ownerScope": "B.6–B.12 before additional subjects or chapters",
+  "implementation": "writing navigation ownership and authorized collection return link",
+  "status": "prepared_pending_required_ci_and_production",
+  "resourceInvestigation": {
+    "mode": "read_only",
+    "resourceTitle": "my hobbies",
+    "resourceStatus": "published",
+    "qaPassed": true,
+    "events": [
+      "created",
+      "file_attached",
+      "qa",
+      "published"
+    ],
+    "recipientClass": "English Unit 1 QA A",
+    "suppliedLearnerContextClass": "Test Physics 7A",
+    "sameLearnerAlsoEnrolledInRecipientClass": true,
+    "activeRecipientEnrollmentsAtRead": 1,
+    "limitation": "Metadata and assignment mapping verified; no fresh signed-in file download. Publication is not individual task assignment.",
+    "userResourceMutated": false
+  },
+  "performanceInvestigation": {
+    "status": "source-confirmed candidates; no end-to-end timing claim",
+    "candidates": [
+      "dashboard waits for role/profile and whole dashboard response",
+      "available class contexts load analytics before dashboard returns",
+      "selected class loads invitations"
+    ],
+    "alreadyPresent": [
+      "bounded four-class read concurrency",
+      "empty-class analytics short circuit"
+    ],
+    "nextSlice": "16.5B.7 measured baseline and optimization"
+  },
+  "changedRuntimeFiles": [
+    "web/student-courses.js",
+    "web/course-page.js",
+    "web/course.html"
+  ],
+  "regressions": {
+    "newNativeJourneys": 2,
+    "widths": [
+      360,
+      1280
+    ],
+    "coverage": [
+      "My work card to actual writing list",
+      "draft/submitted/reviewed states",
+      "chapter and release context",
+      "reload and return",
+      "ordinary Courses remains distinct",
+      "writing tab entry from a course",
+      "account change removes prior context",
+      "no learning or writing mutations from browsing"
+    ]
+  },
+  "preservation": {
+    "studentCapabilityIds": 45,
+    "englishBookmark": "C47",
+    "schemaChanges": false,
+    "edgeChanges": false,
+    "resourceWrites": false,
+    "contentOrScoringChanges": false
+  },
+  "reusedBaselineEvidence": {
+    "teacherActions": 40543468307,
+    "checks": 147,
+    "source": "086281df60619da0d353907db1f88aa781e2a3c2",
+    "materialsLifecycle": 40502331986,
+    "englishReads": 40510817011,
+    "physicsReads": 40488926093
+  },
+  "newCiAndProduction": "pending; close with exact source and retained evidence",
+  "localValidation": {
+    "unitIntegration": {
+      "passed": 1465,
+      "failed": 0
+    },
+    "javascriptSyntax": "passed",
+    "browserDependencyTriggers": "all nine guarded acceptance graphs covered",
+    "nativeBrowser": "required CI; Chromium not installed locally, no install attempted"
+  }
+}

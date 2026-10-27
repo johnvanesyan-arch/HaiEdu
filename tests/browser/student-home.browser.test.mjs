@@ -103,6 +103,48 @@ test('course and work views retain context, keyboard disclosures and course-only
   assert.equal(await page.locator('.amp-mobile-link[aria-label="Հավելյալ նյութեր"]').innerText(),'Նյութեր');
   assert.deepEqual(errors,[]);
 });
+for(const width of [360,1280])test(`My work owns the complete writing journey at ${width}px`,async t=>{
+  const {page,errors}=await fixture(t,{view:'work',selected:true,width,writingTasks:true,active:false});
+  const nav=width===360?'.amp-mobile-nav':'.amp-side-nav';
+  await page.locator('.amp-subject-card').filter({hasText:'Անգլերեն'}).getByRole('link',{name:'Բացել գրավոր աշխատանքները',exact:true}).click();
+  await page.locator('.written-list article').first().waitFor();
+  const assertWork=async()=>{
+    assert.equal(new URL(page.url()).searchParams.get('tab'),'writing');
+    assert.match(await page.locator(nav+' a[aria-current="page"]').innerText(),/Իմ աշխատանքները/);
+    assert.equal(await page.locator('#courseCollectionLabel').innerText(),'ԻՄ ԱՇԽԱՏԱՆՔՆԵՐԸ');
+    assert.equal(await page.locator('.written-list article').count(),3);
+    assert.match(await page.locator('.written-list').innerText(),/Սևագիր/);
+    assert.match(await page.locator('.written-list').innerText(),/Սպասում է ստուգման/);
+    assert.match(await page.locator('.written-list').innerText(),/Ստուգված է/);
+    assert.equal(await page.locator('.course-mode-card').count(),0);
+    const back=new URL(await page.locator('#courseCollectionLink').getAttribute('href'),origin);
+    const here=new URL(page.url());
+    assert.equal(back.searchParams.get('view'),'work');
+    for(const key of ['enrollment','release','unit'])assert.equal(back.searchParams.get(key),here.searchParams.get(key));
+    assert.equal(await page.evaluate(()=>window.__homeFixture.calls.some(c=>c.name==='start-learning-session'||c.name==='manage-written-work'&&c.body.action!=='tasks')),false);
+  };
+  await assertWork();
+  await page.locator('.course-chapters a').filter({hasText:'Երաժշտությունը մեր կյանքում'}).click();
+  await page.locator('.written-list article').first().waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('unit'),id(10));
+  await assertWork();
+  await page.reload();await page.locator('.written-list article').first().waitFor();await assertWork();
+  await page.locator('#courseCollectionLink').click();await page.locator('.amp-subject-card').first().waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('view'),'work');
+  assert.equal(new URL(page.url()).searchParams.get('unit'),id(10));
+  await page.locator(nav).getByRole('link',{name:'Դասընթացներ',exact:true}).click();
+  await page.locator('.amp-subject-card').filter({hasText:'Անգլերեն'}).getByRole('link',{name:'Բացել դասընթացը',exact:true}).click();
+  await page.locator('.course-mode-card').first().waitFor();
+  assert.match(await page.locator(nav+' a[aria-current="page"]').innerText(),/Դասընթացներ/);
+  assert.equal(await page.locator('.written-work').count(),0);
+  await page.locator('.course-tabs').getByRole('link',{name:'Գրավոր աշխատանքներ',exact:true}).click();
+  await page.locator('.written-list article').first().waitFor();await assertWork();
+  await page.evaluate(()=>window.__homeFixture.switchAccount());
+  await page.waitForFunction(()=>document.getElementById('courseContent').textContent.includes('Ընտրված դասընթացն այս պահին հասանելի չէ'));
+  assert.equal(await page.locator('.written-work').count(),0);
+  assert.equal(await page.locator('#courseCollectionLink').getAttribute('href'),'./index.html?view=work');
+  assert.deepEqual(errors,[]);
+});
 test('empty, failed and recovered course access are distinct; signed-out Home stays public',async t=>{
   const empty=await fixture(t,{empty:true});assert.match(await empty.page.locator('#multiSubjectHome').innerText(),/Հասանելի դասընթացներ դեռ չկան/);
   const failed=await fixture(t,{error:true});await failed.page.locator('[data-retry-access]').waitFor();
