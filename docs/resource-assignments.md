@@ -1,8 +1,20 @@
 # Sprint 16.5B.8 — Resource assignments
 
-2026-10-28 Asia/Yerevan · runtime deployed; live acceptance pending.
+2026-10-28 Asia/Yerevan · assignment capability deployed and verified; normal demonstration-account provisioning remains open.
 
-Owner authorization: implement class or selected-student material assignment with delivery into «Իմ աշխատանքները», preserving the approved B.6–B.12 sequence. Base source: `48211d1e780f951963769f240e7fa57cc8448cd8`. One primary agent; English remains paused after C47; PERF-02 and all 45 capability/dependency mappings remain.
+Teachers can send a published PDF or HTTPS material to a whole class or selected students. Intended students receive it in «Իմ աշխատանքները» → «Ուսուցչի առաջադրանքները». This is the resource-assignment subset brought forward from S37; assessment builders, notifications and intervention services retain their own later contracts.
+
+Owner authorization: implement this capability while preserving the B.6–B.12 sequence. Base source: `48211d1e780f951963769f240e7fa57cc8448cd8`. One primary agent; English remains paused after C47; PERF-02 and all 45 capability/dependency mappings remain.
+
+## Using the feature
+
+1. Open the teacher resource library and select the authorized class, course and unit.
+2. Choose a published material and select «Ուղարկել առաջադրանք». Publishing to the library alone does not send a task.
+3. Choose «Ամբողջ դասարանը» or «Ընտրված աշակերտները», review the recipients, optionally add instructions, then select «Ուղարկել առաջադրանքը».
+4. The confirmation retains the assignment ID, time and recipient count. «Ուղարկված առաջադրանքները» opens receipts, recipient lists and reasoned cancellation/history.
+5. Students open My work to see and download/open the assigned material with its class, subject, unit and instructions.
+
+The existing library audience remains visible in the teacher confirmation. Selecting one task recipient does not make an already-published class/programme material private to that learner.
 
 ## Version 1 contract
 
@@ -15,20 +27,33 @@ Owner authorization: implement class or selected-student material assignment wit
 - No due dates, reminders, learner Done marker, read receipt or completion/grade/mastery inference in this version. Those need their own contracts. Resource opening is not assessment evidence.
 - Retries reuse the original request UUID and exact payload. Reusing it for another payload conflicts; double-clicks cannot create multiple assignments. Old account/context responses cannot update a new page. Recipient search/history/inbox are bounded; no per-class eager analytics is introduced.
 
-## Verification and closure
 
-Use real SQL/handler tests for same-class selected/excluded recipients, foreign school/class/subject, stale rosters, revocation, immutable version delivery, withdrawal/republish, cancellation, retries and deletion compatibility; PostgreSQL races and native browser flows cover concurrent writes and stale responses. Production QA remains reviewed-main/designated-fixture-only and cleans up only its own records. Deploy/read back each changed Edge consumer. Close with required CI, exact production source, evidence, aligned merged summaries and source-verified Notion.
+## Verification
 
-Local execution is unavailable. The pinned Supabase CLI 2.122.0 ran in isolated [preparation 40574946019](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40574946019), discovered its help and created `supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql`. No production credentials were supplied to that runner. Runtime deployment does not replace the live delivery acceptance gate.
+All five required jobs pass on implementation PR [40581820805](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40581820805), implementation main [40582617726](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617726), acceptance-scheduling PR [40583298498](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40583298498) and acceptance main [40584068872](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40584068872): **1,488 unit/integration and 201 native Chromium checks**. They include ten assignment SQL cases, four actual-SQL handler cases, seven independent PostgreSQL 17 race cases and six new native assignment journeys. Browser coverage includes lost-response retry, selected recipients, stale rosters, late account/context changes, keyboard use and 360/768/1280-pixel layouts at 200% text. The dependency graph covers ten browser acceptance targets.
 
-Isolated PostgreSQL 17 run [40579507902](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40579507902) passes 21 SQL/handler/privacy checks and seven independent-connection races; its existing library/Home browser regressions pass, while the new browser harness had a syntax error corrected in a subsequent candidate. Earlier PGlite checks cover the same SQL contract. No failed or partial run is counted as a complete release pass. New migration/handler source is additive; unchanged auth and supplementary-handler dependencies are bundled into the new endpoint. The existing supplementary endpoint is unchanged. get-my-privacy is the second changed Edge consumer.
+Reviewed-main production [40584068878](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40584068878) passes **123/123 checks** against `c8303acdf31cfd2732ddcf93d5e11cbd59bebbee`:
+- Ordinary designated teacher/student sessions in both schools; real teacher-browser whole-class send and 360-pixel student My work PDF download.
+- Selected-student service send, exact retry deduplication, foreign-school denial and role-specific account inventory.
+- Pinned PDF after a replacement publication, audited cancellation and logical withdrawal denial.
+- Exact source/hash parity for all eight affected frontend files, before/after tenant isolation, and cancellation/withdrawal of only run-created assignments/materials.
 
-The two current teacher profiles remain dedicated multi-subject QA. Choosing and provisioning a clean Physics-only normal-use identity is still open and must use supported account/invitation tooling; this capability does not remove their existing English/Physics grants. Existing institutional deletion/offboarding restrictions also remain; the new ledger adds no general permanent-delete action.
+Same-class unselected-recipient denial, platform-material assignment, stale roster/revocation, deletion compatibility and concurrent writes are isolated SQL/handler/browser evidence, not additional live learner claims. No learner answers, mastery, writing submissions or original user materials are changed.
 
-Native Chromium delivery, selected-recipient/stale-roster, late-context/account-change and 360/768/1280-pixel keyboard/200%-text checks pass **6/6** in [40581457852](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40581457852); current strict handler tests pass **4/4**. The mobile acceptance caught and repaired Armenian heading/control reflow. Complete required PR/main CI and production acceptance remain the release gates.
+Fresh staff production acceptance [40582617676](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617676) passes **147/147**. A separately triggered Chapter VI read run [40582617916](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617916) records **323/324**, then rejects the changed frontend commit at its final revision check after PR325 deployment. It is explicitly superseded evidence, not a full pass or a new curriculum regression claim. Previously verified unchanged assessment/audio/writing evidence is retained; the new assignment run verifies the affected feature on the current source.
 
-## Runtime deployment checkpoint
+## Deployment and release controls
 
-[PR324](https://github.com/johnvanesyan-arch/HaiEdu/pull/324) merges as `40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1`. PR [40581820805](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40581820805) and main [40582617726](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617726) pass all five required jobs, including **1,488 unit/integration and 201 native browser checks**. The CLI-created additive migration is applied under remote history version `20261027205636`. All ten SQL function bodies, four files in assignment Edge v1 and privacy Edge v9 match repository source. Three RLS tables have no direct anon/authenticated/service_role DML grants. Advisor observations for the new tables are intentional no-policy deny-by-default and unused-index notices before live use.
+[PR324](https://github.com/johnvanesyan-arch/HaiEdu/pull/324) merges as `40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1`. The initial assignment live run was canceled in GitHub's shared pending QA queue before any job started. [PR325](https://github.com/johnvanesyan-arch/HaiEdu/pull/325) schedules the guarded run alone with a workflow-comment/documentation change; runtime files are unchanged. It merges as `c8303acdf31cfd2732ddcf93d5e11cbd59bebbee`, whose production deployment `dpl_F19fZ1mqC3jY6g7ySbnwLaPkxGDe` is READY. The final documentation closure reuses these unchanged runtime checks.
 
-Vercel production `dpl_5K38hvdaRd2DN9WDXSijGkkJUP8u` is ready for that commit. Existing production blocking-check configuration evidence is reused, with no settings changes. The assignment acceptance [40582617948](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617948) was canceled in the shared QA queue before any job started; it is not a failed product test or an accepted delivery. GitHub cannot retry its absent jobs. A workflow-only path update schedules this guarded acceptance separately. [Machine-readable checkpoint](evidence/resource-assignments-release-20261028.json).
+Local execution was unavailable. Pinned Supabase CLI **2.122.0** ran in isolated [40574946019](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40574946019), discovered its help and created `supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql`. No production credentials were supplied to isolated CI. The additive migration is applied as remote history `20261027205636`.
+
+All ten deployed SQL function bodies, all four files bundled with **manage-resource-assignments v1**, and **get-my-privacy v9** match repository source. The new endpoint imports unchanged auth/supplementary helpers; existing supplementary functions do not need redeployment. Three RLS tables have no direct anon/authenticated/service_role DML grants. The new tables' no-policy notices reflect intentional deny-by-default, and unused-index notices were recorded before live use.
+
+The existing Production/Blocking deployment-check configuration attestation from [2026-10-20](evidence/vercel-deployment-check-verification-20261020.json) is reused unchanged. Successful CI or Vercel READY alone is not presented as a fresh configuration verification. [Release evidence](evidence/resource-assignments-release-20261028.json) · [Redacted live report](evidence/resource-assignments-acceptance-20261028.json).
+
+## Remaining scope
+
+**DEMO-01:** read-only inspection finds two active teacher profiles, both designated multi-subject QA. A normal Physics-only demonstration identity still needs selection/provisioning through supported account/invitation administration. No QA subject grants or credentials were removed. Existing institutional deletion/offboarding restrictions remain; this ledger adds no general permanent-delete operation.
+
+**Next: 16.5B.9**, shared Forest staff layout and a reviewable Teacher Home → Classes → Review prototype, then B.10–B.12. PERF-02 remains open before B.12 performance acceptance. All 45 mapped capabilities, the English C47 pause and full four-subject gate remain; resource delivery does not close them. Final owner workspace usability acceptance remains separate.

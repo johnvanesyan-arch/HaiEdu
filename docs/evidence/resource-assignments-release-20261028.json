@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "timezone": "Asia/Yerevan",
   "scope": "16.5B.8 shared resource assignment delivery",
-  "status": "deployed_acceptance_pending",
+  "status": "delivered",
   "implementationPR": 324,
   "implementationCommit": "40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1",
   "reviewedHead": "427ee76186579bdf7d1683e097f419bb340489cb",
@@ -125,6 +125,36 @@
           }
         ]
       }
+    ],
+    "acceptanceSchedulingPRCI": {
+      "runId": 40583298498,
+      "jobs": 5,
+      "passed": 5
+    },
+    "acceptanceMainCI": {
+      "runId": 40584068872,
+      "jobs": 5,
+      "passed": 5
+    },
+    "staffAcceptance": {
+      "runId": 40582617676,
+      "passed": 147,
+      "total": 147,
+      "sourceCommit": "40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1"
+    },
+    "supersededChapterVIRead": {
+      "runId": 40582617916,
+      "passed": 323,
+      "total": 324,
+      "conclusion": "failure",
+      "reason": "Final source guard observed c8303acdf31cfd2732ddcf93d5e11cbd59bebbee replacing expected 40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1 during the read run; not counted as a full pass."
+    },
+    "isolatedScopes": [
+      "same-class selected/unselected recipient access",
+      "platform-material assignment",
+      "stale rosters, ended grants and account switching",
+      "enrollment deletion compatibility",
+      "independent concurrent PostgreSQL writes"
     ]
   },
   "migration": {
@@ -141,17 +171,130 @@
   "deployment": {
     "projectId": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb",
     "teamId": "team_ANGbKWoBF8n9DNpZUZZ4wI2G",
-    "id": "dpl_5K38hvdaRd2DN9WDXSijGkkJUP8u",
+    "id": "dpl_F19fZ1mqC3jY6g7ySbnwLaPkxGDe",
     "state": "READY",
     "environment": "production",
-    "commit": "40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1"
+    "commit": "c8303acdf31cfd2732ddcf93d5e11cbd59bebbee"
   },
   "productionAcceptance": {
-    "status": "pending",
+    "status": "passed",
     "initialRunId": 40582617948,
     "initialConclusion": "cancelled_before_any_job_started",
     "retry": "GitHub rejected retry of a canceled pending run with no jobs; a workflow-only path change schedules it alone.",
-    "successfulRunId": null
+    "successfulRunId": 40584068878,
+    "jobId": 122474305792,
+    "revision": "c8303acdf31cfd2732ddcf93d5e11cbd59bebbee",
+    "startedAt": "2026-10-27T21:15:11.979Z",
+    "completedAt": "2026-10-27T21:19:04.649Z",
+    "passed": 123,
+    "total": 123,
+    "isolationBefore": {
+      "passed": 54,
+      "total": 54
+    },
+    "isolationAfter": {
+      "passed": 54,
+      "total": 54
+    },
+    "frontend": [
+      {
+        "path": "resource-assignments.mjs",
+        "sha256": "e8d3635e2bb0c1f93bfb4d0d2ebd336cd3fdb1849da586c422919532636dcf5a"
+      },
+      {
+        "path": "resource-assignments.css",
+        "sha256": "30405bb8d4085939647c3c15f1533e428d3b85395932b88ca1fb94dc40db0900"
+      },
+      {
+        "path": "supplementary-resources.css",
+        "sha256": "fd8ed959605f9b3422f3687420e829f318aa584307339c16ff727de98541894d"
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "sha256": "b0560d018ebc8bb394accd5e075ed73f8001061081bd72be152d9c25ca131ca8"
+      },
+      {
+        "path": "multi-subject-home.js",
+        "sha256": "b71d11af3c8465f4255169d81dfa5bd48e4d7a4b3c3e98e66acab019dc0f706e"
+      },
+      {
+        "path": "index.html",
+        "sha256": "dd88fcf89279485be3a43683db9b5afe827f3f5f5483f8cd1abd7cca4d3982dc"
+      },
+      {
+        "path": "resource-library.html",
+        "sha256": "b5f907741abb5fb6026c67d1a8ece8b138879ea43c1409eaf78dd2a26cd68e8d"
+      },
+      {
+        "path": "privacy.js",
+        "sha256": "3106c865f874b2f4ecd031718432161466d4144d69831aab3b399226a3185bce"
+      }
+    ],
+    "report": "docs/evidence/resource-assignments-acceptance-20261028.json",
+    "artifactId": 12771372274,
+    "artifactSha256": "ed1a6953bef303702d154e5e87d9fd861f84246a424073f8804f147f5ca28060",
+    "cleanupReadback": {
+      "resources": [
+        {
+          "status": "superseded",
+          "version": 1,
+          "resourceId": "62f00861-ed60-47af-8e67-5a35ed30be3e"
+        },
+        {
+          "status": "withdrawn",
+          "version": 2,
+          "resourceId": "62f00861-ed60-47af-8e67-5a35ed30be3e"
+        },
+        {
+          "status": "superseded",
+          "version": 1,
+          "resourceId": "6f8ff68e-da54-411f-93fd-6275b2b8006f"
+        },
+        {
+          "status": "withdrawn",
+          "version": 2,
+          "resourceId": "6f8ff68e-da54-411f-93fd-6275b2b8006f"
+        }
+      ],
+      "assignments": [
+        {
+          "id": "f5670789-b1d9-44ba-be3d-ea43f15977a6",
+          "status": "canceled",
+          "revision": 2,
+          "auditEvents": [
+            "assigned",
+            "canceled"
+          ]
+        },
+        {
+          "id": "057553e8-9d7c-4445-907b-fb6c3905e452",
+          "status": "canceled",
+          "revision": 2,
+          "auditEvents": [
+            "assigned",
+            "canceled"
+          ]
+        },
+        {
+          "id": "c274b45d-0fdc-462a-b2cb-80f4b87b1069",
+          "status": "canceled",
+          "revision": 2,
+          "auditEvents": [
+            "assigned",
+            "canceled"
+          ]
+        },
+        {
+          "id": "126703b1-999f-4287-bbd0-34cae4b1c90c",
+          "status": "canceled",
+          "revision": 2,
+          "auditEvents": [
+            "assigned",
+            "canceled"
+          ]
+        }
+      ]
+    }
   },
   "boundaries": {
     "assessmentsChanged": false,
@@ -170,6 +313,12 @@
   },
   "notion": {
     "pageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
-    "sync": "after final evidence is merged"
+    "roadmapVersion": "4.98",
+    "sync": "Synchronize to the final merged documentation commit, preserve native child pages, and verify the saved source pointer after merge."
+  },
+  "acceptanceScheduling": {
+    "pr": 325,
+    "mergeCommit": "c8303acdf31cfd2732ddcf93d5e11cbd59bebbee",
+    "runtimeChanged": false
   }
 }
