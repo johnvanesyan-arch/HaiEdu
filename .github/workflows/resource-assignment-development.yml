@@ -1,0 +1,38 @@
+name: Resource assignment isolated preparation
+on:
+  push:
+    branches: [codex/resource-assignments-20261028]
+    paths: [.github/workflows/resource-assignment-development.yml]
+permissions:
+  contents: read
+jobs:
+  prepare-migration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Discover pinned CLI commands
+        run: |
+          npx --yes supabase@2.122.0 --version
+          npx --yes supabase@2.122.0 --help
+          npx --yes supabase@2.122.0 migration --help
+          npx --yes supabase@2.122.0 migration new --help
+      - name: Create the migration using the CLI
+        run: |
+          npx --yes supabase@2.122.0 migration new sprint_16_5b_resource_assignments
+          node --input-type=module <<'JS'
+          import {readdirSync,writeFileSync} from 'node:fs';
+          const found=readdirSync('supabase/migrations').filter(x=>x.endsWith('_sprint_16_5b_resource_assignments.sql'));
+          if(found.length!==1)throw Error('Expected exactly one CLI-generated migration');
+          const path='supabase/migrations/'+found[0];
+          console.log('B8_GENERATED_MIGRATION='+path);
+          writeFileSync('resource-assignment-cli-receipt.json',JSON.stringify({cli:'2.122.0',command:'supabase migration new sprint_16_5b_resource_assignments',path,productionCredentials:false},null,2));
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resource-assignment-cli-receipt
+          path: resource-assignment-cli-receipt.json
+          retention-days: 14
