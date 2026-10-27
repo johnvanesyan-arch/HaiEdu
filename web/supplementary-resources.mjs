@@ -12,7 +12,7 @@ function card(m,staff){const d=m.definition;
  return `<article class="resource-card ${d.purpose==='practice'?'resource-practice':'resource-reading'}"><div class="resource-art">${studentIcon(d.purpose==='practice'?'practice':'courses')}<span>${purposes[d.purpose]}</span></div><div class="resource-card-body"><div class="resource-badges"><span>${m.provider==='teacher'?'Ուսուցչից':'Հարթակից'}${m.providerName?' · '+esc(m.providerName):''}</span>${d.recommended&&m.provider==='teacher'?'<span class="resource-recommended">Ուսուցչի առաջարկ</span>':''}${staff?`<span>${labels[m.status]}</span>`:''}</div><h3 lang="${esc(d.locale)}">${esc(d.title)}</h3><p class="resource-goal" lang="${esc(d.locale)}">${esc(d.goal||d.description)}</p>${d.goal?`<p lang="${esc(d.locale)}">${esc(d.description)}</p>`:''}<p class="resource-meta">${esc(d.topic||'')}${d.topic?' · ':''}${d.format==='pdf'?'PDF':'Հղում'}${m.fileBytes?' · '+(m.fileBytes/1024/1024).toLocaleString('hy',{maximumFractionDigits:2})+' ՄԲ':''}${Number.isInteger(d.estimatedMinutes)&&d.estimatedMinutes>0?' · Մոտ '+d.estimatedMinutes+' րոպե':''}</p><p class="resource-meta">v${m.version}${m.publishedAt?' · '+new Date(m.publishedAt).toLocaleDateString('hy-AM'):''}</p><button type="button" data-resource-${staff?'edit':'open'}="${esc(m.id)}">${staff?'Ստուգել և կառավարել':d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը'}${studentIcon('arrow')}</button></div></article>`;
 }
 export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
- let actor=null,epoch=0,request=0,contexts=[],selected=null,rows=[],role=null,current=null,busy=false,dirty=false,disposed=false,operation=0;
+ let actor=null,epoch=0,request=0,contexts=[],selected=null,rows=[],role=null,current=null,busy=false,dirty=false,disposed=false,operation=0,busyKind='write';
  const urls=new Set();const $=q=>root.querySelector(q);const valid=(e,q=request)=>!disposed&&e===epoch&&q===request;
  const message=(t,bad=false)=>{const el=$('[data-resource-message]');if(el){el.textContent=t;el.classList.toggle('bad',bad);}};
  const clearDelivery=()=>{root.querySelectorAll('dialog').forEach(d=>d.remove());for(const u of urls)URL.revokeObjectURL(u);urls.clear();};
@@ -64,7 +64,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(data instanceof Blob){const url=URL.createObjectURL(data);urls.add(url);const a=document.createElement('a');a.href=url;a.download=`haiedu-material-${id}.pdf`;a.click();setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);message('PDF-ը պատրաստ է ներբեռնման։');}
   else if(data.url){const u=new URL(data.url);if(u.protocol!=='https:')throw Error('resource_unavailable');const dialog=document.createElement('dialog');dialog.className='resource-dialog';dialog.innerHTML=`<h2>Արտաքին նյութ</h2><p>Կբացվի նոր ներդիրում՝ <strong>${esc(u.hostname)}</strong></p><a class="button-link" href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">Բացել արտաքին կայքը</a><button type="button" class="ghost">Փակել</button>`;dialog.querySelector('button').onclick=()=>{dialog.close();dialog.remove();};root.append(dialog);dialog.showModal();}
  }
- async function run(fn){if(busy)return;busy=true;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;
+ async function run(fn,kind='write'){if(busy)return;busy=true;busyKind=kind;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;
   try{await fn();}catch(error){if(valid(e,q)&&error.message!=='resource_stale'){message(errorText(error),true);if(error.message==='resource_forbidden'){rows=[];clearEditor();clearDelivery();$('[data-resource-list]').innerHTML='<p>Դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։</p>';}}}finally{if(op===operation){busy=false;root.removeAttribute('aria-busy');}}}
  root.addEventListener('input',e=>{if(e.target.matches('[data-filter]'))drawCards();if(e.target.closest('[data-resource-form]')){dirty=true;$('[data-resource-dirty]').textContent='Կան չպահպանված փոփոխություններ։';}});
  root.addEventListener('change',e=>{if(e.target.matches('[data-resource-context]')){if(canLeave()){selectContext(e.target.value);}else e.target.value=selected?String(contexts.indexOf(selected)):'';}if(e.target.matches('[data-filter]'))drawCards();if(e.target.name==='format'){$('[data-url-field]').hidden=e.target.value!=='link';$('[data-pdf-note]').hidden=e.target.value!=='pdf';}});
@@ -72,10 +72,11 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(b.hasAttribute('data-purpose')){$('[data-filter="purpose"]').value=b.dataset.purpose;for(const x of root.querySelectorAll('[data-purpose]'))x.setAttribute('aria-pressed',String(x===b));drawCards();}
   if(b.hasAttribute('data-filter-reset')){resetFilters();drawCards();$('[data-filter="query"]').focus();}
   if(b.hasAttribute('data-resource-refresh')&&canLeave())void loadList();
+  if(b.hasAttribute('data-resource-new')||b.hasAttribute('data-resource-close')||b.dataset.resourceEdit){if(busy&&busyKind==='write'){message('Գործողությունը կատարվում է…');return;}if(busy){request++;operation++;busy=false;root.removeAttribute('aria-busy');}}
   if(b.hasAttribute('data-resource-new')){if(!selected){message('Նախ ընտրեք դասընթացն ու բաժինը։');return;}if(canLeave())drawEditor();}
   if(b.hasAttribute('data-resource-close')&&canLeave())clearEditor();
-  if(b.dataset.resourceEdit&&canLeave())void run(async()=>{const r=await invoke('get',{id:b.dataset.resourceEdit});drawEditor(r.material,r.history,r.events);});
-  if(b.dataset.resourceOpen)void run(()=>delivery(b.dataset.resourceOpen));
+  if(b.dataset.resourceEdit&&canLeave())void run(async()=>{const r=await invoke('get',{id:b.dataset.resourceEdit});drawEditor(r.material,r.history,r.events);},'read');
+  if(b.dataset.resourceOpen)void run(()=>delivery(b.dataset.resourceOpen),'read');
   if(b.dataset.resourceAction)void run(async()=>{const action=b.dataset.resourceAction;
    if(dirty&&action!=='withdraw'){message('Նախ պահպանեք փոփոխությունները կամ նորից բացեք պահպանված տարբերակը։');return;}
    if(action==='preview')return delivery(current.id);
@@ -109,6 +110,6 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  root.addEventListener('click',e=>{if(e.target.closest('[data-resource-retry]'))void session({user:{id:actor}},true);});
  let events=0;const sub=client.auth.onAuthStateChange((event,s)=>{events++;if(event==='SIGNED_OUT'||s?.user?.id!==actor)void session(event==='SIGNED_OUT'?null:s,true);});const version=events;
- client.auth.getSession().then(r=>{if(version===events)void session(r.data.session,true);}).catch(()=>{root.textContent='Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։';});
+ client.auth.getSession().then(r=>{if(version===events)void session(r.data.session,true);}).catch(()=>{if(version===events&&!disposed)root.textContent='Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։';});
  return()=>{disposed=true;epoch++;request++;clearDelivery();sub.data.subscription.unsubscribe();window.removeEventListener('beforeunload',beforeLeave);root.innerHTML='';};
 }

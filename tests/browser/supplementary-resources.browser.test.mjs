@@ -59,3 +59,8 @@ test('late private responses cannot restore prior account content; search focus,
  held.action='list';await p.locator('[data-resource-refresh]').click();await new Promise((resolve,reject)=>{const end=Date.now()+5000;const tick=()=>held.release?resolve():Date.now()>end?reject(Error('No held response')):setTimeout(tick,20);tick();});
  await p.evaluate(()=>window.__listeners.forEach(fn=>fn('SIGNED_OUT',null)));held.release();await p.waitForTimeout(100);assert.equal(await p.locator('.resource-card').count(),0);assert.match(await p.locator('#resourceRoot').innerText(),/Մուտք գործեք/);assert.deepEqual(student.errors,[]);
 });
+test('a late editor read cannot overwrite a newly opened resource draft',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await call(f.db,'create',{definition});const staff=await surface(t,f,20),p=staff.page;await p.waitForSelector('[data-resource-edit]');const held=staff.hold('get');await p.locator('[data-resource-edit]').click();
+ await new Promise((resolve,reject)=>{const end=Date.now()+5000;const tick=()=>held.release?resolve():Date.now()>end?reject(Error('No held editor')):setTimeout(tick,20);tick();});
+ await p.locator('[data-resource-new]').click();await p.locator('[name=title]').fill('A new unsaved resource');held.release();await p.waitForTimeout(80);assert.equal(await p.locator('[name=title]').inputValue(),'A new unsaved resource');assert.equal(await p.locator('[data-resource-action=publish]').count(),0);assert.deepEqual(staff.errors,[]);
+});
