@@ -13,8 +13,8 @@ export function installStudentHomeFixture(options = {}) {
     const codes=['english','physics','mathematics','armenian','chemistry','geography','biology','history','unknown'];
     all.splice(0,all.length,...codes.map((code,n)=>({...all[4],subjectCode:code,subjectNameHy:'Առարկա '+code,enrollmentId:id(200+n),subjectProgramId:id(300+n)})));
   }
-  let contexts = options.empty ? [] : options.single ? [all[2]] : all;
-  let session = options.signedOut ? null : { user:{id:id(90)}, access_token:'synthetic-only' };
+  let contexts = options.contexts ?? (options.empty ? [] : options.single ? [all[2]] : all);
+  let session = options.signedOut ? null : { user:{id:options.actorId??id(90)}, access_token:'synthetic-only' };
   let failed = Boolean(options.error), held = Boolean(options.held);
   const calls = [], listeners = [], pending = [];
   const snapshot = () => ({contexts,navigationVersion:'authorized-learning-navigation-v1'});

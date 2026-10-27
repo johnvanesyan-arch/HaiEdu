@@ -9,17 +9,38 @@ jobs:
   assignment-contract:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:17.6
+        env:
+          POSTGRES_USER: phase3_fixture
+          POSTGRES_PASSWORD: fixture-only
+          POSTGRES_DB: phase3_qa_root
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U phase3_fixture -d phase3_qa_root"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PHASE3_POSTGRES_17_CI: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm ci
-      - name: Check the new handler
+      - run: python -m pip install 'psycopg[binary]==3.2.6'
+      - name: Syntax and QA dependency graph
         run: |
-          node --check supabase/functions/_shared/resource-assignments-handler.mjs
-          node --check web/resource-assignments.mjs
-          node --check web/supplementary-resources.mjs
-          node --check web/multi-subject-home.js
-      - name: Exercise the actual SQL and recipient contract in disposable PGlite
+          node scripts/check-web-syntax.mjs
+          node scripts/check-browser-qa-triggers.mjs
+      - name: Contract and handler on PostgreSQL 17
         run: node --test tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs tests/privacy-role-inventory.test.mjs
+      - name: Independent connection races
+        run: python tests/resource-assignments-concurrency.py
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Native delivery and existing library/home regressions
+        run: node --test tests/browser/resource-assignments.browser.test.mjs tests/browser/supplementary-resources.browser.test.mjs tests/browser/student-home.browser.test.mjs
