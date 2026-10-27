@@ -1,4 +1,5 @@
 name: Resource assignment production acceptance
+# Standalone B.8 queue receipt: implementation/main CI and backend parity passed.
 on:
   workflow_dispatch:
   push:

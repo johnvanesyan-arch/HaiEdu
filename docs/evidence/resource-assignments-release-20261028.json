@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.8 shared resource assignment delivery",
+  "status": "deployed_acceptance_pending",
+  "implementationPR": 324,
+  "implementationCommit": "40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1",
+  "reviewedHead": "427ee76186579bdf7d1683e097f419bb340489cb",
+  "authorization": "Owner requests class/selected-student material assignments with delivery into My work; existing release controls retained.",
+  "verification": {
+    "prCI": {
+      "runId": 40581820805,
+      "jobs": 5,
+      "passed": 5,
+      "unitIntegration": 1488,
+      "nativeBrowser": 201
+    },
+    "mainCI": {
+      "runId": 40582617726,
+      "jobs": 5,
+      "passed": 5
+    },
+    "isolatedSqlHandlerPrivacy": {
+      "runId": 40579507902,
+      "checks": 21,
+      "races": 7,
+      "scope": "Only the passed named database/privacy/race steps; later browser harness failure is not counted as a full pass."
+    },
+    "isolatedCurrentHandlerAndBrowser": {
+      "runId": 40581457852,
+      "handler": 4,
+      "browser": 6
+    },
+    "dependencyGraphTargets": 10,
+    "backendParity": [
+      {
+        "slug": "manage-resource-assignments",
+        "version": 1,
+        "verifyJwt": true,
+        "files": [
+          {
+            "name": "manage-resource-assignments/index.ts",
+            "matches": true
+          },
+          {
+            "name": "_shared/auth.ts",
+            "matches": true
+          },
+          {
+            "name": "_shared/resource-assignments-handler.mjs",
+            "matches": true
+          },
+          {
+            "name": "_shared/supplementary-resources-handler.mjs",
+            "matches": true
+          }
+        ],
+        "allMatch": true
+      },
+      {
+        "slug": "get-my-privacy",
+        "version": 9,
+        "verifyJwt": true,
+        "files": [
+          {
+            "name": "get-my-privacy/index.ts",
+            "matches": true
+          }
+        ],
+        "allMatch": true
+      },
+      {
+        "type": "SQL",
+        "functions": [
+          {
+            "name": "private.resource_assignment_available",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.resource_assignment_event_guard",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.resource_assignment_guard",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.resource_assignment_privacy_counts",
+            "matches": true,
+            "securityDefiner": true
+          },
+          {
+            "name": "private.resource_assignment_public",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.resource_assignment_roster",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.resource_recipient_guard",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "private.service_resource_assignments",
+            "matches": true,
+            "securityDefiner": true
+          },
+          {
+            "name": "public.service_resource_assignment_privacy_counts",
+            "matches": true,
+            "securityDefiner": false
+          },
+          {
+            "name": "public.service_resource_assignments",
+            "matches": true,
+            "securityDefiner": false
+          }
+        ]
+      }
+    ]
+  },
+  "migration": {
+    "cli": "2.122.0",
+    "cliRunId": 40574946019,
+    "sourceFile": "supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql",
+    "appliedVersion": "20261027205636",
+    "name": "sprint_16_5b_resource_assignments",
+    "rls": {
+      "tables": 3,
+      "directClientOrServiceTableGrants": 0
+    }
+  },
+  "deployment": {
+    "projectId": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb",
+    "teamId": "team_ANGbKWoBF8n9DNpZUZZ4wI2G",
+    "id": "dpl_5K38hvdaRd2DN9WDXSijGkkJUP8u",
+    "state": "READY",
+    "environment": "production",
+    "commit": "40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1"
+  },
+  "productionAcceptance": {
+    "status": "pending",
+    "initialRunId": 40582617948,
+    "initialConclusion": "cancelled_before_any_job_started",
+    "retry": "GitHub rejected retry of a canceled pending run with no jobs; a workflow-only path change schedules it alone.",
+    "successfulRunId": null
+  },
+  "boundaries": {
+    "assessmentsChanged": false,
+    "originalUserMaterialsMovedOrAssigned": false,
+    "existingQAIdentitiesChanged": false,
+    "learnerCompletionInferred": false,
+    "normalPhysicsIdentityProvisioning": "open",
+    "PERF02": "open before B.12",
+    "english": "paused after C47",
+    "fullFourSubjectGate": "not satisfied"
+  },
+  "releaseControl": {
+    "existingConfigurationEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "configurationChanged": false,
+    "currentCI": "all five required jobs pass; existing blocking-check configuration attestation reused"
+  },
+  "notion": {
+    "pageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
+    "sync": "after final evidence is merged"
+  }
+}

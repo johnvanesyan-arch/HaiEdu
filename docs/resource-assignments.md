@@ -1,6 +1,6 @@
 # Sprint 16.5B.8 — Resource assignments
 
-2026-10-28 Asia/Yerevan · implementation in progress; not deployed.
+2026-10-28 Asia/Yerevan · runtime deployed; live acceptance pending.
 
 Owner authorization: implement class or selected-student material assignment with delivery into «Իմ աշխատանքները», preserving the approved B.6–B.12 sequence. Base source: `48211d1e780f951963769f240e7fa57cc8448cd8`. One primary agent; English remains paused after C47; PERF-02 and all 45 capability/dependency mappings remain.
 
@@ -19,10 +19,16 @@ Owner authorization: implement class or selected-student material assignment wit
 
 Use real SQL/handler tests for same-class selected/excluded recipients, foreign school/class/subject, stale rosters, revocation, immutable version delivery, withdrawal/republish, cancellation, retries and deletion compatibility; PostgreSQL races and native browser flows cover concurrent writes and stale responses. Production QA remains reviewed-main/designated-fixture-only and cleans up only its own records. Deploy/read back each changed Edge consumer. Close with required CI, exact production source, evidence, aligned merged summaries and source-verified Notion.
 
-Local execution is unavailable. The pinned Supabase CLI 2.122.0 ran in isolated [preparation 40574946019](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40574946019), discovered its help and created `supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql`. No production credentials were supplied to that runner. The candidate is not a deployed capability until the recorded main release and production acceptance pass.
+Local execution is unavailable. The pinned Supabase CLI 2.122.0 ran in isolated [preparation 40574946019](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40574946019), discovered its help and created `supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql`. No production credentials were supplied to that runner. Runtime deployment does not replace the live delivery acceptance gate.
 
 Isolated PostgreSQL 17 run [40579507902](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40579507902) passes 21 SQL/handler/privacy checks and seven independent-connection races; its existing library/Home browser regressions pass, while the new browser harness had a syntax error corrected in a subsequent candidate. Earlier PGlite checks cover the same SQL contract. No failed or partial run is counted as a complete release pass. New migration/handler source is additive; unchanged auth and supplementary-handler dependencies are bundled into the new endpoint. The existing supplementary endpoint is unchanged. get-my-privacy is the second changed Edge consumer.
 
 The two current teacher profiles remain dedicated multi-subject QA. Choosing and provisioning a clean Physics-only normal-use identity is still open and must use supported account/invitation tooling; this capability does not remove their existing English/Physics grants. Existing institutional deletion/offboarding restrictions also remain; the new ledger adds no general permanent-delete action.
 
 Native Chromium delivery, selected-recipient/stale-roster, late-context/account-change and 360/768/1280-pixel keyboard/200%-text checks pass **6/6** in [40581457852](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40581457852); current strict handler tests pass **4/4**. The mobile acceptance caught and repaired Armenian heading/control reflow. Complete required PR/main CI and production acceptance remain the release gates.
+
+## Runtime deployment checkpoint
+
+[PR324](https://github.com/johnvanesyan-arch/HaiEdu/pull/324) merges as `40f9b4bc6ae708e996312efb6a2af0d2d8fbbde1`. PR [40581820805](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40581820805) and main [40582617726](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617726) pass all five required jobs, including **1,488 unit/integration and 201 native browser checks**. The CLI-created additive migration is applied under remote history version `20261027205636`. All ten SQL function bodies, four files in assignment Edge v1 and privacy Edge v9 match repository source. Three RLS tables have no direct anon/authenticated/service_role DML grants. Advisor observations for the new tables are intentional no-policy deny-by-default and unused-index notices before live use.
+
+Vercel production `dpl_5K38hvdaRd2DN9WDXSijGkkJUP8u` is ready for that commit. Existing production blocking-check configuration evidence is reused, with no settings changes. The assignment acceptance [40582617948](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40582617948) was canceled in the shared QA queue before any job started; it is not a failed product test or an accepted delivery. GitHub cannot retry its absent jobs. A workflow-only path update schedules this guarded acceptance separately. [Machine-readable checkpoint](evidence/resource-assignments-release-20261028.json).

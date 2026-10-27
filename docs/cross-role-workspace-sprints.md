@@ -10,7 +10,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | --- | --- | --- | --- |
 | 16.5B.6 | Correct My work navigation; trace the reported resource; establish this task map | B.1–B.5 | Delivered; evidence below |
 | 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
-| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Implementation prepared; required CI and production acceptance pending |
+| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Runtime deployed; CI/source parity passed; live acceptance pending |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Planned; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
