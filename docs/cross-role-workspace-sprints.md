@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-27 · owner-authorized scope and priority · roadmap 4.97.
+2026-10-28 · owner-authorized scope and priority · roadmap 4.98.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -10,7 +10,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | --- | --- | --- | --- |
 | 16.5B.6 | Correct My work navigation; trace the reported resource; establish this task map | B.1–B.5 | Delivered; evidence below |
 | 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
-| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Next; new service contract required |
+| 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Implementation prepared; required CI and production acceptance pending |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Planned; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
@@ -40,10 +40,12 @@ Deliver two end-to-end increments rather than a recipient picker without a servi
 
 - **B.8a class assignments:** retain optional library publication; add an explicit Assign action, authorized class/context selection and a recipient summary. Persist an assignment pinned to the immutable resource version and intended context. Display it in the intended learners' My work with a link to the protected resource. Return a durable assignment receipt and allow the teacher to inspect/cancel it through an audited lifecycle.
 - **B.8b selected students:** add a searchable roster restricted to the selected active teaching assignment; persist exact recipient enrollments and verify intended learners can read the assignment while unselected, foreign-class and foreign-school learners cannot. Reject stale rosters, mixed contexts and ended grants on the server. Assignment recipients and existing library visibility are distinct: assigning an already class-published resource to one learner does not make that resource private. The teacher preview must state its existing audience. A new assignment-only file needs an explicit restricted-publication contract before it can be described as private to those recipients.
-- Contract proposal: class-wide assignment captures eligible current enrollments at assignment time; later joiners require explicit inclusion. Version replacement must not silently change an existing assignment. Specify optional due dates/timezone, future-enrollment handling, cancellation/withdrawal, historical access and any self-reported completion before implementing them. Resource opening or a learner's Done action is not mastery, submission or teacher assessment evidence.
+- Accepted implementation contract: class-wide assignment captures eligible current enrollments at assignment time; later joiners require explicit inclusion. Version replacement must not silently change an existing assignment. Specify optional due dates/timezone, future-enrollment handling, cancellation/withdrawal, historical access and any self-reported completion before implementing them. Resource opening or a learner's Done action is not mastery, submission or teacher assessment evidence.
 - Require idempotent retries, concurrency/version guards, immutable audit, clear draft/published/assigned/canceled states and a teacher-visible recipient receipt. Exercise publish → assign → intended student My work → open/download → teacher receipt → cancellation, plus excluded-recipient denial. Preserve the original resource and existing publication history.
 - Separate clean Physics-only demonstration use from dedicated multi-subject QA. Either create a normal-use identity through supported provisioning or migrate the English QA identity/CI configuration before ending the old grants; no removal of designated fixtures as a shortcut.
 - This brings forward only the resource-assignment subset of S37. Assessment builders, intervention recommendations and general notifications remain in their owning sprints; no unimplemented bell, due-date automation or bulk assessment control.
+
+[B.8 implementation and exact contract](resource-assignments.md): published teacher/platform materials, 50-row pages, maximum 500 recipients, class snapshot/selected enrollment IDs, idempotent request UUID, pinned source, protected open and reasoned cancellation. Due dates, reminders and completion remain unimplemented. The normal Physics-only demonstration identity is still open: read-only inspection finds only two existing active teacher profiles, both used by multi-subject QA. A normal-use identity must be chosen and provisioned through the supported account/invitation flow; no QA grant or credential is changed by this slice.
 
 ## B.9 — Shared Forest staff layout and prototype
 

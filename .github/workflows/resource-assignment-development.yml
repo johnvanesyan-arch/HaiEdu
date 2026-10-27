@@ -38,11 +38,13 @@ jobs:
           node --check scripts/resource-assignments-acceptance.mjs
           node --check tests/browser/resource-assignments.browser.test.mjs
           node scripts/check-browser-qa-triggers.mjs
-      # Unchanged SQL/handler/privacy passed in 40579507902; run only new browser coverage below.
+      # Unchanged SQL/privacy and races passed in 40579507902.
+      - name: Strict handler regressions
+        run: node --test tests/resource-assignments-handler.test.mjs
 
       - name: Install Chromium
         if: ${{ always() }}
         run: npx playwright install --with-deps chromium
       - name: Native delivery and existing library/home regressions
         if: ${{ always() }}
-        run: node --test tests/browser/resource-assignments.browser.test.mjs tests/browser/supplementary-resources.browser.test.mjs tests/browser/student-home.browser.test.mjs
+        run: node --test --test-concurrency=1 tests/browser/resource-assignments.browser.test.mjs

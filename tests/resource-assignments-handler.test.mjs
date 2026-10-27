@@ -35,6 +35,6 @@ test('strict request envelope, bounded body, expired sessions and hidden interna
  const f=await fixture();t.after(()=>f.db.close());
  assert.equal((await f.handleAssignments(new Request('https://fixture.invalid',{method:'GET'}))).status,405);
  assert.equal((await f.handleAssignments(new Request('https://fixture.invalid',{method:'POST',body:'{}'}))).status,401);
- for(const [action,payload,ctx] of [['inbox',{actorId:id(10)},{}],['inbox',{}, {actorId:id(10)}],['cancel',{id:id(9),revision:1,reason:''},context(0,true)],['assign',{materialId:id(1),enrollmentIds:[]},context(0,true)],['preview',{materialId:id(1),search:'x'.repeat(33000)},context(0,true)]])assert.equal((await request(f,action,payload,20,ctx)).status,400);
+ for(const [action,payload,ctx] of [['constructor',{},{}],['__proto__',{},{}],['inbox',{actorId:id(10)},{}],['inbox',{}, {actorId:id(10)}],['cancel',{id:id(9),revision:1,reason:''},context(0,true)],['assign',{materialId:id(1),enrollmentIds:[]},context(0,true)],['preview',{materialId:id(1),search:'x'.repeat(33000)},context(0,true)]])assert.equal((await request(f,action,payload,20,ctx)).status,400);
  const rpc=f.admin.rpc.bind(f.admin);f.admin.rpc=async(name,args)=>name==='service_resource_assignments'?{error:{message:'private internal database details'}}:rpc(name,args);const r=await request(f,'inbox',{},10);assert.equal(r.status,503);assert.doesNotMatch(await r.text(),/private internal/);
 });

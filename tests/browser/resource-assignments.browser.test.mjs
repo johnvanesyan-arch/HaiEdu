@@ -91,7 +91,7 @@ test('late preview cannot repopulate a different class; account change clears re
 });
 for(const width of [360,768,1280])test('assignment controls remain usable at '+width+'px and 200% text',async t=>{
  const f=await fixture();t.after(()=>f.db.close());await addLearner(f.db);await published(f.db);
- const {page:p,errors}=await surface(t,f,{width});await compose(p);await p.locator('[name=assignmentAudience][value=selected]').check();await p.locator('[data-recipient-search]').fill('Synthetic');
+ const {page:p,errors}=await surface(t,f,{width});await compose(p);await p.locator('[name=assignmentAudience][value=selected]').check();await p.locator('[data-recipient-search]').fill('learner 12');
  await p.waitForFunction(()=>document.querySelectorAll('[data-recipient]').length===1);
  await p.locator('[data-recipient]').focus();await p.keyboard.press('Space');assert.match(await p.locator('[data-recipient-summary]').innerText(),/1/);
  await p.addStyleTag({content:'html{font-size:200%}'});
