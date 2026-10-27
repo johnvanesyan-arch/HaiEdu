@@ -2,7 +2,7 @@
 
 ## Resource assignments — 16.5B.8
 
-Implementation candidate; required CI and production acceptance are recorded in [resource assignments](resource-assignments.md). This shared core endpoint does not alter assessments, bank approvals or publication authority.
+Runtime deployed; required CI passed and live production acceptance is pending, recorded in [resource assignments](resource-assignments.md). This shared core endpoint does not alter assessments, bank approvals or publication authority.
 
 `POST /functions/v1/manage-resource-assignments` accepts JSON `{action, context, payload}` under the verified live user session. The request body is bounded to 32 KiB. Actor IDs and session IDs never come from client JSON. Every action repeats current role/context/session checks in the service-only RPC.
 
