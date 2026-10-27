@@ -1,4 +1,5 @@
 import {
+  AcademicContextDenied,
   authorizeTeacherAcademicRows,
   resolveTeacherAcademicContextsBatch,
   type TeacherAcademicSelection,
@@ -55,6 +56,8 @@ export async function getInstitutionalTeacherDashboard(
   teacherId: string,
   displayName: string,
   requestedSelection: TeacherAcademicSelection | null = null,
+  requestedClassId: string | null = null,
+  requestedAssignmentId: string | null = null,
 ) {
   const now = Date.now();
   const today = new Date(now).toISOString().slice(0, 10);
@@ -78,7 +81,12 @@ export async function getInstitutionalTeacherDashboard(
       .select("id,school_id,label,starts_on,ends_on,status")
       .in("school_id", schoolIds),
     admin.from("schools").select("id,name").in("id", schoolIds),
-    rowsByIds(admin,"teacher_assignments","id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from,valid_to","teacher_membership_id",membershipIds,q=>q.in("status",["active","ended"])),
+    rowsByIds(admin,"teacher_assignments","id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from,valid_to","teacher_membership_id",membershipIds,q=>{
+      let scoped=q.in("status",["active","ended"]);
+      if(requestedClassId)scoped=scoped.eq("class_id",requestedClassId);
+      if(requestedClassId && (requestedAssignmentId || requestedSelection))scoped=scoped.eq("id",requestedAssignmentId??requestedSelection!.assignmentId);
+      return scoped;
+    }),
     admin.from("profiles").select("id,role,account_status").eq("id",teacherId).maybeSingle(),
   ]);
   if(profileResult.error || !profileResult.data)throw new Error("academic_context_unavailable");
@@ -86,7 +94,10 @@ export async function getInstitutionalTeacherDashboard(
   const grants = requireRows(grantsResult).filter((grant) => activeAt(grant, now));
   const years = requireRows(yearsResult);
   const schools = requireRows(schoolsResult);
-  const assignments = requireRows(assignmentsResult).filter((assignment) => activeAt(assignment, now) || (assignment.status === "ended" && Date.parse(assignment.valid_from) <= now));
+  let assignments = requireRows(assignmentsResult).filter((assignment) => activeAt(assignment, now) || (assignment.status === "ended" && Date.parse(assignment.valid_from) <= now));
+  if(requestedClassId && !requestedSelection && !requestedAssignmentId) {
+    assignments=assignments.sort((a,b)=>Number(activeAt(b,now))-Number(activeAt(a,now)) || Date.parse(b.valid_from)-Date.parse(a.valid_from)).slice(0,1);
+  }
   const subjectIds = [...new Set(grants.map((grant) => grant.subject_id))];
   const classIds = [...new Set(assignments.map((assignment) => assignment.class_id))];
 
@@ -105,26 +116,17 @@ export async function getInstitutionalTeacherDashboard(
   const classes = requireRows(classesResult);
   const enrollments = requireRows(enrollmentsResult).filter((enrollment) => activeAt(enrollment, now) || (enrollment.status === "ended" && Date.parse(enrollment.valid_from) <= now));
   const studentIds = [...new Set(enrollments.map((enrollment) => enrollment.student_id))];
-  const studentMemberships = studentIds.length ? requireRows(await rowsByIds(admin,"institutional_memberships","id,person_id,school_id,status,valid_from,valid_to","person_id",studentIds,q=>q.eq("role","student"))) : [];
-  const studentProfiles = studentIds.length
-    ? requireRows(await rowsByIds(admin,"profiles","id,display_name,account_status,role","id",studentIds,q=>q.eq("role","student")))
-    : [];
   const gradeIds = [...new Set(programmes.map((programme) => programme.grade_id))];
-  const grades = gradeIds.length
-    ? requireRows(await admin.from("grades").select("id,grade_number,label_hy").in("id", gradeIds))
-    : [];
   const programmeIds = [...new Set(assignments.map((assignment) => assignment.subject_program_id))];
-  const releases = programmeIds.length
-    ? requireRows(await admin.from("curriculum_releases")
-      .select("id,subject_program_id,status,release_number,effective_from,effective_to,activated_at,created_at")
-      .in("subject_program_id", programmeIds).in("status", ["pilot", "production","retired"]))
-    : [];
-  const releaseIds = releases.map((release) => release.id);
-  const units = programmeIds.length
-    ? requireRows(await admin.from("units")
-      .select("id,subject_program_id,code,title_hy,sequence_order,status")
-      .in("subject_program_id", programmeIds))
-    : [];
+  const [studentMembershipResult,studentProfileResult,gradeResult,releaseResult,unitResult]=await Promise.all([
+    studentIds.length ? rowsByIds(admin,"institutional_memberships","id,person_id,school_id,status,valid_from,valid_to","person_id",studentIds,q=>q.eq("role","student")) : {data:[]},
+    studentIds.length ? rowsByIds(admin,"profiles","id,display_name,account_status,role","id",studentIds,q=>q.eq("role","student")) : {data:[]},
+    gradeIds.length ? admin.from("grades").select("id,grade_number,label_hy").in("id",gradeIds) : {data:[]},
+    programmeIds.length ? admin.from("curriculum_releases").select("id,subject_program_id,status,release_number,effective_from,effective_to,activated_at,created_at").in("subject_program_id",programmeIds).in("status",["pilot","production","retired"]) : {data:[]},
+    programmeIds.length ? admin.from("units").select("id,subject_program_id,code,title_hy,sequence_order,status").in("subject_program_id",programmeIds) : {data:[]},
+  ]);
+  const studentMemberships=requireRows(studentMembershipResult),studentProfiles=requireRows(studentProfileResult),grades=requireRows(gradeResult),releases=requireRows(releaseResult),units=requireRows(unitResult);
+  const releaseIds=releases.map(release=>release.id);
   const releaseUnits = releaseIds.length
     ? requireRows(await admin.from("curriculum_release_units")
       .select("curriculum_release_id,unit_id,unit_code_snapshot,title_hy_snapshot,sequence_order_snapshot")
@@ -266,6 +268,7 @@ export async function getInstitutionalTeacherDashboard(
   });
   const currentOptions=institutionalOptions.filter(option=>finalMemberships.some(member=>member.id===option.teacherMembershipId && member.school_id===option.schoolId) &&
     finalGrants.filter(grant=>grant.teacher_membership_id===option.teacherMembershipId && grant.school_id===option.schoolId && grant.subject_id===programmeById.get(option.subjectProgramId)?.subject_id).length===1);
+  if (requestedClassId && !classPayload.some(klass=>klass.id===requestedClassId)) throw new AcademicContextDenied();
   if (requestedSelection && !classPayload.some(klass=>klass.assignmentId===requestedSelection.assignmentId)) throw new Error("academic_context_unavailable");
   const selectedClass = requestedSelection
     ? classPayload.find((klass) => klass.assignmentId === requestedSelection.assignmentId)

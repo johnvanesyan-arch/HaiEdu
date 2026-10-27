@@ -10,8 +10,48 @@ const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SU
 const $ = (id) => document.getElementById(id);
 
 let dashboard = null;
+let actorId = null;
+let directoryPages = {};
+let directoryRequestVersion = 0;
+let invitationRequestVersion = 0;
+let archiveSearchTimer;
+let retryClass=()=>{};
+const pendingReads = new Map();
+function readOnce(fn,body) {
+  const key=JSON.stringify([actorId,dashboardLoadVersion,fn,body]);
+  if (!pendingReads.has(key)) pendingReads.set(key, supabase.functions.invoke(fn,{body})
+    .catch(()=>({error:new Error("dashboard_read_failed")})).finally(()=>pendingReads.delete(key)));
+  return pendingReads.get(key);
+}
+const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
+function clearDetail() {
+  institutionalUnitLoadVersion++; invitationRequestVersion++;
+  disposeWriting(); disposeWriting=()=>{}; closeDrawer();
+  for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard"]) $(id)?.classList.add("hidden");
+}
+function directoryKey(archive) { return archive ? "archive" : "active"; }
+async function loadDirectory(archive=false,{more=false,search=""}={}) {
+  if (!dashboard?.directoryMode) return;
+  const key=directoryKey(archive),previous=directoryPages[key];
+  const request=++directoryRequestVersion, version=dashboardLoadVersion;
+  const offset=more ? previous?.nextOffset??0 : 0;
+  const message=$(archive?"archiveLoadMessage":"classesLoadMessage");
+  message.textContent="Դասարանները բեռնվում են…";
+  const {data,error}=await dashboardRead({readMode:"directory",archive,offset,search});
+  if(request!==directoryRequestVersion || version!==dashboardLoadVersion || !dashboard)return;
+  if(error||!data?.directory) {message.textContent="Դասարանները չբեռնվեցին։ Փորձեք կրկին։";return;}
+  const prior=more ? previous?.items??[] : [];
+  directoryPages[key]={...data.directory,items:[...prior,...data.classes],nextOffset:offset+data.classes.length};
+  dashboard.classes=[...dashboard.classes.filter(c=>c.isActive===archive),...directoryPages[key].items];
+  dashboard.institutionalOptions=data.institutionalOptions;
+  dashboard.directory=data.directory;
+  message.textContent="";
+  renderClassList();
+}
+
 let disposeWriting = () => {};
 let selectedClassId = null;
+let selectedAssignmentId=null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
@@ -76,10 +116,13 @@ function renderTeacherView(view = navigationSelection().view) {
 }
 
 function navigateTeacherView(view, push = true) {
+  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+  clearDetail();
   const next = teacherViewUrl(view);
   const current = `${window.location.pathname}${window.location.search}`;
   if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
   renderTeacherView(view);
+  if(dashboard?.directoryMode && ["classes","archive"].includes(view) && !directoryPages[directoryKey(view==="archive")]) void loadDirectory(view==="archive");
 }
 
 function syncNavigation(klass, push = false) {
@@ -206,8 +249,11 @@ async function signOut() {
 
 async function loadDashboard(sessionOverride = null) {
   const version = ++dashboardLoadVersion;
-  closeDrawer();
+  clearDetail();
+  directoryRequestVersion++;
+  directoryPages={};
   $("dashboardPanel").classList.add("hidden");
+  $("teacherLoading")?.classList.remove("hidden");
   let sessionData;
   try {
     let sessionError = null;
@@ -238,24 +284,32 @@ async function loadDashboard(sessionOverride = null) {
     }
   } catch {
     if (version !== dashboardLoadVersion) return;
+    $("teacherLoading")?.classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     setMessage("authMessage", "Չհաջողվեց ստուգել հաշվի դերը։ Փորձեք կրկին։", true);
     return;
   }
+  actorId=sessionData.session.user.id;
   setMessage("classMessage", "");
   const navigation = navigationSelection();
   if (navigation.classId) selectedClassId = navigation.classId;
-  const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", {
-    body: navigation.selection ? { selection: navigation.selection } : {},
-  });
+  selectedAssignmentId=navigation.selection?.assignmentId??null;
+  const body=navigation.view==="class" && (navigation.classId||navigation.selection)
+    ? {readMode:"class",...(navigation.classId?{classId:navigation.classId}:{}),...(navigation.selection?{selection:navigation.selection}:{})}
+    : {readMode:"directory",archive:navigation.view==="archive"};
+  const {data,error}=await dashboardRead(body);
   if (version !== dashboardLoadVersion) return;
   if (error) {
+    $("teacherLoading")?.classList.add("hidden");
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     return setMessage("authMessage", friendlyError(error, "Չհաջողվեց բեռնել ուսուցչի աշխատասեղանը։"), true);
   }
 
   dashboard = data;
+  dashboard.directoryMode=data.progressive===true||data.institutionalTeacher===true||Boolean(data.directory);
+  $("teacherLoading")?.classList.add("hidden");
+  if(data.directory)directoryPages[directoryKey(data.directory.archive)]={...data.directory,items:data.classes,nextOffset:data.classes.length};
   $("authPanel").classList.add("hidden");
   $("dashboardPanel").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
@@ -268,9 +322,11 @@ async function loadDashboard(sessionOverride = null) {
   $("teacherEmail").value = sessionData.session?.user?.email ?? "";
 
   const classes = Array.isArray(data.classes) ? data.classes : [];
-  $("classCount").textContent = classes.filter((klass) => klass.isActive).length;
-  $("studentCount").textContent = data.totals?.students ?? 0;
-  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
+  $("classCount").textContent = data.directory?.activeCount ?? (institutional ? "—" : classes.filter(klass=>klass.isActive).length);
+  $("studentCount").textContent = dashboard.directoryMode ? "—" : data.totals?.students ?? 0;
+  $("supportCount").textContent = dashboard.directoryMode ? "—" : data.totals?.studentsNeedingSupport ?? 0;
+  $("studentCountScope").textContent=dashboard.directoryMode?"Տվյալները՝ դասարանի էջում":"բոլոր դասարաններում";
+  $("supportCountScope").textContent=dashboard.directoryMode?"Տվյալները՝ դասարանի էջում":"աջակցության կարիք ունեցող աշակերտ";
 
   renderClassList();
   const selected = classes.find((klass) => klass.id === selectedClassId)
@@ -278,7 +334,8 @@ async function loadDashboard(sessionOverride = null) {
     ?? classes[0]
     ?? null;
   if (selected) {
-    selectClass(selected.id, { navigate: navigation.view === "class" });
+    if(navigation.view==="class") selectClass(selected.id, {navigate:true,detailReady:true});
+    else selectedClassId=selected.id;
   } else {
     selectedClassId = null;
     $("emptyClass").classList.toggle("hidden", institutional);
@@ -298,8 +355,8 @@ function createClassListButton(klass) {
   btn.innerHTML = `
     <strong>${escapeHtml(klass.name)}</strong>
     <span>${escapeHtml([klass.subjectName, klass.schoolName, klass.academicYear].filter(Boolean).join(" · "))}</span>
-    <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
-  btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true, navigate: true }));
+    <span class="class-list-meta"><span>${klass.studentCount==null?"Բացել դասարանը":klass.studentCount+" աշակերտ"}</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
+  btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true, navigate: true, assignmentId:klass.assignmentId }));
   return btn;
 }
 
@@ -319,8 +376,11 @@ function renderClassList() {
     searchText: klass => [klass.name, klass.academicYear, klass.subjectName, klass.schoolName].filter(Boolean).join(" "),
     renderItem: createClassListButton,
   });
-  $("activeClassCount").textContent = activeClasses.length;
-  $("archivedClassCount").textContent = archivedClasses.length;
+  if(dashboard.directoryMode)archivedList.querySelector(".archive-search")?.remove();
+  $("activeClassCount").textContent = dashboard.directory?.activeCount ?? activeClasses.length;
+  $("archivedClassCount").textContent = dashboard.directory?.archiveCount ?? archivedClasses.length;
+  for(const [key,id] of [["active","classesLoadMore"],["archive","archiveLoadMore"]]) $(id).classList.toggle("hidden",!directoryPages[key]?.hasMore);
+  $("serverArchiveSearch").classList.toggle("hidden",!dashboard.directoryMode);
 
   if (!activeClasses.length) {
     activeList.innerHTML = dashboard?.institutionalTeacher
@@ -333,7 +393,7 @@ function renderClassList() {
 }
 
 function selectedClass() {
-  return dashboard?.classes?.find((c) => c.id === selectedClassId) ?? null;
+  return dashboard?.classes?.find((c) => c.id === selectedClassId && (!selectedAssignmentId || c.assignmentId===selectedAssignmentId)) ?? null;
 }
 
 function setClassRenameEditor(kind, open) {
@@ -397,12 +457,13 @@ async function renameSelectedClass(event, institutional) {
   setMessage(messageId, "Դասարանի անունը փոխված է։");
 }
 
-function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
+async function selectClass(id, { pushNavigation = false, navigate = true, detailReady=false, selection=null, assignmentId=null } = {}) {
   if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
   institutionalUnitLoadVersion++;
   closeDrawer();
+  selectedAssignmentId=selection?.assignmentId??assignmentId??(selectedClassId===id?selectedAssignmentId:null);
   selectedClassId = id;
   rosterQuery = "";
   closeClassRenameEditors();
@@ -413,12 +474,38 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
   const klass = selectedClass();
   if (!klass) return;
   if (navigate) {
-    syncNavigation(klass, pushNavigation);
+    syncNavigation(selection ? {...klass,selectedUnit:selection} : klass, pushNavigation);
     renderTeacherView("class");
   } else if ($("classDetailBackLink")) {
     $("classDetailBackLink").href = klass.isActive ? "?view=classes" : "?view=archive";
   }
 
+  if (dashboard?.directoryMode && navigate && !detailReady) {
+    const request=institutionalUnitLoadVersion,version=dashboardLoadVersion;
+    directoryRequestVersion++;
+    invitationRequestVersion++;
+    const selectedAssignment=selectedAssignmentId;
+    retryClass=()=>selectClass(id,{selection,assignmentId:selectedAssignment});
+    $("institutionalClassView").classList.add("hidden");
+    $("emptyClass").classList.add("hidden");
+    $("institutionalEmpty").classList.add("hidden");
+    $("classView").classList.add("hidden");
+    $("classLoading").classList.remove("hidden");
+    $("classLoadingMessage").textContent="Դասարանի տվյալները բեռնվում են…";
+    $("teacherClassRetry").classList.add("hidden");
+    const {data,error}=await dashboardRead({readMode:"class",classId:id,...(selectedAssignment?{assignmentId:selectedAssignment}:{}),...(selection?{selection}:{})});
+    if(request!==institutionalUnitLoadVersion || version!==dashboardLoadVersion || selectedClassId!==id || !dashboard)return;
+    const detail=data?.classes?.find(c=>c.id===id && (!selectedAssignment || c.assignmentId===selectedAssignment));
+    if(error || !detail) {
+      $("classLoadingMessage").textContent="Դասարանի տվյալները հասանելի չեն։ Թարմացրեք կամ փորձեք կրկին։";
+      $("teacherClassRetry").classList.remove("hidden");
+      return;
+    }
+    dashboard.classes=dashboard.classes.map(c=>c.id===id && (!selectedAssignment || c.assignmentId===selectedAssignment)?detail:c);
+    if(!dashboard.institutionalTeacher)dashboard.skills=data.skills??[];
+    return selectClass(id,{navigate:true,detailReady:true});
+  }
+  $("classLoading")?.classList.add("hidden");
   if (dashboard?.institutionalTeacher) {
     $("emptyClass").classList.add("hidden");
     $("institutionalEmpty").classList.add("hidden");
@@ -488,7 +575,10 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
           isCurrent:()=>request===institutionalUnitLoadVersion && selectedClassId===klass.id && Boolean(dashboard)});
       };
     }
-    void loadInstitutionalStudentInvitations(klass);
+    $("institutionalPendingInvites").replaceChildren();
+    $("institutionalJoinCodeList").replaceChildren();
+    $("institutionalInvitationHistory").open=false;
+    $("institutionalCodeOption").open=false;
     return;
   }
 
@@ -537,38 +627,7 @@ async function changeInstitutionalUnit(event) {
     event.target.value = `${klass.selectedUnit.curriculumReleaseId}:${klass.selectedUnit.unitId}`;
     return;
   }
-  disposeWriting(); disposeWriting = () => {};
-  const request = ++institutionalUnitLoadVersion;
-  const dashboardVersion = dashboardLoadVersion;
-  closeDrawer();
-  $("rosterAnalyticsCard").classList.add("hidden");
-  $("matrixAnalyticsCard").classList.add("hidden");
-  event.target.disabled = true;
-  setMessage("institutionalClassMessage", "Գլխի տվյալները բեռնվում են…");
-  const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", {
-    body: { selection: {
-      assignmentId: klass.assignmentId,
-      curriculumReleaseId: option.curriculumReleaseId,
-      unitId: option.unitId,
-    } },
-  });
-  if (request !== institutionalUnitLoadVersion || dashboardVersion !== dashboardLoadVersion
-    || selectedClassId !== klass.id || !dashboard) return;
-  event.target.disabled = false;
-  if (error || !data?.institutionalTeacher) {
-    selectClass(klass.id);
-    setMessage("institutionalClassMessage", "Ընտրված գլխի տվյալները չբեռնվեցին։", true);
-    event.target.value = `${klass.selectedUnit?.curriculumReleaseId}:${klass.selectedUnit?.unitId}`;
-    return;
-  }
-  dashboard = data;
-  selectedClassId = klass.id;
-  $("classCount").textContent = data.totals?.classes ?? 0;
-  $("studentCount").textContent = data.totals?.students ?? 0;
-  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
-  renderClassList();
-  selectClass(selectedClassId, { pushNavigation: true });
-  setMessage("institutionalClassMessage", "");
+  return selectClass(klass.id,{pushNavigation:true,selection:{assignmentId:klass.assignmentId,curriculumReleaseId:option.curriculumReleaseId,unitId:option.unitId}});
 }
 
 function renderInstitutionalRoster(klass) {
@@ -631,17 +690,15 @@ function renderInstitutionalStudentInvitations(invitations) {
 async function loadInstitutionalStudentInvitations(klass = selectedClass()) {
   if (!klass || !dashboard?.institutionalTeacher) return;
   const requestedClassId = klass.id;
+  const request=++invitationRequestVersion,version=dashboardLoadVersion;
   const list = $("institutionalPendingInvites");
   const codeList = $("institutionalJoinCodeList");
   list.innerHTML = '<li class="institutional-invitation-empty">Բեռնվում է…</li>';
   codeList.innerHTML = '<li class="institutional-invitation-empty">Բեռնվում է…</li>';
-  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
-    body: {
-      action: "list", schoolId: klass.schoolId, classId: klass.id,
-      assignmentId: klass.assignmentId,
-    },
+  const {data,error}=await readOnce("manage-student-invitation",{
+    action:"list",schoolId:klass.schoolId,classId:klass.id,assignmentId:klass.assignmentId,
   });
-  if (selectedClassId !== requestedClassId) return;
+  if (selectedClassId !== requestedClassId || request!==invitationRequestVersion || version!==dashboardLoadVersion || !dashboard) return;
   if (error || !Array.isArray(data?.invitations) || !Array.isArray(data?.joinCodes)) {
     list.innerHTML = '<li class="institutional-invitation-empty">Հրավերների ցանկը հասանելի չէ։</li>';
     codeList.innerHTML = '<li class="institutional-invitation-empty">Կոդերի ցանկը հասանելի չէ։</li>';
@@ -1313,34 +1370,63 @@ document.addEventListener("keydown", (event) => {
   closeClassRenameEditors();
 });
 document.addEventListener("click", (event) => {
-  const link = event.target.closest('a[href^="?view="]');
+  const link = event.target.closest('a[href]');
   if (!link || !dashboard || event.defaultPrevented || event.button !== 0
     || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   const url = new URL(link.href, window.location.href);
+  if(url.origin!==window.location.origin || url.hash || !["/teacher","/teacher.html"].includes(url.pathname))return;
   const view = url.searchParams.get("view");
   if (!TEACHER_VIEWS.has(view) || view === "class") return;
   event.preventDefault();
   navigateTeacherView(view, true);
 });
 
-window.addEventListener("popstate", () => loadDashboard());
+window.addEventListener("popstate", () => {
+  const nav=navigationSelection();
+  if(!dashboard) return void loadDashboard();
+  if(nav.view==="class") {
+    if(!dashboard.classes.some(c=>c.id===nav.classId))return void loadDashboard();
+    void selectClass(nav.classId,{selection:nav.selection});
+  } else navigateTeacherView(nav.view,false);
+});
+$("teacherClassRetry").addEventListener("click",()=>retryClass());
+$("classesLoadMore").addEventListener("click",()=>loadDirectory(false,{more:true}));
+$("archiveLoadMore").addEventListener("click",()=>loadDirectory(true,{more:true,search:$("archiveServerQuery").value.trim()}));
+$("classesRetry").addEventListener("click",()=>loadDirectory(false));
+$("archiveRetry").addEventListener("click",()=>loadDirectory(true,{search:$("archiveServerQuery").value.trim()}));
+$("archiveServerQuery").addEventListener("input",()=>{
+  clearTimeout(archiveSearchTimer);directoryRequestVersion++;
+  archiveSearchTimer=setTimeout(()=>loadDirectory(true,{search:$("archiveServerQuery").value.trim()}),250);
+});
+for(const id of ["institutionalInvitationHistory","institutionalCodeOption"]) $(id).addEventListener("toggle",()=>{
+  if($(id).open)void loadInstitutionalStudentInvitations();
+});
 
 function bootstrapTeacherDashboard(session) {
   if (!session) return Promise.resolve();
-  if (dashboardBootstrapPromise) return dashboardBootstrapPromise;
-  dashboardBootstrapPromise = loadDashboard(session).finally(() => { dashboardBootstrapPromise = null; });
-  return dashboardBootstrapPromise;
+  if (dashboardBootstrapPromise && actorId===session.user.id) return dashboardBootstrapPromise;
+  actorId=session.user.id;
+  const promise=loadDashboard(session).finally(()=>{if(dashboardBootstrapPromise===promise)dashboardBootstrapPromise=null;});
+  dashboardBootstrapPromise=promise;
+  return promise;
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_OUT" || !session) {
+  if (event === "SIGNED_OUT" || !session || (actorId && actorId!==session.user?.id)) {
+    const switched=actorId && session?.user?.id && actorId!==session.user.id;
+    if(switched)window.history.replaceState({},"",teacherViewUrl("home"));
+    selectedClassId=null;selectedAssignmentId=null;
     dashboardLoadVersion++;
+    clearDetail(); directoryRequestVersion++; directoryPages={}; pendingReads.clear();
+    dashboardBootstrapPromise=null; actorId=null;
     disposeWriting(); disposeWriting = () => {};
     closeDrawer();
     dashboard = null;
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
+    $("teacherLoading")?.classList.add("hidden");
+    if(session?.user && event!=="SIGNED_OUT")void bootstrapTeacherDashboard(session);
     return;
   }
   if (event === "TOKEN_REFRESHED" && !$("dashboardPanel").classList.contains("hidden")) return;
