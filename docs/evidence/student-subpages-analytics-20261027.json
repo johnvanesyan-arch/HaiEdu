@@ -1,0 +1,61 @@
+{
+  "scope": "Sprint 14D authenticated production analytics acceptance",
+  "revision": "e7efc028d90e351270bec6606078b6867546db8c",
+  "target": "https://www.haiedu.am",
+  "startedAt": "2026-10-27T10:51:28.732Z",
+  "status": "passed",
+  "sprint14DGateClosed": true,
+  "checks": [
+    {
+      "label": "A: authenticate dedicated school administrator",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: authenticate dedicated school administrator",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own-school aggregate is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: other-school aggregate is denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: own-school aggregate is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: other-school aggregate is denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: authenticated production board loads real scoped analytics",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: authenticated production board loads real scoped analytics",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "finishedAt": "2026-10-27T10:51:57.131Z"
+}

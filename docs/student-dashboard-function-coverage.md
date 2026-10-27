@@ -69,3 +69,5 @@ No known capability is omitted or proposed for removal in this audit. John reque
 ## 16.5B.2 presentation trace — 27 October 2026
 
 All 45 rows and owning dependencies are retained. [Subpage audit](student-subpages-implementation.md) maps S01–S30 to shared and legacy course/assessment/progress/player, guides, writing/feedback and account/join/identity routes. New native-browser coverage lives in `tests/browser/student-utilities.browser.test.mjs` and the expanded `student-workspace.browser.test.mjs`; all existing response/audio/writing/role suites remain required. S31–S45 availability is unchanged. S45 remains a separate complete service slice.
+
+B.2 delivery is verified by [release evidence](evidence/student-subpages-release-20261027.json): 165 native-browser checks, preserved complete response/audio/writing/role suites, and exact-source read acceptance across existing Physics/English and staff analytics. Full 16.5C/four-subject acceptance remains open; no planned dependency is reclassified as implemented.

@@ -1,6 +1,6 @@
 # Sprint 16.5B.2 — Forest student subpages
 
-**27 October 2026 · Asia/Yerevan · Implementation complete; release checks pending.**
+**27 October 2026 · Asia/Yerevan · Delivered bounded slice; full dashboard acceptance remains open.**
 
 John requests the next course/assessment/progress redesign and explicitly includes all associated student subpages. The approved style guide and 45-entry capability map remain the contract. This shared-core presentation slice introduces no curriculum, content, backend, scoring, replay, entitlement or release-policy change.
 
@@ -29,7 +29,9 @@ The new CSS is scoped to `data-haiedu-student`. Static references cover styleshe
 - Native cloud Chromium preview uses actual browser modules with synthetic read/auth services, never production identities or content. Course, assessment, progress, guides, focused player, writing list, account, join and registration were checked at iframe widths 320/360/768/1280; no horizontal overflow or clipped action controls after stylesheet-order correction. These checks do not establish actual-device or full WCAG certification.
 - Native CI expands existing complete-route coverage to 320 px, adds guide/writing/rubric/teacher-feedback and focused-player checks, and adds shared identity/account/join checks plus staff-theme/signout preservation. Existing audio, response, draft, concurrency and role suites remain required.
 - [Course screenshot](evidence/haiedu-student-course-20261027.jpg) shows synthetic data, not real learner records.
-- Required CI, main release and authenticated exact-source production acceptance are pending; the final delivery record must identify the commits/runs. Previously verified, unchanged persistent Vercel blocking configuration is reused from reliability stage 1; no configuration change or fresh management readback is claimed.
+- Required CI passes on PR run [40488420737](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40488420737) and main run [40488925868](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40488925868); all five jobs succeed, with 1,456 unit/integration and 165 native-browser checks. The initial browser run caught a tablet focus-navigation specificity conflict; the desktop selector now excludes active generic players, and regression also verifies mobile suppression and width.
+- Implementation merge `e7efc028d90e351270bec6606078b6867546db8c` is served on production, with all 18 changed frontend assets byte-matched. Authenticated exact-source acceptance passes 324 Physics I–VI, 154 English/preserved programme and 10 staff-analytics checks. Redacted results and queue recovery are bound in the [release record](evidence/student-subpages-release-20261027.json). The first English attempt stopped at 80/81 when a scope-denial request returned status 0 without an HTTP response; the unchanged second attempt passes all 154. These are read flows, not new learner attempt/Unit3 action acceptance.
+- Previously verified, unchanged persistent Vercel blocking configuration is reused from reliability stage 1; no configuration change or fresh management readback is claimed.
 
 ## Remaining work
 
