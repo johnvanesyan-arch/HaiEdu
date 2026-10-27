@@ -24,7 +24,7 @@ async function browserContext(actor,materialId=null){
  await bc.route('**/functions/v1/**',route=>{
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={};try{body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
-  const read=['get-profile','get-student-classes','get-student-dashboard'].includes(fn)
+  const read=['get-student-classes','get-student-dashboard'].includes(fn)
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
   if(read)return route.continue();
@@ -63,6 +63,13 @@ const pdf=new TextEncoder().encode('%PDF-1.4\n1 0 obj\n<< /Type /Catalog /Pages 
 try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
+ report.frontend=[];
+ for(const path of ['resource-assignments.mjs','resource-assignments.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js']){
+  const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
+  const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
+  check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));
+  report.frontend.push({path,sha256:digest(actual)});
+ }
  browser=await chromium.launch({headless:true});
  report.isolationBefore=await runIsolation({fixture,credentials,url,key,revision:report.revision});check('existing tenant isolation before new resources',report.isolationBefore.status==='passed');
  for(const side of sides)for(const role of ['teacher','student']){const actor=side+'_'+role,r=await request(null,'/auth/v1/token?grant_type=password',credentials[actor]);check(actor+': fixture login',r.status===200&&r.data?.user?.id===fixture[side][role+'Id'],r.status);sessions.set(actor,r.data);
@@ -90,6 +97,10 @@ try{
   const inbox=await assignment(student,'inbox',{},{});check(side+': My work API contains both exact assignments', [classAssignment.id,selected.id].every(id=>inbox.assignments.some(a=>a.id===id)));
   await assignment(other,'open',{id:selected.id},selectors.get(other),r=>r.status===404,side+': foreign learner cannot open selected assignment');
   await learnerWork(student,[classAssignment.id,selected.id]);
+  for(const account of [actor,student]){
+   const privacy=await request(account,'/functions/v1/get-my-privacy',{});
+   check(account+': role-specific assignment inventory',privacy.status===200&&Number(privacy.data?.dataInventory?.[account===actor?'materialAssignmentsSent':'materialAssignmentsReceived'])>=2);
+  }
   await assignment(actor,'cancel',{id:classAssignment.id,revision:1,reason:'Synthetic cancellation verification'});assigned.find(x=>x.id===classAssignment.id).canceled=true;
   await assignment(student,'open',{id:classAssignment.id},selectors.get(student),r=>r.status===404,side+': canceled class assignment cannot open');
   const nd={...d,format:'link',url:'https://example.org/'};const old=m;m=(await resource(actor,'revise',{...version(m),definition:nd,reason:'Synthetic version replacement verification'})).material;
@@ -119,5 +130,5 @@ finally{
  report.assignmentCleanup=assigned.map(({id,canceled})=>({id,canceled}));
  for(const entry of created.filter(e=>!e.withdrawn))try{check('cleanup ownership is this run only',!originals.has(entry.resourceId));const m=(await all(entry.actor)).find(m=>m.resourceId===entry.resourceId);if(m&&m.status!=='withdrawn')await resource(entry.actor,'withdraw',{...version(m),reason:'Cleanup this run synthetic acceptance resource'});entry.withdrawn=true;}catch{report.status='failed';}
  for(const [actor]of sessions)await request(actor,'/auth/v1/logout?scope=local',{});
- report.cleanup=created.map(({resourceId,withdrawn})=>({resourceId,withdrawn}));report.completedAt=new Date().toISOString();await mkdir('qa-results',{recursive:true});await writeFile('qa-results/resource-assignments.json',JSON.stringify(report,null,2),{mode:0o600});console.log(`Resource assignment acceptance: ${report.status}; ${report.checks.filter(x=>x.status==='passed').length}/${report.checks.length} checks.`);if(report.status!=='passed')process.exitCode=1;
+ report.cleanup=created.map(({resourceId,withdrawn})=>({resourceId,withdrawn}));report.completedAt=new Date().toISOString();await mkdir('qa-results',{recursive:true});await writeFile('qa-results/resource-assignments.json',JSON.stringify(report,null,2),{mode:0o600});console.log(`Resource assignment acceptance: ${report.status}; ${report.checks.filter(x=>x.status==='passed').length}/${report.checks.length} checks.`);console.log('RESOURCE_ASSIGNMENT_EVIDENCE='+JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;
 }
