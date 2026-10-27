@@ -255,6 +255,8 @@ async function loadDashboard(sessionOverride = null) {
   directoryPages={};
   $("dashboardPanel").classList.add("hidden");
   $("teacherLoading")?.classList.remove("hidden");
+  $("teacherDashboardRetry")?.classList.add("hidden");
+  setMessage("authMessage", "");
   let sessionData;
   try {
     let sessionError = null;
@@ -262,6 +264,7 @@ async function loadDashboard(sessionOverride = null) {
     else ({ data: sessionData, error: sessionError } = await supabase.auth.getSession());
     if (version !== dashboardLoadVersion) return;
     if (sessionError || !sessionData?.session?.user) {
+      $("teacherLoading")?.classList.add("hidden");
       $("authPanel").classList.remove("hidden");
       return;
     }
@@ -275,6 +278,7 @@ async function loadDashboard(sessionOverride = null) {
       return;
     }
     if (profile.role !== "teacher") {
+      $("teacherLoading")?.classList.add("hidden");
       const destination = roleDestination(profile.role);
       if (destination) window.location.replace(destination);
       else {
@@ -288,6 +292,7 @@ async function loadDashboard(sessionOverride = null) {
     $("teacherLoading")?.classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     setMessage("authMessage", "Չհաջողվեց ստուգել հաշվի դերը։ Փորձեք կրկին։", true);
+    $("teacherDashboardRetry")?.classList.remove("hidden");
     return;
   }
   actorId=sessionData.session.user.id;
@@ -304,6 +309,7 @@ async function loadDashboard(sessionOverride = null) {
     $("teacherLoading")?.classList.add("hidden");
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
+    $("teacherDashboardRetry")?.classList.remove("hidden");
     return setMessage("authMessage", friendlyError(error, "Չհաջողվեց բեռնել ուսուցչի աշխատասեղանը։"), true);
   }
 
@@ -1392,6 +1398,7 @@ window.addEventListener("popstate", () => {
   } else navigateTeacherView(nav.view,false);
 });
 $("teacherClassRetry").addEventListener("click",()=>retryClass());
+$("teacherDashboardRetry").addEventListener("click",()=>loadDashboard());
 $("classesLoadMore").addEventListener("click",()=>loadDirectory(false,{more:true}));
 $("archiveLoadMore").addEventListener("click",()=>loadDirectory(true,{more:true,search:$("archiveServerQuery").value.trim()}));
 $("classesRetry").addEventListener("click",()=>loadDirectory(false));

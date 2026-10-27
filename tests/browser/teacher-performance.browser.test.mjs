@@ -28,3 +28,8 @@ test('leaving an archive search cancels its debounce and ignores an already pend
  await nav(page,'archive');await page.evaluate(()=>window.__teacherFixture.holds.push('directory:true'));await page.locator('#archiveServerQuery').fill('Արխիվ 058');await expect.poll(async()=>(await calls(page)).some(r=>r.body.search==='Արխիվ 058')).toBe(true);
  await nav(page,'classes');await page.locator('#classList .teacher-class-button').nth(1).click();await expect(page.locator('#institutionalSelectedName')).toHaveText('Բ Դասարան');await page.evaluate(()=>window.__teacherFixture.release('directory:true'));await expect(page.locator('#institutionalSelectedName')).toHaveText('Բ Դասարան');await expect(page.locator('#rosterAnalyticsCard')).toBeVisible();assert.deepEqual(errors,[]);
 });
+
+test('initial directory failure offers a retry without another sign-in',async t=>{
+ const {page,errors}=await fixture(browser,t,{initialFailure:true});await expect(page.locator('#teacherLoading')).toBeHidden();await expect(page.locator('#dashboardPanel')).toBeHidden();
+ await page.evaluate(()=>window.__teacherFixture.fail=[]);await page.locator('#teacherDashboardRetry').click();await expect(page.locator('#dashboardPanel')).toBeVisible();await expect(page.locator('#teacherDashboardRetry')).toBeHidden();assert.equal((await calls(page)).length,2);assert.deepEqual(errors,[]);
+});
