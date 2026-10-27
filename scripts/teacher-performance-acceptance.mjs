@@ -1,7 +1,10 @@
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
-import {chromium,expect} from '@playwright/test';
+import {chromium,expect as baseExpect} from '@playwright/test';
 import {waitForRelease} from './wait-for-production-release.mjs';
 const phase=process.env.TEACHER_PERF_PHASE??'baseline',site='https://www.haiedu.am';
+// Assertion timeouts are independent of page.setDefaultTimeout. The old page
+// routinely takes longer than Playwright's default five seconds to become usable.
+const expect=baseExpect.configure({timeout:45000});
 const fixture=JSON.parse(process.env.QA_TENANT_FIXTURES_JSON??'{}');
 const config=await readFile(new URL('../web/config.js',import.meta.url),'utf8');
 const url=config.match(/export const SUPABASE_URL = "([^"]+)"/)?.[1],key=config.match(/export const SUPABASE_PUBLISHABLE_KEY = "([^"]+)"/)?.[1];
@@ -56,5 +59,5 @@ try{
  report.summary=[];
  for(const side of ['A','B'])for(const scenario of [...new Set(report.samples.map(s=>s.scenario))]){const rows=report.samples.filter(s=>s.side===side&&s.scenario===scenario);report.summary.push({side,scenario,n:rows.length,p50Ms:quantile(rows.map(s=>s.ms),.5),p95Ms:quantile(rows.map(s=>s.ms),.95),medianRequests:quantile(rows.map(s=>s.requestCount),.5),medianBytes:quantile(rows.map(s=>s.bytes),.5)});}
  report.status='passed';console.log(JSON.stringify(report.summary));
-}catch{report.status='failed';report.failedStage=stage;process.exitCode=1;console.error('Teacher performance acceptance failed at '+stage);}
+}catch(error){report.status='failed';report.failedStage=stage;report.errorName=error?.name;report.timeout=/timeout|timed out/i.test(error?.message??'');process.exitCode=1;console.error('Teacher performance acceptance failed at '+stage+' ('+report.errorName+', timeout='+report.timeout+')');}
 finally{for(const s of sessions)await fetch(url+'/auth/v1/logout?scope=local',{method:'POST',headers:{apikey:key,Authorization:'Bearer '+s.access_token}}).catch(()=>{});await browser?.close();report.finishedAt=new Date().toISOString();await save();}
