@@ -1,5 +1,7 @@
 # Learning API contract
 
+**2026-10-27 teacher UX clarification:** this repair changes presentation only. Supplementary-resource contexts and every write remain bound to the authenticated teacher’s active subject authorization and assignment, class/year, programme, release and unit. Dedicated multi-subject QA accounts legitimately return both subjects. Collapsed archives preserve existing restore/read actions; no general permanent-delete endpoint is added. [Delivery record](teacher-workspace-corrections.md).
+
 **Sprint 16.5B.4 — subject illustrations and Forest continuity delivered, 2026-10-27.** [PR313](https://github.com/johnvanesyan-arch/HaiEdu/pull/313) restores English/Physics art and adds Mathematics, Armenian, Chemistry, Geography, Biology and History symbols. Account loading is Forest from first paint; the public landing page also uses Forest/cream. Required PR/main CI passes all five jobs (**1,464 unit/integration tests; 177 native browser checks**). Production `5c0683a2d81f292ab371b3aceddb7e157eb19d8b` and all seven changed frontend files match; fresh English/preserved-programme reads pass **154/154**, staff analytics **10/10**. All 45 capability mappings and release gates remain; future symbols do not activate subjects. Final owner usability sign-off and full four-subject 16.5C remain open. [Delivery](student-visual-corrections.md) · [Evidence](evidence/student-visual-release-20261027.json).
 
 ## Supplementary materials — 16.5B.3

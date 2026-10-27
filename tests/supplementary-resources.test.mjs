@@ -65,3 +65,19 @@ test('resource URLs and PDF envelopes reject active/non-HTTPS and internal desti
  assert.equal(validResourcePdf(new TextEncoder().encode('<html>active</html>')),false);
  assert.equal(validResourcePdf(new TextEncoder().encode('%PDF-1.7\ntruncated')),false);
 });
+
+test('a second subject in the same school requires both the teacher assignment and subject grant',async t=>{
+ const db=await database();t.after(()=>db.close());
+ // Same-school second-subject assignment, deliberately without its subject grant.
+ await db.query('update classes set school_id=$1,academic_year_id=$2 where id=$3',[id(301),id(311),id(322)]);
+ await db.query('update teacher_assignments set school_id=$1,academic_year_id=$2,teacher_membership_id=$3 where id=$4',[id(301),id(311),id(341),id(352)]);
+ const second=context(2,true);
+ assert.equal((await call(db,'contexts')).contexts.some(c=>c.assignmentId===id(352)),false);
+ await assert.rejects(call(db,'create',{definition},{context:second}),/written_context_unavailable/);
+ await db.query("insert into teacher_subject_authorizations values($1,$2,$3,$4,'active','2020-01-01',null)",[id(363),id(301),id(341),id(102)]);
+ assert.equal((await call(db,'contexts')).contexts.some(c=>c.assignmentId===id(352)),true);
+ const m=(await call(db,'create',{definition},{context:second})).material;
+ await db.query("update teacher_subject_authorizations set status='ended' where id=$1",[id(363)]);
+ assert.equal((await call(db,'contexts')).contexts.some(c=>c.assignmentId===id(352)),false);
+ await assert.rejects(call(db,'get',{id:m.id},{context:second}),/written_context_unavailable/);
+});

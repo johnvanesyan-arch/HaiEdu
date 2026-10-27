@@ -7,11 +7,12 @@ async function fixture(t,{route='privacy.html',role='student',width=360,held=fal
  const context=await browser.newContext({viewport:{width,height:1000}});t.after(()=>context.close());const page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(({role,register,held,offline})=>{
-  let session=register?null:{user:{id:'synthetic-student'}};const listeners=[];window.__calls=[];
+  let session=register?null:{user:{id:'synthetic-student'}};const listeners=[];window.__calls=[];let currentRole=role;
+  window.__switchAccount=()=>{currentRole='teacher';session={user:{id:'synthetic-teacher'}};listeners.forEach(fn=>fn('SIGNED_IN',session));};
   let release;const gate=new Promise(resolve=>{release=resolve;});window.__releasePrivacy=release;
   window.__signout=()=>{session=null;listeners.forEach(fn=>fn('SIGNED_OUT',null));};
   window.__client={auth:{getSession:async()=>({data:{session}}),getUser:async()=>({data:{user:session?.user}}),onAuthStateChange:fn=>listeners.push(fn)},functions:{invoke:async(name,{body})=>{
-   window.__calls.push({name,body});if(name==='get-my-privacy'){if(held)await gate;if(offline)throw Error('Synthetic service unavailable');return {data:{account:{role,status:'active',email:'learner@example.invalid',displayName:'Փորձնական աշակերտ'},preferences:{},dataInventory:{learningSessions:4}}};}
+   window.__calls.push({name,body});if(name==='get-my-privacy'){const requestedRole=currentRole;if(held&&requestedRole===role)await gate;if(offline)throw Error('Synthetic service unavailable');return {data:{account:{role:requestedRole,status:'active',email:'learner@example.invalid',displayName:'Փորձնական աշակերտ'},preferences:{},dataInventory:{learningSessions:4}}};}
    throw Error('Unexpected mutation '+name);
   }}};
  },{role,held,offline,register:route.includes('account-access')});
@@ -38,19 +39,32 @@ test('shared account keeps staff presentation and removes learner theme on signo
  assert.deepEqual([...staff.errors,...learner.errors],[]);
 });
 
-for(const role of ['student','teacher'])test(`account first paint stays Forest while ${role} profile is delayed`,async t=>{
+for(const role of ['student','teacher','school_admin','content_admin','admin'])test(`account starts neutral and resolves the ${role} theme without the wrong role flash`,async t=>{
  const {page,errors}=await fixture(t,{role,held:true});
  await page.waitForFunction(()=>window.__calls.length>0);
  const measure=()=>page.evaluate(()=>({canvas:getComputedStyle(document.body).backgroundColor,header:getComputedStyle(document.querySelector('.topbar')).backgroundColor,title:getComputedStyle(document.querySelector('h1')).fontSize}));
- const before=await measure();assert.ok(await page.locator('.topbar').evaluate(e=>e.getBoundingClientRect().height<420),'account loading header must not stretch a flex basis into a tall blank area');assert.equal(before.canvas,'rgb(245, 246, 239)');assert.equal(before.header,'rgb(230, 240, 230)');assert.equal(await page.locator('#content').isVisible(),false);
+ const before=await measure();assert.ok(await page.locator('.topbar').evaluate(e=>e.getBoundingClientRect().height<420),'account loading header must not stretch a flex basis into a tall blank area');assert.equal(before.canvas,'rgb(248, 250, 248)');assert.equal(before.header,'rgb(255, 255, 255)');assert.equal(await page.locator('#content').isVisible(),false);
  await page.evaluate(()=>window.__releasePrivacy());await page.locator('#content:not(.hidden)').waitFor();
- assert.deepEqual(await measure(),before);assert.equal(await page.locator('body[data-haiedu-student]').count(),role==='student'?1:0);
+ const after=await measure();if(role==='student')assert.equal(after.canvas,'rgb(245, 246, 239)');else assert.notEqual(after.canvas,'rgb(245, 246, 239)');assert.equal(await page.locator('body[data-haiedu-student]').count(),role==='student'?1:0);assert.equal(await page.locator('#accountHomeLink').getAttribute('href'),({student:'./index.html',teacher:'./teacher.html?view=home',school_admin:'./school-admin.html',content_admin:'./content.html',admin:'./admin.html'})[role]);
  assert.deepEqual(errors,[]);
 });
-test('account service failure and signout retain the static Forest loading surface',async t=>{
+test('account failure remains neutral and signout shows the public Forest gateway',async t=>{
  const {page,errors}=await fixture(t,{offline:true});await page.getByText('Synthetic service unavailable',{exact:true}).waitFor();
  assert.equal(await page.locator('#content').isVisible(),false);
- assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(245, 246, 239)');
+ assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(248, 250, 248)');
  await page.evaluate(()=>window.__signout());assert.equal(await page.locator('#signedOut').isVisible(),true);
  assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(245, 246, 239)');assert.deepEqual(errors,[]);
+});
+
+for(const action of ['signout','switchAccount'])test(`delayed account response cannot restore the previous role after ${action}`,async t=>{
+ const {page,errors}=await fixture(t,{held:true});await page.waitForFunction(()=>window.__calls.length>0);
+ await page.evaluate(action=>window['__'+action](),action);
+ if(action==='switchAccount')await page.locator('#content:not(.hidden)').waitFor();
+ await page.evaluate(()=>window.__releasePrivacy());
+ await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,0)));
+ assert.equal(await page.locator('body[data-haiedu-student]').count(),0);
+ assert.equal(await page.locator('#content').isVisible(),action==='switchAccount');
+ assert.equal(await page.locator('#signOutBtn').isVisible(),action==='switchAccount');
+ if(action==='switchAccount')assert.equal(await page.locator('#accountRole').textContent(),'Ուսուցիչ');
+ assert.deepEqual(errors,[]);
 });

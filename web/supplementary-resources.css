@@ -4,3 +4,5 @@
 /* Text enlargement must reflow the decorative header as well as the controls. */
 .resource-welcome>div:first-child{flex:1 1 28rem;min-width:0;overflow-wrap:anywhere}.resource-art{flex-wrap:wrap}.resource-art span{max-width:100%;overflow-wrap:anywhere}.resource-welcome{flex-wrap:wrap}
 @media(max-width:1000px){.resource-welcome-art{display:none}.resource-filter-grid,.resource-form-grid{grid-template-columns:1fr}.resource-search{align-items:stretch;flex-direction:column}}
+
+.resource-history{grid-column:1/-1;border:1px solid #ccd7e4;border-radius:14px;padding:16px;min-width:0}.resource-history>summary{cursor:pointer;font-weight:700;overflow-wrap:anywhere}.resource-history>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}.resource-history[open]>.resource-grid{margin-top:16px}

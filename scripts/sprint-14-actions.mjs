@@ -130,6 +130,15 @@ async function teacherUI(side, entry) {
   await expect(page.locator('#institutionalClassToggle')).toHaveText('Վերակտիվացնել դասարանը');
   entry.archived = true;
   check(`${side}: archive empty class through teacher UI`, true);
+  await page.locator('.hm-role-nav a[href$="view=archive"]').click();
+  await expect(page.locator('#archivedClassList .archive-group[open]')).toHaveCount(0);
+  await page.getByLabel('Որոնել արխիվում', {exact:true}).fill(renamed);
+  const archivedCard = page.locator('#archivedClassList .teacher-class-button').filter({hasText:renamed});
+  await expect(archivedCard).toHaveCount(1);
+  check(`${side}: archived class is searchable inside closed year groups`, true);
+  await archivedCard.click();
+  await expect(page.locator('#institutionalSelectedName')).toHaveText(renamed);
+  check(`${side}: archive search opens the exact run-created class`, true);
   await page.locator('#institutionalClassToggle').click();
   await expect(page.locator('#institutionalClassToggle')).toHaveText('Արխիվացնել դասարանը');
   entry.archived = false;
