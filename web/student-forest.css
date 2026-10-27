@@ -163,7 +163,7 @@ body[data-haiedu-student].amp-focused-task > main.shell { max-width: 61.25rem; m
   body[data-haiedu-student] .student-home-welcome { padding: 1.5rem; grid-template-columns: minmax(0,1fr) 9rem; }
 }
 @media (min-width:761px) {
-  body[data-haiedu-student]:not(.amp-focused-task) .amp-side-nav { display: flex; }
+  body[data-haiedu-student]:not(.amp-focused-task):not([data-student-player=active]) .amp-side-nav { display: flex; }
   body[data-haiedu-student] .amp-mobile-nav { display: none; }
 }
 @media (max-width:760px) {

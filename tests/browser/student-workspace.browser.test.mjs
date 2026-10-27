@@ -256,6 +256,9 @@ test('generic focused player retains readable rules and suppresses competing ove
  await page.locator('#learningPlayer form').waitFor();
  assert.equal(await page.locator('.student-course-hero').isVisible(),false);
  assert.equal(await page.locator('.amp-side-nav').isVisible(),false);
+ await page.setViewportSize({width:320,height:900});
+ assert.equal(await page.locator('.amp-mobile-nav').isVisible(),false);
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
  assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),'');
  await page.locator('#learningPlayer summary').focus();await page.keyboard.press('Enter');
  assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),null);
