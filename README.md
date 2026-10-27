@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform
 
-Teacher account/archive correction and the proposed cross-role design sequence: [delivery record](docs/teacher-workspace-corrections.md). Release verification is in progress.
+Teacher account/archive correction and the proposed cross-role design sequence: [delivery record](docs/teacher-workspace-corrections.md). Implementation released with 1,465 unit/integration, 185 native browser and 147 live staff checks. The final reflow correction retains required CI; the broader design and Physics-only demonstration-account separation remain follow-up work.
 
 **Sprint 16.5B.4 — subject illustrations and Forest continuity delivered, 2026-10-27.** [PR313](https://github.com/johnvanesyan-arch/HaiEdu/pull/313) restores English/Physics art and adds Mathematics, Armenian, Chemistry, Geography, Biology and History symbols. Account loading is Forest from first paint; the public landing page also uses Forest/cream. Required PR/main CI passes all five jobs (**1,464 unit/integration tests; 177 native browser checks**). Production `5c0683a2d81f292ab371b3aceddb7e157eb19d8b` and all seven changed frontend files match; fresh English/preserved-programme reads pass **154/154**, staff analytics **10/10**. All 45 capability mappings and release gates remain; future symbols do not activate subjects. Final owner usability sign-off and full four-subject 16.5C remain open. [Delivery](docs/student-visual-corrections.md) · [Evidence](docs/evidence/student-visual-release-20261027.json).
 

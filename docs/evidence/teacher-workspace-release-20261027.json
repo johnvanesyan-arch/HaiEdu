@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "slice": "16.5B.5",
+  "implementationPullRequest": 315,
+  "implementationCommit": "69a8ae3aaf6af70394395bed8588021ba64753f0",
+  "reviewedHead": "7820d44be6fa5e450b465c89c6f8e426bd7a1083",
+  "status": "bounded_fixes_delivered_full_teacher_redesign_proposed",
+  "requiredImplementationCi": {
+    "pullRequestRun": 40537485952,
+    "mainRun": 40538414159,
+    "unitIntegrationTests": 1465,
+    "nativeBrowserTests": 185,
+    "allFiveRequiredJobs": "success"
+  },
+  "productionImplementation": {
+    "expectedCommit": "69a8ae3aaf6af70394395bed8588021ba64753f0",
+    "stamp": {
+      "schemaVersion": 1,
+      "commit": "69a8ae3aaf6af70394395bed8588021ba64753f0"
+    },
+    "assets": [
+      {
+        "path": "privacy.js",
+        "bytes": 17257,
+        "sha256": "94fc95ef02b49083a85854c23fed26a99103336c7b0a6286035f88d2e673e5a2",
+        "matchesLocal": true
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "bytes": 27502,
+        "sha256": "694b53b9a120b34a5a0c0f36cba71eb947a52990b73935e9757d2d10265d722c",
+        "matchesLocal": true
+      },
+      {
+        "path": "teacher.html",
+        "bytes": 30851,
+        "sha256": "df0f9356d19d7d79f17af4380c7fcffc5083ccaf1ce419f9dd25765ae58c33d9",
+        "matchesLocal": true
+      },
+      {
+        "path": "teacher.css",
+        "bytes": 18995,
+        "sha256": "baaa1f87623820bdc5b0169cfc227dfd8f5f2acfbf0b8e58dfcaccee37c32698",
+        "matchesLocal": true
+      },
+      {
+        "path": "supplementary-resources.css",
+        "bytes": 6270,
+        "sha256": "afa4f73f36a7cc5ef8d467bb62b8b3170f5690317f237efb292473f555c99523",
+        "matchesLocal": true
+      },
+      {
+        "path": "school-admin.js",
+        "bytes": 41038,
+        "sha256": "a8ccd55df85fde04d111923453584fcccd7e1efa7a02b78ea2bdf2436888a9c3",
+        "matchesLocal": true
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 8244,
+        "sha256": "e60ecb9b790595b403db28d6719459dcc0f45224cbec1054b6a3cd89229b8473",
+        "matchesLocal": true
+      },
+      {
+        "path": "privacy.css",
+        "bytes": 2274,
+        "sha256": "093a47e8ad3c9fd2800b46df4656cc7857f0f56013bc4e8ca22f5bf2b3d416d1",
+        "matchesLocal": true
+      },
+      {
+        "path": "archive-browser.mjs",
+        "bytes": 2717,
+        "sha256": "f1f5fa59915e67423f17ba92dd3e8fedb6e955dd6a444cd7fc0238ea04994bea",
+        "matchesLocal": true
+      },
+      {
+        "path": "school-admin.css",
+        "bytes": 11238,
+        "sha256": "0bd7f59119dea513e6f075d01d8cea92b38b3093f4761bf09469cfcc57b8529c",
+        "matchesLocal": true
+      },
+      {
+        "path": "teacher.js",
+        "bytes": 74399,
+        "sha256": "bed51959b056730a97329c02c94ba98223e4ca65534070f3f2337413b1dd6b57",
+        "matchesLocal": true
+      }
+    ]
+  },
+  "vercel": {
+    "state": "success",
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/GmQoKjDNjnK3xPZQyTnPkSUtSeb7",
+    "persistentBlockingControl": "reuse independently verified configuration in docs/reliability-stage1.md; no current management settings read or change"
+  },
+  "liveStaffAcceptance": {
+    "run": 40538414225,
+    "passed": 147,
+    "failed": 0,
+    "receipt": "teacher-workspace-actions-20261027.json",
+    "cleanup": {
+      "classes": [
+        {
+          "id": "7246fae9-b88c-4433-a54a-824d9b314819",
+          "archived": true
+        },
+        {
+          "id": "f242cec9-b007-4c02-9de7-4fbd2f19ed1f",
+          "archived": true
+        },
+        {
+          "id": "8d564dc5-3f2a-400e-9e10-e5510d27d76b",
+          "archived": true
+        },
+        {
+          "id": "1c587ae8-025a-48f2-90e8-2f3050fc7be4",
+          "archived": true
+        }
+      ],
+      "memberships": [
+        {
+          "id": "e7a164ef-902d-4b23-af01-6c57009ed7a7",
+          "ended": true
+        },
+        {
+          "id": "3baa049e-ee86-4b00-a61c-b5c9d3923925",
+          "ended": true
+        }
+      ]
+    }
+  },
+  "investigation": {
+    "backendChanged": false,
+    "assignmentMutation": false,
+    "observedFixtureSubjects": [
+      "english",
+      "physics"
+    ],
+    "roleThemeCause": "unconditional data-forest-surface on shared account body in PR313",
+    "archivedClassCountsAtRead": {
+      "Test Teacher 1": 27,
+      "Test Teacher 2": 24
+    },
+    "authorityChecked": [
+      "active teacher subject authorization",
+      "teacher assignment ownership",
+      "school membership",
+      "class and academic year",
+      "programme/release/unit",
+      "live session"
+    ],
+    "sameSchoolSecondSubjectRegression": "passed in isolated PostgreSQL-compatible fixture; production assignments unchanged",
+    "followUp": "separate Physics-only demonstration account from multi-subject QA fixtures; migration requires dedicated actor/credential setup first"
+  },
+  "isolatedVisual": {
+    "sourceHead": "e5b825ae05db79fd7eac49609a647244cb5d0e00",
+    "kind": "production frontend with synthetic service adapter",
+    "archive": {
+      "desktopIframe": 1280,
+      "mobileIframe": 360,
+      "mobileContentWidth": 345,
+      "mobileScrollWidth": 345,
+      "search": "16 of 31 synthetic classes; matching groups opened; 12 cards plus load-more in first group",
+      "clearSearch": "closed groups restored"
+    },
+    "account": {
+      "pendingCanvas": "rgb(248, 250, 248)",
+      "studentCanvas": "rgb(245, 246, 239)",
+      "teacherCanvas": "rgb(245, 249, 255)",
+      "teacherBack": "./teacher.html?view=home",
+      "mobileWidthAndScroll": 345,
+      "studentFlagForTeacher": false
+    },
+    "screenshot": "docs/evidence/teacher-archive-preview-20261027.jpg",
+    "finalEnlargedText": {
+      "iframe": 360,
+      "fontSize": "32px",
+      "contentWidth": 345,
+      "scrollWidth": 345,
+      "noticeWidth": 319,
+      "archiveWidth": 321,
+      "changes": [
+        "collection heading/count wraps",
+        "shared skip-link width bound",
+        "shared Armenian notice wrapping"
+      ]
+    }
+  },
+  "closureReflowCorrection": {
+    "files": [
+      "web/teacher.css",
+      "web/ux.css"
+    ],
+    "description": "Wrap long collection headings/counts and notices; bound shared skip-link width at 200% text. No JavaScript, assignment, endpoint or business-rule change from verified implementation.",
+    "nativeRegression": "three archive viewport cases now include 200% text and the shared notice/skip link; normal required PR/main CI remains mandatory",
+    "verification": "final closure commit and production assets must be read back before source-verified Notion synchronization"
+  },
+  "reusedEvidence": [
+    {
+      "run": 40510817011,
+      "scope": "English learner/preserved-programme reads",
+      "checks": 154
+    },
+    {
+      "run": 40510541374,
+      "scope": "staff analytics",
+      "checks": 10
+    },
+    {
+      "run": 40488926093,
+      "scope": "Physics learner reads",
+      "checks": 324
+    },
+    {
+      "run": 40502331986,
+      "scope": "S45 backend lifecycle and isolation",
+      "checks": 73
+    }
+  ],
+  "serializedQa": {
+    "cancelledQueuedDuplicate": 40538414620,
+    "reason": "unchanged English behavior; verified evidence reused",
+    "requiredCiCancelled": false
+  },
+  "preservation": {
+    "backendChanged": false,
+    "assignmentChanged": false,
+    "permanentDeleteAdded": false,
+    "capabilitiesRetained": 45,
+    "contentOrAssessmentPolicyChanged": false,
+    "englishBookmark": "C47",
+    "fullTeacherRedesignApproved": false,
+    "fullFourSubjectAcceptanceClaimed": false
+  },
+  "knownFollowUp": [
+    "separate Physics-only demonstration from designated multi-subject QA identities",
+    "review and accept cross-role Forest staff design before broad implementation"
+  ]
+}
