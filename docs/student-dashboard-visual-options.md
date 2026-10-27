@@ -34,6 +34,10 @@ The complete S21 progress function remains: readiness, skill filters, skill deta
 
 The previous preview placed signout in the account list behind a generic “Open” link. The top-right avatar already reached it, but John’s question identifies poor discoverability. A labelled **«Դուրս գալ»** button now appears at the desktop sidebar bottom and directly under account identity. On mobile or in focused work, use the top-right avatar → Account → «Դուրս գալ». The sidebar and account buttons invoke the same explanatory preview dialog; no signed-in session or live logout request exists in this artifact. Existing production signout, cleanup and stale-account response guards must be retained by 16.5B. This is shared student-shell presentation, with no subject-specific behavior.
 
+## Reusable style guide
+
+The requested [style guide v1.0](student-style-guide.md) turns the Forest direction into a reusable token/type/layout/component contract, with a [visual guide](design/student-dashboard/haiedu-student-style-guide.html) and [CSS reference](design/student-dashboard/student-style-tokens.css). It explicitly identifies stronger control outlines, larger essential labels and other normalization as 16.5B refinements. This does not modify the current dashboard preview or imply production rollout.
+
 ## Evidence and next delivery
 
 [Historical colour evidence](evidence/student-dashboard-colors-20261027.json) records 93 native Chromium container-layout checks, 18 interactions and 18 targeted text-colour contrast pairs. All selected pairs exceed 4.5:1; the minimum is 4.78:1. This is not a full accessibility audit: actual device viewports, 200% browser zoom, complete contrast/control review and authenticated production acceptance remain 16.5C work. Existing unchanged learning/source evidence is reused.

@@ -1,0 +1,95 @@
+/* HaiEdu student style guide v1.0, 2026-10-27.
+ * Documentation reference only; not imported by the production application.
+ * Forest direction accepted. Scale/control refinements are specified for 16.5B.
+ */
+[data-haiedu-student] {
+  --student-canvas: #f5f6ef;
+  --student-surface: #ffffff;
+  --student-ink: #23392f;
+  --student-muted: #58695f;
+  --student-accent: #285b45;
+  --student-accent-hover: #214c3a;
+  --student-on-accent: #ffffff;
+  --student-selected: #e3eee5;
+  --student-hero: #e6f0e6;
+  --student-hero-ink: #234734;
+  --student-hero-muted: #4a6353;
+  --student-art: #c1d8bc;
+  --student-quiet: #eef1eb;
+  --student-divider: #dce4da;
+  --student-border-control: #6f8476;
+  --student-focus: #7a4718;
+  --student-success: #167263;
+  --student-success-bg: #e7f5ee;
+  --student-attention: #975b15;
+  --student-attention-bg: #fff2de;
+  --student-feedback: #7453a5;
+  --student-feedback-bg: #f0ebfa;
+  --student-error: #9e3636;
+  --student-error-bg: #fcecec;
+
+  --student-font: "Noto Sans Armenian", "Noto Sans", Arial, sans-serif;
+  --student-text-caption: .75rem;
+  --student-text-meta: .875rem;
+  --student-text-body: 1rem;
+  --student-text-card: 1.125rem;
+  --student-text-section: 1.375rem;
+  --student-text-hero: 1.75rem;
+  --student-text-page: 2rem;
+  --student-leading-body: 1.6;
+  --student-leading-heading: 1.3;
+
+  --student-space-1: .25rem;
+  --student-space-2: .5rem;
+  --student-space-3: .75rem;
+  --student-space-4: 1rem;
+  --student-space-6: 1.5rem;
+  --student-space-8: 2rem;
+  --student-space-12: 3rem;
+  --student-radius-small: .5rem;
+  --student-radius-control: .75rem;
+  --student-radius-card: 1rem;
+  --student-radius-hero: 1.25rem;
+  --student-radius-pill: 999px;
+  --student-target: 2.75rem;
+  --student-content-max: 80rem;
+  --student-work-max: 51.25rem;
+  --student-shadow-card: 0 4px 16px rgb(35 57 47 / .07);
+  --student-shadow-dialog: 0 24px 64px rgb(35 57 47 / .20);
+  --student-duration-fast: 140ms;
+  --student-duration-enter: 200ms;
+  --student-ease: cubic-bezier(.2, .6, .3, 1);
+
+  color: var(--student-ink);
+  background: var(--student-canvas);
+  font-family: var(--student-font);
+  font-size: var(--student-text-body);
+  line-height: var(--student-leading-body);
+}
+
+/* Focus ring assumes a light surrounding surface. Test actual adjacency. */
+[data-haiedu-student] :focus-visible {
+  outline: 3px solid var(--student-focus);
+  outline-offset: 3px;
+}
+
+[data-haiedu-student][data-motion="reduce"] {
+  --student-duration-fast: 0ms;
+  --student-duration-enter: 0ms;
+}
+[data-haiedu-student][data-motion="reduce"] [data-decorative-motion] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-haiedu-student] {
+    --student-duration-fast: 0ms;
+    --student-duration-enter: 0ms;
+  }
+  [data-haiedu-student] [data-decorative-motion] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
