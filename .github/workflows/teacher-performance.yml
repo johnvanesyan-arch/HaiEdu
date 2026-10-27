@@ -27,7 +27,7 @@ jobs:
       - name: Measure only designated teacher reads
         run: node scripts/teacher-performance-acceptance.mjs
         env:
-          TEACHER_PERF_PHASE: baseline
+          TEACHER_PERF_PHASE: after
           QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
           QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
           QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}

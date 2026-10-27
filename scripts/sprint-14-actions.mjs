@@ -132,7 +132,9 @@ async function teacherUI(side, entry) {
   check(`${side}: archive empty class through teacher UI`, true);
   await page.locator('.hm-role-nav a[href$="view=archive"]').click();
   await expect(page.locator('#archivedClassList .archive-group[open]')).toHaveCount(0);
-  await page.getByLabel('Որոնել արխիվում', {exact:true}).fill(renamed);
+  await page.getByLabel('Որոնել ամբողջ արխիվում', {exact:true}).fill(renamed);
+  await expect(page.locator('.archive-group summary')).toContainText('1 դասարան');
+  await page.locator('.archive-group summary').click();
   const archivedCard = page.locator('#archivedClassList .teacher-class-button').filter({hasText:renamed});
   await expect(archivedCard).toHaveCount(1);
   check(`${side}: archived class is searchable inside closed year groups`, true);

@@ -8,12 +8,13 @@ import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext, type Te
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Expose-Headers": "Server-Timing",
 };
 const UNIT_CODE = "PHY7-U01";
 const MASTERY_THRESHOLD = 0.72;
 
-function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+function json(body: unknown, status = 200, timings = "") {
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control":"no-store", ...(timings ? {"Server-Timing":timings} : {}) } });
 }
 
 function fallbackName(id: string) {
@@ -21,6 +22,7 @@ function fallbackName(id: string) {
 }
 
 Deno.serve(async (req) => {
+  const started=Date.now();
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
     if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
@@ -43,8 +45,16 @@ Deno.serve(async (req) => {
       return json({ error: "teacher_role_required" }, 403);
     }
 
-    let requestBody: { selection?: Partial<TeacherAcademicSelection> } = {};
+    let requestBody: { selection?: Partial<TeacherAcademicSelection>; readMode?: string; classId?: string; assignmentId?: string; archive?: boolean; offset?: number; search?: string } = {};
     try { requestBody = await req.json(); } catch { /* an empty body uses the default authorized unit */ }
+    const readMode=requestBody.readMode ?? "full";
+    if (!["full","directory","class"].includes(readMode) ||
+      (requestBody.classId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.classId)) ||
+      (requestBody.assignmentId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.assignmentId)) ||
+      (readMode==="class" && !requestBody.classId && !requestBody.selection?.assignmentId) ||
+      (requestBody.offset !== undefined && (!Number.isInteger(requestBody.offset) || requestBody.offset<0 || requestBody.offset>100000)) ||
+      (requestBody.archive !== undefined && typeof requestBody.archive!=="boolean") ||
+      (requestBody.search !== undefined && (typeof requestBody.search!=="string" || requestBody.search.length>120))) return json({error:"invalid_dashboard_request"},400);
     const rawSelection = requestBody.selection;
     const hasSelection = Boolean(rawSelection?.assignmentId || rawSelection?.curriculumReleaseId || rawSelection?.unitId);
     if (hasSelection && (!rawSelection?.assignmentId || !rawSelection.curriculumReleaseId || !rawSelection.unitId)) {
@@ -58,17 +68,32 @@ Deno.serve(async (req) => {
       .from("institutional_memberships").select("id")
       .eq("person_id", teacherId).eq("role", "teacher").limit(1);
     if (membershipError) return json({ error: "teacher_membership_check_failed" }, 503);
+    if(readMode==="directory") {
+      const dataStarted=Date.now();
+      const result=await admin.rpc("service_teacher_class_directory",{p_actor:teacherId,p_archive:requestBody.archive??false,p_offset:requestBody.offset??0,p_search:requestBody.search?.trim()??""});
+      if(result.error)return json({error:"teacher_directory_unavailable"},503);
+      const dataDuration=Date.now()-dataStarted;
+      if(!(await hasActiveLiveSession(admin,token,teacherId)))return json({error:"account_or_session_inactive"},403);
+      const current=await admin.from("profiles").select("role,account_status").eq("id",teacherId).maybeSingle();
+      if(current.error||current.data?.role!=="teacher"||current.data?.account_status!=="active")return json({error:"teacher_role_required"},403);
+      return json({...result.data,teacher:{id:teacherId,displayName:teacherProfile.display_name?.trim()||"Ուսուցիչ"},institutionalTeacher:Boolean(schoolMemberships?.length),progressive:true,
+        totals:{classes:result.data.directory.activeCount,students:null,studentsNeedingSupport:null}},200,`data;dur=${dataDuration},total;dur=${Date.now()-started}`);
+    }
     if (schoolMemberships?.length) {
       try {
-        if (selection) await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection);
-        const dashboard = await getInstitutionalTeacherDashboard(
+        const dataStarted=Date.now();
+        let dashboard;
+        const selectedContext=selection ? await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection) : null;
+        dashboard = await getInstitutionalTeacherDashboard(
           admin, teacherId, teacherProfile.display_name?.trim() || "Ուսուցիչ",
-          selection,
+          selection,readMode==="class"?requestBody.classId??selectedContext?.classId??null:null,
+          readMode==="class"?requestBody.assignmentId??selection?.assignmentId??null:null,
         );
+        const dataDuration=Date.now()-dataStarted;
         if (!(await hasActiveLiveSession(admin,token,teacherId))) return json({error:"account_or_session_inactive"},403);
         const finalProfile=await admin.from("profiles").select("role,account_status").eq("id",teacherId).maybeSingle();
         if (finalProfile.error || finalProfile.data?.role!=="teacher" || finalProfile.data?.account_status!=="active") throw new AcademicContextDenied();
-        return json(dashboard);
+        return json(dashboard,200,`data;dur=${dataDuration.toFixed(1)},total;dur=${(Date.now()-started).toFixed(1)}`);
       } catch (error) {
         if (error instanceof AcademicContextDenied) return json({ error: "academic_context_unavailable" }, 403);
         console.error("get-institutional-teacher-dashboard", error);
@@ -76,12 +101,15 @@ Deno.serve(async (req) => {
       }
     }
 
-    const { data: classes, error: classesError } = await admin
+    let legacyQuery = admin
       .from("classes")
       .select("id, name, academic_year, join_code, is_active, subject_id, grade_id, created_at")
       .eq("teacher_id", teacherId)
       .is("school_id", null)
       .order("created_at", { ascending: true });
+    if(readMode==="class")legacyQuery=legacyQuery.eq("id",requestBody.classId);
+    const {data:classes,error:classesError}=await legacyQuery;
+    if(readMode==="class"&&!classes?.length)return json({error:"teacher_class_unavailable"},403);
     if (classesError) return json({ error: "classes_query_failed" }, 500);
 
     const { data: skills, error: skillsError } = await admin
@@ -280,7 +308,11 @@ Deno.serve(async (req) => {
       };
     });
 
+    if(!(await hasActiveLiveSession(admin,token,teacherId)))return json({error:"account_or_session_inactive"},403);
+    const legacyProfile=await admin.from("profiles").select("role,account_status").eq("id",teacherId).maybeSingle();
+    if(legacyProfile.error||legacyProfile.data?.role!=="teacher"||legacyProfile.data?.account_status!=="active")return json({error:"teacher_role_required"},403);
     return json({
+      progressive:readMode==="class",
       teacher: { id: teacherId, displayName: teacherProfile.display_name?.trim() || "Ուսուցիչ" },
       unitCode: UNIT_CODE,
       curriculumReleaseId,

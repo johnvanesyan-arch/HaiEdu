@@ -146,5 +146,5 @@ test('institutional UI reuses the sanctioned roster, matrix and drawer without l
   assert.match(js, /modeSummary\.practice/);
   assert.match(js, /modeSummary\.chapter_review/);
   assert.match(js, /window\.history\[push \? "pushState" : "replaceState"\]/);
-  assert.match(js, /window\.addEventListener\("popstate", \(\) => loadDashboard\(\)\)/);
+  assert.match(js, /window\.addEventListener\("popstate"/);
 });

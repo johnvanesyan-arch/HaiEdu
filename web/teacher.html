@@ -36,12 +36,14 @@
       <span>Յուրացման շեմերը և միջամտության առաջարկությունները դեռևս փորձնական են և պետք է վավերացվեն պիլոտի ընթացքում։</span>
     </section>
 
+    <p id="teacherLoading" class="message hidden" role="status">Աշխատասեղանը բեռնվում է…</p>
     <section id="authPanel" class="card auth-card teacher-auth hidden" aria-labelledby="teacherLoginTitle">
       <span class="mode-kicker">Ուսուցիչ</span>
       <h2 id="teacherLoginTitle">Ուսուցչի աշխատասեղան</h2>
       <p class="subtle">Մուտք գործեք ձեր հրավերով ակտիվացված հաշվով։ Հարթակը կբացի ձեր դերին համապատասխան բաժինը։</p>
       <a class="button-link" href="./account-access">Մուտք գործել</a>
       <p id="authMessage" class="message" aria-live="polite"></p>
+      <button id="teacherDashboardRetry" type="button" class="ghost hidden">Փորձել կրկին</button>
     </section>
 
     <section id="dashboardPanel" class="hidden">
@@ -61,8 +63,8 @@
 
       <div id="summaryCards" class="dashboard-summary teacher-summary">
         <div class="stat card compact"><span class="stat-label">Ակտիվ դասարաններ</span><strong id="classCount">—</strong><span class="subtle small">ընթացիկ աշխատանքային դասարան</span></div>
-        <div class="stat card compact"><span class="stat-label">Աշակերտներ</span><strong id="studentCount">—</strong><span class="subtle small">բոլոր դասարաններում</span></div>
-        <div class="stat card compact"><span class="stat-label">Ուշադրություն է պետք</span><strong id="supportCount">—</strong><span class="subtle small">աջակցության կարիք ունեցող աշակերտ</span></div>
+        <div class="stat card compact"><span class="stat-label">Աշակերտներ</span><strong id="studentCount">—</strong><span id="studentCountScope" class="subtle small">բոլոր դասարաններում</span></div>
+        <div class="stat card compact"><span class="stat-label">Ուշադրություն է պետք</span><strong id="supportCount">—</strong><span id="supportCountScope" class="subtle small">աջակցության կարիք ունեցող աշակերտ</span></div>
       </div>
 
       <section id="institutionalTeacherNotice" class="card hidden" role="status">
@@ -160,7 +162,8 @@
         </div>
         <section class="card teacher-collection-card">
           <div class="teacher-collection-heading"><h3>Ակտիվ դասարաններ</h3><span id="activeClassCount" class="teacher-archive-count">0</span></div>
-          <div id="classList" class="teacher-class-list teacher-class-grid"></div>
+          <p id="classesLoadMessage" role="status"></p><button id="classesRetry" type="button" class="ghost small-button">Թարմացնել ցանկը</button>
+          <div id="classList" class="teacher-class-list teacher-class-grid"></div><button id="classesLoadMore" class="ghost hidden" type="button">Բեռնել հաջորդ դասարանները</button>
         </section>
       </section>
 
@@ -171,7 +174,8 @@
         </div>
         <section class="card teacher-collection-card">
           <div class="teacher-collection-heading"><h3>Արխիվացված դասարաններ</h3><span id="archivedClassCount" class="teacher-archive-count">0</span></div>
-          <div id="archivedClassList" class="teacher-archive-browser"></div>
+          <label id="serverArchiveSearch" class="hidden">Որոնել ամբողջ արխիվում<input id="archiveServerQuery" maxlength="120" type="search" /></label><p id="archiveLoadMessage" role="status"></p><button id="archiveRetry" type="button" class="ghost small-button">Թարմացնել ցանկը</button>
+          <div id="archivedClassList" class="teacher-archive-browser"></div><button id="archiveLoadMore" class="ghost hidden" type="button">Բեռնել հաջորդ դասարանները</button>
         </section>
       </section>
 
@@ -249,7 +253,7 @@
                 </div>
               </details>
             </div>
-            <div class="institutional-pending-block">
+            <details id="institutionalInvitationHistory" class="institutional-pending-block"><summary>Չընդունված հրավերներ</summary>
               <div class="teacher-section-heading">
                 <div>
                   <span class="mode-kicker">ՍՊԱՍՎՈՂ ՀՐԱՎԵՐՆԵՐ</span>
@@ -258,7 +262,7 @@
                 <button id="refreshInstitutionalInvites" type="button" class="ghost small-button">Թարմացնել</button>
               </div>
               <ul id="institutionalPendingInvites" class="institutional-invitation-list"></ul>
-            </div>
+            </details>
             <div class="institutional-roster-block hidden" aria-hidden="true">
               <div class="teacher-section-heading">
                 <div>
@@ -271,6 +275,7 @@
               <ul id="institutionalRoster" class="institutional-student-list"></ul>
             </div>
           </section>
+          <div id="classLoading" class="card hidden" role="status"><p id="classLoadingMessage"></p><button id="teacherClassRetry" type="button" class="secondary hidden">Փորձել կրկին</button></div>
           <div id="classView" class="hidden">
             <section id="legacyClassHeader" class="card class-header-card">
               <div class="class-header-main">
