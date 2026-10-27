@@ -94,12 +94,13 @@ test('same-account refresh keeps selection and focus; account switch rejects pri
 });
 test('course and work views retain context, keyboard disclosures and course-only progress',async t=>{
   const {page,errors}=await fixture(t,{view:'work',selected:true,width:360});
-  assert.equal(await page.locator('.amp-mobile-link').count(),3);
+  assert.equal(await page.locator('.amp-mobile-link').count(),4);
   assert.equal(await page.locator('.amp-mobile-nav').getByText('Առաջընթաց',{exact:true}).count(),0);
   assert.equal(await page.locator('.amp-mobile-nav').getByText('Իմ աշխատանքները',{exact:true}).count(),1);
   for(const link of await page.locator('.amp-subject-card > a').all())assert.match(await link.getAttribute('href'),/tab=writing/);
   const details=page.locator('.student-unit-links').first();await details.locator('summary').press('Enter');assert.equal(await details.getAttribute('open'),'');
-  assert.equal(await page.locator('[href*="materials"]').count(),0);
+  assert.ok(await page.locator('[href*="materials"]').count()>=2);
+  assert.equal(await page.locator('.amp-mobile-link[aria-label="Հավելյալ նյութեր"]').innerText(),'Նյութեր');
   assert.deepEqual(errors,[]);
 });
 test('empty, failed and recovered course access are distinct; signed-out Home stays public',async t=>{

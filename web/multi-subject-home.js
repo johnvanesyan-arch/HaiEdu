@@ -44,7 +44,7 @@ function render() {
     : view === 'courses'
       ? ['Բացեք նոր էջ ձեր ուսուցման մեջ', 'Ընտրեք դասընթացը և շարունակեք ձեր աշխատանքը։']
       : ['Բարի գալուստ։ Շարունակե՞նք սովորել։', 'Ընտրեք դասընթացն ու բաժինը։ Ձեր ընթացիկ աշխատանքը կհայտնվի այստեղ։'];
-  root.innerHTML = `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>${view === 'home' ? selectorMarkup() + '<div id="studentNextStep" aria-live="polite" aria-atomic="true"></div>' : ''}${courseCards()}`;
+  root.innerHTML = `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>${view === 'home' ? selectorMarkup() + '<div id="studentNextStep" aria-live="polite" aria-atomic="true"></div>' : ''}${view==='work'?'<p><a class="button-link ghost" href="./materials.html">Հավելյալ նյութեր</a></p>':''}${courseCards()}`;
   if (view === 'home') void loadSelected();
 }
 function syncSelectionUrl() {

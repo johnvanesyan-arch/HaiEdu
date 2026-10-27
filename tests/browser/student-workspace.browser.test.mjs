@@ -214,7 +214,7 @@ for(const width of [320,360,1280]) for(const [route,ready] of studentRoutes) tes
   });
   await capture(page,route.replace('.html','')+'-'+width,metrics);
   assert.equal(new URL(page.url()).pathname,'/'+route,'The entitled student must stay on the requested page');
-  assert.equal(metrics.primaryLinks,3,'Every student page retains the same primary navigation');
+  assert.equal(metrics.primaryLinks,4,'Every student page retains the same primary navigation including supplementary materials');
   assert.equal(metrics.globalProgress,false,'Progress belongs inside a course');
   assert.equal(metrics.canvas,'rgb(245, 246, 239)');
   assert.deepEqual(metrics.unstyledSheets,[]);

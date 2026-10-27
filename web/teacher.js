@@ -469,6 +469,9 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
     }
     if ($("teacherWrittenWorkCard") && klass.selectedUnit) {
       $("teacherWrittenWorkCard").classList.remove("hidden");
+      let resourceLink = document.getElementById('teacherResourcesLink');
+      if (!resourceLink) { resourceLink = document.createElement('a'); resourceLink.id='teacherResourcesLink'; resourceLink.className='button-link ghost'; resourceLink.textContent='Հավելյալ նյութեր'; $("teacherWrittenWorkCard").prepend(resourceLink); }
+      resourceLink.href='./resource-library.html?'+new URLSearchParams({assignment:klass.assignmentId,release:klass.selectedUnit.curriculumReleaseId,unit:klass.selectedUnit.unitId});
       $("teacherOpenWrittenWork").onclick = () => {
         if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
         disposeWriting();
