@@ -34,6 +34,12 @@ export function groupLearningContexts(contexts = []) {
   return [...groups.values()].sort((a,b) => String(a.schoolName).localeCompare(String(b.schoolName),'hy') || a.gradeNumber-b.gradeNumber || String(a.subjectNameHy).localeCompare(String(b.subjectNameHy),'hy') || a.key.localeCompare(b.key));
 }
 export const courseLabel = c => [c.subjectNameHy, c.gradeLabelHy].filter(Boolean).join(' · ');
+export function studentHomeHref(view = 'home', context = null) {
+  const params = context ? new URLSearchParams(contextHref(context).split('?')[1]) : new URLSearchParams();
+  params.delete('tab');
+  if (view !== 'home' && ['courses', 'work'].includes(view)) params.set('view', view);
+  return './index.html' + (params.size ? '?' + params : '');
+}
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
 export function resolveNavigationContext(contexts, selection, extensionKey) {
   if (selection) return contexts.find(c => sameContext(c, selection)) ?? null;

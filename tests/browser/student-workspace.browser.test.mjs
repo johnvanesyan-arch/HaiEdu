@@ -57,8 +57,8 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
   const selected=contexts[contextIndex];
   const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:'practice'}:{}) });
   await page.goto(origin+'/'+route+'?'+params);
-  if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-course-link')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
-  else await page.waitForFunction(()=>document.querySelector('.amp-course-link') && !document.body.dataset.roleRouting);
+  if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-nav-list a[href*="view=courses"]')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
+  else await page.waitForFunction(()=>document.querySelector('.amp-nav-list a[href*="view=courses"]') && !document.body.dataset.roleRouting);
   return {page,errors};
 }
 
@@ -73,7 +73,10 @@ async function capture(page, name, metrics) {
 test('full student shell switches between course documents without browser errors or learning writes', async t => {
   const {page,errors}=await fixture(t,{active:false,route:'index.html'});
   for (const selected of [contexts[0],contexts[1],contexts[0]]) {
-    const link=page.locator(`.amp-side-nav a.amp-course-link[href*="unit=${selected.unitId}"]`);
+    await page.locator('.amp-side-nav a[href*="view=courses"]').click();
+    const card=page.locator('#mySubjects .amp-subject-card').filter({has:page.locator(`.amp-subject-class-list a[href*="unit=${selected.unitId}"]`)});
+    await card.locator('summary').click();
+    const link=card.locator(`.amp-subject-class-list a[href*="unit=${selected.unitId}"]`);
     assert.equal(await link.count(),1);
     await link.click();
     await page.waitForFunction(title=>document.getElementById('courseTitle').textContent.includes(title),selected.unitTitleHy);
@@ -133,7 +136,7 @@ test('full-shell signed-out state clears student evidence',async t=>{
   const {page,errors}=await fixture(t);
   await page.evaluate(()=>window.__listeners.forEach(fn=>fn('SIGNED_OUT',null)));
   assert.equal(await page.locator('#courseContent').innerText(),'');
-  assert.equal(await page.locator('.amp-course-link').count(),0);
+  assert.equal(await page.locator('.amp-nav-list a[href*="enrollment="]').count(),0);
   assert.deepEqual(errors,[]);
 });
 
@@ -196,17 +199,19 @@ for(const width of [360,1280]) for(const [route,ready] of studentRoutes) test(`s
   await page.waitForSelector(ready,{state:'visible'});
   if(route==='mastery.html') await page.waitForFunction(()=>document.getElementById('masteryStateBadge').textContent!=='Բեռնվում է');
   const metrics=await page.evaluate(()=>{
-    const sublinks=document.querySelector('.amp-course-sublinks'),small=document.querySelector('.amp-course-link small');
+    const nav=document.querySelector('.amp-nav-list');
     return {viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
-      navLayout:getComputedStyle(sublinks).display,navMetaDisplay:getComputedStyle(small).display,
+      primaryLinks:nav.querySelectorAll('a').length,globalProgress:[...nav.querySelectorAll('a')].some(a=>a.textContent.includes('Առաջընթաց')),
+      canvas:getComputedStyle(document.body).backgroundColor,
       unstyledSheets:[...document.querySelectorAll('link[rel=stylesheet]')].filter(el=>!el.sheet).map(el=>el.href),
       clippedControls:[...document.querySelectorAll('button,a.button-link,a.ghost')].filter(el=>el.getClientRects().length && el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.trim())
     };
   });
   await capture(page,route.replace('.html','')+'-'+width,metrics);
   assert.equal(new URL(page.url()).pathname,'/'+route,'The entitled student must stay on the requested page');
-  assert.equal(metrics.navLayout,'grid','Every student page must load the course navigation styles');
-  assert.equal(metrics.navMetaDisplay,'block','Class and school metadata need their own line');
+  assert.equal(metrics.primaryLinks,3,'Every student page retains the same primary navigation');
+  assert.equal(metrics.globalProgress,false,'Progress belongs inside a course');
+  assert.equal(metrics.canvas,'rgb(245, 246, 239)');
   assert.deepEqual(metrics.unstyledSheets,[]);
   assert.ok(metrics.documentWidth<=width+1,JSON.stringify(metrics));
   assert.deepEqual(metrics.clippedControls,[]);

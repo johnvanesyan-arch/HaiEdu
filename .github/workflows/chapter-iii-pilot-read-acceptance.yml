@@ -77,6 +77,11 @@ on:
       - web/student-courses.js
       - web/student-shell.css
       - web/student-shell.js
+      - web/student-home-model.mjs
+      - web/student-signout.mjs
+      - web/student-visuals.mjs
+      - web/student-forest.css
+      - web/assets/fonts/**
       - web/styles.css
       - web/tokens.css
       - web/ux.css

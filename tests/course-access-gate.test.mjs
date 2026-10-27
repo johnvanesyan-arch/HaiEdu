@@ -49,7 +49,7 @@ test("student class endpoint exposes metadata needed to build course navigation"
 test("student shell resolves navigation from exact authorized contexts", async () => {
   const shell=await read("web/student-shell.js"), courses=await read("web/student-courses.js"), gate=await read("web/course-gate.js");
   assert.match(shell,/student-courses\.js/);assert.match(shell,/course-gate\.js/);
-  assert.match(courses,/groupLearningContexts/);assert.match(courses,/contextHref/);
+  assert.match(courses,/groupLearningContexts/);assert.match(courses,/studentHomeHref/);
   assert.doesNotMatch(courses,/physics:7|physics-7|mathematics/);
   assert.match(gate,/get-student-classes/);assert.match(gate,/resolveNavigationContext/);assert.match(gate,/request !== version/);
 });

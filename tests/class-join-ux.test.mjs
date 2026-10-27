@@ -10,11 +10,12 @@ test("student utility navigation keeps Join Class while primary learning nav is 
   assert.match(shell, /href="\.\/join\.html">Միանալ դասարանին՝ կոդով/);
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
-  assert.match(courses, /Իմ առարկաները/);
-  assert.match(courses, /contextHref/);
+  assert.match(courses, /Դասընթացներ/);
+  assert.match(courses, /studentHomeHref/);
   assert.doesNotMatch(courses, /physics-7\.html/);
-  assert.match(courses, /assessment/);
-  assert.match(courses, /progress/);
+  const page = await read("web/course-page.js");
+  assert.match(page, /assessment/);
+  assert.match(page, /progress/);
 });
 
 test("Home class card distinguishes no-class and joined-class states", async () => {

@@ -247,11 +247,12 @@ async function browserChecks({ contexts, chapterIIActiveSessions, sessions, url,
         // Both releases belong in the same course card after programme grouping.
         const card = page.locator('#mySubjects .amp-subject-card').filter({ has: page.locator(`a[href*="unit=${chapterII.unitId}"]`) });
         await expect(card).toHaveCount(1);
-        await expect(card.locator(`a[href*="unit=${chapterIUnitId}"]`)).toHaveCount(1);
-        await expect(card.locator(`a[href*="unit=${chapterII.unitId}"]`)).toHaveCount(1);
+        await expect(card.locator(`.amp-subject-class-list a[href*="unit=${chapterIUnitId}"]`)).toHaveCount(1);
+        await expect(card.locator(`.amp-subject-class-list a[href*="unit=${chapterII.unitId}"]`)).toHaveCount(1);
+        await card.locator('summary').click();
         for (const [index, target] of [contexts[side][0], contexts[side][1], contexts[side][0]].entries()) {
           if (index === 1) await page.setViewportSize({ width: 390, height: 844 });
-          const links = page.locator(`${index === 0 ? '#mySubjects' : '.course-chapters'} a[href*="unit=${target.unitId}"]`);
+          const links = page.locator(`${index === 0 ? '#mySubjects .amp-subject-class-list' : '.course-chapters'} a[href*="unit=${target.unitId}"]`);
           await expect(links).toHaveCount(1);
           const href = await links.getAttribute('href');
           const destination = new URL(href, site);
@@ -259,6 +260,7 @@ async function browserChecks({ contexts, chapterIIActiveSessions, sessions, url,
           await links.click();
           await expect(page.locator('#courseTitle')).toContainText(target.unitTitleHy);
           await expect(page.locator('#courseLoading')).toBeHidden();
+          await page.locator('.course-tabs a[href*="tab=assessment"]').click();
           await expect(page.locator('#courseHistoryTitle')).toBeVisible();
           await expect(page.locator(`.course-chapters a[aria-current="page"][href*="unit=${target.unitId}"]`)).toHaveCount(1);
           check(`${side}: browser selected chapter matches navigation`, new URL(page.url()).searchParams.get('release') === target.curriculumReleaseId && new URL(page.url()).searchParams.get('unit') === target.unitId);

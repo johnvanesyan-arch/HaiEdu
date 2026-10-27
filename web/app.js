@@ -1,6 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { routeSession, roleRoutingReady } from "./role-router.js";
+import { signOutStudent } from "./student-signout.mjs";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -86,12 +87,12 @@ function setAuthenticated(isAuthenticated) {
 }
 
 async function signOut() {
-  await supabase.auth.signOut();
+  if (!(await signOutStudent(supabase))) return;
   current = null;
   currentSession = null;
   dashboardData = null;
   window.__HAIEDU_DASHBOARD__ = null;
-  sessionStorage.removeItem("amp:practice-bootstrap");
+  try { sessionStorage.removeItem("amp:practice-bootstrap"); } catch { /* optional storage */ }
   clearQuestion();
 }
 

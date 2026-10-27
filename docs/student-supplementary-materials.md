@@ -2,7 +2,7 @@
 
 **Owner request:** 2026-10-27 Asia/Yerevan. John requests a section below «Իմ աշխատանքները» for additional practice materials supplied by teachers or the platform for each subject.
 
-**Status:** Added to the 16.5A review design and coverage matrix as S45; refined on 2026-10-27 with illustrated cards, discovery controls and restrained motion. This is an accepted feature direction, not acceptance of the complete dashboard design or a live upload/delivery implementation. English remains paused after C47.
+**Status:** Added to the 16.5A review design and coverage matrix as S45; refined on 2026-10-27 with illustrated cards, discovery controls and restrained motion. This is an accepted feature direction, now included in the owner-accepted complete dashboard design; it is not a live upload/delivery implementation. English remains paused after C47.
 
 ## Student experience
 
@@ -25,7 +25,7 @@ The student library, teacher upload/manage/share surface and platform author/rev
 
 ## Delivery and integration requirements
 
-This is a subject-neutral resource capability under **16.5B**, with end-to-end acceptance under **16.5C**. Its resource service and authoring surfaces must be implemented as a separate bounded slice after the dashboard design is accepted. The layout can be reviewed now; ordinary production must not expose a working materials control before authorized delivery exists. No new top-level sprint or formal-pilot gate is introduced by this design addition.
+This is a subject-neutral resource capability under **16.5B**, with end-to-end acceptance under **16.5C**. Its resource service and authoring surfaces must be implemented as a separate bounded slice under the now-accepted dashboard design. The layout can be reviewed now; ordinary production must not expose a working materials control before authorized delivery exists. No new top-level sprint or formal-pilot gate is introduced by this design addition.
 
 The implementation contract must cover:
 

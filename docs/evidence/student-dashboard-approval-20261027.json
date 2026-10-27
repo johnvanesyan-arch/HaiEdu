@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "owner": "John",
+  "decision": "approved_for_implementation",
+  "ownerStatement": "Yes to this:Do you approve the full dashboard design and style guide as the basis for implementation, preserving all 45 mapped capabilities and their existing dependencies?",
+  "acceptedSourceCommit": "feb82ce0116a8ae3b75d0147327661861f91c833",
+  "acceptedArtifacts": [
+    {
+      "path": "docs/student-dashboard-redesign.md",
+      "gitBlobSha": "4c50f9978df86bf3f7c0bb3f37dfb4c8214f1cbb"
+    },
+    {
+      "path": "docs/student-style-guide.md",
+      "gitBlobSha": "b4e3e2f2e0ad73b55afd8ccb95cd96af5b481501"
+    },
+    {
+      "path": "docs/student-dashboard-function-coverage.md",
+      "gitBlobSha": "3978c02476ecece0d7b3e452ef9ca1d7e3b7a36f"
+    },
+    {
+      "path": "docs/design/student-dashboard/haiedu-student-review-2026-10-26.html",
+      "gitBlobSha": "2c4af6627a16ceb03c040734b068f2024885c4f5"
+    },
+    {
+      "path": "docs/design/student-dashboard/haiedu-student-style-guide.html",
+      "gitBlobSha": "6d666bd82197f891e021b4205d584f1eaac27775"
+    },
+    {
+      "path": "docs/design/student-dashboard/student-style-tokens.css",
+      "gitBlobSha": "1cfeb611cf5effc29dd55c8c62f02706a5b5b190"
+    }
+  ],
+  "capabilityIds": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S32",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S40",
+    "S41",
+    "S42",
+    "S43",
+    "S44",
+    "S45"
+  ],
+  "preserveDependencies": true,
+  "firstSlice": "16.5B.1 shared student shell, Home and course navigation",
+  "remainingGates": [
+    "remaining 16.5B surfaces",
+    "S45 complete resource authoring and delivery",
+    "16.5C exact production and four-subject acceptance",
+    "owning services and permissions for planned capabilities"
+  ],
+  "englishBookmark": {
+    "sprint": "16.1C.47",
+    "commit": "d32fede819cd077d028f7c66d90b084243961125",
+    "next": "designated Unit3 learner, assessed-audio and writing/teacher-feedback actions; then Units4–6"
+  },
+  "authorizesLearningPolicyOrContentChanges": false
+}

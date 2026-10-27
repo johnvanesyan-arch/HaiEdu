@@ -206,13 +206,17 @@ export async function browserChecks({ contexts, dashboards, sessions, url, check
       });
       const page = await context.newPage(); page.on('pageerror', () => pageErrors++);
       await page.goto(`${site}/index.html`, { waitUntil: 'domcontentloaded' });
-      const link = page.locator(`#mySubjects a[href*="unit=${english.unitId}"]`);
+      const card = page.locator('#mySubjects .amp-subject-card').filter({ has: page.locator(`.amp-subject-class-list a[href*="unit=${english.unitId}"]`) });
+      await expect(card).toHaveCount(1);
+      await card.locator('summary').click();
+      const link = card.locator(`.amp-subject-class-list a[href*="unit=${english.unitId}"]`);
       await expect(link).toHaveCount(1);
       const destination = new URL(await link.getAttribute('href'), site);
       check(`${side}: English home link retains exact enrollment and release`, destination.searchParams.get('enrollment') === c.enrollmentId
         && destination.searchParams.get('release') === english.curriculumReleaseId && !destination.searchParams.has('action'));
       await link.click();
       await expect(page.locator('#courseTitle')).toContainText(c.unitTitleHy);
+      await page.locator('.course-tabs a[href*="tab=assessment"]').click();
       if (!dashboards[side].activeSession) {
         const cards = page.locator('.course-mode-card'); await expect(cards).toHaveCount(4);
         for (const [index, n] of ['diagnostic', 'practice', 'mastery_check', 'chapter_review'].map(mode => configuration.policies.find(p => p.mode === mode).plannedQuestionCount).entries()) await expect(cards.nth(index)).toContainText(`${n} հարց`);
