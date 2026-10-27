@@ -1,6 +1,6 @@
 # Sprint 16.5A — Student dashboard design review
 
-**Date:** 2026-10-26; updated 2026-10-27 Asia/Yerevan for colour options, illustrated Home and course-scoped progress · **Status:** Concrete design and compatibility review prepared; owner design decision pending. No production interface or backend change.
+**Date:** 2026-10-26; updated 2026-10-27 Asia/Yerevan for the accepted Forest direction and visible logout · **Status:** Concrete design and compatibility review prepared; owner design decision pending. No production interface or backend change.
 
 ## Priority and subject checkpoint
 
@@ -37,7 +37,7 @@ The [7 October reference](design/student-dashboard/haiedu-student-mockup-2026-10
 
 **Supplementary materials — owner request 2026-10-27:** add «Հավելյալ նյութեր» directly below My work, plus course/work shortcuts. Use illustrated practice/reading cards, learning goals, search, purpose chips and disclosed topic/provider/format filters. Show approximate duration and explicit teacher recommendations only when supplied; retain neutral fallbacks and restrained/reduced motion. Preserve authorized context and teacher/platform provenance; handle no materials, no matching filters and withdrawn resources. Five fictional cards demonstrate the interface. PDFs/worksheets and HTTPS links are the recommended first delivery. A complete 16.5B slice must include teacher sharing, platform publication and protected resource delivery, with 16.5C acceptance. This addition does not implement uploads or change mastery. See the [scope](student-supplementary-materials.md) and S45 in the now 45-entry matrix.
 
-**Account:** current sign-in/security/privacy/join/deletion paths remain reachable. Year/history and placement use the separate 18.5 policy once implemented. No student rollover action, invented current-grade inference or school-wide history access.
+**Account:** current sign-in/security/privacy/join/deletion paths remain reachable. «Դուրս գալ» is directly labelled at the desktop sidebar bottom and immediately below account identity on all sizes. On mobile or in focused work, the top-right avatar opens that account page. Both buttons reuse the same preview action; 16.5B must retain existing real signout and cleanup behavior. Year/history and placement use the separate 18.5 policy once implemented. No student rollover action, invented current-grade inference or school-wide history access.
 
 ## Compatibility and integration
 
@@ -62,7 +62,7 @@ These are suggestions, not silently approved gamification or new backend scope. 
 
 ## Delivery gates and next action
 
-**Current 27 October colour/navigation evidence:** [visual options](student-dashboard-visual-options.md) and [evidence](evidence/student-dashboard-colors-20261027.json) record three palettes, 93 responsive layout checks, 18 interaction checks and 18 targeted contrast pairs (minimum 4.78:1). All pass. A mobile readiness-ring caption overflow seen in visual review was corrected by retaining the count in the ring and its explanation beside it. Palette changes preserve course/tab/filter/draft state. The owner has requested global Progress removal; colour selection and complete design acceptance remain pending. The preview defaults to the recommended Forest option solely for review.
+**Historical 27 October colour/navigation evidence:** [visual options](student-dashboard-visual-options.md) and [evidence](evidence/student-dashboard-colors-20261027.json) record three palettes, 93 responsive layout checks, 18 interaction checks and 18 targeted contrast pairs (minimum 4.78:1). All pass. A mobile readiness-ring caption overflow seen in visual review was corrected by retaining the count in the ring and its explanation beside it. Palette changes preserve course/tab/filter/draft state. The owner requested global Progress removal. John subsequently selected Forest/cream; the current preview fixes that palette and adds clearly labelled sidebar/account logout actions. See the [targeted revision evidence](evidence/student-dashboard-forest-logout-20261027.json). Complete design acceptance remains pending. Original palette comparisons remain historical evidence, not a persistent theme feature.
 
 **Historical 27 October materials-refinement evidence:** [engagement-design evidence](evidence/student-materials-engagement-20261027.json) records 57 layout checks at 360/768/1280 px (17 scenarios plus open filters and Physics materials at each width) and 21 interaction checks. Search preserves focus; combined search/filter reset, Armenian case handling, metadata omission, dialog Escape, no-motion/loading behavior and course/work shortcuts pass. The [updated screenshot](design/student-dashboard/haiedu-student-materials-engaging-20261027.jpg) shows the complete materials view. These are fictional design checks, not proof of increased student engagement, actual 200% browser zoom or production delivery. The review-only no-motion toggle does not create a persistent account setting.
 

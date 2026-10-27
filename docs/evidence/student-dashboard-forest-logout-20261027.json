@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5A fictional design preview only; owner-selected Forest direction and labelled logout entry points",
+  "source_base": "57c1dd4e0d11c6da010b7a30acf2f558332dd7d1",
+  "preview_sha256": "1b9c583b43f02a4d9d223e044e73f2aa02320f0b858e14208bcb1b64683edef3",
+  "owner_decision": "Let's go with forest green.",
+  "production_changes": false,
+  "checks": {
+    "layouts": [
+      {
+        "device": "desktop",
+        "view": "home",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 1280,
+        "pass": true
+      },
+      {
+        "device": "desktop",
+        "view": "account",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 1280,
+        "pass": true
+      },
+      {
+        "device": "tablet",
+        "view": "home",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 768,
+        "pass": true
+      },
+      {
+        "device": "tablet",
+        "view": "account",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 768,
+        "pass": true
+      },
+      {
+        "device": "phone",
+        "view": "home",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 360,
+        "pass": true
+      },
+      {
+        "device": "phone",
+        "view": "account",
+        "clipped": [],
+        "outOfBounds": [],
+        "overflow": false,
+        "width": 360,
+        "pass": true
+      }
+    ],
+    "interactions": [
+      {
+        "name": "selected_forest_label_and_no_switcher",
+        "pass": true
+      },
+      {
+        "name": "sidebar_keyboard_opens_existing_explanation",
+        "pass": true
+      },
+      {
+        "name": "sidebar_escape_restores_focus",
+        "pass": true
+      },
+      {
+        "name": "mobile_logout_is_direct_account_button",
+        "pass": true
+      },
+      {
+        "name": "account_keyboard_opens_existing_explanation",
+        "pass": true
+      },
+      {
+        "name": "account_escape_restores_focus",
+        "pass": true
+      },
+      {
+        "name": "focused_workspace_keeps_account_entry",
+        "pass": true
+      },
+      {
+        "name": "focused_workspace_account_exposes_logout",
+        "pass": true
+      },
+      {
+        "name": "blocked_scenario_keeps_account_logout",
+        "pass": true
+      },
+      {
+        "name": "four_main_destinations_retained",
+        "pass": true
+      }
+    ]
+  },
+  "static_validation": [
+    "Inline JavaScript node --check passed",
+    "Nine baseline files matched merged Git blob hashes before edits"
+  ],
+  "reused_evidence": [
+    "docs/evidence/student-dashboard-colors-20261027.json: unchanged Forest tokens, core course/progress/work/materials behavior",
+    "Earlier unchanged learning, content and audio evidence"
+  ],
+  "limitations": [
+    "Container widths 360/768/1280; not actual device viewports or 200% browser zoom",
+    "Signout is an explanatory local preview action, not authenticated session/logout verification",
+    "Full design acceptance, 16.5B implementation and 16.5C acceptance remain pending"
+  ],
+  "screenshot": "docs/design/student-dashboard/haiedu-forest-logout-20261027.jpg"
+}
