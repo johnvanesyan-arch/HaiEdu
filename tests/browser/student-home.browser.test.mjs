@@ -28,7 +28,7 @@ async function fixture(t,{width=1280,view='',selected=false,...options}={}) {
   if(selected)for(const[k,v]of Object.entries({enrollment:id(6),release:id(7),unit:id(8)}))params.set(k,v);
   await page.goto(origin+'/index.html?'+params);
   if(options.signedOut)await page.locator('#publicEntry:not(.hidden)').waitFor();
-  else await page.waitForFunction(()=>document.querySelector('#studentCourseSelect, [data-retry-access]') || document.querySelector('#multiSubjectHome')?.textContent.includes('Հասանելի դասընթացներ դեռ չկան'));
+  else await page.waitForFunction(()=>document.querySelector('#studentCourseSelect, [data-retry-access], .amp-subject-card') || document.querySelector('#multiSubjectHome')?.textContent.includes('Հասանելի դասընթացներ դեռ չկան'));
   await page.evaluate(()=>document.fonts.ready);
   return {page,errors};
 }
