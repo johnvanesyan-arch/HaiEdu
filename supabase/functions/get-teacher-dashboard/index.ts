@@ -308,6 +308,9 @@ Deno.serve(async (req) => {
       };
     });
 
+    if(!(await hasActiveLiveSession(admin,token,teacherId)))return json({error:"account_or_session_inactive"},403);
+    const legacyProfile=await admin.from("profiles").select("role,account_status").eq("id",teacherId).maybeSingle();
+    if(legacyProfile.error||legacyProfile.data?.role!=="teacher"||legacyProfile.data?.account_status!=="active")return json({error:"teacher_role_required"},403);
     return json({
       progressive:readMode==="class",
       teacher: { id: teacherId, displayName: teacherProfile.display_name?.trim() || "Ուսուցիչ" },

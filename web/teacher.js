@@ -25,6 +25,7 @@ function readOnce(fn,body) {
 }
 const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
 function clearDetail() {
+  clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
   disposeWriting(); disposeWriting=()=>{}; closeDrawer();
   for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard"]) $(id)?.classList.add("hidden");
@@ -459,6 +460,7 @@ async function renameSelectedClass(event, institutional) {
 
 async function selectClass(id, { pushNavigation = false, navigate = true, detailReady=false, selection=null, assignmentId=null } = {}) {
   if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+  clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
   institutionalUnitLoadVersion++;

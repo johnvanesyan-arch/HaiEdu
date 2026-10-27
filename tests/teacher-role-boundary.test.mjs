@@ -96,7 +96,7 @@ async function openTeacherPage(profile, profileError = null) {
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
   source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
   const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
-    roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console });
+    roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };
