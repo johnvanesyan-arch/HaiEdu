@@ -23,7 +23,7 @@ function lifetime(root,client){
   events++;const next=s?.user?.id??null;
   if(actor===null&&!invalidated&&event==='INITIAL_SESSION'){actor=next;return;}
   if(next===actor&&event!=='SIGNED_OUT')return;
-  actor=next;invalidated=true;epoch++;root.innerHTML='<p role="status">Հաշիվը փոխվել է։ Թարմացրեք էջը։</p>';
+  actor=next;invalidated=true;epoch++;root.removeAttribute('aria-busy');root.innerHTML='<p role="status">Հաշիվը փոխվել է։ Թարմացրեք էջը։</p>';
   for(const url of urls)URL.revokeObjectURL(url);urls.clear();
  });
  const initialEvents=events;
@@ -46,7 +46,7 @@ function lifetime(root,client){
   dialog.innerHTML='<h3>Արտաքին նյութ</h3><p>Կբացվի նոր ներդիրում՝ <strong>'+esc(u.hostname)+'</strong></p><a class="button-link" target="_blank" rel="noopener noreferrer" href="'+esc(u.href)+'">Բացել նյութը</a><button type="button" data-assignment-dialog-close>Փակել</button>';
   dialog.querySelector('button').addEventListener('click',()=>dialog.remove());root.append(dialog);dialog.showModal();
  }
- return {ready,invoke,open,current:()=>valid(epoch),dispose(){disposed=true;epoch++;subscription.data.subscription.unsubscribe();for(const u of urls)URL.revokeObjectURL(u);urls.clear();root.querySelectorAll('dialog').forEach(d=>d.remove());root.replaceChildren();}};
+ return {ready,invoke,open,current:()=>valid(epoch),dispose(){disposed=true;epoch++;subscription.data.subscription.unsubscribe();for(const u of urls)URL.revokeObjectURL(u);urls.clear();root.querySelectorAll('dialog').forEach(d=>d.remove());root.removeAttribute('aria-busy');root.replaceChildren();}};
 }
 function assignmentCard(a,teacher=false){
  const m=a.material,d=m.definition;
@@ -93,7 +93,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   for(const el of root.querySelectorAll('[data-assignment-compose] input,[data-assignment-compose] textarea,[data-assignment-compose] button'))el.disabled=locked()||(el.hasAttribute('data-recipient')&&mode!=='selected');
   const send=$('[data-assignment-send]');if(send)send.disabled=locked()||!preview||!(mode==='class'?preview.total:selected.size);
   const retry=$('[data-assignment-retry-send]');if(retry){retry.hidden=!pending;retry.disabled=busy;}
-  root.toggleAttribute('aria-busy',busy);
+  if(busy)root.setAttribute('aria-busy','true');else root.removeAttribute('aria-busy');
  }
  function drawCompose(){
   const m=preview.material;

@@ -115,6 +115,8 @@ test('expired session, empty class and excessive recipients never create partial
 });
 test('platform materials can be assigned through teacher authority without inheriting publisher authority',async t=>{
  const db=await database();t.after(()=>db.close());const m=await published(db,{actor:30});
+ assert.deepEqual((await call(db,'catalog')).materials.map(x=>x.id),[m.id]);
+ assert.equal((await call(db,'catalog',{}, {actor:21,index:2})).materials.length,0);
  const a=(await call(db,'assign',await prepared(db,m))).assignment;
  assert.equal(a.material.provider,'platform');assert.equal((await call(db,'open',{id:a.id},{actor:10})).delivery.url,definition.url);
  await assert.rejects(materialCall(db,'withdraw',{...key(m),reason:'Not my publication'}),/resource_unavailable/);
