@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "slice": "16.5B.2",
+  "status": "delivered_bounded_slice",
+  "ownerAcceptance": "student-dashboard-approval-20261027.json",
+  "capabilityIdsPreserved": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S32",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S40",
+    "S41",
+    "S42",
+    "S43",
+    "S44",
+    "S45"
+  ],
+  "implementationPullRequest": 309,
+  "implementationCommit": "e7efc028d90e351270bec6606078b6867546db8c",
+  "requiredCi": {
+    "pullRequestRun": 40488420737,
+    "mainRun": 40488925868,
+    "unitIntegrationTests": 1456,
+    "nativeBrowserTests": 165,
+    "jobs": {
+      "institutional-concurrency": "success",
+      "phase3-postgres-17": "success",
+      "role-layout-browser": "success",
+      "test": "success",
+      "Platform release checks": "success"
+    }
+  },
+  "production": {
+    "origin": "https://www.haiedu.am",
+    "commit": "e7efc028d90e351270bec6606078b6867546db8c",
+    "vercelStatus": "success",
+    "vercelDeploymentUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/DtqcpZhsWZjGhKE7Dzb5HrUASwsF",
+    "assetReadback": [
+      {
+        "path": "privacy.js",
+        "bytes": 15850,
+        "sha256": "1a39969bd29e4c7b49df8bf73124a50f7ed321d56eb82b2adf40e054133649f0",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-visuals.mjs",
+        "bytes": 2187,
+        "sha256": "36a7f38c53f79ea0d19596bf929097f189bf21d603863fb2f5e231838deece42",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-course-presentation.mjs",
+        "bytes": 3136,
+        "sha256": "2efe31691a7d4300e65cd271adabae9cc36716d1317ef59978011e3ffe43b895",
+        "matchesLocal": true
+      },
+      {
+        "path": "course.html",
+        "bytes": 2566,
+        "sha256": "e2b5fab58aea95e6db04e41d34314d926ca2a54e31de863f1b39818af2fd4443",
+        "matchesLocal": true
+      },
+      {
+        "path": "diagnostic.html",
+        "bytes": 5434,
+        "sha256": "91ca4849eb046c4a03bb033ba70e47565c622964659007d598aaba8ea665dcc5",
+        "matchesLocal": true
+      },
+      {
+        "path": "account-access.html",
+        "bytes": 6831,
+        "sha256": "647368d11b0e243f3b03daa0b884b8a85fd96dc7c314222fed1d4137a5dabc30",
+        "matchesLocal": true
+      },
+      {
+        "path": "course-page.js",
+        "bytes": 14277,
+        "sha256": "efb71827873264644134cd64c56d64f6e52afe7cfec9c04c9a1044025099769d",
+        "matchesLocal": true
+      },
+      {
+        "path": "mastery.html",
+        "bytes": 5841,
+        "sha256": "d11942f820369b7397aa5a37742e9ebbe1f494515915970110078e90678b557f",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-forest.css",
+        "bytes": 15157,
+        "sha256": "8ca6519c050d3d8846d2840a41eb3b79bfd34cf1479df6633076d137ee18dac4",
+        "matchesLocal": true
+      },
+      {
+        "path": "join.html",
+        "bytes": 3379,
+        "sha256": "0258427f85ea46ad40b840a49929f6490908c2fe04aac6d63b617b7f5d1b7498",
+        "matchesLocal": true
+      },
+      {
+        "path": "index.html",
+        "bytes": 16263,
+        "sha256": "fe2338468cc3019b8ef87a190ddd04df647a645d7c0d32cf2b5bb749e471e410",
+        "matchesLocal": true
+      },
+      {
+        "path": "student-surfaces.css",
+        "bytes": 15345,
+        "sha256": "64da70cc4a2cb3474aef1c9dbdb19c2f22d7c223f66193c3f06769010ef799e5",
+        "matchesLocal": true
+      },
+      {
+        "path": "physics-7.html",
+        "bytes": 7182,
+        "sha256": "c89a0f8fe386459115c616b4a9f299dad2799fb6e4934be857529f6fef38a71f",
+        "matchesLocal": true
+      },
+      {
+        "path": "assessment.html",
+        "bytes": 6601,
+        "sha256": "daf0dde771808e163e29036fa4d0881f67870990dd77d00f4b3bfeef40cef254",
+        "matchesLocal": true
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 8202,
+        "sha256": "4109ddf9f14ae00fe603621813da9452c0fc7efa76f1797a2f3747d8ea0a17ea",
+        "matchesLocal": true
+      },
+      {
+        "path": "practice.html",
+        "bytes": 8184,
+        "sha256": "5154e9f81cd08c471c2d6b01c7adc839dd9fc451dc94a80935982ad4c24c4608",
+        "matchesLocal": true
+      },
+      {
+        "path": "progress.html",
+        "bytes": 5674,
+        "sha256": "81f206f6863a8d810f137d4b18719b5c2273f500e34e2da6dbcd61d0dfec24e0",
+        "matchesLocal": true
+      },
+      {
+        "path": "learning-player.mjs",
+        "bytes": 11534,
+        "sha256": "27c521f34899ef133461c9d7c1c6015403e841cc6eba8b58add072c5b02ddb41",
+        "matchesLocal": true
+      }
+    ],
+    "readAcceptance": [
+      {
+        "name": "Physics Chapters I–VI",
+        "run": 40488926093,
+        "checks": 324,
+        "evidence": "student-subpages-physics-read-20261027.json"
+      },
+      {
+        "name": "English Unit3 and preserved programme reads",
+        "run": 40490030204,
+        "attempt": 2,
+        "checks": 154,
+        "evidence": "student-subpages-english-read-20261027.json"
+      },
+      {
+        "name": "Staff analytics",
+        "run": 40491187762,
+        "checks": 10,
+        "evidence": "student-subpages-analytics-20261027.json"
+      }
+    ]
+  },
+  "browserEvidence": {
+    "serviceMode": "real browser modules with synthetic Auth/read fixtures; isolated CI also retains SQL-backed response/writing suites",
+    "iframeWidths": [
+      320,
+      360,
+      768,
+      1280
+    ],
+    "noHorizontalOverflow": true,
+    "noClippedControls": true,
+    "courseScreenshot": "haiedu-student-course-20261027.jpg",
+    "actualDeviceOrFullWcagCertificationClaimed": false,
+    "measurements": "student-subpages-layout-20261027.json"
+  },
+  "releaseControl": {
+    "requiredAggregate": "passed",
+    "persistentVercelBlockingCheck": "prior independently verified configuration reused from docs/reliability-stage1.md; unchanged",
+    "currentManagementReadback": "not re-attested: known connector scope limit for existing team",
+    "bypassOrConfigurationChange": false
+  },
+  "queueRecovery": {
+    "cancelledAutomaticEnglish": 40488925908,
+    "cancelledAutomaticAnalytics": 40488925919,
+    "cause": "shared fixture concurrency group canceled pending runs before jobs",
+    "recovery": "existing guarded reviewed-main workflow dispatch; exact frontend source required",
+    "englishReplacement": 40490030204,
+    "analyticsReplacement": 40491187762,
+    "englishFirstAttempt": {
+      "run": 40490030204,
+      "attempt": 1,
+      "passed": 80,
+      "total": 81,
+      "failure": "scope-denial request returned status 0 (transport failure); no HTTP response, no policy verdict",
+      "evidence": "student-subpages-english-first-read-20261027.json"
+    },
+    "englishVerifiedAttempt": 2
+  },
+  "preservation": {
+    "schemaChanges": false,
+    "edgeChanges": false,
+    "contentChanges": false,
+    "learningPolicyChanges": false,
+    "staffDashboardOrPrivacyLayoutChanges": false,
+    "sharedIdentityGatewayPresentationChangedForAllRoles": true,
+    "newLearningAttemptsByReadAcceptance": false,
+    "unchangedBinaryAssetsPreserved": true
+  },
+  "remaining": [
+    "S45 complete teacher/platform authoring and protected delivery",
+    "Future capabilities retain owning-service dependencies",
+    "Full 16.5C and four-subject 16.4 acceptance before Sprint17",
+    "English resumes after C47 at Unit3 learner/audio/writing acceptance, then Units4–6"
+  ],
+  "limitations": [
+    "Production read acceptance does not replace full learner attempts or Unit3 action acceptance.",
+    "No independent specialist approval, engagement gain, full WCAG/device certification or four-subject closure is claimed.",
+    "Hidden historical Home renderer remains separately recorded migration debt."
+  ],
+  "additionalAutomaticChecks": [
+    {
+      "run": 40488925875,
+      "checks": 155,
+      "evidence": "student-subpages-extra-physics-iv-20261027.json"
+    }
+  ]
+}
