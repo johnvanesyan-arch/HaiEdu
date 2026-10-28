@@ -110,7 +110,8 @@ async function teacherUI(side, entry) {
   await expect(page.locator('#institutionalSelectedName')).toHaveText(renamed);
   check(`${side}: actual rename persists after browser reload`, true);
   stage = `${side}: browser home link`;
-  const home = page.locator('a').filter({ hasText: /^Ուսուցչի գլխավոր էջ$/ }).first();
+  // Forest uses the shared role navigation; the duplicate header is hidden.
+  const home = page.locator('.hm-role-nav a[href$="view=home"]');
   await home.click();
   await expect(page.locator('[data-teacher-view="home"]')).toBeVisible();
   await expect(page.locator('#dashboardPanel')).toBeVisible();

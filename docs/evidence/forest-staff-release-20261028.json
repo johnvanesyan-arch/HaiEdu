@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "timezone": "Asia/Yerevan",
   "scope": "16.5B.9 shared Forest staff presentation and local teacher workspace prototype",
-  "status": "implementation_ready_release_verification_pending",
+  "status": "runtime_deployed_fresh_staff_acceptance_pending",
   "sourceBase": "ea3d804ce7033597b83457d0857dffaf20ada8b7",
   "authorization": "Owner-approved Forest direction and 45-capability coverage; explicit B.9 implementation instruction. No new blanket approval required by accepted sequence. Final owner usability remains B.12.",
   "backendChanged": false,
@@ -73,5 +73,178 @@
     "WRITE-CREATE",
     "RESOURCE-SUBMIT",
     "English C47 hold and full four-subject gates"
-  ]
+  ],
+  "implementationPR": 333,
+  "reviewedHead": "2abd847cb75b0d6eea85e83187e775e0c1274c92",
+  "prCI": {
+    "run": 40720706638,
+    "status": "passed",
+    "requiredJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 234
+  },
+  "prototypeVisualReview": {
+    "run": 40719326719,
+    "artifactId": 12829059119,
+    "digest": "sha256:e257d2d78f6992a891d6f3000abd68a078938aaa78a14da51ef3527affd72987",
+    "reviewed": [
+      "prototype desktop Home/Review",
+      "prototype mobile Review",
+      "teacher Home/class review",
+      "school admin desktop/mobile",
+      "master admin desktop/mobile",
+      "reviewer queue desktop/mobile"
+    ],
+    "result": "layout reviewed before broad rollout; final CI additionally covers keyboard skip and selected-work cue"
+  },
+  "initialPrCI": {
+    "run": 40719981291,
+    "unitIntegration": 1488,
+    "nativeBrowser": {
+      "passed": 233,
+      "total": 234
+    },
+    "finding": "360px/200% shared resource labels inherited an overly broad word-wrap override; preserve existing resource wrapping. The same regression remains in the required gate."
+  },
+  "unchangedControllers": [
+    "web/teacher.js",
+    "web/written-work.mjs",
+    "web/supplementary-resources.mjs",
+    "web/resource-assignments.mjs",
+    "web/materials-page.js",
+    "web/account-roles.js"
+  ],
+  "implementationCommit": "07b622015fbe2664e02a9f99aa9aca8745c66001",
+  "mainCI": {
+    "run": 40721519807,
+    "status": "passed",
+    "requiredJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 234
+  },
+  "deployment": {
+    "id": "dpl_9pDNFs651dEL9pKq5ySq3zeqp7Ap",
+    "state": "READY",
+    "target": "production",
+    "projectId": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb",
+    "commit": "07b622015fbe2664e02a9f99aa9aca8745c66001"
+  },
+  "liveAcceptanceScheduling": {
+    "initialRun": 40721519850,
+    "status": "cancelled_before_any_job_started",
+    "jobs": 0,
+    "cause": "shared sprint-14-isolation-qa pending run replaced by another main-triggered acceptance",
+    "correction": "reviewed standalone workflow comment and matching Home navigation selector; source/fixture/cleanup/concurrency guards unchanged"
+  },
+  "finalPrVisualEvidence": {
+    "run": 40720706638,
+    "artifactId": 12831620334,
+    "digest": "sha256:09b195b59aad2815a8cf1a7aa7664bc45f83a24bea3bbc7b3a951327c413cbb3",
+    "reviewed": "final mobile prototype and 360px/200% resource assignment controls, plus staff layouts before broad rollout"
+  },
+  "frontend": {
+    "revision": "07b622015fbe2664e02a9f99aa9aca8745c66001",
+    "status": "passed",
+    "files": [
+      {
+        "path": "web/admin-security.css",
+        "sha256": "6b6f3235c5b284fee05d6b065bdcf09d3e54ea6fb7929e0905be179cc3766b66"
+      },
+      {
+        "path": "web/admin.css",
+        "sha256": "9e0e967ef162370a64b019a58f7c510d86088f6a3c7ce3e11adbe1119c8e43b7"
+      },
+      {
+        "path": "web/content-curriculum.css",
+        "sha256": "864f680a4885cab7c98bce192946366e2b42b9085a267421ea16505dff70ea50"
+      },
+      {
+        "path": "web/content-guides.css",
+        "sha256": "99f254106c4974cc10d139a735a6caed25804f908bb08c979dc5d7a01650817c"
+      },
+      {
+        "path": "web/content-materials.css",
+        "sha256": "e3d289cc0192d270eab93bf90b49131aab44024243d15960bad06a66dce2febd"
+      },
+      {
+        "path": "web/content-pilot-analytics.css",
+        "sha256": "19059e279568530457f0fe8797b422a1097f07b919cffba01d2f2d83f7e5c4c2"
+      },
+      {
+        "path": "web/content-workspace.css",
+        "sha256": "3d1bb18dd1b9a506b63b2024fe480ffcf81cd1727bc6bc70e68a3b4d421302d1"
+      },
+      {
+        "path": "web/content.css",
+        "sha256": "4dd3aa4497cd4f4f3e8076225fca0f13cda0fc3dfadd12c48ee6d9a7dc14e38d"
+      },
+      {
+        "path": "web/forest-tokens.css",
+        "sha256": "f6cf4d7ce29af79e64872c7030970a06074d3799168ba40518e77d6763ab9abe"
+      },
+      {
+        "path": "web/privacy.html",
+        "sha256": "5c7ebf33aa2a7e81132442113b02cb13127948ad46bf1d8e28cc96493b6cbe4a"
+      },
+      {
+        "path": "web/privacy.js",
+        "sha256": "4bb1e24720a85a8a77bf578e5c1c23be9fbd2861c15415ef34e9f306d938cfe9"
+      },
+      {
+        "path": "web/resource-library.html",
+        "sha256": "1743de1236f76c1c70ba9f4abdd02d03a1bc23c90327807a81ca6f0f455f9222"
+      },
+      {
+        "path": "web/role-layout.css",
+        "sha256": "ebbb93cd01ec27e73ac6d15f1fa34ff0b9d7ba44db0cc8b12c7bc4960148595b"
+      },
+      {
+        "path": "web/role-layout.js",
+        "sha256": "7a7c54049b909416ca68d84926cd16161cb003b3bcd98de5fd3d39de41f13770"
+      },
+      {
+        "path": "web/school-admin.css",
+        "sha256": "a69ba5b658e147508821b9be837a42f9567e3ba1776e58673eb35b180fbac7a4"
+      },
+      {
+        "path": "web/staff-forest.css",
+        "sha256": "712a5dbc850711782374b7bb0b14176cb5be91607979396c5f6af1aa2e58eebd"
+      },
+      {
+        "path": "web/student-forest.css",
+        "sha256": "46682d09f975e28f273efe3f95d5243218a70ca3e759ccfb26ed0ba99bdc2d13"
+      },
+      {
+        "path": "web/teacher-workspace-preview.css",
+        "sha256": "8a200fa3040a652211cfc9fcde3a27cff335714f799483884ff23f479e212a6e"
+      },
+      {
+        "path": "web/teacher-workspace-preview.html",
+        "sha256": "96b0fb8cddc4c43ac27a20ada2a9800b4121745b7a6cdbad334d5c38493c2bc6"
+      },
+      {
+        "path": "web/teacher-workspace-preview.mjs",
+        "sha256": "891382fd4f9e27b725eeb467dace3e08d2ada54b3d1c228fc542de85918addd4"
+      },
+      {
+        "path": "web/teacher.css",
+        "sha256": "5628e172dd196af8bac2293a63b60f978f6510047ff69e2a1293c99e7b27106e"
+      }
+    ],
+    "source": "local git bytes match merged runtime; first and last live release stamps exact"
+  },
+  "compatibility": {
+    "run": 40721519571,
+    "source": "07b622015fbe2664e02a9f99aa9aca8745c66001",
+    "status": "passed",
+    "checks": 154,
+    "scope": "English Unit 3 and preserved programme read-only contexts; no learning writes"
+  },
+  "acceptanceAdaptation": {
+    "file": "scripts/sprint-14-actions.mjs",
+    "change": "Use shared authorized Home navigation instead of the deliberately hidden duplicate header link",
+    "guardsChanged": false,
+    "runtimeChanged": false,
+    "localGuardTests": 13
+  }
 }

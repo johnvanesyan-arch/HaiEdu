@@ -1,4 +1,5 @@
 name: Sprint 14 authenticated action QA
+# Dedicated B.9 staff acceptance slot after shared pending-queue cancellation.
 
 on:
   workflow_dispatch:
