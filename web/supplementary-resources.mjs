@@ -76,6 +76,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութ · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header>
   <p class="resource-compose-context">${esc(contextLabel(selected))}</p>
   ${m?`<p><strong>${labels[m.status]}</strong>${m.qa?.passed?' · Ստուգումն անցած է':m.qa&&!m.qa.passed?' · '+(m.qa.issues?.includes('file_required')?'PDF-ը դեռ կցված չէ':'Ստուգեք նյութի տվյալները'):''}</p>`:''}
+  ${role==='teacher'&&m?.status==='published'?`<button type="button" class="ghost" data-resource-student-preview="${esc(m.id)}">Աշակերտի տեսքի նախադիտում</button>`:''}
   <form data-resource-form>
    <fieldset class="resource-file-first"><legend>Նյութը</legend>
     <label>Ձևաչափ<select name="format"><option value="pdf"${d.format==='pdf'?' selected':''}>PDF ֆայլ</option><option value="link"${d.format==='link'?' selected':''}>HTTPS հղում</option></select></label>
@@ -111,7 +112,6 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    <button type="button" class="ghost" data-resource-action="preview">${d.format==='pdf'?'Ներբեռնել ստուգման համար':'Ստուգել հղումը'}</button>
    <button type="button" class="ghost" data-resource-action="qa"${m.status!=='draft'||(d.format==='pdf'&&!m.fileBytes)?' disabled':''}>Ստուգել QA</button>
    <button type="button" data-resource-action="publish"${m.status!=='draft'||!m.qa?.passed?' disabled':''}>${role==='teacher'?'Հրապարակել գրադարանում':'Հաստատել և հրապարակել'}</button>
-   ${role==='teacher'&&m.status==='published'?`<button type="button" class="ghost" data-resource-student-preview="${esc(m.id)}">Աշակերտի տեսքի նախադիտում</button>`:''}
    ${role==='teacher'&&m.status==='published'?`<button type="button" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}
    <button type="button" class="ghost" data-resource-action="withdraw"${m.status==='withdrawn'?' disabled':''}>Հեռացնել հասանելիությունից</button></div></details>
    <details><summary>Տարբերակներ և գործողություններ</summary><ul>${history.map(v=>`<li>v${v.version} · ${labels[v.status]}</li>`).join('')}</ul><ul>${events.map(e=>`<li>${esc(({created:'Ստեղծված',revised:'Նոր տարբերակ',qa:'QA ստուգում',published:'Հրապարակված',superseded:'Փոխարինված',withdrawn:'Հեռացված',file_attached:'Ֆայլը կցված է'})[e.event]||e.event)} · v${e.version} · ${new Date(e.at).toLocaleString('hy-AM')}${e.detail?.reason?' · '+esc(e.detail.reason):''}</li>`).join('')}</ul></details>`:''}`;
