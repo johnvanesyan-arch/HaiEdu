@@ -13,6 +13,7 @@ body[data-staff-preview] > main { max-width:90rem; padding:1.5rem 2rem 3rem; }
 .preview-hero p { max-width:52ch; }
 .preview-hero .student-subject-art { width:12rem; color:var(--forest-accent); }
 .preview-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+.preview-actions>* { min-width:0; max-width:100%; }
 .preview-actions .button-link { display:inline-flex; align-items:center; padding:.65rem 1rem; text-decoration:none; }
 .preview-class-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
 .preview-class-card { padding:1.5rem; display:grid; align-content:start; gap:.75rem; min-width:0; }

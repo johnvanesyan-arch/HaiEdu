@@ -275,7 +275,8 @@ function syncTeacherSections() {
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const linkUrl = new URL(link.href, window.location.href);
     const linkView = linkUrl.searchParams.get("view") || "home";
-    if (linkView === selected) link.setAttribute("aria-current", "page");
+    const samePage = linkUrl.pathname.replace(/\.html$/, "") === location.pathname.replace(/\.html$/, "");
+    if (samePage && linkView === selected) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
   syncWorkspaceBreadcrumb();

@@ -42,7 +42,8 @@ async function snapshot(page,name) {
   if(dir){await mkdir(dir,{recursive:true});await page.screenshot({path:`${dir}/forest-${name}.png`,fullPage:true});}
 }
 async function noPageOverflow(page,label) {
-  const m=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
+  const m=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth,
+    outside:[...document.querySelectorAll('main *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1&&e.getBoundingClientRect().width>0&&!e.closest('.table-wrap,.hm-role-nav')).slice(0,8).map(e=>({tag:e.tagName,id:e.id,class:e.className,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width}))}));
   assert.ok(m.scroll<=m.width+1,`${label}: ${JSON.stringify(m)}`);
 }
 
@@ -89,6 +90,7 @@ test('school administration switches to master presentation without inheriting s
 test('real teacher Home → Classes → Review retains lazy requests, exact context and Forest controls',async t=>{
   const {page,errors}=await teacherFixture(browser,t);
   const nav=view=>page.locator(`.hm-role-nav a[href$="view=${view}"]`).click();
+  assert.equal(await page.locator('.hm-role-nav [aria-current="page"]').count(),1,'an external library destination must not inherit the Home selection');
   await expect(page.locator('.hm-role-foot a[href="./teacher-workspace-preview.html"]')).toBeVisible();
   await nav('classes');await page.locator('#classList .teacher-class-button').first().click();
   await expect(page.locator('.hm-role-breadcrumb')).toContainText('Ընտրված դասարան');

@@ -14,7 +14,7 @@
 .content-priority-row small{display:block;margin-top:3px;color:var(--forest-muted)}
 .content-status-line{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
 .content-chip{display:inline-flex;padding:4px 8px;border-radius:999px;background:var(--forest-quiet);color:var(--forest-muted);font-size:.75rem;font-weight:800}
-.content-chip.fail{background:#fff0f1;color:#9a3944}.content-chip.warn{background:#fff6df;color:#8a641f}.content-chip.good{background:#e9f6ee;color:#2f7149}
+.content-chip.fail{background:#fff0f1;color:#9a3944}.content-chip.warn{background:var(--forest-attention-bg);color:#8a641f}.content-chip.good{background:var(--forest-success-bg);color:var(--forest-success)}
 .content-queue-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
 .content-queue-tabs{display:flex;gap:8px;flex-wrap:wrap}
 .content-queue-tabs button{background:#fff;color:var(--forest-accent);border:1px solid var(--forest-divider)}
@@ -126,7 +126,7 @@ summary.curriculum-program-head:focus-visible{outline:3px solid var(--forest-foc
   margin-bottom:5px;
 }
 .governance-status-grid strong{display:block}
-.governance-ok{color:#2f7149}
+.governance-ok{color:var(--forest-success)}
 .governance-pending{color:#8a641f}
 @media(max-width:760px){
   .governance-status-grid{grid-template-columns:1fr}
