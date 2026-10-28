@@ -23,6 +23,7 @@ on:
       - scripts/sprint-14-isolation.mjs
       - scripts/stamp-release.mjs
       - scripts/wait-for-production-release.mjs
+      - supabase/functions/_shared/teacher-dashboard-batch.ts
       - supabase/functions/_shared/academic-context.ts
       - supabase/functions/_shared/analytics-evidence.mjs
       - supabase/functions/_shared/assessment-policy.mjs

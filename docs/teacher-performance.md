@@ -65,3 +65,12 @@ The independently verified [20 October production Deployment Check configuration
 ## Remaining sequence
 
 **Next: 16.5B.8**, explicit class/student resource assignments and learner My work delivery. B.9–B.12 continue the shared Forest staff design, Today/class cards, feedback and usability acceptance; they must preserve B.7's bounded reads and record any changed timing. Residual target gaps above remain visible for those measurements and the owning hardening work, without weakening authorization. All 45 capabilities remain; English stays paused after C47. Full four-subject 16.4/16.5C still gates Sprint17. This delivery does not claim whole-redesign or subject completion.
+
+
+## B.12.2 implementation and paired measurement
+
+B.12.2 retains the existing desktop/4G budgets: useful cold and warm Home p95 ≤3 seconds, selected class p95 ≤2 seconds, and loaded navigation p95 ≤200 ms. Final usability acceptance is B.12.3. PR342 first establishes the current baseline against the unchanged runtime, waits for both directory and Today, and measures opening a nonempty existing response without creating, grading or changing work. Before/after use the same guarded journeys and two designated teacher fixtures; response fixture state and explicit budget outcomes are reported separately from journey success.
+
+The implementation batches institutional class metadata and exact unit evidence in service-only SECURITY INVOKER functions. It retains the same frozen-version, provenance, scoring and history calculations. Metadata and learner eligibility are read again after evidence; final checks retain current role, live session, membership, subject grant, exact context and expiry. No authorization or learner evidence is cached across requests. Archive growth does not fan out class-detail reads. Existing full and schoolless adapters retain their contracts. Today relies on its transaction's initial actor/session check and the shared final actor RPC, reducing serial database calls.
+
+Affected runtime consumers are `get-teacher-dashboard`, `get-teacher-student` (shared analytics helper) and `get-teacher-workspace`. The student, school-admin and master-admin interfaces, assessment scoring and content banks are unchanged. Browser role checks still precede any teacher data request. Required release gates, deployed source parity and paired production results must be recorded before this slice is closed; this implementation note is not a performance acceptance claim.

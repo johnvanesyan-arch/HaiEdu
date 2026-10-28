@@ -130,7 +130,7 @@ jobs:
       - name: Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6
         run: node --test tests/typed-fields.test.mjs tests/typed-fields-authoring.test.mjs tests/arrangement-responses.test.mjs tests/arrangement-authoring.test.mjs tests/learning-audio.test.mjs tests/learning-audio-handler.test.mjs tests/shared-task-sets.test.mjs tests/shared-task-set-handler.test.mjs tests/shared-task-set-authoring.test.mjs tests/assessed-audio.test.mjs tests/assessed-audio-handler.test.mjs
       - name: Verify written-work submissions, marking and authorization on PostgreSQL 17.6
-        run: node --test tests/written-work.test.mjs tests/written-work-handler.test.mjs tests/unit-materials.test.mjs tests/unit-guides.test.mjs tests/teacher-today.test.mjs tests/teacher-today-api.test.mjs tests/teacher-feedback.test.mjs tests/teacher-feedback-handler.test.mjs
+        run: node --test tests/written-work.test.mjs tests/written-work-handler.test.mjs tests/unit-materials.test.mjs tests/unit-guides.test.mjs tests/teacher-today.test.mjs tests/teacher-today-api.test.mjs tests/teacher-dashboard-batch.test.mjs tests/teacher-feedback.test.mjs tests/teacher-feedback-handler.test.mjs
       - name: Verify supplementary material lifecycle, authorization and PDF delivery
         run: node --test tests/supplementary-resources.test.mjs tests/supplementary-resources-handler.test.mjs
       - name: Verify resource assignment recipients, delivery and handler

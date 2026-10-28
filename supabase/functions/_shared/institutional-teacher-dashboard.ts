@@ -51,27 +51,16 @@ function releaseIsCurrent(release: any, today: string): boolean {
     && (!release.effective_to || today <= release.effective_to);
 }
 
-export async function getInstitutionalTeacherDashboard(
-  admin: any,
-  teacherId: string,
-  displayName: string,
-  requestedSelection: TeacherAcademicSelection | null = null,
-  requestedClassId: string | null = null,
-  requestedAssignmentId: string | null = null,
-) {
+async function loadDashboardRows(admin:any,teacherId:string,requestedSelection:TeacherAcademicSelection|null,requestedClassId:string|null,requestedAssignmentId:string|null) {
   const now = Date.now();
   const today = new Date(now).toISOString().slice(0, 10);
   const memberships = requireRows(await admin.from("institutional_memberships")
     .select("id,person_id,role,school_id,status,valid_from,valid_to")
     .eq("person_id", teacherId).eq("role", "teacher"))
     .filter((membership) => activeAt(membership, now));
+  if(!memberships.length)return {memberships,grants:[],years:[],schools:[],assignments:[],profile:null,programmes:[],subjects:[],classes:[],enrollments:[],studentMemberships:[],studentProfiles:[],grades:[],releases:[],units:[],releaseUnits:[]};
   const membershipIds = memberships.map((membership) => membership.id);
   const schoolIds = [...new Set(memberships.map((membership) => membership.school_id))];
-  if (!membershipIds.length) return {
-    teacher: { id: teacherId, displayName }, institutionalTeacher: true,
-    institutionalOptions: [], classes: [],
-    totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
-  };
 
   const [grantsResult, yearsResult, schoolsResult, assignmentsResult, profileResult] = await Promise.all([
     admin.from("teacher_subject_authorizations")
@@ -132,6 +121,24 @@ export async function getInstitutionalTeacherDashboard(
       .select("curriculum_release_id,unit_id,unit_code_snapshot,title_hy_snapshot,sequence_order_snapshot")
       .in("curriculum_release_id", releaseIds))
     : [];
+
+  return {memberships,grants,years,schools,assignments,profile,programmes,subjects,classes,enrollments,studentMemberships,studentProfiles,grades,releases,units,releaseUnits};
+}
+
+export async function getInstitutionalTeacherDashboard(
+  admin: any,
+  teacherId: string,
+  displayName: string,
+  requestedSelection: TeacherAcademicSelection | null = null,
+  requestedClassId: string | null = null,
+  requestedAssignmentId: string | null = null,
+  readSource: any = null,
+) {
+  const now=Date.now(),today=new Date(now).toISOString().slice(0,10);
+  const rows=readSource?.rows ?? await loadDashboardRows(admin,teacherId,requestedSelection,requestedClassId,requestedAssignmentId);
+  const {memberships,grants,years,schools,assignments,profile,programmes,subjects,classes,enrollments,studentMemberships,studentProfiles,grades,releases,units,releaseUnits}=rows;
+  const membershipIds=memberships.map((m:any)=>m.id);
+  if(!memberships.length)return {teacher:{id:teacherId,displayName},institutionalTeacher:true,institutionalOptions:[],classes:[],totals:{classes:0,students:0,studentsNeedingSupport:0}};
 
   const schoolById = new Map(schools.map((school) => [school.id, school]));
   const yearById = new Map(years.map((year) => [year.id, year]));
@@ -226,7 +233,7 @@ export async function getInstitutionalTeacherDashboard(
         releaseUnitRow:releaseUnits.find(link=>link.curriculum_release_id===selectedUnit.curriculumReleaseId && link.unit_id===selectedUnit.unitId),
         subject:subjectById.get(programme.subject_id),grade:gradeById.get(programme.grade_id),
       },new Date(now));
-      analytics = await loadExactInstitutionalClassAnalytics(admin, academicContext, students);
+      analytics = readSource ? await readSource.analytics(academicContext,students) : await loadExactInstitutionalClassAnalytics(admin, academicContext, students);
     }
     const needingSupport = analytics.students.filter((student: any) =>
       student.weakSkills?.some((skill: any) => skill.band === "needs_support")).length;
@@ -248,7 +255,7 @@ export async function getInstitutionalTeacherDashboard(
   // once per request rather than once per classroom; ownership, grants and the
   // final expiry clock still use the same authorization contract.
   const contextualClasses=classPayload.filter(klass=>klass.selectedUnit);
-  const [finalContexts,finalMembershipResult,finalGrantResult]=await Promise.all([
+  const [finalContexts,finalMembershipResult,finalGrantResult]=readSource ? await readSource.final(contextualClasses.map(klass=>klass.selectedUnit),classPayload) : await Promise.all([
     resolveTeacherAcademicContextsBatch(admin,teacherId,contextualClasses.map(klass=>klass.selectedUnit)),
     admin.from("institutional_memberships").select("id,person_id,role,school_id,status,valid_from,valid_to").in("id",membershipIds),
     admin.from("teacher_subject_authorizations").select("id,school_id,teacher_membership_id,subject_id,status,valid_from,valid_to").in("teacher_membership_id",membershipIds),

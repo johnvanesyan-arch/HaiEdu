@@ -6,6 +6,8 @@ let db,firstWork;
 const migration='supabase/migrations/20261028180038_teacher_today_workspace.sql';
 before(async()=>{
  db=await database();
+ // The RPC uses UTC; expiration setup must use the same day near midnight.
+ await db.exec("set timezone='UTC'");
  await db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;`);
  await db.exec(readFileSync(migration,'utf8'));
  for(let i=0;i<16;i++){

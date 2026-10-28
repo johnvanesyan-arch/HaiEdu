@@ -1,6 +1,6 @@
 const uuid=v=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'}});
-export function createTeacherWorkspaceHandler({createAdmin,hasActiveLiveSession,env}) {
+export function createTeacherWorkspaceHandler({createAdmin,env}) {
  return async request=>{
   if(request.method==='OPTIONS')return json({ok:true});
   if(request.method!=='POST')return json({error:'method_not_allowed'},405);
@@ -16,12 +16,15 @@ export function createTeacherWorkspaceHandler({createAdmin,hasActiveLiveSession,
    const admin=createAdmin(env.url,env.key),token=header.replace(/^Bearer\s+/i,'');
    const {data,error}=await admin.auth.getUser(token);if(error||!data?.user)return json({error:'unauthorized'},401);
    let auth;try{const p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');auth=JSON.parse(atob(p+'='.repeat((4-p.length%4)%4))).session_id;}catch{}
-   if(!uuid(auth)||!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);
+   if(!uuid(auth))return json({error:'account_or_session_inactive'},403);
    const r=await admin.rpc('service_teacher_workspace',{p_actor:data.user.id,p_auth:auth,p_assignment:assignmentId,p_cursor:cursor,p_work:workId,p_recent:recent});
    if(r.error){const m=String(r.error.message??'');return json({error:m.includes('workspace_context_unavailable')?'workspace_context_unavailable':m.includes('workspace_request_invalid')||r.error.code==='22P02'||r.error.code==='22007'?'workspace_request_invalid':'workspace_unavailable'},m.includes('workspace_context_unavailable')?403:m.includes('workspace_request_invalid')||['22P02','22007'].includes(r.error.code)?400:503);}
-   if(!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);
-   const finalProfile=await admin.from('profiles').select('role,account_status').eq('id',data.user.id).maybeSingle();
-   if(finalProfile.error||finalProfile.data?.role!=='teacher'||finalProfile.data?.account_status!=='active')return json({error:'workspace_context_unavailable'},403);
+   // The workspace transaction validates the actor/session before reading.
+   // A separate final RPC catches logout, disabled accounts and role changes
+   // committed while that projection was being read.
+   const finalActor=await admin.rpc('service_teacher_dashboard_actor',{p_actor:data.user.id,p_session:auth});
+   if(finalActor.error)return json({error:finalActor.error.code==='42501'?'workspace_context_unavailable':'workspace_unavailable'},finalActor.error.code==='42501'?403:503);
+   if(finalActor.data?.profile?.role!=='teacher'||finalActor.data?.profile?.account_status!=='active')return json({error:'workspace_context_unavailable'},403);
    return json(r.data);
   }catch{return json({error:'workspace_unavailable'},503);}
  };
