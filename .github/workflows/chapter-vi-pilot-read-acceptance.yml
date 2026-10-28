@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
     paths:
+      - supabase/functions/manage-teacher-feedback/**
+      - supabase/functions/_shared/teacher-feedback-handler.mjs
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json
       - supabase/functions/manage-student-invitation/index.ts
@@ -31,6 +33,7 @@ on:
       - supabase/functions/_shared/written-work-handler.mjs
       - supabase/functions/manage-written-work/index.ts
       - supabase/migrations/20261020112724_sprint_16_1b_written_work.sql
+      - web/teacher-feedback.mjs
       - web/written-work.mjs
       - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,

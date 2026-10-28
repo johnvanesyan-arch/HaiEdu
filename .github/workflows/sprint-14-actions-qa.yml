@@ -8,6 +8,7 @@ on:
     paths:
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json
+      - web/teacher-feedback.mjs
       - web/written-work.mjs
       - web/written-work.css
       - scripts/teacher-today-acceptance.mjs
@@ -49,6 +50,8 @@ on:
       - supabase/functions/get-teacher-academic-context/**
       - supabase/functions/get-teacher-dashboard/**
       - supabase/functions/get-teacher-workspace/**
+      - supabase/functions/manage-teacher-feedback/**
+      - supabase/migrations/*_teacher_feedback_workspace.sql
       - supabase/migrations/20261028180038_teacher_today_workspace.sql
       - supabase/functions/get-teacher-student/**
       - supabase/functions/manage-institutional-invitation/**

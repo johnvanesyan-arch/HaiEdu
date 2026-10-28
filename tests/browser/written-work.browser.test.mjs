@@ -24,7 +24,8 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(url.pathname==='/fixture-rpc'){
    const {name,body}=route.request().postDataJSON();let data,status=200;
-   if(name==='manage-written-work'){const response=await f.request(body,teacher?20:10);status=response.status;data=await response.json();if(hold&&body.action===hold.action){const release=hold;hold=null;await new Promise(resolve=>{release.resolve=resolve;});}}
+   if(name==='manage-teacher-feedback'){const response=await f.feedbackRequest(body,20);status=response.status;data=await response.json();if(hold&&body.action===hold.action){const release=hold;hold=null;await new Promise(resolve=>{release.resolve=resolve;});}}
+   else if(name==='manage-written-work'){const response=await f.request(body,teacher?20:10);status=response.status;data=await response.json();if(hold&&body.action===hold.action){const release=hold;hold=null;await new Promise(resolve=>{release.resolve=resolve;});}}
    else if(name==='get-student-classes')data={contexts:[contextInfo],navigationVersion:'fixture'};
    else if(name==='get-student-dashboard'){const r=await f.admin.rpc('service_student_learning_dashboard',{p_student_id:id(10),p_auth_session_id:id(401),p_enrollment_id:id(371),p_release_id:id(501),p_unit_id:id(511)});if(r.error)throw Error(r.error.message);data=r.data;}
    else if(name==='get-teacher-dashboard')data={teacher:{id:id(20),displayName:'Փորձնական ուսուցիչ'},institutionalTeacher:true,institutionalOptions:[],totals:{classes:1,students:1,studentsNeedingSupport:0},classes:[{id:id(321),assignmentId:id(351),name:'7Ա',isActive:true,schoolId:id(301),academicYear:'2026–2027',gradeNumber:7,schoolName:'Փորձնական դպրոց',subjectName:'Փորձնական առարկա',studentCount:1,students:[],skills:[],unitOptions:[{assignmentId:id(351),curriculumReleaseId:id(501),unitId:id(511),unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1}],selectedUnit:{curriculumReleaseId:id(501),unitId:id(511),unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1},analyticsAvailable:true}]};
@@ -53,12 +54,13 @@ test('actual student and teacher workspaces complete draft, submit, return, revi
  await m.locator('[data-writing-refresh]').click();assert.equal(await m.locator('[data-writing-open]').count(),0);
  await s.evaluate(()=>{const form=document.querySelector('[data-writing-form]');form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));});
  await s.waitForSelector('.written-response');assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);
- await m.locator('[data-writing-refresh]').click();await m.locator('[data-writing-open]').click();await m.locator('[data-writing-feedback]').fill('Add a reason for your choice.');
+ await m.locator('[data-writing-refresh]').click();await m.locator('[data-writing-open]').click();const heldFeedback=marker.holdNext('save_draft');await m.locator('[data-writing-feedback]').fill('Add a reason for your choice.');await m.locator('[data-writing-feedback]').press('Control+s');
+ await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>heldFeedback.resolve?resolve():Date.now()>end?reject(Error('No held feedback save')):setTimeout(check,20);check();});
  m.once('dialog',d=>d.dismiss());await m.locator('#teacherOpenWrittenWork').click();assert.equal(await m.locator('[data-writing-feedback]').inputValue(),'Add a reason for your choice.');
  m.once('dialog',d=>d.dismiss());await m.locator('#teacherUnitFilter').selectOption(id(501)+':'+id(512));
  assert.equal(await m.locator('#teacherUnitFilter').inputValue(),id(501)+':'+id(511));
  assert.equal(await m.locator('[data-writing-feedback]').inputValue(),'Add a reason for your choice.');
- await m.locator('[data-writing-return]').click();await m.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('վերադարձվել'));
+ heldFeedback.resolve();await m.locator('[data-writing-return]').click();await m.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('վերադարձվել'));
  await s.reload();await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill('My revised description explains that the blue jacket is comfortable and suitable for school.');await s.locator('[data-writing-submit]').click();await s.waitForSelector('.written-response');
  await m.locator('[data-writing-back]').click();await m.locator('[data-writing-open]').click();for(const [key,value] of Object.entries({task:3,organisation:2,vocabulary:2,grammar:2}))await m.locator(`[data-writing-score="${key}"]`).selectOption(String(value));
  await m.locator('[data-writing-feedback]').fill('Your reason is clear. Check sentence endings.');await m.locator('[data-writing-grade]').click();await m.waitForSelector('.written-score');

@@ -16,14 +16,14 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
  await p.locator('[data-today-continue] button').click();
  await p.locator('[data-writing-feedback]').waitFor();
  assert.equal(new URL(p.url()).searchParams.get('todayWork'),first);
- let writing=await calls(p,'manage-written-work');
- assert.deepEqual(writing.map(c=>c.body.action),['inspect']);
+ let writing=await calls(p,'manage-teacher-feedback');
+ assert.deepEqual(writing.map(c=>c.body.action),['open']);
  assert.equal((await calls(p,'get-teacher-dashboard')).length,1);
  const exact=writing[0].body.context;
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-review.png'});}
  await p.reload();await p.locator('[data-writing-feedback]').waitFor();
  assert.equal(new URL(p.url()).searchParams.get('todayWork'),first);
- writing=await calls(p,'manage-written-work');assert.deepEqual(writing[0].body.context,exact);
+ writing=await calls(p,'manage-teacher-feedback');assert.deepEqual(writing[0].body.context,exact);
  await p.locator('[data-writing-feedback]').fill('Synthetic review acknowledgment.');
  for(const field of await p.locator('[data-writing-score]').all())await field.selectOption('2');
  await p.locator('[data-writing-grade]').click();await expect(summary(p)).toContainText('1 աշխատանք');
@@ -31,7 +31,7 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
  assert.equal(await p.locator(`[data-today-open="${first}"]`).count(),0);
  await p.locator('[data-today-next]').click();await p.locator('[data-writing-feedback]').waitFor();
  assert.notEqual(new URL(p.url()).searchParams.get('todayWork'),first);
- writing=await calls(p,'manage-written-work');
+ writing=await calls(p,'manage-teacher-feedback');
  assert.notEqual(writing.at(-1).body.context.unitId,exact.unitId);
  assert.equal((await calls(p,'get-teacher-dashboard')).filter(c=>c.body.readMode==='class').length,0);
  await p.locator('[data-today-back]').click();await expect(summary(p)).toContainText('1 աշխատանք');
@@ -56,14 +56,14 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  await expect(summary(p)).toContainText('չբեռնվեց');assert.doesNotMatch(await summary(p).innerText(),/^0 /);
  assert.equal(await p.locator('.today-class-card').count(),0);
  await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 աշխատանք');
- await p.locator('[data-today-continue] button').click();await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
+ await p.locator('[data-today-continue] button').click();await p.evaluate(()=>window.__today.holds.push('manage-teacher-feedback:save_draft'));await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
  const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('#refreshBtn').click();
  assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
  p.once('dialog',d=>d.dismiss());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
  assert.equal(p.url(),reviewURL);assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
  p.once('dialog',d=>d.accept());await p.evaluate(classId=>{history.pushState({},'', '/teacher.html?view=class&class='+classId);dispatchEvent(new PopStateEvent('popstate'));},id(321));
  await p.locator('#teacherClassDetailView:not(.hidden)').waitFor();assert.equal(await p.locator('#teacherToday').innerText(),'');
- assert.equal(await p.locator('[data-writing-feedback]').count(),0);
+ assert.equal(await p.locator('[data-writing-feedback]').count(),0);await p.evaluate(()=>window.__today.release());
  await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
  let count=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
  assert.equal((await calls(p,'get-teacher-workspace')).length,count+1);

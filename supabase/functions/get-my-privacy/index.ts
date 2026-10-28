@@ -6,7 +6,7 @@ const corsHeaders = {
 };
 
 function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control":"no-store" } });
 }
 
 async function countRows(query: any, label: string) {
@@ -93,11 +93,12 @@ async function getDataInventory(admin: any, role: string, userId: string) {
         "teacher_assignments_count_failed",
       )
       : 0;
-    const [emailInvitations, joinCodes, writtenReviews, assignments] = await Promise.all([
+    const [emailInvitations, joinCodes, writtenReviews, assignments, feedback] = await Promise.all([
       countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_invitations_count_failed"),
       countRows(admin.from("institutional_join_codes").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_join_codes_count_failed"),
       countRows(admin.from("written_reviews").select("id", { count: "exact", head: true }).eq("assessor_id", userId), "written_reviews_count_failed"),
       assignmentInventory(admin, userId),
+      admin.rpc('service_teacher_feedback_privacy_counts',{p_user:userId}).then(({data,error}:any)=>{if(error)throw new Error('feedback_inventory_failed');return data;}),
     ]);
     return {
       kind: "teacher",
@@ -105,6 +106,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       teachingAssignments,
       invitationRecords: emailInvitations + joinCodes,
       writtenReviews,
+      ...feedback,
       materialAssignmentsSent: assignments.materialAssignmentsSent,
       auditEvents,
     };

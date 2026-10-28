@@ -1,0 +1,127 @@
+name: Teacher feedback production acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/teacher-feedback-acceptance.yml
+      - docs/qa/additional-programme-fixtures.json
+      - package-lock.json
+      - package.json
+      - scripts/stamp-release.mjs
+      - scripts/teacher-feedback-acceptance.mjs
+      - scripts/wait-for-production-release.mjs
+      - supabase/functions/_shared/**
+      - supabase/functions/get-teacher-dashboard/**
+      - supabase/functions/get-teacher-workspace/**
+      - supabase/functions/manage-student-invitation/**
+      - supabase/functions/get-my-privacy/**
+      - supabase/functions/manage-teacher-feedback/**
+      - supabase/functions/manage-written-work/**
+      - supabase/migrations/*_teacher_feedback_workspace.sql
+      - vercel.json
+      - web/account-roles.js
+      - web/analytics-provenance.mjs
+      - web/archive-browser.mjs
+      - web/arrangement-contract.mjs
+      - web/arrangement-ui.mjs
+      - web/assessed-audio.mjs
+      - web/assessment-reporting.mjs
+      - web/base.css
+      - web/components.css
+      - web/config.js
+      - web/course-gate.js
+      - web/course-page.js
+      - web/course-workspace.css
+      - web/course.html
+      - web/forest-tokens.css
+      - web/learning-audio.mjs
+      - web/learning-extensions.mjs
+      - web/learning-navigation.mjs
+      - web/learning-player.mjs
+      - web/learning-stimulus.mjs
+      - web/learning-task-set.mjs
+      - web/multi-subject-home.js
+      - web/multi-subject.css
+      - web/privacy.css
+      - web/privacy.html
+      - web/privacy.js
+      - web/resource-assignments.mjs
+      - web/resource-navigation.mjs
+      - web/responsive-qa.css
+      - web/role-layout.css
+      - web/role-layout.js
+      - web/staff-forest.css
+      - web/student-course-presentation.mjs
+      - web/student-courses.js
+      - web/student-forest.css
+      - web/student-home-model.mjs
+      - web/student-shell.css
+      - web/student-shell.js
+      - web/student-signout.mjs
+      - web/student-surfaces.css
+      - web/student-visuals.mjs
+      - web/styles.css
+      - web/subject-visuals.mjs
+      - web/teacher-feedback.mjs
+      - web/teacher-today.css
+      - web/teacher-today.mjs
+      - web/teacher.css
+      - web/teacher.html
+      - web/teacher.js
+      - web/tokens.css
+      - web/typed-fields-contract.mjs
+      - web/typed-fields-ui.mjs
+      - web/unit-guides.mjs
+      - web/ux.css
+      - web/ux.js
+      - web/written-work.css
+      - web/written-work.mjs
+permissions:
+  contents: read
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+jobs:
+  feedback-read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Require reviewed main
+        run: test "$GITHUB_REF" = refs/heads/main
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Bound browser package downloads
+        run: |
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/wait-for-production-release.mjs
+      - name: Verify private feedback reads without publishing learner marks
+        run: node scripts/teacher-feedback-acceptance.mjs
+        env:
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: teacher-feedback-production
+          path: qa-results/teacher-feedback.json
+          if-no-files-found: warn
+          retention-days: 14

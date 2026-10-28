@@ -7,6 +7,7 @@ export function writingReadAllowed({pathname,method,body,search}) {
   if(method!=='POST')return false;
   if(pathname==='/functions/v1/get-teacher-dashboard')return true;
   if(pathname==='/functions/v1/manage-student-invitation')return body?.action==='list';
+  if(pathname==='/functions/v1/manage-teacher-feedback')return ['open','snippets'].includes(body?.action);
   return pathname==='/functions/v1/manage-written-work' && ['tasks','queue'].includes(body?.action);
 }
 

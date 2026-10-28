@@ -16,13 +16,13 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
  }
  const handle=createTeacherWorkspaceHandler({createAdmin:()=>f.admin,hasActiveLiveSession:f.hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture-only'}});
  const bc=await browser.newContext({viewport:{width:1280,height:960},serviceWorkers:'block'});t.after(()=>bc.close());const page=await bc.newPage();page.setDefaultTimeout(10000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(()=>{
-  const s=window.__today={actor:20,calls:[],fail:[],holds:[],resolvers:[],listeners:[],release(){this.holds=[];this.resolvers.splice(0).forEach(fn=>fn());},switchActor(actor){this.actor=actor;this.listeners.slice().forEach(fn=>fn(actor?'SIGNED_IN':'SIGNED_OUT',actor?{user:{id:'71000000-0000-4000-8000-'+String(actor).padStart(12,'0')}}:null));}};
+ await bc.addInitScript(()=>{
+  const s=window.__today={actor:20,calls:[],fail:[],lose:[],holds:[],resolvers:[],listeners:[],release(){this.holds=[];this.resolvers.splice(0).forEach(fn=>fn());},switchActor(actor){this.actor=actor;this.listeners.slice().forEach(fn=>fn(actor?'SIGNED_IN':'SIGNED_OUT',actor?{user:{id:'71000000-0000-4000-8000-'+String(actor).padStart(12,'0')}}:null));}};
   const session=()=>({user:{id:'71000000-0000-4000-8000-'+String(s.actor).padStart(12,'0'),email:'synthetic@example.invalid'}});
   window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:s.actor?session():null}}),getUser:async()=>({data:{user:s.actor?session().user:null}}),onAuthStateChange(fn){s.listeners.push(fn);return{data:{subscription:{unsubscribe(){s.listeners=s.listeners.filter(x=>x!==fn);}}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{async invoke(fn,{body}){
    const actor=s.actor;s.calls.push({fn,body,actor});if(s.fail.includes(fn))return{data:{error:'workspace_unavailable'},error:{}};
    const r=await fetch('/fixture-rpc',{method:'POST',body:JSON.stringify({fn,body,actor})}),data=await r.json();
-   if(s.holds.includes(fn)&&actor===20)await new Promise(resolve=>s.resolvers.push(resolve));return r.ok?{data}:{data,error:{}};
+   if((s.holds.includes(fn)||s.holds.includes(fn+':'+body.action))&&actor===20)await new Promise(resolve=>s.resolvers.push(resolve));if(s.lose.includes(fn+':'+body.action)){s.lose=s.lose.filter(k=>k!==fn+':'+body.action);return{data:null,error:{}};}return r.ok?{data}:{data,error:{}};
   }}};
  });
  await bc.route('**/*',async route=>{
@@ -32,6 +32,7 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
   if(u.pathname==='/fixture-rpc'){
    const {fn,body,actor}=route.request().postDataJSON();let data,status=200;
    if(fn==='get-teacher-workspace'){const r=await handle(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+token(actor)},body:JSON.stringify(body)}));status=r.status;data=await r.json();}
+   else if(fn==='manage-teacher-feedback'){const r=await f.feedbackRequest(body,actor);status=r.status;data=await r.json();}
    else if(fn==='manage-written-work'){const r=await f.request(body,actor);status=r.status;data=await r.json();}
    else if(fn==='get-teacher-dashboard'){
     data=(await f.db.query('select service_teacher_class_directory($1,$2,$3,$4) result',[id(actor),body.archive??false,body.offset??0,body.search??''])).rows[0].result;
@@ -43,5 +44,5 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
   try{const n=u.pathname.endsWith('/teacher')?'/teacher.html':u.pathname,body=await readFile(new URL('../../web'+n,import.meta.url));return route.fulfill({body,contentType:n.endsWith('.html')?'text/html':/\.m?js$/.test(n)?'text/javascript':n.endsWith('.css')?'text/css':n.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
  });
  await page.goto('https://today.test/teacher.html'+initialURL);await page.locator('#dashboardPanel:not(.hidden)').waitFor();await page.locator('[data-today-time]').filter({hasText:'Ստուգված է'}).waitFor();
- return{page,errors,db:f.db};
+ return{page,errors,db:f.db,studentRequest:f.request};
 }

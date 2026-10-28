@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 // routes relevant changes to existing QA; it does not turn live QA into a PR
 // test, attest the deployed revision, or replace isolated browser acceptance.
 export const browserQaTargets = [
+  {workflow:".github/workflows/teacher-feedback-acceptance.yml",entries:["web/teacher.html","web/course.html","web/privacy.html","scripts/teacher-feedback-acceptance.mjs","docs/qa/additional-programme-fixtures.json"],runner:"scripts/teacher-feedback-acceptance.mjs"},
   {
     workflow: ".github/workflows/resource-assignments-acceptance.yml",
     entries: ["web/index.html", "web/resource-library.html", "web/teacher.html", "web/teacher-workflows.html", "scripts/resource-assignments-acceptance.mjs"],
