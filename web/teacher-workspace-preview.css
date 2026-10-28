@@ -29,7 +29,7 @@ body[data-staff-preview] > main { max-width:90rem; padding:1.5rem 2rem 3rem; }
 .preview-queue h2 { margin-top:0; }
 .preview-queue-list { display:grid; gap:.75rem; margin-top:1rem; }
 body[data-staff-preview] .preview-queue-list button { text-align:left; background:var(--forest-surface); color:var(--forest-ink); border-color:var(--forest-control); }
-body[data-staff-preview] .preview-queue-list button[aria-pressed=true] { background:var(--forest-selected); }
+body[data-staff-preview] .preview-queue-list button[aria-pressed=true] { background:var(--forest-selected); border-color:var(--forest-accent); box-shadow:inset 4px 0 var(--forest-accent); font-weight:700; }
 .preview-response blockquote { margin:1rem 0; padding:1rem; background:var(--forest-quiet); border-inline-start:4px solid var(--forest-accent); border-radius:.5rem; }
 .preview-response details { padding:1rem; border:1px solid var(--forest-divider); border-radius:.75rem; }
 .preview-response summary { align-content:center; cursor:pointer; }

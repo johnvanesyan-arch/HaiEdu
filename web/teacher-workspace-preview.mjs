@@ -71,5 +71,8 @@ root.addEventListener('submit',event=>{
   (document.getElementById('previewFeedback')||title).focus();
 });
 scenario.addEventListener('change',render);
-window.addEventListener('hashchange',()=>{render();title.focus({preventScroll:true});});
+window.addEventListener('hashchange',()=>{
+  if(!Object.hasOwn(labels,location.hash.slice(1)))return;
+  render();title.focus({preventScroll:true});
+});
 render();

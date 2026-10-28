@@ -48,9 +48,14 @@
     }
   },
   "focusedBrowser": {
-    "status": "pending",
-    "source": "3f0c580447557cf45f30e8211fa85484c3aa7705",
-    "run": 40718698749
+    "status": "passed",
+    "source": "7e49338892d34adb58ca15da96d25baa43165fd9",
+    "run": 40719326719,
+    "tests": 18,
+    "passed": 18,
+    "scope": "all 14 staff pages, master school branch, real teacher lazy review/context, synthetic prototype states/responsive/reduced motion",
+    "isolation": "no live credentials or production services; temporary branch workflow removed before PR",
+    "developmentFinding": "200% Armenian text exposed recovery-list, form and heading intrinsic sizing; corrected and covered. Home external-library active state and primary-fill class-card regression are covered."
   },
   "backendEvidenceReused": [
     "docs/evidence/workflow-boundaries-release-20261028.json",

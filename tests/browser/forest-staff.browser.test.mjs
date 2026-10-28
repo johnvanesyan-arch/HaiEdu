@@ -109,6 +109,8 @@ test('real teacher Home → Classes → Review retains lazy requests, exact cont
 
 test('teacher preview Home → Classes → Review is interactive, local and resets after reload',async t=>{
   const {page,errors,remote}=await pageFixture(t,'teacher-workspace-preview.html');
+  await page.keyboard.press('Tab');await expect(page.locator('.skip-link')).toBeFocused();
+  await page.keyboard.press('Enter');await expect(page.locator('#previewMain')).toBeFocused();
   await expect(page.locator('.preview-notice')).toContainText('հորինված տվյալներ');
   await snapshot(page,'preview-home-1280');
   await page.locator('[data-preview-view="classes"]').click();
