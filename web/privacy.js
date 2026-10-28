@@ -12,6 +12,7 @@ const accountHomes = {student:"./index.html",teacher:"./teacher.html?view=home",
 function clearAccount(signedOut = false) {
   state = null;
   document.body.removeAttribute("data-haiedu-student");
+  document.body.removeAttribute("data-staff-account");
   document.documentElement.removeAttribute("data-haiedu-student-root");
   document.body.toggleAttribute("data-forest-surface", signedOut);
   document.body.toggleAttribute("data-account-pending", !signedOut);
@@ -134,6 +135,7 @@ function render(data) {
   document.body.removeAttribute("data-forest-surface");
   $("accountHomeLink").href = accountHomes[data.account.role] || "./index.html";
   document.body.toggleAttribute("data-haiedu-student", data.account.role === "student");
+  document.body.toggleAttribute("data-staff-account", Object.hasOwn(accountHomes, data.account.role) && data.account.role !== "student");
   document.documentElement.toggleAttribute("data-haiedu-student-root", data.account.role === "student");
   $("loading").classList.add("hidden");
   $("signedOut").classList.add("hidden");

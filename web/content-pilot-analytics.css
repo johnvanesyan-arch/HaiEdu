@@ -23,16 +23,16 @@
 
 .pilot-metric-grid > div,
 .pilot-item-grid > div {
-  border: 1px solid #e5ebf2;
+  border: 1px solid var(--forest-divider);
   border-radius: 10px;
   padding: 11px 12px;
-  background: #fafbfd;
+  background: var(--forest-quiet);
 }
 
 .pilot-metric-grid span,
 .pilot-item-grid span {
   display: block;
-  color: #6e7886;
+  color: var(--forest-muted);
   font-size: .76rem;
   margin-bottom: 4px;
 }
@@ -52,12 +52,12 @@
 .pilot-pool-row > span {
   border-radius: 999px;
   padding: 5px 10px;
-  background: #eef3f8;
+  background: var(--forest-quiet);
   font-size: .8rem;
 }
 
 .pilot-flagged-block {
-  border-top: 1px solid #e7edf4;
+  border-top: 1px solid var(--forest-divider);
   margin-top: 16px;
   padding-top: 14px;
 }
@@ -92,7 +92,7 @@
 .pilot-alert { color: #a62f37; }
 
 .pilot-item-evidence {
-  background: #fbfcfe;
+  background: var(--forest-quiet);
 }
 
 .pilot-item-grid {

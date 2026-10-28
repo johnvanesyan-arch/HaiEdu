@@ -1,5 +1,5 @@
 .school-admin-page {
-  background: #f3f6f9;
+  background: var(--forest-quiet);
 }
 
 .school-admin-shell {
@@ -23,7 +23,7 @@
 .page-lede {
   max-width: 720px;
   margin: 0;
-  color: #657286;
+  color: var(--forest-muted);
   font-size: 1rem;
 }
 
@@ -58,7 +58,7 @@
 
 .panel-kicker {
   margin: 0 0 4px;
-  color: #315d8d;
+  color: var(--forest-accent);
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .06em;
@@ -89,7 +89,7 @@
 
 .form-field input,
 .form-field select {
-  border: 1px solid #c7d0dc;
+  border: 1px solid var(--forest-divider);
   border-radius: 12px;
   background: #fff;
   padding: 12px 13px;
@@ -98,12 +98,12 @@
 
 .form-field input:hover,
 .form-field select:hover {
-  border-color: #aebac9;
+  border-color: var(--forest-control);
 }
 
 .form-field input:focus,
 .form-field select:focus {
-  border-color: #6f92bd;
+  border-color: var(--forest-accent);
   box-shadow: 0 0 0 3px rgba(31, 79, 138, .11);
 }
 
@@ -152,9 +152,9 @@
   justify-content: space-between;
   gap: 18px;
   padding: 14px 16px;
-  border: 1px solid #e0e6ee;
+  border: 1px solid var(--forest-divider);
   border-radius: 13px;
-  background: #fbfcfe;
+  background: var(--forest-quiet);
 }
 
 .invite-row.expired {
@@ -178,8 +178,8 @@
   min-height: 26px;
   padding: 3px 9px;
   border-radius: 999px;
-  background: #edf3fa;
-  color: #2d527e;
+  background: var(--forest-quiet);
+  color: var(--forest-accent);
   font-size: .76rem;
   font-weight: 800;
 }
@@ -191,7 +191,7 @@
 .invite-meta,
 .invite-expiry {
   margin: 4px 0 0;
-  color: #6f7c8d;
+  color: var(--forest-muted);
   font-size: .88rem;
 }
 
@@ -215,7 +215,7 @@
 
 .overview-header { align-items: flex-end; }
 .overview-school-field { min-width: min(100%, 300px); margin: 0; }
-.overview-school-code { margin: 9px 0 0; color: #52667f; font-size: .9rem; }
+.overview-school-code { margin: 9px 0 0; color: var(--forest-muted); font-size: .9rem; }
 .overview-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -225,12 +225,12 @@
 .overview-stat {
   min-width: 0;
   padding: 17px;
-  border: 1px solid #dfe6ef;
+  border: 1px solid var(--forest-divider);
   border-radius: 13px;
-  background: #f8fbff;
+  background: var(--forest-quiet);
 }
-.overview-stat span { display: block; min-height: 2.6em; color: #60738c; font-size: .86rem; line-height: 1.35; }
-.overview-stat strong { display: block; margin-top: 8px; color: #203a5f; font-size: 1.35rem; overflow-wrap: anywhere; }
+.overview-stat span { display: block; min-height: 2.6em; color: var(--forest-muted); font-size: .86rem; line-height: 1.35; }
+.overview-stat strong { display: block; margin-top: 8px; color: var(--forest-accent); font-size: 1.35rem; overflow-wrap: anywhere; }
 .overview-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -241,14 +241,14 @@
   display: grid;
   gap: 4px;
   padding: 15px 17px;
-  border: 1px solid #d7e3f3;
+  border: 1px solid var(--forest-divider);
   border-radius: 12px;
-  color: #244f88;
+  color: var(--forest-accent);
   background: #fff;
   text-decoration: none;
 }
-.overview-actions a:hover { border-color: #9db9dc; background: #f8fbff; }
-.overview-actions span { color: #60738c; font-size: .87rem; line-height: 1.45; }
+.overview-actions a:hover { border-color: var(--forest-control); background: var(--forest-quiet); }
+.overview-actions span { color: var(--forest-muted); font-size: .87rem; line-height: 1.45; }
 .overview-message { margin: 16px 0 0; }
 
 /* The sidebar hash selects one section without changing authorization gates. */
@@ -263,14 +263,14 @@
 #rosterMessage { margin: 12px 0 0; }
 .teacher-roster { display: grid; gap: 18px; margin-top: 14px; }
 .roster-group { display: grid; gap: 12px; }
-.roster-group-title, .year-group-title { margin: 0; color: #294d79; font-size: 1rem; }
-.roster-group-archived { padding-top: 16px; border-top: 1px solid #e0e6ee; }
+.roster-group-title, .year-group-title { margin: 0; color: var(--forest-accent); font-size: 1rem; }
+.roster-group-archived { padding-top: 16px; border-top: 1px solid var(--forest-divider); }
 .roster-card {
   min-width: 0;
   padding: 18px;
-  border: 1px solid #dfe6ef;
+  border: 1px solid var(--forest-divider);
   border-radius: 13px;
-  background: #fbfcfe;
+  background: var(--forest-quiet);
 }
 .roster-card-head {
   display: flex;
@@ -282,7 +282,7 @@
 .roster-state-actions { display: flex; align-items: center; justify-content: flex-end; gap: 9px; flex-wrap: wrap; }
 .roster-archive-button { min-width: 112px; }
 .roster-card h3 { margin: 0; font-size: 1.12rem; }
-.roster-email { margin: 5px 0 0; color: #52667f; overflow-wrap: anywhere; }
+.roster-email { margin: 5px 0 0; color: var(--forest-muted); overflow-wrap: anywhere; }
 .roster-status {
   display: inline-flex;
   padding: 5px 10px;
@@ -293,7 +293,7 @@
   font-weight: 750;
 }
 .roster-status-active { color: #28583b; background: #e6f4e9; }
-.roster-status-archived { color: #52606f; background: #eef1f5; }
+.roster-status-archived { color: var(--forest-muted); background: var(--forest-quiet); }
 .roster-status-ended { color: #7b4350; background: #fbebee; }
 .roster-account-status {
   display: inline-flex;
@@ -306,23 +306,23 @@
 }
 .roster-history {
   padding-top: 16px;
-  border-top: 1px solid #e0e6ee;
+  border-top: 1px solid var(--forest-divider);
 }
 .roster-history > summary {
   cursor: pointer;
-  color: #294d79;
+  color: var(--forest-accent);
   font-size: 1rem;
   font-weight: 800;
   line-height: 1.45;
 }
-.roster-history > summary:focus-visible { outline: 2px solid #245b96; outline-offset: 4px; }
+.roster-history > summary:focus-visible { outline: 2px solid var(--forest-accent); outline-offset: 4px; }
 .roster-history-body { display: grid; gap: 12px; margin-top: 12px; }
 .roster-field { display: flex; flex-wrap: wrap; gap: 5px 10px; margin: 14px 0 0; }
-.roster-field strong, .roster-classes > strong { color: #243e63; }
-.roster-field span { color: #52667f; overflow-wrap: anywhere; }
+.roster-field strong, .roster-classes > strong { color: var(--forest-ink); }
+.roster-field span { color: var(--forest-muted); overflow-wrap: anywhere; }
 .roster-classes { margin-top: 12px; }
-.roster-classes p { margin: 5px 0 0; color: #52667f; }
-.roster-classes ul { margin: 6px 0 0; padding-left: 22px; color: #52667f; }
+.roster-classes p { margin: 5px 0 0; color: var(--forest-muted); }
+.roster-classes ul { margin: 6px 0 0; padding-left: 22px; color: var(--forest-muted); }
 .roster-classes li { margin-top: 4px; overflow-wrap: anywhere; }
 
 @media (max-width: 760px) {
@@ -380,21 +380,21 @@
   }
 }
 
-.year-list{margin-top:16px;display:grid;gap:8px}.year-list p{margin:0;padding:10px 12px;border:1px solid #dfe6ef;border-radius:10px;background:#f8fbff}
+.year-list{margin-top:16px;display:grid;gap:8px}.year-list p{margin:0;padding:10px 12px;border:1px solid var(--forest-divider);border-radius:10px;background:var(--forest-quiet)}
 .year-group { display: grid; gap: 10px; }
-.year-group + .year-group { margin-top: 10px; padding-top: 16px; border-top: 1px solid #e0e6ee; }
+.year-group + .year-group { margin-top: 10px; padding-top: 16px; border-top: 1px solid var(--forest-divider); }
 .year-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   padding: 12px 14px;
-  border: 1px solid #dfe6ef;
+  border: 1px solid var(--forest-divider);
   border-radius: 11px;
-  background: #f8fbff;
+  background: var(--forest-quiet);
 }
 .year-row > div { display: grid; gap: 4px; }
-.year-row span { color: #60738c; font-size: .88rem; }
+.year-row span { color: var(--forest-muted); font-size: .88rem; }
 .year-row button { flex: 0 0 auto; }
 
 @media (max-width: 560px) {
@@ -409,14 +409,14 @@
 .overview-extension-grid {
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid #e2e8ef;
+  border-top: 1px solid var(--forest-divider);
 }
 
 .analytics-board {
   min-width: 0;
-  border: 1px solid #dfe6ee;
+  border: 1px solid var(--forest-divider);
   border-radius: 16px;
-  background: linear-gradient(155deg, #fff, #f4f7fa);
+  background: linear-gradient(155deg, #fff, var(--forest-quiet));
   padding: 20px;
 }
 
@@ -438,7 +438,7 @@
 .analytics-heading p:not(.panel-kicker) {
   max-width: 720px;
   margin: 7px 0 0;
-  color: #556477;
+  color: var(--forest-muted);
   line-height: 1.58;
 }
 
@@ -473,7 +473,7 @@
 .analytics-metric {
   min-width: 0;
   padding: 15px;
-  border: 1px solid #dfe6ef;
+  border: 1px solid var(--forest-divider);
   border-radius: 12px;
   background: rgba(255, 255, 255, .84);
 }
@@ -481,7 +481,7 @@
 .analytics-metric > span {
   display: block;
   min-height: 2.7em;
-  color: #60738c;
+  color: var(--forest-muted);
   font-size: .82rem;
   line-height: 1.4;
 }
@@ -489,7 +489,7 @@
 .analytics-metric strong {
   display: block;
   margin-top: 8px;
-  color: #203a5f;
+  color: var(--forest-accent);
   font-size: 1.45rem;
   overflow-wrap: anywhere;
 }
@@ -497,7 +497,7 @@
 .analytics-metric small {
   display: block;
   margin-top: 8px;
-  color: #66768a;
+  color: var(--forest-muted);
   line-height: 1.4;
   overflow-wrap: anywhere;
 }
@@ -507,7 +507,7 @@
   width: 100%;
   height: 7px;
   margin-top: 10px;
-  accent-color: #2f689f;
+  accent-color: var(--forest-accent);
 }
 
 .analytics-metric progress[hidden] {
@@ -517,20 +517,20 @@
 .analytics-note {
   margin: 16px 0 0;
   padding-top: 12px;
-  border-top: 1px solid #e2e8ee;
-  color: #69778a;
+  border-top: 1px solid var(--forest-divider);
+  color: var(--forest-muted);
   font-size: .77rem;
   line-height: 1.5;
 }
 
 .roster-teacher-link {
-  color: #163f70;
+  color: var(--forest-accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 .roster-teacher-link:hover {
-  color: #0d5ca8;
+  color: var(--forest-accent);
 }
 
 @media (max-width: 560px) {
@@ -560,4 +560,4 @@
   }
 }
 
-.roster-group-archived>summary,.year-group-archived>summary{cursor:pointer;padding:14px;border:1px solid #ccd7e4;border-radius:12px;overflow-wrap:anywhere}.roster-group-archived>summary:focus-visible,.year-group-archived>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}
+.roster-group-archived>summary,.year-group-archived>summary{cursor:pointer;padding:14px;border:1px solid var(--forest-divider);border-radius:12px;overflow-wrap:anywhere}.roster-group-archived>summary:focus-visible,.year-group-archived>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}

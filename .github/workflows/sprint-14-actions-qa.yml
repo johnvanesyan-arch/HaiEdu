@@ -23,6 +23,8 @@ on:
       - web/archive-browser.mjs
       - web/assessment-reporting.mjs
       - web/school-admin.*
+      - web/forest-tokens.css
+      - web/staff-forest.css
       - web/role-layout.*
       - web/ux.*
       - web/account-roles.js

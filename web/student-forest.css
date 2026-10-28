@@ -1,38 +1,32 @@
+@import "./forest-tokens.css";
 @import "./student-surfaces.css";
 /* Forest foundation: student workspaces and the shared account surface.
    Presentation does not confer a student role or access. Unmodified OFL font, pinned in assets/fonts/README.md. */
-@font-face {
-  font-family: "Noto Sans Armenian";
-  src: url("./assets/fonts/noto-sans-armenian-variable.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
 html[data-haiedu-student-root], html:has(body:is([data-haiedu-student],[data-forest-surface])) { font-size: 100%; background: #f5f6ef; }
 body:is([data-haiedu-student],[data-forest-surface]) {
-  --student-canvas: #f5f6ef;
-  --student-surface: #fff;
-  --student-ink: #23392f;
-  --student-muted: #58695f;
-  --student-accent: #285b45;
-  --student-accent-hover: #214c3a;
-  --student-selected: #e3eee5;
-  --student-hero: #e6f0e6;
-  --student-hero-ink: #234734;
-  --student-hero-muted: #4a6353;
-  --student-art: #c1d8bc;
-  --student-quiet: #eef1eb;
-  --student-divider: #dce4da;
-  --student-border-control: #6f8476;
-  --student-focus: #7a4718;
-  --student-success: #167263;
-  --student-success-bg: #e7f5ee;
-  --student-attention: #975b15;
-  --student-attention-bg: #fff2de;
-  --student-feedback: #7453a5;
-  --student-feedback-bg: #f0ebfa;
-  --student-error: #9e3636;
-  --student-error-bg: #fcecec;
+  --student-canvas: var(--forest-canvas);
+  --student-surface: var(--forest-surface);
+  --student-ink: var(--forest-ink);
+  --student-muted: var(--forest-muted);
+  --student-accent: var(--forest-accent);
+  --student-accent-hover: var(--forest-hover);
+  --student-selected: var(--forest-selected);
+  --student-hero: var(--forest-hero);
+  --student-hero-ink: var(--forest-hero-ink);
+  --student-hero-muted: var(--forest-hero-muted);
+  --student-art: var(--forest-art);
+  --student-quiet: var(--forest-quiet);
+  --student-divider: var(--forest-divider);
+  --student-border-control: var(--forest-control);
+  --student-focus: var(--forest-focus);
+  --student-success: var(--forest-success);
+  --student-success-bg: var(--forest-success-bg);
+  --student-attention: var(--forest-attention);
+  --student-attention-bg: var(--forest-attention-bg);
+  --student-feedback: var(--forest-feedback);
+  --student-feedback-bg: var(--forest-feedback-bg);
+  --student-error: var(--forest-error);
+  --student-error-bg: var(--forest-error-bg);
   --amp-color-bg: var(--student-canvas);
   --amp-color-bg-subtle: var(--student-quiet);
   --amp-color-surface: var(--student-surface);

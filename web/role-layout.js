@@ -216,7 +216,7 @@ function ensureWorkspaceLoading() {
     sidebar.dataset.workspace = "loading";
     sidebar.innerHTML = `
       <div class="hm-role-brand"><img src="./assets/haiedu-primary.svg" alt="HaiEdu"></div>
-      <span class="hm-workspace-label">ԱՇԽԱՏԱՍԵՂԱՆ</span>
+      <span class="hm-workspace-label">Աշխատասեղան</span>
       <div class="hm-loading-nav" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
       </div>`;
@@ -278,6 +278,7 @@ function syncTeacherSections() {
     if (linkView === selected) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
+  syncWorkspaceBreadcrumb();
 }
 
 function syncSchoolSections() {
@@ -300,6 +301,7 @@ function syncSchoolSections() {
     if (current) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
+  syncWorkspaceBreadcrumb();
 }
 
 function syncPlatformSections() {
@@ -320,6 +322,38 @@ function syncPlatformSections() {
     if (current) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
+  syncWorkspaceBreadcrumb();
+}
+
+function syncWorkspaceBreadcrumb() {
+  const sidebar = document.querySelector(".hm-role-sidebar:not(.hm-role-sidebar-loading)");
+  const config = currentConfig();
+  const main = document.querySelector("main");
+  if (!sidebar || !config || !main) return;
+  let breadcrumb = main.querySelector(".hm-role-breadcrumb");
+  if (!breadcrumb) {
+    breadcrumb = document.createElement("nav");
+    breadcrumb.className = "hm-role-breadcrumb";
+    breadcrumb.setAttribute("aria-label", "Էջի ուղի");
+    main.prepend(breadcrumb);
+  }
+  const current = page === "teacher" && new URLSearchParams(location.search).get("view") === "class"
+    ? "Ընտրված դասարան"
+    : sidebar.querySelector('.hm-role-nav [aria-current="page"]')?.textContent || config.links[0][0];
+  // Only rebuild when the presentation changes; never observe or change auth state.
+  if (breadcrumb.dataset.current === `${config.label}:${current}`) return;
+  breadcrumb.dataset.current = `${config.label}:${current}`;
+  const list = document.createElement("ol");
+  const home = document.createElement("li");
+  const link = document.createElement("a");
+  link.href = config.links[0][1];
+  link.textContent = config.label;
+  home.append(link);
+  const here = document.createElement("li");
+  here.textContent = current;
+  here.setAttribute("aria-current", "page");
+  list.append(home, here);
+  breadcrumb.replaceChildren(list);
 }
 
 function syncRoleSidebar() {
@@ -329,6 +363,7 @@ function syncRoleSidebar() {
   let sidebar = document.querySelector(".hm-role-sidebar");
   if (!authorized) {
     document.querySelector(".hm-role-chip")?.remove();
+    document.querySelector(".hm-role-breadcrumb")?.remove();
     if (hasTerminalAuthSurface()) {
       sidebar?.remove();
       document.body.classList.remove("hm-has-role-sidebar", "hm-workspace-booting");
@@ -362,7 +397,7 @@ function syncRoleSidebar() {
   brand.append(logo);
   const caption = document.createElement("span");
   caption.className = "hm-workspace-label";
-  caption.textContent = "ԱՇԽԱՏԱՍԵՂԱՆ";
+  caption.textContent = "Աշխատասեղան";
   const nav = document.createElement("nav");
   nav.className = "hm-role-nav";
   nav.setAttribute("aria-label", "Աշխատասեղանի նավարկություն");
@@ -381,6 +416,12 @@ function syncRoleSidebar() {
   account.href = "./privacy.html";
   account.textContent = "Հաշիվ և գաղտնիություն";
   footer.append(pilot, account);
+  if (page === "teacher") {
+    const preview = document.createElement("a");
+    preview.href = "./teacher-workspace-preview.html";
+    preview.textContent = "Նոր տեսքի նախադիտում";
+    footer.append(preview);
+  }
   const existingSignOut = document.getElementById("signOutBtn");
   if (existingSignOut) {
     if (page === "platform") {
@@ -408,6 +449,7 @@ function syncRoleSidebar() {
   syncTeacherSections();
   syncSchoolSections();
   syncPlatformSections();
+  syncWorkspaceBreadcrumb();
 }
 
 const observedShellElements = [

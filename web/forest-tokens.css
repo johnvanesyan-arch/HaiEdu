@@ -1,0 +1,33 @@
+/* Shared presentation tokens. These do not determine a user's role or access. */
+@font-face {
+  font-family: "Noto Sans Armenian";
+  src: url("./assets/fonts/noto-sans-armenian-variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  --forest-canvas: #f5f6ef;
+  --forest-surface: #fff;
+  --forest-ink: #23392f;
+  --forest-muted: #58695f;
+  --forest-accent: #285b45;
+  --forest-hover: #214c3a;
+  --forest-selected: #e3eee5;
+  --forest-hero: #e6f0e6;
+  --forest-hero-ink: #234734;
+  --forest-hero-muted: #4a6353;
+  --forest-art: #c1d8bc;
+  --forest-quiet: #eef1eb;
+  --forest-divider: #dce4da;
+  --forest-control: #6f8476;
+  --forest-focus: #7a4718;
+  --forest-success: #167263;
+  --forest-success-bg: #e7f5ee;
+  --forest-attention: #975b15;
+  --forest-attention-bg: #fff2de;
+  --forest-feedback: #7453a5;
+  --forest-feedback-bg: #f0ebfa;
+  --forest-error: #9e3636;
+  --forest-error-bg: #fcecec;
+}

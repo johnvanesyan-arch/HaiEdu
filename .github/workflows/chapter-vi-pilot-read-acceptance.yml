@@ -98,6 +98,8 @@ on:
       - web/multi-subject-home.js
       - web/multi-subject.css
       - web/remediation.js
+      - web/forest-tokens.css
+      - web/staff-forest.css
       - web/role-layout.css
       - web/role-router.js
       - web/session-watchdog.js

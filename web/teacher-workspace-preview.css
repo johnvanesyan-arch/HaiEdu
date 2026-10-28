@@ -1,0 +1,41 @@
+/* Concrete specimen of the shared staff foundation, with synthetic data only. */
+body[data-staff-preview] > main { max-width:90rem; padding:1.5rem 2rem 3rem; }
+.preview-notice { padding:1rem 1.25rem; border:1px solid var(--forest-attention); border-radius:.75rem; background:var(--forest-attention-bg); margin-bottom:1rem; }
+.preview-notice p { margin:.4rem 0 0; }
+.preview-header { display:flex; justify-content:space-between; align-items:start; gap:1rem; margin-bottom:1.5rem; }
+.preview-header h1 { margin:.4rem 0; }
+.preview-controls { display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; padding:1rem 1.25rem; background:var(--forest-surface); border:1px solid var(--forest-divider); border-radius:.75rem; margin-bottom:1.5rem; }
+.preview-controls label { margin:0; min-width:0; flex:1 1 12rem; max-width:22rem; }
+.preview-controls select { width:100%; padding:.65rem; }
+.preview-controls p { flex:2 1 20rem; }
+.preview-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:1.5rem; align-items:center; padding:1.5rem; background:var(--forest-hero); border-radius:1.25rem; margin-bottom:1.5rem; }
+.preview-hero h2 { margin:.5rem 0; }
+.preview-hero p { max-width:52ch; }
+.preview-hero .student-subject-art { width:12rem; color:var(--forest-accent); }
+.preview-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+.preview-actions .button-link { display:inline-flex; align-items:center; padding:.65rem 1rem; text-decoration:none; }
+.preview-class-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.preview-class-card { padding:1.5rem; display:grid; align-content:start; gap:.75rem; min-width:0; }
+.preview-class-card .student-subject-art { width:9rem; max-width:100%; color:var(--forest-accent); }
+.preview-class-card h3,.preview-class-card p { margin:0; }
+.preview-class-card a { justify-self:start; }
+.preview-state { padding:2rem; max-width:48rem; }
+.preview-state h2 { margin-top:0; }
+.preview-skeleton { min-height:7rem; border-radius:.75rem; background:var(--forest-quiet); margin-top:1rem; }
+.preview-review-layout { display:grid; grid-template-columns:minmax(13rem,.7fr) minmax(0,1.7fr); gap:1rem; align-items:start; }
+.preview-queue,.preview-response { padding:1.5rem; min-width:0; }
+.preview-queue h2 { margin-top:0; }
+.preview-queue-list { display:grid; gap:.75rem; margin-top:1rem; }
+body[data-staff-preview] .preview-queue-list button { text-align:left; background:var(--forest-surface); color:var(--forest-ink); border-color:var(--forest-control); }
+body[data-staff-preview] .preview-queue-list button[aria-pressed=true] { background:var(--forest-selected); }
+.preview-response blockquote { margin:1rem 0; padding:1rem; background:var(--forest-quiet); border-inline-start:4px solid var(--forest-accent); border-radius:.5rem; }
+.preview-response details { padding:1rem; border:1px solid var(--forest-divider); border-radius:.75rem; }
+.preview-response summary { align-content:center; cursor:pointer; }
+.preview-response textarea { width:100%; min-height:9rem; padding:1rem; }
+.preview-context { margin-bottom:1rem; }
+.preview-archive { padding:1.5rem; }
+.preview-archive summary { cursor:pointer; font-weight:700; }
+.preview-archive .preview-class-grid { margin-top:1rem; }
+@media(max-width:1100px) { body[data-staff-preview] > main { margin:0; max-width:none; } }
+@media(max-width:900px) { .preview-class-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .preview-review-layout { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { body[data-staff-preview] > main { padding:1rem; } .preview-class-grid { grid-template-columns:minmax(0,1fr); } .preview-hero { grid-template-columns:minmax(0,1fr); padding:1.25rem; } .preview-hero .student-subject-art { width:9rem; } .preview-header { flex-direction:column; } .preview-state,.preview-response,.preview-queue,.preview-class-card { padding:1.25rem; } }

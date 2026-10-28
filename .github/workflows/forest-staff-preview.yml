@@ -1,0 +1,26 @@
+name: Isolated Forest staff preview
+on:
+  push:
+    branches: [codex/forest-staff-20261028]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node --test tests/browser/forest-staff.browser.test.mjs tests/browser/role-layout.browser.test.mjs tests/browser/teacher-performance.browser.test.mjs tests/browser/student-utilities.browser.test.mjs tests/browser/student-workspace.browser.test.mjs tests/browser/supplementary-resources.browser.test.mjs tests/browser/written-work.browser.test.mjs
+        env:
+          STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/forest-staff
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forest-staff-preview
+          path: artifacts/forest-staff
+          retention-days: 14
