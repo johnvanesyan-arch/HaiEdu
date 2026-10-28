@@ -154,7 +154,9 @@ test('lost create response blocks an unsafe repeated create and exposes recovery
 });
 for(const width of [360,768,1280])test('file-first form reflows at '+width+'px and 200% text with keyboard focus',async t=>{
  const f=await fixture();t.after(()=>f.db.close());const {page:p,errors}=await surface(t,f,{width});await fillPdf(p);await p.addStyleTag({content:'html{font-size:200%}'});
- assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ const layout=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('body *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).map(e=>({tag:e.tagName,cls:e.className,right:e.getBoundingClientRect().right,text:e.textContent?.slice(0,80)})).slice(-12)}));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-form-layout-'+width+'.png',fullPage:true});}
+ assert.ok(layout.scroll<=width+1,JSON.stringify(layout));
  await p.locator('[data-resource-publish-assign]').focus();assert.equal(await p.locator('[data-resource-publish-assign]').evaluate(e=>e===document.activeElement),true);
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-pdf-first-'+width+'.png',fullPage:true});}
  assert.deepEqual(errors,[]);

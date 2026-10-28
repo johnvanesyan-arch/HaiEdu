@@ -29,3 +29,5 @@
 .resource-editor textarea[rows="2"]{min-height:4.5rem}
 .resource-editor :disabled{cursor:wait;opacity:.65}
 .resource-editor [aria-busy=true]{cursor:progress}
+.resource-editor label,.resource-editor legend{overflow-wrap:anywhere}
+.resource-editor .resource-check{min-width:0;overflow-wrap:anywhere}

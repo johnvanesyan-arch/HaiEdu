@@ -123,9 +123,10 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  function openAssignments(materialId){clearAssignments();clearEditor();assignmentView=mountTeacherResourceAssignments({root:$('[data-resource-assignments]'),client,context:selected,materialId});}
  const sameDefinition=(a,b)=>['title','topic','description','goal','purpose','locale','format','sourceReference','url','estimatedMinutes','rightsConfirmed','assessmentSafe','recommended'].every(k=>(a[k]??(['recommended'].includes(k)?false:''))===(b[k]??(['recommended'].includes(k)?false:'')));
  async function attachPendingFile(file){
+  const e=epoch,q=request;
   if(uploadUncertain){
    const saved=(await invoke('get',{id:current.id})).material;remember(saved);
-   if(saved.fileBytes){const bytes=await invoke('open',{id:saved.id});if(!(bytes instanceof Blob)||await resourceFileDigest(bytes)!==await resourceFileDigest(file))throw Error('resource_file_conflict');uploadUncertain=false;return;}
+   if(saved.fileBytes){const bytes=await invoke('open',{id:saved.id});const matches=bytes instanceof Blob&&await resourceFileDigest(bytes)===await resourceFileDigest(file);if(!valid(e,q))throw Error('resource_stale');if(!matches)throw Error('resource_file_conflict');uploadUncertain=false;return;}
   }
   try{remember((await invoke('upload',key(),resourceContext(selected),file)).material);uploadUncertain=false;}
   catch(error){if(error.message==='resource_stale')throw error;uploadUncertain=true;throw Error(error.message==='resource_file_invalid'||error.message==='resource_too_large'?error.message:'resource_upload_uncertain');}
@@ -141,11 +142,11 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    const payload={definition};if(current)Object.assign(payload,key(),{reason});
    composeMessage('Պահպանվում է նյութը…');
    try{remember((await invoke(current?'revise':'create',payload)).material);drawEditor(current,[],[],true);}
-   catch(error){if(!current&&error.message!=='resource_stale'&&!['resource_definition_invalid','resource_request_invalid','resource_url_invalid'].includes(error.message)){uncertainCreate=true;$('[data-resource-recover]').hidden=false;throw Error('resource_create_uncertain');}throw error;}
+   catch(error){if(error.message!=='resource_stale'&&!['resource_definition_invalid','resource_request_invalid','resource_url_invalid','resource_reason_required','resource_conflict','resource_forbidden'].includes(error.message)){uncertainCreate=true;$('[data-resource-recover]').hidden=false;throw Error('resource_create_uncertain');}throw error;}
   }
   if(!valid(e,q))return;
   if(definition.format==='pdf'&&(!current.fileBytes||uploadUncertain)){
-   composeMessage('Կցվում է PDF ֆայլը…');await attachPendingFile(file);drawEditor(current,[],[],true);
+   composeMessage('Կցվում է PDF ֆայլը…');await attachPendingFile(file);if(!valid(e,q))return;drawEditor(current,[],[],true);
   }
   pendingFile=null;drawFileStatus();dirty=false;
   if(intent!=='assign'){drawEditor(current);composeMessage('Սևագիրը և ֆայլը պահպանված են։ Երբ պատրաստ լինեք, հրապարակեք և ընտրեք ստացողներին։');return;}
@@ -210,7 +211,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(b.dataset.resourceEdit&&canLeave())void run(async()=>{const r=await invoke('get',{id:b.dataset.resourceEdit});drawEditor(r.material,r.history,r.events);},'read');
   if(b.dataset.resourceOpen)void run(()=>delivery(b.dataset.resourceOpen),'read');
   if(b.dataset.resourceAction)void run(async()=>{const action=b.dataset.resourceAction;
-   if(dirty&&!['withdraw','upload'].includes(action)){message('Նախ պահպանեք փոփոխությունները կամ նորից բացեք պահպանված տարբերակը։');return;}
+   if(dirty&&action!=='withdraw'){message('Նախ պահպանեք փոփոխությունները կամ նորից բացեք պահպանված տարբերակը։');return;}
    if(action==='preview')return delivery(current.id);
    const e0=epoch,q0=request;
    if(['publish','withdraw'].includes(action)&&role!=='teacher'&&!await ensureMaterialMfa(client,()=>valid(e0,q0)))return;
