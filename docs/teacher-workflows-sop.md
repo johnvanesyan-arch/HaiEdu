@@ -2,7 +2,7 @@
 
 2026-10-28 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
 
-The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Source baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`.
+The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Original B.8.2 baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`; B.11 implementation: `358af1ed89746f1919ea78582895ffcb96e346bd`.
 
 ## Purpose and scope
 
@@ -77,3 +77,5 @@ This presentation/client-coordination slice changes no SQL, Edge bundle, grants,
 Release verification: all five required PR/main gates pass (1,488 unit/integration; 216 native browser checks), focused native workflows 94/94, guarded live workflows 149/149 and 54+54 tenant isolation. Same-class exclusion, ambiguous publication, context/account changes and writing review retain isolated/current-source evidence; no new production writing submission or content approval is claimed. [Delivery record](workflow-boundaries.md) · [Release evidence](evidence/workflow-boundaries-release-20261028.json).
 
 **B.10 verification:** [Today delivery contract](teacher-today-workspace.md) records the new scoped metadata service and direct review path. It does not change writing publication, submission, grading or the original class/unit review procedure. Final owner usability remains B.12.
+
+**B.11 verification:** [Feedback contract/evidence](teacher-feedback-workspace.md) records private autosave, own comments and explicit atomic publication. PR/main gates pass 1,526 unit/integration and 241 native checks; production reads pass 47/47 with 54+54 isolation. Positive learner receipt/return/revision is isolated actual-SQL/native evidence. No production learner grade is created for QA.

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "sourceCommit": "358af1ed89746f1919ea78582895ffcb96e346bd",
+  "beforeCommit": "358af1ed89746f1919ea78582895ffcb96e346bd",
+  "afterCommit": "358af1ed89746f1919ea78582895ffcb96e346bd",
+  "files": [
+    {
+      "file": "web/teacher-feedback.mjs",
+      "bytes": 17128,
+      "localSha256": "307fae97bde9d03deca6258e454a378c29ed3b6dd0b3a1c99105642505c6fa3b",
+      "productionSha256": "307fae97bde9d03deca6258e454a378c29ed3b6dd0b3a1c99105642505c6fa3b",
+      "matches": true
+    },
+    {
+      "file": "web/written-work.mjs",
+      "bytes": 15917,
+      "localSha256": "6c89929e7fdf44bb37b319effcd77b96434a840ff3d86836f63f298b5bbaf746",
+      "productionSha256": "6c89929e7fdf44bb37b319effcd77b96434a840ff3d86836f63f298b5bbaf746",
+      "matches": true
+    },
+    {
+      "file": "web/written-work.css",
+      "bytes": 3719,
+      "localSha256": "8dba2547f50a53ff47ef544f4bcee5f386f1bf9eecb764ab93454ed36e14790e",
+      "productionSha256": "8dba2547f50a53ff47ef544f4bcee5f386f1bf9eecb764ab93454ed36e14790e",
+      "matches": true
+    },
+    {
+      "file": "web/privacy.js",
+      "bytes": 18058,
+      "localSha256": "4c8dd0f9c187d08f89754d4d0b8a9556d1d32fd0fdb3f1f447b27c091ba5bee8",
+      "productionSha256": "4c8dd0f9c187d08f89754d4d0b8a9556d1d32fd0fdb3f1f447b27c091ba5bee8",
+      "matches": true
+    },
+    {
+      "file": "web/teacher-workflows.html",
+      "bytes": 13841,
+      "localSha256": "87cc162802e742376b21a3369cd70ab6dfd2017dae9301f5cc8989218e1aa3b9",
+      "productionSha256": "87cc162802e742376b21a3369cd70ab6dfd2017dae9301f5cc8989218e1aa3b9",
+      "matches": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "scope": "16.5B.11 private teacher feedback",
+  "sourceCommit": "358af1ed89746f1919ea78582895ffcb96e346bd",
+  "migration": {
+    "file": "supabase/migrations/20261028194137_teacher_feedback_workspace.sql",
+    "generatedFile": "supabase/migrations/20261028185043_teacher_feedback_workspace.sql",
+    "name": "teacher_feedback_workspace",
+    "databaseVersion": "20261028194137",
+    "sha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb",
+    "applied": true,
+    "ledgerAlignment": "CLI-generated SQL is byte-identical. Closure aligns its filename/test references to the version assigned by the migration API; SQL was not reapplied."
+  },
+  "database": {
+    "tables": [
+      {
+        "rls": true,
+        "anon": false,
+        "name": "teacher_feedback_drafts",
+        "service": false,
+        "policies": 0,
+        "authenticated": false
+      },
+      {
+        "rls": true,
+        "anon": false,
+        "name": "teacher_feedback_receipts",
+        "service": false,
+        "policies": 0,
+        "authenticated": false
+      },
+      {
+        "rls": true,
+        "anon": false,
+        "name": "teacher_feedback_snippets",
+        "service": false,
+        "policies": 0,
+        "authenticated": false
+      }
+    ],
+    "trigger": "CREATE TRIGGER teacher_feedback_invalidate AFTER UPDATE OF revision ON public.written_work FOR EACH ROW EXECUTE FUNCTION private.invalidate_teacher_feedback_drafts()",
+    "functions": [
+      {
+        "anon": false,
+        "name": "private.invalidate_teacher_feedback_drafts",
+        "public": false,
+        "bodyMd5": "7ae6f2d6ec40e75719019433b0716c6a",
+        "definer": true,
+        "service": false,
+        "signature": "private.invalidate_teacher_feedback_drafts()",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      },
+      {
+        "anon": false,
+        "name": "private.lock_feedback_actor",
+        "public": false,
+        "bodyMd5": "395ad61d470f028b81c1da43e58d92fd",
+        "definer": true,
+        "service": false,
+        "signature": "private.lock_feedback_actor(uuid,uuid)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_feedback",
+        "public": false,
+        "bodyMd5": "916e750a49da56937a2417242b9c4359",
+        "definer": true,
+        "service": true,
+        "signature": "private.service_teacher_feedback(uuid,uuid,text,jsonb,jsonb)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_feedback_privacy_counts",
+        "public": false,
+        "bodyMd5": "688c27208f3f5bcd6cb1221a7c18cf9d",
+        "definer": true,
+        "service": true,
+        "signature": "private.teacher_feedback_privacy_counts(uuid)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_feedback",
+        "public": false,
+        "bodyMd5": "e33ce4ee41731272258f7ff794e6b00a",
+        "definer": false,
+        "service": true,
+        "signature": "service_teacher_feedback(uuid,uuid,text,jsonb,jsonb)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_feedback_privacy_counts",
+        "public": false,
+        "bodyMd5": "f47cea2d55e829d285f6932c6bbd5298",
+        "definer": false,
+        "service": true,
+        "signature": "service_teacher_feedback_privacy_counts(uuid)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "sourceMatches": true
+      }
+    ],
+    "migration": [
+      {
+        "name": "teacher_feedback_workspace",
+        "version": "20261028194137"
+      }
+    ],
+    "dataCounts": {
+      "works": 2,
+      "drafts": 0,
+      "reviews": 4,
+      "receipts": 0,
+      "snippets": 0,
+      "submissions": 4
+    }
+  },
+  "edges": [
+    {
+      "name": "manage-teacher-feedback",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "name": "manage-teacher-feedback/index.ts",
+          "sourceMatches": true
+        },
+        {
+          "name": "_shared/auth.ts",
+          "sourceMatches": true
+        },
+        {
+          "name": "_shared/teacher-feedback-handler.mjs",
+          "sourceMatches": true
+        }
+      ]
+    },
+    {
+      "name": "get-my-privacy",
+      "version": 10,
+      "verifyJwt": true,
+      "files": [
+        {
+          "name": "get-my-privacy/index.ts",
+          "sourceMatches": true
+        }
+      ]
+    }
+  ],
+  "sharedConsumerAudit": {
+    "newFeedbackHelperConsumers": [
+      "manage-teacher-feedback"
+    ],
+    "unchangedAuthHelper": true,
+    "legacyWriting": {
+      "version": 1,
+      "allThreeBundleFilesMatch": true,
+      "redeployed": false,
+      "reason": "Unchanged auth/handler/entry source; the additive SQL work-revision trigger invalidates private drafts for legacy review clients and learner resubmissions."
+    },
+    "privacy": "Updated own teacher inventory; other role inventory paths remain covered by seven role-specific regressions.",
+    "browserConsumers": [
+      "Teacher Today direct review",
+      "Original teacher class/unit review",
+      "Read-only teacher history",
+      "Learner writing and review history",
+      "Shared privacy/account",
+      "Armenian teacher SOP"
+    ]
+  },
+  "advisors": {
+    "securityBefore": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 56
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1
+      }
+    ],
+    "securityAfter": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 59,
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1,
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+      }
+    ],
+    "interpretation": "Three added private tables intentionally have RLS with no client policy and no direct grants. They add INFO findings only. Existing leaked-password protection warning is unchanged.",
+    "performanceAfter": [
+      {
+        "name": "unindexed_foreign_keys",
+        "level": "INFO",
+        "count": 42,
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+      },
+      {
+        "name": "auth_rls_initplan",
+        "level": "WARN",
+        "count": 16,
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "count": 112,
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+      },
+      {
+        "name": "multiple_permissive_policies",
+        "level": "WARN",
+        "count": 14,
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+      }
+    ],
+    "newPerformanceFindings": [
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "detail": "Index \\`teacher_feedback_drafts_work_idx\\` on table \\`private.teacher_feedback_drafts\\` has not been used"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "detail": "Index \\`teacher_feedback_drafts_submission_idx\\` on table \\`private.teacher_feedback_drafts\\` has not been used"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "detail": "Index \\`teacher_feedback_snippets_owner_idx\\` on table \\`private.teacher_feedback_snippets\\` has not been used"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "detail": "Index \\`teacher_feedback_receipts_work_idx\\` on table \\`private.teacher_feedback_receipts\\` has not been used"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "detail": "Index \\`teacher_feedback_receipts_review_idx\\` on table \\`private.teacher_feedback_receipts\\` has not been used"
+      }
+    ],
+    "newIndexNote": "Five fresh FK/list indexes are unused before production feedback writes. No new feedback-table unindexed-FK or WARN finding is reported; no pre-change performance-count comparison is claimed."
+  },
+  "productionDataBoundary": "Readback preserves the two existing writing works, four submissions and four published reviews. No learner answer, grade, personal snippet or teacher feedback draft was manufactured by deployment/QA. Live authorization reads and isolated actual-SQL/native positive writes are separate evidence."
+}

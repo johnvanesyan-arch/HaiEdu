@@ -40,7 +40,7 @@ with database_uri() as uri:
   for q in setup['runtimeQueries']:query(c,q)
   c.execute(setup['migration']);c.execute(setup['dashboardFixtureSQL']);c.execute(setup['dashboardMigration']);c.execute(setup['writtenMigration'])
   for q in setup['writtenQueries']:query(c,q)
-  c.execute((ROOT/'supabase/migrations/20261028185043_teacher_feedback_workspace.sql').read_text())
+  c.execute((ROOT/'supabase/migrations/20261028194137_teacher_feedback_workspace.sql').read_text())
   submitted=call(c,'submit',{'taskId':ident(1000),'expectedRevision':0,'text':'Synthetic response.'})
   work=submitted['work']['id'];rev=submitted['work']['revision']
   ctx={'assignmentId':ident(351),'curriculumReleaseId':ident(501),'unitId':ident(511)}

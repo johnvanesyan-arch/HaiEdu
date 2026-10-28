@@ -1,6 +1,6 @@
 # Teacher feedback workspace — 16.5B.11
 
-2026-10-28 · Shared core · Contract `teacher-feedback-v1` · Implementation/verification in progress.
+2026-10-29 Asia/Yerevan · Shared core · Contract `teacher-feedback-v1` · Technical delivery verified; B.12 owner usability remains.
 
 ## Scope and teacher procedure
 
@@ -44,7 +44,9 @@ Actual SQL/API tests cover private restore/CAS, complete rubric validation, retu
 
 Production verification is deliberately read-only for this slice: six designated identities, intended frontend commit before/after, own bounded list/privacy/Today/native reads, exact pending-work opening if available, cross-school/role/direct RPC denial, all run sessions closed and 54 before + 54 after isolation. No production learner answer, grade or personal comment is created or modified for QA. This distinguishes native actual-SQL positive write evidence from production read evidence. B.10's unchanged staff CRUD/tenant and curriculum/audio approvals are reused. Required CI still includes all five jobs and the aggregate gate; Vercel deployment-check configuration evidence is separate from a successful build.
 
-Release receipt, actual required-gate counts, source parity and production results will be attached at technical closure. Local browser-install failure is not a passing native check; isolated GitHub Chromium is the execution environment.
+[PR338](https://github.com/johnvanesyan-arch/HaiEdu/pull/338) merges implementation `358af1ed89746f1919ea78582895ffcb96e346bd`. All five required PR/main gates pass: **1,526 unit/integration and 241 native checks**, plus six PostgreSQL 17 races. [Production read acceptance](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40756871503) passes **47/47 with 54 before + 54 after isolation**, closes all six run sessions and makes no writing/comment mutations. Live queues are empty; positive draft/publication/learner receipt is actual-SQL/native isolated evidence. Compatibility reads pass **123/123**. All five changed frontend files, six SQL bodies, feedback Edge v1 and privacy Edge v10 match source. The unchanged writing Edge v1 and all three bundled files also match. Three added private RLS/no-policy INFO findings intentionally deny client access; no new security warning is introduced. Applied ledger version `20261028194137` is aligned by renaming byte-identical SQL/test references without reapplying it.
+
+[Release receipt](evidence/teacher-feedback-release-20261029.json) · [Backend/source](evidence/teacher-feedback-backend-20261028.json) · [Frontend](evidence/teacher-feedback-frontend-20261028.json) · [Production reads](evidence/teacher-feedback-acceptance-20261028.json) · [Compatibility](evidence/teacher-feedback-compatibility-20261028.json). Execution evidence is October 28 UTC; closure is October 29 in the client timezone. The closing change retains application/Edge/SQL bytes and reuses that evidence. Persistent Vercel blocking uses the independent [configuration receipt](evidence/vercel-deployment-check-verification-20261020.json), separately from READY/CI. Local browser-install failure is not a passing native check; isolated GitHub Chromium is the execution environment.
 
 ## Remaining gates
 
