@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "scope": "16.5B.8.1 PDF-first authoring correction",
+  "status": "verification_pending",
+  "baseCommit": "3732f612f4c394037493c4aa8b4bb69e83f79a00",
+  "implementationPR": 327,
+  "reviewedHead": "57cf65d9cc529b5c96f0bb0b3fbecdb0e05896a7",
+  "rootCause": {
+    "windowStart": "2026-10-27T21:25:01Z",
+    "windowEnd": "2026-10-28T05:00:00Z",
+    "newMaterialCount": 1,
+    "newAssignmentCount": 0,
+    "materialStatus": "draft",
+    "format": "pdf",
+    "fileBytes": null,
+    "qaIssues": [
+      "file_required"
+    ],
+    "events": [
+      "created",
+      "qa"
+    ],
+    "originalMaterialUnchanged": true,
+    "priorAcceptanceGap": "API-prepared source bypassed actual teacher UI creation and upload"
+  },
+  "focusedBrowser": {
+    "runId": 40638822283,
+    "passed": 18,
+    "failed": 0,
+    "revision": "cd5cbd1ca747c18b14efa6890238b3aef408d1c3",
+    "artifactId": 12794193116,
+    "artifactSha256": "87ab6dc6049ca997496aa285900a843d8cda07418bdaa44743fc7929843b4166",
+    "visualReview": [
+      "360px normal text",
+      "1280px normal text"
+    ],
+    "scope": "Isolated actual page plus SQL/HTTP handler fixtures; no production credentials",
+    "automatedReflowWidthsAt200Percent": [
+      360,
+      768,
+      1280
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "web/resource-file-input.mjs",
+      "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3"
+    },
+    {
+      "path": "web/supplementary-resources.mjs",
+      "sha256": "d565662a262242e4011355cde76ce6f21f0732c8419d83ae4b07ca103779ecba"
+    },
+    {
+      "path": "web/supplementary-resources.css",
+      "sha256": "dab5ac70240c360b09d3ed709d938da415805e906987b3f002aba8904b9a9eb4"
+    },
+    {
+      "path": "scripts/resource-assignments-acceptance.mjs",
+      "sha256": "45a843db30a72e2e4b99b78283e967e45a0d1fc5d57e34b44e3fba88313c9876"
+    },
+    {
+      "path": "tests/browser/resource-assignments.browser.test.mjs",
+      "sha256": "762f1f2f78c34433e6a38dbafd7ec7fe87e177c2e2a3f249348e4475d20e73a2"
+    },
+    {
+      "path": "tests/browser/supplementary-resources.browser.test.mjs",
+      "sha256": "3970aa216a29c9b9b3f4ab280f85644cc0bcdd312376d13992a1023f881976b4"
+    }
+  ],
+  "backendChanges": false,
+  "backendEvidenceReused": "docs/evidence/resource-assignments-release-20261028.json",
+  "blockingConfigurationEvidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+  "remaining": [
+    "Required PR/main CI",
+    "Current production revision and nine-file parity",
+    "Actual teacher UI creation and PDF attachment through learner download in both QA schools",
+    "Run-owned cleanup and original-material preservation",
+    "Merged documentation and source-verified Notion synchronization"
+  ],
+  "scopeGates": {
+    "next": "16.5B.9",
+    "englishPausedAfter": "16.1C.47",
+    "capabilityCount": 45,
+    "fullFourSubjectGateClosed": false,
+    "open": [
+      "PERF-02",
+      "DEMO-01",
+      "final owner workspace usability acceptance"
+    ]
+  },
+  "implementationCommit": "49612ae842fe2cf0792810f8474e087284a10c88",
+  "prCI": {
+    "runId": 40639199541,
+    "passedJobs": 5,
+    "jobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 209
+  },
+  "initialAcceptance": {
+    "runId": 40639527029,
+    "conclusion": "cancelled",
+    "jobsStarted": 0,
+    "reason": "shared GitHub pending concurrency queue"
+  },
+  "initialDeployment": {
+    "id": "dpl_4c9ujyB1NQXT3kATVc4am433ypqS",
+    "state": "READY",
+    "commit": "49612ae842fe2cf0792810f8474e087284a10c88"
+  }
+}
