@@ -16,6 +16,10 @@ on:
       - scripts/stamp-release.mjs
       # The runner exercises both pages; shared dependencies must activate it too.
       - web/teacher.*
+      - web/teacher-workflows.html
+      - web/teacher-workflows.css
+      - web/student-forest.css
+      - web/student-surfaces.css
       - web/archive-browser.mjs
       - web/assessment-reporting.mjs
       - web/school-admin.*

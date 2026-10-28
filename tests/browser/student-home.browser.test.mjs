@@ -100,7 +100,7 @@ test('course and work views retain context, keyboard disclosures and course-only
   for(const link of await page.locator('.amp-subject-card > a').all())assert.match(await link.getAttribute('href'),/tab=writing/);
   const details=page.locator('.student-unit-links').first();await details.locator('summary').press('Enter');assert.equal(await details.getAttribute('open'),'');
   assert.ok(await page.locator('[href*="materials"]').count()>=2);
-  assert.equal(await page.locator('.amp-mobile-link[aria-label="Հավելյալ նյութեր"]').innerText(),'Նյութեր');
+  assert.equal(await page.locator('.amp-mobile-link[aria-label="Նյութերի գրադարան"]').innerText(),'Գրադարան');
   assert.deepEqual(errors,[]);
 });
 for(const width of [360,1280])test(`My work owns the complete writing journey at ${width}px`,async t=>{

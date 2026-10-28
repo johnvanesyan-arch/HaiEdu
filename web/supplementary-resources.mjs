@@ -15,6 +15,7 @@ function card(m,staff,teacher=false){const d=m.definition;
  return `<article class="resource-card ${d.purpose==='practice'?'resource-practice':'resource-reading'}"><div class="resource-art">${studentIcon(d.purpose==='practice'?'practice':'courses')}<span>${purposes[d.purpose]}</span></div><div class="resource-card-body"><div class="resource-badges"><span>${m.provider==='teacher'?'Ուսուցչից':'Հարթակից'}${m.providerName?' · '+esc(m.providerName):''}</span>${d.recommended&&m.provider==='teacher'?'<span class="resource-recommended">Ուսուցչի առաջարկ</span>':''}${staff?`<span>${labels[m.status]}</span>`:''}</div><h3 lang="${esc(d.locale)}">${esc(d.title)}</h3><p class="resource-goal" lang="${esc(d.locale)}">${esc(d.goal||d.description)}</p>${d.goal?`<p lang="${esc(d.locale)}">${esc(d.description)}</p>`:''}<p class="resource-meta">${esc(d.topic||'')}${d.topic?' · ':''}${d.format==='pdf'?'PDF':'Հղում'}${m.fileBytes?' · '+(m.fileBytes/1024/1024).toLocaleString('hy',{maximumFractionDigits:2})+' ՄԲ':''}${Number.isInteger(d.estimatedMinutes)&&d.estimatedMinutes>0?' · Մոտ '+d.estimatedMinutes+' րոպե':''}</p><p class="resource-meta">v${m.version}${m.publishedAt?' · '+new Date(m.publishedAt).toLocaleDateString('hy-AM'):''}</p><button type="button" data-resource-${teacher&&m.provider==='platform'?'assign':staff?'edit':'open'}="${esc(m.id)}">${teacher&&m.provider==='platform'?'Ուղարկել առաջադրանք':staff?'Ստուգել և կառավարել':d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը'}${studentIcon('arrow')}</button>${teacher&&m.provider!=='platform'&&m.status==='published'?`<button type="button" class="ghost" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}</div></article>`;
 }
 export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
+ const assignmentMode=staff&&new URLSearchParams(location.search).get('intent')==='assign';
  let actor=null,epoch=0,request=0,contexts=[],selected=null,rows=[],role=null,current=null,busy=false,dirty=false,disposed=false,operation=0,busyKind='write';
  let assignmentView=null;const lockedControls=new Map();
  function lockWrites(){for(const el of root.querySelectorAll('input,select,textarea,button')){if(!lockedControls.has(el))lockedControls.set(el,el.disabled);el.disabled=true;}}
@@ -46,7 +47,8 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  function clearEditor(){root.classList.remove('resource-composing');current=null;dirty=false;pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;const ed=$('[data-resource-editor]');if(ed){ed.hidden=true;ed.innerHTML='';}}
  function resetFilters(){for(const el of root.querySelectorAll('[data-filter]'))el.value='';for(const b of root.querySelectorAll('[data-purpose]'))b.setAttribute('aria-pressed',String(!b.dataset.purpose));}
- function drawShell(){root.innerHTML=`<section class="resource-welcome"><div><p class="eyebrow">ՍՈՎՈՐԻՐ ԱՎԵԼԻՆ</p><h2>${staff?'Կիսվեք օգտակար նյութերով':'Փոքր քայլ, նոր բացահայտում'}</h2><p>${staff?'Ավելացրեք վարժանքներ կամ ընթերցանության նյութեր։ Սովորողները կտեսնեն միայն հրապարակված տարբերակը։':'Ընտրեք նյութը, խորացրեք գիտելիքները ձեր տեմպով։ Այս նյութերը պարտադիր չեն և չեն փոխում գնահատականները։'}</p></div><div class="resource-welcome-art" aria-hidden="true">${studentIcon('courses')}${studentIcon('practice')}</div></section>
+ function drawShell(){root.innerHTML=`<section class="resource-welcome"><div><p class="eyebrow">ՍՈՎՈՐԻՐ ԱՎԵԼԻՆ</p><h2>${staff?(role==='teacher'&&assignmentMode?'Ընտրեք նյութը և հանձնարարեք':'Կիսվեք օգտակար նյութերով'):'Փոքր քայլ, նոր բացահայտում'}</h2><p>${staff?'Ավելացրեք վարժանքներ կամ ընթերցանության նյութեր։ Սովորողները կտեսնեն միայն հրապարակված տարբերակը։':'Լրացուցիչ նյութեր՝ ինքնուրույն աշխատանքի համար։ Ուսուցչի ուղարկած առաջադրանքները գտեք «Իմ աշխատանքները» բաժնում։'}</p></div><div class="resource-welcome-art" aria-hidden="true">${studentIcon('courses')}${studentIcon('practice')}</div></section>
+ ${staff&&role==='teacher'?'<p class="resource-workflow-note">'+(assignmentMode?'Ընտրեք հրապարակված նյութի «Ուղարկել առաջադրանք» գործողությունը կամ ավելացրեք նոր նյութ։ Ստացողներին կհաստատեք առանձին քայլում։':'Գրադարանում հրապարակելը լրացուցիչ նյութը հասանելի է դարձնում դասարանին։ Այն «Իմ աշխատանքները» բաժին ուղարկելու համար պետք է առանձին հանձնարարել։')+' <a href="./teacher-workflows.html#'+(assignmentMode?'assign':'library')+'">Գործողությունների ուղեցույց</a></p>':''}
  <section class="card resource-controls" aria-label="Դասընթաց և նյութերի որոնում"><label>Դասընթաց և բաժին<select data-resource-context><option value="">Ընտրեք բաժինը</option>${contexts.map((c,i)=>`<option value="${i}">${esc(contextLabel(c))}</option>`).join('')}</select></label><p data-resource-scope class="resource-meta"></p>${staff&&role==='teacher'?'<p class="resource-meta">Այստեղ հասանելի են ձեր ակտիվ դասարաններին վերագրված առարկաները։ Նշանակումները կառավարում է դպրոցի ադմինիստրատորը։ Նյութը հրապարակելուց առաջ ստուգեք ընտրված դասարանը և առարկան։</p>':''}<div class="resource-search"><label>Գտնել նյութ<input type="search" data-filter="query" placeholder="Վերնագիր, նպատակ կամ թեմա"></label><button type="button" class="ghost" data-resource-refresh>Թարմացնել</button></div>
  <div class="resource-purpose" role="group" aria-label="Նյութի նպատակը"><input type="hidden" data-filter="purpose"><button type="button" class="ghost" data-purpose="" aria-pressed="true">Բոլորը</button><button type="button" class="ghost" data-purpose="practice" aria-pressed="false">${studentIcon('practice')}Վարժանք</button><button type="button" class="ghost" data-purpose="reading" aria-pressed="false">${studentIcon('courses')}Ընթերցանություն</button></div>
  <details class="resource-filter-details"><summary>Լրացուցիչ զտիչներ <span data-filter-count></span></summary><div class="resource-filter-grid"><label>Թեմա<select data-filter="topic"><option value="">Բոլոր թեմաները</option></select></label><label>Տրամադրող<select data-filter="provider"><option value="">Բոլորը</option><option value="teacher">Ուսուցչից</option><option value="platform">Հարթակից</option></select></label><label>Ձևաչափ<select data-filter="format"><option value="">Բոլորը</option><option value="pdf">PDF</option><option value="link">Հղում</option></select></label></div></details><button type="button" class="ghost" data-filter-reset hidden>Մաքրել զտիչները</button></section>
@@ -63,7 +65,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  function selectContext(index){selected=contexts[Number(index)]??null;if(index==='')selected=null;request++;operation++;busy=false;clearDelivery();clearAssignments();clearEditor();rows=[];resetFilters();$('[data-resource-context]').value=selected?String(contexts.indexOf(selected)):'';
   $('[data-resource-scope]').textContent=selected?(role==='teacher'?'Նյութը կտրամադրվի՝ ':'')+contextLabel(selected):'';
-  if(selected){const p=new URLSearchParams();for(const[k,v]of Object.entries(resourceContext(selected)))p.set(({enrollmentId:'enrollment',assignmentId:'assignment',curriculumReleaseId:'release',unitId:'unit'})[k],v);history.replaceState({},'',location.pathname+'?'+p);void loadList();}
+  if(selected){const p=new URLSearchParams();if(role==='teacher'&&assignmentMode)p.set('intent','assign');for(const[k,v]of Object.entries(resourceContext(selected)))p.set(({enrollmentId:'enrollment',assignmentId:'assignment',curriculumReleaseId:'release',unitId:'unit'})[k],v);history.replaceState({},'',location.pathname+'?'+p);void loadList();}
   else{$('[data-resource-list]').innerHTML='<p>Ընտրեք դասընթացն ու բաժինը։</p>';message('');}
  }
  function drawEditor(m=null,history=[],events=[],keepFile=false){
@@ -97,9 +99,9 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    <label class="resource-check"><input name="rightsConfirmed" type="checkbox" required${d.rightsConfirmed?' checked':''}>Ունեմ նյութը տրամադրելու իրավունք։</label>
    <label class="resource-check"><input name="assessmentSafe" type="checkbox" required${d.assessmentSafe?' checked':''}>Նյութը չի բացահայտում պաշտպանված գնահատման հարցեր, պատասխաններ կամ լսողական/ընթերցանության աղբյուրներ։</label>
    ${m?'<label>Փոփոխության կամ հեռացման պատճառ<textarea name="reason" maxlength="2000" rows="2"></textarea></label>':''}
-   ${role==='teacher'?'<p class="resource-audience-note">Հրապարակված նյութը հասանելի կլինի այս դասարանի բոլոր իրավասու աշակերտներին «Հավելյալ նյութեր» բաժնում։ Հաջորդ քայլում ընտրեք՝ ում ուղարկել այն որպես առաջադրանք։</p>':''}
+   ${role==='teacher'?'<p class="resource-audience-note">«Հրապարակել գրադարանում» գործողությամբ նյութը հասանելի կլինի այս դասարանի բոլոր իրավասու աշակերտներին։ Առաջադրանք ուղարկելու համար ընտրեք «Հրապարակել և ընտրել ստացողներին», ապա հաստատեք ստացողներին։</p>':''}
    <p data-resource-dirty role="status"></p><div class="resource-actions">
-   ${role==='teacher'?'<button type="submit" name="intent" value="assign" data-resource-publish-assign>Հրապարակել և ընտրել ստացողներին</button>':''}
+   ${role==='teacher'?`<button type="submit" name="intent" value="library" data-resource-publish-library class="${assignmentMode?'ghost':''}">Հրապարակել գրադարանում</button><button type="submit" name="intent" value="assign" data-resource-publish-assign class="${assignmentMode?'':'ghost'}">Հրապարակել և ընտրել ստացողներին</button>`:''}
    <button type="submit" name="intent" value="draft" class="${role==='teacher'?'ghost':''}">${m?'Պահպանել նոր տարբերակ':'Պահպանել սևագիրը'}</button></div>
   </form>
   <p data-resource-compose-status role="status" aria-live="polite"></p><button type="button" class="ghost" data-resource-recover hidden>Թարմացնել և գտնել սևագիրը</button>
@@ -149,7 +151,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    composeMessage('Կցվում է PDF ֆայլը…');await attachPendingFile(file);if(!valid(e,q))return;drawEditor(current,[],[],true);
   }
   pendingFile=null;drawFileStatus();dirty=false;
-  if(intent!=='assign'){drawEditor(current);composeMessage('Սևագիրը և ֆայլը պահպանված են։ Երբ պատրաստ լինեք, հրապարակեք և ընտրեք ստացողներին։');return;}
+  if(intent==='draft'){drawEditor(current);composeMessage('Սևագիրը և ֆայլը պահպանված են։ Երբ պատրաստ լինեք, հրապարակեք գրադարանում կամ ընտրեք ստացողներին։');return;}
   if(current.status!=='published'){
    // Repeat the read on retries: publication may have succeeded before a lost response.
    remember((await invoke('get',{id:current.id})).material);
@@ -159,7 +161,10 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
     composeMessage('Հրապարակվում է նյութը…');remember((await invoke('publish',key())).material);
    }
   }
-  if(valid(e,q)){const id=current.id;openAssignments(id);message('Նյութը հրապարակված է։ Ընտրեք ստացողներին և հաստատեք ուղարկումը։');}
+  if(valid(e,q)){
+   if(intent==='library'){drawEditor(current);composeMessage('Նյութը հրապարակված է գրադարանում։ Առաջադրանք չի ուղարկվել։');}
+   else{const id=current.id;openAssignments(id);message('Նյութը հրապարակված է։ Ընտրեք ստացողներին և հաստատեք ուղարկումը։');}
+  }
  }
  function definitionFromForm(){const f=new FormData($('[data-resource-form]')),d=Object.fromEntries(['title','topic','description','goal','purpose','locale','format','sourceReference'].map(k=>[k,String(f.get(k)||'').trim()]));
   if(role==='teacher'&&!d.description)d.description=d.title;
@@ -225,7 +230,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  });
  root.addEventListener('submit',e=>{
   if(!e.target.matches('[data-resource-form]'))return;e.preventDefault();
-  const intent=e.submitter?.value==='assign'&&role==='teacher'?'assign':'draft',definition=definitionFromForm(),reason=$('[name="reason"]')?.value.trim()||'';
+  const intent=role==='teacher'&&['assign','library'].includes(e.submitter?.value)?e.submitter.value:'draft',definition=definitionFromForm(),reason=$('[name="reason"]')?.value.trim()||'';
   void run(()=>saveResource(intent,definition,reason));
  });
  const beforeLeave=e=>{if(dirty||pendingFile||(busy&&busyKind==='write')||assignmentView?.isBusy()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);

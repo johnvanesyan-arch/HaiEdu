@@ -9,7 +9,7 @@ const fixture=JSON.parse(process.env.QA_TENANT_FIXTURES_JSON??'{}');
 const credentials=Object.fromEntries(sides.flatMap(s=>roles.map(r=>[`${s}_${r}`,{email:process.env[`QA_SCHOOL_${s}_${r.toUpperCase()}_EMAIL`],password:process.env[`QA_SCHOOL_${s}_${r.toUpperCase()}_PASSWORD`]}])));
 const config=await readFile(new URL('../web/config.js',import.meta.url),'utf8');
 const url=config.match(/export const SUPABASE_URL = "([^"]+)"/)?.[1],key=config.match(/export const SUPABASE_PUBLISHABLE_KEY = "([^"]+)"/)?.[1];
-const report={scope:'16.5B.8 material assignments and My work delivery',revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',checks:[],resources:[],fourSubjectGateClosed:false};
+const report={scope:'16.5B.8.2 library publication, separate teacher entry points and My work delivery',revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',checks:[],resources:[],fourSubjectGateClosed:false};
 let browser;
 const assigned=[],assignmentIntents=[];
 const sessions=new Map(),created=[],intents=[],originals=new Set(),selectors=new Map();
@@ -25,7 +25,7 @@ async function browserContext(actor,materialId=null,creation=null){
  await bc.route('**/functions/v1/**',async route=>{
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={},file=null;try{if(req.headers()['content-type']?.startsWith('multipart/')){const form=await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData();body=JSON.parse(form.get('request'));file=form.get('file');}else body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
-  const read=['get-student-classes','get-student-dashboard'].includes(fn)
+  const read=['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-academic-context'].includes(fn)
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
   if(read)return route.continue();
@@ -55,8 +55,13 @@ async function browserContext(actor,materialId=null,creation=null){
 }
 async function teacherCreateAndSend(actor,d){
  const bc=await browserContext(actor,null,d);try{
-  const page=await bc.newPage();page.setDefaultTimeout(45000);const c=selectors.get(actor),params=new URLSearchParams({assignment:c.assignmentId,release:c.curriculumReleaseId,unit:c.unitId});
-  await page.goto('https://www.haiedu.am/resource-library.html?'+params,{waitUntil:'domcontentloaded'});
+  const page=await bc.newPage();page.setDefaultTimeout(45000);const c=selectors.get(actor),params=new URLSearchParams({view:'class',class:fixture[actor[0]].classId,assignment:c.assignmentId,release:c.curriculumReleaseId,unit:c.unitId});
+  const teacherUrl='https://www.haiedu.am/teacher.html?'+params;
+  await page.goto(teacherUrl,{waitUntil:'domcontentloaded'});
+  await page.locator('#teacherResourcesLink').waitFor();
+  const libraryUrl=new URL(await page.locator('#teacherResourcesLink').getAttribute('href'),page.url()),assignUrl=new URL(await page.locator('#teacherAssignResourceLink').getAttribute('href'),page.url());
+  check(actor+': separate library and assignment entry points retain exact context',[libraryUrl,assignUrl].every(u=>u.searchParams.get('assignment')===c.assignmentId&&u.searchParams.get('release')===c.curriculumReleaseId&&u.searchParams.get('unit')===c.unitId)&&!libraryUrl.searchParams.has('intent')&&assignUrl.searchParams.get('intent')==='assign'&&await page.locator('#teacherWrittenWorkCard #teacherResourcesLink').count()===0);
+  await page.locator('#teacherResourcesLink').click();
   await page.locator('[data-resource-new]').click();
   check(actor+': PDF attachment is visible before creating a draft',await page.locator('[data-resource-file]').isVisible()&&await page.locator('[name=format]').inputValue()==='pdf');
   await page.locator('[data-resource-file]').setInputFiles({name:'synthetic-qa.pdf',mimeType:'application/pdf',buffer:Buffer.from(pdf)});
@@ -65,11 +70,18 @@ async function teacherCreateAndSend(actor,d){
   await page.locator('[name=title]').fill(d.title);await page.locator('[name=sourceReference]').fill(d.sourceReference);
   await page.locator('[name=rightsConfirmed]').check();await page.locator('[name=assessmentSafe]').check();
   if(actor==='A_teacher'){await mkdir('qa-results/resource-form',{recursive:true});await page.screenshot({path:'qa-results/resource-form/teacher-pdf-first.png',fullPage:true});}
-  await page.locator('[data-resource-publish-assign]').click();await page.locator('[data-assignment-send]').waitFor();
+  await page.locator('[data-resource-publish-library]').click();await page.waitForFunction(()=>document.querySelector('[data-resource-compose-status]')?.textContent.includes('Առաջադրանք չի ուղարկվել'));
+  check(actor+': optional library publication has no recipient composer',await page.locator('[data-assignment-send]').count()===0);
   const own=created.find(x=>x.actor===actor);check(actor+': browser creation has a recorded receipt',Boolean(own));
   const saved=await resource(actor,'get',{id:own.id}),m=saved.material;
   check(actor+': browser upload QA and publication succeeded',m.status==='published'&&m.qa?.passed&&m.fileBytes===pdf.length);
   const events=saved.events.map(e=>e.event);check(actor+': create attach QA publish audit is complete',['created','file_attached','qa','published'].every(x=>events.includes(x)));
+  check(actor+': optional publication is visible in library',(await all(actor.replace('_teacher','_student'))).some(x=>x.id===m.id));
+  const beforeInbox=(await assignment(actor.replace('_teacher','_student'),'inbox',{},{})).assignments;
+  check(actor+': optional publication does not create a My-work task',beforeInbox.every(a=>a.material.id!==m.id));
+  await page.goto(teacherUrl,{waitUntil:'domcontentloaded'});await page.locator('#teacherAssignResourceLink').click();
+  await page.locator('[data-resource-assign="'+m.id+'"]').click();await page.locator('[data-assignment-send]').waitFor();
+  check(actor+': assignment entry point retains its distinct purpose',new URL(page.url()).searchParams.get('intent')==='assign');
   await page.locator('[data-assignment-instructions]').fill(prefix+' · Synthetic class delivery');
   await page.locator('[data-assignment-send]').click();await page.locator('.assignment-receipt-id').waitFor();
   const id=(await page.locator('.assignment-receipt-id').innerText()).trim();
@@ -94,7 +106,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js']){
+ for(const path of ['resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));

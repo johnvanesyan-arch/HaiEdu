@@ -5,7 +5,7 @@ import {published,call,prepared,materialCall,addLearner} from '../fixtures/resou
 import {installStudentHomeFixture} from '../fixtures/student-home-fixture.mjs';
 let browser;before(async()=>{browser=await chromium.launch({headless:true});});after(async()=>browser?.close());
 const origin='https://assignments.test';
-async function surface(t,f,{actor=20,width=1280}={}){
+async function surface(t,f,{actor=20,width=1280,view='work'}={}){
  const bc=await browser.newContext({viewport:{width,height:960},reducedMotion:'reduce'});t.after(()=>bc.close());const page=await bc.newPage(),errors=[];page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));let held=null,drop=null;
  const contexts=(await materialCall(f.db,'contexts',{}, {actor:10})).contexts;
  await page.addInitScript('window.__baseStudent=('+installStudentHomeFixture.toString()+')('+JSON.stringify({contexts,actorId:id(actor)})+');');
@@ -46,9 +46,9 @@ async function surface(t,f,{actor=20,width=1280}={}){
   if(u.origin!==origin)return route.abort();
   try{return route.fulfill({body:await readFile('web'+u.pathname),contentType:u.pathname.endsWith('.html')?'text/html':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.ttf')?'font/ttf':u.pathname.endsWith('.svg')?'image/svg+xml':'text/javascript'});}catch{return route.fulfill({status:404,body:'Not found'});}
  });
- const c=context(0,true),params=new URLSearchParams(actor===20?{assignment:c.assignmentId,release:c.curriculumReleaseId,unit:c.unitId}:{view:'work'});
- await page.goto(origin+'/'+(actor===20?'resource-library':'index')+'.html?'+params);
- if(actor===20)await page.waitForFunction(()=>document.querySelector('[data-resource-list]')?.getAttribute('aria-busy')==='false');
+ const c=context(0,true),params=new URLSearchParams(actor===20?{assignment:c.assignmentId,release:c.curriculumReleaseId,unit:c.unitId}:view==='materials'?{enrollment:context(0).enrollmentId,release:c.curriculumReleaseId,unit:c.unitId}:{view});
+ await page.goto(origin+'/'+(actor===20?'resource-library':view==='materials'?'materials':'index')+'.html?'+params);
+ if(actor===20||view==='materials')await page.waitForFunction(()=>document.querySelector('[data-resource-list]')?.getAttribute('aria-busy')==='false');
  else await page.locator('[data-assignment-list]').waitFor();
  return {page,errors,hold(action){held={action};return held;},dropNextSend(action='assign'){drop=action;}};
 }
@@ -169,4 +169,33 @@ test('sign-out during upload stops the publication chain and clears the local fi
  assert.match(await p.locator('#resourceRoot').innerText(),/Մուտք գործեք/);assert.equal(await p.locator('[data-resource-file]').count(),0);
  const actions=await p.evaluate(()=>window.__assignmentCalls.map(x=>x.body.action));assert.equal(actions.includes('publish'),false);assert.equal(actions.includes('qa'),false);
  assert.deepEqual(ui.errors,[]);
+});
+
+test('library publication stays optional until a separate explicit assignment creates a My-work item',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const teacher=await surface(t,f),work=await surface(t,f,{actor:10,width:360}),p=teacher.page,s=work.page;
+ await fillPdf(p);await p.locator('[data-resource-publish-library]').click();await p.waitForFunction(()=>document.querySelector('[data-resource-compose-status]')?.textContent.includes('Առաջադրանք չի ուղարկվել'));
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);
+ assert.equal(await p.locator('[data-assignment-send]').count(),0);
+ const library=await surface(t,f,{actor:10,view:'materials',width:360});await library.page.locator('[data-resource-open]').waitFor();
+ assert.equal(await library.page.locator('h1').innerText(),'Նյութերի գրադարան');
+ await s.locator('[data-assignment-refresh]').click();await s.locator('.assignment-empty').waitFor();
+ assert.equal(await s.locator('#multiSubjectHome a[href*="materials"]').count(),0,'My work has no duplicated library shortcut');
+ assert.equal(await s.locator('.amp-nav-link[aria-label="Նյութերի գրադարան"]').count(),1);
+ await p.locator('[data-resource-publish-assign]').click();await p.locator('[data-assignment-send]').waitFor();
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0,'recipient confirmation remains explicit');
+ await p.locator('[data-assignment-send]').click();await p.locator('.assignment-receipt').waitFor();
+ await s.locator('[data-assignment-refresh]').click();await s.locator('[data-assignment-open]').waitFor();
+ assert.equal((await f.db.query('select count(*)::int n from supplementary_resource_versions')).rows[0].n,1,'one published material supports library and assignment');
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);
+ assert.match(await s.locator('.assignment-status').innerText(),/Հանձնարարված է/);
+ assert.equal(await s.locator('[data-writing-submit], [data-assignment-submit], [data-assignment-complete]').count(),0,'resource delivery exposes no invented response/completion controls');
+ assert.deepEqual(teacher.errors,[]);assert.deepEqual(work.errors,[]);assert.deepEqual(library.errors,[]);
+});
+test('ambiguous library publication retries the same version without a second publication or assignment',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const ui=await surface(t,f),p=ui.page;await fillPdf(p);ui.dropNextSend('publish');
+ await p.locator('[data-resource-publish-library]').click();await p.locator('[data-resource-compose-status].bad').waitFor();
+ await p.locator('[data-resource-publish-library]').click();await p.waitForFunction(()=>document.querySelector('[data-resource-compose-status]')?.textContent.includes('Առաջադրանք չի ուղարկվել'));
+ assert.equal((await f.db.query("select count(*)::int n from supplementary_resource_events where event='published'")).rows[0].n,1);
+ assert.equal((await f.db.query('select count(*)::int n from supplementary_resource_versions')).rows[0].n,1);
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.deepEqual(ui.errors,[]);
 });

@@ -16,7 +16,7 @@ export async function fixture(browser,t,{archives=60,initialFailure=false}={}){
       const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
     }
     if(fn==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
-    if(fn==='manage-written-work'&&body.action==='queue')return {data:{queue:[],readOnly:false}};
+    if(fn==='manage-written-work'&&body.action==='queue')return {data:{version:'written-work-v1',queue:[],readOnly:false}};
     throw Error('Unexpected synthetic request: '+fn);
   }}};
  },{archives,initialFailure});

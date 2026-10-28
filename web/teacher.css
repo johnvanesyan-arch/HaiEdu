@@ -65,3 +65,16 @@
 /* Keep long Armenian collection headings and counts inside narrow enlarged-text views. */
 .teacher-collection-heading{flex-wrap:wrap}
 .teacher-collection-heading>h3{min-width:0;max-width:100%;overflow-wrap:anywhere;flex:1 1 12rem}
+
+/* Distinct entry points share only the authorized class/unit context. */
+.teacher-workflow-entrypoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;min-width:0}
+.teacher-workflow-entrypoints.hidden{display:none}
+.teacher-workflow-entrypoints>.card{min-width:0;margin:0;overflow-wrap:anywhere}
+.teacher-workflow-context,.teacher-workflow-review{grid-column:1/-1;min-width:0}
+.teacher-workflow-review:empty{display:none}
+.teacher-workflow-entrypoints h3{margin-top:0}
+.teacher-workflow-entrypoints p{line-height:1.65;overflow-wrap:anywhere}
+.teacher-workflow-entrypoints .button-link,.teacher-workflow-entrypoints button{min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.teacher-workflow-help{display:block;margin-top:1rem;min-height:44px;align-content:center;overflow-wrap:anywhere}
+.teacher-workflow-help:focus-visible{outline:3px solid #836b27;outline-offset:3px}
+@media(max-width:1050px){.teacher-workflow-entrypoints{grid-template-columns:minmax(0,1fr)}}

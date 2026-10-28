@@ -8,7 +8,7 @@ const configs = {
       ["Իմ պրոֆիլը", "./teacher.html?view=profile"],
       ["Դասարաններ", "./teacher.html?view=classes"],
       ["Արխիվացված դասարաններ", "./teacher.html?view=archive"],
-      ["Հավելյալ նյութեր", "./resource-library.html"]
+      ["Նյութերի գրադարան", "./resource-library.html"]
     ]
   },
   school: {
@@ -73,7 +73,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -86,7 +86,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -99,7 +99,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -112,7 +112,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -125,7 +125,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html", "home"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -138,7 +138,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html", "home"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -151,7 +151,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html", "home"]
     ]
@@ -164,7 +164,7 @@ const configs = {
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Ուսումնական նյութեր", "./content-materials.html"],
-      ["Հավելյալ նյութեր", "./resource-library.html"],
+      ["Նյութերի գրադարան", "./resource-library.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html", "home"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]

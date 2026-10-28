@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 export const browserQaTargets = [
   {
     workflow: ".github/workflows/resource-assignments-acceptance.yml",
-    entries: ["web/index.html", "web/resource-library.html", "scripts/resource-assignments-acceptance.mjs"],
+    entries: ["web/index.html", "web/resource-library.html", "web/teacher.html", "web/teacher-workflows.html", "scripts/resource-assignments-acceptance.mjs"],
     runner: "scripts/resource-assignments-acceptance.mjs",
   },
   {
@@ -60,7 +60,7 @@ export const browserQaTargets = [
   },
   {
     workflow: ".github/workflows/sprint-14-actions-qa.yml",
-    entries: ["web/teacher.html", "web/school-admin.html", "scripts/sprint-14-actions.mjs"],
+    entries: ["web/teacher.html", "web/teacher-workflows.html", "web/school-admin.html", "scripts/sprint-14-actions.mjs"],
     runner: "scripts/sprint-14-actions.mjs",
   },
   {
