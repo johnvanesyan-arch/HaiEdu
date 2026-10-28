@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.11 private teacher feedback",
+  "status": "technically delivered; B.12 final owner usability/performance remains open",
+  "implementation": {
+    "pullRequest": 338,
+    "base": "3c3de4a1f39f11bede71095c03b409ec38d043c3",
+    "head": "f7fa7014ef3b8eef5a9de485887b374a01200a83",
+    "merged": "358af1ed89746f1919ea78582895ffcb96e346bd"
+  },
+  "ci": {
+    "pr": {
+      "runId": 40755713832,
+      "jobs": [
+        {
+          "id": 123053936020,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 123053936361,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 123053936440,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 123053936513,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 123056467194,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "main": {
+      "runId": 40756557087,
+      "jobs": [
+        {
+          "id": 123056914872,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 123056915094,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 123056915157,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 123056915163,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 123059662570,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "unitIntegration": 1526,
+    "nativeBrowser": 241,
+    "newSqlCases": 15,
+    "newEdgeCases": 4,
+    "newIndependentPostgresRaces": 6,
+    "nativeArtifact": {
+      "id": 12846835612,
+      "name": "student-workspace-browser",
+      "size_in_bytes": 16486169,
+      "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12846835612",
+      "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12846835612/zip",
+      "expired": false,
+      "created_at": "2026-10-28T19:40:01Z",
+      "expires_at": "2026-11-11T19:39:59Z",
+      "updated_at": "2026-10-28T19:40:01Z",
+      "digest": "sha256:636149d1513963cf299236ce97fcc04366218e86e97ab15cacda5d7353c91e99",
+      "workflow_run": {
+        "id": 40755713832,
+        "repository_id": 1368662129,
+        "head_repository_id": 1368662129,
+        "head_branch": "codex/teacher-feedback-20261028",
+        "head_sha": "f7fa7014ef3b8eef5a9de485887b374a01200a83"
+      }
+    }
+  },
+  "production": {
+    "runId": 40756871503,
+    "functionalChecks": 47,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "writes": "none; positive teacher/learner flows use isolated actual-SQL/native fixtures",
+    "artifact": {
+      "id": 12846478994,
+      "name": "teacher-feedback-production",
+      "size_in_bytes": 1553,
+      "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12846478994",
+      "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12846478994/zip",
+      "expired": false,
+      "created_at": "2026-10-28T19:55:17Z",
+      "expires_at": "2026-11-11T19:55:16Z",
+      "updated_at": "2026-10-28T19:55:17Z",
+      "digest": "sha256:062e8140f6759813f769a14298fbcc81b5e02e8adb48f7e98126d3a71166f94f",
+      "workflow_run": {
+        "id": 40756871503,
+        "repository_id": 1368662129,
+        "head_repository_id": 1368662129,
+        "head_branch": "main",
+        "head_sha": "358af1ed89746f1919ea78582895ffcb96e346bd"
+      }
+    },
+    "compatibility": {
+      "runId": 40756556988,
+      "checks": 123,
+      "artifact": {
+        "id": 12845839395,
+        "name": "chapter-iii-pilot-read-acceptance",
+        "size_in_bytes": 2297,
+        "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12845839395",
+        "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12845839395/zip",
+        "expired": false,
+        "created_at": "2026-10-28T19:50:37Z",
+        "expires_at": "2026-11-11T19:50:37Z",
+        "updated_at": "2026-10-28T19:50:37Z",
+        "digest": "sha256:51e20fce4aa760529aa64547e0fdbeb5177e8f99a6d80d1e37f80d8c02bc4d8a",
+        "workflow_run": {
+          "id": 40756556988,
+          "repository_id": 1368662129,
+          "head_repository_id": 1368662129,
+          "head_branch": "main",
+          "head_sha": "358af1ed89746f1919ea78582895ffcb96e346bd"
+        }
+      }
+    },
+    "deployment": {
+      "id": "dpl_AUQSd6t79foZvvXsUYcxU8sYmhNF",
+      "name": "armenian-mastery-platform",
+      "url": "armenian-mastery-platform-260wz9n3z-kupershtokh-7785.vercel.app",
+      "created": 1793216490341,
+      "state": "READY",
+      "target": "production",
+      "creator": {
+        "uid": "g7d0feep0ZE8i6vjSQUyyJh9",
+        "username": "kupershtokh-7785"
+      },
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitSha": "358af1ed89746f1919ea78582895ffcb96e346bd",
+        "githubCommitMessage": "Merge pull request #338 from johnvanesyan-arch/codex/teacher-feedback-20261028\n\n16.5B.11 — private feedback drafts, personal comments and explicit publication",
+        "githubRepo": "HaiEdu",
+        "githubOrg": "johnvanesyan-arch"
+      },
+      "inspectorUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/AUQSd6t79foZvvXsUYcxU8sYmhNF",
+      "isRollbackCandidate": true
+    },
+    "frontendFiles": 5,
+    "sqlBodies": 6,
+    "newEdgeVersion": 1,
+    "privacyEdgeVersion": 10
+  },
+  "sourceReceipts": [
+    "teacher-feedback-backend-20261028.json",
+    "teacher-feedback-frontend-20261028.json",
+    "teacher-feedback-acceptance-20261028.json",
+    "teacher-feedback-compatibility-20261028.json"
+  ],
+  "unchangedEvidenceReuse": {
+    "staffCrud": "B.10 206/206, 54+54 isolation and cleanup; directory/resource operations unchanged",
+    "contentAudio": "Existing source-verified banks/recordings and owner approvals; no learning release change",
+    "deploymentBlocking": "Independent configuration receipt vercel-deployment-check-verification-20261020.json; not inferred from READY/CI"
+  },
+  "remaining": [
+    "B.12 sharing preview, purposeful motion and final owner usability",
+    "PERF-02 Home/detail/unit and paired response-opening measurements",
+    "DEMO-01",
+    "WRITE-CREATE",
+    "RESOURCE-SUBMIT",
+    "all 45 capability/dependency mappings",
+    "English pause after C47",
+    "full four-subject 16.5C gate"
+  ],
+  "closure": "Documentation/evidence and unchanged migration-ledger filename/test-reference alignment only; SQL is not reapplied. Source-verified Notion synchronization follows the merged closing commit."
+}
