@@ -41,7 +41,9 @@ export async function readBatchedTeacherDashboard(admin:any,actor:string,token:s
  }
  const gate=()=>rpc('service_teacher_dashboard_actor',{});
  if(request.readMode==='directory'){
-  const data=await rpc('service_teacher_dashboard_directory',{p_archive:request.archive??false,p_offset:request.offset??0,p_search:request.search?.trim()??''});
+  const data=request.workspace!==undefined
+   ? await rpc('service_teacher_dashboard_home',{p_workspace:request.workspace})
+   : await rpc('service_teacher_dashboard_directory',{p_archive:request.archive??false,p_offset:request.offset??0,p_search:request.search?.trim()??''});
   const finalActor=await gate();
   if(finalActor.institutionalTeacher!==data.institutionalTeacher)throw new AcademicContextDenied();
   // No evidence is returned by this metadata-only path.
@@ -52,7 +54,8 @@ export async function readBatchedTeacherDashboard(admin:any,actor:string,token:s
  const selection=request.selection??null;
  const classId=request.classId??null,assignmentId=request.assignmentId??selection?.assignmentId??null;
  const args={p_class:classId,p_assignment:assignmentId};
- const rows=await rpc('service_teacher_dashboard_rows',args);
+ const initial=await rpc('service_teacher_dashboard_initial',{...args,p_release:selection?.curriculumReleaseId??null,p_unit:selection?.unitId??null});
+ const rows=initial.rows;
  if(!rows.institutionalTeacher)return null; // Preserve the isolated schoolless adapter.
  if(!rows.assignments.length)throw new AcademicContextDenied();
  if(classId&&!assignmentId)rows.assignments=rows.assignments.slice(0,1);
@@ -60,7 +63,8 @@ export async function readBatchedTeacherDashboard(admin:any,actor:string,token:s
   rows,
   analytics:async(context:any,students:any[])=>{
    if(!students.length)return {skills:[],students:[]};
-   const evidence=await rpc('service_teacher_dashboard_evidence',{p_assignment:context.assignmentId,p_release:context.curriculumReleaseId,p_unit:context.unitId});
+   if(initial.selected?.assignmentId!==context.assignmentId||initial.selected?.curriculumReleaseId!==context.curriculumReleaseId||initial.selected?.unitId!==context.unitId||!initial.evidence)throw new TeacherDashboardReadError(503,'teacher_dashboard_unavailable');
+   const evidence=initial.evidence;
    return loadExactInstitutionalClassAnalytics(admin,context,students,{...evidence,roster:rows});
   },
   final:async(selections:TeacherAcademicSelection[],classes:any[])=>{

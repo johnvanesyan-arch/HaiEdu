@@ -6,3 +6,4 @@ export {assessmentResultMarkup} from './assessment-reporting.mjs';
 export {contractMarkup} from './analytics-provenance.mjs';
 export {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from './config.js';
 export {roleDestination} from './account-roles.js';
+export {createClient} from '@supabase/supabase-js';

@@ -1,13 +1,15 @@
 import {readFile,readdir} from 'node:fs/promises';
 import {fixture as writingFixture,token,id,context} from './written-work-api.mjs';
+import {readBatchedTeacherDashboard} from '../../supabase/functions/_shared/teacher-dashboard-batch.ts';
 import {createTeacherWorkspaceHandler} from '../../supabase/functions/_shared/teacher-workspace-handler.mjs';
 export {id};
-export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={}){
+export async function todayFixture(browser,t,{count=2,initialURL='?view=home',combined=true}={}){
  const f=await writingFixture();t.after(()=>f.db.close());
  await f.db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;update subjects set code=case when id='${id(101)}' then 'english' else 'physics' end,name_hy=case when id='${id(101)}' then 'Անգլերեն' else 'Ֆիզիկա' end;update classes set name=case when id='${id(321)}' then '7Ա' else '7Բ' end;`);
  await f.db.exec(await readFile('supabase/migrations/20261028180038_teacher_today_workspace.sql','utf8'));
  await f.db.exec(await readFile('supabase/migrations/0012_live_session_gate.sql','utf8'));
  const batch=(await readdir('supabase/migrations')).find(p=>p.endsWith('_teacher_dashboard_batched_reads.sql'));await f.db.exec(await readFile('supabase/migrations/'+batch,'utf8'));
+ const transaction=(await readdir('supabase/migrations')).find(p=>p.endsWith('_teacher_transaction_reads.sql'));await f.db.exec(await readFile('supabase/migrations/'+transaction,'utf8'));
  for(let i=0;i<count;i++){
   const ctx=context(i%2);const task=id(6000+i);
   await f.db.query(`insert into written_task_versions(id,task_key,version_no,subject_program_id,curriculum_release_id,unit_id,definition,status,reviewed_by,reviewed_at,review_evidence)
@@ -36,7 +38,9 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
    if(fn==='get-teacher-workspace'){const r=await handle(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+token(actor)},body:JSON.stringify(body)}));status=r.status;data=await r.json();}
    else if(fn==='manage-teacher-feedback'){const r=await f.feedbackRequest(body,actor);status=r.status;data=await r.json();}
    else if(fn==='manage-written-work'){const r=await f.request(body,actor);status=r.status;data=await r.json();}
-   else if(fn==='get-teacher-dashboard'){
+   else if(fn==='get-teacher-dashboard'&&body.workspace&&combined){
+    try{data=await readBatchedTeacherDashboard(f.admin,id(actor),token(actor),body);}catch(e){status=e.status??403;data={error:e.message};}
+   }else if(fn==='get-teacher-dashboard'){
     data=(await f.db.query('select service_teacher_class_directory($1,$2,$3,$4) result',[id(actor),body.archive??false,body.offset??0,body.search??''])).rows[0].result;
     Object.assign(data,{progressive:true,institutionalTeacher:true,teacher:{id:id(actor),displayName:'Փորձնական ուսուցիչ'},totals:{students:null,studentsNeedingSupport:null}});
     if(body.readMode==='class')data.classes=data.classes.filter(c=>c.id===body.classId).map(c=>({...c,analyticsAvailable:false,unitOptions:[{curriculumReleaseId:id(501),unitId:id(511),unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1}],selectedUnit:{curriculumReleaseId:id(501),unitId:id(511),unitTitleHy:'Փորձնական բաժին'}}));

@@ -1,5 +1,4 @@
-import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination} from "./teacher-dependencies.bundle.mjs";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -311,8 +310,9 @@ async function loadDashboard(sessionOverride = null) {
   const body=navigation.view==="class" && (navigation.classId||navigation.selection)
     ? {readMode:"class",...(navigation.classId?{classId:navigation.classId}:{}),...(navigation.selection?{selection:navigation.selection}:{})}
     : {readMode:"directory",archive:navigation.view==="archive"};
-  if(navigation.view==="home"&&$("teacherToday"))todayBoot=readOnce("get-teacher-workspace",todayRequest(actorId));
-  const {data,error}=await dashboardRead(body);
+  const home=navigation.view==="home"&&Boolean($("teacherToday"));
+  if(home)body.workspace=todayRequest(actorId);
+  const {data:loaded,error}=await dashboardRead(body);
   if (version !== dashboardLoadVersion) return;
   if (error) {
     $("teacherLoading")?.classList.add("hidden");
@@ -322,6 +322,10 @@ async function loadDashboard(sessionOverride = null) {
     return setMessage("authMessage", friendlyError(error, "Չհաջողվեց բեռնել ուսուցչի աշխատասեղանը։"), true);
   }
 
+  const {workspace,workspaceError,...data}=loaded;
+  if(home)todayBoot=workspace!==undefined||workspaceError
+   ? Promise.resolve({data:workspaceError?{error:workspaceError}:workspace})
+   : readOnce("get-teacher-workspace",todayRequest(actorId));
   dashboard = data;
   dashboard.directoryMode=data.progressive===true||data.institutionalTeacher===true||Boolean(data.directory);
   $("teacherLoading")?.classList.add("hidden");

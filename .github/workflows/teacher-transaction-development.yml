@@ -1,0 +1,34 @@
+name: Isolated teacher transaction development
+on:
+  push:
+    branches: [codex/teacher-transaction-performance-20261029]
+permissions:
+  contents: read
+concurrency:
+  group: teacher-transaction-isolated-development
+  cancel-in-progress: true
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Bound Ubuntu downloads
+        run: |
+          printf 'Acquire::Retries "2";\nAcquire::http::Timeout "30";\n' | sudo tee /etc/apt/apt.conf.d/99-codex-bounded
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:teacher-bundle
+      - name: Verify combined Home and class reads with isolated SQL
+        run: node --test --test-concurrency=1 tests/teacher-home.test.mjs tests/teacher-dashboard-batch.test.mjs tests/browser/teacher-performance.browser.test.mjs tests/browser/teacher-today.browser.test.mjs tests/browser/teacher-feedback.browser.test.mjs tests/browser/forest-staff.browser.test.mjs
+        env:
+          STUDENT_LAYOUT_SCREENSHOTS_DIR: qa-results/teacher-transaction
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-teacher-transaction
+          path: qa-results
+          retention-days: 7

@@ -4,6 +4,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {acceptanceFixture,id,finishThroughAPI,selection as learnerSelection,compile} from './fixtures/learning-acceptance.mjs';
 import {getInstitutionalTeacherDashboard} from '../supabase/functions/_shared/institutional-teacher-dashboard.ts';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../supabase/functions/_shared/teacher-dashboard-batch.ts';
+import {isTeacherWorkspaceRequest} from '../supabase/functions/_shared/teacher-workspace-request.mjs';
 import {verifyTeacherReadIdentity} from '../supabase/functions/_shared/teacher-read-identity.mjs';
 import {AcademicContextDenied} from '../supabase/functions/_shared/academic-context.ts';
 let f,token;const calls=[];
@@ -21,7 +22,8 @@ before(async()=>{
  const directory=readFileSync('supabase/migrations/20261028180038_teacher_today_workspace.sql','utf8').split('-- Queue')[0];
  await f.db.exec(directory.slice(0,directory.indexOf('create index if not exists written_work_pending_context_idx')));
  await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_dashboard_batched_reads.sql')),'utf8'));
- await f.db.exec(readFileSync('supabase/migrations/20261028223447_teacher_evidence_projection.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_evidence_projection.sql')),'utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_transaction_reads.sql')),'utf8'));
  const original=f.admin.rpc;f.admin.rpc=async(name,args)=>{calls.push(name);return original(name,args);};
  token=f.credential(id(20),id(420));
  f.admin.auth.getClaims=async value=>{const r=await f.admin.auth.getUser(value);if(r.error)return {error:r.error};return {data:{claims:{...JSON.parse(Buffer.from(value.split('.')[1],'base64url').toString()),sub:r.data.user.id,iss:'synthetic/auth/v1',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600}}};};
@@ -34,7 +36,7 @@ async function changed(sql,run){await f.db.exec('begin');try{await f.db.exec(sql
 test('batched selected-class output equals existing analytics with completed evidence, frozen versions and exact contracts',async()=>{
  const expected=await getInstitutionalTeacherDashboard(f.admin,id(20),'Synthetic account',selection,id(321),id(351));
  const actual=await read();assert.deepEqual(json(actual),json(expected));assert.equal(actual.classes[0].students.length,1);assert.equal(actual.classes[0].students[0].matrix.length,2);
- assert.deepEqual(calls,['service_teacher_dashboard_rows','service_teacher_dashboard_evidence','service_teacher_dashboard_rows']);
+ assert.deepEqual(calls,['service_teacher_dashboard_initial','service_teacher_dashboard_rows']);
 });
 test('unit switches and a different subject, school and grade preserve their own evidence and policy',async()=>{
  for(const [actor,session,assignment,klass,release,unit]of [[20,420,351,321,501,512],[21,421,352,322,502,513],[21,421,352,322,502,514]]){
@@ -58,20 +60,20 @@ test('session, role, membership, grants and current roster changes fail closed',
 test('revocation after evidence and before final metadata prevents response disclosure',async()=>{
  const original=f.admin.rpc;
  for(const sql of [`delete from auth.sessions where id='${id(420)}'`,`update teacher_subject_authorizations set status='ended' where id='${id(361)}'`,`update institutional_memberships set status='ended' where id='${id(341)}'`])await changed('select 1',async()=>{
-  f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_evidence')await f.db.exec(sql);return r;};
+  f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_initial')await f.db.exec(sql);return r;};
   try{await assert.rejects(()=>read());}finally{f.admin.rpc=original;}
  });
- await changed('select 1',async()=>{f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_evidence')await f.db.exec(`update institutional_class_enrollments set status='ended',valid_to=now() where id='${id(371)}'`);return r;};try{assert.equal((await read()).classes[0].students.length,0);}finally{f.admin.rpc=original;}});
+ await changed('select 1',async()=>{f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_initial')await f.db.exec(`update institutional_class_enrollments set status='ended',valid_to=now() where id='${id(371)}'`);return r;};try{assert.equal((await read()).classes[0].students.length,0);}finally{f.admin.rpc=original;}});
 });
 test('service-only invoker functions add no browser execution or privileged definer',async()=>{
  const r=await f.db.query(`select proname,prosecdef,has_function_privilege('anon',oid,'execute') anon,has_function_privilege('authenticated',oid,'execute') authenticated,has_function_privilege('service_role',oid,'execute') service from pg_proc where proname like 'service_teacher_dashboard_%'`);
- assert.equal(r.rows.length,4);assert.ok(r.rows.every(x=>!x.prosecdef&&!x.anon&&!x.authenticated&&x.service));
+ assert.equal(r.rows.length,6);assert.ok(r.rows.every(x=>!x.prosecdef&&!x.anon&&!x.authenticated&&x.service));
 });
 
 test('real Edge handler uses the verified JWT actor, protects HTTP errors and marks reads no-store',async()=>{
  let handle;
  compile(readFileSync('supabase/functions/get-teacher-dashboard/index.ts','utf8'),{
-  createClient:()=>f.admin,verifyTeacherReadIdentity,readBatchedTeacherDashboard,TeacherDashboardReadError,AcademicContextDenied,
+  createClient:()=>f.admin,isTeacherWorkspaceRequest,verifyTeacherReadIdentity,readBatchedTeacherDashboard,TeacherDashboardReadError,AcademicContextDenied,
   Deno:{env:{get:()=> 'synthetic'},serve:fn=>handle=fn},
  },[]);
  const call=(body,credential=token)=>handle(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+credential},body:JSON.stringify(body)}));
@@ -87,7 +89,7 @@ test('archive growth does not increase selected-class reads or load unrelated cl
  select ('72000000-0000-4000-8000-'||lpad(n::text,12,'0'))::uuid,'${id(301)}','${id(311)}','${id(101)}','${id(7)}',false,'Archive '||n from generate_series(1,100) n;
  insert into teacher_assignments(id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from)
  select ('73000000-0000-4000-8000-'||lpad(n::text,12,'0'))::uuid,'${id(301)}','${id(311)}',('72000000-0000-4000-8000-'||lpad(n::text,12,'0'))::uuid,'${id(341)}','${id(201)}','active','2020-01-01' from generate_series(1,100) n;`,async()=>{
-  const d=await read();assert.equal(d.classes.length,1);assert.equal(calls.length,3);
+  const d=await read();assert.equal(d.classes.length,1);assert.equal(calls.length,2);
   const raw=await f.admin.rpc('service_teacher_dashboard_rows',{p_actor:id(20),p_session:id(420),p_class:id(321),p_assignment:id(351)});assert.equal(raw.data.classes.length,1);assert.equal(raw.data.assignments.length,1);
  });
 });
@@ -95,4 +97,21 @@ test('archive growth does not increase selected-class reads or load unrelated cl
 test('evidence transfer includes only the frozen fields consumed by analytics',async()=>{
  const r=await f.admin.rpc('service_teacher_dashboard_evidence',{p_actor:id(20),p_session:id(420),p_assignment:id(351),p_release:id(501),p_unit:id(511)});assert.equal(r.error,null);
  assert.ok(r.data.versions.length>0);assert.ok(r.data.versions.every(v=>JSON.stringify(Object.keys(v.snapshot.item).sort())===JSON.stringify(['code','difficulty','prompt_hy','skill_id'])));
+});
+
+test('one initial transaction resolves the canonical governed default without reading another unit',async()=>{
+ for(const [actor,session,assignment,klass] of [[20,420,351,321],[21,421,352,322]]){
+  const expected=await getInstitutionalTeacherDashboard(f.admin,id(actor),'Synthetic account',null,id(klass),id(assignment));
+  const actual=await read({readMode:'class',classId:id(klass),assignmentId:id(assignment)},f.credential(id(actor),id(session)),id(actor));
+  assert.deepEqual(json(actual),json(expected));assert.equal(calls.length,2);
+ }
+ await changed(`update curriculum_release_units set sequence_order_snapshot=case when unit_id='${id(512)}' then 0 else 1 end`,async()=>{
+  const d=await read({readMode:'class',classId:id(321)});assert.equal(d.classes[0].selectedUnit.unitId,id(512));assert.equal(calls.length,2);
+ });
+});
+
+test('initial transaction cannot substitute another unit for the independently resolved context',async()=>{
+ const original=f.admin.rpc;
+ f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_initial'&&r.data)r.data.selected.unitId=id(512);return r;};
+ try{await assert.rejects(()=>read(),e=>e instanceof TeacherDashboardReadError&&e.status===503);}finally{f.admin.rpc=original;}
 });

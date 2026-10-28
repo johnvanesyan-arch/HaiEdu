@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/build-teacher-entry.mjs
       - supabase/functions/_shared/teacher-read-identity.mjs
+      - supabase/functions/_shared/teacher-workspace-request.mjs
       - web/teacher-dependencies.bundle.mjs
       - web/teacher-dependencies.mjs
       - web/resource-learner-view.mjs
