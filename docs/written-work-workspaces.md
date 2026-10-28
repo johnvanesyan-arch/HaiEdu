@@ -1,5 +1,7 @@
 # Written work in student and teacher workspaces
 
+**2026-10-28 workflow clarification:** the teacher Writing review entry is separate from Library and resource assignment. Writing availability comes from approved curriculum tasks; an ordinary teacher has no custom writing builder or class/selected writing-send action in this version. Student submission creates the teacher queue item; feedback is a review stage, not another assignment type. Current release status is in [project-status](project-status.md), which supersedes the dated initial English-inactive notes below. [Current four-procedure SOP](teacher-workflows-sop.md) · [In-product guide](https://www.haiedu.am/teacher-workflows.html).
+
 **16.1C.23 delivery:** Both roles see the approved optional assistance-policy text and a notice that written scores are separate from automatic checks. The accepted English W01 definition is covered by an isolated native-browser flow; English learner access remains inactive. [Bounded acceptance handoff](english-7-unit-01-learner-acceptance.md).
 
 **16.1B.1 · 2026-10-20 · Deployed; production read acceptance verified.** John authorised implementation after reviewing the dashboard gap. This is the reusable writing capability slice of 16.1B. English content, final rubric/pass rules, automatic response formats and audio delivery remain separate work.

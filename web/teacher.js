@@ -28,7 +28,8 @@ function clearDetail() {
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
   disposeWriting(); disposeWriting=()=>{}; closeDrawer();
-  for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard"]) $(id)?.classList.add("hidden");
+  for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard","teacherWorkflowEntries"]) $(id)?.classList.add("hidden");
+  for(const id of ["teacherResourcesLink","teacherAssignResourceLink"]) $(id)?.removeAttribute("href");
 }
 function directoryKey(archive) { return archive ? "archive" : "active"; }
 async function loadDirectory(archive=false,{more=false,search=""}={}) {
@@ -469,6 +470,8 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
+  $("teacherWorkflowEntries")?.classList.add("hidden");
+  for(const id of ["teacherResourcesLink","teacherAssignResourceLink"]) $(id)?.removeAttribute("href");
   institutionalUnitLoadVersion++;
   closeDrawer();
   selectedAssignmentId=selection?.assignmentId??assignmentId??(selectedClassId===id?selectedAssignmentId:null);
@@ -570,9 +573,11 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
     }
     if ($("teacherWrittenWorkCard") && klass.selectedUnit) {
       $("teacherWrittenWorkCard").classList.remove("hidden");
-      let resourceLink = document.getElementById('teacherResourcesLink');
-      if (!resourceLink) { resourceLink = document.createElement('a'); resourceLink.id='teacherResourcesLink'; resourceLink.className='button-link ghost'; resourceLink.textContent='Հավելյալ նյութեր'; $("teacherWrittenWorkCard").prepend(resourceLink); }
-      resourceLink.href='./resource-library.html?'+new URLSearchParams({assignment:klass.assignmentId,release:klass.selectedUnit.curriculumReleaseId,unit:klass.selectedUnit.unitId});
+      $("teacherWorkflowEntries").classList.remove("hidden");
+      const resourceParams = new URLSearchParams({assignment:klass.assignmentId,release:klass.selectedUnit.curriculumReleaseId,unit:klass.selectedUnit.unitId});
+      $("teacherResourcesLink").href='./resource-library.html?'+resourceParams;
+      $("teacherAssignResourceLink").href='./resource-library.html?'+resourceParams+'&intent=assign';
+      $("teacherWorkflowContext").textContent=[klass.name,klass.subjectName,klass.selectedUnit.unitTitleHy,klass.schoolName,klass.academicYear].filter(Boolean).join(' · ');
       $("teacherOpenWrittenWork").onclick = () => {
         if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
         disposeWriting();

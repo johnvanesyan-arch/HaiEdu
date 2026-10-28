@@ -196,7 +196,13 @@
             <h3>Ընտրեք կամ ստեղծեք դպրոցի դասարան</h3>
             <p class="subtle">Դասարանի ստեղծման համար անհրաժեշտ է դպրոցի ադմինի բացած ընթացիկ ուսումնական տարին և ձեր առարկայի հաստատված թույլտվությունը։</p>
           </section>
-          <section id="teacherWrittenWorkCard" class="card hidden"><h3>Գրավոր աշխատանքներ</h3><p>Տեսեք ներկայացված աշխատանքները, գնահատեք և ուղարկեք մեկնաբանություն։</p><button type="button" id="teacherOpenWrittenWork">Բացել գրավոր աշխատանքները</button><div id="teacherWrittenWork"></div></section>
+          <section id="teacherWorkflowEntries" class="teacher-workflow-entrypoints hidden" aria-label="Նյութեր, հանձնարարություններ և գրավոր աշխատանքներ">
+            <p id="teacherWorkflowContext" class="subtle teacher-workflow-context"></p>
+            <section id="teacherResourcesCard" class="card"><h3>Նյութերի գրադարան</h3><p>Հրապարակեք լրացուցիչ նյութեր՝ դասարանի ինքնուրույն աշխատանքի համար։</p><a id="teacherResourcesLink" class="button-link ghost">Բացել գրադարանը</a><a class="teacher-workflow-help" href="./teacher-workflows.html#library">Ինչպե՞ս հրապարակել նյութ</a></section>
+            <section id="teacherAssignmentsCard" class="card"><h3>Ուսուցչի առաջադրանքներ</h3><p>Հանձնարարեք PDF կամ հղում ամբողջ դասարանին կամ ընտրված աշակերտներին։</p><a id="teacherAssignResourceLink" class="button-link ghost">Ուղարկել առաջադրանք</a><a class="teacher-workflow-help" href="./teacher-workflows.html#assign">Ինչպե՞ս հանձնարարել նյութ</a></section>
+            <section id="teacherWrittenWorkCard" class="card hidden"><h3>Գրավոր աշխատանքներ</h3><p>Ստուգեք հրապարակված գրավոր առաջադրանքների ներկայացումները, գնահատեք կամ վերադարձրեք վերանայման։</p><button type="button" id="teacherOpenWrittenWork">Բացել գրավոր աշխատանքները</button><a class="teacher-workflow-help" href="./teacher-workflows.html#review">Ինչպե՞ս ստուգել և մեկնաբանել</a></section>
+            <div id="teacherWrittenWork" class="teacher-workflow-review"></div>
+          </section>
           <section id="institutionalClassView" class="card class-header-card hidden" aria-labelledby="institutionalSelectedName">
             <div class="class-header-main">
               <div class="class-title-row"><span class="mode-kicker">ԴՊՐՈՑԻ ԴԱՍԱՐԱՆ</span><span id="institutionalClassBadge" class="status-badge">Ակտիվ</span></div>

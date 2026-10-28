@@ -1,0 +1,24 @@
+body[data-forest-surface]{background:#f5f6ef;color:#23392f}
+.workflow-shell{max-width:1080px;margin:auto;padding:clamp(1rem,4vw,2.5rem);overflow-wrap:anywhere}
+.workflow-header{display:flex;align-items:start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:1rem 0 2rem}
+.workflow-header>div{flex:1 1 34rem;min-width:0}
+.workflow-header h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.3;margin:.5rem 0 1rem}
+.workflow-kicker{font-size:.85rem;letter-spacing:.04em;color:#425f4c;font-weight:700}
+.workflow-nav{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
+.workflow-nav a,.workflow-back{display:inline-flex;align-items:center;padding:.75rem 1rem;min-height:44px;border:1px solid #8fa892;border-radius:12px;background:#fff;color:#285b45;font-weight:650;text-decoration:none;max-width:100%}
+.workflow-shell a{color:#285b45;text-underline-offset:.2em}
+.workflow-shell a:hover{background:#e7eee2}
+.workflow-shell a:focus-visible,.workflow-shell summary:focus-visible{outline:3px solid #836b27;outline-offset:3px}
+.workflow-notice,.workflow-result{padding:1rem 1.25rem;background:#eeefe2;border-inline-start:4px solid #53745c;border-radius:12px;line-height:1.75}
+.workflow-card{padding:clamp(1rem,3vw,2rem);background:#fff;border:1px solid #c3cfc0;border-radius:20px;margin:1.5rem 0;scroll-margin-top:1rem;min-width:0}
+.workflow-card h2{font-size:clamp(1.35rem,3vw,1.8rem);line-height:1.4;margin:.4rem 0 1rem}
+.workflow-card p,.workflow-card li{line-height:1.8}
+.workflow-card li{margin-bottom:.65rem}
+.workflow-card ol,.workflow-card ul{padding-inline-start:1.6rem}
+.workflow-card summary{cursor:pointer;min-height:44px;align-content:center;padding:.5rem 0;font-weight:650}
+.workflow-future{background:#f5f2e8}
+.workflow-shell footer{padding:1rem 0 2rem;color:#58695f}
+.workflow-skip{position:fixed;top:.5rem;left:1rem;z-index:100;background:#fff;color:#285b45;padding:.8rem;transform:translateY(-200%)}
+.workflow-skip:focus{transform:none}
+@media(max-width:600px){.workflow-nav{display:grid;grid-template-columns:minmax(0,1fr)}.workflow-header{gap:1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

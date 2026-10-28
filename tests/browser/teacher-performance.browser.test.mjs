@@ -33,3 +33,25 @@ test('initial directory failure offers a retry without another sign-in',async t=
  const {page,errors}=await fixture(browser,t,{initialFailure:true});await expect(page.locator('#teacherLoading')).toBeHidden();await expect(page.locator('#dashboardPanel')).toBeHidden();
  await page.evaluate(()=>window.__teacherFixture.fail=[]);await page.locator('#teacherDashboardRetry').click();await expect(page.locator('#dashboardPanel')).toBeVisible();await expect(page.locator('#teacherDashboardRetry')).toBeHidden();assert.equal((await calls(page)).length,2);assert.deepEqual(errors,[]);
 });
+
+test('library, resource assignment and writing review have separate context-scoped entry points without eager review reads',async t=>{
+ const {page,errors}=await fixture(browser,t);await nav(page,'classes');await page.locator('#classList .teacher-class-button').first().click();await expect(page.locator('#teacherWorkflowEntries')).toBeVisible();
+ assert.equal(await page.locator('#teacherWrittenWorkCard #teacherResourcesLink').count(),0);
+ for(const [id,intent] of [['teacherResourcesLink',null],['teacherAssignResourceLink','assign']]){
+  const u=new URL(await page.locator('#'+id).getAttribute('href'),page.url());assert.equal(u.searchParams.get('assignment'),'assignment-a');assert.equal(u.searchParams.get('unit'),'unit-1');assert.equal(u.searchParams.get('intent'),intent);
+ }
+ assert.equal((await calls(page)).filter(x=>x.fn==='manage-written-work').length,0);
+ await page.locator('#teacherOpenWrittenWork').click();await expect(page.locator('[data-writing-filter]')).toBeVisible();assert.equal((await calls(page)).filter(x=>x.fn==='manage-written-work').length,1);
+ await page.locator('#teacherUnitFilter').selectOption('release-a:unit-2');await expect.poll(async()=>new URL(await page.locator('#teacherAssignResourceLink').getAttribute('href'),page.url()).searchParams.get('unit')).toBe('unit-2');
+ await nav(page,'classes');assert.equal(await page.locator('#teacherResourcesLink').getAttribute('href'),null);
+ assert.equal(await page.locator('#teacherAssignResourceLink').getAttribute('href'),null);assert.deepEqual(errors,[]);
+});
+test('teacher workflow cards reflow at narrow and enlarged text sizes without losing action focus',async t=>{
+ const {page,errors}=await fixture(browser,t);await nav(page,'classes');await page.locator('#classList .teacher-class-button').first().click();await expect(page.locator('#teacherWorkflowEntries')).toBeVisible();
+ for(const width of [360,768,1280]){
+  await page.setViewportSize({width,height:960});await page.addStyleTag({content:'html{font-size:200%}'});
+  const box=await page.locator('#teacherWorkflowEntries').evaluate(e=>({right:e.getBoundingClientRect().right,scroll:e.scrollWidth,width:e.clientWidth}));assert.ok(box.right<=width+1&&box.scroll<=box.width+1,JSON.stringify({width,...box}));
+  await page.locator('#teacherAssignResourceLink').focus();assert.equal(await page.locator('#teacherAssignResourceLink').evaluate(e=>e===document.activeElement),true);
+ }
+ assert.deepEqual(errors,[]);
+});

@@ -13,8 +13,8 @@ function render(detail = {}) {
   const view = page === 'materials' ? 'materials'
     : page === 'home' ? (['courses', 'work'].includes(requestedView) ? requestedView : 'home')
     : page === 'course' && params.get('tab') === 'writing' ? 'work' : 'courses';
-  const main = [['home','Գլխավոր','home'], ['courses','Դասընթացներ','courses'], ['work','Իմ աշխատանքները','work'], ['materials','Հավելյալ նյութեր','courses']];
-  const link = ([key,label,icon], mobile = false) => `<a class="${mobile ? 'amp-mobile-link' : 'amp-nav-link'}" href="${esc(key === 'materials' ? resourceHref(selected) : studentHomeHref(key, selected))}"${key === 'materials' ? ' aria-label="Հավելյալ նյութեր"' : ''}${key === view ? ' aria-current="page"' : ''}>${studentIcon(icon)}<span>${mobile && key === 'materials' ? 'Նյութեր' : label}</span></a>`;
+  const main = [['home','Գլխավոր','home'], ['courses','Դասընթացներ','courses'], ['work','Իմ աշխատանքները','work'], ['materials','Նյութերի գրադարան','courses']];
+  const link = ([key,label,icon], mobile = false) => `<a class="${mobile ? 'amp-mobile-link' : 'amp-nav-link'}" href="${esc(key === 'materials' ? resourceHref(selected) : studentHomeHref(key, selected))}"${key === 'materials' ? ' aria-label="Նյութերի գրադարան"' : ''}${key === view ? ' aria-current="page"' : ''}>${studentIcon(icon)}<span>${mobile && key === 'materials' ? 'Գրադարան' : label}</span></a>`;
   const items = main.map(item => link(item));
   const nav = document.querySelector('.amp-nav-list');
   if (nav) nav.innerHTML = items.join('');

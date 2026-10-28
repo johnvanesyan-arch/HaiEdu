@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-28 · owner-authorized scope and priority · roadmap 4.99.
+2026-10-28 · owner-authorized scope and priority · roadmap 4.100.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -12,6 +12,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
 | 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Assignment capability delivered; live acceptance/source parity passed; DEMO-01 remains open |
 | 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | Delivered; 126 live checks, actual PDF form-to-My-work flow in both schools |
+| 16.5B.8.2 | Library/My-work separation, distinct teacher entry points and teacher workflow SOP | B.8.1 | In verification; custom writing creation and PDF-response submission remain future |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Next; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
@@ -51,6 +52,10 @@ Deliver two end-to-end increments rather than a recipient picker without a servi
 ## B.8.1 — PDF-first authoring repair
 
 **2026-10-28 — 16.5B.8.1 PDF-first teacher form correction delivered.** The latest PDF draft had no attachment and failed `file_required` QA; the former live test started with an API-prepared source and missed this authoring path. PDF selection is now upfront, the title is filled from the filename, optional metadata is folded, and one action saves/uploads/checks/publishes before explicit recipient confirmation. [PR327](https://github.com/johnvanesyan-arch/HaiEdu/pull/327) and [scheduling PR328](https://github.com/johnvanesyan-arch/HaiEdu/pull/328) pass all five required PR/main jobs (**1,488 unit/integration; 209 native browser checks**). Actual teacher-form creation through student PDF download in both schools passes **126/126** live checks, **54 before + 54 after** isolation checks, exact nine-file source parity and run-owned cleanup. Original user materials are preserved. [Correction and evidence](resource-pdf-first.md). **Next: B.9 shared Forest staff layout and Home → Classes → Review prototype.** PERF-02, DEMO-01, all 45 capabilities, English C47 hold and full four-subject gates remain.
+
+## B.8.2 — Workflow separation and teacher SOP
+
+**2026-10-28 — 16.5B.8.2 workflow separation and teacher SOP in verification.** The approved student destinations are My work for assigned resources/writing/submissions/feedback and «Նյութերի գրադարան» for optional materials. The redundant My-work library button is removed; library labels align across student courses and staff/reviewer navigation. Teachers have separate Library, Resource assignment and Writing review entry points in the selected class/unit. A direct library-publication action reuses existing QA/publication without creating an assignment; recipient confirmation remains explicit. The Armenian in-product guide and [teacher SOP](teacher-workflows-sop.md) document all four supported procedures. Custom teacher writing creation and responses to PDF/link tasks remain explicit future capabilities. Native/release/live verification is in progress. [Delivery record](workflow-boundaries.md). B.9 follows this correction; PERF-02, DEMO-01, all 45 capability mappings, English C47 hold and full four-subject gates remain.
 
 ## B.9 — Shared Forest staff layout and prototype
 

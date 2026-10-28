@@ -8,6 +8,8 @@ Owner authorization: implement this capability while preserving the B.6–B.12 s
 
 ## Using the feature
 
+**B.8.2 workflow distinction:** select the dedicated Resource assignment entry in the teacher class/unit workspace. The separate Library entry and `Հրապարակել գրադարանում` action publish optional material without sending. Explicit Assign opens recipient confirmation and creates the My-work task only on send. The student library label is now «Նյութերի գրադարան». Structured writing is separate; this endpoint does not accept student responses/files or marks. [Teacher SOP](teacher-workflows-sop.md).
+
 The [B.8.1 correction](resource-pdf-first.md) adds a PDF-first authoring path: choose «Ավելացնել նյութ», select the PDF, confirm its title/source and content declarations, then «Հրապարակել և ընտրել ստացողներին». It proceeds to the same recipient confirmation below. The correction is deployed and verified through actual teacher-form creation and student PDF download in both designated schools (126 live checks). Existing published materials retain the direct assignment action.
 
 1. Open the teacher resource library and select the authorized class, course and unit.
