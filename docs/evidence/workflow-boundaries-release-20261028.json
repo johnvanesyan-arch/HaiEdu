@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "timezone": "Asia/Yerevan",
   "scope": "16.5B.8.2 library/work/teacher workflow separation and SOP",
-  "status": "verification_pending",
+  "status": "delivered",
   "sourceBase": "3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab",
   "authorization": "Owner accepts Library rename, separate teacher entry points and teacher-facing SOP; custom writing and PDF-response submission remain future.",
   "focusedBrowser": {
@@ -33,12 +33,6 @@
     "RESOURCE-SUBMIT",
     "deadlines/notifications/completion/read tracking",
     "B.11 feedback autosave/snippets/batch contracts"
-  ],
-  "requiredRemaining": [
-    "PR and main five-job release gates",
-    "Current production source/hash parity",
-    "Guarded optional Library → assignment → My-work acceptance and run-owned cleanup",
-    "Merged documentation/source-verified Notion sync"
   ],
   "gates": {
     "next": "16.5B.9",
@@ -78,5 +72,95 @@
     "id": "dpl_7UvauqxPAeC8LHTVx4zWKpkASXTA",
     "state": "READY",
     "commit": "16e5f78fe0b395a5f0451c35651a4bc9291381df"
-  }
+  },
+  "mainCI": {
+    "runId": 40705988050,
+    "jobs": 5,
+    "passedJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 216
+  },
+  "scheduling": {
+    "pr": 331,
+    "head": "bb6e4de602964c023f278e38002ad6871d62b24b",
+    "commit": "642c70810e483401365cf97e7be280bee242fa4c",
+    "runtimeUnchanged": true,
+    "prCI": {
+      "runId": 40706372496,
+      "jobs": 5,
+      "passedJobs": 5,
+      "unitIntegration": 1488,
+      "nativeBrowser": 216
+    },
+    "mainCI": {
+      "runId": 40707355061,
+      "jobs": 5,
+      "passedJobs": 5,
+      "unitIntegration": 1488,
+      "nativeBrowser": 216
+    }
+  },
+  "deployment": {
+    "id": "dpl_A5FyQiPUeBWSkKnuxgZWyLCrB9ay",
+    "state": "READY",
+    "commit": "642c70810e483401365cf97e7be280bee242fa4c"
+  },
+  "compatibility": {
+    "englishUnit2": {
+      "runId": 40705988435,
+      "passed": 142,
+      "total": 142,
+      "revision": "16e5f78fe0b395a5f0451c35651a4bc9291381df"
+    },
+    "englishUnit3Superseded": {
+      "runId": 40705988430,
+      "revision": "16e5f78fe0b395a5f0451c35651a4bc9291381df",
+      "passed": 153,
+      "total": 154,
+      "status": "failed-final-source-revision-check",
+      "reason": "Scheduling deployment changed frontend stamp to 642c70810e483401365cf97e7be280bee242fa4c. Runtime files were unchanged; this is not counted as a fresh full pass."
+    },
+    "otherQueuedRuns": "Canceled by the shared pending queue; no fresh-pass claims. Unchanged service/writing evidence is reused."
+  },
+  "liveAcceptance": {
+    "runId": 40707355174,
+    "revision": "642c70810e483401365cf97e7be280bee242fa4c",
+    "passed": 149,
+    "total": 149,
+    "frontendFiles": 18,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "assignmentCleanup": [
+      {
+        "id": "1ffb94ed-ebc9-4dc7-a7d3-dab4ceb1a525",
+        "canceled": true
+      },
+      {
+        "id": "c3f3f1fb-679e-49e2-ade1-e0fc09ddf071",
+        "canceled": true
+      },
+      {
+        "id": "558a21c9-64b5-40a3-98aa-ce54f9b9243c",
+        "canceled": true
+      },
+      {
+        "id": "581084ea-11ad-49d7-9368-e94485612791",
+        "canceled": true
+      }
+    ],
+    "resourceCleanup": [
+      {
+        "resourceId": "18222fc4-4c2e-43f2-b326-f267df09003a",
+        "withdrawn": true
+      },
+      {
+        "resourceId": "be718ef3-1219-47a6-822f-70e8135bc3ba",
+        "withdrawn": true
+      }
+    ],
+    "artifactId": 12824997340,
+    "artifactSha256": "0a0a8791e7fbff03d4f6e4d1a2c036d359a43f638b7866827f9def8d588b56d6",
+    "report": "docs/evidence/workflow-boundaries-acceptance-20261028.json"
+  },
+  "documentationClosure": "Documentation/evidence only; retain verified unchanged runtime and source-verify Notion 4.100 against the merged closure commit."
 }
