@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "sourceCommit": "df051fd1853b6f76421cf11ca24be903e1177694",
+  "before": "df051fd1853b6f76421cf11ca24be903e1177694",
+  "after": "df051fd1853b6f76421cf11ca24be903e1177694",
+  "initialParity": "19 files verified by source-guarded production workflow 40764554290",
+  "files": [
+    {
+      "file": "web/resource-assignments.css",
+      "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+      "matches": true
+    },
+    {
+      "file": "web/resource-assignments.mjs",
+      "sha256": "5ee979f46840e87c813b08ffd0cb0d77a390354c8e7e4b46374809180ba9c607",
+      "matches": true
+    },
+    {
+      "file": "web/resource-learner-view.mjs",
+      "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a",
+      "matches": true
+    },
+    {
+      "file": "web/supplementary-resources.css",
+      "sha256": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+      "matches": true
+    },
+    {
+      "file": "web/supplementary-resources.mjs",
+      "sha256": "bab226af40858c6076ac2a66f9268004b20cb257a9508f2f493c6d8694845c60",
+      "matches": true
+    },
+    {
+      "file": "web/teacher-workflows.html",
+      "sha256": "9fc9051841499d63d4fc299fb7044b5202fdb06980e7eef8e3766831e8913501",
+      "matches": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.12.1 learner-view material/assignment previews",
+  "status": "technically delivered; B.12.2 performance and B.12.3 final owner usability remain open",
+  "implementation": {
+    "pullRequest": 340,
+    "base": "90407732d037470e188cb36c37b55c96644bff23",
+    "head": "1b3f8f8ec63a5c9d07106e5338cd868779406432",
+    "merged": "df051fd1853b6f76421cf11ca24be903e1177694"
+  },
+  "ci": {
+    "pr": {
+      "runId": 40763584734,
+      "jobs": [
+        {
+          "name": "role-layout-browser",
+          "id": 123081661358,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 123081661634,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 123081661786,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 123081661995,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 123084164955,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "main": {
+      "runId": 40764379369,
+      "jobs": [
+        {
+          "name": "phase3-postgres-17",
+          "id": 123084462651,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 123084462862,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 123084462956,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 123084463170,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 123087033501,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "unitIntegration": 1529,
+    "nativeBrowser": 247,
+    "newProjectionCases": 3,
+    "newNativeCases": 6,
+    "nativeArtifact": {
+      "id": 12850270558,
+      "name": "student-workspace-browser",
+      "size_in_bytes": 16771424,
+      "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12850270558",
+      "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12850270558/zip",
+      "expired": false,
+      "created_at": "2026-10-28T20:32:33Z",
+      "expires_at": "2026-11-11T20:32:32Z",
+      "updated_at": "2026-10-28T20:32:33Z",
+      "digest": "sha256:22122e4bf2c6236b2ac7082a91c5836caa619835b595b4251f676a420325d9cf",
+      "workflow_run": {
+        "id": 40763584734,
+        "repository_id": 1368662129,
+        "head_repository_id": 1368662129,
+        "head_branch": "codex/teacher-student-preview-20261029",
+        "head_sha": "1b3f8f8ec63a5c9d07106e5338cd868779406432"
+      }
+    }
+  },
+  "production": {
+    "runId": 40764554290,
+    "checks": 158,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "artifact": {
+      "id": 12850087819,
+      "name": "resource-assignments-acceptance",
+      "size_in_bytes": 164585,
+      "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12850087819",
+      "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12850087819/zip",
+      "expired": false,
+      "created_at": "2026-10-28T20:49:05Z",
+      "expires_at": "2026-11-11T20:49:04Z",
+      "updated_at": "2026-10-28T20:49:05Z",
+      "digest": "sha256:62f11fff5c486e96ebefd09c8f9d36d1f04db10a41438da1478f302945619aa7",
+      "workflow_run": {
+        "id": 40764554290,
+        "repository_id": 1368662129,
+        "head_repository_id": 1368662129,
+        "head_branch": "main",
+        "head_sha": "df051fd1853b6f76421cf11ca24be903e1177694"
+      }
+    },
+    "frontendInitialFiles": 19,
+    "changedFrontendPostflightFiles": 6,
+    "cleanup": {
+      "assignmentsCanceled": 4,
+      "resourcesWithdrawn": 2,
+      "scope": "only this run's exact request identities and resource IDs; originals preserved"
+    },
+    "compatibility": {
+      "runId": 40764379122,
+      "checks": 142,
+      "artifact": {
+        "id": 12849603679,
+        "name": "english-unit2-pilot-read-acceptance",
+        "size_in_bytes": 2092,
+        "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12849603679",
+        "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12849603679/zip",
+        "expired": false,
+        "created_at": "2026-10-28T20:43:40Z",
+        "expires_at": "2026-11-11T20:43:39Z",
+        "updated_at": "2026-10-28T20:43:40Z",
+        "digest": "sha256:f7ec51ea17ea7d415ee571db083c3b1eb246e4c96071c8bef96fbdfb2d3e2e4c",
+        "workflow_run": {
+          "id": 40764379122,
+          "repository_id": 1368662129,
+          "head_repository_id": 1368662129,
+          "head_branch": "main",
+          "head_sha": "df051fd1853b6f76421cf11ca24be903e1177694"
+        }
+      }
+    },
+    "deployment": {
+      "id": "dpl_HKkKwg3wxMDx3pFgaWHb72vkiQAb",
+      "name": "armenian-mastery-platform",
+      "url": "armenian-mastery-platform-itz2l77vp-kupershtokh-7785.vercel.app",
+      "created": 1793219623422,
+      "state": "READY",
+      "target": "production",
+      "creator": {
+        "uid": "g7d0feep0ZE8i6vjSQUyyJh9",
+        "username": "kupershtokh-7785"
+      },
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitSha": "df051fd1853b6f76421cf11ca24be903e1177694",
+        "githubCommitMessage": "Merge pull request #340 from johnvanesyan-arch/codex/teacher-student-preview-20261029\n\n16.5B.12.1 — safe learner-view previews for teacher sharing",
+        "githubRepo": "HaiEdu",
+        "githubOrg": "johnvanesyan-arch"
+      },
+      "inspectorUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/HKkKwg3wxMDx3pFgaWHb72vkiQAb",
+      "isRollbackCandidate": false
+    }
+  },
+  "corrections": [
+    "Published preview retains unsaved material edits without a discard prompt",
+    "Platform preview uses the authorized QA-filtered catalogue; editorial get remains forbidden",
+    "Published learner preview remains visible above the material editor form"
+  ],
+  "verificationBoundary": "Actual-SQL/handler native tests cover teacher-owned and platform cards, unsaved edits, stale context/account, keyboard/reduced-motion and 360/768/1280 px at 200% text. Production verifies teacher-owned PDF previews, no task before send, class/selected sends, learner receipt/download, retry, pinning, withdrawal/cancellation and cleanup in both schools. Platform preview and unsaved-edit regressions are isolated native evidence, not additional live publisher actions.",
+  "sourceReceipts": [
+    "teacher-sharing-acceptance-20261029.json",
+    "teacher-sharing-frontend-20261029.json",
+    "teacher-sharing-compatibility-20261029.json"
+  ],
+  "backend": "No SQL, Edge, schema, grant, privacy, scoring, bank or audio changes. Git diff of functions/migrations from B.11 closure is empty; source-verified existing service evidence is reused.",
+  "scheduling": {
+    "automaticRun": 40764379144,
+    "automaticDisposition": "cancelled in the shared pending queue before a job started",
+    "acceptedRun": 40764554290,
+    "acceptedEvent": "workflow_dispatch on reviewed main",
+    "guards": "Existing main-only, intended frontend source, designated fixtures, serialized isolation and run-owned cleanup retained"
+  },
+  "deploymentCheck": "Existing independent vercel-deployment-check-verification-20261020.json configuration receipt reused; READY/CI are separate observations.",
+  "remaining": [
+    "B.12.2 PERF-02 Home/detail/unit and paired response-opening measurement/repair",
+    "B.12.3 cross-role and final owner usability acceptance",
+    "DEMO-01",
+    "WRITE-CREATE",
+    "RESOURCE-SUBMIT",
+    "all 45 capability/dependency mappings",
+    "English C47 hold",
+    "full four-subject 16.5C gate"
+  ],
+  "closure": "Documentation/evidence only; application runtime is unchanged after the accepted production run. Source-verified Notion synchronization follows the merged closing commit."
+}

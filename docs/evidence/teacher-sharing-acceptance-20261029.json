@@ -1,0 +1,1392 @@
+{
+  "scope": "16.5B.8.2 library publication, separate teacher entry points and My work delivery",
+  "revision": "df051fd1853b6f76421cf11ca24be903e1177694",
+  "startedAt": "2026-10-28T20:44:12.481Z",
+  "status": "passed",
+  "checks": [
+    {
+      "label": "reviewed main and complete dedicated fixtures",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: resource-learner-view.mjs",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: resource-file-input.mjs",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: resource-assignments.mjs",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: resource-assignments.css",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: supplementary-resources.css",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: supplementary-resources.mjs",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: multi-subject-home.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: index.html",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: resource-library.html",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: privacy.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: student-courses.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: role-layout.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher.html",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher.css",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: materials.html",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: course-page.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher-workflows.html",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher-workflows.css",
+      "status": "passed"
+    },
+    {
+      "label": "existing tenant isolation before new resources",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: fixture login",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: contexts",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: exact current fixture context",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: fixture login",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: contexts",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: exact current fixture context",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: fixture login",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: contexts",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: exact current fixture context",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: fixture login",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: contexts",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: exact current fixture context",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: separate library and assignment entry points retain exact context",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: PDF attachment is visible before creating a draft",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: filename fills editable title",
+      "status": "passed"
+    },
+    {
+      "label": "browser-created resource is owned by this run",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: browser-created draft is hidden",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: optional library publication has no recipient composer",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: browser creation has a recorded receipt",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: get",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: browser upload QA and publication succeeded",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: create attach QA publish audit is complete",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: optional publication is visible in library",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: published material preview has inert learner action",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: optional publication does not create a My-work task",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: assignment entry point retains its distinct purpose",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: assignment preview uses current instructions and no learner action",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: preview does not send a task",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: assignment get",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: browser class assignment has durable receipt",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own learner sees teacher resource",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: other school list excludes resource",
+      "status": "passed"
+    },
+    {
+      "label": "A: other-school direct open denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A: authorized PDF bytes and attachment headers",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: assignment preview",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: designated learner is in current eligible roster",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: request retry returns the same receipt",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: My work API contains both exact assignments",
+      "status": "passed"
+    },
+    {
+      "label": "A: foreign learner cannot open selected assignment",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A_student: actual My work receives both class and selected tasks",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: browser downloads the exact assigned PDF",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: role-specific assignment inventory",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: role-specific assignment inventory",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: assignment cancel",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: canceled class assignment cannot open",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A_teacher: revise",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: prior publication survives new draft",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: qa",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: publish",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: superseded download denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A: assigned PDF remains pinned after replacement",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: open",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: revised external destination verified",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: withdraw",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: withdrawn delivery denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A: withdrawn logical resource revokes assigned version",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: withdrawn material absent",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: separate library and assignment entry points retain exact context",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: PDF attachment is visible before creating a draft",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: filename fills editable title",
+      "status": "passed"
+    },
+    {
+      "label": "browser-created resource is owned by this run",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: browser-created draft is hidden",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: optional library publication has no recipient composer",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: browser creation has a recorded receipt",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: get",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: browser upload QA and publication succeeded",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: create attach QA publish audit is complete",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: optional publication is visible in library",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: published material preview has inert learner action",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: optional publication does not create a My-work task",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: assignment entry point retains its distinct purpose",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: assignment preview uses current instructions and no learner action",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: preview does not send a task",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: assignment get",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: browser class assignment has durable receipt",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own learner sees teacher resource",
+      "status": "passed"
+    },
+    {
+      "label": "A_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: other school list excludes resource",
+      "status": "passed"
+    },
+    {
+      "label": "B: other-school direct open denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B: authorized PDF bytes and attachment headers",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: assignment preview",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: designated learner is in current eligible roster",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: request retry returns the same receipt",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: assignment inbox",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: My work API contains both exact assignments",
+      "status": "passed"
+    },
+    {
+      "label": "B: foreign learner cannot open selected assignment",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B_student: actual My work receives both class and selected tasks",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: browser downloads the exact assigned PDF",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: role-specific assignment inventory",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: role-specific assignment inventory",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: assignment cancel",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: canceled class assignment cannot open",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B_teacher: revise",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: prior publication survives new draft",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: qa",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: publish",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: superseded download denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B: assigned PDF remains pinned after replacement",
+      "status": "passed"
+    },
+    {
+      "label": "B_student: open",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: revised external destination verified",
+      "status": "passed"
+    },
+    {
+      "label": "B_teacher: withdraw",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: withdrawn delivery denied",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B: withdrawn logical resource revokes assigned version",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "label": "B_student: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: withdrawn material absent",
+      "status": "passed"
+    },
+    {
+      "label": "existing tenant isolation preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A_teacher: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: list",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: assignment assign",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: assignment cancel",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: assignment cancel",
+      "status": "passed",
+      "httpStatus": 200
+    }
+  ],
+  "resources": [
+    {
+      "resourceId": "4c3a5283-9ad4-4a8d-8f38-d66b69fa9400"
+    },
+    {
+      "resourceId": "70374778-d5a7-46f8-a0cf-85ea8ca3aa7f"
+    }
+  ],
+  "fourSubjectGateClosed": false,
+  "frontend": [
+    {
+      "path": "resource-learner-view.mjs",
+      "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a"
+    },
+    {
+      "path": "resource-file-input.mjs",
+      "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3"
+    },
+    {
+      "path": "resource-assignments.mjs",
+      "sha256": "5ee979f46840e87c813b08ffd0cb0d77a390354c8e7e4b46374809180ba9c607"
+    },
+    {
+      "path": "resource-assignments.css",
+      "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504"
+    },
+    {
+      "path": "supplementary-resources.css",
+      "sha256": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d"
+    },
+    {
+      "path": "supplementary-resources.mjs",
+      "sha256": "bab226af40858c6076ac2a66f9268004b20cb257a9508f2f493c6d8694845c60"
+    },
+    {
+      "path": "multi-subject-home.js",
+      "sha256": "0fdabc28fec1565db687f19641361cefe2a3ce273608c7dbd0f894ac8595c9cf"
+    },
+    {
+      "path": "index.html",
+      "sha256": "dd88fcf89279485be3a43683db9b5afe827f3f5f5483f8cd1abd7cca4d3982dc"
+    },
+    {
+      "path": "resource-library.html",
+      "sha256": "1743de1236f76c1c70ba9f4abdd02d03a1bc23c90327807a81ca6f0f455f9222"
+    },
+    {
+      "path": "privacy.js",
+      "sha256": "4c8dd0f9c187d08f89754d4d0b8a9556d1d32fd0fdb3f1f447b27c091ba5bee8"
+    },
+    {
+      "path": "student-courses.js",
+      "sha256": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e"
+    },
+    {
+      "path": "role-layout.js",
+      "sha256": "7a7c54049b909416ca68d84926cd16161cb003b3bcd98de5fd3d39de41f13770"
+    },
+    {
+      "path": "teacher.html",
+      "sha256": "1c4cf6874f470080154576423d6fef7d6bd62662acedb86f95f30f2599f20c9a"
+    },
+    {
+      "path": "teacher.js",
+      "sha256": "48a923c1243b9cfa517a2ff76f6cbae766bb3110235387a1be7dd5d80d4b0120"
+    },
+    {
+      "path": "teacher.css",
+      "sha256": "5628e172dd196af8bac2293a63b60f978f6510047ff69e2a1293c99e7b27106e"
+    },
+    {
+      "path": "materials.html",
+      "sha256": "c8031e13ac6a254a29cc7af93d7c98a016a88e3d9c2b5b01ed5a04243931358b"
+    },
+    {
+      "path": "course-page.js",
+      "sha256": "9914979577335df73ee9a7a7c146c74aa4752b88025a2ac421e6f5d51967eaf4"
+    },
+    {
+      "path": "teacher-workflows.html",
+      "sha256": "9fc9051841499d63d4fc299fb7044b5202fdb06980e7eef8e3766831e8913501"
+    },
+    {
+      "path": "teacher-workflows.css",
+      "sha256": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589"
+    }
+  ],
+  "isolationBefore": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "df051fd1853b6f76421cf11ca24be903e1177694",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "startedAt": "2026-10-28T20:44:14.660Z",
+    "status": "passed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      }
+    ],
+    "finishedAt": "2026-10-28T20:45:30.312Z"
+  },
+  "isolationAfter": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "df051fd1853b6f76421cf11ca24be903e1177694",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "startedAt": "2026-10-28T20:47:49.526Z",
+    "status": "passed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      }
+    ],
+    "finishedAt": "2026-10-28T20:48:55.531Z"
+  },
+  "assignmentCleanup": [
+    {
+      "id": "e2481a34-37f7-41d0-b552-3e73ab4c0e0b",
+      "canceled": true
+    },
+    {
+      "id": "b16451a0-b80e-42ce-9fc2-97ffeb5d383b",
+      "canceled": true
+    },
+    {
+      "id": "9ea15918-78b7-4642-be34-d3181f3915ba",
+      "canceled": true
+    },
+    {
+      "id": "e4d05795-c57d-4093-b2ba-b6fcc86292dc",
+      "canceled": true
+    }
+  ],
+  "cleanup": [
+    {
+      "resourceId": "4c3a5283-9ad4-4a8d-8f38-d66b69fa9400",
+      "withdrawn": true
+    },
+    {
+      "resourceId": "70374778-d5a7-46f8-a0cf-85ea8ca3aa7f",
+      "withdrawn": true
+    }
+  ],
+  "completedAt": "2026-10-28T20:49:04.774Z"
+}
