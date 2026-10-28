@@ -11,7 +11,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.6 | Correct My work navigation; trace the reported resource; establish this task map | B.1–B.5 | Delivered; evidence below |
 | 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
 | 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Assignment capability delivered; live acceptance/source parity passed; DEMO-01 remains open |
-| 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | In verification; closes the authoring gap reported after delivery |
+| 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | Delivered; 126 live checks, actual PDF form-to-My-work flow in both schools |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Next; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
@@ -50,7 +50,7 @@ Deliver two end-to-end increments rather than a recipient picker without a servi
 
 ## B.8.1 — PDF-first authoring repair
 
-**2026-10-28 — 16.5B.8.1 PDF-first teacher form correction in verification.** The reported post-B.8 material is a PDF draft with no attached bytes and failed `file_required` QA; no assignment was created. The previous live test began with an API-prepared material and missed this authoring path. The corrected shared form puts PDF selection first, derives an editable title, folds optional metadata, saves/uploads/checks/publishes through existing services and then opens explicit recipient confirmation. New native regressions cover real form-to-My-work PDF delivery, upload/create uncertainty, account changes and enlarged-text reflow. Guarded production acceptance now starts from the actual teacher form. Required release and live checks remain pending for this correction. [Correction and acceptance scope](resource-pdf-first.md). B.9 follows this repair; PERF-02, DEMO-01, all 45 capabilities, English C47 hold and full four-subject gates remain.
+**2026-10-28 — 16.5B.8.1 PDF-first teacher form correction delivered.** The latest PDF draft had no attachment and failed `file_required` QA; the former live test started with an API-prepared source and missed this authoring path. PDF selection is now upfront, the title is filled from the filename, optional metadata is folded, and one action saves/uploads/checks/publishes before explicit recipient confirmation. [PR327](https://github.com/johnvanesyan-arch/HaiEdu/pull/327) and [scheduling PR328](https://github.com/johnvanesyan-arch/HaiEdu/pull/328) pass all five required PR/main jobs (**1,488 unit/integration; 209 native browser checks**). Actual teacher-form creation through student PDF download in both schools passes **126/126** live checks, **54 before + 54 after** isolation checks, exact nine-file source parity and run-owned cleanup. Original user materials are preserved. [Correction and evidence](resource-pdf-first.md). **Next: B.9 shared Forest staff layout and Home → Classes → Review prototype.** PERF-02, DEMO-01, all 45 capabilities, English C47 hold and full four-subject gates remain.
 
 ## B.9 — Shared Forest staff layout and prototype
 

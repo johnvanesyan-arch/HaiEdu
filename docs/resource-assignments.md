@@ -8,7 +8,7 @@ Owner authorization: implement this capability while preserving the B.6–B.12 s
 
 ## Using the feature
 
-The [B.8.1 correction](resource-pdf-first.md) adds a PDF-first authoring path: choose «Ավելացնել նյութ», select the PDF, confirm its title/source and content declarations, then «Հրապարակել և ընտրել ստացողներին». It proceeds to the same recipient confirmation below. The correction is in verification at this checkpoint. Existing published materials retain the direct assignment action.
+The [B.8.1 correction](resource-pdf-first.md) adds a PDF-first authoring path: choose «Ավելացնել նյութ», select the PDF, confirm its title/source and content declarations, then «Հրապարակել և ընտրել ստացողներին». It proceeds to the same recipient confirmation below. The correction is deployed and verified through actual teacher-form creation and student PDF download in both designated schools (126 live checks). Existing published materials retain the direct assignment action.
 
 1. Open the teacher resource library and select the authorized class, course and unit.
 2. Choose a published material and select «Ուղարկել առաջադրանք». Publishing to the library alone does not send a task.

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "date": "2026-10-28",
   "scope": "16.5B.8.1 PDF-first authoring correction",
-  "status": "verification_pending",
+  "status": "delivered",
   "baseCommit": "3732f612f4c394037493c4aa8b4bb69e83f79a00",
   "implementationPR": 327,
   "reviewedHead": "57cf65d9cc529b5c96f0bb0b3fbecdb0e05896a7",
@@ -22,7 +22,17 @@
       "qa"
     ],
     "originalMaterialUnchanged": true,
-    "priorAcceptanceGap": "API-prepared source bypassed actual teacher UI creation and upload"
+    "priorAcceptanceGap": "API-prepared source bypassed actual teacher UI creation and upload",
+    "preservationReadback": {
+      "status": "draft",
+      "fileBytes": null,
+      "fingerprint": "cbfddcc58a6a3d5955894a02c40d380ec4db92b96f1454a03d435e202c838f5d",
+      "qaPassed": false,
+      "events": [
+        "created",
+        "qa"
+      ]
+    }
   },
   "focusedBrowser": {
     "runId": 40638822283,
@@ -71,13 +81,6 @@
   "backendChanges": false,
   "backendEvidenceReused": "docs/evidence/resource-assignments-release-20261028.json",
   "blockingConfigurationEvidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
-  "remaining": [
-    "Required PR/main CI",
-    "Current production revision and nine-file parity",
-    "Actual teacher UI creation and PDF attachment through learner download in both QA schools",
-    "Run-owned cleanup and original-material preservation",
-    "Merged documentation and source-verified Notion synchronization"
-  ],
   "scopeGates": {
     "next": "16.5B.9",
     "englishPausedAfter": "16.1C.47",
@@ -107,5 +110,148 @@
     "id": "dpl_4c9ujyB1NQXT3kATVc4am433ypqS",
     "state": "READY",
     "commit": "49612ae842fe2cf0792810f8474e087284a10c88"
-  }
+  },
+  "mainCI": {
+    "runId": 40639527014,
+    "jobs": 5,
+    "passedJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 209
+  },
+  "scheduling": {
+    "pr": 328,
+    "head": "7c400c13bd1db7d7486353f66b692b08872b678f",
+    "commit": "6753afaaad37ee562e8e6d37fcfe9380c31fc6fc",
+    "runtimeUnchanged": true,
+    "prCI": {
+      "runId": 40639644583,
+      "jobs": 5,
+      "passedJobs": 5,
+      "unitIntegration": 1488,
+      "nativeBrowser": 209
+    },
+    "mainCI": {
+      "runId": 40640219348,
+      "jobs": 5,
+      "passedJobs": 5,
+      "unitIntegration": 1488,
+      "nativeBrowser": 209
+    }
+  },
+  "initialPublicParity": {
+    "commit": "49612ae842fe2cf0792810f8474e087284a10c88",
+    "files": [
+      {
+        "path": "resource-file-input.mjs",
+        "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+        "matches": true
+      },
+      {
+        "path": "resource-assignments.mjs",
+        "sha256": "e8d3635e2bb0c1f93bfb4d0d2ebd336cd3fdb1849da586c422919532636dcf5a",
+        "matches": true
+      },
+      {
+        "path": "resource-assignments.css",
+        "sha256": "30405bb8d4085939647c3c15f1533e428d3b85395932b88ca1fb94dc40db0900",
+        "matches": true
+      },
+      {
+        "path": "supplementary-resources.css",
+        "sha256": "dab5ac70240c360b09d3ed709d938da415805e906987b3f002aba8904b9a9eb4",
+        "matches": true
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "sha256": "d565662a262242e4011355cde76ce6f21f0732c8419d83ae4b07ca103779ecba",
+        "matches": true
+      },
+      {
+        "path": "multi-subject-home.js",
+        "sha256": "b71d11af3c8465f4255169d81dfa5bd48e4d7a4b3c3e98e66acab019dc0f706e",
+        "matches": true
+      },
+      {
+        "path": "index.html",
+        "sha256": "dd88fcf89279485be3a43683db9b5afe827f3f5f5483f8cd1abd7cca4d3982dc",
+        "matches": true
+      },
+      {
+        "path": "resource-library.html",
+        "sha256": "b5f907741abb5fb6026c67d1a8ece8b138879ea43c1409eaf78dd2a26cd68e8d",
+        "matches": true
+      },
+      {
+        "path": "privacy.js",
+        "sha256": "3106c865f874b2f4ecd031718432161466d4144d69831aab3b399226a3185bce",
+        "matches": true
+      }
+    ]
+  },
+  "deployment": {
+    "id": "dpl_EDnTmvj2qYduRwzamcpuKygP1dZR",
+    "state": "READY",
+    "commit": "6753afaaad37ee562e8e6d37fcfe9380c31fc6fc"
+  },
+  "compatibility": {
+    "englishUnit3": {
+      "runId": 40639527009,
+      "passed": 154,
+      "total": 154,
+      "revision": "49612ae842fe2cf0792810f8474e087284a10c88"
+    },
+    "otherQueuedRuns": [
+      {
+        "runId": 40639527005,
+        "status": "cancelled",
+        "freshPassClaimed": false
+      },
+      {
+        "runId": 40639527104,
+        "status": "cancelled",
+        "freshPassClaimed": false
+      }
+    ]
+  },
+  "liveAcceptance": {
+    "runId": 40640219356,
+    "revision": "6753afaaad37ee562e8e6d37fcfe9380c31fc6fc",
+    "passed": 126,
+    "total": 126,
+    "frontendFiles": 9,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "assignmentCleanup": [
+      {
+        "id": "d6716b45-38b3-4b1d-a6b5-d3dae36bdfed",
+        "canceled": true
+      },
+      {
+        "id": "f1b05eeb-c950-4301-beb8-5fec2e2a6a5b",
+        "canceled": true
+      },
+      {
+        "id": "70d0b75e-492f-41d7-a3ed-6b2e7a4be2bf",
+        "canceled": true
+      },
+      {
+        "id": "45fd35de-4324-4210-8509-10917bdfea0f",
+        "canceled": true
+      }
+    ],
+    "resourceCleanup": [
+      {
+        "resourceId": "b3d7e005-8788-41d0-8317-cbf76634cd7a",
+        "withdrawn": true
+      },
+      {
+        "resourceId": "be2b0b1c-c88c-4683-8bd8-99ee42a8ce69",
+        "withdrawn": true
+      }
+    ],
+    "report": "docs/evidence/resource-pdf-first-acceptance-20261028.json",
+    "artifactId": 12796075933,
+    "artifactSha256": "801128f658ef3c15b58061f6a7c9af9bbe66a71520be7659e1e2dc649583340c"
+  },
+  "documentationClosure": "Runtime source unchanged; merge evidence and source-verify the Notion 4.99 map against the merged documentation commit."
 }
