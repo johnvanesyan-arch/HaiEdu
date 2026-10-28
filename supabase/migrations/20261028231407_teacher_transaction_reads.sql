@@ -43,7 +43,7 @@ begin
  -- Today failure remains an explicit unknown/denied state, without hiding the
  -- otherwise authorized class directory. Never turn a failed read into zero.
  begin
-  workspace:=public.service_teacher_workspace(p_actor,p_session,(p_workspace->>'assignmentId')::uuid,p_workspace->'cursor',
+  workspace:=public.service_teacher_workspace(p_actor,p_session,(p_workspace->>'assignmentId')::uuid,nullif(p_workspace->'cursor','null'::jsonb),
    (p_workspace->>'workId')::uuid,coalesce(p_workspace->'recent','[]'::jsonb));
   result:=result||jsonb_build_object('workspace',workspace);
  exception when insufficient_privilege then

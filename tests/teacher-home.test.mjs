@@ -30,6 +30,7 @@ test('Home combines the same bounded directory and real nonzero Today projection
  const normal=await f.admin.rpc('service_teacher_workspace',{p_actor:id(20),p_auth:id(420),p_assignment:null,p_cursor:null,p_work:null,p_recent:[]});
  const clean=o=>{const {snapshotAt,...rest}=o;assert.ok(Date.parse(snapshotAt));return rest;};assert.deepEqual(clean(workspace),clean(normal.data));
  assert.ok(!JSON.stringify(combined).includes(Array(80).fill('synthetic').join(' ')));
+ const explicitNulls=await read({cursor:null,assignmentId:null,workId:null});assert.equal(explicitNulls.workspace.pendingCount,2);
 });
 test('an unavailable Today selector stays denied/unknown while the authorized class directory remains available',async()=>{
  const d=await read({workId:id(9999)});assert.equal(d.workspaceError,'workspace_context_unavailable');assert.equal(d.workspace,undefined);assert.ok(d.classes.length>0);
@@ -41,6 +42,8 @@ test('Home validates nested requests before SQL and rejects forged or revoked se
  }
  assert.equal((await request({readMode:'directory',workspace:{}},'invalid')).status,401);
  assert.equal((await request({readMode:'directory',archive:true,workspace:{}})).status,400);
+ assert.equal((await request({readMode:'directory',offset:24,workspace:{}})).status,400);
+ assert.equal((await request({readMode:'directory',search:'needle',workspace:{}})).status,400);
  const original=f.admin.rpc;await f.db.exec('begin');
  try{
   f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_home')await f.db.exec(`delete from auth.sessions where id='${id(420)}'`);return r;};

@@ -52,7 +52,7 @@ Deno.serve(async (req) => {
     if(userError||!userData?.user)return json({error:'unauthorized'},401);
     if(!requestBody||typeof requestBody!=='object'||Array.isArray(requestBody))return json({error:'invalid_dashboard_request'},400);
     const readMode=requestBody.readMode ?? "full";
-    if(requestBody.workspace!==undefined&&(readMode!=='directory'||requestBody.archive===true||!isTeacherWorkspaceRequest(requestBody.workspace)))return json({error:'invalid_dashboard_request'},400);
+    if(requestBody.workspace!==undefined&&(readMode!=='directory'||requestBody.archive===true||(requestBody.offset!==undefined&&requestBody.offset!==0)||(typeof requestBody.search==='string'&&requestBody.search.trim()!=='')||!isTeacherWorkspaceRequest(requestBody.workspace)))return json({error:'invalid_dashboard_request'},400);
     if (!["full","directory","class"].includes(readMode) ||
       (requestBody.classId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.classId)) ||
       (requestBody.assignmentId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.assignmentId)) ||
