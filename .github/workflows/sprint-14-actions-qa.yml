@@ -6,6 +6,9 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-teacher-entry.mjs
+      - web/teacher-dependencies.bundle.mjs
+      - web/teacher-dependencies.mjs
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json
       - web/teacher-feedback.mjs

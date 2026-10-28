@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-teacher-entry.mjs
+      - supabase/functions/_shared/teacher-read-identity.mjs
+      - web/teacher-dependencies.bundle.mjs
+      - web/teacher-dependencies.mjs
       - web/resource-learner-view.mjs
       - supabase/functions/manage-teacher-feedback/**
       - supabase/functions/_shared/teacher-feedback-handler.mjs

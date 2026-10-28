@@ -1,12 +1,5 @@
-import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent} from './teacher-today.mjs';
-import {subjectArtwork} from './subject-visuals.mjs';
-import {renderArchive} from './archive-browser.mjs';
-import { mountWrittenWork } from './written-work.mjs';
-import {assessmentResultMarkup} from './assessment-reporting.mjs';
-import { contractMarkup } from "./analytics-provenance.mjs";
+import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination} from "./teacher-dependencies.bundle.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
-import { roleDestination } from "./account-roles.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);

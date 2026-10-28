@@ -168,3 +168,8 @@ test("prepared QA requires activation-only routing; adding activation evidence r
   assert.ok(result.missing.includes("web/page.js"));
   assert.ok(result.missing.includes(target.workflow));
 });
+
+test('teacher startup bundle retains canonical modules and build inputs in production QA routing',async()=>{
+  const sources=await collectDependencies(fileURLToPath(new URL('../',import.meta.url)),['web/teacher.html']);
+  for(const filename of ['web/teacher-dependencies.bundle.mjs','web/teacher-dependencies.mjs','web/teacher-today.mjs','web/written-work.mjs','web/teacher-feedback.mjs','scripts/build-teacher-entry.mjs','package.json','package-lock.json'])assert.ok(sources.has(filename),filename);
+});

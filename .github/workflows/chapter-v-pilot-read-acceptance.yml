@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - supabase/functions/_shared/teacher-read-identity.mjs
       - web/resource-learner-view.mjs
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json

@@ -4,6 +4,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {acceptanceFixture,id,finishThroughAPI,selection as learnerSelection,compile} from './fixtures/learning-acceptance.mjs';
 import {getInstitutionalTeacherDashboard} from '../supabase/functions/_shared/institutional-teacher-dashboard.ts';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../supabase/functions/_shared/teacher-dashboard-batch.ts';
+import {verifyTeacherReadIdentity} from '../supabase/functions/_shared/teacher-read-identity.mjs';
 import {AcademicContextDenied} from '../supabase/functions/_shared/academic-context.ts';
 let f,token;const calls=[];
 const selection={assignmentId:id(351),curriculumReleaseId:id(501),unitId:id(511)};
@@ -20,8 +21,10 @@ before(async()=>{
  const directory=readFileSync('supabase/migrations/20261028180038_teacher_today_workspace.sql','utf8').split('-- Queue')[0];
  await f.db.exec(directory.slice(0,directory.indexOf('create index if not exists written_work_pending_context_idx')));
  await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_dashboard_batched_reads.sql')),'utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261028223447_teacher_evidence_projection.sql','utf8'));
  const original=f.admin.rpc;f.admin.rpc=async(name,args)=>{calls.push(name);return original(name,args);};
  token=f.credential(id(20),id(420));
+ f.admin.auth.getClaims=async value=>{const r=await f.admin.auth.getUser(value);if(r.error)return {error:r.error};return {data:{claims:{...JSON.parse(Buffer.from(value.split('.')[1],'base64url').toString()),sub:r.data.user.id,iss:'synthetic/auth/v1',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600}}};};
  for(const i of [0,1,2,3]){const s=await f.call('start-learning-session',{...learnerSelection(i),mode:'diagnostic'});assert.equal(s.status,200);await finishThroughAPI(f,s.body.session,true);}
 });
 after(async()=>f?.close());
@@ -68,7 +71,7 @@ test('service-only invoker functions add no browser execution or privileged defi
 test('real Edge handler uses the verified JWT actor, protects HTTP errors and marks reads no-store',async()=>{
  let handle;
  compile(readFileSync('supabase/functions/get-teacher-dashboard/index.ts','utf8'),{
-  createClient:()=>f.admin,readBatchedTeacherDashboard,TeacherDashboardReadError,AcademicContextDenied,
+  createClient:()=>f.admin,verifyTeacherReadIdentity,readBatchedTeacherDashboard,TeacherDashboardReadError,AcademicContextDenied,
   Deno:{env:{get:()=> 'synthetic'},serve:fn=>handle=fn},
  },[]);
  const call=(body,credential=token)=>handle(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+credential},body:JSON.stringify(body)}));
@@ -87,4 +90,9 @@ test('archive growth does not increase selected-class reads or load unrelated cl
   const d=await read();assert.equal(d.classes.length,1);assert.equal(calls.length,3);
   const raw=await f.admin.rpc('service_teacher_dashboard_rows',{p_actor:id(20),p_session:id(420),p_class:id(321),p_assignment:id(351)});assert.equal(raw.data.classes.length,1);assert.equal(raw.data.assignments.length,1);
  });
+});
+
+test('evidence transfer includes only the frozen fields consumed by analytics',async()=>{
+ const r=await f.admin.rpc('service_teacher_dashboard_evidence',{p_actor:id(20),p_session:id(420),p_assignment:id(351),p_release:id(501),p_unit:id(511)});assert.equal(r.error,null);
+ assert.ok(r.data.versions.length>0);assert.ok(r.data.versions.every(v=>JSON.stringify(Object.keys(v.snapshot.item).sort())===JSON.stringify(['code','difficulty','prompt_hy','skill_id'])));
 });
