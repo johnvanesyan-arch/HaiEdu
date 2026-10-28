@@ -1,3 +1,4 @@
+import {studentMaterialCard,previewExplanation} from './resource-learner-view.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {studentIcon} from './student-visuals.mjs';
 import {mountTeacherResourceAssignments} from './resource-assignments.mjs';
@@ -11,8 +12,8 @@ const errorText=e=>errors[e.message]||'Գործողությունը չհաջող
 export const resourceContext=c=>Object.fromEntries(['enrollmentId','assignmentId','curriculumReleaseId','unitId'].filter(k=>c?.[k]).map(k=>[k,c[k]]));
 const contextLabel=c=>[c.subjectNameHy,c.gradeLabelHy,c.unitTitleHy,c.className,c.schoolName,c.academicYearLabel].filter(Boolean).join(' · ');
 export function filterResources(rows,{query='',purpose='',topic='',provider='',format=''}={}){return rows.filter(m=>{const d=m.definition;return(!purpose||d.purpose===purpose)&&(!topic||d.topic===topic)&&(!provider||m.provider===provider)&&(!format||d.format===format)&&[d.title,d.goal,d.description,d.topic].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());});}
-function card(m,staff,teacher=false){const d=m.definition;
- return `<article class="resource-card ${d.purpose==='practice'?'resource-practice':'resource-reading'}"><div class="resource-art">${studentIcon(d.purpose==='practice'?'practice':'courses')}<span>${purposes[d.purpose]}</span></div><div class="resource-card-body"><div class="resource-badges"><span>${m.provider==='teacher'?'Ուսուցչից':'Հարթակից'}${m.providerName?' · '+esc(m.providerName):''}</span>${d.recommended&&m.provider==='teacher'?'<span class="resource-recommended">Ուսուցչի առաջարկ</span>':''}${staff?`<span>${labels[m.status]}</span>`:''}</div><h3 lang="${esc(d.locale)}">${esc(d.title)}</h3><p class="resource-goal" lang="${esc(d.locale)}">${esc(d.goal||d.description)}</p>${d.goal?`<p lang="${esc(d.locale)}">${esc(d.description)}</p>`:''}<p class="resource-meta">${esc(d.topic||'')}${d.topic?' · ':''}${d.format==='pdf'?'PDF':'Հղում'}${m.fileBytes?' · '+(m.fileBytes/1024/1024).toLocaleString('hy',{maximumFractionDigits:2})+' ՄԲ':''}${Number.isInteger(d.estimatedMinutes)&&d.estimatedMinutes>0?' · Մոտ '+d.estimatedMinutes+' րոպե':''}</p><p class="resource-meta">v${m.version}${m.publishedAt?' · '+new Date(m.publishedAt).toLocaleDateString('hy-AM'):''}</p><button type="button" data-resource-${teacher&&m.provider==='platform'?'assign':staff?'edit':'open'}="${esc(m.id)}">${teacher&&m.provider==='platform'?'Ուղարկել առաջադրանք':staff?'Ստուգել և կառավարել':d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը'}${studentIcon('arrow')}</button>${teacher&&m.provider!=='platform'&&m.status==='published'?`<button type="button" class="ghost" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}</div></article>`;
+function card(m,staff,teacher=false){if(!staff)return studentMaterialCard(m);const d=m.definition;
+ return `<article class="resource-card ${d.purpose==='practice'?'resource-practice':'resource-reading'}"><div class="resource-art">${studentIcon(d.purpose==='practice'?'practice':'courses')}<span>${purposes[d.purpose]}</span></div><div class="resource-card-body"><div class="resource-badges"><span>${m.provider==='teacher'?'Ուսուցչից':'Հարթակից'}${m.providerName?' · '+esc(m.providerName):''}</span>${d.recommended&&m.provider==='teacher'?'<span class="resource-recommended">Ուսուցչի առաջարկ</span>':''}${staff?`<span>${labels[m.status]}</span>`:''}</div><h3 lang="${esc(d.locale)}">${esc(d.title)}</h3><p class="resource-goal" lang="${esc(d.locale)}">${esc(d.goal||d.description)}</p>${d.goal?`<p lang="${esc(d.locale)}">${esc(d.description)}</p>`:''}<p class="resource-meta">${esc(d.topic||'')}${d.topic?' · ':''}${d.format==='pdf'?'PDF':'Հղում'}${m.fileBytes?' · '+(m.fileBytes/1024/1024).toLocaleString('hy',{maximumFractionDigits:2})+' ՄԲ':''}${Number.isInteger(d.estimatedMinutes)&&d.estimatedMinutes>0?' · Մոտ '+d.estimatedMinutes+' րոպե':''}</p><p class="resource-meta">v${m.version}${m.publishedAt?' · '+new Date(m.publishedAt).toLocaleDateString('hy-AM'):''}</p><button type="button" data-resource-${teacher&&m.provider==='platform'?'assign':staff?'edit':'open'}="${esc(m.id)}">${teacher&&m.provider==='platform'?'Ուղարկել առաջադրանք':staff?'Ստուգել և կառավարել':d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը'}${studentIcon('arrow')}</button>${teacher&&m.status==='published'?`<button type="button" class="ghost" data-resource-student-preview="${esc(m.id)}">Աշակերտի տեսքի նախադիտում</button>`:''}${teacher&&m.provider!=='platform'&&m.status==='published'?`<button type="button" class="ghost" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}</div></article>`;
 }
 export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  const assignmentMode=staff&&new URLSearchParams(location.search).get('intent')==='assign';
@@ -75,6 +76,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութ · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header>
   <p class="resource-compose-context">${esc(contextLabel(selected))}</p>
   ${m?`<p><strong>${labels[m.status]}</strong>${m.qa?.passed?' · Ստուգումն անցած է':m.qa&&!m.qa.passed?' · '+(m.qa.issues?.includes('file_required')?'PDF-ը դեռ կցված չէ':'Ստուգեք նյութի տվյալները'):''}</p>`:''}
+  ${role==='teacher'&&m?.status==='published'?`<button type="button" class="ghost" data-resource-student-preview="${esc(m.id)}">Աշակերտի տեսքի նախադիտում</button>`:''}
   <form data-resource-form>
    <fieldset class="resource-file-first"><legend>Նյութը</legend>
     <label>Ձևաչափ<select name="format"><option value="pdf"${d.format==='pdf'?' selected':''}>PDF ֆայլ</option><option value="link"${d.format==='link'?' selected':''}>HTTPS հղում</option></select></label>
@@ -170,6 +172,26 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(role==='teacher'&&!d.description)d.description=d.title;
   if(d.format==='link')d.url=String(f.get('url')||'').trim();if(f.get('estimatedMinutes'))d.estimatedMinutes=Number(f.get('estimatedMinutes'));d.rightsConfirmed=f.has('rightsConfirmed');d.assessmentSafe=f.has('assessmentSafe');if(role==='teacher')d.recommended=f.has('recommended');return d;
  }
+ async function previewMaterial(id,trigger){
+  clearDelivery();const e=epoch,q=request;let material;
+  if(rows.find(m=>m.id===id)?.provider==='platform'){
+   // Platform editorial get is deliberately forbidden to teachers. Revalidate through
+   // their existing read-only, QA-filtered catalogue; never acquire editor rights.
+   for(let offset=0;offset<100000;){
+    const {data,error}=await client.functions.invoke('manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset}}});
+    if(!valid(e,q))return;if(error||data?.error)throw Error(data?.error==='assignment_forbidden'?'resource_forbidden':'resource_unavailable');
+    material=data.materials.find(m=>m.id===id);if(material||!data.hasMore)break;
+    if(!Number.isSafeInteger(data.nextOffset)||data.nextOffset<=offset)throw Error('resource_unavailable');offset=data.nextOffset;
+   }
+   if(!material||material.status!=='published')throw Error('resource_unavailable');
+  }else{
+   const data=await invoke('get',{id});if(!valid(e,q))return;material=data.material;
+   if(material.status!=='published'||!material.qa?.passed||material.qa.fingerprint!==material.fingerprint)throw Error('resource_unavailable');
+  }
+  const dialog=document.createElement('dialog');dialog.className='resource-dialog learner-preview-dialog';dialog.setAttribute('aria-labelledby','resourceLearnerPreviewTitle');
+  dialog.innerHTML='<h2 id="resourceLearnerPreviewTitle" tabindex="-1">Աշակերտի տեսքի նախադիտում</h2><p>Ցուցադրվում է հրապարակված տարբերակը։ Չպահպանված խմբագրումները չեն ներառվում։</p><p>'+esc(previewExplanation)+'</p><div class="learner-preview-card">'+studentMaterialCard(material,{preview:true})+'</div><button type="button" autofocus>Փակել նախադիտումը</button>';
+  const close=()=>{dialog.remove();if(valid(e,q)&&trigger.isConnected)trigger.focus();};dialog.addEventListener('close',close,{once:true});dialog.querySelector('button[autofocus]').addEventListener('click',()=>dialog.close());root.append(dialog);dialog.showModal();dialog.querySelector('h2').focus();
+ }
  async function delivery(id){clearDelivery();const data=await invoke('open',{id});
   if(data instanceof Blob){const url=URL.createObjectURL(data);urls.add(url);const a=document.createElement('a');a.href=url;a.download=`haiedu-material-${id}.pdf`;a.click();setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);message('PDF-ը պատրաստ է ներբեռնման։');}
   else if(data.url){const u=new URL(data.url);if(u.protocol!=='https:')throw Error('resource_unavailable');const dialog=document.createElement('dialog');dialog.className='resource-dialog';dialog.innerHTML=`<h2>Արտաքին նյութ</h2><p>Կբացվի նոր ներդիրում՝ <strong>${esc(u.hostname)}</strong></p><a class="button-link" href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">Բացել արտաքին կայքը</a><button type="button" class="ghost">Փակել</button>`;dialog.querySelector('button').onclick=()=>{dialog.close();dialog.remove();};root.append(dialog);dialog.showModal();}
@@ -205,6 +227,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    if(busy||!canLeave())return;if(!selected){message('Նախ ընտրեք դասընթացն ու բաժինը։');return;}
    openAssignments(b.dataset.resourceAssign||null);return;
   }
+  if(b.dataset.resourceStudentPreview&&role==='teacher'){void run(()=>previewMaterial(b.dataset.resourceStudentPreview,b),'read');return;}
   if(b.hasAttribute('data-purpose')){$('[data-filter="purpose"]').value=b.dataset.purpose;for(const x of root.querySelectorAll('[data-purpose]'))x.setAttribute('aria-pressed',String(x===b));drawCards();}
   if(b.hasAttribute('data-filter-reset')){resetFilters();drawCards();$('[data-filter="query"]').focus();}
   if(b.hasAttribute('data-resource-refresh')&&canLeave())void loadList();

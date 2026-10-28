@@ -79,12 +79,14 @@ async function teacherCreateAndSend(actor,d){
   check(actor+': browser upload QA and publication succeeded',m.status==='published'&&m.qa?.passed&&m.fileBytes===pdf.length);
   const events=saved.events.map(e=>e.event);check(actor+': create attach QA publish audit is complete',['created','file_attached','qa','published'].every(x=>events.includes(x)));
   check(actor+': optional publication is visible in library',(await all(actor.replace('_teacher','_student'))).some(x=>x.id===m.id));
+  await page.locator('[data-resource-student-preview]:visible').click();await page.locator('.learner-preview-dialog[open]').waitFor();check(actor+': published material preview has inert learner action',await page.locator('.learner-preview-dialog [data-preview-only]').isDisabled()&&await page.locator('.learner-preview-dialog [data-resource-open],.learner-preview-dialog [data-resource-edit]').count()===0);await page.keyboard.press('Escape');
   const beforeInbox=(await assignment(actor.replace('_teacher','_student'),'inbox',{},{})).assignments;
   check(actor+': optional publication does not create a My-work task',beforeInbox.every(a=>a.material.id!==m.id));
   await page.goto(teacherUrl,{waitUntil:'domcontentloaded'});await page.locator('#teacherAssignResourceLink').click();
   await page.locator('[data-resource-assign="'+m.id+'"]').click();await page.locator('[data-assignment-send]').waitFor();
   check(actor+': assignment entry point retains its distinct purpose',new URL(page.url()).searchParams.get('intent')==='assign');
   await page.locator('[data-assignment-instructions]').fill(prefix+' · Synthetic class delivery');
+  await page.locator('[data-assignment-student-preview]>summary').click();check(actor+': assignment preview uses current instructions and no learner action',await page.locator('[data-assignment-student-card] .assignment-instructions').innerText()===prefix+' · Synthetic class delivery'&&await page.locator('[data-assignment-student-card] [data-preview-only]').isDisabled()&&await page.locator('[data-assignment-student-card] [data-assignment-open]').count()===0);check(actor+': preview does not send a task',(await assignment(actor.replace('_teacher','_student'),'inbox',{},{})).assignments.every(a=>a.material.id!==m.id));
   await page.locator('[data-assignment-send]').click();await page.locator('.assignment-receipt-id').waitFor();
   const id=(await page.locator('.assignment-receipt-id').innerText()).trim();
   const a=(await assignment(actor,'get',{id})).assignment;assigned.push({actor,id,revision:a.revision,canceled:false});
@@ -108,7 +110,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css']){
+ for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));

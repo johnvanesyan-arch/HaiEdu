@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/resource-learner-view.mjs
       - supabase/functions/manage-teacher-feedback/**
       - supabase/functions/_shared/teacher-feedback-handler.mjs
       - scripts/qa-programme-fixtures.mjs

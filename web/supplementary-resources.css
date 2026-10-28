@@ -41,3 +41,8 @@
 
 .resource-workflow-note{padding:1rem;border-inline-start:4px solid #285b45;background:#f5f2e8;border-radius:12px;line-height:1.7;overflow-wrap:anywhere}
 .resource-composing .resource-workflow-note{display:none}
+
+.learner-preview-dialog{width:min(50rem,calc(100vw - 2rem));max-width:calc(100vw - 2rem);max-height:calc(100dvh - 2rem);overflow:auto;box-sizing:border-box;overflow-wrap:anywhere}
+.learner-preview-dialog .resource-card{min-width:0;max-width:100%;box-shadow:none}.learner-preview-dialog>button{min-height:44px;max-width:100%;white-space:normal}
+.learner-preview-dialog [data-preview-only]{cursor:default;opacity:.7}
+@media(prefers-reduced-motion:no-preference){.learner-preview-dialog[open]{animation:preview-reveal 160ms ease-out}@keyframes preview-reveal{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}}
