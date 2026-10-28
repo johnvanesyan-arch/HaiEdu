@@ -1,6 +1,6 @@
 # Teacher workflow SOP — version 1.0
 
-2026-10-28 Asia/Yerevan · owner-authorized 16.5B.8.2 correction · implementation/verification in progress.
+2026-10-28 Asia/Yerevan · owner-authorized 16.5B.8.2 correction · deployed and verified.
 
 The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Source baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`.
 
@@ -69,3 +69,5 @@ None of these is enabled or implied by the new names, entry cards, guide or reso
 ## Verification and evidence
 
 This presentation/client-coordination slice changes no SQL, Edge bundle, grants, privacy, source access, scoring or content approvals. Existing server contracts and verified writing/tenant evidence are reused unchanged. Native regressions must distinguish optional publication from My-work delivery, teacher links from writing review, current/stale/account-switched contexts, and guide/mobile/200%-text usability. Required CI and current deployment/source evidence close the slice. Final owner usability acceptance and the full four-subject gate remain separate.
+
+Release verification: all five required PR/main gates pass (1,488 unit/integration; 216 native browser checks), focused native workflows 94/94, guarded live workflows 149/149 and 54+54 tenant isolation. Same-class exclusion, ambiguous publication, context/account changes and writing review retain isolated/current-source evidence; no new production writing submission or content approval is claimed. [Delivery record](workflow-boundaries.md) · [Release evidence](evidence/workflow-boundaries-release-20261028.json).

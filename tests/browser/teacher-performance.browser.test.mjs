@@ -1,6 +1,7 @@
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {chromium,expect} from '@playwright/test';
+import {mkdir} from 'node:fs/promises';
 import {fixture} from '../fixtures/teacher-performance-browser.mjs';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const calls=page=>page.evaluate(()=>window.__teacherFixture.calls);
@@ -37,6 +38,7 @@ test('initial directory failure offers a retry without another sign-in',async t=
 test('library, resource assignment and writing review have separate context-scoped entry points without eager review reads',async t=>{
  const {page,errors}=await fixture(browser,t);await nav(page,'classes');await page.locator('#classList .teacher-class-button').first().click();await expect(page.locator('#teacherWorkflowEntries')).toBeVisible();
  assert.equal(await page.locator('#teacherWrittenWorkCard #teacherResourcesLink').count(),0);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.locator('#teacherWorkflowEntries').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-entrypoints-1280.png'});}
  for(const [id,intent] of [['teacherResourcesLink',null],['teacherAssignResourceLink','assign']]){
   const u=new URL(await page.locator('#'+id).getAttribute('href'),page.url());assert.equal(u.searchParams.get('assignment'),'assignment-a');assert.equal(u.searchParams.get('unit'),'unit-1');assert.equal(u.searchParams.get('intent'),intent);
  }
@@ -50,8 +52,10 @@ test('teacher workflow cards reflow at narrow and enlarged text sizes without lo
  const {page,errors}=await fixture(browser,t);await nav(page,'classes');await page.locator('#classList .teacher-class-button').first().click();await expect(page.locator('#teacherWorkflowEntries')).toBeVisible();
  for(const width of [360,768,1280]){
   await page.setViewportSize({width,height:960});await page.addStyleTag({content:'html{font-size:200%}'});
+  const padding=await page.locator('#teacherResourcesCard').evaluate(e=>parseFloat(getComputedStyle(e).paddingInlineStart));assert.ok(padding>=16,'workflow cards retain internal spacing');
   const box=await page.locator('#teacherWorkflowEntries').evaluate(e=>({right:e.getBoundingClientRect().right,scroll:e.scrollWidth,width:e.clientWidth}));assert.ok(box.right<=width+1&&box.scroll<=box.width+1,JSON.stringify({width,...box}));
   await page.locator('#teacherAssignResourceLink').focus();assert.equal(await page.locator('#teacherAssignResourceLink').evaluate(e=>e===document.activeElement),true);
  }
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await page.addStyleTag({content:'html{font-size:100%}'});await page.setViewportSize({width:360,height:960});await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.locator('#teacherWorkflowEntries').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-entrypoints-360.png'});}
  assert.deepEqual(errors,[]);
 });
