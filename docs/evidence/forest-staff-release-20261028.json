@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "timezone": "Asia/Yerevan",
   "scope": "16.5B.9 shared Forest staff presentation and local teacher workspace prototype",
-  "status": "runtime_deployed_fresh_staff_acceptance_pending",
+  "status": "delivered",
   "sourceBase": "ea3d804ce7033597b83457d0857dffaf20ada8b7",
   "authorization": "Owner-approved Forest direction and 45-capability coverage; explicit B.9 implementation instruction. No new blanket approval required by accepted sequence. Final owner usability remains B.12.",
   "backendChanged": false,
@@ -246,5 +246,61 @@
     "guardsChanged": false,
     "runtimeChanged": false,
     "localGuardTests": 13
+  },
+  "scheduling": {
+    "pullRequest": 334,
+    "reviewedHead": "1398cbf3a7b594f2632f35016a15cf454182eed7",
+    "merge": "3883777a853c68e6e678ae3d4b48ccd4d40b4521",
+    "prCI": {
+      "run": 40723829460,
+      "requiredJobs": 5,
+      "status": "passed",
+      "unitIntegration": 1488,
+      "nativeBrowser": 234
+    },
+    "mainCI": {
+      "run": 40724576801,
+      "requiredJobs": 5,
+      "status": "passed",
+      "unitIntegration": 1488,
+      "nativeBrowser": 234
+    },
+    "result": "script selector update also matches broad scripts triggers; automatic staff run again cancelled before any job. Existing workflow manually dispatched through normal GitHub UI on main; no further scheduling commit or guard change.",
+    "automaticRun": 40724576709,
+    "manualRun": 40725434252,
+    "event": "workflow_dispatch",
+    "source": "3883777a853c68e6e678ae3d4b48ccd4d40b4521"
+  },
+  "preservedProgrammeCompatibility": {
+    "run": 40721519890,
+    "source": "07b622015fbe2664e02a9f99aa9aca8745c66001",
+    "status": "passed",
+    "checks": 123,
+    "scope": "Chapter III with preserved Chapters I/II; no learning writes"
+  },
+  "liveAcceptance": {
+    "run": 40725434252,
+    "event": "workflow_dispatch",
+    "source": "3883777a853c68e6e678ae3d4b48ccd4d40b4521",
+    "status": "passed",
+    "checks": 147,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "cleanup": {
+      "classesCreatedAndArchived": 4,
+      "membershipsCreatedAndEnded": 2,
+      "onlyRunOwned": true
+    },
+    "report": "docs/evidence/forest-staff-acceptance-20261028.json",
+    "reportSha256": "d1567cf89eb339d019af5f74e77ae88e88ae670ae1c081afcd8660759b6e0750",
+    "artifactId": 12833491174,
+    "artifactDigest": "sha256:f7c20d715a960eb967dbf6bea72edac59222b3d63eb1fa4b1a0054b0718d1de9",
+    "browserFallback": "GitHub connector lacks workflow dispatch; normal GitHub UI accepted run #48 on reviewed main. No new scheduling source or guard change."
+  },
+  "runtimeUnchangedAfterImplementation": true,
+  "documentationClosure": {
+    "scope": "documentation and evidence only; the accepted frontend and all backend sources remain unchanged",
+    "notionTargetVersion": "4.101",
+    "finalOwnerUsability": "remains B.12; not implied by technical handoff"
   }
 }
