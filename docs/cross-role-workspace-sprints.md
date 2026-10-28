@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-28 · owner-authorized scope and priority · roadmap 4.98.
+2026-10-28 · owner-authorized scope and priority · roadmap 4.99.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -11,6 +11,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.6 | Correct My work navigation; trace the reported resource; establish this task map | B.1–B.5 | Delivered; evidence below |
 | 16.5B.7 | Measured teacher performance repair | B.6 | Delivered; measured limits in [report](teacher-performance.md) |
 | 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Assignment capability delivered; live acceptance/source parity passed; DEMO-01 remains open |
+| 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | In verification; closes the authoring gap reported after delivery |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Next; direction accepted |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
@@ -46,6 +47,10 @@ Deliver two end-to-end increments rather than a recipient picker without a servi
 - This brings forward only the resource-assignment subset of S37. Assessment builders, intervention recommendations and general notifications remain in their owning sprints; no unimplemented bell, due-date automation or bulk assessment control.
 
 [B.8 implementation and exact contract](resource-assignments.md): published teacher/platform materials, 50-row pages, maximum 500 recipients, class snapshot/selected enrollment IDs, idempotent request UUID, pinned source, protected open and reasoned cancellation. Due dates, reminders and completion remain unimplemented. The normal Physics-only demonstration identity is still open: read-only inspection finds only two existing active teacher profiles, both used by multi-subject QA. A normal-use identity must be chosen and provisioned through the supported account/invitation flow; no QA grant or credential is changed by this slice.
+
+## B.8.1 — PDF-first authoring repair
+
+**2026-10-28 — 16.5B.8.1 PDF-first teacher form correction in verification.** The reported post-B.8 material is a PDF draft with no attached bytes and failed `file_required` QA; no assignment was created. The previous live test began with an API-prepared material and missed this authoring path. The corrected shared form puts PDF selection first, derives an editable title, folds optional metadata, saves/uploads/checks/publishes through existing services and then opens explicit recipient confirmation. New native regressions cover real form-to-My-work PDF delivery, upload/create uncertainty, account changes and enlarged-text reflow. Guarded production acceptance now starts from the actual teacher form. Required release and live checks remain pending for this correction. [Correction and acceptance scope](resource-pdf-first.md). B.9 follows this repair; PERF-02, DEMO-01, all 45 capabilities, English C47 hold and full four-subject gates remain.
 
 ## B.9 — Shared Forest staff layout and prototype
 
