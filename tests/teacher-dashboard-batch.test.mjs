@@ -115,3 +115,12 @@ test('initial transaction cannot substitute another unit for the independently r
  f.admin.rpc=async(name,args)=>{const r=await original(name,args);if(name==='service_teacher_dashboard_initial'&&r.data)r.data.selected.unitId=id(512);return r;};
  try{await assert.rejects(()=>read(),e=>e instanceof TeacherDashboardReadError&&e.status===503);}finally{f.admin.rpc=original;}
 });
+
+test('default ordering preserves current releases before history and the existing explicit historical selection',async()=>{
+ await changed(`insert into curriculum_releases select (jsonb_populate_record(null::curriculum_releases,to_jsonb(r)||jsonb_build_object('id','${id(599)}','release_number',2,'status','retired'))).* from curriculum_releases r where id='${id(501)}';
+  insert into curriculum_release_units select (jsonb_populate_record(null::curriculum_release_units,to_jsonb(u)||jsonb_build_object('curriculum_release_id','${id(599)}','sequence_order_snapshot',0))).* from curriculum_release_units u where curriculum_release_id='${id(501)}' and unit_id='${id(512)}';`,async()=>{
+  const r={readMode:'class',classId:id(321)};const d=await read(r);assert.equal(d.classes[0].selectedUnit.curriculumReleaseId,id(501));assert.equal(d.classes[0].selectedUnit.unitId,id(511));
+  const historical={assignmentId:id(351),curriculumReleaseId:id(599),unitId:id(512)};
+  const actual=await read({...r,selection:historical});const expected=await getInstitutionalTeacherDashboard(f.admin,id(20),'Synthetic account',historical,id(321),id(351));assert.deepEqual(json(actual),json(expected));assert.equal(actual.classes[0].selectedUnit.readOnlyHistory,true);
+ });
+});
