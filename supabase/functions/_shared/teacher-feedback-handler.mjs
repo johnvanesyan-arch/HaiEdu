@@ -13,6 +13,7 @@ export function createTeacherFeedbackHandler({createAdmin,hasActiveLiveSession,e
    if(!obj(b)||!Object.hasOwn(fields,b.action)||Object.keys(b).some(k=>!['action','context','payload'].includes(k))||!obj(b.payload??{})||!obj(b.context??{}))return json({error:'feedback_request_invalid'},400);
    const payload=b.payload??{},context=b.context??{},personal=['snippets','save_snippet'].includes(b.action);
    if(Object.keys(payload).some(k=>!fields[b.action].includes(k))|| (personal?Object.keys(context).length:!uuid(context.assignmentId)||!uuid(context.curriculumReleaseId)||!uuid(context.unitId)||Object.keys(context).length!==3||!uuid(payload.workId)))return json({error:'feedback_request_invalid'},400);
+   if(b.action==='snippets'&&((payload.archived!==undefined&&typeof payload.archived!=='boolean')||(payload.offset!==undefined&&(!Number.isInteger(payload.offset)||payload.offset<0||payload.offset>100000))))return json({error:'feedback_request_invalid'},400);
    const admin=createAdmin(env.url,env.key),token=header.replace(/^Bearer\s+/i,'');const{data,error}=await admin.auth.getUser(token);
    if(error||!data?.user)return json({error:'unauthorized'},401);
    let auth;try{let p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');auth=JSON.parse(atob(p+'='.repeat((4-p.length%4)%4))).session_id;}catch{}

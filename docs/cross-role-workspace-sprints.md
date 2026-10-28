@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-28 · owner-authorized scope and priority · roadmap 4.101.
+2026-10-28 · owner-authorized scope and priority · roadmap 4.103.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -15,7 +15,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.8.2 | Library/My-work separation, distinct teacher entry points and teacher workflow SOP | B.8.1 | Delivered; 149 live checks and SOP v1; custom writing creation/PDF responses remain future |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Delivered; 234 native / 147 live staff checks; final owner usability remains B.12 |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Delivered; 237 native / 206 live staff checks; final usability remains B.12 |
-| 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
+| 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Implementation/verification in progress |
 | 16.5B.12 | Sharing preview, purposeful motion and cross-role usability acceptance | B.6–B.11 | Planned |
 
 Complete and verify these bounded slices, then obtain owner usability acceptance before resuming English after C47: Unit 3 full learner/audio/writing acceptance, Units 4–6 and course closure; Mathematics/Armenian follow their existing sequence. Full four-subject 16.4/16.5C acceptance still gates Sprint 17. It cannot be a prerequisite for resuming the subject work needed to supply the remaining subjects: this workspace exit covers available production programmes and subject-neutral fixtures, not a claim of four production-ready subjects.
@@ -119,3 +119,5 @@ The actual production flow uses both designated schools, the ordinary teacher/st
 **2026-10-28 — B.10 implementation.** [Today workspace contract](teacher-today-workspace.md) adds one scoped paginated projection and direct review, with class cards and actor-scoped recent hints. This is shared core across authorized subjects/grades/schools. Verification remains in progress; B.11 follows technical closure and B.12 retains final owner usability acceptance. PERF-02 stays open.
 
 **2026-10-28 — B.10 verified delivery.** [PR336](https://github.com/johnvanesyan-arch/HaiEdu/pull/336), required PR/main gates (1,507 unit/integration; 237 native), current-source live 206/206, 54+54 isolation/cleanup, 123 preserved-programme reads and frontend/Edge/SQL source parity close technical delivery. [Evidence](teacher-today-workspace.md). Metadata p50/p95 is 1.36/1.78 s (ten reads, nearest rank); this does not resolve PERF-02 or establish paired production response-opening speed. B.11 follows; final owner usability remains B.12.
+
+**2026-10-28 — B.11 implementation.** [Feedback workspace contract](teacher-feedback-workspace.md) covers own private autosave, snippets, explicit publication receipts, legacy-client invalidation, privacy and all affected consumers. Verification/technical closure are pending. B.12 final owner usability, PERF-02 and subject-resumption gates remain.

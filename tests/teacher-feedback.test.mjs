@@ -77,3 +77,15 @@ test('personal comments have bounded pages and active count, while learner erasu
  assert.equal((await api('save_snippet',{id:id(8200),expectedRevision:0,title:'Generic',body:'Comment',archived:false},20,{})).data.error,'feedback_snippet_limit');
  await save();await f.db.query('delete from profiles where id=$1',[id(10)]);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_snippets')).rows[0].n,50);
 }));
+test('a separately authorized co-teacher sees the response but never another teacher private draft',async()=>changed(async()=>{
+ await f.db.exec(`insert into profiles(id,role,account_status) values('${id(22)}','teacher','active');insert into auth.users(id) values('${id(22)}');insert into auth.sessions(id,user_id) values('${id(422)}','${id(22)}');
+ insert into institutional_memberships(id,school_id,person_id,role,status,valid_from) values('${id(840)}','${id(301)}','${id(22)}','teacher','active','2020-01-01');
+ insert into teacher_subject_authorizations(id,school_id,teacher_membership_id,subject_id,status,valid_from) values('${id(841)}','${id(301)}','${id(840)}','${id(101)}','active','2020-01-01');
+ insert into teacher_assignments(id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from) values('${id(842)}','${id(301)}','${id(311)}','${id(321)}','${id(840)}','${id(201)}','active','2020-01-01');`);
+ const complete={...data,scores:{task:2,organisation:2,vocabulary:2,grammar:2}};await save({data:complete});
+ const c={...ctx,assignmentId:id(842)};const co=async(action,payload)=>(await f.db.query('select service_teacher_feedback($1,$2,$3,$4,$5) r',[id(22),id(422),action,JSON.stringify(c),JSON.stringify(payload)])).rows[0].r;
+ const view=await co('open',{workId:work});assert.equal(view.writtenWork.work.id,work);assert.equal(view.draft,null);
+ await co('save_draft',{workId:work,expectedRevision:revision,draftRevision:0,data:{...data,feedback:'Co-teacher private draft'}});
+ assert.equal((await api('open',{workId:work})).data.draft.data.feedback,data.feedback);assert.equal((await co('open',{workId:work})).draft.data.feedback,'Co-teacher private draft');
+ await api('publish',{workId:work,expectedRevision:revision,draftRevision:1,decision:'assessed',requestId:id(845)});assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);
+}));

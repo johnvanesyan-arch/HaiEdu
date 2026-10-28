@@ -26,6 +26,7 @@ async function browserContext(actor,materialId=null,creation=null){
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={},file=null;try{if(req.headers()['content-type']?.startsWith('multipart/')){const form=await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData();body=JSON.parse(form.get('request'));file=form.get('file');}else body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
   const read=['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
+   ||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(body.action))
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
   if(read)return route.continue();

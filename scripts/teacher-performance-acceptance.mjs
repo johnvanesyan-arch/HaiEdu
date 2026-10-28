@@ -34,7 +34,7 @@ try{
    const context=await browser.newContext({viewport:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(session)}]}]}});
    let requests=[],blocked=0;
    await context.route('**/functions/v1/**',route=>{const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let b={};try{b=req.postDataJSON()??{};}catch{}
-    const allowed=['get-teacher-dashboard','get-teacher-workspace','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action));
+    const allowed=['get-teacher-dashboard','get-teacher-workspace','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action))||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(b.action));
     if(req.method()==='OPTIONS'||allowed)return route.continue();blocked++;return route.abort();});
    const page=await context.newPage();page.setDefaultTimeout(45000);
    const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.setCacheDisabled',{cacheDisabled:false});await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:1600000/8,uploadThroughput:750000/8});

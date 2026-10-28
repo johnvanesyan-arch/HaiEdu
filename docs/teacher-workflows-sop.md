@@ -1,6 +1,6 @@
-# Teacher workflow SOP — version 1.1
+# Teacher workflow SOP — version 1.2
 
-2026-10-28 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today review shortcut.
+2026-10-28 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
 
 The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Source baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`.
 
@@ -52,19 +52,21 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 
 **Owner/trigger:** the current authorized teacher reviews a submitted writing version in the selected class/unit.
 
-**Steps:** Writing card → `Բացել գրավոր աշխատանքները` → `Սպասում են ստուգման` → open learner submission → inspect full prompt/rubric/text → either score every criterion and provide feedback with `Պահպանել գնահատականը`, or provide revision instructions with `Վերադարձնել վերանայման`.
+**Steps:** Writing card → `Բացել գրավոր աշխատանքները` → `Սպասում են ստուգման` → open learner submission → inspect full prompt/rubric/text → either score every criterion and provide feedback with `Ուղարկել գնահատականն ու մեկնաբանությունը`, or provide revision instructions with `Վերադարձնել վերանայման`.
 
 **Today shortcut (16.5B.10):** Home → `Շարունակել ստուգումը`, or a class card's pending-writing button → open the exact submission → use the same review/return actions above. The queue is oldest first across current authorized school contexts; its timestamp and selected-class label define coverage. After the saved result appears, `Հաջորդ աշխատանքը` opens the next pending response. `Վերադառնալ հերթին` retains the class filter. Reload reauthorizes the selected response; an unavailable queue is not a zero count. The original class/unit route remains available, including its existing historical read-only access.
 
-**Confirmation/result:** saved assessed/returned state, visible on the learner's same writing page. Returned work allows a revised draft and new submission. Every submitted/reviewed version remains in history. Regrading requires a reason. Human writing scores remain separate from automatic assessment/mastery.
+**Draft step:** partial rubric choices and feedback autosave after 750 ms; `Պահպանել սևագիրը` or Ctrl/⌘+S saves explicitly. The acknowledged draft is private to this teacher and frozen submission. Personal comments can be created/edited/archived/restored and inserted into this draft; insertion never sends. Tab/Shift+Tab and the feedback focus shortcut remain native keyboard controls.
 
-**Recovery:** teacher feedback is not autosaved; confirm its save before leaving. Empty queue requires checking class/unit/filter and whether work was actually submitted. A stale revision is a conflict, not permission to overwrite another review. Archived/ended contexts retain read-only controls. No push-notification delivery is implied by saving feedback.
+**Confirmation/result:** explicitly sent assessed/returned state, visible on the learner's same writing page. Returned work allows a revised draft and new submission. Every submitted/reviewed version remains in history. Regrading requires a reason. Human writing scores remain separate from automatic assessment/mastery.
+
+**Recovery:** wait for the private saved acknowledgement before leaving. A failed save preserves text and can be retried. An uncertain publication freezes the review fields and offers `Կրկնել նույն ուղարկումը` with the original request ID. A stale-tab conflict preserves the text; copy what you need before explicitly reloading the last version. Empty queue requires checking class/unit/filter and whether work was actually submitted. A stale revision is a conflict, not permission to overwrite another review. Archived/ended contexts retain read-only controls. No push-notification delivery is implied by saving feedback.
 
 ## Explicit future capabilities
 
 - **WRITE-CREATE:** ordinary-teacher custom prompt/rubric creation and explicit class/selected-student writing assignment; requires its own versioned content/recipient/publication contract.
 - **RESOURCE-SUBMIT:** text or file responses to PDF/link resource assignments, submission history, review and grading; requires its own response/storage/privacy/audit lifecycle.
-- Resource deadlines, completion states, read receipts and notifications retain later S37 dependencies. Personal feedback snippets, feedback autosave and batch review retain B.11 contracts.
+- Resource deadlines, completion states, read receipts and notifications retain later S37 dependencies. B.11 adds private feedback autosave and personal snippets under the [feedback contract](teacher-feedback-workspace.md). Batch publication remains unimplemented until a separate bounded preview/per-item result/audit contract is accepted.
 
 None of these is enabled or implied by the new names, entry cards, guide or resource publication buttons. Existing writing submissions/feedback remain functional. All 45 capability mappings and existing release gates are preserved.
 
