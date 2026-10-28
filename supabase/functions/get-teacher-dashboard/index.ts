@@ -1,4 +1,5 @@
 import {verifyTeacherReadIdentity} from '../_shared/teacher-read-identity.mjs';
+import {isTeacherWorkspaceRequest} from '../_shared/teacher-workspace-request.mjs';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../_shared/teacher-dashboard-batch.ts';
 import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -39,7 +40,7 @@ Deno.serve(async (req) => {
     if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
     if (!authHeader) return json({ error: "unauthorized" }, 401);
 
-    let requestBody: { selection?: Partial<TeacherAcademicSelection>; readMode?: string; classId?: string; assignmentId?: string; archive?: boolean; offset?: number; search?: string } = {};
+    let requestBody: { selection?: Partial<TeacherAcademicSelection>; readMode?: string; classId?: string; assignmentId?: string; archive?: boolean; offset?: number; search?: string; workspace?: unknown } = {};
     try { requestBody = await req.json(); } catch { /* an empty body uses the default authorized unit */ }
     const admin = readAdmin ??= createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
     const token = authHeader.replace(/^Bearer\s+/i, "");
@@ -51,6 +52,7 @@ Deno.serve(async (req) => {
     if(userError||!userData?.user)return json({error:'unauthorized'},401);
     if(!requestBody||typeof requestBody!=='object'||Array.isArray(requestBody))return json({error:'invalid_dashboard_request'},400);
     const readMode=requestBody.readMode ?? "full";
+    if(requestBody.workspace!==undefined&&(readMode!=='directory'||requestBody.archive===true||(requestBody.offset!==undefined&&requestBody.offset!==0)||(typeof requestBody.search==='string'&&requestBody.search.trim()!=='')||!isTeacherWorkspaceRequest(requestBody.workspace)))return json({error:'invalid_dashboard_request'},400);
     if (!["full","directory","class"].includes(readMode) ||
       (requestBody.classId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.classId)) ||
       (requestBody.assignmentId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.assignmentId)) ||

@@ -10,7 +10,7 @@ const calls=(p,fn)=>p.evaluate(fn=>window.__today.calls.filter(c=>c.fn===fn),fn)
 test('Today opens exact work directly, reloads context, reviews and advances across units without analytics fanout',async t=>{
  const {page:p,errors}=await todayFixture(browser,t);
  await expect(summary(p)).toContainText('2 աշխատանք');
- assert.equal((await calls(p,'get-teacher-workspace')).length,1);
+ assert.equal((await calls(p,'get-teacher-workspace')).length,0);
  assert.equal((await calls(p,'get-teacher-dashboard')).length,1);
  const first=await p.locator('[data-today-open]').first().getAttribute('data-today-open');
  await p.locator('[data-today-continue] button').click();
@@ -105,4 +105,22 @@ test('live class cards use governed subject art, exact links and account-scoped 
  await p.evaluate(()=>window.__today.switchActor(null));await p.locator('#authPanel:not(.hidden)').waitFor();
  assert.equal(await p.evaluate(()=>Object.keys(sessionStorage).filter(k=>k.startsWith('haiedu:teacher-recent:')).length),0);
  assert.equal(await p.locator('.today-class-card').count(),0);assert.deepEqual(errors,[]);
+});
+
+test('teacher SDK bundle constructs the existing client locally and old-server Home fallback stays functional',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t,{count:0,combined:false});
+ assert.equal((await calls(p,'get-teacher-workspace')).length,1);
+ const result=await p.evaluate(async()=>{const {createClient}=await import('/teacher-dependencies.bundle.mjs');const client=createClient('https://synthetic.invalid','synthetic-publishable-key',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});const {data,error}=await client.auth.getSession();return {empty:data.session===null,ok:!error};});
+ assert.deepEqual(result,{empty:true,ok:true});assert.deepEqual(errors,[]);
+});
+
+test('a delayed combined Home response cannot replace a newly signed-in teachers queue or multiply refresh handlers',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t);
+ await p.evaluate(()=>window.__today.holds.push('get-teacher-dashboard'));await p.locator('#refreshBtn').click();
+ await p.waitForFunction(()=>window.__today.resolvers.length===1);
+ await p.evaluate(()=>window.__today.switchActor(21));await expect(summary(p)).toContainText('0 աշխատանք');
+ await p.evaluate(()=>window.__today.release());await expect(summary(p)).toContainText('0 աշխատանք');
+ assert.equal(await p.locator('.today-work-row').count(),0);
+ const before=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
+ assert.equal((await calls(p,'get-teacher-workspace')).length,before+1);assert.deepEqual(errors,[]);
 });

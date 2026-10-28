@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - supabase/functions/_shared/teacher-read-identity.mjs
+      - supabase/functions/_shared/teacher-workspace-request.mjs
       - web/resource-learner-view.mjs
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json

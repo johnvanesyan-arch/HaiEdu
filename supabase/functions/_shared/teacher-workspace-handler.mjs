@@ -1,4 +1,5 @@
 import {verifyTeacherReadIdentity} from './teacher-read-identity.mjs';
+import {isTeacherWorkspaceRequest} from './teacher-workspace-request.mjs';
 const uuid=v=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 const json=(data,status=200,timing=null)=>new Response(JSON.stringify(data),{status,headers:{...(timing?{'Server-Timing':timing}:{}),'Access-Control-Expose-Headers':'Server-Timing','Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Max-Age':'600'}});
 export function createTeacherWorkspaceHandler({createAdmin,env}) {
@@ -12,9 +13,7 @@ export function createTeacherWorkspaceHandler({createAdmin,env}) {
    const raw=await request.text();if(new TextEncoder().encode(raw).length>4096)return json({error:'workspace_request_invalid'},400);
    let body;try{body=JSON.parse(raw);}catch{return json({error:'workspace_request_invalid'},400);}
    const {assignmentId=null,cursor=null,workId=null,recent=[]}=body??{};
-   if(!body||typeof body!=='object'||Array.isArray(body)||Object.keys(body).some(k=>!['assignmentId','cursor','workId','recent'].includes(k))||
-    (assignmentId!==null&&!uuid(assignmentId))||(workId!==null&&!uuid(workId))||!Array.isArray(recent)||recent.length>4||recent.some(v=>!uuid(v))||
-    (cursor!==null&&(!cursor||Array.isArray(cursor)||typeof cursor!=='object'||Object.keys(cursor).length!==2||!uuid(cursor.id)||typeof cursor.submittedAt!=='string'||!/^\d{4}-\d{2}-\d{2}T/.test(cursor.submittedAt)||!Number.isFinite(Date.parse(cursor.submittedAt)))))return json({error:'workspace_request_invalid'},400);
+   if(!isTeacherWorkspaceRequest(body))return json({error:'workspace_request_invalid'},400);
    const admin=createAdmin(env.url,env.key),token=header.replace(/^Bearer\s+/i,'');
    const authStarted=Date.now();
    const identity=await verifyTeacherReadIdentity(admin,token,env.url);if(!identity)return json({error:'unauthorized'},401);

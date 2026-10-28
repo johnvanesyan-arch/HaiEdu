@@ -119,6 +119,6 @@ test('teacher page fails closed on missing, unknown, inactive or unreadable prof
 });
 test('active teachers reach the dashboard endpoint', async () => {
   const result = await openTeacherPage({ role: 'teacher', account_status: 'active' });
-  assert.equal(result.calls, 1);assert.equal(result.workspaceCalls,1);
+  assert.equal(result.calls, 1);assert.equal(result.workspaceCalls,0);
   assert.deepEqual(result.redirects, []);
 });

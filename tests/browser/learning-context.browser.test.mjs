@@ -16,6 +16,7 @@ async function teacherFixture(t,{history=false}={}) {
    if(name==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
    throw Error(name);
   }}};
+  window.__haieduSupabaseClient=window.__client;
  },{history});
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());

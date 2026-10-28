@@ -85,3 +85,12 @@ Directory/class and Today reads use the SDK's verified JWT claims (ES256 project
 The evidence RPC transfers only the frozen item fields used by unchanged teacher analytics: skill, difficulty, code and Armenian prompt. Question answers, options and unrelated snapshot fields no longer cross the database-to-Edge boundary. The separately versioned replacement preserves exact evidence selection, service-only execution, invoker security and existing grants. The original batched migration filename is aligned to its already-applied database version; it must not be applied twice.
 
 Actual SDK/WebCrypto tests reject altered, unsigned, expired, future, foreign-issuer/audience and malformed identities, verify public-key reuse across distinct actors and verify legacy Auth fallback. Existing SQL/native regressions continue to cover current/final authorization, account/context changes, archives and nonempty writing review. The performance targets above remain unchanged; functional CI success alone does not close PERF-02.
+
+
+### Transaction follow-up (awaiting release measurement)
+
+The second run completed 150 guarded observations but still missed Home and class p95 budgets. Its class-opening median improved to about 1.33 seconds; cold Home includes server/network tails above ten seconds. These results remain intermediate evidence, not acceptance.
+
+The next follow-up composes bounded directory and Today reads into one optional directory response and fetches selected-class metadata plus exact selected-unit evidence in one initial transaction. Edge still performs the final live actor/context/roster read after calculations. The database uses the existing governed unit ordering, preserves stable ties, and Edge independently requires the returned tuple to equal its canonical choice. No other unit evidence is transferred. A Today failure is an explicit unknown/denied state alongside the authorized directory. Older servers retain the existing separate Today request through a feature-detected fallback.
+
+The teacher bundle includes the same `@supabase/supabase-js` 2.118.0 version observed at its existing `esm.sh/@supabase/supabase-js@2` URL. This removes the external SDK module waterfall, rather than introducing a different browser SDK version. The private workspace reader retains its existing pinned SDK. Public-key verification and all final authorization gates remain. These implementation notes do not claim the timing budgets are met.

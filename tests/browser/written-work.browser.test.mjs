@@ -15,6 +15,7 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
   window.__client={auth:{getSession:async()=>({data:{session}}),onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:teacher?'teacher':'student',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
    window.__writingCalls.push({name,body});const response=await fetch('/fixture-rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,body})});const data=await response.json();return response.ok?{data}:{data,error:{message:data.error}};
   }}};
+  if(teacher)window.__haieduSupabaseClient=window.__client;
  },{teacher,actor:id(teacher?20:10),selector});
  const contextInfo={...context(),subjectProgramId:id(201),subjectNameHy:'Փորձնական առարկա',gradeLabelHy:'7-րդ դասարան',gradeNumber:7,schoolName:'Փորձնական դպրոց',className:'7Ա',academicYearLabel:'2026–2027',unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1};
  let hold=null;
