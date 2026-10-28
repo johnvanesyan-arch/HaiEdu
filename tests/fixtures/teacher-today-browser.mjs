@@ -5,7 +5,7 @@ export {id};
 export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={}){
  const f=await writingFixture();t.after(()=>f.db.close());
  await f.db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;update subjects set code=case when id='${id(101)}' then 'english' else 'physics' end,name_hy=case when id='${id(101)}' then 'Անգլերեն' else 'Ֆիզիկա' end;update classes set name=case when id='${id(321)}' then '7Ա' else '7Բ' end;`);
- await f.db.exec(await readFile('supabase/migrations/20261028172021_teacher_today_workspace.sql','utf8'));
+ await f.db.exec(await readFile('supabase/migrations/20261028180038_teacher_today_workspace.sql','utf8'));
  for(let i=0;i<count;i++){
   const ctx=context(i%2);const task=id(6000+i);
   await f.db.query(`insert into written_task_versions(id,task_key,version_no,subject_program_id,curriculum_release_id,unit_id,definition,status,reviewed_by,reviewed_at,review_evidence)

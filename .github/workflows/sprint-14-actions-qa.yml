@@ -49,7 +49,7 @@ on:
       - supabase/functions/get-teacher-academic-context/**
       - supabase/functions/get-teacher-dashboard/**
       - supabase/functions/get-teacher-workspace/**
-      - supabase/migrations/20261028172021_teacher_today_workspace.sql
+      - supabase/migrations/20261028180038_teacher_today_workspace.sql
       - supabase/functions/get-teacher-student/**
       - supabase/functions/manage-institutional-invitation/**
       - supabase/functions/manage-institutional-membership/**

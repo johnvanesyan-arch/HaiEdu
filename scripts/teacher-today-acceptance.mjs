@@ -31,7 +31,7 @@ export async function verifyTeacherToday({sides,fixture,check,call,request,pageF
  }
  const unauth=await request(null,'/functions/v1/get-teacher-workspace',{});check('Today unauthenticated read denied',unauth.status===401);
  const times=samples.map(s=>s.readMs).sort((a,b)=>a-b);
- report.teacherToday={contract:'teacher-workspace-v1',samples,metadataReadMs:{median:times[Math.floor(times.length/2)],p95:times[Math.ceil(times.length*.95)-1]},
+ report.teacherToday={contract:'teacher-workspace-v1',samples,metadataReadMs:{percentileMethod:'nearest-rank',p50:times[Math.ceil(times.length*.5)-1],p95:times[Math.ceil(times.length*.95)-1]},
   scope:'Designated two-school live metadata/empty-or-current queue; no learner writes',
   reviewOpening:'Nonzero direct inspection, next/review removal and reload use actual SQL + Edge handler in isolated native tests. No production submission is fabricated.',
   b7Baseline:{detailMedianMs:5870,detailP95Ms:7880,unitMedianMs:6840,unitP95Ms:8860},
