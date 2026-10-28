@@ -2,7 +2,7 @@
 
 ## B.12.1 learner-view previews (implementation; verification pending)
 
-This is a shared browser display projection, not a new API or learner impersonation. Published-material preview reuses the current teacher-authorized supplementary `get` read and rejects nonpublished/non-QA versions. Assignment preview reuses the already authorized material plus unsent instructions locally, with no send/open/read/completion operation. Actual learner library and assignment cards share the same allowlisted display renderer. Existing recipient/withdrawal/file/session authorization remains authoritative. [Contract and acceptance scope](teacher-sharing-preview.md).
+This is a shared browser display projection, not a new API or learner impersonation. Published-material preview uses the current teacher-authorized supplementary `get` for own materials or the read-only, QA-filtered assignment catalogue for platform materials; platform editor access stays forbidden. Nonpublished/non-QA versions are rejected. Assignment preview reuses the already authorized material plus unsent instructions locally, with no send/open/read/completion operation. Actual learner library and assignment cards share the same allowlisted display renderer. Existing recipient/withdrawal/file/session authorization remains authoritative. [Contract and acceptance scope](teacher-sharing-preview.md).
 
 ## Teacher feedback — 16.5B.11 (deployed; source verified)
 

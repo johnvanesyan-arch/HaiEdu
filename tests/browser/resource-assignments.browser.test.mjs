@@ -225,3 +225,9 @@ test('published learner preview preserves an unsaved teacher material edit witho
  await p.locator('[data-resource-edit]').first().click();await p.locator('[data-resource-form]').waitFor();const title=p.locator('[data-resource-form] [name=title]');const original=await title.inputValue();await title.fill('Unsaved material title');let dialogs=0;p.on('dialog',d=>{dialogs++;void d.dismiss();});
  await p.locator('[data-resource-student-preview]:visible').click();await p.locator('.learner-preview-dialog[open]').waitFor();assert.equal(await p.locator('.learner-preview-dialog .resource-card h3').innerText(),original);await p.keyboard.press('Escape');assert.equal(await title.inputValue(),'Unsaved material title');assert.equal(dialogs,0);assert.deepEqual(ui.errors,[]);
 });
+
+test('platform material preview uses the authorized catalogue without editorial access',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const m=await published(f.db,{actor:30});const ui=await surface(t,f),p=ui.page;
+ await p.locator('[data-resource-student-preview]').first().click();await p.locator('.learner-preview-dialog[open]').waitFor();assert.equal(await p.locator('.learner-preview-dialog .resource-card h3').innerText(),m.definition.title);assert.equal(await p.locator('.learner-preview-dialog [data-preview-only]').isDisabled(),true);
+ const calls=await p.evaluate(()=>window.__assignmentCalls);assert.equal(calls.some(c=>c.body.action==='get'),false);assert.ok(calls.filter(c=>c.body.action==='catalog').length>=2);assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.deepEqual(ui.errors,[]);
+});

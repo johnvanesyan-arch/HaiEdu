@@ -173,10 +173,23 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(d.format==='link')d.url=String(f.get('url')||'').trim();if(f.get('estimatedMinutes'))d.estimatedMinutes=Number(f.get('estimatedMinutes'));d.rightsConfirmed=f.has('rightsConfirmed');d.assessmentSafe=f.has('assessmentSafe');if(role==='teacher')d.recommended=f.has('recommended');return d;
  }
  async function previewMaterial(id,trigger){
-  clearDelivery();const e=epoch,q=request;const data=await invoke('get',{id});
-  if(!valid(e,q))return;if(data.material.status!=='published'||!data.material.qa?.passed||data.material.qa.fingerprint!==data.material.fingerprint)throw Error('resource_unavailable');
+  clearDelivery();const e=epoch,q=request;let material;
+  if(rows.find(m=>m.id===id)?.provider==='platform'){
+   // Platform editorial get is deliberately forbidden to teachers. Revalidate through
+   // their existing read-only, QA-filtered catalogue; never acquire editor rights.
+   for(let offset=0;offset<100000;){
+    const {data,error}=await client.functions.invoke('manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset}}});
+    if(!valid(e,q))return;if(error||data?.error)throw Error(data?.error==='assignment_forbidden'?'resource_forbidden':'resource_unavailable');
+    material=data.materials.find(m=>m.id===id);if(material||!data.hasMore)break;
+    if(!Number.isSafeInteger(data.nextOffset)||data.nextOffset<=offset)throw Error('resource_unavailable');offset=data.nextOffset;
+   }
+   if(!material||material.status!=='published')throw Error('resource_unavailable');
+  }else{
+   const data=await invoke('get',{id});if(!valid(e,q))return;material=data.material;
+   if(material.status!=='published'||!material.qa?.passed||material.qa.fingerprint!==material.fingerprint)throw Error('resource_unavailable');
+  }
   const dialog=document.createElement('dialog');dialog.className='resource-dialog learner-preview-dialog';dialog.setAttribute('aria-labelledby','resourceLearnerPreviewTitle');
-  dialog.innerHTML='<h2 id="resourceLearnerPreviewTitle" tabindex="-1">Աշակերտի տեսքի նախադիտում</h2><p>Ցուցադրվում է հրապարակված տարբերակը։ Չպահպանված խմբագրումները չեն ներառվում։</p><p>'+esc(previewExplanation)+'</p><div class="learner-preview-card">'+studentMaterialCard(data.material,{preview:true})+'</div><button type="button" autofocus>Փակել նախադիտումը</button>';
+  dialog.innerHTML='<h2 id="resourceLearnerPreviewTitle" tabindex="-1">Աշակերտի տեսքի նախադիտում</h2><p>Ցուցադրվում է հրապարակված տարբերակը։ Չպահպանված խմբագրումները չեն ներառվում։</p><p>'+esc(previewExplanation)+'</p><div class="learner-preview-card">'+studentMaterialCard(material,{preview:true})+'</div><button type="button" autofocus>Փակել նախադիտումը</button>';
   const close=()=>{dialog.remove();if(valid(e,q)&&trigger.isConnected)trigger.focus();};dialog.addEventListener('close',close,{once:true});dialog.querySelector('button[autofocus]').addEventListener('click',()=>dialog.close());root.append(dialog);dialog.showModal();dialog.querySelector('h2').focus();
  }
  async function delivery(id){clearDelivery();const data=await invoke('open',{id});
