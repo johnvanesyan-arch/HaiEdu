@@ -1,10 +1,12 @@
 # Learning API contract
 
-## Teacher Today metadata — 16.5B.10 (implementation; deployment verification pending)
+## Teacher Today metadata — 16.5B.10 (deployed; source verified)
 
 `POST /functions/v1/get-teacher-workspace` requires a live active teacher session. Body: `{assignmentId?: uuid, workId?: uuid, cursor?: {submittedAt: ISO timestamp, id: uuid}, recent?: uuid[0..4]}`; other keys and asserted identities are rejected. Response `teacher-workspace-v1` has snapshotAt, coverage, pendingCount, assignmentId/filterClass, queue (max12), hasMore/nextCursor, selectedWork, cards (max6), classCount/cardsPartial. Scope is all active writable school contexts or the exact authorized assignment. Cards include governed subjectCode, exact class/assignment route data, pendingCount and reauthorized recent hints. Legacy schoolless counts are null with explicit unavailable coverage. Metadata contains no response/draft/feedback text. No learning/content mutation occurs.
 
 401 denies invalid authentication; 403 denies unavailable context/session/role; 400 rejects malformed selectors; 503 reports an unavailable read. Responses are no-store. The Edge derives actor/session and calls the service-only public invoker/private privileged metadata reader. Existing writing inspect/review retains its own live authorization, revision and audit contract. See [Today contract](teacher-today-workspace.md) for coverage and verification limits.
+
+Verification: Edge v1 and all three SQL bodies match merged implementation `22a91099290e08c188c98d880155450773a2d9ab`; all five frontend files match production. Actual signed-in staff metadata/denials pass within the 206-check two-school run, with 54+54 isolation/cleanup. Live queues are empty. Positive review/next/removal use synthetic actual-SQL/native fixtures; no production writing response was created. [Backend receipt](evidence/teacher-today-backend-20261028.json) · [Production receipt](evidence/teacher-today-acceptance-20261028.json).
 
 ## Shared Forest staff presentation — 16.5B.9
 

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "scope": "16.5B.10 teacher Today metadata projection",
+  "sourceCommit": "22a91099290e08c188c98d880155450773a2d9ab",
+  "migration": {
+    "file": "supabase/migrations/20261028180038_teacher_today_workspace.sql",
+    "name": "teacher_today_workspace",
+    "sha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1",
+    "applied": true,
+    "generatedFile": "supabase/migrations/20261028172021_teacher_today_workspace.sql",
+    "databaseVersion": "20261028180038",
+    "ledgerAlignment": "The CLI-generated SQL is unchanged. The delivery closure aligns its repository filename to the version assigned by the Supabase migration API; no SQL was reapplied."
+  },
+  "database": {
+    "index": "CREATE INDEX written_work_pending_context_idx ON public.written_work USING btree (school_id, academic_year_id, class_id, subject_program_id, curriculum_release_id, unit_id, id) WHERE (state = 'submitted'::text)",
+    "functions": [
+      {
+        "anon": false,
+        "name": "private.service_teacher_workspace",
+        "bodyMd5": "db49aadc761e27aa5611b7937bee05b9",
+        "definer": true,
+        "service": true,
+        "signature": "private.service_teacher_workspace(uuid,uuid,uuid,jsonb,uuid,jsonb)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ]
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_class_directory",
+        "bodyMd5": "6c0e0288a8bcfa09016ec897afd235ee",
+        "definer": false,
+        "service": true,
+        "signature": "service_teacher_class_directory(uuid,boolean,integer,text)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_workspace",
+        "bodyMd5": "afb5bcef035a531308922d2ee7dc30e8",
+        "definer": false,
+        "service": true,
+        "signature": "service_teacher_workspace(uuid,uuid,uuid,jsonb,uuid,jsonb)",
+        "authenticated": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      }
+    ],
+    "pendingWriting": 0,
+    "functionBodiesMatchSource": true,
+    "authTablesRemainUnreadableByServiceRole": true
+  },
+  "edge": {
+    "name": "get-teacher-workspace",
+    "version": 1,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "bundleSha256": "97c5ec6be235b9f732706613d99d27e9622e2a909bfbe8eb56083265742dd42d",
+    "files": [
+      {
+        "path": "get-teacher-workspace/index.ts",
+        "sourceMatch": true
+      },
+      {
+        "path": "_shared/auth.ts",
+        "sourceMatch": true
+      },
+      {
+        "path": "_shared/teacher-workspace-handler.mjs",
+        "sourceMatch": true
+      }
+    ],
+    "authentication": "Verified getUser; derived live session; service-only SQL; final live-session and active-teacher profile checks"
+  },
+  "dependencyAudit": {
+    "newHandlerImporters": [
+      "get-teacher-workspace"
+    ],
+    "authHelperChanged": false,
+    "existingDirectoryEdge": {
+      "name": "get-teacher-dashboard",
+      "version": 22,
+      "sourceMatchFiles": [
+        "get-teacher-dashboard/index.ts",
+        "_shared/initial-diagnostic.ts",
+        "_shared/auth.ts",
+        "_shared/curriculum-release.ts",
+        "_shared/institutional-teacher-dashboard.ts",
+        "_shared/academic-context.ts",
+        "_shared/institutional-teacher-analytics.ts",
+        "_shared/analytics-evidence.mjs"
+      ],
+      "redeployed": false,
+      "reason": "No source change; adds subjectCode through its existing directory RPC projection. All eight deployed files match repository."
+    }
+  },
+  "securityAdvisor": {
+    "newFindings": false,
+    "stableIgnoringObservationTimestamps": true,
+    "existing": [
+      {
+        "name": "rls_enabled_no_policy",
+        "count": 56
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "count": 1
+      }
+    ]
+  },
+  "productionEvidenceBoundary": "There are no submitted production written_work rows at rollout. Live empty queue, metadata and role/foreign-selector denial checks are separate from the synthetic actual-SQL/native nonzero review journey. No learner work was fabricated."
+}

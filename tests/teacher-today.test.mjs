@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {database,id,scopes,call,context} from './fixtures/written-work-db.mjs';
 let db,firstWork;
-const migration='supabase/migrations/20261028172021_teacher_today_workspace.sql';
+const migration='supabase/migrations/20261028180038_teacher_today_workspace.sql';
 before(async()=>{
  db=await database();
  await db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;`);

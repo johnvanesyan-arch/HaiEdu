@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.10 Today workspace and live class cards",
+  "status": "technically delivered; final owner usability remains B.12",
+  "authorization": "Owner explicitly requested B.10. One primary agent; existing release/content gates preserved.",
+  "implementation": {
+    "pullRequest": 336,
+    "base": "99c6f82051dc36757216c321002c0bd6da086f06",
+    "head": "1f19251e9566402a4059f7f461b2cfb802c9b8ef",
+    "merged": "22a91099290e08c188c98d880155450773a2d9ab"
+  },
+  "ci": {
+    "pr": {
+      "runId": 40740234081,
+      "jobs": [
+        {
+          "name": "institutional-concurrency",
+          "id": 122999525134,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 122999525520,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 122999525662,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 122999526513,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 123001993349,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "main": {
+      "runId": 40741059114,
+      "jobs": [
+        {
+          "name": "phase3-postgres-17",
+          "id": 123002450541,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 123002450789,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 123002450871,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 123002450925,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 123005090271,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "unitIntegration": 1507,
+    "nativeBrowser": 237,
+    "actualPostgresVersion": "17.6",
+    "newSqlProjectionTests": 15,
+    "newEdgeHandlerTests": 4,
+    "nativeArtifact": {
+      "id": 12838752769,
+      "name": "student-workspace-browser",
+      "size_in_bytes": 15914186,
+      "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12838752769",
+      "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12838752769/zip",
+      "expired": false,
+      "created_at": "2026-10-28T17:58:54Z",
+      "expires_at": "2026-11-11T17:58:52Z",
+      "updated_at": "2026-10-28T17:58:54Z",
+      "digest": "sha256:885480667d2dd3e0e24364aefce8ad123e15082da35e430fa152620fe396d5ef",
+      "workflow_run": {
+        "id": 40740234081,
+        "repository_id": 1368662129,
+        "head_repository_id": 1368662129,
+        "head_branch": "codex/teacher-today-20261028",
+        "head_sha": "1f19251e9566402a4059f7f461b2cfb802c9b8ef"
+      }
+    },
+    "focusedNative": {
+      "runId": 40739424339,
+      "passed": 15,
+      "artifactId": 12838338121
+    },
+    "applicationRuntimeUnchangedDuringClosure": true
+  },
+  "frontend": {
+    "evidence": "docs/evidence/teacher-today-frontend-20261028.json",
+    "changedFiles": 5,
+    "sourceMatch": true,
+    "revision": "22a91099290e08c188c98d880155450773a2d9ab"
+  },
+  "backend": {
+    "evidence": "docs/evidence/teacher-today-backend-20261028.json",
+    "edgeVersion": 1,
+    "edgeFiles": 3,
+    "directoryEdgeVersion": 22,
+    "directoryUnchangedFiles": 8,
+    "sqlBodies": 3,
+    "sourceMatch": true,
+    "migrationLedgerVersion": "20261028180038",
+    "migrationSqlUnchangedDuringFilenameAlignment": true
+  },
+  "production": {
+    "site": "https://www.haiedu.am",
+    "vercelDeployment": "dpl_Ci4JCNT6Sc6Sic3usNGAMZdZDYkU",
+    "vercelState": "READY",
+    "deploymentCheck": {
+      "evidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+      "configurationChanged": false,
+      "freshSettingsAttestation": false,
+      "note": "CI, Vercel READY, public source parity and signed-in functional checks are separate from the independent persistent Deployment Check configuration receipt."
+    },
+    "staffAcceptance": {
+      "runId": 40741449470,
+      "passed": 206,
+      "total": 206,
+      "isolationBefore": 54,
+      "isolationAfter": 54,
+      "cleanup": {
+        "runCreatedEmptyClassesArchived": 4,
+        "temporaryMembershipsEnded": 2,
+        "originalFixturesPreserved": true
+      },
+      "artifact": {
+        "id": 12841045690,
+        "name": "sprint-14-actions-evidence",
+        "size_in_bytes": 3667,
+        "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12841045690",
+        "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12841045690/zip",
+        "expired": false,
+        "created_at": "2026-10-28T18:17:47Z",
+        "expires_at": "2026-11-11T18:17:46Z",
+        "updated_at": "2026-10-28T18:17:47Z",
+        "digest": "sha256:8d62cf85feb830166daaa6a059847179f4ae30cb308d0fc990c9f112463dc49c",
+        "workflow_run": {
+          "id": 40741449470,
+          "repository_id": 1368662129,
+          "head_repository_id": 1368662129,
+          "head_branch": "main",
+          "head_sha": "22a91099290e08c188c98d880155450773a2d9ab"
+        }
+      },
+      "evidence": "docs/evidence/teacher-today-acceptance-20261028.json"
+    },
+    "preservedProgrammeReads": {
+      "runId": 40741059085,
+      "passed": 123,
+      "total": 123,
+      "artifact": {
+        "id": 12840127435,
+        "name": "chapter-iii-pilot-read-acceptance",
+        "size_in_bytes": 2297,
+        "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12840127435",
+        "archive_download_url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/12840127435/zip",
+        "expired": false,
+        "created_at": "2026-10-28T18:09:58Z",
+        "expires_at": "2026-11-11T18:09:57Z",
+        "updated_at": "2026-10-28T18:09:58Z",
+        "digest": "sha256:dd77bdeff9b3ddb4a58799f9d323473fa53a017ee9cbb6564ae74791461665a2",
+        "workflow_run": {
+          "id": 40741059085,
+          "repository_id": 1368662129,
+          "head_repository_id": 1368662129,
+          "head_branch": "main",
+          "head_sha": "22a91099290e08c188c98d880155450773a2d9ab"
+        }
+      }
+    }
+  },
+  "performance": {
+    "metadataSamples": 10,
+    "teachers": 2,
+    "queueSizeAtRollout": 0,
+    "percentileMethod": "nearest-rank",
+    "p50Ms": 1359,
+    "p95Ms": 1779,
+    "originalArtifactSummaryNote": "The original artifact's median=1416 is its upper middle sample. p50/p95 here are recomputed from all ten retained raw samples; the QA harness now explicitly reports nearest-rank p50.",
+    "directReviewNativeTrace": {
+      "inspectRequests": 1,
+      "classAnalyticsRequests": 0,
+      "scopedQueueRequests": 0
+    },
+    "perf02": "Open. No equivalent paired production response-opening sample exists while live queues are empty; preserve and remeasure B.7 Home/detail/unit budgets before B.12."
+  },
+  "evidenceBoundary": {
+    "positiveQueue": "Real migration, SQL services and Edge handler with synthetic identities in isolated native Chromium; reviewed-item removal and automatic-evidence preservation verified.",
+    "liveQueue": "Empty in the two designated teachers; no production learner submission fabricated.",
+    "unchangedEvidenceReused": [
+      "Existing approved content/audio/release decisions",
+      "B.8.2 optional-library vs explicit-resource-assignment contract and publication controls",
+      "B.9 shared Forest tokens and accepted student palette values"
+    ]
+  },
+  "closure": {
+    "scope": [
+      "Merged status/roadmap/backlog/API/SOP and durable receipts",
+      "Align migration/test/QA filename with actual Supabase ledger; no SQL reapplication",
+      "Correct QA metadata percentile label/calculation from retained samples"
+    ],
+    "notionVersion": "4.102",
+    "notionSourceRule": "Sync to the final merged documentation source commit and preserve all 13 native child pages; read back the saved source before final response."
+  },
+  "remaining": [
+    "16.5B.11 feedback ergonomics and persistence/conflict contracts",
+    "16.5B.12 final owner usability, sharing preview/motion and performance acceptance",
+    "PERF-02",
+    "DEMO-01",
+    "WRITE-CREATE",
+    "RESOURCE-SUBMIT",
+    "All 45 mapped capability dependencies",
+    "English pause after C47",
+    "Full four-subject 16.4/16.5C gates before Sprint17"
+  ]
+}

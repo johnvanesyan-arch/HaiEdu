@@ -14,7 +14,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | Delivered; 126 live checks, actual PDF form-to-My-work flow in both schools |
 | 16.5B.8.2 | Library/My-work separation, distinct teacher entry points and teacher workflow SOP | B.8.1 | Delivered; 149 live checks and SOP v1; custom writing creation/PDF responses remain future |
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Delivered; 234 native / 147 live staff checks; final owner usability remains B.12 |
-| 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | In implementation; production acceptance pending |
+| 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Delivered; 237 native / 206 live staff checks; final usability remains B.12 |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
 | 16.5B.12 | Sharing preview, purposeful motion and cross-role usability acceptance | B.6–B.11 | Planned |
 
@@ -117,3 +117,5 @@ The actual production flow uses both designated schools, the ordinary teacher/st
 **2026-10-28 — B.9 implementation.** Shared Forest tokens and staff presentation cover teacher, school/master administration, reviewer and shared account/resource/writing surfaces; accepted student values and all existing role/service boundaries remain. The concrete, labelled synthetic Home → Classes → Review specimen is reviewable before broad Today/feedback work. [Scope and verification](forest-staff-workspace.md). Release CI, production parity and fresh staff action acceptance are pending; no completed live rollout or final usability acceptance is claimed yet. B.10 follows verification.
 
 **2026-10-28 — B.10 implementation.** [Today workspace contract](teacher-today-workspace.md) adds one scoped paginated projection and direct review, with class cards and actor-scoped recent hints. This is shared core across authorized subjects/grades/schools. Verification remains in progress; B.11 follows technical closure and B.12 retains final owner usability acceptance. PERF-02 stays open.
+
+**2026-10-28 — B.10 verified delivery.** [PR336](https://github.com/johnvanesyan-arch/HaiEdu/pull/336), required PR/main gates (1,507 unit/integration; 237 native), current-source live 206/206, 54+54 isolation/cleanup, 123 preserved-programme reads and frontend/Edge/SQL source parity close technical delivery. [Evidence](teacher-today-workspace.md). Metadata p50/p95 is 1.36/1.78 s (ten reads, nearest rank); this does not resolve PERF-02 or establish paired production response-opening speed. B.11 follows; final owner usability remains B.12.

@@ -1,0 +1,45 @@
+{
+  "revision": "22a91099290e08c188c98d880155450773a2d9ab",
+  "files": [
+    {
+      "path": "web/teacher.html",
+      "status": 200,
+      "bytes": 33778,
+      "sha256": "1c4cf6874f470080154576423d6fef7d6bd62662acedb86f95f30f2599f20c9a",
+      "sourceMatch": true
+    },
+    {
+      "path": "web/teacher.js",
+      "status": 200,
+      "bytes": 83631,
+      "sha256": "48a923c1243b9cfa517a2ff76f6cbae766bb3110235387a1be7dd5d80d4b0120",
+      "sourceMatch": true
+    },
+    {
+      "path": "web/teacher-today.mjs",
+      "status": 200,
+      "bytes": 11717,
+      "sha256": "6ad831c505c5b83933bf4be9129098236a5469d9bb2f086afa2c7ef6fd9bacf4",
+      "sourceMatch": true
+    },
+    {
+      "path": "web/teacher-today.css",
+      "status": 200,
+      "bytes": 2069,
+      "sha256": "9ca1b1a9789d42bd7a0c813a60deec7b3b941e918842bcc74d5f17e530dfb717",
+      "sourceMatch": true
+    },
+    {
+      "path": "web/written-work.mjs",
+      "status": 200,
+      "bytes": 16599,
+      "sha256": "f9c76d6bf6b046b9281fd2ef1aa5df36ffad1df25cf3de9b34b01deee9e20d6b",
+      "sourceMatch": true
+    }
+  ],
+  "release": {
+    "schemaVersion": 1,
+    "commit": "22a91099290e08c188c98d880155450773a2d9ab"
+  },
+  "verifiedAt": "2026-10-28T18:06:41Z"
+}
