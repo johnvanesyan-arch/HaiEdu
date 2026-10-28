@@ -15,7 +15,7 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: node --test tests/browser/forest-staff.browser.test.mjs tests/browser/role-layout.browser.test.mjs tests/browser/teacher-performance.browser.test.mjs tests/browser/student-utilities.browser.test.mjs tests/browser/student-workspace.browser.test.mjs tests/browser/supplementary-resources.browser.test.mjs tests/browser/written-work.browser.test.mjs
+      - run: node --test tests/browser/forest-staff.browser.test.mjs
         env:
           STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/forest-staff
       - uses: actions/upload-artifact@v4

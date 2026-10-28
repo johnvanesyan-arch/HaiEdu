@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.9 shared Forest staff presentation and local teacher workspace prototype",
+  "status": "implementation_ready_release_verification_pending",
+  "sourceBase": "ea3d804ce7033597b83457d0857dffaf20ada8b7",
+  "authorization": "Owner-approved Forest direction and 45-capability coverage; explicit B.9 implementation instruction. No new blanket approval required by accepted sequence. Final owner usability remains B.12.",
+  "backendChanged": false,
+  "databaseChanged": false,
+  "studentPalette": {
+    "verifiedTokenValues": 23,
+    "result": "exact parity with accepted sourceBase values; aliases use shared Forest tokens"
+  },
+  "prototype": {
+    "path": "web/teacher-workspace-preview.html",
+    "data": "labelled synthetic classes and work",
+    "services": false,
+    "storage": false,
+    "learnerMutations": false,
+    "states": [
+      "ready",
+      "loading",
+      "empty",
+      "error/retry",
+      "folded archive"
+    ],
+    "journey": [
+      "Home",
+      "Classes",
+      "Review",
+      "local confirmation",
+      "reload reset"
+    ],
+    "subjectArt": "unchanged governed-code artwork and generic fallback"
+  },
+  "localChecks": {
+    "syntax": "80 browser JavaScript files pass",
+    "coreParity": "five mirrored modules pass",
+    "favicon": "pass",
+    "typecheck": "pass",
+    "qaDependencies": "all ten production workflow graphs covered; main/source/fixture guards preserved",
+    "unitInitial": {
+      "tests": 1488,
+      "passed": 1487,
+      "failed": 1,
+      "cause": "shared dependency paths absent before workflow update; corrected focused dependency suite passes 9/9"
+    }
+  },
+  "focusedBrowser": {
+    "status": "pending",
+    "source": "3f0c580447557cf45f30e8211fa85484c3aa7705",
+    "run": 40718698749
+  },
+  "backendEvidenceReused": [
+    "docs/evidence/workflow-boundaries-release-20261028.json",
+    "docs/evidence/workflow-boundaries-acceptance-20261028.json",
+    "docs/evidence/teacher-performance-release-20261027.json"
+  ],
+  "blockingConfigurationEvidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+  "capabilitiesRetained": 45,
+  "open": [
+    "B.10 Today projection and live class cards",
+    "B.11 feedback persistence/snippets",
+    "B.12 final owner usability",
+    "PERF-02",
+    "DEMO-01",
+    "WRITE-CREATE",
+    "RESOURCE-SUBMIT",
+    "English C47 hold and full four-subject gates"
+  ]
+}
