@@ -1,4 +1,4 @@
-# Teacher workflow SOP — version 1.2
+# Teacher workflow SOP — version 1.3
 
 2026-10-28 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
 
@@ -18,6 +18,8 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 
 **Steps:** teacher selects class/unit → Library card → `Բացել գրադարանը` → `Ավելացնել նյութ` → attach PDF/add link and confirm metadata/declarations → `Հրապարակել գրադարանում`. The existing coordinator saves, uploads, checks and publishes; `Պահպանել սևագիրը` stops before publication.
 
+**Preview:** after publication, `Աշակերտի տեսքի նախադիտում` shows the shared student library card. Delivery is inactive; no task/activity is created. Teacher file inspection remains separate.
+
 **Confirmation/result:** published status and explicit no-assignment message. Eligible class learners can browse it in Library; no My-work task, submission, completion or grade is created. A saved draft is not student-visible. Editing substantive content requires a new version and reason.
 
 **Recovery:** a known failed upload retains the draft. Retry reconciles an ambiguous upload against stored bytes. An ambiguous create/revise blocks unsafe repetition and offers `Թարմացնել և գտնել սևագիրը`; inspect the saved draft before creating another. Invalid/oversize files must be replaced. Failed QA does not publish.
@@ -27,6 +29,8 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 **Owner/trigger:** an active assigned teacher wants a class or selected learners to follow instructions using a published resource.
 
 **Steps:** select class/unit → Resource assignments card → `Ուղարկել առաջադրանք` → choose a published material's Assign action, or add a new material and choose `Հրապարակել և ընտրել ստացողներին` → choose class/selected roster, add instructions, review recipient summary → `Ուղարկել առաջադրանքը`.
+
+**Preview before sending:** expand `Նախադիտում․ ինչ կտեսնի աշակերտը` to check the exact instructions/material card; this does not send or open a learner account. Recipient selection and final send remain explicit.
 
 **Confirmation/result:** durable assignment ID, time and original recipient count. Exact selected recipients see it in My work → Teacher assignments and can open/download the pinned version. Confirming publication never sends automatically. A selected assignment audience does not restrict already-published class/programme library access.
 

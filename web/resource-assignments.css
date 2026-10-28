@@ -4,3 +4,9 @@
 .resource-assignment-workspace{overflow-wrap:anywhere}.resource-assignment-workspace fieldset{min-inline-size:0;max-width:100%}.resource-assignment-workspace legend{max-width:100%;white-space:normal}.assignment-heading>div,.assignment-choice{min-width:0}
 
 .assignment-choice,.resource-assignment-workspace legend{overflow-wrap:anywhere}
+
+/* Real disclosures/receipts animate briefly; state is always conveyed in text. */
+[data-assignment-student-preview]{border:1px solid var(--border,#bdcbbc);border-radius:12px;padding:.75rem 1rem}
+[data-assignment-student-card]{min-width:0}.assignment-card{transition:border-color 140ms ease,box-shadow 140ms ease}
+.assignment-card:hover{border-color:#6b8a58;box-shadow:0 3px 12px #254c3910}
+@media(prefers-reduced-motion:no-preference){[data-assignment-student-preview][open]>div,.assignment-receipt{animation:assignment-reveal 160ms ease-out}@keyframes assignment-reveal{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}}

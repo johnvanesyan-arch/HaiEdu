@@ -58,7 +58,7 @@ test('teacher class send survives lost response without duplicates and arrives i
  const f=await fixture();t.after(()=>f.db.close());await addLearner(f.db);await published(f.db);
  const teacher=await surface(t,f),student=await surface(t,f,{actor:10,width:360}),p=teacher.page,s=student.page;
  await compose(p);assert.match(await p.locator('[data-recipient-summary]').innerText(),/2/);
- await p.locator('[data-assignment-instructions]').fill('Compare the two ideas before class.');
+ await p.locator('[data-assignment-instructions]').fill('Compare the two ideas before class.');await p.locator('[data-assignment-student-preview]>summary').click();assert.equal(await p.locator('[data-assignment-student-card] .assignment-instructions').innerText(),'Compare the two ideas before class.');assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);
  teacher.dropNextSend();await p.locator('[data-assignment-send]').click();await p.locator('[data-assignment-retry-send]:not([hidden])').waitFor();
  await p.locator('[data-assignment-retry-send]').click();await p.locator('.assignment-receipt').waitFor();
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);
@@ -198,4 +198,24 @@ test('ambiguous library publication retries the same version without a second pu
  assert.equal((await f.db.query("select count(*)::int n from supplementary_resource_events where event='published'")).rows[0].n,1);
  assert.equal((await f.db.query('select count(*)::int n from supplementary_resource_versions')).rows[0].n,1);
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.deepEqual(ui.errors,[]);
+});
+
+for(const width of [360,768,1280])test('learner-view previews are inert, current and keyboard usable at '+width+'px',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const ui=await surface(t,f,{width}),p=ui.page;
+ const baseline=(await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n;
+ await p.locator('[data-resource-student-preview]').first().click();await p.locator('.learner-preview-dialog[open]').waitFor();
+ assert.equal(await p.locator('.learner-preview-dialog [data-resource-open],.learner-preview-dialog [data-resource-edit]').count(),0);assert.equal(await p.locator('.learner-preview-dialog [data-preview-only]').isDisabled(),true);assert.equal(await p.locator('.learner-preview-dialog').evaluate(e=>getComputedStyle(e).animationName),'none');
+ await p.addStyleTag({content:'html{font-size:200%}'});assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await p.locator('.learner-preview-dialog').evaluate(e=>e.scrollWidth<=e.clientWidth+1));
+ await p.keyboard.press('Escape');await p.locator('.learner-preview-dialog').waitFor({state:'detached'});assert.equal(await p.locator('[data-resource-student-preview]').first().evaluate(e=>e===document.activeElement),true);
+ await compose(p);await p.locator('[data-assignment-student-preview]>summary').click();await p.locator('[data-assignment-instructions]').fill('Compare two ideas before class.');
+ await p.locator('[data-assignment-student-card] .assignment-instructions').waitFor();assert.equal(await p.locator('[data-assignment-student-card] .assignment-instructions').innerText(),'Compare two ideas before class.');assert.equal(await p.locator('[data-assignment-student-card] [data-assignment-open]').count(),0);assert.equal(await p.locator('[data-assignment-student-card] [data-preview-only]').isDisabled(),true);assert.match(await p.locator('[data-assignment-student-card] .assignment-status').innerText(),/դեռ չի հանձնարարվել/);
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,baseline);const calls=await p.evaluate(()=>window.__assignmentCalls.map(c=>c.body.action));assert.ok(calls.every(a=>['contexts','list','catalog','get','preview'].includes(a)),JSON.stringify(calls));assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.locator('[data-assignment-student-preview]').scrollIntoViewIfNeeded();await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/learner-assignment-preview-'+width+'.png'});}
+ await p.evaluate(()=>window.__assignmentSwitch());assert.equal(await p.locator('[data-assignment-student-card]').count(),0);assert.deepEqual(ui.errors,[]);
+});
+test('a held material preview cannot reopen after class or account changes',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const ui=await surface(t,f),p=ui.page,held=ui.hold('get');
+ await p.locator('[data-resource-student-preview]').first().click();await p.waitForFunction(()=>window.__assignmentCalls.some(c=>c.body.action==='get'));
+ await p.locator('[data-resource-context]').selectOption('');while(!held.release)await new Promise(r=>setTimeout(r,10));const response=p.waitForResponse(r=>r.url().includes('/fixture/manage-supplementary-resources')&&r.request().postDataJSON().action==='get');held.release();await(await response).finished();await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));assert.equal(await p.locator('.learner-preview-dialog').count(),0);
+ await p.locator('[data-resource-context]').selectOption('0');await p.locator('[data-resource-student-preview]').first().click();await p.locator('.learner-preview-dialog[open]').waitFor();await p.evaluate(()=>window.__assignmentSwitch());assert.equal(await p.locator('.learner-preview-dialog').count(),0);assert.deepEqual(ui.errors,[]);
 });

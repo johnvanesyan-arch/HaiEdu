@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/resource-learner-view.mjs
       - .github/workflows/teacher-feedback-acceptance.yml
       - docs/qa/additional-programme-fixtures.json
       - package-lock.json

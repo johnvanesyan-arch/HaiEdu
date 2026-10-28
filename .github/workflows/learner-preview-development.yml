@@ -1,0 +1,27 @@
+name: Isolated learner-view preview development
+on:
+  push:
+    branches: [codex/teacher-student-preview-20261029]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node --test tests/browser/resource-assignments.browser.test.mjs tests/browser/supplementary-resources.browser.test.mjs tests/browser/teacher-workflows-guide.browser.test.mjs
+        env:
+          STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/learner-preview
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: learner-preview-development
+          path: artifacts/learner-preview
+          retention-days: 14

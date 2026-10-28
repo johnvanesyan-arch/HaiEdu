@@ -1,5 +1,9 @@
 # Learning API contract
 
+## B.12.1 learner-view previews (implementation; verification pending)
+
+This is a shared browser display projection, not a new API or learner impersonation. Published-material preview reuses the current teacher-authorized supplementary `get` read and rejects nonpublished/non-QA versions. Assignment preview reuses the already authorized material plus unsent instructions locally, with no send/open/read/completion operation. Actual learner library and assignment cards share the same allowlisted display renderer. Existing recipient/withdrawal/file/session authorization remains authoritative. [Contract and acceptance scope](teacher-sharing-preview.md).
+
 ## Teacher feedback — 16.5B.11 (deployed; source verified)
 
 `POST /functions/v1/manage-teacher-feedback` returns `teacher-feedback-v1`. Live teacher-derived actor/session, strict selectors, no-store and final authorization cover `open`, versioned private `save_draft`, explicitly acknowledged-draft `publish`, own paged `snippets` and CAS `save_snippet`. Work actions use the exact assignment/release/unit and current frozen submission. Publication preserves the existing writing review/rubric/history and returns an atomic idempotency receipt. Personal snippets have 20-row pages and a 50-active bound; they confer no learner access. Direct table/privileged RPC access is denied. Teacher privacy inventory adds own private-draft/comment/receipt counts. [Complete payload, privacy, retry and verification contract](teacher-feedback-workspace.md). Positive writes use isolated actual-SQL/native fixtures; production probes are read-only and never create learner grades. Required PR/main gates pass 1,526 unit/integration and 241 native checks, including six PostgreSQL 17 races. Production reads pass 47/47 with 54+54 isolation; five frontend files, six SQL bodies, feedback Edge v1 and privacy Edge v10 match implementation `358af1ed89746f1919ea78582895ffcb96e346bd`.
