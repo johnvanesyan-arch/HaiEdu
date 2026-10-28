@@ -114,6 +114,7 @@ test('teacher preview Home → Classes → Review is interactive, local and rese
   await expect(page.locator('.preview-notice')).toContainText('հորինված տվյալներ');
   await snapshot(page,'preview-home-1280');
   await page.locator('[data-preview-view="classes"]').click();
+  await expect(page.locator('[data-preview-view="classes"]')).toHaveAttribute('aria-current','page');
   await expect(page.locator('.preview-class-card')).toHaveCount(3);
   assert.deepEqual(await page.locator('[data-subject-art]').evaluateAll(es=>es.map(e=>e.dataset.subjectArt)),['english','physics','mathematics']);
   await page.locator('[data-preview-class="english"]').click();

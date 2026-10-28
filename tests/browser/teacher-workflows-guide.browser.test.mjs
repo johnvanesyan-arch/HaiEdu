@@ -10,7 +10,7 @@ for(const width of [360,768,1280])test('teacher procedure guide is readable and 
  for(const a of await page.locator('.workflow-nav a').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))))assert.equal(await page.locator(a).count(),1);
  assert.match(await page.locator('#future').innerText(),/ԴԵՌ ՀԱՍԱՆԵԼԻ ՉԷ/);assert.match(await page.locator('#future').innerText(),/PDF առաջադրանքի պատասխանի/);assert.equal(await page.locator('#future button, #future input').count(),0);
  for(const size of [100,200]){await page.addStyleTag({content:'html{font-size:'+size+'%}'});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),width+'px, '+size+'%');}
- await page.locator('.workflow-nav a[href="#assign"]').focus();await page.keyboard.press('Enter');assert.equal(new URL(page.url()).hash,'#assign');
+ await page.locator('.workflow-nav a[href="#assign"]').focus();await page.keyboard.press('Enter');await page.waitForURL('**/#assign');assert.equal(new URL(page.url()).hash,'#assign');
  assert.deepEqual(errors,[]);assert.deepEqual(serviceCalls,[],'informational guide does not invoke account/data mutations');
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await page.addStyleTag({content:'html{font-size:100%}'});await page.goto('https://guide.test/teacher-workflows.html');await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-workflows-'+width+'.png',fullPage:true});}
 });
