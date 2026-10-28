@@ -23,6 +23,9 @@ jobs:
       - name: Check mirrored core parity
         run: npm run check:core-parity
 
+      - name: Check teacher startup bundle parity
+        run: npm run check:teacher-bundle
+
       - name: Check platform favicon
         run: npm run check:favicon
 

@@ -1,3 +1,4 @@
+import {verifyTeacherReadIdentity} from '../_shared/teacher-read-identity.mjs';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../_shared/teacher-dashboard-batch.ts';
 import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -8,6 +9,8 @@ import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext, type Te
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Max-Age": "600",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Expose-Headers": "Server-Timing",
 };
@@ -22,6 +25,8 @@ function fallbackName(id: string) {
   return `Ուսանող ${id.slice(0, 6).toUpperCase()}`;
 }
 
+// Reuse only the stateless service client/public JWKS cache; no user/session or authorization cache.
+let readAdmin: any = null;
 Deno.serve(async (req) => {
   const started=Date.now();
   try {
@@ -34,12 +39,17 @@ Deno.serve(async (req) => {
     if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
     if (!authHeader) return json({ error: "unauthorized" }, 401);
 
-    const admin = createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
-    const token = authHeader.replace(/^Bearer\s+/i, "");
-    const { data: userData, error: userError } = await admin.auth.getUser(token);
-    if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     let requestBody: { selection?: Partial<TeacherAcademicSelection>; readMode?: string; classId?: string; assignmentId?: string; archive?: boolean; offset?: number; search?: string } = {};
     try { requestBody = await req.json(); } catch { /* an empty body uses the default authorized unit */ }
+    const admin = readAdmin ??= createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
+    const token = authHeader.replace(/^Bearer\s+/i, "");
+    const authStarted=Date.now();
+    const optimized=requestBody?.readMode==='directory'||requestBody?.readMode==='class';
+    const identity=optimized ? await verifyTeacherReadIdentity(admin,token,supabaseUrl) : null;
+    const {data:userData,error:userError}=optimized ? {data:{user:identity},error:identity?null:true} : await admin.auth.getUser(token);
+    const authDuration=Date.now()-authStarted;
+    if(userError||!userData?.user)return json({error:'unauthorized'},401);
+    if(!requestBody||typeof requestBody!=='object'||Array.isArray(requestBody))return json({error:'invalid_dashboard_request'},400);
     const readMode=requestBody.readMode ?? "full";
     if (!["full","directory","class"].includes(readMode) ||
       (requestBody.classId !== undefined && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestBody.classId)) ||
@@ -59,7 +69,7 @@ Deno.serve(async (req) => {
       try{
         const dataStarted=Date.now();
         const result=await readBatchedTeacherDashboard(admin,userData.user.id,token,{...requestBody,selection,readMode});
-        if(result)return json(result,200,`data;dur=${Date.now()-dataStarted},total;dur=${Date.now()-started}`);
+        if(result)return json(result,200,`auth;dur=${authDuration},data;dur=${Date.now()-dataStarted},total;dur=${Date.now()-started}`);
       }catch(error){
         if(error instanceof TeacherDashboardReadError)return json({error:error.message},error.status);
         if(error instanceof AcademicContextDenied || error?.message==='academic_context_unavailable')return json({error:'academic_context_unavailable'},403);

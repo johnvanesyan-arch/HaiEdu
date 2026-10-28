@@ -18,6 +18,7 @@ export async function stampRelease(output = resolve("web/release.json"), environ
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
+    await import("./build-teacher-entry.mjs");
     const metadata = await stampRelease();
     console.log(`Frontend release: ${metadata.commit}`);
   } catch (error) {
