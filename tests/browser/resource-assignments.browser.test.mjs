@@ -158,7 +158,7 @@ for(const width of [360,768,1280])test('file-first form reflows at '+width+'px a
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-form-layout-'+width+'.png',fullPage:true});}
  assert.ok(layout.scroll<=width+1,JSON.stringify(layout));
  await p.locator('[data-resource-publish-assign]').focus();assert.equal(await p.locator('[data-resource-publish-assign]').evaluate(e=>e===document.activeElement),true);
- if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-pdf-first-'+width+'.png',fullPage:true});}
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-pdf-first-'+width+'.png',fullPage:true});await p.addStyleTag({content:'html{font-size:100%}'});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/resource-pdf-first-normal-'+width+'.png',fullPage:true});}
  assert.deepEqual(errors,[]);
 });
 

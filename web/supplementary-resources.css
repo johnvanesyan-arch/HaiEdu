@@ -31,3 +31,10 @@
 .resource-editor [aria-busy=true]{cursor:progress}
 .resource-editor label,.resource-editor legend{overflow-wrap:anywhere}
 .resource-editor .resource-check{min-width:0;overflow-wrap:anywhere}
+.resource-editor form{grid-template-columns:minmax(0,1fr);min-width:0}
+.resource-editor form>*{min-width:0;max-width:100%;box-sizing:border-box}
+.resource-file-first{grid-template-columns:minmax(0,1fr);margin-inline:0}
+.resource-file-first legend{max-width:100%;box-sizing:border-box}
+
+.resource-composing .resource-welcome,.resource-composing .resource-search,.resource-composing .resource-purpose,.resource-composing .resource-filter-details,.resource-composing [data-filter-reset],.resource-composing .resource-list-heading,.resource-composing [data-resource-list],.resource-composing [data-resource-assignment-history],.resource-composing .resource-controls>.resource-meta{display:none!important}
+.resource-editor button[type=submit]:not(.ghost){background:#285b45;border-color:#285b45;color:#fff}

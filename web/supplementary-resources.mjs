@@ -44,7 +44,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
     return active.map(m=>card(m,staff,role==='teacher')).join('')+(history.length?`<details class="resource-history"><summary>Նյութերի պատմություն · ${history.length}</summary><div class="resource-grid">${history.map(m=>card(m,staff,role==='teacher')).join('')}</div></details>`:'');
   })()||`<div class="resource-empty">${studentIcon('courses')}<h2>${rows.length?'Ոչ մի նյութ չի համապատասխանում':'Այստեղ դեռ նյութեր չկան'}</h2><p>${rows.length?'Փոխեք որոնումը կամ մաքրեք զտիչները։':staff?'Ավելացրեք առաջին նյութը ընտրված բաժնի համար։':'Երբ ուսուցիչը կամ հարթակը նյութ ավելացնի, այն կտեսնեք այստեղ։'}</p></div>`;
  }
- function clearEditor(){current=null;dirty=false;pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;const ed=$('[data-resource-editor]');if(ed){ed.hidden=true;ed.innerHTML='';}}
+ function clearEditor(){root.classList.remove('resource-composing');current=null;dirty=false;pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;const ed=$('[data-resource-editor]');if(ed){ed.hidden=true;ed.innerHTML='';}}
  function resetFilters(){for(const el of root.querySelectorAll('[data-filter]'))el.value='';for(const b of root.querySelectorAll('[data-purpose]'))b.setAttribute('aria-pressed',String(!b.dataset.purpose));}
  function drawShell(){root.innerHTML=`<section class="resource-welcome"><div><p class="eyebrow">ՍՈՎՈՐԻՐ ԱՎԵԼԻՆ</p><h2>${staff?'Կիսվեք օգտակար նյութերով':'Փոքր քայլ, նոր բացահայտում'}</h2><p>${staff?'Ավելացրեք վարժանքներ կամ ընթերցանության նյութեր։ Սովորողները կտեսնեն միայն հրապարակված տարբերակը։':'Ընտրեք նյութը, խորացրեք գիտելիքները ձեր տեմպով։ Այս նյութերը պարտադիր չեն և չեն փոխում գնահատականները։'}</p></div><div class="resource-welcome-art" aria-hidden="true">${studentIcon('courses')}${studentIcon('practice')}</div></section>
  <section class="card resource-controls" aria-label="Դասընթաց և նյութերի որոնում"><label>Դասընթաց և բաժին<select data-resource-context><option value="">Ընտրեք բաժինը</option>${contexts.map((c,i)=>`<option value="${i}">${esc(contextLabel(c))}</option>`).join('')}</select></label><p data-resource-scope class="resource-meta"></p>${staff&&role==='teacher'?'<p class="resource-meta">Այստեղ հասանելի են ձեր ակտիվ դասարաններին վերագրված առարկաները։ Նշանակումները կառավարում է դպրոցի ադմինիստրատորը։ Նյութը հրապարակելուց առաջ ստուգեք ընտրված դասարանը և առարկան։</p>':''}<div class="resource-search"><label>Գտնել նյութ<input type="search" data-filter="query" placeholder="Վերնագիր, նպատակ կամ թեմա"></label><button type="button" class="ghost" data-resource-refresh>Թարմացնել</button></div>
@@ -67,7 +67,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   else{$('[data-resource-list]').innerHTML='<p>Ընտրեք դասընթացն ու բաժինը։</p>';message('');}
  }
  function drawEditor(m=null,history=[],events=[],keepFile=false){
-  clearAssignments();current=m;dirty=false;uncertainCreate=false;
+  clearAssignments();root.classList.add('resource-composing');current=m;dirty=false;uncertainCreate=false;
   if(!keepFile){pendingFile=null;fileTicket++;uploadUncertain=false;}
   const d=m?.definition??{locale:'hy',format:'pdf',purpose:'reading'},ed=$('[data-resource-editor]');ed.hidden=false;
   ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութ · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header>
@@ -115,7 +115,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  function drawFileStatus(error=''){
   const note=$('[data-resource-file-status]');if(!note)return;
-  note.textContent=error|| (pendingFile?pendingFile.name+' · '+(pendingFile.size/1024/1024).toLocaleString('hy-AM',{maximumFractionDigits:2})+' ՄԲ · պատրաստ է կցման':'PDF ֆայլ դեռ ընտրված չէ։');note.classList.toggle('bad',Boolean(error));
+  note.textContent=error|| (pendingFile?pendingFile.name+' · '+(pendingFile.size<1024?pendingFile.size+' բայթ':pendingFile.size<1024*1024?(pendingFile.size/1024).toLocaleString('hy-AM',{maximumFractionDigits:1})+' ԿԲ':(pendingFile.size/1024/1024).toLocaleString('hy-AM',{maximumFractionDigits:2})+' ՄԲ')+' · պատրաստ է կցման':'PDF ֆայլ դեռ ընտրված չէ։');note.classList.toggle('bad',Boolean(error));
   $('[data-resource-file-preview]').hidden=!pendingFile;
  }
  function composeMessage(text,bad=false){message(text,bad);const el=$('[data-resource-compose-status]');if(el){el.textContent=text;el.classList.toggle('bad',bad);}}
@@ -230,8 +230,8 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  });
  const beforeLeave=e=>{if(dirty||pendingFile||(busy&&busyKind==='write')||assignmentView?.isBusy()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);
  async function session(s,force=false){const next=s?.user?.id??null;if(!force&&next===actor)return;actor=next;epoch++;request++;operation++;clearDelivery();clearAssignments();pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;unlockWrites();root.removeAttribute('aria-busy');dirty=false;busy=false;current=null;selected=null;rows=[];contexts=[];document.querySelectorAll('.material-mfa').forEach(d=>d.dispatchEvent(new Event('material-session-ended')));
-  if(!actor){root.innerHTML='<section class="card resource-empty"><h2>Մուտք գործեք</h2><p>Նյութերը հասանելի են ձեր դասընթացների շրջանակում։</p><a class="button-link" href="./account-access.html">Մուտք գործել</a></section>';return;}
-  root.innerHTML='<p role="status">Ստուգվում է նյութերի հասանելիությունը…</p>';const e=epoch,q=request;
+  if(!actor){root.classList.remove('resource-composing');root.innerHTML='<section class="card resource-empty"><h2>Մուտք գործեք</h2><p>Նյութերը հասանելի են ձեր դասընթացների շրջանակում։</p><a class="button-link" href="./account-access.html">Մուտք գործել</a></section>';return;}
+  root.classList.remove('resource-composing');root.innerHTML='<p role="status">Ստուգվում է նյութերի հասանելիությունը…</p>';const e=epoch,q=request;
   try{const data=await invoke('contexts',{},{});if(!valid(e,q))return;role=data.role;contexts=data.contexts??[];
    if(staff?(role==='student'):role!=='student'){root.innerHTML=`<section class="card"><p>Այս էջը նախատեսված է ${staff?'նյութերը տրամադրողների':'սովորողների'} համար։</p><a href="./${staff?'materials':'resource-library'}.html">Բացել ձեր նյութերի բաժինը</a></section>`;return;}
    onRole(role);drawShell();
