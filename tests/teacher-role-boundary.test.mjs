@@ -79,7 +79,7 @@ for (const name of functions) {
 }
 
 async function openTeacherPage(profile, profileError = null) {
-  let calls = 0;
+  let calls = 0, workspaceCalls=0;
   const redirects = [];
   const elements = new Map();
   const getElement = (id) => {
@@ -91,15 +91,15 @@ async function openTeacherPage(profile, profileError = null) {
   const client = {
     auth: { getSession: async () => ({ data: { session: { user: { id: 'test-user' } } } }) },
     from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: profile, error: profileError }) }) }) }),
-    functions: { invoke: async () => { calls++; return { error: new Error('stop before rendering') }; } },
+    functions: { invoke: async (fn) => { if(fn==="get-teacher-workspace")workspaceCalls++;else calls++; return { error: new Error('stop before rendering') }; } },
   };
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
   source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
   const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
-    roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
+    todayRequest:()=>({recent:[]}),roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
-  return { calls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };
+  return { calls, workspaceCalls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };
 }
 
 for (const [role, destination] of Object.entries({ admin: './admin.html', content_admin: './content.html', student: './index.html', school_admin: './school-admin' })) {
@@ -119,6 +119,6 @@ test('teacher page fails closed on missing, unknown, inactive or unreadable prof
 });
 test('active teachers reach the dashboard endpoint', async () => {
   const result = await openTeacherPage({ role: 'teacher', account_status: 'active' });
-  assert.equal(result.calls, 1);
+  assert.equal(result.calls, 1);assert.equal(result.workspaceCalls,1);
   assert.deepEqual(result.redirects, []);
 });

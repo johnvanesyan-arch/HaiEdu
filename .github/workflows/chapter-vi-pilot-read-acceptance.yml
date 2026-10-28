@@ -8,6 +8,8 @@ on:
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json
       - supabase/functions/manage-student-invitation/index.ts
+      - web/teacher-today.css
+      - web/teacher-today.mjs
       - web/teacher.html
       - web/teacher.js
       - web/archive-browser.mjs

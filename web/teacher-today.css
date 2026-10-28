@@ -1,0 +1,24 @@
+#teacherToday { display:grid; grid-template-columns:minmax(0,1fr); gap:1.25rem; margin-block:1.25rem; min-width:0; overflow-wrap:anywhere; }
+#teacherToday :is(.today-overview,.today-queue) { padding:1.5rem; min-width:0; }
+#teacherToday :is(h2,h3,p) { margin-block:.4rem; }
+#teacherToday .today-overview { background:var(--forest-hero); }
+.today-actions,.today-heading { display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; }
+.today-heading { justify-content:space-between; margin-bottom:1rem; }
+.today-actions>* { min-width:0; max-width:100%; }
+.today-actions a:not(.button-link) { display:inline-flex; align-items:center; min-height:2.75rem; }
+.today-summary { font-size:1.125rem; font-weight:700; }
+.today-work-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:1rem; align-items:center; padding:1rem 0; border-bottom:1px solid var(--forest-divider); }
+.today-work-row>div { min-width:0; }
+.today-work-row small { color:var(--forest-muted); }
+.today-class-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.today-class-card { padding:1.25rem; min-width:0; display:grid; gap:.5rem; align-content:start; }
+.today-class-card .student-subject-art { width:7rem; max-width:100%; color:var(--forest-accent); }
+.teacher-class-button .student-subject-art { display:block; width:5rem; max-width:100%; height:auto; color:var(--forest-accent); }
+.today-context { padding:1rem; background:var(--forest-selected); border-radius:.75rem; }
+.today-review { scroll-margin-top:1rem; min-width:0; }
+#teacherToday :is(button,.button-link) { overflow-wrap:anywhere; white-space:normal; min-width:0; max-width:100%; }
+#teacherToday .written-work { padding:1.5rem; }
+@media(max-width:1100px) { .today-class-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:700px) { .today-class-grid,.today-work-row { grid-template-columns:minmax(0,1fr); } #teacherToday :is(.today-overview,.today-queue,.written-work) { padding:1rem; } }
+
+#teacherToday .today-heading>* { min-width:0; max-width:100%; overflow-wrap:anywhere; }

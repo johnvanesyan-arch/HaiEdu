@@ -10,12 +10,16 @@ on:
       - docs/qa/additional-programme-fixtures.json
       - web/written-work.mjs
       - web/written-work.css
+      - scripts/teacher-today-acceptance.mjs
       - scripts/sprint-14-actions.mjs
       - scripts/sprint-14-action-guards.mjs
       - scripts/sprint-14-isolation.mjs
       - scripts/wait-for-production-release.mjs
       - scripts/stamp-release.mjs
       # The runner exercises both pages; shared dependencies must activate it too.
+      - web/subject-visuals.mjs
+      - web/teacher-today.css
+      - web/teacher-today.mjs
       - web/teacher.*
       - web/teacher-workflows.html
       - web/teacher-workflows.css
@@ -44,6 +48,8 @@ on:
       - supabase/functions/get-student-classes/**
       - supabase/functions/get-teacher-academic-context/**
       - supabase/functions/get-teacher-dashboard/**
+      - supabase/functions/get-teacher-workspace/**
+      - supabase/migrations/20261028172021_teacher_today_workspace.sql
       - supabase/functions/get-teacher-student/**
       - supabase/functions/manage-institutional-invitation/**
       - supabase/functions/manage-institutional-membership/**

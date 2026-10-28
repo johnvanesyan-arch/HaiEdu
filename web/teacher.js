@@ -1,3 +1,5 @@
+import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent} from './teacher-today.mjs';
+import {subjectArtwork} from './subject-visuals.mjs';
 import {renderArchive} from './archive-browser.mjs';
 import { mountWrittenWork } from './written-work.mjs';
 import {assessmentResultMarkup} from './assessment-reporting.mjs';
@@ -10,6 +12,11 @@ const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SU
 const $ = (id) => document.getElementById(id);
 
 let dashboard = null;
+let disposeToday=()=>{};
+let todayBoot=null;
+let lastTeacherUrl=(window.location?.pathname??"")+(window.location?.search??"");
+function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.());}
+function allowTeacherLeave(){if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
 let actorId = null;
 let directoryPages = {};
 let directoryRequestVersion = 0;
@@ -25,6 +32,7 @@ function readOnce(fn,body) {
 }
 const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
 function clearDetail() {
+  disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
   disposeWriting(); disposeWriting=()=>{}; closeDrawer();
@@ -94,12 +102,13 @@ function navigationSelection() {
   };
 }
 
-function teacherViewUrl(view) {
+function teacherViewUrl(view,clearToday=false) {
   const url = new URL(window.location.href);
   url.searchParams.set("view", TEACHER_VIEWS.has(view) ? view : "home");
   if (view !== "class") {
     ["class", "assignment", "release", "unit", "source"].forEach((key) => url.searchParams.delete(key));
   }
+  if(clearToday||view!=="home")["todayWork","queueAssignment"].forEach(k=>url.searchParams.delete(k));
   url.hash = "";
   return `${url.pathname}${url.search}`;
 }
@@ -115,12 +124,14 @@ function renderTeacherView(view = navigationSelection().view) {
   document.title = `${title} · HaiEdu`;
   window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
   window.scrollTo({ top: 0, behavior: "auto" });
+  lastTeacherUrl=window.location.pathname+window.location.search;
+  if(selected==="home"&&dashboard&&$("teacherToday")){disposeToday();const version=dashboardLoadVersion;disposeToday=mountTeacherToday({root:$("teacherToday"),supabase,actorId,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,initialResponse:todayBoot,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});todayBoot=null;}
 }
 
 function navigateTeacherView(view, push = true) {
-  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+  if (!allowTeacherLeave()) return;
   clearDetail();
-  const next = teacherViewUrl(view);
+  const next = teacherViewUrl(view,push);
   const current = `${window.location.pathname}${window.location.search}`;
   if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
   renderTeacherView(view);
@@ -129,6 +140,7 @@ function navigateTeacherView(view, push = true) {
 
 function syncNavigation(klass, push = false) {
   if (!klass) return;
+  rememberTeacherClass(actorId,klass.id);
   const url = new URL(window.location.href);
   url.searchParams.set("view", "class");
   url.searchParams.set("class", klass.id);
@@ -143,9 +155,11 @@ function syncNavigation(klass, push = false) {
     url.searchParams.delete("release");
     url.searchParams.delete("unit");
   }
+  ["todayWork","queueAssignment"].forEach(k=>url.searchParams.delete(k));
   const next = `${url.pathname}${url.search}`;
   const current = `${window.location.pathname}${window.location.search}`;
   if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
+  lastTeacherUrl=window.location.pathname+window.location.search;
   if ($("classDetailBackLink")) {
     $("classDetailBackLink").href = klass.isActive ? "?view=classes" : "?view=archive";
     $("classDetailBackLink").textContent = klass.isActive
@@ -304,6 +318,7 @@ async function loadDashboard(sessionOverride = null) {
   const body=navigation.view==="class" && (navigation.classId||navigation.selection)
     ? {readMode:"class",...(navigation.classId?{classId:navigation.classId}:{}),...(navigation.selection?{selection:navigation.selection}:{})}
     : {readMode:"directory",archive:navigation.view==="archive"};
+  if(navigation.view==="home"&&$("teacherToday"))todayBoot=readOnce("get-teacher-workspace",todayRequest(actorId));
   const {data,error}=await dashboardRead(body);
   if (version !== dashboardLoadVersion) return;
   if (error) {
@@ -336,6 +351,7 @@ async function loadDashboard(sessionOverride = null) {
   $("studentCountScope").textContent=dashboard.directoryMode?"Տվյալները՝ դասարանի էջում":"բոլոր դասարաններում";
   $("supportCountScope").textContent=dashboard.directoryMode?"Տվյալները՝ դասարանի էջում":"աջակցության կարիք ունեցող աշակերտ";
 
+  $("summaryCards").classList.toggle("hidden",dashboard.directoryMode);
   renderClassList();
   const selected = classes.find((klass) => klass.id === selectedClassId)
     ?? classes.find((klass) => klass.isActive)
@@ -361,6 +377,7 @@ function createClassListButton(klass) {
   btn.className = `teacher-class-button${klass.id === selectedClassId ? " active" : ""}${klass.isActive ? "" : " archived"}`;
   btn.type = "button";
   btn.innerHTML = `
+    ${subjectArtwork(klass.subjectCode)}
     <strong>${escapeHtml(klass.name)}</strong>
     <span>${escapeHtml([klass.subjectName, klass.schoolName, klass.academicYear].filter(Boolean).join(" · "))}</span>
     <span class="class-list-meta"><span>${klass.studentCount==null?"Բացել դասարանը":klass.studentCount+" աշակերտ"}</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
@@ -466,7 +483,8 @@ async function renameSelectedClass(event, institutional) {
 }
 
 async function selectClass(id, { pushNavigation = false, navigate = true, detailReady=false, selection=null, assignmentId=null } = {}) {
-  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+  if (!allowTeacherLeave()) return;
+  disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
@@ -579,7 +597,7 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
       $("teacherAssignResourceLink").href='./resource-library.html?'+resourceParams+'&intent=assign';
       $("teacherWorkflowContext").textContent=[klass.name,klass.subjectName,klass.selectedUnit.unitTitleHy,klass.schoolName,klass.academicYear].filter(Boolean).join(' · ');
       $("teacherOpenWrittenWork").onclick = () => {
-        if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+        if (!allowTeacherLeave()) return;
         disposeWriting();
         const selected = klass.selectedUnit;
         const request = institutionalUnitLoadVersion;
@@ -636,7 +654,7 @@ async function changeInstitutionalUnit(event) {
   if (!option || (option.unitId === klass.selectedUnit?.unitId
     && option.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId)) return;
   // Decide before invalidating the current writer or changing dashboard data.
-  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) {
+  if (!allowTeacherLeave()) {
     event.target.value = `${klass.selectedUnit.curriculumReleaseId}:${klass.selectedUnit.unitId}`;
     return;
   }
@@ -1342,7 +1360,7 @@ async function removeStudent(studentId, studentName) {
 }
 
 $("signOutBtn").addEventListener("click", signOut);
-$("refreshBtn").addEventListener("click", loadDashboard);
+$("refreshBtn").addEventListener("click", () => { if(allowTeacherLeave())void loadDashboard(); });
 $("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
 $("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);
@@ -1428,7 +1446,8 @@ function bootstrapTeacherDashboard(session) {
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT" || !session || (actorId && actorId!==session.user?.id)) {
     const switched=actorId && session?.user?.id && actorId!==session.user.id;
-    if(switched)window.history.replaceState({},"",teacherViewUrl("home"));
+    clearTeacherRecent(actorId);
+    if(switched)window.history.replaceState({},"",teacherViewUrl("home",true));
     selectedClassId=null;selectedAssignmentId=null;
     dashboardLoadVersion++;
     clearDetail(); directoryRequestVersion++; directoryPages={}; pendingReads.clear();

@@ -7,8 +7,8 @@ let browser;before(async()=>browser=await chromium.launch({headless:true}));afte
 const calls=page=>page.evaluate(()=>window.__teacherFixture.calls);
 const nav=(page,v)=>page.locator('.hm-role-nav a[href$="view='+v+'"]').click();
 for(const archives of [1,1000])test(`home discovery and loaded navigation avoid detail/invitation reads with ${archives} archives`,async t=>{
- const {page,errors}=await fixture(browser,t,{archives});let c=await calls(page);assert.equal(c.length,1);assert.equal(c[0].body.readMode,'directory');await expect(page.locator('#supportCount')).toHaveText('—');
- await nav(page,'classes');await expect(page.locator('#classList .teacher-class-button')).toHaveCount(2);await nav(page,'home');await nav(page,'classes');assert.equal((await calls(page)).length,1);
+ const {page,errors}=await fixture(browser,t,{archives});let c=await calls(page);assert.equal(c.filter(r=>r.fn==='get-teacher-dashboard').length,1);assert.equal(c.find(r=>r.fn==='get-teacher-dashboard').body.readMode,'directory');await expect(page.locator('#supportCount')).toHaveText('—');
+ await nav(page,'classes');await expect(page.locator('#classList .teacher-class-button')).toHaveCount(2);await nav(page,'home');await nav(page,'classes');assert.equal((await calls(page)).filter(r=>r.fn==='get-teacher-dashboard').length,1);
  await page.locator('#classList .teacher-class-button').first().click();await expect(page.locator('#rosterAnalyticsCard')).toBeVisible();c=await calls(page);assert.equal(c.filter(r=>r.body.readMode==='class').length,1);assert.equal(c.filter(r=>r.fn==='manage-student-invitation').length,0);
  await page.locator('#institutionalInvitationHistory summary').click();await expect.poll(async()=>(await calls(page)).filter(r=>r.fn==='manage-student-invitation').length).toBe(1);assert.deepEqual(errors,[]);
 });
@@ -32,7 +32,7 @@ test('leaving an archive search cancels its debounce and ignores an already pend
 
 test('initial directory failure offers a retry without another sign-in',async t=>{
  const {page,errors}=await fixture(browser,t,{initialFailure:true});await expect(page.locator('#teacherLoading')).toBeHidden();await expect(page.locator('#dashboardPanel')).toBeHidden();
- await page.evaluate(()=>window.__teacherFixture.fail=[]);await page.locator('#teacherDashboardRetry').click();await expect(page.locator('#dashboardPanel')).toBeVisible();await expect(page.locator('#teacherDashboardRetry')).toBeHidden();assert.equal((await calls(page)).length,2);assert.deepEqual(errors,[]);
+ await page.evaluate(()=>window.__teacherFixture.fail=[]);await page.locator('#teacherDashboardRetry').click();await expect(page.locator('#dashboardPanel')).toBeVisible();await expect(page.locator('#teacherDashboardRetry')).toBeHidden();assert.equal((await calls(page)).filter(r=>r.fn==='get-teacher-dashboard').length,2);assert.deepEqual(errors,[]);
 });
 
 test('library, resource assignment and writing review have separate context-scoped entry points without eager review reads',async t=>{
