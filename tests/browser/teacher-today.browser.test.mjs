@@ -56,11 +56,11 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  assert.equal(await p.locator('.today-class-card').count(),0);
  await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 աշխատանք');
  await p.locator('[data-today-continue] button').click();await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
- const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('a[href*="view=classes"]').first().click();
+ const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
  assert.equal(p.url(),reviewURL);assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
- p.once('dialog',d=>d.accept());await p.locator('a[href*="view=classes"]').first().click();
+ p.once('dialog',d=>d.accept());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
  assert.equal(await p.locator('[data-writing-feedback]').count(),0);
- await p.locator('a[href*="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
+ await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
  let count=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
  assert.equal((await calls(p,'get-teacher-workspace')).length,count+1);
  await p.evaluate(()=>window.__today.holds.push('get-teacher-workspace'));await p.locator('[data-today-refresh]').click();

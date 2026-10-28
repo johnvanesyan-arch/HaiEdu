@@ -139,7 +139,7 @@ begin
   join public.written_task_versions t on t.id=w.task_version_id and t.curriculum_release_id=r.id and t.unit_id=u.id and t.subject_program_id=a.subject_program_id
   join public.written_submissions su on su.id=w.current_submission_id and su.work_id=w.id
   join public.profiles p on p.id=w.student_id
-  where w.state in ('submitted','reviewed','changes_requested')
+  where w.state in ('submitted','reviewed','changes_requested') and (w.state='submitted' or w.id=p_work)
  ), entries as materialized (
   select distinct on(id) id,state,submitted_at,assignment_id,class_id,jsonb_build_object('id',id,'state',state,'revision',revision,
    'submittedAt',submitted_at,'studentName',student_name,'taskTitle',task_title,'classId',class_id,'className',class_name,
@@ -162,7 +162,7 @@ begin
   where c.teacher_id=p_actor and c.school_id is null and c.is_active
    and not exists(select 1 from public.institutional_memberships m where m.person_id=p_actor and m.role='teacher')
  ), card_page as (
-  select * from cards order by coalesce((select ordinal from jsonb_array_elements_text(p_recent) with ordinality x(v,ordinal) where v=class_id::text),100),class_name,class_id,assignment_id limit 6
+  select * from cards order by coalesce((select min(ordinal) from jsonb_array_elements_text(p_recent) with ordinality x(v,ordinal) where v=class_id::text),100),class_name,class_id,assignment_id limit 6
  )
  select jsonb_build_object('version','teacher-workspace-v1','snapshotAt',now(),
   'authorizedFilter',p_assignment is null or exists(select 1 from assignments where assignment_id=p_assignment),
@@ -173,7 +173,7 @@ begin
   'hasMore',(select count(*)>12 from page),
   'nextCursor',(select jsonb_build_object('submittedAt',submitted_at,'id',id) from page order by submitted_at,id offset 11 limit 1),
   'selectedWork',(select entry from entries where id=p_work),
-  'cards',coalesce((select jsonb_agg(card order by coalesce((select ordinal from jsonb_array_elements_text(p_recent) with ordinality x(v,ordinal) where v=class_id::text),100),class_name,class_id,assignment_id) from card_page),'[]'),
+  'cards',coalesce((select jsonb_agg(card order by coalesce((select min(ordinal) from jsonb_array_elements_text(p_recent) with ordinality x(v,ordinal) where v=class_id::text),100),class_name,class_id,assignment_id) from card_page),'[]'),
   'classCount',(select count(*) from cards),'cardsPartial',(select count(*)>6 from cards)) into result;
  if result->'authorizedFilter' <> 'true' or result->'authorizedWork' <> 'true' then
   raise exception 'workspace_context_unavailable' using errcode='42501';end if;

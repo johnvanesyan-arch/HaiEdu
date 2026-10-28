@@ -44,6 +44,7 @@ test('direct work selector derives its actual context and denies foreign or draf
 });
 test('recent class hints are reauthorized and never return foreign class metadata',async()=>{
  const a=await read({recent:[id(322),id(321)]});assert.equal(a.cards.length,1);assert.equal(a.cards[0].recent,true);assert.equal(a.cards[0].id,id(321));
+ assert.equal((await read({recent:[id(321),id(321)]})).cards.length,1);
  await assert.rejects(()=>read({recent:Array(5).fill(id(321))}),/workspace_request_invalid/);
 });
 for(const [name,sql] of [

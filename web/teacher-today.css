@@ -1,4 +1,4 @@
-#teacherToday { display:grid; gap:1.25rem; margin-block:1.25rem; min-width:0; overflow-wrap:anywhere; }
+#teacherToday { display:grid; grid-template-columns:minmax(0,1fr); gap:1.25rem; margin-block:1.25rem; min-width:0; overflow-wrap:anywhere; }
 #teacherToday :is(.today-overview,.today-queue) { padding:1.5rem; min-width:0; }
 #teacherToday :is(h2,h3,p) { margin-block:.4rem; }
 #teacherToday .today-overview { background:var(--forest-hero); }
@@ -20,3 +20,5 @@
 #teacherToday .written-work { padding:1.5rem; }
 @media(max-width:1100px) { .today-class-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:700px) { .today-class-grid,.today-work-row { grid-template-columns:minmax(0,1fr); } #teacherToday :is(.today-overview,.today-queue,.written-work) { padding:1rem; } }
+
+#teacherToday .today-heading>* { min-width:0; max-width:100%; overflow-wrap:anywhere; }
