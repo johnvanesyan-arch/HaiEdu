@@ -18,7 +18,9 @@ body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-s
   overflow-wrap:break-word;
   background:var(--forest-canvas); color:var(--forest-ink);
 }
-body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(h1,h2,h3,p,label,legend,button,a,summary) { letter-spacing:normal; word-break:normal; overflow-wrap:break-word; }
+body:is([data-role-workspace],[data-staff-account],[data-staff-preview]) :is(h1,h2,h3,p,label,legend,button,a,summary) { letter-spacing:normal; word-break:normal; overflow-wrap:break-word; }
+/* Keep the resource form's existing last-resort wrapping for oversized words. */
+body[data-resource-staff] :is(h1,h2,h3,p,label,legend,button,a,summary) { letter-spacing:normal; word-break:normal; }
 body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h1 { font-size:2rem; line-height:1.3; }
 body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h2 { font-size:1.375rem; line-height:1.45; }
 body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h3 { font-size:1.125rem; line-height:1.5; }
