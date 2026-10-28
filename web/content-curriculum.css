@@ -1,8 +1,8 @@
 .curriculum-card {
   margin-bottom: 16px;
   padding: 18px 20px;
-  border: 1px solid #dfe7f1;
-  background: linear-gradient(180deg, #fbfdff 0%, #f7faff 100%);
+  border: 1px solid var(--forest-divider);
+  background: linear-gradient(180deg, var(--forest-quiet) 0%, var(--forest-quiet) 100%);
 }
 
 .curriculum-heading {
@@ -39,8 +39,8 @@
 }
 
 #allContentBtn.active {
-  background: #243b63;
-  border-color: #243b63;
+  background: var(--forest-accent);
+  border-color: var(--forest-accent);
   color: #fff;
 }
 
@@ -50,10 +50,10 @@
   gap: 10px 16px;
   margin: 12px 0 16px;
   padding: 13px 15px;
-  border: 1px solid #dce6f2;
+  border: 1px solid var(--forest-divider);
   border-radius: 12px;
-  background: #f6f9fd;
-  color: #243044;
+  background: var(--forest-quiet);
+  color: var(--forest-ink);
 }
 
 .curriculum-context-card > div {
@@ -67,7 +67,7 @@
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #738096;
+  color: var(--forest-muted);
 }
 
 .curriculum-context-card strong,

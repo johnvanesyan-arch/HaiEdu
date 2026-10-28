@@ -26,6 +26,8 @@ on:
       - web/school-analytics-view.mjs
       - web/config.js
       - web/school-membership-status.js
+      - web/forest-tokens.css
+      - web/staff-forest.css
       - web/role-layout.*
       - web/styles.css
       - web/ux.*

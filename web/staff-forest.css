@@ -1,0 +1,104 @@
+@import "./forest-tokens.css";
+/* Role-neutral staff presentation; existing page services authorize every action.
+   Resource and account surfaces opt in independently of student navigation. */
+html:has(body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview])) { background:var(--forest-canvas); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) {
+  --hm-bg:var(--forest-canvas); --hm-surface:var(--forest-surface);
+  --hm-soft:var(--forest-selected); --hm-text:var(--forest-ink);
+  --hm-muted:var(--forest-muted); --hm-line:var(--forest-divider); --hm-blue:var(--forest-accent);
+  --border:var(--forest-control);
+  --amp-color-bg:var(--forest-canvas); --amp-color-surface:var(--forest-surface);
+  --amp-color-text:var(--forest-ink); --amp-color-text-muted:var(--forest-muted);
+  --amp-color-border:var(--forest-divider); --amp-color-bg-subtle:var(--forest-quiet);
+  --amp-color-success:var(--forest-success); --amp-color-success-soft:var(--forest-success-bg);
+  --amp-color-warning:var(--forest-attention); --amp-color-warning-soft:var(--forest-attention-bg);
+  --amp-color-danger:var(--forest-error); --amp-color-danger-soft:var(--forest-error-bg);
+  --amp-color-info:var(--forest-accent); --amp-color-info-soft:var(--forest-selected);
+  font:1rem/1.6 "Noto Sans Armenian","Noto Sans",Arial,sans-serif;
+  overflow-wrap:break-word;
+  background:var(--forest-canvas); color:var(--forest-ink);
+}
+body:is([data-role-workspace],[data-staff-account],[data-staff-preview]) :is(h1,h2,h3,p,label,legend,button,a,summary) { letter-spacing:normal; word-break:normal; overflow-wrap:break-word; }
+/* Keep the resource form's existing last-resort wrapping for oversized words. */
+body[data-resource-staff] :is(h1,h2,h3,p,label,legend,button,a,summary) { letter-spacing:normal; word-break:normal; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h1 { font-size:2rem; line-height:1.3; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h2 { font-size:1.375rem; line-height:1.45; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) h3 { font-size:1.125rem; line-height:1.5; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(.subtle,.page-lede,.small,.hm-workspace-label,.eyebrow,.panel-kicker,.stat-label) { color:var(--forest-muted); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) a { color:var(--forest-accent); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :focus-visible { outline:3px solid var(--forest-focus); outline-offset:3px; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button,input,select,textarea) { font:inherit; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button,.button-link,summary) { min-height:2.75rem; min-width:0; max-width:100%; white-space:normal; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(input:not([type=checkbox],[type=radio]),select,textarea) { color:var(--forest-ink); background:var(--forest-surface); border:1px solid var(--forest-control); border-radius:.5rem; max-width:100%; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(input[type=checkbox],input[type=radio]) { accent-color:var(--forest-accent); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button,.button-link) { border-radius:.65rem; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button:not(.ghost,.secondary,.danger-btn,.danger,.teacher-class-button,.item-tab-button,.content-queue-tabs button,.guide-tab-nav button),.button-link:not(.ghost,.secondary,.danger)) { color:#fff; background:var(--forest-accent); border:1px solid var(--forest-accent); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button.ghost,button.secondary,a.ghost,a.secondary) { color:var(--forest-accent); border:1px solid var(--forest-control); background:var(--forest-surface); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button,.button-link):hover:not(:disabled) { filter:none; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(button:not(.ghost,.secondary,.danger-btn,.danger,.teacher-class-button,.item-tab-button,.content-queue-tabs button,.guide-tab-nav button),.button-link:not(.ghost,.secondary,.danger)):hover:not(:disabled) { background:var(--forest-hover); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(.ghost,.secondary):hover:not(:disabled) { background:var(--forest-selected); }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) :is(.danger-btn,.danger-zone button,.hm-sidebar-signout) { color:var(--forest-error) !important; background:var(--forest-surface); border:1px solid var(--forest-error) !important; }
+body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) .card { min-width:0; border-color:var(--forest-divider); border-radius:1rem; box-shadow:0 4px 18px rgb(35 57 47 / .04); }
+body[data-role-workspace] :is(.admin-topbar,.admin-view-heading,.security-status-card,.guide-topbar,.section-heading)>div { min-width:0; max-width:100%; }
+body[data-role-workspace] :is(.status-chip,.role-chip,.status-badge,.hm-role-chip) { white-space:normal; max-width:100%; font-size:.875rem; }
+body[data-role-workspace] :is(.status-chip.active,.status-chip.school-active,.roster-status-active) { color:var(--forest-success); background:var(--forest-success-bg); }
+body[data-role-workspace] :is(.status-chip.archived,.status-chip.school-archived,.roster-status-archived) { color:var(--forest-muted); background:var(--forest-quiet); }
+body[data-role-workspace] :is(.status-chip.suspended,.status-chip.deletion_pending,.status-chip.school-ended,.roster-status-ended,.content-chip.fail) { color:var(--forest-error); background:var(--forest-error-bg); }
+body[data-role-workspace] :is(.teacher-topbar,.school-admin-header,.admin-topbar,.content-topbar,.guide-topbar) h1 { font-size:2rem; line-height:1.3; }
+body[data-role-workspace] :is(.teacher-welcome-card,.teacher-onboarding-card,.institutional-generated-code,.teacher-class-button,.admin-action-card,.content-action-card,.quality-stat,.evidence-metric,.privacy-state) { background:var(--forest-surface); color:var(--forest-ink); border-color:var(--forest-divider); }
+body[data-role-workspace].hm-has-role-sidebar .teacher-welcome-card { background:var(--forest-hero); }
+body[data-role-workspace] :is(.teacher-class-button,.admin-action-card,.content-action-card):hover { background:var(--forest-quiet); border-color:var(--forest-control); transform:none; }
+body[data-role-workspace] :is(.teacher-class-button strong,.content-action-card strong,.institutional-generated-code>strong,.mode-kicker,.panel-kicker,.teacher-code-option summary,.institutional-code-option summary) { color:var(--forest-accent); }
+body[data-role-workspace] :is(.teacher-class-button span,.content-action-card p,.content-action-card>span,.institutional-student-empty,.institutional-invitation-empty,.institutional-email-count) { color:var(--forest-muted); }
+body[data-role-workspace] :is(.mode-kicker,.teacher-onboarding-steps>li>span) { background:var(--forest-selected); color:var(--forest-accent); }
+body[data-role-workspace] .mode-kicker { max-width:100%; }
+body[data-role-workspace] .recovery-card ol { grid-template-columns:minmax(0,1fr); }
+body[data-role-workspace] .recovery-card li { min-width:0; }
+body[data-role-workspace] :is(.class-rename-form,.institutional-student-list li,.institutional-invitation-list li,.institutional-batch-results li,.written-response) { background:var(--forest-quiet); border-color:var(--forest-divider); color:var(--forest-ink); }
+body[data-role-workspace] .written-response { border-inline-start-color:var(--forest-accent); }
+body[data-role-workspace] .written-feedback { color:var(--forest-ink); background:var(--forest-feedback-bg); border-inline-start-color:var(--forest-feedback); }
+body[data-role-workspace] .written-error { color:var(--forest-error); }
+body[data-role-workspace] :is(.written-list article,.written-rubric,.written-history,.archive-group) { border-color:var(--forest-divider); background:var(--forest-surface); }
+body[data-staff-account] :is(.privacy-state,.privacy-toggle,.privacy-security-form) { background:var(--forest-quiet); border-color:var(--forest-divider); }
+body[data-staff-account] .privacy-list dt { color:var(--forest-muted); }
+body[data-staff-account] .privacy-list dd { min-width:0; overflow-wrap:anywhere; }
+body[data-staff-account] .student-account-sections { display:flex; flex-wrap:wrap; gap:.75rem; margin-block:1rem; }
+body[data-staff-account] .student-account-sections a { display:inline-flex; align-items:center; min-height:2.75rem; padding:.5rem .75rem; border-radius:.5rem; background:var(--forest-selected); }
+body[data-staff-account] .student-account-symbol { color:var(--forest-accent); }
+body[data-staff-account] .student-account-symbol svg { width:2rem; height:2rem; }
+body[data-staff-account] .topbar { align-items:start; flex-wrap:wrap; padding:1.5rem; background:var(--forest-hero); border-radius:1rem; }
+body[data-role-workspace].hm-has-role-sidebar .teacher-header-actions { display:none; }
+body[data-role-workspace].hm-has-role-sidebar :is(.school-admin-header,.admin-topbar,.content-topbar,.guide-topbar) #signOutBtn { display:none !important; }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { width:var(--hm-sidebar-width,232px); box-shadow:none; padding:1.5rem .875rem 1rem; overflow-y:auto; }
+body:is([data-role-workspace],[data-staff-preview]) .hm-workspace-label { font-size:.875rem; }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { min-height:2.75rem; display:flex; align-items:center; line-height:1.5; color:var(--forest-muted); }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a[aria-current=page] { color:var(--forest-accent); background:var(--forest-selected); }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot a { display:flex; align-items:center; min-height:2.75rem; }
+body[data-role-workspace] :is(.hm-loading-nav span,.hm-loading-card::before,.hm-loading-card span) { background:linear-gradient(90deg,var(--forest-quiet) 25%,var(--forest-canvas) 50%,var(--forest-quiet) 75%); background-size:220% 100%; }
+.hm-role-breadcrumb { margin:0 0 1rem; color:var(--forest-muted); font-size:.875rem; }
+.hm-role-breadcrumb ol { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; list-style:none; padding:0; margin:0; }
+.hm-role-breadcrumb li+li::before { content:"/"; margin-inline-end:.5rem; }
+.hm-role-breadcrumb a { display:inline-flex; align-items:center; min-height:2.75rem; }
+.staff-status { display:inline-block; max-width:100%; padding:.25rem .65rem; border-radius:.5rem; font-size:.875rem; color:var(--forest-muted); background:var(--forest-quiet); }
+.staff-status[data-state=ready] { color:var(--forest-success); background:var(--forest-success-bg); }
+.staff-status[data-state=pending] { color:var(--forest-attention); background:var(--forest-attention-bg); }
+.staff-status[data-state=feedback] { color:var(--forest-feedback); background:var(--forest-feedback-bg); }
+.staff-status[data-state=error] { color:var(--forest-error); background:var(--forest-error-bg); }
+@media (max-width:1100px) {
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { position:static; width:100%; display:grid; grid-template-columns:1fr auto; gap:.5rem; overflow:visible; padding:1rem; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-brand img { width:7.5rem; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav { grid-column:1/-1; display:flex; overflow-x:auto; max-width:100%; white-space:normal; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { flex:0 0 auto; max-width:16rem; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; padding-top:.5rem; border-top:1px solid var(--forest-divider); }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>a { display:flex; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>span { display:none; }
+}
+@media (max-width:760px) {
+  body:is([data-role-workspace],[data-staff-account],[data-staff-preview]) h1,
+  body[data-role-workspace] :is(.teacher-topbar,.school-admin-header,.admin-topbar,.content-topbar,.guide-topbar) h1 { font-size:1.75rem; }
+  body[data-staff-account] .privacy-grid { grid-template-columns:minmax(0,1fr); }
+}
+@media (prefers-reduced-motion:reduce) {
+  body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) *,
+  body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) *::before { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+}

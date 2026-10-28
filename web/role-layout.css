@@ -1,4 +1,5 @@
-/* Shared visual language for the authenticated HaiEdu workspaces. */
+@import "./staff-forest.css";
+/* Shared layout; the role-neutral Forest skin scopes staff presentation. */
 :root {
   --hm-bg: #f5f9ff;
   --hm-surface: #fff;

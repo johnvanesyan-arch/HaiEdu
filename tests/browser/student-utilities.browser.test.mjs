@@ -34,7 +34,7 @@ for(const route of ['privacy.html','join.html','account-access.html?view=registe
  assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name!=='get-my-privacy')),false);assert.deepEqual(errors,[]);
 });
 test('shared account keeps staff presentation and removes learner theme on signout',async t=>{
- const staff=await fixture(t,{role:'teacher'});assert.equal(await staff.page.locator('body[data-haiedu-student]').count(),0);assert.equal(await staff.page.locator('.student-account-sections').isVisible(),false);
+ const staff=await fixture(t,{role:'teacher'});assert.equal(await staff.page.locator('body[data-haiedu-student]').count(),0);assert.equal(await staff.page.locator('.student-account-sections').isVisible(),true);assert.equal(await staff.page.locator('body[data-staff-account]').count(),1);
  const learner=await fixture(t);await learner.page.evaluate(()=>window.__signout());assert.equal(await learner.page.locator('body[data-haiedu-student]').count(),0);assert.equal(await learner.page.locator('#content').isVisible(),false);
  assert.deepEqual([...staff.errors,...learner.errors],[]);
 });
@@ -45,7 +45,7 @@ for(const role of ['student','teacher','school_admin','content_admin','admin'])t
  const measure=()=>page.evaluate(()=>({canvas:getComputedStyle(document.body).backgroundColor,header:getComputedStyle(document.querySelector('.topbar')).backgroundColor,title:getComputedStyle(document.querySelector('h1')).fontSize}));
  const before=await measure();assert.ok(await page.locator('.topbar').evaluate(e=>e.getBoundingClientRect().height<420),'account loading header must not stretch a flex basis into a tall blank area');assert.equal(before.canvas,'rgb(248, 250, 248)');assert.equal(before.header,'rgb(255, 255, 255)');assert.equal(await page.locator('#content').isVisible(),false);
  await page.evaluate(()=>window.__releasePrivacy());await page.locator('#content:not(.hidden)').waitFor();
- const after=await measure();if(role==='student')assert.equal(after.canvas,'rgb(245, 246, 239)');else assert.notEqual(after.canvas,'rgb(245, 246, 239)');assert.equal(await page.locator('body[data-haiedu-student]').count(),role==='student'?1:0);assert.equal(await page.locator('#accountHomeLink').getAttribute('href'),({student:'./index.html',teacher:'./teacher.html?view=home',school_admin:'./school-admin.html',content_admin:'./content.html',admin:'./admin.html'})[role]);
+ const after=await measure();assert.equal(after.canvas,'rgb(245, 246, 239)');assert.equal(await page.locator('body[data-staff-account]').count(),role==='student'?0:1);assert.equal(await page.locator('body[data-haiedu-student]').count(),role==='student'?1:0);assert.equal(await page.locator('#accountHomeLink').getAttribute('href'),({student:'./index.html',teacher:'./teacher.html?view=home',school_admin:'./school-admin.html',content_admin:'./content.html',admin:'./admin.html'})[role]);
  assert.deepEqual(errors,[]);
 });
 test('account failure remains neutral and signout shows the public Forest gateway',async t=>{

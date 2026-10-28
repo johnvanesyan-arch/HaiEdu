@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+  <title>Ուսուցչի աշխատասեղանի նախադիտում · HaiEdu</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/haiedu-icon.svg?v=20260928">
+  <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./ux.css"><link rel="stylesheet" href="./role-layout.css">
+  <link rel="stylesheet" href="./teacher-workspace-preview.css">
+</head>
+<body data-staff-preview class="hm-has-role-sidebar">
+  <a class="skip-link" href="#previewMain">Անցնել բովանդակությանը</a>
+  <aside class="hm-role-sidebar" aria-label="Ուսուցչի նախադիտում">
+    <a class="hm-role-brand" href="#home"><img src="./assets/haiedu-primary.svg" alt="HaiEdu"></a>
+    <span class="hm-workspace-label">Ուսուցիչ · նախադիտում</span>
+    <nav class="hm-role-nav" aria-label="Նախադիտման նավարկություն">
+      <a href="#home" data-preview-view="home">Գլխավոր</a>
+      <a href="#classes" data-preview-view="classes">Իմ դասարանները</a>
+      <a href="#review" data-preview-view="review">Գրավորի ստուգում</a>
+    </nav>
+    <div class="hm-role-foot"><span>Միայն հորինված տվյալներ</span><a href="./teacher.html">Վերադառնալ աշխատասեղան</a><a href="./teacher-workflows.html">Գործողությունների ուղեցույց</a></div>
+  </aside>
+  <main id="previewMain" tabindex="-1">
+    <div class="preview-notice" role="note"><strong>Դիզայնի նախադիտում · հորինված տվյալներ</strong><p>Սա գործող հաշիվ չէ։ Այստեղ կատարված ընտրություններն ու մեկնաբանությունները չեն պահպանվում և չեն ուղարկվում աշակերտներին։</p></div>
+    <nav class="hm-role-breadcrumb" aria-label="Էջի ուղի"><ol><li><a href="#home">Ուսուցիչ</a></li><li id="previewCrumb" aria-current="page">Գլխավոր</li></ol></nav>
+    <header class="preview-header"><div><p class="eyebrow">Աշխատասեղան՝ հանգիստ ու հստակ</p><h1 id="previewTitle" tabindex="-1">Բարի գալուստ, Աննա</h1><p class="subtle" id="previewSubtitle">Ընտրեք դասարանը, ապա շարունակեք ստուգումը։</p></div><span class="staff-status">2026–2027 · օրինակ</span></header>
+    <section class="preview-controls" aria-labelledby="scenarioTitle"><label id="scenarioTitle" for="previewScenario">Ցուցադրվող վիճակ<select id="previewScenario"><option value="ready">Տվյալներով</option><option value="empty">Դատարկ</option><option value="loading">Բեռնվում է</option><option value="error">Բեռնման սխալ</option><option value="archived">Արխիվացված</option></select></label><p class="subtle">Փորձեք նավարկությունը և տարբեր վիճակները։ Բոլոր դասարաններն ու աշխատանքները հորինված են։</p></section>
+    <div id="previewContent"></div>
+    <p id="previewMessage" role="status" aria-live="polite"></p>
+    <noscript><p>Նախադիտման նավարկության համար միացրեք JavaScript-ը։ <a href="./teacher-workflows.html">Կարդալ գործողությունների ուղեցույցը</a></p></noscript>
+  </main>
+  <script type="module" src="./teacher-workspace-preview.mjs"></script>
+</body>
+</html>
