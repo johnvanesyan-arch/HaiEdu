@@ -162,5 +162,12 @@
     "artifactSha256": "0a0a8791e7fbff03d4f6e4d1a2c036d359a43f638b7866827f9def8d588b56d6",
     "report": "docs/evidence/workflow-boundaries-acceptance-20261028.json"
   },
-  "documentationClosure": "Documentation/evidence only; retain verified unchanged runtime and source-verify Notion 4.100 against the merged closure commit."
+  "documentationClosure": "Final visual card spacing plus documentation/evidence. Functional JavaScript/backend remain unchanged; retain 149-check live evidence and source-verify Notion 4.100 against the merged closure commit.",
+  "finalVisualPolish": {
+    "file": "web/teacher.css",
+    "change": "Explicit 1.25rem internal padding for the new teacher workflow cards.",
+    "verification": "Current required native browser gate, padding/reflow assertion, desktop/mobile screenshots and production CSS source readback.",
+    "functionalJavaScriptUnchanged": true,
+    "retainedLiveAcceptanceRun": 40707355174
+  }
 }
