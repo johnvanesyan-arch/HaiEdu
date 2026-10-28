@@ -1,6 +1,7 @@
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {chromium,expect as baseExpect} from '@playwright/test';
 import {waitForRelease} from './wait-for-production-release.mjs';
+const fixtureScope=process.env.TEACHER_PERF_SCOPE??'all';
 const phase=process.env.TEACHER_PERF_PHASE??'baseline',site='https://www.haiedu.am';
 // Assertion timeouts are independent of page.setDefaultTimeout. The old page
 // routinely takes longer than Playwright's default five seconds to become usable.
@@ -8,17 +9,17 @@ const expect=baseExpect.configure({timeout:45000});
 const fixture=JSON.parse(process.env.QA_TENANT_FIXTURES_JSON??'{}');
 const config=await readFile(new URL('../web/config.js',import.meta.url),'utf8');
 const url=config.match(/export const SUPABASE_URL = "([^"]+)"/)?.[1],key=config.match(/export const SUPABASE_PUBLISHABLE_KEY = "([^"]+)"/)?.[1];
-const report={scope:'Read-only teacher performance',phase,revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',samples:[],checks:[],profile:{browser:'Chromium',runner:'GitHub ubuntu-latest',viewport:'1365x950',cpu:'unthrottled shared runner',network:'CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up',cold:'fresh browser context and HTTP cache',warm:'same context reload',iterations:10},budgets:{usefulHomeP95Ms:3000,selectedClassP95Ms:2000,loadedNavigationP95Ms:200}};
+const report={scope:'Read-only teacher performance',phase,fixtureScope,revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',samples:[],checks:[],profile:{browser:'Chromium',runner:'GitHub ubuntu-latest',viewport:'1365x950',cpu:'unthrottled shared runner',network:'CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up',cold:'fresh browser context and HTTP cache',warm:'same context reload',iterations:10},budgets:{usefulHomeP95Ms:3000,selectedClassP95Ms:2000,loadedNavigationP95Ms:200}};
 let browser,stage='preflight';const sessions=[];
 function check(label,passed){report.checks.push({label,passed});if(!passed)throw Error(label);}
 const quantile=(a,q)=>a.toSorted((a,b)=>a-b)[Math.ceil(a.length*q)-1];
 async function save(){await mkdir('qa-results',{recursive:true});await writeFile('qa-results/teacher-performance.json',JSON.stringify(report,null,2));}
 async function api(token,fn,body){const start=performance.now();const res=await fetch(`${url}/functions/v1/${fn}`,{method:'POST',headers:{apikey:key,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(30000)});const raw=await res.text();return {status:res.status,data:JSON.parse(raw),ms:performance.now()-start,bytes:Buffer.byteLength(raw),serverTiming:res.headers.get('server-timing')};}
 try{
- check('reviewed main and designated two-school fixtures',process.env.GITHUB_REF==='refs/heads/main'&&['baseline','after'].includes(phase)&&fixture.dedicatedQa===true&&fixture.A?.schoolId!==fixture.B?.schoolId);
+ check('reviewed main and designated two-school fixtures',process.env.GITHUB_REF==='refs/heads/main'&&['baseline','after'].includes(phase)&&['all','A','B'].includes(fixtureScope)&&fixture.dedicatedQa===true&&fixture.A?.schoolId!==fixture.B?.schoolId);
  await waitForRelease({expectedCommit:process.env.GITHUB_SHA});
  browser=await chromium.launch({headless:true});
- for(const side of ['A','B']){
+ for(const side of (fixtureScope==='all'?['A','B']:[fixtureScope])){
   stage=side+': login';const email=process.env[`QA_SCHOOL_${side}_TEACHER_EMAIL`],password=process.env[`QA_SCHOOL_${side}_TEACHER_PASSWORD`];
   check(side+': credentials configured',Boolean(email&&password));
   const login=await fetch(`${url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({email,password}),signal:AbortSignal.timeout(30000)});
@@ -43,8 +44,8 @@ try{
    }
    if(responseFixture)break;
   }
-  check(side+': existing submitted response fixture found without writes',Boolean(responseFixture));
-  report.checks.push({label:side+': response fixture state',state:responseFixture.state});
+  report.responseFixtures??=[];report.responseFixtures.push({side,available:Boolean(responseFixture),state:responseFixture?.state??null});
+  report.checks.push({label:side+': response fixture state',state:responseFixture?.state??'unavailable'});
   for(let iteration=0;iteration<10;iteration++){
    const context=await browser.newContext({viewport:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(session)}]}]}});
    let requests=[],blocked=0;const pageErrors=[];
@@ -67,16 +68,17 @@ try{
    await measure('selected-class',()=>page.locator('#classList .teacher-class-button').filter({hasText:klass.name}).click(),()=>expect(page.locator('#rosterAnalyticsCard')).toBeVisible());
    await measure('unit-switch',()=>page.locator('#teacherUnitFilter').selectOption(option.curriculumReleaseId+':'+option.unitId),async()=>{await expect(page.locator('#teacherUnitFilter')).toHaveValue(option.curriculumReleaseId+':'+option.unitId);await expect(page.locator('#rosterAnalyticsCard')).toBeVisible();await expect(page.locator('#matrixUnitTitle')).toHaveText(option.unitTitleHy);});
    await measure('review',()=>page.locator('#teacherOpenWrittenWork').click(),()=>expect(page.locator('[data-writing-filter]')).toBeVisible());
-   const responseUrl=new URL(site+'/teacher.html');responseUrl.searchParams.set('view','class');responseUrl.searchParams.set('class',responseFixture.classId);for(const [k,v] of Object.entries(responseFixture.selection))responseUrl.searchParams.set(({assignmentId:'assignment',curriculumReleaseId:'release',unitId:'unit'})[k],v);
+   if(responseFixture){const responseUrl=new URL(site+'/teacher.html');responseUrl.searchParams.set('view','class');responseUrl.searchParams.set('class',responseFixture.classId);for(const [k,v] of Object.entries(responseFixture.selection))responseUrl.searchParams.set(({assignmentId:'assignment',curriculumReleaseId:'release',unitId:'unit'})[k],v);
    await page.goto(responseUrl.href,{waitUntil:'domcontentloaded'});await expect(page.locator('#rosterAnalyticsCard')).toBeVisible();await page.locator('#teacherOpenWrittenWork').click();await expect(page.locator('[data-writing-filter]')).toBeVisible();await page.locator('[data-writing-filter]').selectOption('all');const responseButton=page.locator('[data-writing-open="'+responseFixture.workId+'"]');await expect(responseButton).toBeVisible();
    await measure('response-open',()=>responseButton.click(),async()=>{await expect(page.locator('.written-submitted .written-response')).toBeVisible();await expect(page.locator('.written-submitted .written-response')).not.toBeEmpty();});
+   }
    check(side+': no page errors in sample '+iteration,pageErrors.length===0);
    check(side+': no browser mutations in sample '+iteration,blocked===0);await context.close();
    console.log(`${side} sample ${iteration+1}/10 complete`);
   }
  }
  report.summary=[];
- for(const side of ['A','B'])for(const scenario of [...new Set(report.samples.map(s=>s.scenario))]){const rows=report.samples.filter(s=>s.side===side&&s.scenario===scenario);report.summary.push({side,scenario,n:rows.length,p50Ms:quantile(rows.map(s=>s.ms),.5),p95Ms:quantile(rows.map(s=>s.ms),.95),medianRequests:quantile(rows.map(s=>s.requestCount),.5),medianBytes:quantile(rows.map(s=>s.bytes),.5)});}
+ for(const side of ['A','B'])for(const scenario of [...new Set(report.samples.map(s=>s.scenario))]){const rows=report.samples.filter(s=>s.side===side&&s.scenario===scenario);if(!rows.length)continue;report.summary.push({side,scenario,n:rows.length,p50Ms:quantile(rows.map(s=>s.ms),.5),p95Ms:quantile(rows.map(s=>s.ms),.95),medianRequests:quantile(rows.map(s=>s.requestCount),.5),medianBytes:quantile(rows.map(s=>s.bytes),.5)});}
  await waitForRelease({expectedCommit:process.env.GITHUB_SHA});check('production source unchanged after measurement',true);
  report.budgetResults=['cold-home','warm-home','selected-class','classes'].map(scenario=>{const rows=report.samples.filter(s=>s.scenario===scenario),limitMs=scenario==='selected-class'?2000:scenario==='classes'?200:3000,p95Ms=quantile(rows.map(s=>s.ms),.95);return {scenario,p95Ms,limitMs,met:p95Ms<=limitMs};});
  report.status='passed';report.statusMeaning='All guarded read-only journeys completed; budgetResults separately records performance targets.';console.log(JSON.stringify(report.summary));

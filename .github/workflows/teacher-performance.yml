@@ -7,6 +7,11 @@ on:
         options: [baseline, after]
         default: baseline
         required: true
+      fixtureScope:
+        type: choice
+        options: [all, A, B]
+        default: all
+        required: true
   push:
     branches: [main]
     paths:
@@ -33,6 +38,7 @@ jobs:
       - name: Measure only designated teacher reads
         run: node scripts/teacher-performance-acceptance.mjs
         env:
+          TEACHER_PERF_SCOPE: ${{ inputs.fixtureScope || 'all' }}
           TEACHER_PERF_PHASE: ${{ inputs.phase || 'baseline' }}
           QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
           QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
