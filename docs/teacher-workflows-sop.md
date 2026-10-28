@@ -1,8 +1,8 @@
 # Teacher workflow SOP — version 1.3
 
-2026-10-28 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
+2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
 
-The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Original B.8.2 baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`; B.11 implementation: `358af1ed89746f1919ea78582895ffcb96e346bd`.
+The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Original B.8.2 baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`; B.11 implementation: `358af1ed89746f1919ea78582895ffcb96e346bd`; B.12.1 preview implementation: `df051fd1853b6f76421cf11ca24be903e1177694`.
 
 ## Purpose and scope
 
@@ -83,3 +83,5 @@ Release verification: all five required PR/main gates pass (1,488 unit/integrati
 **B.10 verification:** [Today delivery contract](teacher-today-workspace.md) records the new scoped metadata service and direct review path. It does not change writing publication, submission, grading or the original class/unit review procedure. Final owner usability remains B.12.
 
 **B.11 verification:** [Feedback contract/evidence](teacher-feedback-workspace.md) records private autosave, own comments and explicit atomic publication. PR/main gates pass 1,526 unit/integration and 241 native checks; production reads pass 47/47 with 54+54 isolation. Positive learner receipt/return/revision is isolated actual-SQL/native evidence. No production learner grade is created for QA.
+
+**B.12.1 verification:** [Sharing-preview delivery](teacher-sharing-preview.md) records the shared learner projection and inert preview controls. PR/main gates pass 1,529 unit/integration and 247 native; production passes 158/158 with 54+54 isolation and run-owned cleanup. No learner task is sent by previewing. B.12.2 performance and B.12.3 final owner usability remain.

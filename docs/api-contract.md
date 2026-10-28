@@ -1,8 +1,8 @@
 # Learning API contract
 
-## B.12.1 learner-view previews (implementation; verification pending)
+## B.12.1 learner-view previews (deployed; source verified)
 
-This is a shared browser display projection, not a new API or learner impersonation. Published-material preview uses the current teacher-authorized supplementary `get` for own materials or the read-only, QA-filtered assignment catalogue for platform materials; platform editor access stays forbidden. Nonpublished/non-QA versions are rejected. Assignment preview reuses the already authorized material plus unsent instructions locally, with no send/open/read/completion operation. Actual learner library and assignment cards share the same allowlisted display renderer. Existing recipient/withdrawal/file/session authorization remains authoritative. [Contract and acceptance scope](teacher-sharing-preview.md).
+This is a shared browser display projection, not a new API or learner impersonation. Published-material preview uses the current teacher-authorized supplementary `get` for own materials or the read-only, QA-filtered assignment catalogue for platform materials; platform editor access stays forbidden. Nonpublished/non-QA versions are rejected. Assignment preview reuses the already authorized material plus unsent instructions locally, with no send/open/read/completion operation. Actual learner library and assignment cards share the same allowlisted display renderer. Existing recipient/withdrawal/file/session authorization remains authoritative. [Contract and acceptance scope](teacher-sharing-preview.md). PR/main gates pass 1,529 unit/integration and 247 native checks; production passes 158/158 with 54+54 isolation and run-owned cleanup on `df051fd1853b6f76421cf11ca24be903e1177694`. Nineteen frontend files match; six changed-file hashes and the release stamp are rechecked after acceptance. No SQL or Edge dependency is changed or redeployed.
 
 ## Teacher feedback — 16.5B.11 (deployed; source verified)
 
