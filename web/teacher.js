@@ -484,6 +484,7 @@ async function renameSelectedClass(event, institutional) {
 
 async function selectClass(id, { pushNavigation = false, navigate = true, detailReady=false, selection=null, assignmentId=null } = {}) {
   if (!allowTeacherLeave()) return;
+  disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
@@ -1359,7 +1360,7 @@ async function removeStudent(studentId, studentName) {
 }
 
 $("signOutBtn").addEventListener("click", signOut);
-$("refreshBtn").addEventListener("click", loadDashboard);
+$("refreshBtn").addEventListener("click", () => { if(allowTeacherLeave())void loadDashboard(); });
 $("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
 $("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);

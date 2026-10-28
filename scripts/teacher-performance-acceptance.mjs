@@ -23,12 +23,12 @@ try{
   check(side+': credentials configured',Boolean(email&&password));
   const login=await fetch(`${url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({email,password}),signal:AbortSignal.timeout(30000)});
   const session=await login.json();session.expires_at??=Math.floor(Date.now()/1000)+Number(session.expires_in);check(side+': designated teacher identity',login.ok&&session.user?.id===fixture[side].teacherId);sessions.push(session);
-  const base=await api(session.access_token,'get-teacher-dashboard','get-teacher-workspace',{});check(side+': initial authorized directory',base.status===200&&base.data.classes.some(c=>c.id===fixture[side].classId));
+  const base=await api(session.access_token,'get-teacher-dashboard',{});check(side+': initial authorized directory',base.status===200&&base.data.classes.some(c=>c.id===fixture[side].classId));
   report.checks.push({label:side+': fixture size',active:base.data.classes.filter(c=>c.isActive).length,archived:base.data.classes.filter(c=>!c.isActive).length});
   const klass=base.data.classes.find(c=>c.id===fixture[side].classId);
   const option=klass.unitOptions.find(x=>x.unitId!==klass.selectedUnit?.unitId&&!x.readOnlyHistory)??klass.unitOptions.find(x=>x.unitId!==klass.selectedUnit?.unitId);
   check(side+': unit-switch fixture exists',Boolean(option));
-  const foreign=fixture[side==='A'?'B':'A'];const denied=await api(session.access_token,'get-teacher-dashboard','get-teacher-workspace',{selection:{assignmentId:foreign.assignmentId,curriculumReleaseId:foreign.curriculumReleaseId,unitId:foreign.unitId},...(phase==='after'?{readMode:'class',classId:foreign.classId}:{})});
+  const foreign=fixture[side==='A'?'B':'A'];const denied=await api(session.access_token,'get-teacher-dashboard',{selection:{assignmentId:foreign.assignmentId,curriculumReleaseId:foreign.curriculumReleaseId,unitId:foreign.unitId},...(phase==='after'?{readMode:'class',classId:foreign.classId}:{})});
   check(side+': foreign class denied',denied.status===403);
   for(let iteration=0;iteration<10;iteration++){
    const context=await browser.newContext({viewport:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(session)}]}]}});

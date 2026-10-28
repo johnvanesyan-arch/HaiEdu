@@ -4,7 +4,7 @@ import {createTeacherWorkspaceHandler} from '../../supabase/functions/_shared/te
 export {id};
 export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={}){
  const f=await writingFixture();t.after(()=>f.db.close());
- await f.db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;update subjects set code=case when id='${id(101)}' then 'english' else 'physics' end;`);
+ await f.db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;update subjects set code=case when id='${id(101)}' then 'english' else 'physics' end,name_hy=case when id='${id(101)}' then 'Անգլերեն' else 'Ֆիզիկա' end;update classes set name=case when id='${id(321)}' then '7Ա' else '7Բ' end;`);
  await f.db.exec(await readFile('supabase/migrations/20261028172021_teacher_today_workspace.sql','utf8'));
  for(let i=0;i<count;i++){
   const ctx=context(i%2);const task=id(6000+i);
@@ -19,7 +19,7 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
  await page.addInitScript(()=>{
   const s=window.__today={actor:20,calls:[],fail:[],holds:[],resolvers:[],listeners:[],release(){this.holds=[];this.resolvers.splice(0).forEach(fn=>fn());},switchActor(actor){this.actor=actor;this.listeners.slice().forEach(fn=>fn(actor?'SIGNED_IN':'SIGNED_OUT',actor?{user:{id:'71000000-0000-4000-8000-'+String(actor).padStart(12,'0')}}:null));}};
   const session=()=>({user:{id:'71000000-0000-4000-8000-'+String(s.actor).padStart(12,'0'),email:'synthetic@example.invalid'}});
-  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:session()}}),onAuthStateChange(fn){s.listeners.push(fn);return{data:{subscription:{unsubscribe(){s.listeners=s.listeners.filter(x=>x!==fn);}}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{async invoke(fn,{body}){
+  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:s.actor?session():null}}),getUser:async()=>({data:{user:s.actor?session().user:null}}),onAuthStateChange(fn){s.listeners.push(fn);return{data:{subscription:{unsubscribe(){s.listeners=s.listeners.filter(x=>x!==fn);}}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{async invoke(fn,{body}){
    const actor=s.actor;s.calls.push({fn,body,actor});if(s.fail.includes(fn))return{data:{error:'workspace_unavailable'},error:{}};
    const r=await fetch('/fixture-rpc',{method:'POST',body:JSON.stringify({fn,body,actor})}),data=await r.json();
    if(s.holds.includes(fn)&&actor===20)await new Promise(resolve=>s.resolvers.push(resolve));return r.ok?{data}:{data,error:{}};

@@ -20,6 +20,7 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
  assert.deepEqual(writing.map(c=>c.body.action),['inspect']);
  assert.equal((await calls(p,'get-teacher-dashboard')).length,1);
  const exact=writing[0].body.context;
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-review.png'});}
  await p.reload();await p.locator('[data-writing-feedback]').waitFor();
  assert.equal(new URL(p.url()).searchParams.get('todayWork'),first);
  writing=await calls(p,'manage-written-work');assert.deepEqual(writing[0].body.context,exact);
@@ -56,9 +57,12 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  assert.equal(await p.locator('.today-class-card').count(),0);
  await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 աշխատանք');
  await p.locator('[data-today-continue] button').click();await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
- const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
+ const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('#refreshBtn').click();
+ assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
+ p.once('dialog',d=>d.dismiss());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
  assert.equal(p.url(),reviewURL);assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
- p.once('dialog',d=>d.accept());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
+ p.once('dialog',d=>d.accept());await p.evaluate(classId=>{history.pushState({},'', '/teacher.html?view=class&class='+classId);dispatchEvent(new PopStateEvent('popstate'));},id(321));
+ await p.locator('#teacherClassDetailView:not(.hidden)').waitFor();assert.equal(await p.locator('#teacherToday').innerText(),'');
  assert.equal(await p.locator('[data-writing-feedback]').count(),0);
  await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
  let count=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
@@ -94,7 +98,7 @@ test('live class cards use governed subject art, exact links and account-scoped 
    await p.locator('[data-today-refresh]').focus();assert.equal(await p.locator('[data-today-refresh]').evaluate(e=>e===document.activeElement),true);
   }
  }
- await p.evaluate(()=>document.documentElement.style.fontSize='100%');
+ await p.evaluate(()=>{document.documentElement.style.fontSize='100%';document.activeElement?.blur();window.scrollTo(0,0);});
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-wide.png',fullPage:true});await p.setViewportSize({width:360,height:900});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-mobile.png',fullPage:true});}
  await p.evaluate(async()=>{const {rememberTeacherClass}=await import('/teacher-today.mjs');rememberTeacherClass('71000000-0000-4000-8000-000000000020','71000000-0000-4000-8000-000000000321');});
  await p.reload();await expect(p.locator('.today-class-card .staff-status')).toHaveText('Վերջերս բացված');
