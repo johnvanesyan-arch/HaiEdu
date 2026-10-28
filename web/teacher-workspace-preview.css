@@ -33,6 +33,9 @@ body[data-staff-preview] .preview-queue-list button[aria-pressed=true] { backgro
 .preview-response details { padding:1rem; border:1px solid var(--forest-divider); border-radius:.75rem; }
 .preview-response summary { align-content:center; cursor:pointer; }
 .preview-response textarea { width:100%; min-height:9rem; padding:1rem; }
+.preview-response form,.preview-response label { min-width:0; max-width:100%; }
+.preview-response label { grid-template-columns:minmax(0,1fr); }
+.preview-response textarea { min-width:0; }
 .preview-context { margin-bottom:1rem; }
 .preview-archive { padding:1.5rem; }
 .preview-archive summary { cursor:pointer; font-weight:700; }

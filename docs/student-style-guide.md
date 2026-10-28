@@ -27,7 +27,7 @@ Use a calm, clear, age-appropriate interface with enough visual interest to make
 - Pair every learning state with readable text; the green brand colour does not mean that a student has mastered something.
 - Use illustrations to identify a course or material purpose. Supply a neutral fallback. Avoid childish mascots, competitive rankings or rewards that the product has not adopted.
 - Keep account, school/year and selected-course context visible where it affects the action. Never infer a current grade from a course title.
-- Use the existing approved logo asset. Its blue/gold brand colours are retained; the logo and staff dashboards retain their existing branding. The owner-requested 16.5B.4 correction extends Forest to the public landing page and the shared account surface from first paint, independently of account role.
+- Use the existing approved logo asset. Its blue/gold brand colours are retained; the logo retains its existing branding. The owner-approved 16.5B.9 slice extends the shared Forest/cream foundation to staff dashboards independently of learner authorization; see [staff delivery](forest-staff-workspace.md). The owner-requested 16.5B.4 correction extends Forest to the public landing page and the shared account surface from first paint, independently of account role.
 
 ## 3. Colour system
 

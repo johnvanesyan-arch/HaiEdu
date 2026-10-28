@@ -92,7 +92,10 @@ test('real teacher Home → Classes → Review retains lazy requests, exact cont
   const nav=view=>page.locator(`.hm-role-nav a[href$="view=${view}"]`).click();
   assert.equal(await page.locator('.hm-role-nav [aria-current="page"]').count(),1,'an external library destination must not inherit the Home selection');
   await expect(page.locator('.hm-role-foot a[href="./teacher-workspace-preview.html"]')).toBeVisible();
-  await nav('classes');await page.locator('#classList .teacher-class-button').first().click();
+  await nav('classes');
+  const card=page.locator('#classList .teacher-class-button').first();
+  assert.equal(await card.evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 255)','class selection cards must not inherit the primary action fill');
+  await card.click();
   await expect(page.locator('.hm-role-breadcrumb')).toContainText('Ընտրված դասարան');
   assert.equal(await page.evaluate(()=>window.__teacherFixture.calls.filter(c=>c.fn==='manage-written-work').length),0);
   await page.locator('#teacherOpenWrittenWork').click();
@@ -141,6 +144,7 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
       await page.locator('#previewScenario').selectOption(state);
       for(const view of ['home','classes','review']) {
         await page.locator(`[data-preview-view="${view}"]`).click();
+        await expect(page.locator(`[data-preview-view="${view}"]`)).toHaveAttribute('aria-current','page');
         await noPageOverflow(page,`preview/${width}/${scale}/${state}/${view}`);
       }
     }
