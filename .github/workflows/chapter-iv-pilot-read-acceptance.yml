@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/qa-programme-fixtures.mjs
       - docs/qa/additional-programme-fixtures.json
+      - web/teacher-feedback.mjs
       - web/written-work.mjs
       - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,

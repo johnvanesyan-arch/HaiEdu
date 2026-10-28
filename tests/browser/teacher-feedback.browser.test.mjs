@@ -1,0 +1,42 @@
+import test,{before,after} from 'node:test';import assert from 'node:assert/strict';import {mkdir} from 'node:fs/promises';
+import {chromium,expect} from '@playwright/test';import {todayFixture,id} from '../fixtures/teacher-today-browser.mjs';import{context}from'../fixtures/written-work-api.mjs';
+let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
+const fillScores=async p=>{for(const field of await p.locator('[data-writing-score]').all())await field.selectOption('2');};
+const openFirst=async p=>{await p.locator('[data-today-continue] button').click();await p.locator('[data-writing-feedback]').waitFor();};
+const saved=p=>expect(p.locator('[data-feedback-status]')).toContainText('Սևագիրը պահպանված է');
+test('private autosave restores, personal snippets insert into the draft, and explicit publication reaches the learner once',async t=>{
+ const {page:p,db,studentRequest,errors}=await todayFixture(browser,t);await openFirst(p);
+ await p.locator('[data-writing-feedback]').fill('Private teacher draft');await p.locator('[data-writing-feedback]').press('Control+s');await saved(p);
+ const privateCopy=await(await studentRequest({action:'open',context:context(),payload:{taskId:id(6000)}})).json();assert.equal(JSON.stringify(privateCopy).includes('Private teacher draft'),false);
+ await p.reload();await expect(p.locator('[data-writing-feedback]')).toHaveValue('Private teacher draft');
+ await p.locator('.feedback-snippets>summary').click();await p.locator('[data-snippet-title]').fill('Explain the reason');await p.locator('[data-snippet-body]').fill('Explain the reason for your choice.');await p.locator('[data-snippet-form] button[type=submit]').click();await expect(p.locator('[data-snippet-status]')).toContainText('պահպանված');
+ await p.locator('[data-snippet-insert]').click();await expect(p.locator('[data-writing-feedback]')).toHaveValue('Private teacher draft\nExplain the reason for your choice.');
+ await fillScores(p);await p.evaluate(()=>{const f=document.querySelector('[data-writing-review]');f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));});
+ await expect(p.locator('[data-today-summary]')).toContainText('1 աշխատանք');assert.equal((await db.query('select count(*) n from written_reviews')).rows[0].n,1);assert.equal((await db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);
+ const receipt=await(await studentRequest({action:'open',context:context(),payload:{taskId:id(6000)}})).json();assert.match(receipt.submissions.at(-1).reviews.at(-1).feedback,/Explain the reason/);assert.equal(receipt.work.state,'reviewed');
+ assert.deepEqual(errors,[]);
+});
+test('two actual tabs detect stale private revisions without overwriting typed text; an acknowledged lost publish reply replays once',async t=>{
+ const {page:p,db,errors}=await todayFixture(browser,t);await openFirst(p);
+ const q=await p.context().newPage();const qErrors=[];q.on('pageerror',e=>qErrors.push(e.message));await q.goto(p.url());await q.locator('[data-writing-feedback]').waitFor();
+ await p.locator('[data-writing-feedback]').fill('First tab draft');await p.locator('[data-feedback-save]').click();await saved(p);
+ await q.locator('[data-writing-feedback]').fill('Second tab text stays visible');await q.locator('[data-feedback-save]').click();await expect(q.locator('[data-feedback-status]')).toContainText('Մեկ այլ պատուհանում');await expect(q.locator('[data-writing-feedback]')).toHaveValue('Second tab text stays visible');
+ assert.equal((await db.query('select data from private.teacher_feedback_drafts')).rows[0].data.feedback,'First tab draft');await q.close();
+ await fillScores(p);await p.evaluate(()=>window.__today.lose.push('manage-teacher-feedback:publish'));await p.locator('[data-writing-grade]').click();await expect(p.locator('[data-feedback-retry]')).toBeVisible();await expect(p.locator('[data-writing-feedback]')).toBeDisabled();
+ await p.locator('[data-feedback-retry]').click();await expect(p.locator('.written-score')).toBeVisible();assert.equal((await db.query('select count(*) n from written_reviews')).rows[0].n,1);
+ const sent=await p.evaluate(()=>window.__today.calls.filter(c=>c.fn==='manage-teacher-feedback'&&c.body.action==='publish').map(c=>c.body.payload.requestId));assert.equal(sent.length,2);assert.equal(sent[0],sent[1]);assert.deepEqual(errors,[]);assert.deepEqual(qErrors,[]);
+});
+test('held draft replies cannot alter the next work or a new account; same-account revocation clears private work',async t=>{
+ const {page:p,db,errors}=await todayFixture(browser,t);await openFirst(p);
+ await p.evaluate(()=>window.__today.holds.push('manage-teacher-feedback:save_draft'));await p.locator('[data-writing-feedback]').fill('Old work private text');await p.locator('[data-feedback-save]').click();await p.waitForFunction(()=>window.__today.resolvers.length===1);
+ p.once('dialog',d=>d.accept());await p.locator('[data-today-next]').click();await expect(p.locator('[data-writing-feedback]')).toHaveValue('');await p.evaluate(()=>window.__today.release());await expect(p.locator('[data-writing-feedback]')).toHaveValue('');
+ await p.evaluate(()=>window.__today.holds.push('manage-teacher-feedback:save_draft'));await p.locator('[data-writing-feedback]').fill('Old account private text');await p.locator('[data-feedback-save]').click();await p.waitForFunction(()=>window.__today.resolvers.length===1);await p.evaluate(()=>window.__today.switchActor(21));await expect(p.locator('[data-today-summary]')).toContainText('0 աշխատանք');await p.evaluate(()=>window.__today.release());assert.equal(await p.locator('[data-writing-feedback]').count(),0);
+ await p.goto('https://today.test/teacher.html?view=home');await openFirst(p);await db.query("update teacher_subject_authorizations set status='ended' where id=$1",[id(361)]);await p.locator('[data-writing-feedback]').fill('Must disappear after denial');await p.locator('[data-feedback-save]').click();await expect(p.locator('.written-work')).toContainText('այլևս հասանելի չէ');assert.equal(await p.locator('[data-writing-feedback]').count(),0);assert.equal(await p.locator('.written-response').count(),0);
+ assert.equal(await p.evaluate(()=>Object.values(localStorage).some(v=>v.includes('Old account private text'))),false);assert.deepEqual(errors,[]);
+});
+test('rubric/response, private/sent labels and personal archive reflow and remain keyboard usable at 200% text',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t);await openFirst(p);
+ await p.locator('.feedback-snippets>summary').click();await p.locator('[data-snippet-title]').fill('Generic guidance');await p.locator('[data-snippet-body]').fill('Check the sequence.');await p.locator('[data-snippet-form] button[type=submit]').click();await expect(p.locator('[data-snippet-toggle]')).toHaveCount(1);await p.locator('[data-snippet-toggle]').click();await expect(p.locator('[data-snippet-list]')).toContainText('դեռ չկա');await p.locator('[data-snippet-archive]>summary').click();await expect(p.locator('[data-snippet-archived-list]')).toContainText('Generic guidance');await p.locator('[data-snippet-archived-list] [data-snippet-toggle]').click();await expect(p.locator('[data-snippet-list]')).toContainText('Generic guidance');
+ await p.emulateMedia({reducedMotion:'reduce'});for(const width of [360,768,1280]){await p.setViewportSize({width,height:1000});for(const font of ['100%','200%']){await p.evaluate(font=>document.documentElement.style.fontSize=font,font);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow ${width}/${font}`);await p.locator('[data-feedback-focus]').click();assert.equal(await p.locator('[data-writing-feedback]').evaluate(e=>e===document.activeElement),true);}}
+ await p.evaluate(()=>document.documentElement.style.fontSize='100%');if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.locator('.written-review-layout').scrollIntoViewIfNeeded();await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-feedback-wide.png'});await p.setViewportSize({width:360,height:900});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-feedback-mobile.png',fullPage:true});}assert.deepEqual(errors,[]);
+});
