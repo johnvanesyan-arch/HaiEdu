@@ -57,5 +57,26 @@
       "total": 216
     },
     "failure": "Six VM role-boundary checks hit a missing removeAttribute method in the old synthetic DOM stub. Product native checks passed; the stub now supports that standard DOM method without weakening assertions."
+  },
+  "implementationPR": 330,
+  "implementationCommit": "16e5f78fe0b395a5f0451c35651a4bc9291381df",
+  "reviewedHead": "7fb8b6d747317973328904076dd658188c5374c5",
+  "prCI": {
+    "runId": 40705099068,
+    "jobs": 5,
+    "passedJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 216
+  },
+  "initialLiveRun": {
+    "id": 40705988502,
+    "conclusion": "cancelled",
+    "jobsStarted": 0,
+    "reason": "Shared GitHub pending concurrency queue"
+  },
+  "initialBuild": {
+    "id": "dpl_7UvauqxPAeC8LHTVx4zWKpkASXTA",
+    "state": "READY",
+    "commit": "16e5f78fe0b395a5f0451c35651a4bc9291381df"
   }
 }

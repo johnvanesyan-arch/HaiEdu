@@ -1,5 +1,5 @@
 name: Resource assignment production acceptance
-# Standalone B.8.1 PDF-form acceptance slot after shared pending-queue cancellation.
+# Standalone B.8.2 workflow-boundary acceptance after shared pending-queue cancellation.
 on:
   workflow_dispatch:
   push:
