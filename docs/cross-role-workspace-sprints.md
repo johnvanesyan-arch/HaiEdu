@@ -13,8 +13,8 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.8 | Explicit resource assignments to a class or selected students, with learner delivery | B.6, B.7 | Assignment capability delivered; live acceptance/source parity passed; DEMO-01 remains open |
 | 16.5B.8.1 | PDF-first teacher creation, safe publication and explicit recipient handoff | B.8 | Delivered; 126 live checks, actual PDF form-to-My-work flow in both schools |
 | 16.5B.8.2 | Library/My-work separation, distinct teacher entry points and teacher workflow SOP | B.8.1 | Delivered; 149 live checks and SOP v1; custom writing creation/PDF responses remain future |
-| 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Implemented; native review/release closure in progress |
-| 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Planned |
+| 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Delivered; 234 native / 147 live staff checks; final owner usability remains B.12 |
+| 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Next |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Planned |
 | 16.5B.12 | Sharing preview, purposeful motion and cross-role usability acceptance | B.6–B.11 | Planned |
 
