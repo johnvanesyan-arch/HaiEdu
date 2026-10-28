@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "timezone": "Asia/Yerevan",
   "scope": "16.5B.9 shared Forest staff presentation and local teacher workspace prototype",
-  "status": "implementation_ready_release_verification_pending",
+  "status": "runtime_deployed_fresh_staff_acceptance_pending",
   "sourceBase": "ea3d804ce7033597b83457d0857dffaf20ada8b7",
   "authorization": "Owner-approved Forest direction and 45-capability coverage; explicit B.9 implementation instruction. No new blanket approval required by accepted sequence. Final owner usability remains B.12.",
   "backendChanged": false,
@@ -73,5 +73,70 @@
     "WRITE-CREATE",
     "RESOURCE-SUBMIT",
     "English C47 hold and full four-subject gates"
-  ]
+  ],
+  "implementationPR": 333,
+  "reviewedHead": "2abd847cb75b0d6eea85e83187e775e0c1274c92",
+  "prCI": {
+    "run": 40720706638,
+    "status": "passed",
+    "requiredJobs": 5,
+    "unitIntegration": 1488,
+    "nativeBrowser": 234
+  },
+  "prototypeVisualReview": {
+    "run": 40719326719,
+    "artifactId": 12829059119,
+    "digest": "sha256:e257d2d78f6992a891d6f3000abd68a078938aaa78a14da51ef3527affd72987",
+    "reviewed": [
+      "prototype desktop Home/Review",
+      "prototype mobile Review",
+      "teacher Home/class review",
+      "school admin desktop/mobile",
+      "master admin desktop/mobile",
+      "reviewer queue desktop/mobile"
+    ],
+    "result": "layout reviewed before broad rollout; final CI additionally covers keyboard skip and selected-work cue"
+  },
+  "initialPrCI": {
+    "run": 40719981291,
+    "unitIntegration": 1488,
+    "nativeBrowser": {
+      "passed": 233,
+      "total": 234
+    },
+    "finding": "360px/200% shared resource labels inherited an overly broad word-wrap override; preserve existing resource wrapping. The same regression remains in the required gate."
+  },
+  "unchangedControllers": [
+    "web/teacher.js",
+    "web/written-work.mjs",
+    "web/supplementary-resources.mjs",
+    "web/resource-assignments.mjs",
+    "web/materials-page.js",
+    "web/account-roles.js"
+  ],
+  "implementationCommit": "07b622015fbe2664e02a9f99aa9aca8745c66001",
+  "mainCI": {
+    "run": 40721519807,
+    "status": "in_progress_at_schedule_preparation"
+  },
+  "deployment": {
+    "id": "dpl_9pDNFs651dEL9pKq5ySq3zeqp7Ap",
+    "state": "READY",
+    "target": "production",
+    "projectId": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb",
+    "commit": "07b622015fbe2664e02a9f99aa9aca8745c66001"
+  },
+  "liveAcceptanceScheduling": {
+    "initialRun": 40721519850,
+    "status": "cancelled_before_any_job_started",
+    "jobs": 0,
+    "cause": "shared sprint-14-isolation-qa pending run replaced by another main-triggered acceptance",
+    "correction": "reviewed standalone workflow-comment change; source/fixture/cleanup/concurrency guards unchanged"
+  },
+  "finalPrVisualEvidence": {
+    "run": 40720706638,
+    "artifactId": 12831620334,
+    "digest": "sha256:09b195b59aad2815a8cf1a7aa7664bc45f83a24bea3bbc7b3a951327c413cbb3",
+    "reviewed": "final mobile prototype and 360px/200% resource assignment controls, plus staff layouts before broad rollout"
+  }
 }
