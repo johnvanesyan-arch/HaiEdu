@@ -1,0 +1,26 @@
+name: Isolated teacher Today development
+on:
+  push:
+    branches: [codex/teacher-today-20261028]
+permissions:
+  contents: read
+jobs:
+  isolated-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node --test tests/browser/teacher-today.browser.test.mjs tests/browser/teacher-performance.browser.test.mjs tests/browser/written-work.browser.test.mjs
+        env:
+          STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/teacher-today
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: teacher-today-development
+          path: artifacts/teacher-today

@@ -23,18 +23,18 @@ try{
   check(side+': credentials configured',Boolean(email&&password));
   const login=await fetch(`${url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({email,password}),signal:AbortSignal.timeout(30000)});
   const session=await login.json();session.expires_at??=Math.floor(Date.now()/1000)+Number(session.expires_in);check(side+': designated teacher identity',login.ok&&session.user?.id===fixture[side].teacherId);sessions.push(session);
-  const base=await api(session.access_token,'get-teacher-dashboard',{});check(side+': initial authorized directory',base.status===200&&base.data.classes.some(c=>c.id===fixture[side].classId));
+  const base=await api(session.access_token,'get-teacher-dashboard','get-teacher-workspace',{});check(side+': initial authorized directory',base.status===200&&base.data.classes.some(c=>c.id===fixture[side].classId));
   report.checks.push({label:side+': fixture size',active:base.data.classes.filter(c=>c.isActive).length,archived:base.data.classes.filter(c=>!c.isActive).length});
   const klass=base.data.classes.find(c=>c.id===fixture[side].classId);
   const option=klass.unitOptions.find(x=>x.unitId!==klass.selectedUnit?.unitId&&!x.readOnlyHistory)??klass.unitOptions.find(x=>x.unitId!==klass.selectedUnit?.unitId);
   check(side+': unit-switch fixture exists',Boolean(option));
-  const foreign=fixture[side==='A'?'B':'A'];const denied=await api(session.access_token,'get-teacher-dashboard',{selection:{assignmentId:foreign.assignmentId,curriculumReleaseId:foreign.curriculumReleaseId,unitId:foreign.unitId},...(phase==='after'?{readMode:'class',classId:foreign.classId}:{})});
+  const foreign=fixture[side==='A'?'B':'A'];const denied=await api(session.access_token,'get-teacher-dashboard','get-teacher-workspace',{selection:{assignmentId:foreign.assignmentId,curriculumReleaseId:foreign.curriculumReleaseId,unitId:foreign.unitId},...(phase==='after'?{readMode:'class',classId:foreign.classId}:{})});
   check(side+': foreign class denied',denied.status===403);
   for(let iteration=0;iteration<10;iteration++){
    const context=await browser.newContext({viewport:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(session)}]}]}});
    let requests=[],blocked=0;
    await context.route('**/functions/v1/**',route=>{const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let b={};try{b=req.postDataJSON()??{};}catch{}
-    const allowed=['get-teacher-dashboard','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action));
+    const allowed=['get-teacher-dashboard','get-teacher-workspace','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action));
     if(req.method()==='OPTIONS'||allowed)return route.continue();blocked++;return route.abort();});
    const page=await context.newPage();page.setDefaultTimeout(45000);
    const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.setCacheDisabled',{cacheDisabled:false});await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:1600000/8,uploadThroughput:750000/8});

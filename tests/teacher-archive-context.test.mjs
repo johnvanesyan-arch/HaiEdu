@@ -9,7 +9,7 @@ function harness({active=true,success=true,sourceView='classes'}={}) {
   const elements=new Map(), snapshots=[];
   const window={location:new URL(`https://example.invalid/teacher?view=class&class=class-qa&source=${sourceView}&assignment=assignment-qa&release=release-qa&unit=unit-qa`),confirm:()=>true};
   window.history={replaceState:(_a,_b,next)=>{window.location=new URL(next,window.location);},pushState:(_a,_b,next)=>{window.location=new URL(next,window.location);}};
-  const context=vm.createContext({URL,URLSearchParams,window,TEACHER_VIEWS:new Set(['home','profile','classes','archive','create','class']),
+  const context=vm.createContext({URL,URLSearchParams,window,actorId:'teacher-qa',rememberTeacherClass:()=>{},TEACHER_VIEWS:new Set(['home','profile','classes','archive','create','class']),
     dashboard:{institutionalTeacher:true},selectedClass:()=>klass,
     $:id=>{if(!elements.has(id))elements.set(id,{});return elements.get(id);},setMessage:()=>{},
     supabase:{functions:{invoke:async()=>success?{data:{updated:true}}:{error:new Error('denied')}}},

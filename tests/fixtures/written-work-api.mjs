@@ -10,5 +10,5 @@ export async function fixture(options={}){
  const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);
  const handle=createWrittenWorkHandler({createAdmin:()=>admin,hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture-only'}});
  const request=(body,actor=10,credential=token(actor))=>handle(new Request('https://fixture.invalid/written-work',{method:'POST',headers:{Authorization:'Bearer '+credential,'Content-Type':'application/json'},body:JSON.stringify(body)}));
- return{db,admin,handle,request};
+ return{db,admin,handle,request,hasActiveLiveSession};
 }
