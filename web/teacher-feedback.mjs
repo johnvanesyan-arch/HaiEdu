@@ -29,13 +29,13 @@ export function mountTeacherFeedback({root,supabase,context,model,initial,isCurr
  function changed(){if(!active()||pending||publishing)return;if(conflict){status(messages.feedback_conflict,true);return;}clearTimeout(timer);status('Փոփոխությունները դեռ չեն պահպանվել։');timer=setTimeout(()=>void flush(),750);}
  async function publish(decision,retry=false){
   if(!active()||publishing||conflict||(!retry&&pending))return;
-  if(!retry){if(!form.reportValidity())return;if(decision==='assessed'&&Object.values(capture().scores).some(v=>v===null)){status('Ընտրեք միավորը յուրաքանչյուր չափանիշի համար։',true);return;}}
-  publishing=true;fields.disabled=true;
+  if(!retry){if(snippetBusy){status('Սպասեք պատրաստի մեկնաբանության պահպանմանը։');return;}if(!form.reportValidity())return;if(decision==='assessed'&&Object.values(capture().scores).some(v=>v===null)){status('Ընտրեք միավորը յուրաքանչյուր չափանիշի համար։',true);return;}if(JSON.stringify(personal())!==snippetAck&&!window.confirm('Ուղարկելուց հետո չպահպանված պատրաստի մեկնաբանությունը կչեղարկվի։ Շարունակե՞լ։'))return;}
+  publishing=true;fields.disabled=true;for(const el of root.querySelectorAll('.feedback-snippets button,.feedback-snippets input,.feedback-snippets textarea'))el.disabled=true;
   try{
    if(!pending){if(!await flush())return;pending={workId:model.work.id,expectedRevision:model.work.revision,draftRevision:revision,decision,requestId:crypto.randomUUID()};}
    const r=await feedbackApi(supabase,context,'publish',pending);if(!active())return;pending=null;ack=JSON.stringify(capture());status('Գնահատումն ու մեկնաբանությունն ուղարկված են աշակերտին։');onPublished(r.writtenWork,r.receipt);
   }catch(e){if(active()&&!deny(e)){conflict=['feedback_conflict','written_conflict'].includes(e.code);if(conflict){pending=null;conflictState();status(e.message,true);}else if(e.code==='written_review_invalid'){pending=null;status(e.message,true);}else{status('Ուղարկման հաստատումը չի ստացվել։ Սեղմեք «Կրկնել նույն ուղարկումը»՝ արդյունքը ստուգելու համար։',true);$('[data-feedback-retry]').classList.remove('hidden');}}}
-  finally{publishing=false;if(active())fields.disabled=Boolean(pending);}
+  finally{publishing=false;if(active()){fields.disabled=Boolean(pending);for(const el of root.querySelectorAll('.feedback-snippets button,.feedback-snippets input,.feedback-snippets textarea'))el.disabled=Boolean(pending);}}
  }
  function drawSnippets(){
   const row=(s,archived=false)=>`<article><strong>${esc(s.title)}</strong><p class="written-text">${esc(s.body)}</p><div class="row">${archived?'':`<button type="button" class="ghost" data-snippet-insert="${esc(s.id)}">Ավելացնել սևագրին</button><button type="button" class="ghost" data-snippet-edit="${esc(s.id)}">Խմբագրել</button>`}<button type="button" class="ghost" data-snippet-toggle="${esc(s.id)}">${archived?'Վերականգնել':'Արխիվացնել'}</button></div></article>`;
