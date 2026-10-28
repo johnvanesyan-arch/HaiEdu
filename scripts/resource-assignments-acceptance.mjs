@@ -61,6 +61,7 @@ async function teacherCreateAndSend(actor,d){
   await page.locator('#teacherResourcesLink').waitFor();
   const libraryUrl=new URL(await page.locator('#teacherResourcesLink').getAttribute('href'),page.url()),assignUrl=new URL(await page.locator('#teacherAssignResourceLink').getAttribute('href'),page.url());
   check(actor+': separate library and assignment entry points retain exact context',[libraryUrl,assignUrl].every(u=>u.searchParams.get('assignment')===c.assignmentId&&u.searchParams.get('release')===c.curriculumReleaseId&&u.searchParams.get('unit')===c.unitId)&&!libraryUrl.searchParams.has('intent')&&assignUrl.searchParams.get('intent')==='assign'&&await page.locator('#teacherWrittenWorkCard #teacherResourcesLink').count()===0);
+  if(actor==='A_teacher'){await mkdir('qa-results/resource-form',{recursive:true});await page.locator('#teacherWorkflowEntries').screenshot({path:'qa-results/resource-form/teacher-workflow-entrypoints.png'});}
   await page.locator('#teacherResourcesLink').click();
   await page.locator('[data-resource-new]').click();
   check(actor+': PDF attachment is visible before creating a draft',await page.locator('[data-resource-file]').isVisible()&&await page.locator('[name=format]').inputValue()==='pdf');

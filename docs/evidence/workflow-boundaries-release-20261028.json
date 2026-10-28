@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5B.8.2 library/work/teacher workflow separation and SOP",
+  "status": "verification_pending",
+  "sourceBase": "3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab",
+  "authorization": "Owner accepts Library rename, separate teacher entry points and teacher-facing SOP; custom writing and PDF-response submission remain future.",
+  "focusedBrowser": {
+    "runId": 40702569559,
+    "revision": "81c29f2c564811d97ea6f64addc1e82f8078a542",
+    "passed": 94,
+    "total": 94,
+    "artifactId": 12822681618,
+    "artifactSha256": "e239e313ef2837c10d6d93ab4a7559f3d2593323ecb848d29ad81d231965b819",
+    "scope": "Isolated native pages using synthetic identity and real SQL/HTTP handler fixtures; no production credentials"
+  },
+  "localChecks": {
+    "sqlLifecycle": 16,
+    "qaDependency": 9,
+    "syntax": 79,
+    "favicon": "passed"
+  },
+  "backendChanged": false,
+  "backendEvidenceReused": [
+    "docs/evidence/resource-assignments-release-20261028.json",
+    "docs/english-7-unit-02-learner-acceptance.md"
+  ],
+  "blockingConfigurationEvidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+  "capabilitiesRetained": 45,
+  "futureCapabilities": [
+    "WRITE-CREATE",
+    "RESOURCE-SUBMIT",
+    "deadlines/notifications/completion/read tracking",
+    "B.11 feedback autosave/snippets/batch contracts"
+  ],
+  "requiredRemaining": [
+    "PR and main five-job release gates",
+    "Current production source/hash parity",
+    "Guarded optional Library → assignment → My-work acceptance and run-owned cleanup",
+    "Merged documentation/source-verified Notion sync"
+  ],
+  "gates": {
+    "next": "16.5B.9",
+    "open": [
+      "PERF-02",
+      "DEMO-01",
+      "owner workspace usability acceptance",
+      "full four-subject gate"
+    ],
+    "englishPausedAfter": "16.1C.47"
+  }
+}
