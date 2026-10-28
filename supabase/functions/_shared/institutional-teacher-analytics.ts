@@ -268,20 +268,23 @@ export async function loadExactInstitutionalClassAnalytics(
   admin: any,
   context: AuthorizedTeacherAcademicContext,
   students: any[],
+  batchedRows: any = null,
 ) {
   const enrollmentIds = students.map((student) => student.enrollmentId);
   const studentIds = students.map((student) => student.id);
   // No enrollment means no attributable evidence. Avoid reloading the same
   // frozen question bank for every empty current or historical classroom.
   if (!studentIds.length) return { skills: [], students: [] };
-  const blueprintRows = requireRows(await admin.from("assessment_blueprints").select("id").eq("curriculum_release_id", context.curriculumReleaseId).eq("unit_id", context.unitId));
-  const blueprintItems: any[] = [], versions: any[] = [];
+  const blueprintRows = batchedRows ? batchedRows.blueprintRows : requireRows(await admin.from("assessment_blueprints").select("id").eq("curriculum_release_id", context.curriculumReleaseId).eq("unit_id", context.unitId));
+  const blueprintItems: any[] = batchedRows?.blueprintItems ?? [], versions: any[] = batchedRows?.versions ?? [];
+  if(!batchedRows){
   for (const ids of chunks(blueprintRows.map(row => row.id))) blueprintItems.push(...await paged((from,to) => admin.from("assessment_blueprint_items").select("assessment_blueprint_id,item_id,item_version_snapshot").in("assessment_blueprint_id",ids).range(from,to)));
   for (const ids of chunks([...new Set(blueprintItems.map(row => row.item_id))])) versions.push(...await paged((from,to) => admin.from("item_versions").select("item_id,version_no,snapshot").in("item_id",ids).range(from,to)));
+  }
   const itemVersions = new Map(versions.map(row => [row.item_id+":"+row.version_no,row.snapshot?.item]));
   const frozenItems = new Map(blueprintItems.map(row => [row.assessment_blueprint_id+":"+row.item_id,itemVersions.get(row.item_id+":"+row.item_version_snapshot)]));
   const unitSkillIds = new Set([...frozenItems.values()].map(item => item?.skill_id).filter(Boolean));
-  const skillRows = requireRows(await admin.from("curriculum_release_skills")
+  const skillRows = batchedRows ? batchedRows.skillRows : requireRows(await admin.from("curriculum_release_skills")
     .select("skill_id,skill_code_snapshot,name_hy_snapshot,layer_snapshot,sequence_order_snapshot")
     .eq("curriculum_release_id", context.curriculumReleaseId)
     .order("sequence_order_snapshot", { ascending: true }));
@@ -291,7 +294,7 @@ export async function loadExactInstitutionalClassAnalytics(
   }));
   if (!studentIds.length) return { skills, students: [] };
 
-  const sessions = (await paged((from, to) => admin.from("learning_sessions")
+  const sessions = (batchedRows ? batchedRows.sessions : await paged((from, to) => admin.from("learning_sessions")
     .select("id,student_id,unit_code,mode,status,target_skill_id,planned_item_count,answered_count,correct_count,assessment_result,score_percent,metadata,mastery_attempt_number,started_at,completed_at,institutional_class_enrollment_id,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id,curriculum_release_id,academic_context_status,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status")
     .eq("academic_context_status", "exact")
     .eq("school_id", context.schoolId).eq("academic_year_id", context.academicYearId)
@@ -301,8 +304,9 @@ export async function loadExactInstitutionalClassAnalytics(
     .in("institutional_class_enrollment_id", enrollmentIds).in("student_id", studentIds)
     .order("started_at", { ascending: false }).range(from, to))).filter(row => row.governed_unit_id === context.unitId || (row.governed_unit_id == null && blueprintRows.some(bp=>bp.id===row.assessment_blueprint_id)));
   const sessionIds = sessions.map((row) => row.id);
-  const attempts: any[] = [];
-  const reviewSessions: any[] = [];
+  const attempts: any[] = batchedRows?.attempts ?? [];
+  const reviewSessions: any[] = batchedRows?.reviewSessions ?? [];
+  if(!batchedRows){
   for (const ids of chunks(sessionIds)) {
     attempts.push(...await paged((from, to) => admin.from("attempts")
       .select("id,student_id,learning_session_id,item_id,skill_id,score,correct,hint_used,response_time_ms,error_code,created_at")
@@ -311,9 +315,12 @@ export async function loadExactInstitutionalClassAnalytics(
       .select("id,learning_session_id,review_context,qualifying,status,review_cycle_number,review_session_number,target_question_count,eligible_pool_size,completed_at,created_at")
       .in("learning_session_id", ids).order("created_at", { ascending: true }).range(from, to)));
   }
-  const models: any[] = [], lifecyclePolicies: any[] = [];
+  }
+  const models: any[] = batchedRows?.models ?? [], lifecyclePolicies: any[] = batchedRows?.lifecyclePolicies ?? [];
+  if(!batchedRows){
   for (const ids of chunks([...new Set(sessions.map(row=>row.learning_model_configuration_id).filter(Boolean))])) models.push(...requireRows(await admin.from("learning_model_configurations").select("id,configuration").in("id",ids)));
   for (const ids of chunks([...new Set(sessions.map(row=>row.academic_mastery_policy_id).filter(Boolean))])) lifecyclePolicies.push(...requireRows(await admin.from("academic_mastery_policy_versions").select("id,maximum_mastery_attempts").in("id",ids)));
+  }
   const modelById = new Map(models.map(row=>[row.id,row]));
   const policyById = new Map(lifecyclePolicies.map(row=>[row.id,row]));
   for (const session of sessions) session.originalLifecyclePolicy = policyById.get(session.academic_mastery_policy_id);
@@ -328,10 +335,13 @@ export async function loadExactInstitutionalClassAnalytics(
     skillCode: skillById.get(attempt.skill_id)?.code ?? "",
     skillNameHy: skillById.get(attempt.skill_id)?.nameHy ?? "",
   }));
-  const finalEnrollments:any[]=[], finalProfiles:any[]=[], finalMemberships:any[]=[];
+  const fresh=batchedRows ? await batchedRows.revalidate() : null;
+  const finalEnrollments:any[]=fresh?.enrollments ?? [], finalProfiles:any[]=fresh?.studentProfiles ?? [], finalMemberships:any[]=fresh?.studentMemberships ?? [];
+  if(!batchedRows){
   for(const ids of chunks(enrollmentIds)) finalEnrollments.push(...requireRows(await admin.from("institutional_class_enrollments").select("id,student_id,student_membership_id,status,valid_from,valid_to").in("id",ids).eq("school_id",context.schoolId).eq("academic_year_id",context.academicYearId).eq("class_id",context.classId).eq("teacher_assignment_id",context.assignmentId).eq("subject_program_id",context.subjectProgramId)));
   for(const ids of chunks(studentIds)) finalProfiles.push(...requireRows(await admin.from("profiles").select("id,role,account_status").in("id",ids)));
   for(const ids of chunks(finalEnrollments.map(row=>row.student_membership_id))) finalMemberships.push(...requireRows(await admin.from("institutional_memberships").select("id,person_id,school_id,role,status,valid_from,valid_to").in("id",ids)));
+  }
   const validAt=(row:any) => row && ["active",...(context.readOnlyHistory?["ended"]:[])].includes(row.status) && Date.parse(row.valid_from)<=Date.now() && (context.readOnlyHistory || !row.valid_to || Date.parse(row.valid_to)>Date.now());
   const authorizedStudents=students.filter(student=>{
     const e=finalEnrollments.find(row=>row.id===student.enrollmentId&&row.student_id===student.id);

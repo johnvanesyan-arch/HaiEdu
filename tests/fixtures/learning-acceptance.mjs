@@ -65,7 +65,7 @@ export function sqlAdmin(db) {
             // PGlite's JavaScript Date objects. Do not alter JSON policy values.
             const rows=result.rows.map(row=>Object.fromEntries(Object.entries(row).map(([key,value])=>[key,value instanceof Date?(['starts_on','ends_on','effective_from','effective_to'].includes(key)?value.toISOString().slice(0,10):value.toISOString()):value])));
             return {data:single?(rows[0]??null):rows,error:null};
-          }catch(error){return {data:null,error:{message:error.message}};}
+          }catch(error){return {data:null,error:{message:error.message,code:error.code}};}
         })().then(resolve,reject);},
       };return q;
     },
@@ -74,7 +74,7 @@ export function sqlAdmin(db) {
         const entries=Object.entries(args),values=entries.map(([,v])=>v&&typeof v==='object'?JSON.stringify(v):v);
         const result=await db.query(`select ${identifier(name)}(${entries.map(([k],i)=>identifier(k)+' => $'+(i+1)).join(',')}) result`,values);
         return {data:result.rows[0].result,error:null};
-      }catch(error){return {data:null,error:{message:error.message}};}
+      }catch(error){return {data:null,error:{message:error.message,code:error.code}};}
     },
   };return admin;
 }

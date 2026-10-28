@@ -1,3 +1,4 @@
+import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../_shared/teacher-dashboard-batch.ts';
 import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -37,14 +38,6 @@ Deno.serve(async (req) => {
     const token = authHeader.replace(/^Bearer\s+/i, "");
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
-    if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
-    const teacherId = userData.user.id;
-
-    const { data: teacherProfile } = await admin.from("profiles").select("id, role, display_name").eq("id", teacherId).maybeSingle();
-    if (!teacherProfile || teacherProfile.role !== "teacher") {
-      return json({ error: "teacher_role_required" }, 403);
-    }
-
     let requestBody: { selection?: Partial<TeacherAcademicSelection>; readMode?: string; classId?: string; assignmentId?: string; archive?: boolean; offset?: number; search?: string } = {};
     try { requestBody = await req.json(); } catch { /* an empty body uses the default authorized unit */ }
     const readMode=requestBody.readMode ?? "full";
@@ -61,6 +54,26 @@ Deno.serve(async (req) => {
       return json({ error: "academic_selection_incomplete" }, 400);
     }
     const selection = hasSelection ? rawSelection as TeacherAcademicSelection : null;
+
+    if(readMode==='directory'||readMode==='class'){
+      try{
+        const dataStarted=Date.now();
+        const result=await readBatchedTeacherDashboard(admin,userData.user.id,token,{...requestBody,selection,readMode});
+        if(result)return json(result,200,`data;dur=${Date.now()-dataStarted},total;dur=${Date.now()-started}`);
+      }catch(error){
+        if(error instanceof TeacherDashboardReadError)return json({error:error.message},error.status);
+        if(error instanceof AcademicContextDenied || error?.message==='academic_context_unavailable')return json({error:'academic_context_unavailable'},403);
+        console.error('batched-teacher-dashboard',error);return json({error:'teacher_dashboard_unavailable'},503);
+      }
+    }
+    if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    const teacherId = userData.user.id;
+
+    const { data: teacherProfile } = await admin.from("profiles").select("id, role, display_name").eq("id", teacherId).maybeSingle();
+    if (!teacherProfile || teacherProfile.role !== "teacher") {
+      return json({ error: "teacher_role_required" }, 403);
+    }
+
 
     // Keep a school teacher out of the legacy, schoolless class and evidence
     // path until institutional classes have an authorized academic context.

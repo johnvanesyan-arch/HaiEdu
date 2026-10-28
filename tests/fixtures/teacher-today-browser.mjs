@@ -1,4 +1,4 @@
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 import {fixture as writingFixture,token,id,context} from './written-work-api.mjs';
 import {createTeacherWorkspaceHandler} from '../../supabase/functions/_shared/teacher-workspace-handler.mjs';
 export {id};
@@ -6,6 +6,8 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
  const f=await writingFixture();t.after(()=>f.db.close());
  await f.db.exec(`alter table classes add column if not exists teacher_id uuid,add column if not exists academic_year text;update subjects set code=case when id='${id(101)}' then 'english' else 'physics' end,name_hy=case when id='${id(101)}' then 'Անգլերեն' else 'Ֆիզիկա' end;update classes set name=case when id='${id(321)}' then '7Ա' else '7Բ' end;`);
  await f.db.exec(await readFile('supabase/migrations/20261028180038_teacher_today_workspace.sql','utf8'));
+ await f.db.exec(await readFile('supabase/migrations/0012_live_session_gate.sql','utf8'));
+ const batch=(await readdir('supabase/migrations')).find(p=>p.endsWith('_teacher_dashboard_batched_reads.sql'));await f.db.exec(await readFile('supabase/migrations/'+batch,'utf8'));
  for(let i=0;i<count;i++){
   const ctx=context(i%2);const task=id(6000+i);
   await f.db.query(`insert into written_task_versions(id,task_key,version_no,subject_program_id,curriculum_release_id,unit_id,definition,status,reviewed_by,reviewed_at,review_evidence)
