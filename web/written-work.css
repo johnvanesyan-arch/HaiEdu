@@ -12,3 +12,5 @@
 .feedback-panel ol{padding-inline-start:1.4rem}.feedback-panel [role=status]{padding:.65rem;border-radius:.5rem;background:var(--forest-quiet,#f3f6ef)}
 @media(min-width:1200px){.feedback-panel{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;scrollbar-gutter:stable}}
 @media(max-width:1100px){.written-review-layout{grid-template-columns:minmax(0,1fr)}}
+.written-work:has(.feedback-panel),.feedback-panel form,.feedback-panel fieldset{grid-template-columns:minmax(0,1fr);min-width:0}
+.written-work .feedback-panel :is(label,legend,h3,h4,summary,button,p){overflow-wrap:anywhere;max-width:100%;min-width:0}

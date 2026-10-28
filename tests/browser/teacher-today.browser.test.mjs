@@ -56,14 +56,14 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  await expect(summary(p)).toContainText('չբեռնվեց');assert.doesNotMatch(await summary(p).innerText(),/^0 /);
  assert.equal(await p.locator('.today-class-card').count(),0);
  await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 աշխատանք');
- await p.locator('[data-today-continue] button').click();await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
+ await p.locator('[data-today-continue] button').click();await p.evaluate(()=>window.__today.holds.push('manage-teacher-feedback:save_draft'));await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
  const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('#refreshBtn').click();
  assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
  p.once('dialog',d=>d.dismiss());await p.locator('.hm-role-nav a[href$="view=classes"]').first().click();
  assert.equal(p.url(),reviewURL);assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
  p.once('dialog',d=>d.accept());await p.evaluate(classId=>{history.pushState({},'', '/teacher.html?view=class&class='+classId);dispatchEvent(new PopStateEvent('popstate'));},id(321));
  await p.locator('#teacherClassDetailView:not(.hidden)').waitFor();assert.equal(await p.locator('#teacherToday').innerText(),'');
- assert.equal(await p.locator('[data-writing-feedback]').count(),0);
+ assert.equal(await p.locator('[data-writing-feedback]').count(),0);await p.evaluate(()=>window.__today.release());
  await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
  let count=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
  assert.equal((await calls(p,'get-teacher-workspace')).length,count+1);

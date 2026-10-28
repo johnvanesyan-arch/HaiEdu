@@ -45,7 +45,7 @@ for(const [label,sql] of [['grant',`update teacher_subject_authorizations set st
  await save();await f.db.exec(sql);const r=await save({draftRevision:1});assert.equal(r.status,403);
 }));
 test('foreign class/teacher, learner and forged selectors cannot read private draft or templates',async()=>changed(async()=>{
- await save();assert.equal((await api('open',{workId:work},21,context(2,true))).status,403);
+ await save();assert.equal((await api('open',{workId:work},20,context(1,true))).status,403);assert.equal((await api('open',{workId:work},21,context(2,true))).status,403);
  assert.equal((await api('snippets',{},10,{})).status,403);assert.equal((await api('snippets',{},30,{})).status,403);
  const forged=await f.feedbackRequest({action:'open',context:ctx,payload:{workId:work},actorId:id(21)});assert.equal(forged.status,400);
 }));
@@ -63,4 +63,17 @@ test('privacy inventory, deletion cascades and direct database denial preserve e
  for(const role of ['anon','authenticated','service_role'])for(const table of ['teacher_feedback_drafts','teacher_feedback_snippets','teacher_feedback_receipts'])assert.equal((await f.db.query('select has_table_privilege($1,$2,\'SELECT\') p',[role,'private.'+table])).rows[0].p,false);
  for(const role of ['anon','authenticated'])assert.equal((await f.db.query('select has_function_privilege($1,\'public.service_teacher_feedback(uuid,uuid,text,jsonb,jsonb)\',\'execute\') p',[role])).rows[0].p,false);
  await f.db.query('delete from profiles where id=$1',[id(20)]);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_snippets')).rows[0].n,0);
+}));
+test('legacy reviews invalidate new drafts and staff deletion preserves the published judgment',async()=>changed(async()=>{
+ const complete={scores:{task:2,organisation:2,vocabulary:2,grammar:2},feedback:'Synthetic mark',changeReason:''};await save({data:complete});
+ const r=await f.request({action:'review',context:ctx,payload:{workId:work,expectedRevision:revision,decision:'assessed',scores:complete.scores,feedback:complete.feedback}},20);assert.equal(r.status,200);
+ assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);
+ await f.db.query('delete from profiles where id=$1',[id(20)]);const reviews=(await f.db.query('select assessor_id,feedback from written_reviews')).rows;assert.equal(reviews.length,1);assert.equal(reviews[0].assessor_id,null);assert.equal(reviews[0].feedback,complete.feedback);
+}));
+test('personal comments have bounded pages and active count, while learner erasure cascades linked private drafts',async()=>changed(async()=>{
+ await f.db.query("insert into private.teacher_feedback_snippets(id,teacher_id,title,body,revision) select gen_random_uuid(),$1,'Generic','Comment',1 from generate_series(1,50)",[id(20)]);
+ const a=await api('snippets',{},20,{});assert.equal(a.status,200);assert.equal(a.data.snippets.length,20);assert.equal(a.data.hasMore,true);
+ const b=await api('snippets',{offset:20},20,{});assert.equal(b.data.snippets.length,20);assert.ok(!b.data.snippets.some(x=>a.data.snippets.some(y=>y.id===x.id)));
+ assert.equal((await api('save_snippet',{id:id(8200),expectedRevision:0,title:'Generic',body:'Comment',archived:false},20,{})).data.error,'feedback_snippet_limit');
+ await save();await f.db.query('delete from profiles where id=$1',[id(10)]);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_drafts')).rows[0].n,0);assert.equal((await f.db.query('select count(*) n from private.teacher_feedback_snippets')).rows[0].n,50);
 }));
