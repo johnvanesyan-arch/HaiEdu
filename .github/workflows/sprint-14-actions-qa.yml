@@ -10,6 +10,7 @@ on:
       - docs/qa/additional-programme-fixtures.json
       - web/written-work.mjs
       - web/written-work.css
+      - scripts/teacher-today-acceptance.mjs
       - scripts/sprint-14-actions.mjs
       - scripts/sprint-14-action-guards.mjs
       - scripts/sprint-14-isolation.mjs

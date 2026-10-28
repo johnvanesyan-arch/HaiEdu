@@ -1,3 +1,4 @@
+import {verifyTeacherToday} from './teacher-today-acceptance.mjs';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { chromium, expect as baseExpect } from '@playwright/test';
 import { validateFixture, roles, sides, runIsolation } from './sprint-14-isolation.mjs';
@@ -181,6 +182,7 @@ try {
     check(`${s}: current authorized class creation option`, Boolean(option));
     baselines[s] = { option, roster: roster.teachers, studentClasses: student.classes, originalClasses: d.classes.map(c => ({ id:c.id, name:c.name, isActive:c.isActive, assignmentId:c.assignmentId, students:c.students.map(x=>x.id).sort() })) };
   }
+  await verifyTeacherToday({sides,fixture,check,call,request,pageFor,report,site});
   // Reciprocal mutations are attempted before either temporary cross-school membership exists.
   for (const s of sides) {
     stage = `${s}: cross-school mutation denials`;

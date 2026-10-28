@@ -90,13 +90,13 @@ test('live class cards use governed subject art, exact links and account-scoped 
   await p.setViewportSize({width,height:1000});
   for(const font of ['100%','200%']){
    await p.evaluate(font=>document.documentElement.style.fontSize=font,font);
-   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow ${width} ${font}`);
+   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow ${width} ${font}: ${JSON.stringify(await p.evaluate(()=>[...document.querySelectorAll("body *")].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>[e.tagName,e.className,e.getBoundingClientRect().width]).slice(-12)))}`);
    await p.locator('[data-today-refresh]').focus();assert.equal(await p.locator('[data-today-refresh]').evaluate(e=>e===document.activeElement),true);
   }
  }
  await p.evaluate(()=>document.documentElement.style.fontSize='100%');
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-wide.png',fullPage:true});await p.setViewportSize({width:360,height:900});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-today-mobile.png',fullPage:true});}
- await p.evaluate(async()=>{const {rememberTeacherClass}=await import('/teacher-today.mjs');rememberTeacherClass('10000000-0000-4000-8000-000000000020','10000000-0000-4000-8000-000000000321');});
+ await p.evaluate(async()=>{const {rememberTeacherClass}=await import('/teacher-today.mjs');rememberTeacherClass('71000000-0000-4000-8000-000000000020','71000000-0000-4000-8000-000000000321');});
  await p.reload();await expect(p.locator('.today-class-card .staff-status')).toHaveText('Վերջերս բացված');
  await p.evaluate(()=>window.__today.switchActor(null));await p.locator('#authPanel:not(.hidden)').waitFor();
  assert.equal(await p.evaluate(()=>Object.keys(sessionStorage).filter(k=>k.startsWith('haiedu:teacher-recent:')).length),0);

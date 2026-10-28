@@ -1,4 +1,4 @@
-#teacherToday { display:grid; gap:1.25rem; margin-block:1.25rem; min-width:0; }
+#teacherToday { display:grid; gap:1.25rem; margin-block:1.25rem; min-width:0; overflow-wrap:anywhere; }
 #teacherToday :is(.today-overview,.today-queue) { padding:1.5rem; min-width:0; }
 #teacherToday :is(h2,h3,p) { margin-block:.4rem; }
 #teacherToday .today-overview { background:var(--forest-hero); }

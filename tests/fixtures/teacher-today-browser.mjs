@@ -11,14 +11,14 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home'}={
   await f.db.query(`insert into written_task_versions(id,task_key,version_no,subject_program_id,curriculum_release_id,unit_id,definition,status,reviewed_by,reviewed_at,review_evidence)
    select $1,$2,1,subject_program_id,curriculum_release_id,unit_id,definition,status,reviewed_by,reviewed_at,review_evidence from written_task_versions where id=$3`,[task,'today-'+i,id(1000+i%2)]);
   const opened=await(await f.request({action:'open',context:ctx,payload:{taskId:task}})).json();
-  const submitted=await f.request({action:'submit',context:ctx,payload:{taskId:task,expectedRevision:opened.work.revision,text:Array(80).fill('synthetic').join(' ')}});
+  const submitted=await f.request({action:'submit',context:ctx,payload:{taskId:task,expectedRevision:opened.work?.revision??0,text:Array(80).fill('synthetic').join(' ')}});
   if(!submitted.ok)throw Error('Synthetic submission failed');
  }
  const handle=createTeacherWorkspaceHandler({createAdmin:()=>f.admin,hasActiveLiveSession:f.hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture-only'}});
  const bc=await browser.newContext({viewport:{width:1280,height:960},serviceWorkers:'block'});t.after(()=>bc.close());const page=await bc.newPage();page.setDefaultTimeout(10000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{
-  const s=window.__today={actor:20,calls:[],fail:[],holds:[],resolvers:[],listeners:[],release(){this.holds=[];this.resolvers.splice(0).forEach(fn=>fn());},switchActor(actor){this.actor=actor;this.listeners.slice().forEach(fn=>fn(actor?'SIGNED_IN':'SIGNED_OUT',actor?{user:{id:'10000000-0000-4000-8000-'+String(actor).padStart(12,'0')}}:null));}};
-  const session=()=>({user:{id:'10000000-0000-4000-8000-'+String(s.actor).padStart(12,'0'),email:'synthetic@example.invalid'}});
+  const s=window.__today={actor:20,calls:[],fail:[],holds:[],resolvers:[],listeners:[],release(){this.holds=[];this.resolvers.splice(0).forEach(fn=>fn());},switchActor(actor){this.actor=actor;this.listeners.slice().forEach(fn=>fn(actor?'SIGNED_IN':'SIGNED_OUT',actor?{user:{id:'71000000-0000-4000-8000-'+String(actor).padStart(12,'0')}}:null));}};
+  const session=()=>({user:{id:'71000000-0000-4000-8000-'+String(s.actor).padStart(12,'0'),email:'synthetic@example.invalid'}});
   window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:session()}}),onAuthStateChange(fn){s.listeners.push(fn);return{data:{subscription:{unsubscribe(){s.listeners=s.listeners.filter(x=>x!==fn);}}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{async invoke(fn,{body}){
    const actor=s.actor;s.calls.push({fn,body,actor});if(s.fail.includes(fn))return{data:{error:'workspace_unavailable'},error:{}};
    const r=await fetch('/fixture-rpc',{method:'POST',body:JSON.stringify({fn,body,actor})}),data=await r.json();
