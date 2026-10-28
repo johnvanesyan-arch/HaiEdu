@@ -49,5 +49,13 @@
       "full four-subject gate"
     ],
     "englishPausedAfter": "16.1C.47"
+  },
+  "initialPrCI": {
+    "runId": 40704062827,
+    "nativeBrowser": {
+      "passed": 216,
+      "total": 216
+    },
+    "failure": "Six VM role-boundary checks hit a missing removeAttribute method in the old synthetic DOM stub. Product native checks passed; the stub now supports that standard DOM method without weakening assertions."
   }
 }

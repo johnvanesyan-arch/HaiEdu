@@ -83,7 +83,7 @@ async function openTeacherPage(profile, profileError = null) {
   const redirects = [];
   const elements = new Map();
   const getElement = (id) => {
-    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, replaceChildren(){},setAttribute(){}, classList: {
+    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, replaceChildren(){},setAttribute(){},removeAttribute(){}, classList: {
       values: new Set(), add(value) { this.values.add(value); }, remove(value) { this.values.delete(value); },
     } });
     return elements.get(id);
