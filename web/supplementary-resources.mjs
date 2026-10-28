@@ -2,10 +2,12 @@ import {escapeHtml as esc} from './learning-navigation.mjs';
 import {studentIcon} from './student-visuals.mjs';
 import {mountTeacherResourceAssignments} from './resource-assignments.mjs';
 import {ensureMaterialMfa} from './content-material-mfa.mjs';
+import {prepareResourceFile,resourceFileTitle,resourceFileDigest} from './resource-file-input.mjs';
 const labels={draft:'Սևագիր',published:'Հրապարակված',superseded:'Նախորդ տարբերակ',withdrawn:'Հեռացված'};
 const purposes={practice:'Վարժանք',reading:'Ընթերցանություն'};
 const errors={resource_forbidden:'Այս դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։',resource_unavailable:'Նյութը հեռացվել կամ փոխարինվել է։ Թարմացրեք ցանկը։',resource_conflict:'Նյութը փոխվել է։ Թարմացրեք ցանկը և բացեք վերջին տարբերակը։',resource_definition_invalid:'Ստուգեք դաշտերն ու աղբյուրի հաստատումները։',resource_file_invalid:'Ընտրեք PDF ֆայլ՝ առավելագույնը 5 ՄԲ։ Ֆայլը պետք է ամբողջական լինի։',resource_too_large:'Ֆայլը գերազանցում է 5 ՄԲ սահմանը։',resource_url_invalid:'Մուտքագրեք արտաքին կայքի HTTPS հղում։',resource_qa_required:'Նախ պահպանեք փոփոխությունները և անցկացրեք QA ստուգումը։',resource_mfa_required:'Հրապարակման համար հաստատեք բազմագործոն մուտքը։',resource_reason_required:'Նշեք փոփոխության պատճառը։'};
-const errorText=e=>errors[e.message]||'Բեռնել չհաջողվեց։ Փորձեք նորից։';
+Object.assign(errors,{resource_file_required:'Նախ կցեք PDF ֆայլը։',resource_storage_unavailable:'Ֆայլը վերբեռնել չհաջողվեց։ Սևագիրը պահպանված է․ կրկին փորձեք կցել ֆայլը։',resource_create_uncertain:'Սևագրի ստեղծման հաստատումը չստացվեց։ Թարմացրեք ցանկը և ստուգեք սևագրերը՝ կրկնօրինակ չստեղծելու համար։',resource_upload_uncertain:'Կցման հաստատումը չստացվեց։ Կրկին փորձելուց առաջ կստուգենք պահպանված ֆայլը։',resource_file_conflict:'Պահպանված PDF-ը տարբերվում է ընտրված ֆայլից։ Թարմացրեք ցանկը և ստուգեք նյութը։'});
+const errorText=e=>errors[e.message]||'Գործողությունը չհաջողվեց։ Փորձեք նորից։';
 export const resourceContext=c=>Object.fromEntries(['enrollmentId','assignmentId','curriculumReleaseId','unitId'].filter(k=>c?.[k]).map(k=>[k,c[k]]));
 const contextLabel=c=>[c.subjectNameHy,c.gradeLabelHy,c.unitTitleHy,c.className,c.schoolName,c.academicYearLabel].filter(Boolean).join(' · ');
 export function filterResources(rows,{query='',purpose='',topic='',provider='',format=''}={}){return rows.filter(m=>{const d=m.definition;return(!purpose||d.purpose===purpose)&&(!topic||d.topic===topic)&&(!provider||m.provider===provider)&&(!format||d.format===format)&&[d.title,d.goal,d.description,d.topic].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());});}
@@ -14,12 +16,15 @@ function card(m,staff,teacher=false){const d=m.definition;
 }
 export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  let actor=null,epoch=0,request=0,contexts=[],selected=null,rows=[],role=null,current=null,busy=false,dirty=false,disposed=false,operation=0,busyKind='write';
- let assignmentView=null;
+ let assignmentView=null;const lockedControls=new Map();
+ function lockWrites(){for(const el of root.querySelectorAll('input,select,textarea,button')){if(!lockedControls.has(el))lockedControls.set(el,el.disabled);el.disabled=true;}}
+ function unlockWrites(){for(const [el,disabled]of lockedControls)if(el.isConnected)el.disabled=disabled;lockedControls.clear();if(uncertainCreate)for(const el of root.querySelectorAll('[data-resource-form] button[type=submit]'))el.disabled=true;}
+ let pendingFile=null,fileTicket=0,uncertainCreate=false,uploadUncertain=false;
  const clearAssignments=()=>{assignmentView?.dispose();assignmentView=null;const el=root.querySelector('[data-resource-assignments]');if(el)el.hidden=true;};
  const urls=new Set();const $=q=>root.querySelector(q);const valid=(e,q=request)=>!disposed&&e===epoch&&q===request;
  const message=(t,bad=false)=>{const el=$('[data-resource-message]');if(el){el.textContent=t;el.classList.toggle('bad',bad);}};
  const clearDelivery=()=>{root.querySelectorAll('dialog').forEach(d=>d.remove());for(const u of urls)URL.revokeObjectURL(u);urls.clear();};
- const canLeave=()=>{if(assignmentView?.isBusy()){message('Սպասեք ուղարկման հաստատմանը կամ կրկնեք նույն ուղարկումը։');return false;}return !dirty||window.confirm('Չպահպանված փոփոխությունները կհեռացվեն։ Շարունակե՞լ։');};
+ const canLeave=()=>{if((busy&&busyKind==='write')||assignmentView?.isBusy()){message('Սպասեք գործողության հաստատմանը։');return false;}return !(dirty||pendingFile)||window.confirm('Չպահպանված փոփոխությունները կհեռացվեն։ Շարունակե՞լ։');};
  async function invoke(action,payload={},context=resourceContext(selected),file){
   const e=epoch,q=request;let body={action,context,payload};
   if(file){const f=new FormData();f.append('request',JSON.stringify(body));f.append('file',file);body=f;}
@@ -39,7 +44,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
     return active.map(m=>card(m,staff,role==='teacher')).join('')+(history.length?`<details class="resource-history"><summary>Նյութերի պատմություն · ${history.length}</summary><div class="resource-grid">${history.map(m=>card(m,staff,role==='teacher')).join('')}</div></details>`:'');
   })()||`<div class="resource-empty">${studentIcon('courses')}<h2>${rows.length?'Ոչ մի նյութ չի համապատասխանում':'Այստեղ դեռ նյութեր չկան'}</h2><p>${rows.length?'Փոխեք որոնումը կամ մաքրեք զտիչները։':staff?'Ավելացրեք առաջին նյութը ընտրված բաժնի համար։':'Երբ ուսուցիչը կամ հարթակը նյութ ավելացնի, այն կտեսնեք այստեղ։'}</p></div>`;
  }
- function clearEditor(){current=null;dirty=false;const ed=$('[data-resource-editor]');if(ed){ed.hidden=true;ed.innerHTML='';}}
+ function clearEditor(){current=null;dirty=false;pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;const ed=$('[data-resource-editor]');if(ed){ed.hidden=true;ed.innerHTML='';}}
  function resetFilters(){for(const el of root.querySelectorAll('[data-filter]'))el.value='';for(const b of root.querySelectorAll('[data-purpose]'))b.setAttribute('aria-pressed',String(!b.dataset.purpose));}
  function drawShell(){root.innerHTML=`<section class="resource-welcome"><div><p class="eyebrow">ՍՈՎՈՐԻՐ ԱՎԵԼԻՆ</p><h2>${staff?'Կիսվեք օգտակար նյութերով':'Փոքր քայլ, նոր բացահայտում'}</h2><p>${staff?'Ավելացրեք վարժանքներ կամ ընթերցանության նյութեր։ Սովորողները կտեսնեն միայն հրապարակված տարբերակը։':'Ընտրեք նյութը, խորացրեք գիտելիքները ձեր տեմպով։ Այս նյութերը պարտադիր չեն և չեն փոխում գնահատականները։'}</p></div><div class="resource-welcome-art" aria-hidden="true">${studentIcon('courses')}${studentIcon('practice')}</div></section>
  <section class="card resource-controls" aria-label="Դասընթաց և նյութերի որոնում"><label>Դասընթաց և բաժին<select data-resource-context><option value="">Ընտրեք բաժինը</option>${contexts.map((c,i)=>`<option value="${i}">${esc(contextLabel(c))}</option>`).join('')}</select></label><p data-resource-scope class="resource-meta"></p>${staff&&role==='teacher'?'<p class="resource-meta">Այստեղ հասանելի են ձեր ակտիվ դասարաններին վերագրված առարկաները։ Նշանակումները կառավարում է դպրոցի ադմինիստրատորը։ Նյութը հրապարակելուց առաջ ստուգեք ընտրված դասարանը և առարկան։</p>':''}<div class="resource-search"><label>Գտնել նյութ<input type="search" data-filter="query" placeholder="Վերնագիր, նպատակ կամ թեմա"></label><button type="button" class="ghost" data-resource-refresh>Թարմացնել</button></div>
@@ -61,55 +66,169 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   if(selected){const p=new URLSearchParams();for(const[k,v]of Object.entries(resourceContext(selected)))p.set(({enrollmentId:'enrollment',assignmentId:'assignment',curriculumReleaseId:'release',unitId:'unit'})[k],v);history.replaceState({},'',location.pathname+'?'+p);void loadList();}
   else{$('[data-resource-list]').innerHTML='<p>Ընտրեք դասընթացն ու բաժինը։</p>';message('');}
  }
- function drawEditor(m=null,history=[],events=[]){clearAssignments();current=m;dirty=false;const d=m?.definition??{locale:'hy',format:'link',purpose:'reading'},ed=$('[data-resource-editor]');ed.hidden=false;
-  ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութի ստուգում · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header><p>${role==='teacher'?'Ուսուցչից · Ընտրված դասարանի համար':'Հարթակից · Ընտրված ծրագրի և թողարկման բոլոր իրավասու սովորողների համար'}</p>${m?`<p><strong>${labels[m.status]}</strong> · ${m.qa?.passed?'QA անցած':m.qa?'QA խնդիր':'QA չի անցկացվել'}</p>`:''}<form data-resource-form><div class="resource-form-grid"><label>Վերնագիր<input name="title" required maxlength="200" value="${esc(d.title||'')}"></label><label>Թեմա<input name="topic" maxlength="200" value="${esc(d.topic||'')}"></label><label>Նպատակ<select name="purpose"><option value="reading"${d.purpose==='reading'?' selected':''}>Ընթերցանություն</option><option value="practice"${d.purpose==='practice'?' selected':''}>Վարժանք</option></select></label><label>Լեզու<select name="locale">${[['hy','Հայերեն'],['en','Անգլերեն'],['ru','Ռուսերեն']].map(([v,l])=>`<option value="${v}"${d.locale===v?' selected':''}>${l}</option>`).join('')}</select></label></div><label>Նկարագրություն<textarea name="description" required maxlength="2000">${esc(d.description||'')}</textarea></label><label>Ինչ կսովորի աշակերտը (ըստ ցանկության)<textarea name="goal" maxlength="500">${esc(d.goal||'')}</textarea></label><div class="resource-form-grid"><label>Ձևաչափ<select name="format"><option value="link"${d.format==='link'?' selected':''}>HTTPS հղում</option><option value="pdf"${d.format==='pdf'?' selected':''}>PDF · մինչև 5 ՄԲ</option></select></label><label>Մոտավոր տևողություն՝ րոպե (ըստ ցանկության)<input name="estimatedMinutes" type="number" min="1" max="240" step="1" value="${esc(d.estimatedMinutes||'')}"></label></div><label data-url-field${d.format==='pdf'?' hidden':''}>Արտաքին HTTPS հղում<input name="url" type="url" maxlength="2048" value="${esc(d.url||'')}"></label><p data-pdf-note${d.format!=='pdf'?' hidden':''}>PDF-ը կցեք սևագիրը պահպանելուց հետո։ Նոր տարբերակի համար կցեք նոր ֆայլ։</p><label>Աղբյուր և օգտագործման հիմք<textarea name="sourceReference" required maxlength="2000">${esc(d.sourceReference||'')}</textarea></label><label class="resource-check"><input name="rightsConfirmed" type="checkbox" required${d.rightsConfirmed?' checked':''}>Ունեմ նյութը տրամադրելու իրավունք։</label><label class="resource-check"><input name="assessmentSafe" type="checkbox" required${d.assessmentSafe?' checked':''}>Նյութը չի բացահայտում պաշտպանված գնահատման հարցեր, պատասխաններ կամ լսողական/ընթերցանության աղբյուրներ։</label>${role==='teacher'?`<label class="resource-check"><input name="recommended" type="checkbox"${d.recommended?' checked':''}>Առաջարկել այս նյութը ընտրված դասարանին</label>`:''}${m?'<label>Փոփոխության կամ հեռացման պատճառ<textarea name="reason" maxlength="2000"></textarea></label>':''}<p data-resource-dirty role="status"></p><button type="submit">${m?'Պահպանել նոր տարբերակ':'Պահպանել սևագիրը'}</button></form>
- ${m?`<section class="resource-publish"><h3>Նախադիտում և հրապարակում</h3><p>QA-ն ստուգում է դաշտերն ու ֆայլի առկայությունը։ Դուք ստուգում եք բովանդակությունն ու համապատասխանությունը։</p>${d.format==='pdf'&&m.status==='draft'&&!m.fileBytes?'<label>PDF ֆայլ<input type="file" accept="application/pdf,.pdf" data-resource-file></label><button type="button" data-resource-action="upload">Կցել PDF</button>':''}<div class="resource-actions"><button type="button" class="ghost" data-resource-action="preview">${d.format==='pdf'?'Ներբեռնել ստուգման համար':'Ստուգել հղումը'}</button><button type="button" class="ghost" data-resource-action="qa"${m.status!=='draft'?' disabled':''}>Ստուգել QA</button><button type="button" data-resource-action="publish"${m.status!=='draft'||!m.qa?.passed?' disabled':''}>${role==='teacher'?'Հրապարակել գրադարանում':'Հաստատել և հրապարակել'}</button>${role==='teacher'&&m.status==='published'?`<button type="button" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}<button type="button" class="ghost" data-resource-action="withdraw"${m.status==='withdrawn'?' disabled':''}>Հեռացնել հասանելիությունից</button></div>${m.qa?.issues?.includes('file_required')?'<p class="bad">Նախ կցեք PDF ֆայլը։</p>':''}</section><details><summary>Տարբերակներ և գործողություններ</summary><ul>${history.map(v=>`<li>v${v.version} · ${labels[v.status]}</li>`).join('')}</ul><ul>${events.map(e=>`<li>${esc(({created:'Ստեղծված',revised:'Նոր տարբերակ',qa:'QA ստուգում',published:'Հրապարակված',superseded:'Փոխարինված',withdrawn:'Հեռացված',file_attached:'Ֆայլը կցված է'})[e.event]||e.event)} · v${e.version} · ${new Date(e.at).toLocaleString('hy-AM')}${e.detail?.reason?' · '+esc(e.detail.reason):''}</li>`).join('')}</ul></details>`:''}`;
-  ed.querySelector('h2').focus();
+ function drawEditor(m=null,history=[],events=[],keepFile=false){
+  clearAssignments();current=m;dirty=false;uncertainCreate=false;
+  if(!keepFile){pendingFile=null;fileTicket++;uploadUncertain=false;}
+  const d=m?.definition??{locale:'hy',format:'pdf',purpose:'reading'},ed=$('[data-resource-editor]');ed.hidden=false;
+  ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութ · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header>
+  <p class="resource-compose-context">${esc(contextLabel(selected))}</p>
+  ${m?`<p><strong>${labels[m.status]}</strong>${m.qa?.passed?' · Ստուգումն անցած է':m.qa&&!m.qa.passed?' · '+(m.qa.issues?.includes('file_required')?'PDF-ը դեռ կցված չէ':'Ստուգեք նյութի տվյալները'):''}</p>`:''}
+  <form data-resource-form>
+   <fieldset class="resource-file-first"><legend>Նյութը</legend>
+    <label>Ձևաչափ<select name="format"><option value="pdf"${d.format==='pdf'?' selected':''}>PDF ֆայլ</option><option value="link"${d.format==='link'?' selected':''}>HTTPS հղում</option></select></label>
+    <div data-pdf-field${d.format!=='pdf'?' hidden':''}>
+     ${m?.fileBytes?`<p>Կցված PDF · ${(m.fileBytes/1024/1024).toLocaleString('hy-AM',{maximumFractionDigits:2})} ՄԲ</p><button type="button" class="ghost" data-resource-action="preview">Ստուգել պահպանված PDF-ը</button>`:''}
+     <label>${m?.fileBytes?'Փոխարինող PDF՝ նոր տարբերակի համար':'Կցել PDF'}<input type="file" accept="application/pdf,.pdf" data-resource-file></label>
+     <p class="resource-meta">Մինչև 5 ՄԲ։ Ֆայլը կկցվի պահպանման ժամանակ։</p>
+     <p data-resource-file-status role="status"></p><button type="button" class="ghost" data-resource-file-preview hidden>Ստուգել ընտրված PDF-ը</button>
+    </div>
+    <label data-url-field${d.format!=='link'?' hidden':''}>Արտաքին HTTPS հղում<input name="url" type="url" maxlength="2048" value="${esc(d.url||'')}"></label>
+   </fieldset>
+   <label>Վերնագիր<input name="title" required maxlength="200" value="${esc(d.title||'')}" placeholder="Ինչ նյութ եք ուղարկում"></label>
+   <label>Աղբյուր<input name="sourceReference" required maxlength="2000" value="${esc(d.sourceReference||'')}" placeholder="Օրինակ՝ իմ պատրաստած նյութը, գրքի անունը կամ աղբյուրի հղումը"></label>
+   <label>Կարճ նկարագրություն${role==='teacher'?' (ըստ ցանկության)':''}<textarea name="description"${role==='teacher'?'':' required'} maxlength="2000" rows="2">${esc(d.description||'')}</textarea></label>
+   <details class="resource-extra-fields"><summary>Լրացուցիչ տվյալներ (ըստ ցանկության)</summary><div class="resource-form-grid">
+    <label>Թեմա<input name="topic" maxlength="200" value="${esc(d.topic||'')}"></label>
+    <label>Նպատակ<select name="purpose"><option value="reading"${d.purpose==='reading'?' selected':''}>Ընթերցանություն</option><option value="practice"${d.purpose==='practice'?' selected':''}>Վարժանք</option></select></label>
+    <label>Լեզու<select name="locale">${[['hy','Հայերեն'],['en','Անգլերեն'],['ru','Ռուսերեն']].map(([v,l])=>`<option value="${v}"${d.locale===v?' selected':''}>${l}</option>`).join('')}</select></label>
+    <label>Մոտավոր տևողություն՝ րոպե<input name="estimatedMinutes" type="number" min="1" max="240" step="1" value="${esc(d.estimatedMinutes||'')}"></label>
+   </div><label>Ինչ կսովորի աշակերտը<textarea name="goal" maxlength="500">${esc(d.goal||'')}</textarea></label>
+   ${role==='teacher'?`<label class="resource-check"><input name="recommended" type="checkbox"${d.recommended?' checked':''}>Առաջարկել այս նյութը դասարանի գրադարանում</label>`:''}</details>
+   <label class="resource-check"><input name="rightsConfirmed" type="checkbox" required${d.rightsConfirmed?' checked':''}>Ունեմ նյութը տրամադրելու իրավունք։</label>
+   <label class="resource-check"><input name="assessmentSafe" type="checkbox" required${d.assessmentSafe?' checked':''}>Նյութը չի բացահայտում պաշտպանված գնահատման հարցեր, պատասխաններ կամ լսողական/ընթերցանության աղբյուրներ։</label>
+   ${m?'<label>Փոփոխության կամ հեռացման պատճառ<textarea name="reason" maxlength="2000" rows="2"></textarea></label>':''}
+   ${role==='teacher'?'<p class="resource-audience-note">Հրապարակված նյութը հասանելի կլինի այս դասարանի բոլոր իրավասու աշակերտներին «Հավելյալ նյութեր» բաժնում։ Հաջորդ քայլում ընտրեք՝ ում ուղարկել այն որպես առաջադրանք։</p>':''}
+   <p data-resource-dirty role="status"></p><div class="resource-actions">
+   ${role==='teacher'?'<button type="submit" name="intent" value="assign" data-resource-publish-assign>Հրապարակել և ընտրել ստացողներին</button>':''}
+   <button type="submit" name="intent" value="draft" class="${role==='teacher'?'ghost':''}">${m?'Պահպանել նոր տարբերակ':'Պահպանել սևագիրը'}</button></div>
+  </form>
+  <p data-resource-compose-status role="status" aria-live="polite"></p><button type="button" class="ghost" data-resource-recover hidden>Թարմացնել և գտնել սևագիրը</button>
+  ${m?`<details class="resource-publish"><summary>Հրապարակում և նյութի կառավարում</summary><p>Ֆայլի ստուգումը չի փոխարինում բովանդակության ձեր ստուգմանը։</p><div class="resource-actions">
+   ${d.format==='pdf'&&!m.fileBytes&&m.status==='draft'?'<button type="button" data-resource-action="upload">Կցել PDF</button>':''}
+   <button type="button" class="ghost" data-resource-action="preview">${d.format==='pdf'?'Ներբեռնել ստուգման համար':'Ստուգել հղումը'}</button>
+   <button type="button" class="ghost" data-resource-action="qa"${m.status!=='draft'||(d.format==='pdf'&&!m.fileBytes)?' disabled':''}>Ստուգել QA</button>
+   <button type="button" data-resource-action="publish"${m.status!=='draft'||!m.qa?.passed?' disabled':''}>${role==='teacher'?'Հրապարակել գրադարանում':'Հաստատել և հրապարակել'}</button>
+   ${role==='teacher'&&m.status==='published'?`<button type="button" data-resource-assign="${esc(m.id)}">Ուղարկել առաջադրանք</button>`:''}
+   <button type="button" class="ghost" data-resource-action="withdraw"${m.status==='withdrawn'?' disabled':''}>Հեռացնել հասանելիությունից</button></div></details>
+   <details><summary>Տարբերակներ և գործողություններ</summary><ul>${history.map(v=>`<li>v${v.version} · ${labels[v.status]}</li>`).join('')}</ul><ul>${events.map(e=>`<li>${esc(({created:'Ստեղծված',revised:'Նոր տարբերակ',qa:'QA ստուգում',published:'Հրապարակված',superseded:'Փոխարինված',withdrawn:'Հեռացված',file_attached:'Ֆայլը կցված է'})[e.event]||e.event)} · v${e.version} · ${new Date(e.at).toLocaleString('hy-AM')}${e.detail?.reason?' · '+esc(e.detail.reason):''}</li>`).join('')}</ul></details>`:''}`;
+  drawFileStatus();if(busy&&busyKind==='write')lockWrites();ed.querySelector('h2').focus();
+ }
+ function drawFileStatus(error=''){
+  const note=$('[data-resource-file-status]');if(!note)return;
+  note.textContent=error|| (pendingFile?pendingFile.name+' · '+(pendingFile.size/1024/1024).toLocaleString('hy-AM',{maximumFractionDigits:2})+' ՄԲ · պատրաստ է կցման':'PDF ֆայլ դեռ ընտրված չէ։');note.classList.toggle('bad',Boolean(error));
+  $('[data-resource-file-preview]').hidden=!pendingFile;
+ }
+ function composeMessage(text,bad=false){message(text,bad);const el=$('[data-resource-compose-status]');if(el){el.textContent=text;el.classList.toggle('bad',bad);}}
+ function remember(m){current=m;rows=[m,...rows.filter(x=>x.resourceId!==m.resourceId)];drawCards();}
+ function openAssignments(materialId){clearAssignments();clearEditor();assignmentView=mountTeacherResourceAssignments({root:$('[data-resource-assignments]'),client,context:selected,materialId});}
+ const sameDefinition=(a,b)=>['title','topic','description','goal','purpose','locale','format','sourceReference','url','estimatedMinutes','rightsConfirmed','assessmentSafe','recommended'].every(k=>(a[k]??(['recommended'].includes(k)?false:''))===(b[k]??(['recommended'].includes(k)?false:'')));
+ async function attachPendingFile(file){
+  if(uploadUncertain){
+   const saved=(await invoke('get',{id:current.id})).material;remember(saved);
+   if(saved.fileBytes){const bytes=await invoke('open',{id:saved.id});if(!(bytes instanceof Blob)||await resourceFileDigest(bytes)!==await resourceFileDigest(file))throw Error('resource_file_conflict');uploadUncertain=false;return;}
+  }
+  try{remember((await invoke('upload',key(),resourceContext(selected),file)).material);uploadUncertain=false;}
+  catch(error){if(error.message==='resource_stale')throw error;uploadUncertain=true;throw Error(error.message==='resource_file_invalid'||error.message==='resource_too_large'?error.message:'resource_upload_uncertain');}
+ }
+ async function saveResource(intent,definition,reason){
+  if(uncertainCreate)throw Error('resource_create_uncertain');
+  const e=epoch,q=request;
+  const changed=current&&!sameDefinition(definition,current.definition),needsVersion=changed||Boolean(pendingFile&&current?.fileBytes&&!uploadUncertain);
+  const file=definition.format==='pdf'?pendingFile:null;
+  if(definition.format==='pdf'&&(!current||needsVersion||!current.fileBytes)&&!file)throw Error('resource_file_required');
+  if(current&&needsVersion&&!reason)throw Error('resource_reason_required');
+  if(!current||needsVersion){
+   const payload={definition};if(current)Object.assign(payload,key(),{reason});
+   composeMessage('Պահպանվում է նյութը…');
+   try{remember((await invoke(current?'revise':'create',payload)).material);drawEditor(current,[],[],true);}
+   catch(error){if(!current&&error.message!=='resource_stale'&&!['resource_definition_invalid','resource_request_invalid','resource_url_invalid'].includes(error.message)){uncertainCreate=true;$('[data-resource-recover]').hidden=false;throw Error('resource_create_uncertain');}throw error;}
+  }
+  if(!valid(e,q))return;
+  if(definition.format==='pdf'&&(!current.fileBytes||uploadUncertain)){
+   composeMessage('Կցվում է PDF ֆայլը…');await attachPendingFile(file);drawEditor(current,[],[],true);
+  }
+  pendingFile=null;drawFileStatus();dirty=false;
+  if(intent!=='assign'){drawEditor(current);composeMessage('Սևագիրը և ֆայլը պահպանված են։ Երբ պատրաստ լինեք, հրապարակեք և ընտրեք ստացողներին։');return;}
+  if(current.status!=='published'){
+   // Repeat the read on retries: publication may have succeeded before a lost response.
+   remember((await invoke('get',{id:current.id})).material);
+   if(current.status!=='published'){
+    composeMessage('Ստուգվում է նյութը…');remember((await invoke('qa',key())).material);
+    if(!current.qa?.passed){drawEditor(current);throw Error(current.qa?.issues?.includes('file_required')?'resource_file_required':'resource_qa_required');}
+    composeMessage('Հրապարակվում է նյութը…');remember((await invoke('publish',key())).material);
+   }
+  }
+  if(valid(e,q)){const id=current.id;openAssignments(id);message('Նյութը հրապարակված է։ Ընտրեք ստացողներին և հաստատեք ուղարկումը։');}
  }
  function definitionFromForm(){const f=new FormData($('[data-resource-form]')),d=Object.fromEntries(['title','topic','description','goal','purpose','locale','format','sourceReference'].map(k=>[k,String(f.get(k)||'').trim()]));
+  if(role==='teacher'&&!d.description)d.description=d.title;
   if(d.format==='link')d.url=String(f.get('url')||'').trim();if(f.get('estimatedMinutes'))d.estimatedMinutes=Number(f.get('estimatedMinutes'));d.rightsConfirmed=f.has('rightsConfirmed');d.assessmentSafe=f.has('assessmentSafe');if(role==='teacher')d.recommended=f.has('recommended');return d;
  }
  async function delivery(id){clearDelivery();const data=await invoke('open',{id});
   if(data instanceof Blob){const url=URL.createObjectURL(data);urls.add(url);const a=document.createElement('a');a.href=url;a.download=`haiedu-material-${id}.pdf`;a.click();setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);message('PDF-ը պատրաստ է ներբեռնման։');}
   else if(data.url){const u=new URL(data.url);if(u.protocol!=='https:')throw Error('resource_unavailable');const dialog=document.createElement('dialog');dialog.className='resource-dialog';dialog.innerHTML=`<h2>Արտաքին նյութ</h2><p>Կբացվի նոր ներդիրում՝ <strong>${esc(u.hostname)}</strong></p><a class="button-link" href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">Բացել արտաքին կայքը</a><button type="button" class="ghost">Փակել</button>`;dialog.querySelector('button').onclick=()=>{dialog.close();dialog.remove();};root.append(dialog);dialog.showModal();}
  }
- async function run(fn,kind='write'){if(busy||assignmentView?.isBusy())return;busy=true;busyKind=kind;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;
-  try{await fn();}catch(error){if(valid(e,q)&&error.message!=='resource_stale'){message(errorText(error),true);if(error.message==='resource_forbidden'){rows=[];clearEditor();clearDelivery();$('[data-resource-list]').innerHTML='<p>Դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։</p>';}}}finally{if(op===operation){busy=false;root.removeAttribute('aria-busy');}}}
- root.addEventListener('input',e=>{if(e.target.matches('[data-filter]'))drawCards();if(e.target.closest('[data-resource-form]')){dirty=true;$('[data-resource-dirty]').textContent='Կան չպահպանված փոփոխություններ։';}});
- root.addEventListener('change',e=>{if(e.target.matches('[data-resource-context]')){if(canLeave()){selectContext(e.target.value);}else e.target.value=selected?String(contexts.indexOf(selected)):'';}if(e.target.matches('[data-filter]'))drawCards();if(e.target.name==='format'){$('[data-url-field]').hidden=e.target.value!=='link';$('[data-pdf-note]').hidden=e.target.value!=='pdf';}});
+ async function run(fn,kind='write'){
+  if(busy||assignmentView?.isBusy())return;busy=true;busyKind=kind;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;if(kind==='write')lockWrites();
+  try{await fn();}catch(error){if(valid(e,q)&&error.message!=='resource_stale'){
+   composeMessage(errorText(error),true);
+   if(error.message==='resource_forbidden'){rows=[];clearEditor();clearDelivery();$('[data-resource-list]').innerHTML='<p>Դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։</p>';}
+  }}finally{if(op===operation){busy=false;unlockWrites();root.removeAttribute('aria-busy');}}
+ }
+ root.addEventListener('input',e=>{
+  if(e.target.matches('[data-filter]'))drawCards();
+  if(e.target.closest('[data-resource-form]')&&!e.target.matches('[data-resource-file]')){dirty=true;$('[data-resource-dirty]').textContent='Կան չպահպանված փոփոխություններ։';}
+ });
+ root.addEventListener('change',e=>{
+  if(e.target.matches('[data-resource-context]')){if(canLeave())selectContext(e.target.value);else e.target.value=selected?String(contexts.indexOf(selected)):'';}
+  if(e.target.matches('[data-filter]'))drawCards();
+  if(e.target.name==='format'){
+   $('[data-url-field]').hidden=e.target.value!=='link';$('[data-pdf-field]').hidden=e.target.value!=='pdf';$('[name="url"]').required=e.target.value==='link';
+   pendingFile=null;fileTicket++;$('[data-resource-file]').value='';drawFileStatus();
+  }
+  if(e.target.matches('[data-resource-file]')){
+   const file=e.target.files?.[0],ticket=++fileTicket,epoch0=epoch,q=request;pendingFile=null;drawFileStatus();
+   if(!file)return;$('[data-resource-file-status]').textContent='Ստուգվում է PDF ֆայլը…';
+   void prepareResourceFile(file).then(ready=>{
+    if(!valid(epoch0,q)||ticket!==fileTicket)return;pendingFile=ready;const title=$('[name="title"]');if(!title.value.trim())title.value=resourceFileTitle(file.name);drawFileStatus();
+   }).catch(error=>{if(valid(epoch0,q)&&ticket===fileTicket){e.target.value='';drawFileStatus(errorText(error));}});
+  }
+ });
  root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if((b.dataset.resourceAssign||b.hasAttribute('data-resource-assignment-history'))&&role==='teacher'){
    if(busy||!canLeave())return;if(!selected){message('Նախ ընտրեք դասընթացն ու բաժինը։');return;}
-   clearAssignments();clearEditor();const area=$('[data-resource-assignments]');
-   assignmentView=mountTeacherResourceAssignments({root:area,client,context:selected,materialId:b.dataset.resourceAssign||null});return;
+   openAssignments(b.dataset.resourceAssign||null);return;
   }
   if(b.hasAttribute('data-purpose')){$('[data-filter="purpose"]').value=b.dataset.purpose;for(const x of root.querySelectorAll('[data-purpose]'))x.setAttribute('aria-pressed',String(x===b));drawCards();}
   if(b.hasAttribute('data-filter-reset')){resetFilters();drawCards();$('[data-filter="query"]').focus();}
   if(b.hasAttribute('data-resource-refresh')&&canLeave())void loadList();
+  if(b.hasAttribute('data-resource-recover')&&!busy){dirty=false;pendingFile=null;void loadList();}
+  if(b.hasAttribute('data-resource-file-preview')&&pendingFile){const url=URL.createObjectURL(pendingFile);urls.add(url);const a=document.createElement('a');a.href=url;a.download=pendingFile.name;a.click();setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);}
   if(b.hasAttribute('data-resource-new')||b.hasAttribute('data-resource-close')||b.dataset.resourceEdit){if(busy&&busyKind==='write'){message('Գործողությունը կատարվում է…');return;}if(busy){request++;operation++;busy=false;root.removeAttribute('aria-busy');}}
   if(b.hasAttribute('data-resource-new')){if(!selected){message('Նախ ընտրեք դասընթացն ու բաժինը։');return;}if(canLeave())drawEditor();}
   if(b.hasAttribute('data-resource-close')&&canLeave())clearEditor();
   if(b.dataset.resourceEdit&&canLeave())void run(async()=>{const r=await invoke('get',{id:b.dataset.resourceEdit});drawEditor(r.material,r.history,r.events);},'read');
   if(b.dataset.resourceOpen)void run(()=>delivery(b.dataset.resourceOpen),'read');
   if(b.dataset.resourceAction)void run(async()=>{const action=b.dataset.resourceAction;
-   if(dirty&&action!=='withdraw'){message('Նախ պահպանեք փոփոխությունները կամ նորից բացեք պահպանված տարբերակը։');return;}
+   if(dirty&&!['withdraw','upload'].includes(action)){message('Նախ պահպանեք փոփոխությունները կամ նորից բացեք պահպանված տարբերակը։');return;}
    if(action==='preview')return delivery(current.id);
    const e0=epoch,q0=request;
    if(['publish','withdraw'].includes(action)&&role!=='teacher'&&!await ensureMaterialMfa(client,()=>valid(e0,q0)))return;
    if(!valid(e0,q0))return;
    const payload=key();let file;
-   if(action==='upload'){file=$('[data-resource-file]')?.files[0];if(!file||file.size>5*1024*1024)throw Error('resource_file_invalid');}
+   if(action==='upload'){file=pendingFile;if(!file)throw Error('resource_file_required');await attachPendingFile(file);pendingFile=null;drawEditor(current);composeMessage('Ֆայլը կցված է։ Կարող եք հրապարակել և ընտրել ստացողներին։');return;}
    if(action==='withdraw'){payload.reason=$('[name="reason"]').value.trim();if(!payload.reason)throw Error('resource_reason_required');}
    const r=await invoke(action,payload,resourceContext(selected),file);dirty=false;const m=r.material;
    rows=rows.map(x=>x.resourceId===m.resourceId?m:x);drawCards();drawEditor(m);message(action==='publish'?'Նյութը հրապարակված է։':action==='withdraw'?'Նյութն այլևս հասանելի չէ սովորողներին։':action==='qa'?(m.qa?.passed?'QA ստուգումն անցած է։':'Կցեք PDF-ը և կրկին ստուգեք։'):'Ֆայլը կցված է։');
   });
  });
- root.addEventListener('submit',e=>{if(!e.target.matches('[data-resource-form]'))return;e.preventDefault();void run(async()=>{
-  const payload={definition:definitionFromForm()};if(current)Object.assign(payload,key(),{reason:$('[name="reason"]').value.trim()});
-  const r=await invoke(current?'revise':'create',payload),m=r.material;rows=[m,...rows.filter(x=>x.resourceId!==m.resourceId)];drawCards();drawEditor(m);message('Սևագիրը պահպանված է։ Ստուգեք նյութը, ապա հրապարակեք։');
- });});
- const beforeLeave=e=>{if(dirty||assignmentView?.isBusy()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);
- async function session(s,force=false){const next=s?.user?.id??null;if(!force&&next===actor)return;actor=next;epoch++;request++;operation++;clearDelivery();clearAssignments();dirty=false;busy=false;current=null;selected=null;rows=[];contexts=[];document.querySelectorAll('.material-mfa').forEach(d=>d.dispatchEvent(new Event('material-session-ended')));
+ root.addEventListener('submit',e=>{
+  if(!e.target.matches('[data-resource-form]'))return;e.preventDefault();
+  const intent=e.submitter?.value==='assign'&&role==='teacher'?'assign':'draft',definition=definitionFromForm(),reason=$('[name="reason"]')?.value.trim()||'';
+  void run(()=>saveResource(intent,definition,reason));
+ });
+ const beforeLeave=e=>{if(dirty||pendingFile||(busy&&busyKind==='write')||assignmentView?.isBusy()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);
+ async function session(s,force=false){const next=s?.user?.id??null;if(!force&&next===actor)return;actor=next;epoch++;request++;operation++;clearDelivery();clearAssignments();pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;unlockWrites();root.removeAttribute('aria-busy');dirty=false;busy=false;current=null;selected=null;rows=[];contexts=[];document.querySelectorAll('.material-mfa').forEach(d=>d.dispatchEvent(new Event('material-session-ended')));
   if(!actor){root.innerHTML='<section class="card resource-empty"><h2>Մուտք գործեք</h2><p>Նյութերը հասանելի են ձեր դասընթացների շրջանակում։</p><a class="button-link" href="./account-access.html">Մուտք գործել</a></section>';return;}
   root.innerHTML='<p role="status">Ստուգվում է նյութերի հասանելիությունը…</p>';const e=epoch,q=request;
   try{const data=await invoke('contexts',{},{});if(!valid(e,q))return;role=data.role;contexts=data.contexts??[];
@@ -125,5 +244,5 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  root.addEventListener('click',e=>{if(e.target.closest('[data-resource-retry]'))void session({user:{id:actor}},true);});
  let events=0;const sub=client.auth.onAuthStateChange((event,s)=>{events++;if(event==='SIGNED_OUT'||s?.user?.id!==actor)void session(event==='SIGNED_OUT'?null:s,true);});const version=events;
  client.auth.getSession().then(r=>{if(version===events)void session(r.data.session,true);}).catch(()=>{if(version===events&&!disposed)root.textContent='Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։';});
- return()=>{disposed=true;epoch++;request++;clearDelivery();clearAssignments();sub.data.subscription.unsubscribe();window.removeEventListener('beforeunload',beforeLeave);root.innerHTML='';};
+ return()=>{disposed=true;epoch++;request++;clearDelivery();clearAssignments();sub.data.subscription.unsubscribe();window.removeEventListener('beforeunload',beforeLeave);pendingFile=null;fileTicket++;lockedControls.clear();root.removeAttribute('aria-busy');root.innerHTML='';};
 }
