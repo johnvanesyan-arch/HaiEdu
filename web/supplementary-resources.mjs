@@ -176,7 +176,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   clearDelivery();const e=epoch,q=request;const data=await invoke('get',{id});
   if(!valid(e,q))return;if(data.material.status!=='published'||!data.material.qa?.passed||data.material.qa.fingerprint!==data.material.fingerprint)throw Error('resource_unavailable');
   const dialog=document.createElement('dialog');dialog.className='resource-dialog learner-preview-dialog';dialog.setAttribute('aria-labelledby','resourceLearnerPreviewTitle');
-  dialog.innerHTML='<h2 id="resourceLearnerPreviewTitle" tabindex="-1">Աշակերտի տեսքի նախադիտում</h2><p>'+esc(previewExplanation)+'</p><div class="learner-preview-card">'+studentMaterialCard(data.material,{preview:true})+'</div><button type="button" autofocus>Փակել նախադիտումը</button>';
+  dialog.innerHTML='<h2 id="resourceLearnerPreviewTitle" tabindex="-1">Աշակերտի տեսքի նախադիտում</h2><p>Ցուցադրվում է հրապարակված տարբերակը։ Չպահպանված խմբագրումները չեն ներառվում։</p><p>'+esc(previewExplanation)+'</p><div class="learner-preview-card">'+studentMaterialCard(data.material,{preview:true})+'</div><button type="button" autofocus>Փակել նախադիտումը</button>';
   const close=()=>{dialog.remove();if(valid(e,q)&&trigger.isConnected)trigger.focus();};dialog.addEventListener('close',close,{once:true});dialog.querySelector('button[autofocus]').addEventListener('click',()=>dialog.close());root.append(dialog);dialog.showModal();dialog.querySelector('h2').focus();
  }
  async function delivery(id){clearDelivery();const data=await invoke('open',{id});
@@ -214,7 +214,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    if(busy||!canLeave())return;if(!selected){message('Նախ ընտրեք դասընթացն ու բաժինը։');return;}
    openAssignments(b.dataset.resourceAssign||null);return;
   }
-  if(b.dataset.resourceStudentPreview&&role==='teacher'){if(canLeave())void run(()=>previewMaterial(b.dataset.resourceStudentPreview,b),'read');return;}
+  if(b.dataset.resourceStudentPreview&&role==='teacher'){void run(()=>previewMaterial(b.dataset.resourceStudentPreview,b),'read');return;}
   if(b.hasAttribute('data-purpose')){$('[data-filter="purpose"]').value=b.dataset.purpose;for(const x of root.querySelectorAll('[data-purpose]'))x.setAttribute('aria-pressed',String(x===b));drawCards();}
   if(b.hasAttribute('data-filter-reset')){resetFilters();drawCards();$('[data-filter="query"]').focus();}
   if(b.hasAttribute('data-resource-refresh')&&canLeave())void loadList();

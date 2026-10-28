@@ -219,3 +219,9 @@ test('a held material preview cannot reopen after class or account changes',asyn
  await p.locator('[data-resource-context]').selectOption('');while(!held.release)await new Promise(r=>setTimeout(r,10));const response=p.waitForResponse(r=>r.url().includes('/fixture/manage-supplementary-resources')&&r.request().postDataJSON().action==='get');held.release();await(await response).finished();await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));assert.equal(await p.locator('.learner-preview-dialog').count(),0);
  await p.locator('[data-resource-context]').selectOption('0');await p.locator('[data-resource-student-preview]').first().click();await p.locator('.learner-preview-dialog[open]').waitFor();await p.evaluate(()=>window.__assignmentSwitch());assert.equal(await p.locator('.learner-preview-dialog').count(),0);assert.deepEqual(ui.errors,[]);
 });
+
+test('published learner preview preserves an unsaved teacher material edit without a discard prompt',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const ui=await surface(t,f),p=ui.page;
+ await p.locator('[data-resource-edit]').first().click();await p.locator('[data-resource-form]').waitFor();const title=p.locator('[data-resource-form] [name=title]');const original=await title.inputValue();await title.fill('Unsaved material title');let dialogs=0;p.on('dialog',d=>{dialogs++;void d.dismiss();});
+ await p.locator('[data-resource-student-preview]:visible').click();await p.locator('.learner-preview-dialog[open]').waitFor();assert.equal(await p.locator('.learner-preview-dialog .resource-card h3').innerText(),original);await p.keyboard.press('Escape');assert.equal(await title.inputValue(),'Unsaved material title');assert.equal(dialogs,0);assert.deepEqual(ui.errors,[]);
+});
