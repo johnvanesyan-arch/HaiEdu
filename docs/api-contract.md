@@ -1,5 +1,9 @@
 # Learning API contract
 
+## PDF-first resource authoring — 16.5B.8.1
+
+The shared browser form coordinates existing supplementary `create`/`revise`, multipart `upload`, `get`, `qa` and `publish`, then the existing assignment `preview`/`assign` confirmation. No endpoint, schema, role grant, publication authority or learner projection changes. PDF bytes are validated before draft creation; an empty browser MIME value is normalized only after the existing PDF header/EOF/size checks. The server repeats its own checks. A known upload failure retains the current draft and selected local file; an ambiguous upload is reconciled against the authorized stored file digest before retry. An ambiguous creation/revision blocks another create until explicit catalog recovery. Publication and assignment remain distinct; the user must confirm recipients. Immutable version/reason, platform MFA, class/programme library visibility and final server authorization stay unchanged. [Implementation and verification scope](resource-pdf-first.md).
+
 ## Resource assignments — 16.5B.8
 
 Deployed and verified under [16.5B.8](resource-assignments.md): all five required PR/main CI jobs pass, and reviewed-main production acceptance passes 123 checks with two-school class/selected delivery, actual teacher/student browser PDF flow, retry, pinned version, cancellation, withdrawal and run-owned cleanup. Same-class unselected-recipient denial, platform-material assignment, stale rosters and independent PostgreSQL races are isolated checks; they are not presented as additional live learner tests. Exact frontend, Edge v1/privacy v9 and ten SQL function bodies match source. This shared core endpoint does not alter assessments, bank approvals or publication authority.

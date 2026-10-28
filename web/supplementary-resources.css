@@ -12,3 +12,29 @@
 [data-resource-assignment-history],[data-resource-assign]{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 
 .resource-purpose button,.resource-card-body button{max-width:100%;min-width:0;overflow-wrap:anywhere}
+
+/* File-first authoring: the essential fields stay visible; metadata is optional. */
+.resource-file-first{min-inline-size:0;border:1px solid #b2c6b5;border-radius:16px;background:#f3f7ee;padding:1.25rem;display:grid;gap:1rem}
+.resource-file-first legend{font-weight:700;padding:0 .4rem}
+.resource-file-first [data-pdf-field]{display:grid;gap:.65rem;min-width:0}
+.resource-file-first input[type=file]{padding:.8rem;background:#fff;overflow:hidden}
+.resource-file-first input[type=file]::file-selector-button{border:1px solid #326449;border-radius:8px;padding:.65rem;background:#e5efdf;color:#203d30;cursor:pointer;max-width:100%;white-space:normal}
+.resource-editor .resource-extra-fields{border-top:1px solid #d0dcd1;border-bottom:1px solid #d0dcd1;padding:.75rem 0}
+.resource-extra-fields>summary,.resource-publish>summary{cursor:pointer;min-height:44px;display:list-item;align-content:center;overflow-wrap:anywhere}
+.resource-extra-fields[open]>.resource-form-grid{margin:1rem 0}
+.resource-compose-context,.resource-audience-note{padding:.8rem 1rem;background:#f5f2e8;border-radius:12px;overflow-wrap:anywhere;line-height:1.6}
+.resource-editor [data-resource-file-status],.resource-editor [data-resource-compose-status]{overflow-wrap:anywhere;line-height:1.6}
+.resource-editor button,.resource-editor input,.resource-editor select{min-height:44px}
+.resource-editor button{max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere}
+.resource-editor textarea[rows="2"]{min-height:4.5rem}
+.resource-editor :disabled{cursor:wait;opacity:.65}
+.resource-editor [aria-busy=true]{cursor:progress}
+.resource-editor label,.resource-editor legend{overflow-wrap:anywhere}
+.resource-editor .resource-check{min-width:0;overflow-wrap:anywhere}
+.resource-editor form{grid-template-columns:minmax(0,1fr);min-width:0}
+.resource-editor form>*{min-width:0;max-width:100%;box-sizing:border-box}
+.resource-file-first{grid-template-columns:minmax(0,1fr);margin-inline:0}
+.resource-file-first legend{max-width:100%;box-sizing:border-box}
+
+.resource-composing .resource-welcome,.resource-composing .resource-search,.resource-composing .resource-purpose,.resource-composing .resource-filter-details,.resource-composing [data-filter-reset],.resource-composing .resource-list-heading,.resource-composing [data-resource-list],.resource-composing [data-resource-assignment-history],.resource-composing .resource-controls>.resource-meta{display:none!important}
+.resource-editor button[type=submit]:not(.ghost){background:#285b45;border-color:#285b45;color:#fff}

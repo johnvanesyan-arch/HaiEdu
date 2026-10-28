@@ -55,5 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resource-assignments-acceptance
-          path: qa-results/resource-assignments.json
+          path: |
+            qa-results/resource-assignments.json
+            qa-results/resource-form
           retention-days: 14
