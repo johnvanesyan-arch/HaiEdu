@@ -1,7 +1,13 @@
 import {getInstitutionalTeacherDashboard} from './institutional-teacher-dashboard.ts';
 import {loadExactInstitutionalClassAnalytics} from './institutional-teacher-analytics.ts';
 import {authorizeTeacherAcademicRows,AcademicContextDenied,type TeacherAcademicSelection} from './academic-context.ts';
-import {verifiedSessionClaim} from './governed-learning-runtime.mjs';
+// Signature/user verification happens in the handler. This claim is only an
+// input to the database live-session gate, never an authorization decision.
+function sessionClaim(token:string){try{
+ const p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+ const id=JSON.parse(atob(p+'='.repeat((4-p.length%4)%4))).session_id;
+ return typeof id==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)?id:null;
+}catch{return null;}}
 
 // Request-local snapshots only. The final read is made after all evidence reads,
 // and every expiry check uses the clock after that read has completed.
@@ -22,7 +28,7 @@ export class TeacherDashboardReadError extends Error {
  constructor(status:number,code:string){super(code);this.status=status;}
 }
 export async function readBatchedTeacherDashboard(admin:any,actor:string,token:string,request:any){
- const session=verifiedSessionClaim(token);
+ const session=sessionClaim(token);
  if(!session)throw new TeacherDashboardReadError(403,'account_or_session_inactive');
  async function rpc(name:string,args:any){
   const {data,error}=await admin.rpc(name,{p_actor:actor,p_session:session,...args});
@@ -50,18 +56,38 @@ export async function readBatchedTeacherDashboard(admin:any,actor:string,token:s
  if(!rows.institutionalTeacher)return null; // Preserve the isolated schoolless adapter.
  if(!rows.assignments.length)throw new AcademicContextDenied();
  if(classId&&!assignmentId)rows.assignments=rows.assignments.slice(0,1);
- let finalRows:Promise<any>|null=null;
- const revalidate=()=>finalRows??=(rpc('service_teacher_dashboard_rows',args));
  return getInstitutionalTeacherDashboard(admin,actor,rows.profile.display_name?.trim()||'Ուսուցիչ',selection,classId,assignmentId,{
   rows,
   analytics:async(context:any,students:any[])=>{
    if(!students.length)return {skills:[],students:[]};
    const evidence=await rpc('service_teacher_dashboard_evidence',{p_assignment:context.assignmentId,p_release:context.curriculumReleaseId,p_unit:context.unitId});
-   return loadExactInstitutionalClassAnalytics(admin,context,students,{...evidence,revalidate});
+   return loadExactInstitutionalClassAnalytics(admin,context,students,{...evidence,roster:rows});
   },
-  final:async(selections:TeacherAcademicSelection[])=>{
-   const fresh=await revalidate(),now=new Date();
-   return [selections.map(s=>contextFromRows(actor,s,fresh,now)),{data:fresh.memberships},{data:fresh.grants}];
+  final:async(selections:TeacherAcademicSelection[],classes:any[])=>{
+   const fresh=await rpc('service_teacher_dashboard_rows',args),now=new Date();
+   const contexts=selections.map(s=>contextFromRows(actor,s,fresh,now));
+   for(const klass of classes){
+    const a=fresh.assignments.find((a:any)=>a.id===klass.assignmentId);
+    const c=fresh.classes.find((c:any)=>c.id===a?.class_id),y=fresh.years.find((y:any)=>y.id===a?.academic_year_id);
+    const p=fresh.programmes.find((p:any)=>p.id===a?.subject_program_id);
+    if(!a||!c||!y||!p||c.id!==klass.id||c.school_id!==a.school_id||c.academic_year_id!==a.academic_year_id||
+      c.subject_id!==p.subject_id||c.grade_id!==p.grade_id||p.status!=='published'||y.school_id!==a.school_id||
+      !['active','closed','archived'].includes(y.status)||a.valid_from.slice(0,10)>y.ends_on||(a.valid_to&&a.valid_to.slice(0,10)<y.starts_on))throw new AcademicContextDenied();
+    const ctx=contexts.find(ctx=>ctx.assignmentId===klass.assignmentId);
+    const today=now.toISOString().slice(0,10);
+    const history=ctx?.readOnlyHistory??(a.status==='ended'||!c.is_active||y.status!=='active'||today<y.starts_on||today>y.ends_on);
+    const valid=(r:any)=>r&&['active',...(history?['ended']:[])].includes(r.status)&&Date.parse(r.valid_from)<=now.getTime()&&(history||!r.valid_to||Date.parse(r.valid_to)>now.getTime());
+    klass.students=klass.students.filter((s:any)=>{
+     const e=fresh.enrollments.find((e:any)=>e.id===(s.institutionalClassEnrollmentId??s.enrollmentId)&&e.student_id===s.id&&e.teacher_assignment_id===a.id&&e.class_id===c.id&&e.school_id===a.school_id&&e.academic_year_id===a.academic_year_id&&e.subject_program_id===p.id);
+     const profile=fresh.studentProfiles.find((p:any)=>p.id===s.id);
+     const m=fresh.studentMemberships.find((m:any)=>m.id===e?.student_membership_id&&m.person_id===s.id&&m.school_id===a.school_id&&m.role==='student');
+     return valid(e)&&valid(m)&&profile?.role==='student'&&profile.account_status==='active';
+    });
+    klass.studentCount=klass.students.length;
+    klass.activeStudents=klass.students.filter((s:any)=>s.latestActivityAt).length;
+    klass.needingSupport=klass.students.filter((s:any)=>s.weakSkills?.some((k:any)=>k.band==='needs_support')).length;
+   }
+   return [contexts,{data:fresh.memberships},{data:fresh.grants}];
   },
  });
 }

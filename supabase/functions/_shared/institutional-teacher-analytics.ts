@@ -335,7 +335,8 @@ export async function loadExactInstitutionalClassAnalytics(
     skillCode: skillById.get(attempt.skill_id)?.code ?? "",
     skillNameHy: skillById.get(attempt.skill_id)?.nameHy ?? "",
   }));
-  const fresh=batchedRows ? await batchedRows.revalidate() : null;
+  // Batched dashboard reads perform their final roster check after all calculations.
+  const fresh=batchedRows?.roster ?? null;
   const finalEnrollments:any[]=fresh?.enrollments ?? [], finalProfiles:any[]=fresh?.studentProfiles ?? [], finalMemberships:any[]=fresh?.studentMemberships ?? [];
   if(!batchedRows){
   for(const ids of chunks(enrollmentIds)) finalEnrollments.push(...requireRows(await admin.from("institutional_class_enrollments").select("id,student_id,student_membership_id,status,valid_from,valid_to").in("id",ids).eq("school_id",context.schoolId).eq("academic_year_id",context.academicYearId).eq("class_id",context.classId).eq("teacher_assignment_id",context.assignmentId).eq("subject_program_id",context.subjectProgramId)));

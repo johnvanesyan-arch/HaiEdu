@@ -255,7 +255,7 @@ export async function getInstitutionalTeacherDashboard(
   // once per request rather than once per classroom; ownership, grants and the
   // final expiry clock still use the same authorization contract.
   const contextualClasses=classPayload.filter(klass=>klass.selectedUnit);
-  const [finalContexts,finalMembershipResult,finalGrantResult]=readSource ? await readSource.final(contextualClasses.map(klass=>klass.selectedUnit)) : await Promise.all([
+  const [finalContexts,finalMembershipResult,finalGrantResult]=readSource ? await readSource.final(contextualClasses.map(klass=>klass.selectedUnit),classPayload) : await Promise.all([
     resolveTeacherAcademicContextsBatch(admin,teacherId,contextualClasses.map(klass=>klass.selectedUnit)),
     admin.from("institutional_memberships").select("id,person_id,role,school_id,status,valid_from,valid_to").in("id",membershipIds),
     admin.from("teacher_subject_authorizations").select("id,school_id,teacher_membership_id,subject_id,status,valid_from,valid_to").in("teacher_membership_id",membershipIds),
