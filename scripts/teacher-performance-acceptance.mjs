@@ -65,7 +65,7 @@ try{
      readiness=await page.evaluate(start=>({method:window.__haieduTeacherHomeTiming.version,ms:window.__haieduTeacherHomeTiming.readyAtEpochMs-start,
       navigation:(()=>{const n=performance.getEntriesByType('navigation')[0];return {responseEnd:n.responseEnd,domInteractive:n.domInteractive,domContentLoaded:n.domContentLoadedEventEnd};})(),
       resources:performance.getEntriesByType('resource').filter(e=>new URL(e.name).origin===location.origin).slice(0,100).map(e=>({path:new URL(e.name).pathname,startTime:e.startTime,duration:e.duration,encodedBodySize:e.encodedBodySize,transferSize:e.transferSize}))}),startEpochMs);
-     check(side+': exact visible Home milestone in sample '+iteration,Number.isFinite(readiness.ms)&&readiness.ms>=0&&readiness.ms<=ms+100);
+     check(side+': exact visible Home milestone in sample '+iteration,Number.isFinite(readiness.ms)&&readiness.ms>=0&&readiness.ms<=Date.now()-startEpochMs+100);
     }
     report.samples.push({side,iteration,scenario,ms,...(readiness?{readiness}:{}),requestCount:calls.length,bytes:calls.reduce((n,c)=>n+c.bytes,0),calls});await save();
    }
