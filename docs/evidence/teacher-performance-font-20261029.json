@@ -1,0 +1,93 @@
+{
+  "scope": "All shared Forest consumers at existing normal width",
+  "manifest": {
+    "version": 1,
+    "scope": "Shared Forest UI at its existing normal width; full weight range and glyph coverage",
+    "source": {
+      "file": "noto-sans-armenian-variable.ttf",
+      "bytes": 221936,
+      "sha256": "0870908d8318435a5daf1cd280ae15063f990cd9ad60f3e94c734ce9e1ffef71"
+    },
+    "delivery": {
+      "file": "noto-sans-armenian-ui-ded672ae8d54.woff2",
+      "bytes": 64600,
+      "sha256": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f",
+      "width": 100,
+      "weightRange": [
+        100,
+        900
+      ]
+    },
+    "toolchain": {
+      "fonttools": "4.61.1",
+      "brotli": "1.2.1",
+      "optimizeIup": false,
+      "recalculateTimestamp": false,
+      "recipeSha256": "684c4376a792db087779b4ffa80f7fde15c510b2de3c9a1e397e1741c3d39091"
+    },
+    "verification": {
+      "glyphs": 436,
+      "codepoints": 430,
+      "weights": [
+        100,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900
+      ],
+      "outlineAndAdvanceComparisons": 3052,
+      "allMatchAtTestedWeights": true
+    },
+    "license": "OFL-NotoSansArmenian.txt",
+    "licenseSha256": "0468358b316f69f405b55cadf8a8314e16e3610b8feaad96772bd5d968112d02",
+    "fallback": "noto-sans-armenian-variable.ttf"
+  },
+  "consumerCheck": {
+    "font": "noto-sans-armenian-ui-ded672ae8d54.woff2",
+    "bytes": 64600,
+    "consumers": [
+      "web/account-access.html",
+      "web/admin-security.html",
+      "web/admin.html",
+      "web/assessment.html",
+      "web/content-bank.html",
+      "web/content-curriculum.html",
+      "web/content-evidence.html",
+      "web/content-guides.html",
+      "web/content-item.html",
+      "web/content-materials.html",
+      "web/content-misconceptions.html",
+      "web/content-review.html",
+      "web/content.html",
+      "web/course.html",
+      "web/diagnostic.html",
+      "web/index.html",
+      "web/join.html",
+      "web/mastery.html",
+      "web/materials.html",
+      "web/physics-7.html",
+      "web/practice.html",
+      "web/privacy.html",
+      "web/progress.html",
+      "web/resource-library.html",
+      "web/school-admin.html",
+      "web/school-teacher.html",
+      "web/teacher-workflows.html",
+      "web/teacher-workspace-preview.html",
+      "web/teacher.html"
+    ],
+    "verified": true
+  },
+  "isolatedNative": {
+    "run": 40796670943,
+    "job": 123194697087,
+    "checks": 93,
+    "passed": true
+  },
+  "nativeFontMetricComparisons": 14,
+  "localUnitChecks": 1551,
+  "originalTtfRetained": true,
+  "fontDisplay": "swap"
+}

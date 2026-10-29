@@ -1,4 +1,25 @@
-# Sprint 16.5B.7 — Teacher loading performance
+# Teacher loading performance
+
+## Current checkpoint — B.12.2
+
+**2026-10-29 — B.12.2 teacher loading performance delivered.** Batched exact reads, verified-identity reuse, local SDK/font delivery and one-use role-gated startup overlap retain live/final authorization. All 150 final guarded observations complete on the recorded desktop/4G profile: useful Home p95 **2.47 s cold /1.75 s reload**, class opening **1.33 s**, loaded navigation **42 ms**; the unchanged 3 s /2 s /200 ms budgets pass. Original polling clocks, precise-before calibration, failed-target iterations and all samples remain in [the report](teacher-performance.md). All five required PR/main CI jobs pass (**1,561 unit/integration; 260 native checks**). Current frontend, all 22 teacher Edge file instances and six SQL bodies/grants match source; fixture sizes, existing evidence and run-owned cleanup are verified. [Measurement evidence](evidence/teacher-performance-final-20261029.json). **Next: B.12.3 cross-role/recipient journeys and final owner usability acceptance.** Full B.12, all 45 mappings, DEMO-01, WRITE-CREATE, RESOURCE-SUBMIT, English C47 hold and full four-subject gates remain.
+
+| Scenario | Precise-before p95 | Final p95 | Fixed budget |
+| --- | --- | --- | --- |
+| Useful cold Home | 2.71 s | 2.47 s | ≤3 s |
+| Useful Home reload | 2.70 s | 1.75 s | ≤3 s |
+| Selected class | See retained polling report | 1.33 s | ≤2 s |
+| Loaded Classes navigation | See retained polling report | 42 ms | ≤200 ms |
+
+The precise-before report is the preceding startup-overlap runtime `93e766d2ac1e3ddd71622694a644a711ef88f2d2` ([run40802546459](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40802546459)); the same observer, original polling clock, two teachers and profile are retained in [the final comparison](evidence/teacher-performance-final-20261029.json). Earlier pre-observer reports are historical polling measurements, not precise Home readiness. No sample or server/network tail was removed. Reload does not guarantee an HTTP cache hit; a fresh context does not prove a cold Edge/database process. These are controlled fixture measurements, not population or mobile guarantees.
+
+Fixture A retains 3 active/33 archived classes and B 2/30. Existing sessions/attempts and writing counts/timestamps remain unchanged, with full-row evidence hashes before/after. A opens an existing reviewed response; B has none. Native actual-SQL fixtures cover nonzero pending review, but no production submission or grade was created. Both benchmark sessions are closed. Compatibility reuses source-verified unchanged contracts, with any fresh run recorded separately.
+
+The original polling clock also passes: Home p95 2.95 s cold /2.23 s reload. All 40 Home observations now make exactly two application requests; the preceding runtime made redundant startup reads in 21 observations. No measurement was removed. The first main native attempt failed at Chromium screenshot capture on an unchanged content-review page; the same-commit full native retry passes all 260 checks and the required aggregate is green. [Retry receipt](evidence/teacher-performance-native-retry-20261029.json).
+
+Implementation lineage: PR343 batching, PR345 identity/projection and canonical bundles, PR346 transaction composition/local SDK, PR347 dual-clock calibration, PR348 shared font/UX startup, PR349 overlapping role-gated Home reads, and PR350 completed-bootstrap idempotence. Required gates, exact frontend/Edge/SQL parity, intermediate failures and settings-attestation limits are in [release evidence](evidence/teacher-performance-release-20261029.json) and the adjacent dated receipts. Closure documentation does not change runtime behavior or learner content.
+
+## Historical B.7 and implementation record
 
 2026-10-27 · bounded loading repair deployed and measured · next: B.8 resource assignments.
 
@@ -62,7 +83,7 @@ Fresh English Unit3 compatibility passes **154/154** on the implementation sourc
 
 The independently verified [20 October production Deployment Check configuration](evidence/vercel-deployment-check-verification-20261020.json) is reused. Current connector scope returns 403 for that team's settings, so no fresh settings re-attestation is claimed. No configuration was changed; required CI, Vercel success, exact production revision/assets and signed-in acceptance are recorded independently.
 
-## Remaining sequence
+## Historical B.7 sequence
 
 **Next: 16.5B.8**, explicit class/student resource assignments and learner My work delivery. B.9–B.12 continue the shared Forest staff design, Today/class cards, feedback and usability acceptance; they must preserve B.7's bounded reads and record any changed timing. Residual target gaps above remain visible for those measurements and the owning hardening work, without weakening authorization. All 45 capabilities remain; English stays paused after C47. Full four-subject 16.4/16.5C still gates Sprint17. This delivery does not claim whole-redesign or subject completion.
 
@@ -76,7 +97,7 @@ The implementation batches institutional class metadata and exact unit evidence 
 Affected runtime consumers are `get-teacher-dashboard`, `get-teacher-student` (shared analytics helper) and `get-teacher-workspace`. The student, school-admin and master-admin interfaces, assessment scoring and content banks are unchanged. Browser role checks still precede any teacher data request. Required release gates, deployed source parity and paired production results must be recorded before this slice is closed; this implementation note is not a performance acceptance claim.
 
 
-### Startup and identity follow-up (implementation awaiting measurement)
+### Startup and identity follow-up — historical implementation note
 
 The teacher entry preloads its existing module and one reproducible dependency bundle. Canonical Today, feedback, subject artwork, configuration and role helpers remain the source; `npm run build:teacher` regenerates the committed bundle, CI checks byte parity, and production QA dependency traversal follows the canonical entry, builder and lockfile. The release build regenerates it before stamping the frontend revision. No extra learner functionality is introduced.
 
@@ -87,7 +108,7 @@ The evidence RPC transfers only the frozen item fields used by unchanged teacher
 Actual SDK/WebCrypto tests reject altered, unsigned, expired, future, foreign-issuer/audience and malformed identities, verify public-key reuse across distinct actors and verify legacy Auth fallback. Existing SQL/native regressions continue to cover current/final authorization, account/context changes, archives and nonempty writing review. The performance targets above remain unchanged; functional CI success alone does not close PERF-02.
 
 
-### Transaction follow-up (awaiting release measurement)
+### Transaction follow-up — historical implementation note
 
 The second run completed 150 guarded observations but still missed Home and class p95 budgets. Its class-opening median improved to about 1.33 seconds; cold Home includes server/network tails above ten seconds. These results remain intermediate evidence, not acceptance.
 
@@ -96,14 +117,14 @@ The next follow-up composes bounded directory and Today reads into one optional 
 The teacher bundle includes the same `@supabase/supabase-js` 2.118.0 version observed at its existing `esm.sh/@supabase/supabase-js@2` URL. This moves the teacher entry’s SDK into the local bundle. Later resource inspection found the shared UX module still fetched a duplicate remote SDK; the startup follow-up below removes that remaining eager dependency. The private workspace reader retains its existing pinned SDK. Public-key verification and all final authorization gates remain. These implementation notes do not claim the timing budgets are met.
 
 
-### Home readiness instrumentation (pending calibration)
+### Home readiness instrumentation — historical calibration note
 
 The transaction follow-up completes 150 current-source observations and meets class-detail p95 (1.84 s ≤2 s) and loaded navigation (42 ms ≤200 ms). Polling-completion Home p95 remains 3.83 s cold /3.68 s warm. Home application requests have already fallen from three to two; their durations leave a substantial interval outside server response time. Brotli delivery is confirmed for the local SDK bundle and teacher entry. No missing-target result is discarded.
 
 The measurement follow-up records an event-based timestamp **alongside** the unchanged polling timer. A read-only benchmark observer waits for the same complete visible dashboard, enabled Today refresh and checked snapshot, then confirms the state on an animation frame. It captures the whole action interval, not metadata-only timing. Native regressions cover incomplete/hidden states, repeated setup, a state reversed before the frame, and observer settlement. Static-resource/navigation timings contain paths and numbers only. The 3-second Home budget, fixture/network profile, permissions, source guards and cleanup remain unchanged. Historical reports have no exact DOM timestamp: no like-for-like historical exact-readiness percentage may be inferred. Calibration must establish the actual remaining application delay before acceptance.
 
 
-### Shared startup follow-up (awaiting paired measurement)
+### Shared startup follow-up — historical implementation note
 
 Exact DOM calibration on unchanged runtime reports Home p95 3.71 s cold /3.76 s reload; class and navigation remain within their fixed targets. It is the precise-before baseline for this follow-up. The old polling clock and every intermediate result remain recorded. Reload means the same context; observed routing can still cause assets to transfer, so it is not represented as a guaranteed cache hit.
 
@@ -111,7 +132,7 @@ The shared UX module now reuses the page’s client after load/idle instead of e
 
 Every shared Forest page preloads a 64,600-byte, content-hashed normal-width WOFF2 copy, replacing a 139,378-byte Brotli TTF transfer in the measured teacher trace. Full glyph/weight coverage and existing typography are preserved; the upstream TTF/license remain as fallback/provenance. The deterministic recipe, complete glyph checks, native text metrics and CI provenance/preload check cover all affected roles. QA dependency traversal includes font binaries. No data, permission or curriculum contract changes. Read-only resource diagnostics additionally include the known SDK host, with host/path/numeric timings only. Timing predicates, budgets and fixture guards are unchanged.
 
-### Overlap the initial reads with SDK delivery (awaiting measurement)
+### Overlap the initial reads with SDK delivery — historical implementation note
 
 The font/SDK follow-up completes all 150 observations, but exact Home p95 remains 3.50 s cold /3.57 s reload; class opening is 1.33 s and loaded navigation 32 ms. All samples, including server tails, remain evidence. No `esm.sh` SDK resource remains in those Home traces. The remaining waterfall starts the role read and directory/Today call only after the 75 KB compressed SDK bundle finishes.
 
@@ -119,6 +140,6 @@ A tiny head entry now starts the same RLS-protected own-profile read during the 
 
 Recent-class and Today request construction come from one shared canonical module. Both startup bundles are reproducible and checked in CI; dependency routing includes the new head entry and its canonical sources. Browser regressions hold the full SDK download while verifying the role-first reads, exact single consumption, repeat initialization, account changes and ordinary fallback. The upstream bundled dependency notices are included beside the SDK bundle. Fixed timing budgets and both measurement clocks remain unchanged.
 
-### Settled bootstrap guard (awaiting final remeasurement)
+### Settled bootstrap guard — verified delivery
 
 The overlapping-startup run meets every fixed target, including the original polling clock (Home p95 2.99 s cold /2.77 s reload). Its trace also exposes four-request startup sequences in 21 of the 40 Home observations: a fast INITIAL_SESSION bootstrap can finish before the page's separate getSession call returns. The previous in-flight-only guard then starts Home again. A completed, visible Home for the same actor now settles bootstrap as well. Explicit Refresh still performs fresh reads; account changes and hidden/error states retain their existing load/retry behavior. A native regression delays the startup session promise until the INITIAL_SESSION flow has rendered Today, then checks that completing that promise makes no second profile/dashboard request. This is a startup idempotence fix, not a reusable authorization cache.
