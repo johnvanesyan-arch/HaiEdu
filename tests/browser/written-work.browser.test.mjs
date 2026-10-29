@@ -119,6 +119,7 @@ test('unknown submission outcome preserves text, blocks duplicate sends and navi
  await s.locator('.course-tabs a').first().click();assert.equal(new URL(s.url()).searchParams.get('tab'),'writing');
  await s.evaluate(()=>{const url=new URL(location.href);url.searchParams.set('tab','course');history.pushState({},'',url);dispatchEvent(new PopStateEvent('popstate'));});
  await s.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='writing');
+ assert.equal(await s.locator('.amp-nav-link[aria-current="page"]').innerText(),'Իմ աշխատանքները');
  await s.evaluate(()=>{const form=document.querySelector('[data-writing-form]');form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));});
  const submissions=()=>s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='manage-written-work'&&c.body.action==='submit').length);
  assert.equal(await submissions(),1);

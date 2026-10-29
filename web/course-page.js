@@ -33,7 +33,7 @@ function completionDate(value) {
 }
 function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
 async function load() {
-  if (disposeWriting.flush && !(await disposeWriting.flush())) { history.replaceState({}, '', lastCourseUrl); return; }
+  if (disposeWriting.flush && !(await disposeWriting.flush())) { history.replaceState({}, '', lastCourseUrl); window.dispatchEvent(new CustomEvent('haiedu-home-selection')); return; }
   lastCourseUrl = location.href;
   const request = ++version;
   clear();
