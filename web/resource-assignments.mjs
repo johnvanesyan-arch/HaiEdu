@@ -83,22 +83,27 @@ export function mountStudentResourceAssignments({root,client}){
  life.ready.then(ok=>{if(ok&&life.current())void load();else if(life.current())message('Մուտք գործեք առաջադրանքները տեսնելու համար։');}).catch(()=>message('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։',true));
  return {dispose(){generation++;root.removeEventListener('click',click);root.removeEventListener('toggle',toggle,true);life.dispose();}};
 }
-export function mountTeacherResourceAssignments({root,client,context,materialId=null}){
- const life=lifetime(root,client);let generation=0,busy=false,preview=null,mode='class',selected=new Set(),offset=0,search='',timer=null,pending=null,listRows=[],listOffset=0,listState='current',currentReceipt=null;
+export function mountTeacherResourceAssignments({root,client,context,materialId=null,onClose=()=>{}}){
+ const life=lifetime(root,client);let generation=0,busy=false,preview=null,mode='class',selected=new Set(),offset=0,search='',timer=null,pending=null,listRows=[],listOffset=0,listState='current',currentReceipt=null,previewNotice='';
  const ctx=exactContext(context),$=q=>root.querySelector(q);
  root.classList.add('resource-assignment-workspace');root.hidden=false;
- root.innerHTML='<section class="card assignment-teacher-panel"><div class="assignment-heading"><div><h3 tabindex="-1">Ուղարկել առաջադրանք</h3><p class="assignment-context">'+esc(scopeText(context))+'</p></div><button type="button" class="ghost" data-assignment-history-list>Ուղարկված առաջադրանքները</button></div><p data-assignment-message role="status" aria-live="polite"></p><div data-assignment-body></div></section>';
+ root.innerHTML='<section class="card assignment-teacher-panel"><div class="assignment-heading"><div><h3 tabindex="-1" data-assignment-title>Ուղարկել առաջադրանք</h3><p class="assignment-context">'+esc(scopeText(context))+'</p></div><div class="row"><button type="button" class="ghost" data-assignment-history-list>Ուղարկված առաջադրանքները</button><button type="button" class="ghost" data-assignment-close>Վերադառնալ նյութերին</button></div></div><p data-assignment-message role="status" aria-live="polite"></p><div data-assignment-body></div></section>';
  const message=(t,bad=false)=>{const m=$('[data-assignment-message]');if(m){m.textContent=t;m.classList.toggle('bad',bad);}};
  const locked=()=>busy||Boolean(pending);
+ const hasUnsaved=()=>Boolean($('[data-assignment-compose]')&&(mode!=='class'||selected.size||$('[data-assignment-instructions]')?.value.trim()))||Boolean($('[data-assignment-cancel-reason]')?.value.trim());
+ const canLeave=()=>{if(locked()){message('Սպասեք ուղարկման կամ չեղարկման հաստատմանը։');return false;}return !hasUnsaved()||window.confirm('Չպահպանված հրահանգն ու ստացողների ընտրությունը կկորչեն։ Շարունակե՞լ։');};
+ const title=text=>{const h=$('[data-assignment-title]');if(h)h.textContent=text;};
  function lockControls(){
+  for(const el of root.querySelectorAll('[data-assignment-history-list],[data-assignment-close],[data-assignment-compose-again]'))el.disabled=locked();
   for(const el of root.querySelectorAll('[data-assignment-compose] input,[data-assignment-compose] textarea,[data-assignment-compose] button'))el.disabled=locked()||(el.hasAttribute('data-recipient')&&mode!=='selected');
   const send=$('[data-assignment-send]');if(send)send.disabled=locked()||!preview||!(mode==='class'?preview.total:selected.size);
   const retry=$('[data-assignment-retry-send]');if(retry){retry.hidden=!pending;retry.disabled=busy;}
   if(busy)root.setAttribute('aria-busy','true');else root.removeAttribute('aria-busy');
  }
- function drawCompose(){
+ function drawCompose(instructions=''){
+  title('Ընտրել ստացողներին և ուղարկել');
   const m=preview.material;
-  $('[data-assignment-body]').innerHTML='<div data-assignment-compose><h4 lang="'+esc(m.definition.locale)+'">'+esc(m.definition.title)+' · v'+m.version+'</h4><p class="assignment-audience">Առաջադրանքը կտեսնեն ընտրված ստացողները։ Հրապարակված նյութը շարունակում է հասանելի մնալ '+(m.provider==='teacher'?'դասարանի բոլոր իրավասու աշակերտներին':'այս ծրագրի և բաժնի բոլոր իրավասու աշակերտներին')+' «Նյութերի գրադարան» բաժնում։</p><fieldset><legend>Ստացողները</legend><label class="assignment-choice"><input type="radio" name="assignmentAudience" value="class" checked>Ամբողջ դասարանը՝ '+preview.total+' աշակերտ</label><label class="assignment-choice"><input type="radio" name="assignmentAudience" value="selected">Ընտրված աշակերտները</label></fieldset><div data-recipient-picker hidden><label>Գտնել աշակերտ<input type="search" data-recipient-search maxlength="120" placeholder="Անուն"></label><div data-recipient-list></div><button type="button" class="ghost" data-recipient-more hidden>Բեռնել ավելին</button></div><label>Հրահանգ աշակերտներին (ըստ ցանկության)<textarea data-assignment-instructions maxlength="2000" rows="3"></textarea></label><p data-recipient-summary aria-live="polite"></p><details data-assignment-student-preview><summary>Նախադիտում․ ինչ կտեսնի աշակերտը</summary><p>'+esc(previewExplanation)+'</p><p>Ուսուցչի անունը և ուղարկման ամսաթիվը կավելանան ուղարկելուց հետո։</p><div data-assignment-student-card></div></details><p class="assignment-meta">Ստացողների ցանկը պահպանվում է ուղարկման պահին։ Ավելի ուշ միացած աշակերտի համար ուղարկեք նոր առաջադրանք։</p><button type="button" data-assignment-send>Ուղարկել առաջադրանքը</button></div><button type="button" data-assignment-retry-send hidden>Կրկնել նույն ուղարկումը</button>';
+  $('[data-assignment-body]').innerHTML='<div data-assignment-compose><p class="assignment-context">Քայլ 2․ ընտրեք ստացողներին և հաստատեք ուղարկումը։</p><h4 lang="'+esc(m.definition.locale)+'">'+esc(m.definition.title)+' · v'+m.version+'</h4><p class="assignment-audience">Առաջադրանքը կտեսնեն ընտրված ստացողները։ Հրապարակված նյութը շարունակում է հասանելի մնալ '+(m.provider==='teacher'?'դասարանի բոլոր իրավասու աշակերտներին':'այս ծրագրի և բաժնի բոլոր իրավասու աշակերտներին')+' «Նյութերի գրադարան» բաժնում։</p><fieldset><legend>Ստացողները</legend><label class="assignment-choice"><input type="radio" name="assignmentAudience" value="class"'+(mode==='class'?' checked':'')+'>Ամբողջ դասարանը՝ '+preview.total+' աշակերտ</label><label class="assignment-choice"><input type="radio" name="assignmentAudience" value="selected"'+(mode==='selected'?' checked':'')+'>Ընտրված աշակերտները</label></fieldset><div data-recipient-picker hidden><label>Գտնել աշակերտ<input type="search" data-recipient-search maxlength="120" placeholder="Անուն"></label><div data-recipient-list></div><button type="button" class="ghost" data-recipient-more hidden>Բեռնել ավելին</button></div><label>Հրահանգ աշակերտներին (ըստ ցանկության)<textarea data-assignment-instructions maxlength="2000" rows="3">'+esc(instructions)+'</textarea></label><p data-recipient-summary aria-live="polite"></p><details data-assignment-student-preview><summary>Նախադիտում․ ինչ կտեսնի աշակերտը</summary><p>'+esc(previewExplanation)+'</p><p>Ուսուցչի անունը և ուղարկման ամսաթիվը կավելանան ուղարկելուց հետո։</p><div data-assignment-student-card></div></details><p class="assignment-meta">Ստացողների ցանկը պահպանվում է ուղարկման պահին։ Ավելի ուշ միացած աշակերտի համար ուղարկեք նոր առաջադրանք։</p><button type="button" data-assignment-send>Ուղարկել առաջադրանքը</button></div><button type="button" data-assignment-retry-send hidden>Կրկնել նույն ուղարկումը</button>';
   drawRoster(preview.roster);summary();drawStudentPreview();lockControls();
  }
  function drawStudentPreview(){
@@ -118,13 +123,14 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
    const data=await life.invoke('preview',{materialId,offset:more?offset:0,search},ctx);
    if(!life.current()||token!==generation)return;
    const changed=preview&&data.rosterFingerprint!==preview.rosterFingerprint;
-   if(changed||reset){selected.clear();mode='class';}
+   if(changed||reset)selected.clear();
    const first=!preview||reset||changed;preview=data;offset=data.nextOffset;
-   if(first)drawCompose();else{drawRoster(data.roster,more);summary();}
-   message(changed?'Աշակերտների ցանկը փոխվել է։ Ստուգեք ստացողներին։':'');lockControls();
+   if(first)drawCompose($('[data-assignment-instructions]')?.value??'');else{drawRoster(data.roster,more);summary();}
+   message(previewNotice||(changed?'Աշակերտների ցանկը փոխվել է։ Ստուգեք ստացողներին։':''));lockControls();
   }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);if(!preview)$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-preview-retry>Փորձել նորից</button>';}}
  }
  function drawReceipt(data){
+  title('Ուղարկման հաստատում');
   currentReceipt=data.assignment;
   const a=data.assignment;
   $('[data-assignment-body]').innerHTML='<section class="assignment-receipt"><h4>'+(a.status==='canceled'?'Առաջադրանքը չեղարկված է':'Առաջադրանքն ուղարկված է')+'</h4><p lang="'+esc(a.material.definition.locale)+'">'+esc(a.material.definition.title)+' · v'+a.material.version+'</p><p>Ստացողներ՝ '+a.recipientCount+'</p><p class="assignment-meta">Հաստատման համար՝ <span class="assignment-receipt-id">'+esc(a.id)+'</span></p><p>'+new Date(a.assignedAt).toLocaleString('hy-AM')+'</p>'+(data.recipients?'<details open><summary>Ստացողների ցանկը</summary><ul>'+data.recipients.map(r=>'<li>'+esc(r.studentName)+'</li>').join('')+'</ul>'+(data.recipients.length<a.recipientCount?'<p>Որոշ հաշիվներ կամ անդամակցություններ այլևս գրանցված չեն։ Սկզբնական ստացողների քանակը պահպանված է։</p>':'')+'</details>':'<button type="button" class="ghost" data-assignment-inspect="'+esc(a.id)+'">Ստուգել ստացողների ցանկը</button>')+(a.status==='assigned'&&!data.readOnly?'<details class="assignment-cancel"><summary>Չեղարկել առաջադրանքը</summary><label>Չեղարկման պատճառ<textarea data-assignment-cancel-reason maxlength="1000" rows="2"></textarea></label><button type="button" class="ghost" data-assignment-cancel>Չեղարկել</button></details>':'')+(data.events?'<details><summary>Գործողությունների պատմություն</summary><ul>'+data.events.map(e=>'<li>'+(e.event==='assigned'?'Ուղարկված է':'Չեղարկված է')+' · '+new Date(e.at).toLocaleString('hy-AM')+(e.detail.reason?' · '+esc(e.detail.reason):'')+'</li>').join('')+'</ul></details>':'')+'</section>';
@@ -144,7 +150,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
    if(!life.current())return;drawReceipt(data);message('Պահպանված է։ Առաջադրանքը հասանելի է ստացողների «Իմ աշխատանքները» բաժնում։');
   }catch(e){
    if(e.message==='assignment_stale'||!life.current())return;
-   if(['assignment_preview_stale','assignment_recipients_invalid'].includes(e.message)){pending=null;preview=null;selected.clear();message(errorText(e),true);}
+   if(['assignment_preview_stale','assignment_recipients_invalid'].includes(e.message)){pending=null;preview=null;selected.clear();previewNotice=errorText(e);message(previewNotice,true);}
    else if(errors[e.message]){pending=null;message(errorText(e),true);}
    else message('Ուղարկման հաստատումը չի ստացվել։ Կրկնեք նույն ուղարկումը՝ կրկնօրինակ չստեղծելու համար։',true);
   }finally{
@@ -152,13 +158,14 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   }
  }
  async function loadList(more=false){
+  if(!more&&!canLeave())return;
   if(busy||pending){message('Նախ ավարտեք ընթացիկ ուղարկումը։');return;}
-  const token=++generation;busy=true;message('Ուղարկված առաջադրանքները բեռնվում են…');
+  const token=++generation;busy=true;title('Ուղարկված առաջադրանքները');message('Ուղարկված առաջադրանքները բեռնվում են…');lockControls();
   if(!more){listRows=[];listOffset=0;}
   try{
    const data=await life.invoke('list',{offset:listOffset,state:listState},ctx);if(!life.current()||token!==generation)return;
    listRows=more?[...listRows,...data.assignments]:data.assignments;listOffset=data.nextOffset;
-   $('[data-assignment-body]').innerHTML='<div class="assignment-list-controls"><label class="assignment-choice"><input type="checkbox" data-assignment-canceled'+(listState==='history'?' checked':'')+'>Ցույց տալ չեղարկվածները</label></div><div class="assignment-list">'+(listRows.map(a=>assignmentCard(a,true)).join('')||'<p>Այս բաժնում ուղարկված առաջադրանք չկա։</p>')+'</div>'+(data.hasMore?'<button type="button" class="ghost" data-assignment-list-more>Բեռնել ավելին</button>':'');message('');
+   $('[data-assignment-body]').innerHTML=(materialId?'<button type="button" class="ghost" data-assignment-compose-again>Ընտրել ստացողներին նոր առաջադրանքի համար</button>':'')+'<div class="assignment-list-controls"><label class="assignment-choice"><input type="checkbox" data-assignment-canceled'+(listState==='history'?' checked':'')+'>Միայն չեղարկված առաջադրանքները</label></div><div class="assignment-list">'+(listRows.map(a=>assignmentCard(a,true)).join('')||'<p>Այս բաժնում ուղարկված առաջադրանք չկա։</p>')+'</div>'+(data.hasMore?'<button type="button" class="ghost" data-assignment-list-more>Բեռնել ավելին</button>':'');message('');
   }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-history-list>Փորձել նորից</button>';}}
   finally{if(life.current()&&token===generation){busy=false;lockControls();}}
  }
@@ -171,6 +178,8 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
  }
  const click=e=>{
   const b=e.target.closest('button');if(!b)return;
+  if(b.hasAttribute('data-assignment-close')){if(canLeave())onClose();return;}
+  if(b.hasAttribute('data-assignment-compose-again')){if(canLeave()){mode='class';previewNotice='';void loadPreview(false,true);}return;}
   if(b.hasAttribute('data-assignment-send')||b.hasAttribute('data-assignment-retry-send'))void send();
   if(b.hasAttribute('data-assignment-preview-retry'))void loadPreview();
   if(b.hasAttribute('data-recipient-more'))void loadPreview(true);
@@ -180,13 +189,13 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   if(b.hasAttribute('data-assignment-cancel'))void cancel();
  };
  const change=e=>{
-  if(e.target.name==='assignmentAudience'&&!locked()){mode=e.target.value;summary();}
-  if(e.target.hasAttribute('data-recipient')&&!locked()){const id=e.target.dataset.recipient;e.target.checked?selected.add(id):selected.delete(id);summary();}
+  if(e.target.name==='assignmentAudience'&&!locked()){mode=e.target.value;previewNotice='';message('');summary();}
+  if(e.target.hasAttribute('data-recipient')&&!locked()){const id=e.target.dataset.recipient;e.target.checked?selected.add(id):selected.delete(id);previewNotice='';message('');summary();}
   if(e.target.hasAttribute('data-assignment-canceled')&&!busy){listState=e.target.checked?'history':'current';void loadList();}
  };
  const input=e=>{if(e.target.matches('[data-assignment-instructions]'))drawStudentPreview();if(e.target.matches('[data-recipient-search]')&&!locked()){search=e.target.value;clearTimeout(timer);generation++;timer=setTimeout(()=>void loadPreview(),250);}};
  root.addEventListener('click',click);root.addEventListener('change',change);root.addEventListener('input',input);
  life.ready.then(ok=>{if(ok&&life.current())materialId?void loadPreview():void loadList();else if(life.current())message('Մուտք գործեք առաջադրանքները կառավարելու համար։');}).catch(()=>message('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։',true));
  $('[tabindex="-1"]')?.focus();
- return {isBusy:()=>busy||Boolean(pending),dispose(){generation++;clearTimeout(timer);root.removeEventListener('click',click);root.removeEventListener('change',change);root.removeEventListener('input',input);life.dispose();}};
+ return {isBusy:()=>busy||Boolean(pending),hasUnsaved,dispose(){generation++;clearTimeout(timer);root.removeEventListener('click',click);root.removeEventListener('change',change);root.removeEventListener('input',input);life.dispose();}};
 }

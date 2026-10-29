@@ -75,8 +75,10 @@ test('selected learner snapshot excludes an eligible classmate, stale roster req
  const f=await fixture();t.after(()=>f.db.close());await addLearner(f.db);await published(f.db);
  const {page:p,errors}=await surface(t,f);await compose(p);await p.locator('[name=assignmentAudience][value=selected]').check();
  await p.locator('[data-recipient="'+id(9112)+'"]').check();assert.match(await p.locator('[data-recipient-summary]').innerText(),/1/);
+ await p.locator('[data-assignment-instructions]').fill('Keep these instructions after the roster changes.');
  await addLearner(f.db,13);await p.locator('[data-assignment-send]').click();
- await p.waitForFunction(()=>document.querySelector('[data-recipient-summary]')?.textContent.includes('3'));
+ await p.waitForFunction(()=>document.querySelector('[data-recipient-summary]')?.textContent.includes('0'));
+ assert.equal(await p.locator('[name=assignmentAudience][value=selected]').isChecked(),true);assert.equal(await p.locator('[data-assignment-instructions]').inputValue(),'Keep these instructions after the roster changes.');assert.equal(await p.locator('[data-assignment-send]').isDisabled(),true);
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);
  await p.locator('[name=assignmentAudience][value=selected]').check();await p.locator('[data-recipient="'+id(9112)+'"]').check();await p.locator('[data-assignment-send]').click();await p.locator('.assignment-receipt').waitFor();
  assert.equal((await call(f.db,'inbox',{}, {actor:10})).assignments.length,0);assert.equal((await call(f.db,'inbox',{}, {actor:12})).assignments.length,1);assert.deepEqual(errors,[]);
@@ -230,4 +232,26 @@ test('platform material preview uses the authorized catalogue without editorial 
  const f=await fixture();t.after(()=>f.db.close());const m=await published(f.db,{actor:30});const ui=await surface(t,f),p=ui.page;
  await p.locator('[data-resource-student-preview]').first().click();await p.locator('.learner-preview-dialog[open]').waitFor();assert.equal(await p.locator('.learner-preview-dialog .resource-card h3').innerText(),m.definition.title);assert.equal(await p.locator('.learner-preview-dialog [data-preview-only]').isDisabled(),true);
  const calls=await p.evaluate(()=>window.__assignmentCalls);assert.equal(calls.some(c=>c.body.action==='get'),false);assert.ok(calls.filter(c=>c.body.action==='catalog').length>=2);assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.deepEqual(ui.errors,[]);
+});
+
+
+test('unfinished assignment keeps instructions and recipients when history, class change or closing is canceled',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await addLearner(f.db);await published(f.db);const {page:p,errors}=await surface(t,f);await compose(p);
+ assert.equal(await p.locator('[data-resource-list]').isVisible(),false,'recipient selection is a focused second step');
+ await p.locator('[name=assignmentAudience][value=selected]').check();await p.locator('[data-recipient="'+id(9112)+'"]').check();await p.locator('[data-assignment-instructions]').fill('Keep my exact instructions.');
+ let dialogs=0;const dismiss=async d=>{dialogs++;await d.dismiss();};p.on('dialog',dismiss);
+ await p.locator('[data-assignment-history-list]').click();await p.locator('[data-resource-context]').selectOption('');await p.locator('[data-assignment-close]').click();
+ p.off('dialog',dismiss);assert.equal(dialogs,3);assert.equal(await p.locator('[data-resource-context]').inputValue(),'0');assert.equal(await p.locator('[data-assignment-instructions]').inputValue(),'Keep my exact instructions.');assert.equal(await p.locator('[data-recipient="'+id(9112)+'"]').isChecked(),true);
+ p.once('dialog',async d=>{assert.equal(d.type(),'beforeunload');await d.dismiss();});await p.reload().catch(()=>{});assert.equal(await p.locator('[data-assignment-instructions]').inputValue(),'Keep my exact instructions.');
+ p.once('dialog',d=>d.accept());await p.locator('[data-assignment-close]').click();await p.locator('[data-resource-assign]').first().waitFor();assert.equal(await p.locator('[data-assignment-send]').count(),0);assert.equal(await p.locator('[data-resource-assign]').first().evaluate(e=>e===document.activeElement),true);
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.deepEqual(errors,[]);
+});
+
+test('assignment history has a route back to a fresh recipient choice and sending disables destructive navigation',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const ui=await surface(t,f),p=ui.page;await compose(p);
+ await p.locator('[data-assignment-history-list]').click();await p.locator('[data-assignment-compose-again]').click();await p.locator('[data-assignment-send]').waitFor();
+ await p.locator('[data-assignment-instructions]').fill('One explicit send.');const held=ui.hold('assign');await p.locator('[data-assignment-send]').click();
+ await p.waitForFunction(()=>window.__assignmentCalls.some(c=>c.body.action==='assign'));assert.equal(await p.locator('[data-assignment-close]').isDisabled(),true);assert.equal(await p.locator('[data-assignment-history-list]').isDisabled(),true);
+ while(!held.release)await new Promise(r=>setTimeout(r,10));held.release();await p.locator('.assignment-receipt').waitFor();await p.locator('[data-assignment-history-list]').click();await p.locator('[data-assignment-inspect]').click();await p.locator('.assignment-receipt').waitFor();
+ await p.locator('[data-assignment-close]').click();await p.locator('[data-resource-assign]').first().waitFor();assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);assert.deepEqual(ui.errors,[]);
 });
