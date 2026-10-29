@@ -1,12 +1,8 @@
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {subjectArtwork} from './subject-visuals.mjs';
 import {mountWrittenWork} from './written-work.mjs';
-const uuid=v=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
-const historyKey=actor=>'haiedu:teacher-recent:v1:'+actor;
-export function recentTeacherClasses(actor){try{return JSON.parse(sessionStorage.getItem(historyKey(actor))||'[]').filter(uuid).slice(0,4);}catch{return [];}}
-export function rememberTeacherClass(actor,id){if(!actor||!uuid(id))return;try{sessionStorage.setItem(historyKey(actor),JSON.stringify([id,...recentTeacherClasses(actor).filter(v=>v!==id)].slice(0,4)));}catch{}}
-export function clearTeacherRecent(actor){try{sessionStorage.removeItem(historyKey(actor));}catch{}}
-export function todayRequest(actor){const q=new URLSearchParams(location.search);return {recent:recentTeacherClasses(actor),...(q.get('queueAssignment')?{assignmentId:q.get('queueAssignment')}:{}),...(q.get('todayWork')?{workId:q.get('todayWork')}: {})};}
+import {todayRequest,rememberTeacherClass} from './teacher-home-request.mjs';
+export {todayRequest,rememberTeacherClass,recentTeacherClasses,clearTeacherRecent} from './teacher-home-request.mjs';
 const date=s=>new Date(s).toLocaleString('hy-AM',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
 export function mountTeacherToday({root,supabase,actorId,isCurrent=()=>true,initialResponse=null,onRoute=()=>{}}){
  let alive=true,ticket=0,data=null,cursor=null,writing=()=>{},selected=null,loading=false;

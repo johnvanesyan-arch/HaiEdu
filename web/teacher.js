@@ -1,5 +1,7 @@
 import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
+// A delayed async head entry must not start a second read after SDK startup.
+window.__haieduTeacherHomeStartup ||= Object.freeze({claim:()=>null,cancel:()=>{}});
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 
@@ -265,6 +267,7 @@ async function loadDashboard(sessionOverride = null) {
   $("teacherDashboardRetry")?.classList.add("hidden");
   setMessage("authMessage", "");
   let sessionData;
+  let startup=null;
   try {
     let sessionError = null;
     if (sessionOverride?.user) sessionData = { session: sessionOverride };
@@ -275,7 +278,8 @@ async function loadDashboard(sessionOverride = null) {
       $("authPanel").classList.remove("hidden");
       return;
     }
-    const { data: profile, error: profileError } = await supabase
+    startup=window.__haieduTeacherHomeStartup?.claim(sessionData.session)??null;
+    const { data: profile, error: profileError } = (await startup?.profile)??await supabase
       .from("profiles").select("role, account_status")
       .eq("id", sessionData.session.user.id).maybeSingle();
     if (version !== dashboardLoadVersion) return;
@@ -312,7 +316,7 @@ async function loadDashboard(sessionOverride = null) {
     : {readMode:"directory",archive:navigation.view==="archive"};
   const home=navigation.view==="home"&&Boolean($("teacherToday"));
   if(home)body.workspace=todayRequest(actorId);
-  const {data:loaded,error}=await dashboardRead(body);
+  const {data:loaded,error}=(await startup?.dashboard(body))??await dashboardRead(body);
   if (version !== dashboardLoadVersion) return;
   if (error) {
     $("teacherLoading")?.classList.add("hidden");
@@ -1442,6 +1446,7 @@ function bootstrapTeacherDashboard(session) {
 
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT" || !session || (actorId && actorId!==session.user?.id)) {
+    window.__haieduTeacherHomeStartup?.cancel();
     const switched=actorId && session?.user?.id && actorId!==session.user.id;
     clearTeacherRecent(actorId);
     if(switched)window.history.replaceState({},"",teacherViewUrl("home",true));
