@@ -21,14 +21,21 @@ test('every shared UX consumer keeps a readable keyboard route into its actual m
      // absent. Resolve only the fixture presentation hold which that absent
      // router would normally clear; the production role guard stays intact.
      // This verifies the shared component, not a signed-in journey.
-     if(u.pathname.endsWith('.html'))bytes=Buffer.from(bytes.toString().replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/\sdata-role-routing="pending"/,'').replace('</body>','<script type="module" src="./ux.js"></script></body>'));
+     if(u.pathname.endsWith('.html')){
+      let html=bytes.toString().replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/\sdata-role-routing="pending"/,'');
+      // With the role controller deliberately absent, model its no-session
+      // landing state explicitly. Its two main regions otherwise retain the
+      // pre-routing placeholder state; signed-in shell journeys run separately.
+      if(name==='index.html')html=html.replace('id="publicEntry" class="public-entry hidden"','id="publicEntry" class="public-entry"').replace('<main class="shell" id="mainContent">','<main class="shell hidden" id="mainContent">');
+      bytes=Buffer.from(html.replace('</body>','<script type="module" src="./ux.js"></script></body>'));
+     }
      if(js&&!['/ux.js','/config.js'].includes(u.pathname))bytes=Buffer.from('');
      await r.fulfill({body:bytes,contentType:u.pathname.endsWith('.html')?'text/html':js?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{await r.fulfill({status:404,body:''});}
    });
    await p.goto('https://ux-consumers.test/'+name);await keyboardSkipAcceptance(p);
    await p.locator('a.skip-link').first().focus();await p.locator('a.skip-link').first().press('Enter');
-   await expect(p.locator('main').first()).toBeFocused();assert.deepEqual(errors,[],name);rows.push({page:name,keyboard:true,contrast:true,reducedMotion:true,scope:'actual page styles/shared UX; isolated auth/business modules'});
+   const target=await p.locator('a.skip-link').first().getAttribute('href');assert.ok(/^#[A-Za-z][\w-]*$/.test(target),name);await expect(p.locator(target),name).toBeVisible();await expect(p.locator(target),name).toBeFocused();assert.deepEqual(errors,[],name);rows.push({page:name,keyboard:true,contrast:true,reducedMotion:true,scope:'actual page styles/shared UX; isolated auth/business modules'});
   }finally{await bc.close();}
  }
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/b123-ux-consumers.json',JSON.stringify(rows,null,2));}
