@@ -51,3 +51,8 @@ Production verification is deliberately read-only for this slice: six designated
 ## Remaining gates
 
 B.12 retains student-safe sharing preview, purposeful motion, final cross-role owner usability, paired response-opening speed and PERF-02. B.7 measured detail median/p95 5.87/7.88 s and unit switch 6.84/8.86 s remain unresolved targets. DEMO-01, WRITE-CREATE, RESOURCE-SUBMIT, all 45 capability/dependency mappings, English C47 pause and the full four-subject 16.5C gate remain. Batch feedback/publication is not exposed: it needs a separately bounded recipient preview, per-item results and audit contract. This slice does not declare the complete staff redesign accepted.
+
+
+## 2026-10-29 — Logout during publication recovery
+
+Mounted writing exposes its feedback publication pending state to the shared logout leave guard. While a publish request or its receipt remains unresolved, logout stays in the review and points to the existing same-request retry. The actual-SQL native two-tab/lost-reply case asserts zero logout calls, then confirms exactly one review and the same publication request ID. Existing private-draft discard confirmation, autosave, rubric, actor fences and human-assessment contract remain. [Account integration/evidence](account-session-recovery.md).
