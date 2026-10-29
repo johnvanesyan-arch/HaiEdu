@@ -5,14 +5,15 @@ import {chromium,expect} from '@playwright/test';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const a='71000000-0000-4000-8000-000000000020',b='71000000-0000-4000-8000-000000000021';
 const projection=actor=>({teacher:{id:actor,displayName:actor===a?'Initial teacher':'Current teacher'},progressive:true,institutionalTeacher:true,institutionalOptions:[],classes:[],totals:{students:null,studentsNeedingSupport:null},directory:{archive:false,offset:0,matching:0,hasMore:false,activeCount:0,archiveCount:0},workspace:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:0,coverage:'active_writable_school_contexts'}});
-async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false,holdStyle=false,holdStartup=false}={}){
+async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false,holdStyle=false,holdStartup=false,initialEvent=false}={}){
  const config=await readFile('web/config.js','utf8'),url=config.match(/SUPABASE_URL = "([^"]+)"/)[1],hostname=new URL(url).hostname,storageKey='sb-'+hostname.split('.')[0]+'-auth-token';
  const context=await browser.newContext();let releaseSDK,releaseDashboard,releaseStyle,releaseStartup;const sdkGate=new Promise(resolve=>releaseSDK=resolve),dashboardGate=new Promise(resolve=>releaseDashboard=resolve),styleGate=new Promise(resolve=>releaseStyle=resolve),startupGate=new Promise(resolve=>releaseStartup=resolve);t.after(async()=>{releaseSDK();releaseDashboard();releaseStyle();releaseStartup();await context.close();});
  const sessionA={user:{id:a,email:'synthetic-a@example.invalid'},access_token:'synthetic-a',expires_at:Math.floor(Date.now()/1000)+3600},sessionB={user:{id:b,email:'synthetic-b@example.invalid'},access_token:'synthetic-b',expires_at:Math.floor(Date.now()/1000)+3600};
- await context.addInitScript(({sessionA,sessionB,storageKey,role,responses})=>{
-  const s=window.__startupFixture={session:sessionA,sessionB,storageKey,profileReads:0,functionCalls:[],listeners:[],responses};localStorage.setItem(storageKey,JSON.stringify(sessionA));
-  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:s.session}}),getUser:async()=>({data:{user:s.session.user}}),onAuthStateChange(fn){s.listeners.push(fn);return{data:{subscription:{unsubscribe(){}}}};}},from(){return{select(){return this;},eq(){return this;},maybeSingle:async()=>{s.profileReads++;return{data:{role,account_status:'active'}};}};},functions:{async invoke(fn,{body}){s.functionCalls.push({fn,body,actor:s.session.user.id});if(fn==='get-teacher-dashboard')return{data:s.responses[s.session.user.id]};throw Error('Unexpected fixture endpoint '+fn);}}};
- },{sessionA,sessionB,storageKey,role,responses:{[a]:projection(a),[b]:projection(b)}});
+ await context.addInitScript(({sessionA,sessionB,storageKey,role,responses,initialEvent})=>{
+  const s=window.__startupFixture={session:sessionA,sessionB,storageKey,profileReads:0,functionCalls:[],listeners:[],responses,sessionReturns:0};localStorage.setItem(storageKey,JSON.stringify(sessionA));
+  const gate=initialEvent?new Promise(resolve=>s.releaseSession=resolve):Promise.resolve();
+  window.__haieduSupabaseClient={auth:{getSession:async()=>{await gate;s.sessionReturns++;return{data:{session:s.session}};},getUser:async()=>({data:{user:s.session.user}}),onAuthStateChange(fn){s.listeners.push(fn);if(initialEvent)queueMicrotask(()=>fn('INITIAL_SESSION',s.session));return{data:{subscription:{unsubscribe(){}}}};}},from(){return{select(){return this;},eq(){return this;},maybeSingle:async()=>{s.profileReads++;return{data:{role,account_status:'active'}};}};},functions:{async invoke(fn,{body}){s.functionCalls.push({fn,body,actor:s.session.user.id});if(fn==='get-teacher-dashboard')return{data:s.responses[s.session.user.id]};throw Error('Unexpected fixture endpoint '+fn);}}};
+ },{sessionA,sessionB,storageKey,role,initialEvent,responses:{[a]:projection(a),[b]:projection(b)}});
  const calls=[];await context.route('**/*',async route=>{
   const u=new URL(route.request().url());
   if(u.hostname===hostname){
@@ -54,4 +55,11 @@ test('an unavailable early profile falls back to the ordinary SDK reads and reac
 test('a late head entry cannot create duplicate reads after ordinary SDK startup completes',async t=>{
  const f=await fixture(t,{holdStartup:true});f.releaseSDK();await ready(f.page);assert.equal(f.calls.length,0);f.releaseStartup();await f.page.waitForLoadState('load');
  assert.equal(f.calls.length,0);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:1,calls:1});assert.deepEqual(f.errors,[]);
+});
+test('a completed INITIAL_SESSION bootstrap is not repeated when the slower startup session read returns',async t=>{
+ const f=await fixture(t,{initialEvent:true});await expect.poll(()=>f.calls.length).toBe(2);f.releaseSDK();await ready(f.page);
+ assert.equal(await f.page.evaluate(()=>window.__startupFixture.sessionReturns),0);
+ await f.page.evaluate(()=>window.__startupFixture.releaseSession());await expect.poll(()=>f.page.evaluate(()=>window.__startupFixture.sessionReturns)).toBeGreaterThan(0);
+ await f.page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+ assert.equal(f.calls.length,2);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:0,calls:0});await ready(f.page);assert.deepEqual(f.errors,[]);
 });
