@@ -41,9 +41,12 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
   }
   if(url.origin===origin&&/\.(html|css|js|mjs)$/.test(url.pathname)){
    let source=await readFile(new URL('../../web'+url.pathname,import.meta.url),'utf8');
-   if(url.pathname.endsWith('.html'))source=source.replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</body>',`<script type="module" src="./${teacher?'teacher':'course-page'}.js"></script></body>`);
+   // Keep the real learner shell/UX: it owns the authenticated Forest layout.
+   // Teacher boot remains the isolated entry fixture used by this lifecycle suite.
+   if(teacher&&url.pathname.endsWith('.html'))source=source.replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</body>','<script type="module" src="./teacher.js"></script></body>');
    return route.fulfill({contentType:url.pathname.endsWith('.html')?'text/html':url.pathname.endsWith('.css')?'text/css':'text/javascript',body:source});
   }
+  if(url.origin===origin&&/^\/assets\/.+\.(woff2|svg)$/.test(url.pathname))return route.fulfill({contentType:url.pathname.endsWith('.woff2')?'font/woff2':'image/svg+xml',body:await readFile(new URL('../../web'+url.pathname,import.meta.url))});
   return route.abort();
  });
  await page.goto(origin+(teacher?'/teacher.html?view=class&class='+id(321):href));
@@ -109,9 +112,9 @@ test('unknown submission outcome preserves text, blocks duplicate sends and navi
  assert.equal(await s.locator('[data-writing-submit]').isVisible(),false);assert.equal(await s.locator('[data-writing-save]').isVisible(),false);assert.equal(await s.locator('[data-writing-back]').isDisabled(),true);
  assert.match(await s.locator('[data-writing-message]').innerText(),/Մի փակեք էջը/);
  assert.equal(await s.locator('[data-writing-recover]').evaluate(e=>e===document.activeElement),true);
- await s.addStyleTag({content:'html{font-size:200%}'});await s.evaluate(()=>scrollTo(0,0));
+ await s.addStyleTag({content:'html{font-size:200%!important}'});assert.equal(await s.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');await s.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await s.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/writing-recovery-mobile-200.png',fullPage:true});}
- const overflow=await s.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,class:e.className,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.right>innerWidth+1&&e.width>0).slice(-20));assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),JSON.stringify(overflow));
+ const overflow=await s.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,scrollX,forest:document.body.hasAttribute('data-haiedu-student'),elements:[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,class:e.className,right:e.getBoundingClientRect().right+scrollX,width:e.getBoundingClientRect().width,client:e.clientWidth,scroll:e.scrollWidth})).filter(e=>(e.right>innerWidth+1||e.scroll>e.client+1)&&e.width>0).slice(-30)}));assert.ok(overflow.forest);assert.ok(overflow.scrollWidth<=overflow.width+1,JSON.stringify(overflow));
  s.once('dialog',async d=>{assert.equal(d.type(),'beforeunload');await d.dismiss();});await s.reload().catch(()=>{});assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
  await s.locator('.course-tabs a').first().click();assert.equal(new URL(s.url()).searchParams.get('tab'),'writing');
  await s.evaluate(()=>{const url=new URL(location.href);url.searchParams.set('tab','course');history.pushState({},'',url);dispatchEvent(new PopStateEvent('popstate'));});

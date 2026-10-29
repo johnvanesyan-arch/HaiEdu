@@ -18,6 +18,7 @@ body[data-student-page="course"].amp-student-shell-active .topbar h1 {
   background: var(--amp-color-primary-soft);
   border-color: var(--amp-color-primary);
 }
+.course-tabs .button-link { overflow-wrap: anywhere; }
 .course-overview p { margin: 0; }
 .course-overview p + p { margin-top: var(--amp-space-2); }
 .course-active-session {
