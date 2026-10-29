@@ -13,6 +13,7 @@ async function surface(t,f,{actor=20,width=1280,view='work'}={}){
   const listeners=[];let session={user:{id:identity}};window.__assignmentCalls=[];
   const base=window.__baseStudent;
   const teacherAuth={
+   getUser:async()=>{window.__assignmentAuthChecked=true;return{data:{user:session?.user}};},
    getSession:async()=>({data:{session}}),
    onAuthStateChange:fn=>{
     listeners.push(fn);
@@ -99,7 +100,8 @@ for(const width of [360,768,1280])test('assignment controls remain usable at '+w
  await p.addStyleTag({content:'html{font-size:200%}'});
  const dimensions=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('body *')].filter(x=>x.getClientRects().length&&x.getBoundingClientRect().right>innerWidth+1).slice(0,12).map(x=>({tag:x.tagName,cls:x.className,right:x.getBoundingClientRect().right})),contentOverflow:[...document.querySelectorAll('body *')].filter(x=>x.getClientRects().length&&x.scrollWidth>x.clientWidth+2&&getComputedStyle(x).overflowX==='visible').map(x=>({tag:x.tagName,cls:x.className,scroll:x.scrollWidth,client:x.clientWidth,text:x.textContent.trim().slice(0,60)})).slice(-20),buttons:[...document.querySelectorAll('.resource-assignment-workspace button')].filter(x=>x.getClientRects().length&&!x.disabled).map(x=>x.getBoundingClientRect().height)}));
  assert.ok(dimensions.scroll<=width+1,JSON.stringify(dimensions));assert.ok(dimensions.buttons.every(x=>x>=44),JSON.stringify(dimensions));assert.deepEqual(errors,[]);
- if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/assignment-compose-'+width+'.png',fullPage:true});}
+ await p.waitForFunction(()=>window.__assignmentAuthChecked===true);assert.doesNotMatch(await p.locator('#uxGlobalStatus').innerText(),/Մուտքի ստուգումը ժամանակավորապես անհասանելի/);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.evaluate(()=>{document.documentElement.style.fontSize='100%';scrollTo(0,0);});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/assignment-compose-'+width+'.png',fullPage:true});}
 });
 
 const pdfUpload={name:'class_reading.pdf',mimeType:'application/pdf',buffer:Buffer.from('%PDF-1.7\nSynthetic browser assignment\n%%EOF\n')};

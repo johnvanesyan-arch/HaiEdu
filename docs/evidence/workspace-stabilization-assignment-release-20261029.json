@@ -1,0 +1,1189 @@
+{
+  "scope": "B12.3 stabilization batch1 assignment process",
+  "source": "0f0778aeae9a81170f93f049b6bd2fb980e79073",
+  "base": "9951c2c0bac99e91ca3ed6d60309d7d89a906dbc",
+  "pr": 356,
+  "head": "b18ede139d07f9c71b78f21c2070a96cc0a4b5b8",
+  "prCi": 40850139467,
+  "prJobs": [
+    {
+      "id": 123367277700,
+      "name": "institutional-concurrency",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850139467,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install isolated PostgreSQL test tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Verify administrator and teacher offboarding races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Verify isolated Phase 3 content races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify misconception review and existing item-write races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 123367278018,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850139467,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Check mirrored core parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Check teacher startup bundle parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Check platform favicon",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Check shared Forest font provenance and preloads",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Check browser QA dependency coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Typecheck",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Check browser JavaScript syntax",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        }
+      ]
+    },
+    {
+      "id": 123367278191,
+      "name": "phase3-postgres-17",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850139467,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run python -m pip install 'psycopg[binary]==3.2.6'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Verify isolated Phase 3 races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Verify misconception review and existing item-write races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Execute analytics SQL, handler and Evidence page with PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Verify connected two-subject two-unit Edge and SQL acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Verify versioned scoring, readiness, reporting and preserved v1 rules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Verify written-work submissions, marking and authorization on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Verify supplementary material lifecycle, authorization and PDF delivery",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Verify resource assignment recipients, delivery and handler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Verify resource assignment races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Verify supplementary publication and delivery races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Verify material revision, approval and reviewer-session races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify guide delivery, assessment start and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Verify private feedback draft, publication retry and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Verify written-work save, submit, mark and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Verify atomic answer scoring with independent PostgreSQL 17.6 connections",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Verify governed policy and session authorization races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Verify read-only learning navigation and dashboard revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Verify governed learning API, answer and review races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Verify disjoint curriculum release activation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        },
+        {
+          "name": "Verify assessed listening allowances and cancellation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Verify shared-source exposure and allocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Verify governed whole-form mastery selection races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 57
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61
+        }
+      ]
+    },
+    {
+      "id": 123367278251,
+      "name": "role-layout-browser",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850139467,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Bound Ubuntu downloads for the browser gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify browser responsiveness and lifecycle regressions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Keep isolated student interface evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    },
+    {
+      "id": 123369341587,
+      "name": "Platform release checks",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850139467,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Require every platform check to succeed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "mainCi": 40850838715,
+  "mainJobs": [
+    {
+      "id": 123369593572,
+      "name": "phase3-postgres-17",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850838715,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run python -m pip install 'psycopg[binary]==3.2.6'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Verify isolated Phase 3 races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Verify misconception review and existing item-write races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Execute analytics SQL, handler and Evidence page with PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Verify connected two-subject two-unit Edge and SQL acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Verify versioned scoring, readiness, reporting and preserved v1 rules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Verify written-work submissions, marking and authorization on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Verify supplementary material lifecycle, authorization and PDF delivery",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Verify resource assignment recipients, delivery and handler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Verify resource assignment races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Verify supplementary publication and delivery races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Verify material revision, approval and reviewer-session races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Verify guide delivery, assessment start and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Verify private feedback draft, publication retry and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Verify written-work save, submit, mark and revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Verify atomic answer scoring with independent PostgreSQL 17.6 connections",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Verify governed policy and session authorization races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Verify read-only learning navigation and dashboard revocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Verify governed learning API, answer and review races on PostgreSQL 17.6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Verify disjoint curriculum release activation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        },
+        {
+          "name": "Verify assessed listening allowances and cancellation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Verify shared-source exposure and allocation races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Verify governed whole-form mastery selection races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 57
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61
+        }
+      ]
+    },
+    {
+      "id": 123369593845,
+      "name": "role-layout-browser",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850838715,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Bound Ubuntu downloads for the browser gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify browser responsiveness and lifecycle regressions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Keep isolated student interface evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    },
+    {
+      "id": 123369593871,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850838715,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Check mirrored core parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Check teacher startup bundle parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Check platform favicon",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Check shared Forest font provenance and preloads",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Check browser QA dependency coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Typecheck",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Check browser JavaScript syntax",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        }
+      ]
+    },
+    {
+      "id": 123369593872,
+      "name": "institutional-concurrency",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850838715,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install isolated PostgreSQL test tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Verify administrator and teacher offboarding races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Verify isolated Phase 3 content races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify misconception review and existing item-write races",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    },
+    {
+      "id": 123371326959,
+      "name": "Platform release checks",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40850838715,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Require every platform check to succeed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "nativeArtifact": 12886747677,
+  "productionRun": 40851099137,
+  "productionArtifact": 12887468376,
+  "automaticCompatibility": {
+    "run": 40850838690,
+    "status": "passed",
+    "checks": 206,
+    "interrupted": false
+  },
+  "schemaVersion": "haiedu-workspace-stabilization-batch-v1",
+  "date": "2026-10-29",
+  "timezone": "Asia/Yerevan",
+  "batchStatus": "assignment-batch-verified; full-stabilization-open",
+  "nativeChecks": 275,
+  "focusedLocalChecks": 25,
+  "production": {
+    "report": "workspace-stabilization-assignment-production-20261029.json",
+    "sha256": "d02bcbf2e07e76f2115be688468114a95ccc48611a6d69915f1037cb5ef9d40e",
+    "checks": 196,
+    "frontendHashes": 30,
+    "isolation": [
+      54,
+      54
+    ],
+    "cleanup": {
+      "assignments": [
+        {
+          "id": "f06809ca-43dc-424a-ad08-cf7c45ad766a",
+          "canceled": true
+        },
+        {
+          "id": "1e3ffe65-5ba3-48b6-ae90-77f76813c565",
+          "canceled": true
+        },
+        {
+          "id": "2a2a6d1f-7f6f-41b1-b642-8487f32d71c7",
+          "canceled": true
+        },
+        {
+          "id": "c8a45e97-de49-4fa8-b6cf-53e5948de2c1",
+          "canceled": true
+        }
+      ],
+      "resources": [
+        {
+          "resourceId": "9421fbdb-920e-464e-bd3f-84237ecea9f6",
+          "withdrawn": true
+        },
+        {
+          "resourceId": "f77267b0-2ccd-426c-983d-6674be2d9c91",
+          "withdrawn": true
+        }
+      ],
+      "sessions": [
+        {
+          "actor": "A_admin",
+          "httpStatus": 204,
+          "closed": true
+        },
+        {
+          "actor": "A_teacher",
+          "httpStatus": 204,
+          "closed": true
+        },
+        {
+          "actor": "A_student",
+          "httpStatus": 204,
+          "closed": true
+        },
+        {
+          "actor": "B_admin",
+          "httpStatus": 204,
+          "closed": true
+        },
+        {
+          "actor": "B_teacher",
+          "httpStatus": 204,
+          "closed": true
+        },
+        {
+          "actor": "B_student",
+          "httpStatus": 204,
+          "closed": true
+        }
+      ]
+    }
+  },
+  "preservation": [
+    {
+      "path": "docs/student-dashboard-function-coverage.md",
+      "sha256": "7d3b3541e4f35bfec3cb6fa5a8aad7edc4f3c82756c5df30faca632e0a37fcef",
+      "unchanged": true
+    },
+    {
+      "path": "web/teacher.js",
+      "sha256": "6e687c5e6c96cfcd0fac685989a5cc63660a5dfaa7841978c399f5cf3b90df63",
+      "unchanged": true
+    },
+    {
+      "path": "web/teacher-startup.bundle.mjs",
+      "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+      "unchanged": true
+    },
+    {
+      "path": "web/teacher-dependencies.bundle.mjs",
+      "sha256": "d05408b929999ceedcf11ce72253f69615a064bce479ba40cc4427c7d8474032",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/teacher-performance-acceptance.mjs",
+      "sha256": "522efcc948974624ada64cfbd660dc181074171831e040ca084cee8504ee8d35",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/resource-assignments-acceptance.mjs",
+      "sha256": "5417a0043a9c9b83042d04a05a29e011bd7e0ccde971547502edc1af005d7588",
+      "unchanged": true
+    }
+  ],
+  "fixed": [
+    "UX-ASSIGN-01",
+    "UX-ASSIGN-02",
+    "UX-ASSIGN-03"
+  ],
+  "remaining": [
+    "UX-WRITE-01",
+    "UX-ACCOUNT-01",
+    "UX-ASSIGN-04",
+    "UI-ERROR-01",
+    "DEMO-01"
+  ],
+  "notices": [
+    "Earlier technical evidence is a bounded baseline, not whole-platform usability acceptance.",
+    "No backend, dependency, curriculum/audio, grade or 45-capability map change. No new production writing or grading for QA.",
+    "Teacher Home/SDK code is byte-identical; the prior 150-observation profile is reused as baseline and is not remeasured in this batch.",
+    "An incomplete native fixture omitted auth.getUser and produced a false authentication notice in a screenshot. Closing fixture supplies that method and asserts the rendered health state. This is not a diagnosed production auth defect.",
+    "After 200%text assertions, evidence screenshots use normal text and scroll to top so a fixed off-viewport skip link is not painted inside a full-document capture. No runtime keyboard guard is weakened.",
+    "Closing batch changes docs/evidence and isolated fixture only; fresh required CI remains a merge/release condition.",
+    "B12.3/B12 remain open, subject expansion paused, final owner usability acceptance not given."
+  ]
+}
