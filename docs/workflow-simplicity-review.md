@@ -1,6 +1,6 @@
 # B.12.3 — Four teacher/student workflow simplicity review
 
-2026-10-29 · PROCESS-01/U13 · Shared core presentation/control slice. Implementation prepared; current-source verification pending. B.12.3/B.12 remain open and subject expansion stays paused.
+2026-10-29 · PROCESS-01/U13 · Shared core presentation/control slice. Functional implementation verified; final label-only polish follows the closing CI/visual gate. B.12.3/B.12 remain open and subject expansion stays paused.
 
 ## Purpose and scope
 
@@ -13,7 +13,7 @@ Each process must show its current purpose/context, necessary ordered inputs, on
 | Teacher find → review/private save or send → continue | Required assessed/return inputs are explicit; completed-criterion count derives from the actual rubric; an invalid assessed send focuses the first missing score. | Private autosave and explicit publication stay separate; returning feedback needs no scores. Existing regrade reason, nonce/revision, conflict, pending and Today next/back rules remain. |
 | Learner feedback → revise → return/submit | Latest feedback/result appears before the editable draft; a direct action focuses revision; previous submitted text is folded while full history remains. | A revision creates another frozen version. Assessed/read-only work stays noneditable. No private teacher draft is exposed. |
 
-UX-ACCOUNT-04 shares the concise visible status-check label `Ստուգել կարգավիճակը`; its accessible name states logout status and that logout is not repeated. The underlying account controller/Auth scopes are unchanged.
+UX-ACCOUNT-04 shares the concise visible status-check label `Կրկին ստուգել`; its accessible name states logout status and that logout is not repeated. The underlying account controller/Auth scopes are unchanged.
 
 ## State review and evidence matrix
 
@@ -43,6 +43,11 @@ No SQL, Edge, grants, authentication policy, storage, source delivery, scoring, 
 
 ## Delivery and remaining acceptance
 
-Required PR/main CI, current frontend provenance, guarded production resource-delivery/read acceptance, run-owned cleanup and source-verified Notion closure are pending. Earlier assignment/writing/account evidence is reused only for unchanged contracts, with current native checks required for changed display/control paths. No fresh latency, actual-device/assistive-technology survey, persistent Deployment Check configuration or full four-role authenticated acceptance is claimed.
+Implementation PR/main CI passes 1,569 unit/integration and 316 native checks. Functional [production acceptance](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40905555878) passes 196/196, 54+54 isolation and complete run-owned cleanup on `dad2e02b7501cf497cfabec5910160f0a9bc3e5d`; all eight frontend files match public bytes. The closing runtime changes only the visible status-check label plus docs/tests: reuse the unchanged functional production evidence explicitly, rerun the required closing PR/main gates, inspect the final enlarged-label native image before merge and verify final public source/eight-file parity. Source-verified Notion synchronization follows the merged closing commit. [Technical index](evidence/workflow-simplicity-release-20261029.json) preserves sources, checks, initial pre-auth stopped read attempt and scope. Earlier assignment/writing/account evidence is reused only for unchanged contracts, with current native checks required for changed display/control paths. No fresh latency, actual-device/assistive-technology survey, persistent Deployment Check configuration or full four-role authenticated acceptance is claimed.
 
 After verified delivery, resolve remaining single-register investigations/operational dispositions, then obtain John's final concrete usability decision. UI-ERROR-01's original historical cause remains unconfirmed; DEMO-01 must retain intentional QA grants. Subject expansion stays paused.
+
+
+## Enlarged-text visual correction before closure
+
+PR362 passes 316 native checks, but its downloaded 390 px / computed 200% text image still splits the final Armenian article from the initially shortened status label. Geometry remains 390/390 with no outside elements; passing reflow alone did not establish readable word wrapping. The final visible action is shortened further to `Կրկին ստուգել`; its full accessible name explicitly checks logout status without a second logout mutation. The final native screenshot must be visually inspected before merging the closing batch; a passing geometry check alone is insufficient. This is a label-only correction; all account outcome/scoping behavior is unchanged.

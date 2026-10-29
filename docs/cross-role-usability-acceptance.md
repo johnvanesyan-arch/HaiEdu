@@ -69,4 +69,4 @@ Pending. A request to perform acceptance authorizes verification and fixes; it i
 
 ## PROCESS-01/U13 focused simplicity review
 
-[Four-journey review and state matrix](workflow-simplicity-review.md) records the current bounded implementation, unchanged contracts and evidence requirements. Current verification is pending. This advances U13 without substituting for U12/John's final usability decision. B.12.3/B.12 remain open and subject expansion stays paused.
+[Four-journey review and state matrix](workflow-simplicity-review.md) records the bounded implementation and unchanged contracts. Implementation PR/main1569+316 and functional production196/196 with 54+54 isolation pass; the final label-only closing correction requires current native CI and visual inspection, with unchanged functional evidence reused by exact source. This advances U13 without substituting for U12/John's final usability decision. B.12.3/B.12 remain open and subject expansion stays paused.

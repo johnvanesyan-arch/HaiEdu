@@ -1,0 +1,209 @@
+{
+  "scope": "B.12.3 PROCESS-01/U13 four workflow simplicity review",
+  "date": "2026-10-29",
+  "base": "f6b31ee558e91d70193ae5943aa452bcf11bf62b",
+  "implementation": {
+    "pr": 362,
+    "head": "947e0e28be7ad381ea7c256cc8be4cb987867250",
+    "runtime": "dad2e02b7501cf497cfabec5910160f0a9bc3e5d",
+    "prCi": 40904322800,
+    "mainCi": 40905396684,
+    "unitIntegrationPassed": 1569,
+    "nativePassed": 316,
+    "nativeArtifact": 12910139671
+  },
+  "production": {
+    "run": 40905555878,
+    "job": 123562192128,
+    "artifact": 12912207217,
+    "revision": "dad2e02b7501cf497cfabec5910160f0a9bc3e5d",
+    "passed": 196,
+    "total": 196,
+    "beforeIsolation": 54,
+    "afterIsolation": 54,
+    "assignmentCleanup": [
+      {
+        "id": "bc76652c-6182-4eb5-b592-2497ea5c4891",
+        "canceled": true
+      },
+      {
+        "id": "82ef60af-a56f-4834-90ab-b56430d80732",
+        "canceled": true
+      },
+      {
+        "id": "5725e7a7-5313-4fe2-bd3e-58624f31406b",
+        "canceled": true
+      },
+      {
+        "id": "4ee603a5-5887-4ff2-b312-ce0ee4f39410",
+        "canceled": true
+      }
+    ],
+    "materialCleanup": [
+      {
+        "resourceId": "699cf3ed-6eb8-4250-aae5-23a9d3623483",
+        "withdrawn": true
+      },
+      {
+        "resourceId": "ecaf3a4a-a12d-4fa4-83a0-d9a3fa6edd91",
+        "withdrawn": true
+      }
+    ],
+    "sessionCleanup": [
+      {
+        "actor": "A_admin",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "A_teacher",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "A_student",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_admin",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_teacher",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_student",
+        "httpStatus": 204,
+        "closed": true
+      }
+    ],
+    "writingReceiptCoverage": [
+      {
+        "side": "A",
+        "existingReviewedResponse": true,
+        "productionWritingMutation": false
+      },
+      {
+        "side": "B",
+        "existingReviewedResponse": false,
+        "productionWritingMutation": false
+      }
+    ],
+    "mutatesProductionWritingOrGrades": false
+  },
+  "frontend": {
+    "revision": "dad2e02b7501cf497cfabec5910160f0a9bc3e5d",
+    "releaseBefore": "dad2e02b7501cf497cfabec5910160f0a9bc3e5d",
+    "files": [
+      {
+        "path": "web/account-signout.mjs",
+        "status": 200,
+        "expected": "56ff01f7634e71504c5890f3ea628c117094f504e5e911dc79d33abaa4d3893c",
+        "actual": "56ff01f7634e71504c5890f3ea628c117094f504e5e911dc79d33abaa4d3893c",
+        "passed": true
+      },
+      {
+        "path": "web/resource-assignments.mjs",
+        "status": 200,
+        "expected": "a9f7234e30cb59d841a6367a16354890d317bb01f479be712fea524d69552709",
+        "actual": "a9f7234e30cb59d841a6367a16354890d317bb01f479be712fea524d69552709",
+        "passed": true
+      },
+      {
+        "path": "web/supplementary-resources.mjs",
+        "status": 200,
+        "expected": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b",
+        "actual": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b",
+        "passed": true
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "status": 200,
+        "expected": "cefeaa6d8ad79399a90fa20f8320dbd58d42f1c50367aeb5b6f4e948998ac88d",
+        "actual": "cefeaa6d8ad79399a90fa20f8320dbd58d42f1c50367aeb5b6f4e948998ac88d",
+        "passed": true
+      },
+      {
+        "path": "web/teacher-feedback.mjs",
+        "status": 200,
+        "expected": "73bc7067472cb584285a49a74979996c6cf801acba593ff2fe8168acade7822c",
+        "actual": "73bc7067472cb584285a49a74979996c6cf801acba593ff2fe8168acade7822c",
+        "passed": true
+      },
+      {
+        "path": "web/teacher-workflows.html",
+        "status": 200,
+        "expected": "2aefeee09c6ea5358c702ab2c39c4f5f22c9e625e157a5024e612f48414d2694",
+        "actual": "2aefeee09c6ea5358c702ab2c39c4f5f22c9e625e157a5024e612f48414d2694",
+        "passed": true
+      },
+      {
+        "path": "web/written-work.css",
+        "status": 200,
+        "expected": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+        "actual": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+        "passed": true
+      },
+      {
+        "path": "web/written-work.mjs",
+        "status": 200,
+        "expected": "e00c2de5ad746e1ad5a2b810c9d4a6692952590f591253699f5d9eef96574a6c",
+        "actual": "e00c2de5ad746e1ad5a2b810c9d4a6692952590f591253699f5d9eef96574a6c",
+        "passed": true
+      }
+    ],
+    "releaseAfter": "dad2e02b7501cf497cfabec5910160f0a9bc3e5d",
+    "passed": true
+  },
+  "initialReadAttempt": {
+    "run": 40905396582,
+    "job": 123558651800,
+    "artifact": 12911862008,
+    "status": "failed before authentication",
+    "checks": "3/4",
+    "failedBoundary": "intended production frontend before reads",
+    "note": "Wait step succeeded, immediate runner stamp check differed; final stamp matched. No isolation/login/session or learner mutation began. Retain artifact; dedicated resource acceptance covers current reads/delivery."
+  },
+  "localChecks": {
+    "focusedService": 36,
+    "syntaxFiles": 91,
+    "typecheck": true,
+    "teacherBundle": true,
+    "qaDependencies": true
+  },
+  "finalLabelCorrection": {
+    "visible": "Կրկին ստուգել",
+    "accessible": "Ստուգել դուրս գալու կարգավիճակը՝ առանց կրկին դուրս գալու",
+    "sourceBehaviorPreservedByExactLiteralReplacement": true,
+    "files": [
+      "web/account-signout.mjs"
+    ],
+    "nativeEvidenceLocation": "closing PR/main credential-free browser gate; account-recovery-unknown-mobile-200.png must be visually inspected before merge",
+    "productionEvidenceReuse": "Functional production journeys above are from the exact dad2e02 runtime. The closing runtime differs only in this label plus docs/tests. It does not re-run authenticated resource mutations. Verify all eight final public frontend bytes and the final release stamp."
+  },
+  "capabilityMapSha256": "7d3b3541e4f35bfec3cb6fa5a8aad7edc4f3c82756c5df30faca632e0a37fcef",
+  "preservation": {
+    "backendSqlEdgeGrants": true,
+    "packagesSdk": true,
+    "sourcesAudioContentApprovals": true,
+    "all45Mappings": true,
+    "englishC47Hold": true,
+    "fourSubjectGateSeparate": true,
+    "speakingClassroomAssessed": true
+  },
+  "limitations": [
+    "Production reviewed-response positive coverage is school A; school B has no reviewed response.",
+    "New positive writing/feedback outcomes and injected failures use isolated SQL/handler/native browser fixtures.",
+    "Initial account-label native geometry passed but its visual word wrapping required another literal correction; final image inspection remains a merge condition.",
+    "No fresh latency, actual device/AT survey or persistent Deployment Check configuration attestation.",
+    "Full B12.3 and owner usability acceptance remain open."
+  ],
+  "next": [
+    "remaining single-register investigation and operational dispositions",
+    "John final usability decision; subjects paused"
+  ]
+}

@@ -85,7 +85,7 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 | Teacher reviews | Writing review or Today → response/rubric → private save or explicit assess/return | Sent result; then Next/return to queue |
 | Learner revises | Same writing task → current feedback → edit/save → Submit | New submitted version, earlier history preserved |
 
-Teacher review shows the number of completed criteria and focuses the first missing score on an incomplete assessed send. Returning instructions requires a comment, not rubric scores; existing regrade-reason requirements remain. Cancellation keeps all receipt controls busy until its result. The shared status-check label is concise; its accessible name retains the read-only logout meaning. These are presentation/control changes; current native/release verification remains pending in [the review record](workflow-simplicity-review.md).
+Teacher review shows the number of completed criteria and focuses the first missing score on an incomplete assessed send. Returning instructions requires a comment, not rubric scores; existing regrade-reason requirements remain. Cancellation keeps all receipt controls busy until its result. The shared status-check label is concise; its accessible name retains the read-only logout meaning. These are presentation/control changes; current verification and bounded production-evidence reuse are recorded in [the review record](workflow-simplicity-review.md).
 
 ## Explicit future capabilities
 
