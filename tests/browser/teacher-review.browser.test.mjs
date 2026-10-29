@@ -32,7 +32,7 @@ test('late class and writing replies cannot repaint a new class, a new page or a
  await page.evaluate(()=>window.__teacherFixture.release('class:a'));await expect(page.locator('[data-review-context]')).toContainText('Բ Դասարան');
  await page.evaluate(()=>window.__teacherFixture.holds.push('manage-written-work'));await page.locator('[data-writing-state="reviewed"]').click();await nav(page,'classes');await page.evaluate(()=>window.__teacherFixture.release('manage-written-work'));await expect(page.locator('#teacherReviewRoot')).toBeEmpty();
  await nav(page,'review');await ready(page);await choose(page);await page.evaluate(()=>{const s=window.__teacherFixture;s.actor='teacher-b';s.listeners.forEach(fn=>fn('SIGNED_IN',{user:{id:s.actor,email:'new@example.invalid'}}));});
- await expect(page.locator('#teacherEmail')).toHaveValue('new@example.invalid');await expect(page.locator('[data-review-writing]')).toBeEmpty();assert.deepEqual(errors,[]);
+ await expect(page.locator('#teacherEmail')).toHaveValue('new@example.invalid');await expect(page.locator('#teacherReviewRoot')).toBeEmpty();await expect(page.locator('#teacherHomeView')).toBeVisible();assert.deepEqual(errors,[]);
 });
 test('failed exact-unit read clears old work and retry retains requested unit; archive discovery stays separate',async t=>{
  const {page,errors}=await fixture(browser,t,{archives:30});await nav(page,'review');await ready(page);await choose(page);
