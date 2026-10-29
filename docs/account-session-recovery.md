@@ -4,7 +4,7 @@
 
 ## Outcome contract
 
-Every interactive logout uses `account-signout.mjs`: one operation per Auth client, disabled duplicate controls, existing role-specific destination and existing global scope. After either a returned error or a rejection, read the local session. Confirmed local clearing can navigate, but a remote failure carries a precise notice that other-device revocation was not confirmed. A retained session exposes an explicit logout retry. An unreadable outcome exposes a focused read-only status check and keeps logout disabled; it never automatically repeats the mutation. A newer sign-in prevents the old controller from clearing state, reporting an old result or navigating. No access/refresh token is stored in a recovery record or message.
+Every interactive logout uses `account-signout.mjs`: one operation per Auth client, disabled duplicate controls, existing role-specific destination or inline signed-out panel and existing global scope. After either a returned error or a rejection, read the local session. Confirmed local clearing can navigate, but a remote failure carries a precise notice that other-device revocation was not confirmed. A retained session exposes an explicit logout retry. An unreadable outcome exposes a focused read-only status check and keeps logout disabled; it never automatically repeats the mutation. A newer sign-in prevents the old controller from clearing state, reporting an old result or navigating. No access/refresh token is stored in a recovery record or message.
 
 Learner writing participates in a cancelable asynchronous leave guard: flush the existing draft before logout; a failed save or unknown submission remains in the current writing recovery flow. Teacher feedback publication with a pending/unknown receipt blocks logout until its existing status recovery resolves. Existing private-feedback/editor discard confirmations remain. The shared account page also confirms discarding unsaved name, email or privacy choices.
 
@@ -21,10 +21,10 @@ The legacy Practice, Progress and Physics overview startup checks no longer turn
 | Shared account page, all supported roles | Common controller, unsaved account-input confirmation, actor/generation fences and old-field clearing. |
 | School overview and teacher detail | Both controllers use the common outcome/redirect logic. |
 | Master admin and security | Existing explicit global scope and account-access destination retained. |
-| Question bank/item/review | Common controller; pending workflow blocks exit and unsaved content requires confirmation. |
-| Guide authoring | Common controller; in-flight workflow counter and unsaved-content confirmation. |
+| Question bank/item/review | Common controller; pending workflow blocks exit and unsaved content requires confirmation. Existing inline signed-out panel is retained. |
+| Guide authoring | Common controller; generation-scoped in-flight workflow counter and unsaved-content confirmation. Existing inline signed-out panel is retained. |
 | Unit material reviewer | Existing `canLeave` plus busy guard retained before common logout. |
-| Misconception reviewer | Existing discard/MFA factor cleanup retained before common logout, with actor recheck afterward. |
+| Misconception reviewer | Existing discard/MFA factor cleanup and inline signed-out panel retained before common logout, with actor recheck afterward. |
 | Shared content-workspace consumers | Common logout and confirmed cache cleanup. Existing role/session listeners still close private views. |
 | Blocked-role router | Common logout; navigation follows confirmed local outcome. |
 | Legacy learner startup checks and shared UX health | Explicit transient/terminal distinction and stale-snapshot protection. |

@@ -233,6 +233,6 @@ test('learner logout waits for actual-SQL draft save before ending the session',
  await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held logout draft save')):setTimeout(check,20);check();});
  assert.equal(await s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='auth:signout').length),0);
  held.resolve();await s.waitForURL('**/index.html');
- const rows=(await f.db.query('select draft_text from written_work where draft_text<>''')).rows;assert.equal(rows.length,1);assert.equal(rows[0].draft_text,text);
+ const rows=(await f.db.query("select draft_text from written_work where draft_text<>''")).rows;assert.equal(rows.length,1);assert.equal(rows[0].draft_text,text);
  assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,0);assert.deepEqual(learner.errors,[]);
 });

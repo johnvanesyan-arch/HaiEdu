@@ -191,7 +191,7 @@ $('mcNext').addEventListener('click',()=>{if(!busy&&offset+50<total){offset+=50;
 $('mcMfaClose').addEventListener('click',()=>{void closeMfa();});
 $('mcMfa').addEventListener('cancel',event=>{event.preventDefault();void closeMfa();});
 $('signOutBtn').addEventListener('click',async()=>{
-  await signOutAccount(supabase,{canLeave:()=>!busy&&discardOkay(),prepare:async()=>{await closeMfa();await cleanupFactors(userId).catch(()=>null);},redirect:'./account-access'});
+  await signOutAccount(supabase,{canLeave:()=>!busy&&discardOkay(),prepare:async()=>{await closeMfa();await cleanupFactors(userId).catch(()=>null);}});
 });
 $('retryAuth').addEventListener('click',async()=>{const {data}=await supabase.auth.getSession();void showSession(data.session,{force:true});});
 window.addEventListener('beforeunload',event=>{if(dirty()){event.preventDefault();event.returnValue='';}});

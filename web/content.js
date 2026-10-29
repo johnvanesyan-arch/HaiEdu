@@ -1129,7 +1129,7 @@ function bootstrapSession(session, options) {
   return pending.finally(() => { if (bootstrapPromise === pending) bootstrapPromise = null; });
 }
 
-$("signOutBtn")?.addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowBusy && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")), redirect: "./account-access" }));
+$("signOutBtn")?.addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowBusy && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")) }));
 $("refreshBtn")?.addEventListener("click", () => {
   if (workflowBusy) return;
   if (editorDirty && !confirm("Չեղարկե՞լ չպահպանված փոփոխությունները և թարմացնել հարցերի բանկը։")) return;

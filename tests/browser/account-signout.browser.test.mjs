@@ -38,12 +38,12 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
  const setup=`import {signOutAccount,showSignOutNotice} from './account-signout.mjs';
  const supabase=window.__client,client=supabase,contentSupabase=supabase,$=id=>document.getElementById(id);
  const state={account:{displayName:'Synthetic name'},preferences:{product_analytics_opt_in:false,research_use_opt_in:false}};
- const workflowBusy=false,workflowsInFlight=0,busy=false,editorDirty=false,currentUserId='actor-A',userId='actor-A';
+ const workflowBusy=false,workflowsInFlight=new Map(),sessionCheck=0,busy=false,editorDirty=false,currentUserId='actor-A',userId='actor-A';
  const allowTeacherLeave=()=>window.__logout.canLeave,canLeave=allowTeacherLeave,discardOkay=allowTeacherLeave,closeMfa=async()=>{},cleanupFactors=async()=>{},clearContentDashboardCache=()=>{};
  ${code}
  document.querySelector('#signOutBtn')?.classList.remove('hidden');
  window.__ready=true;`;
- const generic=`<!doctype html><html lang="hy"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="./styles.css"></head><body><main><h1>Փորձնական աշխատատարածք</h1><button id="${file==='role-router.js'?'blockedSignOutBtn':'signOutBtn'}">Դուրս գալ</button><textarea id="displayNameInput">Synthetic name</textarea><input id="newEmailInput"><input type="checkbox" id="analyticsOptIn"><input type="checkbox" id="researchOptIn"><textarea id="privateDraft">Unsaved synthetic work</textarea></main><script type="module">${setup}</script></body></html>`;
+ const generic=`<!doctype html><html lang="hy"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="./styles.css"></head><body><main class="shell"><h1>Հաշիվ</h1><button id="${file==='role-router.js'?'blockedSignOutBtn':'signOutBtn'}">Դուրս գալ</button><textarea id="displayNameInput">Synthetic name</textarea><input id="newEmailInput"><input type="checkbox" id="analyticsOptIn"><input type="checkbox" id="researchOptIn"><textarea id="privateDraft">Unsaved synthetic work</textarea></main><script type="module">${setup}</script></body></html>`;
  await bc.route('**/*',async r=>{
   const u=new URL(r.request().url());if(u.hostname==='esm.sh')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.origin!==origin)return r.abort();
@@ -62,7 +62,9 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
 for(const file of consumers)test(`${file} actual logout binding: returned error with retained session has no false redirect and permits explicit retry`,async t=>{
  const {p,errors,button}=await fixture(t,{file});await button.click();await expect(p.locator('#accountSignOutMessage')).toContainText('Չհաջողվեց դուրս գալ');
  assert.equal(new URL(p.url()).pathname,'/fixture');await expect(button).toBeEnabled();assert.equal(await p.locator('#privateDraft').inputValue(),'Unsaved synthetic work');
- await p.evaluate(()=>window.__logout.mode='success');await button.click();await p.waitForURL(/\/(account-access(?:\.html)?|index\.html)$/);
+ await p.evaluate(()=>window.__logout.mode='success');await button.click();
+ if(['content.js','content-guides.js','content-misconceptions.js'].includes(file)){await expect(button).toBeEnabled();assert.equal(await p.evaluate(()=>window.__logout.session),null);assert.equal(new URL(p.url()).pathname,'/fixture');}
+ else await p.waitForURL(/\/(account-access(?:\.html)?|index\.html)$/);
  assert.deepEqual(errors,[]);
 });
 for(const role of ['student','teacher','school_admin','content_admin','admin'])test(`real shared account controller (${role}): local clearing with remote failure reaches login with accurate notice`,async t=>{
@@ -75,7 +77,9 @@ test('unknown logout outcome offers read-only recovery, serializes both entry po
  await p.evaluate(()=>{document.querySelector('#signOutBtn').click();document.querySelector('[data-student-signout]').click();});
  const check=p.locator('[data-signout-check]');await expect(check).toBeFocused();await expect(button).toBeDisabled();await check.click();await expect(check).toBeFocused();
  await p.addStyleTag({content:'html{font-size:200%!important}'});assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');
- assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await check.click();await expect(button).toBeEnabled();
+ const geometry=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,id:e.id,width:e.getBoundingClientRect().width,right:e.getBoundingClientRect().right}))}));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/account-recovery-unknown-mobile-200.png',fullPage:true});await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/account-recovery-geometry.json',JSON.stringify(geometry));}
+ assert.ok(geometry.scroll<=geometry.width+1,JSON.stringify(geometry));await check.click();await expect(button).toBeEnabled();
  assert.equal(await p.evaluate(()=>window.__logout.calls.length),1);assert.deepEqual(await p.evaluate(()=>window.__logout.calls[0]),{scope:'global'});
  await expect(p.locator('#accountSignOutMessage')).toContainText('Այս դիտարկիչից դուրս եք եկել');
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/account-recovery-mobile-200.png',fullPage:true});}

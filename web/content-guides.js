@@ -14,7 +14,7 @@ let currentActor = null;
 let pendingEnrollmentFactorId = null;
 let activeGuideTab = "content";
 let previewToken = 0;
-let workflowsInFlight = 0;
+const workflowsInFlight = new Map();
 
 const statusLabels = {
   draft: "Սևագիր",
@@ -1092,7 +1092,7 @@ async function configureMfa() {
 
 async function runWorkflow(action) {
   const check = sessionCheck;
-  workflowsInFlight++;
+  workflowsInFlight.set(check, (workflowsInFlight.get(check) || 0) + 1);
   try {
     const rationaleInput = $("changeRationale");
     const rationale = rationaleInput?.value.trim() || "";
@@ -1129,7 +1129,10 @@ async function runWorkflow(action) {
     if (check !== sessionCheck) return;
     if (error.validation && $("validationPanel")) renderValidation(error.validation);
     setMessage(messageFor(error), true);
-  } finally { workflowsInFlight--; }
+  } finally {
+    const remaining = workflowsInFlight.get(check) - 1;
+    if (remaining) workflowsInFlight.set(check, remaining); else workflowsInFlight.delete(check);
+  }
 }
 
 async function refreshCatalog(reselect = selectedId, { preserveDirtyEditor = false } = {}) {
@@ -1217,7 +1220,7 @@ async function showForSession(session) {
   }
 }
 
-$("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowsInFlight && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")), redirect: "./account-access" }));
+$("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowsInFlight.get(sessionCheck) && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")) }));
 $("refreshGuidesBtn").addEventListener("click", () => {
   if (editorDirty && !confirm("Չպահպանված փոփոխությունները չեղարկե՞լ և թարմացնել ցանկը։")) return;
   editorDirty = false;

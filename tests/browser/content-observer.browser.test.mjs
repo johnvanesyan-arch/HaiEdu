@@ -8,7 +8,7 @@ import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content-review-resume.mjs", "content-list-navigation.mjs", "content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-audio.mjs", "assessed-audio.mjs", "learning-task-set.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["account-signout.mjs", "content-review-resume.mjs", "content-list-navigation.mjs", "content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-audio.mjs", "assessed-audio.mjs", "learning-task-set.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{}) }); }, { timeout: 30_000 });
