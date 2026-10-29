@@ -1,0 +1,26 @@
+name: Teacher font isolated regression
+on:
+  push:
+    branches: [codex/teacher-font-startup-performance-20261029]
+permissions:
+  contents: read
+jobs:
+  isolated:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Bound browser dependency downloads
+        run: |
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
+      - run: npx playwright install --with-deps chromium
+      - name: Isolated shared startup and affected-role regressions
+        run: node --test tests/browser/ux-startup.browser.test.mjs tests/browser/forest-font.browser.test.mjs tests/browser/forest-staff.browser.test.mjs tests/browser/teacher-today.browser.test.mjs tests/browser/teacher-performance.browser.test.mjs tests/browser/teacher-feedback.browser.test.mjs tests/browser/student-workspace.browser.test.mjs tests/browser/content-observer.browser.test.mjs

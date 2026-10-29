@@ -76,6 +76,23 @@ test("dependency traversal handles cycles and reports missing local imports", as
   await assert.rejects(() => collectDependencies(root, ["web/page.html"]), /ENOENT/);
 });
 
+test("font preloads and CSS fallback binaries remain in production QA routing", async t => {
+  const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html"], runner: "scripts/qa.mjs" };
+  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "package.json", "package-lock.json", "vercel.json"];
+  const root = await fixture(t, {
+    [target.workflow]: workflow(patterns),
+    "web/page.html": '<link rel="preload" href="./assets/ui.woff2?v=1" as="font" crossorigin><link rel="stylesheet" href="./base.css">',
+    "web/base.css": '@font-face {src: url("./assets/ui.woff2") format("woff2"), url("./assets/fallback.ttf") format("truetype");}',
+    "web/assets/ui.woff2": Buffer.from([119, 79, 70, 50, 255]),
+    "web/assets/fallback.ttf": Buffer.from([0, 1, 0, 0, 255]),
+  });
+  const graph = await collectDependencies(root, target.entries);
+  assert.ok(graph.has("web/assets/ui.woff2")); assert.ok(graph.has("web/assets/fallback.ttf"));
+  assert.deepEqual((await checkBrowserQaTriggers(root, [target]))[0].missing, ["web/assets/fallback.ttf", "web/assets/ui.woff2"]);
+  await writeFile(path.join(root, target.workflow), workflow([...patterns, "web/assets/**"]));
+  assert.deepEqual((await checkBrowserQaTriggers(root, [target]))[0].missing, []);
+});
+
 test("bare relative HTML and CSS URLs cannot bypass dependency trigger coverage", async (t) => {
   const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html"], runner: "scripts/qa.mjs" };
   const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "package.json", "package-lock.json", "vercel.json"];

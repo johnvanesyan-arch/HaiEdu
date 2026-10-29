@@ -29,6 +29,9 @@ jobs:
       - name: Check platform favicon
         run: npm run check:favicon
 
+      - name: Check shared Forest font provenance and preloads
+        run: npm run check:ui-font
+
       - name: Check browser QA dependency coverage
         run: node scripts/check-browser-qa-triggers.mjs
 

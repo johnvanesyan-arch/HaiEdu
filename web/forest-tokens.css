@@ -1,9 +1,10 @@
 /* Shared presentation tokens. These do not determine a user's role or access. */
 @font-face {
   font-family: "Noto Sans Armenian";
-  src: url("./assets/fonts/noto-sans-armenian-variable.ttf") format("truetype");
+  src: url("./assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2") format("woff2"), url("./assets/fonts/noto-sans-armenian-variable.ttf") format("truetype");
   font-style: normal;
   font-weight: 100 900;
+  font-stretch: normal;
   font-display: swap;
 }
 :root {
