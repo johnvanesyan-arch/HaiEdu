@@ -7,6 +7,8 @@ on:
     paths:
       - web/writing-assignments.css
       - web/writing-assignments.mjs
+      - web/student-teacher-tasks.mjs
+      - web/student-teacher-task-client.mjs
       - web/account-signout.mjs
       - web/teacher-*.mjs
       - scripts/build-teacher-entry.mjs

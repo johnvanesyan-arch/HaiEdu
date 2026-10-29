@@ -32,6 +32,8 @@ async function browserContext(actor,materialId=null,creation=null){
   const read=writingDelivery.readAllowed(actor,fn,body)||usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
    ||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(body.action))
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
+   ||(fn==='manage-teacher-task-student-work'&&['inbox','open'].includes(body.action))
+   ||(fn==='manage-teacher-task-student-files'&&['source','open'].includes(body.action))
    ||(fn==='manage-writing-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
   if(read)return route.continue();
@@ -116,7 +118,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['teacher-task-send.mjs','teacher-task-draft-workspace.mjs','teacher-task-editor.mjs','teacher-task-form.mjs','teacher-task-source-client.mjs','writing-assignments.mjs','writing-assignments.css','resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html','ux.js','student-surfaces.css','school-admin.html','school-teacher.html']){
+ for(const path of ['student-teacher-tasks.mjs','student-teacher-task-client.mjs','teacher-task-send.mjs','teacher-task-draft-workspace.mjs','teacher-task-editor.mjs','teacher-task-form.mjs','teacher-task-source-client.mjs','writing-assignments.mjs','writing-assignments.css','resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html','ux.js','student-surfaces.css','school-admin.html','school-teacher.html']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));
