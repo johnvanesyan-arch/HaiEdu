@@ -1,4 +1,4 @@
-import {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
+import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
 // A delayed async head entry must not start a second read after SDK startup.
 window.__haieduTeacherHomeStartup ||= Object.freeze({claim:()=>null,cancel:()=>{}});
@@ -7,9 +7,10 @@ const $ = (id) => document.getElementById(id);
 
 let dashboard = null;
 let disposeToday=()=>{};
+let disposeReview=()=>{};
 let todayBoot=null;
 let lastTeacherUrl=(window.location?.pathname??"")+(window.location?.search??"");
-function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.());}
+function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.()||disposeReview.hasUnsaved?.());}
 function allowTeacherLeave(){if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
 let actorId = null;
 let directoryPages = {};
@@ -26,6 +27,7 @@ function readOnce(fn,body) {
 }
 const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
 function clearDetail() {
+  disposeReview();disposeReview=()=>{};
   disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
@@ -64,9 +66,10 @@ let dashboardBootstrapPromise = null;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class"]);
+const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class", "review"]);
 const TEACHER_VIEW_META = {
   home: ["Ուսուցչի գլխավոր", "Այսօրվա ամփոփ պատկերը, արագ գործողությունները և աշխատանքի հաջորդ քայլերը։"],
+  review: ["Գրավորի ստուգում", "Ներկայացված աշխատանքներ, գնահատում և մեկնաբանություններ՝ ըստ դասարանի ու բաժնի։"],
   profile: ["Իմ պրոֆիլը", "Ցուցադրվող անունը և մուտքի պաշտպանված կարգավորումները։"],
   classes: ["Իմ դասարանները", "Միայն ակտիվ դասարանները՝ աշակերտներով, հրավերներով և առաջընթացով։"],
   archive: ["Արխիվացված դասարաններ", "Ավարտված դասարանների պատմությունը՝ ընթացիկ աշխատանքից առանձին։"],
@@ -85,7 +88,7 @@ function navigationSelection() {
   const requested = params.get("view");
   const classId = params.get("class");
   return {
-    view: requested === "class" || classId
+    view: requested === "review" ? "review" : requested === "class" || classId
       ? "class"
       : (TEACHER_VIEWS.has(requested) ? requested : "home"),
     source: params.get("source") === "archive" ? "archive" : "classes",
@@ -99,8 +102,8 @@ function navigationSelection() {
 function teacherViewUrl(view,clearToday=false) {
   const url = new URL(window.location.href);
   url.searchParams.set("view", TEACHER_VIEWS.has(view) ? view : "home");
-  if (view !== "class") {
-    ["class", "assignment", "release", "unit", "source"].forEach((key) => url.searchParams.delete(key));
+  if (view !== "class" && !(view === "review" && ["class","review"].includes(navigationSelection().view))) {
+    ["class", "assignment", "release", "unit", "source", "state"].forEach((key) => url.searchParams.delete(key));
   }
   if(clearToday||view!=="home")["todayWork","queueAssignment"].forEach(k=>url.searchParams.delete(k));
   url.hash = "";
@@ -119,6 +122,7 @@ function renderTeacherView(view = navigationSelection().view) {
   window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
   window.scrollTo({ top: 0, behavior: "auto" });
   lastTeacherUrl=window.location.pathname+window.location.search;
+  if(selected==="review"&&dashboard){disposeReview();const version=dashboardLoadVersion;const key=directoryKey(navigationSelection().source==="archive");const page=directoryPages[key];disposeReview=mountTeacherReview({root:$("teacherReviewRoot"),supabase,actorId,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="home"&&dashboard&&$("teacherToday")){disposeToday();const version=dashboardLoadVersion;disposeToday=mountTeacherToday({root:$("teacherToday"),supabase,actorId,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,initialResponse:todayBoot,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});todayBoot=null;}
 }
 
@@ -313,7 +317,7 @@ async function loadDashboard(sessionOverride = null) {
   selectedAssignmentId=navigation.selection?.assignmentId??null;
   const body=navigation.view==="class" && (navigation.classId||navigation.selection)
     ? {readMode:"class",...(navigation.classId?{classId:navigation.classId}:{}),...(navigation.selection?{selection:navigation.selection}:{})}
-    : {readMode:"directory",archive:navigation.view==="archive"};
+    : {readMode:"directory",archive:navigation.view==="archive" || (navigation.view==="review"&&navigation.source==="archive")};
   const home=navigation.view==="home"&&Boolean($("teacherToday"));
   if(home)body.workspace=todayRequest(actorId);
   const {data:loaded,error}=(await startup?.dashboard(body))??await dashboardRead(body);
@@ -485,6 +489,7 @@ async function renameSelectedClass(event, institutional) {
 
 async function selectClass(id, { pushNavigation = false, navigate = true, detailReady=false, selection=null, assignmentId=null } = {}) {
   if (!allowTeacherLeave()) return;
+  disposeReview();disposeReview=()=>{};
   disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   disposeWriting(); disposeWriting = () => {};

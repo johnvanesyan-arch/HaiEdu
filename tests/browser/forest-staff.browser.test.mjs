@@ -91,7 +91,8 @@ test('real teacher Home → Classes → Review retains lazy requests, exact cont
   const {page,errors}=await teacherFixture(browser,t);
   const nav=view=>page.locator(`.hm-role-nav a[href$="view=${view}"]`).click();
   assert.equal(await page.locator('.hm-role-nav [aria-current="page"]').count(),1,'an external library destination must not inherit the Home selection');
-  await expect(page.locator('.hm-role-foot a[href="./teacher-workspace-preview.html"]')).toBeVisible();
+  await expect(page.locator('.hm-role-foot a[href="./teacher-workspace-preview.html"]')).toHaveCount(0);
+  await expect(page.locator('.hm-role-nav a[href="./teacher.html?view=review"]')).toBeVisible();
   await nav('classes');
   const card=page.locator('#classList .teacher-class-button').first();
   assert.equal(await card.evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 255)','class selection cards must not inherit the primary action fill');

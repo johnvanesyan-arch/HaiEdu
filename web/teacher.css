@@ -78,3 +78,5 @@
 .teacher-workflow-help{display:block;margin-top:1rem;min-height:44px;align-content:center;overflow-wrap:anywhere}
 .teacher-workflow-help:focus-visible{outline:3px solid #836b27;outline-offset:3px}
 @media(max-width:1050px){.teacher-workflow-entrypoints{grid-template-columns:minmax(0,1fr)}}
+
+.teacher-review-controls{display:grid;grid-template-columns:minmax(160px,1fr) minmax(0,2fr) minmax(0,2fr);gap:16px}.teacher-review-controls label{min-width:0}.teacher-review-controls select{width:100%;min-width:0;max-width:100%}.teacher-review-picker{margin-bottom:20px}@media(max-width:900px){.teacher-review-controls{grid-template-columns:minmax(0,1fr)}}
