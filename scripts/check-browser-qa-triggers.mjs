@@ -124,7 +124,7 @@ export async function collectDependencies(root, entries) {
     const source = /\.(?:ttf|woff2)$/i.test(filename) ? "" : raw.toString("utf8");
     sources.set(filename, source);
     for (const dependency of localReferences(filename, source)) await visit(dependency);
-    const generatedInputs={"web/teacher-dependencies.bundle.mjs":["web/teacher-dependencies.mjs","scripts/build-teacher-entry.mjs","package.json","package-lock.json"]};
+    const generatedInputs={"web/teacher-dependencies.bundle.mjs":["web/teacher-dependencies.mjs","scripts/build-teacher-entry.mjs","package.json","package-lock.json"],"web/teacher-startup.bundle.mjs":["web/teacher-startup.mjs","scripts/build-teacher-entry.mjs","package.json","package-lock.json"]};
     for(const dependency of generatedInputs[filename]??[])await visit(dependency);
   }
   for (const entry of entries) await visit(entry);

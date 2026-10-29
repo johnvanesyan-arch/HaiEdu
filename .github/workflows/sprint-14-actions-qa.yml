@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/teacher-*.mjs
       - scripts/build-teacher-entry.mjs
       - web/teacher-dependencies.bundle.mjs
       - web/teacher-dependencies.mjs
