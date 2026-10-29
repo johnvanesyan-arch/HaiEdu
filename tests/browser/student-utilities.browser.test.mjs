@@ -50,7 +50,7 @@ for(const role of ['student','teacher','school_admin','content_admin','admin'])t
  assert.deepEqual(errors,[]);
 });
 test('account failure remains neutral and signout shows the public Forest gateway',async t=>{
- const {page,errors}=await fixture(t,{offline:true});await page.getByText('Synthetic service unavailable',{exact:true}).waitFor();
+ const {page,errors}=await fixture(t,{offline:true});await page.getByText('Հաշվի տվյալները չբեռնվեցին։',{exact:true}).waitFor();await page.getByRole('button',{name:'Կրկին ստուգել մուտքը'}).waitFor();assert.equal(await page.getByText('Synthetic service unavailable',{exact:true}).count(),0);
  assert.equal(await page.locator('#content').isVisible(),false);
  assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(248, 250, 248)');
  await page.evaluate(()=>window.__signout());assert.equal(await page.locator('#signedOut').isVisible(),true);

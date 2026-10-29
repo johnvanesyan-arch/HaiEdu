@@ -43,7 +43,9 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
  ${code}
  document.querySelector('#signOutBtn')?.classList.remove('hidden');
  window.__ready=true;`;
- const generic=`<!doctype html><html lang="hy"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preload" href="./assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./forest-tokens.css"><link rel="stylesheet" href="./components.css"><link rel="stylesheet" href="./student-surfaces.css"></head><body data-forest-surface><main class="shell"><h1>Հաշիվ</h1><button id="${file==='role-router.js'?'blockedSignOutBtn':'signOutBtn'}">Դուրս գալ</button><textarea id="displayNameInput">Synthetic name</textarea><input id="newEmailInput"><input type="checkbox" id="analyticsOptIn"><input type="checkbox" id="researchOptIn"><textarea id="privateDraft">Unsaved synthetic work</textarea></main><script type="module">${setup}</script></body></html>`;
+ const accountHead=(await readFile('web/privacy.html','utf8')).split('<head>')[1].split('</head>')[0];
+ const generic=`<!doctype html><html lang="hy"><head>${accountHead}</head><body data-forest-surface data-student-utility="account"><main class="shell privacy-shell"><h1>Հաշիվ</h1><button id="${file==='role-router.js'?'blockedSignOutBtn':'signOutBtn'}">Դուրս գալ</button><input id="displayNameInput" value="Synthetic name"><input id="newEmailInput"><input type="checkbox" id="analyticsOptIn"><input type="checkbox" id="researchOptIn"><input id="privateDraft" value="Unsaved synthetic work"></main><script type="module">${setup}</script></body></html>`;
+
  await bc.route('**/*',async r=>{
   const u=new URL(r.request().url());if(u.hostname==='esm.sh')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.origin!==origin)return r.abort();
@@ -51,7 +53,7 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
    let html=generic;if(realPrivacy){html=(await readFile('web/privacy.html','utf8')).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace('</body>','<script type="module" src="./privacy.js"></script></body>');}
    return r.fulfill({contentType:'text/html',body:html});
   }
-  if(['/account-access','/account-access.html','/index.html'].includes(u.pathname))return r.fulfill({contentType:'text/html',body:'<link rel="stylesheet" href="./styles.css"><main><h1>Մուտք գործել</h1></main><script type="module">import {showSignOutNotice} from "./account-signout.mjs";showSignOutNotice();</script>'});
+  if(['/account-access','/account-access.html','/index.html'].includes(u.pathname))return r.fulfill({contentType:'text/html',body:'<!doctype html><html lang="hy"><head>'+accountHead+'</head><body data-forest-surface data-student-utility="account"><main class="shell"><h1>Մուտք գործել</h1></main><script type="module">import {showSignOutNotice} from "./account-signout.mjs";showSignOutNotice();</script></body></html>'});
   if(u.pathname==='/config.js')return r.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://synthetic.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic-public";'});
   try{return r.fulfill({body:await readFile('web'+u.pathname),contentType:/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':'application/octet-stream'});}catch{return r.fulfill({status:404,body:''});}
  });
@@ -77,6 +79,9 @@ test('unknown logout outcome offers read-only recovery, serializes both entry po
  await p.evaluate(()=>{document.querySelector('#signOutBtn').click();document.querySelector('[data-student-signout]').click();});
  const check=p.locator('[data-signout-check]');await expect(check).toBeFocused();await expect(button).toBeDisabled();await check.click();await expect(check).toBeFocused();
  await p.addStyleTag({content:'html{font-size:200%!important}'});assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');
+ const colors=await p.locator('#accountSignOutMessage').evaluate(e=>{const b=e.querySelector('button'),c=getComputedStyle(e),s=getComputedStyle(b);return{background:c.backgroundColor,color:c.color,border:c.borderTopWidth,padding:c.paddingLeft,button:s.backgroundColor,buttonText:s.color,charset:document.characterSet,heading:document.querySelector('h1').textContent};});
+ assert.deepEqual(colors,{background:'rgb(255, 255, 255)',color:'rgb(35, 57, 47)',border:'2px',padding:'32px',button:'rgb(40, 91, 69)',buttonText:'rgb(255, 255, 255)',charset:'UTF-8',heading:'Հաշիվ'});
+
  const geometry=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,id:e.id,width:e.getBoundingClientRect().width,right:e.getBoundingClientRect().right}))}));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/account-recovery-unknown-mobile-200.png',fullPage:true});await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/account-recovery-geometry.json',JSON.stringify(geometry));}
  assert.ok(geometry.scroll<=geometry.width+1,JSON.stringify(geometry));await check.click();await expect(button).toBeEnabled();
@@ -131,4 +136,12 @@ for(const nextId of ['actor-B','actor-A'])test(`unknown logout followed by a new
 test('failed shared account read has an explicit retry and never signs out a valid account',async t=>{
  const {p,errors}=await fixture(t,{realPrivacy:true,privacyFailure:true});await expect(p.locator('#content')).toBeHidden();assert.equal(await p.evaluate(()=>window.__logout.calls.length),0);
  await p.evaluate(()=>window.__logout.privacyFailure=false);await p.getByRole('button',{name:'Կրկին ստուգել մուտքը'}).click();await expect(p.locator('#content')).toBeVisible();await expect(p.locator('#accountSignOutMessage')).toHaveCount(0);assert.equal(await p.evaluate(()=>window.__logout.calls.length),0);assert.deepEqual(errors,[]);
+});
+
+for(const mode of ['returnedCleared','returnedActive'])test(`real shared account ${mode}: unknown logout notice retains Forest contrast outside private panels`,async t=>{
+ const {p,errors,button}=await fixture(t,{realPrivacy:true,mode,readsFail:2});await button.click();await expect(p.locator('[data-signout-check]')).toBeFocused();
+ const colors=await p.locator('#accountSignOutMessage').evaluate(e=>({background:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color,button:getComputedStyle(e.querySelector('button')).backgroundColor}));
+ assert.deepEqual(colors,{background:'rgb(255, 255, 255)',color:'rgb(35, 57, 47)',button:'rgb(40, 91, 69)'});
+ if(mode==='returnedCleared')await expect(p.locator('#content')).toBeHidden();else await expect(p.locator('#content')).toBeVisible();
+ assert.equal(await p.evaluate(()=>window.__logout.calls.length),1);assert.deepEqual(errors,[]);
 });
