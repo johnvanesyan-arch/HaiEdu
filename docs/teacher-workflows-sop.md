@@ -1,5 +1,7 @@
 # Teacher workflow SOP — version 1.5
 
+**B.12.3.2 authoring preparation — not deployed.** The working draft route is Assign writing → explicit class/unit → My task drafts → New / Reopen / Create copy → independent task-source and required-response controls → Preview → Save private draft. Saving never sends work. Text/link copies become separate drafts; PDF copies explicitly require reattachment while asset reuse/retention is completed. Unknown save replies lock editing/navigation/logout until exact replay; conflicts retain text and offer deliberate latest-version reload. The published course-task path remains separate. Custom send/recipient receipt and student text/document/link submission/review are still under implementation; do not instruct teachers to use them in production. [Contract](teacher-assignment-authoring-contract.md).
+
 2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments; B.12.3.1 adds permanent writing-review navigation.
 
 The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Original B.8.2 baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`; B.11 implementation: `358af1ed89746f1919ea78582895ffcb96e346bd`; B.12.1 preview implementation: `df051fd1853b6f76421cf11ca24be903e1177694`.

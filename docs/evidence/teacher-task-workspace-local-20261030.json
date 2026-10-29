@@ -1,0 +1,26 @@
+{
+  "scope": "B.12.3.2 private draft workspace; unmerged and not deployed",
+  "baseline": "18254f44ee950010bb9a17e555c1f51c81cdf168",
+  "checks": {
+    "focused_definition_form_draft_source_and_published_delivery": {
+      "passed": 22,
+      "failed": 0,
+      "log": "/tmp/haiedu-task-workspace-focused.log"
+    },
+    "typecheck": "passed",
+    "browser_syntax": "96 files passed",
+    "teacher_bundle_parity": "passed",
+    "browser_QA_dependency_triggers": "passed"
+  },
+  "native": "Six authoring cases prepared for isolated Chromium CI; not yet passed",
+  "remaining": [
+    "immutable custom-task delivery",
+    "learner text/document/link draft and submissions",
+    "teacher feedback/publication/revision integration",
+    "PDF reuse without reattachment",
+    "full text formatting controls",
+    "production storage policies and privacy inventory/retention",
+    "required CI and exact source deployment acceptance"
+  ],
+  "release": "No production change; B.12.3 open; subjects paused"
+}
