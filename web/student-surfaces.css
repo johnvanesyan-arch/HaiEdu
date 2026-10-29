@@ -12,7 +12,7 @@ body[data-haiedu-student] {
 }
 body[data-haiedu-student] :is(.subtle,.small,.stat-label,.skill-code) { color:var(--student-muted); }
 body[data-haiedu-student] :is(.small,small,.stat-label,.skill-code) { font-size:.875rem; line-height:1.6; }
-body[data-haiedu-student] :is(a:not(.button-link,.amp-nav-link,.amp-mobile-link),summary) { color:var(--student-accent); text-underline-offset:.2em; }
+body[data-haiedu-student] :is(a:not(.button-link,.amp-nav-link,.amp-mobile-link,.skip-link),summary) { color:var(--student-accent); text-underline-offset:.2em; }
 body[data-haiedu-student] :is(button,.button-link):disabled { opacity:1; background:var(--student-quiet); color:var(--student-muted); border-color:var(--student-border-control); cursor:not-allowed; }
 body[data-haiedu-student] :is(h2,h3) { color:var(--student-ink); line-height:1.45; }
 body[data-haiedu-student] h2 { font-size:1.375rem; }
