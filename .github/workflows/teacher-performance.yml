@@ -16,6 +16,7 @@ on:
     branches: [main]
     paths:
       - scripts/teacher-performance-acceptance.mjs
+      - scripts/teacher-home-readiness.mjs
       - .github/workflows/teacher-performance.yml
 permissions:
   contents: read
@@ -39,7 +40,7 @@ jobs:
         run: node scripts/teacher-performance-acceptance.mjs
         env:
           TEACHER_PERF_SCOPE: ${{ inputs.fixtureScope || 'all' }}
-          TEACHER_PERF_PHASE: ${{ inputs.phase || 'baseline' }}
+          TEACHER_PERF_PHASE: ${{ inputs.phase || 'after' }}
           QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
           QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
           QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
