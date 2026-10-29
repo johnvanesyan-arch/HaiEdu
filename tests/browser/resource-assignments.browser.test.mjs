@@ -257,3 +257,25 @@ test('assignment history has a route back to a fresh recipient choice and sendin
  while(!held.release)await new Promise(r=>setTimeout(r,10));held.release();await p.locator('.assignment-receipt').waitFor();await p.locator('[data-assignment-history-list]').click();await p.locator('[data-assignment-inspect]').click();await p.locator('.assignment-receipt').waitFor();
  await p.locator('[data-assignment-close]').click();await p.locator('[data-resource-assign]').first().waitFor();assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);assert.deepEqual(ui.errors,[]);
 });
+
+
+test('cancellation shows the required reason and disables all receipt navigation until the acknowledged result',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const ui=await surface(t,f),p=ui.page;
+ await compose(p);assert.match(await p.locator('[data-recipient-summary]').innerText(),/Ամբողջ դասարանը/);
+ await p.locator('[data-assignment-send]').click();await p.locator('.assignment-receipt').waitFor();
+ await p.locator('[data-assignment-inspect]').click();await p.locator('.assignment-cancel summary').click();
+ await p.locator('[data-assignment-cancel]').click();assert.equal(await p.locator('[data-assignment-cancel-reason]').evaluate(e=>e===document.activeElement),true);
+ assert.equal(await p.evaluate(()=>window.__assignmentCalls.filter(c=>c.body.action==='cancel').length),0);
+ await p.locator('[data-assignment-cancel-reason]').fill('The lesson plan changed.');const held=ui.hold('cancel');
+ await p.locator('[data-assignment-cancel]').click();
+ try{
+  await p.waitForFunction(()=>document.querySelector('[data-assignment-close]').disabled);
+  for(const selector of ['[data-assignment-close]','[data-assignment-history-list]','[data-assignment-cancel]','[data-assignment-cancel-reason]'])assert.equal(await p.locator(selector).isDisabled(),true);
+  assert.equal(await p.locator('.resource-assignment-workspace').getAttribute('aria-busy'),'true');
+  assert.equal(await p.locator('[data-assignment-cancel-reason]').inputValue(),'The lesson plan changed.');
+ }finally{const deadline=Date.now()+5000;while(!held.release&&Date.now()<deadline)await new Promise(r=>setTimeout(r,10));assert.ok(held.release,"Cancellation reached the isolated handler");held.release();}
+ await p.waitForFunction(()=>document.querySelector('.assignment-receipt h4')?.textContent.includes('չեղարկված'));
+ assert.equal(await p.locator('[data-assignment-close]').isEnabled(),true);assert.equal(await p.locator('[data-assignment-history-list]').isEnabled(),true);
+ assert.match(await p.locator('[data-assignment-next]').innerText(),/այլևս չի ցուցադրվում/);
+ assert.equal(await p.evaluate(()=>window.__assignmentCalls.filter(c=>c.body.action==='cancel').length),1);assert.deepEqual(ui.errors,[]);
+});

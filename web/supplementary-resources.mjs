@@ -75,6 +75,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   const d=m?.definition??{locale:'hy',format:'pdf',purpose:'reading'},ed=$('[data-resource-editor]');ed.hidden=false;
   ed.innerHTML=`<header><h2 tabindex="-1">${m?'Նյութ · v'+m.version:'Նոր նյութ'}</h2><button type="button" class="ghost" data-resource-close>Փակել</button></header>
   <p class="resource-compose-context">${esc(contextLabel(selected))}</p>
+  ${role==='teacher'?`<p class="resource-audience-note" data-resource-step>${assignmentMode?'Քայլ 1․ պատրաստեք նյութը։ Հաջորդ քայլում ընտրեք ստացողներին և հաստատեք ուղարկումը։':'Հրապարակեք նյութը գրադարանում։ Աշակերտներին առաջադրանք ուղարկելը առանձին քայլ է։'}</p>`:''}
   ${m?`<p><strong>${labels[m.status]}</strong>${m.qa?.passed?' · Ստուգումն անցած է':m.qa&&!m.qa.passed?' · '+(m.qa.issues?.includes('file_required')?'PDF-ը դեռ կցված չէ':'Ստուգեք նյութի տվյալները'):''}</p>`:''}
   ${role==='teacher'&&m?.status==='published'?`<button type="button" class="ghost" data-resource-student-preview="${esc(m.id)}">Աշակերտի տեսքի նախադիտում</button>`:''}
   <form data-resource-form>

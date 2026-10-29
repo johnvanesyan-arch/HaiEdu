@@ -65,3 +65,8 @@ The current slice changes no server source, dependencies, curriculum, audio or g
 ## Owner decision record
 
 Pending. A request to perform acceptance authorizes verification and fixes; it is not evidence that John has inspected and accepted the final result. No owner decision, human task-completion time or engagement metric is invented. Full B.12.3/B.12 and the English C47 hold remain until that decision is recorded.
+
+
+## PROCESS-01/U13 focused simplicity review
+
+[Four-journey review and state matrix](workflow-simplicity-review.md) records the current bounded implementation, unchanged contracts and evidence requirements. Current verification is pending. This advances U13 without substituting for U12/John's final usability decision. B.12.3/B.12 remain open and subject expansion stays paused.

@@ -43,3 +43,20 @@ test('rubric/response, private/sent labels and personal archive reflow and remai
  await p.emulateMedia({reducedMotion:'reduce'});for(const width of [360,768,1280]){await p.setViewportSize({width,height:1000});for(const font of ['100%','200%']){await p.evaluate(font=>document.documentElement.style.fontSize=font,font);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow ${width}/${font}: ${JSON.stringify(await p.evaluate(()=>[...document.querySelectorAll("body *")].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>[e.tagName,e.className,e.getBoundingClientRect().width]).slice(-15)))}`);await p.locator('[data-feedback-focus]').click();assert.equal(await p.locator('[data-writing-feedback]').evaluate(e=>e===document.activeElement),true);}}
  await p.evaluate(()=>document.documentElement.style.fontSize='100%');if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.locator('.written-review-layout').scrollIntoViewIfNeeded();await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-feedback-wide.png'});await p.setViewportSize({width:360,height:900});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-feedback-mobile.png',fullPage:true});}assert.deepEqual(errors,[]);
 });
+
+
+test('review points to the first missing score while revision instructions can be returned without a grade',async t=>{
+ const {page:p,db,studentRequest,errors}=await todayFixture(browser,t);await openFirst(p);
+ await expect(p.locator('[data-feedback-progress]')).toHaveText('Լրացված չափանիշներ՝ 0/4');
+ await p.locator('[data-writing-feedback]').fill('Explain why you chose this example.');await p.locator('[data-writing-grade]').click();
+ await expect(p.locator('[data-writing-score]').first()).toBeFocused();
+ await expect(p.locator('[data-feedback-status]')).toContainText('Ընտրեք միավորը');
+ assert.equal((await db.query('select count(*) n from written_reviews')).rows[0].n,0);
+ await p.locator('[data-writing-score]').first().selectOption('2');await expect(p.locator('[data-feedback-progress]')).toHaveText('Լրացված չափանիշներ՝ 1/4');
+ await p.locator('[data-writing-grade]').click();await expect(p.locator('[data-writing-score]').nth(1)).toBeFocused();
+ await p.locator('[data-writing-return]').click();await expect(p.locator('[data-writing-message]')).toContainText('վերադարձվել');
+ const received=await(await studentRequest({action:'open',context:context(),payload:{taskId:id(6000)}})).json();
+ assert.equal(received.work.state,'changes_requested');assert.equal(received.submissions.at(-1).reviews.at(-1).scores,null);
+ assert.equal(received.submissions.at(-1).reviews.at(-1).feedback,'Explain why you chose this example.');
+ assert.equal((await db.query('select count(*) n from written_reviews')).rows[0].n,1);assert.deepEqual(errors,[]);
+});

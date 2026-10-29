@@ -20,3 +20,7 @@
 
 .written-state-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}.written-state-filters button[aria-pressed="true"]{background:var(--forest-accent,var(--amp-color-primary));color:white;border-color:var(--forest-accent,var(--amp-color-primary))}
 #teacherReviewRoot .written-state-filters button{max-width:100%;white-space:normal;overflow-wrap:anywhere}#teacherReviewRoot .written-state-filters button[aria-pressed="true"]{background:var(--forest-accent,var(--amp-color-primary));color:var(--forest-on-accent,#fff);border-color:var(--forest-accent,var(--amp-color-primary))}
+
+/* U13: the current instruction/feedback precedes revision; history stays folded. */
+.written-next-step{padding:1rem;border:1px solid var(--forest-divider,#ccd7ca);border-inline-start:4px solid var(--forest-accent,#285b45);border-radius:.7rem;background:var(--forest-quiet,#f3f6ef);min-width:0}
+.written-previous{padding:.8rem;border:1px solid var(--forest-divider,#ccd7ca);border-radius:.6rem;min-width:0}
