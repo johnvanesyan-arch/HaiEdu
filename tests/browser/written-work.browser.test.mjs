@@ -108,7 +108,10 @@ test('unknown submission outcome preserves text, blocks duplicate sends and navi
  assert.equal(await s.locator('[data-writing-text]').inputValue(),text);assert.equal(await s.locator('[data-writing-text]').getAttribute('readonly'),'');
  assert.equal(await s.locator('[data-writing-submit]').isVisible(),false);assert.equal(await s.locator('[data-writing-save]').isVisible(),false);assert.equal(await s.locator('[data-writing-back]').isDisabled(),true);
  assert.match(await s.locator('[data-writing-message]').innerText(),/Մի փակեք էջը/);
- await s.addStyleTag({content:'html{font-size:200%}'});assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ assert.equal(await s.locator('[data-writing-recover]').evaluate(e=>e===document.activeElement),true);
+ await s.addStyleTag({content:'html{font-size:200%}'});await s.evaluate(()=>scrollTo(0,0));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await s.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/writing-recovery-mobile-200.png',fullPage:true});}
+ const overflow=await s.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,class:e.className,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.right>innerWidth+1&&e.width>0).slice(-20));assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),JSON.stringify(overflow));
  s.once('dialog',async d=>{assert.equal(d.type(),'beforeunload');await d.dismiss();});await s.reload().catch(()=>{});assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
  await s.locator('.course-tabs a').first().click();assert.equal(new URL(s.url()).searchParams.get('tab'),'writing');
  await s.evaluate(()=>{const url=new URL(location.href);url.searchParams.set('tab','course');history.pushState({},'',url);dispatchEvent(new PopStateEvent('popstate'));});

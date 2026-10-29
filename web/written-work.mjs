@@ -92,7 +92,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
    if(unchanged){model=data;conflict=false;message('Ներկայացումը դեռ չի հաստատվել։ Ձեր սևագիրը պահպանված է։ Կարող եք կրկին սեղմել «Ներկայացնել ուսուցչին»։',true);}
    else{conflict=true;message('Աշխատանքի պահպանված տարբերակը փոխվել է։ Այս պատուհանի տեքստը մնացել է տեսանելի․ պատճենեք այն, ապա բեռնեք վերջին պահպանված տարբերակը։',true);}
   }catch{if(current()&&request===sequence&&pending===pendingSubmission){message('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։',true);}}
-  finally{busy=false;controls();}
+  finally{busy=false;controls();if(current()&&request===sequence){const next=pendingSubmission?$('[data-writing-recover]'):conflict?$('[data-writing-reload]'):$('[data-writing-message]');if(next){if(next.matches('[data-writing-message]'))next.tabIndex=-1;next.focus();}}}
  }
  async function submit(){
   if(busy||pendingSubmission||!current()||conflict)return;
