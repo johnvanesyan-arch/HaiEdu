@@ -22,5 +22,24 @@
     "production storage policies and privacy inventory/retention",
     "required CI and exact source deployment acceptance"
   ],
-  "release": "No production change; B.12.3 open; subjects paused"
+  "release": "No production change; B.12.3 open; subjects paused",
+  "firstCI": {
+    "runId": 40953600530,
+    "source": "2bf8b160f192e4f11c08f8ba10a3f91cf100d0e8",
+    "unitIntegrationPassed": 1591,
+    "postgres17": "passed",
+    "institutionalConcurrency": "passed",
+    "native": {
+      "passed": 326,
+      "failed": 3,
+      "total": 329
+    },
+    "aggregate": "failed",
+    "causes": [
+      "Hidden class-source label overridden by author CSS",
+      "Narrow enlarged-text draft form intrinsic overflow",
+      "Native fixture incorrectly treats null held action as undefined multipart action"
+    ],
+    "fixes": "Explicit hidden precedence, shrinkable form grid/controls, fixture requires non-null held request. Latest source rerun required."
+  }
 }

@@ -34,7 +34,7 @@ export function mountTeacherTaskDraftWorkspace({root,client,context,actorId,onCl
   editor?.dispose();editor=null;$('[data-drafts-list]').replaceChildren();message('');
   let initialDefinition=null,initialNote='';
   if(copy){const model=copyTeacherTaskDraft(draft);if(model.sourceKind==='pdf'){model.attachmentId=null;initialNote='Սա նոր սևագիր է։ PDF-ը պետք է կցել նորից. բնօրինակը չի փոխվել։';}else initialNote='Սա նոր սևագիր է։ Բնօրինակ առաջադրանքը չի փոխվել։';initialDefinition=teacherTaskDefinition(model);draft=null;}
-  editor=mountTeacherTaskEditor({root:$('[data-drafts-editor]'),client,context:ctx,actorId,draft,initialDefinition,initialNote,isCurrent:current,onClose:()=>list(false,true),onReload:record=>{void read('get',{id:record.id},data=>{if(!data.readOnly)edit(data.draft);else{editor?.dispose();editor=null;list();}});}});
+  editor=mountTeacherTaskEditor({root:$('[data-drafts-editor]'),client,context:ctx,actorId,draft,initialDefinition,initialNote,isCurrent:current,onClose:()=>list(false,true),onReload:record=>{void read('get',{id:record.id},data=>{if(!data.readOnly)edit(data.draft);else{editor?.dispose();editor=null;queueMicrotask(()=>list());}});}});
  }
  const click=e=>{if(!current()||busy)return;const b=e.target.closest('button');if(!b)return;
   if(b.hasAttribute('data-drafts-close')){if(canLeave())onClose();}
