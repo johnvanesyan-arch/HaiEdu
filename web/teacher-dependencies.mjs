@@ -1,3 +1,4 @@
+export {mountTeacherReview} from './teacher-review.mjs';
 export {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent} from './teacher-today.mjs';
 export {subjectArtwork} from './subject-visuals.mjs';
 export {renderArchive} from './archive-browser.mjs';

@@ -7,6 +7,7 @@ const configs = {
       ["Գլխավոր", "./teacher.html?view=home", "home"],
       ["Իմ պրոֆիլը", "./teacher.html?view=profile"],
       ["Դասարաններ", "./teacher.html?view=classes"],
+      ["Գրավորի ստուգում", "./teacher.html?view=review"],
       ["Արխիվացված դասարաններ", "./teacher.html?view=archive"],
       ["Նյութերի գրադարան", "./resource-library.html"]
     ]
@@ -271,7 +272,7 @@ function syncTeacherSections() {
   const requested = params.get("view");
   const selected = requested === "class"
     ? (params.get("source") === "archive" ? "archive" : "classes")
-    : (["home", "profile", "classes", "archive", "create"].includes(requested) ? requested : "home");
+    : (["home", "profile", "classes", "archive", "create", "review"].includes(requested) ? requested : "home");
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const linkUrl = new URL(link.href, window.location.href);
     const linkView = linkUrl.searchParams.get("view") || "home";
@@ -417,12 +418,6 @@ function syncRoleSidebar() {
   account.href = "./privacy.html";
   account.textContent = "Հաշիվ և գաղտնիություն";
   footer.append(pilot, account);
-  if (page === "teacher") {
-    const preview = document.createElement("a");
-    preview.href = "./teacher-workspace-preview.html";
-    preview.textContent = "Նոր տեսքի նախադիտում";
-    footer.append(preview);
-  }
   const existingSignOut = document.getElementById("signOutBtn");
   if (existingSignOut) {
     if (page === "platform") {

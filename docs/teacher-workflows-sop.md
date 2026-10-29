@@ -1,6 +1,6 @@
-# Teacher workflow SOP — version 1.3
+# Teacher workflow SOP — version 1.4
 
-2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments.
+2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments; B.12.3.1 adds permanent writing-review navigation.
 
 The in-product Armenian [teacher guide](https://www.haiedu.am/teacher-workflows.html) is reachable from each teacher entry point and resource management. This document is the operating contract for those procedures. Original B.8.2 baseline: `3a92b4ec132df1d0b4978d7a2ec6afa5e38651ab`; B.11 implementation: `358af1ed89746f1919ea78582895ffcb96e346bd`; B.12.1 preview implementation: `df051fd1853b6f76421cf11ca24be903e1177694`.
 
@@ -55,6 +55,8 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 ## SOP 04 — Review, feedback and revision
 
 **Owner/trigger:** the current authorized teacher reviews a submitted writing version in the selected class/unit.
+
+**Permanent entry:** sidebar → `Գրավորի ստուգում` → select active/archived class and exact unit → choose Pending, Returned, Reviewed or All → open a response. URL state retains the authorized class/assignment/release/unit and status filter. No class is selected implicitly on a fresh entry; no writing queue is read until a valid class/unit is selected. Already-reviewed work remains discoverable with zero pending submissions. Existing class/unit review is also retained.
 
 **Steps:** Writing card → `Բացել գրավոր աշխատանքները` → `Սպասում են ստուգման` → open learner submission → inspect full prompt/rubric/text → either score every criterion and provide feedback with `Ուղարկել գնահատականն ու մեկնաբանությունը`, or provide revision instructions with `Վերադարձնել վերանայման`.
 

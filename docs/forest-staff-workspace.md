@@ -51,3 +51,5 @@ The prototype and affected role screenshots are reviewed before broad rollout. R
 ## Acceptance queue operation
 
 The existing shared fixture group retains one active and one pending run. Broad script triggers can replace a pending staff run before any job starts. The normal GitHub **Run workflow** control dispatched the existing main-only staff workflow directly on reviewed `3883777a853c68e6e678ae3d4b48ccd4d40b4521`, avoiding another scheduling commit. Keep source, designated-fixture, authorization, non-cancelling concurrency and run-owned cleanup guards. The acceptance adapter uses the shared Home navigation now that the duplicate header is hidden. This is an operator path, not a new product capability.
+
+**2026-10-29 B.12.3.1 correction:** the fictional B.9 specimen remains available internally at its documented URL; its obsolete footer link is removed from the live teacher workspace. The permanent writing-review navigation opens real authorized data.
