@@ -1,3 +1,4 @@
+import {mountTeacherTaskSend} from './teacher-task-send.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {mountTeacherTaskEditor} from './teacher-task-editor.mjs';
 import {copyTeacherTaskDraft,teacherTaskDefinition} from './teacher-task-form.mjs';
@@ -9,7 +10,7 @@ export function mountTeacherTaskDraftWorkspace({root,client,context,actorId,onCl
  const ctx=Object.fromEntries(['assignmentId','curriculumReleaseId','unitId'].map(k=>[k,context[k]]));
  const current=()=>alive&&!invalid&&isCurrent()&&root.isConnected,$=s=>root.querySelector(s);
  const canLeave=()=>editor?.canLeave?.()??true;
- function shell(){root.innerHTML='<section class="card wa-panel"><div class="wa-heading"><h2>Իմ առաջադրանքների սևագրերը</h2><button type="button" class="ghost" data-drafts-close>Դասընթացի առաջադրանքները</button></div><p>Սևագրերը տեսնում եք միայն դուք։ Պահպանումը առաջադրանք չի ուղարկում աշակերտներին։</p><p data-drafts-status role="status" aria-live="polite" tabindex="-1"></p><div data-drafts-list></div></section><div data-drafts-editor></div>';}
+ function shell(){root.innerHTML='<section class="card wa-panel"><div class="wa-heading"><h2>Իմ սևագրերը</h2><button type="button" class="ghost" data-drafts-close>Դասընթացի առաջադրանքները</button></div><p>Սևագրերը տեսնում եք միայն դուք։ Պահպանումը առաջադրանք չի ուղարկում աշակերտներին։</p><p data-drafts-status role="status" aria-live="polite" tabindex="-1"></p><div data-drafts-list></div></section><div data-drafts-editor></div>';}
  const message=(v,bad=false)=>{if(current()){$('[data-drafts-status]').textContent=v;$('[data-drafts-status]').classList.toggle('bad',bad);}};
  const lock=()=>{if(current()){root.toggleAttribute('aria-busy',busy);root.querySelectorAll('button').forEach(b=>{b.disabled=busy;});}};
  async function read(action,payload,done){
@@ -34,7 +35,7 @@ export function mountTeacherTaskDraftWorkspace({root,client,context,actorId,onCl
   editor?.dispose();editor=null;$('[data-drafts-list]').replaceChildren();message('');
   let initialDefinition=null,initialNote='';
   if(copy){const model=copyTeacherTaskDraft(draft);if(model.sourceKind==='pdf'){model.attachmentId=null;initialNote='Սա նոր սևագիր է։ PDF-ը պետք է կցել նորից. բնօրինակը չի փոխվել։';}else initialNote='Սա նոր սևագիր է։ Բնօրինակ առաջադրանքը չի փոխվել։';initialDefinition=teacherTaskDefinition(model);draft=null;}
-  editor=mountTeacherTaskEditor({root:$('[data-drafts-editor]'),client,context:ctx,actorId,draft,initialDefinition,initialNote,isCurrent:current,onClose:()=>list(false,true),onReload:record=>{void read('get',{id:record.id},data=>{if(!data.readOnly)edit(data.draft);else{editor?.dispose();editor=null;queueMicrotask(()=>list());}});}});
+  editor=mountTeacherTaskEditor({root:$('[data-drafts-editor]'),client,context:ctx,actorId,draft,initialDefinition,initialNote,isCurrent:current,onPrepare:record=>{editor?.dispose();editor=mountTeacherTaskSend({root:$('[data-drafts-editor]'),client,context:ctx,actorId,draft:record,isCurrent:current,onClose:()=>list(false,true)});},onClose:()=>list(false,true),onReload:record=>{void read('get',{id:record.id},data=>{if(!data.readOnly)edit(data.draft);else{editor?.dispose();editor=null;queueMicrotask(()=>list());}});}});
  }
  const click=e=>{if(!current()||busy)return;const b=e.target.closest('button');if(!b)return;
   if(b.hasAttribute('data-drafts-close')){if(canLeave())onClose();}

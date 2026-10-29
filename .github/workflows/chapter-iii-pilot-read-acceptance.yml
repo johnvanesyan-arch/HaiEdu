@@ -11,6 +11,7 @@ on:
       - web/teacher-task-editor.mjs
       - web/teacher-task-form.mjs
       - web/teacher-task-source-client.mjs
+      - web/teacher-task-send.mjs
       - web/account-signout.mjs
       - supabase/functions/_shared/teacher-read-identity.mjs
       - supabase/functions/_shared/teacher-workspace-request.mjs

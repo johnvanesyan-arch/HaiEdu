@@ -6,7 +6,7 @@ import {authoringFixture,id,context,token} from '../fixtures/teacher-task-author
 let browser;
 before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 async function surface(t,{width=1280,large=false}={}){
- const f=await authoringFixture();t.after(()=>f.db.close());
+ const f=await authoringFixture({delivery:true});t.after(()=>f.db.close());
  const bc=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});t.after(()=>bc.close());const page=await bc.newPage(),errors=[];let drop=null,hold=null;
  page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(10000);
  await page.addInitScript(({actor,credential,scope,large})=>{
@@ -21,7 +21,7 @@ async function surface(t,{width=1280,large=false}={}){
  await page.route('**/*',async route=>{
   const req=route.request(),u=new URL(req.url());if(u.origin!=='https://authoring.test')return route.abort();
   if(u.pathname.startsWith('/fixture/')){
-   const handler=u.pathname.endsWith('manage-writing-assignments')?f.handle:u.pathname.endsWith('manage-teacher-task-sources')?f.handleSource:f.handleDraft;
+   const handler=u.pathname.endsWith('manage-writing-assignments')?f.handle:u.pathname.endsWith('manage-teacher-task-sources')?f.handleSource:u.pathname.endsWith('manage-teacher-task-delivery')?f.handleDelivery:f.handleDraft;
    const request=new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()});let action;
    if(req.headers()['content-type']?.includes('json'))action=req.postDataJSON().action;
    const response=await handler(request);
@@ -67,4 +67,9 @@ test('conflict preserves text until deliberate reload, and reuse creates a separ
 for(const width of [390,768,1280])test('draft editor conditional fields reflow at '+width+'px with 200% text',async t=>{
  const f=await surface(t,{width,large:true}),p=f.page;await fill(p);await p.locator('[data-field=sourceKind]').selectOption('pdf');await p.locator('[data-field=responseKind]').selectOption('document');await p.locator('details summary').click();await p.locator('[data-field=assessmentKind]').selectOption('criteria');await p.locator('[data-criterion-field=label]').fill('Clear explanation');await p.evaluate(()=>document.fonts.ready);assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,JSON.stringify(await p.evaluate(()=>[...document.querySelectorAll('main *')].map(e=>({tag:e.tagName,selector:e.className,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(r=>r.right>innerWidth+1))));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-editor-'+width+'-200.png',fullPage:true});}assert.deepEqual(f.errors,[]);
+});
+
+test('custom task send pins selected recipients, recovers one lost receipt and freezes the saved version',async t=>{
+ const f=await surface(t),p=f.page;await fill(p);await p.locator('[data-field=responseKind]').selectOption('link');await p.locator('[data-editor-prepare]').click();await expect(p.locator('[data-send-confirm]')).toBeEnabled();await p.locator('[name=customAudience][value=selected]').check();await p.locator('[data-send-recipient]').first().check();f.drop('assign');await p.locator('[data-send-confirm]').click();await expect(p.locator('[data-send-retry]')).toBeVisible();assert.equal(await p.evaluate(()=>document.dispatchEvent(new CustomEvent('haiedu-before-signout',{cancelable:true}))),false);await p.locator('a[href="/outside"]').click();await expect(p).toHaveURL(/harness/);await p.locator('[data-send-retry]').click();await expect(p.locator('[data-send-status]')).toContainText('Ուղարկումը գրանցված է');
+ const sends=await p.evaluate(()=>window.__calls.filter(c=>c.name==='manage-teacher-task-delivery'&&c.body.action==='assign'));assert.equal(sends.length,2);assert.deepEqual(sends[0],sends[1]);assert.equal((await f.db.query('select count(*)::int n from teacher_task_deliveries')).rows[0].n,1);assert.equal((await f.db.query('select count(*)::int n from written_work')).rows[0].n,0);await p.locator('[data-send-close]').click();await p.locator('[data-drafts-open]').click();await p.locator('[data-editor-prepare]').click();await expect(p.locator('[data-send-recipient]')).toBeDisabled();await expect(p.locator('[data-send-confirm]')).toBeDisabled();assert.deepEqual(f.errors,[]);
 });
