@@ -176,14 +176,15 @@
     "qaDependencies": true
   },
   "finalLabelCorrection": {
-    "visible": "Կրկին ստուգել",
+    "visible": "Ստուգել",
     "accessible": "Ստուգել դուրս գալու կարգավիճակը՝ առանց կրկին դուրս գալու",
     "sourceBehaviorPreservedByExactLiteralReplacement": true,
     "files": [
       "web/account-signout.mjs"
     ],
     "nativeEvidenceLocation": "closing PR/main credential-free browser gate; account-recovery-unknown-mobile-200.png must be visually inspected before merge",
-    "productionEvidenceReuse": "Functional production journeys above are from the exact dad2e02 runtime. The closing runtime differs only in this label plus docs/tests. It does not re-run authenticated resource mutations. Verify all eight final public frontend bytes and the final release stamp."
+    "productionEvidenceReuse": "Functional production journeys above are from the exact dad2e02 runtime. The closing runtime differs only in this label plus docs/tests. It does not re-run authenticated resource mutations. Verify all eight final public frontend bytes and the final release stamp.",
+    "labelInAccessibleName": true
   },
   "capabilityMapSha256": "7d3b3541e4f35bfec3cb6fa5a8aad7edc4f3c82756c5df30faca632e0a37fcef",
   "preservation": {

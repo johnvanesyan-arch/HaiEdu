@@ -13,7 +13,7 @@ Each process must show its current purpose/context, necessary ordered inputs, on
 | Teacher find → review/private save or send → continue | Required assessed/return inputs are explicit; completed-criterion count derives from the actual rubric; an invalid assessed send focuses the first missing score. | Private autosave and explicit publication stay separate; returning feedback needs no scores. Existing regrade reason, nonce/revision, conflict, pending and Today next/back rules remain. |
 | Learner feedback → revise → return/submit | Latest feedback/result appears before the editable draft; a direct action focuses revision; previous submitted text is folded while full history remains. | A revision creates another frozen version. Assessed/read-only work stays noneditable. No private teacher draft is exposed. |
 
-UX-ACCOUNT-04 shares the concise visible status-check label `Կրկին ստուգել`; its accessible name states logout status and that logout is not repeated. The underlying account controller/Auth scopes are unchanged.
+UX-ACCOUNT-04 shares the concise visible status-check label `Ստուգել`; its accessible name states logout status and that logout is not repeated. The underlying account controller/Auth scopes are unchanged.
 
 ## State review and evidence matrix
 
@@ -50,4 +50,4 @@ After verified delivery, resolve remaining single-register investigations/operat
 
 ## Enlarged-text visual correction before closure
 
-PR362 passes 316 native checks, but its downloaded 390 px / computed 200% text image still splits the final Armenian article from the initially shortened status label. Geometry remains 390/390 with no outside elements; passing reflow alone did not establish readable word wrapping. The final visible action is shortened further to `Կրկին ստուգել`; its full accessible name explicitly checks logout status without a second logout mutation. The final native screenshot must be visually inspected before merging the closing batch; a passing geometry check alone is insufficient. This is a label-only correction; all account outcome/scoping behavior is unchanged.
+PR362 passes 316 native checks, but its downloaded 390 px / computed 200% text image still splits the final Armenian article from the initially shortened status label. Geometry remains 390/390 with no outside elements; passing reflow alone did not establish readable word wrapping. The final visible action is shortened further to `Ստուգել`; its full accessible name explicitly checks logout status without a second logout mutation. The final native screenshot must be visually inspected before merging the closing batch; a passing geometry check alone is insufficient. This is a label-only correction; all account outcome/scoping behavior is unchanged.

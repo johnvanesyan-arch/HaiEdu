@@ -25,7 +25,7 @@ function notice(kind, check) {
   section.append(text);
   if (check) {
     const button = document.createElement('button');
-    button.type = 'button'; button.textContent = kind === 'authFailed' ? 'Կրկին ստուգել մուտքը' : 'Կրկին ստուգել';
+    button.type = 'button'; button.textContent = kind === 'authFailed' ? 'Կրկին ստուգել մուտքը' : 'Ստուգել';
     if (kind !== 'authFailed') button.setAttribute('aria-label', 'Ստուգել դուրս գալու կարգավիճակը՝ առանց կրկին դուրս գալու');
     button.dataset.signoutCheck = '';
     button.addEventListener('click', () => { void check(); });
