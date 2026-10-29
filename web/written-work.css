@@ -16,3 +16,4 @@
 .written-work .feedback-panel :is(label,legend,h3,h4,summary,button,p){overflow-wrap:anywhere;max-width:100%;min-width:0}
 
 .written-state-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}.written-state-filters button[aria-pressed="true"]{background:var(--forest-accent,var(--amp-color-primary));color:white;border-color:var(--forest-accent,var(--amp-color-primary))}
+body.hm-role-shell #teacherReviewRoot .written-state-filters button{max-width:100%;white-space:normal;overflow-wrap:anywhere}body.hm-role-shell #teacherReviewRoot .written-state-filters button[aria-pressed="true"]{background:var(--forest-accent,var(--amp-color-primary));color:var(--forest-on-accent,#fff);border-color:var(--forest-accent,var(--amp-color-primary))}

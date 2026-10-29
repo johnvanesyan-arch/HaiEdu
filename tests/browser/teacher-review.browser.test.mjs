@@ -43,6 +43,8 @@ test('failed exact-unit read clears old work and retry retains requested unit; a
 test('review controls and status filters remain usable at 360px and 200 percent text',async t=>{
  const {page,errors}=await fixture(browser,t);await nav(page,'review');await ready(page);await choose(page);
  await page.setViewportSize({width:360,height:960});await page.addStyleTag({content:'html{font-size:200%}'});
+ const padding=await page.locator('.teacher-review-picker').evaluate(e=>parseFloat(getComputedStyle(e).paddingInlineStart));assert.ok(padding>=16);
+ const colors=await page.locator('.written-state-filters').evaluate(e=>[...e.querySelectorAll('button')].map(b=>({selected:b.getAttribute('aria-pressed')==='true',bg:getComputedStyle(b).backgroundColor})));assert.notEqual(colors.find(b=>b.selected).bg,colors.find(b=>!b.selected).bg);
  const box=await page.locator('#teacherReviewRoot').evaluate(e=>({right:e.getBoundingClientRect().right,scroll:e.scrollWidth,width:e.clientWidth}));assert.ok(box.right<=361&&box.scroll<=box.width+1,JSON.stringify(box));
  await page.locator('[data-writing-state="reviewed"]').focus();assert.equal(await page.locator('[data-writing-state="reviewed"]').evaluate(e=>e===document.activeElement),true);
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-writing-review-360.png',fullPage:true});await page.setViewportSize({width:1280,height:960});await page.addStyleTag({content:'html{font-size:100%}'});await page.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-writing-review-1280.png',fullPage:true});}
