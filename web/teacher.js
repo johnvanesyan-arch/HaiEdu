@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
 // A delayed async head entry must not start a second read after SDK startup.
@@ -261,9 +262,7 @@ function renderInstitutionalClassCreator(data, institutional) {
 }
 
 async function signOut() {
-  if (!allowTeacherLeave()) return;
-  await supabase.auth.signOut();
-  window.location.reload();
+  await signOutAccount(supabase, { canLeave: allowTeacherLeave, redirect: "./account-access" });
 }
 
 function showDashboardReadFailure(message) {

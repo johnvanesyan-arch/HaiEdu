@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -192,9 +193,7 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
   }
 
   $("signOutBtn")?.addEventListener("click", async () => {
-    clearContentDashboardCache(currentUserId);
-    await contentSupabase.auth.signOut();
-    location.replace("./account-access");
+    await signOutAccount(contentSupabase, { redirect: "./account-access", onSignedOut: () => clearContentDashboardCache(currentUserId) });
   });
   contentSupabase.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_OUT") return void show(null);

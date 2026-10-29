@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import {rememberReviewItem} from './content-review-resume.mjs';
 import * as reviewNavigation from './content-list-navigation.mjs';
 import {arrangementEditorMarkup,bindArrangementEditor,collectArrangementEditor} from './arrangement-editor.mjs';
@@ -1128,7 +1129,7 @@ function bootstrapSession(session, options) {
   return pending.finally(() => { if (bootstrapPromise === pending) bootstrapPromise = null; });
 }
 
-$("signOutBtn")?.addEventListener("click", () => supabase.auth.signOut());
+$("signOutBtn")?.addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowBusy && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")), redirect: "./account-access" }));
 $("refreshBtn")?.addEventListener("click", () => {
   if (workflowBusy) return;
   if (editorDirty && !confirm("Չեղարկե՞լ չպահպանված փոփոխությունները և թարմացնել հարցերի բանկը։")) return;

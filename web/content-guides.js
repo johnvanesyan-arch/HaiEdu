@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -13,6 +14,7 @@ let currentActor = null;
 let pendingEnrollmentFactorId = null;
 let activeGuideTab = "content";
 let previewToken = 0;
+let workflowsInFlight = 0;
 
 const statusLabels = {
   draft: "Սևագիր",
@@ -1090,6 +1092,7 @@ async function configureMfa() {
 
 async function runWorkflow(action) {
   const check = sessionCheck;
+  workflowsInFlight++;
   try {
     const rationaleInput = $("changeRationale");
     const rationale = rationaleInput?.value.trim() || "";
@@ -1126,7 +1129,7 @@ async function runWorkflow(action) {
     if (check !== sessionCheck) return;
     if (error.validation && $("validationPanel")) renderValidation(error.validation);
     setMessage(messageFor(error), true);
-  }
+  } finally { workflowsInFlight--; }
 }
 
 async function refreshCatalog(reselect = selectedId, { preserveDirtyEditor = false } = {}) {
@@ -1214,7 +1217,7 @@ async function showForSession(session) {
   }
 }
 
-$("signOutBtn").addEventListener("click", () => supabase.auth.signOut());
+$("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { canLeave: () => !workflowsInFlight && (!editorDirty || confirm("Չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")), redirect: "./account-access" }));
 $("refreshGuidesBtn").addEventListener("click", () => {
   if (editorDirty && !confirm("Չպահպանված փոփոխությունները չեղարկե՞լ և թարմացնել ցանկը։")) return;
   editorDirty = false;

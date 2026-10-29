@@ -11,8 +11,8 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
  const selector=context(0,teacher);
  await page.addInitScript(({teacher,actor,selector})=>{
   const listeners=new Set();window.__writingListeners=listeners;window.__writingCalls=[];
-  const session={user:{id:actor}};
-  window.__client={auth:{getSession:async()=>({data:{session}}),getUser:async()=>({data:{user:session.user},error:null}),onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:teacher?'teacher':'student',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
+  let session=sessionStorage.getItem('writing-signedout')==='1'?null:{user:{id:actor}};
+  window.__client={auth:{getSession:async()=>({data:{session}}),getUser:async()=>({data:{user:session?.user},error:null}),signOut:async options=>{window.__writingCalls.push({name:'auth:signout',body:options});sessionStorage.setItem('writing-signedout','1');session=null;for(const fn of [...listeners])fn('SIGNED_OUT',null);return{error:null};},onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:teacher?'teacher':'student',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
    window.__writingCalls.push({name,body});try{const response=await fetch('/fixture-rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,body})});const data=await response.json();return response.ok?{data}:{data,error:{message:data.error}};}catch{return{data:null,error:{name:'FunctionsFetchError',message:'Synthetic transport failure'}};}
   }}};
   if(teacher)window.__haieduSupabaseClient=window.__client;
@@ -115,6 +115,7 @@ test('unknown submission outcome preserves text, blocks duplicate sends and navi
  await s.addStyleTag({content:'html{font-size:200%!important}'});assert.equal(await s.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');await s.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await s.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/writing-recovery-mobile-200.png',fullPage:true});}
  const overflow=await s.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,scrollX,forest:document.body.hasAttribute('data-haiedu-student'),elements:[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,class:e.className,right:e.getBoundingClientRect().right+scrollX,width:e.getBoundingClientRect().width,client:e.clientWidth,scroll:e.scrollWidth})).filter(e=>(e.right>innerWidth+1||e.scroll>e.client+1)&&e.width>0).slice(-30)}));assert.ok(overflow.forest);assert.ok(overflow.scrollWidth<=overflow.width+1,JSON.stringify(overflow));
+ await s.locator('[data-student-signout]').click();assert.equal(await s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='auth:signout').length),0);assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
  s.once('dialog',async d=>{assert.equal(d.type(),'beforeunload');await d.dismiss();});await s.reload().catch(()=>{});assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
  await s.locator('.course-tabs a').first().click();assert.equal(new URL(s.url()).searchParams.get('tab'),'writing');
  await s.evaluate(()=>{const url=new URL(location.href);url.searchParams.set('tab','course');history.pushState({},'',url);dispatchEvent(new PopStateEvent('popstate'));});
@@ -222,4 +223,16 @@ test('accepted English writing definition completes separately from automatic ev
  assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await m.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await s.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/english-writing-mobile.png',fullPage:true});await m.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/english-writing-teacher.png',fullPage:true});}
  assert.deepEqual(learner.errors,[]);assert.deepEqual(marker.errors,[]);
+});
+
+test('learner logout waits for actual-SQL draft save before ending the session',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f),s=learner.page;
+ await s.locator('[data-writing-open]').click();const held=learner.holdNext('save');
+ const text='Synthetic draft retained when the learner chooses logout.';await s.locator('[data-writing-text]').fill(text);
+ await s.locator('[data-student-signout]').click();
+ await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held logout draft save')):setTimeout(check,20);check();});
+ assert.equal(await s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='auth:signout').length),0);
+ held.resolve();await s.waitForURL('**/index.html');
+ const rows=(await f.db.query('select draft_text from written_work where draft_text<>''')).rows;assert.equal(rows.length,1);assert.equal(rows[0].draft_text,text);
+ assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,0);assert.deepEqual(learner.errors,[]);
 });

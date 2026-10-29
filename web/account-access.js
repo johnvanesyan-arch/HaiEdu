@@ -1,6 +1,9 @@
+import { showSignOutNotice } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { roleDestination, studentDestination } from "./account-roles.js";
+
+showSignOutNotice();
 
 const hashParams = new URLSearchParams(location.hash.slice(1));
 const searchParams = new URLSearchParams(location.search);

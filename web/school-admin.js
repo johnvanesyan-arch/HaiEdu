@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { renderEvidenceGroups } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -727,8 +728,7 @@ supabase.auth.onAuthStateChange((event) => {
   if(event === "SIGNED_OUT") { ++analyticsLoadVersion; ++teacherRosterLoadVersion; $("analyticsEvidenceGroups").replaceChildren(); for(const id of ["overviewPanel","teachersPanel","yearPanel","teacherPanel","pendingPanel"]) $(id).classList.add("hidden"); }
 });
 $("signOutBtn").addEventListener("click", async () => {
-  await supabase.auth.signOut();
-  location.replace("./account-access");
+  await signOutAccount(supabase, { redirect: "./account-access" });
 });
 
 const { data: sessionData } = await supabase.auth.getSession();

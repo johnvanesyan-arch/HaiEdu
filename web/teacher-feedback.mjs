@@ -58,5 +58,5 @@ export function mountTeacherFeedback({root,supabase,context,model,initial,isCurr
  const archive=()=>{if($('[data-snippet-archive]').open)void loadSnippets(true);};
  form.addEventListener('input',changed);form.addEventListener('submit',submit);root.addEventListener('click',click);root.addEventListener('keydown',key);$('[data-snippet-form]').addEventListener('submit',snippetSubmit);$('[data-snippet-archive]').addEventListener('toggle',archive);drawSnippets();
  const dispose=()=>{if(!alive)return;alive=false;clearTimeout(timer);snippetTicket.active++;snippetTicket.archived++;form.removeEventListener('input',changed);form.removeEventListener('submit',submit);root.removeEventListener('click',click);root.removeEventListener('keydown',key);$('[data-snippet-form]').removeEventListener('submit',snippetSubmit);$('[data-snippet-archive]').removeEventListener('toggle',archive);};
- dispose.hasUnsaved=()=>active()&&(Boolean(saving)||publishing||Boolean(pending)||JSON.stringify(capture())!==ack||JSON.stringify(personal())!==snippetAck);dispose.flush=flush;return dispose;
+ dispose.hasUnsaved=()=>active()&&(Boolean(saving)||publishing||Boolean(pending)||JSON.stringify(capture())!==ack||JSON.stringify(personal())!==snippetAck);dispose.flush=flush;dispose.isPending=()=>active()&&(publishing||Boolean(pending));return dispose;
 }

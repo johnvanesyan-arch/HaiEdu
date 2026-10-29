@@ -5,16 +5,16 @@ import vm from 'node:vm';
 const read=path=>readFileSync(path,'utf8');
 
 // Exercise the shipped check, including a delayed error after token refresh.
-async function check({error=null,throws=false,sessionThrows=false,nextSession,anonymous=false}={}) {
+async function check({error=null,throws=false,sessionThrows=false,nextSession,anonymous=false,signOutError=null,signOutThrows=false,postSession,postReadError=false}={}) {
  const session={user:{id:'teacher-test'},access_token:'synthetic-access-token'};
- const calls={signOut:[],removed:[],redirects:[],messages:[],stored:[]};let reads=0;
+ const calls={signOut:[],removed:[],redirects:[],messages:[],stored:[]};let reads=0,signedOut=false;
  const client={auth:{
-  getSession:async()=>{if(sessionThrows)throw new Error('offline');return {data:{session:anonymous?null:reads++===0?session:nextSession===undefined?session:nextSession}};},
+  getSession:async()=>{if(sessionThrows||(signedOut&&postReadError))throw new Error('offline');if(signedOut)return {data:{session:postSession??null}};return {data:{session:anonymous?null:reads++===0?session:nextSession===undefined?session:nextSession}};},
   getUser:async()=>{if(throws)throw new Error('network interrupted');return {data:{user:error?null:session.user},error};},
-  signOut:async opts=>{calls.signOut.push({...opts});},
+  signOut:async opts=>{calls.signOut.push({...opts});if(signOutThrows)throw Error('offline');signedOut=true;return{error:signOutError};},
  }};
  const source=read('web/ux.js').replace(/^import .*;\n/gm,'').split('\nfunction showTerminalAuthMessage()')[0];
- const ctx=vm.createContext({window:{__haieduSupabaseClient:client},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL});
+ const ctx=vm.createContext({showSignOutNotice(){},window:{__haieduSupabaseClient:client},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL});
  vm.runInContext(source,ctx);ctx.report=(...args)=>calls.messages.push(args);vm.runInContext('announce = report;',ctx);
  calls.result=await vm.runInContext('handleTerminalAuthFailure()',ctx);return calls;
 }
@@ -50,5 +50,13 @@ for(const code of ['user_not_found','user_banned','session_not_found','session_e
 test('a stale Auth response cannot clear a newer session',async()=>{
  for(const nextSession of [{user:{id:'teacher-test'},access_token:'refreshed-token'},{user:{id:'another-account'},access_token:'synthetic-access-token'},null]){
   const r=await check({error:{code:'session_not_found'},nextSession});assert.equal(r.result,false);assert.deepEqual(r.signOut,[]);assert.deepEqual(r.redirects,[]);
+ }
+});
+test('terminal cleanup can finish locally after a returned remote error',async()=>{
+ const r=await check({error:{code:'session_expired'},signOutError:{status:500}});assert.equal(r.result,true);assert.deepEqual(r.removed,[]);assert.equal(r.redirects.length,1);
+});
+test('terminal cleanup never redirects on rejected logout, unreadable outcome or a newer remaining session',async()=>{
+ for(const opts of [{signOutThrows:true},{postReadError:true},{postSession:{user:{id:'another-account'},access_token:'new-token'}}]){
+  const r=await check({error:{code:'session_expired'},...opts});assert.equal(r.result,false);assert.deepEqual(r.redirects,[]);assert.deepEqual(r.removed,[]);
  }
 });

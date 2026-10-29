@@ -22,7 +22,7 @@ async function pageFixture(t,file,{gate,master=false}={}) {
     try {
       // Staff page tests exercise native layout and the real role shell, with
       // authorization outcomes simulated. They do not claim signed-in acceptance.
-      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js'].includes(name);
+      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js','/account-signout.mjs'].includes(name);
       const body=blocked?'':await readFile(new URL('../../web'+name,import.meta.url));
       return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{return route.fulfill({status:404,body:''});}

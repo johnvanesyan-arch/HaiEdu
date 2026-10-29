@@ -110,8 +110,10 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
  }
  const navigate=async e=>{const link=e.target.closest?.('a[href]');if(!current()||teacher||!link||(!dirty()&&!saving)||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||link.target==='_blank')return;e.preventDefault();e.stopImmediatePropagation();if(await flush())location.assign(link.href);};
  document.addEventListener('click',navigate,true);
+ const beforeSignOut=e=>{if(!current())return;if(!teacher)e.detail.waitUntil(flush());else if(feedbackEditor.isPending?.()){e.preventDefault();message('Նախ ստուգեք գնահատականի ուղարկման կարգավիճակը։',true);}};
+ document.addEventListener('haiedu-before-signout',beforeSignOut);
  if(teacher&&initialWorkId)void open(initialWorkId);else void list();
- const dispose=()=>{if(!alive)return;alive=false;feedbackEditor();feedbackInitial=null;pendingSubmission=null;authSubscription?.unsubscribe?.();sequence++;clearTimeout(timer);window.removeEventListener('beforeunload',unload);document.removeEventListener('click',navigate,true);root.replaceChildren();model=null;savedText='';};
+ const dispose=()=>{if(!alive)return;alive=false;feedbackEditor();feedbackInitial=null;pendingSubmission=null;authSubscription?.unsubscribe?.();sequence++;clearTimeout(timer);window.removeEventListener('beforeunload',unload);document.removeEventListener('click',navigate,true);document.removeEventListener('haiedu-before-signout',beforeSignOut);root.replaceChildren();model=null;savedText='';};
  authSubscription=supabase.auth?.onAuthStateChange?.((_event,session)=>{if(!session||session.user?.id!==actorId)dispose();})?.data?.subscription;
  if(!alive)authSubscription?.unsubscribe?.();
  dispose.flush=()=>flush();dispose.hasUnsaved=dirty;return dispose;

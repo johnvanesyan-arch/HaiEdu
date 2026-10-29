@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { $, esc, contentSupabase as supabase, invokeContent, clearContentDashboardCache } from './content-workspace.js';
 
 const endpoint = 'manage-misconception-reviews';
@@ -17,7 +18,6 @@ const errors = {
 let userId = null, authEpoch = 0, listEpoch = 0, detailEpoch = 0, offset = 0, total = 0;
 let detail = null, selectedId = null, busy = false, stale = false, mfaEpoch = 0, mfaBusy = false;
 let enrollment = null;
-let signingOut = false;
 // Only IDs created by this workspace are retained, never QR codes or secrets.
 // A departed identity cannot clean up with another account's session; retry when
 // its own session returns. This also survives reloads during enrollment.
@@ -191,10 +191,7 @@ $('mcNext').addEventListener('click',()=>{if(!busy&&offset+50<total){offset+=50;
 $('mcMfaClose').addEventListener('click',()=>{void closeMfa();});
 $('mcMfa').addEventListener('cancel',event=>{event.preventDefault();void closeMfa();});
 $('signOutBtn').addEventListener('click',async()=>{
-  if(signingOut||!discardOkay())return;signingOut=true;
-  try{await closeMfa();await cleanupFactors(userId).catch(()=>null);const {error}=await supabase.auth.signOut();if(error)throw error;}
-  catch{message('Չհաջողվեց դուրս գալ։ Կրկին փորձեք։',true);}
-  finally{signingOut=false;}
+  await signOutAccount(supabase,{canLeave:()=>!busy&&discardOkay(),prepare:async()=>{await closeMfa();await cleanupFactors(userId).catch(()=>null);},redirect:'./account-access'});
 });
 $('retryAuth').addEventListener('click',async()=>{const {data}=await supabase.auth.getSession();void showSession(data.session,{force:true});});
 window.addEventListener('beforeunload',event=>{if(dirty()){event.preventDefault();event.returnValue='';}});

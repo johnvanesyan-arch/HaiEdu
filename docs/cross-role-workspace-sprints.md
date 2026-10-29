@@ -1,5 +1,7 @@
 # Cross-role workspace repair and Forest redesign
 
+**2026-10-29 — B.12.3 account/session recovery in progress.** The owner authorized the next stabilization slice and a subsequent process-simplicity review. Shared logout outcome reconciliation, writing/feedback leave guards, transient-session retry and account-change fencing are prepared; required native and production verification is pending. [Scope and consumer audit](account-session-recovery.md) · [Single defect register](workspace-defect-register.md). **B.12.3/B.12 remain open; subject expansion stays paused.** All 45 capability mappings, content/audio approvals, English C47 hold and the separate four-subject gate remain.
+
 2026-10-29 · owner-authorized scope and priority · roadmap 4.108.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.

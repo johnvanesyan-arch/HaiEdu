@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/account-signout.mjs
       - supabase/functions/_shared/teacher-read-identity.mjs
       - supabase/functions/_shared/teacher-workspace-request.mjs
       - web/resource-learner-view.mjs
