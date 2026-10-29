@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "timezone": "Asia/Yerevan",
+  "scope": "B.12.3 stabilization batch2: learner writing submission outcome and process usability",
+  "status": "bounded repair technically verified; full B.12.3 open; subjects paused; final owner usability acceptance not inferred",
+  "source": "bcea2054d91d7827bef78f0c3192a0b2defbf0e7",
+  "base": "144acc6a4f0a685ed23fb205eaacbd6ade281641",
+  "pr": 358,
+  "head": "dc9419557757f7d02e324dcda3bfb10605ce8370",
+  "prCi": 40860268814,
+  "prJobs": [
+    {
+      "id": 123401431724,
+      "name": "phase3-postgres-17",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123401432038,
+      "name": "role-layout-browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123401432101,
+      "name": "institutional-concurrency",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123401432273,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123403861195,
+      "name": "Platform release checks",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "mainCi": 40861039877,
+  "mainJobs": [
+    {
+      "id": 123404034824,
+      "name": "role-layout-browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123404035229,
+      "name": "institutional-concurrency",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123404035269,
+      "name": "phase3-postgres-17",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123404035360,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 123405850790,
+      "name": "Platform release checks",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "checks": {
+    "unitIntegration": 1561,
+    "native": 281,
+    "newFailureScenarios": 6,
+    "focusedLocalSqlHandlerAndTrigger": 18,
+    "browserSyntaxFiles": 90,
+    "production": 196,
+    "isolationBefore": 54,
+    "isolationAfter": 54
+  },
+  "nativeArtifact": 12891980545,
+  "productionRun": 40861216601,
+  "productionArtifact": 12892550611,
+  "productionEvidence": "workspace-stabilization-writing-production-20261029.json",
+  "productionJob": [
+    {
+      "id": 123405601260,
+      "name": "acceptance",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "writingReceiptCoverage": [
+    {
+      "side": "A",
+      "existingReviewedResponse": true,
+      "productionWritingMutation": false
+    },
+    {
+      "side": "B",
+      "existingReviewedResponse": false,
+      "productionWritingMutation": false
+    }
+  ],
+  "cleanup": {
+    "assignments": [
+      {
+        "id": "31d6121a-548e-434d-b02e-f453b6caa86d",
+        "canceled": true
+      },
+      {
+        "id": "b8742f8c-94c3-45eb-a191-3874c172ed41",
+        "canceled": true
+      },
+      {
+        "id": "bc5c1c6c-a272-49b1-9768-1d2927df88cc",
+        "canceled": true
+      },
+      {
+        "id": "88db0240-54ce-450f-8a0f-93c799a7ade5",
+        "canceled": true
+      }
+    ],
+    "resources": [
+      {
+        "resourceId": "081f8069-076e-492c-af7c-624ca8430544",
+        "withdrawn": true
+      },
+      {
+        "resourceId": "3272e8a8-0eb3-428e-ba0b-6571b38cccaf",
+        "withdrawn": true
+      }
+    ],
+    "sessions": [
+      {
+        "actor": "A_admin",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "A_teacher",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "A_student",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_admin",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_teacher",
+        "httpStatus": 204,
+        "closed": true
+      },
+      {
+        "actor": "B_student",
+        "httpStatus": 204,
+        "closed": true
+      }
+    ]
+  },
+  "publicFrontend": {
+    "source": "bcea2054d91d7827bef78f0c3192a0b2defbf0e7",
+    "release": {
+      "schemaVersion": 1,
+      "commit": "bcea2054d91d7827bef78f0c3192a0b2defbf0e7"
+    },
+    "sourceMatches": true,
+    "files": [
+      {
+        "path": "course-page.js",
+        "expected": "9877d5f1ce9b13d7310c6630d4043628c5161a664bbc21353d7b113ee722b210",
+        "actual": "9877d5f1ce9b13d7310c6630d4043628c5161a664bbc21353d7b113ee722b210",
+        "passed": true
+      },
+      {
+        "path": "course-workspace.css",
+        "expected": "8838b94cd16513f955a3f50fd453699af682001c25f22de55acb9a97b95b089e",
+        "actual": "8838b94cd16513f955a3f50fd453699af682001c25f22de55acb9a97b95b089e",
+        "passed": true
+      },
+      {
+        "path": "index.html",
+        "expected": "cba7afc13a395a9c65c33bf89c9c98e805912a271ac8aa022ff05b0dd50cb5f7",
+        "actual": "cba7afc13a395a9c65c33bf89c9c98e805912a271ac8aa022ff05b0dd50cb5f7",
+        "passed": true
+      },
+      {
+        "path": "materials.html",
+        "expected": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "actual": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "passed": true
+      },
+      {
+        "path": "multi-subject-home.js",
+        "expected": "0fdabc28fec1565db687f19641361cefe2a3ce273608c7dbd0f894ac8595c9cf",
+        "actual": "0fdabc28fec1565db687f19641361cefe2a3ce273608c7dbd0f894ac8595c9cf",
+        "passed": true
+      },
+      {
+        "path": "privacy.html",
+        "expected": "045ee18efd6787e139d1ea43bd2937f7669a3713589abb0db1528db1edaabe35",
+        "actual": "045ee18efd6787e139d1ea43bd2937f7669a3713589abb0db1528db1edaabe35",
+        "passed": true
+      },
+      {
+        "path": "privacy.js",
+        "expected": "4c8dd0f9c187d08f89754d4d0b8a9556d1d32fd0fdb3f1f447b27c091ba5bee8",
+        "actual": "4c8dd0f9c187d08f89754d4d0b8a9556d1d32fd0fdb3f1f447b27c091ba5bee8",
+        "passed": true
+      },
+      {
+        "path": "resource-assignments.css",
+        "expected": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+        "actual": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+        "passed": true
+      },
+      {
+        "path": "resource-assignments.mjs",
+        "expected": "672e711cded7edc441cfe0f57276c2a101ba3ce39fc28ba1f83949cad78faedf",
+        "actual": "672e711cded7edc441cfe0f57276c2a101ba3ce39fc28ba1f83949cad78faedf",
+        "passed": true
+      },
+      {
+        "path": "resource-file-input.mjs",
+        "expected": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+        "actual": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+        "passed": true
+      },
+      {
+        "path": "resource-learner-view.mjs",
+        "expected": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a",
+        "actual": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a",
+        "passed": true
+      },
+      {
+        "path": "resource-library.html",
+        "expected": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "actual": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "passed": true
+      },
+      {
+        "path": "role-layout.js",
+        "expected": "c17f24ceb2c1e1aecc61bea7ba1500dea4e292296f13ef3ce3a1451b8b076958",
+        "actual": "c17f24ceb2c1e1aecc61bea7ba1500dea4e292296f13ef3ce3a1451b8b076958",
+        "passed": true
+      },
+      {
+        "path": "school-admin.html",
+        "expected": "97b16c5b70b24d597e91bac82ab3d9e5a1c18f4ae4798c9a70974893054a3d04",
+        "actual": "97b16c5b70b24d597e91bac82ab3d9e5a1c18f4ae4798c9a70974893054a3d04",
+        "passed": true
+      },
+      {
+        "path": "school-teacher.html",
+        "expected": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c",
+        "actual": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c",
+        "passed": true
+      },
+      {
+        "path": "student-courses.js",
+        "expected": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e",
+        "actual": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e",
+        "passed": true
+      },
+      {
+        "path": "student-surfaces.css",
+        "expected": "de36f1513f169fd0d62f0e53c9e777db930744f599976c78d8c7283a0f0cf9bd",
+        "actual": "de36f1513f169fd0d62f0e53c9e777db930744f599976c78d8c7283a0f0cf9bd",
+        "passed": true
+      },
+      {
+        "path": "supplementary-resources.css",
+        "expected": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+        "actual": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+        "passed": true
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "expected": "53e273f60df47f28d9fd05f9335a5256c77c70ffc44461074355a8dd9f8c24ed",
+        "actual": "53e273f60df47f28d9fd05f9335a5256c77c70ffc44461074355a8dd9f8c24ed",
+        "passed": true
+      },
+      {
+        "path": "teacher-dependencies.bundle.mjs",
+        "expected": "ed28b57561499cba942f87cd52f272cf9c85de39ff47e781f543805c8264de5b",
+        "actual": "ed28b57561499cba942f87cd52f272cf9c85de39ff47e781f543805c8264de5b",
+        "passed": true
+      },
+      {
+        "path": "teacher-review.mjs",
+        "expected": "fa4d122d6214cd2441d49d8f16e39b85e4d41f69aee9e129233eb32042cd22d2",
+        "actual": "fa4d122d6214cd2441d49d8f16e39b85e4d41f69aee9e129233eb32042cd22d2",
+        "passed": true
+      },
+      {
+        "path": "teacher-startup.bundle.mjs",
+        "expected": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "actual": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "passed": true
+      },
+      {
+        "path": "teacher-workflows.css",
+        "expected": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
+        "actual": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
+        "passed": true
+      },
+      {
+        "path": "teacher-workflows.html",
+        "expected": "bf0e02e8cee2916ad15c0cd009e0156d06b95b779b69e5fbc68bf32d5982042b",
+        "actual": "bf0e02e8cee2916ad15c0cd009e0156d06b95b779b69e5fbc68bf32d5982042b",
+        "passed": true
+      },
+      {
+        "path": "teacher.css",
+        "expected": "efb1a4d684c23c3aa4267d7e0b80fc0ffa19d28de38a924f26ac2826423bc0d2",
+        "actual": "efb1a4d684c23c3aa4267d7e0b80fc0ffa19d28de38a924f26ac2826423bc0d2",
+        "passed": true
+      },
+      {
+        "path": "teacher.html",
+        "expected": "358704fa2e2134d47890e50d00c99aa4eac15f6cbfe0fa63722881329fbda236",
+        "actual": "358704fa2e2134d47890e50d00c99aa4eac15f6cbfe0fa63722881329fbda236",
+        "passed": true
+      },
+      {
+        "path": "teacher.js",
+        "expected": "6e687c5e6c96cfcd0fac685989a5cc63660a5dfaa7841978c399f5cf3b90df63",
+        "actual": "6e687c5e6c96cfcd0fac685989a5cc63660a5dfaa7841978c399f5cf3b90df63",
+        "passed": true
+      },
+      {
+        "path": "ux.css",
+        "expected": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+        "actual": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+        "passed": true
+      },
+      {
+        "path": "ux.js",
+        "expected": "dcb8e582b90dcb6b445a2e846af27f25a0da0c6df69f8088e0e250cbe89766a3",
+        "actual": "dcb8e582b90dcb6b445a2e846af27f25a0da0c6df69f8088e0e250cbe89766a3",
+        "passed": true
+      },
+      {
+        "path": "written-work.css",
+        "expected": "6386d485bc7746bc9ca93d12dc3b630bfc445b9164cb0c3bf82a48e0ddb303d1",
+        "actual": "6386d485bc7746bc9ca93d12dc3b630bfc445b9164cb0c3bf82a48e0ddb303d1",
+        "passed": true
+      },
+      {
+        "path": "written-work.mjs",
+        "expected": "9d47420348507005222d3d5435a7378d5477af82af232cadf6bb4b67f3a826a4",
+        "actual": "9d47420348507005222d3d5435a7378d5477af82af232cadf6bb4b67f3a826a4",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "deployment": {
+    "id": "dpl_4yyfce3czUes66VLCLtnn9gRXomc",
+    "target": "production",
+    "state": "READY",
+    "source": "bcea2054d91d7827bef78f0c3192a0b2defbf0e7",
+    "note": "READY alone was not treated as public delivery. Initial probe still served the prior accepted source; current intended release and all31 file hashes were checked after main gates passed."
+  },
+  "initialNativeFailures": [
+    {
+      "run": 40857888332,
+      "pass": 280,
+      "total": 281,
+      "finding": "390px/200% writing fixture horizontal overflow"
+    },
+    {
+      "run": 40858821216,
+      "pass": 280,
+      "total": 281,
+      "finding": "overflow remained; screenshot exposed omitted learner shell/Forest presentation; final fixture retains actual learner scripts/assets, and asserts computed text size"
+    }
+  ],
+  "localNativeLimitation": "Chrome156 from the official vendor downloaded, but launch was denied by environment socket() EPERM. No local native pass or production browser issue is claimed. Pinned credential-free CI supplies native evidence.",
+  "preservation": [
+    {
+      "path": "docs/student-dashboard-function-coverage.md",
+      "sha256": "7d3b3541e4f35bfec3cb6fa5a8aad7edc4f3c82756c5df30faca632e0a37fcef",
+      "unchanged": true
+    },
+    {
+      "path": "docs/student-dashboard-redesign.md",
+      "sha256": "1ea1be93f1a560ae8dba90493f02696aeb9dcadd96a3a7cc923fb7633e998c60",
+      "unchanged": true
+    },
+    {
+      "path": "docs/student-style-guide.md",
+      "sha256": "4d90498804a6a894dc82fe2c41195a3b0a53433b99ebbe56a073ea01eacd3c54",
+      "unchanged": true
+    },
+    {
+      "path": "web/teacher.js",
+      "sha256": "6e687c5e6c96cfcd0fac685989a5cc63660a5dfaa7841978c399f5cf3b90df63",
+      "unchanged": true
+    },
+    {
+      "path": "web/teacher-startup.bundle.mjs",
+      "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/teacher-performance-acceptance.mjs",
+      "sha256": "522efcc948974624ada64cfbd660dc181074171831e040ca084cee8504ee8d35",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/resource-assignments-acceptance.mjs",
+      "sha256": "5417a0043a9c9b83042d04a05a29e011bd7e0ccde971547502edc1af005d7588",
+      "unchanged": true
+    }
+  ],
+  "unchanged": [
+    "Supabase schema and deployed Edge code",
+    "content and audio definitions/approvals",
+    "package pins and lockfile",
+    "assessment rules and release boundaries",
+    "teacher private feedback publication/autosave contract"
+  ],
+  "changedConsumers": [
+    "Student governed course/writing surfaces in every subject/grade/context",
+    "Course tab labels shared with assessment/progress/guide views",
+    "Teacher Home/Class/Review canonical dependency bundle rebuilt; teacher mutation semantics unchanged"
+  ],
+  "fixed": [
+    "UX-WRITE-01",
+    "UX-WRITE-02"
+  ],
+  "remaining": [
+    "UX-ACCOUNT-01",
+    "UX-ASSIGN-04",
+    "UI-ERROR-01 historical cause unconfirmed",
+    "DEMO-01",
+    "B.12.3 owner usability acceptance",
+    "English C47 and four-subject release gates"
+  ],
+  "cancelledUnrelatedRun": {
+    "run": 40861039900,
+    "preflightAt": "2026-10-29T10:56:10.505Z",
+    "observedStep": "Wait for this frontend revision on production",
+    "authenticatedStep": "Verify designated English and preserved programme reads without learning writes",
+    "authenticatedStepConclusion": "skipped",
+    "reason": "Free shared QA mutex before authentication; no authenticated QA was interrupted.",
+    "finalJob": {
+      "id": 123404034742,
+      "name": "authenticated-read-acceptance",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    "authenticationStepReadback": {
+      "name": "Verify designated English and preserved programme reads without learning writes",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 10
+    }
+  },
+  "baselineReuse": [
+    "Prior assignment and teacher feedback positive lifecycle evidence unchanged",
+    "Existing desktop/4G latency evidence is a baseline; no new timing claim",
+    "Persistent production Deployment Check configuration not newly attested by this slice; earlier independent record retained"
+  ]
+}
