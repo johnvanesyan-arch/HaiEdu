@@ -20,11 +20,11 @@ Both current active teacher identities are designated multi-subject QA fixtures.
 | Role | Teacher |
 | Subject/programme | Physics, Grade 7 only |
 | Class | A separate empty class, «Ֆիզիկա 7 · ցուցադրական» |
-| Recipient | An unused email address selected by John — required input |
+| Recipient | Selected explicitly by John; targeted Auth lookup returned zero matches. Address omitted from public documentation. |
 | Existing QA accounts, classes, grants and credentials | Preserved |
 
 Use the existing authorized school/master-admin invitation flow. `provision-staff-account` validates the actor's live session, role/MFA where required, school/subject scope and target email; Auth sends the activation invitation. The recipient alone chooses their password. After acceptance, use the existing class/assignment workflow and verify Physics-only access. Do not write raw Auth/profile/membership/grant rows or infer an email alias to bypass the supported flow. No invitation has been sent and no account or class has been created.
 
-**Needed from John:** the unused email address that should receive the activation invitation. Creation and post-acceptance verification remain pending; no completed-demo claim is made.
+**Current dependency:** the recipient is selected and confirmed unused. The first secure browser sign-in reached the content-team workspace, whose account cannot manage school invitations; it was signed out through the normal control. A separate administrator sign-in was rejected with the site's address/password error. No invitation was submitted. Continue through secure administrator sign-in or the documented authentication handoff; never request credentials in chat. Account creation, recipient acceptance and post-acceptance class setup remain pending; no completed-demo claim is made.
 
-[Read-only investigation evidence](evidence/b123-final-followup-investigation-20261029.json) contains aggregate results, unchanged state and the prepared procedure, without account emails or credentials. Batch final authoritative documentation and source-verified Notion closure after the account dependency is resolved. Existing content/audio approvals, all 45 capability mappings, classroom speaking, English C47 hold and the separate four-subject gate remain.
+[Investigation and preparation evidence](evidence/b123-final-followup-investigation-20261029.json) contains aggregate results and the prepared procedure, without account emails or credentials. The follow-up used normal sign-in/sign-out only; no account, invitation, class or grant was created. Batch final authoritative documentation and source-verified Notion closure after administrator authentication and recipient activation are resolved. Existing content/audio approvals, all 45 capability mappings, classroom speaking, English C47 hold and the separate four-subject gate remain.

@@ -1,5 +1,5 @@
 {
-  "scope": "B.12.3 UI-ERROR-01 and DEMO-01 read-only preparation; incomplete pending owner email",
+  "scope": "B.12.3 UI-ERROR-01 investigation and DEMO-01 preparation; incomplete pending administrator authentication and recipient activation",
   "capturedAt": "2026-10-29T16:43:00.980Z",
   "sourceCommit": "4961996d5d5ea81e26c0eb0a6e7ac59eae9103ac",
   "changes": {
@@ -8,7 +8,8 @@
     "authIdentities": false,
     "emailsSent": false,
     "grants": false,
-    "learnerEvidence": false
+    "learnerEvidence": false,
+    "existingBrowserSessionsChanged": true
   },
   "historicalTeacherError": {
     "status": "investigated; historical cause unconfirmed",
@@ -143,7 +144,7 @@
     "next": "If the generic toast recurs in owner review, retain the exact exception, time and route; investigate before acceptance."
   },
   "demoPreparation": {
-    "status": "awaiting unused owner-selected email; not provisioned",
+    "status": "recipient selected and unused; invitation not submitted; administrator sign-in required",
     "existingActiveTeachers": 2,
     "existingTeachersAreDesignatedQa": true,
     "originalClass": {
@@ -165,7 +166,7 @@
     "classInitiallyEmpty": true,
     "recipientEmail": null,
     "process": [
-      "Owner supplies unused email and authorizes activation invitation.",
+      "Owner-selected recipient confirmed unused through a targeted Auth lookup; explicit invitation authorization retained.",
       "Authorized administrator uses existing provision-staff-account teacher flow, with this school and Physics subject.",
       "Recipient accepts invitation and chooses their own password.",
       "Use supported class/assignment workflow for a separate empty Grade7 Physics demo class.",
@@ -174,7 +175,17 @@
     "noProvisioningShortcuts": [
       "No raw Auth/profile/membership/grant inserts.",
       "No inferred email alias, reused QA identity, unsolicited invitation, QA grant removal or curriculum activation."
-    ]
+    ],
+    "recipientSelectedByOwner": true,
+    "targetedAuthMatches": 0,
+    "recipientAddressOmittedFromPublicEvidence": true,
+    "administratorBrowserAttempt": {
+      "firstSignIn": "content-team account; invitation page denies this role; normal sign-out completed",
+      "secondSignIn": "site rejected address/password",
+      "invitationSubmitted": false,
+      "credentialsCollectedOnlyThroughBrowserAuth": true,
+      "next": "Documented secure authentication handoff; then supported invitation and recipient activation."
+    }
   },
   "advisors": {
     "reviewed": true,
