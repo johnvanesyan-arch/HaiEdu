@@ -1,3 +1,4 @@
+import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -67,4 +68,10 @@ for(const action of ['signout','switchAccount'])test(`delayed account response c
  assert.equal(await page.locator('#signOutBtn').isVisible(),action==='switchAccount');
  if(action==='switchAccount')assert.equal(await page.locator('#accountRole').textContent(),'Ուսուցիչ');
  assert.deepEqual(errors,[]);
+});
+
+test('shared account skip navigation remains readable for each resolved role',async t=>{
+ for(const role of ['student','teacher','school_admin','admin','content_admin']){
+  const {page,errors}=await fixture(t,{role,width:360});await keyboardSkipAcceptance(page);assert.deepEqual(errors,[]);await page.context().close();
+ }
 });

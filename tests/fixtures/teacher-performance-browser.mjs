@@ -13,6 +13,7 @@ export async function fixture(browser,t,{archives=60,initialFailure=false,startU
     if(fn==='get-teacher-workspace')return {data:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:2,coverage:'active_writable_school_contexts'}};
     if(fn==='get-teacher-dashboard'){
       const result={teacher:{id:actor,displayName:'Ուսուցիչ'},institutionalTeacher:true,institutionalOptions:[],totals:{students:null,studentsNeedingSupport:null}};
+      if(state.badDashboard)return {data:null};
       if(body.readMode==='directory'){const all=rows.filter(c=>c.isActive===!body.archive&&(!body.search||c.name.includes(body.search))),offset=body.offset??0;return {data:{...result,classes:all.slice(offset,offset+24),directory:{archive:!!body.archive,offset,matching:all.length,hasMore:offset+24<all.length,activeCount:2,archiveCount:archives}}};}
       const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
     }

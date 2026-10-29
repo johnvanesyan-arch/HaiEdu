@@ -71,11 +71,11 @@ function localizeNode(root = document.body) {
 }
 
 function ensureSkipLink() {
-  if (document.querySelector(".skip-link")) return;
   const main = document.querySelector("main");
   if (!main) return;
   if (!main.id) main.id = "mainContent";
-  main.tabIndex = -1;
+  if (!main.hasAttribute("tabindex")) main.tabIndex = -1;
+  if (document.querySelector(".skip-link")) return;
   const link = document.createElement("a");
   link.className = "skip-link";
   link.href = `#${main.id}`;
