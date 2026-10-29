@@ -112,7 +112,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html']){
+ for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html','ux.js','student-surfaces.css','school-admin.html','school-teacher.html']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));
@@ -120,7 +120,8 @@ try{
  }
  browser=await chromium.launch({headless:true});
  report.isolationBefore=await runIsolation({fixture,credentials,url,key,revision:report.revision});check('existing tenant isolation before new resources',report.isolationBefore.status==='passed');
- for(const side of sides)for(const role of ['teacher','student']){const actor=side+'_'+role,r=await request(null,'/auth/v1/token?grant_type=password',credentials[actor]);check(actor+': fixture login',r.status===200&&r.data?.user?.id===fixture[side][role+'Id'],r.status);sessions.set(actor,r.data);
+ for(const side of sides)for(const role of roles){const actor=side+'_'+role,r=await request(null,'/auth/v1/token?grant_type=password',credentials[actor]);check(actor+': fixture login',r.status===200&&r.data?.user?.id===fixture[side][role+'Id'],r.status);sessions.set(actor,r.data);
+  if(role==='admin')continue; // Account-only acceptance; no resource or roster mutation.
   const navigation=await resource(actor,'contexts',{},{});const expected=fixture[side],c=navigation.contexts.find(c=>c.curriculumReleaseId===expected.curriculumReleaseId&&c.unitId===expected.unitId&&(role==='teacher'?c.assignmentId===expected.assignmentId:c.classId===expected.classId));check(actor+': exact current fixture context',Boolean(c));selectors.set(actor,{curriculumReleaseId:c.curriculumReleaseId,unitId:c.unitId,...(role==='teacher'?{assignmentId:c.assignmentId}:{enrollmentId:c.enrollmentId})});
   for(const m of await all(actor))originals.add(m.resourceId);
  }
