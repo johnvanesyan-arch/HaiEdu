@@ -152,7 +152,7 @@ async function handleTerminalAuthFailure() {
     if (result.error || !result.data || !Object.hasOwn(result.data, "session")) throw Error("session_unavailable");
     if (result.data.session) return false;
   } catch {
-    announce("Ելքի կարգավիճակը չհաջողվեց ստուգել։ Ստուգեք կապը և թարմացրեք էջը։", true);
+    announce("Չհաջողվեց հաստատել՝ դուրս եք եկել հաշվից, թե ոչ։ Ստուգեք կապը և թարմացրեք էջը։", true);
     return false;
   }
 

@@ -7,7 +7,7 @@ const controlsSelector = '#signOutBtn, #blockedSignOutBtn, [data-student-signout
 const messages = {
   pending: 'Հաշվից դուրս գալը կատարվում է…',
   failed: 'Չհաջողվեց դուրս գալ։ Ստուգեք կապը և կրկին սեղմեք «Դուրս գալ»։',
-  unknown: 'Ելքի կարգավիճակը չհաջողվեց ստուգել։ Ստուգեք կապը և կրկին ստուգեք կարգավիճակը։',
+  unknown: 'Չհաջողվեց հաստատել՝ դուրս եք եկել հաշվից, թե ոչ։ Ստուգեք կապը և կրկին ստուգեք կարգավիճակը։',
   local: 'Այս դիտարկիչից դուրս եք եկել։ Մյուս սարքերից դուրս գալը չհաստատվեց։',
   localScope: 'Այս դիտարկիչից դուրս եք եկել։ Հեռավար աշխատաշրջանի փակումը չհաստատվեց։',
   authFailed: 'Մուտքի ստուգումը ժամանակավորապես անհասանելի է։ Ստուգեք կապը և կրկին փորձեք։',
@@ -24,7 +24,7 @@ function notice(kind, check) {
   section.append(text);
   if (check) {
     const button = document.createElement('button');
-    button.type = 'button'; button.textContent = kind === 'authFailed' ? 'Կրկին ստուգել մուտքը' : 'Ստուգել ելքի կարգավիճակը';
+    button.type = 'button'; button.textContent = kind === 'authFailed' ? 'Կրկին ստուգել մուտքը' : 'Ստուգել դուրս գալու կարգավիճակը';
     button.dataset.signoutCheck = '';
     button.addEventListener('click', () => { void check(); });
     section.append(button);
