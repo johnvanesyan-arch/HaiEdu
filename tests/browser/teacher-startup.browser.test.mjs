@@ -5,15 +5,15 @@ import {chromium,expect} from '@playwright/test';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const a='71000000-0000-4000-8000-000000000020',b='71000000-0000-4000-8000-000000000021';
 const projection=actor=>({teacher:{id:actor,displayName:actor===a?'Initial teacher':'Current teacher'},progressive:true,institutionalTeacher:true,institutionalOptions:[],classes:[],totals:{students:null,studentsNeedingSupport:null},directory:{archive:false,offset:0,matching:0,hasMore:false,activeCount:0,archiveCount:0},workspace:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:0,coverage:'active_writable_school_contexts'}});
-async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false,holdStyle=false,holdStartup=false,initialEvent=false}={}){
+async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false,holdStyle=false,holdStartup=false,initialEvent=false,sessionFailures=0}={}){
  const config=await readFile('web/config.js','utf8'),url=config.match(/SUPABASE_URL = "([^"]+)"/)[1],hostname=new URL(url).hostname,storageKey='sb-'+hostname.split('.')[0]+'-auth-token';
  const context=await browser.newContext();let releaseSDK,releaseDashboard,releaseStyle,releaseStartup;const sdkGate=new Promise(resolve=>releaseSDK=resolve),dashboardGate=new Promise(resolve=>releaseDashboard=resolve),styleGate=new Promise(resolve=>releaseStyle=resolve),startupGate=new Promise(resolve=>releaseStartup=resolve);t.after(async()=>{releaseSDK();releaseDashboard();releaseStyle();releaseStartup();await context.close();});
  const sessionA={user:{id:a,email:'synthetic-a@example.invalid'},access_token:'synthetic-a',expires_at:Math.floor(Date.now()/1000)+3600},sessionB={user:{id:b,email:'synthetic-b@example.invalid'},access_token:'synthetic-b',expires_at:Math.floor(Date.now()/1000)+3600};
- await context.addInitScript(({sessionA,sessionB,storageKey,role,responses,initialEvent})=>{
-  const s=window.__startupFixture={session:sessionA,sessionB,storageKey,profileReads:0,functionCalls:[],listeners:[],responses,sessionReturns:0};localStorage.setItem(storageKey,JSON.stringify(sessionA));
+ await context.addInitScript(({sessionA,sessionB,storageKey,role,responses,initialEvent,sessionFailures})=>{
+  const s=window.__startupFixture={session:sessionA,sessionB,storageKey,profileReads:0,functionCalls:[],listeners:[],responses,sessionReturns:0,sessionFailures};localStorage.setItem(storageKey,JSON.stringify(sessionA));
   const gate=initialEvent?new Promise(resolve=>s.releaseSession=resolve):Promise.resolve();
-  window.__haieduSupabaseClient={auth:{getSession:async()=>{await gate;s.sessionReturns++;return{data:{session:s.session}};},getUser:async()=>({data:{user:s.session.user}}),onAuthStateChange(fn){s.listeners.push(fn);if(initialEvent)queueMicrotask(()=>fn('INITIAL_SESSION',s.session));return{data:{subscription:{unsubscribe(){}}}};}},from(){return{select(){return this;},eq(){return this;},maybeSingle:async()=>{s.profileReads++;return{data:{role,account_status:'active'}};}};},functions:{async invoke(fn,{body}){s.functionCalls.push({fn,body,actor:s.session.user.id});if(fn==='get-teacher-dashboard')return{data:s.responses[s.session.user.id]};throw Error('Unexpected fixture endpoint '+fn);}}};
- },{sessionA,sessionB,storageKey,role,initialEvent,responses:{[a]:projection(a),[b]:projection(b)}});
+  window.__haieduSupabaseClient={auth:{getSession:async()=>{await gate;s.sessionReturns++;if(s.sessionFailures>0){s.sessionFailures--;throw Error("Synthetic session read failure");}return{data:{session:s.session}};},getUser:async()=>({data:{user:s.session.user}}),onAuthStateChange(fn){s.listeners.push(fn);if(initialEvent==='synchronous')fn('INITIAL_SESSION',s.session);else if(initialEvent)queueMicrotask(()=>fn('INITIAL_SESSION',s.session));return{data:{subscription:{unsubscribe(){}}}};}},from(){return{select(){return this;},eq(){return this;},maybeSingle:async()=>{s.profileReads++;return{data:{role,account_status:'active'}};}};},functions:{async invoke(fn,{body}){s.functionCalls.push({fn,body,actor:s.session.user.id});if(fn==='get-teacher-dashboard')return{data:s.responses[s.session.user.id]};throw Error('Unexpected fixture endpoint '+fn);}}};
+ },{sessionA,sessionB,storageKey,role,initialEvent,sessionFailures,responses:{[a]:projection(a),[b]:projection(b)}});
  const calls=[];await context.route('**/*',async route=>{
   const u=new URL(route.request().url());
   if(u.hostname===hostname){
@@ -62,4 +62,17 @@ test('a completed INITIAL_SESSION bootstrap is not repeated when the slower star
  await f.page.evaluate(()=>window.__startupFixture.releaseSession());await expect.poll(()=>f.page.evaluate(()=>window.__startupFixture.sessionReturns)).toBeGreaterThan(0);
  await f.page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  assert.equal(f.calls.length,2);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:0,calls:0});await ready(f.page);assert.deepEqual(f.errors,[]);
+});
+
+for(const initialEvent of [true,'synchronous'])test('a late rejected SDK session read cannot produce a global error after INITIAL_SESSION opened Home ('+initialEvent+')',async t=>{
+ const f=await fixture(t,{initialEvent,sessionFailures:1});await expect.poll(()=>f.calls.length).toBe(2);f.releaseSDK();await ready(f.page);
+ await f.page.evaluate(()=>window.__startupFixture.releaseSession());await expect.poll(()=>f.page.evaluate(()=>window.__startupFixture.sessionReturns)).toBeGreaterThan(0);
+ await f.page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+ await ready(f.page);assert.deepEqual(f.errors,[]);assert.equal(f.calls.length,2);
+ await expect(f.page.locator('#uxGlobalStatus')).not.toHaveText('Տեխնիկական խնդիր առաջացավ։ Կրկին փորձեք կամ թարմացրեք էջը։');
+});
+test('an initial SDK session failure offers bounded retry without an unhandled rejection or sign-in loop',async t=>{
+ const f=await fixture(t,{sessionFailures:1});await expect.poll(()=>f.calls.length).toBe(2);f.releaseSDK();
+ await expect(f.page.locator('#teacherDashboardRetry')).toBeVisible();await expect(f.page.locator('#dashboardPanel')).toBeHidden();
+ await f.page.locator('#teacherDashboardRetry').click();await ready(f.page);assert.deepEqual(f.errors,[]);
 });

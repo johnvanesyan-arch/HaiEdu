@@ -1,5 +1,7 @@
 # Learning API contract
 
+**B.12.3 usability verification (in progress):** teacher initial-session/dashboard failures become explicit retry/unknown states; stale SDK completions cannot overwrite newer auth/workspace state. Feedback leave guards and shared keyboard styling/focus change only browser coordination. No endpoint, SQL, grants, publication, scoring, playback, custom-writing or PDF-response contract changes. [Matrix and release scope](cross-role-usability-acceptance.md).
+
 **B.12.3.1 — writing-review navigation (browser only).** `teacher?view=review` uses bounded `get-teacher-dashboard` directory discovery, then its existing exact class read and `manage-written-work` queue with `submitted`, `changes_requested`, `reviewed` or `all`. The existing feedback service performs inspection/private drafts/publication. Class, assignment, release, unit and state URL parameters describe a selection; they confer no access. No new endpoint, SQL, grant, learner submission, PDF response or scoring contract is added. [Contract/evidence](teacher-writing-review-navigation.md).
 
 ## B.12.1 learner-view previews (deployed; source verified)

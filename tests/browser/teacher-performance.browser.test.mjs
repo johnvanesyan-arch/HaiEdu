@@ -59,3 +59,10 @@ test('teacher workflow cards reflow at narrow and enlarged text sizes without lo
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await page.addStyleTag({content:'html{font-size:100%}'});await page.setViewportSize({width:360,height:960});await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.locator('#teacherWorkflowEntries').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-entrypoints-360.png'});}
  assert.deepEqual(errors,[]);
 });
+
+test('a malformed dashboard reply is a retryable unknown state and cannot create an unhandled error or false counts',async t=>{
+ const {page,errors}=await fixture(browser,t);await page.evaluate(()=>window.__teacherFixture.badDashboard=true);
+ await page.locator('#refreshBtn').click();await expect(page.locator('#teacherDashboardRetry')).toBeVisible();await expect(page.locator('#dashboardPanel')).toBeHidden();
+ await page.evaluate(()=>window.__teacherFixture.badDashboard=false);await page.locator('#teacherDashboardRetry').click();await expect(page.locator('#dashboardPanel')).toBeVisible();
+ assert.deepEqual(errors,[]);
+});

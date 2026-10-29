@@ -1,3 +1,4 @@
+import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
@@ -13,6 +14,7 @@ async function pageFixture(t,file,{gate,master=false}={}) {
   const page=await context.newPage();page.setDefaultTimeout(5000);
   const errors=[],remote=[];
   page.on('pageerror',e=>errors.push(e.message));
+  await context.addInitScript(()=>{window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:null}})}};});
   await context.route('**/*',async route=>{
     const u=new URL(route.request().url());
     if(u.origin!=='https://forest.test'){remote.push(u.href);return route.abort();}
@@ -20,7 +22,7 @@ async function pageFixture(t,file,{gate,master=false}={}) {
     try {
       // Staff page tests exercise native layout and the real role shell, with
       // authorization outcomes simulated. They do not claim signed-in acceptance.
-      const blocked=gate&&/\.m?js$/.test(name)&&name!=='/role-layout.js';
+      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js'].includes(name);
       const body=blocked?'':await readFile(new URL('../../web'+name,import.meta.url));
       return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{return route.fulfill({status:404,body:''});}
@@ -55,6 +57,7 @@ const pages=[
 ];
 for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact account/logout, text enlargement and keyboard`,async t=>{
   const {page,errors,remote}=await pageFixture(t,file,{gate});
+  await keyboardSkipAcceptance(page);
   for(const width of [1280,768,360]) {
     await page.setViewportSize({width,height:960});
     for(const scale of [100,200]) {

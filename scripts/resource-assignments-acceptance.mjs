@@ -1,3 +1,4 @@
+import {createUsabilityReads} from './b123-usability-reads.mjs';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
 import {createHash,randomUUID} from 'node:crypto';
@@ -9,15 +10,16 @@ const fixture=JSON.parse(process.env.QA_TENANT_FIXTURES_JSON??'{}');
 const credentials=Object.fromEntries(sides.flatMap(s=>roles.map(r=>[`${s}_${r}`,{email:process.env[`QA_SCHOOL_${s}_${r.toUpperCase()}_EMAIL`],password:process.env[`QA_SCHOOL_${s}_${r.toUpperCase()}_PASSWORD`]}])));
 const config=await readFile(new URL('../web/config.js',import.meta.url),'utf8');
 const url=config.match(/export const SUPABASE_URL = "([^"]+)"/)?.[1],key=config.match(/export const SUPABASE_PUBLISHABLE_KEY = "([^"]+)"/)?.[1];
-const report={scope:'16.5B.8.2 library publication, separate teacher entry points and My work delivery',revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',checks:[],resources:[],fourSubjectGateClosed:false};
+const report={scope:'16.5B.12.3 cross-role usability and recipient delivery verification',revision:process.env.GITHUB_SHA,startedAt:new Date().toISOString(),status:'running',checks:[],resources:[],fourSubjectGateClosed:false};
 let browser;
 const assigned=[],assignmentIntents=[];
 const sessions=new Map(),created=[],intents=[],originals=new Set(),selectors=new Map();
-const prefix=`B8-QA-${process.env.GITHUB_RUN_ID}-${randomUUID()}`;let stage='preflight';
+const prefix=`B123-QA-${process.env.GITHUB_RUN_ID}-${randomUUID()}`;let stage='preflight';
 const check=(label,ok,status)=>{report.checks.push({label,status:ok?'passed':'failed',...(status===undefined?{}:{httpStatus:status})});if(!ok)throw Error(label);};
 async function request(actor,path,body){try{const r=await fetch(url+path,{method:'POST',redirect:'error',headers:{apikey:key,Authorization:'Bearer '+(sessions.get(actor)?.access_token??key),...(body instanceof FormData?{}:{'Content-Type':'application/json'})},body:body instanceof FormData?body:JSON.stringify(body??{}),signal:AbortSignal.timeout(25000)});return{status:r.status,headers:r.headers,data:r.headers.get('content-type')?.startsWith('application/pdf')?new Uint8Array(await r.arrayBuffer()):await r.json().catch(()=>null)};}catch{return{status:0,data:null};}}
 async function resource(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': '+action){const r=await request(actor,'/functions/v1/manage-supplementary-resources',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
 async function assignment(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': assignment '+action){const r=await request(actor,'/functions/v1/manage-resource-assignments',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
+const usability=createUsabilityReads({fixture,roles,sides,request,browserContext,check,report});
 async function browserContext(actor,materialId=null,creation=null){
  const owned=new Set(materialId?[materialId]:[]);let createStarted=false;
  const site='https://www.haiedu.am',session=sessions.get(actor);session.expires_at??=Math.floor(Date.now()/1000)+Number(session.expires_in);
@@ -25,7 +27,7 @@ async function browserContext(actor,materialId=null,creation=null){
  await bc.route('**/functions/v1/**',async route=>{
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={},file=null;try{if(req.headers()['content-type']?.startsWith('multipart/')){const form=await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData();body=JSON.parse(form.get('request'));file=form.get('file');}else body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
-  const read=['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
+  const read=usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
    ||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(body.action))
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
@@ -110,7 +112,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css']){
+ for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));
@@ -155,6 +157,7 @@ try{
   await assignment(student,'open',{id:selected.id},selectors.get(student),r=>r.status===404,side+': withdrawn logical resource revokes assigned version');
   check(side+': withdrawn material absent',(await all(student)).every(x=>x.resourceId!==m.resourceId));
  }
+ stage='cross-role reading';await usability.verify();
  stage='postflight';report.isolationAfter=await runIsolation({fixture,credentials,url,key,revision:report.revision});check('existing tenant isolation preserved',report.isolationAfter.status==='passed');report.status='passed';
 }catch{report.status='failed';report.failedStage=stage;}
 finally{

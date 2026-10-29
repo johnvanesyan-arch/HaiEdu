@@ -13,6 +13,7 @@ let lastTeacherUrl=(window.location?.pathname??"")+(window.location?.search??"")
 function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.()||disposeReview.hasUnsaved?.());}
 function allowTeacherLeave(){if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
 let actorId = null;
+let teacherAuthGeneration = 0;
 let directoryPages = {};
 let directoryRequestVersion = 0;
 let invitationRequestVersion = 0;
@@ -225,6 +226,9 @@ function renderInstitutionalClassCreator(data, institutional) {
   shortcut.classList.remove("hidden");
   shortcut.href = "?view=create";
 
+  if (institutional) $("teacherWelcomeText").textContent = data.directory?.activeCount===0
+    ? "Ստեղծեք դասարան ձեր հասանելի դպրոցի, ուսումնական տարվա և առարկայի շրջանակում։"
+    : "Բացեք ձեր դասարանները, շարունակեք գրավորների ստուգումը կամ հանձնարարեք նյութեր։";
   if (!institutional) return;
   const options = Array.isArray(data.institutionalOptions) ? data.institutionalOptions : [];
   const select = $("institutionalClassOption");
@@ -257,11 +261,32 @@ function renderInstitutionalClassCreator(data, institutional) {
 }
 
 async function signOut() {
+  if (!allowTeacherLeave()) return;
   await supabase.auth.signOut();
   window.location.reload();
 }
 
+function showDashboardReadFailure(message) {
+  clearDetail(); dashboard=null;
+  $("teacherLoading")?.classList.add("hidden");
+  $("dashboardPanel").classList.add("hidden");
+  $("authPanel").classList.remove("hidden");
+  $("signOutBtn").classList.add("hidden");
+  setMessage("authMessage", message, true);
+  $("teacherDashboardRetry").classList.remove("hidden");
+}
 async function loadDashboard(sessionOverride = null) {
+  if (!sessionOverride && !allowTeacherLeave()) return;
+  const request=dashboardLoadVersion+1;
+  try { await readTeacherDashboard(sessionOverride); }
+  catch {
+    // An old failure cannot replace the next account/context's workspace.
+    if(request!==dashboardLoadVersion)return;
+    window.__haieduTeacherHomeStartup?.cancel();
+    showDashboardReadFailure("Չհաջողվեց բեռնել աշխատասեղանը։ Փորձեք կրկին։");
+  }
+}
+async function readTeacherDashboard(sessionOverride = null) {
   const version = ++dashboardLoadVersion;
   clearDetail();
   directoryRequestVersion++;
@@ -1366,7 +1391,7 @@ async function removeStudent(studentId, studentName) {
 }
 
 $("signOutBtn").addEventListener("click", signOut);
-$("refreshBtn").addEventListener("click", () => { if(allowTeacherLeave())void loadDashboard(); });
+$("refreshBtn").addEventListener("click", () => { void loadDashboard(); });
 $("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
 $("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);
@@ -1451,6 +1476,7 @@ function bootstrapTeacherDashboard(session) {
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
+  teacherAuthGeneration++;
   if (event === "SIGNED_OUT" || !session || (actorId && actorId!==session.user?.id)) {
     window.__haieduTeacherHomeStartup?.cancel();
     const switched=actorId && session?.user?.id && actorId!==session.user.id;
@@ -1474,5 +1500,18 @@ supabase.auth.onAuthStateChange((event, session) => {
   if ($("dashboardPanel").classList.contains("hidden")) void bootstrapTeacherDashboard(session);
 });
 
-const { data: sessionData } = await supabase.auth.getSession();
-if (sessionData.session) await bootstrapTeacherDashboard(sessionData.session);
+// The auth event already drives its own role-gated bootstrap. A delayed SDK
+// snapshot (including a failure) must never override a newer auth event.
+const initialAuthGeneration=teacherAuthGeneration;
+try {
+  const {data:sessionData,error}=await supabase.auth.getSession();
+  if(initialAuthGeneration===teacherAuthGeneration){
+    if(error)throw error;
+    if(sessionData?.session)await bootstrapTeacherDashboard(sessionData.session);
+  }
+} catch {
+  if(initialAuthGeneration===teacherAuthGeneration&&!dashboard&&!dashboardBootstrapPromise){
+    window.__haieduTeacherHomeStartup?.cancel();
+    showDashboardReadFailure("Չհաջողվեց ստուգել մուտքի տվյալները։ Փորձեք կրկին։");
+  }
+}
