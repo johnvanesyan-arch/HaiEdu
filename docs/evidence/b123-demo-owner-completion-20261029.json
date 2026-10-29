@@ -1,0 +1,55 @@
+{
+  "scope": "B.12.3 DEMO-01 owner-confirmed operational completion; final usability pending",
+  "date": "2026-10-29",
+  "timezone": "Asia/Yerevan",
+  "runtimeSourceCommit": "4961996d5d5ea81e26c0eb0a6e7ac59eae9103ac",
+  "evidenceKind": "explicit owner completion report; not independently reverified",
+  "ownerSequence": [
+    "Owner supplied invitation recipient; targeted Auth lookup returned zero matches before setup.",
+    "Agent could not complete authorized administrator sign-in and sent no invitation.",
+    "Owner chose to send the invitation directly and changed demo subject from Physics to English.",
+    "Owner offered to create the English Grade7 demo class.",
+    "Agent instructed activation, new-demo-teacher sign-in, Test School / English Grade7 / separate empty demo class.",
+    "Owner replied: I did it."
+  ],
+  "requestedScope": {
+    "school": "Test School",
+    "role": "teacher",
+    "subject": "English",
+    "grade": 7,
+    "class": "separate empty demo class",
+    "requestedName": "Անգլերեն 7 · ցուցադրական",
+    "recipientAddressOmitted": true
+  },
+  "demoDisposition": "owner-confirmed complete",
+  "independentLiveAccountOrClassAuditPerformed": false,
+  "actualClassIdObserved": false,
+  "agentProductionMutationsThisCheckpoint": false,
+  "qaFixturesRemainProtected": true,
+  "historicalTeacherError": {
+    "disposition": "bounded investigation complete; historical cause unconfirmed",
+    "recurrenceAction": "Retain actual exception/time/route/action, investigate before acceptance.",
+    "earlierEvidence": "b123-final-followup-investigation-20261029.json"
+  },
+  "unchangedEvidenceReused": {
+    "unitIntegration": 1569,
+    "native": 316,
+    "functionalProduction": 196,
+    "functionalIsolationBeforeAfter": [
+      54,
+      54
+    ],
+    "finalSourceFeedbackReads": 73,
+    "finalSourceFeedbackRun": 40909814227
+  },
+  "gates": {
+    "ownerFourJourneyUsabilityAcceptance": "pending",
+    "b123Open": true,
+    "subjectExpansionPaused": true,
+    "all45MappingsPreserved": true,
+    "contentAndAudioApprovalsPreserved": true,
+    "englishC47Hold": true,
+    "separateFourSubjectGatePreserved": true,
+    "speakingClassroomAssessed": true
+  }
+}

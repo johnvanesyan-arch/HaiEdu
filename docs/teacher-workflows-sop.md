@@ -108,3 +108,8 @@ Release verification: all five required PR/main gates pass (1,488 unit/integrati
 **B.12.1 verification:** [Sharing-preview delivery](teacher-sharing-preview.md) records the shared learner projection and inert preview controls. PR/main gates pass 1,529 unit/integration and 247 native; production passes 158/158 with 54+54 isolation and run-owned cleanup. No learner task is sent by previewing. B.12.2 performance and B.12.3 final owner usability remain.
 
 **B.12.3.1 verification:** [Permanent writing-review delivery](teacher-writing-review-navigation.md) passes all five PR/main gates (1,561 unit/integration; 266 native), both schools’ four real status queues and 73 production checks with 54+54 isolation. The existing publication/learner receipt contract remains. Full owner usability and the separate generic JavaScript error remain open.
+
+
+## B.12.3 owner review context — 2026-10-29
+
+John confirms completing the instructed separate ordinary English Grade 7 demo setup. Use that class to review teacher navigation, subject/context selection and empty states. With no enrolled learner or submitted writing, an empty roster/review queue is expected; it is not delivery/submission evidence. The [four-journey review checklist](workspace-final-followups.md#owner-usability-review) distinguishes those checks from delivery, writing and feedback in a permitted class with a test learner. Existing actual-SQL/native and guarded production evidence is reused; no fresh production submission/grade or API capability is added. SOP 1.5 procedures are unchanged.
