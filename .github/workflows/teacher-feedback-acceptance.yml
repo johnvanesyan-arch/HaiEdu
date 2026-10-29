@@ -38,6 +38,7 @@ on:
       - web/course-page.js
       - web/course-workspace.css
       - web/course.html
+      - web/assets/fonts/**
       - web/forest-tokens.css
       - web/learning-audio.mjs
       - web/learning-extensions.mjs

@@ -17,10 +17,16 @@ function ensurePlatformFavicon() {
 
 ensurePlatformFavicon();
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const uxSupabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let uxClientPromise = null;
+async function getUxSupabase() {
+  if (window.__haieduSupabaseClient) return window.__haieduSupabaseClient;
+  if (!uxClientPromise) uxClientPromise = import("https://esm.sh/@supabase/supabase-js@2")
+    .then(({ createClient }) => window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY))
+    .finally(() => { uxClientPromise = null; });
+  return uxClientPromise;
+}
 const path = location.pathname.toLowerCase();
 const isStudentPage = /(?:^|\/)(?:index\.html|mastery\.html|join\.html)?$/.test(path) || path.endsWith("/");
 const terminalAuthMessageKey = "amp-terminal-auth-message";
@@ -111,7 +117,9 @@ function isTerminalAuthError(error) {
 async function handleTerminalAuthFailure() {
   let session;
   let error;
+  let uxSupabase;
   try {
+    uxSupabase = await getUxSupabase();
     const { data: sessionData } = await uxSupabase.auth.getSession();
     session = sessionData?.session;
     if (!session) return false;
@@ -429,10 +437,30 @@ ensureSkipLink();
 ensureGlobalStatus();
 configurePage();
 showTerminalAuthMessage();
-const scheduleAuthHealthCheck = window.requestIdleCallback
-  ? (callback) => window.requestIdleCallback(callback, { timeout: 4500 })
-  : (callback) => window.setTimeout(callback, 2500);
-scheduleAuthHealthCheck(() => { void handleTerminalAuthFailure(); });
+// Let each page initialize its own SDK first. A bounded fallback still starts
+// the health check if page resources never finish; server authorization remains
+// authoritative for every data request.
+let authHealthStarted = false, authHealthIdle = null;
+function runAuthHealthCheck() {
+  if (authHealthStarted) return;
+  authHealthStarted = true;
+  clearTimeout(authHealthFallback);
+  window.removeEventListener("load", scheduleAuthHealthCheck);
+  if (authHealthIdle !== null) {
+    if (window.cancelIdleCallback) window.cancelIdleCallback(authHealthIdle);
+    else clearTimeout(authHealthIdle);
+  }
+  void handleTerminalAuthFailure();
+}
+function scheduleAuthHealthCheck() {
+  if (authHealthStarted || authHealthIdle !== null) return;
+  authHealthIdle = window.requestIdleCallback
+    ? window.requestIdleCallback(runAuthHealthCheck, { timeout: 4500 })
+    : window.setTimeout(runAuthHealthCheck, 2500);
+}
+const authHealthFallback = window.setTimeout(runAuthHealthCheck, 4500);
+if (document.readyState === "complete") scheduleAuthHealthCheck();
+else window.addEventListener("load", scheduleAuthHealthCheck, { once: true });
 
 const observer = new MutationObserver((records) => {
   let shouldConfigure = false;

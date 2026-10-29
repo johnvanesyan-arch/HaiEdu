@@ -14,7 +14,7 @@ async function check({error=null,throws=false,sessionThrows=false,nextSession,an
   signOut:async opts=>{calls.signOut.push({...opts});},
  }};
  const source=read('web/ux.js').replace(/^import .*;\n/gm,'').split('\nfunction showTerminalAuthMessage()')[0];
- const ctx=vm.createContext({window:{},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL});
+ const ctx=vm.createContext({window:{__haieduSupabaseClient:client},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL});
  vm.runInContext(source,ctx);ctx.report=(...args)=>calls.messages.push(args);vm.runInContext('announce = report;',ctx);
  calls.result=await vm.runInContext('handleTerminalAuthFailure()',ctx);return calls;
 }

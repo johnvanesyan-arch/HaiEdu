@@ -86,7 +86,8 @@ export function localReferences(filename, source) {
       if (src) refs.push(src);
     }
     for (const [tag] of source.matchAll(/<link\b[^>]*>/gi)) {
-      if (attribute(tag, "rel")?.toLowerCase().split(/\s+/).includes("stylesheet")) {
+      const rel=attribute(tag,"rel")?.toLowerCase().split(/\s+/)??[];
+      if (rel.includes("stylesheet") || (rel.includes("preload")&&attribute(tag,"as")?.toLowerCase()==="font")) {
         const href = attribute(tag, "href");
         if (href) refs.push(href);
       }
@@ -96,6 +97,7 @@ export function localReferences(filename, source) {
     for (const match of source.matchAll(/\bimport\s*\(\s*["']([^"']+)["']\s*\)/g)) refs.push(match[1]);
   } else if (filename.endsWith(".css")) {
     for (const match of source.matchAll(/@import\s+(?:url\(\s*)?["']([^"']+)["']/g)) refs.push(match[1]);
+    for (const match of source.matchAll(/url\(\s*["']?([^"')\s]+\.(?:ttf|woff2)(?:[?#][^"')\s]*)?)["']?\s*\)/gi)) refs.push(match[1]);
   }
   const documentUrl = /\.(?:html|css)$/.test(filename);
   return [...new Set(refs.filter((ref) => {
@@ -118,7 +120,8 @@ export async function collectDependencies(root, entries) {
   const sources = new Map();
   async function visit(filename) {
     if (sources.has(filename)) return;
-    const source = await readFile(path.join(root, filename), "utf8");
+    const raw = await readFile(path.join(root, filename));
+    const source = /\.(?:ttf|woff2)$/i.test(filename) ? "" : raw.toString("utf8");
     sources.set(filename, source);
     for (const dependency of localReferences(filename, source)) await visit(dependency);
     const generatedInputs={"web/teacher-dependencies.bundle.mjs":["web/teacher-dependencies.mjs","scripts/build-teacher-entry.mjs","package.json","package-lock.json"]};

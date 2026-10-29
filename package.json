@@ -11,6 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "check:core-parity": "node scripts/check-core-parity.mjs",
     "check:favicon": "node scripts/check-favicon-coverage.mjs",
+    "check:ui-font": "node scripts/check-forest-font.mjs",
     "build:teacher": "node scripts/build-teacher-entry.mjs",
     "check:teacher-bundle": "node scripts/build-teacher-entry.mjs --check"
   },
