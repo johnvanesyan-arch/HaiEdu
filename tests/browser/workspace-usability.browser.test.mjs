@@ -18,8 +18,10 @@ test('every shared UX consumer keeps a readable keyboard route into its actual m
     const u=new URL(r.request().url());if(u.origin!=='https://ux-consumers.test')throw Error('Unexpected external request');
     try{let bytes=await readFile('web'+u.pathname);const js=/\.m?js$/.test(u.pathname);
      // Actual HTML/CSS and shared UX, with business/auth modules deliberately
-     // absent. This verifies the shared component, not a signed-in journey.
-     if(u.pathname.endsWith('.html'))bytes=Buffer.from(bytes.toString().replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace('</body>','<script type="module" src="./ux.js"></script></body>'));
+     // absent. Resolve only the fixture presentation hold which that absent
+     // router would normally clear; the production role guard stays intact.
+     // This verifies the shared component, not a signed-in journey.
+     if(u.pathname.endsWith('.html'))bytes=Buffer.from(bytes.toString().replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/\sdata-role-routing="pending"/,'').replace('</body>','<script type="module" src="./ux.js"></script></body>'));
      if(js&&!['/ux.js','/config.js'].includes(u.pathname))bytes=Buffer.from('');
      await r.fulfill({body:bytes,contentType:u.pathname.endsWith('.html')?'text/html':js?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{await r.fulfill({status:404,body:''});}
