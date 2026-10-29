@@ -1,0 +1,192 @@
+{
+  "scope": "B.12.3 UI-ERROR-01 and DEMO-01 read-only preparation; incomplete pending owner email",
+  "capturedAt": "2026-10-29T16:43:00.980Z",
+  "sourceCommit": "4961996d5d5ea81e26c0eb0a6e7ac59eae9103ac",
+  "changes": {
+    "application": false,
+    "database": false,
+    "authIdentities": false,
+    "emailsSent": false,
+    "grants": false,
+    "learnerEvidence": false
+  },
+  "historicalTeacherError": {
+    "status": "investigated; historical cause unconfirmed",
+    "requestedLogWindow": {
+      "from": "2026-10-28T16:35:00Z",
+      "to": "2026-10-29T16:35:00Z"
+    },
+    "endpoints": 6,
+    "requestsByStatus": {
+      "200": 2391,
+      "401": 5,
+      "403": 624
+    },
+    "server5xxObserved": 0,
+    "aggregates": [
+      {
+        "first_seen": "2026-10-28T18:05:57.714000",
+        "last_seen": "2026-10-29T16:24:16.974000",
+        "path": "/functions/v1/get-teacher-academic-context",
+        "requests": 76,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T18:06:44.676000",
+        "last_seen": "2026-10-29T16:24:58.157000",
+        "path": "/functions/v1/get-teacher-academic-context",
+        "requests": 76,
+        "status_code": "403"
+      },
+      {
+        "first_seen": "2026-10-28T17:02:50.269000",
+        "last_seen": "2026-10-29T16:27:12.884000",
+        "path": "/functions/v1/get-teacher-dashboard",
+        "requests": 1360,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T18:06:46.926000",
+        "last_seen": "2026-10-29T16:24:59.651000",
+        "path": "/functions/v1/get-teacher-dashboard",
+        "requests": 91,
+        "status_code": "403"
+      },
+      {
+        "first_seen": "2026-10-28T17:07:57.421000",
+        "last_seen": "2026-10-29T16:24:33.540000",
+        "path": "/functions/v1/get-teacher-student",
+        "requests": 80,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T18:06:48.895000",
+        "last_seen": "2026-10-29T16:25:15.474000",
+        "path": "/functions/v1/get-teacher-student",
+        "requests": 359,
+        "status_code": "403"
+      },
+      {
+        "first_seen": "2026-10-28T18:12:29.099000",
+        "last_seen": "2026-10-29T16:27:30.599000",
+        "path": "/functions/v1/get-teacher-workspace",
+        "requests": 175,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T18:12:56.005000",
+        "last_seen": "2026-10-29T09:42:16.326000",
+        "path": "/functions/v1/get-teacher-workspace",
+        "requests": 2,
+        "status_code": "401"
+      },
+      {
+        "first_seen": "2026-10-28T18:12:34.628000",
+        "last_seen": "2026-10-29T09:42:14.744000",
+        "path": "/functions/v1/get-teacher-workspace",
+        "requests": 16,
+        "status_code": "403"
+      },
+      {
+        "first_seen": "2026-10-28T19:53:23.034000",
+        "last_seen": "2026-10-29T16:23:20.284000",
+        "path": "/functions/v1/manage-teacher-feedback",
+        "requests": 109,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T19:53:49.102000",
+        "last_seen": "2026-10-29T16:23:38.344000",
+        "path": "/functions/v1/manage-teacher-feedback",
+        "requests": 3,
+        "status_code": "401"
+      },
+      {
+        "first_seen": "2026-10-28T19:53:30.858000",
+        "last_seen": "2026-10-29T16:23:26.130000",
+        "path": "/functions/v1/manage-teacher-feedback",
+        "requests": 18,
+        "status_code": "403"
+      },
+      {
+        "first_seen": "2026-10-28T17:02:04.357000",
+        "last_seen": "2026-10-29T16:31:11.391000",
+        "path": "/functions/v1/manage-written-work",
+        "requests": 591,
+        "status_code": "200"
+      },
+      {
+        "first_seen": "2026-10-28T18:35:27.913000",
+        "last_seen": "2026-10-29T14:53:00.093000",
+        "path": "/functions/v1/manage-written-work",
+        "requests": 64,
+        "status_code": "403"
+      }
+    ],
+    "browserObservation": {
+      "classId": "20342530-a1f9-42cf-ab19-849506947a43",
+      "currentState": "signed out; login entry visible",
+      "retainedHaiEduExceptionTrace": false,
+      "extensionMetadataErrorNotAttributedToHaiEdu": true
+    },
+    "limits": [
+      "Backend success does not rule out a client exception.",
+      "No current authenticated reproduction in the signed-out user tab.",
+      "The repaired late INITIAL_SESSION rejection is a separate reproduction, not proof of the historical cause."
+    ],
+    "reusedCurrentEvidence": {
+      "nativeChecks": 316,
+      "productionWorkflowChecks": 196,
+      "finalSourceTeacherFeedbackReads": 73,
+      "readRun": 40909814227
+    },
+    "next": "If the generic toast recurs in owner review, retain the exact exception, time and route; investigate before acceptance."
+  },
+  "demoPreparation": {
+    "status": "awaiting unused owner-selected email; not provisioned",
+    "existingActiveTeachers": 2,
+    "existingTeachersAreDesignatedQa": true,
+    "originalClass": {
+      "id": "20342530-a1f9-42cf-ab19-849506947a43",
+      "name": "English Unit 1 QA A",
+      "subjectCode": "english"
+    },
+    "proposedSchool": {
+      "id": "e88bb74c-ab42-41a5-8943-e33a3ac4c2e6",
+      "name": "Test School"
+    },
+    "subject": {
+      "id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+      "code": "physics",
+      "programmeId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "grade": 7
+    },
+    "proposedClass": "Ֆիզիկա 7 · ցուցադրական",
+    "classInitiallyEmpty": true,
+    "recipientEmail": null,
+    "process": [
+      "Owner supplies unused email and authorizes activation invitation.",
+      "Authorized administrator uses existing provision-staff-account teacher flow, with this school and Physics subject.",
+      "Recipient accepts invitation and chooses their own password.",
+      "Use supported class/assignment workflow for a separate empty Grade7 Physics demo class.",
+      "Verify Physics-only access and preserved QA grants."
+    ],
+    "noProvisioningShortcuts": [
+      "No raw Auth/profile/membership/grant inserts.",
+      "No inferred email alias, reused QA identity, unsolicited invitation, QA grant removal or curriculum activation."
+    ]
+  },
+  "advisors": {
+    "reviewed": true,
+    "relatedCauseEstablished": false,
+    "configurationChanged": false
+  },
+  "gates": {
+    "b123Open": true,
+    "subjectsPaused": true,
+    "ownerUsabilityPending": true,
+    "all45CapabilitiesPreserved": true,
+    "englishC47Hold": true,
+    "fourSubjectGateSeparate": true
+  }
+}
