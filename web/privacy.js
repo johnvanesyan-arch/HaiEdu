@@ -1,4 +1,4 @@
-import { signOutAccount } from './account-signout.mjs';
+import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -11,6 +11,7 @@ let accountActor;
 const accountHomes = {student:"./index.html",teacher:"./teacher.html?view=home",school_admin:"./school-admin.html",admin:"./admin.html",content_admin:"./content.html"};
 
 function clearAccount(signedOut = false) {
+  clearSessionReadFailure();
   state = null;
   for (const id of ['displayNameInput', 'newEmailInput']) $(id).value = '';
   for (const id of ['analyticsOptIn', 'researchOptIn']) $(id).checked = false;
@@ -152,6 +153,7 @@ function deletionLabel(request) {
 }
 
 function render(data) {
+  clearSessionReadFailure();
   state = data;
   document.body.removeAttribute("data-account-pending");
   document.body.removeAttribute("data-forest-surface");
@@ -212,7 +214,8 @@ async function refresh() {
   } catch (err) {
     if (!current()) return;
     clearAccount();
-    $("loading").textContent = err.message || "Չհաջողվեց բեռնել տվյալները։";
+    $("loading").textContent = "Հաշվի տվյալները չբեռնվեցին։";
+    showSessionReadFailure(refresh);
   }
 }
 

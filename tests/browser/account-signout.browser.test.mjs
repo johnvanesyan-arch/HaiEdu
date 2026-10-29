@@ -19,11 +19,11 @@ async function binding(file){
  const fn=file==='teacher.js'?ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='signOut').getText(ast)+'\n':'';
  return fn+found[0];
 }
-async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false,redirect=false,realPrivacy=false,role='teacher'}={}){
+async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false,redirect=false,realPrivacy=false,role='teacher',privacyFailure=false}={}){
  const bc=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});t.after(()=>bc.close());
- await bc.addInitScript(({mode,readsFail,held,role})=>{
+ await bc.addInitScript(({mode,readsFail,held,role,privacyFailure})=>{
   const listeners=new Set(),session=()=>({user:{id:'actor-A'},access_token:'synthetic-old'});
-  const s=window.__logout={session:session(),mode,readsFail,held,attempted:false,calls:[],canLeave:true,release:null,confirmations:0,role,
+  const s=window.__logout={session:session(),mode,readsFail,held,attempted:false,calls:[],canLeave:true,release:null,confirmations:0,role,privacyFailure,
    emit(event){for(const fn of [...listeners])fn(event,this.session);},switchActor(){this.session={user:{id:'actor-B'},access_token:'synthetic-new'};this.emit('SIGNED_IN');}};
   window.confirm=()=>{s.confirmations++;return s.canLeave;};
   window.__client={auth:{getSession:async()=>{if(s.attempted&&s.readsFail-->0)throw Error('Synthetic unreadable session');return{data:{session:s.session},error:null};},getUser:async()=>({data:{user:{...s.session?.user,email:'synthetic@example.invalid'}}}),updateUser:async()=>new Promise(resolve=>s.resolveEmail=resolve),onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};},signOut:async({scope}={})=>{
@@ -32,8 +32,8 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
    if(s.held)await new Promise(resolve=>s.release=resolve);
    if(s.mode.startsWith('thrown'))throw Error('Synthetic request rejected');
    return{error:s.mode==='success'?null:{message:'Synthetic remote failure'}};
-  }},functions:{invoke:async(name)=>{if(name==='manage-my-privacy')return new Promise(resolve=>s.resolvePrivacy=resolve);if(name!=='get-my-privacy')throw Error('Unexpected fixture function');return{data:{account:{role:s.role,status:'active',displayName:s.session?.user.id==='actor-B'?'Other synthetic name':'Synthetic name',email:'synthetic@example.invalid'},preferences:{product_analytics_opt_in:false,research_use_opt_in:false},dataInventory:{}},error:null};}}};
- },{mode,readsFail,held,role});
+  }},functions:{invoke:async(name)=>{if(name==='manage-my-privacy')return new Promise(resolve=>s.resolvePrivacy=resolve);if(name!=='get-my-privacy')throw Error('Unexpected fixture function');if(s.privacyFailure)return{data:null,error:{message:'Synthetic unavailable profile'}};return{data:{account:{role:s.role,status:'active',displayName:s.session?.user.id==='actor-B'?'Other synthetic name':'Synthetic name',email:'synthetic@example.invalid'},preferences:{product_analytics_opt_in:false,research_use_opt_in:false},dataInventory:{}},error:null};}}};
+ },{mode,readsFail,held,role,privacyFailure});
  const code=file?await binding(file):`document.getElementById('signOutBtn').addEventListener('click',()=>{window.__result=signOutAccount(supabase,{${redirect?"redirect:'./account-access',":''}canLeave:()=>window.__logout.canLeave});});`;
  const setup=`import {signOutAccount,showSignOutNotice} from './account-signout.mjs';
  const supabase=window.__client,client=supabase,contentSupabase=supabase,$=id=>document.getElementById(id);
@@ -56,7 +56,7 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
   try{return r.fulfill({body:await readFile('web'+u.pathname),contentType:/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':'application/octet-stream'});}catch{return r.fulfill({status:404,body:''});}
  });
  const p=await bc.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(origin+'/fixture');
- if(realPrivacy)await expect(p.locator('#content')).toBeVisible();else await p.waitForFunction(()=>window.__ready);
+ if(realPrivacy){if(privacyFailure)await expect(p.getByRole('button',{name:'Կրկին ստուգել մուտքը'})).toBeVisible();else await expect(p.locator('#content')).toBeVisible();}else await p.waitForFunction(()=>window.__ready);
  return{p,errors,button:p.locator(file==='role-router.js'?'#blockedSignOutBtn':'#signOutBtn')};
 }
 for(const file of consumers)test(`${file} actual logout binding: returned error with retained session has no false redirect and permits explicit retry`,async t=>{
@@ -119,4 +119,16 @@ test('late email-change acknowledgement cannot erase a new account email field',
  await p.evaluate(()=>window.__logout.switchActor());await expect(p.locator('#displayNameInput')).toHaveValue('Other synthetic name');await p.locator('#newEmailInput').fill('new@example.invalid');
  await p.evaluate(()=>window.__logout.resolveEmail({data:{user:{id:'actor-A'}},error:null}));
  await expect(p.locator('#newEmailInput')).toHaveValue('new@example.invalid');await expect(p.locator('#emailChangeMessage')).toHaveText('');await expect(p.locator('#changeEmailBtn')).toBeEnabled();assert.deepEqual(errors,[]);
+});
+
+for(const nextId of ['actor-B','actor-A'])test(`unknown logout followed by a newer ${nextId} login releases old controls without redirect`,async t=>{
+ const {p,errors,button}=await fixture(t,{mode:'returnedCleared',readsFail:1});await button.click();await expect(p.locator('[data-signout-check]')).toBeVisible();await expect(button).toBeDisabled();
+ await p.evaluate(nextId=>{window.__logout.session={user:{id:nextId},access_token:'synthetic-new'};window.__logout.emit('SIGNED_IN');},nextId);
+ await expect(button).toBeEnabled();await expect(p.locator('#accountSignOutMessage')).toHaveCount(0);assert.equal(new URL(p.url()).pathname,'/fixture');
+ await p.evaluate(()=>{window.__logout.mode='success';window.__logout.readsFail=0;});await button.click();assert.equal(await p.evaluate(async()=>await window.__result),true);assert.equal(await p.evaluate(()=>window.__logout.calls.length),2);assert.deepEqual(errors,[]);
+});
+
+test('failed shared account read has an explicit retry and never signs out a valid account',async t=>{
+ const {p,errors}=await fixture(t,{realPrivacy:true,privacyFailure:true});await expect(p.locator('#content')).toBeHidden();assert.equal(await p.evaluate(()=>window.__logout.calls.length),0);
+ await p.evaluate(()=>window.__logout.privacyFailure=false);await p.getByRole('button',{name:'Կրկին ստուգել մուտքը'}).click();await expect(p.locator('#content')).toBeVisible();await expect(p.locator('#accountSignOutMessage')).toHaveCount(0);assert.equal(await p.evaluate(()=>window.__logout.calls.length),0);assert.deepEqual(errors,[]);
 });

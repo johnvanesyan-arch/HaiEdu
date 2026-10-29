@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createClient} from '@supabase/supabase-js';
 import {readFileSync} from 'node:fs';
-import {isTerminalAuthError} from '../web/account-signout.mjs';
+import {isTerminalAuthError,signOutAccount} from '../web/account-signout.mjs';
 
 // Real pinned Auth SDK with an isolated HTTP transport, not production Auth.
 for(const status of [401,500])test(`pinned SDK logout HTTP ${status}: reconcile local removal separately from remote error`,async()=>{
@@ -42,4 +42,21 @@ test('all three legacy learner startup checks retain sessions on transient ident
   const ctx=vm.createContext({supabase:client,isChapterReview:false,readPracticeBootstrap:()=>null,isTerminalAuthError,signOutAccount:()=>signouts++,showSessionReadFailure:()=>retries++,retryInitialize(){},loadProgress:()=>reads++,loadSubject:()=>reads++,window:{location:{replace(){throw Error('Unexpected redirect');}}}});
   await vm.runInContext(fn+';initialize()',ctx);assert.equal(signouts,0,name);assert.equal(reads,0,name);assert.equal(retries,1,name);
  }
+});
+
+test('a newer login releases settled unknown-outcome controls and cannot reuse the old logout operation',async()=>{
+ const previous=globalThis.document;
+ try{
+  for(const nextId of ['actor-B','actor-A']){
+   const nodes=new Map(),controls=[{disabled:false}];
+   const node=()=>({dataset:{},children:[],setAttribute(k,v){this[k]=v;},append(...children){this.children.push(...children);},addEventListener(){},focus(){},querySelector(){return this.children.find(n=>Object.hasOwn(n.dataset,'signoutCheck'))||null;},remove(){if(nodes.get(this.id)===this)nodes.delete(this.id);}});
+   globalThis.document={getElementById:id=>nodes.get(id)||null,createElement:node,querySelectorAll:()=>controls,dispatchEvent:()=>true,body:{append:n=>nodes.set(n.id,n)}};
+   let session={user:{id:'actor-A'},access_token:'old'},attempted=false,unreadable=true,calls=0;const listeners=new Set();
+   const client={auth:{getSession:async()=>{if(attempted&&unreadable)throw Error('offline');return{data:{session},error:null};},onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};},signOut:async()=>{calls++;attempted=true;session=null;return{error:unreadable?{status:500}:null};}}};
+   assert.equal(await signOutAccount(client),false);assert.equal(controls[0].disabled,true);assert.ok(nodes.has('accountSignOutMessage'));
+   session={user:{id:nextId},access_token:'new'};for(const fn of [...listeners])fn('SIGNED_IN',session);
+   assert.equal(controls[0].disabled,false);assert.equal(nodes.has('accountSignOutMessage'),false);assert.equal(listeners.size,0);
+   unreadable=false;assert.equal(await signOutAccount(client),true);assert.equal(calls,2);assert.equal(listeners.size,0);
+  }
+ }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });

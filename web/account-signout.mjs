@@ -18,6 +18,7 @@ function notice(kind, check) {
   const section = document.createElement('section');
   section.id = 'accountSignOutMessage';
   section.className = 'account-signout-notice card';
+  section.dataset.accountRecovery = kind;
   section.setAttribute('role', kind === 'pending' ? 'status' : 'alert');
   section.tabIndex = -1;
   const text = document.createElement('p'); text.textContent = messages[kind];
@@ -35,10 +36,16 @@ function notice(kind, check) {
   }
   document.body.append(section);
   if (kind !== 'pending') (section.querySelector('[data-signout-check]') || section).focus();
+  return section;
 }
 
 export function showSessionReadFailure(retry) {
   notice('authFailed', () => { document.getElementById('accountSignOutMessage')?.remove(); return retry(); });
+}
+
+export function clearSessionReadFailure() {
+  const section = document.getElementById('accountSignOutMessage');
+  if (section?.dataset.accountRecovery === 'authFailed') section.remove();
 }
 
 export function showSignOutNotice() {
@@ -65,40 +72,49 @@ export function signOutAccount(client, options = {}) {
   const controls = [...document.querySelectorAll(controlsSelector)];
   const disabled = controls.map(control => control.disabled);
   controls.forEach(control => { control.disabled = true; });
-  const subscription = client.auth.onAuthStateChange?.((event, session) => {
+  let finished = false, subscription;
+  const show = (kind, check) => { operation.notice = notice(kind, check); };
+  const clearNotice = () => { if (document.getElementById('accountSignOutMessage') === operation.notice) operation.notice?.remove(); };
+  subscription = client.auth.onAuthStateChange?.((event, session) => {
     if (event === 'SIGNED_IN' && session && (!operation.initial
       || session.user?.id !== operation.initial.user?.id
-      || session.access_token !== operation.initial.access_token)) operation.changed = true;
+      || session.access_token !== operation.initial.access_token)) {
+      operation.changed = true;
+      if (!operation.promise) { finish(); clearNotice(); }
+    }
   })?.data?.subscription;
+  if (finished) subscription?.unsubscribe?.();
   function finish() {
-    subscription?.unsubscribe?.(); operations.delete(client.auth);
+    if (finished) return; finished = true;
+    subscription?.unsubscribe?.();
+    if (operations.get(client.auth) === operation) operations.delete(client.auth);
     controls.forEach((control, index) => { control.disabled = disabled[index]; });
   }
   async function reconcile() {
     let current;
     try { current = await sessionOf(client); }
     catch {
-      if (operation.changed) { finish(); document.getElementById('accountSignOutMessage')?.remove(); return false; }
-      notice('unknown', operation.check); return false;
+      if (operation.changed) { finish(); clearNotice(); return false; }
+      show('unknown', operation.check); return false;
     }
     if (operation.changed || (current && current.user?.id !== operation.initial?.user?.id)) {
-      finish(); document.getElementById('accountSignOutMessage')?.remove(); return false;
+      finish(); clearNotice(); return false;
     }
-    if (current) { finish(); notice('failed'); return false; }
-    finish(); document.getElementById('accountSignOutMessage')?.remove();
+    if (current) { finish(); show('failed'); return false; }
+    finish(); clearNotice();
     onSignedOut();
     const kind = scope === 'global' ? 'local' : 'localScope';
     if (operation.remoteFailed) {
       if (redirect) { try { sessionStorage.setItem(noticeKey, kind); } catch { /* optional */ } }
-      else notice(kind);
+      else show(kind);
     }
     if (redirect) location.replace(redirect);
     return true;
   }
   operation.check = () => {
     if (operation.promise) return operation.promise;
-    notice('pending');
-    operation.promise = Promise.resolve().then(reconcile).finally(() => { operation.promise = null; });
+    show('pending');
+    operation.promise = Promise.resolve().then(reconcile).finally(() => { operation.promise = null; if (operation.changed) { finish(); clearNotice(); } });
     return operation.promise;
   };
   operation.promise = Promise.resolve().then(async () => {
@@ -118,15 +134,15 @@ export function signOutAccount(client, options = {}) {
         // Preparation (e.g. MFA cleanup) must not log out a newer account.
         const current = await sessionOf(client);
         if (operation.changed || current?.user?.id !== operation.initial.user?.id) { finish(); return false; }
-        notice('pending'); operation.attempted = true;
+        show('pending'); operation.attempted = true;
         try { const result = await client.auth.signOut({ scope }); operation.remoteFailed = !result || !Object.hasOwn(result, 'error') || Boolean(result.error); }
         catch { operation.remoteFailed = true; }
       }
       return await reconcile();
     } catch {
-      finish(); if (!operation.changed) notice('failed'); return false;
+      finish(); if (!operation.changed) show('failed'); return false;
     }
-  }).finally(() => { operation.promise = null; });
+  }).finally(() => { operation.promise = null; if (operation.changed) { finish(); clearNotice(); } });
   return operation.promise;
 }
 
