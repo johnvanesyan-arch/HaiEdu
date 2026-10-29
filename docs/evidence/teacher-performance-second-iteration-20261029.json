@@ -1,0 +1,3449 @@
+{
+  "scope": "Read-only teacher performance",
+  "phase": "after",
+  "fixtureScope": "all",
+  "revision": "077797eb1e06df2172b6257549cf3bc749fa813d",
+  "startedAt": "2026-10-28T23:02:21.012Z",
+  "status": "passed",
+  "samples": [
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "cold-home",
+      "ms": 3584.685534,
+      "requestCount": 3,
+      "bytes": 3601,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 426.135,
+          "status": 200,
+          "bytes": 580,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1189.525,
+          "status": 200,
+          "bytes": 1262,
+          "serverTiming": "auth;dur=39,data;dur=529,total;dur=919"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 881.038,
+          "status": 200,
+          "bytes": 1759,
+          "serverTiming": "auth;dur=1,data;dur=719,total;dur=720"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "warm-home",
+      "ms": 2996.8878609999992,
+      "requestCount": 3,
+      "bytes": 4536,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 385.482,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 935.538,
+          "status": 200,
+          "bytes": 1632,
+          "serverTiming": "auth;dur=1,data;dur=460,total;dur=803, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 874.828,
+          "status": 200,
+          "bytes": 1977,
+          "serverTiming": "auth;dur=1,data;dur=737,total;dur=738, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "classes",
+      "ms": 49.73939799999789,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "archive",
+      "ms": 1360.6615710000005,
+      "requestCount": 1,
+      "bytes": 3837,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 982.176,
+          "status": 200,
+          "bytes": 3837,
+          "serverTiming": "auth;dur=39,data;dur=724,total;dur=767, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "selected-class",
+      "ms": 1334.2060779999993,
+      "requestCount": 1,
+      "bytes": 6791,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1165.038,
+          "status": 200,
+          "bytes": 6791,
+          "serverTiming": "auth;dur=1,data;dur=1011,total;dur=1012, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "unit-switch",
+      "ms": 1312.174492000002,
+      "requestCount": 1,
+      "bytes": 5031,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1275.812,
+          "status": 200,
+          "bytes": 5031,
+          "serverTiming": "auth;dur=0,data;dur=1125,total;dur=1125, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "review",
+      "ms": 1871.4574840000023,
+      "requestCount": 1,
+      "bytes": 922,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1692.343,
+          "status": 200,
+          "bytes": 922,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 0,
+      "scenario": "response-open",
+      "ms": 6436.581234999998,
+      "requestCount": 1,
+      "bytes": 3606,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 6147.727,
+          "status": 200,
+          "bytes": 3606,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "cold-home",
+      "ms": 10687.841120000005,
+      "requestCount": 3,
+      "bytes": 3595,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 2676.764,
+          "status": 200,
+          "bytes": 583,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 5651.412,
+          "status": 200,
+          "bytes": 1254,
+          "serverTiming": "auth;dur=49,data;dur=4908,total;dur=5452"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 3527.362,
+          "status": 200,
+          "bytes": 1758,
+          "serverTiming": "auth;dur=1,data;dur=3381,total;dur=3382"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "warm-home",
+      "ms": 3526.104643000006,
+      "requestCount": 3,
+      "bytes": 4524,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 453.897,
+          "status": 200,
+          "bytes": 965,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1062.135,
+          "status": 200,
+          "bytes": 1610,
+          "serverTiming": "auth;dur=51,data;dur=585,total;dur=813, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1234.219,
+          "status": 200,
+          "bytes": 1949,
+          "serverTiming": "auth;dur=47,data;dur=932,total;dur=984, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "classes",
+      "ms": 19.290924000000814,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "archive",
+      "ms": 1334.1363610000044,
+      "requestCount": 1,
+      "bytes": 3861,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1031.715,
+          "status": 200,
+          "bytes": 3861,
+          "serverTiming": "auth;dur=0,data;dur=888,total;dur=888, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "selected-class",
+      "ms": 2340.9315940000015,
+      "requestCount": 1,
+      "bytes": 6791,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 2063.061,
+          "status": 200,
+          "bytes": 6791,
+          "serverTiming": "auth;dur=1,data;dur=1894,total;dur=1895, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "unit-switch",
+      "ms": 2318.7899899999975,
+      "requestCount": 1,
+      "bytes": 5032,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 2079.599,
+          "status": 200,
+          "bytes": 5032,
+          "serverTiming": "auth;dur=0,data;dur=1995,total;dur=1995, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "review",
+      "ms": 1347.2894149999993,
+      "requestCount": 1,
+      "bytes": 918,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1228.425,
+          "status": 200,
+          "bytes": 918,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 1,
+      "scenario": "response-open",
+      "ms": 2875.044289000012,
+      "requestCount": 1,
+      "bytes": 3608,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 2550.23,
+          "status": 200,
+          "bytes": 3608,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "cold-home",
+      "ms": 3978.0095449999935,
+      "requestCount": 3,
+      "bytes": 3939,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 323.969,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1614.949,
+          "status": 200,
+          "bytes": 1240,
+          "serverTiming": "auth;dur=1,data;dur=1121,total;dur=1497"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 879.382,
+          "status": 200,
+          "bytes": 1756,
+          "serverTiming": "auth;dur=0,data;dur=739,total;dur=739"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "warm-home",
+      "ms": 3491.5452700000023,
+      "requestCount": 3,
+      "bytes": 4520,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 341.461,
+          "status": 200,
+          "bytes": 961,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1009.119,
+          "status": 200,
+          "bytes": 1607,
+          "serverTiming": "auth;dur=30,data;dur=630,total;dur=819, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1091.746,
+          "status": 200,
+          "bytes": 1952,
+          "serverTiming": "auth;dur=36,data;dur=832,total;dur=872, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "classes",
+      "ms": 16.343498000002,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "archive",
+      "ms": 1334.1395090000005,
+      "requestCount": 1,
+      "bytes": 3860,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1013.825,
+          "status": 200,
+          "bytes": 3860,
+          "serverTiming": "auth;dur=0,data;dur=864,total;dur=864, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "selected-class",
+      "ms": 2338.652452999988,
+      "requestCount": 1,
+      "bytes": 6767,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1955.288,
+          "status": 200,
+          "bytes": 6767,
+          "serverTiming": "auth;dur=36,data;dur=1683,total;dur=1723, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "unit-switch",
+      "ms": 1811.0166710000049,
+      "requestCount": 1,
+      "bytes": 5007,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1522.949,
+          "status": 200,
+          "bytes": 5007,
+          "serverTiming": "auth;dur=44,data;dur=1252,total;dur=1301, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "review",
+      "ms": 1344.3583389999985,
+      "requestCount": 1,
+      "bytes": 923,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1313.722,
+          "status": 200,
+          "bytes": 923,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 2,
+      "scenario": "response-open",
+      "ms": 1347.672888000001,
+      "requestCount": 1,
+      "bytes": 3608,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1303.413,
+          "status": 200,
+          "bytes": 3608,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "cold-home",
+      "ms": 3740.6971820000035,
+      "requestCount": 3,
+      "bytes": 3905,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 350.157,
+          "status": 200,
+          "bytes": 941,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 867.697,
+          "status": 200,
+          "bytes": 1415,
+          "serverTiming": "auth;dur=40,data;dur=254,total;dur=656"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1061.637,
+          "status": 200,
+          "bytes": 1549,
+          "serverTiming": "auth;dur=63,data;dur=752,total;dur=820"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "warm-home",
+      "ms": 3004.830992000003,
+      "requestCount": 3,
+      "bytes": 4549,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 175.971,
+          "status": 200,
+          "bytes": 963,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1129.81,
+          "status": 200,
+          "bytes": 1609,
+          "serverTiming": "auth;dur=69,data;dur=468,total;dur=930, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1136.977,
+          "status": 200,
+          "bytes": 1977,
+          "serverTiming": "auth;dur=44,data;dur=881,total;dur=928, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "classes",
+      "ms": 39.598603999998886,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "archive",
+      "ms": 1333.109580999997,
+      "requestCount": 1,
+      "bytes": 3839,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 812.967,
+          "status": 200,
+          "bytes": 3839,
+          "serverTiming": "auth;dur=32,data;dur=598,total;dur=634, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "selected-class",
+      "ms": 1836.7084310000064,
+      "requestCount": 1,
+      "bytes": 6767,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1477.278,
+          "status": 200,
+          "bytes": 6767,
+          "serverTiming": "auth;dur=38,data;dur=1002,total;dur=1049, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "unit-switch",
+      "ms": 1809.703880999994,
+      "requestCount": 1,
+      "bytes": 5030,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1636.895,
+          "status": 200,
+          "bytes": 5030,
+          "serverTiming": "auth;dur=1,data;dur=1502,total;dur=1503, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "review",
+      "ms": 1870.6055970000016,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1716.885,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 3,
+      "scenario": "response-open",
+      "ms": 2353.5900659999897,
+      "requestCount": 1,
+      "bytes": 3608,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1834.354,
+          "status": 200,
+          "bytes": 3608,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "cold-home",
+      "ms": 3227.7006790000014,
+      "requestCount": 3,
+      "bytes": 3928,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 192.451,
+          "status": 200,
+          "bytes": 942,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1129.494,
+          "status": 200,
+          "bytes": 1232,
+          "serverTiming": "auth;dur=40,data;dur=524,total;dur=925"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 738.067,
+          "status": 200,
+          "bytes": 1754,
+          "serverTiming": "auth;dur=0,data;dur=602,total;dur=603"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "warm-home",
+      "ms": 3495.808738000007,
+      "requestCount": 3,
+      "bytes": 4543,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 340.458,
+          "status": 200,
+          "bytes": 963,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1025.017,
+          "status": 200,
+          "bytes": 1631,
+          "serverTiming": "auth;dur=1,data;dur=542,total;dur=904, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1046.691,
+          "status": 200,
+          "bytes": 1949,
+          "serverTiming": "auth;dur=44,data;dur=816,total;dur=863, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "classes",
+      "ms": 32.16995500000485,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "archive",
+      "ms": 2342.0293070000043,
+      "requestCount": 1,
+      "bytes": 3838,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1849.603,
+          "status": 200,
+          "bytes": 3838,
+          "serverTiming": "auth;dur=38,data;dur=1602,total;dur=1645, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "selected-class",
+      "ms": 1834.8779439999926,
+      "requestCount": 1,
+      "bytes": 6766,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1438.997,
+          "status": 200,
+          "bytes": 6766,
+          "serverTiming": "auth;dur=98,data;dur=1122,total;dur=1224, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "unit-switch",
+      "ms": 1811.0385180000012,
+      "requestCount": 1,
+      "bytes": 5004,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1338.597,
+          "status": 200,
+          "bytes": 5004,
+          "serverTiming": "auth;dur=42,data;dur=1083,total;dur=1129, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "review",
+      "ms": 1342.602316000004,
+      "requestCount": 1,
+      "bytes": 890,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1214.067,
+          "status": 200,
+          "bytes": 890,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 4,
+      "scenario": "response-open",
+      "ms": 2366.283410999982,
+      "requestCount": 1,
+      "bytes": 3581,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1940.947,
+          "status": 200,
+          "bytes": 3581,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "cold-home",
+      "ms": 3260.5932709999906,
+      "requestCount": 3,
+      "bytes": 3569,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 373.735,
+          "status": 200,
+          "bytes": 582,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 949.319,
+          "status": 200,
+          "bytes": 1233,
+          "serverTiming": "auth;dur=59,data;dur=304,total;dur=724"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 851.328,
+          "status": 200,
+          "bytes": 1754,
+          "serverTiming": "auth;dur=57,data;dur=539,total;dur=600"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "warm-home",
+      "ms": 2642.3974980000057,
+      "requestCount": 3,
+      "bytes": 4565,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 167.831,
+          "status": 200,
+          "bytes": 963,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 739.07,
+          "status": 200,
+          "bytes": 1630,
+          "serverTiming": "auth;dur=1,data;dur=458,total;dur=609, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 454.167,
+          "status": 200,
+          "bytes": 1972,
+          "serverTiming": "auth;dur=3,data;dur=331,total;dur=334, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "classes",
+      "ms": 30.505807000008645,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "archive",
+      "ms": 826.9776760000095,
+      "requestCount": 1,
+      "bytes": 3859,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 413.499,
+          "status": 200,
+          "bytes": 3859,
+          "serverTiming": "auth;dur=0,data;dur=335,total;dur=335, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "selected-class",
+      "ms": 1330.1248170000035,
+      "requestCount": 1,
+      "bytes": 6794,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1009.333,
+          "status": 200,
+          "bytes": 6794,
+          "serverTiming": "auth;dur=0,data;dur=866,total;dur=866, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "unit-switch",
+      "ms": 1303.433680999995,
+      "requestCount": 1,
+      "bytes": 5002,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1181.345,
+          "status": 200,
+          "bytes": 5002,
+          "serverTiming": "auth;dur=46,data;dur=929,total;dur=980, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "review",
+      "ms": 1362.1836149999872,
+      "requestCount": 1,
+      "bytes": 921,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1019.567,
+          "status": 200,
+          "bytes": 921,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 5,
+      "scenario": "response-open",
+      "ms": 1344.0570920000027,
+      "requestCount": 1,
+      "bytes": 3580,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1234.971,
+          "status": 200,
+          "bytes": 3580,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "cold-home",
+      "ms": 10784.720653000026,
+      "requestCount": 3,
+      "bytes": 3598,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 2136.209,
+          "status": 200,
+          "bytes": 605,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 6491.901,
+          "status": 200,
+          "bytes": 1417,
+          "serverTiming": "auth;dur=0,data;dur=5773,total;dur=6363"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 6520.758,
+          "status": 200,
+          "bytes": 1576,
+          "serverTiming": "auth;dur=54,data;dur=6244,total;dur=6302"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "warm-home",
+      "ms": 3190.944220000005,
+      "requestCount": 3,
+      "bytes": 4484,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 324.93,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1099.298,
+          "status": 200,
+          "bytes": 1607,
+          "serverTiming": "auth;dur=54,data;dur=465,total;dur=873, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 836.804,
+          "status": 200,
+          "bytes": 1949,
+          "serverTiming": "auth;dur=46,data;dur=539,total;dur=591, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "classes",
+      "ms": 25.860842000023695,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "archive",
+      "ms": 1335.4553719999967,
+      "requestCount": 1,
+      "bytes": 3838,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 906.038,
+          "status": 200,
+          "bytes": 3838,
+          "serverTiming": "auth;dur=58,data;dur=686,total;dur=747, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "selected-class",
+      "ms": 2843.2921609999903,
+      "requestCount": 1,
+      "bytes": 6793,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 2531.216,
+          "status": 200,
+          "bytes": 6793,
+          "serverTiming": "auth;dur=38,data;dur=2303,total;dur=2344, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "unit-switch",
+      "ms": 2311.974285000004,
+      "requestCount": 1,
+      "bytes": 5006,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1858.388,
+          "status": 200,
+          "bytes": 5006,
+          "serverTiming": "auth;dur=57,data;dur=1578,total;dur=1640, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "review",
+      "ms": 1355.1646579999942,
+      "requestCount": 1,
+      "bytes": 922,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1196.745,
+          "status": 200,
+          "bytes": 922,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 6,
+      "scenario": "response-open",
+      "ms": 1850.5399120000075,
+      "requestCount": 1,
+      "bytes": 3580,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1342.625,
+          "status": 200,
+          "bytes": 3580,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "cold-home",
+      "ms": 3285.8189490000077,
+      "requestCount": 3,
+      "bytes": 3899,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 186.716,
+          "status": 200,
+          "bytes": 941,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 978.68,
+          "status": 200,
+          "bytes": 1409,
+          "serverTiming": "auth;dur=93,data;dur=518,total;dur=782"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1060.409,
+          "status": 200,
+          "bytes": 1549,
+          "serverTiming": "auth;dur=52,data;dur=794,total;dur=851"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "warm-home",
+      "ms": 3058.332727000001,
+      "requestCount": 3,
+      "bytes": 4576,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 370.915,
+          "status": 200,
+          "bytes": 964,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 995.407,
+          "status": 200,
+          "bytes": 1636,
+          "serverTiming": "auth;dur=45,data;dur=515,total;dur=722, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 469.216,
+          "status": 200,
+          "bytes": 1976,
+          "serverTiming": "auth;dur=1,data;dur=333,total;dur=334, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "classes",
+      "ms": 50.34127499998431,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "archive",
+      "ms": 841.8414420000045,
+      "requestCount": 1,
+      "bytes": 3838,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 635.197,
+          "status": 200,
+          "bytes": 3838,
+          "serverTiming": "auth;dur=58,data;dur=334,total;dur=396, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "selected-class",
+      "ms": 1330.9158980000066,
+      "requestCount": 1,
+      "bytes": 6766,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1103.551,
+          "status": 200,
+          "bytes": 6766,
+          "serverTiming": "auth;dur=36,data;dur=862,total;dur=901, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "unit-switch",
+      "ms": 1306.8548410000221,
+      "requestCount": 1,
+      "bytes": 5033,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 892.001,
+          "status": 200,
+          "bytes": 5033,
+          "serverTiming": "auth;dur=2,data;dur=737,total;dur=739, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "review",
+      "ms": 1353.3669119999977,
+      "requestCount": 1,
+      "bytes": 919,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1130.377,
+          "status": 200,
+          "bytes": 919,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 7,
+      "scenario": "response-open",
+      "ms": 1849.959726000001,
+      "requestCount": 1,
+      "bytes": 3607,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1587.27,
+          "status": 200,
+          "bytes": 3607,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "cold-home",
+      "ms": 3311.1905059999845,
+      "requestCount": 3,
+      "bytes": 3903,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 342.514,
+          "status": 200,
+          "bytes": 941,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 679.029,
+          "status": 200,
+          "bytes": 1209,
+          "serverTiming": "auth;dur=90,data;dur=185,total;dur=466"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 663.233,
+          "status": 200,
+          "bytes": 1753,
+          "serverTiming": "auth;dur=47,data;dur=346,total;dur=399"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "warm-home",
+      "ms": 3298.8743280000053,
+      "requestCount": 3,
+      "bytes": 4544,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 160.27,
+          "status": 200,
+          "bytes": 962,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1009.741,
+          "status": 200,
+          "bytes": 1634,
+          "serverTiming": "auth;dur=1,data;dur=666,total;dur=826, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 536.473,
+          "status": 200,
+          "bytes": 1948,
+          "serverTiming": "auth;dur=1,data;dur=390,total;dur=391, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "classes",
+      "ms": 21.60107100001187,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "archive",
+      "ms": 830.0552150000003,
+      "requestCount": 1,
+      "bytes": 3863,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 654.073,
+          "status": 200,
+          "bytes": 3863,
+          "serverTiming": "auth;dur=0,data;dur=523,total;dur=523, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "selected-class",
+      "ms": 1332.4194279999938,
+      "requestCount": 1,
+      "bytes": 6768,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1099.549,
+          "status": 200,
+          "bytes": 6768,
+          "serverTiming": "auth;dur=43,data;dur=834,total;dur=880, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "unit-switch",
+      "ms": 2317.8409260000044,
+      "requestCount": 1,
+      "bytes": 5005,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1883.362,
+          "status": 200,
+          "bytes": 5005,
+          "serverTiming": "auth;dur=50,data;dur=1641,total;dur=1694, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "review",
+      "ms": 1864.8989080000028,
+      "requestCount": 1,
+      "bytes": 922,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1668.708,
+          "status": 200,
+          "bytes": 922,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 8,
+      "scenario": "response-open",
+      "ms": 2370.962655999989,
+      "requestCount": 1,
+      "bytes": 3581,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1954.131,
+          "status": 200,
+          "bytes": 3581,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "cold-home",
+      "ms": 3255.466086999979,
+      "requestCount": 3,
+      "bytes": 3598,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 358.553,
+          "status": 200,
+          "bytes": 606,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 717.465,
+          "status": 200,
+          "bytes": 1395,
+          "serverTiming": "auth;dur=1,data;dur=438,total;dur=602"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 851.073,
+          "status": 200,
+          "bytes": 1597,
+          "serverTiming": "auth;dur=48,data;dur=569,total;dur=622"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "warm-home",
+      "ms": 2993.6840270000102,
+      "requestCount": 3,
+      "bytes": 4571,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 168.28,
+          "status": 200,
+          "bytes": 965,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1166.961,
+          "status": 200,
+          "bytes": 1634,
+          "serverTiming": "auth;dur=0,data;dur=680,total;dur=1030, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 918.533,
+          "status": 200,
+          "bytes": 1972,
+          "serverTiming": "auth;dur=1,data;dur=763,total;dur=764, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "classes",
+      "ms": 23.58627900001011,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "archive",
+      "ms": 1332.0903699999908,
+      "requestCount": 1,
+      "bytes": 3863,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 834.427,
+          "status": 200,
+          "bytes": 3863,
+          "serverTiming": "auth;dur=1,data;dur=686,total;dur=687, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "selected-class",
+      "ms": 1333.3700149999931,
+      "requestCount": 1,
+      "bytes": 6762,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1130.757,
+          "status": 200,
+          "bytes": 6762,
+          "serverTiming": "auth;dur=33,data;dur=834,total;dur=872, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "unit-switch",
+      "ms": 1304.9391419999884,
+      "requestCount": 1,
+      "bytes": 5003,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1244.77,
+          "status": 200,
+          "bytes": 5003,
+          "serverTiming": "auth;dur=62,data;dur=987,total;dur=1052, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "review",
+      "ms": 1373.2986059999967,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1237.031,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "A",
+      "iteration": 9,
+      "scenario": "response-open",
+      "ms": 1848.5799239999906,
+      "requestCount": 1,
+      "bytes": 3605,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-teacher-feedback",
+          "ms": 1580.459,
+          "status": 200,
+          "bytes": 3605,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "cold-home",
+      "ms": 3202.157754999993,
+      "requestCount": 3,
+      "bytes": 3410,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 380.873,
+          "status": 200,
+          "bytes": 582,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 881.861,
+          "status": 200,
+          "bytes": 1154,
+          "serverTiming": "auth;dur=43,data;dur=302,total;dur=697"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 836.027,
+          "status": 200,
+          "bytes": 1674,
+          "serverTiming": "auth;dur=77,data;dur=558,total;dur=638"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "warm-home",
+      "ms": 2970.3092900000047,
+      "requestCount": 3,
+      "bytes": 4354,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 167.497,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 806.415,
+          "status": 200,
+          "bytes": 1551,
+          "serverTiming": "auth;dur=36,data;dur=394,total;dur=591, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 656.041,
+          "status": 200,
+          "bytes": 1875,
+          "serverTiming": "auth;dur=75,data;dur=368,total;dur=446, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "classes",
+      "ms": 29.105556999973487,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "archive",
+      "ms": 827.0810180000262,
+      "requestCount": 1,
+      "bytes": 3851,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 547.02,
+          "status": 200,
+          "bytes": 3851,
+          "serverTiming": "auth;dur=41,data;dur=324,total;dur=368, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "selected-class",
+      "ms": 1333.1840519999969,
+      "requestCount": 1,
+      "bytes": 5557,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1172.825,
+          "status": 200,
+          "bytes": 5557,
+          "serverTiming": "auth;dur=36,data;dur=930,total;dur=968, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "unit-switch",
+      "ms": 1808.6498109999811,
+      "requestCount": 1,
+      "bytes": 4757,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1304.565,
+          "status": 200,
+          "bytes": 4757,
+          "serverTiming": "auth;dur=50,data;dur=1025,total;dur=1079, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 0,
+      "scenario": "review",
+      "ms": 1354.65728699998,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1291.965,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "cold-home",
+      "ms": 7032.221191000019,
+      "requestCount": 3,
+      "bytes": 3444,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 756.371,
+          "status": 200,
+          "bytes": 582,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 4137.164,
+          "status": 200,
+          "bytes": 1181,
+          "serverTiming": "auth;dur=2,data;dur=3796,total;dur=4022"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 2808.144,
+          "status": 200,
+          "bytes": 1681,
+          "serverTiming": "auth;dur=0,data;dur=2664,total;dur=2664"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "warm-home",
+      "ms": 2963.6965109999874,
+      "requestCount": 3,
+      "bytes": 4395,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 183.203,
+          "status": 200,
+          "bytes": 967,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 596.262,
+          "status": 200,
+          "bytes": 1552,
+          "serverTiming": "auth;dur=1,data;dur=282,total;dur=464, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 941.154,
+          "status": 200,
+          "bytes": 1876,
+          "serverTiming": "auth;dur=55,data;dur=657,total;dur=717, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "classes",
+      "ms": 21.358622000028845,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "archive",
+      "ms": 1331.6365719999885,
+      "requestCount": 1,
+      "bytes": 3873,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 859.426,
+          "status": 200,
+          "bytes": 3873,
+          "serverTiming": "auth;dur=1,data;dur=716,total;dur=717, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "selected-class",
+      "ms": 1834.3225970000494,
+      "requestCount": 1,
+      "bytes": 5532,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1665.209,
+          "status": 200,
+          "bytes": 5532,
+          "serverTiming": "auth;dur=55,data;dur=1391,total;dur=1451, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "unit-switch",
+      "ms": 1305.5066259999876,
+      "requestCount": 1,
+      "bytes": 4756,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1279.641,
+          "status": 200,
+          "bytes": 4756,
+          "serverTiming": "auth;dur=49,data;dur=1013,total;dur=1066, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 1,
+      "scenario": "review",
+      "ms": 1372.9014670000179,
+      "requestCount": 1,
+      "bytes": 890,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1122.503,
+          "status": 200,
+          "bytes": 890,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "cold-home",
+      "ms": 3186.9301640000194,
+      "requestCount": 3,
+      "bytes": 3415,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 351.461,
+          "status": 200,
+          "bytes": 582,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 753.681,
+          "status": 200,
+          "bytes": 1332,
+          "serverTiming": "auth;dur=49,data;dur=365,total;dur=588"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 790.889,
+          "status": 200,
+          "bytes": 1501,
+          "serverTiming": "auth;dur=43,data;dur=516,total;dur=564"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "warm-home",
+      "ms": 2983.7489349999814,
+      "requestCount": 3,
+      "bytes": 4417,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 355.526,
+          "status": 200,
+          "bytes": 963,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 702.474,
+          "status": 200,
+          "bytes": 1555,
+          "serverTiming": "auth;dur=1,data;dur=420,total;dur=575, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 761.469,
+          "status": 200,
+          "bytes": 1899,
+          "serverTiming": "auth;dur=0,data;dur=629,total;dur=629, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "classes",
+      "ms": 30.11901399999624,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "archive",
+      "ms": 827.7050860000309,
+      "requestCount": 1,
+      "bytes": 3873,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 526.283,
+          "status": 200,
+          "bytes": 3873,
+          "serverTiming": "auth;dur=1,data;dur=380,total;dur=381, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "selected-class",
+      "ms": 1331.2234329999774,
+      "requestCount": 1,
+      "bytes": 5533,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1263.025,
+          "status": 200,
+          "bytes": 5533,
+          "serverTiming": "auth;dur=44,data;dur=975,total;dur=1025, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "unit-switch",
+      "ms": 1810.126144000038,
+      "requestCount": 1,
+      "bytes": 4758,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1373.615,
+          "status": 200,
+          "bytes": 4758,
+          "serverTiming": "auth;dur=38,data;dur=1068,total;dur=1110, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 2,
+      "scenario": "review",
+      "ms": 846.6609830000089,
+      "requestCount": 1,
+      "bytes": 920,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 811.649,
+          "status": 200,
+          "bytes": 920,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "cold-home",
+      "ms": 2735.724617000029,
+      "requestCount": 3,
+      "bytes": 3420,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 193.049,
+          "status": 200,
+          "bytes": 580,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 595.443,
+          "status": 200,
+          "bytes": 1180,
+          "serverTiming": "auth;dur=76,data;dur=202,total;dur=426"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 459.604,
+          "status": 200,
+          "bytes": 1660,
+          "serverTiming": "auth;dur=0,data;dur=329,total;dur=329"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "warm-home",
+      "ms": 3001.9399930000072,
+      "requestCount": 3,
+      "bytes": 4359,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 324.932,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 708.93,
+          "status": 200,
+          "bytes": 1530,
+          "serverTiming": "auth;dur=39,data;dur=272,total;dur=466, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 678.889,
+          "status": 200,
+          "bytes": 1901,
+          "serverTiming": "auth;dur=0,data;dur=545,total;dur=545, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "classes",
+      "ms": 15.730024999997113,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "archive",
+      "ms": 843.8503950000159,
+      "requestCount": 1,
+      "bytes": 3852,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 575.557,
+          "status": 200,
+          "bytes": 3852,
+          "serverTiming": "auth;dur=35,data;dur=349,total;dur=388, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "selected-class",
+      "ms": 1332.6666459999979,
+      "requestCount": 1,
+      "bytes": 5557,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 849.104,
+          "status": 200,
+          "bytes": 5557,
+          "serverTiming": "auth;dur=0,data;dur=714,total;dur=714, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "unit-switch",
+      "ms": 1308.0164050000021,
+      "requestCount": 1,
+      "bytes": 4757,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1238.017,
+          "status": 200,
+          "bytes": 4757,
+          "serverTiming": "auth;dur=49,data;dur=910,total;dur=963, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 3,
+      "scenario": "review",
+      "ms": 1371.2135819999967,
+      "requestCount": 1,
+      "bytes": 896,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1120.431,
+          "status": 200,
+          "bytes": 896,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "cold-home",
+      "ms": 3244.5808580000303,
+      "requestCount": 3,
+      "bytes": 3754,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 186.819,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 934.783,
+          "status": 200,
+          "bytes": 1154,
+          "serverTiming": "auth;dur=35,data;dur=554,total;dur=755"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 655.89,
+          "status": 200,
+          "bytes": 1657,
+          "serverTiming": "auth;dur=1,data;dur=519,total;dur=520"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "warm-home",
+      "ms": 2987.5015539999586,
+      "requestCount": 3,
+      "bytes": 4362,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 326.535,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 634.681,
+          "status": 200,
+          "bytes": 1557,
+          "serverTiming": "auth;dur=1,data;dur=358,total;dur=519, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 582.083,
+          "status": 200,
+          "bytes": 1877,
+          "serverTiming": "auth;dur=38,data;dur=316,total;dur=358, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "classes",
+      "ms": 33.056761000014376,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "archive",
+      "ms": 826.8103590000537,
+      "requestCount": 1,
+      "bytes": 3849,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 743.365,
+          "status": 200,
+          "bytes": 3849,
+          "serverTiming": "auth;dur=36,data;dur=485,total;dur=526, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "selected-class",
+      "ms": 826.4174670000211,
+      "requestCount": 1,
+      "bytes": 5557,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 731.279,
+          "status": 200,
+          "bytes": 5557,
+          "serverTiming": "auth;dur=0,data;dur=585,total;dur=585, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "unit-switch",
+      "ms": 1305.4045009999536,
+      "requestCount": 1,
+      "bytes": 4780,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1098.226,
+          "status": 200,
+          "bytes": 4780,
+          "serverTiming": "auth;dur=0,data;dur=963,total;dur=963, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 4,
+      "scenario": "review",
+      "ms": 1351.1826310000033,
+      "requestCount": 1,
+      "bytes": 919,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 959.564,
+          "status": 200,
+          "bytes": 919,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "cold-home",
+      "ms": 2904.4912439999753,
+      "requestCount": 3,
+      "bytes": 3751,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 179.011,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 769.046,
+          "status": 200,
+          "bytes": 1129,
+          "serverTiming": "auth;dur=46,data;dur=368,total;dur=563"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 587.313,
+          "status": 200,
+          "bytes": 1679,
+          "serverTiming": "auth;dur=53,data;dur=340,total;dur=396"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "warm-home",
+      "ms": 2795.862653999997,
+      "requestCount": 3,
+      "bytes": 4359,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 325.713,
+          "status": 200,
+          "bytes": 928,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 716.754,
+          "status": 200,
+          "bytes": 1530,
+          "serverTiming": "auth;dur=44,data;dur=285,total;dur=514, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 446.434,
+          "status": 200,
+          "bytes": 1901,
+          "serverTiming": "auth;dur=0,data;dur=312,total;dur=312, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "classes",
+      "ms": 30.51837600005092,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "archive",
+      "ms": 828.3088519999874,
+      "requestCount": 1,
+      "bytes": 3850,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 743.057,
+          "status": 200,
+          "bytes": 3850,
+          "serverTiming": "auth;dur=42,data;dur=527,total;dur=573, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "selected-class",
+      "ms": 829.3542269999743,
+      "requestCount": 1,
+      "bytes": 5557,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 716.347,
+          "status": 200,
+          "bytes": 5557,
+          "serverTiming": "auth;dur=0,data;dur=572,total;dur=572, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "unit-switch",
+      "ms": 1306.1648580000037,
+      "requestCount": 1,
+      "bytes": 4777,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 797.282,
+          "status": 200,
+          "bytes": 4777,
+          "serverTiming": "auth;dur=0,data;dur=729,total;dur=729, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 5,
+      "scenario": "review",
+      "ms": 1872.853879000002,
+      "requestCount": 1,
+      "bytes": 893,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1363.033,
+          "status": 200,
+          "bytes": 893,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "cold-home",
+      "ms": 3456.7858569999808,
+      "requestCount": 3,
+      "bytes": 3715,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 185.307,
+          "status": 200,
+          "bytes": 940,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 1002.149,
+          "status": 200,
+          "bytes": 1115,
+          "serverTiming": "auth;dur=38,data;dur=395,total;dur=776"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 461.487,
+          "status": 200,
+          "bytes": 1660,
+          "serverTiming": "auth;dur=1,data;dur=328,total;dur=329"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "warm-home",
+      "ms": 4501.6690240000025,
+      "requestCount": 3,
+      "bytes": 4370,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 348.06,
+          "status": 200,
+          "bytes": 964,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 701.617,
+          "status": 200,
+          "bytes": 1530,
+          "serverTiming": "auth;dur=86,data;dur=180,total;dur=448, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 2050.156,
+          "status": 200,
+          "bytes": 1876,
+          "serverTiming": "auth;dur=57,data;dur=573,total;dur=635, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "classes",
+      "ms": 32.01506999996491,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "archive",
+      "ms": 828.0625639999635,
+      "requestCount": 1,
+      "bytes": 3876,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 457.813,
+          "status": 200,
+          "bytes": 3876,
+          "serverTiming": "auth;dur=0,data;dur=320,total;dur=320, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "selected-class",
+      "ms": 2338.5806049999665,
+      "requestCount": 1,
+      "bytes": 5533,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1885.976,
+          "status": 200,
+          "bytes": 5533,
+          "serverTiming": "auth;dur=42,data;dur=1606,total;dur=1653, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "unit-switch",
+      "ms": 1307.3629420000361,
+      "requestCount": 1,
+      "bytes": 4780,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1215.239,
+          "status": 200,
+          "bytes": 4780,
+          "serverTiming": "auth;dur=0,data;dur=1089,total;dur=1090, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 6,
+      "scenario": "review",
+      "ms": 1371.5182030000142,
+      "requestCount": 1,
+      "bytes": 920,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1262.646,
+          "status": 200,
+          "bytes": 920,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "cold-home",
+      "ms": 2750.2738460000255,
+      "requestCount": 3,
+      "bytes": 3430,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 192.795,
+          "status": 200,
+          "bytes": 584,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 582.49,
+          "status": 200,
+          "bytes": 1184,
+          "serverTiming": "auth;dur=42,data;dur=169,total;dur=390"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 566.619,
+          "status": 200,
+          "bytes": 1662,
+          "serverTiming": "auth;dur=56,data;dur=377,total;dur=436"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "warm-home",
+      "ms": 2990.67656599998,
+      "requestCount": 3,
+      "bytes": 4378,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 347.829,
+          "status": 200,
+          "bytes": 927,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 634.705,
+          "status": 200,
+          "bytes": 1553,
+          "serverTiming": "auth;dur=1,data;dur=366,total;dur=521, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 477.374,
+          "status": 200,
+          "bytes": 1898,
+          "serverTiming": "auth;dur=1,data;dur=343,total;dur=344, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "classes",
+      "ms": 27.700712999969255,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "archive",
+      "ms": 827.6194569999934,
+      "requestCount": 1,
+      "bytes": 3854,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 583.634,
+          "status": 200,
+          "bytes": 3854,
+          "serverTiming": "auth;dur=39,data;dur=311,total;dur=356, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "selected-class",
+      "ms": 839.044430000009,
+      "requestCount": 1,
+      "bytes": 5557,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 789.232,
+          "status": 200,
+          "bytes": 5557,
+          "serverTiming": "auth;dur=1,data;dur=722,total;dur=723, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "unit-switch",
+      "ms": 1307.3085880000144,
+      "requestCount": 1,
+      "bytes": 4759,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1150.872,
+          "status": 200,
+          "bytes": 4759,
+          "serverTiming": "auth;dur=42,data;dur=885,total;dur=931, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 7,
+      "scenario": "review",
+      "ms": 1367.9013350000023,
+      "requestCount": 1,
+      "bytes": 923,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 863.237,
+          "status": 200,
+          "bytes": 923,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "cold-home",
+      "ms": 2685.081358000054,
+      "requestCount": 3,
+      "bytes": 3748,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 185.025,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 552.596,
+          "status": 200,
+          "bytes": 1329,
+          "serverTiming": "auth;dur=37,data;dur=162,total;dur=368"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 605.219,
+          "status": 200,
+          "bytes": 1476,
+          "serverTiming": "auth;dur=49,data;dur=349,total;dur=402"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "warm-home",
+      "ms": 2477.7032469999976,
+      "requestCount": 3,
+      "bytes": 4417,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 163.371,
+          "status": 200,
+          "bytes": 962,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 642.064,
+          "status": 200,
+          "bytes": 1555,
+          "serverTiming": "auth;dur=1,data;dur=312,total;dur=499, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 491.855,
+          "status": 200,
+          "bytes": 1900,
+          "serverTiming": "auth;dur=1,data;dur=353,total;dur=354, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "classes",
+      "ms": 36.47414499998558,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "archive",
+      "ms": 826.3503469999996,
+      "requestCount": 1,
+      "bytes": 3849,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 602.208,
+          "status": 200,
+          "bytes": 3849,
+          "serverTiming": "auth;dur=53,data;dur=336,total;dur=393, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "selected-class",
+      "ms": 1329.9130359999835,
+      "requestCount": 1,
+      "bytes": 5531,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 868.374,
+          "status": 200,
+          "bytes": 5531,
+          "serverTiming": "auth;dur=40,data;dur=608,total;dur=653, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "unit-switch",
+      "ms": 1306.7043760000379,
+      "requestCount": 1,
+      "bytes": 4757,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 1069.811,
+          "status": 200,
+          "bytes": 4757,
+          "serverTiming": "auth;dur=43,data;dur=789,total;dur=836, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 8,
+      "scenario": "review",
+      "ms": 1362.3468219999922,
+      "requestCount": 1,
+      "bytes": 894,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 1110.883,
+          "status": 200,
+          "bytes": 894,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "cold-home",
+      "ms": 3321.6464760000235,
+      "requestCount": 3,
+      "bytes": 3754,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 185.76,
+          "status": 200,
+          "bytes": 943,
+          "serverTiming": null
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 642.285,
+          "status": 200,
+          "bytes": 1332,
+          "serverTiming": "auth;dur=32,data;dur=240,total;dur=467"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 657.024,
+          "status": 200,
+          "bytes": 1479,
+          "serverTiming": "auth;dur=84,data;dur=327,total;dur=416"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "warm-home",
+      "ms": 2995.8891019999865,
+      "requestCount": 3,
+      "bytes": 4333,
+      "calls": [
+        {
+          "endpoint": "/rest/v1/profiles",
+          "ms": 340.615,
+          "status": 200,
+          "bytes": 926,
+          "serverTiming": "cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-workspace",
+          "ms": 642.152,
+          "status": 200,
+          "bytes": 1532,
+          "serverTiming": "auth;dur=81,data;dur=244,total;dur=482, cfExtPri"
+        },
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 596.919,
+          "status": 200,
+          "bytes": 1875,
+          "serverTiming": "auth;dur=44,data;dur=351,total;dur=400, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "classes",
+      "ms": 19.997847999969963,
+      "requestCount": 0,
+      "bytes": 0,
+      "calls": []
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "archive",
+      "ms": 825.0277450000285,
+      "requestCount": 1,
+      "bytes": 3874,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 461.976,
+          "status": 200,
+          "bytes": 3874,
+          "serverTiming": "auth;dur=1,data;dur=340,total;dur=341, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "selected-class",
+      "ms": 1333.0165660000057,
+      "requestCount": 1,
+      "bytes": 5558,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 886.146,
+          "status": 200,
+          "bytes": 5558,
+          "serverTiming": "auth;dur=1,data;dur=761,total;dur=762, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "unit-switch",
+      "ms": 1308.0256200000294,
+      "requestCount": 1,
+      "bytes": 4782,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/get-teacher-dashboard",
+          "ms": 806.784,
+          "status": 200,
+          "bytes": 4782,
+          "serverTiming": "auth;dur=0,data;dur=677,total;dur=677, cfExtPri"
+        }
+      ]
+    },
+    {
+      "side": "B",
+      "iteration": 9,
+      "scenario": "review",
+      "ms": 848.3379249999998,
+      "requestCount": 1,
+      "bytes": 922,
+      "calls": [
+        {
+          "endpoint": "/functions/v1/manage-written-work",
+          "ms": 754.443,
+          "status": 200,
+          "bytes": 922,
+          "serverTiming": "cfExtPri"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "label": "reviewed main and designated two-school fixtures",
+      "passed": true
+    },
+    {
+      "label": "A: credentials configured",
+      "passed": true
+    },
+    {
+      "label": "A: designated teacher identity",
+      "passed": true
+    },
+    {
+      "label": "A: initial authorized directory",
+      "passed": true
+    },
+    {
+      "label": "A: fixture size",
+      "active": 3,
+      "archived": 33
+    },
+    {
+      "label": "A: authorized exact class",
+      "passed": true
+    },
+    {
+      "label": "A: unit-switch fixture exists",
+      "passed": true
+    },
+    {
+      "label": "A: foreign class denied",
+      "passed": true
+    },
+    {
+      "label": "A: response candidate authorized",
+      "passed": true
+    },
+    {
+      "label": "A: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "A: response fixture state",
+      "state": "reviewed"
+    },
+    {
+      "label": "A: no page errors in sample 0",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 0",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 1",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 1",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 2",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 2",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 3",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 3",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 4",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 4",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 5",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 5",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 6",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 6",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 7",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 7",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 8",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 8",
+      "passed": true
+    },
+    {
+      "label": "A: no page errors in sample 9",
+      "passed": true
+    },
+    {
+      "label": "A: no browser mutations in sample 9",
+      "passed": true
+    },
+    {
+      "label": "B: credentials configured",
+      "passed": true
+    },
+    {
+      "label": "B: designated teacher identity",
+      "passed": true
+    },
+    {
+      "label": "B: initial authorized directory",
+      "passed": true
+    },
+    {
+      "label": "B: fixture size",
+      "active": 2,
+      "archived": 30
+    },
+    {
+      "label": "B: authorized exact class",
+      "passed": true
+    },
+    {
+      "label": "B: unit-switch fixture exists",
+      "passed": true
+    },
+    {
+      "label": "B: foreign class denied",
+      "passed": true
+    },
+    {
+      "label": "B: response candidate authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response candidate authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response queue authorized",
+      "passed": true
+    },
+    {
+      "label": "B: response fixture state",
+      "state": "unavailable"
+    },
+    {
+      "label": "B: no page errors in sample 0",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 0",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 1",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 1",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 2",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 2",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 3",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 3",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 4",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 4",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 5",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 5",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 6",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 6",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 7",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 7",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 8",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 8",
+      "passed": true
+    },
+    {
+      "label": "B: no page errors in sample 9",
+      "passed": true
+    },
+    {
+      "label": "B: no browser mutations in sample 9",
+      "passed": true
+    },
+    {
+      "label": "production source unchanged after measurement",
+      "passed": true
+    },
+    {
+      "label": "local QA session closed",
+      "passed": true
+    },
+    {
+      "label": "local QA session closed",
+      "passed": true
+    }
+  ],
+  "profile": {
+    "browser": "Chromium",
+    "runner": "GitHub ubuntu-latest",
+    "viewport": "1365x950",
+    "cpu": "unthrottled shared runner",
+    "network": "CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up",
+    "cold": "fresh browser context and HTTP cache",
+    "warm": "same context reload",
+    "iterations": 10
+  },
+  "budgets": {
+    "usefulHomeP95Ms": 3000,
+    "selectedClassP95Ms": 2000,
+    "loadedNavigationP95Ms": 200
+  },
+  "responseFixtures": [
+    {
+      "side": "A",
+      "available": true,
+      "state": "reviewed"
+    },
+    {
+      "side": "B",
+      "available": false,
+      "state": null
+    }
+  ],
+  "summary": [
+    {
+      "side": "A",
+      "scenario": "cold-home",
+      "n": 10,
+      "p50Ms": 3311.1905059999845,
+      "p95Ms": 10784.720653000026,
+      "medianRequests": 3,
+      "medianBytes": 3601
+    },
+    {
+      "side": "A",
+      "scenario": "warm-home",
+      "n": 10,
+      "p50Ms": 3058.332727000001,
+      "p95Ms": 3526.104643000006,
+      "medianRequests": 3,
+      "medianBytes": 4543
+    },
+    {
+      "side": "A",
+      "scenario": "classes",
+      "n": 10,
+      "p50Ms": 25.860842000023695,
+      "p95Ms": 50.34127499998431,
+      "medianRequests": 0,
+      "medianBytes": 0
+    },
+    {
+      "side": "A",
+      "scenario": "archive",
+      "n": 10,
+      "p50Ms": 1333.109580999997,
+      "p95Ms": 2342.0293070000043,
+      "medianRequests": 1,
+      "medianBytes": 3839
+    },
+    {
+      "side": "A",
+      "scenario": "selected-class",
+      "n": 10,
+      "p50Ms": 1334.2060779999993,
+      "p95Ms": 2843.2921609999903,
+      "medianRequests": 1,
+      "medianBytes": 6767
+    },
+    {
+      "side": "A",
+      "scenario": "unit-switch",
+      "n": 10,
+      "p50Ms": 1809.703880999994,
+      "p95Ms": 2318.7899899999975,
+      "medianRequests": 1,
+      "medianBytes": 5006
+    },
+    {
+      "side": "A",
+      "scenario": "review",
+      "n": 10,
+      "p50Ms": 1355.1646579999942,
+      "p95Ms": 1871.4574840000023,
+      "medianRequests": 1,
+      "medianBytes": 919
+    },
+    {
+      "side": "A",
+      "scenario": "response-open",
+      "n": 10,
+      "p50Ms": 1850.5399120000075,
+      "p95Ms": 6436.581234999998,
+      "medianRequests": 1,
+      "medianBytes": 3605
+    },
+    {
+      "side": "B",
+      "scenario": "cold-home",
+      "n": 10,
+      "p50Ms": 3186.9301640000194,
+      "p95Ms": 7032.221191000019,
+      "medianRequests": 3,
+      "medianBytes": 3444
+    },
+    {
+      "side": "B",
+      "scenario": "warm-home",
+      "n": 10,
+      "p50Ms": 2983.7489349999814,
+      "p95Ms": 4501.6690240000025,
+      "medianRequests": 3,
+      "medianBytes": 4362
+    },
+    {
+      "side": "B",
+      "scenario": "classes",
+      "n": 10,
+      "p50Ms": 29.105556999973487,
+      "p95Ms": 36.47414499998558,
+      "medianRequests": 0,
+      "medianBytes": 0
+    },
+    {
+      "side": "B",
+      "scenario": "archive",
+      "n": 10,
+      "p50Ms": 827.6194569999934,
+      "p95Ms": 1331.6365719999885,
+      "medianRequests": 1,
+      "medianBytes": 3852
+    },
+    {
+      "side": "B",
+      "scenario": "selected-class",
+      "n": 10,
+      "p50Ms": 1331.2234329999774,
+      "p95Ms": 2338.5806049999665,
+      "medianRequests": 1,
+      "medianBytes": 5557
+    },
+    {
+      "side": "B",
+      "scenario": "unit-switch",
+      "n": 10,
+      "p50Ms": 1307.3085880000144,
+      "p95Ms": 1810.126144000038,
+      "medianRequests": 1,
+      "medianBytes": 4758
+    },
+    {
+      "side": "B",
+      "scenario": "review",
+      "n": 10,
+      "p50Ms": 1362.3468219999922,
+      "p95Ms": 1872.853879000002,
+      "medianRequests": 1,
+      "medianBytes": 896
+    }
+  ],
+  "budgetResults": [
+    {
+      "scenario": "cold-home",
+      "p95Ms": 10687.841120000005,
+      "limitMs": 3000,
+      "met": false
+    },
+    {
+      "scenario": "warm-home",
+      "p95Ms": 3526.104643000006,
+      "limitMs": 3000,
+      "met": false
+    },
+    {
+      "scenario": "selected-class",
+      "p95Ms": 2340.9315940000015,
+      "limitMs": 2000,
+      "met": false
+    },
+    {
+      "scenario": "classes",
+      "p95Ms": 49.73939799999789,
+      "limitMs": 200,
+      "met": true
+    }
+  ],
+  "statusMeaning": "All guarded read-only journeys completed; budgetResults separately records performance targets.",
+  "finishedAt": "2026-10-28T23:08:42.863Z",
+  "interpretation": "All 150 guarded observations complete; Home/class p95 targets still unmet. This intermediate run is retained without removing outliers or relaxing budgets."
+}

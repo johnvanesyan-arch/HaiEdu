@@ -1,0 +1,23 @@
+{
+  "source": "78fb5869abcc1145aab5181dadbff5a22273a46d",
+  "run": 40804830226,
+  "initialNativeJob": 123221155792,
+  "initialNativeChecks": 260,
+  "initialPassed": 259,
+  "initialFailed": 1,
+  "failure": {
+    "test": "Forest staff content-review.html: role layout, compact account/logout, text enlargement and keyboard",
+    "operation": "page.screenshot",
+    "error": "Protocol error (Page.captureScreenshot): Unable to capture screenshot",
+    "phase": "after fonts loaded",
+    "file": "tests/browser/forest-staff.browser.test.mjs",
+    "fixtureSourceUnchanged": true
+  },
+  "disposition": "First attempt remains failed. Rerun only the failed full native job and its dependent aggregate on the same commit; no assertion, screenshot or threshold removed. Other successful checks are reused. Production promotion remains blocked until the required aggregate passes.",
+  "retryStatus": "passed",
+  "successfulNativeJob": 123223000206,
+  "nativeChecksPassed": 260,
+  "aggregateJob": 123224290814,
+  "allFiveRequiredJobsPassed": true,
+  "sourceUnchanged": true
+}

@@ -1,0 +1,1396 @@
+{
+  "scope": "B.12.2 font/SDK frontend follow-up; budget results recorded separately",
+  "source": "78fb5869abcc1145aab5181dadbff5a22273a46d",
+  "implementation": {
+    "pr": 350,
+    "head": "1958094c006805f620c00b4dbfeb20bdebfeb1c7",
+    "ci": [
+      {
+        "run": 40804223755,
+        "jobs": [
+          {
+            "id": 123219185379,
+            "name": "institutional-concurrency",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123219185544,
+            "name": "role-layout-browser",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123219185555,
+            "name": "phase3-postgres-17",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123219185569,
+            "name": "test",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123220793413,
+            "name": "Platform release checks",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "unitIntegration": 1561,
+        "nativeBrowser": 260
+      },
+      {
+        "run": 40804830226,
+        "jobs": [
+          {
+            "id": 123223000206,
+            "name": "role-layout-browser",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123223001184,
+            "name": "institutional-concurrency",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123223001643,
+            "name": "test",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123223002120,
+            "name": "phase3-postgres-17",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 123224290814,
+            "name": "Platform release checks",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "unitIntegration": 1561,
+        "nativeBrowser": 260,
+        "nativeRetry": {
+          "initialJob": 123221155792,
+          "initialOutcome": "259 passed; 1 Chromium screenshot protocol failure on unchanged content-review page. First attempt remains failed.",
+          "successfulJob": 123223000206,
+          "sourceUnchanged": true,
+          "assertionsAndThresholdsUnchanged": true
+        }
+      }
+    ],
+    "nativeStartupRegressions": 6,
+    "nativeRetryEvidence": "docs/evidence/teacher-performance-native-retry-20261029.json"
+  },
+  "frontend": {
+    "checkedAt": "2026-10-29T02:23:03.898732+00:00",
+    "release": {
+      "schemaVersion": 1,
+      "commit": "78fb5869abcc1145aab5181dadbff5a22273a46d"
+    },
+    "files": [
+      {
+        "path": "web/account-access.html",
+        "status": 200,
+        "sourceSha256": "85fc427744754ea0ee94540c279ab55fb0b79ab9e1583a7074023a331f432583",
+        "productionSha256": "85fc427744754ea0ee94540c279ab55fb0b79ab9e1583a7074023a331f432583",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/account-roles.js",
+        "status": 200,
+        "sourceSha256": "80fac1c2fb89129aa06ded469fa52bf35a2701c6271dac30929b80da064af2b5",
+        "productionSha256": "80fac1c2fb89129aa06ded469fa52bf35a2701c6271dac30929b80da064af2b5",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/admin-security.html",
+        "status": 200,
+        "sourceSha256": "1751e97054c19caa066593f69b6322edf9b4cf6ddffbfb4008f6689bbd12f8ec",
+        "productionSha256": "1751e97054c19caa066593f69b6322edf9b4cf6ddffbfb4008f6689bbd12f8ec",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/admin.html",
+        "status": 200,
+        "sourceSha256": "7e186dbcab3bb742a8f90536e8e853d2bb3dae29dcc46529b9a73b0ff34810c8",
+        "productionSha256": "7e186dbcab3bb742a8f90536e8e853d2bb3dae29dcc46529b9a73b0ff34810c8",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/analytics-provenance.mjs",
+        "status": 200,
+        "sourceSha256": "55af145a3c475d1f5dfe065a81de2c25c49ef525af6b29d7407682bbe1c2563b",
+        "productionSha256": "55af145a3c475d1f5dfe065a81de2c25c49ef525af6b29d7407682bbe1c2563b",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/archive-browser.mjs",
+        "status": 200,
+        "sourceSha256": "f1f5fa59915e67423f17ba92dd3e8fedb6e955dd6a444cd7fc0238ea04994bea",
+        "productionSha256": "f1f5fa59915e67423f17ba92dd3e8fedb6e955dd6a444cd7fc0238ea04994bea",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/assessment-reporting.mjs",
+        "status": 200,
+        "sourceSha256": "6b811487d2a1b4f9ebc31a53afaa5e43d50967ce113a25b2688ca7fd0fb56b6f",
+        "productionSha256": "6b811487d2a1b4f9ebc31a53afaa5e43d50967ce113a25b2688ca7fd0fb56b6f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/assessment.html",
+        "status": 200,
+        "sourceSha256": "ee2346175080a2454174cf164a9c4b9139bcf48e9bb527011e37ad63ef405ba2",
+        "productionSha256": "ee2346175080a2454174cf164a9c4b9139bcf48e9bb527011e37ad63ef405ba2",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+        "status": 200,
+        "sourceSha256": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f",
+        "productionSha256": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/base.css",
+        "status": 200,
+        "sourceSha256": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6",
+        "productionSha256": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/components.css",
+        "status": 200,
+        "sourceSha256": "4879b45580bb75548a5d73a805703832fe7a013551f5bccf9b587858973fad56",
+        "productionSha256": "4879b45580bb75548a5d73a805703832fe7a013551f5bccf9b587858973fad56",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/config.js",
+        "status": 200,
+        "sourceSha256": "721242de821877470224c671fc8069c1fbe4ae860f082062e13dae36a61d0eae",
+        "productionSha256": "721242de821877470224c671fc8069c1fbe4ae860f082062e13dae36a61d0eae",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-bank.html",
+        "status": 200,
+        "sourceSha256": "909370ed610b8d88436af0def50f19bd1bfa9f9ebbdb0d2159be343bd13afb09",
+        "productionSha256": "909370ed610b8d88436af0def50f19bd1bfa9f9ebbdb0d2159be343bd13afb09",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-curriculum.html",
+        "status": 200,
+        "sourceSha256": "6cce5453fe2a9d522ba0c3c86eb585d102ae104cf7a64960b23f419827c26683",
+        "productionSha256": "6cce5453fe2a9d522ba0c3c86eb585d102ae104cf7a64960b23f419827c26683",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-evidence.html",
+        "status": 200,
+        "sourceSha256": "1ee3c9bc71d93f17ffb573d4a1540cbb5749b82174451f4ff89762c3df1b8b14",
+        "productionSha256": "1ee3c9bc71d93f17ffb573d4a1540cbb5749b82174451f4ff89762c3df1b8b14",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-guides.html",
+        "status": 200,
+        "sourceSha256": "50490485aa12cc450344cb9d5a7b487eff5a17f8d59bec336471babfdbb0f111",
+        "productionSha256": "50490485aa12cc450344cb9d5a7b487eff5a17f8d59bec336471babfdbb0f111",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-item.html",
+        "status": 200,
+        "sourceSha256": "fdb9a851aff7754382aa1f08a9a5bbc298a73d082e00328db482c2024523a1fc",
+        "productionSha256": "fdb9a851aff7754382aa1f08a9a5bbc298a73d082e00328db482c2024523a1fc",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-materials.html",
+        "status": 200,
+        "sourceSha256": "2f1d19f9e9d60798957f1fc7593df04b88f64ac0aeb9c3ffa2435412e74421d9",
+        "productionSha256": "2f1d19f9e9d60798957f1fc7593df04b88f64ac0aeb9c3ffa2435412e74421d9",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-misconceptions.html",
+        "status": 200,
+        "sourceSha256": "4a74daaf29b4b6f0284e829c8621e2d48a94cd5ad2ec354b6c973659ca375670",
+        "productionSha256": "4a74daaf29b4b6f0284e829c8621e2d48a94cd5ad2ec354b6c973659ca375670",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content-review.html",
+        "status": 200,
+        "sourceSha256": "a7d8ca7594fb415d375a64d55abece91c397502adb330e3de89a675cec1d0682",
+        "productionSha256": "a7d8ca7594fb415d375a64d55abece91c397502adb330e3de89a675cec1d0682",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/content.html",
+        "status": 200,
+        "sourceSha256": "c67f96557deb0dc9ef74c5644abb72869adde5819c1c9b3e5e221ec9f375c81f",
+        "productionSha256": "c67f96557deb0dc9ef74c5644abb72869adde5819c1c9b3e5e221ec9f375c81f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/course.html",
+        "status": 200,
+        "sourceSha256": "4c5d923fba6dba1b3c96f18db6cacbaac5bf64a7974c3ddf16f4bdfea6bba7af",
+        "productionSha256": "4c5d923fba6dba1b3c96f18db6cacbaac5bf64a7974c3ddf16f4bdfea6bba7af",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/diagnostic.html",
+        "status": 200,
+        "sourceSha256": "35412a01e531cd817347e1fe981ddcb44bc65b47a57a5fba8ddb1fbd9e8e3410",
+        "productionSha256": "35412a01e531cd817347e1fe981ddcb44bc65b47a57a5fba8ddb1fbd9e8e3410",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/forest-tokens.css",
+        "status": 200,
+        "sourceSha256": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31",
+        "productionSha256": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/index.html",
+        "status": 200,
+        "sourceSha256": "cba7afc13a395a9c65c33bf89c9c98e805912a271ac8aa022ff05b0dd50cb5f7",
+        "productionSha256": "cba7afc13a395a9c65c33bf89c9c98e805912a271ac8aa022ff05b0dd50cb5f7",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/join.html",
+        "status": 200,
+        "sourceSha256": "8f5c0a5dbbafaaf7225c385b19e3501eb716075081b26747ce5e8831c40d3e47",
+        "productionSha256": "8f5c0a5dbbafaaf7225c385b19e3501eb716075081b26747ce5e8831c40d3e47",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/learning-navigation.mjs",
+        "status": 200,
+        "sourceSha256": "d500a81e08d64d95e96e869f64fc346734961eaa510c4c362973bb2d55468a11",
+        "productionSha256": "d500a81e08d64d95e96e869f64fc346734961eaa510c4c362973bb2d55468a11",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/mastery.html",
+        "status": 200,
+        "sourceSha256": "3860658bef195905f07e02c971cc037d43b6206b16ef60b589d61b8bad58a698",
+        "productionSha256": "3860658bef195905f07e02c971cc037d43b6206b16ef60b589d61b8bad58a698",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/materials.html",
+        "status": 200,
+        "sourceSha256": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "productionSha256": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/physics-7.html",
+        "status": 200,
+        "sourceSha256": "17b90d76ac509a84dbdec9943484618ddde05527c10195e1606cb155ae277f6e",
+        "productionSha256": "17b90d76ac509a84dbdec9943484618ddde05527c10195e1606cb155ae277f6e",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/practice.html",
+        "status": 200,
+        "sourceSha256": "2a66d6df9043b67268e0526be9a31004e51426a5cff10ae0128ca18f5e91b75b",
+        "productionSha256": "2a66d6df9043b67268e0526be9a31004e51426a5cff10ae0128ca18f5e91b75b",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/privacy.html",
+        "status": 200,
+        "sourceSha256": "045ee18efd6787e139d1ea43bd2937f7669a3713589abb0db1528db1edaabe35",
+        "productionSha256": "045ee18efd6787e139d1ea43bd2937f7669a3713589abb0db1528db1edaabe35",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/progress.html",
+        "status": 200,
+        "sourceSha256": "b898721b75ca3c1cd93e8ce3badc521b372b22acc4d6578ef04392b3f04e7603",
+        "productionSha256": "b898721b75ca3c1cd93e8ce3badc521b372b22acc4d6578ef04392b3f04e7603",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/resource-library.html",
+        "status": 200,
+        "sourceSha256": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "productionSha256": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/responsive-qa.css",
+        "status": 200,
+        "sourceSha256": "e2e3a714dbcec1e7fdfb8727fa034f9469fe0198732caf74ab89aed59f8d1621",
+        "productionSha256": "e2e3a714dbcec1e7fdfb8727fa034f9469fe0198732caf74ab89aed59f8d1621",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/role-layout.css",
+        "status": 200,
+        "sourceSha256": "ebbb93cd01ec27e73ac6d15f1fa34ff0b9d7ba44db0cc8b12c7bc4960148595b",
+        "productionSha256": "ebbb93cd01ec27e73ac6d15f1fa34ff0b9d7ba44db0cc8b12c7bc4960148595b",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/role-layout.js",
+        "status": 200,
+        "sourceSha256": "7a7c54049b909416ca68d84926cd16161cb003b3bcd98de5fd3d39de41f13770",
+        "productionSha256": "7a7c54049b909416ca68d84926cd16161cb003b3bcd98de5fd3d39de41f13770",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/school-admin.html",
+        "status": 200,
+        "sourceSha256": "04e39fd968103e519648c8b2abe2d1ff23af5724ac1bd7f3849cde30b6e83442",
+        "productionSha256": "04e39fd968103e519648c8b2abe2d1ff23af5724ac1bd7f3849cde30b6e83442",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/school-teacher.html",
+        "status": 200,
+        "sourceSha256": "525b2e47b971a9a9192bd611bc21db3728cce50f7d2d39caca870e0932d72bb2",
+        "productionSha256": "525b2e47b971a9a9192bd611bc21db3728cce50f7d2d39caca870e0932d72bb2",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/staff-forest.css",
+        "status": 200,
+        "sourceSha256": "712a5dbc850711782374b7bb0b14176cb5be91607979396c5f6af1aa2e58eebd",
+        "productionSha256": "712a5dbc850711782374b7bb0b14176cb5be91607979396c5f6af1aa2e58eebd",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/styles.css",
+        "status": 200,
+        "sourceSha256": "2911012de5151db8c8cadbad47f47d2b93c133cc6135156b5569e38216fe4018",
+        "productionSha256": "2911012de5151db8c8cadbad47f47d2b93c133cc6135156b5569e38216fe4018",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/subject-visuals.mjs",
+        "status": 200,
+        "sourceSha256": "a04660dd3ce99b07e4c4e74e806917abddb325455eb3c8ac6f88393205fae4c1",
+        "productionSha256": "a04660dd3ce99b07e4c4e74e806917abddb325455eb3c8ac6f88393205fae4c1",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "status": 200,
+        "sourceSha256": "6e8b9ccd1d936d1be2ee775331a9959a72ec8ad06f8ca38d6df933fb1a2aa980",
+        "productionSha256": "6e8b9ccd1d936d1be2ee775331a9959a72ec8ad06f8ca38d6df933fb1a2aa980",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs.LICENSE.txt",
+        "status": 200,
+        "sourceSha256": "859546c6f4bfa05c9a5e7dfbd89d2652aaac82bf08cf7d24e687aca6ac3aefdf",
+        "productionSha256": "859546c6f4bfa05c9a5e7dfbd89d2652aaac82bf08cf7d24e687aca6ac3aefdf",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-dependencies.mjs",
+        "status": 200,
+        "sourceSha256": "2aa935636daa5f6e37a1f861fe3778140b7ed75406b20ae6cfe5231494ae611f",
+        "productionSha256": "2aa935636daa5f6e37a1f861fe3778140b7ed75406b20ae6cfe5231494ae611f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-feedback.mjs",
+        "status": 200,
+        "sourceSha256": "307fae97bde9d03deca6258e454a378c29ed3b6dd0b3a1c99105642505c6fa3b",
+        "productionSha256": "307fae97bde9d03deca6258e454a378c29ed3b6dd0b3a1c99105642505c6fa3b",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-home-request.mjs",
+        "status": 200,
+        "sourceSha256": "3ba2ff02cbd3bf9ba4fce624a578e2129a9259fc133632f18f6dc66a14e4e245",
+        "productionSha256": "3ba2ff02cbd3bf9ba4fce624a578e2129a9259fc133632f18f6dc66a14e4e245",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-home-startup.mjs",
+        "status": 200,
+        "sourceSha256": "b1388821e578d7fbdf8c2bdf50fe14ab39cb786136695f52aa759d6120d9394f",
+        "productionSha256": "b1388821e578d7fbdf8c2bdf50fe14ab39cb786136695f52aa759d6120d9394f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-startup.bundle.mjs",
+        "status": 200,
+        "sourceSha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "productionSha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-startup.mjs",
+        "status": 200,
+        "sourceSha256": "4a29b6b2b1dd129758dc3e72145d001c73be9caa292589d8146266d415562bd1",
+        "productionSha256": "4a29b6b2b1dd129758dc3e72145d001c73be9caa292589d8146266d415562bd1",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-today.css",
+        "status": 200,
+        "sourceSha256": "9ca1b1a9789d42bd7a0c813a60deec7b3b941e918842bcc74d5f17e530dfb717",
+        "productionSha256": "9ca1b1a9789d42bd7a0c813a60deec7b3b941e918842bcc74d5f17e530dfb717",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-today.mjs",
+        "status": 200,
+        "sourceSha256": "5999f0f7b2972cea4ed395e77744722bd7d3b8919d145e14c10d46d462a8ab35",
+        "productionSha256": "5999f0f7b2972cea4ed395e77744722bd7d3b8919d145e14c10d46d462a8ab35",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-workflows.html",
+        "status": 200,
+        "sourceSha256": "55d0c6cff253181bdfe2d46458527084351917757e7b4be2eaa7c7c1d0ea8740",
+        "productionSha256": "55d0c6cff253181bdfe2d46458527084351917757e7b4be2eaa7c7c1d0ea8740",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher-workspace-preview.html",
+        "status": 200,
+        "sourceSha256": "62ec90c79db758706aba8c04d05978433415585ce9a77e14d29d9178e509fcd1",
+        "productionSha256": "62ec90c79db758706aba8c04d05978433415585ce9a77e14d29d9178e509fcd1",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher.css",
+        "status": 200,
+        "sourceSha256": "5628e172dd196af8bac2293a63b60f978f6510047ff69e2a1293c99e7b27106e",
+        "productionSha256": "5628e172dd196af8bac2293a63b60f978f6510047ff69e2a1293c99e7b27106e",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher.html",
+        "status": 200,
+        "sourceSha256": "ae06c32bf5b77a4e3c93719efde9b78259d868e90180b735a70da5ad648f2473",
+        "productionSha256": "ae06c32bf5b77a4e3c93719efde9b78259d868e90180b735a70da5ad648f2473",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/teacher.js",
+        "status": 200,
+        "sourceSha256": "b94bda4b284d8ff5d539aa90a456a819c937e11228f7fdba60e2311b0cfb84a3",
+        "productionSha256": "b94bda4b284d8ff5d539aa90a456a819c937e11228f7fdba60e2311b0cfb84a3",
+        "matches": true,
+        "readbackFresh": true
+      },
+      {
+        "path": "web/tokens.css",
+        "status": 200,
+        "sourceSha256": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d",
+        "productionSha256": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/ux.css",
+        "status": 200,
+        "sourceSha256": "6e3975367e2ecdbb61fa5936a8f34f2c7e97efac23734a09220ead5c222ab82f",
+        "productionSha256": "6e3975367e2ecdbb61fa5936a8f34f2c7e97efac23734a09220ead5c222ab82f",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/ux.js",
+        "status": 200,
+        "sourceSha256": "eb681fe7c49f8177200cc0858523ca7cb4f59c965bb6ac31b0d7ec23e528b0ee",
+        "productionSha256": "eb681fe7c49f8177200cc0858523ca7cb4f59c965bb6ac31b0d7ec23e528b0ee",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/written-work.css",
+        "status": 200,
+        "sourceSha256": "8dba2547f50a53ff47ef544f4bcee5f386f1bf9eecb764ab93454ed36e14790e",
+        "productionSha256": "8dba2547f50a53ff47ef544f4bcee5f386f1bf9eecb764ab93454ed36e14790e",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      },
+      {
+        "path": "web/written-work.mjs",
+        "status": 200,
+        "sourceSha256": "6c89929e7fdf44bb37b319effcd77b96434a840ff3d86836f63f298b5bbaf746",
+        "productionSha256": "6c89929e7fdf44bb37b319effcd77b96434a840ff3d86836f63f298b5bbaf746",
+        "matches": true,
+        "readbackFresh": false,
+        "reusedVerifiedSource": "93e766d2ac1e3ddd71622694a644a711ef88f2d2",
+        "reusedCheckedAt": "2026-10-29T01:53:39.217664+00:00"
+      }
+    ],
+    "freshFiles": 1,
+    "unchangedFilesReused": 61,
+    "sourceDiffVerified": [
+      "web/teacher.js"
+    ],
+    "meaning": "One changed teacher entry is freshly read; all 61 other current dependency hashes equal the prior exact deployed readback. No changed dependency is reused."
+  },
+  "edge": {
+    "verifiedSource": "40ef8eaaa50467c715d7c44ac02fbc0dd8b9a37e",
+    "currentSource": "78fb5869abcc1145aab5181dadbff5a22273a46d",
+    "allCurrentDependencyBytesUnchanged": true,
+    "readback": {
+      "source": "40ef8eaaa50467c715d7c44ac02fbc0dd8b9a37e",
+      "functions": [
+        {
+          "name": "get-teacher-dashboard",
+          "version": 25,
+          "verifyJwt": true,
+          "bundle": "f67233f7a9a3f80804cbc16668ae7d1b9d6a04e2c43d413e1712d4a22074aea2",
+          "checkedAt": "2026-10-29T01:00:36.204Z",
+          "files": [
+            {
+              "path": "get-teacher-dashboard/index.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-read-identity.mjs",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-workspace-request.mjs",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-dashboard-batch.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/institutional-teacher-dashboard.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/academic-context.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/institutional-teacher-analytics.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/initial-diagnostic.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/analytics-evidence.mjs",
+              "matches": true
+            },
+            {
+              "path": "_shared/auth.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/curriculum-release.ts",
+              "matches": true
+            }
+          ]
+        },
+        {
+          "name": "get-teacher-workspace",
+          "version": 4,
+          "verifyJwt": true,
+          "bundle": "84980628530129f33b038b450652bcc88da96c2b504e4b7c9fd47d64ee8265f8",
+          "checkedAt": "2026-10-29T01:00:36.887Z",
+          "files": [
+            {
+              "path": "get-teacher-workspace/index.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-workspace-handler.mjs",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-read-identity.mjs",
+              "matches": true
+            },
+            {
+              "path": "_shared/teacher-workspace-request.mjs",
+              "matches": true
+            }
+          ]
+        },
+        {
+          "name": "get-teacher-student",
+          "version": 17,
+          "verifyJwt": false,
+          "bundle": "80b1072cbf0c0fe490e34f2894d7ded3f78102cd31880f8d9a5a0ea847fd7b97",
+          "checkedAt": "2026-10-29T01:00:38.280Z",
+          "files": [
+            {
+              "path": "get-teacher-student/index.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/initial-diagnostic.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/auth.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/curriculum-release.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/academic-context.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/institutional-teacher-analytics.ts",
+              "matches": true
+            },
+            {
+              "path": "_shared/analytics-evidence.mjs",
+              "matches": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sql": {
+    "verifiedSource": "40ef8eaaa50467c715d7c44ac02fbc0dd8b9a37e",
+    "currentSource": "78fb5869abcc1145aab5181dadbff5a22273a46d",
+    "allCurrentBodiesAndAclDeclarationsUnchanged": true,
+    "readback": {
+      "source": "40ef8eaaa50467c715d7c44ac02fbc0dd8b9a37e",
+      "checkedAt": "2026-10-29T01:04:12.954Z",
+      "functions": [
+        {
+          "proname": "service_teacher_dashboard_actor",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\""
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+          "bodyLength": 677,
+          "matchesReviewedBody": true
+        },
+        {
+          "proname": "service_teacher_dashboard_directory",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\""
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+          "bodyLength": 193,
+          "matchesReviewedBody": true
+        },
+        {
+          "proname": "service_teacher_dashboard_evidence",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\"",
+            "TimeZone=UTC"
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028225658_teacher_evidence_projection.sql",
+          "bodyLength": 6666,
+          "matchesReviewedBody": true
+        },
+        {
+          "proname": "service_teacher_dashboard_home",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\"",
+            "TimeZone=UTC"
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028234350_teacher_transaction_reads.sql",
+          "bodyLength": 836,
+          "matchesReviewedBody": true
+        },
+        {
+          "proname": "service_teacher_dashboard_initial",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\"",
+            "TimeZone=UTC"
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028234350_teacher_transaction_reads.sql",
+          "bodyLength": 2165,
+          "matchesReviewedBody": true
+        },
+        {
+          "proname": "service_teacher_dashboard_rows",
+          "prosecdef": false,
+          "provolatile": "s",
+          "proconfig": [
+            "search_path=\"\"",
+            "TimeZone=UTC"
+          ],
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true,
+          "sourcePath": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+          "bodyLength": 5164,
+          "matchesReviewedBody": true
+        }
+      ],
+      "migrationsAlreadyApplied": [
+        "20261028220526",
+        "20261028225658",
+        "20261028234350"
+      ],
+      "reapplied": false
+    }
+  },
+  "vercel": {
+    "id": "dpl_2TuaWcFXggaxARhJxisyfTvwhWmp",
+    "state": "READY",
+    "source": "78fb5869abcc1145aab5181dadbff5a22273a46d"
+  },
+  "deploymentGate": {
+    "reusedConfigurationEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "freshConfigurationAttestation": false,
+    "reason": "Current connector scope denies team deployment-settings read (403); no configuration was changed. READY, required CI, production revision/assets and authenticated acceptance remain independent evidence."
+  },
+  "evidenceReuse": "The last runtime change affects only teacher.js. That file is freshly read from production; all 61 other frontend dependencies equal their previous exact deployed readbacks. All 65 compatibility dependencies, 22 Edge instances and six optimized SQL bodies/settings/grants are unchanged from verified evidence. No unchanged code was redeployed or migration reapplied. Current teacher behavior is covered by 150 fresh observations and 260 native checks.",
+  "status": "Source verified; fixed PERF-02 budgets met; final owner usability remains B.12.3",
+  "dataset": {
+    "before": [
+      {
+        "side": "A",
+        "sessions": 6,
+        "attempts": 39,
+        "latest_session_change": "2026-10-13 19:03:04.931758+00",
+        "writing_works": 2,
+        "latest_work_change": "2026-10-24 13:55:10.845892+00",
+        "read_evidence_hash": "c0d0d3e2a3157c66339fd24ced1d8616"
+      },
+      {
+        "side": "B",
+        "sessions": 1,
+        "attempts": 3,
+        "latest_session_change": "2026-10-03 18:10:41.877+00",
+        "writing_works": 0,
+        "latest_work_change": null,
+        "read_evidence_hash": "b3da6c851ad9dd7bc2de97b4049bd531"
+      }
+    ],
+    "after": [
+      {
+        "side": "A",
+        "sessions": 6,
+        "attempts": 39,
+        "latest_session_change": "2026-10-13 19:03:04.931758+00",
+        "writing_works": 2,
+        "latest_work_change": "2026-10-24 13:55:10.845892+00",
+        "read_evidence_hash": "c0d0d3e2a3157c66339fd24ced1d8616"
+      },
+      {
+        "side": "B",
+        "sessions": 1,
+        "attempts": 3,
+        "latest_session_change": "2026-10-03 18:10:41.877+00",
+        "writing_works": 0,
+        "latest_work_change": null,
+        "read_evidence_hash": "b3da6c851ad9dd7bc2de97b4049bd531"
+      }
+    ],
+    "unchanged": true,
+    "query": "with f(side,class_id,teacher_id) as (values ('A','6f8002d4-e375-4490-91d1-ac8111c316de'::uuid,'50e19b9c-166a-48bf-b654-c702edcff815'::uuid),('B','69c3a01d-c393-4b0e-b085-23c8c89cd026'::uuid,'61ad0552-7bcb-480a-ba27-95c635326953'::uuid)) select side,(select count(*) from learning_sessions s where s.class_id=f.class_id) sessions,(select count(*) from attempts a join learning_sessions s on s.id=a.learning_session_id where s.class_id=f.class_id) attempts,(select max(s.updated_at) from learning_sessions s where s.class_id=f.class_id) latest_session_change,(select count(*) from written_work w where w.class_id in(select c.id from classes c where c.teacher_id=f.teacher_id)) writing_works,(select max(w.updated_at) from written_work w where w.class_id in(select c.id from classes c where c.teacher_id=f.teacher_id)) latest_work_change, md5(coalesce((select string_agg(to_jsonb(s)::text,'' order by s.id) from learning_sessions s where s.class_id=f.class_id),'')||coalesce((select string_agg(to_jsonb(a)::text,'' order by a.id) from attempts a join learning_sessions s on s.id=a.learning_session_id where s.class_id=f.class_id),'')) read_evidence_hash from f order by side",
+    "hashDefinition": "Ordered full-row MD5 for existing class sessions and attempts; writing counts and last-change timestamps separately. Historical baseline fingerprint algorithm is retained separately."
+  },
+  "performance": {
+    "run": 40804979204,
+    "artifact": 12867679754,
+    "samples": 150,
+    "allFixedTargetsMet": true,
+    "legacyPollingBudgetsAllMet": true,
+    "pairedPreciseBefore": 40802546459,
+    "homeObservations": 40,
+    "applicationRequestsPerHome": 2,
+    "redundantStartupObservationsAfter": 0,
+    "fixtureSizes": {
+      "A": {
+        "active": 3,
+        "archived": 33
+      },
+      "B": {
+        "active": 2,
+        "archived": 30
+      }
+    },
+    "localQaSessionsClosed": 2,
+    "productionSourceUnchangedAfter": true
+  },
+  "reusedCompatibility": {
+    "verifiedSource": "40ef8eaaa50467c715d7c44ac02fbc0dd8b9a37e",
+    "currentSource": "78fb5869abcc1145aab5181dadbff5a22273a46d",
+    "run": 40797439888,
+    "checks": 142,
+    "isolationChecks": 54,
+    "allDependencyBytesUnchanged": true,
+    "files": [
+      {
+        "path": "docs/content/english-7-unit-02-configuration-summary.json",
+        "sha256": "ca6ac1f194e4fede3b942bd78346a72c8ff3ce492dc460cfa9895c7b1674b04f"
+      },
+      {
+        "path": "docs/content/english-7-unit-02-read-contract.json",
+        "sha256": "7c0fe05c3284bcd7d940ee26ba92679c99d7a73c7cdb169fdc5306d4465983a4"
+      },
+      {
+        "path": "docs/content/english-7-unit-02-release-decision.json",
+        "sha256": "ec2fdcdddff3d15d8034cb5a9d9c91b667a5a5f457a1fbdfaede3f1ec60411c5"
+      },
+      {
+        "path": "docs/qa/additional-programme-fixtures.json",
+        "sha256": "8720cf039718a594ac52cbbd4cca9c91fb420256ef029a4e8a7836d4a6fe7019"
+      },
+      {
+        "path": "scripts/chapter-ii-pilot-read-acceptance.mjs",
+        "sha256": "f4d0398f653e03a47fddbfe88c935167a200693ada888a0c586f691ec385e5ee"
+      },
+      {
+        "path": "scripts/english-unit2-pilot-read-acceptance.mjs",
+        "sha256": "6b02aa388bef4b2aba47c784d9f6013b0f512cf44969cc21f9f48d895c14b6f7"
+      },
+      {
+        "path": "scripts/qa-programme-fixtures.mjs",
+        "sha256": "d08f1755e584049effe24d07fbdf54dbd83bff790949ee36e892873f125346bc"
+      },
+      {
+        "path": "scripts/sprint-14-isolation.mjs",
+        "sha256": "5b35d8420afe3ad3d683947eb93255efab6fa23687433c2b7fc80e7607ff590f"
+      },
+      {
+        "path": "scripts/wait-for-production-release.mjs",
+        "sha256": "d498976a2f8586f8dd6d38c6b43ae14df9d61f16f9e84cad975bd95d48333dc0"
+      },
+      {
+        "path": "web/account-roles.js",
+        "sha256": "80fac1c2fb89129aa06ded469fa52bf35a2701c6271dac30929b80da064af2b5"
+      },
+      {
+        "path": "web/app.js",
+        "sha256": "8e8f899c817fb8c0e0b671887df44a4f0bf5da8c4dad17bf0e463f2ba2ad1fee"
+      },
+      {
+        "path": "web/arrangement-contract.mjs",
+        "sha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66"
+      },
+      {
+        "path": "web/arrangement-ui.mjs",
+        "sha256": "047bcad2991c83ccebc65f46d5f2d88b8085005bb8e5e882587336908f337723"
+      },
+      {
+        "path": "web/assessed-audio.mjs",
+        "sha256": "8d0f09848696e514bc7e57b4f3bffc26fc35ae7ea019d3b34c32a7cde4288a4e"
+      },
+      {
+        "path": "web/assessment-reporting.mjs",
+        "sha256": "6b811487d2a1b4f9ebc31a53afaa5e43d50967ce113a25b2688ca7fd0fb56b6f"
+      },
+      {
+        "path": "web/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+        "sha256": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f"
+      },
+      {
+        "path": "web/assets/fonts/noto-sans-armenian-variable.ttf",
+        "sha256": "0870908d8318435a5daf1cd280ae15063f990cd9ad60f3e94c734ce9e1ffef71"
+      },
+      {
+        "path": "web/base.css",
+        "sha256": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6"
+      },
+      {
+        "path": "web/components.css",
+        "sha256": "4879b45580bb75548a5d73a805703832fe7a013551f5bccf9b587858973fad56"
+      },
+      {
+        "path": "web/config.js",
+        "sha256": "721242de821877470224c671fc8069c1fbe4ae860f082062e13dae36a61d0eae"
+      },
+      {
+        "path": "web/course-gate.js",
+        "sha256": "3d33709583005a9f2d27281eb89ee97fdfaeb54909c26cdd70c69f4f80c4d891"
+      },
+      {
+        "path": "web/course-page.js",
+        "sha256": "9914979577335df73ee9a7a7c146c74aa4752b88025a2ac421e6f5d51967eaf4"
+      },
+      {
+        "path": "web/course-workspace.css",
+        "sha256": "c901a38fad6657456e80cc71546d6c27d6898104dc16933f932ae89346cb7ad5"
+      },
+      {
+        "path": "web/course.html",
+        "sha256": "4c5d923fba6dba1b3c96f18db6cacbaac5bf64a7974c3ddf16f4bdfea6bba7af"
+      },
+      {
+        "path": "web/forest-tokens.css",
+        "sha256": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31"
+      },
+      {
+        "path": "web/home-class.js",
+        "sha256": "de7e63de5ec89377ecc15403b71df01041e0fbba93432698b949389dd6f9a26f"
+      },
+      {
+        "path": "web/home.css",
+        "sha256": "5dc78c59f75cb82bbcb76f1eb8343cf100fccd2d33d3b824db3df7aa30b0d63c"
+      },
+      {
+        "path": "web/index.html",
+        "sha256": "cba7afc13a395a9c65c33bf89c9c98e805912a271ac8aa022ff05b0dd50cb5f7"
+      },
+      {
+        "path": "web/learning-audio.mjs",
+        "sha256": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9"
+      },
+      {
+        "path": "web/learning-extensions.mjs",
+        "sha256": "c3c161b1d83fe8de6b3c1f61fce1fc5084103df38db9746b4d5a998c97f7fa11"
+      },
+      {
+        "path": "web/learning-navigation.mjs",
+        "sha256": "d500a81e08d64d95e96e869f64fc346734961eaa510c4c362973bb2d55468a11"
+      },
+      {
+        "path": "web/learning-player.mjs",
+        "sha256": "27c521f34899ef133461c9d7c1c6015403e841cc6eba8b58add072c5b02ddb41"
+      },
+      {
+        "path": "web/learning-stimulus.mjs",
+        "sha256": "2c843af3ddf9578dbd1e0fc1be213c5fdc0e67d4edcf9200477be3b67f6b6cbe"
+      },
+      {
+        "path": "web/learning-task-set.mjs",
+        "sha256": "9600b680895d668261747d5ce7fcec1b366a179dd1b1d55f5ad7e11e2dae7755"
+      },
+      {
+        "path": "web/multi-subject-home.js",
+        "sha256": "0fdabc28fec1565db687f19641361cefe2a3ce273608c7dbd0f894ac8595c9cf"
+      },
+      {
+        "path": "web/multi-subject.css",
+        "sha256": "c48ebb9d0b4e85b24bd6f6e979e9975c6316569722e1e5262096bad382295b4c"
+      },
+      {
+        "path": "web/remediation.js",
+        "sha256": "2251ef9745f2b9f92c6f2261b9873675d07c2a5785e08e201a9e18c3978420f4"
+      },
+      {
+        "path": "web/resource-assignments.css",
+        "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504"
+      },
+      {
+        "path": "web/resource-assignments.mjs",
+        "sha256": "5ee979f46840e87c813b08ffd0cb0d77a390354c8e7e4b46374809180ba9c607"
+      },
+      {
+        "path": "web/resource-learner-view.mjs",
+        "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a"
+      },
+      {
+        "path": "web/resource-navigation.mjs",
+        "sha256": "a99c86ba427f4a2223a933431eae3c090eff3c702c0f44c1d46f9176dbd1009d"
+      },
+      {
+        "path": "web/role-layout.css",
+        "sha256": "ebbb93cd01ec27e73ac6d15f1fa34ff0b9d7ba44db0cc8b12c7bc4960148595b"
+      },
+      {
+        "path": "web/role-router.js",
+        "sha256": "8020b6e91f4e5506a6b75c770bd4777e82110270423a9727063e84f7ad66446b"
+      },
+      {
+        "path": "web/session-watchdog.js",
+        "sha256": "3d660cdc13d509b3f271d40bc83eccdda43fcf8f5850183d7bf6b9110c34aed9"
+      },
+      {
+        "path": "web/staff-forest.css",
+        "sha256": "712a5dbc850711782374b7bb0b14176cb5be91607979396c5f6af1aa2e58eebd"
+      },
+      {
+        "path": "web/student-course-presentation.mjs",
+        "sha256": "2ef43a783c51b82c353ec82a4cbfea6bf113ed774a6ce37b990292133db522e2"
+      },
+      {
+        "path": "web/student-courses.js",
+        "sha256": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e"
+      },
+      {
+        "path": "web/student-forest.css",
+        "sha256": "46682d09f975e28f273efe3f95d5243218a70ca3e759ccfb26ed0ba99bdc2d13"
+      },
+      {
+        "path": "web/student-home-model.mjs",
+        "sha256": "5840f8288a89eabd4e1ed91fb03790995a5005e1ac96b87c27c54b87d5d9f4eb"
+      },
+      {
+        "path": "web/student-shell.css",
+        "sha256": "f8c5e2e5b1053f4c569468cef98250af693d02ab7eb443a992b82b4f2c5b07e4"
+      },
+      {
+        "path": "web/student-shell.js",
+        "sha256": "76463f17de61e76d35bd9b3c0ac6badd034b80c454cbb685c4f85529e06ff038"
+      },
+      {
+        "path": "web/student-signout.mjs",
+        "sha256": "4a7bc2540f420c6e49ca834ca03b71e65cdee7f6ce1083108e2d830726020793"
+      },
+      {
+        "path": "web/student-surfaces.css",
+        "sha256": "af5a5af247ca4513fd62ea1b4eec673c03955a8435efdb392e56e308f905d35d"
+      },
+      {
+        "path": "web/student-visuals.mjs",
+        "sha256": "36a7f38c53f79ea0d19596bf929097f189bf21d603863fb2f5e231838deece42"
+      },
+      {
+        "path": "web/styles.css",
+        "sha256": "2911012de5151db8c8cadbad47f47d2b93c133cc6135156b5569e38216fe4018"
+      },
+      {
+        "path": "web/subject-visuals.mjs",
+        "sha256": "a04660dd3ce99b07e4c4e74e806917abddb325455eb3c8ac6f88393205fae4c1"
+      },
+      {
+        "path": "web/teacher-feedback.mjs",
+        "sha256": "307fae97bde9d03deca6258e454a378c29ed3b6dd0b3a1c99105642505c6fa3b"
+      },
+      {
+        "path": "web/tokens.css",
+        "sha256": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d"
+      },
+      {
+        "path": "web/typed-fields-contract.mjs",
+        "sha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc"
+      },
+      {
+        "path": "web/typed-fields-ui.mjs",
+        "sha256": "7c99f658c882dfff69614dd38bfe46c3d1ccfa446f8ce405c99e6ef1ccbc3dc4"
+      },
+      {
+        "path": "web/unit-guides.mjs",
+        "sha256": "968ddfd2701a762a0cf80a7e0865c941fde1257395ca3b84089660b5c52b90fc"
+      },
+      {
+        "path": "web/ux.css",
+        "sha256": "6e3975367e2ecdbb61fa5936a8f34f2c7e97efac23734a09220ead5c222ab82f"
+      },
+      {
+        "path": "web/ux.js",
+        "sha256": "eb681fe7c49f8177200cc0858523ca7cb4f59c965bb6ac31b0d7ec23e528b0ee"
+      },
+      {
+        "path": "web/written-work.css",
+        "sha256": "8dba2547f50a53ff47ef544f4bcee5f386f1bf9eecb764ab93454ed36e14790e"
+      },
+      {
+        "path": "web/written-work.mjs",
+        "sha256": "6c89929e7fdf44bb37b319effcd77b96434a840ff3d86836f63f298b5bbaf746"
+      }
+    ]
+  },
+  "notices": {
+    "file": "web/teacher-dependencies.bundle.mjs.LICENSE.txt",
+    "sha256": "859546c6f4bfa05c9a5e7dfbd89d2652aaac82bf08cf7d24e687aca6ac3aefdf",
+    "dependencies": [
+      {
+        "package": "@supabase/auth-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "@supabase/functions-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "@supabase/phoenix",
+        "version": "0.4.5",
+        "license": "MIT",
+        "files": [
+          "LICENSE.md"
+        ]
+      },
+      {
+        "package": "@supabase/postgrest-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "@supabase/realtime-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "@supabase/storage-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "@supabase/supabase-js",
+        "version": "2.118.0",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "iceberg-js",
+        "version": "0.8.1",
+        "license": "MIT",
+        "files": [
+          "LICENSE"
+        ]
+      },
+      {
+        "package": "tslib",
+        "version": "2.8.1",
+        "license": "0BSD",
+        "files": [
+          "LICENSE.txt"
+        ]
+      }
+    ]
+  },
+  "queueControl": {
+    "duplicateCompatibilityRun": 40802394536,
+    "canceledBeforeAuthentication": true,
+    "authenticatedStepSkipped": true,
+    "reason": "Reuse unchanged verified evidence and give PERF-02 the shared QA slot; no production session or fixture record had been created.",
+    "settlementDuplicateCompatibility": {
+      "run": 40804830171,
+      "canceledBeforeAuthentication": true,
+      "authenticatedStepSkipped": true,
+      "reason": "Unchanged verified contracts reused; no production sessions or fixture records had been created."
+    }
+  }
+}

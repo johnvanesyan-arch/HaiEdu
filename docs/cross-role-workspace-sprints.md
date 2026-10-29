@@ -1,6 +1,6 @@
 # Cross-role workspace repair and Forest redesign
 
-2026-10-28 · owner-authorized scope and priority · roadmap 4.104.
+2026-10-28 · owner-authorized scope and priority · roadmap 4.105.
 
 John accepts the shared Forest/cream direction, role-specific homes, teacher Today workspace, feedback improvements, visual class cards, explicit sharing and restrained motion. He requires the reported navigation, delivery and performance problems to be addressed before additional subjects or chapters. Work proceeds through independently verifiable slices with one primary agent. Approval of the direction does not claim implementation, measured performance or completion of future services.
 
@@ -16,7 +16,7 @@ John accepts the shared Forest/cream direction, role-specific homes, teacher Tod
 | 16.5B.9 | Shared Forest staff layout and concrete Teacher Home → Classes → Review prototype, then rollout | B.7; B.8 contract informs sharing states | Delivered; 234 native / 147 live staff checks; final owner usability remains B.12 |
 | 16.5B.10 | Teacher Today workspace and visual class cards | B.7, B.9; scoped queue projection | Delivered; 237 native / 206 live staff checks; final usability remains B.12 |
 | 16.5B.11 | Faster rubric/feedback workflow | B.9, B.10; feedback persistence contracts | Delivered; 241 native / 47 live reads and 54+54 isolation; final usability remains B.12 |
-| 16.5B.12 | Sharing preview, purposeful motion and cross-role usability acceptance | B.6–B.11 | In progress: B.12.1 delivered; B.12.2 performance and B.12.3 final acceptance remain |
+| 16.5B.12 | Sharing preview, purposeful motion and cross-role usability acceptance | B.6–B.11 | In progress: B.12.1 previews and B.12.2 performance delivered; B.12.3 final acceptance next |
 
 Complete and verify these bounded slices, then obtain owner usability acceptance before resuming English after C47: Unit 3 full learner/audio/writing acceptance, Units 4–6 and course closure; Mathematics/Armenian follow their existing sequence. Full four-subject 16.4/16.5C acceptance still gates Sprint 17. It cannot be a prerequisite for resuming the subject work needed to supply the remaining subjects: this workspace exit covers available production programmes and subject-neutral fixtures, not a claim of four production-ready subjects.
 
@@ -127,3 +127,8 @@ The actual production flow uses both designated schools, the ordinary teacher/st
 **B.12 delivery subdivisions — 2026-10-29:** [B.12.1 sharing previews](teacher-sharing-preview.md) is the first bounded capability; B.12.2 resolves/rechecks PERF-02; B.12.3 completes cross-role journeys and owner usability acceptance. Full B.12 and subject resumption remain gated.
 
 **B.12.1 verified delivery — 2026-10-29:** [PR340](https://github.com/johnvanesyan-arch/HaiEdu/pull/340), all five PR/main gates (1,529 unit/integration; 247 native), current-source 158/158 live checks and 54+54 isolation/cleanup, 142 compatibility checks and frontend parity close the preview capability. [Contract/evidence](teacher-sharing-preview.md). No backend/content/audio change. **Next B.12.2 PERF-02; B.12.3 retains final owner usability.** Full B.12, all 45 mappings, English C47 hold and full four-subject gates remain.
+
+
+## B.12.2 verified delivery — 2026-10-29
+
+**2026-10-29 — B.12.2 teacher loading performance delivered.** Batched exact reads, verified-identity reuse, local SDK/font delivery and one-use role-gated startup overlap retain live/final authorization. All 150 final guarded observations complete on the recorded desktop/4G profile: useful Home p95 **2.47 s cold /1.75 s reload**, class opening **1.33 s**, loaded navigation **42 ms**; the unchanged 3 s /2 s /200 ms budgets pass. Original polling clocks, precise-before calibration, failed-target iterations and all samples remain in [the report](teacher-performance.md). All five required PR/main CI jobs pass (**1,561 unit/integration; 260 native checks**). Current frontend, all 22 teacher Edge file instances and six SQL bodies/grants match source; fixture sizes, existing evidence and run-owned cleanup are verified. [Measurement evidence](evidence/teacher-performance-final-20261029.json). **Next: B.12.3 cross-role/recipient journeys and final owner usability acceptance.** Full B.12, all 45 mappings, DEMO-01, WRITE-CREATE, RESOURCE-SUBMIT, English C47 hold and full four-subject gates remain.
