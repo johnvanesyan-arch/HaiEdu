@@ -8,11 +8,11 @@ const rubric=d=>`<details class="written-rubric"><summary>Գնահատման չ�
 const reviewMarkup=r=>`<div class="written-feedback"><strong>${r.decision==='assessed'?'Գնահատված է':'Վերադարձվել է վերանայման'}</strong><p class="written-text">${esc(r.feedback)}</p>${r.changeReason?`<p>Փոփոխության պատճառ՝ ${esc(r.changeReason)}</p>`:''}<small>${esc(date(r.createdAt))}</small></div>`;
 export function mountWrittenWork({root,supabase,context,actorId,teacher=false,isCurrent=()=>true,initialWorkId=null,initialState="submitted",stateButtons=false,onStateChange=()=>{},onReviewed=()=>{},onBack=null}) {
  let feedbackEditor=()=>{},feedbackInitial=null;
- let authSubscription=null,alive=true,sequence=0,model=null,timer=null,saving=null,savedText='',busy=false,conflict=false,offset=0,state=['submitted','changes_requested','reviewed','all'].includes(initialState)?initialState:'submitted',teacherDirty=false;
+ let authSubscription=null,alive=true,sequence=0,model=null,timer=null,saving=null,savedText='',busy=false,conflict=false,pendingSubmission=null,offset=0,state=['submitted','changes_requested','reviewed','all'].includes(initialState)?initialState:'submitted',teacherDirty=false;
  const current=()=>alive&&isCurrent();
  const $=s=>root.querySelector(s);
  const message=(text,bad=false)=>{const el=$('[data-writing-message]');if(current()&&el){el.textContent=text;el.classList.toggle('written-error',bad);}};
- const dirty=()=>Boolean(!teacher&&$('[data-writing-text]')&&$('[data-writing-text]').value!==savedText)||teacherDirty||Boolean(teacher&&feedbackEditor.hasUnsaved?.());
+ const dirty=()=>Boolean(!teacher&&(pendingSubmission||busy||conflict||($('[data-writing-text]')&&$('[data-writing-text]').value!==savedText)))||teacherDirty||Boolean(teacher&&feedbackEditor.hasUnsaved?.());
  const unload=e=>{if(current()&&(dirty()||saving||busy)){e.preventDefault();e.returnValue='';}};
  window.addEventListener('beforeunload',unload);
  async function api(action,payload={}) {
@@ -43,38 +43,76 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
   const max=d.criteria.reduce((n,c)=>n+c.descriptors.length-1,0);
   const score=lastReview?.decision==='assessed'?Object.values(lastReview.scores).reduce((n,x)=>n+x,0):null;
   shell(`<button type="button" class="ghost" data-writing-back>Վերադառնալ ցանկին</button>${teacher?`<p><strong>${esc(model.studentName)}</strong></p>`:''}<h3 lang="${esc(d.locale)}">${esc(d.title)}</h3><p>${labels[work?.state??'not_started']}${model.readOnly?' · Միայն դիտման համար':''}</p><p class="written-text" lang="${esc(d.locale)}">${esc(d.prompt)}</p><p>Առաջարկվող ծավալ՝ ${d.minWords}–${d.maxWords} բառ։</p>${typeof d.assistance.policy==='string'?`<p class="subtle" data-writing-assistance lang="${esc(d.locale)}">${esc(d.assistance.policy)}</p>`:''}${canMark?'':rubric(d)}
-   ${editable?`<form data-writing-form><label>Ձեր աշխատանքը<textarea data-writing-text rows="10" maxlength="20000" lang="${esc(d.locale)}" spellcheck="${d.assistance.spellcheck===true}" autocomplete="off" autocorrect="off" autocapitalize="off">${esc(savedText)}</textarea></label><p data-writing-count aria-live="polite"></p><p class="subtle">Բառերը հաշվվում են ըստ բացատների և տողադարձերի։ Ծավալը գնահատման ուղեցույց է։</p><div class="row"><button type="button" class="secondary" data-writing-save>Պահպանել սևագիրը</button><button type="submit" data-writing-submit>Ներկայացնել ուսուցչին</button></div></form>`:!teacher&&!last?'<p>Այս պահին աշխատանքը ներկայացնել հնարավոր չէ։</p>':''}
+   ${editable?`<form data-writing-form><label>Ձեր աշխատանքը<textarea data-writing-text rows="10" maxlength="20000" lang="${esc(d.locale)}" spellcheck="${d.assistance.spellcheck===true}" autocomplete="off" autocorrect="off" autocapitalize="off">${esc(savedText)}</textarea></label><p data-writing-count aria-live="polite"></p><p class="subtle">Բառերը հաշվվում են ըստ բացատների և տողադարձերի։ Ծավալը գնահատման ուղեցույց է։</p><div class="row"><button type="button" class="secondary" data-writing-save>Պահպանել սևագիրը</button><button type="submit" data-writing-submit>Ներկայացնել ուսուցչին</button><button type="button" data-writing-recover hidden>Ստուգել ներկայացման կարգավիճակը</button><button type="button" class="secondary" data-writing-reload hidden>Բեռնել վերջին պահպանված տարբերակը</button></div></form>`:!teacher&&!last?'<p>Այս պահին աշխատանքը ներկայացնել հնարավոր չէ։</p>':''}
    ${canMark?'<div class="written-review-layout">':''}${last?`<section class="written-submitted"><h3>Ներկայացված տարբերակ ${last.version}</h3><p class="written-text written-response" lang="${esc(d.locale)}">${esc(last.text)}</p><p>${last.wordCount} բառ · ${esc(date(last.submittedAt))}</p>${score==null?'':`<p class="written-score">Արդյունք՝ ${score}/${max}</p><ul>${d.criteria.map(c=>`<li><span lang="${esc(d.locale)}">${esc(c.label)}</span>՝ ${lastReview.scores[c.key]}/${c.descriptors.length-1}</li>`).join('')}</ul>`}${lastReview?reviewMarkup(lastReview):'<p>Սպասում է ուսուցչի ստուգմանը։ Կարող եք շարունակել մյուս առաջադրանքները։</p>'}</section>`:''}
    ${canMark?teacherFeedbackMarkup(d,lastReview):''}${canMark?'</div>':''}${teacher&&!canMark&&feedbackInitial?.draft?`<section class="written-feedback"><h3>Ձեր անձնական սևագիրը · Միայն դիտման համար</h3><p>Աշակերտին չի ուղարկվել։</p><p class="written-text">${esc(feedbackInitial.draft.data.feedback)}</p></section>`:''}
 
    ${model.submissions.length?`<details class="written-history"><summary>Ներկայացումների և գնահատումների պատմությունը</summary>${model.submissions.slice().reverse().map(s=>`<section><h4>Տարբերակ ${s.version} · ${esc(date(s.submittedAt))}</h4><p class="written-text" lang="${esc(d.locale)}">${esc(s.text)}</p>${s.reviews.map(r=>`${r.scores?`<p>${d.criteria.map(c=>`${esc(c.label)}՝ ${r.scores[c.key]}/${c.descriptors.length-1}`).join(' · ')}</p>`:''}${reviewMarkup(r)}`).join('')}</section>`).join('')}</details>`:''}`);
   $('[data-writing-back]').onclick=onBack??list;
-  if(editable){const input=$('[data-writing-text]');const count=()=>{$('[data-writing-count]').textContent=`${writtenWordCount(input.value)} բառ`;};count();input.oninput=()=>{count();clearTimeout(timer);message('Փոփոխությունները դեռ չեն պահպանվել։');timer=setTimeout(()=>void flush(),750);};$('[data-writing-save]').onclick=()=>flush();$('[data-writing-form]').onsubmit=e=>{e.preventDefault();void submit();};}
+  if(editable){const input=$('[data-writing-text]');const count=()=>{$('[data-writing-count]').textContent=`${writtenWordCount(input.value)} բառ`;};count();input.oninput=()=>{count();clearTimeout(timer);message('Փոփոխությունները դեռ չեն պահպանվել։');timer=setTimeout(()=>void flush(),750);};$('[data-writing-save]').onclick=()=>flush();$('[data-writing-form]').onsubmit=e=>{e.preventDefault();void submit();};$('[data-writing-recover]').onclick=()=>void recoverSubmission();$('[data-writing-reload]').onclick=()=>{if(!busy&&window.confirm('Ձեր այս պատուհանի տեքստը կփոխարինվի վերջին պահպանված տարբերակով։ Նախ պատճենեք այն, եթե ցանկանում եք պահել։ Շարունակե՞լ։'))void open(model.task.id);};controls();}
   if(canMark){const editorSequence=sequence;feedbackEditor=mountTeacherFeedback({root:$('[data-feedback-editor]'),supabase,context,model,initial:feedbackInitial,onReload:()=>void open(model.work.id),isCurrent:()=>current()&&sequence===editorSequence,
    onDenied:()=>{if(current()&&sequence===editorSequence){sequence++;model=null;feedbackInitial=null;shell('<p>Այս աշխատանքն այլևս հասանելի չէ։ Նորից բացեք ձեր հասանելի դասարանի աշխատանքները։</p>');}},
    onPublished:(next,receipt)=>{if(!current()||sequence!==editorSequence)return;model=next;feedbackInitial={...feedbackInitial,draft:null};teacherDirty=false;render();message(next.work.state==='changes_requested'?'Աշխատանքը վերադարձվել է աշակերտին։':'Գնահատումն ու մեկնաբանությունն ուղարկված են աշակերտին։');void Promise.resolve().then(()=>{if(current())return onReviewed({workId:model.work.id,receipt});}).catch(()=>{});}});}
 
  }
- async function flush(){
-  clearTimeout(timer);if(teacher||!current()||!$('[data-writing-text]'))return true;
+ function controls(){
+  if(teacher||!current())return;
+  const locked=busy||Boolean(pendingSubmission)||conflict;
+  const input=$('[data-writing-text]');if(input)input.readOnly=locked;
+  for(const selector of ['[data-writing-save]','[data-writing-submit]']){const button=$(selector);if(button){button.disabled=locked;button.hidden=Boolean(pendingSubmission)||conflict;}}
+  const back=$('[data-writing-back]');if(back)back.disabled=locked;
+  const recover=$('[data-writing-recover]');if(recover){recover.hidden=!pendingSubmission;recover.disabled=busy;}
+  const reload=$('[data-writing-reload]');if(reload){reload.hidden=!conflict;reload.disabled=busy;}
+ }
+ async function flush(duringSubmit=false){
+  clearTimeout(timer);if(teacher||!current())return true;
+  if(pendingSubmission||(busy&&!duringSubmit))return false;
+  if(!$('[data-writing-text]'))return true;
   if(conflict)return false;
-  if(saving){if(!(await saving))return false;return flush();}
+  if(saving){if(!(await saving))return false;return flush(duringSubmit);}
   const input=$('[data-writing-text]'),text=input.value;if(text===savedText)return true;
   message('Սևագիրը պահպանվում է…');const taskId=model.task.id,request=sequence;
-  saving=(async()=>{try{const data=await api('save',{taskId,text,expectedRevision:model.work?.revision??0});if(!current()||request!==sequence)return false;model=data;savedText=text;message(input.value===text?'Սևագիրը պահպանված է։':'Նոր փոփոխությունները դեռ պահպանվում են…');return true;}catch(e){if(current()&&request===sequence){conflict=e.code==='written_conflict';message(e.message,true);}return false;}})();
-  const success=await saving;saving=null;if(success&&current()&&input.value!==savedText)return flush();return success;
+  saving=(async()=>{try{const data=await api('save',{taskId,text,expectedRevision:model.work?.revision??0});if(!current()||request!==sequence)return false;model=data;savedText=text;message(input.value===text?'Սևագիրը պահպանված է։':'Նոր փոփոխությունները դեռ պահպանվում են…');return true;}catch(e){if(current()&&request===sequence){conflict=e.code==='written_conflict';message(e.message,true);controls();}return false;}})();
+  const success=await saving;saving=null;if(success&&current()&&input.value!==savedText)return flush(duringSubmit);return success;
  }
- async function submit(){if(busy||!current()||conflict)return;busy=true;const button=$('[data-writing-submit]');button.disabled=true;
-  try{if(!(await flush()))return;const text=$('[data-writing-text]').value;if(!writtenWordCount(text)){message('Նախ գրեք ձեր պատասխանը։',true);return;}
-   $('[data-writing-text]').readOnly=true;const request=sequence;const data=await api('submit',{taskId:model.task.id,text,expectedRevision:model.work?.revision??0});if(!current()||request!==sequence)return;model=data;savedText=text;render();message('Աշխատանքը ներկայացված է ուսուցչին։');
-  }catch(e){if(current()){message(e.message,true);const input=$('[data-writing-text]');if(input)input.readOnly=false;conflict=e.code==='written_conflict';}}
-  finally{busy=false;if(current()&&button.isConnected)button.disabled=false;}
+ async function recoverSubmission(){
+  if(busy||!current()||!pendingSubmission)return;
+  busy=true;controls();message('Ստուգվում է՝ արդյոք աշխատանքը ներկայացված է ուսուցչին…');
+  const pending=pendingSubmission,request=sequence;
+  try{
+   const data=await api('open',{taskId:pending.taskId});
+   if(!current()||request!==sequence||pending!==pendingSubmission)return;
+   if(data.task.id!==pending.taskId)throw new Error('written_recovery_context');
+   // Immutable history confirms the submitted text even if a teacher has already
+   // reviewed/returned it. Never replay a mutation merely to discover its outcome.
+   const confirmed=data.submissions.some(s=>!pending.submissionIds.includes(s.id)&&s.text===pending.text);
+   if(confirmed){pendingSubmission=null;model=data;savedText=data.draftText;conflict=false;render();message('Աշխատանքի ներկայացումը հաստատված է։ Ստորև կարող եք տեսնել ներկայացված տարբերակն ու ստուգման կարգավիճակը։');return;}
+   const unchanged=data.work?.revision===pending.expectedRevision&&data.work?.currentSubmissionId===pending.previousSubmissionId&&data.draftText===pending.text&&!data.readOnly&&['draft','changes_requested'].includes(data.work?.state);
+   pendingSubmission=null;
+   if(unchanged){model=data;conflict=false;message('Ներկայացումը դեռ չի հաստատվել։ Ձեր սևագիրը պահպանված է։ Կարող եք կրկին սեղմել «Ներկայացնել ուսուցչին»։',true);}
+   else{conflict=true;message('Աշխատանքի պահպանված տարբերակը փոխվել է։ Այս պատուհանի տեքստը մնացել է տեսանելի․ պատճենեք այն, ապա բեռնեք վերջին պահպանված տարբերակը։',true);}
+  }catch{if(current()&&request===sequence&&pending===pendingSubmission){message('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։',true);}}
+  finally{busy=false;controls();if(current()&&request===sequence){const next=pendingSubmission?$('[data-writing-recover]'):conflict?$('[data-writing-reload]'):$('[data-writing-message]');if(next){if(next.matches('[data-writing-message]'))next.tabIndex=-1;next.focus();}}}
+ }
+ async function submit(){
+  if(busy||pendingSubmission||!current()||conflict)return;
+  busy=true;controls();const request=sequence;
+  try{
+   if(!(await flush(true))||!current()||request!==sequence)return;
+   const text=$('[data-writing-text]').value;if(!writtenWordCount(text)){message('Նախ գրեք ձեր պատասխանը։',true);return;}
+   pendingSubmission={taskId:model.task.id,text,expectedRevision:model.work?.revision??0,previousSubmissionId:model.work?.currentSubmissionId??null,submissionIds:model.submissions.map(s=>s.id)};
+   controls();message('Աշխատանքը ներկայացվում է ուսուցչին…');
+   const data=await api('submit',{taskId:pendingSubmission.taskId,text,expectedRevision:pendingSubmission.expectedRevision});
+   if(!current()||request!==sequence)return;
+   pendingSubmission=null;model=data;savedText=text;render();message('Աշխատանքը ներկայացված է ուսուցչին։');
+  }catch(e){if(current()&&request===sequence){if(pendingSubmission){busy=false;await recoverSubmission();}else{message(e.message,true);controls();}}}
+  finally{busy=false;controls();}
  }
  const navigate=async e=>{const link=e.target.closest?.('a[href]');if(!current()||teacher||!link||(!dirty()&&!saving)||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||link.target==='_blank')return;e.preventDefault();e.stopImmediatePropagation();if(await flush())location.assign(link.href);};
  document.addEventListener('click',navigate,true);
  if(teacher&&initialWorkId)void open(initialWorkId);else void list();
- const dispose=()=>{if(!alive)return;alive=false;feedbackEditor();feedbackInitial=null;authSubscription?.unsubscribe?.();sequence++;clearTimeout(timer);window.removeEventListener('beforeunload',unload);document.removeEventListener('click',navigate,true);root.replaceChildren();model=null;savedText='';};
+ const dispose=()=>{if(!alive)return;alive=false;feedbackEditor();feedbackInitial=null;pendingSubmission=null;authSubscription?.unsubscribe?.();sequence++;clearTimeout(timer);window.removeEventListener('beforeunload',unload);document.removeEventListener('click',navigate,true);root.replaceChildren();model=null;savedText='';};
  authSubscription=supabase.auth?.onAuthStateChange?.((_event,session)=>{if(!session||session.user?.id!==actorId)dispose();})?.data?.subscription;
  if(!alive)authSubscription?.unsubscribe?.();
- dispose.flush=flush;dispose.hasUnsaved=dirty;return dispose;
+ dispose.flush=()=>flush();dispose.hasUnsaved=dirty;return dispose;
 }
