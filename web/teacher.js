@@ -1438,6 +1438,7 @@ for(const id of ["institutionalInvitationHistory","institutionalCodeOption"]) $(
 function bootstrapTeacherDashboard(session) {
   if (!session) return Promise.resolve();
   if (dashboardBootstrapPromise && actorId===session.user.id) return dashboardBootstrapPromise;
+  if (dashboard && actorId===session.user.id && !$("dashboardPanel").classList.contains("hidden")) return Promise.resolve();
   actorId=session.user.id;
   const promise=loadDashboard(session).finally(()=>{if(dashboardBootstrapPromise===promise)dashboardBootstrapPromise=null;});
   dashboardBootstrapPromise=promise;
