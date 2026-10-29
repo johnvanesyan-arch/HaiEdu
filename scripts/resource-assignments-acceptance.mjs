@@ -175,6 +175,7 @@ finally{
  }catch{report.status='failed';}
  report.assignmentCleanup=assigned.map(({id,canceled})=>({id,canceled}));
  for(const entry of created.filter(e=>!e.withdrawn))try{check('cleanup ownership is this run only',!originals.has(entry.resourceId));const m=(await all(entry.actor)).find(m=>m.resourceId===entry.resourceId);if(m&&m.status!=='withdrawn')await resource(entry.actor,'withdraw',{...version(m),reason:'Cleanup this run synthetic acceptance resource'});entry.withdrawn=true;}catch{report.status='failed';}
- for(const [actor]of sessions)await request(actor,'/auth/v1/logout?scope=local',{});
+ report.sessionCleanup=[];
+ for(const [actor]of sessions){const r=await request(actor,'/auth/v1/logout?scope=local',{}),closed=r.status===204||r.status===200;report.sessionCleanup.push({actor,httpStatus:r.status,closed});if(!closed)report.status='failed';}
  report.cleanup=created.map(({resourceId,withdrawn})=>({resourceId,withdrawn}));report.completedAt=new Date().toISOString();await mkdir('qa-results',{recursive:true});await writeFile('qa-results/resource-assignments.json',JSON.stringify(report,null,2),{mode:0o600});console.log(`Resource assignment acceptance: ${report.status}; ${report.checks.filter(x=>x.status==='passed').length}/${report.checks.length} checks.`);console.log('RESOURCE_ASSIGNMENT_EVIDENCE='+JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;
 }
