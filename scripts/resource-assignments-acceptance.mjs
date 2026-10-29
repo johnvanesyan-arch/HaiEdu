@@ -1,3 +1,4 @@
+import {createWritingDeliveryAcceptance} from './writing-assignment-delivery-acceptance.mjs';
 import {createUsabilityReads} from './b123-usability-reads.mjs';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
@@ -19,6 +20,7 @@ const check=(label,ok,status)=>{report.checks.push({label,status:ok?'passed':'fa
 async function request(actor,path,body){try{const r=await fetch(url+path,{method:'POST',redirect:'error',headers:{apikey:key,Authorization:'Bearer '+(sessions.get(actor)?.access_token??key),...(body instanceof FormData?{}:{'Content-Type':'application/json'})},body:body instanceof FormData?body:JSON.stringify(body??{}),signal:AbortSignal.timeout(25000)});return{status:r.status,headers:r.headers,data:r.headers.get('content-type')?.startsWith('application/pdf')?new Uint8Array(await r.arrayBuffer()):await r.json().catch(()=>null)};}catch{return{status:0,data:null};}}
 async function resource(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': '+action){const r=await request(actor,'/functions/v1/manage-supplementary-resources',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
 async function assignment(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': assignment '+action){const r=await request(actor,'/functions/v1/manage-resource-assignments',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
+const writingDelivery=createWritingDeliveryAcceptance({fixture,request,browserContext,check,report});
 const usability=createUsabilityReads({fixture,roles,sides,request,browserContext,check,report});
 async function browserContext(actor,materialId=null,creation=null){
  const owned=new Set(materialId?[materialId]:[]);let createStarted=false;
@@ -27,9 +29,10 @@ async function browserContext(actor,materialId=null,creation=null){
  await bc.route('**/functions/v1/**',async route=>{
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={},file=null;try{if(req.headers()['content-type']?.startsWith('multipart/')){const form=await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData();body=JSON.parse(form.get('request'));file=form.get('file');}else body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
-  const read=usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
+  const read=writingDelivery.readAllowed(actor,fn,body)||usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
    ||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(body.action))
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
+   ||(fn==='manage-writing-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action))
    ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
   if(read)return route.continue();
   const exactContext=Object.entries(selectors.get(actor)).every(([k,v])=>body.context?.[k]===v)&&Object.keys(body.context??{}).length===3;
@@ -52,6 +55,7 @@ async function browserContext(actor,materialId=null,creation=null){
   if(fn==='manage-resource-assignments'&&body.action==='assign'&&actor.endsWith('teacher')&&owned.has(body.payload?.materialId)&&body.payload.mode==='class'&&body.payload.enrollmentIds?.length===0&&Object.entries(selectors.get(actor)).every(([k,v])=>body.context?.[k]===v)&&Object.keys(body.context??{}).length===3){
    assignmentIntents.push({actor,payload:body.payload});return route.continue();
   }
+  if(await writingDelivery.mutation(actor,fn,body,route))return;
   report.checks.push({label:'unexpected browser mutation blocked',status:'failed'});return route.abort();
  });
  return bc;
@@ -112,7 +116,7 @@ try{
  check('reviewed main and complete dedicated fixtures',process.env.GITHUB_REF==='refs/heads/main'&&/^[a-f0-9]{40}$/.test(report.revision??'')&&validateFixture(fixture,credentials).length===0&&Boolean(url&&key));
  await waitForRelease({expectedCommit:report.revision});
  report.frontend=[];
- for(const path of ['resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html','ux.js','student-surfaces.css','school-admin.html','school-teacher.html']){
+ for(const path of ['writing-assignments.mjs','writing-assignments.css','resource-learner-view.mjs','resource-file-input.mjs','resource-assignments.mjs','resource-assignments.css','supplementary-resources.css','supplementary-resources.mjs','multi-subject-home.js','index.html','resource-library.html','privacy.js','student-courses.js','role-layout.js','teacher.html','teacher.js','teacher.css','materials.html','course-page.js','teacher-workflows.html','teacher-workflows.css','ux.css','teacher-dependencies.bundle.mjs','teacher-startup.bundle.mjs','teacher-review.mjs','written-work.mjs','written-work.css','privacy.html','ux.js','student-surfaces.css','school-admin.html','school-teacher.html']){
   const expected=await readFile(new URL('../web/'+path,import.meta.url)),response=await fetch('https://www.haiedu.am/'+path+'?source_probe='+report.revision,{cache:'no-store',signal:AbortSignal.timeout(30000)});
   const actual=Buffer.from(await response.arrayBuffer()),digest=b=>createHash('sha256').update(b).digest('hex');
   check('production source parity: '+path,response.ok&&new URL(response.url).origin==='https://www.haiedu.am'&&digest(actual)===digest(expected));
@@ -158,11 +162,13 @@ try{
   await assignment(student,'open',{id:selected.id},selectors.get(student),r=>r.status===404,side+': withdrawn logical resource revokes assigned version');
   check(side+': withdrawn material absent',(await all(student)).every(x=>x.resourceId!==m.resourceId));
  }
+ stage='writing assignment delivery';await writingDelivery.verify();
  stage='cross-role reading';await usability.verify();
  stage='postflight';report.isolationAfter=await runIsolation({fixture,credentials,url,key,revision:report.revision});check('existing tenant isolation preserved',report.isolationAfter.status==='passed');report.status='passed';
 }catch{report.status='failed';report.failedStage=stage;}
 finally{
  await browser?.close();
+ await writingDelivery.cleanup();
  // Recover only exact unique run titles if an upload/create response was ambiguous.
  for(const intent of intents)try{for(const m of await all(intent.actor))if(m.definition.title===intent.title&&!originals.has(m.resourceId)&&!created.some(x=>x.resourceId===m.resourceId))created.push({actor:intent.actor,resourceId:m.resourceId,id:m.id,withdrawn:false});}catch{report.status='failed';}
  // Resolve only recorded run-owned request identities before cleanup, including lost responses.

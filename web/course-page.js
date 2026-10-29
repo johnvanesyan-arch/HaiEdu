@@ -107,7 +107,7 @@ async function load() {
       root.querySelectorAll(':scope > :not(nav):not(.student-course-hero)').forEach(node => node.remove());
       const writingRoot = document.createElement('div');
       root.append(writingRoot);
-      disposeWriting = mountWrittenWork({root:writingRoot,supabase,context:selection,actorId:auth.session.user.id,isCurrent:valid});
+      disposeWriting = mountWrittenWork({root:writingRoot,supabase,context:selection,actorId:auth.session.user.id,isCurrent:valid,initialTaskId:/^[0-9a-f-]{36}$/i.test(new URLSearchParams(location.search).get("writingTask")??"")?new URLSearchParams(location.search).get("writingTask"):null});
       return;
     }
     const requestedMode = new URLSearchParams(location.search).get('action');

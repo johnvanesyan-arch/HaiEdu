@@ -8,7 +8,7 @@ test("teacher workspace uses URL-addressable views instead of dashboard anchors"
   const html = read("web/teacher.html");
   const roleLayout = read("web/role-layout.js");
   const views = [...html.matchAll(/data-teacher-view="([^"]+)"/g)].map((match) => match[1]);
-  assert.deepEqual(views, ["home", "review", "profile", "create", "classes", "archive", "class"]);
+  assert.deepEqual(views, ["home", "assign-writing", "review", "profile", "create", "classes", "archive", "class"]);
   assert.match(roleLayout, /\.\/teacher\.html\?view=home/);
   assert.match(roleLayout, /\.\/teacher\.html\?view=profile/);
   assert.match(roleLayout, /\.\/teacher\.html\?view=classes/);

@@ -67,7 +67,7 @@
 .teacher-collection-heading>h3{min-width:0;max-width:100%;overflow-wrap:anywhere;flex:1 1 12rem}
 
 /* Distinct entry points share only the authorized class/unit context. */
-.teacher-workflow-entrypoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;min-width:0}
+.teacher-workflow-entrypoints{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;min-width:0}
 .teacher-workflow-entrypoints.hidden{display:none}
 .teacher-workflow-entrypoints>.card{min-width:0;margin:0;padding:1.25rem;overflow-wrap:anywhere}
 .teacher-workflow-context,.teacher-workflow-review{grid-column:1/-1;min-width:0}

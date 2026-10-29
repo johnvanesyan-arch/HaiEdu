@@ -5,18 +5,18 @@ const states=new Set(['submitted','changes_requested','reviewed','all']);
 
 // Discovery only. The existing class and writing services authorize every exact
 // assignment/release/unit; a menu choice never confers permission.
-export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,isCurrent=()=>true,onRoute=()=>{}}){
+export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,isCurrent=()=>true,onRoute=()=>{},assignmentMode=false}){
  let alive=true,ticket=0,directoryTicket=0,writing=()=>{},rows=[],directory=null,chosen=null,context=null;
  const q=new URLSearchParams(location.search);
  let archive=q.get('source')==='archive',state=states.has(q.get('state'))?q.get('state'):'submitted';
  const active=()=>alive&&isCurrent(),$=s=>root.querySelector(s);
  root.innerHTML=`<section class="card teacher-review-picker"><p>Ընտրեք դասարանն ու բաժինը։ Այստեղ կարող եք գտնել նաև արդեն ստուգված և վերանայման վերադարձված աշխատանքները։</p><div class="teacher-review-controls"><label>Դասարանների ցանկը<select data-review-source><option value="active">Ակտիվ դասարաններ</option><option value="archive">Արխիվացված դասարաններ</option></select></label><label>Դասարան<select data-review-class disabled><option value="">Դասարանները բեռնվում են…</option></select></label><label>Բաժին<select data-review-unit disabled><option value="">Նախ ընտրեք դասարանը</option></select></label></div><p data-review-message role="status" aria-live="polite"></p><p data-review-context class="subtle"></p><div class="row"><button type="button" class="ghost hidden" data-review-more>Բեռնել հաջորդ դասարանները</button><button type="button" class="ghost hidden" data-review-retry>Փորձել նորից</button><a href="./teacher-workflows.html#review">Ստուգման ուղեցույց</a></div></section><div data-review-writing></div>`;
- $('[data-review-source]').value=archive?'archive':'active';
+ if(assignmentMode){root.querySelector('.teacher-review-picker').classList.add('teacher-writing-picker');$('[data-review-source]').closest('label').hidden=true;root.querySelector('.teacher-review-picker > p').textContent='Ընտրեք դասարանն ու բաժինը, ապա՝ հրապարակված գրավոր առաջադրանքը։';const guide=root.querySelector('a[href]');guide.href='./teacher-workflows.html#assign-writing';guide.textContent='Հանձնարարելու ուղեցույց';}$('[data-review-source]').value=archive?'archive':'active';
  const message=text=>{if(active())$('[data-review-message]').textContent=text;};
- const leave=()=>!writing.hasUnsaved?.()||window.confirm('Չպահպանված գնահատականը չեղարկե՞լ։');
+ const leave=()=>writing.canLeave?writing.canLeave():!writing.hasUnsaved?.()||window.confirm('Չպահպանված գնահատականը չեղարկե՞լ։');
  function clearWork(){writing();writing=()=>{};context=null;$('[data-review-writing]').replaceChildren();$('[data-review-context]').textContent='';}
  function route(replace=false){
-  const u=new URL(location.href);u.searchParams.set('view','review');u.searchParams.set('source',archive?'archive':'classes');u.searchParams.set('state',state);
+  const u=new URL(location.href);u.searchParams.set('view',assignmentMode?'assign-writing':'review');u.searchParams.set('source',archive?'archive':'classes');if(!assignmentMode)u.searchParams.set('state',state);else u.searchParams.delete('state');
   for(const key of ['class','assignment','release','unit','todayWork','queueAssignment'])u.searchParams.delete(key);
   if(chosen){u.searchParams.set('class',chosen.id);if(chosen.assignmentId)u.searchParams.set('assignment',chosen.assignmentId);}
   if(context){u.searchParams.set('release',context.curriculumReleaseId);u.searchParams.set('unit',context.unitId);}
@@ -44,10 +44,12 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
   }catch{if(active()&&request===directoryTicket){message('Դասարանների ցանկը չբեռնվեց։ Փորձեք կրկին։');$('[data-review-retry]').classList.remove('hidden');}}
   finally{if(active()&&request===directoryTicket)$('[data-review-more]').disabled=false;}
  }
- function openQueue(klass,unit){
+ async function openQueue(klass,unit){
   context={assignmentId:klass.assignmentId,curriculumReleaseId:unit.curriculumReleaseId,unitId:unit.unitId};
   $('[data-review-context]').textContent=[klass.name,klass.subjectName,unit.unitTitleHy,klass.schoolName,klass.academicYear].filter(Boolean).join(' · ');
   const request=ticket,scope=context;
+  if(assignmentMode){try{const {mountTeacherWritingAssignments}=await import('./writing-assignments.mjs');if(!active()||request!==ticket||context!==scope)return;const instance=mountTeacherWritingAssignments({root:$('[data-review-writing]'),client:supabase,context:{...klass,...unit,...scope,classId:klass.id},isCurrent:()=>active()&&request===ticket&&context===scope});writing=()=>instance.dispose();writing.canLeave=instance.canLeave;writing.hasUnsaved=instance.hasUnsaved;}catch{if(active()&&request===ticket&&context===scope){message('Հանձնարարելու գործիքը չբեռնվեց։ Փորձեք կրկին։');$('[data-review-retry]').classList.remove('hidden');}}return;}
+
   writing=mountWrittenWork({root:$('[data-review-writing]'),supabase,actorId,teacher:true,context:scope,initialState:state,stateButtons:true,
    isCurrent:()=>active()&&request===ticket&&context===scope,
    onStateChange:value=>{state=value;route();}});
@@ -87,5 +89,5 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
  const click=e=>{if(e.target.closest('[data-review-more]'))void loadDirectory({more:true});else if(e.target.closest('[data-review-retry]'))void retry();};
  root.addEventListener('change',change);root.addEventListener('click',click);void loadDirectory({initial:true});
  const dispose=()=>{if(!alive)return;alive=false;ticket++;directoryTicket++;writing();root.removeEventListener('change',change);root.removeEventListener('click',click);root.replaceChildren();rows=[];chosen=null;context=null;};
- dispose.hasUnsaved=()=>Boolean(writing.hasUnsaved?.());return dispose;
+ dispose.hasUnsaved=()=>Boolean(writing.hasUnsaved?.());if(assignmentMode)dispose.canLeave=leave;return dispose;
 }

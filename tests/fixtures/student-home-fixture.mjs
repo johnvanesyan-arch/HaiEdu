@@ -45,6 +45,7 @@ export function installStudentHomeFixture(options = {}) {
         if(held) return new Promise(resolve=>pending.push(()=>resolve(result)));
         return result;
       }
+      if(name==='manage-writing-assignments'&&body.action==='inbox')return {data:{version:'writing-assignments-v1',assignments:[],hasMore:false,nextOffset:50}};
       if(name==='manage-resource-assignments'&&body.action==='inbox')return {data:{assignments:[],hasMore:false,nextOffset:50}};
       if(name==='manage-written-work') return {data:{version:'written-work-v1',tasks:options.writingTasks ? ['draft','submitted','reviewed'].map((state,n)=>({id:id(400+n),title:['Գրավոր սևագիր','Ներկայացված աշխատանք','Ստուգված աշխատանք'][n],locale:'hy',state,available:true,baselineRequired:false})) : []}};
       throw Error('Unexpected API '+name);

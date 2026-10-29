@@ -72,6 +72,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       assessedAudioRecordings,
       sourceFamilyExposures,
       materialAssignmentsReceived: assignments.materialAssignmentsReceived,
+      writingAssignmentsReceived: assignments.writingAssignmentsReceived,
     };
   }
 
@@ -108,6 +109,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       writtenReviews,
       ...feedback,
       materialAssignmentsSent: assignments.materialAssignmentsSent,
+      writingAssignmentsSent: assignments.writingAssignmentsSent,
       auditEvents,
     };
   }
