@@ -10,7 +10,7 @@ import { mountWrittenWork } from './written-work.mjs';
 import { mountUnitGuides } from './unit-guides.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const root = document.getElementById('courseContent');
-let version = 0, accountId = null, disposePlayer = () => {}, disposeWriting = () => {}, disposeGuides = () => {};
+let version = 0, accountId = null, lastCourseUrl = location.href, disposePlayer = () => {}, disposeWriting = () => {}, disposeGuides = () => {};
 function collectionNavigation(tab, context = null) {
   const writing = tab === 'writing';
   const link = document.getElementById('courseCollectionLink');
@@ -33,7 +33,8 @@ function completionDate(value) {
 }
 function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
 async function load() {
-  if (disposeWriting.flush && !(await disposeWriting.flush())) return;
+  if (disposeWriting.flush && !(await disposeWriting.flush())) { history.replaceState({}, '', lastCourseUrl); return; }
+  lastCourseUrl = location.href;
   const request = ++version;
   clear();
   const tab = new URLSearchParams(location.search).get('tab') || 'course';

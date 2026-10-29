@@ -12,19 +12,22 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
  await page.addInitScript(({teacher,actor,selector})=>{
   const listeners=new Set();window.__writingListeners=listeners;window.__writingCalls=[];
   const session={user:{id:actor}};
-  window.__client={auth:{getSession:async()=>({data:{session}}),onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:teacher?'teacher':'student',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
-   window.__writingCalls.push({name,body});const response=await fetch('/fixture-rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,body})});const data=await response.json();return response.ok?{data}:{data,error:{message:data.error}};
+  window.__client={auth:{getSession:async()=>({data:{session}}),getUser:async()=>({data:{user:session.user},error:null}),onAuthStateChange:fn=>{listeners.add(fn);return{data:{subscription:{unsubscribe:()=>listeners.delete(fn)}}};}},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:teacher?'teacher':'student',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
+   window.__writingCalls.push({name,body});try{const response=await fetch('/fixture-rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,body})});const data=await response.json();return response.ok?{data}:{data,error:{message:data.error}};}catch{return{data:null,error:{name:'FunctionsFetchError',message:'Synthetic transport failure'}};}
   }}};
   if(teacher)window.__haieduSupabaseClient=window.__client;
  },{teacher,actor:id(teacher?20:10),selector});
  const contextInfo={...context(),subjectProgramId:id(201),subjectNameHy:'Փորձնական առարկա',gradeLabelHy:'7-րդ դասարան',gradeNumber:7,schoolName:'Փորձնական դպրոց',className:'7Ա',academicYearLabel:'2026–2027',unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1};
- let hold=null;
+ let hold=null;const faults=[];
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
   if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(url.pathname==='/fixture-rpc'){
    const {name,body}=route.request().postDataJSON();let data,status=200;
+   const faultIndex=name==='manage-written-work'?faults.findIndex(f=>f.action===body.action):-1;
+   const fault=faultIndex<0?null:faults.splice(faultIndex,1)[0];
+   if(fault&&!fault.afterCommit)return route.abort('failed');
    if(name==='manage-teacher-feedback'){const response=await f.feedbackRequest(body,20);status=response.status;data=await response.json();if(hold&&body.action===hold.action){const release=hold;hold=null;await new Promise(resolve=>{release.resolve=resolve;});}}
    else if(name==='manage-written-work'){const response=await f.request(body,teacher?20:10);status=response.status;data=await response.json();if(hold&&body.action===hold.action){const release=hold;hold=null;await new Promise(resolve=>{release.resolve=resolve;});}}
    else if(name==='get-student-classes')data={contexts:[contextInfo],navigationVersion:'fixture'};
@@ -33,6 +36,7 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
    else if(name==='manage-student-invitation')data={invitations:[],joinCodes:[]};
    else throw Error('Unexpected fixture API '+name);
    if(name==='get-teacher-dashboard')data.classes[0].unitOptions.push({...data.classes[0].unitOptions[0],unitId:id(512),unitSequence:2,unitTitleHy:'Երկրորդ փորձնական բաժին'});
+   if(fault)return route.abort('failed');
    return route.fulfill({status,contentType:'application/json',body:JSON.stringify(data)});
   }
   if(url.origin===origin&&/\.(html|css|js|mjs)$/.test(url.pathname)){
@@ -45,7 +49,7 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
  await page.goto(origin+(teacher?'/teacher.html?view=class&class='+id(321):href));
  if(teacher)await page.locator('#teacherOpenWrittenWork').click();
  await page.waitForSelector('.written-work');
- return{page,errors,holdNext(action){const slot={action,resolve:null};hold=slot;return slot;}};
+ return{page,errors,holdNext(action){const slot={action,resolve:null};hold=slot;return slot;},dropNext(action,{afterCommit=false}={}){faults.push({action,afterCommit});}};
 }
 test('actual student and teacher workspaces complete draft, submit, return, revision, grading and feedback against SQL',async t=>{
  const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f,false,{mobile:true});const marker=await pageFixture(t,f,true);const s=learner.page,m=marker.page;
@@ -77,6 +81,98 @@ test('late autosave responses cannot restore private work after sign-out; draft 
  await s.locator('[data-writing-open]').click();const held=learner.holdNext('save');await s.locator('[data-writing-text]').fill('<img src=x onerror="window.__writingXss=true">');await s.locator('[data-writing-save]').click();
  await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held save')):setTimeout(check,20);check();});
  await s.evaluate(()=>[...window.__writingListeners].forEach(fn=>fn('SIGNED_OUT',null)));held.resolve();await s.waitForTimeout(80);assert.equal(await s.locator('#courseContent').innerText(),'');assert.equal(await s.evaluate(()=>window.__writingXss),undefined);assert.deepEqual(learner.errors,[]);
+});
+
+test('lost committed submission reply recovers immutable history without replaying the submission',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f,false,{mobile:true}),s=learner.page;
+ const text='Synthetic response whose submission reply will be lost.';
+ await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill(text);
+ learner.dropNext('submit',{afterCommit:true});
+ await s.locator('[data-writing-submit]').click();await s.waitForSelector('.written-response');
+ assert.equal(await s.locator('.written-response').innerText(),text);
+ assert.match(await s.locator('[data-writing-message]').innerText(),/ներկայացումը հաստատված է/);
+ assert.equal(await s.locator('[data-writing-text]').count(),0);
+ const calls=await s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='manage-written-work').map(c=>c.body.action));
+ assert.equal(calls.filter(a=>a==='submit').length,1);assert.equal(calls.at(-1),'open');
+ assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);
+ const queue=await(await f.request({action:'queue',context:context(0,true),payload:{}},20)).json();assert.equal(queue.queue.length,1);
+ assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(learner.errors,[]);
+});
+
+test('unknown submission outcome preserves text, blocks duplicate sends and navigation, then recovers by read only',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f,false,{mobile:true}),s=learner.page;
+ const text='Synthetic response retained while the connection is unavailable.';
+ await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill(text);
+ learner.dropNext('submit',{afterCommit:true});learner.dropNext('open');
+ await s.locator('[data-writing-submit]').click();await s.waitForFunction(()=>document.querySelector('[data-writing-recover]')?.disabled===false&&!document.querySelector('[data-writing-recover]').hidden);
+ assert.equal(await s.locator('[data-writing-text]').inputValue(),text);assert.equal(await s.locator('[data-writing-text]').getAttribute('readonly'),'');
+ assert.equal(await s.locator('[data-writing-submit]').isVisible(),false);assert.equal(await s.locator('[data-writing-save]').isVisible(),false);assert.equal(await s.locator('[data-writing-back]').isDisabled(),true);
+ assert.match(await s.locator('[data-writing-message]').innerText(),/Մի փակեք էջը/);
+ await s.addStyleTag({content:'html{font-size:200%}'});assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ s.once('dialog',async d=>{assert.equal(d.type(),'beforeunload');await d.dismiss();});await s.reload().catch(()=>{});assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
+ await s.locator('.course-tabs a').first().click();assert.equal(new URL(s.url()).searchParams.get('tab'),'writing');
+ await s.evaluate(()=>{const url=new URL(location.href);url.searchParams.set('tab','course');history.pushState({},'',url);dispatchEvent(new PopStateEvent('popstate'));});
+ await s.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='writing');
+ await s.evaluate(()=>{const form=document.querySelector('[data-writing-form]');form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));});
+ const submissions=()=>s.evaluate(()=>window.__writingCalls.filter(c=>c.name==='manage-written-work'&&c.body.action==='submit').length);
+ assert.equal(await submissions(),1);
+ learner.dropNext('open');await s.locator('[data-writing-recover]').click();await s.waitForFunction(()=>document.querySelector('[data-writing-recover]')?.disabled===false);
+ assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
+ await s.locator('[data-writing-recover]').click();await s.waitForSelector('.written-response');
+ assert.equal(await submissions(),1);assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);
+ await s.locator('[data-writing-back]').click();await s.waitForSelector('[data-writing-open]');assert.deepEqual(learner.errors,[]);
+});
+
+test('returned work with identical earlier text is not mistaken for a newly submitted revision',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const text='The same synthetic text can exist in an earlier returned version.';
+ const first=await(await f.request({action:'submit',context:context(),payload:{taskId:id(1000),expectedRevision:0,text}})).json();
+ const returned=await f.request({action:'review',context:context(0,true),payload:{workId:first.work.id,expectedRevision:1,decision:'return',feedback:'Synthetic return before revision.'}},20);assert.equal(returned.status,200);
+ const learner=await pageFixture(t,f),s=learner.page;await s.locator('[data-writing-open]').click();learner.dropNext('submit');
+ await s.locator('[data-writing-submit]').click();await s.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('դեռ չի հաստատվել'));
+ assert.equal(await s.locator('[data-writing-text]').inputValue(),text);assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);
+ learner.dropNext('submit',{afterCommit:true});const held=learner.holdNext('submit');await s.locator('[data-writing-submit]').click();
+ await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held resubmission')):setTimeout(check,20);check();});
+ const work=(await f.db.query('select id,revision from written_work')).rows[0];
+ const reviewed=await f.request({action:'review',context:context(0,true),payload:{workId:work.id,expectedRevision:work.revision,decision:'return',feedback:'Synthetic review already received.'}},20);assert.equal(reviewed.status,200);held.resolve();
+ await s.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('ներկայացումը հաստատված է'));
+ assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,2);assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
+ assert.match(await s.locator('.written-feedback').first().innerText(),/Synthetic review already received/);assert.equal(await s.locator('[data-writing-submit]').isEnabled(),true);assert.deepEqual(learner.errors,[]);
+});
+
+test('submission that never reaches SQL offers an explicit retry and creates only one version',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f),s=learner.page;
+ const text='Synthetic response with the first request dropped before SQL.';
+ await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill(text);learner.dropNext('submit');
+ await s.locator('[data-writing-submit]').click();await s.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('դեռ չի հաստատվել'));
+ assert.equal(await s.locator('[data-writing-text]').inputValue(),text);assert.equal(await s.locator('[data-writing-text]').getAttribute('readonly'),null);
+ assert.equal(await s.locator('[data-writing-submit]').isEnabled(),true);assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,0);
+ await s.locator('[data-writing-submit]').click();await s.waitForSelector('.written-response');
+ assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);assert.deepEqual(learner.errors,[]);
+});
+
+test('concurrent submitted text is not falsely confirmed; local text stays selectable until explicit reload',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f),s=learner.page;
+ const text='Synthetic local response that must not be mistaken for the other tab.';
+ await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill(text);await s.locator('[data-writing-save]').click();
+ await s.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent==='Սևագիրը պահպանված է։');
+ const r=await f.request({action:'submit',context:context(),payload:{taskId:id(1000),expectedRevision:1,text:'Different text submitted in another synthetic tab.'}});assert.equal(r.status,200);
+ await s.locator('[data-writing-submit]').click();await s.waitForFunction(()=>!document.querySelector('[data-writing-reload]')?.hidden);
+ assert.equal(await s.locator('[data-writing-text]').inputValue(),text);assert.equal(await s.locator('[data-writing-text]').getAttribute('readonly'),'');
+ assert.equal(await s.locator('[data-writing-submit]').isVisible(),false);assert.match(await s.locator('[data-writing-message]').innerText(),/փոխվել է/);
+ s.once('dialog',d=>d.dismiss());await s.locator('[data-writing-reload]').click();assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
+ s.once('dialog',d=>d.accept());await s.locator('[data-writing-reload]').click();await s.waitForSelector('.written-response');
+ assert.equal(await s.locator('.written-response').innerText(),'Different text submitted in another synthetic tab.');
+ assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);assert.deepEqual(learner.errors,[]);
+});
+
+test('late submission recovery cannot repaint private work after an account change',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const learner=await pageFixture(t,f),s=learner.page;
+ await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill('Private synthetic response.');
+ learner.dropNext('submit',{afterCommit:true});const held=learner.holdNext('open');
+ await s.locator('[data-writing-submit]').click();
+ await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held recovery')):setTimeout(check,20);check();});
+ await s.evaluate(()=>[...window.__writingListeners].forEach(fn=>fn('SIGNED_OUT',null)));held.resolve();
+ await s.waitForTimeout(80);assert.equal(await s.locator('#courseContent').innerText(),'');assert.equal(await s.locator('.written-response').count(),0);assert.deepEqual(learner.errors,[]);
 });
 
 test('accepted English writing definition completes separately from automatic evidence in a synthetic governed scope',async t=>{
