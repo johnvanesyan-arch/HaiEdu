@@ -5,9 +5,9 @@ import {chromium,expect} from '@playwright/test';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const a='71000000-0000-4000-8000-000000000020',b='71000000-0000-4000-8000-000000000021';
 const projection=actor=>({teacher:{id:actor,displayName:actor===a?'Initial teacher':'Current teacher'},progressive:true,institutionalTeacher:true,institutionalOptions:[],classes:[],totals:{students:null,studentsNeedingSupport:null},directory:{archive:false,offset:0,matching:0,hasMore:false,activeCount:0,archiveCount:0},workspace:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:0,coverage:'active_writable_school_contexts'}});
-async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false}={}){
+async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false,holdStyle=false,holdStartup=false}={}){
  const config=await readFile('web/config.js','utf8'),url=config.match(/SUPABASE_URL = "([^"]+)"/)[1],hostname=new URL(url).hostname,storageKey='sb-'+hostname.split('.')[0]+'-auth-token';
- const context=await browser.newContext();let releaseSDK,releaseDashboard;const sdkGate=new Promise(resolve=>releaseSDK=resolve),dashboardGate=new Promise(resolve=>releaseDashboard=resolve);t.after(async()=>{releaseSDK();releaseDashboard();await context.close();});
+ const context=await browser.newContext();let releaseSDK,releaseDashboard,releaseStyle,releaseStartup;const sdkGate=new Promise(resolve=>releaseSDK=resolve),dashboardGate=new Promise(resolve=>releaseDashboard=resolve),styleGate=new Promise(resolve=>releaseStyle=resolve),startupGate=new Promise(resolve=>releaseStartup=resolve);t.after(async()=>{releaseSDK();releaseDashboard();releaseStyle();releaseStartup();await context.close();});
  const sessionA={user:{id:a,email:'synthetic-a@example.invalid'},access_token:'synthetic-a',expires_at:Math.floor(Date.now()/1000)+3600},sessionB={user:{id:b,email:'synthetic-b@example.invalid'},access_token:'synthetic-b',expires_at:Math.floor(Date.now()/1000)+3600};
  await context.addInitScript(({sessionA,sessionB,storageKey,role,responses})=>{
   const s=window.__startupFixture={session:sessionA,sessionB,storageKey,profileReads:0,functionCalls:[],listeners:[],responses};localStorage.setItem(storageKey,JSON.stringify(sessionA));
@@ -25,17 +25,19 @@ async function fixture(t,{role='teacher',profileStatus=200,holdDashboard=false}=
   }
   if(u.origin!=='https://startup.test')return route.abort();
   if(u.pathname==='/teacher-dependencies.bundle.mjs')await sdkGate;
+  if(holdStyle&&u.pathname==='/role-layout.css')await styleGate;
+  if(holdStartup&&u.pathname==='/teacher-startup.bundle.mjs')await startupGate;
   if(u.pathname.endsWith('.html')&&u.pathname!=='/teacher.html')return route.fulfill({contentType:'text/html',body:'<main>Role destination</main>'});
   try{const bytes=await readFile('web'+u.pathname);return route.fulfill({body:bytes,contentType:u.pathname.endsWith('.html')?'text/html':/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
  });
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('https://startup.test/teacher.html?view=home',{waitUntil:'commit'});
- return{page,calls,errors,releaseSDK,releaseDashboard};
+ return{page,calls,errors,releaseSDK,releaseDashboard,releaseStyle,releaseStartup};
 }
 const ready=async page=>{await expect(page.locator('#dashboardPanel')).toBeVisible();await expect(page.locator('[data-today-time]')).toContainText('Ստուգված է');await expect(page.locator('[data-today-refresh]')).toBeEnabled();};
 test('initial authorized reads complete while the SDK is held, then the real teacher screen consumes them once',async t=>{
- const f=await fixture(t);await expect.poll(()=>f.calls.length).toBe(2);assert.equal(await f.page.evaluate(()=>window.__startupFixture.profileReads),0);await expect(f.page.locator('#dashboardPanel')).toBeHidden();
+ const f=await fixture(t,{holdStyle:true});await expect.poll(()=>f.calls.length).toBe(2);assert.equal(await f.page.evaluate(()=>window.__startupFixture.profileReads),0);await expect(f.page.locator('#dashboardPanel')).toBeHidden();
  assert.deepEqual(f.calls.map(c=>c.path),['/rest/v1/profiles','/functions/v1/get-teacher-dashboard']);assert.deepEqual(f.calls[1].body,{readMode:'directory',archive:false,workspace:{recent:[]}});
- f.releaseSDK();await ready(f.page);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:0,calls:0});
+ f.releaseSDK();f.releaseStyle();await ready(f.page);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:0,calls:0});
  await f.page.addScriptTag({type:'module',url:'/teacher-startup.bundle.mjs?reinitialize=1'});assert.equal(f.calls.length,2);assert.deepEqual(f.errors,[]);
 });
 test('an account switched before SDK initialization discards and aborts the old pending Home',async t=>{
@@ -48,4 +50,8 @@ test('the early role gate routes a content administrator without requesting teac
 });
 test('an unavailable early profile falls back to the ordinary SDK reads and reaches a complete Home',async t=>{
  const f=await fixture(t,{profileStatus:503});await expect.poll(()=>f.calls.length).toBe(1);f.releaseSDK();await ready(f.page);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:1,calls:1});assert.deepEqual(f.errors,[]);
+});
+test('a late head entry cannot create duplicate reads after ordinary SDK startup completes',async t=>{
+ const f=await fixture(t,{holdStartup:true});f.releaseSDK();await ready(f.page);assert.equal(f.calls.length,0);f.releaseStartup();await f.page.waitForLoadState('load');
+ assert.equal(f.calls.length,0);const state=await f.page.evaluate(()=>({profileReads:window.__startupFixture.profileReads,calls:window.__startupFixture.functionCalls.length}));assert.deepEqual(state,{profileReads:1,calls:1});assert.deepEqual(f.errors,[]);
 });
