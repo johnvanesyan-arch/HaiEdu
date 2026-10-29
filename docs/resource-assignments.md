@@ -61,3 +61,8 @@ The existing Production/Blocking deployment-check configuration attestation from
 **DEMO-01:** read-only inspection finds two active teacher profiles, both designated multi-subject QA. A normal Physics-only demonstration identity still needs selection/provisioning through supported account/invitation administration. No QA subject grants or credentials were removed. Existing institutional deletion/offboarding restrictions remain; this ledger adds no general permanent-delete operation.
 
 **Next: 16.5B.9**, shared Forest staff layout and a reviewable Teacher Home → Classes → Review prototype, then B.10–B.12. PERF-02 remains open before B.12 performance acceptance. All 45 mapped capabilities, the English C47 pause and full four-subject gate remain; resource delivery does not close them. Final owner workspace usability acceptance remains separate.
+
+
+## B.12.3 stabilization batch 1 — 2026-10-29
+
+The recipient composer exposes unsent instructions/selections to its host leave guard. History, context changes and closing require a discard decision; page unload also warns. A stale roster keeps the instruction and selected-audience intent, clears stale recipient IDs and requires a fresh selection before sending. Pending/uncertain sends retain the existing request identity and prevent destructive navigation. Recipient choice is a focused second step, with explicit return to materials/history and distinct headings. [Defect register and process acceptance criteria](workspace-defect-register.md). Verification remains pending; endpoints and backend authorization are unchanged.

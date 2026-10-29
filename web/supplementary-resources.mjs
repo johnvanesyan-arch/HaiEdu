@@ -22,11 +22,11 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  function lockWrites(){for(const el of root.querySelectorAll('input,select,textarea,button')){if(!lockedControls.has(el))lockedControls.set(el,el.disabled);el.disabled=true;}}
  function unlockWrites(){for(const [el,disabled]of lockedControls)if(el.isConnected)el.disabled=disabled;lockedControls.clear();if(uncertainCreate)for(const el of root.querySelectorAll('[data-resource-form] button[type=submit]'))el.disabled=true;}
  let pendingFile=null,fileTicket=0,uncertainCreate=false,uploadUncertain=false;
- const clearAssignments=()=>{assignmentView?.dispose();assignmentView=null;const el=root.querySelector('[data-resource-assignments]');if(el)el.hidden=true;};
+ const clearAssignments=()=>{assignmentView?.dispose();assignmentView=null;root.classList.remove('resource-composing');const el=root.querySelector('[data-resource-assignments]');if(el)el.hidden=true;};
  const urls=new Set();const $=q=>root.querySelector(q);const valid=(e,q=request)=>!disposed&&e===epoch&&q===request;
  const message=(t,bad=false)=>{const el=$('[data-resource-message]');if(el){el.textContent=t;el.classList.toggle('bad',bad);}};
  const clearDelivery=()=>{root.querySelectorAll('dialog').forEach(d=>d.remove());for(const u of urls)URL.revokeObjectURL(u);urls.clear();};
- const canLeave=()=>{if((busy&&busyKind==='write')||assignmentView?.isBusy()){message('Սպասեք գործողության հաստատմանը։');return false;}return !(dirty||pendingFile)||window.confirm('Չպահպանված փոփոխությունները կհեռացվեն։ Շարունակե՞լ։');};
+ const canLeave=()=>{if((busy&&busyKind==='write')||assignmentView?.isBusy()){message('Սպասեք գործողության հաստատմանը։');return false;}return !(dirty||pendingFile||assignmentView?.hasUnsaved())||window.confirm('Չպահպանված փոփոխությունները կհեռացվեն։ Շարունակե՞լ։');};
  async function invoke(action,payload={},context=resourceContext(selected),file){
   const e=epoch,q=request;let body={action,context,payload};
   if(file){const f=new FormData();f.append('request',JSON.stringify(body));f.append('file',file);body=f;}
@@ -124,7 +124,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  function composeMessage(text,bad=false){message(text,bad);const el=$('[data-resource-compose-status]');if(el){el.textContent=text;el.classList.toggle('bad',bad);}}
  function remember(m){current=m;rows=[m,...rows.filter(x=>x.resourceId!==m.resourceId)];drawCards();}
- function openAssignments(materialId){clearAssignments();clearEditor();assignmentView=mountTeacherResourceAssignments({root:$('[data-resource-assignments]'),client,context:selected,materialId});}
+ function openAssignments(materialId){clearAssignments();clearEditor();root.classList.add('resource-composing');assignmentView=mountTeacherResourceAssignments({root:$('[data-resource-assignments]'),client,context:selected,materialId,onClose:()=>{clearAssignments();const b=[...root.querySelectorAll('[data-resource-assign]')].find(b=>b.dataset.resourceAssign===materialId);(b??$('[data-resource-context]'))?.focus();}});}
  const sameDefinition=(a,b)=>['title','topic','description','goal','purpose','locale','format','sourceReference','url','estimatedMinutes','rightsConfirmed','assessmentSafe','recommended'].every(k=>(a[k]??(['recommended'].includes(k)?false:''))===(b[k]??(['recommended'].includes(k)?false:'')));
  async function attachPendingFile(file){
   const e=epoch,q=request;
@@ -256,7 +256,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
   const intent=role==='teacher'&&['assign','library'].includes(e.submitter?.value)?e.submitter.value:'draft',definition=definitionFromForm(),reason=$('[name="reason"]')?.value.trim()||'';
   void run(()=>saveResource(intent,definition,reason));
  });
- const beforeLeave=e=>{if(dirty||pendingFile||(busy&&busyKind==='write')||assignmentView?.isBusy()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);
+ const beforeLeave=e=>{if(dirty||pendingFile||(busy&&busyKind==='write')||assignmentView?.isBusy()||assignmentView?.hasUnsaved()){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeLeave);
  async function session(s,force=false){const next=s?.user?.id??null;if(!force&&next===actor)return;actor=next;epoch++;request++;operation++;clearDelivery();clearAssignments();pendingFile=null;fileTicket++;uncertainCreate=false;uploadUncertain=false;unlockWrites();root.removeAttribute('aria-busy');dirty=false;busy=false;current=null;selected=null;rows=[];contexts=[];document.querySelectorAll('.material-mfa').forEach(d=>d.dispatchEvent(new Event('material-session-ended')));
   if(!actor){root.classList.remove('resource-composing');root.innerHTML='<section class="card resource-empty"><h2>Մուտք գործեք</h2><p>Նյութերը հասանելի են ձեր դասընթացների շրջանակում։</p><a class="button-link" href="./account-access.html">Մուտք գործել</a></section>';return;}
   root.classList.remove('resource-composing');root.innerHTML='<p role="status">Ստուգվում է նյութերի հասանելիությունը…</p>';const e=epoch,q=request;

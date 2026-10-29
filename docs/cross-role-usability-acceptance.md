@@ -1,6 +1,8 @@
 # B.12.3 — Cross-role usability acceptance
 
-2026-10-29 Asia/Yerevan · Technical verification complete; final owner usability decision pending.
+2026-10-29 Asia/Yerevan · Stabilization in progress; final owner usability decision pending.
+
+John has not accepted the workspace. Earlier technical checks below are bounded baseline evidence. The [single defect register and process standard](workspace-defect-register.md) govern the current audit and fixes. Forms and submissions must be logical, simple and easy to follow; no known P0/P1 defect may remain in the agreed journeys at final acceptance. Subject expansion stays paused.
 
 This is the remaining workspace exit, covering the available production programmes and neutral fixtures. It does not activate subjects, change content approvals or close the separate full four-subject gate. The 45 capability/dependency rows remain unchanged. Speaking stays classroom-assessed. WRITE-CREATE, RESOURCE-SUBMIT, DEMO-01 and batch feedback remain separately scoped.
 
@@ -19,6 +21,7 @@ This is the remaining workspace exit, covering the available production programm
 | U09 | Tenant/recipient, role and session restrictions | Existing server contracts retained; required SQL races/isolation plus guarded production before/after isolation. No service credentials in isolated browser tests. |
 | U10 | Forty-five mappings, subject/grade neutrality and feature readiness | Compare the unchanged 45-row coverage document and source hashes; UI changes contain no subject/grade default. No future feature becomes live by renaming or approval. |
 | U11 | Release and provenance | All five implementation PR/main gates pass (1,561 unit/integration; 273 native). Production release **708682d6267c62cb23410ecc8fa746d69be1e2dc** and thirty byte hashes match. Closing documentation/evidence and broader isolated checks leave runtime unchanged; required closing CI and exact-source Notion synchronization are delivery conditions. |
+| U13 | Logical, simple, easy-to-follow processes | Purpose/context, necessary and ordered inputs, clear primary action, distinct draft/publication/assignment/send states, safe back/cancel/retry, retained input, acknowledged result and clear next destination. Normal/error/pending states require evidence under the [process standard](workspace-defect-register.md). Audit in progress; human usability is not inferred from technical counts. |
 | U12 | Owner usability acceptance | Remains a human decision after the concrete review packet/results below. The project exit rule requires owner acceptance before further subject/chapter work. |
 
 ## Verified repairs

@@ -392,3 +392,6 @@ The initial selected-class RPC composes current metadata and exactly the request
 ### B.12.2 deployed verification — 2026-10-29
 
 Dashboard v25, workspace v4 and student v17 (its pre-existing JWT setting retained) match all 22 deployed file instances. All six service-only stable invoker SQL bodies/settings/grants match the aligned, already-applied migrations; none was reapplied. Public-key reuse caches no user permission or learner evidence. The Home startup optimization changes timing only: own-profile RLS precedes teacher data, then the existing live-session/final authorization service gates apply. The SDK may consume a startup result only once for the same navigation, actor, token and complete request within eight seconds; account/refresh/context change, timeout or failure discards it. Full/default, schoolless and older-server workspace fallback contracts remain. [Deployed source and evidence](evidence/teacher-performance-release-20261029.json). B.12.3 final owner usability remains separate.
+
+
+B.12.3 stabilization batch 1 changes browser draft/recipient navigation only; material/assignment endpoint payloads, authority, immutable pinning and retry identities remain. Process simplicity is now an explicit acceptance requirement in [the workspace defect register](workspace-defect-register.md). Full usability acceptance and subject expansion remain gated.
