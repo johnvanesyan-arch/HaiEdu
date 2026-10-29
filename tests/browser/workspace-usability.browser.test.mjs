@@ -33,9 +33,13 @@ test('every shared UX consumer keeps a readable keyboard route into its actual m
      await r.fulfill({body:bytes,contentType:u.pathname.endsWith('.html')?'text/html':js?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{await r.fulfill({status:404,body:''});}
    });
-   await p.goto('https://ux-consumers.test/'+name);await keyboardSkipAcceptance(p);
-   await p.locator('a.skip-link').first().focus();await p.locator('a.skip-link').first().press('Enter');
-   const target=await p.locator('a.skip-link').first().getAttribute('href');assert.ok(/^#[A-Za-z][\w-]*$/.test(target),name);await expect(p.locator(target),name).toBeVisible();await expect(p.locator(target),name).toBeFocused();assert.deepEqual(errors,[],name);rows.push({page:name,keyboard:true,contrast:true,reducedMotion:true,scope:'actual page styles/shared UX; isolated auth/business modules'});
+   await p.goto('https://ux-consumers.test/'+name);
+   for(const width of [360,768,1280])for(const textScale of [100,200]){
+    await p.setViewportSize({width,height:960});await p.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',textScale);
+    await keyboardSkipAcceptance(p);await p.locator('a.skip-link').first().focus();await p.locator('a.skip-link').first().press('Enter');
+    const target=await p.locator('a.skip-link').first().getAttribute('href');assert.ok(/^#[A-Za-z][\w-]*$/.test(target),name);await expect(p.locator(target),name).toBeVisible();await expect(p.locator(target),name).toBeFocused();assert.deepEqual(errors,[],name);
+    rows.push({page:name,width,textScale,keyboard:true,contrast:true,reducedMotion:true,scope:'actual page styles/shared UX; resolved presentation only; isolated auth/business modules; index guest landing'});
+   }
   }finally{await bc.close();}
  }
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/b123-ux-consumers.json',JSON.stringify(rows,null,2));}

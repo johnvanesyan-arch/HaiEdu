@@ -9,6 +9,7 @@ on:
       - supabase/functions/**
       - supabase/migrations/**
       - scripts/**
+      - docs/qa/additional-programme-fixtures.json
       - package.json
       - package-lock.json
       - vercel.json
