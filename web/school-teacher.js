@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -92,8 +93,7 @@ function renderTeacher(school, teacher) {
 }
 
 $("signOutBtn").addEventListener("click", async () => {
-  await supabase.auth.signOut();
-  location.replace("./account-access");
+  await signOutAccount(supabase, { redirect: "./account-access" });
 });
 
 const { data: auth } = await supabase.auth.getUser();

@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import {contentSupabase as client,$,esc,invokeContent} from './content-workspace.js';
 import {ensureMaterialMfa} from './content-material-mfa.mjs';
 const statusLabel={draft:'Սևագիր',approved:'Հաստատված',retired:'Արխիվացված'};
@@ -79,6 +80,6 @@ $('refreshMaterials').onclick=async()=>{
 };
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 document.addEventListener('click',e=>{if(e.target.closest('a[href]')&&dirty&&!canLeave())e.preventDefault();});
-$('signOutBtn').onclick=async()=>{if(!canLeave())return;await client.auth.signOut();location.replace('./account-access');};
+$('signOutBtn').onclick=()=>signOutAccount(client,{canLeave:()=>!busy&&canLeave(),redirect:'./account-access'});
 async function session(next){const user=next?.user?.id??null;if(user===actor)return;actor=user;epoch++;selection++;rows=[];hasMore=false;current=null;dirty=false;busy=false;listBusy=false;for(const id of ['materialSearch','unitFilter','kindFilter','statusFilter'])$(id).value='';message('');document.querySelectorAll('.material-mfa').forEach(d=>d.dispatchEvent(new Event('material-session-ended')));$('console').classList.add('hidden');$('materialEditor').replaceChildren();$('materialList').replaceChildren();$('authPanel').classList.toggle('hidden',!!user);$('signOutBtn').classList.toggle('hidden',!user);if(!user)return;const e=epoch;try{await list();if(e!==epoch)return;$('console').classList.remove('hidden');$('materialEditor').innerHTML='<div class="material-empty"><h2>Ընտրեք նյութ</h2><p>Ցանկից ընտրեք ուղեցույցը կամ գրավոր աշխատանքը՝ ստուգելու և խմբագրելու համար։</p></div>';}catch{if(e!==epoch)return;$('authPanel').classList.remove('hidden');$('authMessage').textContent='Նյութերը հասանելի չեն այս հաշվին կամ ժամանակավորապես չեն բեռնվում։';}}
 let authEvent=0;client.auth.onAuthStateChange((event,s)=>{authEvent++;void session(event==='SIGNED_OUT'?null:s);});const initial=authEvent;client.auth.getSession().then(r=>{if(initial===authEvent)void session(r.data.session);}).catch(()=>{$('authMessage').textContent='Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։';});

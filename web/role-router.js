@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { roleDestination } from "./account-roles.js";
@@ -87,8 +88,7 @@ export async function routeSession(session) {
 }
 
 document.getElementById("blockedSignOutBtn")?.addEventListener("click", async () => {
-  await supabase.auth.signOut();
-  window.location.replace("./account-access");
+  await signOutAccount(supabase, { redirect: "./account-access" });
 });
 
 supabase.auth.onAuthStateChange((event, session) => {

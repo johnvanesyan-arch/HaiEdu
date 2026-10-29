@@ -29,7 +29,7 @@ test('every shared UX consumer keeps a readable keyboard route into its actual m
       if(name==='index.html')html=html.replace('id="publicEntry" class="public-entry hidden"','id="publicEntry" class="public-entry"').replace('<main class="shell" id="mainContent">','<main class="shell hidden" id="mainContent">');
       bytes=Buffer.from(html.replace('</body>','<script type="module" src="./ux.js"></script></body>'));
      }
-     if(js&&!['/ux.js','/config.js'].includes(u.pathname))bytes=Buffer.from('');
+     if(js&&!['/ux.js','/config.js','/account-signout.mjs'].includes(u.pathname))bytes=Buffer.from('');
      await r.fulfill({body:bytes,contentType:u.pathname.endsWith('.html')?'text/html':js?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{await r.fulfill({status:404,body:''});}
    });

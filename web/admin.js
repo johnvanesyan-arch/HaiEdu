@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { mountSchoolAnalytics } from "./school-analytics-view.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -414,7 +415,7 @@ async function enterConsole(session) {
   await loadCurrentView();
 }
 
-$("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut({ scope:"global" }); window.location.assign("./account-access.html"); });
+$("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { scope: "global", redirect: "./account-access.html" }));
 document.querySelectorAll("[data-refresh-view]").forEach((button) => button.addEventListener("click", loadCurrentView));
 $("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefault(); schoolPage = 1; selectedSchoolId = null; ++schoolDetailVersion; disposeSchoolAnalytics(); $("schoolDetail").classList.add("hidden"); loadSchools(); });
 $("accountFilterForm").addEventListener("submit", (event) => { event.preventDefault(); accountPage = 1; loadAccounts(); });

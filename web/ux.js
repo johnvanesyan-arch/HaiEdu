@@ -1,3 +1,4 @@
+import { showSignOutNotice } from './account-signout.mjs';
 function ensurePlatformFavicon() {
   if (typeof document === "undefined") return;
   if (document.querySelector('link[data-haiedu-platform-favicon="true"]')) return;
@@ -16,6 +17,7 @@ function ensurePlatformFavicon() {
 }
 
 ensurePlatformFavicon();
+showSignOutNotice();
 
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -143,11 +145,15 @@ async function handleTerminalAuthFailure() {
   }
 
   try {
+    // The SDK may clear locally even when it returns a remote error. A fresh
+    // session (or unreadable state) must never be treated as signed out.
     await uxSupabase.auth.signOut({ scope: "local" });
+    const result = await uxSupabase.auth.getSession();
+    if (result.error || !result.data || !Object.hasOwn(result.data, "session")) throw Error("session_unavailable");
+    if (result.data.session) return false;
   } catch {
-    try {
-      localStorage.removeItem(`sb-${new URL(SUPABASE_URL).hostname.split(".")[0]}-auth-token`);
-    } catch { /* best-effort local cleanup */ }
+    announce("Չհաջողվեց հաստատել՝ դուրս եք եկել հաշվից, թե ոչ։ Ստուգեք կապը և թարմացրեք էջը։", true);
+    return false;
   }
 
   sessionStorage.setItem(terminalAuthMessageKey, error.code === "user_not_found"

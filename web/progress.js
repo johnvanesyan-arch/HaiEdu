@@ -1,3 +1,4 @@
+import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
@@ -281,15 +282,16 @@ async function loadProgress() {
 }
 
 async function initialize() {
-  const { data: sessionData } = await supabase.auth.getSession();
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError) throw sessionError;
   if (!sessionData.session) {
     window.location.replace("./index.html");
     return;
   }
   const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError || !userData.user) {
-    await supabase.auth.signOut({ scope: "local" });
-    window.location.replace("./index.html");
+  if (userError || !userData?.user) {
+    if (isTerminalAuthError(userError)) await signOutAccount(supabase, { scope: "local", expectedSession: sessionData.session, redirect: "./index.html" });
+    else showSessionReadFailure(retryInitialize);
     return;
   }
   await loadProgress();
@@ -309,6 +311,7 @@ $("progressNextAction")?.addEventListener("click", async (event) => {
   sessionStorage.setItem("pendingRecommendationInstanceId", visibleRecommendation.instanceId);
   window.location.assign(href);
 });
-initialize();
 
 
+function retryInitialize() { void initialize().catch(() => showSessionReadFailure(retryInitialize)); }
+retryInitialize();

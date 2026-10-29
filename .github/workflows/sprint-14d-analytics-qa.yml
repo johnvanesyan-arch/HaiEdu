@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/account-signout.mjs
       - 'web/student-forest.css'
       - 'web/student-surfaces.css'
       - 'web/assets/fonts/**'

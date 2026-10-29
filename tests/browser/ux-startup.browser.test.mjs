@@ -18,7 +18,7 @@ async function fixture(t,holdLoad=false){
   if(u.origin!=='https://ux-startup.test')return route.abort();
   if(u.pathname==='/held.png'){await new Promise(resolve=>{release=resolve;});return route.fulfill({status:404,body:''});}
   if(u.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://synthetic.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic-public";'});
-  if(u.pathname==='/ux.js')return route.fulfill({contentType:'text/javascript',body:await readFile('web/ux.js','utf8')});
+  if(['/ux.js','/account-signout.mjs'].includes(u.pathname))return route.fulfill({contentType:'text/javascript',body:await readFile('web'+u.pathname,'utf8')});
   if(u.pathname==='/teacher.html')return route.fulfill({contentType:'text/html',body:'<main><h1>Փորձնական էջ</h1></main>'+(holdLoad?'<img src="/held.png" alt="">':'')+'<script type="module" src="/ux.js"></script>'});
   return route.fulfill({status:404,body:''});
  });

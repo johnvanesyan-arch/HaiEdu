@@ -1,7 +1,8 @@
+import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let state = null;
 let accountEpoch = 0;
@@ -10,7 +11,12 @@ let accountActor;
 const accountHomes = {student:"./index.html",teacher:"./teacher.html?view=home",school_admin:"./school-admin.html",admin:"./admin.html",content_admin:"./content.html"};
 
 function clearAccount(signedOut = false) {
+  clearSessionReadFailure();
   state = null;
+  for (const id of ['displayNameInput', 'newEmailInput']) $(id).value = '';
+  for (const id of ['analyticsOptIn', 'researchOptIn']) $(id).checked = false;
+  for (const id of ['accountTitle', 'accountRole', 'accountStatus', 'accountEmail', 'inventory',
+    'nameMessage', 'emailChangeMessage', 'passwordChangeMessage', 'privacyMessage', 'deletionMessage']) $(id).textContent = '';
   document.body.removeAttribute("data-haiedu-student");
   document.body.removeAttribute("data-staff-account");
   document.documentElement.removeAttribute("data-haiedu-student-root");
@@ -26,13 +32,27 @@ function clearAccount(signedOut = false) {
 
 
 function setMessage(id, text, bad = false) {
+  if (text === 'account_session_changed') return;
   const el = $(id);
   el.textContent = text || "";
   el.style.color = bad ? "#8a3342" : "#356246";
 }
 
+async function withinAccount(action) {
+  const epoch = accountEpoch, actor = accountActor;
+  const changed = () => epoch !== accountEpoch || actor !== accountActor;
+  try {
+    const result = await action();
+    if (changed()) throw Error('account_session_changed');
+    return result;
+  } catch (error) {
+    if (changed()) throw Error('account_session_changed');
+    throw error;
+  }
+}
+
 async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
+  const { data, error } = await withinAccount(() => supabase.functions.invoke(name, { body }));
   if (error) throw new Error(data?.detail || data?.error || error.message);
   if (data?.error) throw new Error(data.detail || data.error);
   return data;
@@ -133,6 +153,7 @@ function deletionLabel(request) {
 }
 
 function render(data) {
+  clearSessionReadFailure();
   state = data;
   document.body.removeAttribute("data-account-pending");
   document.body.removeAttribute("data-forest-surface");
@@ -193,7 +214,8 @@ async function refresh() {
   } catch (err) {
     if (!current()) return;
     clearAccount();
-    $("loading").textContent = err.message || "Չհաջողվեց բեռնել տվյալները։";
+    $("loading").textContent = "Հաշվի տվյալները չբեռնվեցին։";
+    showSessionReadFailure(refresh);
   }
 }
 
@@ -208,6 +230,7 @@ $("saveNameBtn").addEventListener("click", async () => {
 
 $("changeEmailForm").addEventListener("submit", async (event) => {
   event.preventDefault();
+  const epoch = accountEpoch;
   const email = $("newEmailInput").value.trim();
   const button = $("changeEmailBtn");
   if (!email || email.toLowerCase() === state?.account?.email?.toLowerCase()) {
@@ -217,47 +240,49 @@ $("changeEmailForm").addEventListener("submit", async (event) => {
   button.disabled = true;
   setMessage("emailChangeMessage", "Հաստատման նամակն ուղարկվում է…");
   try {
-    const { error } = await supabase.auth.updateUser(
+    const { error } = await withinAccount(() => supabase.auth.updateUser(
       { email },
       { emailRedirectTo: `${location.origin}/account-access` },
-    );
+    ));
     if (error) throw error;
     $("newEmailInput").value = "";
     setMessage("emailChangeMessage", "Ստուգեք նոր և ներկայիս էլ. հասցեների փոստարկղերը և հաստատեք փոփոխությունը։ Մինչ այդ մուտք գործեք ներկայիս հասցեով։");
   } catch (err) {
     setMessage("emailChangeMessage", err.message || "Չհաջողվեց ուղարկել հաստատման նամակը։", true);
   } finally {
-    button.disabled = false;
+    if (epoch === accountEpoch) button.disabled = false;
   }
 });
 
 $("changePasswordBtn").addEventListener("click", async () => {
+  const epoch = accountEpoch;
   const button = $("changePasswordBtn");
   button.disabled = true;
   setMessage("passwordChangeMessage", "Հղումն ուղարկվում է…");
   try {
-    const { data, error: userError } = await supabase.auth.getUser();
+    const { data, error: userError } = await withinAccount(() => supabase.auth.getUser());
     if (userError || !data.user?.email) throw userError || new Error("Մուտքի էլ. հասցեն չի գտնվել։");
-    const { error } = await supabase.auth.resetPasswordForEmail(data.user.email, {
+    const { error } = await withinAccount(() => supabase.auth.resetPasswordForEmail(data.user.email, {
       redirectTo: `${location.origin}/account-access`,
-    });
+    }));
     if (error) throw error;
     setMessage("passwordChangeMessage", "Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։");
   } catch (err) {
     setMessage("passwordChangeMessage", err.message || "Հղումը չուղարկվեց։ Փորձեք կրկին։", true);
   } finally {
-    button.disabled = false;
+    if (epoch === accountEpoch) button.disabled = false;
   }
 });
 
 $("savePrivacyBtn").addEventListener("click", async () => {
+  const preferences = { productAnalytics: $("analyticsOptIn").checked, researchUse: $("researchOptIn").checked };
   try {
     setMessage("privacyMessage", "Պահվում է…");
     await invoke("manage-my-privacy", {
       action: "save_preferences",
-      productAnalytics: $("analyticsOptIn").checked,
-      researchUse: $("researchOptIn").checked,
+      ...preferences,
     });
+    if (state) state.preferences = { ...state.preferences, product_analytics_opt_in: preferences.productAnalytics, research_use_opt_in: preferences.researchUse };
     setMessage("privacyMessage", "Ընտրությունները պահպանվեցին։");
   } catch (err) { setMessage("privacyMessage", err.message, true); }
 });
@@ -283,8 +308,12 @@ $("cancelDeletionBtn").addEventListener("click", async () => {
 });
 
 $("signOutBtn").addEventListener("click", async () => {
-  await supabase.auth.signOut();
-  window.location.href = "./index.html";
+  await signOutAccount(supabase, { redirect: "./index.html", canLeave: () => {
+    const dirty = state && ($("displayNameInput").value !== (state.account.displayName || "")
+      || $("newEmailInput").value.trim() || $("analyticsOptIn").checked !== (state.preferences?.product_analytics_opt_in === true)
+      || $("researchOptIn").checked !== (state.preferences?.research_use_opt_in === true));
+    return !dirty || window.confirm("Հաշվի չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։");
+  } });
 });
 
 supabase.auth.onAuthStateChange((_event, session) => {

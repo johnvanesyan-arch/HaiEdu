@@ -122,3 +122,10 @@ button.ghost { background: transparent; color: #274a75; border: 1px solid #ccd7e
 /* Keep cross-document navigation native. A global view-transition opt-in can
    reject during stylesheet/document handoff and emit a page error even after
    the destination has loaded successfully. Component animations are separate. */
+
+/* Persistent recovery owns its appearance outside role-specific panels. */
+#accountSignOutMessage.account-signout-notice { position:fixed; z-index:3000; inset-inline:1rem; bottom:1rem; width:calc(100% - 2rem); max-width:34rem; max-height:calc(100dvh - 2rem); overflow:auto; margin-inline:auto; box-sizing:border-box; padding:1rem !important; border-radius:1rem !important; background:var(--forest-surface,#fff) !important; color:var(--forest-ink,#23392f) !important; border:2px solid var(--forest-accent,#285b45) !important; box-shadow:0 8px 32px #23392f33 !important; overflow-wrap:anywhere; }
+#accountSignOutMessage p { margin:0 0 .75rem; color:var(--forest-ink,#23392f) !important; }
+#accountSignOutMessage button { max-width:100%; white-space:normal; overflow-wrap:anywhere; background:var(--forest-accent,#285b45) !important; color:var(--forest-surface,#fff) !important; border:1px solid var(--forest-accent,#285b45) !important; }
+#accountSignOutMessage button.ghost { background:transparent !important; color:var(--forest-ink,#23392f) !important; }
+#accountSignOutMessage:focus, #accountSignOutMessage button:focus-visible { outline:3px solid var(--forest-focus,#7a4718); outline-offset:3px; }

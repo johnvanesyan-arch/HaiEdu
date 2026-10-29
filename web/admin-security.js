@@ -1,3 +1,4 @@
+import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -149,7 +150,7 @@ $("challengeForm").addEventListener("submit", verifyChallenge);
 $("startEnrollBtn").addEventListener("click", beginEnrollment);
 $("enrollVerifyForm").addEventListener("submit", verifyFactor);
 $("addBackupBtn").addEventListener("click", () => { $("enrollPanel").classList.remove("hidden"); $("enrollTitle").textContent = "Ավելացնել պահուստային authenticator"; $("enrollPanel").scrollIntoView({ behavior:"smooth" }); });
-$("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut({ scope:"global" }); window.location.assign("./account-access.html"); });
+$("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { scope: "global", redirect: "./account-access.html" }));
 function bootstrapSecurity(session) {
   const userId = session?.user?.id ?? null;
   if (!session) return enter(null);
