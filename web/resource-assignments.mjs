@@ -95,6 +95,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
  const title=text=>{const h=$('[data-assignment-title]');if(h)h.textContent=text;};
  function lockControls(){
   for(const el of root.querySelectorAll('[data-assignment-history-list],[data-assignment-close],[data-assignment-compose-again]'))el.disabled=locked();
+  for(const el of root.querySelectorAll('[data-assignment-cancel],[data-assignment-cancel-reason]'))el.disabled=locked();
   for(const el of root.querySelectorAll('[data-assignment-compose] input,[data-assignment-compose] textarea,[data-assignment-compose] button'))el.disabled=locked()||(el.hasAttribute('data-recipient')&&mode!=='selected');
   const send=$('[data-assignment-send]');if(send)send.disabled=locked()||!preview||!(mode==='class'?preview.total:selected.size);
   const retry=$('[data-assignment-retry-send]');if(retry){retry.hidden=!pending;retry.disabled=busy;}
@@ -116,7 +117,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   if(more)list.insertAdjacentHTML('beforeend',html);else list.innerHTML=html||'<p>Ոչ մի աշակերտ չի համապատասխանում որոնմանը։</p>';
   $('[data-recipient-more]').hidden=!preview.hasMore;
  }
- function summary(){const s=$('[data-recipient-summary]');if(s)s.textContent='Ստացողներ՝ '+(mode==='class'?preview?.total??0:selected.size);const picker=$('[data-recipient-picker]');if(picker)picker.hidden=mode!=='selected';lockControls();}
+ function summary(){const s=$('[data-recipient-summary]'),count=mode==='class'?preview?.total??0:selected.size;if(s)s.textContent=(mode==='class'?'Ամբողջ դասարանը':'Ընտրված աշակերտները')+' · '+count+' ստացող'+(mode==='selected'&&!count?'։ Նշեք առնվազն մեկ աշակերտի։':'');const picker=$('[data-recipient-picker]');if(picker)picker.hidden=mode!=='selected';lockControls();}
  async function loadPreview(more=false,reset=false){
   if(!materialId||busy||pending)return;const token=++generation;message('Ստացողների ցանկը բեռնվում է…');
   try{
@@ -133,7 +134,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   title('Ուղարկման հաստատում');
   currentReceipt=data.assignment;
   const a=data.assignment;
-  $('[data-assignment-body]').innerHTML='<section class="assignment-receipt"><h4>'+(a.status==='canceled'?'Առաջադրանքը չեղարկված է':'Առաջադրանքն ուղարկված է')+'</h4><p lang="'+esc(a.material.definition.locale)+'">'+esc(a.material.definition.title)+' · v'+a.material.version+'</p><p>Ստացողներ՝ '+a.recipientCount+'</p><p class="assignment-meta">Հաստատման համար՝ <span class="assignment-receipt-id">'+esc(a.id)+'</span></p><p>'+new Date(a.assignedAt).toLocaleString('hy-AM')+'</p>'+(data.recipients?'<details open><summary>Ստացողների ցանկը</summary><ul>'+data.recipients.map(r=>'<li>'+esc(r.studentName)+'</li>').join('')+'</ul>'+(data.recipients.length<a.recipientCount?'<p>Որոշ հաշիվներ կամ անդամակցություններ այլևս գրանցված չեն։ Սկզբնական ստացողների քանակը պահպանված է։</p>':'')+'</details>':'<button type="button" class="ghost" data-assignment-inspect="'+esc(a.id)+'">Ստուգել ստացողների ցանկը</button>')+(a.status==='assigned'&&!data.readOnly?'<details class="assignment-cancel"><summary>Չեղարկել առաջադրանքը</summary><label>Չեղարկման պատճառ<textarea data-assignment-cancel-reason maxlength="1000" rows="2"></textarea></label><button type="button" class="ghost" data-assignment-cancel>Չեղարկել</button></details>':'')+(data.events?'<details><summary>Գործողությունների պատմություն</summary><ul>'+data.events.map(e=>'<li>'+(e.event==='assigned'?'Ուղարկված է':'Չեղարկված է')+' · '+new Date(e.at).toLocaleString('hy-AM')+(e.detail.reason?' · '+esc(e.detail.reason):'')+'</li>').join('')+'</ul></details>':'')+'</section>';
+  $('[data-assignment-body]').innerHTML='<section class="assignment-receipt"><p class="assignment-context">Քայլ 3․ ուղարկման արդյունքը</p><h4>'+(a.status==='canceled'?'Առաջադրանքը չեղարկված է':'Առաջադրանքն ուղարկված է')+'</h4><p data-assignment-next>'+ (a.status==='canceled'?'Այս առաջադրանքն այլևս չի ցուցադրվում որպես ընթացիկ աշխատանք։ Նյութը մնում է գրադարանում։':'Ընտրված աշակերտները կարող են այն բացել «Իմ աշխատանքները» → «Ուսուցչի առաջադրանքները» բաժնում։')+'</p><p lang="'+esc(a.material.definition.locale)+'">'+esc(a.material.definition.title)+' · v'+a.material.version+'</p><p>Ստացողներ՝ '+a.recipientCount+'</p><p class="assignment-meta">Հաստատման համար՝ <span class="assignment-receipt-id">'+esc(a.id)+'</span></p><p>'+new Date(a.assignedAt).toLocaleString('hy-AM')+'</p>'+(data.recipients?'<details open><summary>Ստացողների ցանկը</summary><ul>'+data.recipients.map(r=>'<li>'+esc(r.studentName)+'</li>').join('')+'</ul>'+(data.recipients.length<a.recipientCount?'<p>Որոշ հաշիվներ կամ անդամակցություններ այլևս գրանցված չեն։ Սկզբնական ստացողների քանակը պահպանված է։</p>':'')+'</details>':'<button type="button" class="ghost" data-assignment-inspect="'+esc(a.id)+'">Ստուգել ստացողների ցանկը</button>')+(a.status==='assigned'&&!data.readOnly?'<details class="assignment-cancel"><summary>Չեղարկել առաջադրանքը</summary><label>Չեղարկման պատճառ<textarea data-assignment-cancel-reason maxlength="1000" rows="2"></textarea></label><button type="button" class="ghost" data-assignment-cancel>Չեղարկել</button></details>':'')+(data.events?'<details><summary>Գործողությունների պատմություն</summary><ul>'+data.events.map(e=>'<li>'+(e.event==='assigned'?'Ուղարկված է':'Չեղարկված է')+' · '+new Date(e.at).toLocaleString('hy-AM')+(e.detail.reason?' · '+esc(e.detail.reason):'')+'</li>').join('')+'</ul></details>':'')+'</section>';
  }
  async function inspect(id){
   const token=++generation;busy=true;message('Հաստատումը բեռնվում է…');lockControls();
@@ -170,11 +171,11 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
   finally{if(life.current()&&token===generation){busy=false;lockControls();}}
  }
  async function cancel(){
-  if(busy||!currentReceipt)return;const reason=$('[data-assignment-cancel-reason]')?.value.trim();if(!reason){message(errors.assignment_reason_required,true);return;}
-  busy=true;const b=$('[data-assignment-cancel]');b.disabled=true;
+  if(locked()||!currentReceipt)return;const reason=$('[data-assignment-cancel-reason]')?.value.trim();if(!reason){message(errors.assignment_reason_required,true);$('[data-assignment-cancel-reason]')?.focus();return;}
+  busy=true;lockControls();message('Չեղարկման հաստատումը բեռնվում է…');
   try{const data=await life.invoke('cancel',{id:currentReceipt.id,revision:currentReceipt.revision,reason},ctx);if(life.current()){drawReceipt(data);message('Առաջադրանքը չեղարկված է։ Հրապարակված նյութի հասանելիությունը չի փոխվել։');}}
   catch(e){if(life.current()&&e.message!=='assignment_stale')message(errorText(e),true);}
-  finally{busy=false;if(b.isConnected)b.disabled=false;}
+  finally{busy=false;if(life.current())lockControls();}
  }
  const click=e=>{
   const b=e.target.closest('button');if(!b)return;

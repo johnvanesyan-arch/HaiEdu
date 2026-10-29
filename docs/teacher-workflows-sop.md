@@ -1,4 +1,4 @@
-# Teacher workflow SOP — version 1.4
+# Teacher workflow SOP — version 1.5
 
 2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments; B.12.3.1 adds permanent writing-review navigation.
 
@@ -67,6 +67,25 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 **Confirmation/result:** explicitly sent assessed/returned state, visible on the learner's same writing page. Returned work allows a revised draft and new submission. Every submitted/reviewed version remains in history. Regrading requires a reason. Human writing scores remain separate from automatic assessment/mastery.
 
 **Recovery:** wait for the private saved acknowledgement before leaving. A failed save preserves text and can be retried. An uncertain publication freezes the review fields and offers `Կրկնել նույն ուղարկումը` with the original request ID. A stale-tab conflict preserves the text; copy what you need before explicitly reloading the last version. Empty queue requires checking class/unit/filter and whether work was actually submitted. A stale revision is a conflict, not permission to overwrite another review. Archived/ended contexts retain read-only controls. No push-notification delivery is implied by saving feedback.
+
+## SOP 05 — Learner feedback and revision
+
+**Trigger:** the learner's same writing task is reviewed or returned. My work → course → writing uses state-specific actions to open the result or revision.
+
+**Steps:** open the task → read the current next-step guidance and teacher feedback above the editor → if returned, choose `Անցնել խմբագրմանը`, revise the existing draft and choose `Ներկայացնել ուսուցչին` → wait for the acknowledged submitted state. The previous frozen text is folded below the editor; complete submission/review history remains available. Assessed and historical read-only work has no editable response.
+
+**Recovery:** draft-save failure preserves text; an unknown submission result keeps the existing read-only status recovery and blocks a duplicate send. Reopening or signing out retains the account/session safety contract. A teacher's private draft is never learner feedback.
+
+## Four core journey shortcuts — PROCESS-01/U13
+
+| Goal | Ordered route | Acknowledged result |
+| --- | --- | --- |
+| Teacher sends a material | Prepare material → explicit class/selected recipients and optional instructions → Send | Receipt and My-work destination; publication alone does not send |
+| Learner submits writing | My work → writing task → requirements → write/save → Submit | Immutable submitted version and pending review |
+| Teacher reviews | Writing review or Today → response/rubric → private save or explicit assess/return | Sent result; then Next/return to queue |
+| Learner revises | Same writing task → current feedback → edit/save → Submit | New submitted version, earlier history preserved |
+
+Teacher review shows the number of completed criteria and focuses the first missing score on an incomplete assessed send. Returning instructions requires a comment, not rubric scores; existing regrade-reason requirements remain. Cancellation keeps all receipt controls busy until its result. The shared status-check label is concise; its accessible name retains the read-only logout meaning. These are presentation/control changes; current native/release verification remains pending in [the review record](workflow-simplicity-review.md).
 
 ## Explicit future capabilities
 
