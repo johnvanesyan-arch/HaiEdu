@@ -18,7 +18,7 @@ export function docxBytes(extra={}){
  const c=Buffer.concat(central),e=Buffer.alloc(22);e.writeUInt32LE(0x06054b50);e.writeUInt16LE(Object.keys(entries).length,8);e.writeUInt16LE(Object.keys(entries).length,10);e.writeUInt32LE(c.length,12);e.writeUInt32LE(offset,16);return new Uint8Array(Buffer.concat([...chunks,c,e]));
 }
 export async function studentTaskFixture(){
- const f=await authoringFixture({delivery:true});await addLearner(f.db);await f.db.exec(readFileSync('supabase/proposals/teacher-task-student-work.sql','utf8'));
+ const f=await authoringFixture({delivery:true});await addLearner(f.db);await f.db.query("update classes set name='Դասարան' where id=$1",[id(321)]);await f.db.query("update subjects set name_hy='Առարկա' where id=(select subject_id from subject_programs where id=(select subject_program_id from institutional_class_enrollments where id=$1))",[id(371)]);await f.db.exec(readFileSync('supabase/proposals/teacher-task-student-work.sql','utf8'));
  const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);const options={createAdmin:()=>f.admin,hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture'}};
  const handleWork=createTeacherTaskStudentHandler(options),handleFiles=createTeacherTaskStudentFilesHandler(options);
  const request=(action,payload={},actor=10,scope=action==='inbox'?{}:context(0,false))=>handleWork(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+token(actor),'Content-Type':'application/json'},body:JSON.stringify({action,context:scope,payload})}));

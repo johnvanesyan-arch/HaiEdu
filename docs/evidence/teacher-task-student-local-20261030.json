@@ -39,5 +39,23 @@
     "B123Open": true,
     "subjectExpansionPaused": true,
     "existingContentAudio45MappingsAndClassroomSpeaking": "preserved"
-  }
+  },
+  "learnerCI": [
+    {
+      "runId": 40961724483,
+      "source": "efdad654fcca8d6d2d47de7aafb27d31c5d042da",
+      "allFiveJobs": "passed",
+      "unitIntegration": 1598,
+      "native": 337
+    },
+    {
+      "runId": 40962875341,
+      "source": "96dad4b0d49944da239536644dd825b372778e03",
+      "allFiveJobs": "passed",
+      "unitIntegration": 1598,
+      "native": 337,
+      "added": "Unavailable task-link return to authorized inbox preserves saved work"
+    }
+  ],
+  "visualFixtureCorrection": "Initial component screenshots omitted the real Forest stylesheet. The real index already loads it. The latest test harness derives all stylesheets from web/index.html, asserts the Forest canvas and uses human-readable synthetic class/subject labels. Latest-source CI/visual verification required; no production palette defect is inferred."
 }
