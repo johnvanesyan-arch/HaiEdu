@@ -59,5 +59,28 @@
     "final owner usability acceptance"
   ],
   "B12.3": "open",
-  "subjectExpansion": "paused"
+  "subjectExpansion": "paused",
+  "ciAttempts": [
+    {
+      "source": "d2a7f27eab89ff4023c76048cd0127da0fc56444",
+      "run": 41053248039,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "native": {
+        "passed": 354,
+        "failed": 2,
+        "finding": "Real account page overflows at 390/768px with 200% text; fixed column/padding layout squeezes words. All four new behavior/recovery/account-fence cases pass."
+      },
+      "artifact": 12976301620,
+      "artifactSha256": "17b5c596743fbc071705cc378988a75fd7e8c32f6f16fa67a34a09a077fcde14",
+      "allRequiredJobsPassed": false
+    }
+  ],
+  "reflowCorrection": "Shared all-role account layout uses font-relative auto-fit columns, bounded padding, full-width wrapping navigation/controls, concise Armenian labels and accurate execution status. Same static word guards expanded across headers/buttons/navigation; student and staff variants checked at each width. No SQL/Edge behavior changed after passing database gates."
 }

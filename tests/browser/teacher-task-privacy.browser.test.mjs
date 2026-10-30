@@ -1,6 +1,6 @@
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,mkdir} from 'node:fs/promises';
+import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import ts from 'typescript';
 import {chromium,expect} from '@playwright/test';
 import {privacyFixture,privacyToken,id,context,pdf,textDefinition} from '../fixtures/teacher-task-privacy-api.mjs';
@@ -81,16 +81,20 @@ test('unknown deletion reply refreshes the execution marker and late response ca
  const f=await surface(t,{mode:'admin'}),p=f.p;f.drop();await p.locator('[data-delete-execute]').click();await expect(p.locator('[data-delete-execute]')).toHaveText('Շարունակել ջնջումը');await expect(p.locator('[data-delete-reject]')).toHaveCount(0);
  await f.drainElapsed();const held=f.hold();await p.locator('[data-delete-execute]').click();await heldReady(held);await p.evaluate(()=>window.__switch());held.release();await p.waitForFunction(()=>window.__settled===2);await expect(p.locator('#consoleMessage')).toHaveText('Other account');await expect(p.locator('#deletionRows')).toHaveText('Other account');assert.deepEqual(f.errors,[]);
 });
-async function layout(p,selector){
- await p.evaluate(()=>document.fonts.ready);const g=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(g.scroll<=g.width+1,JSON.stringify(g));
+async function layout(p,selector,stamp){
+ await p.evaluate(()=>document.fonts.ready);const g=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,15).map(e=>({tag:e.tagName,id:e.id,class:e.className,right:e.getBoundingClientRect().right}))}));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${stamp}-geometry.json`,JSON.stringify(g));
+ assert.ok(g.scroll<=g.width+1,JSON.stringify(g));
  const split=await p.locator(selector).evaluateAll(elements=>{const words=[];for(const e of elements)for(const n of e.childNodes){if(n.nodeType!==Node.TEXT_NODE)continue;for(const m of n.textContent.matchAll(/\p{L}+/gu)){const r=document.createRange();r.setStart(n,m.index);r.setEnd(n,m.index+m[0].length);if(new Set([...r.getClientRects()].filter(r=>r.width).map(r=>Math.round(r.top))).size>1)words.push(m[0]);}}return words;});assert.deepEqual(split,[]);
 }
 for(const width of [390,768,1280])test(`privacy and admin execution states retain controls at ${width}px and 200% text`,async t=>{
- for(const mode of ['privacy','admin']){
-  const f=await surface(t,{mode,width,large:true}),p=f.p;
-  if(mode==='privacy'){await f.privacy('prepare',{requestId:f.requestId});await p.reload();await expect(p.locator('#deletionState')).toContainText('այլևս չեք կարող չեղարկել');}
+ for(const [mode,actor,label] of [['privacy',10,'privacy'],['privacy',20,'staff-account'],['admin',40,'admin']]){
+  const f=await surface(t,{mode,actor,width,large:true}),p=f.p;
+  if(mode==='privacy'&&actor===10){await f.privacy('prepare',{requestId:f.requestId});await p.reload();await expect(p.locator('#deletionState')).toContainText('այլևս չեք կարող չեղարկել');await expect(p.locator('#accountStatus')).toHaveText('Ջնջումն ընթացքի մեջ է');}
+  else if(mode==='privacy'){await expect(p.locator('#inventory')).toContainText('Կցված PDF ֆայլեր');}
   else{await p.locator('[data-delete-execute]').click();await expect(p.locator('#consoleMessage')).toContainText('վերբեռնումների ավարտին');await expect(p.locator('[data-delete-execute]')).toBeEnabled();}
-  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${mode}-${width}-200.png`,fullPage:true});}
-  await layout(p,mode==='privacy'?'#inventory dt,#deletionState':'[data-delete-execute],#consoleMessage');assert.deepEqual(f.errors,[]);
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${label}-${width}-200.png`,fullPage:true});if(mode==='privacy')await p.locator('#studentInventory').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${label}-inventory-${width}-200.png`});}
+  assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');
+  await layout(p,mode==='privacy'?'h1,h2,h3,.student-account-sections a,button,#inventory dt,#deletionState':'[data-delete-execute],#consoleMessage',`${label}-${width}-200`);assert.deepEqual(f.errors,[]);
  }
 });

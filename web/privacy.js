@@ -74,7 +74,7 @@ function inventoryPresentation(role, inventory) {
       title: "Ինչ տվյալներ ենք պահում աշակերտի մասին",
       description: "Աշակերտի պրոֆիլում պահվում են հաշվի տվյալները և ուսուցման համար անհրաժեշտ դասարանային, հրավերների ու առաջընթացի գրառումները։",
       rows: [
-        ["Դասարանային անդամակցություններ", inventory.classMemberships ?? 0],
+        ["Դասարաններ", inventory.classMemberships ?? 0],
         ["Ստացված հրավերների գրառումներ", inventory.invitationsReceived ?? 0],
         ["Ուսուցչից ստացված նյութային առաջադրանքներ", inventory.materialAssignmentsReceived ?? 0],
         ["Ուսուցչից ստացված գրավոր առաջադրանքներ", inventory.writingAssignmentsReceived ?? 0],
@@ -82,7 +82,7 @@ function inventoryPresentation(role, inventory) {
         ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
         ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
         ["Ամրապնդման իրադարձություններ", inventory.remediationEvents ?? 0],
-        ["Գրավոր աշխատանքներ՝ սևագրերով, ներկայացված տարբերակներով և մեկնաբանություններով", inventory.writtenWork ?? 0],
+        ["Գրավոր աշխատանքներ՝ սևագրեր, պատասխաններ, ստուգումներ", inventory.writtenWork ?? 0],
         ["Չուղարկված պատասխանների սևագրեր", inventory.responseDrafts ?? 0],
         ["Ձայնագրությունների օգտագործման գրառումներ", inventory.audioDeliveries ?? 0],
         ["Գնահատման ընթացքում ձայնագրությունների օգտագործման գրառումներ", inventory.assessedAudioRecordings ?? 0],
@@ -97,9 +97,9 @@ function inventoryPresentation(role, inventory) {
         ["Դասավանդման նշանակումներ", inventory.teachingAssignments ?? 0],
         ["Ուղարկված նյութային առաջադրանքներ", inventory.materialAssignmentsSent ?? 0],
         ["Ուղարկված գրավոր առաջադրանքներ", inventory.writingAssignmentsSent ?? 0],
-        ["Գրավոր աշխատանքների գնահատումներ և մեկնաբանություններ", inventory.writtenReviews ?? 0],
+        ["Գրավոր աշխատանքների գնահատումներ ու նշումներ", inventory.writtenReviews ?? 0],
         ["Գնահատման անձնական սևագրեր", inventory.feedbackDrafts ?? 0],
-        ["Պատրաստի անձնական մեկնաբանություններ՝ ներառյալ արխիվը", inventory.feedbackSnippets ?? 0],
+        ["Պատրաստի անձնական գրառումներ՝ ներառյալ արխիվը", inventory.feedbackSnippets ?? 0],
         ["Գնահատման ուղարկման հաստատումներ", inventory.feedbackReceipts ?? 0],
         ["Ստեղծված հրավերներ և կոդեր", inventory.invitationRecords ?? 0],
         ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
@@ -172,7 +172,8 @@ function render(data) {
 
   $("accountTitle").textContent = data.account.displayName || "Իմ հաշիվը";
   $("accountRole").textContent = roleLabel(data.account.role);
-  $("accountStatus").textContent = statusLabel(data.account.status);
+  $("accountStatus").textContent = erasurePresentation(data.latestDeletionRequest).started && data.account.status === "deletion_pending"
+    ? "Ջնջումն ընթացքի մեջ է" : statusLabel(data.account.status);
   $("accountEmail").textContent = data.account.email || "—";
   $("displayNameInput").value = data.account.displayName || "";
 

@@ -5,3 +5,27 @@ body[data-account-pending]{background:#f8faf8;color:#23392f}
 body[data-account-pending] .topbar{background:#fff;color:#23392f;box-shadow:none}
 body[data-account-pending] .topbar .button-link{background:#fff;color:#23392f;border-color:#7c8b82}
 body[data-student-utility="account"] .topbar{flex-direction:row;flex-wrap:wrap}
+
+/* Account reflow is shared by every role. Font-relative columns collapse when
+ * text grows; fixed padding must not consume most of a narrow viewport. */
+body[data-student-utility="account"] > main.privacy-shell{width:100%;min-width:0;max-width:70rem;margin-inline:auto;padding:clamp(12px,2.5vw,28px)}
+body[data-student-utility="account"] .topbar{padding:clamp(12px,3vw,24px);gap:16px}
+body[data-student-utility="account"] .topbar > div{min-width:0;max-width:100%}
+body[data-student-utility="account"] .topbar > div:first-child{flex:1 1 20rem}
+body[data-student-utility="account"] .topbar h1{font-size:1.5rem;line-height:1.3}
+body[data-student-utility="account"] h2{font-size:1.15rem;line-height:1.4}
+body[data-student-utility="account"] h3{font-size:1.05rem;line-height:1.4}
+body[data-student-utility="account"] :is(.privacy-grid,.privacy-security-grid){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:16px;min-width:0}
+body[data-student-utility="account"] :is(.privacy-card,.privacy-security-form){padding:clamp(12px,2.5vw,24px);min-width:0;max-width:100%}
+body[data-student-utility="account"] .privacy-list > div{display:flex;flex-wrap:wrap;gap:4px 16px;min-width:0}
+body[data-student-utility="account"] .privacy-list dt{flex:1 1 14rem;min-width:0}
+body[data-student-utility="account"] .privacy-list dd{min-width:0;max-width:100%;text-align:left}
+body[data-student-utility="account"] .privacy-toggle{padding:12px;gap:8px;min-width:0}
+body[data-student-utility="account"] .privacy-toggle span{min-width:0}
+body[data-student-utility="account"] .privacy-toggle input{flex:0 0 auto;width:1rem;height:1rem;min-height:0;padding:0}
+body[data-student-utility="account"] .student-account-sections{display:flex;flex-wrap:wrap;gap:8px}
+body[data-student-utility="account"] .student-account-sections a{flex:1 1 10rem;max-width:100%;min-width:0;font-size:1rem;padding:12px 16px}
+body[data-student-utility="account"] :is(button,.button-link){max-width:100%;min-width:0;padding:12px 16px;white-space:normal;overflow-wrap:normal;word-break:normal}
+body[data-student-utility="account"] :is(h1,h2,h3,p,dt,label){overflow-wrap:normal;word-break:normal}
+body[data-student-utility="account"] :is(#accountTitle,#accountEmail){overflow-wrap:anywhere}
+body[data-student-utility="account"] :is(input,select,textarea){min-width:0;max-width:100%}
