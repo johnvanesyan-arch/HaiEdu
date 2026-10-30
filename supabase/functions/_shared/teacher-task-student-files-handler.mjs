@@ -1,4 +1,4 @@
-import {taskUuid as uuid,RESPONSE_FILE_LIMIT,RESPONSE_MIME} from './teacher-task-response.mjs';
+import {taskUuid as uuid,RESPONSE_FILE_LIMIT,RESPONSE_MIME,RESPONSE_DOWNLOAD_MIME} from './teacher-task-response.mjs';
 import {validateTaskDocument} from './teacher-task-documents.mjs';
 import {taskStudentCors,taskStudentReply,taskStudentError,taskStudentAccess,taskBounded,taskShape,validStudentContext} from './teacher-task-student-handler.mjs';
 const fail=code=>{throw Error(code);};
@@ -18,6 +18,6 @@ export function createTeacherTaskStudentFilesHandler(options){return async reque
    await readback(access.admin,asset);await access.rpc('open_file',context,{id:payload.id,fileId:asset.id});await access.live();return taskStudentReply({version:'teacher-task-student-files-v1',file:{id:asset.id,format:asset.format,bytes:asset.bytes,sha256:asset.sha256}});
   }
   if(action==='open'&&!uuid(payload.fileId))fail('task_work_invalid');const rpcAction=action==='source'?'source':'open_file';const result=await access.rpc(rpcAction,context,payload),asset=result.file;const content=await readback(access.admin,asset);await access.rpc(rpcAction,context,payload);await access.live();
-  return new Response(content,{headers:{...taskStudentCors,'Content-Type':RESPONSE_MIME[asset.format],'Content-Disposition':'attachment; filename="haiedu-'+(action==='source'?'task':'response')+'.'+asset.format+'"','Content-Security-Policy':"sandbox; default-src 'none'"}});
+  return new Response(content,{headers:{...taskStudentCors,'Content-Type':RESPONSE_DOWNLOAD_MIME[asset.format],'Content-Disposition':'attachment; filename="haiedu-'+(action==='source'?'task':'response')+'.'+asset.format+'"','Content-Security-Policy':"sandbox; default-src 'none'"}});
  }catch(e){return taskStudentError(e);}
 };}

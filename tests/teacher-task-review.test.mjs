@@ -1,3 +1,6 @@
+import {FunctionsClient} from '@supabase/functions-js';
+import {createStudentTeacherTaskClient} from '../web/student-teacher-task-client.mjs';
+import {taskDownloadBlob} from '../web/teacher-task-download.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {studentTaskFixture,id,context,token,textDefinition,pdf,docxBytes} from './fixtures/teacher-task-student-api.mjs';
 async function setup(t,definition=textDefinition){
@@ -47,4 +50,14 @@ test('audited cancellation preserves submissions/feedback and closes new writes 
  const payload={deliveryId:f.delivery.id,requestId:crypto.randomUUID(),reason:'Replaced with a corrected task.'};let r=await f.review('cancel',payload);assert.equal(r.status,200,await r.clone().text());const c=(await r.json()).cancellation;assert.deepEqual((await(await f.review('cancel',payload)).json()).cancellation,c);
  const student=await(await f.request('open',{id:f.delivery.id})).json();assert.equal(student.assignment.cancelled,true);assert.equal(student.work.submissions[0].reviews.length,1);assert.equal((await f.request('save',{id:f.delivery.id,expectedRevision:student.work.revision,content:{kind:'text',text:'Blocked new work'}})).status,409);
  assert.equal((await(await f.review('open',{submissionId:s.id})).json()).submission.editable,false);assert.equal((await f.review('publish',pub.payload)).status,200);assert.equal((await f.db.query('select count(*)::int n from teacher_task_delivery_cancellations')).rows[0].n,1);assert.equal((await f.db.query("select has_table_privilege('authenticated','teacher_task_review_drafts','select') allowed")).rows[0].allowed,false);
+});
+
+test('actual Supabase FunctionsClient preserves PDF/DOCX bytes for teacher and learner downloads',async t=>{
+ for(const [format,bytes]of [['pdf',pdf],['docx',docxBytes()]]){
+  const f=await setup(t,{...textDefinition,source:{kind:'pdf',attachmentId:null},response:{kind:'document',allowedFormats:[format]}});const uploaded=await f.fileRequest('upload',{id:f.delivery.id,requestId:crypto.randomUUID(),format},10,context(0,false),bytes);const file=(await uploaded.json()).file,s=await f.submit(f.delivery,{kind:'document',fileId:file.id});
+  // Exercise the installed transport, not the browser harness binary decoder.
+  const clientFor=(actor,handler)=>new FunctionsClient('https://fixture.invalid',{headers:{Authorization:'Bearer '+token(actor)},customFetch:(url,init)=>handler(new Request(url,init))});
+  const teacher=clientFor(20,f.handleReviewFiles);for(const action of ['file','source']){const r=await teacher.invoke('manage-teacher-task-review-files',{body:{action,context:context(0,true),payload:{submissionId:s.id}}});assert.equal(r.error,null);assert.ok(r.data instanceof Blob);const blob=taskDownloadBlob(r.data);assert.deepEqual(new Uint8Array(await blob.arrayBuffer()),action==='source'?pdf:bytes);assert.equal(blob.type,action==='source'||format==='pdf'?'application/pdf':'application/vnd.openxmlformats-officedocument.wordprocessingml.document');}
+  const client=createStudentTeacherTaskClient({client:{auth:{getSession:async()=>({data:{session:{user:{id:id(10)}}}})},functions:clientFor(10,f.handleFiles)},actorId:id(10)});const blob=await client.download('open',context(0,false),{id:f.delivery.id,fileId:file.id});assert.deepEqual(new Uint8Array(await blob.arrayBuffer()),bytes);client.dispose();
+ }
 });

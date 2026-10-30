@@ -82,5 +82,13 @@
       "native label-overflow assertion added"
     ],
     "currentSourceScreenshots": "required after layout corrections"
+  },
+  "realSdkCompatibility": {
+    "package": "@supabase/functions-js 2.118.0 (pinned project dependency)",
+    "finding": "FunctionsClient treats DOCX MIME as text, unlike the earlier browser fixture decoder",
+    "fix": "DOCX application/octet-stream transport; shared role-client Blob MIME normalization; original .docx filename and exact upload validation retained",
+    "verification": "11 focused actual SQL/Edge/real-FunctionsClient cases pass; PDF/DOCX teacher/learner bytes are exact",
+    "nativeFixtureChange": "Recognize actual octet-stream transport; raw DOCX parsing is no longer simulated",
+    "requiredCi": "new exact-source gate is required; previous typography-source gate passed1603unit/346native"
   }
 }

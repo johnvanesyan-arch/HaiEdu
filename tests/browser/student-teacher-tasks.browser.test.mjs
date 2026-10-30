@@ -13,7 +13,7 @@ async function surface(t,{definition=textDefinition,width=1280,large=false,home=
    window.__calls.push({name,body:body instanceof FormData?JSON.parse(body.get('request')):body});
    if(name==='manage-writing-assignments')return{data:{version:'writing-assignments-v1',assignments:[],hasMore:false,nextOffset:50}};
    if(name==='manage-resource-assignments')return{data:{version:'resource-assignments-v1',assignments:[],hasMore:false,nextOffset:50}};
-   const multipart=body instanceof FormData,r=await fetch('/fixture/'+name,{method:'POST',headers:{Authorization:'Bearer '+credential,...(multipart?{}:{'Content-Type':'application/json'})},body:multipart?body:JSON.stringify(body)}),binary=r.headers.get('content-type')?.includes('application/pdf')||r.headers.get('content-type')?.includes('wordprocessingml');const data=binary?await r.blob():await r.json();return r.ok?{data}:{data,error:{message:data.error}};
+   const multipart=body instanceof FormData,r=await fetch('/fixture/'+name,{method:'POST',headers:{Authorization:'Bearer '+credential,...(multipart?{}:{'Content-Type':'application/json'})},body:multipart?body:JSON.stringify(body)}),binary=r.headers.get('content-type')?.includes('application/octet-stream')||r.headers.get('content-type')?.includes('application/pdf');const data=binary?await r.blob():await r.json();return r.ok?{data}:{data,error:{message:data.error}};
   }}};
   window.__switch=()=>{session={user:{id:'other-account'}};[...listeners].forEach(f=>f('SIGNED_IN',session));};
  },{actor:id(10),credential:token(10),scope:context(0,false),large,home});

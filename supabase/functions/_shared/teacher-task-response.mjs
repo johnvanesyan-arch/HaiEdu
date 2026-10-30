@@ -9,3 +9,6 @@ export function validTaskResponse(c,{draft=false}={}){
  if(c.kind==='link')return typeof c.url==='string'&&c.url.length<=2048&&(draft||taskHttpsUrl(c.url));
  return draft&&c.fileId===null||taskUuid(c.fileId);
 }
+
+// FunctionsClient treats DOCX MIME as text. Binary download transport stays lossless.
+export const RESPONSE_DOWNLOAD_MIME={pdf:'application/pdf',docx:'application/octet-stream'};

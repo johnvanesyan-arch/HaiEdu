@@ -1,3 +1,4 @@
+import {taskDownloadBlob} from './teacher-task-download.mjs';
 export function createStudentTeacherTaskClient({client,actorId,isCurrent=()=>true}){
  let alive=true;const uploads=new Map();
  async function identity(){const r=await client.auth.getSession();if(!alive||!isCurrent()||r.data?.session?.user?.id!==(typeof actorId==='function'?actorId():actorId))throw Error('stale');}
@@ -9,6 +10,6 @@ export function createStudentTeacherTaskClient({client,actorId,isCurrent=()=>tru
   const body=new FormData();body.set('request',JSON.stringify(request));body.set('file',new Blob([bytes],{type:format==='pdf'?'application/pdf':'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}),'response.'+format);
   const r=await invoke('manage-teacher-task-student-files',body);if(r?.version!=='teacher-task-student-files-v1'||!r.file?.id)throw Error('unknown');uploads.delete(key);return r.file;
  }
- async function download(action,context,payload){const r=await invoke('manage-teacher-task-student-files',{action,context,payload});if(!(r instanceof Blob)||!['application/pdf','application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(r.type))throw Error('task_file_invalid');return r;}
+ async function download(action,context,payload){const r=await invoke('manage-teacher-task-student-files',{action,context,payload});return taskDownloadBlob(r);}
  return{work,upload,download,dispose(){alive=false;uploads.clear();}};
 }

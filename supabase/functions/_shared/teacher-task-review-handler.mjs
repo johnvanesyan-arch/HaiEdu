@@ -1,4 +1,4 @@
-import {taskUuid as uuid,RESPONSE_MIME} from './teacher-task-response.mjs';
+import {taskUuid as uuid,RESPONSE_DOWNLOAD_MIME} from './teacher-task-response.mjs';
 import {taskStudentCors,taskStudentReply,taskStudentError,taskStudentAccess,taskBounded,taskShape} from './teacher-task-student-handler.mjs';
 import {readbackTaskFile} from './teacher-task-student-files-handler.mjs';
 const fail=code=>{throw Error(code);};
@@ -34,7 +34,7 @@ export function createTeacherTaskReviewHandler(options,{files=false}={}){return 
   const result=await access.rpc(action,context,payload);
   if(files){
    const asset=result.file,content=await readbackTaskFile(access.admin,asset);await access.rpc(action,context,payload);await access.live();
-   return new Response(content,{headers:{...taskStudentCors,'Content-Type':RESPONSE_MIME[asset.format],'Content-Disposition':'attachment; filename="haiedu-'+(action==='source'?'task':'response')+'.'+asset.format+'"','Content-Security-Policy':"sandbox; default-src 'none'"}});
+   return new Response(content,{headers:{...taskStudentCors,'Content-Type':RESPONSE_DOWNLOAD_MIME[asset.format],'Content-Disposition':'attachment; filename="haiedu-'+(action==='source'?'task':'response')+'.'+asset.format+'"','Content-Security-Policy':"sandbox; default-src 'none'"}});
   }
   await access.live();return taskStudentReply(result);
  }catch(e){return reviewError(e);}
