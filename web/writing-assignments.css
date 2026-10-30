@@ -33,3 +33,5 @@
 .task-text-tools { display:flex; flex-wrap:wrap; gap:.25rem; margin-block:.35rem .7rem; }
 .task-text-tools button { min-width:0; max-width:100%; font-size:.9em; }
 .task-text-editor { min-width:0; }
+/* Preserve room for ordinary words at enlarged mobile text sizes. */
+@media(max-width:600px){.task-text :is(ul,ol){padding-inline-start:0;list-style-position:inside}}

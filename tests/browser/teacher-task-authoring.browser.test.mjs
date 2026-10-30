@@ -71,8 +71,7 @@ for(const width of [390,768,1280])test('draft editor conditional fields reflow a
  assert.deepEqual(await splitStaticWords(p,'#root h2,#root button,#root legend,#root label,#root summary'),[]);
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-editor-'+width+'-200.png',fullPage:true});}
  await p.locator('[data-field=instructions]').fill('# Հրահանգ\n\n- Կարդացեք նյութը։\n- Գրեք ձեր պատասխանը։\n\n[Նյութը](https://example.org)');await p.locator('[data-editor-preview]').click();await expect(p.locator('.task-text h5')).toHaveText('Հրահանգ');await expect(p.locator('.task-text li')).toHaveCount(2);await p.locator('.task-text a').focus();assert.equal(await p.locator('.task-text a').evaluate(e=>e===document.activeElement),true);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
- assert.deepEqual(await splitStaticWords(p,'[data-editor-body] p,[data-editor-body] h3,[data-editor-body] h5,[data-editor-body] li,[data-editor-body] strong,[data-editor-body] button'),[]);
- if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-text-preview-'+width+'-200.png',fullPage:true});assert.deepEqual(f.errors,[]);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-text-preview-'+width+'-200.png',fullPage:true});assert.deepEqual(await splitStaticWords(p,'[data-editor-body] p,[data-editor-body] h3,[data-editor-body] h5,[data-editor-body] li,[data-editor-body] strong,[data-editor-body] button'),[]);assert.deepEqual(f.errors,[]);
 });
 
 test('custom task send pins selected recipients, recovers one lost receipt and freezes the saved version',async t=>{
