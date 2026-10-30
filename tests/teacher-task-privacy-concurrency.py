@@ -69,7 +69,7 @@ with database_uri() as uri:
   c.execute("insert into profiles(id,role,account_status) values(%s,'admin','active')",[ident(40)])
   c.execute('insert into auth.users(id) values(%s)',[ident(40)])
   c.execute('insert into auth.sessions(id,user_id) values(%s,%s)',[ident(440),ident(40)])
-  c.execute((ROOT/'supabase/migrations/20261030204829_teacher_task_privacy.sql').read_text())
+  c.execute((ROOT/'supabase/migrations/20261030214222_teacher_task_privacy.sql').read_text())
   cutoff=c.execute("select clock_timestamp()-interval '36 hours'").fetchone()[0].isoformat()
   # A save's JSON reference obtains KEY SHARE on the actual file row.
   d,f=new_source(c);age(c,'source',f['id']);preview=retention(c,'preview',{'before':cutoff})

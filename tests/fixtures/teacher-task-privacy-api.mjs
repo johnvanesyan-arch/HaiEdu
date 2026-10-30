@@ -37,7 +37,7 @@ export async function privacyFixture(){
  const f=await studentTaskFixture({review:true});await f.db.exec(privacyFoundationSQL());
  await f.db.query("insert into profiles(id,role,account_status,display_name) values($1,'admin','active','Synthetic administrator')",[id(40)]);
  await f.db.query('insert into auth.users(id) values($1)',[id(40)]);await f.db.query('insert into auth.sessions(id,user_id) values($1,$2)',[id(440),id(40)]);
- await f.db.exec(readFileSync('supabase/migrations/20261030204829_teacher_task_privacy.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261030214222_teacher_task_privacy.sql','utf8'));
  f.admin.from=crud(f.db);const baseRpc=f.admin.rpc.bind(f.admin);let lostRpc=null,removeMode='ok',authDeleteMode='ok',removes=0;
  f.admin.rpc=async(name,args)=>{const r=await baseRpc(name,args);if(!r.error&&(lostRpc===args.p_action||lostRpc===name)){lostRpc=null;return{data:null,error:{message:'fixture_lost_reply'}};}return r;};
  f.admin.auth={getUser:async token=>{const actor=Number(token.split('.').at(-1));return token.startsWith('fixture.')&&[10,12,20,21,30,40].includes(actor)?{data:{user:{id:id(actor)}}}:{error:{message:'Invalid fixture credential'}};},admin:{
