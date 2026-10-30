@@ -100,7 +100,29 @@
       "artifact": 12977411494,
       "artifactSha256": "d2bdb0a35929cfcd14e4a6ff3d9a2e46bf8778317c4b2581520ce461a5bedaed",
       "visualFinding": "Root/word-wrap gates pass, but inspected 390px student screenshots show Back-label/control and inventory-column text spills. Admin sticky progress overlays Resume and refresh label splits. Corrected specificity, header/refresh reflow and inline deletion progress; stronger per-element word-containment and hit-target checks retained."
+    },
+    {
+      "source": "fbe0fd2a1a9f5c5c6e067b3608c4b0177b225806",
+      "run": 41057884673,
+      "allRequiredJobsPassed": false,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "native": {
+        "passed": 355,
+        "failed": 1,
+        "newPrivacyCasesPassed": 7,
+        "finding": "All new containment and hit-target checks pass. Existing complete staff layout catches platform-admin heading overflow at 360px/200%; bounded font clamp added. Admin-security and other roles pass."
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "artifact": 12977558008,
+      "artifactSha256": "12b6d22a01186bc02ee5d92095417480f48026dd7dd2d94e7a23ea094cbe1321"
     }
   ],
-  "reflowCorrection": "Shared all-role account layout uses font-relative auto-fit columns, bounded padding, full-width wrapping navigation/controls, concise Armenian labels and accurate execution status. Same static word guards expanded across headers/buttons/navigation; student and staff variants checked at each width. No SQL/Edge behavior changed after passing database gates."
+  "reflowCorrection": "Shared all-role account layout uses font-relative auto-fit columns, bounded padding, full-width wrapping navigation/controls, concise Armenian labels and accurate execution status. Same static word guards expanded across headers/buttons/navigation; student and staff variants checked at each width. No SQL/Edge behavior changed after passing database gates.",
+  "completionReadback": "Actual SQL/Edge plus extracted browser-handler VM probe reproduces lost-final-reply false error before the fix and confirmed completion after same-request readback. Existing native lifecycle case now drops that final reply and requires one completed receipt/no retry control."
 }

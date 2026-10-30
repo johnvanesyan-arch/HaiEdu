@@ -325,6 +325,7 @@ async function loadDeletions(isCurrent=async()=>true) {
   setMessage("Ջնջման հարցումները բեռնվում են…");
   const data=await invoke("get-admin-dashboard", { view: "deletions" });
   if(await isCurrent())renderDeletionRequests(data);
+  return data;
 }
 
 async function loadAudit() {
@@ -396,7 +397,13 @@ async function executeDeletion(requestId,started=false) {
     await loadDeletions(current);
     if(!await current())return;
     setMessage(result.completed===false?(result.erasure?.retryAfterSeconds>0?`Սպասում ենք ընթացիկ վերբեռնումների ավարտին։ Շարունակեք ջնջումը մոտ ${Math.ceil(result.erasure.retryAfterSeconds/60)} րոպեից։`:`Ջնջումը դեռ ընթացքի մեջ է։ Մնացել է ${result.erasure?.pendingFiles??0} ֆայլ։ Կրկին ընտրեք «Շարունակել ջնջումը»։`):"Հաշիվը վերջնականապես ջնջվել է։");
-  } catch(error){if(await current()){await loadDeletions(current).catch(()=>{});if(await current())setMessage(friendlyError(error),true);}}
+  } catch(error){if(await current()){
+    const readback=await loadDeletions(current).catch(()=>null);
+    if(await current()){
+      const completed=readback?.deletionRequests?.some(r=>r.id===requestId&&r.status==='completed');
+      setMessage(completed?"Հաշիվը վերջնականապես ջնջվել է։":friendlyError(error),!completed);
+    }
+  }}
   finally{pendingDeletionIds.delete(requestId);if(await current())document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=false;});}
 }
 
