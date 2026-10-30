@@ -41,7 +41,7 @@ function roleLabel(role) {
 }
 
 function statusLabel(status) {
-  return ({ active:"Ակտիվ", suspended:"Կասեցված", archived:"Արխիվացված", deletion_pending:"Ջնջման սպասող", ended:"Ավարտված", revoked:"Չեղարկված" })[status] || status || "—";
+  return ({ active:"Ակտիվ", suspended:"Կասեցված", archived:"Արխիվացված", deletion_pending:"Ջնջման սպասող", ended:"Ավարտված", revoked:"Չեղարկված", pending:"Սպասում է",processing:"Ընթացքի մեջ է",completed:"Ավարտված",rejected:"Մերժված",cancelled:"Չեղարկված" })[status] || status || "—";
 }
 
 function schoolStatusMarkup(user) {
@@ -249,7 +249,7 @@ function renderDeletionRequests(data) {
     let actions = "—";
     if (request.status === "pending") actions = `<div class="admin-actions"><button data-delete-approve="${esc(request.id)}">Հաստատել հարցումը</button><button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել</button></div>`;
     if (request.status === "processing") {const state=erasurePresentation(request);actions = `<div class="admin-actions"><button class="danger-btn" data-delete-execute="${esc(request.id)}" data-delete-started="${state.started}"${pendingDeletionIds.has(request.id)?' disabled':''}>${state.action}</button>${state.canReject?`<button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել / վերադարձնել</button>`:''}</div>`;}
-    return `<tr><td><code>${esc(request.id.slice(0, 8))}</code></td><td>${esc(displayUser(user))}</td><td><span class="status-chip ${esc(request.status)}">${esc(request.status)}</span>${request.resolution_code ? `<div class="subtle small">${esc(request.resolution_code)}</div>` : ""}</td><td>${esc(fmtDate(request.requested_at))}</td><td>${actions}</td></tr>`;
+    return `<tr><td><code>${esc(request.id.slice(0, 8))}</code></td><td>${esc(displayUser(user))}</td><td><span class="status-chip ${esc(request.status)}">${esc(statusLabel(request.status))}</span>${request.resolution_code ? `<div class="subtle small">${esc(request.resolution_code)}</div>` : ""}</td><td>${esc(fmtDate(request.requested_at))}</td><td>${actions}</td></tr>`;
   }).join("") : '<tr><td colspan="5" class="empty-row">Ջնջման բաց հարցում չկա։</td></tr>';
   $("deletionRows").querySelectorAll("[data-delete-approve]").forEach((button) => button.addEventListener("click", () => approveDeletion(button.dataset.deleteApprove)));
   $("deletionRows").querySelectorAll("[data-delete-execute]").forEach((button) => button.addEventListener("click", () => executeDeletion(button.dataset.deleteExecute,button.dataset.deleteStarted==='true')));

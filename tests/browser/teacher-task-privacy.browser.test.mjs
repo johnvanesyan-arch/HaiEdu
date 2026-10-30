@@ -11,7 +11,7 @@ async function heldReady(slot){const deadline=Date.now()+10000;while(!slot.relea
 // MFA/router initialization is deliberately outside this isolated component.
 async function adminModule(){
  const source=await readFile('web/admin.js','utf8'),ast=ts.createSourceFile('admin.js',source,ts.ScriptTarget.Latest,true);
- const names=['esc','fmtDate','displayUser','setMessage','friendlyError','invoke','cacheUsers','renderDeletionRequests','loadDeletions','executeDeletion'];
+ const names=['esc','fmtDate','displayUser','statusLabel','setMessage','friendlyError','invoke','cacheUsers','renderDeletionRequests','loadDeletions','executeDeletion'];
  const functions=names.map(name=>{const n=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name);assert.ok(n,name);return n.getText(ast);}).join('\n');
  return `import{erasurePresentation}from'/task-privacy-view.mjs';
  const supabase=window.__client,$=id=>document.getElementById(id),accountCache=new Map(),pendingDeletionIds=new Set();let actor=null;
@@ -85,7 +85,7 @@ async function layout(p,selector,stamp){
  await p.evaluate(()=>document.fonts.ready);const g=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,15).map(e=>({tag:e.tagName,id:e.id,class:e.className,right:e.getBoundingClientRect().right}))}));
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${stamp}-geometry.json`,JSON.stringify(g));
  assert.ok(g.scroll<=g.width+1,JSON.stringify(g));
- const split=await p.locator(selector).evaluateAll(elements=>{const words=[];for(const e of elements)for(const n of e.childNodes){if(n.nodeType!==Node.TEXT_NODE)continue;for(const m of n.textContent.matchAll(/\p{L}+/gu)){const r=document.createRange();r.setStart(n,m.index);r.setEnd(n,m.index+m[0].length);if(new Set([...r.getClientRects()].filter(r=>r.width).map(r=>Math.round(r.top))).size>1)words.push(m[0]);}}return words;});assert.deepEqual(split,[]);
+ const split=await p.locator(selector).evaluateAll(elements=>{const words=[];for(const e of elements)for(const n of e.childNodes){if(n.nodeType!==Node.TEXT_NODE)continue;for(const m of n.textContent.matchAll(/\p{L}+/gu)){const r=document.createRange();r.setStart(n,m.index);r.setEnd(n,m.index+m[0].length);const rects=[...r.getClientRects()].filter(r=>r.width),box=e.getBoundingClientRect();if(new Set(rects.map(r=>Math.round(r.top))).size>1||rects.some(r=>r.left<box.left-1||r.right>box.right+1))words.push(m[0]);}}return words;});assert.deepEqual(split,[]);
 }
 for(const width of [390,768,1280])test(`privacy and admin execution states retain controls at ${width}px and 200% text`,async t=>{
  for(const [mode,actor,label] of [['privacy',10,'privacy'],['privacy',20,'staff-account'],['admin',40,'admin']]){
@@ -93,8 +93,9 @@ for(const width of [390,768,1280])test(`privacy and admin execution states retai
   if(mode==='privacy'&&actor===10){await f.privacy('prepare',{requestId:f.requestId});await p.reload();await expect(p.locator('#deletionState')).toContainText('այլևս չեք կարող չեղարկել');await expect(p.locator('#accountStatus')).toHaveText('Ջնջումն ընթացքի մեջ է');}
   else if(mode==='privacy'){await expect(p.locator('#inventory')).toContainText('Կցված PDF ֆայլեր');}
   else{await p.locator('[data-delete-execute]').click();await expect(p.locator('#consoleMessage')).toContainText('վերբեռնումների ավարտին');await expect(p.locator('[data-delete-execute]')).toBeEnabled();}
+  if(mode==='admin'){await p.locator('[data-delete-execute]').scrollIntoViewIfNeeded();assert.equal(await p.locator('[data-delete-execute]').evaluate(b=>{const r=b.getBoundingClientRect();return b.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}),true,'Progress message must not cover Resume');}
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${label}-${width}-200.png`,fullPage:true});if(mode==='privacy')await p.locator('#studentInventory').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/task-${label}-inventory-${width}-200.png`});}
   assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');
-  await layout(p,mode==='privacy'?'h1,h2,h3,.student-account-sections a,button,#inventory dt,#deletionState':'[data-delete-execute],#consoleMessage',`${label}-${width}-200`);assert.deepEqual(f.errors,[]);
+  await layout(p,mode==='privacy'?'h1,h2,h3,.student-account-sections a,#accountHomeLink,button,#inventory dt,#deletionState':'h1,#deletionsSection [data-refresh-view],[data-delete-execute],#consoleMessage',`${label}-${width}-200`);assert.deepEqual(f.errors,[]);
  }
 });

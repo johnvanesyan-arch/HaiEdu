@@ -80,6 +80,26 @@
       "artifact": 12976301620,
       "artifactSha256": "17b5c596743fbc071705cc378988a75fd7e8c32f6f16fa67a34a09a077fcde14",
       "allRequiredJobsPassed": false
+    },
+    {
+      "source": "0f0667b77f5acc41ed1bf922514ee87255268277",
+      "run": 41055593070,
+      "allRequiredJobsPassed": true,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "native": {
+        "passed": 356,
+        "failed": 0
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "artifact": 12977411494,
+      "artifactSha256": "d2bdb0a35929cfcd14e4a6ff3d9a2e46bf8778317c4b2581520ce461a5bedaed",
+      "visualFinding": "Root/word-wrap gates pass, but inspected 390px student screenshots show Back-label/control and inventory-column text spills. Admin sticky progress overlays Resume and refresh label splits. Corrected specificity, header/refresh reflow and inline deletion progress; stronger per-element word-containment and hit-target checks retained."
     }
   ],
   "reflowCorrection": "Shared all-role account layout uses font-relative auto-fit columns, bounded padding, full-width wrapping navigation/controls, concise Armenian labels and accurate execution status. Same static word guards expanded across headers/buttons/navigation; student and staff variants checked at each width. No SQL/Edge behavior changed after passing database gates."
