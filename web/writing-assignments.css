@@ -24,3 +24,12 @@
 
 [data-review-kind]:not([hidden]){display:flex;flex-wrap:wrap;gap:.5rem;margin-block:1rem}
 [data-review-kind] button{min-width:0;max-width:100%}
+.task-text { overflow-wrap:anywhere; min-width:0; }
+.task-text :is(p,ul,ol,h5,h6) { margin-block:.65em; }
+.task-text :is(ul,ol) { padding-inline-start:1.5em; }
+.task-text :is(h5,h6) { font-size:1em; line-height:1.4; }
+.task-text h6 { font-weight:600; }
+.task-text a { color:var(--forest-700,#215a43); text-decoration:underline; text-underline-offset:.15em; }
+.task-text-tools { display:flex; flex-wrap:wrap; gap:.25rem; margin-block:.35rem .7rem; }
+.task-text-tools button { min-width:0; max-width:100%; font-size:.9em; }
+.task-text-editor { min-width:0; }

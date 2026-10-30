@@ -44,7 +44,16 @@ with database_uri() as uri:
   for name in ['20261029192739_teacher_writing_assignments.sql','20261029203041_teacher_task_drafts.sql','20261029203950_teacher_task_source_attachments.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())
   for name in ['teacher-task-delivery.sql','teacher-task-student-work.sql','teacher-task-review.sql']:c.execute((ROOT/'supabase/proposals'/name).read_text())
   definition={'schemaVersion':'teacher-task-v1','title':'Synthetic concurrency task','instructions':'Explain.','source':{'kind':'text','text':'Synthetic source'},'response':{'kind':'text'},'assessment':{'kind':'feedback'}}
-  d=call(c,'drafts','create',{'requestId':str(uuid.uuid4()),'definition':definition})['draft'];p=call(c,'delivery','preview',{'id':d['id']})
+  d=call(c,'drafts','create',{'requestId':str(uuid.uuid4()),'definition':definition})['draft']
+  copying={'id':d['id'],'expectedRevision':1,'requestId':str(uuid.uuid4())}
+  a,b=race(uri,lambda a:call(a,'drafts','copy',copying),lambda b:call(b,'drafts','copy',copying))
+  assert a['draft']['id']==b['draft']['id'];assert c.execute('select count(*) from teacher_task_drafts where copied_from_id=%s',[d['id']]).fetchone()[0]==1
+  print('PASS simultaneous copy retries create one private editable draft',flush=True)
+  copied=a['draft'];newer=definition|{'title':'Changed private source'}
+  _,b=race(uri,lambda a:call(a,'drafts','save',{'id':copied['id'],'expectedRevision':1,'definition':newer}),lambda b:call(b,'drafts','copy',{'id':copied['id'],'expectedRevision':1,'requestId':str(uuid.uuid4())}))
+  assert 'task_draft_conflict' in b['error'];assert c.execute('select count(*) from teacher_task_drafts where copied_from_id=%s',[copied['id']]).fetchone()[0]==0
+  print('PASS copy racing with a newer source save rejects stale preview',flush=True)
+  p=call(c,'delivery','preview',{'id':d['id']})
   a=call(c,'delivery','assign',{'id':d['id'],'expectedRevision':d['revision'],'definition':definition,'requestId':str(uuid.uuid4()),'rosterFingerprint':p['rosterFingerprint'],'mode':'selected','enrollmentIds':[ident(371)]})['delivery'];task=a['id']
   content={'kind':'text','text':'Synthetic answer'};call(c,'student_work','save',{'id':task,'expectedRevision':0,'content':content});s=call(c,'student_work','submit',{'id':task,'expectedRevision':1,'content':content,'requestId':str(uuid.uuid4())})['receipt']['id']
   review={'decision':'reviewed','feedback':'Synthetic feedback','scores':{},'reason':''};call(c,'review','save',{'submissionId':s,'expectedRevision':0,'review':review})

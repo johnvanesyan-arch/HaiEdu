@@ -26,7 +26,10 @@ declare asset uuid;
 begin
  if new.definition->'source'->>'kind'='pdf' and new.definition->'source'->>'attachmentId' is not null then
   asset:=(new.definition->'source'->>'attachmentId')::uuid;
-  if not exists(select 1 from public.teacher_task_source_files where id=asset and draft_id=new.id and created_by=new.created_by and status='ready') then raise exception 'task_draft_invalid';end if;
+  -- Reuse immutable bytes only within the same owner's exact governed context.
+  if not exists(select 1 from public.teacher_task_source_files a join public.teacher_task_drafts origin on origin.id=a.draft_id
+   where a.id=asset and a.created_by=new.created_by and a.status='ready' and origin.created_by=new.created_by
+   and origin.teacher_assignment_id=new.teacher_assignment_id and origin.curriculum_release_id=new.curriculum_release_id and origin.unit_id=new.unit_id) then raise exception 'task_draft_invalid';end if;
  end if;return new;end;$$;
 create trigger teacher_task_draft_source before insert or update of definition on public.teacher_task_drafts for each row execute function private.teacher_task_draft_source_guard();
 create function private.service_teacher_task_sources(p_actor uuid,p_auth uuid,p_action text,p_context jsonb,p_payload jsonb default '{}') returns jsonb

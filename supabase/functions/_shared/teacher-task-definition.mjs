@@ -11,13 +11,15 @@ export function taskHttpsUrl(value){
 export function validateTeacherTaskDefinition(d,{draft=false}={}){
  const errors=[];const issue=(field,code)=>errors.push({field,code});
  const shape=(v,keys)=>object(v)&&Object.keys(v).every(k=>keys.includes(k));
- if(!shape(d,['schemaVersion','title','instructions','source','response','assessment']))return{valid:false,errors:[{field:'definition',code:'invalid_shape'}]};
+ if(!shape(d,['schemaVersion','title','instructions','instructionsFormat','source','response','assessment']))return{valid:false,errors:[{field:'definition',code:'invalid_shape'}]};
  if(d.schemaVersion!==TEACHER_TASK_VERSION)issue('schemaVersion','unsupported_version');
  if(typeof d.title!=='string'||d.title.length>200||!draft&&!d.title.trim())issue('title','title_required');
  if(typeof d.instructions!=='string'||d.instructions.length>8000||!draft&&!d.instructions.trim())issue('instructions','instructions_required');
- if(!shape(d.source,['kind','text','url','attachmentId'])||!['text','pdf','link'].includes(d.source.kind))issue('source','invalid_source');
+ if(d.instructionsFormat!==undefined&&d.instructionsFormat!=='task-text-v1')issue('instructionsFormat','unsupported_format');
+ if(!shape(d.source,['kind','text','format','url','attachmentId'])||!['text','pdf','link'].includes(d.source.kind))issue('source','invalid_source');
  else{
   const s=d.source;
+  if(s.format!==undefined&&(s.kind!=='text'||s.format!=='task-text-v1'))issue('source.format','unsupported_format');
   if(s.kind==='text'&&(s.url!==undefined||s.attachmentId!==undefined||typeof s.text!=='string'||s.text.length>20000||!draft&&!s.text.trim()))issue('source.text','text_required');
   if(s.kind==='pdf'&&(s.text!==undefined||s.url!==undefined||!(draft&&(s.attachmentId===null||s.attachmentId===undefined))&&!uuid(s.attachmentId)))issue('source.attachmentId','pdf_required');
   if(s.kind==='link'&&(s.text!==undefined||s.attachmentId!==undefined||!(draft&&s.url==='')&&!taskHttpsUrl(s.url)))issue('source.url','https_required');

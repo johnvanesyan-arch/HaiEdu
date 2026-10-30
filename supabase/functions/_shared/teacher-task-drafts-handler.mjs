@@ -24,13 +24,13 @@ export function createTeacherTaskDraftsHandler({createAdmin,hasActiveLiveSession
    let claims;try{claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));}catch{fail('assignment_forbidden');}
    if(!UUID.test(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');
    const live=async()=>{if(!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');};
-   const body=await bodyJSON(request),keys={create:['requestId','definition'],save:['id','expectedRevision','definition'],get:['id'],list:['offset']};
+   const body=await bodyJSON(request),keys={create:['requestId','definition'],copy:['id','expectedRevision','requestId'],save:['id','expectedRevision','definition'],get:['id'],list:['offset']};
    if(!shape(body,['action','context','payload'])||!Object.hasOwn(keys,body.action)||!shape(body.context,['assignmentId','curriculumReleaseId','unitId'])||Object.keys(body.context).length!==3||!shape(body.payload??{},keys[body.action]))fail('task_draft_invalid');
    const {action,context,payload={}}=body;
    if(Object.values(context).some(v=>typeof v!=='string'||!UUID.test(v)))fail('task_draft_invalid');
-   if(action==='create'&&!UUID.test(payload.requestId))fail('task_draft_invalid');
-   if(['get','save'].includes(action)&&!UUID.test(payload.id))fail('task_draft_invalid');
-   if(action==='save'&&(!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision<0||payload.expectedRevision>2147483646))fail('task_draft_invalid');
+   if(['create','copy'].includes(action)&&!UUID.test(payload.requestId))fail('task_draft_invalid');
+   if(['get','save','copy'].includes(action)&&!UUID.test(payload.id))fail('task_draft_invalid');
+   if(['save','copy'].includes(action)&&(!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision<(action==='copy'?1:0)||payload.expectedRevision>2147483646))fail('task_draft_invalid');
    if(['create','save'].includes(action)&&!validateTeacherTaskDefinition(payload.definition,{draft:true}).valid)fail('task_draft_invalid');
    if(payload.offset!==undefined&&(!Number.isSafeInteger(payload.offset)||payload.offset<0||payload.offset>100000))fail('task_draft_invalid');
    const rpc=async()=>{const {data,error}=await admin.rpc('service_teacher_task_drafts',{p_actor:auth.user.id,p_auth:claims.session_id,p_action:action,p_context:context,p_payload:payload});if(error)throw Error(error.message);return data;};
