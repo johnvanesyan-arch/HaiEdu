@@ -1,4 +1,4 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -72,6 +72,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       assessedAudioRecordings,
       sourceFamilyExposures,
       materialAssignmentsReceived: assignments.materialAssignmentsReceived,
+      writingAssignmentsReceived: assignments.writingAssignmentsReceived,
     };
   }
 
@@ -108,6 +109,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       writtenReviews,
       ...feedback,
       materialAssignmentsSent: assignments.materialAssignmentsSent,
+      writingAssignmentsSent: assignments.writingAssignmentsSent,
       auditEvents,
     };
   }
@@ -168,13 +170,14 @@ Deno.serve(async (req) => {
 
     const { data: deletionRequest } = await admin
       .from("account_deletion_requests")
-      .select("id, status, requested_at, resolved_at, resolution_code")
+      .select("id, status, requested_at, resolved_at, resolution_code, execution_started_at")
       .or(`user_id.eq.${userId},requester_user_id.eq.${userId}`)
       .order("requested_at", { ascending: false })
       .limit(1)
       .maybeSingle();
 
-    const dataInventory = await getDataInventory(admin, String(profile.role), userId);
+    const [dataInventory,taskInventory]=await Promise.all([getDataInventory(admin,String(profile.role),userId),admin.rpc('service_teacher_task_privacy_counts',{p_user_id:userId})]);
+    if(taskInventory.error)throw Error('teacher_task_inventory_failed');
 
     return json({
       account: {
@@ -192,7 +195,7 @@ Deno.serve(async (req) => {
         updated_at: null,
       },
       latestDeletionRequest: deletionRequest ?? null,
-      dataInventory,
+      dataInventory:{...dataInventory,teacherTasks:taskInventory.data},
       minimization: {
         storedInProfile: ["role", "optional display name", "account status"],
         notCollectedByPlatformProfile: ["date of birth", "home address", "phone number", "parent email", "government ID"],

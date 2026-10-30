@@ -33,6 +33,7 @@ async function invokePrivacy(role) {
   };
   const client = {
     rpc: async (name, args) => {
+      if(name==='service_teacher_task_privacy_counts'){assert.equal(args.p_user_id,'user-a');return{data:{drafts:role==='teacher'?3:0,received:role==='student'?2:0},error:null};}
       if(name==='service_resource_assignment_privacy_counts'){assert.ok(['teacher','student'].includes(role));assert.equal(args.p_user_id,'user-a');return {data:{materialAssignmentsReceived:4,materialAssignmentsSent:2},error:null};}
       if(name==='service_teacher_feedback_privacy_counts'){assert.equal(role,'teacher');assert.equal(args.p_user,'user-a');return{data:{feedbackDrafts:1,feedbackSnippets:2,feedbackReceipts:3},error:null};}
       assert.equal(name, 'service_unit_material_privacy_counts');
@@ -119,6 +120,7 @@ test("teacher inventory reports only teacher-owned institutional records", async
   const result = await invokePrivacy("teacher");
   assert.deepEqual(result.payload.dataInventory, {
     kind: "teacher",
+    teacherTasks:{drafts:3,received:0},
     institutionalMemberships: 1,
     teachingAssignments: 8,
     materialAssignmentsSent: 2,

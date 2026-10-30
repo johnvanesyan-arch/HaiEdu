@@ -1,4 +1,14 @@
-# Teacher workflow SOP — version 1.5
+# Teacher workflow SOP — version 1.6
+
+**SOP 1.6 candidate — backend integrated; frontend/hosted acceptance pending.** The in-product guide now distinguishes published course writing from teacher-created tasks. All seven migrations and twelve Edge runtimes are verified; the current-source frontend release and guarded acceptance remain required before the new workflow is advertised live.
+
+**Create and send a teacher task:** Assign writing → exact class/unit → Create my task / drafts → New / Reopen / Create copy → title/instructions → independent source (editable text/private PDF/HTTPS link) and required response (HaiEdu text/PDF, DOCX or both/HTTPS link) → feedback only or explicit criteria → student preview → Save and continue → class/selected active recipients → explicit confirm → durable receipt. Private save never sends. Reuse pins the same owner's ready PDF in the exact context and never copies student work. Later draft edits do not change sent versions.
+
+**Learner submission:** My Work → exact assigned task → read source/response requirement → type, choose the allowed document or paste an accessible HTTPS link → Save private draft → explicit Submit → immutable submission receipt. Uploading alone never submits; a private draft never enters the teacher queue. Unknown sends use the same request/status check; conflicts preserve copyable local text before deliberate reload.
+
+**Custom review and revision:** Writing review → exact class/unit → My created tasks → Pending/Returned/Reviewed/All → frozen submission beside task → private feedback save or explicit Publish review. Assigned criteria require their scores; feedback-only tasks do not force a grade. Return requires actionable feedback. Learner reads feedback in the same task, revises and explicitly submits again. Earlier versions remain. Regrading requires a reason. Sent deliveries → Cancel → reason → confirm preserves existing work. Today counts explicitly cover course writing; its custom-review link remains separate.
+
+**Account and operator procedures:** own inventory includes custom task/file/feedback counts. Approved deletion remains reversible until explicit final execution; then the same admin request resumes upload drain/file cleanup and completes only after Storage/profile/Auth absence is verified. Staff offboarding remains separate. Reviewed orphan cleanup defaults to preview and adds no automatic saved-work expiry. [Detailed privacy procedure](teacher-task-privacy-retention.md).
 
 2026-10-29 Asia/Yerevan · B.8.2 procedures retained; B.10 adds a direct Today shortcut; B.11 adds private drafts and personal comments; B.12.3.1 adds permanent writing-review navigation.
 
@@ -48,7 +58,7 @@ Teacher entry points are separate Library, Resource assignments and Writing revi
 
 **Steps:** student My work → course → `Բացել գրավոր աշխատանքները` → open task → read prompt, assistance policy and rubric → complete required baseline if applicable → write with server autosave/manual `Պահպանել սևագիրը` → `Ներկայացնել ուսուցչին`.
 
-**Confirmation/result:** immutable submitted version, pending teacher review. A private draft is never the teacher's queue item. Pending review is not a zero or automatic pass. No teacher-selected class/student writing-send operation or custom writing builder exists in this version.
+**Confirmation/result:** immutable submitted version, pending teacher review. A private draft is never the teacher's queue item. Pending review is not a zero or automatic pass. Published course writing can also be explicitly assigned through Assign writing → published task → class/selected recipients; its original availability/prerequisites and learner work remain intact. Teacher-created sources use the separate custom workflow above.
 
 **Recovery:** unavailable task means inspect exact class/unit/publication/prerequisites; never use an unrelated PDF as if it created a structured-writing response. Conflicting drafts preserve visible text and require explicit reconciliation. Do not repeat owner content approvals merely to investigate navigation.
 
@@ -89,11 +99,10 @@ Teacher review shows the number of completed criteria and focuses the first miss
 
 ## Explicit future capabilities
 
-- **WRITE-CREATE:** ordinary-teacher custom prompt/rubric creation and explicit class/selected-student writing assignment; requires its own versioned content/recipient/publication contract.
-- **RESOURCE-SUBMIT:** text or file responses to PDF/link resource assignments, submission history, review and grading; requires its own response/storage/privacy/audit lifecycle.
+- Existing optional-library/resource assignment records are not silently converted into response workspaces. Use a separately created custom task with a PDF/link source when a learner response is required; delivered custom authoring/submission/review is documented above. Retrofitting submissions onto the legacy resource-assignment record remains separately scoped.
 - Resource deadlines, completion states, read receipts and notifications retain later S37 dependencies. B.11 adds private feedback autosave and personal snippets under the [feedback contract](teacher-feedback-workspace.md). Batch publication remains unimplemented until a separate bounded preview/per-item result/audit contract is accepted.
 
-None of these is enabled or implied by the new names, entry cards, guide or resource publication buttons. Existing writing submissions/feedback remain functional. All 45 capability mappings and existing release gates are preserved.
+These remaining features are not implied by entry cards, the guide or resource publication buttons. Existing writing submissions/feedback remain functional. All 45 capability mappings and existing release gates are preserved.
 
 ## Verification and evidence — B.8.2 origin
 

@@ -1,0 +1,35 @@
+{
+  "scope": "B.12.3.2 custom send/immutable receipt foundation",
+  "deployed": false,
+  "merged": false,
+  "sql": "isolated proposal, not deployment migration",
+  "localChecks": {
+    "focusedAuthoringSourceDeliveryPassed": 16,
+    "failed": 0,
+    "browserSyntaxFiles": 97,
+    "canonicalTeacherBundles": "passed",
+    "browserQATriggers": "passed"
+  },
+  "priorCI": {
+    "runId": 40954791743,
+    "source": "c88a58efe52b9b9b8110a4bfe23f70c76767c79c",
+    "unitIntegrationPassed": 1591,
+    "nativePassed": 328,
+    "nativeFailed": 1,
+    "cause": "Two long Armenian h2 words overflow at390px/200%; shortened without splitting words in current source."
+  },
+  "newNativeCoverage": "Custom selected send, lost acknowledgement, exact replay, guarded exit/logout and zero learner work mutation. Current-source native run required.",
+  "remaining": [
+    "Student inbox/response storage and submission",
+    "Review/return/revision and cancellation",
+    "PDF asset reuse",
+    "Privacy/retention and deletion audit",
+    "Production migration and endpoint deployment",
+    "Native/CI and source/production verification",
+    "Owner usability acceptance"
+  ],
+  "gates": {
+    "b123Open": true,
+    "subjectsPaused": true
+  }
+}

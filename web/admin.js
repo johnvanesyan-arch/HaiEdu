@@ -1,3 +1,4 @@
+import {erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { mountSchoolAnalytics } from "./school-analytics-view.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -23,6 +24,7 @@ let accountPage = 1;
 let archivePage = 1;
 let selectedSchoolId = null;
 let accountCache = new Map();
+const pendingDeletionIds=new Set();
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -39,7 +41,7 @@ function roleLabel(role) {
 }
 
 function statusLabel(status) {
-  return ({ active:"Ակտիվ", suspended:"Կասեցված", archived:"Արխիվացված", deletion_pending:"Ջնջման սպասող", ended:"Ավարտված", revoked:"Չեղարկված" })[status] || status || "—";
+  return ({ active:"Ակտիվ", suspended:"Կասեցված", archived:"Արխիվացված", deletion_pending:"Ջնջման սպասող", ended:"Ավարտված", revoked:"Չեղարկված", pending:"Սպասում է",processing:"Ընթացքի մեջ է",completed:"Ավարտված",rejected:"Մերժված",cancelled:"Չեղարկված" })[status] || status || "—";
 }
 
 function schoolStatusMarkup(user) {
@@ -78,6 +80,13 @@ function friendlyError(error) {
     suspend_before_archiving: "Հաշիվը նախ պետք է կասեցնել, հետո՝ արխիվացնել։",
     school_not_found: "Դպրոցը չի գտնվել։",
     class_not_found: "Դասարանը չի գտնվել։",
+    deletion_execution_started:"Վերջնական ջնջումն արդեն սկսված է։ Այն հնարավոր չէ չեղարկել։",
+    deletion_client_update_required:"Թարմացրեք էջը՝ ջնջման ընթացքն ու ավարտը ճիշտ տեսնելու համար։",
+    task_privacy_storage_unavailable:"Ֆայլերի ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
+    task_privacy_unavailable:"Ջնջման արդյունքը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
+    student_data_erasure_failed:"Տվյալների ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
+    auth_user_delete_failed:"Հաշվի ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
+    deletion_ban_failed:"Չհաջողվեց սկսել վերջնական ջնջումը։ Կրկին փորձեք նույն հարցումով։",
   };
   if (labels[value]) return `${labels[value]}${error?.detail ? ` (${error.detail})` : ""}`;
   return error?.detail || value;
@@ -240,11 +249,11 @@ function renderDeletionRequests(data) {
     const user = accountCache.get(request.user_id);
     let actions = "—";
     if (request.status === "pending") actions = `<div class="admin-actions"><button data-delete-approve="${esc(request.id)}">Հաստատել հարցումը</button><button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել</button></div>`;
-    if (request.status === "processing") actions = `<div class="admin-actions"><button class="danger-btn" data-delete-execute="${esc(request.id)}">Ջնջել վերջնականապես</button><button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել / վերադարձնել</button></div>`;
-    return `<tr><td><code>${esc(request.id.slice(0, 8))}</code></td><td>${esc(displayUser(user))}</td><td><span class="status-chip ${esc(request.status)}">${esc(request.status)}</span>${request.resolution_code ? `<div class="subtle small">${esc(request.resolution_code)}</div>` : ""}</td><td>${esc(fmtDate(request.requested_at))}</td><td>${actions}</td></tr>`;
+    if (request.status === "processing") {const state=erasurePresentation(request);actions = `<div class="admin-actions"><button class="danger-btn" data-delete-execute="${esc(request.id)}" data-delete-started="${state.started}"${pendingDeletionIds.has(request.id)?' disabled':''}>${state.action}</button>${state.canReject?`<button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել / վերադարձնել</button>`:''}</div>`;}
+    return `<tr><td><code>${esc(request.id.slice(0, 8))}</code></td><td>${esc(displayUser(user))}</td><td><span class="status-chip ${esc(request.status)}">${esc(statusLabel(request.status))}</span>${request.resolution_code ? `<div class="subtle small">${esc(request.resolution_code)}</div>` : ""}</td><td>${esc(fmtDate(request.requested_at))}</td><td>${actions}</td></tr>`;
   }).join("") : '<tr><td colspan="5" class="empty-row">Ջնջման բաց հարցում չկա։</td></tr>';
   $("deletionRows").querySelectorAll("[data-delete-approve]").forEach((button) => button.addEventListener("click", () => approveDeletion(button.dataset.deleteApprove)));
-  $("deletionRows").querySelectorAll("[data-delete-execute]").forEach((button) => button.addEventListener("click", () => executeDeletion(button.dataset.deleteExecute)));
+  $("deletionRows").querySelectorAll("[data-delete-execute]").forEach((button) => button.addEventListener("click", () => executeDeletion(button.dataset.deleteExecute,button.dataset.deleteStarted==='true')));
   $("deletionRows").querySelectorAll("[data-delete-reject]").forEach((button) => button.addEventListener("click", () => rejectDeletion(button.dataset.deleteReject)));
 }
 
@@ -313,9 +322,11 @@ async function loadArchive() {
   renderAccounts(await invoke("get-admin-dashboard", { view: "accounts", page: archivePage, pageSize, search: $("archiveSearch").value.trim(), archived: true }), true);
 }
 
-async function loadDeletions() {
+async function loadDeletions(isCurrent=async()=>true) {
   setMessage("Ջնջման հարցումները բեռնվում են…");
-  renderDeletionRequests(await invoke("get-admin-dashboard", { view: "deletions" }));
+  const data=await invoke("get-admin-dashboard", { view: "deletions" });
+  if(await isCurrent())renderDeletionRequests(data);
+  return data;
 }
 
 async function loadAudit() {
@@ -371,12 +382,30 @@ async function approveDeletion(requestId) {
   catch (error) { setMessage(friendlyError(error), true); }
 }
 
-async function executeDeletion(requestId) {
-  if (!confirm("Վերջնականապե՞ս ջնջել այս աշակերտի տվյալներն ու հաշիվը։ Գործողությունը հետադարձելի չէ։")) return;
-  const token = prompt('Մուտքագրեք DELETE՝ վերջնական ջնջումը հաստատելու համար։', "");
-  if (token !== "DELETE") return;
-  try { await invoke("manage-admin-account", { action:"execute_deletion", requestId }); await loadDeletions(); setMessage("Հաշիվը վերջնականապես ջնջվել է։"); }
-  catch (error) { setMessage(friendlyError(error), true); }
+async function executeDeletion(requestId,started=false) {
+  if(pendingDeletionIds.has(requestId))return;
+  if(!started){
+    if (!confirm("Վերջնականապե՞ս ջնջել այս աշակերտի տվյալներն ու հաշիվը։ Գործողությունը հետադարձելի չէ։")) return;
+    if(prompt('Մուտքագրեք DELETE՝ վերջնական ջնջումը հաստատելու համար։', "")!=="DELETE")return;
+  }
+  pendingDeletionIds.add(requestId);const actorId=actor?.id;
+  const current=async()=>{try{const r=await supabase.auth.getSession();return Boolean(!r.error&&actorId&&r.data?.session?.user?.id===actorId);}catch{return false;}};
+  document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=true;});
+  try {
+    if(!await current())return;
+    const result=await invoke("manage-admin-account",{action:"execute_deletion",executionProtocol:"teacher-task-privacy-v1",requestId});
+    if(!await current())return;
+    await loadDeletions(current);
+    if(!await current())return;
+    setMessage(result.completed===false?(result.erasure?.retryAfterSeconds>0?`Սպասում ենք ընթացիկ վերբեռնումների ավարտին։ Շարունակեք ջնջումը մոտ ${Math.ceil(result.erasure.retryAfterSeconds/60)} րոպեից։`:`Ջնջումը դեռ ընթացքի մեջ է։ Մնացել է ${result.erasure?.pendingFiles??0} ֆայլ։ Կրկին ընտրեք «Շարունակել ջնջումը»։`):"Հաշիվը վերջնականապես ջնջվել է։");
+  } catch(error){if(await current()){
+    const readback=await loadDeletions(current).catch(()=>null);
+    if(await current()){
+      const completed=readback?.deletionRequests?.some(r=>r.id===requestId&&r.status==='completed');
+      setMessage(completed?"Հաշիվը վերջնականապես ջնջվել է։":friendlyError(error),!completed);
+    }
+  }}
+  finally{pendingDeletionIds.delete(requestId);if(await current())document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=false;});}
 }
 
 async function rejectDeletion(requestId) {

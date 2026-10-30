@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="./responsive-qa.css" />
   <link rel="stylesheet" href="./role-layout.css" />
   <link rel="stylesheet" href="./written-work.css" />
+  <link rel="stylesheet" href="./writing-assignments.css" />
   <link rel="stylesheet" href="./teacher-today.css" />
 </head>
 <body data-role-workspace="teacher">
@@ -66,6 +67,17 @@
         </div>
       </section>
 
+      <nav class="teacher-home-paths" aria-label="Աշխատանքային բաժիններ">
+        <a class="card teacher-home-path" href="?view=classes" data-home-progress>
+          <strong>Դասարանի առաջընթացը</strong>
+          <span>Դիտեք արդյունքները և տեսեք՝ ում է պետք աջակցել։</span>
+        </a>
+        <a class="card teacher-home-path" href="?view=review" data-home-review>
+          <strong>Գրավորի ստուգում</strong>
+          <span>Բացեք ներկայացված աշխատանքները և տվեք հետադարձ կապ։</span>
+        </a>
+      </nav>
+
       <div id="teacherToday" aria-label="Այսօրվա աշխատանքները"></div>
 
       <div id="summaryCards" class="dashboard-summary teacher-summary">
@@ -86,15 +98,16 @@
           <h3 id="teacherStartTitle">4 քայլով պատրաստեք ձեր դասարանը</h3>
         </div>
         <ol class="teacher-onboarding-steps">
-          <li><span>1</span><div><strong>Լրացրեք ձեր անունը</strong><small>Աշխատասեղանում և հետագա հաղորդակցությունում օգտագործվող անունը։</small></div></li>
+          <li><span>1</span><div><strong>Լրացրեք ձեր անունը</strong><small>Ձեր անունը՝ դասարանի և գրավորների էջերում։</small></div></li>
           <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա» կամ «7Ա Ֆիզիկա», ապա ընտրեք ուսումնական տարին։</small></div></li>
           <li><span>3</span><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
-          <li><span>4</span><div><strong>Հետևեք առաջընթացին</strong><small>Բացեք աշակերտի քարտը՝ հմտություններն ու առաջարկվող քայլերը տեսնելու համար։</small></div></li>
+          <li><span>4</span><div><strong>Տեսեք՝ ում օգնել</strong><small>Բացեք աշակերտի քարտը՝ արդյունքն ու հաջորդ քայլը տեսնելու համար։</small></div></li>
         </ol>
       </section>
 
       </div>
 
+      <section class="teacher-view hidden" data-teacher-view="assign-writing" aria-label="Հանձնարարել գրավոր աշխատանք"><div id="teacherAssignWritingRoot"></div></section>
       <section id="teacherReviewView" class="teacher-view hidden" data-teacher-view="review" aria-label="Գրավորի ստուգում"><div id="teacherReviewRoot"></div></section>
 
       <section id="teacherProfileView" class="teacher-view hidden" data-teacher-view="profile" aria-labelledby="teacherProfileViewTitle">
@@ -208,8 +221,9 @@
           <section id="teacherWorkflowEntries" class="teacher-workflow-entrypoints hidden" aria-label="Նյութեր, հանձնարարություններ և գրավոր աշխատանքներ">
             <p id="teacherWorkflowContext" class="subtle teacher-workflow-context"></p>
             <section id="teacherResourcesCard" class="card"><h3>Նյութերի գրադարան</h3><p>Հրապարակեք լրացուցիչ նյութեր՝ դասարանի ինքնուրույն աշխատանքի համար։</p><a id="teacherResourcesLink" class="button-link ghost">Բացել գրադարանը</a><a class="teacher-workflow-help" href="./teacher-workflows.html#library">Ինչպե՞ս հրապարակել նյութ</a></section>
-            <section id="teacherAssignmentsCard" class="card"><h3>Ուսուցչի առաջադրանքներ</h3><p>Հանձնարարեք PDF կամ հղում ամբողջ դասարանին կամ ընտրված աշակերտներին։</p><a id="teacherAssignResourceLink" class="button-link ghost">Ուղարկել առաջադրանք</a><a class="teacher-workflow-help" href="./teacher-workflows.html#assign">Ինչպե՞ս հանձնարարել նյութ</a></section>
-            <section id="teacherWrittenWorkCard" class="card hidden"><h3>Գրավոր աշխատանքներ</h3><p>Ստուգեք հրապարակված գրավոր առաջադրանքների ներկայացումները, գնահատեք կամ վերադարձրեք վերանայման։</p><button type="button" id="teacherOpenWrittenWork">Բացել գրավոր աշխատանքները</button><a class="teacher-workflow-help" href="./teacher-workflows.html#review">Ինչպե՞ս ստուգել և մեկնաբանել</a></section>
+            <section id="teacherAssignmentsCard" class="card"><h3>Հանձնարարել նյութ</h3><p>Հանձնարարեք PDF կամ հղում ամբողջ դասարանին կամ ընտրված աշակերտներին։</p><a id="teacherAssignResourceLink" class="button-link ghost">Ուղարկել առաջադրանք</a><a class="teacher-workflow-help" href="./teacher-workflows.html#assign">Ինչպե՞ս հանձնարարել նյութ</a></section>
+            <section class="card"><h3>Հանձնարարել գրավոր աշխատանք</h3><p>Ընտրեք հրապարակված առաջադրանք և ուղարկեք դասարանին կամ ընտրված աշակերտներին։</p><a id="teacherAssignWritingLink" class="button-link ghost">Ընտրել գրավոր առաջադրանքը</a></section>
+            <section id="teacherWrittenWorkCard" class="card hidden"><h3>Գրավորի ստուգում</h3><p>Ստուգեք հրապարակված գրավոր առաջադրանքների ներկայացումները, գնահատեք կամ վերադարձրեք վերանայման։</p><button type="button" id="teacherOpenWrittenWork">Բացել գրավոր աշխատանքները</button><a class="teacher-workflow-help" href="./teacher-workflows.html#review">Ինչպե՞ս ստուգել և մեկնաբանել</a></section>
             <div id="teacherWrittenWork" class="teacher-workflow-review"></div>
           </section>
           <section id="institutionalClassView" class="card class-header-card hidden" aria-labelledby="institutionalSelectedName">

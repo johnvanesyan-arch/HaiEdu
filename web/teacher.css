@@ -67,7 +67,7 @@
 .teacher-collection-heading>h3{min-width:0;max-width:100%;overflow-wrap:anywhere;flex:1 1 12rem}
 
 /* Distinct entry points share only the authorized class/unit context. */
-.teacher-workflow-entrypoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;min-width:0}
+.teacher-workflow-entrypoints{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;min-width:0}
 .teacher-workflow-entrypoints.hidden{display:none}
 .teacher-workflow-entrypoints>.card{min-width:0;margin:0;padding:1.25rem;overflow-wrap:anywhere}
 .teacher-workflow-context,.teacher-workflow-review{grid-column:1/-1;min-width:0}
@@ -79,5 +79,20 @@
 .teacher-workflow-help:focus-visible{outline:3px solid #836b27;outline-offset:3px}
 @media(max-width:1050px){.teacher-workflow-entrypoints{grid-template-columns:minmax(0,1fr)}}
 
-.teacher-review-controls{display:grid;grid-template-columns:minmax(160px,1fr) minmax(0,2fr) minmax(0,2fr);gap:16px}.teacher-review-controls label{min-width:0}.teacher-review-controls select{width:100%;min-width:0;max-width:100%}.teacher-review-picker{margin-bottom:20px}@media(max-width:900px){.teacher-review-controls{grid-template-columns:minmax(0,1fr)}}
+.teacher-review-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:16px}.teacher-review-controls label{min-width:0;display:grid;align-content:start;gap:.4rem}.teacher-review-controls select{width:100%;min-width:0;max-width:100%}.teacher-review-picker{margin-bottom:20px}@media(max-width:900px){.teacher-review-controls{grid-template-columns:minmax(0,1fr)}}
 #teacherReviewRoot .teacher-review-picker,#teacherReviewRoot .written-work{padding:clamp(16px,2.4vw,28px)}
+
+/* Keep classroom evidence and submitted-work review equally discoverable. */
+.teacher-home-paths { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr)); gap:1rem; margin-block:1.25rem; }
+.teacher-home-path { display:grid; align-content:start; gap:.5rem; min-width:0; padding:clamp(.75rem,1vw,1rem); color:var(--forest-text); text-decoration:none; overflow-wrap:break-word; }
+.teacher-home-path strong { font-size:1.125rem; }
+.teacher-home-path span { color:var(--forest-muted); }
+.teacher-home-path:hover { background:var(--forest-selected); }
+.teacher-home-path:focus-visible { outline:3px solid #876341; outline-offset:3px; }
+/* Let enlarged text, rather than viewport pixels alone, determine columns. */
+.teacher-welcome-card { grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr)); }
+.teacher-welcome-card>* { min-width:0; max-width:100%; }
+.teacher-welcome-card h2 { font-size:1.25rem; }
+.teacher-quick-actions { min-width:0; max-width:100%; justify-content:flex-start; }
+.teacher-onboarding-steps { grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); }
+.teacher-onboarding-card h3,#institutionalTeacherNotice h2 { font-size:1.125rem; line-height:1.4; }

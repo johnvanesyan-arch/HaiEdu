@@ -17,6 +17,7 @@ export async function fixture(browser,t,{archives=60,initialFailure=false,startU
       if(body.readMode==='directory'){const all=rows.filter(c=>c.isActive===!body.archive&&(!body.search||c.name.includes(body.search))),offset=body.offset??0;return {data:{...result,classes:all.slice(offset,offset+24),directory:{archive:!!body.archive,offset,matching:all.length,hasMore:offset+24<all.length,activeCount:2,archiveCount:archives}}};}
       const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
     }
+    if(fn==='manage-writing-assignments'&&body.action==='catalog')return {data:{version:'writing-assignments-v1',tasks:[],hasMore:false,nextOffset:50}};
     if(fn==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
     if(fn==='manage-written-work'&&body.action==='queue'){state.queueStates.push(body.payload.state);return {data:{version:'written-work-v1',queue:state.queueRows,readOnly:false}};}
     throw Error('Unexpected synthetic request: '+fn);

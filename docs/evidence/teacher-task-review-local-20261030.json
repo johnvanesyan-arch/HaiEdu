@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-30",
+  "timezone": "Asia/Yerevan",
+  "scope": "B.12.3.2 custom task review/return/revision/cancellation",
+  "stage": "unmerged working branch; not deployed",
+  "draftPR": 365,
+  "localChecks": {
+    "actualSqlEdgeDeliveryStudentReview": 12,
+    "existingFormDefinitionNavigation": 17,
+    "typecheck": "passed",
+    "browserQaDependencyCoverage": "passed",
+    "teacherBundleParity": "passed"
+  },
+  "prepared": {
+    "nativeBrowserCases": 9,
+    "independentPostgres17Races": 6
+  },
+  "localLimitations": [
+    "Chromium executable unavailable; native verification requires isolated CI",
+    "psycopg unavailable; actual PostgreSQL concurrency verification requires CI"
+  ],
+  "priorUnchangedEvidence": {
+    "source": "a625cfeb564c9c3ca3fb5233d976f7c35cc091db",
+    "run": 40963936732,
+    "unitIntegration": 1598,
+    "native": 337,
+    "scope": "previous learner slice only; not current review verification"
+  },
+  "remaining": [
+    "current CI and visual artifact inspection",
+    "source PDF reuse and formatted text",
+    "privacy inventory and retention/erasure reconciliation",
+    "production migrations, deployment and source verification",
+    "owner usability acceptance"
+  ],
+  "productionWrites": false,
+  "B123": "open",
+  "subjectExpansion": "paused",
+  "initialCI": {
+    "source": "f23cf9e4e7483ee6965fc80d5dda0faf8260b59e",
+    "run": 41013228042,
+    "unitIntegration": 1603,
+    "postgres17": "passed including all five custom lifecycle races",
+    "native": {
+      "passed": 334,
+      "total": 345,
+      "failures": "six old Today wording assertions; five custom harness empty-status readiness assertions"
+    },
+    "corrections": "Align Today text assertions; wait for visible queue controls; add native submitted-file/revision download case",
+    "finalGate": "current required CI remains visible on draft PR365"
+  },
+  "secondCI": {
+    "source": "ecf97e8f39811fb51c2c4a42f324624111d7cb60",
+    "run": 41014103560,
+    "unitIntegration": 1603,
+    "postgres17": "passed including five custom lifecycle races",
+    "native": {
+      "passed": 345,
+      "total": 346,
+      "failure": "custom harness legacy course-queue stub omitted required queue array after all return/revision/history actions passed"
+    },
+    "correction": "Supply actual legacy queue contract; bound account-fence wait to eight seconds",
+    "applicationCode": "unchanged from f23cf9e4e7483ee6965fc80d5dda0faf8260b59e"
+  },
+  "visualFollowup": {
+    "artifact": 12958987247,
+    "sha256": "e141ea5b9824f66887eae2965a041c3a573a60a9c3c191496df657efd251edac",
+    "inspected": [
+      390,
+      768,
+      1280
+    ],
+    "textScale": "200%",
+    "findings": [
+      "new long review heading/helper words split at390px",
+      "shared class-picker label crowding at1280px"
+    ],
+    "changes": [
+      "shorter natural Armenian heading, field label and helper text",
+      "font-relative auto-fit picker columns across review/authoring",
+      "shorter shared picker instruction and learner history label",
+      "native label-overflow assertion added"
+    ],
+    "currentSourceScreenshots": "required after layout corrections"
+  },
+  "realSdkCompatibility": {
+    "package": "@supabase/functions-js 2.118.0 (pinned project dependency)",
+    "finding": "FunctionsClient treats DOCX MIME as text, unlike the earlier browser fixture decoder",
+    "fix": "DOCX application/octet-stream transport; shared role-client Blob MIME normalization; original .docx filename and exact upload validation retained",
+    "verification": "11 focused actual SQL/Edge/real-FunctionsClient cases pass; PDF/DOCX teacher/learner bytes are exact",
+    "nativeFixtureChange": "Recognize actual octet-stream transport; raw DOCX parsing is no longer simulated",
+    "requiredCi": "new exact-source gate is required; previous typography-source gate passed1603unit/346native"
+  },
+  "publicationRevisionFence": {
+    "reproduced": "Two distinct request nonces published two identical review versions from the same saved feedback revision",
+    "fix": "Unique submission/draft_revision publication fence plus explicit conflict; exact nonce replay precedes the fence",
+    "local": "six review/actual-SDK cases pass, including distinct-nonce rejection and original receipt recovery",
+    "concurrency": "sixth independent PostgreSQL17 race added; current exact-source CI required"
+  },
+  "compatibilityCI": {
+    "source": "ab7a003207a893c949dc094674fd1c073f39d87c",
+    "run": 41018677861,
+    "allFiveJobs": "passed",
+    "unitIntegration": 1604,
+    "native": 346,
+    "scope": "before the additional distinct-nonce publication fence"
+  }
+}

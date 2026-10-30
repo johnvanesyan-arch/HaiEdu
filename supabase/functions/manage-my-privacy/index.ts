@@ -1,4 +1,4 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -6,7 +6,7 @@ const corsHeaders = {
 };
 
 function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control":"no-store" } });
 }
 
 async function audit(admin: any, actorId: string, actorRole: string, action: string, details: Record<string, unknown> = {}) {
@@ -102,12 +102,13 @@ Deno.serve(async (req) => {
 
     if (action === "cancel_deletion") {
       const { data: openRequest } = await admin.from("account_deletion_requests")
-        .select("id, status, resolution_code")
+        .select("id, status, resolution_code, execution_started_at")
         .eq("user_id", userId)
         .in("status", ["pending", "processing"])
         .order("requested_at", { ascending: false })
         .limit(1)
         .maybeSingle();
+      if(openRequest?.execution_started_at)return json({error:"deletion_execution_started"},409);
       if (!openRequest) return json({ error: "no_cancellable_deletion_request" }, 409);
       if (openRequest.resolution_code === "admin_archived_account") return json({ error: "archived_account_admin_review_required" }, 403);
 
@@ -117,7 +118,7 @@ Deno.serve(async (req) => {
         resolution_code: "cancelled_by_user",
         auth_user_id: null,
       }).eq("id", openRequest.id).select("id, status, resolved_at, resolution_code").single();
-      if (error) return json({ error: "deletion_cancel_failed", detail: error.message }, 500);
+      if (error) return json({ error: String(error.message).includes("deletion_execution_started")?"deletion_execution_started":"deletion_cancel_failed" }, String(error.message).includes("deletion_execution_started")?409:500);
 
       if (profile.account_status === "deletion_pending") {
         await admin.from("profiles").update({

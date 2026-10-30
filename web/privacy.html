@@ -7,21 +7,21 @@
   <title>Գաղտնիություն և հաշիվ — Armenian Mastery Platform</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
-  <link rel="stylesheet" href="./privacy.css" />
   <link rel="stylesheet" href="./role-layout.css" />
   <link rel="stylesheet" href="./student-forest.css" data-student-forest />
   <link rel="stylesheet" href="./staff-forest.css" />
+  <link rel="stylesheet" href="./privacy.css" />
 </head>
 <body data-account-pending data-student-utility="account">
   <main class="shell privacy-shell" id="mainContent">
     <header class="topbar">
       <div>
-        <p class="eyebrow">ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ ԵՎ ԳԱՂՏՆԻՈՒԹՅՈՒՆ</p>
-        <h1>Իմ հաշիվն ու տվյալները</h1>
+        <p class="eyebrow">ՀԱՇՎԻ ԿԱՌԱՎԱՐՈՒՄ</p>
+        <h1>Իմ հաշիվը</h1>
         <p class="subtle">Կառավարեք ձեր մուտքի տվյալները, գաղտնիության ընտրությունները և հաշվի տվյալները։</p>
       </div>
       <div class="row">
-        <a id="accountHomeLink" class="ghost button-link" href="./index.html">← Վերադառնալ</a>
+        <a id="accountHomeLink" class="ghost button-link" href="./index.html">← Գլխավոր</a>
         <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
       </div>
     </header>
@@ -84,7 +84,7 @@
       <section class="card privacy-card">
         <span class="mode-kicker">Ընտրովի օգտագործումներ</span>
         <h2 id="studentPrivacy">Գաղտնիության ընտրություններ</h2>
-        <p class="subtle">Այս երկու ընտրությունները լռելյայն անջատված են։ Դրանք պահում են ձեր համաձայնության նախապատվությունը և չեն նշանակում, որ առանձին վերլուծական կամ հետազոտական համակարգ արդեն ակտիվ է։</p>
+        <p class="subtle">Այս երկու ընտրությունները լռելյայն անջատված են։ Միացնելը պահում է ձեր համաձայնությունը։ Այս ընտրությունները չեն գործարկում առանձին վերլուծական կամ հետազոտական համակարգ։</p>
         <label class="privacy-toggle"><input id="analyticsOptIn" type="checkbox" /> <span><strong>Ընտրովի արտադրանքի վերլուծություն</strong><small>Թույլատրել ապագայում հաստատված պիլոտային վերլուծության համար ոչ անհրաժեշտ օգտագործումը։</small></span></label>
         <label class="privacy-toggle"><input id="researchOptIn" type="checkbox" /> <span><strong>Ընտրովի հետազոտական օգտագործում</strong><small>Թույլատրել առանձին հաստատված հետազոտական օգտագործումը՝ համապատասխան ընթացակարգերի դեպքում։</small></span></label>
         <button id="savePrivacyBtn" type="button">Պահել ընտրությունները</button>
@@ -94,8 +94,8 @@
       <section class="card privacy-card danger-zone">
         <span class="mode-kicker">Հաշվի ջնջում</span>
         <h2 id="studentDeletion">Ջնջման հարցում</h2>
-        <p>Ուսանողական հաշվի հաստատված ջնջումը հեռացնում է ուսումնական փորձերը, սեսիաները, mastery-ի տվյալները և դասարանային անդամակցությունները, ապա ջնջում է մուտքի հաշիվը։</p>
-        <p class="subtle">Ուսուցչի կամ ադմինի հաշիվների համար պահանջվում է առանձին offboarding, որովհետև կարող են լինել դասարաններ կամ այլ պատասխանատվություններ, որոնք նախ պետք է փոխանցվեն։</p>
+        <p>Աշակերտի հաշվի ջնջումը հեռացնում է նրա ուսումնական տվյալները, ներկայացրած պատասխաններն ու դրանց ստուգումները, ապա՝ մուտքի հաշիվը։</p>
+        <p class="subtle">Ուսուցչի կամ ադմինի հաշվի համար նախ անհրաժեշտ է առանձին ստուգում և դասարանների ու գործերի փոխանցում։</p>
         <div id="deletionState" class="privacy-state">—</div>
         <div class="row">
           <button id="requestDeletionBtn" type="button" class="danger-btn">Ուղարկել ջնջման հարցում</button>

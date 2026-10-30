@@ -3,13 +3,36 @@ import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import {todayFixture,id} from '../fixtures/teacher-today-browser.mjs';
+import {teacherHomeReadability} from '../fixtures/teacher-home-readability.mjs';
 let browser;before(async()=>{browser=await chromium.launch({headless:true});});after(async()=>browser?.close());
 const summary=p=>p.locator('[data-today-summary]');
 const calls=(p,fn)=>p.evaluate(fn=>window.__today.calls.filter(c=>c.fn===fn),fn);
 
+test('teacher Home balances classroom progress and review with readable keyboard paths',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t);
+ await expect(summary(p)).toContainText('2 դասընթացի գրավոր');
+ await p.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [1280,768,390]){
+  await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+  for(const selector of ['[data-home-progress]','[data-home-review]']){
+   const link=p.locator(selector);await expect(link).toBeVisible();await link.focus();
+   assert.equal(await link.evaluate(e=>e===document.activeElement),true);
+  }
+  const bad=await p.evaluate(teacherHomeReadability);
+  assert.deepEqual(bad,[],String(width));
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-home-balanced-'+width+'.png',fullPage:true});}
+ }
+ await p.evaluate(()=>document.documentElement.style.fontSize='100%');
+ await p.locator('[data-home-progress]').click();await expect(p.locator('#teacherClassesView')).toBeVisible();
+ assert.equal(new URL(p.url()).searchParams.get('view'),'classes');
+ await p.locator('.hm-role-nav a[href="./teacher.html?view=home"]').click();
+ await p.locator('[data-home-review]').click();await expect(p.locator('[data-review-class]')).toBeVisible();
+ assert.equal(new URL(p.url()).searchParams.get('view'),'review');assert.deepEqual(errors,[]);
+});
+
 test('Today opens exact work directly, reloads context, reviews and advances across units without analytics fanout',async t=>{
  const {page:p,errors}=await todayFixture(browser,t);
- await expect(summary(p)).toContainText('2 աշխատանք');
+ await expect(summary(p)).toContainText('2 դասընթացի գրավոր');
  assert.equal((await calls(p,'get-teacher-workspace')).length,0);
  assert.equal((await calls(p,'get-teacher-dashboard')).length,1);
  const first=await p.locator('[data-today-open]').first().getAttribute('data-today-open');
@@ -26,7 +49,7 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
  writing=await calls(p,'manage-teacher-feedback');assert.deepEqual(writing[0].body.context,exact);
  await p.locator('[data-writing-feedback]').fill('Synthetic review acknowledgment.');
  for(const field of await p.locator('[data-writing-score]').all())await field.selectOption('2');
- await p.locator('[data-writing-grade]').click();await expect(summary(p)).toContainText('1 աշխատանք');
+ await p.locator('[data-writing-grade]').click();await expect(summary(p)).toContainText('1 դասընթացի գրավոր');
  await expect(p.locator('.written-score')).toBeVisible();
  assert.equal(await p.locator(`[data-today-open="${first}"]`).count(),0);
  await p.locator('[data-today-next]').click();await p.locator('[data-writing-feedback]').waitFor();
@@ -34,7 +57,7 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
  writing=await calls(p,'manage-teacher-feedback');
  assert.notEqual(writing.at(-1).body.context.unitId,exact.unitId);
  assert.equal((await calls(p,'get-teacher-dashboard')).filter(c=>c.body.readMode==='class').length,0);
- await p.locator('[data-today-back]').click();await expect(summary(p)).toContainText('1 աշխատանք');
+ await p.locator('[data-today-back]').click();await expect(summary(p)).toContainText('1 դասընթացի գրավոր');
  assert.equal(new URL(p.url()).searchParams.has('todayWork'),false);
  await p.locator('button[data-today-filter]').first().click();await expect(summary(p)).toContainText('ընտրված դասարանում');
  assert.equal(new URL(p.url()).searchParams.get('queueAssignment'),id(351));
@@ -45,7 +68,7 @@ test('Today opens exact work directly, reloads context, reviews and advances acr
 
 test('Today handles pagination, unknown and denied states, unsaved navigation, and an old account response',async t=>{
  const {page:p,errors}=await todayFixture(browser,t,{count:14});
- await expect(summary(p)).toContainText('14 աշխատանք');
+ await expect(summary(p)).toContainText('14 դասընթացի գրավոր');
  assert.equal(await p.locator('.today-work-row').count(),12);
  const firstPage=await p.locator('.today-work-row [data-today-open]').evaluateAll(nodes=>nodes.map(n=>n.dataset.todayOpen));
  await p.locator('[data-today-more]').click();await expect(p.locator('.today-work-row')).toHaveCount(2);
@@ -55,7 +78,7 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  await p.evaluate(()=>window.__today.fail.push('get-teacher-workspace'));await p.locator('[data-today-refresh]').click();
  await expect(summary(p)).toContainText('չբեռնվեց');assert.doesNotMatch(await summary(p).innerText(),/^0 /);
  assert.equal(await p.locator('.today-class-card').count(),0);
- await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 աշխատանք');
+ await p.evaluate(()=>window.__today.fail=[]);await p.locator('[data-today-refresh]').click();await expect(summary(p)).toContainText('14 դասընթացի գրավոր');
  await p.locator('[data-today-continue] button').click();await p.evaluate(()=>window.__today.holds.push('manage-teacher-feedback:save_draft'));await p.locator('[data-writing-feedback]').fill('Unsaved synthetic feedback');
  const reviewURL=p.url();p.once('dialog',d=>d.dismiss());await p.locator('#refreshBtn').click();
  assert.equal(await p.locator('[data-writing-feedback]').inputValue(),'Unsaved synthetic feedback');
@@ -64,27 +87,27 @@ test('Today handles pagination, unknown and denied states, unsaved navigation, a
  p.once('dialog',d=>d.accept());await p.evaluate(classId=>{history.pushState({},'', '/teacher.html?view=class&class='+classId);dispatchEvent(new PopStateEvent('popstate'));},id(321));
  await p.locator('#teacherClassDetailView:not(.hidden)').waitFor();assert.equal(await p.locator('#teacherToday').innerText(),'');
  assert.equal(await p.locator('[data-writing-feedback]').count(),0);await p.evaluate(()=>window.__today.release());
- await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 աշխատանք');
+ await p.locator('.hm-role-nav a[href$="view=home"]').first().click();await expect(summary(p)).toContainText('14 դասընթացի գրավոր');
  let count=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
  assert.equal((await calls(p,'get-teacher-workspace')).length,count+1);
  await p.evaluate(()=>window.__today.holds.push('get-teacher-workspace'));await p.locator('[data-today-refresh]').click();
  await p.waitForFunction(()=>window.__today.resolvers.length===1);
- await p.evaluate(()=>window.__today.switchActor(21));await expect(summary(p)).toContainText('0 աշխատանք');
- await p.evaluate(()=>window.__today.release());await expect(summary(p)).toContainText('0 աշխատանք');
+ await p.evaluate(()=>window.__today.switchActor(21));await expect(summary(p)).toContainText('0 դասընթացի գրավոր');
+ await p.evaluate(()=>window.__today.release());await expect(summary(p)).toContainText('0 դասընթացի գրավոր');
  assert.equal(await p.locator('.today-work-row').count(),0);
  assert.equal(await p.evaluate(actor=>sessionStorage.getItem('haiedu:teacher-recent:v1:'+actor),id(20)),null);
  assert.doesNotMatch(await p.locator('[data-today-cards]').innerText(),/School A/);
- await p.goto('https://today.test/teacher.html?view=home&todayWork='+firstPage[0]);await expect(summary(p)).toContainText('14 աշխատանք');
+ await p.goto('https://today.test/teacher.html?view=home&todayWork='+firstPage[0]);await expect(summary(p)).toContainText('14 դասընթացի գրավոր');
  // Reload creates a fresh synthetic teacher A session; a foreign selector must still fail closed.
  await p.goto('https://today.test/teacher.html?view=home&todayWork='+id(9999));await expect(summary(p)).toContainText('այլևս հասանելի չէ');
  assert.equal(await p.locator('[data-writing-feedback]').count(),0);
- await p.locator('[data-today-all]').click();await expect(summary(p)).toContainText('14 աշխատանք');
+ await p.locator('[data-today-all]').click();await expect(summary(p)).toContainText('14 դասընթացի գրավոր');
  assert.deepEqual(errors,[]);
 });
 
 test('live class cards use governed subject art, exact links and account-scoped recent hints at narrow and enlarged sizes',async t=>{
  const {page:p,errors}=await todayFixture(browser,t,{count:0});
- await expect(summary(p)).toContainText('0 աշխատանք');
+ await expect(summary(p)).toContainText('0 դասընթացի գրավոր');
  assert.equal(await p.locator('.today-class-card').count(),1);
  assert.ok(await p.locator('.today-class-card svg').count());
  const link=p.locator('.today-class-card a');const href=new URL(await link.getAttribute('href'),p.url());
@@ -118,8 +141,8 @@ test('a delayed combined Home response cannot replace a newly signed-in teachers
  const {page:p,errors}=await todayFixture(browser,t);
  await p.evaluate(()=>window.__today.holds.push('get-teacher-dashboard'));await p.locator('#refreshBtn').click();
  await p.waitForFunction(()=>window.__today.resolvers.length===1);
- await p.evaluate(()=>window.__today.switchActor(21));await expect(summary(p)).toContainText('0 աշխատանք');
- await p.evaluate(()=>window.__today.release());await expect(summary(p)).toContainText('0 աշխատանք');
+ await p.evaluate(()=>window.__today.switchActor(21));await expect(summary(p)).toContainText('0 դասընթացի գրավոր');
+ await p.evaluate(()=>window.__today.release());await expect(summary(p)).toContainText('0 դասընթացի գրավոր');
  assert.equal(await p.locator('.today-work-row').count(),0);
  const before=(await calls(p,'get-teacher-workspace')).length;await p.locator('[data-today-refresh]').click();await expect(p.locator('[data-today-refresh]')).toBeEnabled();
  assert.equal((await calls(p,'get-teacher-workspace')).length,before+1);assert.deepEqual(errors,[]);

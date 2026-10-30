@@ -1,0 +1,61 @@
+{
+  "scope": "B.12.3.2 custom learner inbox/draft/submission and private document foundation",
+  "date": "2026-10-30",
+  "timezone": "Asia/Yerevan",
+  "merged": false,
+  "deployed": false,
+  "baseUnmergedSource": "1ddfc25f029414a7ca66c11ba0f0690d8102d424",
+  "checks": {
+    "focusedStudentNavigationPassed": 30,
+    "studentAndExistingSourceDeliveryPassed": 9,
+    "failed": 0,
+    "newStudentSqlEdgeCases": 5,
+    "allNineSourceResponsePairs": "draft and submit verified in isolated actual SQL/Edge",
+    "native": "7 prepared; local launch blocked by absent Chromium; no local native pass inferred",
+    "syntaxFiles": 99,
+    "typecheck": "passed",
+    "teacherBundleParity": "passed",
+    "browserQATriggers": "passed"
+  },
+  "privateFiles": {
+    "bucket": "teacher-task-files",
+    "maxBytes": 10485760,
+    "docxMaxUncompressedBytes": 31457280,
+    "docxMaxZipEntries": 512,
+    "mimeAndContainerChecked": true,
+    "readyBytesHashVerified": true,
+    "upsert": false,
+    "responseObjectsBoundTo": "exact delivery/enrollment/student"
+  },
+  "remaining": [
+    "Teacher submission review/return/revision and cancellation",
+    "Source reuse and formatted text controls",
+    "Custom lifecycle concurrency races",
+    "Privacy inventory/retention/erasure",
+    "Production migrations/Edge/dependency provenance and guarded acceptance",
+    "Final usability acceptance"
+  ],
+  "gates": {
+    "B123Open": true,
+    "subjectExpansionPaused": true,
+    "existingContentAudio45MappingsAndClassroomSpeaking": "preserved"
+  },
+  "learnerCI": [
+    {
+      "runId": 40961724483,
+      "source": "efdad654fcca8d6d2d47de7aafb27d31c5d042da",
+      "allFiveJobs": "passed",
+      "unitIntegration": 1598,
+      "native": 337
+    },
+    {
+      "runId": 40962875341,
+      "source": "96dad4b0d49944da239536644dd825b372778e03",
+      "allFiveJobs": "passed",
+      "unitIntegration": 1598,
+      "native": 337,
+      "added": "Unavailable task-link return to authorized inbox preserves saved work"
+    }
+  ],
+  "visualFixtureCorrection": "Initial component screenshots omitted the real Forest stylesheet. The real index already loads it. The latest test harness derives all stylesheets from web/index.html, asserts the Forest canvas and uses human-readable synthetic class/subject labels. Latest-source CI/visual verification required; no production palette defect is inferred."
+}

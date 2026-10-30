@@ -6,7 +6,7 @@ const errors={written_conflict:'Աշխատանքը փոխվել է մեկ այլ
 const date=v=>new Date(v).toLocaleString('hy-AM',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
 const rubric=d=>`<details class="written-rubric"><summary>Գնահատման չափանիշները</summary>${d.criteria.map(c=>`<section lang="${esc(d.locale)}"><h4>${esc(c.label)}</h4><ol start="0">${c.descriptors.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></section>`).join('')}</details>`;
 const reviewMarkup=r=>`<div class="written-feedback"><strong>${r.decision==='assessed'?'Գնահատված է':'Վերադարձվել է վերանայման'}</strong><p class="written-text">${esc(r.feedback)}</p>${r.changeReason?`<p>Փոփոխության պատճառ՝ ${esc(r.changeReason)}</p>`:''}<small>${esc(date(r.createdAt))}</small></div>`;
-export function mountWrittenWork({root,supabase,context,actorId,teacher=false,isCurrent=()=>true,initialWorkId=null,initialState="submitted",stateButtons=false,onStateChange=()=>{},onReviewed=()=>{},onBack=null}) {
+export function mountWrittenWork({root,supabase,context,actorId,teacher=false,isCurrent=()=>true,initialWorkId=null,initialTaskId=null,initialState="submitted",stateButtons=false,onStateChange=()=>{},onReviewed=()=>{},onBack=null}) {
  let feedbackEditor=()=>{},feedbackInitial=null;
  let authSubscription=null,alive=true,sequence=0,model=null,timer=null,saving=null,savedText='',busy=false,conflict=false,pendingSubmission=null,offset=0,state=['submitted','changes_requested','reviewed','all'].includes(initialState)?initialState:'submitted',teacherDirty=false;
  const current=()=>alive&&isCurrent();
@@ -125,7 +125,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
  document.addEventListener('click',navigate,true);
  const beforeSignOut=e=>{if(!current())return;if(!teacher)e.detail.waitUntil(flush());else if(feedbackEditor.isPending?.()){e.preventDefault();message('Նախ ստուգեք գնահատականի ուղարկման կարգավիճակը։',true);}};
  document.addEventListener('haiedu-before-signout',beforeSignOut);
- if(teacher&&initialWorkId)void open(initialWorkId);else void list();
+ if(teacher&&initialWorkId)void open(initialWorkId);else if(!teacher&&initialTaskId)void open(initialTaskId);else void list();
  const dispose=()=>{if(!alive)return;alive=false;feedbackEditor();feedbackInitial=null;pendingSubmission=null;authSubscription?.unsubscribe?.();sequence++;clearTimeout(timer);window.removeEventListener('beforeunload',unload);document.removeEventListener('click',navigate,true);document.removeEventListener('haiedu-before-signout',beforeSignOut);root.replaceChildren();model=null;savedText='';};
  authSubscription=supabase.auth?.onAuthStateChange?.((_event,session)=>{if(!session||session.user?.id!==actorId)dispose();})?.data?.subscription;
  if(!alive)authSubscription?.unsubscribe?.();

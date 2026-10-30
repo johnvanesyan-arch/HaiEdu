@@ -9,10 +9,11 @@ const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let disposeToday=()=>{};
 let disposeReview=()=>{};
+let disposeAssignments=()=>{};
 let todayBoot=null;
 let lastTeacherUrl=(window.location?.pathname??"")+(window.location?.search??"");
 function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.()||disposeReview.hasUnsaved?.());}
-function allowTeacherLeave(){if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
+function allowTeacherLeave(){if(disposeAssignments.canLeave&&!disposeAssignments.canLeave()){history.replaceState({},"",lastTeacherUrl);return false;}if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
 let actorId = null;
 let teacherAuthGeneration = 0;
 let directoryPages = {};
@@ -29,13 +30,14 @@ function readOnce(fn,body) {
 }
 const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
 function clearDetail() {
+  disposeAssignments();disposeAssignments=()=>{};
   disposeReview();disposeReview=()=>{};
   disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
   disposeWriting(); disposeWriting=()=>{}; closeDrawer();
   for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard","teacherWorkflowEntries"]) $(id)?.classList.add("hidden");
-  for(const id of ["teacherResourcesLink","teacherAssignResourceLink"]) $(id)?.removeAttribute("href");
+  for(const id of ["teacherResourcesLink","teacherAssignResourceLink","teacherAssignWritingLink"]) $(id)?.removeAttribute("href");
 }
 function directoryKey(archive) { return archive ? "archive" : "active"; }
 async function loadDirectory(archive=false,{more=false,search=""}={}) {
@@ -68,9 +70,10 @@ let dashboardBootstrapPromise = null;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class", "review"]);
+const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class", "review", "assign-writing"]);
 const TEACHER_VIEW_META = {
   home: ["Ուսուցչի գլխավոր", "Այսօրվա ամփոփ պատկերը, արագ գործողությունները և աշխատանքի հաջորդ քայլերը։"],
+  "assign-writing": ["Հանձնարարել գրավոր աշխատանք", "Ընտրեք առաջադրանքը, ստացողներին և հաստատեք ուղարկումը։"],
   review: ["Գրավորի ստուգում", "Ներկայացված աշխատանքներ, գնահատում և մեկնաբանություններ՝ ըստ դասարանի ու բաժնի։"],
   profile: ["Իմ պրոֆիլը", "Ցուցադրվող անունը և մուտքի պաշտպանված կարգավորումները։"],
   classes: ["Իմ դասարանները", "Միայն ակտիվ դասարանները՝ աշակերտներով, հրավերներով և առաջընթացով։"],
@@ -90,7 +93,7 @@ function navigationSelection() {
   const requested = params.get("view");
   const classId = params.get("class");
   return {
-    view: requested === "review" ? "review" : requested === "class" || classId
+    view: ["review","assign-writing"].includes(requested) ? requested : requested === "class" || classId
       ? "class"
       : (TEACHER_VIEWS.has(requested) ? requested : "home"),
     source: params.get("source") === "archive" ? "archive" : "classes",
@@ -104,7 +107,7 @@ function navigationSelection() {
 function teacherViewUrl(view,clearToday=false) {
   const url = new URL(window.location.href);
   url.searchParams.set("view", TEACHER_VIEWS.has(view) ? view : "home");
-  if (view !== "class" && !(view === "review" && ["class","review"].includes(navigationSelection().view))) {
+  if (view !== "class" && !(["review","assign-writing"].includes(view) && ["class","review","assign-writing"].includes(navigationSelection().view))) {
     ["class", "assignment", "release", "unit", "source", "state"].forEach((key) => url.searchParams.delete(key));
   }
   if(clearToday||view!=="home")["todayWork","queueAssignment"].forEach(k=>url.searchParams.delete(k));
@@ -124,6 +127,7 @@ function renderTeacherView(view = navigationSelection().view) {
   window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
   window.scrollTo({ top: 0, behavior: "auto" });
   lastTeacherUrl=window.location.pathname+window.location.search;
+  if(selected==="assign-writing"&&dashboard){disposeAssignments();const version=dashboardLoadVersion;const page=directoryPages[directoryKey(navigationSelection().source==="archive")];disposeAssignments=mountTeacherReview({root:$("teacherAssignWritingRoot"),supabase,actorId,assignmentMode:true,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="review"&&dashboard){disposeReview();const version=dashboardLoadVersion;const key=directoryKey(navigationSelection().source==="archive");const page=directoryPages[key];disposeReview=mountTeacherReview({root:$("teacherReviewRoot"),supabase,actorId,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="home"&&dashboard&&$("teacherToday")){disposeToday();const version=dashboardLoadVersion;disposeToday=mountTeacherToday({root:$("teacherToday"),supabase,actorId,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,initialResponse:todayBoot,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});todayBoot=null;}
 }
@@ -341,7 +345,7 @@ async function readTeacherDashboard(sessionOverride = null) {
   selectedAssignmentId=navigation.selection?.assignmentId??null;
   const body=navigation.view==="class" && (navigation.classId||navigation.selection)
     ? {readMode:"class",...(navigation.classId?{classId:navigation.classId}:{}),...(navigation.selection?{selection:navigation.selection}:{})}
-    : {readMode:"directory",archive:navigation.view==="archive" || (navigation.view==="review"&&navigation.source==="archive")};
+    : {readMode:"directory",archive:navigation.view==="archive" || (["review","assign-writing"].includes(navigation.view)&&navigation.source==="archive")};
   const home=navigation.view==="home"&&Boolean($("teacherToday"));
   if(home)body.workspace=todayRequest(actorId);
   const {data:loaded,error}=(await startup?.dashboard(body))??await dashboardRead(body);
@@ -519,7 +523,7 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
   disposeWriting(); disposeWriting = () => {};
   $("teacherWrittenWorkCard")?.classList.add("hidden");
   $("teacherWorkflowEntries")?.classList.add("hidden");
-  for(const id of ["teacherResourcesLink","teacherAssignResourceLink"]) $(id)?.removeAttribute("href");
+  for(const id of ["teacherResourcesLink","teacherAssignResourceLink","teacherAssignWritingLink"]) $(id)?.removeAttribute("href");
   institutionalUnitLoadVersion++;
   closeDrawer();
   selectedAssignmentId=selection?.assignmentId??assignmentId??(selectedClassId===id?selectedAssignmentId:null);
@@ -625,6 +629,8 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
       const resourceParams = new URLSearchParams({assignment:klass.assignmentId,release:klass.selectedUnit.curriculumReleaseId,unit:klass.selectedUnit.unitId});
       $("teacherResourcesLink").href='./resource-library.html?'+resourceParams;
       $("teacherAssignResourceLink").href='./resource-library.html?'+resourceParams+'&intent=assign';
+      $("teacherAssignWritingLink").href='./teacher.html?view=assign-writing&class='+encodeURIComponent(klass.id)+'&'+resourceParams+(klass.isActive?'':'&source=archive');
+      $("teacherAssignWritingLink").textContent=klass.isActive?'Ընտրել գրավոր առաջադրանքը':'Դիտել ուղարկված գրավորները';
       $("teacherWorkflowContext").textContent=[klass.name,klass.subjectName,klass.selectedUnit.unitTitleHy,klass.schoolName,klass.academicYear].filter(Boolean).join(' · ');
       $("teacherOpenWrittenWork").onclick = () => {
         if (!allowTeacherLeave()) return;

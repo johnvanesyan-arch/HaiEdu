@@ -7,6 +7,7 @@ const configs = {
       ["Գլխավոր", "./teacher.html?view=home", "home"],
       ["Իմ պրոֆիլը", "./teacher.html?view=profile"],
       ["Դասարաններ", "./teacher.html?view=classes"],
+      ["Հանձնարարել գրավոր", "./teacher.html?view=assign-writing"],
       ["Գրավորի ստուգում", "./teacher.html?view=review"],
       ["Արխիվացված դասարաններ", "./teacher.html?view=archive"],
       ["Նյութերի գրադարան", "./resource-library.html"]

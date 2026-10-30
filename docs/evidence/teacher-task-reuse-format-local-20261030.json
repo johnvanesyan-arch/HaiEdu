@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-30",
+  "timezone": "Asia/Yerevan",
+  "scope": "B.12.3.2 PDF source reuse and versioned teacher text",
+  "status": "local preflight; unmerged/not deployed; current-source CI pending",
+  "baseSource": "6dec6a4fe7c49382ec1bb02e4077fdfb5c4c2102",
+  "local": {
+    "focused": {
+      "passed": 20,
+      "log": "/tmp/haiedu-reuse-format-focused.log"
+    },
+    "reviewTextActualSDK": {
+      "passed": 11,
+      "log": "/tmp/haiedu-reuse-format-review-regression.log"
+    },
+    "syntaxFiles": 102,
+    "teacherBundleParity": "pass, bundles unchanged",
+    "typecheck": "pass",
+    "browserQaTriggers": "pass",
+    "native": "not executed locally: Chromium executable unavailable",
+    "studentDelivery": {
+      "passed": 7,
+      "log": "/tmp/haiedu-reuse-format-student-regression.log"
+    }
+  },
+  "preparedNative": [
+    "PDF copy unknown reply/navigation/logout/account fence/private bytes",
+    "toolbar selection/editor and send preview/frozen definition",
+    "identical safe formatted task in student and teacher review"
+  ],
+  "preparedPostgresRaces": [
+    "same-nonce private copy creates one draft",
+    "copy versus newer source save conflicts"
+  ],
+  "priorUnchangedReviewEvidence": {
+    "ciRun": 41020398559,
+    "unitIntegration": 1604,
+    "native": 346,
+    "reviewRaces": 6,
+    "reusedOnlyForUnchangedScope": true
+  },
+  "remaining": [
+    "current-source all-five CI and visual artifacts",
+    "privacy inventory/retention/erasure including copied-source reachability",
+    "proper production migrations and custom delivery endpoint",
+    "deploy all affected Edge consumers and source readback",
+    "guarded production acceptance, merged documentation/source-verified Notion",
+    "owner usability acceptance"
+  ],
+  "gates": {
+    "B12_3": "open",
+    "subjects": "paused",
+    "contentAudioApprovals": "preserved",
+    "mastery": "unchanged"
+  },
+  "firstCi": {
+    "source": "48357f4f5fde25dfbd555473f79aeced993a76ac",
+    "run": 41029884460,
+    "allFive": "success",
+    "unitIntegration": 1612,
+    "native": 349,
+    "copyReviewRaces": 8,
+    "artifact": {
+      "id": 12965606652,
+      "sha256": "7a32a042d9daf9eb2908ef50a46a44f18c0a4215567d700c6e8939fbf9e069c2",
+      "downloadHashVerified": true,
+      "imagesInspected": [
+        "teacher-task-editor-390-200.png",
+        "teacher-task-editor-768-200.png",
+        "teacher-task-editor-1280-200.png"
+      ],
+      "visualFinding": "long return/settings labels split at390/200; max-points label also shortened",
+      "notFinalVisualAcceptance": true
+    }
+  },
+  "visualCorrection": {
+    "labels": "shorter Armenian course-return/settings/max-points labels",
+    "harness": "actual teacher.html stylesheet links and local font",
+    "native": "static word-boundary assertions and formatted preview/keyboard/reflow/screenshots at all three widths",
+    "currentSourceCi": "required"
+  },
+  "secondCi": {
+    "source": "976cc07da1a71cdcabc03f29fc6b97c90ba161d6",
+    "run": 41031517667,
+    "unitIntegration": 1612,
+    "native": {
+      "pass": 348,
+      "total": 349,
+      "remaining": "390px/200% static words նախադիտումը and ստացողներին in two action labels"
+    },
+    "postgresInstitutional": "success including all8copy/review races",
+    "currentCorrection": "short student-view/save-and-continue actions; explicit next-recipient sentence; same strict assertion retained"
+  },
+  "thirdCi": {
+    "source": "501cf8bd7597b1aa73354bfc7d0f14b3213d0e18",
+    "run": 41032725834,
+    "unitIntegration": 1612,
+    "native": {
+      "pass": 348,
+      "total": 349,
+      "remaining": "390px/200% list indentation split the normal fixture word պատասխանը; all editor/action labels pass"
+    },
+    "postgresInstitutional": "success, all8copy/review races",
+    "correction": "shared formatted lists use inside markers with no hanging indentation at narrow widths; word guard remains; screenshot saved before final word assertion"
+  }
+}

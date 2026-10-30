@@ -1,0 +1,37 @@
+.writing-assignment-workspace{min-width:0;margin-block:1.25rem}.wa-panel{max-width:58rem;margin-inline:auto;padding:clamp(1rem,3vw,2rem)}.wa-heading,.wa-actions{display:flex;gap:1rem;justify-content:space-between;align-items:center;flex-wrap:wrap}.wa-heading>p{font-size:.9rem;color:var(--muted);margin:0}.wa-text{white-space:pre-wrap;overflow-wrap:anywhere}.wa-panel h2{font-size:1.4rem}.wa-panel h3{font-size:1.1rem}.wa-tasks{display:grid;gap:1rem;margin-block:1.5rem}.wa-tasks article,.wa-history-item{padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius-md,12px)}.wa-tasks h3,.wa-history-item h3{margin-top:0}.wa-rubric,.wa-cancel{margin-block:1.5rem;padding:1rem;background:var(--surface-soft,var(--surface));border:1px solid var(--border);border-radius:12px}.wa-rubric summary,.wa-cancel summary{cursor:pointer;font-weight:600}.wa-audience{display:grid;gap:1rem;border:0;padding:0;margin-block:1.5rem}.wa-audience label,.wa-roster label,.wa-history-filter{display:flex;align-items:flex-start;gap:.65rem}.wa-audience input,.wa-roster input,.wa-history-filter input{width:auto;flex:none;margin-top:.3rem}.wa-roster{display:grid;gap:.75rem;margin-block:1rem;max-height:22rem;overflow:auto;padding:.25rem}.wa-panel [data-wa-body]>button,.wa-panel [data-wa-body]>p{margin-block:1rem}.wa-actions{justify-content:flex-start;margin-block:1.5rem}.wa-panel textarea{display:block;width:100%;box-sizing:border-box}.wa-student-task{margin-block:1rem}.wa-student-task h4{font-size:1.15rem}.wa-panel [role=status]:focus-visible{outline:3px solid var(--primary);outline-offset:4px}.wa-panel,.wa-student-task{overflow-wrap:anywhere}.wa-panel button,.wa-panel a{max-width:100%;white-space:normal}.wa-history-filter{margin-block:1rem}.wa-panel [data-wa-selected]>label{display:grid;gap:.5rem}@media(max-width:600px){.wa-actions>*{width:100%;text-align:center}.wa-panel{padding:1rem}.wa-heading{align-items:flex-start}.wa-panel [data-wa-body]>button{width:100%}}@media(prefers-reduced-motion:no-preference){.wa-tasks article{transition:border-color .15s ease,background-color .15s ease}.wa-tasks article:hover{border-color:var(--primary)}}
+
+.teacher-writing-picker .teacher-review-controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}@media(max-width:600px){.teacher-writing-picker .teacher-review-controls{grid-template-columns:minmax(0,1fr)}}
+.task-editor-fields{display:grid;gap:1.25rem}.task-editor label{display:grid;gap:.4rem}.task-editor fieldset{border:0;padding:0;min-width:0;margin:0}.task-editor legend{font-weight:650;margin-bottom:.65rem}.task-editor input,.task-editor textarea,.task-editor select{width:100%;max-width:100%;box-sizing:border-box}.task-editor [data-editor-source],.task-editor [data-editor-response],.task-editor [data-editor-criteria]{margin-top:.8rem}.task-editor [data-criterion]{display:grid;gap:.8rem;padding:1rem;margin-block:1rem;border:1px solid var(--border);border-radius:12px}.task-editor textarea{resize:vertical;white-space:pre-wrap}.task-editor [role=status]{overflow-wrap:anywhere}
+
+/* Native hidden state must win over label layout. Keep intrinsic form widths
+   inside one explicit shrinkable grid track at enlarged text sizes. */
+.teacher-review-controls [hidden]{display:none!important}
+.task-editor-fields{grid-template-columns:minmax(0,1fr)}
+.task-editor-fields>*{min-width:0}
+.task-editor :is(label,input,textarea,select){min-width:0}
+
+.student-custom-tasks label{display:grid;gap:.5rem;margin-block:1rem;min-width:0}.student-custom-tasks :is(input,textarea){display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box}.student-custom-tasks textarea{resize:vertical}.student-custom-tasks .wa-student-task{border-block-end:1px solid var(--border);padding-block:1rem}.student-custom-tasks [hidden]{display:none!important}
+/* Custom task review uses the same private-draft/published-feedback vocabulary. */
+.teacher-custom-review .tr-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem}
+.teacher-custom-review .tr-columns>section{min-width:0}
+.teacher-custom-review label{display:grid;gap:.35rem;margin-block:.75rem;min-width:0}
+.teacher-custom-review textarea,.teacher-custom-review select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.teacher-custom-review textarea{resize:vertical}
+.teacher-custom-review [data-tr-status]{overflow-wrap:anywhere}
+.teacher-custom-review details{margin-block:.75rem}
+.teacher-custom-review .wa-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+@media(max-width:58rem){.teacher-custom-review .tr-columns{grid-template-columns:minmax(0,1fr)}}
+
+[data-review-kind]:not([hidden]){display:flex;flex-wrap:wrap;gap:.5rem;margin-block:1rem}
+[data-review-kind] button{min-width:0;max-width:100%}
+.task-text { overflow-wrap:anywhere; min-width:0; }
+.task-text :is(p,ul,ol,h5,h6) { margin-block:.65em; }
+.task-text :is(ul,ol) { padding-inline-start:1.5em; }
+.task-text :is(h5,h6) { font-size:1em; line-height:1.4; }
+.task-text h6 { font-weight:600; }
+.task-text a { color:var(--forest-700,#215a43); text-decoration:underline; text-underline-offset:.15em; }
+.task-text-tools { display:flex; flex-wrap:wrap; gap:.25rem; margin-block:.35rem .7rem; }
+.task-text-tools button { min-width:0; max-width:100%; font-size:.9em; }
+.task-text-editor { min-width:0; }
+/* Preserve room for ordinary words at enlarged mobile text sizes. */
+@media(max-width:600px){.task-text :is(ul,ol){padding-inline-start:0;list-style-position:inside}}

@@ -1,5 +1,6 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import {taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing} from "../_shared/teacher-task-privacy.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,7 +8,7 @@ const corsHeaders = {
 };
 
 function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control":"no-store" } });
 }
 
 function jwtPayload(token: string): Record<string, unknown> {
@@ -255,14 +256,17 @@ Deno.serve(async (req) => {
       const resolutionCode = String(body.resolutionCode ?? "not_verified");
       const allowedCodes = new Set(["not_verified", "staff_offboarding_required", "legal_hold", "duplicate_request"]);
       if (!requestId || !allowedCodes.has(resolutionCode)) return json({ error: "invalid_rejection" }, 400);
-      const { data: request } = await admin.from("account_deletion_requests").select("id, user_id, status, resolution_code")
+      const { data: request } = await admin.from("account_deletion_requests").select("id, user_id, status, resolution_code, execution_started_at")
         .eq("id", requestId).maybeSingle();
       if (!request || !["pending", "processing"].includes(request.status)) return json({ error: "request_not_open" }, 409);
+      if(request.execution_started_at)return json({error:"deletion_execution_started"},409);
       const { data: updated, error } = await admin.from("account_deletion_requests").update({
         status: "rejected", resolved_at: new Date().toISOString(), resolved_by: actorId,
         resolution_code: resolutionCode, auth_user_id: null,
       }).eq("id", requestId).select("id, status, resolution_code, resolved_at").single();
-      if (error) return json({ error: "deletion_reject_failed", detail: error.message }, 500);
+      if (error) return String(error.message).includes("deletion_execution_started")
+        ? json({error:"deletion_execution_started"},409)
+        : json({ error: "deletion_reject_failed", detail: error.message }, 500);
       if (request.user_id) {
         await admin.from("profiles").update({
           account_status: request.resolution_code === "admin_archived_account" ? "archived" : "active",
@@ -314,51 +318,64 @@ Deno.serve(async (req) => {
       return json({ request: staged, readyForExecution: true, irreversible: false });
     }
 
-    if (action === "execute_deletion") {
-      const requestId = String(body.requestId ?? "");
-      if (!requestId) return json({ error: "request_id_required" }, 400);
-      const { data: request } = await admin.from("account_deletion_requests")
-        .select("id, user_id, auth_user_id, status")
-        .eq("id", requestId).maybeSingle();
-      if (!request || request.status !== "processing") return json({ error: "approved_request_required" }, 409);
-
-      const targetUserId = request.user_id as string | null;
-      const authUserId = (request.auth_user_id ?? request.user_id) as string | null;
-      if (!targetUserId || !authUserId) return json({ error: "deletion_target_missing" }, 409);
-
-      const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
-      if (!target) return json({ error: "target_profile_missing" }, 404);
-      if (String(target.role) !== "student") {
-        return json({ error: "staff_offboarding_required", detail: "Transfer or archive staff-owned resources before deleting this account." }, 409);
+    if (["preview_task_file_cleanup","execute_task_file_cleanup","resume_task_file_cleanup"].includes(action)) {
+      const sessionId=String(jwtPayload(token).session_id??"");
+      const assertLive=async()=>{if(!await hasActiveLiveSession(admin,token,actorId))throw Error('account_or_session_inactive');};
+      let receipt:any;
+      if(action==='resume_task_file_cleanup')receipt={cleanupId:body.cleanupId};
+      else {
+        const payload=action==='preview_task_file_cleanup'?{before:body.before}:{before:body.before,fingerprint:body.fingerprint,requestId:body.requestId};
+        const r=await admin.rpc('service_teacher_task_retention',{p_actor:actorId,p_auth:sessionId,p_action:action==='preview_task_file_cleanup'?'preview':'enqueue',p_payload:payload});
+        if(r.error)throw Error(String(r.error.message).split('\n')[0]);
+        if(action==='preview_task_file_cleanup')return json(r.data);
+        receipt=r.data;
       }
-      if (target.account_status !== "deletion_pending") return json({ error: "deletion_pending_status_required" }, 409);
+      const cleaned=await removeTeacherTaskFiles({admin,actorId,sessionId,selector:{cleanupId:receipt.cleanupId},assertLive});
+      return json({...receipt,pendingFiles:cleaned.pendingFiles,completed:cleaned.pendingFiles===0},cleaned.pendingFiles?202:200);
+    }
 
-      const ban = await admin.auth.admin.updateUserById(authUserId, { ban_duration: "876000h" });
-      if (ban.error) return json({ error: "deletion_ban_failed", detail: ban.error.message }, 500);
-
-      const erased = await admin.rpc("erase_student_data", { p_student_id: targetUserId });
-      if (erased.error) return json({ error: "student_data_erasure_failed", detail: erased.error.message }, 500);
-      const inventory = erased.data ?? null;
-
-      const deleted = await admin.auth.admin.deleteUser(authUserId, false);
-      if (deleted.error) return json({ error: "auth_user_delete_failed", detail: deleted.error.message, retryable: true }, 500);
-
-      const { data: completed, error: completeError } = await admin.from("account_deletion_requests").update({
-        status: "completed", resolved_at: new Date().toISOString(), resolved_by: actorId,
-        resolution_code: "student_erased", auth_user_id: null,
-      }).eq("id", requestId).select("id, status, resolved_at, resolution_code").single();
-      if (completeError) return json({ error: "deletion_finalize_failed", detail: completeError.message }, 500);
-
-      await writeAudit(admin, {
-        actor_user_id: actorId, actor_role: "admin", action: "admin.student_account_erased", outcome: "success",
-        target_user_id: null, target_type: "deletion_request", target_key: requestId,
-        details: { erasedInventory: inventory ?? {}, authDeleted: true },
-      });
-      return json({ request: completed, erasedInventory: inventory });
+    if (action === "execute_deletion") {
+      // Older cached consoles treat any 2xx response as final completion. Refuse
+      // them before preparing or changing a target; only opted-in clients can
+      // execute the resumable protocol and understand its pending response.
+      if (body.executionProtocol !== "teacher-task-privacy-v1") return json({
+        error: "deletion_client_update_required",
+        detail: "Թարմացրեք էջը՝ ջնջման ընթացքն ու ավարտը ճիշտ տեսնելու համար։",
+      }, 409);
+      const requestId = String(body.requestId ?? "");
+      if (!/^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(requestId)) return json({ error: "request_id_required" }, 400);
+      const { data: request } = await admin.from("account_deletion_requests")
+        .select("id, user_id, auth_user_id, status").eq("id", requestId).maybeSingle();
+      if (!request || !["processing","completed"].includes(request.status)) return json({ error: "approved_request_required" }, 409);
+      const sessionId=String(jwtPayload(token).session_id??"");
+      const state=await taskPrivacyRpc(admin,actorId,sessionId,'prepare',{requestId});
+      if(state.phase==='completed')return json({request:state.request,erasedInventory:state.inventory,completed:true,replayed:true});
+      const authUserId=String(request.auth_user_id??request.user_id??"");
+      if(!authUserId)return json({error:"deletion_target_missing"},409);
+      if(state.phase!=='profile_erased'){
+        const ban=await admin.auth.admin.updateUserById(authUserId,{ban_duration:"876000h"});
+        if(ban.error)return json({error:"deletion_ban_failed",retryable:true},503);
+        await taskPrivacyRpc(admin,actorId,sessionId,'purge',{requestId});
+      }
+      const assertLive=async()=>{if(!await hasActiveLiveSession(admin,token,actorId))throw Error('account_or_session_inactive');};
+      const cleanup=await removeTeacherTaskFiles({admin,actorId,sessionId,selector:{requestId},assertLive});
+      if(cleanup.pendingFiles>0)return json({request:cleanup.request,erasure:{pendingFiles:cleanup.pendingFiles,retryAfterSeconds:cleanup.retryAfterSeconds},completed:false},202);
+      // The original learning/profile cascade follows confirmed private-file cleanup.
+      await assertLive();
+      const erased=await admin.rpc("erase_student_data",{p_student_id:authUserId});
+      if(erased.error)return json({error:"student_data_erasure_failed",retryable:true},503);
+      await assertLive();
+      const deleted=await admin.auth.admin.deleteUser(authUserId,false);
+      if(deleted.error&&!taskAuthUserMissing(deleted.error))return json({error:"auth_user_delete_failed",retryable:true},503);
+      const completed=await taskPrivacyRpc(admin,actorId,sessionId,'finish',{requestId});
+      return json({request:completed.request,erasedInventory:completed.inventory,completed:true});
     }
 
     return json({ error: "invalid_action" }, 400);
   } catch (err) {
+    const code=String(err && typeof err === 'object' && 'message' in err ? err.message : err).split('\n')[0];
+    const status:Record<string,number>={task_privacy_invalid:400,task_retention_cutoff:400,task_retention_stale:409,task_retention_conflict:409,task_privacy_target:409,task_privacy_ban_required:409,task_privacy_prepare_required:409,task_privacy_files_pending:409,task_privacy_not_finished:409,staff_offboarding_required:409,task_privacy_forbidden:403,resource_forbidden:403,account_or_session_inactive:403,task_privacy_storage_unavailable:503,task_privacy_unavailable:503};
+    if(status[code])return json({error:code,retryable:status[code]===503},status[code]);
     console.error("manage-admin-account", err);
     return json({ error: "manage_admin_account_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }

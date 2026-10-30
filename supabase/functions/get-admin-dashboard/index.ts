@@ -1,4 +1,4 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
 const corsHeaders = {
@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control":"no-store" } });
 }
 
 function clamp(value: unknown, fallback: number, min: number, max: number) {
@@ -292,7 +292,7 @@ async function accounts(admin: any, actor: any, actorId: string, body: any) {
 
 async function deletions(admin: any, actor: any, actorId: string) {
   const { data, error } = await admin.from("account_deletion_requests")
-    .select("id,user_id,requester_user_id,status,requested_at,resolved_at,resolved_by,resolution_code")
+    .select("id,user_id,requester_user_id,status,requested_at,resolved_at,resolved_by,resolution_code,execution_started_at")
     .order("requested_at", { ascending:false }).limit(100);
   if (error) throw error;
   const ids = (data ?? []).flatMap((request: any) => [request.user_id, request.requester_user_id, request.resolved_by]).filter(Boolean);

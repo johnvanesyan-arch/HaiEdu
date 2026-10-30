@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "haiedu-teacher-task-privacy-local-v1",
+  "date": "2026-10-30",
+  "scope": "B.12.3.2 custom-task privacy inventory / referenced-file retention / resumable student erasure",
+  "status": "staged implementation; not deployed",
+  "pr": "https://github.com/johnvanesyan-arch/HaiEdu/pull/365",
+  "local": {
+    "newPrivacySqlEdgeUiRunnerChecks": 12,
+    "existingRolePrivacySecurityChecks": 18,
+    "failures": 0,
+    "logs": [
+      "/tmp/haiedu-task-privacy-current-local.log",
+      "/tmp/haiedu-task-privacy-role-security.log"
+    ],
+    "unchangedSourceStudentReviewReuseChecks": {
+      "passed": 16,
+      "sourceLog": "/tmp/haiedu-task-privacy-final-local.log",
+      "note": "That earlier run had one runner ISO-normalization assertion failure, corrected and passing in the current 12-case log; no backend regression failed."
+    }
+  },
+  "preparedRequiredCI": {
+    "newIndependentPostgres17Races": 8,
+    "newNativeCases": 7,
+    "widths": [
+      390,
+      768,
+      1280
+    ],
+    "textPercent": 200,
+    "results": "Current-source CI receipts and visual inspection recorded in PR365 and source-verified Notion checkpoint."
+  },
+  "evidenceLimits": [
+    "Actual proposal SQL and Edge handlers; Storage/Auth HTTP doubles",
+    "Native real account controller and extracted actual admin deletion component, not full production MFA/router",
+    "No production SQL, Edge, Storage, profile, Auth, submission or grade writes"
+  ],
+  "reuse": {
+    "source": "e1a16846164a27733bc32c6a8f8fdf1938bba1ea",
+    "ci": 41034066851,
+    "allFiveRequiredJobs": "passed",
+    "unitIntegration": 1612,
+    "native": 349,
+    "copyReviewIndependentRaces": 8,
+    "artifact": 12966988109,
+    "artifactSha256": "e47469467e1ceae55df0b295c00ddf85267cc2ea9ed12377113b7a4708c4854e",
+    "inspectedEditorPreviewImages": 6
+  },
+  "deploymentConsumers": [
+    "get-my-privacy",
+    "manage-my-privacy",
+    "get-admin-dashboard",
+    "manage-admin-account"
+  ],
+  "remainingReleaseGates": [
+    "production migration/proposal promotion plus custom delivery endpoint index",
+    "all staged and affected Edge deployments/readback",
+    "required main CI and guarded production/source acceptance",
+    "merged documentation and merged-source Notion closure",
+    "final owner usability acceptance"
+  ],
+  "B12.3": "open",
+  "subjectExpansion": "paused",
+  "ciAttempts": [
+    {
+      "source": "d2a7f27eab89ff4023c76048cd0127da0fc56444",
+      "run": 41053248039,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "native": {
+        "passed": 354,
+        "failed": 2,
+        "finding": "Real account page overflows at 390/768px with 200% text; fixed column/padding layout squeezes words. All four new behavior/recovery/account-fence cases pass."
+      },
+      "artifact": 12976301620,
+      "artifactSha256": "17b5c596743fbc071705cc378988a75fd7e8c32f6f16fa67a34a09a077fcde14",
+      "allRequiredJobsPassed": false
+    },
+    {
+      "source": "0f0667b77f5acc41ed1bf922514ee87255268277",
+      "run": 41055593070,
+      "allRequiredJobsPassed": true,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "native": {
+        "passed": 356,
+        "failed": 0
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "artifact": 12977411494,
+      "artifactSha256": "d2bdb0a35929cfcd14e4a6ff3d9a2e46bf8778317c4b2581520ce461a5bedaed",
+      "visualFinding": "Root/word-wrap gates pass, but inspected 390px student screenshots show Back-label/control and inventory-column text spills. Admin sticky progress overlays Resume and refresh label splits. Corrected specificity, header/refresh reflow and inline deletion progress; stronger per-element word-containment and hit-target checks retained."
+    },
+    {
+      "source": "fbe0fd2a1a9f5c5c6e067b3608c4b0177b225806",
+      "run": 41057884673,
+      "allRequiredJobsPassed": false,
+      "unitIntegration": {
+        "passed": 1624,
+        "failed": 0
+      },
+      "native": {
+        "passed": 355,
+        "failed": 1,
+        "newPrivacyCasesPassed": 7,
+        "finding": "All new containment and hit-target checks pass. Existing complete staff layout catches platform-admin heading overflow at 360px/200%; bounded font clamp added. Admin-security and other roles pass."
+      },
+      "newPostgres17IndependentRaces": {
+        "passed": 8,
+        "failed": 0
+      },
+      "artifact": 12977558008,
+      "artifactSha256": "12b6d22a01186bc02ee5d92095417480f48026dd7dd2d94e7a23ea094cbe1321"
+    }
+  ],
+  "reflowCorrection": "Shared all-role account layout uses font-relative auto-fit columns, bounded padding, full-width wrapping navigation/controls, concise Armenian labels and accurate execution status. Same static word guards expanded across headers/buttons/navigation; student and staff variants checked at each width. No SQL/Edge behavior changed after passing database gates.",
+  "completionReadback": "Actual SQL/Edge plus extracted browser-handler VM probe reproduces lost-final-reply false error before the fix and confirmed completion after same-request readback. Existing native lifecycle case now drops that final reply and requires one completed receipt/no retry control."
+}

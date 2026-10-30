@@ -1,0 +1,44 @@
+{
+  "scope": "B.12.3.2 private teacher source PDF backend and editor adapter, local checkpoint",
+  "date": "2026-10-30",
+  "timezone": "Asia/Yerevan",
+  "baseMergedSource": "18254f44ee950010bb9a17e555c1f51c81cdf168",
+  "deployed": false,
+  "merged": false,
+  "checks": {
+    "focusedSchemaFormDraftSourceTests": 14,
+    "failed": 0,
+    "nativeBrowserVerified": false,
+    "storageAdapter": "isolated in-memory Storage with real SQL and Edge handler; not production Storage RLS verification"
+  },
+  "sourceDelivery": {
+    "privateBucket": "teacher-task-files",
+    "maximumBytes": 10485760,
+    "sourceType": "PDF",
+    "reservationBeforeUpload": true,
+    "retryUsesSameRequest": true,
+    "upsert": false,
+    "bytesAndHashVerifiedOnDownload": true,
+    "arbitraryDraftAssetReferencesRejected": true,
+    "studentDocumentUploadEnabled": false
+  },
+  "editor": {
+    "draftPersistedBeforeNewPdfUpload": true,
+    "sourceClientBoundToActorAndContext": true,
+    "mountedForProduction": false
+  },
+  "remaining": [
+    "storage policy/deployed provenance verification",
+    "immutable task publication and recipients for teacher-created tasks",
+    "student text/document/link drafts and submissions",
+    "review, return and revision lifecycle",
+    "draft list/reuse UI and rich text formatting",
+    "native visual and guarded production acceptance",
+    "aligned merged documentation and source-verified Notion closure"
+  ],
+  "gates": {
+    "b123Open": true,
+    "subjectExpansionPaused": true,
+    "priorApprovalsAnd45MappingsPreserved": true
+  }
+}

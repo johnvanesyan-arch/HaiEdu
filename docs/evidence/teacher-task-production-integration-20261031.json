@@ -1,0 +1,2434 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Yerevan",
+  "scope": "B.12.3.2 production integration; approved cross-role consistency preparation",
+  "state": "seven migrations and twelve runtimes source-verified; frontend PR/main/hosted acceptance pending",
+  "baselineMain": "18254f44ee950010bb9a17e555c1f51c81cdf168",
+  "priorVerifiedSource": "541d1a80d7d5309a054d6870a8f77e20b850d1d7",
+  "priorCi": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41058923727",
+  "currentLocal": {
+    "unitIntegration": 1627,
+    "failed": 0,
+    "log": "/tmp/haiedu-production-integration-all-tests.log",
+    "focusedPromotedSql": 23,
+    "productionGuard": 1,
+    "native": "prepared; current CI required"
+  },
+  "production": {
+    "appliedMigrations": [
+      {
+        "old": "supabase/migrations/20261029192739_teacher_writing_assignments.sql",
+        "new": "supabase/migrations/20261030203359_teacher_writing_assignments.sql",
+        "sha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12"
+      },
+      {
+        "old": "supabase/migrations/20261029203041_teacher_task_drafts.sql",
+        "new": "supabase/migrations/20261030203404_teacher_task_drafts.sql",
+        "sha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf"
+      },
+      {
+        "old": "supabase/migrations/20261029203950_teacher_task_source_attachments.sql",
+        "new": "supabase/migrations/20261030203406_teacher_task_source_attachments.sql",
+        "sha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a"
+      },
+      {
+        "old": "supabase/migrations/20261030202403_teacher_task_delivery.sql",
+        "new": "supabase/migrations/20261030203407_teacher_task_delivery.sql",
+        "sha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5"
+      },
+      {
+        "old": "supabase/migrations/20261030202405_teacher_task_student_work.sql",
+        "new": "supabase/migrations/20261030203408_teacher_task_student_work.sql",
+        "sha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157"
+      },
+      {
+        "old": "supabase/migrations/20261030202406_teacher_task_review.sql",
+        "new": "supabase/migrations/20261030203409_teacher_task_review.sql",
+        "sha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee"
+      }
+    ],
+    "privacyMigration": {
+      "path": "supabase/migrations/20261030214222_teacher_task_privacy.sql",
+      "attempts": [
+        {
+          "status": "expired",
+          "message": "Confirmation expired after 2 minutes; no migration history or schema change."
+        },
+        {
+          "status": "expired",
+          "message": "Fresh confirmation also expired; no third blind retry."
+        },
+        {
+          "status": "expired",
+          "message": "Reopened after exact SQL/current source passed all five CI gates and the reviewable migration was explicitly shown; confirmation expired again without schema/history execution. Service confirmation remains required."
+        }
+      ],
+      "version": "20261030214222",
+      "status": "applied",
+      "sha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762"
+    },
+    "edgeDeployments": [
+      {
+        "name": "get-my-privacy",
+        "version": 11,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 1,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "97c7a3cbc88ac3d7433127bca9aaaf6c0c897080cf51e9bb81f2e732d04111e0"
+      },
+      {
+        "name": "manage-my-privacy",
+        "version": 4,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 1,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "eb7e57b21f188a2e60957ba24da11075eed09ee801b73ef32f01bb1b122ae548"
+      },
+      {
+        "name": "get-admin-dashboard",
+        "version": 3,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 2,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "0a59405694d549627a16b2aa62f4d4b943c55c2dd69f22f98c6752fcd3329c52"
+      },
+      {
+        "name": "manage-admin-account",
+        "version": 7,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 3,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "7fd0009813997aa868651c5ad193bbed36275067c70963f1e103cfefb68ce202"
+      },
+      {
+        "name": "manage-writing-assignments",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 3,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "068c46f316db7690ce0838c99d0481cf3532f12b74a048819d706b40420facef"
+      },
+      {
+        "name": "manage-teacher-task-drafts",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 4,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "7beb63ca06664d1436fa84a4a3267b908429ef33c92c2965d0c64a920511bc37"
+      },
+      {
+        "name": "manage-teacher-task-sources",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 4,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "74b28f7545527274e6757614786ad61353d83f81a5e28c957bd5e8d6f3dee8ba"
+      },
+      {
+        "name": "manage-teacher-task-delivery",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 4,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "ac64a5c5a3dc393f647348bece0365e2071389960a7953c707de66235dced513"
+      },
+      {
+        "name": "manage-teacher-task-student-work",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 5,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "f7653f1371026b0b5e00f28011c952391591b0f959002f4c5984ee7a06e3c894"
+      },
+      {
+        "name": "manage-teacher-task-student-files",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 8,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "3d11f74724a7e847cb295d099e1f04405aad30c285971cca2911941b0dad587a"
+      },
+      {
+        "name": "manage-teacher-task-review",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 9,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "176bb65a6131bb4808013d1b5099902cc6e45a6320001f874787d7ad265ca687"
+      },
+      {
+        "name": "manage-teacher-task-review-files",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "fileCount": 9,
+        "missing": [],
+        "unexpected": [],
+        "ezbr_sha256": "644dd713584a4178173b2c0f7abf6431963ed32a4d3588ff893cb5b70953bd86"
+      }
+    ],
+    "frontendActivated": false,
+    "learnerWrites": false,
+    "gradeWrites": false,
+    "accountErasureExecuted": false,
+    "storageObjectsWritten": false,
+    "newBucketMetadata": true
+  },
+  "preservation": {
+    "tables": 117,
+    "changedTables": [],
+    "before": [
+      {
+        "table_name": "academic_identity_events",
+        "row_count": 1205,
+        "row_fingerprint": "222f18377f8644dc5c48d19d5bdf82a9"
+      },
+      {
+        "table_name": "academic_mastery_policy_activation",
+        "row_count": 1,
+        "row_fingerprint": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "table_name": "academic_mastery_policy_versions",
+        "row_count": 1,
+        "row_fingerprint": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "table_name": "academic_years",
+        "row_count": 2,
+        "row_fingerprint": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "table_name": "account_deletion_requests",
+        "row_count": 3,
+        "row_fingerprint": "27f7bc851682e61b1b0543435ae15f86"
+      },
+      {
+        "table_name": "assessment_blueprint_items",
+        "row_count": 2546,
+        "row_fingerprint": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "table_name": "assessment_blueprints",
+        "row_count": 39,
+        "row_fingerprint": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "table_name": "assessment_form_items",
+        "row_count": 832,
+        "row_fingerprint": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "table_name": "assessment_forms",
+        "row_count": 44,
+        "row_fingerprint": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "table_name": "assessment_policy_bindings",
+        "row_count": 32,
+        "row_fingerprint": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "row_count": 27,
+        "row_fingerprint": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "table_name": "assessment_pool_items",
+        "row_count": 1761,
+        "row_fingerprint": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "table_name": "assessment_pools",
+        "row_count": 28,
+        "row_fingerprint": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "table_name": "assignment_skills",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "assignments",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "attempts",
+        "row_count": 229,
+        "row_fingerprint": "ffc3d3f646ae50cf5951d0d2bbd88a54"
+      },
+      {
+        "table_name": "calibration_analysis_scopes",
+        "row_count": 1,
+        "row_fingerprint": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "table_name": "calibration_change_decisions",
+        "row_count": 1,
+        "row_fingerprint": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "table_name": "calibration_decision_protocols",
+        "row_count": 1,
+        "row_fingerprint": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "table_name": "calibration_evidence_contracts",
+        "row_count": 2,
+        "row_fingerprint": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "table_name": "calibration_metric_sets",
+        "row_count": 2,
+        "row_fingerprint": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "table_name": "chapter_mastery_states",
+        "row_count": 3,
+        "row_fingerprint": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "table_name": "chapter_review_cycles",
+        "row_count": 2,
+        "row_fingerprint": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "table_name": "chapter_review_item_exposures",
+        "row_count": 24,
+        "row_fingerprint": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "table_name": "chapter_review_requirements",
+        "row_count": 2,
+        "row_fingerprint": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "table_name": "chapter_review_sessions",
+        "row_count": 2,
+        "row_fingerprint": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "table_name": "class_memberships",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "classes",
+        "row_count": 127,
+        "row_fingerprint": "b971b3d56d780abd00634bdad253c6d4"
+      },
+      {
+        "table_name": "curriculum_authorities",
+        "row_count": 2,
+        "row_fingerprint": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "table_name": "curriculum_frameworks",
+        "row_count": 1,
+        "row_fingerprint": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "table_name": "curriculum_reconciliation_runs",
+        "row_count": 9,
+        "row_fingerprint": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "table_name": "curriculum_release_gate_checks",
+        "row_count": 63,
+        "row_fingerprint": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "table_name": "curriculum_release_item_families",
+        "row_count": 1580,
+        "row_fingerprint": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "table_name": "curriculum_release_outcomes",
+        "row_count": 86,
+        "row_fingerprint": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "table_name": "curriculum_release_reconciliations",
+        "row_count": 9,
+        "row_fingerprint": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "table_name": "curriculum_release_skills",
+        "row_count": 108,
+        "row_fingerprint": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "table_name": "curriculum_release_units",
+        "row_count": 10,
+        "row_fingerprint": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "table_name": "curriculum_releases",
+        "row_count": 10,
+        "row_fingerprint": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "table_name": "curriculum_source_documents",
+        "row_count": 6,
+        "row_fingerprint": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "table_name": "grades",
+        "row_count": 12,
+        "row_fingerprint": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "table_name": "institutional_class_enrollments",
+        "row_count": 6,
+        "row_fingerprint": "07bf76230f8baefed451a785a17234c4"
+      },
+      {
+        "table_name": "institutional_invitations",
+        "row_count": 119,
+        "row_fingerprint": "d5fe8910381ee96f16f52478443056e7"
+      },
+      {
+        "table_name": "institutional_join_codes",
+        "row_count": 62,
+        "row_fingerprint": "65e49bacccfb2ebfde3a5fc8c192b80e"
+      },
+      {
+        "table_name": "institutional_memberships",
+        "row_count": 66,
+        "row_fingerprint": "9ea6a0f3af8faf8acf0968e16f90dc55"
+      },
+      {
+        "table_name": "item_answer_keys",
+        "row_count": 1803,
+        "row_fingerprint": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "table_name": "item_curriculum_scopes",
+        "row_count": 1803,
+        "row_fingerprint": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "table_name": "item_families",
+        "row_count": 1581,
+        "row_fingerprint": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "table_name": "item_family_curriculum_reconciliations",
+        "row_count": 1581,
+        "row_fingerprint": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "table_name": "item_misconception_mappings",
+        "row_count": 3212,
+        "row_fingerprint": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "table_name": "item_options",
+        "row_count": 6122,
+        "row_fingerprint": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "table_name": "item_qa_runs",
+        "row_count": 2304,
+        "row_fingerprint": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "table_name": "item_reviews",
+        "row_count": 2088,
+        "row_fingerprint": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "table_name": "item_template_remediation_guides",
+        "row_count": 518,
+        "row_fingerprint": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "table_name": "item_templates",
+        "row_count": 1581,
+        "row_fingerprint": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "table_name": "item_versions",
+        "row_count": 1890,
+        "row_fingerprint": "8fb793d70b596e625848fa017f793866"
+      },
+      {
+        "table_name": "items",
+        "row_count": 1803,
+        "row_fingerprint": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "table_name": "learning_assessed_audio",
+        "row_count": 11,
+        "row_fingerprint": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "table_name": "learning_audio_deliveries",
+        "row_count": 14,
+        "row_fingerprint": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "table_name": "learning_audio_versions",
+        "row_count": 44,
+        "row_fingerprint": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "table_name": "learning_model_configurations",
+        "row_count": 9,
+        "row_fingerprint": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "table_name": "learning_model_runtime_bindings",
+        "row_count": 9,
+        "row_fingerprint": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "table_name": "learning_outcome_normative_mappings",
+        "row_count": 86,
+        "row_fingerprint": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "table_name": "learning_outcomes",
+        "row_count": 86,
+        "row_fingerprint": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "table_name": "learning_response_drafts",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "learning_session_items",
+        "row_count": 297,
+        "row_fingerprint": "7dd9877508011879a21241f4ba0d6a14"
+      },
+      {
+        "table_name": "learning_sessions",
+        "row_count": 27,
+        "row_fingerprint": "cc2b17bd3dd437aa9f44b42d5328c0cb"
+      },
+      {
+        "table_name": "learning_source_family_exposures",
+        "row_count": 70,
+        "row_fingerprint": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "table_name": "learning_task_set_versions",
+        "row_count": 82,
+        "row_fingerprint": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "table_name": "legacy_learning_blueprint_mappings",
+        "row_count": 7,
+        "row_fingerprint": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "table_name": "mastery_check_attempts",
+        "row_count": 5,
+        "row_fingerprint": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "table_name": "misconception_review_events",
+        "row_count": 1026,
+        "row_fingerprint": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "table_name": "misconceptions",
+        "row_count": 1033,
+        "row_fingerprint": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "table_name": "pilot_evidence_classifications",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_gate_checks",
+        "row_count": 11,
+        "row_fingerprint": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "table_name": "pilot_participant_events",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_participants",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_runs",
+        "row_count": 1,
+        "row_fingerprint": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "table_name": "privacy_preferences",
+        "row_count": 2,
+        "row_fingerprint": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "table_name": "profiles",
+        "row_count": 12,
+        "row_fingerprint": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "table_name": "recommendation_events",
+        "row_count": 873,
+        "row_fingerprint": "df984d33889b50ef3c8d461cf9018965"
+      },
+      {
+        "table_name": "remediation_events",
+        "row_count": 6,
+        "row_fingerprint": "6c5aa87d43e93dbd18a26c73dae4e261"
+      },
+      {
+        "table_name": "remediation_guide_authoring_versions",
+        "row_count": 1708,
+        "row_fingerprint": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "table_name": "remediation_guide_versions",
+        "row_count": 1067,
+        "row_fingerprint": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "table_name": "resource_assignment_events",
+        "row_count": 81,
+        "row_fingerprint": "87a1250017821de33a92e9cccd7a100f"
+      },
+      {
+        "table_name": "resource_assignment_recipients",
+        "row_count": 51,
+        "row_fingerprint": "f5c7bc3017f0b918e7ac0edf25bfbfcb"
+      },
+      {
+        "table_name": "resource_assignments",
+        "row_count": 41,
+        "row_fingerprint": "a5a3f17c22c1a9ad51c2e382f5a0c1f7"
+      },
+      {
+        "table_name": "runtime_builds",
+        "row_count": 30,
+        "row_fingerprint": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "table_name": "schools",
+        "row_count": 2,
+        "row_fingerprint": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "table_name": "security_audit_log",
+        "row_count": 34,
+        "row_fingerprint": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "table_name": "skill_curriculum_reconciliations",
+        "row_count": 108,
+        "row_fingerprint": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "table_name": "skill_outcome_curriculum_mappings",
+        "row_count": 137,
+        "row_fingerprint": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "table_name": "skill_outcomes",
+        "row_count": 137,
+        "row_fingerprint": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "table_name": "skill_prerequisites",
+        "row_count": 17,
+        "row_fingerprint": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "table_name": "skill_remediation_guides",
+        "row_count": 10,
+        "row_fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "table_name": "skills",
+        "row_count": 109,
+        "row_fingerprint": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "table_name": "staff_account_provisioning",
+        "row_count": 6,
+        "row_fingerprint": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "table_name": "student_account_acceptances",
+        "row_count": 1,
+        "row_fingerprint": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "table_name": "student_item_exposure_events",
+        "row_count": 233,
+        "row_fingerprint": "022611c0589a9ccd95cfb0d05d9febbd"
+      },
+      {
+        "table_name": "student_skill_mastery",
+        "row_count": 34,
+        "row_fingerprint": "ef5167483767f687fe846202e871cf4f"
+      },
+      {
+        "table_name": "student_skill_mastery_by_release",
+        "row_count": 34,
+        "row_fingerprint": "bc624ea28fc7c5ff6f441318857af41f"
+      },
+      {
+        "table_name": "subject_program_source_bindings",
+        "row_count": 3,
+        "row_fingerprint": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "table_name": "subject_programs",
+        "row_count": 3,
+        "row_fingerprint": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "table_name": "subjects",
+        "row_count": 3,
+        "row_fingerprint": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "table_name": "supplementary_resource_events",
+        "row_count": 204,
+        "row_fingerprint": "64e861d9e9a6132a031e1117cbaf5eb2"
+      },
+      {
+        "table_name": "supplementary_resource_versions",
+        "row_count": 46,
+        "row_fingerprint": "89c2188153833c5ed8402347a0675230"
+      },
+      {
+        "table_name": "teacher_assignments",
+        "row_count": 127,
+        "row_fingerprint": "4af5e0e45787a6d06da266fe41560c8e"
+      },
+      {
+        "table_name": "teacher_subject_authorizations",
+        "row_count": 62,
+        "row_fingerprint": "b84b46670290184813b13e8dfc0c25a8"
+      },
+      {
+        "table_name": "textbook_mappings",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "textbooks",
+        "row_count": 1,
+        "row_fingerprint": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "table_name": "topics",
+        "row_count": 33,
+        "row_fingerprint": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "table_name": "unit_material_events",
+        "row_count": 90,
+        "row_fingerprint": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "table_name": "unit_material_versions",
+        "row_count": 28,
+        "row_fingerprint": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "table_name": "units",
+        "row_count": 10,
+        "row_fingerprint": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "table_name": "written_reviews",
+        "row_count": 5,
+        "row_fingerprint": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "table_name": "written_submissions",
+        "row_count": 5,
+        "row_fingerprint": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "table_name": "written_task_versions",
+        "row_count": 3,
+        "row_fingerprint": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "table_name": "written_work",
+        "row_count": 3,
+        "row_fingerprint": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ],
+    "afterSix": [
+      {
+        "table_name": "academic_identity_events",
+        "row_count": 1205,
+        "row_fingerprint": "222f18377f8644dc5c48d19d5bdf82a9"
+      },
+      {
+        "table_name": "academic_mastery_policy_activation",
+        "row_count": 1,
+        "row_fingerprint": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "table_name": "academic_mastery_policy_versions",
+        "row_count": 1,
+        "row_fingerprint": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "table_name": "academic_years",
+        "row_count": 2,
+        "row_fingerprint": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "table_name": "account_deletion_requests",
+        "row_count": 3,
+        "row_fingerprint": "27f7bc851682e61b1b0543435ae15f86"
+      },
+      {
+        "table_name": "assessment_blueprint_items",
+        "row_count": 2546,
+        "row_fingerprint": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "table_name": "assessment_blueprints",
+        "row_count": 39,
+        "row_fingerprint": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "table_name": "assessment_form_items",
+        "row_count": 832,
+        "row_fingerprint": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "table_name": "assessment_forms",
+        "row_count": 44,
+        "row_fingerprint": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "table_name": "assessment_policy_bindings",
+        "row_count": 32,
+        "row_fingerprint": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "row_count": 27,
+        "row_fingerprint": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "table_name": "assessment_pool_items",
+        "row_count": 1761,
+        "row_fingerprint": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "table_name": "assessment_pools",
+        "row_count": 28,
+        "row_fingerprint": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "table_name": "assignment_skills",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "assignments",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "attempts",
+        "row_count": 229,
+        "row_fingerprint": "ffc3d3f646ae50cf5951d0d2bbd88a54"
+      },
+      {
+        "table_name": "calibration_analysis_scopes",
+        "row_count": 1,
+        "row_fingerprint": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "table_name": "calibration_change_decisions",
+        "row_count": 1,
+        "row_fingerprint": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "table_name": "calibration_decision_protocols",
+        "row_count": 1,
+        "row_fingerprint": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "table_name": "calibration_evidence_contracts",
+        "row_count": 2,
+        "row_fingerprint": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "table_name": "calibration_metric_sets",
+        "row_count": 2,
+        "row_fingerprint": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "table_name": "chapter_mastery_states",
+        "row_count": 3,
+        "row_fingerprint": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "table_name": "chapter_review_cycles",
+        "row_count": 2,
+        "row_fingerprint": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "table_name": "chapter_review_item_exposures",
+        "row_count": 24,
+        "row_fingerprint": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "table_name": "chapter_review_requirements",
+        "row_count": 2,
+        "row_fingerprint": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "table_name": "chapter_review_sessions",
+        "row_count": 2,
+        "row_fingerprint": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "table_name": "class_memberships",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "classes",
+        "row_count": 127,
+        "row_fingerprint": "b971b3d56d780abd00634bdad253c6d4"
+      },
+      {
+        "table_name": "curriculum_authorities",
+        "row_count": 2,
+        "row_fingerprint": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "table_name": "curriculum_frameworks",
+        "row_count": 1,
+        "row_fingerprint": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "table_name": "curriculum_reconciliation_runs",
+        "row_count": 9,
+        "row_fingerprint": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "table_name": "curriculum_release_gate_checks",
+        "row_count": 63,
+        "row_fingerprint": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "table_name": "curriculum_release_item_families",
+        "row_count": 1580,
+        "row_fingerprint": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "table_name": "curriculum_release_outcomes",
+        "row_count": 86,
+        "row_fingerprint": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "table_name": "curriculum_release_reconciliations",
+        "row_count": 9,
+        "row_fingerprint": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "table_name": "curriculum_release_skills",
+        "row_count": 108,
+        "row_fingerprint": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "table_name": "curriculum_release_units",
+        "row_count": 10,
+        "row_fingerprint": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "table_name": "curriculum_releases",
+        "row_count": 10,
+        "row_fingerprint": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "table_name": "curriculum_source_documents",
+        "row_count": 6,
+        "row_fingerprint": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "table_name": "grades",
+        "row_count": 12,
+        "row_fingerprint": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "table_name": "institutional_class_enrollments",
+        "row_count": 6,
+        "row_fingerprint": "07bf76230f8baefed451a785a17234c4"
+      },
+      {
+        "table_name": "institutional_invitations",
+        "row_count": 119,
+        "row_fingerprint": "d5fe8910381ee96f16f52478443056e7"
+      },
+      {
+        "table_name": "institutional_join_codes",
+        "row_count": 62,
+        "row_fingerprint": "65e49bacccfb2ebfde3a5fc8c192b80e"
+      },
+      {
+        "table_name": "institutional_memberships",
+        "row_count": 66,
+        "row_fingerprint": "9ea6a0f3af8faf8acf0968e16f90dc55"
+      },
+      {
+        "table_name": "item_answer_keys",
+        "row_count": 1803,
+        "row_fingerprint": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "table_name": "item_curriculum_scopes",
+        "row_count": 1803,
+        "row_fingerprint": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "table_name": "item_families",
+        "row_count": 1581,
+        "row_fingerprint": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "table_name": "item_family_curriculum_reconciliations",
+        "row_count": 1581,
+        "row_fingerprint": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "table_name": "item_misconception_mappings",
+        "row_count": 3212,
+        "row_fingerprint": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "table_name": "item_options",
+        "row_count": 6122,
+        "row_fingerprint": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "table_name": "item_qa_runs",
+        "row_count": 2304,
+        "row_fingerprint": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "table_name": "item_reviews",
+        "row_count": 2088,
+        "row_fingerprint": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "table_name": "item_template_remediation_guides",
+        "row_count": 518,
+        "row_fingerprint": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "table_name": "item_templates",
+        "row_count": 1581,
+        "row_fingerprint": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "table_name": "item_versions",
+        "row_count": 1890,
+        "row_fingerprint": "8fb793d70b596e625848fa017f793866"
+      },
+      {
+        "table_name": "items",
+        "row_count": 1803,
+        "row_fingerprint": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "table_name": "learning_assessed_audio",
+        "row_count": 11,
+        "row_fingerprint": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "table_name": "learning_audio_deliveries",
+        "row_count": 14,
+        "row_fingerprint": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "table_name": "learning_audio_versions",
+        "row_count": 44,
+        "row_fingerprint": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "table_name": "learning_model_configurations",
+        "row_count": 9,
+        "row_fingerprint": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "table_name": "learning_model_runtime_bindings",
+        "row_count": 9,
+        "row_fingerprint": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "table_name": "learning_outcome_normative_mappings",
+        "row_count": 86,
+        "row_fingerprint": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "table_name": "learning_outcomes",
+        "row_count": 86,
+        "row_fingerprint": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "table_name": "learning_response_drafts",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "learning_session_items",
+        "row_count": 297,
+        "row_fingerprint": "7dd9877508011879a21241f4ba0d6a14"
+      },
+      {
+        "table_name": "learning_sessions",
+        "row_count": 27,
+        "row_fingerprint": "cc2b17bd3dd437aa9f44b42d5328c0cb"
+      },
+      {
+        "table_name": "learning_source_family_exposures",
+        "row_count": 70,
+        "row_fingerprint": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "table_name": "learning_task_set_versions",
+        "row_count": 82,
+        "row_fingerprint": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "table_name": "legacy_learning_blueprint_mappings",
+        "row_count": 7,
+        "row_fingerprint": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "table_name": "mastery_check_attempts",
+        "row_count": 5,
+        "row_fingerprint": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "table_name": "misconception_review_events",
+        "row_count": 1026,
+        "row_fingerprint": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "table_name": "misconceptions",
+        "row_count": 1033,
+        "row_fingerprint": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "table_name": "pilot_evidence_classifications",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_gate_checks",
+        "row_count": 11,
+        "row_fingerprint": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "table_name": "pilot_participant_events",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_participants",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "pilot_runs",
+        "row_count": 1,
+        "row_fingerprint": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "table_name": "privacy_preferences",
+        "row_count": 2,
+        "row_fingerprint": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "table_name": "profiles",
+        "row_count": 12,
+        "row_fingerprint": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "table_name": "recommendation_events",
+        "row_count": 873,
+        "row_fingerprint": "df984d33889b50ef3c8d461cf9018965"
+      },
+      {
+        "table_name": "remediation_events",
+        "row_count": 6,
+        "row_fingerprint": "6c5aa87d43e93dbd18a26c73dae4e261"
+      },
+      {
+        "table_name": "remediation_guide_authoring_versions",
+        "row_count": 1708,
+        "row_fingerprint": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "table_name": "remediation_guide_versions",
+        "row_count": 1067,
+        "row_fingerprint": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "table_name": "resource_assignment_events",
+        "row_count": 81,
+        "row_fingerprint": "87a1250017821de33a92e9cccd7a100f"
+      },
+      {
+        "table_name": "resource_assignment_recipients",
+        "row_count": 51,
+        "row_fingerprint": "f5c7bc3017f0b918e7ac0edf25bfbfcb"
+      },
+      {
+        "table_name": "resource_assignments",
+        "row_count": 41,
+        "row_fingerprint": "a5a3f17c22c1a9ad51c2e382f5a0c1f7"
+      },
+      {
+        "table_name": "runtime_builds",
+        "row_count": 30,
+        "row_fingerprint": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "table_name": "schools",
+        "row_count": 2,
+        "row_fingerprint": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "table_name": "security_audit_log",
+        "row_count": 34,
+        "row_fingerprint": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "table_name": "skill_curriculum_reconciliations",
+        "row_count": 108,
+        "row_fingerprint": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "table_name": "skill_outcome_curriculum_mappings",
+        "row_count": 137,
+        "row_fingerprint": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "table_name": "skill_outcomes",
+        "row_count": 137,
+        "row_fingerprint": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "table_name": "skill_prerequisites",
+        "row_count": 17,
+        "row_fingerprint": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "table_name": "skill_remediation_guides",
+        "row_count": 10,
+        "row_fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "table_name": "skills",
+        "row_count": 109,
+        "row_fingerprint": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "table_name": "staff_account_provisioning",
+        "row_count": 6,
+        "row_fingerprint": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "table_name": "student_account_acceptances",
+        "row_count": 1,
+        "row_fingerprint": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "table_name": "student_item_exposure_events",
+        "row_count": 233,
+        "row_fingerprint": "022611c0589a9ccd95cfb0d05d9febbd"
+      },
+      {
+        "table_name": "student_skill_mastery",
+        "row_count": 34,
+        "row_fingerprint": "ef5167483767f687fe846202e871cf4f"
+      },
+      {
+        "table_name": "student_skill_mastery_by_release",
+        "row_count": 34,
+        "row_fingerprint": "bc624ea28fc7c5ff6f441318857af41f"
+      },
+      {
+        "table_name": "subject_program_source_bindings",
+        "row_count": 3,
+        "row_fingerprint": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "table_name": "subject_programs",
+        "row_count": 3,
+        "row_fingerprint": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "table_name": "subjects",
+        "row_count": 3,
+        "row_fingerprint": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "table_name": "supplementary_resource_events",
+        "row_count": 204,
+        "row_fingerprint": "64e861d9e9a6132a031e1117cbaf5eb2"
+      },
+      {
+        "table_name": "supplementary_resource_versions",
+        "row_count": 46,
+        "row_fingerprint": "89c2188153833c5ed8402347a0675230"
+      },
+      {
+        "table_name": "teacher_assignments",
+        "row_count": 127,
+        "row_fingerprint": "4af5e0e45787a6d06da266fe41560c8e"
+      },
+      {
+        "table_name": "teacher_subject_authorizations",
+        "row_count": 62,
+        "row_fingerprint": "b84b46670290184813b13e8dfc0c25a8"
+      },
+      {
+        "table_name": "textbook_mappings",
+        "row_count": 0,
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table_name": "textbooks",
+        "row_count": 1,
+        "row_fingerprint": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "table_name": "topics",
+        "row_count": 33,
+        "row_fingerprint": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "table_name": "unit_material_events",
+        "row_count": 90,
+        "row_fingerprint": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "table_name": "unit_material_versions",
+        "row_count": 28,
+        "row_fingerprint": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "table_name": "units",
+        "row_count": 10,
+        "row_fingerprint": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "table_name": "written_reviews",
+        "row_count": 5,
+        "row_fingerprint": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "table_name": "written_submissions",
+        "row_count": 5,
+        "row_fingerprint": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "table_name": "written_task_versions",
+        "row_count": 3,
+        "row_fingerprint": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "table_name": "written_work",
+        "row_count": 3,
+        "row_fingerprint": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ]
+  },
+  "pending": [
+    "current-source PR/main CI",
+    "exact deployed frontend/source checks and guarded hosted acceptance",
+    "bounded consistency disposition and merged source-verified Notion closure",
+    "John usability acceptance"
+  ],
+  "retained": [
+    "all 45 capabilities",
+    "assessment/analytics rules and scope",
+    "content/audio/demo owner approvals",
+    "classroom speaking",
+    "English C47 and four-subject gate",
+    "B.12.3/B.12 open; subjects paused"
+  ],
+  "firstCurrentCi": {
+    "source": "ed1d83d53b9a356ddbedfb2a05675dcb44a3464d",
+    "run": 41126541610,
+    "allRequiredJobs": "passed",
+    "unitIntegration": 1628,
+    "native": 357,
+    "taskSpecificIndependentPg17Races": 16,
+    "artifact": 13011162460,
+    "artifactSha256": "a45fab2a8fbc5769d020a21fd10e35ebc8409c7bc2189b4126d7ec8c3a908a9b",
+    "visualAccepted": false,
+    "findings": [
+      "Desktop 200%-text welcome copy squeezed into a narrow column.",
+      "Narrow-screen headings split natural Armenian words.",
+      "Enlarged-text class cards retain undersized fixed columns."
+    ],
+    "correction": "Font-relative grids/secondary headings/concise copy and expanded institutional/legacy Home native word checks; fresh CI/images required."
+  },
+  "stagingReadback": {
+    "sqlFunctions": 48,
+    "exactBodyMatches": 48,
+    "anonymousOrAuthenticatedExecute": 0,
+    "newTables": 19,
+    "allRlsEnabled": true,
+    "ordinaryTableAccess": false,
+    "affectedAdvisorFindings": "INFO only: deliberately denied RLS tables and unused new indexes; no new affected missing-FK-index or WARN finding",
+    "preparedEdgeBundles": 12,
+    "matchingSourceFileInstances": 53,
+    "edgeDeployments": 12
+  },
+  "firstCorrectionCi": {
+    "source": "3a3122585c4dd63911e8da1cedc91c029263c0b2",
+    "run": 41129445144,
+    "unitIntegration": "passed",
+    "postgres17": "passed",
+    "institutional": "passed",
+    "nativePassed": 355,
+    "nativeTotal": 357,
+    "aggregate": "failed",
+    "findings": [
+      "Legacy onboarding action word at360px/200%.",
+      "Institutional overview long summary word at390px/200%.",
+      "Numeric academic-year range is a normal dash break, not a continuous word."
+    ],
+    "correction": "Concise onboarding action, bounded overview padding; Unicode letter/mark word ranges with unchanged geometry guards; explicit Today CSS source hash."
+  },
+  "postPrivacyReadback": {
+    "functions": [
+      {
+        "anon": false,
+        "name": "private.resource_assignment_privacy_counts",
+        "bodyMd5": "be7f676f698c908796e809471e441433",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_delivery",
+        "bodyMd5": "6158361495b6a04fb7c312ce0b38b81a",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_drafts",
+        "bodyMd5": "e8a7971f7ecac5a58883e5a83388dbb5",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_privacy",
+        "bodyMd5": "b2979160b971dafb4f221a58e60cd227",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_retention",
+        "bodyMd5": "7ed4e26b2dc56ceb7db20ee9ec2fcebd",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_review",
+        "bodyMd5": "80b8f56a3fa333f65da01dce0d876f7f",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_sources",
+        "bodyMd5": "297f4516e241dc1eb3ad98d8c8f18558",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_teacher_task_student_work",
+        "bodyMd5": "db47d761229c990160769404385685ae",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.service_writing_assignments",
+        "bodyMd5": "db3be8884b45d4a14839133c79b1f1c9",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_content_valid",
+        "bodyMd5": "d9df8f23d32e55a92c92531c65b7cb7f",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_delivery_immutable",
+        "bodyMd5": "e1e3c2a0fb76c49f5c588458847ea3ff",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_delivery_public",
+        "bodyMd5": "2b21759eab17ee077d6d93e2370b5388",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_draft_source_guard",
+        "bodyMd5": "e5d03a5771663097adc578a4439bf035",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_erasure_state",
+        "bodyMd5": "eff68ede431ba60d2659eaded338fdfd",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_execution_guard",
+        "bodyMd5": "65dc27d958a8045d6d36da71caa2fb84",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_file_referenced",
+        "bodyMd5": "161d8d924581ece46754eb8faf0b941a",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_privacy_counts",
+        "bodyMd5": "83507c7f41f65121b2814b0462edb146",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_privacy_delete_allowed",
+        "bodyMd5": "b35d8f82283cc93524c16847ff8fdc29",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_privacy_delete_guard",
+        "bodyMd5": "6096df0e80f1ba3da6abb3b3ae692832",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_response_file_guard",
+        "bodyMd5": "c03ecb9323fd43153abb7d5e32b4fbb7",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_retention_candidates",
+        "bodyMd5": "a9a7cbb869acc014438c7e814511afd7",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_review_draft_guard",
+        "bodyMd5": "1c5a861197682effa865cfee02a35499",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_review_valid",
+        "bodyMd5": "296245fed5a4c12df8267b075d670a0e",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_reviews_public",
+        "bodyMd5": "704c9387bf898d7c668ba4647d055e4d",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_source_guard",
+        "bodyMd5": "e52c14a437cb7d4ac14e328a8d06d89f",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_student_context",
+        "bodyMd5": "f8bdb4121cf2ad39c1e603a0af8ad758",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_submission_reviews",
+        "bodyMd5": "e8b3d7fe919d213e9bcc69f863e0ed9d",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_work_guard",
+        "bodyMd5": "95f27a41017c7f3171d5384855b14a21",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.teacher_task_work_public",
+        "bodyMd5": "665dbaf095b20a8b92e642326755b6b0",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_assignment_available",
+        "bodyMd5": "724cf3524a747b81180cb32ba5276d2c",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_assignment_event_guard",
+        "bodyMd5": "559fe2184bdb634e394d6b86ca4d7e22",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_assignment_guard",
+        "bodyMd5": "94c7613a86518724748de3defeea2aec",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_assignment_privacy_counts",
+        "bodyMd5": "7e8ff82a11864a8af3bdb607f3daddad",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_assignment_public",
+        "bodyMd5": "7b1dc55f195f11c953ddb602ee5f458e",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_recipient_guard",
+        "bodyMd5": "18cefcd20fbe7ca27711082afa130044",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_task_fingerprint",
+        "bodyMd5": "0058b0e2961ab0e513880deb3b1e120d",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "private.writing_task_public",
+        "bodyMd5": "9c1253446064597260c2717485fb5b35",
+        "service": false,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.erase_student_data",
+        "bodyMd5": "18ae830a8beb10eadea242423fcdee0e",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_delivery",
+        "bodyMd5": "a313d225a9334007cfbd2028daa5e58e",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_drafts",
+        "bodyMd5": "4bdd00c6310d74bb383fe80a2db51fff",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_privacy",
+        "bodyMd5": "c67bde175259c2cb62e918a92ee8f03c",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_privacy_counts",
+        "bodyMd5": "741477edbf6a5bf500379564682b06d7",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_retention",
+        "bodyMd5": "f309f7766be18760045ce65443df86e9",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_review",
+        "bodyMd5": "c2dcb3040d9669eb0ab65a5b3d5bf02b",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_sources",
+        "bodyMd5": "66b02ee2396c51745da4ace8a3c0b6a7",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_teacher_task_student_work",
+        "bodyMd5": "67ecaf9ff27050c04d72ba75472e766b",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_writing_assignment_privacy_counts",
+        "bodyMd5": "7512f993345e5be43916867818cb6cf3",
+        "service": true,
+        "authenticated": false
+      },
+      {
+        "anon": false,
+        "name": "public.service_writing_assignments",
+        "bodyMd5": "a38a363211903d5a7cd7c29078e44d52",
+        "service": true,
+        "authenticated": false
+      }
+    ],
+    "fingerprints": [
+      {
+        "row_count": 1205,
+        "table_name": "academic_identity_events",
+        "row_fingerprint": "222f18377f8644dc5c48d19d5bdf82a9"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "row_fingerprint": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "row_fingerprint": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "row_count": 2,
+        "table_name": "academic_years",
+        "row_fingerprint": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "row_count": 3,
+        "table_name": "account_deletion_requests",
+        "row_fingerprint": "27f7bc851682e61b1b0543435ae15f86"
+      },
+      {
+        "row_count": 2546,
+        "table_name": "assessment_blueprint_items",
+        "row_fingerprint": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "row_count": 39,
+        "table_name": "assessment_blueprints",
+        "row_fingerprint": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "row_count": 832,
+        "table_name": "assessment_form_items",
+        "row_fingerprint": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "row_count": 44,
+        "table_name": "assessment_forms",
+        "row_fingerprint": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "row_count": 32,
+        "table_name": "assessment_policy_bindings",
+        "row_fingerprint": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "row_fingerprint": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "row_count": 1761,
+        "table_name": "assessment_pool_items",
+        "row_fingerprint": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "row_count": 28,
+        "table_name": "assessment_pools",
+        "row_fingerprint": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "row_count": 0,
+        "table_name": "assignment_skills",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "assignments",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 229,
+        "table_name": "attempts",
+        "row_fingerprint": "ffc3d3f646ae50cf5951d0d2bbd88a54"
+      },
+      {
+        "row_count": 1,
+        "table_name": "calibration_analysis_scopes",
+        "row_fingerprint": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "row_count": 1,
+        "table_name": "calibration_change_decisions",
+        "row_fingerprint": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "row_count": 1,
+        "table_name": "calibration_decision_protocols",
+        "row_fingerprint": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "row_count": 2,
+        "table_name": "calibration_evidence_contracts",
+        "row_fingerprint": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "row_count": 2,
+        "table_name": "calibration_metric_sets",
+        "row_fingerprint": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "row_count": 3,
+        "table_name": "chapter_mastery_states",
+        "row_fingerprint": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "row_count": 2,
+        "table_name": "chapter_review_cycles",
+        "row_fingerprint": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "row_count": 24,
+        "table_name": "chapter_review_item_exposures",
+        "row_fingerprint": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "row_count": 2,
+        "table_name": "chapter_review_requirements",
+        "row_fingerprint": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "row_count": 2,
+        "table_name": "chapter_review_sessions",
+        "row_fingerprint": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "row_count": 0,
+        "table_name": "class_memberships",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 127,
+        "table_name": "classes",
+        "row_fingerprint": "b971b3d56d780abd00634bdad253c6d4"
+      },
+      {
+        "row_count": 2,
+        "table_name": "curriculum_authorities",
+        "row_fingerprint": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "row_fingerprint": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "row_count": 9,
+        "table_name": "curriculum_reconciliation_runs",
+        "row_fingerprint": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "row_count": 63,
+        "table_name": "curriculum_release_gate_checks",
+        "row_fingerprint": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "row_count": 1580,
+        "table_name": "curriculum_release_item_families",
+        "row_fingerprint": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "row_count": 86,
+        "table_name": "curriculum_release_outcomes",
+        "row_fingerprint": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "row_count": 9,
+        "table_name": "curriculum_release_reconciliations",
+        "row_fingerprint": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "row_count": 108,
+        "table_name": "curriculum_release_skills",
+        "row_fingerprint": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "row_count": 10,
+        "table_name": "curriculum_release_units",
+        "row_fingerprint": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "row_count": 10,
+        "table_name": "curriculum_releases",
+        "row_fingerprint": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_source_documents",
+        "row_fingerprint": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "row_fingerprint": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "institutional_class_enrollments",
+        "row_fingerprint": "07bf76230f8baefed451a785a17234c4"
+      },
+      {
+        "row_count": 119,
+        "table_name": "institutional_invitations",
+        "row_fingerprint": "d5fe8910381ee96f16f52478443056e7"
+      },
+      {
+        "row_count": 62,
+        "table_name": "institutional_join_codes",
+        "row_fingerprint": "65e49bacccfb2ebfde3a5fc8c192b80e"
+      },
+      {
+        "row_count": 66,
+        "table_name": "institutional_memberships",
+        "row_fingerprint": "9ea6a0f3af8faf8acf0968e16f90dc55"
+      },
+      {
+        "row_count": 1803,
+        "table_name": "item_answer_keys",
+        "row_fingerprint": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "row_count": 1803,
+        "table_name": "item_curriculum_scopes",
+        "row_fingerprint": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "row_count": 1581,
+        "table_name": "item_families",
+        "row_fingerprint": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "row_count": 1581,
+        "table_name": "item_family_curriculum_reconciliations",
+        "row_fingerprint": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "row_fingerprint": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "row_count": 6122,
+        "table_name": "item_options",
+        "row_fingerprint": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "row_count": 2304,
+        "table_name": "item_qa_runs",
+        "row_fingerprint": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "row_count": 2088,
+        "table_name": "item_reviews",
+        "row_fingerprint": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "row_fingerprint": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "row_count": 1581,
+        "table_name": "item_templates",
+        "row_fingerprint": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "row_count": 1890,
+        "table_name": "item_versions",
+        "row_fingerprint": "8fb793d70b596e625848fa017f793866"
+      },
+      {
+        "row_count": 1803,
+        "table_name": "items",
+        "row_fingerprint": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "row_count": 11,
+        "table_name": "learning_assessed_audio",
+        "row_fingerprint": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "row_count": 14,
+        "table_name": "learning_audio_deliveries",
+        "row_fingerprint": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "row_count": 44,
+        "table_name": "learning_audio_versions",
+        "row_fingerprint": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "row_count": 9,
+        "table_name": "learning_model_configurations",
+        "row_fingerprint": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "row_count": 9,
+        "table_name": "learning_model_runtime_bindings",
+        "row_fingerprint": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "row_count": 86,
+        "table_name": "learning_outcome_normative_mappings",
+        "row_fingerprint": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "row_count": 86,
+        "table_name": "learning_outcomes",
+        "row_fingerprint": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_response_drafts",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 297,
+        "table_name": "learning_session_items",
+        "row_fingerprint": "7dd9877508011879a21241f4ba0d6a14"
+      },
+      {
+        "row_count": 27,
+        "table_name": "learning_sessions",
+        "row_fingerprint": "cc2b17bd3dd437aa9f44b42d5328c0cb"
+      },
+      {
+        "row_count": 70,
+        "table_name": "learning_source_family_exposures",
+        "row_fingerprint": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "row_count": 82,
+        "table_name": "learning_task_set_versions",
+        "row_fingerprint": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "row_count": 7,
+        "table_name": "legacy_learning_blueprint_mappings",
+        "row_fingerprint": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "row_count": 5,
+        "table_name": "mastery_check_attempts",
+        "row_fingerprint": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "row_fingerprint": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "row_fingerprint": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "row_count": 0,
+        "table_name": "pilot_evidence_classifications",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 11,
+        "table_name": "pilot_gate_checks",
+        "row_fingerprint": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "row_count": 0,
+        "table_name": "pilot_participant_events",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "pilot_participants",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "pilot_runs",
+        "row_fingerprint": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "row_count": 2,
+        "table_name": "privacy_preferences",
+        "row_fingerprint": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "row_count": 12,
+        "table_name": "profiles",
+        "row_fingerprint": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "row_count": 873,
+        "table_name": "recommendation_events",
+        "row_fingerprint": "df984d33889b50ef3c8d461cf9018965"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "row_fingerprint": "6c5aa87d43e93dbd18a26c73dae4e261"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "row_fingerprint": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "row_fingerprint": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "row_count": 81,
+        "table_name": "resource_assignment_events",
+        "row_fingerprint": "87a1250017821de33a92e9cccd7a100f"
+      },
+      {
+        "row_count": 51,
+        "table_name": "resource_assignment_recipients",
+        "row_fingerprint": "f5c7bc3017f0b918e7ac0edf25bfbfcb"
+      },
+      {
+        "row_count": 41,
+        "table_name": "resource_assignments",
+        "row_fingerprint": "a5a3f17c22c1a9ad51c2e382f5a0c1f7"
+      },
+      {
+        "row_count": 30,
+        "table_name": "runtime_builds",
+        "row_fingerprint": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "row_count": 2,
+        "table_name": "schools",
+        "row_fingerprint": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "row_count": 34,
+        "table_name": "security_audit_log",
+        "row_fingerprint": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "row_count": 108,
+        "table_name": "skill_curriculum_reconciliations",
+        "row_fingerprint": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "row_count": 137,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "row_fingerprint": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "row_count": 137,
+        "table_name": "skill_outcomes",
+        "row_fingerprint": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "row_fingerprint": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "row_fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "row_count": 109,
+        "table_name": "skills",
+        "row_fingerprint": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "row_count": 6,
+        "table_name": "staff_account_provisioning",
+        "row_fingerprint": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "row_count": 1,
+        "table_name": "student_account_acceptances",
+        "row_fingerprint": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "row_count": 233,
+        "table_name": "student_item_exposure_events",
+        "row_fingerprint": "022611c0589a9ccd95cfb0d05d9febbd"
+      },
+      {
+        "row_count": 34,
+        "table_name": "student_skill_mastery",
+        "row_fingerprint": "ef5167483767f687fe846202e871cf4f"
+      },
+      {
+        "row_count": 34,
+        "table_name": "student_skill_mastery_by_release",
+        "row_fingerprint": "bc624ea28fc7c5ff6f441318857af41f"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_program_source_bindings",
+        "row_fingerprint": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "row_fingerprint": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "row_fingerprint": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "row_count": 204,
+        "table_name": "supplementary_resource_events",
+        "row_fingerprint": "64e861d9e9a6132a031e1117cbaf5eb2"
+      },
+      {
+        "row_count": 46,
+        "table_name": "supplementary_resource_versions",
+        "row_fingerprint": "89c2188153833c5ed8402347a0675230"
+      },
+      {
+        "row_count": 127,
+        "table_name": "teacher_assignments",
+        "row_fingerprint": "4af5e0e45787a6d06da266fe41560c8e"
+      },
+      {
+        "row_count": 62,
+        "table_name": "teacher_subject_authorizations",
+        "row_fingerprint": "b84b46670290184813b13e8dfc0c25a8"
+      },
+      {
+        "row_count": 0,
+        "table_name": "textbook_mappings",
+        "row_fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "textbooks",
+        "row_fingerprint": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "row_count": 33,
+        "table_name": "topics",
+        "row_fingerprint": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "row_count": 90,
+        "table_name": "unit_material_events",
+        "row_fingerprint": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "row_count": 28,
+        "table_name": "unit_material_versions",
+        "row_fingerprint": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "row_count": 10,
+        "table_name": "units",
+        "row_fingerprint": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "row_count": 5,
+        "table_name": "written_reviews",
+        "row_fingerprint": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "row_count": 5,
+        "table_name": "written_submissions",
+        "row_fingerprint": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "written_task_versions",
+        "row_fingerprint": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "row_count": 3,
+        "table_name": "written_work",
+        "row_fingerprint": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ]
+  },
+  "finalCorrectedCi": {
+    "run": 41131022111,
+    "allFive": "passed",
+    "unitIntegration": 1628,
+    "native": 357,
+    "taskSpecificIndependentPg17Races": 16,
+    "failures": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "jobs": [
+      {
+        "id": 124321640871,
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 124321641087,
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 124321641194,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 124321641308,
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 124324678872,
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "acceptedFixtureVisuals": {
+    "artifact": 13013870517,
+    "sha256": "e1d79fcacee6d35ca0a6040134c9df42fabebd6c9fa7c09401cb688c67d74aad",
+    "downloadedAndVerified": true,
+    "inspectedImages": 5,
+    "coverage": "Institutional Home390/768/1280 and legacy Home360/1280 at200% text; bounded native fixtures, not hosted or owner usability",
+    "zip": "/tmp/haiedu-production-integration-verified-native.zip",
+    "images": "/tmp/haiedu-production-integration-verified-images"
+  },
+  "productionReleaseGate": {
+    "observedAt": "2026-10-31 Asia/Yerevan",
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+    "check": "Platform release checks",
+    "provider": "GitHub",
+    "environment": "Production",
+    "behavior": "Blocking",
+    "selected": true,
+    "saveDisabled": true,
+    "settingsWrites": 0,
+    "browserFallback": "previously owner-authorized; connector has no persistent check settings read",
+    "screenshot": "docs/evidence/vercel-production-blocking-20261031.jpg",
+    "screenshotSha256": "d5b1be297104c0fd3f8bcc9ba87f136e519982743e28a31d653baab83f43ab00"
+  },
+  "consistencyGuideCorrection": {
+    "defect": "Guide called teacher-created tasks and PDF source responses future despite new implementation",
+    "fix": "Separate custom task instructions; independent source/response, explicit save/send/submit/review/return; optional library and published course writing retained",
+    "verification": "current guide native CI and fresh screenshots pending",
+    "runtimeApiChanges": false
+  }
+}

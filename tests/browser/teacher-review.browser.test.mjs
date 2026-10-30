@@ -66,3 +66,7 @@ test('dedicated review uses actual submission/feedback SQL and protects unsaved 
  assert.equal((await db.query("select state from written_work where task_version_id=$1",[id(6000)])).rows[0].state,'reviewed');
  await p.locator('[data-writing-back]').click();await p.locator('[data-writing-state="reviewed"]').click();await expect(p.locator('[data-writing-open]')).toHaveCount(1);assert.deepEqual(errors,[]);
 });
+
+test('writing assignment has a distinct teacher route and guarded class/unit picker',async t=>{
+ const {page,errors}=await fixture(browser,t);await nav(page,'assign-writing');await ready(page);await expect(page.locator('#teacherPageTitle')).toHaveText('Հանձնարարել գրավոր աշխատանք');await expect(page.locator('[data-review-source]')).toBeHidden();assert.equal((await page.evaluate(()=>window.__teacherFixture.calls)).filter(c=>c.fn==='manage-writing-assignments').length,0);await page.locator('[data-review-class]').selectOption('0');await expect(page.locator('[data-wa-body]')).toContainText('հրապարակված գրավոր առաջադրանք դեռ չկա');assert.equal(new URL(page.url()).searchParams.get('view'),'assign-writing');await nav(page,'review');await expect(page.locator('#teacherAssignWritingRoot')).toBeEmpty();await expect(page.locator('#teacherPageTitle')).toHaveText('Գրավորի ստուգում');assert.deepEqual(errors,[]);
+});

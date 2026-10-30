@@ -5,6 +5,17 @@ on:
   push:
     branches: [main]
     paths:
+      - web/writing-assignments.css
+      - web/writing-assignments.mjs
+      - web/teacher-task-draft-workspace.mjs
+      - web/teacher-task-editor.mjs
+      - web/teacher-task-form.mjs
+      - web/teacher-task-source-client.mjs
+      - web/teacher-task-send.mjs
+      - web/student-teacher-tasks.mjs
+      - web/student-teacher-task-client.mjs
+      - web/teacher-task-text.mjs
+      - web/teacher-task-download.mjs
       - web/account-signout.mjs
       - supabase/functions/_shared/teacher-read-identity.mjs
       - supabase/functions/_shared/teacher-workspace-request.mjs

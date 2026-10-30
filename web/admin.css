@@ -3,3 +3,10 @@
 @media(max-width:1080px){.admin-stats{grid-template-columns:repeat(2,1fr)}.school-card{grid-template-columns:minmax(220px,1.3fr) repeat(2,minmax(90px,.45fr)) auto}.school-card .school-metric:last-of-type{display:none}.admin-filter-grid{grid-template-columns:1fr 1fr}.admin-filter-grid button{justify-self:start}.class-assignment{grid-template-columns:1fr 1fr}.class-assignment button{justify-self:start}}
 @media(max-width:760px){.admin-shell{padding:20px 16px 48px}.admin-topbar,.admin-view-heading,.admin-heading,.school-detail-header{flex-direction:column}.admin-overview-grid{grid-template-columns:1fr}.admin-wide-card{grid-column:auto}.admin-quick-actions{grid-template-columns:1fr}.admin-filter-bar,.admin-filter-grid{display:grid;grid-template-columns:1fr;align-items:stretch}.school-card{grid-template-columns:1fr 1fr}.school-card>div:first-child,.school-card>button{grid-column:1/-1}.person-card summary,.person-card-static{grid-template-columns:1fr}.student-roster-list{grid-template-columns:1fr}}
 @media(max-width:480px){.admin-stats{grid-template-columns:1fr}.admin-card{padding:16px}.school-card{grid-template-columns:1fr}.school-card>*{grid-column:1!important}}
+
+/* Keep the deletion progress in flow, clear of its resume action. */
+#deletionsSection:not([hidden]) ~ #consoleMessage{position:static;inset:auto;transform:none;width:auto;max-width:100%;margin-top:1rem}
+#deletionsSection .admin-view-heading{flex-wrap:wrap}
+#deletionsSection .admin-view-heading > div{flex:1 1 22rem;min-width:0}
+#deletionsSection [data-refresh-view]{flex:0 0 auto;max-width:100%;white-space:normal;word-break:normal;overflow-wrap:normal}
+body[data-role-workspace="platform"] .admin-shell .admin-topbar h1{font-size:clamp(1.25rem,4vw,1.5rem);line-height:1.3;overflow-wrap:normal}

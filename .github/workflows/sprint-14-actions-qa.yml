@@ -6,6 +6,8 @@ on:
   push:
     branches: [main]
     paths:
+      - web/writing-assignments.css
+      - web/writing-assignments.mjs
       - web/account-signout.mjs
       - web/teacher-*.mjs
       - scripts/build-teacher-entry.mjs
