@@ -1,3 +1,4 @@
+import {taskPrivacyRows,erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -144,6 +145,7 @@ function inventoryPresentation(role, inventory) {
 
 function deletionLabel(request) {
   if (!request) return "Ակտիվ ջնջման հարցում չկա։";
+  if(request.status==="processing"&&erasurePresentation(request).started)return erasurePresentation(request).progress;
   const labels = {
     pending: "Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։",
     processing: "Ադմինը հաստատել է հարցումը, բայց վերջնական ջնջումը դեռ չի իրականացվել։ Դուք դեռ կարող եք չեղարկել այն։",
@@ -182,13 +184,13 @@ function render(data) {
   $("inventoryTitle").textContent = presentation.title;
   $("inventoryDescription").textContent = presentation.description;
   $("inventoryMinimization").textContent = presentation.minimization || "Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ այս պրոֆիլում չենք պահում։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։";
-  $("inventory").innerHTML = presentation.rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
+  $("inventory").innerHTML = [...presentation.rows,...taskPrivacyRows(inventory.teacherTasks)].map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
 
   const request = data.latestDeletionRequest;
   $("deletionState").textContent = deletionLabel(request);
-  const cancellable = request && ["pending", "processing"].includes(request.status);
-  $("requestDeletionBtn").classList.toggle("hidden", Boolean(cancellable));
-  $("cancelDeletionBtn").classList.toggle("hidden", !cancellable);
+  const deletion=erasurePresentation(request);
+  $("requestDeletionBtn").classList.toggle("hidden",deletion.open);
+  $("cancelDeletionBtn").classList.toggle("hidden",!deletion.canCancel);
 
   const deletionPending = data.account.status === "deletion_pending";
   $("displayNameInput").disabled = deletionPending;

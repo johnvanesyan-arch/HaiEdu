@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "haiedu-teacher-task-privacy-local-v1",
+  "date": "2026-10-30",
+  "scope": "B.12.3.2 custom-task privacy inventory / referenced-file retention / resumable student erasure",
+  "status": "staged implementation; not deployed",
+  "pr": "https://github.com/johnvanesyan-arch/HaiEdu/pull/365",
+  "local": {
+    "newPrivacySqlEdgeUiRunnerChecks": 12,
+    "existingRolePrivacySecurityChecks": 18,
+    "failures": 0,
+    "logs": [
+      "/tmp/haiedu-task-privacy-current-local.log",
+      "/tmp/haiedu-task-privacy-role-security.log"
+    ],
+    "unchangedSourceStudentReviewReuseChecks": {
+      "passed": 16,
+      "sourceLog": "/tmp/haiedu-task-privacy-final-local.log",
+      "note": "That earlier run had one runner ISO-normalization assertion failure, corrected and passing in the current 12-case log; no backend regression failed."
+    }
+  },
+  "preparedRequiredCI": {
+    "newIndependentPostgres17Races": 8,
+    "newNativeCases": 7,
+    "widths": [
+      390,
+      768,
+      1280
+    ],
+    "textPercent": 200,
+    "results": "Current-source CI receipts and visual inspection recorded in PR365 and source-verified Notion checkpoint."
+  },
+  "evidenceLimits": [
+    "Actual proposal SQL and Edge handlers; Storage/Auth HTTP doubles",
+    "Native real account controller and extracted actual admin deletion component, not full production MFA/router",
+    "No production SQL, Edge, Storage, profile, Auth, submission or grade writes"
+  ],
+  "reuse": {
+    "source": "e1a16846164a27733bc32c6a8f8fdf1938bba1ea",
+    "ci": 41034066851,
+    "allFiveRequiredJobs": "passed",
+    "unitIntegration": 1612,
+    "native": 349,
+    "copyReviewIndependentRaces": 8,
+    "artifact": 12966988109,
+    "artifactSha256": "e47469467e1ceae55df0b295c00ddf85267cc2ea9ed12377113b7a4708c4854e",
+    "inspectedEditorPreviewImages": 6
+  },
+  "deploymentConsumers": [
+    "get-my-privacy",
+    "manage-my-privacy",
+    "get-admin-dashboard",
+    "manage-admin-account"
+  ],
+  "remainingReleaseGates": [
+    "production migration/proposal promotion plus custom delivery endpoint index",
+    "all staged and affected Edge deployments/readback",
+    "required main CI and guarded production/source acceptance",
+    "merged documentation and merged-source Notion closure",
+    "final owner usability acceptance"
+  ],
+  "B12.3": "open",
+  "subjectExpansion": "paused"
+}

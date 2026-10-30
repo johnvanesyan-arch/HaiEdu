@@ -20,6 +20,7 @@ create table public.teacher_task_response_files (
  file_sha256 text not null check(file_sha256~'^[a-f0-9]{64}$'),
  file_bytes integer not null check(file_bytes between 1 and 10485760),
  object_path text not null unique,
+ upload_lease_until timestamptz not null default (clock_timestamp()+interval '15 minutes'),
  status text not null default 'pending' check(status in ('pending','ready')),
  created_at timestamptz not null default clock_timestamp(),
  unique(student_id,request_id),
@@ -58,7 +59,7 @@ create function private.teacher_task_work_guard() returns trigger language plpgs
  if tg_op='DELETE' or (old.state in ('submitted','reviewed') and (new.state not in ('returned','reviewed') or new.content is distinct from old.content)) or new.delivery_id<>old.delivery_id or new.enrollment_id<>old.enrollment_id or new.student_id<>old.student_id or new.revision<>old.revision+1 then raise exception 'task_work_immutable';end if;return new;end;$$;
 create trigger teacher_task_work_guard before update or delete on public.teacher_task_student_work for each row execute function private.teacher_task_work_guard();
 create function private.teacher_task_response_file_guard() returns trigger language plpgsql set search_path='' as $$begin
- if tg_op='UPDATE' and (to_jsonb(new)-'status')=(to_jsonb(old)-'status') and (new.status=old.status or old.status='pending' and new.status='ready') then return new;end if;raise exception 'task_file_immutable';end;$$;
+ if tg_op='UPDATE' and (to_jsonb(new)-'status'-'upload_lease_until')=(to_jsonb(old)-'status'-'upload_lease_until') and new.upload_lease_until>=old.upload_lease_until and new.upload_lease_until<=greatest(old.upload_lease_until,clock_timestamp()+interval '15 minutes 5 seconds') and (new.status=old.status or old.status='pending' and new.status='ready') then return new;end if;raise exception 'task_file_immutable';end;$$;
 create trigger teacher_task_response_file_guard before update or delete on public.teacher_task_response_files for each row execute function private.teacher_task_response_file_guard();
 create trigger teacher_task_submission_immutable before update or delete on public.teacher_task_submissions for each row execute function private.teacher_task_delivery_immutable();
 create trigger teacher_task_work_event_immutable before update or delete on public.teacher_task_work_events for each row execute function private.teacher_task_delivery_immutable();
@@ -95,7 +96,7 @@ begin
  elsif kind='document' then
   if exists(select 1 from jsonb_object_keys(p_content) k where k not in ('kind','fileId')) then return false;end if;
   if not p_complete and p_content->'fileId'='null'::jsonb then return true;end if;
-  return exists(select 1 from public.teacher_task_response_files f where f.id=(p_content->>'fileId')::uuid and f.delivery_id=p_id and f.enrollment_id=p_enrollment and f.student_id=p_actor and f.status='ready' and p_definition->'response'->'allowedFormats' ? f.format);
+  perform f.id from public.teacher_task_response_files f where f.id=(p_content->>'fileId')::uuid and f.delivery_id=p_id and f.enrollment_id=p_enrollment and f.student_id=p_actor and f.status='ready' and p_definition->'response'->'allowedFormats' ? f.format for key share;return found;
  end if;return false;
 exception when invalid_text_representation then return false;
 end;$$;
@@ -152,6 +153,7 @@ begin
     file_id:=gen_random_uuid();insert into public.teacher_task_response_files(id,delivery_id,enrollment_id,student_id,request_id,format,file_sha256,file_bytes,object_path)
      values(file_id,task_id,enr,p_actor,(p_payload->>'requestId')::uuid,p_payload->>'format',p_payload->>'sha256',(p_payload->>'bytes')::integer,'responses/'||task_id::text||'/'||file_id::text||'.'||(p_payload->>'format')) returning * into f;
    end if;
+   if f.status='pending' then update public.teacher_task_response_files set upload_lease_until=greatest(upload_lease_until,clock_timestamp()+interval '15 minutes') where id=f.id returning * into f;end if;
   else
    if p_payload<>jsonb_build_object('id',p_payload->'id','fileId',p_payload->'fileId') then raise exception 'task_work_invalid';end if;
    select * into f from public.teacher_task_response_files where id=(p_payload->>'fileId')::uuid and delivery_id=task_id and enrollment_id=enr and student_id=p_actor for update;

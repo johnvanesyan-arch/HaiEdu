@@ -10,6 +10,7 @@ create table public.teacher_task_source_files (
  file_sha256 text not null check(file_sha256~'^[a-f0-9]{64}$'),
  file_bytes integer not null check(file_bytes between 1 and 10485760),
  object_path text not null unique,
+ upload_lease_until timestamptz not null default (clock_timestamp()+interval '15 minutes'),
  status text not null default 'pending' check(status in ('pending','ready')),
  created_at timestamptz not null default clock_timestamp(),
  unique(created_by,request_id)
@@ -18,7 +19,7 @@ create index teacher_task_source_files_draft on public.teacher_task_source_files
 alter table public.teacher_task_source_files enable row level security;
 revoke all on public.teacher_task_source_files from public,anon,authenticated,service_role;
 create function private.teacher_task_source_guard() returns trigger language plpgsql set search_path='' as $$begin
- if tg_op='UPDATE' and (to_jsonb(new)-'status')=(to_jsonb(old)-'status') and (new.status=old.status or old.status='pending' and new.status='ready') then return new;end if;
+ if tg_op='UPDATE' and (to_jsonb(new)-'status'-'upload_lease_until')=(to_jsonb(old)-'status'-'upload_lease_until') and new.upload_lease_until>=old.upload_lease_until and new.upload_lease_until<=greatest(old.upload_lease_until,clock_timestamp()+interval '15 minutes 5 seconds') and (new.status=old.status or old.status='pending' and new.status='ready') then return new;end if;
  raise exception 'task_source_immutable';end;$$;
 create trigger teacher_task_source_immutable before update on public.teacher_task_source_files for each row execute function private.teacher_task_source_guard();
 create function private.teacher_task_draft_source_guard() returns trigger language plpgsql set search_path='' as $$
@@ -27,9 +28,10 @@ begin
  if new.definition->'source'->>'kind'='pdf' and new.definition->'source'->>'attachmentId' is not null then
   asset:=(new.definition->'source'->>'attachmentId')::uuid;
   -- Reuse immutable bytes only within the same owner's exact governed context.
-  if not exists(select 1 from public.teacher_task_source_files a join public.teacher_task_drafts origin on origin.id=a.draft_id
+  perform a.id from public.teacher_task_source_files a join public.teacher_task_drafts origin on origin.id=a.draft_id
    where a.id=asset and a.created_by=new.created_by and a.status='ready' and origin.created_by=new.created_by
-   and origin.teacher_assignment_id=new.teacher_assignment_id and origin.curriculum_release_id=new.curriculum_release_id and origin.unit_id=new.unit_id) then raise exception 'task_draft_invalid';end if;
+   and origin.teacher_assignment_id=new.teacher_assignment_id and origin.curriculum_release_id=new.curriculum_release_id and origin.unit_id=new.unit_id for key share of a;
+  if not found then raise exception 'task_draft_invalid';end if;
  end if;return new;end;$$;
 create trigger teacher_task_draft_source before insert or update of definition on public.teacher_task_drafts for each row execute function private.teacher_task_draft_source_guard();
 create function private.service_teacher_task_sources(p_actor uuid,p_auth uuid,p_action text,p_context jsonb,p_payload jsonb default '{}') returns jsonb
@@ -55,6 +57,7 @@ begin
    asset_id:=gen_random_uuid();insert into public.teacher_task_source_files(id,draft_id,created_by,request_id,file_sha256,file_bytes,object_path)
     values(asset_id,d.id,p_actor,(p_payload->>'requestId')::uuid,p_payload->>'sha256',(p_payload->>'bytes')::integer,d.id::text||'/'||asset_id::text||'.pdf') returning * into a;
   end if;
+  if a.status='pending' then update public.teacher_task_source_files set upload_lease_until=greatest(upload_lease_until,clock_timestamp()+interval '15 minutes') where id=a.id returning * into a;end if;
  else
   if p_payload<>jsonb_build_object('id',p_payload->'id') then raise exception 'task_source_invalid';end if;
   select * into a from public.teacher_task_source_files where id=(p_payload->>'id')::uuid and created_by=p_actor for update;

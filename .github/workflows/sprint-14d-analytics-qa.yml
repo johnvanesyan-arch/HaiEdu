@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - web/account-signout.mjs
+      - web/task-privacy-view.mjs
       - 'web/student-forest.css'
       - 'web/student-surfaces.css'
       - 'web/assets/fonts/**'

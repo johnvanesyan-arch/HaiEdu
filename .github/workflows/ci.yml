@@ -146,6 +146,7 @@ jobs:
           python tests/resource-assignments-concurrency.py
           python tests/writing-assignments-concurrency.py
           python tests/teacher-task-review-concurrency.py
+          python tests/teacher-task-privacy-concurrency.py
       - name: Verify supplementary publication and delivery races
         run: python tests/supplementary-resources-concurrency.py
       - name: Verify material revision, approval and reviewer-session races
