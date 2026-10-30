@@ -2424,5 +2424,11 @@
     "browserFallback": "previously owner-authorized; connector has no persistent check settings read",
     "screenshot": "docs/evidence/vercel-production-blocking-20261031.jpg",
     "screenshotSha256": "d5b1be297104c0fd3f8bcc9ba87f136e519982743e28a31d653baab83f43ab00"
+  },
+  "consistencyGuideCorrection": {
+    "defect": "Guide called teacher-created tasks and PDF source responses future despite new implementation",
+    "fix": "Separate custom task instructions; independent source/response, explicit save/send/submit/review/return; optional library and published course writing retained",
+    "verification": "current guide native CI and fresh screenshots pending",
+    "runtimeApiChanges": false
   }
 }

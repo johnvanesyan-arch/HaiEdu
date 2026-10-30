@@ -38,3 +38,12 @@ Both journeys are primary acceptance requirements. A writing-review queue alone 
 B.12.3/B.12 remain open until these gates are met. Dedicated administration expansion and dark mode stay later work. Academic-year activation/rollover, controlled A–E classroom creation and Headmaster conflict handling remain Sprint18.5 under the approved academic-year policy.
 
 Sources: [45-capability map](student-dashboard-function-coverage.md), [assessment scope](assessment-scope-model.md), [teacher/school/master context](sprint-15b12d-navigation-analytics.md), [school aggregate contract](sprint-14d-school-performance-analytics.md), [academic-year policy](academic-year-rollover-localization-policy.md), [single defect register](workspace-defect-register.md).
+
+
+## Bounded consistency disposition — 2026-10-31
+
+Teacher Home now gives class progress and writing review equal visible entry points. The final task/Home source passes CI41131022111 (1,628 unit/integration;357 native;16 task-specific PG17 races); five SHA-verified institutional/legacy images establish bounded 200%-text readability. Existing student assessment/course/progress, shared Forest/account controls and School/Master Admin authority contracts are retained by those unchanged regressions. This reuses evidence; it is not a fresh hosted master-admin, real-device or screen-reader acceptance claim.
+
+The guide audit found a reproducible documentation defect: the live-guide candidate still labelled own task creation and PDF responses as future features despite the new editor/submission implementation. The release now explains the independent source/response choices, private save, explicit recipients/send receipt, learner submission, custom review/publication and return/revision. Published course writing and optional library publication keep their separate instructions. Deadlines, notifications and automatic completion tracking remain future work. Existing guide native coverage now rejects the obsolete future claims and keeps keyboard/narrow/200%-text checks; current-source CI and fresh guide images are required.
+
+Owner review must exercise both routes: Teacher Home → Classes → selected subject/unit performance and learner progress; and Assign writing → own task → explicit recipients → learner My Work → submit → teacher Writing review → publish/return → learner feedback/revision. Student assessment access and both administrator scopes remain part of the original usability checklist. The English demo setup and content/audio acceptance are accepted without repetition.
