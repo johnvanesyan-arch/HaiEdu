@@ -17,7 +17,7 @@ export async function verifyTeacherToday({sides,fixture,check,call,request,pageF
   for(const role of ['student','admin'])await call(side+'_'+role,'get-teacher-workspace',{},`${side}: ${role} cannot read teacher Today`,r=>r.status===403&&r.data?.error==='workspace_context_unavailable');
   const p=await pageFor(actor,'teacher.html?view=home');
   await p.locator('[data-today-time]').filter({hasText:'Ստուգված է'}).waitFor();
-  check(`${side}: signed-in Today displays a fresh scoped summary`,await p.locator('[data-today-summary]').innerText().then(s=>/աշխատանք է սպասում ստուգման/.test(s)));
+  check(`${side}: signed-in Today displays a fresh scoped summary`,await p.locator('[data-today-summary]').innerText().then(s=>/դասընթացի գրավոր է սպասում ստուգման/.test(s)));
   const card=p.locator('.today-class-card').filter({has:p.locator(`a[href*="class=${fixture[side].classId}"]`)});
   // Large directories may legitimately omit the original class from the first six.
   if(await card.count()){

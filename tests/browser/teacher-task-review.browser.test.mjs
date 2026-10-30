@@ -1,4 +1,5 @@
-import test,{before,after} from 'node:test';import assert from 'node:assert/strict';import {mkdir} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
+import test,{before,after} from 'node:test';import assert from 'node:assert/strict';import {mkdir,readFile} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
+import {docxBytes,pdf} from '../fixtures/teacher-task-student-api.mjs';
 import {reviewSurface,textDefinition,id,context} from '../fixtures/teacher-task-review-browser.mjs';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 async function open(p){await p.locator('[data-tr-open]').click();await expect(p.locator('[data-tr-feedback]')).toBeVisible();}
@@ -26,4 +27,13 @@ for(const width of [390,768,1280])test('custom teacher review reflows and retain
 });
 test('cancelled private link drafts remain copyable text without creating unsafe links',async t=>{
  const f=await reviewSurface(browser,t,{definition:{...textDefinition,response:{kind:'link'}},submitted:false}),p=f.teacher,s=await f.student();await s.locator('[data-task-open]').click();await s.locator('[data-task-url]').fill('javascript:alert(1)');await s.locator('[data-task-save]').click();await expect(s.locator('[data-task-status]')).toContainText('Սևագիրը պահպանված է');await p.locator('[data-tr-deliveries]').click();await p.locator('summary').filter({hasText:'Չեղարկել'}).click();await p.locator('[data-tr-cancel-reason]').fill('Draft task withdrawn.');await p.locator('[data-tr-cancel]').click();await expect(p.locator('[data-tr-status]')).toContainText('Չեղարկումը հաստատված է');await s.reload();await expect(s.locator('[data-task-body]')).toContainText('javascript:alert(1)');assert.equal(await s.locator('a[href^="javascript:"]').count(),0);await expect(s.locator('[data-task-submit]')).toHaveCount(0);assert.deepEqual(f.errors,[]);
+});
+
+test('teacher document download stays pinned to the submitted version during a private learner revision',async t=>{
+ const f=await reviewSurface(browser,t,{definition:{...textDefinition,source:{kind:'pdf',attachmentId:null},response:{kind:'document',allowedFormats:['docx']}}}),p=f.teacher;await open(p);
+ let pending=p.waitForEvent('download');await p.locator('[data-tr-document]').click();let download=await pending;assert.equal(download.suggestedFilename(),'haiedu-response.docx');assert.deepEqual(new Uint8Array(await readFile(await download.path())),docxBytes());
+ await p.locator('summary').filter({hasText:'Առաջադրանքը'}).click();pending=p.waitForEvent('download');await p.locator('[data-tr-source]').click();download=await pending;assert.deepEqual(new Uint8Array(await readFile(await download.path())),pdf);
+ await p.locator('[data-tr-feedback]').fill('Add your supporting example.');await p.locator('[data-tr-publish="returned"]').click();await expect(p.locator('[data-tr-status]')).toContainText('Հրապարակումը հաստատված է');const s=await f.student();await s.locator('[data-task-open]').click();const revised=docxBytes({'docProps/core.xml':'<revision>Second version</revision>'});await s.locator('[data-task-file]').setInputFiles({name:'revision.docx',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',buffer:Buffer.from(revised)});await s.locator('[data-task-save]').click();await expect(s.locator('[data-task-status]')).toContainText('Սևագիրը պահպանված է');
+ pending=p.waitForEvent('download');await p.locator('[data-tr-document]').click();download=await pending;assert.deepEqual(new Uint8Array(await readFile(await download.path())),docxBytes());assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,1);
+ await s.locator('[data-task-submit]').click();await expect(s.locator('[data-task-status]')).toContainText('Ներկայացումը հաստատված է');await p.locator('[data-tr-back]').click();await open(p);pending=p.waitForEvent('download');await p.locator('[data-tr-document]').click();download=await pending;assert.deepEqual(new Uint8Array(await readFile(await download.path())),revised);assert.deepEqual(f.errors,[]);
 });

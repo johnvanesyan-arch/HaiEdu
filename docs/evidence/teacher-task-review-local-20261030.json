@@ -12,7 +12,7 @@
     "teacherBundleParity": "passed"
   },
   "prepared": {
-    "nativeBrowserCases": 8,
+    "nativeBrowserCases": 9,
     "independentPostgres17Races": 5
   },
   "localLimitations": [
@@ -35,5 +35,18 @@
   ],
   "productionWrites": false,
   "B123": "open",
-  "subjectExpansion": "paused"
+  "subjectExpansion": "paused",
+  "initialCI": {
+    "source": "f23cf9e4e7483ee6965fc80d5dda0faf8260b59e",
+    "run": 41013228042,
+    "unitIntegration": 1603,
+    "postgres17": "passed including all five custom lifecycle races",
+    "native": {
+      "passed": 334,
+      "total": 345,
+      "failures": "six old Today wording assertions; five custom harness empty-status readiness assertions"
+    },
+    "corrections": "Align Today text assertions; wait for visible queue controls; add native submitted-file/revision download case",
+    "finalGate": "current required CI remains visible on draft PR365"
+  }
 }
