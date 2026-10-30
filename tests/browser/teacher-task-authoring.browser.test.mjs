@@ -7,6 +7,7 @@ let browser;
 before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 async function surface(t,{width=1280,large=false}={}){
  const f=await authoringFixture({delivery:true});t.after(()=>f.db.close());
+ const css=[...(await readFile(new URL('../../web/teacher.html',import.meta.url),'utf8')).matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/g)].map(m=>m[0].replace('href="./','href="/')).join('');
  const bc=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});t.after(()=>bc.close());const page=await bc.newPage(),errors=[];let drop=null,hold=null;
  page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(10000);
  await page.addInitScript(({actor,credential,scope,large})=>{
@@ -29,12 +30,13 @@ async function surface(t,{width=1280,large=false}={}){
    if(drop===action){drop=null;return route.fulfill({status:503,contentType:'application/json',body:'{"error":"unknown_transport"}'});}
    return route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:Buffer.from(await response.arrayBuffer())});
   }
-  if(u.pathname==='/harness')return route.fulfill({contentType:'text/html',body:'<!doctype html><html lang="hy"><meta charset="utf-8"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/base.css"><link rel="stylesheet" href="/role-layout.css"><link rel="stylesheet" href="/writing-assignments.css"><body data-role-workspace="teacher" class="hm-role-workspace"><main style="max-width:65rem;margin:auto;padding:1rem"><a href="/outside">Գլխավոր էջ</a><div id="root"></div></main><script type="module">import{mountTeacherAssignmentWorkspace}from"/writing-assignments.mjs";if(window.__large)document.documentElement.style.fontSize="32px";window.__view=mountTeacherAssignmentWorkspace({root:document.querySelector("#root"),client:window.__client,actorId:window.__actor,context:window.__scope});</script>'});
-  try{return route.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:u.pathname.endsWith('.mjs')?'text/javascript':u.pathname.endsWith('.css')?'text/css':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
+  if(u.pathname==='/harness')return route.fulfill({contentType:'text/html',body:'<!doctype html><html lang="hy"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+css+'<body data-role-workspace="teacher" class="hm-role-workspace"><main style="max-width:65rem;margin:auto;padding:1rem"><a href="/outside">Գլխավոր էջ</a><div id="root"></div></main><script type="module">import{mountTeacherAssignmentWorkspace}from"/writing-assignments.mjs";if(window.__large)document.documentElement.style.fontSize="32px";window.__view=mountTeacherAssignmentWorkspace({root:document.querySelector("#root"),client:window.__client,actorId:window.__actor,context:window.__scope});</script>'});
+  try{return route.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:u.pathname.endsWith('.mjs')?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.woff2')?'font/woff2':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
  });
  await page.goto('https://authoring.test/harness');await page.locator('[data-wa-custom]').click();await expect(page.locator('[data-drafts-new]')).toBeVisible();
  return{...f,page,errors,drop(action){drop=action;},hold(action){const slot={action};hold=slot;return slot;}};
 }
+async function splitStaticWords(page,selector){return page.locator(selector).evaluateAll(elements=>{const split=[];for(const e of elements){for(const node of e.childNodes){if(node.nodeType!==Node.TEXT_NODE)continue;for(const m of node.textContent.matchAll(/\p{L}+/gu)){const r=document.createRange();r.setStart(node,m.index);r.setEnd(node,m.index+m[0].length);if(new Set([...r.getClientRects()].filter(r=>r.width).map(r=>Math.round(r.top))).size>1)split.push(m[0]);}}}return split;});}
 async function fill(p,title='Class task'){
  await p.locator('[data-drafts-new]').click();await p.locator('[data-field=title]').fill(title);await p.locator('[data-field=instructions]').fill('Read the task and explain your answer.');await p.locator('[data-field=text]').fill('First paragraph.\n\nSecond paragraph.');
 }
@@ -66,7 +68,11 @@ test('conflict preserves text until deliberate reload, and reuse creates a separ
 });
 for(const width of [390,768,1280])test('draft editor conditional fields reflow at '+width+'px with 200% text',async t=>{
  const f=await surface(t,{width,large:true}),p=f.page;await fill(p);await p.locator('[data-field=sourceKind]').selectOption('pdf');await p.locator('[data-field=responseKind]').selectOption('document');await p.locator('details summary').click();await p.locator('[data-field=assessmentKind]').selectOption('criteria');await p.locator('[data-criterion-field=label]').fill('Clear explanation');await p.evaluate(()=>document.fonts.ready);assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,JSON.stringify(await p.evaluate(()=>[...document.querySelectorAll('main *')].map(e=>({tag:e.tagName,selector:e.className,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(r=>r.right>innerWidth+1))));
- if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-editor-'+width+'-200.png',fullPage:true});}assert.deepEqual(f.errors,[]);
+ assert.deepEqual(await splitStaticWords(p,'#root h2,#root button,#root legend,#root label,#root summary'),[]);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-editor-'+width+'-200.png',fullPage:true});}
+ await p.locator('[data-field=instructions]').fill('# Հրահանգ\n\n- Կարդացեք նյութը։\n- Գրեք ձեր պատասխանը։\n\n[Նյութը](https://example.org)');await p.locator('[data-editor-preview]').click();await expect(p.locator('.task-text h5')).toHaveText('Հրահանգ');await expect(p.locator('.task-text li')).toHaveCount(2);await p.locator('.task-text a').focus();assert.equal(await p.locator('.task-text a').evaluate(e=>e===document.activeElement),true);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ assert.deepEqual(await splitStaticWords(p,'[data-editor-body] p,[data-editor-body] h3,[data-editor-body] h5,[data-editor-body] li,[data-editor-body] strong,[data-editor-body] button'),[]);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-task-text-preview-'+width+'-200.png',fullPage:true});assert.deepEqual(f.errors,[]);
 });
 
 test('custom task send pins selected recipients, recovers one lost receipt and freezes the saved version',async t=>{

@@ -52,5 +52,31 @@
     "subjects": "paused",
     "contentAudioApprovals": "preserved",
     "mastery": "unchanged"
+  },
+  "firstCi": {
+    "source": "48357f4f5fde25dfbd555473f79aeced993a76ac",
+    "run": 41029884460,
+    "allFive": "success",
+    "unitIntegration": 1612,
+    "native": 349,
+    "copyReviewRaces": 8,
+    "artifact": {
+      "id": 12965606652,
+      "sha256": "7a32a042d9daf9eb2908ef50a46a44f18c0a4215567d700c6e8939fbf9e069c2",
+      "downloadHashVerified": true,
+      "imagesInspected": [
+        "teacher-task-editor-390-200.png",
+        "teacher-task-editor-768-200.png",
+        "teacher-task-editor-1280-200.png"
+      ],
+      "visualFinding": "long return/settings labels split at390/200; max-points label also shortened",
+      "notFinalVisualAcceptance": true
+    }
+  },
+  "visualCorrection": {
+    "labels": "shorter Armenian course-return/settings/max-points labels",
+    "harness": "actual teacher.html stylesheet links and local font",
+    "native": "static word-boundary assertions and formatted preview/keyboard/reflow/screenshots at all three widths",
+    "currentSourceCi": "required"
   }
 }

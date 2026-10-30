@@ -8,7 +8,7 @@ export function mountTeacherTaskDraftWorkspace({root,client,context,actorId,onCl
  const ctx=Object.fromEntries(['assignmentId','curriculumReleaseId','unitId'].map(k=>[k,context[k]]));
  const current=()=>alive&&!invalid&&isCurrent()&&root.isConnected,$=s=>root.querySelector(s);
  const canLeave=()=>{if(pendingCopy){message('Նախ ստուգեք պատճենի պահպանման հաստատումը։',true);return false;}return editor?.canLeave?.()??true;};
- function shell(){root.innerHTML='<section class="card wa-panel"><div class="wa-heading"><h2>Իմ սևագրերը</h2><button type="button" class="ghost" data-drafts-close>Դասընթացի առաջադրանքները</button></div><p>Սևագրերը տեսնում եք միայն դուք։ Պահպանումը առաջադրանք չի ուղարկում աշակերտներին։</p><p data-drafts-status role="status" aria-live="polite" tabindex="-1"></p><div data-drafts-list></div></section><div data-drafts-editor></div>';}
+ function shell(){root.innerHTML='<section class="card wa-panel"><div class="wa-heading"><h2>Իմ սևագրերը</h2><button type="button" class="ghost" data-drafts-close>Դասընթացի գրավորները</button></div><p>Սևագրերը տեսնում եք միայն դուք։ Պահպանումը առաջադրանք չի ուղարկում աշակերտներին։</p><p data-drafts-status role="status" aria-live="polite" tabindex="-1"></p><div data-drafts-list></div></section><div data-drafts-editor></div>';}
  const message=(v,bad=false)=>{if(current()){$('[data-drafts-status]').textContent=v;$('[data-drafts-status]').classList.toggle('bad',bad);}};
  const lock=()=>{if(current()){root.toggleAttribute('aria-busy',busy);root.querySelectorAll('button').forEach(b=>{b.disabled=busy||Boolean(pendingCopy)&&!b.hasAttribute('data-drafts-retry');});}};
  async function read(action,payload,done){
