@@ -78,5 +78,17 @@
     "harness": "actual teacher.html stylesheet links and local font",
     "native": "static word-boundary assertions and formatted preview/keyboard/reflow/screenshots at all three widths",
     "currentSourceCi": "required"
+  },
+  "secondCi": {
+    "source": "976cc07da1a71cdcabc03f29fc6b97c90ba161d6",
+    "run": 41031517667,
+    "unitIntegration": 1612,
+    "native": {
+      "pass": 348,
+      "total": 349,
+      "remaining": "390px/200% static words նախադիտումը and ստացողներին in two action labels"
+    },
+    "postgresInstitutional": "success including all8copy/review races",
+    "currentCorrection": "short student-view/save-and-continue actions; explicit next-recipient sentence; same strict assertion retained"
   }
 }
