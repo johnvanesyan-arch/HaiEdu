@@ -1,6 +1,6 @@
 # Teacher workflow SOP — version 1.6
 
-**SOP 1.6 candidate — backend integrated; frontend/hosted acceptance pending.** The in-product guide now distinguishes published course writing from teacher-created tasks. All seven migrations and twelve Edge runtimes are verified; the current-source frontend release and guarded acceptance remain required before the new workflow is advertised live.
+**SOP 1.6 — deployed implementation; final hosted acceptance/owner usability open.** The in-product guide distinguishes published course writing from teacher-created tasks. Seven migrations, twelve Edge runtimes and48 public frontend files are source verified; all five PR/main gates pass. Positive submissions, review/revision and erasure are covered by isolated actual-SQL/native evidence. Current hosted acceptance stops at the QA/demo identity overlap described in the integration contract; no production learner response, mark or erasure is manufactured.
 
 **Create and send a teacher task:** Assign writing → exact class/unit → Create my task / drafts → New / Reopen / Create copy → title/instructions → independent source (editable text/private PDF/HTTPS link) and required response (HaiEdu text/PDF, DOCX or both/HTTPS link) → feedback only or explicit criteria → student preview → Save and continue → class/selected active recipients → explicit confirm → durable receipt. Private save never sends. Reuse pins the same owner's ready PDF in the exact context and never copies student work. Later draft edits do not change sent versions.
 

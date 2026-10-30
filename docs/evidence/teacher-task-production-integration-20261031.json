@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
   "scope": "B.12.3.2 production integration; approved cross-role consistency preparation",
-  "state": "seven migrations and twelve runtimes source-verified; frontend PR/main/hosted acceptance pending",
+  "state": "implementation deployed/source verified; hosted acceptance blocked by QA/demo identity overlap and manual workflow dispatch",
   "baselineMain": "18254f44ee950010bb9a17e555c1f51c81cdf168",
   "priorVerifiedSource": "541d1a80d7d5309a054d6870a8f77e20b850d1d7",
   "priorCi": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41058923727",
@@ -189,12 +189,14 @@
         "ezbr_sha256": "644dd713584a4178173b2c0f7abf6431963ed32a4d3588ff893cb5b70953bd86"
       }
     ],
-    "frontendActivated": false,
+    "frontendActivated": true,
     "learnerWrites": false,
     "gradeWrites": false,
     "accountErasureExecuted": false,
     "storageObjectsWritten": false,
-    "newBucketMetadata": true
+    "newBucketMetadata": true,
+    "frontendRevision": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+    "deploymentId": "dpl_DVDKqwEE6FKYqX3hUV1zoQrgdvXc"
   },
   "preservation": {
     "tables": 117,
@@ -1375,10 +1377,9 @@
     ]
   },
   "pending": [
-    "current-source PR/main CI",
-    "exact deployed frontend/source checks and guarded hosted acceptance",
-    "bounded consistency disposition and merged source-verified Notion closure",
-    "John usability acceptance"
+    "owner decision on restoring QA/demo identity separation",
+    "guarded hosted delivery acceptance via normal workflow dispatch",
+    "final owner usability decision and complete delivery closure"
   ],
   "retained": [
     "all 45 capabilities",
@@ -2423,12 +2424,464 @@
     "settingsWrites": 0,
     "browserFallback": "previously owner-authorized; connector has no persistent check settings read",
     "screenshot": "docs/evidence/vercel-production-blocking-20261031.jpg",
-    "screenshotSha256": "d5b1be297104c0fd3f8bcc9ba87f136e519982743e28a31d653baab83f43ab00"
+    "screenshotSha256": "d5b1be297104c0fd3f8bcc9ba87f136e519982743e28a31d653baab83f43ab00",
+    "observedBehavior": {
+      "candidateReadyBeforeMainAggregate": true,
+      "publicRetainedPriorSource": "18254f44ee950010bb9a17e555c1f51c81cdf168",
+      "promotedAfterMainAggregate": "879590a48ce2407a52c8846e5cdbeeda69da090f"
+    }
   },
   "consistencyGuideCorrection": {
     "defect": "Guide called teacher-created tasks and PDF source responses future despite new implementation",
     "fix": "Separate custom task instructions; independent source/response, explicit save/send/submit/review/return; optional library and published course writing retained",
-    "verification": "current guide native CI and fresh screenshots pending",
+    "verification": "current CI357/native passed; three fresh guide images SHA verified and inspected; exact served guide source verified",
     "runtimeApiChanges": false
+  },
+  "frontendSourceVerification": {
+    "revision": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+    "checkedAt": "2026-10-30T22:18:31.633Z",
+    "stableRevision": true,
+    "files": [
+      {
+        "path": "admin.css",
+        "sha256": "de26bfab1576ad631f5943e781b76a700c19dc17133e58b60e2474613e7e7d5b",
+        "bytes": 9796,
+        "characters": 9786,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "admin.html",
+        "sha256": "bde29f9ef07010b49913acc7d11d61ff2e969f7b4db186810e6ff1f55f95342d",
+        "bytes": 11074,
+        "characters": 9408,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "admin.js",
+        "sha256": "a4ece087d91b629cf5aa742940cae136989ec63e07528312d4d226dfeca9112e",
+        "bytes": 32160,
+        "characters": 29358,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "course-page.js",
+        "sha256": "81ffd0058831e1d6f62e04510918c22803ea47153e0633e7b1071de7e9f66619",
+        "bytes": 15414,
+        "characters": 13967,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "index.html",
+        "sha256": "ec74f777cc7cc59f66cfee9fbc6428841a9abe9f45ac5e3790ad943fade991ce",
+        "bytes": 16537,
+        "characters": 13832,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "materials.html",
+        "sha256": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "bytes": 1695,
+        "characters": 1568,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "multi-subject-home.js",
+        "sha256": "3e3ecedc4310cedf83e516ad48458bb8d270ca24571517fe3cf2308c5e328145",
+        "bytes": 13296,
+        "characters": 12154,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "privacy.css",
+        "sha256": "2f21004d802576284bf224d406609613196356e5e62dbc92918d4f5e3b296da6",
+        "bytes": 4941,
+        "characters": 4941,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "privacy.html",
+        "sha256": "ff0b805174cad651aa66c59af9512a0405abdf3167940416a00edabc031c2512",
+        "bytes": 8221,
+        "characters": 6766,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "privacy.js",
+        "sha256": "24d34883468e3c3bca83a27bdacb15fa158cdfd9e45ffd4d849f9051e15f351a",
+        "bytes": 20442,
+        "characters": 17062,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "resource-assignments.css",
+        "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+        "bytes": 4163,
+        "characters": 4163,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "resource-assignments.mjs",
+        "sha256": "5bd5367c1a216355ffb5d650d1e3bb31d67a2c5ae02357af9b19ade87e090dd3",
+        "bytes": 26267,
+        "characters": 23256,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "resource-file-input.mjs",
+        "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+        "bytes": 1029,
+        "characters": 1029,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "resource-learner-view.mjs",
+        "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a",
+        "bytes": 4168,
+        "characters": 3813,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "resource-library.html",
+        "sha256": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "bytes": 1864,
+        "characters": 1693,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "role-layout.js",
+        "sha256": "dd74a0cf54e8ec0f538490074becb86b9f5da9962266bb5f3df17151b1a7ec51",
+        "bytes": 22522,
+        "characters": 20437,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "school-admin.html",
+        "sha256": "97b16c5b70b24d597e91bac82ab3d9e5a1c18f4ae4798c9a70974893054a3d04",
+        "bytes": 14763,
+        "characters": 12290,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "school-teacher.html",
+        "sha256": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c",
+        "bytes": 3437,
+        "characters": 3039,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "student-courses.js",
+        "sha256": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e",
+        "bytes": 2460,
+        "characters": 2388,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "student-surfaces.css",
+        "sha256": "de36f1513f169fd0d62f0e53c9e777db930744f599976c78d8c7283a0f0cf9bd",
+        "bytes": 16113,
+        "characters": 16111,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "student-teacher-task-client.mjs",
+        "sha256": "52ca36ceabfe985987b172fae8dc76faf4429052e81e013cd029b34c6cab197b",
+        "bytes": 2192,
+        "characters": 2192,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "student-teacher-tasks.mjs",
+        "sha256": "853a96e9dad42b92d57a9c5e55b60b7973cceabcec355ec24ea09c0c71b711ff",
+        "bytes": 19100,
+        "characters": 17170,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "supplementary-resources.css",
+        "sha256": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+        "bytes": 10037,
+        "characters": 10037,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "sha256": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b",
+        "bytes": 44236,
+        "characters": 39203,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "task-privacy-view.mjs",
+        "sha256": "c0c43b3d2be1b9364d8bcb4413d4eeff6cf031844fe195513db05a612ae9208b",
+        "bytes": 1615,
+        "characters": 1247,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-dependencies.bundle.mjs",
+        "sha256": "28335251dacaaf256a68c78f407fb5b8607485c3920ecee4c475b57b628a3f47",
+        "bytes": 285415,
+        "characters": 277407,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-review.mjs",
+        "sha256": "a943bc241c77d15588407c2d70989601ef51def4d5c2fac2f22f3e5a1fb52714",
+        "bytes": 13626,
+        "characters": 12778,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-startup.bundle.mjs",
+        "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "bytes": 3815,
+        "characters": 3740,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-download.mjs",
+        "sha256": "a963ccaaa5b43e6e428c2fd1842fa632f579eb1cd6ea65b056239b4860f37024",
+        "bytes": 582,
+        "characters": 582,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-draft-workspace.mjs",
+        "sha256": "0386f89441f6fc1937fed9573ce2df5ead0b9f43abfd7d097119d0856639a0b1",
+        "bytes": 8568,
+        "characters": 7749,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-editor.mjs",
+        "sha256": "6cfdbb1d7e3615f72d447462cad99412986a620cecdbd2467f70238f01ed53d6",
+        "bytes": 18201,
+        "characters": 16261,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-form.mjs",
+        "sha256": "68bc8bbcb2efe43202b9c6103425447d47e752ef5d9bb1cc18c3400efdd6de85",
+        "bytes": 1619,
+        "characters": 1619,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-review.mjs",
+        "sha256": "7b451d3783f71822a4a4238ee3ba8652a411facc83faa7b2a2ab38961a9a2fa9",
+        "bytes": 18691,
+        "characters": 16877,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-send.mjs",
+        "sha256": "5cfc594c1f72ca494650495e58e96d6bb3ff952be3e11fd16f7dfb4ebd1f3068",
+        "bytes": 11898,
+        "characters": 10799,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-source-client.mjs",
+        "sha256": "a33c58338abf1bade75aa626e927a8df867e9bd3e3a6474cfe05e670a8b33395",
+        "bytes": 1893,
+        "characters": 1893,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-task-text.mjs",
+        "sha256": "43d139bf8d77caed19d373716c6710551dabf10766decc60a304da2a17499b6a",
+        "bytes": 3417,
+        "characters": 3412,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-today.css",
+        "sha256": "c88c2f03d4d5ea2c9ad2f9dfbb8b49cd4fdefea63a77311daf62d9d7f68de1e4",
+        "bytes": 2383,
+        "characters": 2383,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-workflows.css",
+        "sha256": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
+        "bytes": 2147,
+        "characters": 2147,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher-workflows.html",
+        "sha256": "c3df3f2d8d55a2b8508a858a6a5b1ec02900e57f6ed89c37dd80adb0496d790b",
+        "bytes": 23843,
+        "characters": 14631,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher.css",
+        "sha256": "879f5c700308d74d2e923d7f7f9a46e67a3ae17c782d6d7918687bccdb613109",
+        "bytes": 22894,
+        "characters": 22894,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher.html",
+        "sha256": "d8ab62bb82302747b66217c717aa6e12931ff28bc3ac97a3301db423da2e0163",
+        "bytes": 35513,
+        "characters": 30017,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "teacher.js",
+        "sha256": "931e59cfb24fbcc947f4e5e75f9ff3ebfc4766abf423ef22d8381f159fbdb91a",
+        "bytes": 88482,
+        "characters": 81779,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "ux.css",
+        "sha256": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+        "bytes": 6867,
+        "characters": 6865,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "ux.js",
+        "sha256": "712f9e3b4fb86210c06c927f3b403d4312ba8001022783e00c4a26e495ae68cf",
+        "bytes": 18834,
+        "characters": 17815,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "writing-assignments.css",
+        "sha256": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a",
+        "bytes": 5483,
+        "characters": 5483,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "writing-assignments.mjs",
+        "sha256": "fd47cba12417f091a9317a5f4dc5f586df2cad2d914f80334ecd6bd34475eb06",
+        "bytes": 25210,
+        "characters": 22207,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "written-work.css",
+        "sha256": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+        "bytes": 4991,
+        "characters": 4991,
+        "status": 200,
+        "exact": true
+      },
+      {
+        "path": "written-work.mjs",
+        "sha256": "4b22fd3052ee0687a8421f159dec1251525740e82ffb793e630930a760fc8525",
+        "bytes": 23889,
+        "characters": 20638,
+        "status": 200,
+        "exact": true
+      }
+    ],
+    "method": "Authenticated provider fetch of public UTF-8 files; full Unicode content and UTF-8 byte counts compared to repository; matching SHA256 from identical repository bytes",
+    "localTransportRecovery": "One local read transport failure retried serially; no source mismatch."
+  },
+  "implementationVerification": {
+    "source": "4647cdc376f941971e4f323baac74ca7d6d9b897",
+    "main": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+    "pr": 365,
+    "prCi": 41134775820,
+    "mainCi": 41135838800,
+    "allFiveRequiredJobs": "passed",
+    "unitIntegration": 1628,
+    "native": 357,
+    "taskSpecificPg17Races": 16,
+    "failures": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "artifact": 13016027110,
+    "artifactSha256": "de76cc4267c1a789a332da28378f72d8fe4c6bafe55d2901ddf09a37c73e946d",
+    "guideImagesInspected": 3,
+    "unchangedHomeImagesReused": 5
+  },
+  "hostedAcceptance": {
+    "status": "blocked",
+    "readRuns": [
+      41135838903,
+      41135839673
+    ],
+    "outerChecks": "3/4 each; failed",
+    "isolationChecks": "22/24 each; stopped at positive controls before negative probes",
+    "allSixLoginsAndOwnSessionCleanup": "passed",
+    "resourceRun": 41135838917,
+    "resourceRunStatus": "cancelled by pending queue before jobs; no authenticated agent cancellation",
+    "browserDispatch": "saved github.com origin permission rejected; no workaround",
+    "connectorRerun": "403: This workflow run cannot be retried",
+    "rootCause": "Designated School B QA learner also has an active School A English7 demo membership and enrollment from 2026-10-29; legitimate access conflicts with disjoint-fixture assumptions",
+    "newReadRuntimeChanges": false,
+    "unchangedReadRuntimeFileMatches": 9,
+    "assertionsWeakened": false,
+    "membershipChanges": false,
+    "proposedAction": {
+      "status": "proposal only; not executed; owner decision required",
+      "endpoint": "manage-institutional-membership",
+      "body": {
+        "action": "end_membership",
+        "membershipId": "4b077073-9ad8-4c1f-a628-c8513b885588",
+        "reason": "administrative"
+      },
+      "affectedPersonId": "ae4cb419-f894-4d75-8e9f-3f08dc2fcdb7",
+      "affectedSchoolId": "e88bb74c-ab42-41a5-8943-e33a3ac4c2e6",
+      "affectedEnrollmentIds": [
+        "4647219d-5153-4c9e-97e4-0ebcf9bb485b"
+      ],
+      "ordinaryDemoClassId": "2b2ab295-2ebd-47a1-888a-61622a9e89bf",
+      "preserve": "ordinary demo class/teacher; all history/work; School B membership and both original enrollments",
+      "execution": "normal live-session-authorized audited service; no QA impersonation or raw erasure"
+    }
   }
 }
