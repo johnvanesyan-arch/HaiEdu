@@ -12,9 +12,10 @@ create table public.teacher_task_reviews (
  submission_id uuid not null references public.teacher_task_submissions(id),
  teacher_id uuid not null references public.profiles(id),
  version integer not null check(version>0),
+ draft_revision integer not null check(draft_revision>0),
  request_id uuid not null, request_hash text not null,
  review jsonb not null, published_at timestamptz not null default clock_timestamp(),
- unique(submission_id,version), unique(teacher_id,request_id)
+ unique(submission_id,version), unique(submission_id,draft_revision), unique(teacher_id,request_id)
 );
 create index teacher_task_reviews_teacher on public.teacher_task_reviews(teacher_id);
 create table public.teacher_task_delivery_cancellations (
@@ -153,9 +154,10 @@ begin
        else update public.teacher_task_review_drafts set review=p_payload->'review',revision=revision+1,updated_at=clock_timestamp() where submission_id=s.id returning * into d;end if;
       else
        if d.review is distinct from p_payload->'review' then raise exception 'task_review_conflict';end if;
+       if exists(select 1 from public.teacher_task_reviews where submission_id=s.id and draft_revision=d.revision) then raise exception 'task_review_conflict';end if;
        select count(*) into prior from public.teacher_task_reviews where submission_id=s.id;
        if prior>0 and length(btrim(p_payload->'review'->>'reason'))=0 then raise exception 'task_review_reason_required';end if;
-       insert into public.teacher_task_reviews(submission_id,teacher_id,version,request_id,request_hash,review) values(s.id,p_actor,prior+1,(p_payload->>'requestId')::uuid,fingerprint,d.review) returning * into published;
+       insert into public.teacher_task_reviews(submission_id,teacher_id,version,draft_revision,request_id,request_hash,review) values(s.id,p_actor,prior+1,d.revision,(p_payload->>'requestId')::uuid,fingerprint,d.review) returning * into published;
        update public.teacher_task_student_work set state=d.review->>'decision',revision=revision+1,updated_at=clock_timestamp() where delivery_id=a.id and enrollment_id=s.enrollment_id;
        insert into public.teacher_task_work_events(submission_id,actor_id,event) values(s.id,p_actor,d.review->>'decision');
        result:=jsonb_build_object('receipt',jsonb_build_object('id',published.id,'version',published.version,'publishedAt',published.published_at),'replayed',false);

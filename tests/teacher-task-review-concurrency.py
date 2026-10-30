@@ -52,13 +52,19 @@ with database_uri() as uri:
   a,b=race(uri,lambda a:call(a,'review','publish',payload),lambda b:call(b,'review','publish',payload))
   assert a['receipt']['id']==b['receipt']['id'] and b['replayed'];assert c.execute('select count(*) from teacher_task_reviews').fetchone()[0]==1
   print('PASS simultaneous publication retries create one immutable review',flush=True)
+  correction=review|{'feedback':'Corrected published feedback','reason':'Explicit correction'}
+  call(c,'review','save',{'submissionId':s,'expectedRevision':1,'review':correction})
+  payload={'submissionId':s,'expectedRevision':2,'review':correction,'requestId':str(uuid.uuid4())}
+  a,b=race(uri,lambda a:call(a,'review','publish',payload),lambda b:call(b,'review','publish',payload|{'requestId':str(uuid.uuid4())}))
+  assert 'task_review_conflict' in b['error'];assert c.execute('select count(*) from teacher_task_reviews').fetchone()[0]==2
+  print('PASS distinct nonces cannot republish the same saved feedback revision',flush=True)
   r1=review|{'feedback':'First private correction','reason':'Correction one'};r2=review|{'feedback':'Second private correction','reason':'Correction two'}
-  a,b=race(uri,lambda a:call(a,'review','save',{'submissionId':s,'expectedRevision':1,'review':r1}),lambda b:call(b,'review','save',{'submissionId':s,'expectedRevision':1,'review':r2}))
+  a,b=race(uri,lambda a:call(a,'review','save',{'submissionId':s,'expectedRevision':2,'review':r1}),lambda b:call(b,'review','save',{'submissionId':s,'expectedRevision':2,'review':r2}))
   assert 'task_review_conflict' in b['error'];assert call(c,'review','open',{'submissionId':s})['draft']['review']==r1
   print('PASS concurrent private feedback saves cannot overwrite a newer draft',flush=True)
-  returned=review|{'decision':'returned','feedback':'Add evidence','reason':'Allow revision'};call(c,'review','save',{'submissionId':s,'expectedRevision':2,'review':returned})
+  returned=review|{'decision':'returned','feedback':'Add evidence','reason':'Allow revision'};call(c,'review','save',{'submissionId':s,'expectedRevision':3,'review':returned})
   before=call(c,'student_work','open',{'id':task})['work']['revision']
-  _,b=race(uri,lambda a:call(a,'review','publish',{'submissionId':s,'expectedRevision':3,'review':returned,'requestId':str(uuid.uuid4())}),lambda b:call(b,'student_work','save',{'id':task,'expectedRevision':before,'content':{'kind':'text','text':'Stale save'}}))
+  _,b=race(uri,lambda a:call(a,'review','publish',{'submissionId':s,'expectedRevision':4,'review':returned,'requestId':str(uuid.uuid4())}),lambda b:call(b,'student_work','save',{'id':task,'expectedRevision':before,'content':{'kind':'text','text':'Stale save'}}))
   assert 'task_work_conflict' in b['error']
   print('PASS a return racing with a stale learner save preserves submission and review',flush=True)
   work=call(c,'student_work','open',{'id':task})['work'];revised={'kind':'text','text':'Revised answer'};call(c,'student_work','save',{'id':task,'expectedRevision':work['revision'],'content':revised})
@@ -69,5 +75,5 @@ with database_uri() as uri:
   s2=a['receipt']['id'];call(c,'review','save',{'submissionId':s2,'expectedRevision':0,'review':review})
   cancel={'deliveryId':task,'requestId':str(uuid.uuid4()),'reason':'Synthetic cancellation'}
   _,b=race(uri,lambda a:call(a,'review','cancel',cancel),lambda b:call(b,'review','publish',{'submissionId':s2,'expectedRevision':1,'review':review,'requestId':str(uuid.uuid4())}))
-  assert 'task_review_locked' in b['error'];assert c.execute('select count(*) from teacher_task_reviews').fetchone()[0]==2;assert c.execute('select count(*) from teacher_task_submissions').fetchone()[0]==2
+  assert 'task_review_locked' in b['error'];assert c.execute('select count(*) from teacher_task_reviews').fetchone()[0]==3;assert c.execute('select count(*) from teacher_task_submissions').fetchone()[0]==2
   print('PASS cancellation fences concurrent publication without deleting prior history',flush=True)

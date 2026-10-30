@@ -13,7 +13,7 @@
   },
   "prepared": {
     "nativeBrowserCases": 9,
-    "independentPostgres17Races": 5
+    "independentPostgres17Races": 6
   },
   "localLimitations": [
     "Chromium executable unavailable; native verification requires isolated CI",
@@ -90,5 +90,19 @@
     "verification": "11 focused actual SQL/Edge/real-FunctionsClient cases pass; PDF/DOCX teacher/learner bytes are exact",
     "nativeFixtureChange": "Recognize actual octet-stream transport; raw DOCX parsing is no longer simulated",
     "requiredCi": "new exact-source gate is required; previous typography-source gate passed1603unit/346native"
+  },
+  "publicationRevisionFence": {
+    "reproduced": "Two distinct request nonces published two identical review versions from the same saved feedback revision",
+    "fix": "Unique submission/draft_revision publication fence plus explicit conflict; exact nonce replay precedes the fence",
+    "local": "six review/actual-SDK cases pass, including distinct-nonce rejection and original receipt recovery",
+    "concurrency": "sixth independent PostgreSQL17 race added; current exact-source CI required"
+  },
+  "compatibilityCI": {
+    "source": "ab7a003207a893c949dc094674fd1c073f39d87c",
+    "run": 41018677861,
+    "allFiveJobs": "passed",
+    "unitIntegration": 1604,
+    "native": 346,
+    "scope": "before the additional distinct-nonce publication fence"
   }
 }
