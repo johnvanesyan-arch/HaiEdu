@@ -1295,5 +1295,21 @@
     "preparedEdgeBundles": 12,
     "matchingSourceFileInstances": 53,
     "edgeDeployments": 0
+  },
+  "firstCorrectionCi": {
+    "source": "3a3122585c4dd63911e8da1cedc91c029263c0b2",
+    "run": 41129445144,
+    "unitIntegration": "passed",
+    "postgres17": "passed",
+    "institutional": "passed",
+    "nativePassed": 355,
+    "nativeTotal": 357,
+    "aggregate": "failed",
+    "findings": [
+      "Legacy onboarding action word at360px/200%.",
+      "Institutional overview long summary word at390px/200%.",
+      "Numeric academic-year range is a normal dash break, not a continuous word."
+    ],
+    "correction": "Concise onboarding action, bounded overview padding; Unicode letter/mark word ranges with unchanged geometry guards; explicit Today CSS source hash."
   }
 }

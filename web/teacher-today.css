@@ -26,3 +26,4 @@
 .today-class-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr)); }
 #teacherToday :is(.today-overview h2,.today-queue h3),#teacherToday>h3 { font-size:1.125rem; line-height:1.4; }
 #teacherToday .today-summary { font-size:1rem; }
+#teacherToday .today-overview { padding:min(1.25rem,20px); }
