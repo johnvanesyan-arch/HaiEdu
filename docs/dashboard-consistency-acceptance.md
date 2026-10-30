@@ -1,6 +1,6 @@
 # Dashboard consistency and complete learning journeys
 
-2026-10-31 Asia/Yerevan · owner-approved B.12.3 scope · implementation/acceptance pending after current custom-task production integration.
+2026-10-31 Asia/Yerevan · owner-approved B.12.3 scope · bounded Home/guide consistency implemented and source verified; full hosted/owner acceptance remains open.
 
 John approves a bounded consistency pass within the open stabilization work. Preserve all 45 mappings, every original policy/model/version, authorization, content/audio acceptance and classroom-assessed speaking. English stays at C47 and subject expansion stays paused. This approval is a planning decision; it does not close usability acceptance or activate a new feature.
 
@@ -44,6 +44,9 @@ Sources: [45-capability map](student-dashboard-function-coverage.md), [assessmen
 
 Teacher Home now gives class progress and writing review equal visible entry points. The final task/Home source passes CI41131022111 (1,628 unit/integration;357 native;16 task-specific PG17 races); five SHA-verified institutional/legacy images establish bounded 200%-text readability. Existing student assessment/course/progress, shared Forest/account controls and School/Master Admin authority contracts are retained by those unchanged regressions. This reuses evidence; it is not a fresh hosted master-admin, real-device or screen-reader acceptance claim.
 
-The guide audit found a reproducible documentation defect: the live-guide candidate still labelled own task creation and PDF responses as future features despite the new editor/submission implementation. The release now explains the independent source/response choices, private save, explicit recipients/send receipt, learner submission, custom review/publication and return/revision. Published course writing and optional library publication keep their separate instructions. Deadlines, notifications and automatic completion tracking remain future work. Existing guide native coverage now rejects the obsolete future claims and keeps keyboard/narrow/200%-text checks; current-source CI and fresh guide images are required.
+The guide audit found a reproducible documentation defect: the live-guide candidate still labelled own task creation and PDF responses as future features despite the new editor/submission implementation. The release now explains the independent source/response choices, private save, explicit recipients/send receipt, learner submission, custom review/publication and return/revision. Published course writing and optional library publication keep their separate instructions. Deadlines, notifications and automatic completion tracking remain future work. Existing guide native coverage now rejects the obsolete future claims and keeps keyboard/narrow/200%-text checks; current-source CI passes all357 native checks and three fresh SHA-verified guide images are inspected.
 
 Owner review must exercise both routes: Teacher Home → Classes → selected subject/unit performance and learner progress; and Assign writing → own task → explicit recipients → learner My Work → submit → teacher Writing review → publish/return → learner feedback/revision. Student assessment access and both administrator scopes remain part of the original usability checklist. The English demo setup and content/audio acceptance are accepted without repetition.
+
+
+Current deployment/source verification and the QA/demo identity collision are recorded in [the integration contract](teacher-task-production-integration.md). The strict isolation runners stop before negative/subject checks; final usability is held. No role boundary or assertion is relaxed to call this consistency pass complete.

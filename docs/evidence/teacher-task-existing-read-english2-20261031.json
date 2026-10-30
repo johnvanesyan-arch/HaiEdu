@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "scope": "English Unit 2 provisional pilot authenticated read acceptance",
+  "revision": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+  "status": "failed",
+  "startedAt": "2026-10-30T22:13:52.976Z",
+  "checks": [
+    {
+      "label": "exact activation, recorded owner decisions, reviewed main and six designated fixture guards",
+      "status": "passed"
+    },
+    {
+      "label": "exact production revision before authentication",
+      "status": "passed"
+    },
+    {
+      "label": "committed public client configuration present",
+      "status": "passed"
+    },
+    {
+      "label": "existing two-school positive and negative read controls pass",
+      "status": "failed"
+    }
+  ],
+  "limitations": [
+    "Read-only acceptance does not complete learner attempts, play audio or create writing work.",
+    "Existing Unit 2 owner content/audio acceptance, C29-C34 evidence and C26 runtime verification are reused.",
+    "Independent specialist qualification, four-subject pilot closure and source licences are not established by this runner."
+  ],
+  "frontendCommit": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+  "readIsolation": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "879590a48ce2407a52c8846e5cdbeeda69da090f",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "startedAt": "2026-10-30T22:13:58.237Z",
+    "status": "failed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own school",
+        "status": "failed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "failed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      }
+    ],
+    "finishedAt": "2026-10-30T22:14:52.821Z"
+  },
+  "finishedAt": "2026-10-30T22:14:52.821Z"
+}

@@ -1,6 +1,6 @@
 # Teacher task privacy, retention and account erasure
 
-2026-10-30 Asia/Yerevan · B.12.3.2 · staged in draft PR365, not deployed.
+2026-10-31 Asia/Yerevan · B.12.3.2 · implementation deployed in PR365; source verified; final hosted acceptance/owner usability remain open. No production account erasure was executed.
 
 This shared core slice extends the existing account inventory and two-stage student deletion procedure to teacher-created tasks. It applies across governed subjects, grades and roles. It does not change curriculum release gates, mastery, classroom speaking or owner content/audio acceptance. B.12.3/B.12 remain open and subject expansion remains paused.
 
