@@ -48,5 +48,18 @@
     },
     "corrections": "Align Today text assertions; wait for visible queue controls; add native submitted-file/revision download case",
     "finalGate": "current required CI remains visible on draft PR365"
+  },
+  "secondCI": {
+    "source": "ecf97e8f39811fb51c2c4a42f324624111d7cb60",
+    "run": 41014103560,
+    "unitIntegration": 1603,
+    "postgres17": "passed including five custom lifecycle races",
+    "native": {
+      "passed": 345,
+      "total": 346,
+      "failure": "custom harness legacy course-queue stub omitted required queue array after all return/revision/history actions passed"
+    },
+    "correction": "Supply actual legacy queue contract; bound account-fence wait to eight seconds",
+    "applicationCode": "unchanged from f23cf9e4e7483ee6965fc80d5dda0faf8260b59e"
   }
 }

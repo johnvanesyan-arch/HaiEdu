@@ -11,7 +11,7 @@ export async function reviewSurface(browser,t,{definition=textDefinition,width=1
   await p.addInitScript(({teacher,actor,credential,scope,klass,large})=>{
    let session={user:{id:actor}},listeners=[];window.__calls=[];window.__large=large;window.__klass=klass;window.__scope=scope;
    window.__client={auth:{getSession:async()=>({data:{session}}),onAuthStateChange:fn=>{listeners.push(fn);return{data:{subscription:{unsubscribe(){listeners=listeners.filter(f=>f!==fn);}}}};}},functions:{invoke:async(name,{body})=>{
-    window.__calls.push({name,body});if(name==='get-teacher-dashboard')return{data:{institutionalTeacher:true,classes:[klass],directory:{archive:false,hasMore:false,nextOffset:1}}};if(name==='manage-written-work')return{data:{version:'written-work-v1',tasks:[],works:[],readOnly:false}};
+    window.__calls.push({name,body});if(name==='get-teacher-dashboard')return{data:{institutionalTeacher:true,classes:[klass],directory:{archive:false,hasMore:false,nextOffset:1}}};if(name==='manage-written-work')return{data:{version:'written-work-v1',tasks:[],queue:[],readOnly:false}};
     const multipart=body instanceof FormData,r=await fetch('/fixture/'+name,{method:'POST',headers:{Authorization:'Bearer '+credential,...(multipart?{}:{'Content-Type':'application/json'})},body:multipart?body:JSON.stringify(body)}),binary=r.headers.get('content-type')?.includes('application/pdf')||r.headers.get('content-type')?.includes('wordprocessingml'),data=binary?await r.blob():await r.json();return r.ok?{data}:{data,error:{message:data.error}};
    }}};
    window.__switch=()=>{session={user:{id:'new-account'}};[...listeners].forEach(fn=>fn('SIGNED_IN',session));};
