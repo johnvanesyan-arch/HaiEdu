@@ -61,5 +61,26 @@
     },
     "correction": "Supply actual legacy queue contract; bound account-fence wait to eight seconds",
     "applicationCode": "unchanged from f23cf9e4e7483ee6965fc80d5dda0faf8260b59e"
+  },
+  "visualFollowup": {
+    "artifact": 12958987247,
+    "sha256": "e141ea5b9824f66887eae2965a041c3a573a60a9c3c191496df657efd251edac",
+    "inspected": [
+      390,
+      768,
+      1280
+    ],
+    "textScale": "200%",
+    "findings": [
+      "new long review heading/helper words split at390px",
+      "shared class-picker label crowding at1280px"
+    ],
+    "changes": [
+      "shorter natural Armenian heading, field label and helper text",
+      "font-relative auto-fit picker columns across review/authoring",
+      "shorter shared picker instruction and learner history label",
+      "native label-overflow assertion added"
+    ],
+    "currentSourceScreenshots": "required after layout corrections"
   }
 }
