@@ -1,5 +1,5 @@
--- Isolated implementation proposal, NOT a deployment migration. Apply only in
--- disposable fixtures until submission, review and retention contracts close.
+-- B.12.3.2 production integration; promoted unchanged SQL after isolated verification.
+-- Filename generated with Supabase CLI 2.122.0; deployment remains gated by release acceptance.
 create table public.teacher_task_versions (
  id uuid primary key default gen_random_uuid(),
  draft_id uuid references public.teacher_task_drafts(id) on delete set null,

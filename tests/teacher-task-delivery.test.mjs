@@ -4,7 +4,19 @@ import {addLearner} from './fixtures/resource-assignments-db.mjs';
 import {compile} from './fixtures/learning-acceptance.mjs';
 import {createTeacherTaskDeliveryHandler} from '../supabase/functions/_shared/teacher-task-delivery-handler.mjs';
 const definition={schemaVersion:'teacher-task-v1',title:'Task one',instructions:'Explain your answer.',source:{kind:'text',text:'Classroom task'},response:{kind:'link'},assessment:{kind:'feedback'}};
-async function setup(t){const f=await authoringFixture();t.after(()=>f.db.close());await f.db.exec(readFileSync('supabase/proposals/teacher-task-delivery.sql','utf8'));
+test('deployed custom-delivery entrypoint boots the actual authorized handler',async t=>{
+ const f=await authoringFixture({delivery:true});t.after(()=>f.db.close());let handler;
+ const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);
+ compile(readFileSync('supabase/functions/manage-teacher-task-delivery/index.ts','utf8'),{
+  createClient:()=>f.admin,hasActiveLiveSession,createTeacherTaskDeliveryHandler,
+  Deno:{env:{get:()=> 'fixture'},serve:value=>{handler=value;}}
+ },[]);
+ assert.equal(typeof handler,'function');
+ const r=await handler(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+token(20),'Content-Type':'application/json'},body:JSON.stringify({action:'list',context:context(0,true),payload:{}})}));
+ assert.equal(r.status,200,await r.clone().text());assert.equal((await r.json()).version,'teacher-task-delivery-v1');assert.equal(r.headers.get('cache-control'),'no-store');
+ assert.equal((await handler(new Request('https://fixture.invalid',{method:'POST'}))).status,401);
+});
+async function setup(t){const f=await authoringFixture();t.after(()=>f.db.close());await f.db.exec(readFileSync('supabase/migrations/20261030203407_teacher_task_delivery.sql','utf8'));
  const rpc=async(action,payload={},actor=20,scope=context(actor===20?0:2,true))=>(await f.db.query('select service_teacher_task_delivery($1,$2,$3,$4,$5) r',[id(actor),id(actor===20?420:421),action,JSON.stringify(scope),JSON.stringify(payload)])).rows[0].r;
  const draftCall=async(action,payload)=>(await f.db.query('select service_teacher_task_drafts($1,$2,$3,$4,$5) r',[id(20),id(420),action,JSON.stringify(context(0,true)),JSON.stringify(payload)])).rows[0].r;
  const draft=(await draftCall('create',{requestId:crypto.randomUUID(),definition})).draft;

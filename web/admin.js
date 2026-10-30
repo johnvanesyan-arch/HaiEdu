@@ -81,6 +81,7 @@ function friendlyError(error) {
     school_not_found: "Դպրոցը չի գտնվել։",
     class_not_found: "Դասարանը չի գտնվել։",
     deletion_execution_started:"Վերջնական ջնջումն արդեն սկսված է։ Այն հնարավոր չէ չեղարկել։",
+    deletion_client_update_required:"Թարմացրեք էջը՝ ջնջման ընթացքն ու ավարտը ճիշտ տեսնելու համար։",
     task_privacy_storage_unavailable:"Ֆայլերի ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
     task_privacy_unavailable:"Ջնջման արդյունքը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
     student_data_erasure_failed:"Տվյալների ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
@@ -392,7 +393,7 @@ async function executeDeletion(requestId,started=false) {
   document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=true;});
   try {
     if(!await current())return;
-    const result=await invoke("manage-admin-account",{action:"execute_deletion",requestId});
+    const result=await invoke("manage-admin-account",{action:"execute_deletion",executionProtocol:"teacher-task-privacy-v1",requestId});
     if(!await current())return;
     await loadDeletions(current);
     if(!await current())return;

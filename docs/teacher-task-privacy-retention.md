@@ -12,6 +12,8 @@ Source PDFs belong to their teacher. Deleting a recipient removes that learner's
 
 ## Two-stage student deletion
 
+**Integration compatibility:** final execution requires body `executionProtocol: "teacher-task-privacy-v1"`. Cached legacy consoles receive HTTP409 `deletion_client_update_required` with a refresh instruction before any preparation, ban, revocation or data/file change. The current client opts in explicitly; this does not change admin/MFA authorization. See the [production integration contract](teacher-task-production-integration.md).
+
 Approval still only marks the existing request `processing` and profile `deletion_pending`. The learner can cancel, or the administrator reject, until explicit final execution begins. The existing active master-admin/live-session/AAL2 gate and typed `DELETE` confirmation remain.
 
 | Phase | Action and recovery |

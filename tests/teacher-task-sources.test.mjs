@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import {rea
 import {fixture,id,context,token} from './fixtures/writing-assignments-api.mjs';import {compile} from './fixtures/learning-acceptance.mjs';
 import {createTeacherTaskSourcesHandler,validTeacherTaskPdf} from '../supabase/functions/_shared/teacher-task-sources-handler.mjs';
 const pdf=new TextEncoder().encode('%PDF-1.4\n1 0 obj\n<<>>\nendobj\n%%EOF\n');
-async function setup(t){const f=await fixture();t.after(()=>f.db.close());await f.db.exec(readFileSync('supabase/migrations/20261029203041_teacher_task_drafts.sql','utf8'));await f.db.exec(readFileSync('supabase/migrations/20261029203950_teacher_task_source_attachments.sql','utf8'));
+async function setup(t){const f=await fixture();t.after(()=>f.db.close());await f.db.exec(readFileSync('supabase/migrations/20261030203404_teacher_task_drafts.sql','utf8'));await f.db.exec(readFileSync('supabase/migrations/20261030203406_teacher_task_source_attachments.sql','utf8'));
  const definition={schemaVersion:'teacher-task-v1',title:'PDF task',instructions:'Respond online.',source:{kind:'pdf',attachmentId:null},response:{kind:'text'},assessment:{kind:'feedback'}};
  const rpc=async(action,payload={},actor=20,scope=context(0,true))=>(await f.db.query('select service_teacher_task_drafts($1,$2,$3,$4,$5) r',[id(actor),id(actor===20?420:421),action,JSON.stringify(scope),JSON.stringify(payload)])).rows[0].r;
  const draft=(await rpc('create',{requestId:crypto.randomUUID(),definition})).draft,objects=new Map();let uploadError=false;

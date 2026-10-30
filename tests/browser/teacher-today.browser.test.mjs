@@ -7,6 +7,40 @@ let browser;before(async()=>{browser=await chromium.launch({headless:true});});a
 const summary=p=>p.locator('[data-today-summary]');
 const calls=(p,fn)=>p.evaluate(fn=>window.__today.calls.filter(c=>c.fn===fn),fn);
 
+test('teacher Home balances classroom progress and review with readable keyboard paths',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t);
+ await expect(summary(p)).toContainText('2 դասընթացի գրավոր');
+ await p.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [1280,768,390]){
+  await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+  for(const selector of ['[data-home-progress]','[data-home-review]']){
+   const link=p.locator(selector);await expect(link).toBeVisible();await link.focus();
+   assert.equal(await link.evaluate(e=>e===document.activeElement),true);
+  }
+  const bad=await p.locator('.teacher-home-paths').evaluate(root=>{
+   const errors=[];
+   for(const el of root.querySelectorAll('strong,span')){
+    const box=el.getBoundingClientRect(),node=el.firstChild;
+    if(el.scrollWidth>el.clientWidth+1||box.right>innerWidth+1)errors.push(el.textContent);
+    for(const word of node.textContent.matchAll(/\S+/gu)){
+     const r=document.createRange();r.setStart(node,word.index);r.setEnd(node,word.index+word[0].length);
+     const rects=[...r.getClientRects()].filter(r=>r.width>0);
+     if(rects.some(r=>Math.abs(r.top-rects[0].top)>1)||rects.some(r=>r.left<box.left-1||r.right>box.right+1))errors.push(word[0]);
+    }
+   }
+   return errors;
+  });
+  assert.deepEqual(bad,[],String(width));
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-home-balanced-'+width+'.png',fullPage:true});}
+ }
+ await p.evaluate(()=>document.documentElement.style.fontSize='100%');
+ await p.locator('[data-home-progress]').click();await expect(p.locator('#teacherClassesView')).toBeVisible();
+ assert.equal(new URL(p.url()).searchParams.get('view'),'classes');
+ await p.locator('.hm-role-nav a[href="./teacher.html?view=home"]').click();
+ await p.locator('[data-home-review]').click();await expect(p.locator('[data-review-class]')).toBeVisible();
+ assert.equal(new URL(p.url()).searchParams.get('view'),'review');assert.deepEqual(errors,[]);
+});
+
 test('Today opens exact work directly, reloads context, reviews and advances across units without analytics fanout',async t=>{
  const {page:p,errors}=await todayFixture(browser,t);
  await expect(summary(p)).toContainText('2 դասընթացի գրավոր');

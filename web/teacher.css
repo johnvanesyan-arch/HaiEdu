@@ -81,3 +81,11 @@
 
 .teacher-review-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:16px}.teacher-review-controls label{min-width:0;display:grid;align-content:start;gap:.4rem}.teacher-review-controls select{width:100%;min-width:0;max-width:100%}.teacher-review-picker{margin-bottom:20px}@media(max-width:900px){.teacher-review-controls{grid-template-columns:minmax(0,1fr)}}
 #teacherReviewRoot .teacher-review-picker,#teacherReviewRoot .written-work{padding:clamp(16px,2.4vw,28px)}
+
+/* Keep classroom evidence and submitted-work review equally discoverable. */
+.teacher-home-paths { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr)); gap:1rem; margin-block:1.25rem; }
+.teacher-home-path { display:grid; align-content:start; gap:.5rem; min-width:0; padding:clamp(.75rem,1vw,1rem); color:var(--forest-text); text-decoration:none; overflow-wrap:break-word; }
+.teacher-home-path strong { font-size:1.125rem; }
+.teacher-home-path span { color:var(--forest-muted); }
+.teacher-home-path:hover { background:var(--forest-selected); }
+.teacher-home-path:focus-visible { outline:3px solid #876341; outline-offset:3px; }

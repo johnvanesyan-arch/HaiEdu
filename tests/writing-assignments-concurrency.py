@@ -44,7 +44,7 @@ with database_uri() as uri:
   c.execute('create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[])')
   c.execute(next((ROOT/'supabase/migrations').glob('*_sprint_16_5b_supplementary_materials.sql')).read_text())
   c.execute(next((ROOT/'supabase/migrations').glob('*_sprint_16_5b_resource_assignments.sql')).read_text())
-  c.execute((ROOT/'supabase/migrations/20261029192739_teacher_writing_assignments.sql').read_text())
+  c.execute((ROOT/'supabase/migrations/20261030203359_teacher_writing_assignments.sql').read_text())
   preview=call(c,'preview',{'taskId':ident(1000)})
   payload={'taskId':ident(1000),'fingerprint':preview['task']['fingerprint'],'rosterFingerprint':preview['rosterFingerprint'],'requestId':ident(8001),'mode':'class','enrollmentIds':[],'instructions':''}
   a,b=race(uri,lambda a:call(a,'assign',payload),lambda b:call(b,'assign',payload))

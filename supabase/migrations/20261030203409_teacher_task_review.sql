@@ -1,5 +1,5 @@
--- Isolated proposal: apply after delivery/student-work proposals in disposable
--- fixtures only. Retention/erasure and deployment remain release prerequisites.
+-- B.12.3.2 production integration; promoted unchanged SQL after isolated verification.
+-- Filename generated with Supabase CLI 2.122.0; deployment remains gated by release acceptance.
 create table public.teacher_task_review_drafts (
  submission_id uuid primary key references public.teacher_task_submissions(id),
  teacher_id uuid not null references public.profiles(id),

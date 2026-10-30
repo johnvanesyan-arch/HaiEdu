@@ -1,5 +1,5 @@
--- Staged after custom delivery/student/review proposals. No production execution.
--- Storage bytes are removed through the Storage API, never storage.objects SQL.
+-- B.12.3.2 production integration; promoted unchanged SQL after isolated verification.
+-- Filename generated with Supabase CLI 2.122.0; deployment remains gated by release acceptance.
 alter table public.account_deletion_requests add column execution_started_at timestamptz;
 create table public.teacher_task_erasure_jobs (
  request_id uuid primary key references public.account_deletion_requests(id),

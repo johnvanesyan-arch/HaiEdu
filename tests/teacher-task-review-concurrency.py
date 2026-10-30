@@ -41,8 +41,8 @@ with database_uri() as uri:
   c.execute('create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[])')
   for pattern in ['*_sprint_16_5b_supplementary_materials.sql','*_sprint_16_5b_resource_assignments.sql']:
    c.execute(next((ROOT/'supabase/migrations').glob(pattern)).read_text())
-  for name in ['20261029192739_teacher_writing_assignments.sql','20261029203041_teacher_task_drafts.sql','20261029203950_teacher_task_source_attachments.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())
-  for name in ['teacher-task-delivery.sql','teacher-task-student-work.sql','teacher-task-review.sql']:c.execute((ROOT/'supabase/proposals'/name).read_text())
+  for name in ['20261030203359_teacher_writing_assignments.sql','20261030203404_teacher_task_drafts.sql','20261030203406_teacher_task_source_attachments.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())
+  for name in ['20261030203407_teacher_task_delivery.sql','20261030203408_teacher_task_student_work.sql','20261030203409_teacher_task_review.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())
   definition={'schemaVersion':'teacher-task-v1','title':'Synthetic concurrency task','instructions':'Explain.','source':{'kind':'text','text':'Synthetic source'},'response':{'kind':'text'},'assessment':{'kind':'feedback'}}
   d=call(c,'drafts','create',{'requestId':str(uuid.uuid4()),'definition':definition})['draft']
   copying={'id':d['id'],'expectedRevision':1,'requestId':str(uuid.uuid4())}

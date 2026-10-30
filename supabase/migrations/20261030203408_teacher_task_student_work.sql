@@ -1,5 +1,5 @@
--- Isolated proposal; not a production migration. Review/return/cancellation,
--- privacy/retention and endpoint deployment remain separate release gates.
+-- B.12.3.2 production integration; promoted unchanged SQL after isolated verification.
+-- Filename generated with Supabase CLI 2.122.0; deployment remains gated by release acceptance.
 create table public.teacher_task_student_work (
  delivery_id uuid not null, enrollment_id uuid not null,
  student_id uuid not null references public.profiles(id),

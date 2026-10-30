@@ -1,4 +1,4 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import {taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing} from "../_shared/teacher-task-privacy.mjs";
 
@@ -335,6 +335,13 @@ Deno.serve(async (req) => {
     }
 
     if (action === "execute_deletion") {
+      // Older cached consoles treat any 2xx response as final completion. Refuse
+      // them before preparing or changing a target; only opted-in clients can
+      // execute the resumable protocol and understand its pending response.
+      if (body.executionProtocol !== "teacher-task-privacy-v1") return json({
+        error: "deletion_client_update_required",
+        detail: "Թարմացրեք էջը՝ ջնջման ընթացքն ու ավարտը ճիշտ տեսնելու համար։",
+      }, 409);
       const requestId = String(body.requestId ?? "");
       if (!/^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(requestId)) return json({ error: "request_id_required" }, 400);
       const { data: request } = await admin.from("account_deletion_requests")

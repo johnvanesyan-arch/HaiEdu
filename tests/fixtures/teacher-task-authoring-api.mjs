@@ -7,9 +7,9 @@ import {createTeacherTaskSourcesHandler} from '../../supabase/functions/_shared/
 export {id,context,token} from './writing-assignments-api.mjs';
 export async function authoringFixture({delivery=false}={}){
  const f=await fixture();
- await f.db.exec(readFileSync('supabase/migrations/20261029203041_teacher_task_drafts.sql','utf8'));
- await f.db.exec(readFileSync('supabase/migrations/20261029203950_teacher_task_source_attachments.sql','utf8'));
- if(delivery)await f.db.exec(readFileSync('supabase/proposals/teacher-task-delivery.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261030203404_teacher_task_drafts.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261030203406_teacher_task_source_attachments.sql','utf8'));
+ if(delivery)await f.db.exec(readFileSync('supabase/migrations/20261030203407_teacher_task_delivery.sql','utf8'));
  const objects=new Map();
  f.admin.storage={from:()=>({upload:async(path,bytes)=>{if(objects.has(path))return{error:{message:'exists'}};objects.set(path,new Blob([bytes]));return{data:{path}};},download:async path=>objects.has(path)?{data:objects.get(path)}:{error:{message:'missing'}}})};
  const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);
