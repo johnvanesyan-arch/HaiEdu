@@ -3,6 +3,7 @@ import {readFileSync} from 'node:fs';
 import {deflateRawSync} from 'node:zlib';
 import {authoringFixture,id,context,token} from './teacher-task-authoring-api.mjs';
 import {compile} from './learning-acceptance.mjs';
+import {createTeacherTaskReviewHandler} from '../../supabase/functions/_shared/teacher-task-review-handler.mjs';
 import {createTeacherTaskStudentHandler} from '../../supabase/functions/_shared/teacher-task-student-handler.mjs';
 import {createTeacherTaskStudentFilesHandler} from '../../supabase/functions/_shared/teacher-task-student-files-handler.mjs';
 export {id,context,token};
@@ -17,8 +18,9 @@ export function docxBytes(extra={}){
  }
  const c=Buffer.concat(central),e=Buffer.alloc(22);e.writeUInt32LE(0x06054b50);e.writeUInt16LE(Object.keys(entries).length,8);e.writeUInt16LE(Object.keys(entries).length,10);e.writeUInt32LE(c.length,12);e.writeUInt32LE(offset,16);return new Uint8Array(Buffer.concat([...chunks,c,e]));
 }
-export async function studentTaskFixture(){
+export async function studentTaskFixture({review=false}={}){
  const f=await authoringFixture({delivery:true});await addLearner(f.db);await f.db.query("update classes set name='Դասարան' where id=$1",[id(321)]);await f.db.query("update subjects set name_hy='Առարկա' where id=(select subject_id from subject_programs where id=(select subject_program_id from institutional_class_enrollments where id=$1))",[id(371)]);await f.db.exec(readFileSync('supabase/proposals/teacher-task-student-work.sql','utf8'));
+ if(review)await f.db.exec(readFileSync('supabase/proposals/teacher-task-review.sql','utf8'));
  const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);const options={createAdmin:()=>f.admin,hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture'}};
  const handleWork=createTeacherTaskStudentHandler(options),handleFiles=createTeacherTaskStudentFilesHandler(options);
  const request=(action,payload={},actor=10,scope=action==='inbox'?{}:context(0,false))=>handleWork(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+token(actor),'Content-Type':'application/json'},body:JSON.stringify({action,context:scope,payload})}));
@@ -32,5 +34,5 @@ export async function studentTaskFixture(){
   const p=await f.admin.rpc('service_teacher_task_delivery',{p_actor:id(20),p_auth:id(420),p_action:'preview',p_context:context(0,true),p_payload:{id:draft.id}});if(p.error)throw Error(p.error.message);
   const sent=await f.admin.rpc('service_teacher_task_delivery',{p_actor:id(20),p_auth:id(420),p_action:'assign',p_context:context(0,true),p_payload:{id:draft.id,expectedRevision:draft.revision,definition,requestId:crypto.randomUUID(),rosterFingerprint:p.data.rosterFingerprint,mode,enrollmentIds}});if(sent.error)throw Error(sent.error.message);return sent.data.delivery;
  };
- return{...f,handleWork,handleFiles,request,fileRequest,send};
+ return{...f,handleWork,handleFiles,request,fileRequest,send,handleReview:review?createTeacherTaskReviewHandler(options):null,handleReviewFiles:review?createTeacherTaskReviewHandler(options,{files:true}):null};
 }

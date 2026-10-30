@@ -140,11 +140,12 @@ jobs:
       - name: Verify supplementary material lifecycle, authorization and PDF delivery
         run: node --test tests/supplementary-resources.test.mjs tests/supplementary-resources-handler.test.mjs
       - name: Verify resource assignment recipients, delivery and handler
-        run: node --test --test-concurrency=1 tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs tests/writing-assignments.test.mjs tests/writing-assignments-handler.test.mjs tests/teacher-task-definition.test.mjs tests/teacher-task-delivery.test.mjs tests/teacher-task-student-work.test.mjs tests/teacher-task-drafts.test.mjs tests/teacher-task-sources.test.mjs tests/teacher-task-source-client.test.mjs tests/teacher-task-form.test.mjs
+        run: node --test --test-concurrency=1 tests/resource-assignments.test.mjs tests/resource-assignments-handler.test.mjs tests/writing-assignments.test.mjs tests/writing-assignments-handler.test.mjs tests/teacher-task-definition.test.mjs tests/teacher-task-delivery.test.mjs tests/teacher-task-student-work.test.mjs tests/teacher-task-review.test.mjs tests/teacher-task-drafts.test.mjs tests/teacher-task-sources.test.mjs tests/teacher-task-source-client.test.mjs tests/teacher-task-form.test.mjs
       - name: Verify resource assignment races
         run: |
           python tests/resource-assignments-concurrency.py
           python tests/writing-assignments-concurrency.py
+          python tests/teacher-task-review-concurrency.py
       - name: Verify supplementary publication and delivery races
         run: python tests/supplementary-resources-concurrency.py
       - name: Verify material revision, approval and reviewer-session races

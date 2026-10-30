@@ -11,3 +11,16 @@
 .task-editor :is(label,input,textarea,select){min-width:0}
 
 .student-custom-tasks label{display:grid;gap:.5rem;margin-block:1rem;min-width:0}.student-custom-tasks :is(input,textarea){display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box}.student-custom-tasks textarea{resize:vertical}.student-custom-tasks .wa-student-task{border-block-end:1px solid var(--border);padding-block:1rem}.student-custom-tasks [hidden]{display:none!important}
+/* Custom task review uses the same private-draft/published-feedback vocabulary. */
+.teacher-custom-review .tr-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem}
+.teacher-custom-review .tr-columns>section{min-width:0}
+.teacher-custom-review label{display:grid;gap:.35rem;margin-block:.75rem;min-width:0}
+.teacher-custom-review textarea,.teacher-custom-review select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.teacher-custom-review textarea{resize:vertical}
+.teacher-custom-review [data-tr-status]{overflow-wrap:anywhere}
+.teacher-custom-review details{margin-block:.75rem}
+.teacher-custom-review .wa-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+@media(max-width:58rem){.teacher-custom-review .tr-columns{grid-template-columns:minmax(0,1fr)}}
+
+[data-review-kind]:not([hidden]){display:flex;flex-wrap:wrap;gap:.5rem;margin-block:1rem}
+[data-review-kind] button{min-width:0;max-width:100%}

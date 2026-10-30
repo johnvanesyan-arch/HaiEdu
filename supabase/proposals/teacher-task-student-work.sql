@@ -4,7 +4,7 @@ create table public.teacher_task_student_work (
  delivery_id uuid not null, enrollment_id uuid not null,
  student_id uuid not null references public.profiles(id),
  revision integer not null check(revision>0),
- state text not null check(state in ('draft','submitted')),
+ state text not null check(state in ('draft','submitted','returned','reviewed')),
  content jsonb not null,
  updated_at timestamptz not null default clock_timestamp(),
  primary key(delivery_id,enrollment_id),
@@ -44,7 +44,7 @@ create table public.teacher_task_work_events (
  id uuid primary key default gen_random_uuid(),
  submission_id uuid not null references public.teacher_task_submissions(id),
  actor_id uuid not null references public.profiles(id),
- event text not null check(event='submitted'),
+ event text not null check(event in ('submitted','returned','reviewed')),
  created_at timestamptz not null default clock_timestamp()
 );
 create index teacher_task_work_events_submission on public.teacher_task_work_events(submission_id);
@@ -55,7 +55,7 @@ alter table public.teacher_task_submissions enable row level security;
 alter table public.teacher_task_work_events enable row level security;
 revoke all on public.teacher_task_student_work,public.teacher_task_response_files,public.teacher_task_submissions,public.teacher_task_work_events from public,anon,authenticated,service_role;
 create function private.teacher_task_work_guard() returns trigger language plpgsql set search_path='' as $$begin
- if tg_op='DELETE' or old.state='submitted' or new.delivery_id<>old.delivery_id or new.enrollment_id<>old.enrollment_id or new.student_id<>old.student_id or new.revision<>old.revision+1 then raise exception 'task_work_immutable';end if;return new;end;$$;
+ if tg_op='DELETE' or (old.state in ('submitted','reviewed') and (new.state not in ('returned','reviewed') or new.content is distinct from old.content)) or new.delivery_id<>old.delivery_id or new.enrollment_id<>old.enrollment_id or new.student_id<>old.student_id or new.revision<>old.revision+1 then raise exception 'task_work_immutable';end if;return new;end;$$;
 create trigger teacher_task_work_guard before update or delete on public.teacher_task_student_work for each row execute function private.teacher_task_work_guard();
 create function private.teacher_task_response_file_guard() returns trigger language plpgsql set search_path='' as $$begin
  if tg_op='UPDATE' and (to_jsonb(new)-'status')=(to_jsonb(old)-'status') and (new.status=old.status or old.status='pending' and new.status='ready') then return new;end if;raise exception 'task_file_immutable';end;$$;
@@ -99,9 +99,10 @@ begin
  end if;return false;
 exception when invalid_text_representation then return false;
 end;$$;
+create function private.teacher_task_submission_reviews(p_id uuid) returns jsonb language sql stable set search_path='' as $$select '[]'::jsonb;$$;
 create function private.teacher_task_work_public(p_id uuid,p_enrollment uuid) returns jsonb language sql stable set search_path='' as $$
  select jsonb_build_object('revision',coalesce(w.revision,0),'state',coalesce(w.state,'not_started'),'content',w.content,'document',(select jsonb_build_object('id',f.id,'format',f.format,'bytes',f.file_bytes) from public.teacher_task_response_files f where f.id=case when w.content->>'kind'='document' then (w.content->>'fileId')::uuid end and f.delivery_id=p_id and f.enrollment_id=p_enrollment),
- 'submissions',(select coalesce(jsonb_agg(jsonb_build_object('id',s.id,'content',s.content,'submittedAt',s.submitted_at) order by s.submitted_at,s.id),'[]') from public.teacher_task_submissions s where s.delivery_id=p_id and s.enrollment_id=p_enrollment))
+ 'submissions',(select coalesce(jsonb_agg(jsonb_build_object('id',s.id,'content',s.content,'submittedAt',s.submitted_at,'reviews',private.teacher_task_submission_reviews(s.id)) order by s.submitted_at,s.id),'[]') from public.teacher_task_submissions s where s.delivery_id=p_id and s.enrollment_id=p_enrollment))
  from (values(1)) seed(n) left join public.teacher_task_student_work w on w.delivery_id=p_id and w.enrollment_id=p_enrollment;
 $$;
 create function private.service_teacher_task_student_work(p_actor uuid,p_auth uuid,p_action text,p_context jsonb,p_payload jsonb default '{}') returns jsonb
@@ -129,6 +130,8 @@ begin
  ctx:=private.teacher_task_student_context(p_actor,p_auth,task_id,p_context);enr:=(p_context->>'enrollmentId')::uuid;
  select v.definition into strict definition from public.teacher_task_versions v where v.id=(ctx->>'taskVersionId')::uuid;
  -- One lock covers draft creation/save, submit and upload state transitions.
+ perform pg_advisory_xact_lock_shared(hashtextextended('teacher-task-delivery:'||task_id::text,0));
+ ctx:=private.teacher_task_student_context(p_actor,p_auth,task_id,p_context);
  perform pg_advisory_xact_lock(hashtextextended('teacher-task-work:'||task_id::text||':'||enr::text,0));
  select * into w from public.teacher_task_student_work where delivery_id=task_id and enrollment_id=enr for update;
  if p_action='source' then
@@ -140,7 +143,7 @@ begin
   if p_action='reserve_file' then
    if exists(select 1 from jsonb_object_keys(p_payload) k where k not in ('id','requestId','sha256','bytes','format')) or p_payload->>'requestId' is null or coalesce(p_payload->>'sha256','')!~'^[a-f0-9]{64}$' or jsonb_typeof(p_payload->'bytes') is distinct from 'number' or coalesce(p_payload->>'bytes','')!~'^[0-9]+$' or (p_payload->>'bytes')::numeric not between 1 and 10485760 then raise exception 'task_work_invalid';end if;
    if definition->'response'->>'kind'<>'document' or not(definition->'response'->'allowedFormats' ? (p_payload->>'format')) then raise exception 'task_work_format';end if;
-   if w.state='submitted' then raise exception 'task_work_locked';end if;
+   if w.state in ('submitted','reviewed') or coalesce((ctx->>'cancelled')::boolean,false) then raise exception 'task_work_locked';end if;
    perform pg_advisory_xact_lock(hashtextextended('task-response-file:'||p_actor::text||':'||(p_payload->>'requestId')::uuid::text,0));
    select * into f from public.teacher_task_response_files where student_id=p_actor and request_id=(p_payload->>'requestId')::uuid;
    if found then
@@ -154,7 +157,7 @@ begin
    select * into f from public.teacher_task_response_files where id=(p_payload->>'fileId')::uuid and delivery_id=task_id and enrollment_id=enr and student_id=p_actor for update;
    if not found then raise exception 'task_file_unavailable';end if;
    if p_action='ready_file' then
-    if w.state='submitted' then raise exception 'task_work_locked';end if;
+    if w.state in ('submitted','reviewed') or coalesce((ctx->>'cancelled')::boolean,false) then raise exception 'task_work_locked';end if;
     update public.teacher_task_response_files set status='ready' where teacher_task_response_files.id=f.id returning * into f;
    elsif f.status<>'ready' then raise exception 'task_file_unavailable';end if;
   end if;
@@ -173,7 +176,7 @@ begin
    end if;
   elsif p_payload ? 'requestId' then raise exception 'task_work_invalid';end if;
   if result is null then
-   if w.state='submitted' then raise exception 'task_work_locked';end if;
+   if w.state in ('submitted','reviewed') or coalesce((ctx->>'cancelled')::boolean,false) then raise exception 'task_work_locked';end if;
    if p_action='save' and w.content is not distinct from p_payload->'content' then null;
    else
     if coalesce(w.revision,0)<>(p_payload->>'expectedRevision')::integer then raise exception 'task_work_conflict';end if;
@@ -200,5 +203,5 @@ begin
 exception when invalid_text_representation or numeric_value_out_of_range then raise exception 'task_work_invalid';
 end;$$;
 create function public.service_teacher_task_student_work(p_actor uuid,p_auth uuid,p_action text,p_context jsonb,p_payload jsonb default '{}') returns jsonb language sql security invoker set search_path='' as $$select private.service_teacher_task_student_work(p_actor,p_auth,p_action,p_context,p_payload);$$;
-revoke all on function private.teacher_task_work_guard(),private.teacher_task_response_file_guard(),private.teacher_task_student_context(uuid,uuid,uuid,jsonb),private.teacher_task_content_valid(uuid,uuid,uuid,jsonb,jsonb,boolean),private.teacher_task_work_public(uuid,uuid),private.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb),public.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb) from public,anon,authenticated,service_role;
+revoke all on function private.teacher_task_work_guard(),private.teacher_task_response_file_guard(),private.teacher_task_student_context(uuid,uuid,uuid,jsonb),private.teacher_task_content_valid(uuid,uuid,uuid,jsonb,jsonb,boolean),private.teacher_task_work_public(uuid,uuid),private.teacher_task_submission_reviews(uuid),private.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb),public.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb) from public,anon,authenticated,service_role;
 grant execute on function private.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb),public.service_teacher_task_student_work(uuid,uuid,text,jsonb,jsonb) to service_role;

@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-30",
+  "timezone": "Asia/Yerevan",
+  "scope": "B.12.3.2 custom task review/return/revision/cancellation",
+  "stage": "unmerged working branch; not deployed",
+  "draftPR": 365,
+  "localChecks": {
+    "actualSqlEdgeDeliveryStudentReview": 12,
+    "existingFormDefinitionNavigation": 17,
+    "typecheck": "passed",
+    "browserQaDependencyCoverage": "passed",
+    "teacherBundleParity": "passed"
+  },
+  "prepared": {
+    "nativeBrowserCases": 8,
+    "independentPostgres17Races": 5
+  },
+  "localLimitations": [
+    "Chromium executable unavailable; native verification requires isolated CI",
+    "psycopg unavailable; actual PostgreSQL concurrency verification requires CI"
+  ],
+  "priorUnchangedEvidence": {
+    "source": "a625cfeb564c9c3ca3fb5233d976f7c35cc091db",
+    "run": 40963936732,
+    "unitIntegration": 1598,
+    "native": 337,
+    "scope": "previous learner slice only; not current review verification"
+  },
+  "remaining": [
+    "current CI and visual artifact inspection",
+    "source PDF reuse and formatted text",
+    "privacy inventory and retention/erasure reconciliation",
+    "production migrations, deployment and source verification",
+    "owner usability acceptance"
+  ],
+  "productionWrites": false,
+  "B123": "open",
+  "subjectExpansion": "paused"
+}

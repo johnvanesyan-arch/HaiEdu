@@ -3,7 +3,8 @@ import {validateTaskDocument} from './teacher-task-documents.mjs';
 import {taskStudentCors,taskStudentReply,taskStudentError,taskStudentAccess,taskBounded,taskShape,validStudentContext} from './teacher-task-student-handler.mjs';
 const fail=code=>{throw Error(code);};
 const hash=async bytes=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join('');
-async function readback(admin,file){const r=await admin.storage.from('teacher-task-files').download(file.path);if(r.error||!r.data)fail('task_file_storage_unavailable');const bytes=new Uint8Array(await r.data.arrayBuffer());if(bytes.length!==file.bytes||await hash(bytes)!==file.sha256)fail('task_file_invalid');await validateTaskDocument(bytes,file.format);return bytes;}
+export async function readbackTaskFile(admin,file){const r=await admin.storage.from('teacher-task-files').download(file.path);if(r.error||!r.data)fail('task_file_storage_unavailable');const bytes=new Uint8Array(await r.data.arrayBuffer());if(bytes.length!==file.bytes||await hash(bytes)!==file.sha256)fail('task_file_invalid');await validateTaskDocument(bytes,file.format);return bytes;}
+const readback=readbackTaskFile;
 export function createTeacherTaskStudentFilesHandler(options){return async request=>{
  if(request.method==='OPTIONS')return new Response('ok',{headers:taskStudentCors});if(request.method!=='POST')return taskStudentReply({error:'method_not_allowed'},405);
  try{
