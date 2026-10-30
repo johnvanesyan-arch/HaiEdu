@@ -1,4 +1,5 @@
 import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
+import {teacherHomeReadability} from '../fixtures/teacher-home-readability.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
@@ -63,6 +64,10 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
     for(const scale of [100,200]) {
       await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
       await noPageOverflow(page,`${file}/${width}/${scale}`);
+      if(file==='teacher.html'){
+        assert.deepEqual(await page.evaluate(teacherHomeReadability),[],`${file}/${width}/${scale}: readable Home`);
+        if(scale===200&&width!==768){await page.evaluate(()=>window.scrollTo(0,0));await snapshot(page,`teacher-large-${width}`);}
+      }
       const account=page.locator('.hm-role-foot a[href="./privacy.html"]');
       await expect(account).toBeVisible();await account.focus();
       assert.equal(await account.evaluate(e=>e===document.activeElement),true);

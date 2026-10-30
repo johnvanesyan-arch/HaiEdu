@@ -2,7 +2,7 @@
 
 2026-10-31 Asia/Yerevan · B.12.3.2 · six migrations staged; final privacy confirmation, runtime deployment, frontend activation and usability acceptance pending.
 
-**Current blocker:** Supabase returned an expired confirmation twice for the final privacy migration. Readback confirms no privacy execution column/job table and no history entry for that phase. The six successful migrations preserve all 117 original public tables exactly. No runtime or frontend is activated and no learner work, mark or account erasure is created. [Staging receipt](evidence/teacher-task-production-integration-20261031.json).
+**Current blocker:** Supabase returned an expired confirmation three times for the final privacy migration. The third was reopened only after the exact SQL passed all required CI gates and the reviewable source was explicitly shown. Readback confirms no privacy execution column/job table and no history entry for that phase. The six successful migrations preserve all 117 original public tables exactly. No runtime or frontend is activated and no learner work, mark or account erasure is created. [Staging receipt](evidence/teacher-task-production-integration-20261031.json).
 
 This promotes the already tested published-writing delivery and custom-task authoring/source/delivery/student/review/privacy capability from draft PR365. The assessment engine, learning criteria, curriculum, owner content/audio decisions and speaking policy remain unchanged. All 45 mapped capabilities, English C47 and the separate four-subject gate are retained. The [newly approved consistency contract](dashboard-consistency-acceptance.md) follows this integration; B.12.3/B.12 remain open and subjects stay paused.
 
@@ -42,3 +42,10 @@ Record migration/runtime versions and hashes, 117-table staging preservation, ad
 ## Recovery boundary
 
 Keep old-client refusal and resumable erasure fencing in place during frontend rollback. Do not drop new tables, erase saved work or rewrite immutable task/submission history to restore a prior screen. Use the existing reviewed rollback/promotion controls and reconcile the same uncertain send/submission/deletion request. No unreviewed background cleanup or new automatic expiry is introduced.
+
+
+## Bounded visual correction after the first current CI
+
+Source `ed1d83d53b9a356ddbedfb2a05675dcb44a3464d`, CI41126541610 passes all five gates: 1,628 unit/integration, 357 native and sixteen task-specific PostgreSQL17 races. Artifact13011162460 is downloaded and SHA-256 verified (`a45fab2a8fbc5769d020a21fd10e35ebc8409c7bc2189b4126d7ec8c3a908a9b`). Its three actual Home images show the new progress/review paths, but also expose a pre-existing welcome grid that squeezes copy to one character per line at desktop 200%, narrow-screen heading splits and undersized class-card columns at enlarged text. Geometry-only passing tests were insufficient; these images are not accepted visual evidence.
+
+The corrective batch uses font-relative welcome/onboarding/class grids, smaller secondary headings and shorter onboarding copy. A shared native word-range check now covers the institutional Home and the legacy staff Home at 100/200% text, alongside the existing page bounds, role, keyboard and account/logout checks. Screenshots scroll to the page top before capture so an off-viewport fixed skip link is not drawn into a full-page screenshot after keyboard scrolling. No runtime skip-link behavior or evidence/assessment rule changes. The correction needs its own current-source CI and fresh inspected images before visual acceptance.

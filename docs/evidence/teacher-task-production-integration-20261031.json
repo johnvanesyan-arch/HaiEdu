@@ -57,6 +57,10 @@
         {
           "status": "expired",
           "message": "Fresh confirmation also expired; no third blind retry."
+        },
+        {
+          "status": "expired",
+          "message": "Reopened after exact SQL/current source passed all five CI gates and the reviewable migration was explicitly shown; confirmation expired again without schema/history execution. Service confirmation remains required."
         }
       ]
     },
@@ -1262,5 +1266,34 @@
     "classroom speaking",
     "English C47 and four-subject gate",
     "B.12.3/B.12 open; subjects paused"
-  ]
+  ],
+  "firstCurrentCi": {
+    "source": "ed1d83d53b9a356ddbedfb2a05675dcb44a3464d",
+    "run": 41126541610,
+    "allRequiredJobs": "passed",
+    "unitIntegration": 1628,
+    "native": 357,
+    "taskSpecificIndependentPg17Races": 16,
+    "artifact": 13011162460,
+    "artifactSha256": "a45fab2a8fbc5769d020a21fd10e35ebc8409c7bc2189b4126d7ec8c3a908a9b",
+    "visualAccepted": false,
+    "findings": [
+      "Desktop 200%-text welcome copy squeezed into a narrow column.",
+      "Narrow-screen headings split natural Armenian words.",
+      "Enlarged-text class cards retain undersized fixed columns."
+    ],
+    "correction": "Font-relative grids/secondary headings/concise copy and expanded institutional/legacy Home native word checks; fresh CI/images required."
+  },
+  "stagingReadback": {
+    "sqlFunctions": 35,
+    "exactBodyMatches": 35,
+    "anonymousOrAuthenticatedExecute": 0,
+    "newTables": 16,
+    "allRlsEnabled": true,
+    "ordinaryTableAccess": false,
+    "affectedAdvisorFindings": "INFO only: deliberately denied RLS tables and unused new indexes; no new affected missing-FK-index or WARN finding",
+    "preparedEdgeBundles": 12,
+    "matchingSourceFileInstances": 53,
+    "edgeDeployments": 0
+  }
 }

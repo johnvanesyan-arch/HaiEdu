@@ -89,3 +89,10 @@
 .teacher-home-path span { color:var(--forest-muted); }
 .teacher-home-path:hover { background:var(--forest-selected); }
 .teacher-home-path:focus-visible { outline:3px solid #876341; outline-offset:3px; }
+/* Let enlarged text, rather than viewport pixels alone, determine columns. */
+.teacher-welcome-card { grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr)); }
+.teacher-welcome-card>* { min-width:0; max-width:100%; }
+.teacher-welcome-card h2 { font-size:1.25rem; }
+.teacher-quick-actions { min-width:0; max-width:100%; justify-content:flex-start; }
+.teacher-onboarding-steps { grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); }
+.teacher-onboarding-card h3,#institutionalTeacherNotice h2 { font-size:1.125rem; line-height:1.4; }
