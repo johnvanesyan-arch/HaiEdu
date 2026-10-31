@@ -26,7 +26,6 @@
   <main class="shell teacher-shell" id="mainContent">
     <header class="topbar teacher-topbar">
       <div>
-        <p class="eyebrow">ՈՒՍՈՒՑՉԻ ԱՇԽԱՏԱՍԵՂԱՆ</p>
         <h1 id="teacherPageTitle">Ուսուցչի գլխավոր</h1>
         <p id="teacherPageSubtitle" class="subtle">Ամփոփ պատկեր, ուշադրության ազդակներ և արագ գործողություններ</p>
       </div>
@@ -37,10 +36,10 @@
       </div>
     </header>
 
-    <section class="notice" aria-label="Փորձնական կարգավիճակ">
-      <strong>Փորձնական ուսուցչական միջավայր</strong>
-      <span>Յուրացման շեմերը և միջամտության առաջարկությունները դեռևս փորձնական են և պետք է վավերացվեն պիլոտի ընթացքում։</span>
-    </section>
+    <details class="notice teacher-pilot-notice">
+      <summary>Փորձնական ուսուցչական միջավայր</summary>
+      <p>Յուրացման շեմերը և միջամտության առաջարկությունները դեռևս փորձնական են և պետք է վավերացվեն պիլոտի ընթացքում։</p>
+    </details>
 
     <p id="teacherLoading" class="message hidden" role="status">Աշխատասեղանը բեռնվում է…</p>
     <section id="authPanel" class="card auth-card teacher-auth hidden" aria-labelledby="teacherLoginTitle">
@@ -54,10 +53,9 @@
 
     <section id="dashboardPanel" class="hidden">
       <div id="teacherHomeView" class="teacher-view" data-teacher-view="home">
-      <section class="card teacher-welcome-card" aria-labelledby="teacherName">
+      <section class="teacher-home-toolbar" aria-label="Արագ գործողություններ">
         <div class="teacher-welcome-copy">
-          <span class="mode-kicker">ԻՄ ԱՇԽԱՏԱՍԵՂԱՆԸ</span>
-          <h2>Բարի գալուստ, <span id="teacherName">Ուսուցիչ</span></h2>
+          <p>Բարի գալուստ, <strong id="teacherName">Ուսուցիչ</strong></p>
           <p id="teacherWelcomeText" class="subtle">Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։</p>
         </div>
         <div class="teacher-quick-actions">
@@ -68,13 +66,13 @@
       </section>
 
       <nav class="teacher-home-paths" aria-label="Աշխատանքային բաժիններ">
-        <a class="card teacher-home-path" href="?view=classes" data-home-progress>
+        <a class="teacher-home-path" href="?view=classes" data-home-progress>
           <strong>Դասարանի առաջընթացը</strong>
-          <span>Դիտեք արդյունքները և տեսեք՝ ում է պետք աջակցել։</span>
+          <span>Արդյունքներ և աջակցության կարիք</span>
         </a>
-        <a class="card teacher-home-path" href="?view=review" data-home-review>
+        <a class="teacher-home-path" href="?view=review" data-home-review>
           <strong>Գրավորի ստուգում</strong>
-          <span>Բացեք ներկայացված աշխատանքները և տվեք հետադարձ կապ։</span>
+          <span>Ներկայացված աշխատանքներ և հետադարձ կապ</span>
         </a>
       </nav>
 
@@ -177,13 +175,13 @@
 
       </section>
 
-      <section id="teacherClassesView" class="teacher-view hidden" data-teacher-view="classes" aria-labelledby="teacherClassesViewTitle">
+      <section id="teacherClassesView" class="teacher-view hidden" data-teacher-view="classes" aria-labelledby="teacherPageTitle">
         <div class="teacher-view-heading">
-          <div><span class="mode-kicker">ԱԿՏԻՎ ԴԱՍԱՐԱՆՆԵՐ</span><h2 id="teacherClassesViewTitle">Իմ դասարանները</h2><p class="subtle">Այստեղ ցուցադրվում են միայն ընթացիկ դասարանները։ Ընտրեք դասարանը՝ աշակերտներին, հրավերներն ու առաջընթացը բացելու համար։</p></div>
+          <p class="subtle">Ընտրեք դասարանը՝ աշակերտներին, հրավերներն ու առաջընթացը բացելու համար։</p>
           <a class="button-link" href="?view=create">+ Նոր դասարան</a>
         </div>
         <section class="card teacher-collection-card">
-          <div class="teacher-collection-heading"><h3>Ակտիվ դասարաններ</h3><span id="activeClassCount" class="teacher-archive-count">0</span></div>
+          <div class="teacher-collection-heading"><h2>Ակտիվ դասարաններ</h2><span id="activeClassCount" class="teacher-archive-count">0</span></div>
           <p id="classesLoadMessage" role="status"></p><button id="classesRetry" type="button" class="ghost small-button">Թարմացնել ցանկը</button>
           <div id="classList" class="teacher-class-list teacher-class-grid"></div><button id="classesLoadMore" class="ghost hidden" type="button">Բեռնել հաջորդ դասարանները</button>
         </section>

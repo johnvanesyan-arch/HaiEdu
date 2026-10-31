@@ -27,3 +27,40 @@
 #teacherToday :is(.today-overview h2,.today-queue h3),#teacherToday>h3 { font-size:1.125rem; line-height:1.4; }
 #teacherToday .today-summary { font-size:1rem; }
 #teacherToday .today-overview { padding:min(1.25rem,20px); }
+
+/* Teacher composition only; the shared Forest staff shell keeps its tokens. */
+body[data-role-workspace="teacher"].hm-has-role-sidebar .teacher-topbar {
+  padding:1rem; margin-bottom:.75rem; gap:.75rem;
+}
+body[data-role-workspace="teacher"].hm-has-role-sidebar .teacher-topbar h1 {
+  font-size:1.5rem; line-height:1.35;
+}
+.teacher-pilot-notice { display:block; margin-bottom:.75rem; padding:.5rem .75rem; }
+.teacher-pilot-notice summary,.today-scope summary { cursor:pointer; padding-block:.375rem; }
+.teacher-pilot-notice p { margin:.5rem 0 0; }
+.teacher-home-toolbar {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:.5rem 1rem; margin-block:.75rem;
+}
+.teacher-home-toolbar .teacher-welcome-copy { flex:1 1 16rem; }
+.teacher-home-toolbar p { margin:.25rem 0; }
+.teacher-home-toolbar p:empty { display:none; }
+.teacher-home-toolbar .teacher-quick-actions { flex:0 1 auto; }
+.teacher-home-paths { gap:.5rem; margin-block:.75rem; }
+.teacher-home-path {
+  gap:.125rem; padding:.5rem .75rem; border:1px solid var(--forest-divider);
+  border-radius:.75rem; background:var(--forest-surface);
+}
+.teacher-home-path strong { font-size:1rem; }
+.teacher-home-path span { font-size:.875rem; }
+#teacherToday { margin-top:.75rem; }
+#teacherToday .today-overview .today-heading { margin-bottom:.25rem; }
+#teacherToday [data-today-continue]:not(:empty) { margin-top:.75rem; }
+.today-secondary-actions { margin-top:.75rem; align-items:flex-start; gap:.25rem 1.25rem; }
+.today-scope { flex:1 1 18rem; min-width:0; }
+.teacher-pilot-notice :focus-visible,.today-scope :focus-visible {
+  outline:3px solid var(--forest-accent); outline-offset:3px;
+}
+#teacherClassesView .teacher-view-heading { align-items:center; margin-bottom:.75rem; gap:.75rem; }
+#teacherClassesView .teacher-view-heading p { min-width:0; }
+#teacherClassesView .teacher-collection-heading h2 { font-size:1.125rem; margin-block:.25rem; }

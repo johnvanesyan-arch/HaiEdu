@@ -8,6 +8,35 @@ let browser;before(async()=>{browser=await chromium.launch({headless:true});});a
 const summary=p=>p.locator('[data-today-summary]');
 const calls=(p,fn)=>p.evaluate(fn=>window.__today.calls.filter(c=>c.fn===fn),fn);
 
+test('Home exposes the real pending-work action on the first desktop screen and Classes has one page title',async t=>{
+ const {page:p,errors}=await todayFixture(browser,t);
+ await p.setViewportSize({width:1280,height:900});
+ await expect(summary(p)).toContainText('2 դասընթացի գրավոր');
+ const next=p.locator('[data-today-continue] button');
+ for(const target of [summary(p),next,p.locator('[data-home-progress]'),p.locator('[data-home-review]')]){
+  const box=await target.boundingBox();assert.ok(box&&box.y>=0&&box.y+box.height<=900,await target.innerText());
+ }
+ await expect(p.getByRole('heading',{level:1})).toHaveText('Ուսուցչի գլխավոր');
+ const notice=p.locator('.teacher-pilot-notice');
+ await expect(notice.locator('p')).toBeHidden();
+ await notice.locator('summary').focus();await p.keyboard.press('Enter');
+ await expect(notice.locator('p')).toContainText('պետք է վավերացվեն');
+ await p.keyboard.press('Enter');await expect(notice.locator('p')).toBeHidden();
+ const scope=p.locator('.today-scope');await scope.locator('summary').click();
+ await expect(scope.locator('p')).toContainText('առանձին ստուգման ցանկ');
+ await scope.locator('summary').click();
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-home-first-screen.png'});}
+ await p.locator('[data-home-progress]').click();
+ await expect(p.getByRole('heading',{name:'Իմ դասարանները',exact:true})).toHaveCount(1);
+ await expect(p.locator('#classList .teacher-class-button')).toHaveCount(1);
+ const pendingWrites=await p.evaluate(()=>window.__today.calls.filter(c=>!['get-teacher-dashboard','get-teacher-workspace'].includes(c.fn)));
+ assert.deepEqual(pendingWrites,[]);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-classes-compact.png'});
+ await p.goBack();await expect(summary(p)).toContainText('2 դասընթացի գրավոր');
+ await next.click();await expect(p.locator('[data-writing-feedback]')).toBeVisible();
+ assert.deepEqual(errors,[]);
+});
+
 test('teacher Home balances classroom progress and review with readable keyboard paths',async t=>{
  const {page:p,errors}=await todayFixture(browser,t);
  await expect(summary(p)).toContainText('2 դասընթացի գրավոր');

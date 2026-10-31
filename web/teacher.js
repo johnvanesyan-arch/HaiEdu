@@ -72,7 +72,7 @@ const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class", "review", "assign-writing"]);
 const TEACHER_VIEW_META = {
-  home: ["Ուսուցչի գլխավոր", "Այսօրվա ամփոփ պատկերը, արագ գործողությունները և աշխատանքի հաջորդ քայլերը։"],
+  home: ["Ուսուցչի գլխավոր", "Ստուգման սպասող աշխատանքները և ձեր դասարանները։"],
   "assign-writing": ["Հանձնարարել գրավոր աշխատանք", "Ընտրեք առաջադրանքը, ստացողներին և հաստատեք ուղարկումը։"],
   review: ["Գրավորի ստուգում", "Ներկայացված աշխատանքներ, գնահատում և մեկնաբանություններ՝ ըստ դասարանի ու բաժնի։"],
   profile: ["Իմ պրոֆիլը", "Ցուցադրվող անունը և մուտքի պաշտպանված կարգավորումները։"],
@@ -233,7 +233,7 @@ function renderInstitutionalClassCreator(data, institutional) {
 
   if (institutional) $("teacherWelcomeText").textContent = data.directory?.activeCount===0
     ? "Ստեղծեք դասարան ձեր հասանելի դպրոցի, ուսումնական տարվա և առարկայի շրջանակում։"
-    : "Բացեք ձեր դասարանները, շարունակեք գրավորների ստուգումը կամ հանձնարարեք նյութեր։";
+    : "";
   if (!institutional) return;
   const options = Array.isArray(data.institutionalOptions) ? data.institutionalOptions : [];
   const select = $("institutionalClassOption");
