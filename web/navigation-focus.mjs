@@ -5,7 +5,7 @@ export function installNavigationFocus(root = document) {
   if (navigationFocusRoots.has(root)) return;
   navigationFocusRoots.add(root);
   root.addEventListener('focusin', event => {
-    const link = event.target.closest?.('.hm-role-nav a,.amp-nav-list a,.amp-mobile-nav a');
+    const link = event.target.closest?.('.hm-role-nav a,.amp-nav-list a,.amp-mobile-nav a,.course-tabs a');
     if (!link || !link.matches(':focus-visible')) return;
     link.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
   });

@@ -305,7 +305,7 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
   assert.equal(original.length,4);
   for(const link of original){const url=new URL(link.href,'https://student-workspace.test');assert.equal(url.searchParams.get('release'),contexts[1].curriculumReleaseId);assert.equal(url.searchParams.get('unit'),contexts[1].unitId);}
   const rows=[];
-  for(const width of [1280,960,768,390,360])for(const scale of [100,200]){
+  for(const width of [1280,960,768,390,360,320])for(const scale of [100,200]){
     await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
     const navigation=await checkNavigation(page);assert.deepEqual(navigation.errors,[],`${width}/${scale}`);
     assert.deepEqual(await page.locator('.amp-nav-list a').evaluateAll(es=>es.map(e=>({href:e.getAttribute('href'),label:e.textContent.trim(),current:e.getAttribute('aria-current')}))),original);

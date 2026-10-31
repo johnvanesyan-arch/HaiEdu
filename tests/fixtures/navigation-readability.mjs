@@ -4,9 +4,9 @@
 export async function navigationReadability() {
   await document.fonts.ready;
   const errors=[],previous=document.activeElement,position={x:scrollX,y:scrollY};
-  const roots=[...document.querySelectorAll('.hm-role-nav,.amp-nav-list,.amp-mobile-nav')];
+  const roots=[...document.querySelectorAll('.hm-role-nav,.amp-nav-list,.amp-mobile-nav,.course-tabs')];
   const saved=roots.map(el=>({el,x:el.scrollLeft,y:el.scrollTop}));
-  const controls=[...document.querySelectorAll('.hm-role-nav a,.hm-role-foot a,.hm-role-foot button,.amp-nav-list a,.amp-nav-utility a,.amp-nav-utility button,.amp-mobile-link')].filter(el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+  const controls=[...document.querySelectorAll('.hm-role-nav a,.hm-role-foot a,.hm-role-foot button,.amp-nav-list a,.amp-nav-utility a,.amp-nav-utility button,.amp-mobile-link,.course-tabs a')].filter(el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
   const links=controls.map(el=>({label:el.textContent.trim(),href:el.getAttribute('href'),current:el.getAttribute('aria-current')}));
   for(const el of controls) {
     el.focus();await new Promise(requestAnimationFrame);
