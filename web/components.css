@@ -206,3 +206,21 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   .session-progress-bar,
   .mini-progress-bar { forced-color-adjust: none; }
 }
+.assessment-history-list {
+  display:grid; gap:1rem; min-width:0; padding:0; margin:1rem 0; list-style:none;
+}
+.assessment-history-list>li {
+  min-width:0; padding:1rem; border:1px solid var(--forest-divider,#ccd7ca);
+  border-radius:.75rem; background:var(--forest-surface,#fff);
+}
+.assessment-record-heading {
+  display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between;
+  gap:.5rem 1rem; min-width:0;
+}
+.assessment-record-heading :is(h3,h4) { margin:.25rem 0; font-size:1rem; }
+.assessment-record-heading :is(time,span) { font-size:.875rem; }
+.assessment-history-list p { margin:.35rem 0; }
+.assessment-history-list details :is(p,dd) { overflow-wrap:break-word; }
+.assessment-history-list dd { margin-inline-start:0; }
+.assessment-group[data-assessment-state=unassessed],
+.assessment-group[data-assessment-state=unavailable] { color:var(--forest-muted,#687385); }

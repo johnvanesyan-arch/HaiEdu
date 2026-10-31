@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {assessmentRules,assessmentResultMarkup,assessmentScopeText} from '../web/assessment-reporting.mjs';
+import {assessmentRules,assessmentResultMarkup,assessmentScopeText,assessmentScopeMarkup,assessmentGroupMarkup} from '../web/assessment-reporting.mjs';
 import {renderEvidenceGroups} from '../web/analytics-provenance.mjs';
 
 const manifest=JSON.parse(readFileSync('docs/content/english-7-unit-01-release-configuration.json','utf8'));
@@ -49,4 +49,40 @@ test('configured group labels remain escaped and are not interpreted as a subjec
  const saved=result();saved.groups=[{...groups[0],label:'<img src=x onerror=alert(1)>',determinesPass:false}];
  const html=assessmentResultMarkup(saved);assert.doesNotMatch(html,/<img|հանձնելիս/);assert.match(html,/&lt;img/);
  assert.equal(assessmentResultMarkup(null),'');assert.equal(assessmentResultMarkup({schemaVersion:'unknown'}),'');
+});
+
+test('saved v2/v3 groups distinguish no assessment from a genuine zero without changing the saved result',()=>{
+ for(const points of [false,true]){
+  const group=points?{earned:0,possible:3}:{correct:0,answered:3};
+  const empty=points?{earned:0,possible:0}:{correct:0,answered:0};
+  const saved={schemaVersion:'haiedu-assessment-result-v'+(points?3:2),score:null,passed:null,groups:[{label:'Assessed',...group,percent:0},{label:'Other group',...empty,percent:null}]};
+  const before=structuredClone(saved),html=assessmentResultMarkup(saved);
+  assert.match(html,/Assessed՝ 0\/3(?: միավոր)? · 0%/);
+  assert.match(html,/data-assessment-state="unassessed">Other group՝ Չի գնահատվել/);
+  assert.doesNotMatch(html,/0\/0|Ստուգարքն անցած է|Ստուգարքը չի անցել/);
+  assert.deepEqual(saved,before);
+ }
+ for(const group of [{possible:null,earned:0},{possible:3,earned:null},{possible:0,earned:2}]){
+  const html=assessmentGroupMarkup({label:'Unavailable',...group},{points:true});
+  assert.match(html,/data-assessment-state="unavailable"/);assert.match(html,/Տվյալը հասանելի չէ/);assert.doesNotMatch(html,/Չի գնահատվել|NaN|undefined/);
+ }
+});
+
+test('history can retain one accessible scope explanation while standalone results keep their full scope',()=>{
+ const saved=result(),standalone=assessmentResultMarkup(saved),row=assessmentResultMarkup(saved,{includeScope:false});
+ assert.ok(standalone.includes(assessmentScopeText));assert.ok(!row.includes(assessmentScopeText));
+ const section=assessmentScopeMarkup({disclosure:true})+row+row;
+ assert.equal((section.match(/data-assessment-scope/g)??[]).length,1);
+ assert.match(section,/<details class="assessment-scope"><summary>Արդյունքների սահմանները<\/summary>/);
+ assert.match(row,/Ստուգարքն անցած է · 22.5\/28 միավոր/);
+});
+
+test('school and master aggregates use the same empty-group distinction without combining contracts or adding percentages',()=>{
+ const payload={analytics:{evidenceGroups:[{mode:'practice',sessions:2,correct:0,answered:3,accuracy:0,reportingGroups:[{label:'Observed zero',earned:0,possible:3,percent:0},{label:'Not assessed',earned:0,possible:0,percent:null}],contract:{policyBindingId:'points-contract'}},{mode:'practice',sessions:1,correct:2,answered:3,accuracy:66.67,reportingGroups:[{label:'Legacy group',correct:2,answered:3},{label:'Legacy empty',correct:0,answered:0}],contract:{policyBindingId:'legacy-contract'}}]}};
+ const before=structuredClone(payload),root={innerHTML:''};renderEvidenceGroups(root,payload);
+ assert.match(root.innerHTML,/Observed zero՝ 0\/3 միավոր<\/p>/);assert.match(root.innerHTML,/Legacy group՝ 2\/3/);
+ assert.equal((root.innerHTML.match(/data-assessment-state="unassessed"/g)??[]).length,2);
+ assert.doesNotMatch(root.innerHTML,/0\/0|Ստուգարքն անցած է|Ստուգարքը չի անցել/);
+ assert.ok(root.innerHTML.includes('points-contract')&&root.innerHTML.includes('legacy-contract'));
+ assert.deepEqual(payload,before);
 });

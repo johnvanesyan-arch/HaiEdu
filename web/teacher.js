@@ -1,5 +1,5 @@
 import { signOutAccount } from './account-signout.mjs';
-import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
+import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,assessmentScopeMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
 // A delayed async head entry must not start a second read after SDK startup.
 window.__haieduTeacherHomeStartup ||= Object.freeze({claim:()=>null,cancel:()=>{}});
@@ -1161,7 +1161,7 @@ async function openStudent(studentId, skillId = null) {
   const modeSummary = data.modeSummary ?? {};
   const recentSessions = (data.sessions ?? []).map((session) => {
     const labels = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
-    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(({completed:"Ավարտված",active:"Ընթացքի մեջ",abandoned:"Դադարեցված"})[session.status] ?? "Վիճակը հասանելի չէ")}</td><td>${assessmentResultMarkup(session.reporting) || `${session.correct ?? "—"} / ${session.answered}`} ${contractMarkup(session.contract)}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
+    return `<li><div class="assessment-record-heading"><h4>${escapeHtml(labels[session.mode] ?? session.mode)} · ${escapeHtml(({completed:"Ավարտված",active:"Ընթացքի մեջ",abandoned:"Դադարեցված"})[session.status] ?? "Վիճակը հասանելի չէ")}</h4><span>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</span></div><div>${assessmentResultMarkup(session.reporting,{includeScope:false}) || `${session.correct ?? "—"} / ${session.answered}`}</div>${contractMarkup(session.contract)}</li>`;
   }).join("");
   const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? "—";
   const contextKicker = dashboard?.institutionalTeacher
@@ -1169,11 +1169,12 @@ async function openStudent(studentId, skillId = null) {
     : "Ֆիզիկա 7 · Գլուխ I";
   $("studentDrawerContent").innerHTML = `
     <section class="drawer-summary-grid">
-      <div class="mini-card"><span>Սկզբնական ախտորոշիչ</span><strong>${data.latestDiagnostic?.assessmentResult ? assessmentResultMarkup(data.latestDiagnostic.assessmentResult) : data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Սկզբնական ախտորոշիչ</span><div class="drawer-assessment-result">${data.latestDiagnostic?.assessmentResult ? assessmentResultMarkup(data.latestDiagnostic.assessmentResult,{includeScope:false}) : data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</div></div>
       <div class="mini-card"><span>Վարժություն</span><strong>${modeSummary.practice?.completed ?? 0} ավարտված</strong></div>
       <div class="mini-card"><span>Գլխի կրկնություն</span><strong>${modeSummary.chapter_review?.completed ?? review?.totalReviewsCompleted ?? 0} ավարտված</strong></div>
-      <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck?.assessmentResult ? assessmentResultMarkup(data.latestMasteryCheck.assessmentResult) : data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Յուրացման ստուգում</span><div class="drawer-assessment-result">${data.latestMasteryCheck?.assessmentResult ? assessmentResultMarkup(data.latestMasteryCheck.assessmentResult,{includeScope:false}) : data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</div></div>
     </section>
+    ${data.latestDiagnostic?.assessmentResult||data.latestMasteryCheck?.assessmentResult?assessmentScopeMarkup({disclosure:true}):''}
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
     <p class="mode-kicker">${escapeHtml(contextKicker)}</p>
     <p class="subtle small">${escapeHtml(unitTitle)}</p>
@@ -1198,8 +1199,11 @@ async function openStudent(studentId, skillId = null) {
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Ցիկլ / սեսիա</th><th>Հարցեր</th><th>Ավարտ</th></tr></thead><tbody>${reviewHistory || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
     <h3>Գլխի կրկնության հմտությունների տվյալներ</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
-    <h3>Սեսիաների պատմություն</h3>
-    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Վիճակ</th><th>Ճիշտ / պատասխանած</th><th>Ավարտ</th></tr></thead><tbody>${recentSessions || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
+    <section class="teacher-assessment-history" aria-labelledby="teacherHistoryTitle">
+    <h3 id="teacherHistoryTitle">Աշխատանքների պատմություն</h3>
+    ${recentSessions?assessmentScopeMarkup({disclosure:true}):''}
+    <ol class="assessment-history-list">${recentSessions || '<li>Աշխատանքների պատմությունը դեռ դատարկ է։</li>'}</ol>
+    </section>
     <h3>Վերջին փորձերը</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>`;
   if (skillId) {
