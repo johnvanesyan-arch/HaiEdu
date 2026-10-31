@@ -35,6 +35,7 @@ body[data-haiedu-student] .course-tabs { display:flex; flex-wrap:wrap; gap:.5rem
 body[data-haiedu-student] .course-tabs a { flex:1 1 auto; min-inline-size:min-content; max-inline-size:100%; text-align:center; font-size:.875rem; overflow-wrap:normal; word-break:normal; }
 body[data-haiedu-student] :is(.course-tabs,.course-chapters) .button-link[aria-current=page] { background:var(--student-accent); color:var(--student-surface); border-color:var(--student-accent); }
 body[data-haiedu-student] .student-course-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2rem; padding:2rem; border-radius:1.25rem; background:var(--student-hero); color:var(--student-hero-ink); }
+body[data-haiedu-student] .student-course-hero > * { min-width:0; }
 body[data-haiedu-student] .student-course-hero h2 { font-size:1.75rem; margin:.75rem 0 .5rem; }
 body[data-haiedu-student] .student-course-hero p { margin:0; max-width:44rem; color:var(--student-hero-muted); }
 body[data-haiedu-student] .student-course-readiness { width:14rem; display:grid; gap:.5rem; font-size:.875rem; padding:1.25rem; background:var(--student-surface); border-radius:1rem; }
@@ -111,7 +112,7 @@ body:is([data-haiedu-student],[data-forest-surface]) :is(.privacy-card,.unit-gui
  body[data-haiedu-student] :is(.course-mode-card,.written-list article):hover { box-shadow:0 6px 20px rgb(35 57 47 / .08); border-color:var(--student-border-control); }
 }
 @media (max-width:1100px) {
- body[data-haiedu-student] .student-course-hero { grid-template-columns:1fr; gap:1.25rem; }
+ body[data-haiedu-student] .student-course-hero { grid-template-columns:minmax(0,1fr); gap:1.25rem; }
  body[data-haiedu-student] .student-course-readiness { width:100%; }
 }
 @media (max-width:760px) {
@@ -140,3 +141,8 @@ body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access
 body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-invite-note { background:var(--student-hero); }
 body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] .account-invite-note span { color:var(--student-hero-muted); }
 body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access] #loginPanel input { background:var(--student-surface); }
+
+/* Keep nested progress-summary padding from exceeding a narrow enlarged-text grid. */
+@media (max-width:400px) {
+ body[data-haiedu-student] :is(.student-course-hero,.student-course-readiness) { padding:.5rem; }
+}

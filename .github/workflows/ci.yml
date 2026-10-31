@@ -67,10 +67,6 @@ jobs:
           printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Diagnose narrow navigation before the unchanged full browser gate
-        run: node --test --test-name-pattern="shared student navigation keeps full labels" tests/browser/student-workspace.browser.test.mjs
-        env:
-          STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/student-workspace
       - name: Verify browser responsiveness and lifecycle regressions
         run: node --test tests/browser/*.test.mjs
         env:
