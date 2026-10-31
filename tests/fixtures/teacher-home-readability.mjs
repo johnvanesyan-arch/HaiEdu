@@ -2,7 +2,7 @@
 // column squeezed to one letter per line; inspect natural word ranges as well.
 export function teacherHomeReadability(){
  const errors=[];
- const selectors='.teacher-home-paths,.teacher-welcome-copy,.teacher-onboarding-card h3,.teacher-onboarding-steps,#teacherToday h2,#teacherToday h3,#teacherToday .today-summary,#teacherToday .today-class-card,#institutionalTeacherNotice h2';
+ const selectors='.teacher-home-paths,.teacher-welcome-copy,.teacher-pilot-notice,.today-scope,.teacher-onboarding-card h3,.teacher-onboarding-steps,#teacherToday h2,#teacherToday h3,#teacherToday .today-summary,#teacherToday .today-class-card,#institutionalTeacherNotice h2';
  for(const el of document.querySelectorAll(selectors)){
   if(!el.getClientRects().length)continue;
   const box=el.getBoundingClientRect(),walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
