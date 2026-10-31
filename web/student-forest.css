@@ -167,6 +167,7 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
 @media (max-width:760px) {
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { display: none; }
   body:is([data-haiedu-student],[data-forest-surface]) > main.shell { width: 100%; margin: 0; padding: 1.5rem 1rem calc(6rem + env(safe-area-inset-bottom,0px)); }
+  body:is([data-haiedu-student],[data-forest-surface]).amp-student-shell-active > main.shell { padding:min(1.5rem,24px) min(1rem,16px) calc(6rem + env(safe-area-inset-bottom,0px)); }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display: grid; }
   body:is([data-haiedu-student],[data-forest-surface]) .topbar { gap: 1rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .topbar h1 { font-size: 1.75rem; }

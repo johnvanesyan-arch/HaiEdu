@@ -281,9 +281,11 @@ test('student saved Practice cards retain assessed zeros, historical scales and 
     await record.locator('details summary').click();await expect(record).toContainText('policy-'+n);await record.locator('details summary').click();
   }
   await p.emulateMedia({reducedMotion:'reduce'});
-  for(const width of [1280,960,768,390]){
+  for(const width of [1280,960,768,390,360]){
     await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
     if(width<=1100){await expect(p.locator('.amp-side-nav')).toBeHidden();await expect(p.locator('.amp-mobile-nav')).toBeVisible();}
+    const versions=history.locator('.assessment-history-list>li').first().locator('details summary');await versions.click();
+    assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width)+' expanded versions');await versions.click();
     await history.locator('h2').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width));
     if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-'+width+'.png'});}
   }
