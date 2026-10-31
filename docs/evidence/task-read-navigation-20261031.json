@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
-  "state": "Merged and deployed; all five PR/main checks and49 public files pass; full hosted/owner acceptance pending",
+  "state": "Merged/deployed/native and fresh hosted navigation verified:327/327,54+54; final owner usability open",
   "story": "Student My Work course/unit link opens writing while an independent custom-task inbox read is pending. Clean read/download loading must permit leaving; actual or uncertain writes and dirty work remain protected.",
   "baselineSource": "95d2210c6738e43ab52d8ae33f87c8e788ee2f0c",
   "baselinePr": 368,
@@ -218,5 +218,12 @@
     "mainCi": 41186985753,
     "totalSuitePassed": 364
   },
-  "releaseEvidence": "task-read-navigation-release-20261031.json"
+  "releaseEvidence": "task-read-navigation-release-20261031.json",
+  "latestHostedAcceptance": {
+    "run": 41191092937,
+    "source": "6892b7302bedd6dcdb86d762beb94241ae2850e1",
+    "bothLinksWithBusyInbox": true,
+    "status": "passed",
+    "evidence": "teacher-task-hosted-acceptance-20261031.json"
+  }
 }

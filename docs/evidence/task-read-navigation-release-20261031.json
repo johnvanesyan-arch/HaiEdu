@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
-  "state": "Navigation/loading correction merged, all required PR/main gates passed and production49files exact; full hosted postflight and owner usability remain open",
+  "state": "Navigation release verified by fresh full guarded resource acceptance327/327 and54+54; final owner usability remains open",
   "implementation": {
     "pr": 369,
     "head": "2b8df2a76caea06fc1dd2ced2e40edce0cbd1fce",
@@ -414,7 +414,20 @@
     "verifiedPriorScope": "7 migrations/48 SQL bodies/19 denied new RLS tables/12 JWT-true runtimes/53 files",
     "evidence": "teacher-task-production-integration-20261031.json"
   },
-  "hosted": {
+  "preservation": {
+    "newDatabaseAuthStorageOperationsInThisCorrection": 0,
+    "ownerContentAudioDemoRechecked": false,
+    "membershipRepairRepeated": false,
+    "productionLearnerAnswersSubmissionsGradesFeedbackPublicationsErasureCreated": false,
+    "all45Capabilities": true,
+    "assessmentAnalyticsMeanings": "unchanged",
+    "classroomSpeaking": "unchanged",
+    "EnglishC47": "open",
+    "fourSubjectGate": "separate/open",
+    "B12B123": "open",
+    "subjectExpansion": "paused"
+  },
+  "historicalHostedCheckpoint": {
     "currentRun": 41186985896,
     "source": "9437f1197b36aea38f5554b41ebbfa71708f1458",
     "state": "cancelled by shared one-pending queue replacement before any job started",
@@ -438,17 +451,13 @@
     },
     "freshFullHostedPassClaimed": false
   },
-  "preservation": {
-    "newDatabaseAuthStorageOperationsInThisCorrection": 0,
-    "ownerContentAudioDemoRechecked": false,
-    "membershipRepairRepeated": false,
-    "productionLearnerAnswersSubmissionsGradesFeedbackPublicationsErasureCreated": false,
-    "all45Capabilities": true,
-    "assessmentAnalyticsMeanings": "unchanged",
-    "classroomSpeaking": "unchanged",
-    "EnglishC47": "open",
-    "fourSubjectGate": "separate/open",
-    "B12B123": "open",
-    "subjectExpansion": "paused"
+  "latestHostedAcceptance": {
+    "run": 41191092937,
+    "source": "6892b7302bedd6dcdb86d762beb94241ae2850e1",
+    "status": "passed",
+    "checks": 327,
+    "before": 54,
+    "after": 54,
+    "evidence": "teacher-task-hosted-acceptance-20261031.json"
   }
 }

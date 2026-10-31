@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Yerevan",
+  "state": "Fresh guarded technical acceptance complete; final role-based consistency/usability review remains open",
+  "run": 41191092937,
+  "job": 124507866603,
+  "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41191092937",
+  "trigger": "owner manual workflow_dispatch/main; new run, not retry of an old SHA",
+  "attempt": 1,
+  "source": "6892b7302bedd6dcdb86d762beb94241ae2850e1",
+  "sourceTree": "eef3f95432d51fc754f1253d62dfdc7d8b40f750",
+  "sourceStatusBlob": "1159f743d652de3038364e4f4796987cf922ec93",
+  "productionDeployment": "dpl_AnhJXcsnJDWq5E6d3EaGnd9T3Wss",
+  "productionMainReleaseExact": true,
+  "checks": {
+    "passed": 327,
+    "total": 327,
+    "failed": 0,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "isolationAllPassed": true
+  },
+  "frontend": {
+    "files": 49,
+    "allExact": true,
+    "hashesRecheckedAgainstRepository": true,
+    "inRawReport": true
+  },
+  "customFlows": {
+    "schools": 2,
+    "perSchoolSelectedRecipients": 1,
+    "protectedPdfSourceDownloadExact": true,
+    "sourceResponseIndependent": "PDF task source, required HTTPS-link response",
+    "draftRevisionPinsReceipt": true,
+    "strictSubmittedQueueContract": true,
+    "privateLearnerDraftExcluded": true,
+    "privacyInventory": true,
+    "auditedCancellation": true,
+    "ordinaryLearnerResponsesGradesPublishedFeedbackOrErasureCreated": false
+  },
+  "navigation": {
+    "bothSchoolsPassed": true,
+    "customInboxStillBusyAtBothWritingLinks": true,
+    "MyWorkOpensWritingNotCourses": true,
+    "exactReturnContext": true,
+    "archiveSeparateSearchable": true,
+    "existingReviewedFeedbackAndScore": "School A only; School B has no pre-existing reviewed response and verifies discovery/navigation",
+    "accountReturnAndTheme": "all6designated student/teacher/school-admin actors; no fresh live master-admin claim",
+    "originalOldException": "not retained; fresh same-path pass and separate before/after native reproduction do not establish exact historical exception"
+  },
+  "artifact": {
+    "id": 13038957854,
+    "bytes": 837553,
+    "sha256": "750e0786dd01d1ce673834d999b84b7e09dc9645c3da1c7c875338910446a593",
+    "zipDigestVerified": true,
+    "reportExactlyEqualsDecodedJobLog": true,
+    "rawReport": "teacher-task-hosted-passed-20261031.json",
+    "customImages": [
+      {
+        "path": "custom-task-student-A-hosted-20261031.png",
+        "sha256": "77860871618cbb25129ca44da3efe6d1f3c37f9c209f37c1da3acb47c9c68587",
+        "bytes": 220954,
+        "width": 360,
+        "height": 4264,
+        "inspected": true
+      },
+      {
+        "path": "custom-task-student-B-hosted-20261031.png",
+        "sha256": "a8c2a199777b886713bec781d5efe7b659869c630853e298edacdfed974a7b44",
+        "bytes": 203757,
+        "width": 360,
+        "height": 3944,
+        "inspected": true
+      },
+      {
+        "path": "custom-task-teacher-A-hosted-20261031.png",
+        "sha256": "f3533f232a4e069b9dcaab008a5741ae438ba1c140e1c68bc48f29e8235256c5",
+        "bytes": 130162,
+        "width": 1280,
+        "height": 1411,
+        "inspected": true
+      },
+      {
+        "path": "custom-task-teacher-B-hosted-20261031.png",
+        "sha256": "937f44a254ceb35632380ebd121d8dcdb599a8dea732e007f7a201064a9bb13d",
+        "bytes": 130362,
+        "width": 1280,
+        "height": 1411,
+        "inspected": true
+      }
+    ],
+    "captureScope": "Synthetic source/delivery views:360px learner,1280px teacher. Scroll resets before full-page capture. Fixed bottom navigation appears at viewport position in a full-document export; this is not whole-interface visual or actual-device acceptance. No failure capture is generated in this passing run; privacy-negative diagnostic test remains the evidence for masking."
+  },
+  "cleanup": {
+    "resourcesWithdrawn": 2,
+    "materialAssignmentsCancelled": 4,
+    "courseWritingDeliveriesCancelled": 2,
+    "customDeliveriesCancelled": 2,
+    "primaryOwnSessionsClosed": 6,
+    "allAcknowledged": true,
+    "privateDraftsPinnedPdfsImmutableAudit": "retained under established contract",
+    "isolationSessions": "before/after isolation runs retain their own scoped cleanup"
+  },
+  "reusedVerification": {
+    "implementationPr": 369,
+    "implementationSource": "9437f1197b36aea38f5554b41ebbfa71708f1458",
+    "documentationPr": 370,
+    "documentationSource": "6892b7302bedd6dcdb86d762beb94241ae2850e1",
+    "prCi": 41188089326,
+    "mainCi": 41188669131,
+    "allFivePrAndMainJobs": "passed",
+    "unitIntegration": 1630,
+    "native": 364,
+    "newReadNavigationCases": 7,
+    "taskSpecificPg17Races": 16,
+    "backendSqlEdgeObjects": "unchanged; reuse verified7migrations/48SQL/12JWTtrue runtimes/53files",
+    "releaseControl": "persistent Production/Blocking independently verified; no configuration change",
+    "teacherHomeGuideVisualEvidence": "unchanged5Home/3guide images reused",
+    "ownerContentAudioDemoAcceptance": "preserved; not repeated"
+  },
+  "closedTechnicalItems": [
+    "QA-FIXTURE-01 pre/post isolation",
+    "QA-QUEUE-01 manual current-source dispatch completed",
+    "QA-REVIEW-PROBE-01 strict submitted queue",
+    "READ-NAV-01 live busy-read navigation both schools",
+    "QA-EVIDENCE-01 custom images retained",
+    "QA-EVIDENCE-02 scroll-origin capture and safe diagnostic tests"
+  ],
+  "remaining": {
+    "B12B123": "open",
+    "subjectExpansion": "paused",
+    "next": "Final role-specific consistency/usability review covering learning/analytics and assignment/submission/review/revision, then explicit owner acceptance",
+    "ordinaryAccounts": "Use authorized ordinary learner/teacher accounts; dedicated QA grants stay protected. The preserved English demo needs a separate ordinary learner if chosen, because its sole QA enrollment was intentionally ended. Do not repeat setup/content/audio acceptance.",
+    "notClaimed": [
+      "fresh production learner submit/grade/review publication/erasure",
+      "master-admin live session",
+      "actual-device or screen-reader certification",
+      "all45capability implementation completion",
+      "EnglishC47 or separate four-subject release closure"
+    ]
+  }
+}
