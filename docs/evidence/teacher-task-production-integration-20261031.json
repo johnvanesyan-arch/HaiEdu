@@ -2902,8 +2902,19 @@
   "loadingAccessibilityFollowup": {
     "evidence": "task-read-navigation-20261031.json",
     "scope": "All seven malformed aria-busy sites; exact protected frontend manifest expanded48 to49 to include school-admin.js",
-    "requiredCi": "pending for corrected source; first PR369 attempt passes1630unit/bothPG, native358of362; aggregate correctly blocks release",
+    "requiredCi": "PR41186468258 and main41186985753 all five passed;1,630unit/364native; no failures/skips/cancellations",
     "nativePrepared": 7,
-    "deployed": false
+    "deployed": true,
+    "nativePassed": 7
+  },
+  "latestNavigationRelease": {
+    "source": "9437f1197b36aea38f5554b41ebbfa71708f1458",
+    "pr": 369,
+    "deployment": "dpl_4bkXK2mRYvM7VcVb1g9AoH2PVT3L",
+    "all49PublicFilesExact": true,
+    "evidence": "task-read-navigation-release-20261031.json",
+    "resourceRun": 41186985896,
+    "resourceRunState": "cancelled before any job; manual current-main dispatch required",
+    "fullHostedPass": false
   }
 }
