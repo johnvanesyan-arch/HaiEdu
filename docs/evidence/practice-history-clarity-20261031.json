@@ -1,0 +1,338 @@
+{
+  "schemaVersion": "haiedu-practice-history-evidence-v1",
+  "defect": "UX-ANALYTICS-02",
+  "baselineCommit": "f119bc6f3a8a743e10bdfaa5a3cdb44a57c2be6a",
+  "baselineTree": "b7fbb01c738a1679c5b57badea36326848a20e12",
+  "productPR": 376,
+  "productHead": "23243e9546b3cec493441cb672feec9f658ee8b3",
+  "productTree": "61781f789093ff02463ec3fdd654eaa78a84b4cd",
+  "requiredPRCI": 41232368806,
+  "localUnit": {
+    "tests": 1636,
+    "pass": 1636,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "changedFrontend": [
+    {
+      "path": "web/analytics-provenance.mjs",
+      "bytes": 2241,
+      "sha256": "4101db1a3e7da80a626e7933be114708f1cd001077ace516ee2743663a70ceb0",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/assessment-reporting.mjs",
+      "bytes": 5366,
+      "sha256": "5077bd3b2e05f9fc12947a3883994d36425a2695af42c6dc7b320e10675bc96e",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/components.css",
+      "bytes": 6950,
+      "sha256": "896f44f0242d534f7d95894edb668f736156896dcb081b3a718ab9ba8314164b",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/course-page.js",
+      "bytes": 15314,
+      "sha256": "c899dff9e4275a9722ad788bc1927268ead0fae74dbbdf1b3f6dbc499fc08b75",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/student-forest.css",
+      "bytes": 19177,
+      "sha256": "9437951fe2dc9f2c5afe3aa583179a0d9eb0df1d0d3fda1e07de8f4578914f13",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/student-shell.css",
+      "bytes": 15250,
+      "sha256": "fa930c9767c3b5823419032cdeac62d2f468b9a8b4a5ae810bf7645b5e670a1c",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher-dependencies.bundle.mjs",
+      "bytes": 289278,
+      "sha256": "a8beea5051f98ecddcc6e2924f5e6e33912876104e29e7bab99b19b8fa54ba62",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher-dependencies.mjs",
+      "bytes": 764,
+      "sha256": "5e0237bff250c547bb6571672674ffce47a907a49e6b604db213901d5da1d41b",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher.css",
+      "bytes": 24504,
+      "sha256": "d047802a27764fc01ab255483d708ebce8fea6e892728fce9ea4d5bada4609c7",
+      "httpStatus": 200,
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher.js",
+      "bytes": 88275,
+      "sha256": "e15afc275f5daa03c3ec52fe96f5f88f579cec87b6290938757c325ca5b5ffc7",
+      "httpStatus": 200,
+      "matchesRepository": true
+    }
+  ],
+  "unchangedRuntimeRoots": {
+    ".env.example": "592f40953fa1255c745341db6752d5b03dde9488",
+    ".github": "292fd7e48a981f7cec7215b3ffdcd93498d86401",
+    ".gitignore": "4ab8ee1cace081e4360dad20d429748023fc8470",
+    "AGENTS.md": "b44e1dc4a5cd07f67e1c1372873b9f793cc6fd52",
+    "backend": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+    "e2e": "61535703565835ee5328e684f40e482c92c82682",
+    "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+    "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+    "playwright.config.js": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "tsconfig.json": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+    "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f"
+  },
+  "preservation": {
+    "savedScoresAndDenominators": true,
+    "savedPassDecisions": true,
+    "originalVersionMetadata": true,
+    "backendAuthRLSAPIs": true,
+    "membershipsHistoryAndApprovals": true,
+    "contentAndAudio": true,
+    "URLDomainsAndMasterAdminBoundaries": true,
+    "all45Mappings": true,
+    "retainedResourceAcceptance": "41191092937:327/327,54+54 isolation and run-owned cleanup"
+  },
+  "scope": "Subject-neutral presentation; new activity cards on teacher/student history; same unassessed/observed-zero/unavailable group states in shared school/master aggregate renderer. No model/threshold or educational workflow change.",
+  "limits": [
+    "Synthetic native API fixtures validate the actual page/renderer, not final ordinary-account or owner usability.",
+    "200% root font is not browser-chrome zoom or physical-device acceptance.",
+    "UX-NAV-02 shared enlarged staff/student menu-label readability remains open."
+  ],
+  "next": "Remaining role checks incl UX-NAV-02, then explicit owner usability acceptance; B12open, subjects paused.",
+  "initialPRCI": {
+    "id": 41228845188,
+    "unit": {
+      "tests": 1636,
+      "pass": 1636
+    },
+    "native": {
+      "tests": 369,
+      "pass": 364,
+      "fail": 5
+    },
+    "cause": "Four obsolete table/provenance selectors and actual student tablet/200% sidebar squeeze. Base/Forest compact navigation aligned at1100 across active student pages; public/account chooser820 and standalone layouts retained; native checks cover960and768. No readability or scoring threshold weakened."
+  },
+  "responsiveScope": "Existing compact navigation aligned at1100 across active student shell; phone main/history padding capped. Public/account chooser820 and unrelated standalone frames retained.",
+  "phoneFollowupCI": {
+    "id": 41230253461,
+    "unit": 1636,
+    "native": {
+      "tests": 369,
+      "pass": 368,
+      "fail": 1
+    },
+    "cause": "390px/200% nested padding squeezed normal Armenian words. Spacing capped without reducing font size, redundant narrow outer history card removed, active shell phone spacing specificity corrected. Native adds360px and expanded version details."
+  },
+  "preVisualPRCI": {
+    "id": 41231172413,
+    "unit": 1636,
+    "native": 369,
+    "allFiveJobs": "success",
+    "visualFinding": "Narrow history section heading still split normal words; corrected phone heading sizing and spacing specificity. Word guard now includes headings; captures frame actual record. Pre-existing shared menu-label findings remain UX-NAV-02."
+  },
+  "productMerge": "53f880067368b970ad12bca11dc37314569ea978",
+  "requiredMainCI": 41233488572,
+  "requiredPRCIResult": {
+    "allFiveJobs": "success",
+    "unit": {
+      "tests": 1636,
+      "pass": 1636,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "tests": 369,
+      "pass": 369,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "nativeArtifact": {
+    "id": 13054376561,
+    "run": 41232368806,
+    "zipBytes": 26574530,
+    "sha256": "dea21263fb02270b48f61b0a6a9ab8179fd634441ba4e7d1ed9799b551cd232b",
+    "downloadDigestVerified": true
+  },
+  "images": [
+    {
+      "path": "docs/evidence/student-practice-history-1280-20261031.png",
+      "size": [
+        1280,
+        1000
+      ],
+      "bytes": 109333,
+      "sha256": "511e7859b9d60c4f07911389528b36f9f742b04a6bdffce49eebe0f074619b5d",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/student-practice-history-360-20261031.png",
+      "size": [
+        360,
+        1000
+      ],
+      "bytes": 51167,
+      "sha256": "b037bc03d3efcad81beee1c92e3cf622632bc819f8b273f26aa0d390c6770e8d",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/student-practice-history-390-20261031.png",
+      "size": [
+        390,
+        1000
+      ],
+      "bytes": 54115,
+      "sha256": "b7b6fbdde49eb27fa3e104d747b9563980e3110a320108876a5c13d3bad0aaa1",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/student-practice-history-768-20261031.png",
+      "size": [
+        768,
+        1000
+      ],
+      "bytes": 75074,
+      "sha256": "59c2023e63a927cc9bdcefb4ecdc40c9763f5021a46195b97d2633d2a2f0484f",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/student-practice-history-960-20261031.png",
+      "size": [
+        960,
+        1000
+      ],
+      "bytes": 86914,
+      "sha256": "36910a4f9ff038d24d8b5f0db1800cb54add7be5773c22c5a7d7f79918d989e9",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/student-practice-history-normal-20261031.png",
+      "size": [
+        1280,
+        1000
+      ],
+      "bytes": 104100,
+      "sha256": "451cab898273af467c51e1b83b7d081f058a0eeb60013df29b2f97500ff66b2a",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; normal text"
+    },
+    {
+      "path": "docs/evidence/teacher-practice-history-1280-20261031.png",
+      "size": [
+        1280,
+        1000
+      ],
+      "bytes": 154760,
+      "sha256": "79f5a03513415e0f7ad2bf412ee5eb510b9e97f3e0080ffff9e4bdece9d010f0",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/teacher-practice-history-390-20261031.png",
+      "size": [
+        390,
+        1000
+      ],
+      "bytes": 51264,
+      "sha256": "57618932bb5669bcab19319a9643ec00f94fb8778d51e5c4e61e7cefe2fee12e",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/teacher-practice-history-768-20261031.png",
+      "size": [
+        768,
+        1000
+      ],
+      "bytes": 71585,
+      "sha256": "d66f837a7315a7ff542371cbd0a1aa464e5907608beff30a6099e66bf9b41fcb",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; 200% root font; capture starts at history record"
+    },
+    {
+      "path": "docs/evidence/teacher-practice-history-normal-20261031.png",
+      "size": [
+        1280,
+        1000
+      ],
+      "bytes": 153717,
+      "sha256": "2af9334879730b1dc55f50cd042a30eb94a1d134ddcf9b4496af587d3ad4fe0c",
+      "inspected": true,
+      "scope": "actual page with synthetic API fixture; normal text"
+    }
+  ],
+  "changedRoots": [
+    "README.md",
+    "docs",
+    "tests",
+    "web"
+  ],
+  "unchangedClosureRuntimeRoots": {
+    ".env.example": "592f40953fa1255c745341db6752d5b03dde9488",
+    ".github": "292fd7e48a981f7cec7215b3ffdcd93498d86401",
+    ".gitignore": "4ab8ee1cace081e4360dad20d429748023fc8470",
+    "AGENTS.md": "b44e1dc4a5cd07f67e1c1372873b9f793cc6fd52",
+    "backend": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+    "e2e": "61535703565835ee5328e684f40e482c92c82682",
+    "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+    "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+    "playwright.config.js": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "tests": "8752489cb50c836e2256bddb3ffd608b8a5fe943",
+    "tsconfig.json": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+    "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f",
+    "web": "d845839ec07e3d02015013a06c18e50b78e98bd1"
+  },
+  "production": {
+    "deploymentId": "dpl_8o2FjMpKoZUXTPevXeWrZpw4L9zF",
+    "commit": "53f880067368b970ad12bca11dc37314569ea978",
+    "releaseJsonCommit": "53f880067368b970ad12bca11dc37314569ea978",
+    "readyState": "READY",
+    "servedFrontendExact": true
+  },
+  "requiredMainCIResult": {
+    "allFiveJobs": "success",
+    "unit": {
+      "tests": 1636,
+      "pass": 1636,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "tests": 369,
+      "pass": 369,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  }
+}
