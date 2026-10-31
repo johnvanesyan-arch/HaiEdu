@@ -96,3 +96,16 @@
 .teacher-quick-actions { min-width:0; max-width:100%; justify-content:flex-start; }
 .teacher-onboarding-steps { grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); }
 .teacher-onboarding-card h3,#institutionalTeacherNotice h2 { font-size:1.125rem; line-height:1.4; }
+.matrix-cell.separate{background:var(--forest-selected);color:var(--forest-ink)}
+.legend-swatch.separate{background:var(--forest-accent)}
+.skill-evidence-link{display:inline-block;max-width:100%;min-height:44px;padding:8px;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;white-space:normal;cursor:pointer}
+.skill-evidence-link:hover{background:var(--forest-selected);color:var(--forest-ink)}
+.skill-evidence-link:focus-visible,.teacher-skill-evidence summary:focus-visible{outline:3px solid var(--amp-color-focus);outline-offset:2px}
+.teacher-skill-evidence>details{margin:10px 0;padding:12px;background:#fff;border:1px solid var(--forest-divider);border-radius:12px}
+.teacher-skill-evidence>details>summary{cursor:pointer;line-height:1.6;overflow-wrap:anywhere}
+.teacher-skill-evidence>details>summary>span{display:block;font-size:.86rem;color:var(--forest-muted)}
+.skill-estimate{padding:12px;margin-top:12px;border-left:5px solid var(--forest-control);background:var(--forest-quiet);border-radius:8px}
+.skill-estimate h4,.skill-estimate p{margin:.3rem 0;overflow-wrap:anywhere}
+.skill-estimate.secure{border-left-color:#3a8d5c}
+.skill-estimate.developing{border-left-color:#d6a124}
+.skill-estimate.needs_support{border-left-color:#c84c58}

@@ -41,7 +41,7 @@ test("chapter analytics filter students without changing the underlying class su
 });
 
 test("attention centres are derived only from existing red and yellow skill bands", () => {
-  assert.match(js, /cell\?\.band === "needs_support"/);
-  assert.match(js, /cell\?\.band === "developing"/);
+  assert.match(js, /skillAttentionBand\(cell\) === "needs_support"/);
+  assert.match(js, /skillAttentionBand\(cell\) === "developing"/);
   assert.doesNotMatch(js, /attentionScore|riskScore|newThreshold/i);
 });
