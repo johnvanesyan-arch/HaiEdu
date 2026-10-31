@@ -1,8 +1,9 @@
+import {historyEntries,historyReadability} from '../fixtures/assessment-history.mjs';
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { chromium } from '@playwright/test';
+import { chromium, expect } from '@playwright/test';
 
 // Real student HTML, shell, modules and styles. Only auth/Edge responses are
 // synthetic; no production identity, content, credentials or evidence is used.
@@ -16,20 +17,20 @@ let browser;
 before(async () => { browser = await chromium.launch({ headless:true }); });
 after(async () => { await browser?.close(); });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false }={}) {
+async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills }) => {
+  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory }) => {
     window.__calls=[]; window.__listeners=[];
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
       progress:{completedSkills:3,totalSkills:10,percent:30},
       activeSession:active ? { id:'active-fixture', mode:'practice', answered:5, planned:8, policyBindingId:'fixture-binding' } : null,
       skills:Array.from({length:manySkills?10:1},(_,n)=>({ id:selected.subjectProgramId+'-'+n, code:(selected.extensionKey?'PHY7-U01-':'MATH8-U02-')+'S'+String(n+1).padStart(2,'0'), nameHy:selected.extensionKey?'Ֆիզիկական երևույթների ճանաչում և համեմատություն':'Կիրառական խնդիրների լուծում և արդյունքների համեմատություն', ready:n<3, mastery:{ percent:75-n, evidenceCount:8 } })),
-      history:[{ id:'completed-fixture', mode:'practice', correct:6, answered:8, percent:75, completedAt:'2026-10-01T19:47:56.15+00:00', curriculumReleaseId:selected.curriculumReleaseId, blueprintId:'fixture-blueprint', policyBindingId:'fixture-binding', modelId:'fixture-model', runtimeBuildId:'fixture-runtime', academicMasteryPolicyId:'fixture-lifecycle', provenanceStatus:'registered_legacy' }],
+      history:reportingHistory??[{ id:'completed-fixture', mode:'practice', correct:6, answered:8, percent:75, completedAt:'2026-10-01T19:47:56.15+00:00', curriculumReleaseId:selected.curriculumReleaseId, blueprintId:'fixture-blueprint', policyBindingId:'fixture-binding', modelId:'fixture-model', runtimeBuildId:'fixture-runtime', academicMasteryPolicyId:'fixture-lifecycle', provenanceStatus:'registered_legacy' }],
       modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode => [mode, { status:'configured', questions:8, hintsAllowed:mode==='practice'||mode==='chapter_review', minimumPercent:mode==='mastery_check'?80:null, minimumCorrectBySkill:{} }]))
     });
     window.__client={ auth:{ getSession:async()=>({ data:{ session:{ user:{ id:studentId } } } }), getUser:async()=>({ data:{ user:{ id:studentId } } }), onAuthStateChange:fn=>window.__listeners.push(fn) }, from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'student',account_status:'active'}})})})}), functions:{ invoke:async(name,{body})=>{
@@ -47,7 +48,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills });
+  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.origin==='https://esm.sh') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
@@ -95,11 +96,11 @@ test('full student shell switches between course documents without browser error
 for(const width of [1280,768,360]) test(`full student assessment shell is readable and contained at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{width});
   const metrics=await page.evaluate(()=>{
-    const table=document.querySelector('#courseContent table'), cell=table.querySelector('td');
+    const record=document.querySelector('#courseContent .assessment-history-list>li');
     const nav=document.querySelector('.amp-mobile-nav');
     return { viewport:innerWidth, documentWidth:document.documentElement.scrollWidth,
-      tableCollapse:getComputedStyle(table).borderCollapse, cellPadding:parseFloat(getComputedStyle(cell).paddingTop),
-      rawDateVisible:[...document.querySelectorAll('#courseContent td')].some(el=>/^\d{4}-\d\d-\d\dT/.test(el.textContent.trim())),
+      historyDisplay:getComputedStyle(record.parentElement).display, recordPadding:parseFloat(getComputedStyle(record).paddingTop),
+      rawDateVisible:[...document.querySelectorAll('#courseContent .assessment-history-list time')].some(el=>/^\d{4}-\d\d-\d\dT/.test(el.textContent.trim())),
       emptyParagraphs:[...document.querySelectorAll('#courseContent > p')].filter(el=>!el.textContent.trim()).length,
       emptyPlayerDisplay:getComputedStyle(document.getElementById('learningPlayer')).display,
       dateText:document.querySelector('#courseContent time')?.textContent,
@@ -109,8 +110,8 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
     };
   });
   await capture(page,'shared-assessment-'+width,metrics);
-  assert.equal(metrics.tableCollapse,'collapse','History lost its table styling');
-  assert.ok(metrics.cellPadding>=10,'History rows need readable cell spacing');
+  assert.equal(metrics.historyDisplay,'grid','History must retain its readable activity list');
+  assert.ok(metrics.recordPadding>=10,'Saved activities need readable spacing');
   assert.equal(metrics.rawDateVisible,false,'Student history must format timestamps');
   assert.match(metrics.dateText,/^\d{2}\.\d{2}\.\d{4} · \d{2}:\d{2}$/,'History must remain readable without Armenian locale data');
   assert.equal(metrics.clippedTabs,0,'Tab labels must fit their buttons');
@@ -121,7 +122,7 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
   assert.ok(metrics.resumeHref.includes('action=practice'));
   assert.deepEqual(errors,[]);
   await page.getByRole('link',{name:'Առաջընթաց',exact:true}).last().click();
-  await page.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='progress' && document.querySelectorAll('#courseContent table').length===2);
+  await page.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='progress' && document.querySelectorAll('#courseContent table').length===1 && document.querySelector('#courseContent .assessment-history-list>li'));
   assert.match(await page.locator('#courseContent').innerText(),/75%/);
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session')),false);
 });
@@ -156,9 +157,10 @@ test('an unavailable enrollment exposes no student evidence in the full shell',a
 test('expanded provenance stays contained at 200 percent text size',async t=>{
   const {page,errors}=await fixture(t);
   await page.addStyleTag({content:'html { font-size: 200%; }'});
-  await page.locator('#courseContent details summary').click();
-  assert.match(await page.locator('#courseContent details').innerText(),/fixture-blueprint/);
-  assert.match(await page.locator('#courseContent details').innerText(),/fixture-runtime/);
+  const provenance=page.locator('#courseContent .assessment-history-list>li details');
+  await provenance.locator('summary').click();
+  assert.match(await provenance.innerText(),/fixture-blueprint/);
+  assert.match(await provenance.innerText(),/fixture-runtime/);
   const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
     crowdedNavLinks:[...document.querySelectorAll('.amp-nav-link')].filter(el=>{
       const label=el.lastElementChild.getBoundingClientRect(), link=el.getBoundingClientRect();
@@ -264,4 +266,32 @@ test('generic focused player retains readable rules and suppresses competing ove
  assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),null);
  assert.equal(await page.locator('#learningPlayer button[type=submit]').isVisible(),true);
  assert.deepEqual(errors,[]);
+});
+test('student saved Practice cards retain assessed zeros, historical scales and accessible scope without a wide history table',async t=>{
+  const {page:p,errors}=await fixture(t,{contextIndex:1,tab:'progress',active:false,reportingHistory:historyEntries()});
+  const history=p.locator('section[aria-labelledby=courseHistoryTitle]');
+  await expect(history.locator('.assessment-history-list>li')).toHaveCount(3);await expect(history.locator('table')).toHaveCount(0);
+  await expect(history.locator('[data-assessment-state=unassessed]')).toHaveCount(3);assert.doesNotMatch(await history.innerText(),/0\/0/);
+  await expect(history).toContainText('0/3 միավոր · 0%');await expect(history).toContainText('2/3 · 66.67%');
+  await expect(history).toContainText('Ստուգարքը չի անցել · 22.39/28 միավոր · 80%');
+  await expect(history.locator('[data-assessment-scope]')).toHaveCount(1);await expect(history.locator('[data-assessment-scope]')).toBeHidden();
+  await history.locator('.assessment-scope summary').focus();await p.keyboard.press('Enter');
+  await expect(history.locator('[data-assessment-scope]')).toBeVisible();await expect(history.locator('[data-assessment-scope]')).toContainText('ամբողջ դասընթացի ընդհանուր գնահատականը չէ');await p.keyboard.press('Enter');
+  for(const [n,record] of (await history.locator('.assessment-history-list>li').all()).entries()){
+    await record.locator('details summary').click();await expect(record).toContainText('policy-'+n);await record.locator('details summary').click();
+  }
+  await p.emulateMedia({reducedMotion:'reduce'});
+  for(const width of [1280,960,768,390,360]){
+    await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+    if(width<=1100){await expect(p.locator('.amp-side-nav')).toBeHidden();await expect(p.locator('.amp-mobile-nav')).toBeVisible();}
+    const versions=history.locator('.assessment-history-list>li').first().locator('details summary');await versions.click();
+    assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width)+' expanded versions');await versions.click();
+    await history.locator('h2').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width));
+    await history.locator('.assessment-history-list>li').first().evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+    if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-'+width+'.png'});}
+  }
+  await p.setViewportSize({width:1280,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='100%');await history.locator('h2').scrollIntoViewIfNeeded();
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-normal.png'});
+  assert.equal(await p.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
+  assert.deepEqual(errors,[]);
 });

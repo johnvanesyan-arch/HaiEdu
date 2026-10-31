@@ -123,7 +123,8 @@ test('v2 native player and history show the 10/2/4 scales and preserve mandatory
  assert.match(await page.locator('#learningPlayer [data-assessment-scope]').innerText(),/միայն այս ստուգմամբ գնահատված հմտություններին/);
  await page.locator('#learningPlayer button').filter({hasText:'Թարմացնել արդյունքները'}).click();await page.waitForSelector('#courseHistoryTitle');
  assert.match(await page.locator('#courseContent').innerText(),/Պարտադիր վերջնարդյունքներ՝ 8\/10/);
- assert.match(await page.locator('tbody [data-assessment-scope]').first().innerText(),/ամբողջ դասընթացի ընդհանուր գնահատականը չէ/);
+ const historyScope=page.locator('section[aria-labelledby=courseHistoryTitle] .assessment-scope');await historyScope.locator('summary').click();
+ await expect(historyScope.locator('[data-assessment-scope]')).toBeVisible();assert.match(await historyScope.innerText(),/ամբողջ դասընթացի ընդհանուր գնահատականը չէ/);
  await page.setViewportSize({width:375,height:812});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
  assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
 });

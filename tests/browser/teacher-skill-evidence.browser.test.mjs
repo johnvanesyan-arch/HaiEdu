@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import {fixture} from '../fixtures/teacher-performance-browser.mjs';
+import {historyEntries,historyReports,historyReadability} from '../fixtures/assessment-history.mjs';
 
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const estimates=[{percent:88,band:'secure',status:'secure',evidenceCount:4,contract:{mode:'diagnostic',modelId:'model-a'}},{percent:38,band:'needs_support',status:'needs_support',evidenceCount:4,contract:{mode:'practice',modelId:'model-b'}}];
@@ -13,6 +14,36 @@ const matrix=[{skillId:'s1',code:'SYN-1-S01',nameHy:'Առաջին հմտությ
 const student={id:'student-a',displayName:'Փորձնական աշակերտ',matrix,weakSkills:matrix,latestActivityAt:'2026-10-30',masteryCheck:{passed:true}};
 const studentDetails={student,unitCode:'SYN-1',matrix,skills:matrix,recentAttempts:[],sessions:[],modeSummary:{}};
 const analytics={students:[student],studentCount:1,skills:matrix};
+
+test('teacher saved history distinguishes unassessed groups from zero, keeps versions and one keyboard-accessible scope',async t=>{
+ const details={...studentDetails,sessions:historyEntries(),latestDiagnostic:{assessmentResult:historyReports[1]},latestMasteryCheck:{assessmentResult:historyReports[2]}};
+ const {page:p,errors}=await fixture(browser,t,{analytics,studentDetails:details});
+ await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
+ await p.locator('#matrixWrap td button').first().click();
+ const history=p.locator('.teacher-assessment-history');await expect(history.locator('.assessment-history-list>li')).toHaveCount(3);
+ await expect(history.locator('[data-assessment-state=unassessed]')).toHaveCount(3);
+ assert.doesNotMatch(await history.innerText(),/0\/0/);
+ await expect(history).toContainText('0/3 միավոր · 0%');await expect(history).toContainText('2/3 · 66.67%');
+ await expect(history).toContainText('Ստուգարքը չի անցել · 22.39/28 միավոր · 80%');
+ await expect(history.locator('[data-assessment-scope]')).toHaveCount(1);await expect(history.locator('[data-assessment-scope]')).toBeHidden();
+ await history.locator('.assessment-scope summary').focus();await p.keyboard.press('Enter');
+ await expect(history.locator('[data-assessment-scope]')).toBeVisible();await expect(history.locator('[data-assessment-scope]')).toContainText('ամբողջ դասընթացի ընդհանուր գնահատականը չէ');
+ await p.keyboard.press('Enter');
+ for(const [n,record] of (await history.locator('.assessment-history-list>li').all()).entries()){
+  await record.locator('details summary').click();await expect(record).toContainText('policy-'+n);await record.locator('details summary').click();
+ }
+ await p.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [1280,768,390]){
+  await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+  await history.locator('h3').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'.teacher-assessment-history'),[],String(width));
+  await history.locator('.assessment-history-list>li').first().evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-practice-history-'+width+'.png'});}
+ }
+ await p.setViewportSize({width:1280,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='100%');await history.locator('h3').scrollIntoViewIfNeeded();
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-practice-history-normal.png'});
+ const writes=await p.evaluate(()=>window.__teacherFixture.calls.filter(c=>!['get-teacher-dashboard','get-teacher-student','get-teacher-workspace'].includes(c.fn)&&!(c.fn==='manage-student-invitation'&&c.body.action==='list')));
+ assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);
+});
 
 test('actual teacher matrix exposes split evidence, support counts and direct keyboard details without false no-data',async t=>{
  const {page:p,errors}=await fixture(browser,t,{analytics,studentDetails});

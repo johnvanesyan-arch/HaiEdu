@@ -76,7 +76,7 @@ test("student shell provides desktop rail, mobile navigation and focused-task su
   assert.match(css, /\.amp-side-nav/);
   assert.match(css, /\.amp-mobile-nav/);
   assert.match(css, /amp-focused-task[\s\S]*\.amp-side-nav/);
-  assert.match(css, /@media \(max-width: 820px\)/);
+  assert.match(css, /@media \(max-width: 1100px\)/);
 });
 
 test("Physics 7 browser exposes chapter-topic-skill hierarchy without privileged data", async () => {
