@@ -59,4 +59,5 @@ jobs:
           path: |
             qa-results/resource-assignments.json
             qa-results/resource-form
+            qa-results/custom-task-*.png
           retention-days: 14

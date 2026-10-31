@@ -1,6 +1,6 @@
 # Teacher workflow SOP — version 1.6
 
-**SOP 1.6 — deployed implementation; final hosted acceptance/owner usability open.** The in-product guide distinguishes published course writing from teacher-created tasks. Seven migrations, twelve Edge runtimes and48 public frontend files are source verified; all five PR/main gates pass. Positive submissions, review/revision and erasure are covered by isolated actual-SQL/native evidence. Current hosted acceptance stops at the QA/demo identity overlap described in the integration contract; no production learner response, mark or erasure is manufactured.
+**SOP 1.6 — implementation deployed; hosted QA correction and owner usability open.** Seven migrations, twelve Edge runtimes and48 public frontend files are source verified; all five baseline PR/main gates pass. The fixture repair passes all54 initial authenticated isolation checks. The fresh run stops at an unsupported queue state sent only by its acceptance helper; the browser and deployed API use the correct submitted-work contract. Eight focused actual-handler/SQL checks pass for the corrected probe; full postflight/new guarded acceptance remain pending. Positive submission/review/revision/erasure evidence remains isolated; no production learner response, mark or erasure is manufactured.
 
 **Create and send a teacher task:** Assign writing → exact class/unit → Create my task / drafts → New / Reopen / Create copy → title/instructions → independent source (editable text/private PDF/HTTPS link) and required response (HaiEdu text/PDF, DOCX or both/HTTPS link) → feedback only or explicit criteria → student preview → Save and continue → class/selected active recipients → explicit confirm → durable receipt. Private save never sends. Reuse pins the same owner's ready PDF in the exact context and never copies student work. Later draft edits do not change sent versions.
 
@@ -122,3 +122,8 @@ Release verification: all five required PR/main gates pass (1,488 unit/integrati
 ## B.12.3 owner review context — 2026-10-29
 
 John confirms completing the instructed separate ordinary English Grade 7 demo setup. Use that class to review teacher navigation, subject/context selection and empty states. With no enrolled learner or submitted writing, an empty roster/review queue is expected; it is not delivery/submission evidence. The [four-journey review checklist](workspace-final-followups.md#owner-usability-review) distinguishes those checks from delivery, writing and feedback in a permitted class with a test learner. Existing actual-SQL/native and guarded production evidence is reused; no fresh production submission/grade or API capability is added. SOP 1.5 procedures are unchanged.
+
+
+## Paired owner usability after QA fixture separation
+
+Use an ordinary authorized teacher/student pair. The preserved English7 demo class now has zero active learners after the specifically approved removal of its QA learner; enroll a separate ordinary learner if that class is used for the paired review. The accepted teacher/class setup is preserved. Dedicated two-school QA accounts remain automation fixtures and are not repurposed as ordinary demonstration accounts. Full technical acceptance and the four simple-process journeys still precede final owner acceptance.

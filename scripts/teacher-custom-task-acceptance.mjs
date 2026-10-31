@@ -18,6 +18,10 @@ export function matchesCustomTaskSend(body,{draft,scope,enrollmentId}){
   &&Object.keys(p).length===7);
 }
 
+export function readSubmittedCustomTaskQueue(api,teacher){
+ return api(teacher,'manage-teacher-task-review','queue',{state:'submitted'});
+}
+
 // Reviewed-main caller supplies ordinary designated QA sessions and the shared
 // production mutex. Never submit learner work, publish a mark or erase an account.
 export function createCustomTaskAcceptance({fixture,request,browserContext,check,report,prefix}){
@@ -127,7 +131,7 @@ export function createCustomTaskAcceptance({fixture,request,browserContext,check
    }finally{await sb.close();}
    const revised=await api(teacher,'manage-teacher-task-drafts','save',{id:draft.id,expectedRevision:drafts.get(teacher).revision,definition:{...definition,title:definition.title+' edited draft'}});
    check(side+': later draft editing leaves assigned source/version unchanged',revised.draft.revision>saved.draft.revision&&(await api(student,'manage-teacher-task-student-work','open',{id:delivery.id})).assignment.definition.title===definition.title);
-   const queue=await api(teacher,'manage-teacher-task-review','queue',{state:'pending'});
+   const queue=await readSubmittedCustomTaskQueue(api,teacher);
    check(side+': unsubmitted tasks do not create teacher review work',Array.isArray(queue.entries)&&queue.entries.every(s=>s.deliveryId!==delivery.id));
    for(const actor of [teacher,student]){
     const privacy=await request(actor,'/functions/v1/get-my-privacy',{});

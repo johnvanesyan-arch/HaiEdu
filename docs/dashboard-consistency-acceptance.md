@@ -50,3 +50,10 @@ Owner review must exercise both routes: Teacher Home → Classes → selected su
 
 
 Current deployment/source verification and the QA/demo identity collision are recorded in [the integration contract](teacher-task-production-integration.md). The strict isolation runners stop before negative/subject checks; final usability is held. No role boundary or assertion is relaxed to call this consistency pass complete.
+
+
+## Current technical gate and paired review prerequisite — 2026-10-31
+
+PR367/main e7f14281 passes all five required gates and exact production/source verification. The owner-approved fixture access repair passes all54 initial authenticated isolation checks in run41178222785. That run stops after264/265 checks on an invalid QA review-state request; the browser and deployed API use submitted correctly. The corrected probe passes eight focused actual-handler/SQL checks; required current-source CI, a fresh full hosted run and its final isolation remain pending. The existing Home/guide source and visual proof are unchanged.
+
+After that technical gate, review both complete journeys above and the four simple teacher/student processes in SOP1.6. Use ordinary authorized accounts; the preserved English7 demo needs a separate ordinary learner if chosen for the paired review, because its sole QA enrollment was intentionally ended. This does not reopen the accepted teacher/class/content/audio setup. All45 mappings, distinct assessment/analytics meanings, classroom speaking, English C47 and the four-subject gate remain. B.12.3/B.12 stay open and subjects stay paused.
