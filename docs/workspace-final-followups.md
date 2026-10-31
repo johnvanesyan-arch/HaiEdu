@@ -1,5 +1,8 @@
 # B.12.3 — Final follow-up dispositions and owner review
 
+**2026-10-31 — Final walkthrough found UX-ANALYTICS-01; correction prepared, not deployed.** Teacher mixed-contract skill evidence was displayed as no data and arbitrary attention skills. The shared teacher renderer now keeps separate results, explicit existing colors and sparse/missing states distinct across matrix, roster, filters and details. All1,633 local unit/integration checks pass; required native CI, production/source proof and visual inspection remain pending. No scoring/backend/content change. [Correction and limits](teacher-skill-evidence-20261031.md). The earlier327/327 resource delivery evidence is retained for unchanged contracts. **B.12.3/B.12 remain open; subjects stay paused.** Final ordinary-account and four-role usability acceptance remains separate.
+
+
 2026-10-31 Asia/Yerevan · current technical prerequisite complete on6892b730: manual resource41191092937 passes327/327,54+54 isolation,49 frontend hashes and all run-owned cleanup. The owner-confirmed English7 demo setup stays accepted. Final role-specific consistency/usability is the next gate; B.12.3/B.12 stay open and subjects paused. [Current receipt](evidence/teacher-task-hosted-acceptance-20261031.json) · [Authoritative status](project-status.md) · [Single register](workspace-defect-register.md).
 
 ## Ordinary demo setup — owner-confirmed complete

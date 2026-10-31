@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-31",
+  "status": "working branch; CI/deployment pending",
+  "issue": "UX-ANALYTICS-01",
+  "productionSourceObserved": "f35c4b01f7d1d0b7aff5173654be11b9090371ec",
+  "actorScope": "Securely supplied dedicated QA teacher; read-only existing records, ordinary-account acceptance not implied",
+  "reproduction": {
+    "mixedSkillCells": 12,
+    "display": "em dash / not_assessed",
+    "diagnostic": "saved four assessed groups100%",
+    "mastery": "saved passed28/28",
+    "firstSkillPerContract": [
+      {
+        "percent": 71,
+        "count": 3
+      },
+      {
+        "percent": 71,
+        "count": 3
+      },
+      {
+        "percent": 60,
+        "count": 1
+      }
+    ]
+  },
+  "cause": "mixed_contracts aggregate null is intentional; missing UI distinction and per-contract support presentation",
+  "sourceChanges": "teacher browser presentation only; no backend, schema, scoring, content, grants or configuration changes",
+  "tests": {
+    "localUnitIntegration": 1633,
+    "localFailures": 0,
+    "targeted": 33,
+    "nativeNewCases": 2,
+    "nativeLocal": "unavailable executable; CI required",
+    "syntaxBrowserFiles": 104,
+    "qaTriggerGraphs": 11
+  },
+  "beforeImage": {
+    "path": "teacher-skill-matrix-before-20261031.jpg",
+    "sha256": "f236805278a6cec0934fb0ec272bbdab5633b42b61aa6d12b463f71290c1f0d2"
+  },
+  "noLearnerResponseGradeOrFeedbackWrites": true,
+  "logout": "normal UI returned to account-access; no other QA run active at that time",
+  "ownerGate": "B.12.3/B.12 open; subjects paused"
+}
