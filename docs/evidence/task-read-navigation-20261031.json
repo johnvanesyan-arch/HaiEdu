@@ -195,5 +195,24 @@
     "regression": "Retain strict true assertion; extend actual-component held-read coverage to custom draft list and published writing catalog, six component cases plus the full student journey.",
     "productionSourceManifestFiles": 49,
     "schoolAdminScope": "Shared busy-button helper used by every school-admin operation; no action/auth/analytics change."
+  },
+  "correctedPrVerificationAttempt": {
+    "run": 41185883583,
+    "source": "40cfe0c2010c1dc708fb1d07f07c46c00b0868bc",
+    "unitIntegration": {
+      "passed": 1630,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgresJobs": "both passed",
+    "native": {
+      "passed": 358,
+      "total": 364,
+      "failed": 6,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failure": "All six component cases pass semantic busy, canLeave, hasUnsaved and actual outside navigation URL checks, then fail only the destination heading text: test fixture lacks UTF-8 declaration and decodes Armenian as Windows-1252. Add charset in fixture response and meta; do not change product or weaken assertions. Full My Work to writing case and all357 unchanged native cases pass. Aggregate blocks release pending complete current-source pass."
   }
 }

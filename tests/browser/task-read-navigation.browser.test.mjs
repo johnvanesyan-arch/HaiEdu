@@ -29,7 +29,7 @@ for(const [kind,[file,mount,endpoint,action]]of Object.entries(modules))test(kin
  },{actorId:id(10),context,draft,endpoint,action});
  await page.route('**/*',async route=>{
   const u=new URL(route.request().url());if(u.origin!=='https://read-navigation.test')return route.abort();
-  if(u.pathname==='/outside')return route.fulfill({contentType:'text/html',body:'<!doctype html><html lang="hy"><h1>Այլ էջ</h1></html>'});
+  if(u.pathname==='/outside')return route.fulfill({contentType:'text/html; charset=utf-8',body:'<!doctype html><html lang="hy"><meta charset="utf-8"><h1>Այլ էջ</h1></html>'});
   if(u.pathname==='/harness')return route.fulfill({contentType:'text/html',body:`<!doctype html><html lang="hy"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/base.css"><link rel="stylesheet" href="/written-work.css"><link rel="stylesheet" href="/writing-assignments.css"><body><main><a href="/outside">Բացել այլ էջ</a><div id="root"></div></main><script type="module">import{${mount}}from'/${file}';window.__view=${mount}({root:document.querySelector('#root'),client:window.__client,...window.__readOptions});</script></body></html>`});
   try{return route.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
  });
