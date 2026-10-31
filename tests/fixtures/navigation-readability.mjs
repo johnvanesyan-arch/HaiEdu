@@ -31,7 +31,16 @@ export async function navigationReadability() {
   if(previous&&previous!==document.body)previous.focus({preventScroll:true});else document.activeElement?.blur();
   for(const {el,x,y} of saved){el.scrollLeft=x;el.scrollTop=y;}
   window.scrollTo({left:position.x,top:position.y,behavior:'instant'});
-  if(document.documentElement.scrollWidth>innerWidth+1)errors.push({kind:'page overflow'});
+  if(document.documentElement.scrollWidth>innerWidth+1){
+    const offenders=[...document.querySelectorAll('body *')].filter(el=>{
+      if(!el.getClientRects().length)return false;
+      const r=el.getBoundingClientRect(),c=getComputedStyle(el);
+      if(r.left>=-1&&r.right<=innerWidth+1&&!(el.scrollWidth>el.clientWidth+1&&c.overflowX==='visible'))return false;
+      for(let p=el.parentElement;p&&p!==document.body;p=p.parentElement)if(/auto|scroll|hidden|clip/.test(getComputedStyle(p).overflowX))return false;
+      return true;
+    }).map(el=>{const r=el.getBoundingClientRect(),c=getComputedStyle(el);return {tag:el.tagName,id:el.id,className:String(el.className),text:el.textContent.trim().slice(0,90),left:r.left,right:r.right,width:r.width,scrollWidth:el.scrollWidth,minWidth:c.minWidth,maxWidth:c.maxWidth,padding:c.padding,display:c.display,overflow:c.overflowX};}).sort((a,b)=>a.width-b.width).slice(0,16);
+    errors.push({kind:'page overflow',viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,offenders});
+  }
   return {errors,links};
 }
 
