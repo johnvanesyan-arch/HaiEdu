@@ -1,0 +1,6740 @@
+{
+  "navigation-admin-security.json": [
+    {
+      "page": "admin-security.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin-security.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin-security.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin-security.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin-security.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin-security.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "./admin.html#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "./admin.html#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "./admin.html#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "./admin.html#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "./admin.html#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-admin.json": [
+    {
+      "page": "admin.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 960,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 960,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 390,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 390,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "admin.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Դպրոցի հրավեր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Դպրոցների կառավարում",
+          "href": "#schoolsSection",
+          "current": null
+        },
+        {
+          "label": "Հաշիվներ և դերեր",
+          "href": "#accountsSection",
+          "current": null
+        },
+        {
+          "label": "Արխիվ",
+          "href": "#archiveSection",
+          "current": null
+        },
+        {
+          "label": "Ջնջման հարցումներ",
+          "href": "#deletionsSection",
+          "current": null
+        },
+        {
+          "label": "Աուդիտ",
+          "href": "#auditSection",
+          "current": null
+        },
+        {
+          "label": "Անվտանգություն",
+          "href": "./admin-security.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-bank.json": [
+    {
+      "page": "content-bank.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-bank.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-bank.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-bank.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-bank.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-bank.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-curriculum.json": [
+    {
+      "page": "content-curriculum.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-curriculum.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-curriculum.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-curriculum.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-curriculum.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-curriculum.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": "page"
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-evidence.json": [
+    {
+      "page": "content-evidence.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-evidence.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-evidence.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-evidence.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-evidence.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-evidence.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-guides.json": [
+    {
+      "page": "content-guides.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-guides.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-guides.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-guides.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-guides.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-guides.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": "page"
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-item.json": [
+    {
+      "page": "content-item.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-item.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-item.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-item.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-item.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-item.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-materials.json": [
+    {
+      "page": "content-materials.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-materials.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-materials.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-materials.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-materials.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-materials.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": "page"
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-misconceptions.json": [
+    {
+      "page": "content-misconceptions.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-misconceptions.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-misconceptions.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-misconceptions.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-misconceptions.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-misconceptions.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": "page"
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content-review.json": [
+    {
+      "page": "content-review.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 960,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 960,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 390,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 390,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content-review.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": null
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": "page"
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-content.json": [
+    {
+      "page": "content.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "content.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./content.html",
+          "current": "page"
+        },
+        {
+          "label": "Ստուգման հերթ",
+          "href": "./content-review.html",
+          "current": null
+        },
+        {
+          "label": "Հարցերի բանկ",
+          "href": "./content-bank.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական ծրագիր",
+          "href": "./content-curriculum.html",
+          "current": null
+        },
+        {
+          "label": "Փորձնական տվյալներ",
+          "href": "./content-evidence.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական նյութեր",
+          "href": "./content-materials.html",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Օգնության ուղեցույցներ",
+          "href": "./content-guides.html",
+          "current": null
+        },
+        {
+          "label": "Թյուր պատկերացումներ",
+          "href": "./content-misconceptions.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-school-admin.json": [
+    {
+      "page": "school-admin.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 960,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 960,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 390,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 390,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-admin.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": "page"
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "#teachersPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-school-teacher.json": [
+    {
+      "page": "school-teacher.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-teacher.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-teacher.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-teacher.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-teacher.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "school-teacher.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./school-admin.html",
+          "current": null
+        },
+        {
+          "label": "Ուսումնական տարի",
+          "href": "./school-admin.html#yearPanel",
+          "current": null
+        },
+        {
+          "label": "Ուսուցիչներ",
+          "href": "./school-admin.html#teachersPanel",
+          "current": "page"
+        },
+        {
+          "label": "Ուսուցչի հրավեր",
+          "href": "./school-admin.html#teacherPanel",
+          "current": null
+        },
+        {
+          "label": "Սպասվող հրավերներ",
+          "href": "./school-admin.html#pendingPanel",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ],
+  "navigation-student.json": [
+    {
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Միանալ դասարանին՝ կոդով",
+          "href": "./join.html",
+          "current": null
+        },
+        {
+          "label": "Իմ հաշիվը",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        },
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Միանալ դասարանին՝ կոդով",
+          "href": "./join.html",
+          "current": null
+        },
+        {
+          "label": "Իմ հաշիվը",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        },
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 960,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 960,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 390,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 390,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 320,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    },
+    {
+      "width": 320,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գնահատումներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=assessment",
+          "current": null
+        },
+        {
+          "label": "Դասընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=course",
+          "current": null
+        },
+        {
+          "label": "Ուղեցույցներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=guides",
+          "current": null
+        },
+        {
+          "label": "Առաջընթաց",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=progress",
+          "current": "page"
+        },
+        {
+          "label": "Գրավոր աշխատանքներ",
+          "href": "./course.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&tab=writing",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Գլխավոր",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        },
+        {
+          "label": "Դասընթացներ",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=courses",
+          "current": "page"
+        },
+        {
+          "label": "Իմ աշխատանքները",
+          "href": "./index.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007&view=work",
+          "current": null
+        },
+        {
+          "label": "Գրադարան",
+          "href": "./materials.html?enrollment=74000000-0000-4000-8000-000000000005&release=74000000-0000-4000-8000-000000000006&unit=74000000-0000-4000-8000-000000000007",
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "contextPreserved": true
+    }
+  ],
+  "navigation-teacher.json": [
+    {
+      "page": "teacher.html",
+      "width": 1280,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 1280,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 960,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 960,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 768,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 768,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 390,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 390,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 360,
+      "textScale": 100,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    },
+    {
+      "page": "teacher.html",
+      "width": 360,
+      "textScale": 200,
+      "controls": [
+        {
+          "label": "Գլխավոր",
+          "href": "./teacher.html?view=home",
+          "current": "page"
+        },
+        {
+          "label": "Իմ պրոֆիլը",
+          "href": "./teacher.html?view=profile",
+          "current": null
+        },
+        {
+          "label": "Դասարաններ",
+          "href": "./teacher.html?view=classes",
+          "current": null
+        },
+        {
+          "label": "Հանձնարարել գրավոր",
+          "href": "./teacher.html?view=assign-writing",
+          "current": null
+        },
+        {
+          "label": "Գրավորի ստուգում",
+          "href": "./teacher.html?view=review",
+          "current": null
+        },
+        {
+          "label": "Արխիվացված դասարաններ",
+          "href": "./teacher.html?view=archive",
+          "current": null
+        },
+        {
+          "label": "Նյութերի գրադարան",
+          "href": "./resource-library.html",
+          "current": null
+        },
+        {
+          "label": "Հաշիվ և գաղտնիություն",
+          "href": "./privacy.html",
+          "current": null
+        },
+        {
+          "label": "Դուրս գալ",
+          "href": null,
+          "current": null
+        }
+      ],
+      "keyboard": true,
+      "fullWords": true,
+      "scope": "actual page/shared role shell; simulated authorization, not authenticated production acceptance"
+    }
+  ]
+}
