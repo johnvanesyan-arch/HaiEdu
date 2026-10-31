@@ -33,4 +33,6 @@ Required all-five PR/main CI, inspected screenshot/digest receipts and public re
 
 Roll back if unassessed groups become zero grades, observed zeros disappear, the saved result/pass flag/denominator changes, version details or scope become unreachable, card content overflows or a required release check/source comparison fails. The previous frontend remains compatible because API/record/URL contracts are unchanged.
 
-Next is the remaining role usability pass, including UX-NAV-02 (enlarged shared staff navigation), then John’s explicit acceptance. URL overhaul, the open MFA coverage finding and Master Admin isolation retain their separate planned scope/approval gates. All45 capability mappings, accepted content/audio, classroom speaking, English C47 and the separate four-subject gate remain.
+Visual review separately records oversized/word-split enlarged student compact-navigation labels alongside the existing cropped staff rail under UX-NAV-02. They remain a shared navigation follow-up, not accepted by the bounded result/heading checks.
+
+Next is the remaining role usability pass, including UX-NAV-02 (enlarged shared staff/student navigation), then John’s explicit acceptance. URL overhaul, the open MFA coverage finding and Master Admin isolation retain their separate planned scope/approval gates. All45 capability mappings, accepted content/audio, classroom speaking, English C47 and the separate four-subject gate remain.

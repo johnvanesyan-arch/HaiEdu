@@ -16,10 +16,10 @@ export function historyEntries(){
 export function historyReadability(selector){
  const root=document.querySelector(selector),errors=[];
  if(!root)return ['history missing'];
- for(const el of root.querySelectorAll('.assessment-history-list>li,.assessment-group')){
+ for(const el of root.querySelectorAll('.assessment-history-list>li,.assessment-group,:scope>h2,:scope>h3,.assessment-record-heading h3,.assessment-record-heading h4')){
   const box=el.getBoundingClientRect();
   if(el.scrollWidth>el.clientWidth+1||box.right>innerWidth+1)errors.push('overflow: '+el.textContent);
-  if(!el.matches('.assessment-group'))continue;
+  if(!el.matches('.assessment-group,h2,h3,h4'))continue;
   const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
   for(let node=walker.nextNode();node;node=walker.nextNode())for(const word of node.textContent.matchAll(/\p{L}[\p{L}\p{M}]*/gu)){
    const r=document.createRange();r.setStart(node,word.index);r.setEnd(node,word.index+word[0].length);

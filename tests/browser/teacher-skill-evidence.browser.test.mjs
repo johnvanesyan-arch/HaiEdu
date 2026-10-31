@@ -36,6 +36,7 @@ test('teacher saved history distinguishes unassessed groups from zero, keeps ver
  for(const width of [1280,768,390]){
   await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
   await history.locator('h3').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'.teacher-assessment-history'),[],String(width));
+  await history.locator('.assessment-history-list>li').first().evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-practice-history-'+width+'.png'});}
  }
  await p.setViewportSize({width:1280,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='100%');await history.locator('h3').scrollIntoViewIfNeeded();

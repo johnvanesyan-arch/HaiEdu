@@ -224,8 +224,9 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
 .assessment-history-list dd { margin-inline-start:0; }
 .assessment-group[data-assessment-state=unassessed],
 .assessment-group[data-assessment-state=unavailable] { color:var(--forest-muted,#687385); }
-#courseContent .course-history-section { padding:min(1.25rem,20px); }
+body[data-student-page="course"] #courseContent .course-history-section { padding:min(1.25rem,20px); }
 @media (max-width:760px) {
   /* Activities already have their own cards; keep room for enlarged words. */
-  #courseContent .course-history-section { padding:0; border:0; background:transparent; box-shadow:none; }
+  body[data-student-page="course"] #courseContent .course-history-section { padding:0; border:0; background:transparent; box-shadow:none; }
+  body[data-student-page="course"] #courseContent .course-history-section>h2 { font-size:1rem; }
 }
