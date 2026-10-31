@@ -12,8 +12,10 @@ const modules={
  review:['teacher-task-review.mjs','mountTeacherTaskReview','manage-teacher-task-review','queue'],
  send:['teacher-task-send.mjs','mountTeacherTaskSend','manage-teacher-task-delivery','preview'],
  editor:['teacher-task-editor.mjs','mountTeacherTaskEditor','manage-teacher-task-sources','open'],
+ drafts:['teacher-task-draft-workspace.mjs','mountTeacherTaskDraftWorkspace','manage-teacher-task-drafts','list'],
+ published:['writing-assignments.mjs','mountTeacherWritingAssignments','manage-writing-assignments','catalog'],
 };
-for(const [kind,[file,mount,endpoint,action]]of Object.entries(modules))test(kind+' permits navigation during a clean read without treating it as saved work',async t=>{
+for(const [kind,[file,mount,endpoint,action]]of Object.entries(modules))test(kind+' permits navigation during a clean read without treating it as unsaved work',async t=>{
  const bc=await browser.newContext({viewport:{width:768,height:960},serviceWorkers:'block'});t.after(()=>bc.close());
  const page=await bc.newPage(),errors=[],dialogs=[];page.setDefaultTimeout(8000);page.on('pageerror',e=>errors.push(e.message));page.on('dialog',async d=>{dialogs.push(d.message());await d.dismiss();});
  const context={assignmentId:id(1),curriculumReleaseId:id(2),unitId:id(3)};

@@ -66,7 +66,7 @@
   ],
   "fix": "Use a separate in-flight mutation flag for navigation/dirty guards. Keep busy control locks for reads; retain pending receipt, dirty data, live actor/context and stale-result fencing.",
   "nativeRegressionsPrepared": {
-    "componentCases": 4,
+    "componentCases": 6,
     "fullStudentWorkToWritingCase": 1,
     "transport": "controlled Auth/API; actual modules/DOM/navigation",
     "preservedCases": "Existing unknown save/send/submit/publication/cancel and actor/context-change coverage"
@@ -129,24 +129,71 @@
     "coverage": "All four new custom-task controllers and their student/teacher entry points, across governed subjects/grades/classes",
     "generatedTeacherBundles": "rebuilt/check passed; byte-identical dynamic dependency wrappers",
     "browserQaTriggerAudit": "all eleven workflow dependency graphs pass; resource147 paths",
-    "runtimeDeployments": "backend unchanged; no Edge redeploy required; fresh changed frontend source proof required"
+    "runtimeDeployments": "backend unchanged; no Edge redeploy; verify49 frontend files, including all seven modified modules"
   },
   "changedFrontend": [
     {
       "path": "student-teacher-tasks.mjs",
-      "sha256": "7c8826001ea2a3894c894e2d444f346aee989620d53caac2f42944e44b26fba7"
+      "sha256": "281e2f3bc51740da6cda210166edaac4b7f49cdc109b8cc425145fbfcfc514a2"
     },
     {
       "path": "teacher-task-editor.mjs",
-      "sha256": "9af0b50a8a5527bc8aac5b4c7bbd6d89159a487366ec38fe53c2bbfd9b3db307"
+      "sha256": "afb9f69d25efea835cc8776aefa4cc227e1e057a93051384d32a3999499b66f0"
     },
     {
       "path": "teacher-task-send.mjs",
-      "sha256": "018c826439d51a3856513c319f2fb7413c9d1442183319de1d2d48211b4fff46"
+      "sha256": "428bffc3b8477b1ab568318473412485b08a47b2adaac029eef8b0cee6312c12"
     },
     {
       "path": "teacher-task-review.mjs",
-      "sha256": "04fe973a325d174733126525f06301472b8ecbd4665329a1293cb220a6a45866"
+      "sha256": "dafc1e294dd3965ed1d4d83b295d51fb2355d363a123810a5b24b24acb608877"
+    },
+    {
+      "path": "teacher-task-draft-workspace.mjs",
+      "sha256": "f53bcb9fe59191b79258c3ccf77b4a91a7ed830445672a82d7c70c7f8c948d81"
+    },
+    {
+      "path": "writing-assignments.mjs",
+      "sha256": "6f21820eced3e84b99c1c127d6c66a21f6ccd32253cf25c13b8062947e2714db"
+    },
+    {
+      "path": "school-admin.js",
+      "sha256": "b44a7b01f8e309a8094e0933e2403bbc923756f922d959071039504de6bd1599"
     }
-  ]
+  ],
+  "prVerificationAttempt": {
+    "run": 41185114174,
+    "source": "10da3bdb9c6408d4ce332b42faeaa3c066ddab8e",
+    "unitIntegration": {
+      "passed": 1630,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgresJobs": "both passed",
+    "native": {
+      "passed": 358,
+      "total": 362,
+      "failed": 4,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failure": "All four new component cases stopped at aria-busy true; toggleAttribute instead produced empty string. The full My Work to writing case passed. Navigation assertions beyond the attribute check were not reached in the four cases. Aggregate correctly blocked release."
+  },
+  "loadingAccessibilityCorrection": {
+    "scope": "All seven malformed toggleAttribute aria-busy call sites in web source",
+    "files": [
+      "web/student-teacher-tasks.mjs",
+      "web/teacher-task-editor.mjs",
+      "web/teacher-task-send.mjs",
+      "web/teacher-task-review.mjs",
+      "web/teacher-task-draft-workspace.mjs",
+      "web/writing-assignments.mjs",
+      "web/school-admin.js"
+    ],
+    "change": "Set aria-busy=true while loading, remove it after completion; preserve disabled controls and all authorization/mutation/dirty guards.",
+    "regression": "Retain strict true assertion; extend actual-component held-read coverage to custom draft list and published writing catalog, six component cases plus the full student journey.",
+    "productionSourceManifestFiles": 49,
+    "schoolAdminScope": "Shared busy-button helper used by every school-admin operation; no action/auth/analytics change."
+  }
 }

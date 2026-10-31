@@ -10,7 +10,7 @@ export function mountTeacherTaskEditor({root,client,context,actorId,draft=null,i
  root.classList.add('writing-assignment-workspace');
  const message=(text,bad=false)=>{if(current()){$('[data-editor-message]').textContent=text;$('[data-editor-message]').classList.toggle('bad',bad);}};
  const dirty=()=>Boolean(file)&&model.sourceKind==='pdf'||JSON.stringify(model)!==saved;
- function lock(){if(!current())return;root.toggleAttribute('aria-busy',busy);root.querySelectorAll('input,textarea,select,button').forEach(e=>{e.disabled=busy||Boolean(pending)&&!e.hasAttribute('data-editor-retry');});}
+ function lock(){if(!current())return;if(busy)root.setAttribute('aria-busy','true');else root.removeAttribute('aria-busy');root.querySelectorAll('input,textarea,select,button').forEach(e=>{e.disabled=busy||Boolean(pending)&&!e.hasAttribute('data-editor-retry');});}
  function canLeave(){if(mutating||pending){message('Նախ ստուգեք պահպանման հաստատումը։',true);return false;}return!dirty()||window.confirm('Չպահպանված փոփոխությունները չեղարկե՞լ։');}
  const field=(key,label,value,limit,rows=0)=>{
   const control=`<label>${label}${rows?`<textarea data-field="${key}" rows="${rows}" maxlength="${limit}">${esc(value)}</textarea>`:`<input data-field="${key}" maxlength="${limit}" value="${esc(value)}">`}</label>`;

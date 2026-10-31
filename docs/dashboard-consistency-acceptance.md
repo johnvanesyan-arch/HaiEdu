@@ -1,5 +1,7 @@
 # Dashboard consistency and complete learning journeys
 
+**31 October CI follow-up, not deployed:** PR369 CI41185114174 passes1,630 unit/integration and both PostgreSQL jobs. Native358/362 stops four new component cases at an empty `aria-busy` value; the full My Work → writing navigation case passes. Keep the strict accessibility assertion, correct all seven malformed busy-marker sites across task views and the shared school-admin button helper, and cover draft-list/published-writing loading in two more native cases. Backend/auth/assessment contracts are unchanged. Required current-source CI,49-file production verification and full hosted postflight remain; B.12.3/B.12 stay open and subjects paused.
+
 2026-10-31 Asia/Yerevan · owner-approved B.12.3 scope · bounded Home/guide consistency implemented and source verified; full hosted/owner acceptance remains open.
 
 John approves a bounded consistency pass within the open stabilization work. Preserve all 45 mappings, every original policy/model/version, authorization, content/audio acceptance and classroom-assessed speaking. English stays at C47 and subject expansion stays paused. This approval is a planning decision; it does not close usability acceptance or activate a new feature.

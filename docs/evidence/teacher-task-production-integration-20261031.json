@@ -2898,5 +2898,12 @@
     "failedReport": "teacher-task-hosted-second-20261031.json",
     "priorInvalidRequestRun": 41178222785,
     "navigationEvidence": "task-read-navigation-20261031.json"
+  },
+  "loadingAccessibilityFollowup": {
+    "evidence": "task-read-navigation-20261031.json",
+    "scope": "All seven malformed aria-busy sites; exact protected frontend manifest expanded48 to49 to include school-admin.js",
+    "requiredCi": "pending for corrected source; first PR369 attempt passes1630unit/bothPG, native358of362; aggregate correctly blocks release",
+    "nativePrepared": 7,
+    "deployed": false
   }
 }
