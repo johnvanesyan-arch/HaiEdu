@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Yerevan",
+  "state": "QA request corrected locally; reviewed-main CI/deployment and fresh guarded acceptance pending",
+  "productionQaRun": 41178222785,
+  "productionSource": "e7f14281e61ba12cab479796eb0c7ee856eabe99",
+  "productionDeployment": "dpl_FYTJDkXBom8hYtwS92eYoeeGdm9d",
+  "baselinePr": 367,
+  "baselinePrCi": 41177365022,
+  "baselineMainCi": 41177925382,
+  "baselineAllFiveRequiredJobs": "passed",
+  "baselineUnitIntegration": 1628,
+  "baselineNative": 357,
+  "taskSpecificPg17Races": 16,
+  "failedReport": "teacher-task-hosted-failed-20261031.json",
+  "artifact": 13033986905,
+  "artifactSha256": "eb9ce3fcbfa02126ff3f1ca67d09dc995e93e48b1d80d1ff24764b8974c888ea",
+  "artifactVerified": true,
+  "reportMatchesDecodedJobLog": true,
+  "checksPassed": 264,
+  "checksTotal": 265,
+  "isolationBefore": 54,
+  "isolationBeforePassed": true,
+  "isolationAfter": "not reached",
+  "failure": {
+    "endpoint": "manage-teacher-task-review",
+    "action": "queue",
+    "payload": {
+      "state": "pending"
+    },
+    "httpStatus": 400,
+    "correctState": "submitted",
+    "classification": "QA caller contract mismatch; deployed API and browser use submitted"
+  },
+  "deployedReviewHandler": {
+    "version": 1,
+    "verifyJwt": true,
+    "exactSource": true,
+    "sha256": "220fc40671d62d599f57f32404092ca10c206e3f16e72577b58413ccfa435372"
+  },
+  "fix": {
+    "script": "scripts/teacher-custom-task-acceptance.mjs",
+    "sharedProbe": "readSubmittedCustomTaskQueue",
+    "strictApiValidationPreserved": true,
+    "artifactPathAdded": "qa-results/custom-task-*.png",
+    "workflowGuardsOrSchedulingChanged": false,
+    "endpointOrSchemaChanges": false
+  },
+  "focusedVerification": {
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "actualHandlerAndSql": "Old pending state returns 400; production probe returns 200; private drafts stay absent; only explicit isolated submission enters review queue",
+    "triggerAudit": "All eleven production workflow dependency graphs covered; resource147 paths; reviewed-main retained"
+  },
+  "cleanup": {
+    "publishedResourcesWithdrawn": 2,
+    "publishedAssignmentsCancelled": 4,
+    "courseWritingDeliveriesCancelled": 2,
+    "customDeliveriesCancelled": 1,
+    "ownAuthSessionsClosed": 6,
+    "allAcknowledged": true,
+    "privateTeacherDraftsAndPinnedSources": "Retained with immutable audit under normal retention contract"
+  },
+  "productionLearnerAnswersGradesFeedbackOrErasureCreated": false,
+  "retained": [
+    "owner content/audio/demo approvals",
+    "all45 capabilities and assessment/analytics meanings",
+    "classroom speaking",
+    "English C47 and four-subject gate",
+    "B.12.3/B.12 open; subjects paused"
+  ],
+  "next": "Required CI and merge of genuine runner/artifact fix; normal exact-source production acceptance; aligned source-verified Notion closure and final owner usability",
+  "affectedConsumers": {
+    "qaHelperImporters": [
+      "scripts/resource-assignments-acceptance.mjs",
+      "tests/teacher-custom-task-acceptance.test.mjs"
+    ],
+    "workflow": ".github/workflows/resource-assignments-acceptance.yml",
+    "runtimeImportsChanged": false,
+    "unchangedProductionObjects": [
+      "web",
+      "supabase",
+      "package.json",
+      "package-lock.json",
+      "vercel.json"
+    ],
+    "guards": "reviewed-main/exact-revision/dedicated-fixture/shared-mutex/run-owned cleanup unchanged"
+  },
+  "checkpoint": {
+    "completed": "genuine caller/artifact fix and eight focused actual-handler/SQL checks",
+    "next": "required PR CI then merge with head lease; exact main CI/public source; fresh normal production acceptance",
+    "sourceBase": "e7f14281e61ba12cab479796eb0c7ee856eabe99",
+    "notionMergedVersion": "4.114; working correction marked unmerged",
+    "targetNotionVersion": "4.115 after actual merge/source verification",
+    "permissions": "GitHub browser origin remains blocked by saved permission; no workaround. Connector has no workflow_dispatch."
+  }
+}
