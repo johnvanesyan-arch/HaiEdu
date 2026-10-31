@@ -75,7 +75,10 @@ async function fixture(t, workspace = "school", initialView = "") {
       output.textContent = String(Number(output.textContent) + 1);
     });
   });
-  await page.addScriptTag({ type: "module", content: source });
+  await page.addScriptTag({ type: "module", content: source + "\nwindow.__roleLayoutFixtureReady = true;" });
+  // Inline ESM insertion can resolve before its imported graph has evaluated.
+  // Await actual execution, then exercise the original loading/observer gates.
+  await page.waitForFunction(() => window.__roleLayoutFixtureReady === true);
   return { page, errors, views, workspace };
 }
 
