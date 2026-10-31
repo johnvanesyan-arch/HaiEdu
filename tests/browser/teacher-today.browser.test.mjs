@@ -47,8 +47,11 @@ test('teacher Home balances classroom progress and review with readable keyboard
    const link=p.locator(selector);await expect(link).toBeVisible();await link.focus();
    assert.equal(await link.evaluate(e=>e===document.activeElement),true);
   }
+  await p.locator('.teacher-pilot-notice summary').click();
+  await expect(p.locator('.teacher-pilot-notice p')).toBeVisible();
   const bad=await p.evaluate(teacherHomeReadability);
   assert.deepEqual(bad,[],String(width));
+  await p.locator('.teacher-pilot-notice summary').click();
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-home-balanced-'+width+'.png',fullPage:true});}
  }
  await p.evaluate(()=>document.documentElement.style.fontSize='100%');
