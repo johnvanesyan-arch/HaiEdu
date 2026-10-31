@@ -72,8 +72,9 @@ a.ghost,
   /* Scroll the menu instead of splitting a navigation label into letters. */
   .amp-mobile-link > span:last-child {
     max-width: 100%;
-    white-space: nowrap;
+    white-space: normal;
     overflow-wrap: normal;
+    word-break: normal;
   }
 
   .topbar > .row,

@@ -356,8 +356,9 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
 
   .amp-mobile-link {
     flex: 1 0 auto;
-    min-width: max-content;
-    white-space: nowrap;
+    min-width: min-content;
+    max-width: 100%;
+    white-space: normal;
     min-height: var(--amp-mobile-nav-height);
     display: grid;
     place-items: center;

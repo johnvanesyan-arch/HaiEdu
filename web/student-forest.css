@@ -103,7 +103,7 @@ body:is([data-haiedu-student],[data-forest-surface]) .amp-nav-utility a { displa
 body:is([data-haiedu-student],[data-forest-surface]) .amp-nav-utility [data-student-signout] { display: flex; gap: .75rem; align-items: center; border: 0; background: transparent; color: var(--student-ink); text-align: left; padding: .75rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px)); background: var(--student-surface); border-color: var(--student-divider); }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link { grid-template-columns: minmax(0,1fr); color: var(--student-muted); font-size: .875rem; line-height: 1.4; padding: .6rem .3rem; gap: .3rem; min-height: 4.5rem; }
-body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link > span { min-width: 0; max-width: 100%; white-space: nowrap; overflow-wrap: normal; }
+body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link > span { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: normal; word-break: normal; }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link[aria-current=page] { background: var(--student-selected); color: var(--student-accent); }
 body:is([data-haiedu-student],[data-forest-surface]) .notice { background: var(--student-attention-bg); color: var(--student-attention); border-color: #e9d6b9; border-radius: .75rem; font-size: .875rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .notice span { color: inherit; }
