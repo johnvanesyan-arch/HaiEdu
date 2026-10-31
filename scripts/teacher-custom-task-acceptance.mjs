@@ -106,6 +106,7 @@ export function createCustomTaskAcceptance({fixture,request,browserContext,check
     await p.locator('[data-send-confirm]').click();
     await p.locator('[data-send-body] h3').filter({hasText:'Ուղարկումը հաստատված է'}).waitFor();
     check(side+': actual teacher custom send receives acknowledgement',sendIntents.has(teacher)&&errors.length===0);
+    await p.evaluate(()=>window.scrollTo(0,0));
     await p.screenshot({path:'qa-results/custom-task-teacher-'+side+'.png',fullPage:true});
    }finally{await bc.close();}
    const intent=sendIntents.get(teacher),sent=await api(teacher,'manage-teacher-task-delivery','assign',intent.payload),delivery=sent.delivery;
@@ -127,6 +128,7 @@ export function createCustomTaskAcceptance({fixture,request,browserContext,check
     check(side+': My work opens the PDF task with required link response',new URL(p.url()).searchParams.get('view')==='work'&&await p.locator('[data-task-source]').isVisible());
     const download=p.waitForEvent('download');await p.locator('[data-task-source]').click();const file=await download;
     check(side+': student receives exact protected source bytes',hash(await readFile(await file.path()))===hash(pdf));
+    await p.evaluate(()=>window.scrollTo(0,0));
     await p.screenshot({path:'qa-results/custom-task-student-'+side+'.png',fullPage:true});
    }finally{await sb.close();}
    const revised=await api(teacher,'manage-teacher-task-drafts','save',{id:draft.id,expectedRevision:drafts.get(teacher).revision,definition:{...definition,title:definition.title+' edited draft'}});

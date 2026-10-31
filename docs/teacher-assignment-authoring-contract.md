@@ -1,6 +1,6 @@
 # Teacher task authoring and independent submission formats
 
-2026-10-31 Asia/Yerevan · owner-authorized expanded implementation deployed/source verified in PR365. This supersedes the initial published-writing-only scope. The fixture repair passes all54 initial authenticated isolation checks. Fresh hosted acceptance stops at an invalid QA-only review-state request; the corrected runner awaits CI/merge and a new exact-source run. B.12.3 stays open and subjects remain paused.
+2026-10-31 Asia/Yerevan · owner-authorized expanded implementation deployed/source verified in PR365. This supersedes the initial published-writing-only scope. The submitted-queue correction is merged; both production schools verify custom delivery/source/inventory/cancellation. The latest run stops during later reading before final isolation. An independently reproduced clean-read navigation guard is corrected in the working branch and awaits current-source native/hosted verification. B.12.3 stays open and subjects remain paused.
 
 ## Independent choices
 

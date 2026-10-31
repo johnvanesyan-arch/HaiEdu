@@ -103,6 +103,13 @@ test('course and work views retain context, keyboard disclosures and course-only
   assert.equal(await page.locator('.amp-mobile-link[aria-label="Նյութերի գրադարան"]').innerText(),'Գրադարան');
   assert.deepEqual(errors,[]);
 });
+test('My work unit link opens writing while the independent custom-task inbox is still loading',async t=>{
+  const {page,errors}=await fixture(t,{view:'work',selected:true,width:360,writingTasks:true,active:false,holdCustomInbox:true});
+  await page.waitForFunction(()=>window.__homeFixture.calls.some(c=>c.name==='manage-teacher-task-student-work'&&c.body.action==='inbox'));
+  const card=page.locator('.amp-subject-card').filter({hasText:'Անգլերեն'});await card.locator('.student-unit-links summary').click();
+  await card.locator('.student-unit-links a[href*="unit='+id(8)+'"][href*="tab=writing"]').click();await page.locator('.written-list article').first().waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('tab'),'writing');assert.equal(await page.locator('.course-mode-card').count(),0);assert.deepEqual(errors,[]);
+});
 for(const width of [360,1280])test(`My work owns the complete writing journey at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{view:'work',selected:true,width,writingTasks:true,active:false});
   const nav=width===360?'.amp-mobile-nav':'.amp-side-nav';
