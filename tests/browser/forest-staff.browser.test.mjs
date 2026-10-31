@@ -1,4 +1,4 @@
-import {navigationReadability} from '../fixtures/navigation-readability.mjs';
+import {checkNavigation} from '../fixtures/navigation-readability.mjs';
 import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
 import {teacherHomeReadability} from '../fixtures/teacher-home-readability.mjs';
 import test,{before,after} from 'node:test';
@@ -68,7 +68,7 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
     for(const scale of [100,200]) {
       await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
       await noPageOverflow(page,`${file}/${width}/${scale}`);
-      const navigation=await page.evaluate(navigationReadability);
+      const navigation=await checkNavigation(page);
       assert.deepEqual(navigation.errors,[],`${file}/${width}/${scale}: full keyboard-readable navigation`);
       assert.ok(navigation.links.length>=6,'the role menu and account/logout controls must remain present');
       navigationRows.push({page:file,width,textScale:scale,controls:navigation.links,keyboard:true,fullWords:true,scope:'actual page/shared role shell; simulated authorization, not authenticated production acceptance'});
@@ -106,7 +106,7 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
 test('school administration switches to master presentation without inheriting school navigation',async t=>{
   const {page,errors}=await pageFixture(t,'school-admin.html',{gate:'masterPanel',master:true});
   assert.equal(await page.locator('.hm-role-sidebar').getAttribute('data-workspace'),'Հարթակի ադմին');
-  for(const width of [1280,360])for(const scale of [100,200]){await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);assert.deepEqual((await page.evaluate(navigationReadability)).errors,[],`school/master ${width}/${scale}`);}
+  for(const width of [1280,360])for(const scale of [100,200]){await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);assert.deepEqual((await checkNavigation(page)).errors,[],`school/master ${width}/${scale}`);}
   await expect(page.locator('.hm-role-nav a[href="./admin.html#accountsSection"]')).toBeVisible();
   assert.deepEqual(errors,[]);
 });
@@ -170,7 +170,7 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
     await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
     for(const state of ['ready','empty','loading','error','archived']) {
       await page.locator('#previewScenario').selectOption(state);
-      assert.deepEqual((await page.evaluate(navigationReadability)).errors,[],`preview navigation/${width}/${scale}`);
+      assert.deepEqual((await checkNavigation(page)).errors,[],`preview navigation/${width}/${scale}`);
       for(const view of ['home','classes','review']) {
         await page.locator(`[data-preview-view="${view}"]`).click();
         await expect(page.locator(`[data-preview-view="${view}"]`)).toHaveAttribute('aria-current','page');
@@ -180,4 +180,23 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
     if(scale===100&&width===360){await page.locator('#previewScenario').selectOption('ready');await snapshot(page,'preview-review-360');}
   }
   assert.deepEqual(errors,[]);
+});
+
+
+test('shared keyboard menu reveal binds once across resyncs and ignores pointer focus',async t=>{
+ const {page,errors}=await pageFixture(t,'teacher.html',{gate:'dashboardPanel'});
+ await page.setViewportSize({width:360,height:960});await page.emulateMedia({reducedMotion:'reduce'});
+ await page.evaluate(()=>{
+   const original=Element.prototype.scrollIntoView;window.__navRevealCalls=[];
+   Element.prototype.scrollIntoView=function(options){if(this.matches('.hm-role-nav a'))window.__navRevealCalls.push({label:this.textContent,options});return original.call(this,options);};
+   for(let i=0;i<5;i++)document.body.classList.toggle('synthetic-resync');
+   for(const a of document.querySelectorAll('.hm-role-nav a'))a.addEventListener('click',e=>e.preventDefault());
+ });
+ const first=page.locator('.hm-role-nav a').first(),last=page.locator('.hm-role-nav a').last();
+ await first.click();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),0,'pointer focus must not move its target');
+ await page.keyboard.press('Tab');await page.evaluate(()=>window.__navRevealCalls=[]);
+ await last.focus();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),1);
+ await first.focus();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),2,'reconfiguration must not multiply focus handlers');
+ assert.equal(await page.evaluate(()=>window.__navRevealCalls.every(c=>c.options.inline==='nearest'&&c.options.block==='nearest'&&c.options.behavior==='instant')),true);
+ assert.deepEqual(errors,[]);
 });

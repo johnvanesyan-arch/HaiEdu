@@ -395,7 +395,21 @@ function configureDrawer() {
   }
 }
 
+// Delegate once: role and entitlement controllers replace menu links. Only
+// keyboard focus is revealed; pointer interaction must not move its target.
+let navigationFocusBound = false;
+function configureNavigationFocus() {
+  if (navigationFocusBound) return;
+  navigationFocusBound = true;
+  document.addEventListener("focusin", (event) => {
+    const link = event.target.closest?.('.hm-role-nav a,.amp-nav-list a,.amp-mobile-nav a');
+    if (!link || !link.matches(':focus-visible')) return;
+    link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+  });
+}
+
 function configurePage() {
+  configureNavigationFocus();
   document.querySelectorAll("input").forEach(configureInput);
   configureAnswerArea();
   configureMessages();

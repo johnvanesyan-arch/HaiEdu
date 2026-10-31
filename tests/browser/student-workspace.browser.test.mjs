@@ -1,4 +1,4 @@
-import {navigationReadability} from '../fixtures/navigation-readability.mjs';
+import {checkNavigation} from '../fixtures/navigation-readability.mjs';
 import {historyEntries,historyReadability} from '../fixtures/assessment-history.mjs';
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -307,7 +307,7 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
   const rows=[];
   for(const width of [1280,960,768,390,360])for(const scale of [100,200]){
     await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
-    const navigation=await page.evaluate(navigationReadability);assert.deepEqual(navigation.errors,[],`${width}/${scale}`);
+    const navigation=await checkNavigation(page);assert.deepEqual(navigation.errors,[],`${width}/${scale}`);
     assert.deepEqual(await page.locator('.amp-nav-list a').evaluateAll(es=>es.map(e=>({href:e.getAttribute('href'),label:e.textContent.trim(),current:e.getAttribute('aria-current')}))),original);
     if(width<=1100){
       const bar=page.locator('.amp-mobile-nav');await expect(bar).toBeVisible();

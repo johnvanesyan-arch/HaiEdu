@@ -34,3 +34,24 @@ export async function navigationReadability() {
   if(document.documentElement.scrollWidth>innerWidth+1)errors.push({kind:'page overflow'});
   return {errors,links};
 }
+
+
+// Establish actual keyboard modality before testing focused-label geometry.
+export async function checkNavigation(page) {
+  await page.keyboard.press('Tab');
+  return page.evaluate(navigationReadability);
+}
+
+export function accountWordReadability() {
+  const errors=[];
+  for(const el of document.querySelectorAll('.privacy-shell :is(h1,h2,h3,p,dt,label,strong,small,button,.button-link)')){
+    if(!el.getClientRects().length)continue;
+    const box=el.getBoundingClientRect(),walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+    for(let node=walker.nextNode();node;node=walker.nextNode())for(const word of node.textContent.matchAll(/\p{L}[\p{L}\p{M}]*/gu)){
+      const range=document.createRange();range.setStart(node,word.index);range.setEnd(node,word.index+word[0].length);
+      const rects=[...range.getClientRects()].filter(r=>r.width>0);
+      if(rects.some(r=>Math.abs(r.top-rects[0].top)>1)||rects.some(r=>r.left<box.left-1||r.right>box.right+1))errors.push({word:word[0],tag:el.tagName,id:el.id});
+    }
+  }
+  return errors;
+}
