@@ -146,3 +146,18 @@ for(const mode of ['returnedCleared','returnedActive'])test(`real shared account
  if(mode==='returnedCleared')await expect(p.locator('#content')).toBeHidden();else await expect(p.locator('#content')).toBeVisible();
  assert.equal(await p.evaluate(()=>window.__logout.calls.length),1);assert.deepEqual(errors,[]);
 });
+
+
+for(const role of ['student','teacher','school_admin','admin','content_admin'])test(`real ${role} account retains visible keyboard logout at compact and enlarged sizes`,async t=>{
+ const {p,errors,button}=await fixture(t,{realPrivacy:true,role,mode:'success'});
+ const href=await p.locator('#accountHomeLink').getAttribute('href');
+ for(const width of [1280,768,360])for(const scale of [100,200]){
+  await p.setViewportSize({width,height:960});await p.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+  await expect(button).toBeVisible();await button.focus();await expect(button).toBeFocused();
+  const b=await button.evaluate(e=>({height:e.getBoundingClientRect().height,right:e.getBoundingClientRect().right,width:innerWidth}));assert.ok(b.height>=44&&b.right<=b.width+1);
+  assert.equal(await p.locator('#accountHomeLink').getAttribute('href'),href,'the original role return destination stays intact');
+  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+ }
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR&&role==='student'){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/navigation-student-account-360-200.png'});}
+ await button.press('Enter');await expect(p.locator('h1')).toContainText('Մուտք գործել');assert.deepEqual(errors,[]);
+});

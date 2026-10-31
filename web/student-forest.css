@@ -101,9 +101,9 @@ body:is([data-haiedu-student],[data-forest-surface]) .amp-course-sublink:is(:hov
 body:is([data-haiedu-student],[data-forest-surface]) .amp-nav-utility { border-top: 1px solid var(--student-divider); gap: .25rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-nav-utility a { display: flex; align-items: center; min-height: 2.75rem; color: var(--student-muted); font-size: .875rem; padding: .5rem .75rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-nav-utility [data-student-signout] { display: flex; gap: .75rem; align-items: center; border: 0; background: transparent; color: var(--student-ink); text-align: left; padding: .75rem; }
-body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { padding-bottom: env(safe-area-inset-bottom, 0px); background: var(--student-surface); border-color: var(--student-divider); }
+body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px)); background: var(--student-surface); border-color: var(--student-divider); }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link { grid-template-columns: minmax(0,1fr); color: var(--student-muted); font-size: .875rem; line-height: 1.4; padding: .6rem .3rem; gap: .3rem; min-height: 4.5rem; }
-body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link > span { min-width: 0; max-width: 100%; white-space: nowrap; overflow-wrap: normal; }
 body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link[aria-current=page] { background: var(--student-selected); color: var(--student-accent); }
 body:is([data-haiedu-student],[data-forest-surface]) .notice { background: var(--student-attention-bg); color: var(--student-attention); border-color: #e9d6b9; border-radius: .75rem; font-size: .875rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .notice span { color: inherit; }
@@ -155,7 +155,7 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { display:none; }
   body:is([data-haiedu-student],[data-forest-surface]) > main.shell { padding:1.5rem; }
   body:is([data-haiedu-student],[data-forest-surface]).amp-student-shell-active > main.shell { width:100%; margin:0; padding:1.5rem 1.5rem calc(6rem + env(safe-area-inset-bottom,0px)); }
-  body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display:grid; }
+  body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display:flex; }
   body:is([data-haiedu-student],[data-forest-surface]) { --amp-nav-width: 14rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { padding-inline: .75rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-home-welcome { padding: 1.5rem; grid-template-columns: minmax(0,1fr) 9rem; }
@@ -168,10 +168,10 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { display: none; }
   body:is([data-haiedu-student],[data-forest-surface]) > main.shell { width: 100%; margin: 0; padding: 1.5rem 1rem calc(6rem + env(safe-area-inset-bottom,0px)); }
   body:is([data-haiedu-student],[data-forest-surface]).amp-student-shell-active > main.shell { padding:min(1.5rem,24px) min(1rem,16px) calc(6rem + env(safe-area-inset-bottom,0px)); }
-  body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display: grid; }
+  body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display: flex; }
   body:is([data-haiedu-student],[data-forest-surface]) .topbar { gap: 1rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .topbar h1 { font-size: 1.75rem; }
-  body:is([data-haiedu-student],[data-forest-surface]) .topbar > .row > #signOutBtn { display: none; }
+  body:is([data-haiedu-student],[data-forest-surface]).amp-student-shell-active .topbar > .row > #signOutBtn { display: none; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-home-welcome h2 { font-size: 1.5rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-selection { grid-template-columns: 1fr; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-next { gap: 1rem; }

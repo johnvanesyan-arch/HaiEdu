@@ -1,0 +1,59 @@
+# B.12.3 — Navigation readability and role usability review
+
+2026-11-01 Asia/Yerevan · working branch; required native/visual/public verification pending. B.12.3/B.12 remain open and subjects stay paused. This is a subject-neutral shared presentation correction, followed by the existing role usability review. It does not introduce a new educational workflow or routing migration.
+
+## Reproductions and correction
+
+UX-NAV-02: the staff rail stays232px wide while text grows to200%, cropping or breaking its Armenian labels. Four fixed student bottom-menu columns squeeze long words into letters and create a tall fixed panel. The earlier inspected Practice-history images preserve both reproductions.
+
+The Forest staff rail now uses a text-relative width consistent with its main-content offset. Its menu can scroll vertically within the desktop rail while account/logout stay available; compact staff links retain native horizontal scrolling. Student compact navigation uses full labels in a horizontal scroll menu instead of forcing equal narrow columns. Focus padding, safe-area space, existing active-page semantics, keyboard links and reduced-motion rules remain. No new listener, observer, request or menu state is added.
+
+UX-ACCOUNT-02: the old mobile student rule also matched the standalone student account page and hid its only logout button. Restricting that hide rule to the active learning shell restores the existing standalone control; its confirmed/failed/unknown outcome controller is untouched. The learning shell retains its compact account entry and desktop logout.
+
+## Consumer audit
+
+| Shared surface | Actual consumers and treatment |
+| --- | --- |
+| Staff role shell | Teacher; School Admin; school teacher detail; Master Admin console/security; content home, queue, bank, item, curriculum, evidence, materials, guides and misconceptions:14 HTML pages. The school page’s separate Master Admin presentation and local teacher preview also retain the shared rules. |
+| Student shell | index, course, assessment, diagnostic, mastery, practice, progress, materials and subject-scoped Physics browser:9 HTML pages. Shared scroll-menu CSS is used by both initial shell links and governed entitlement/context rendering. Focused assessments retain navigation suppression. |
+| Standalone account | Existing privacy page, all five roles. Restore student compact logout; preserve the exact role return destination, neutral first paint, account-bound form/session fences and recovery controls. |
+| Optional resource library and staff account | They load Forest tokens/components but do not render the staff rail. Rail width/scroll selectors do not affect their independent content layout; no duplicate account/menu is created. |
+| Remaining components and backend | No JavaScript, generated bundle, API, SQL, Edge Function, Auth/RLS, assessment/scoring, membership, curriculum/audio, domain or deployment configuration changes. Exact route/record context and all45 mappings remain. |
+
+Four runtime files change: `staff-forest.css`, `student-shell.css`, `student-forest.css`, `responsive-qa.css`. Long content/record names retain their existing fallback wrapping; this change concerns fixed navigation labels.
+
+## Verification scope and role journeys
+
+New native focus/word checks visit every rendered menu, account and logout control. An intentional scroll menu may contain offscreen links, but focusing each control must reveal its full box and natural words inside the viewport and clipping ancestors. Targets remain at least44px; no page-level horizontal overflow is allowed. Full student-shell checks preserve all four links, exact governed release/unit and active-page identity at1280/960/768/390/360px and100/200% text. The compact menu has a bounded height. All14 actual staff documents and the local preview receive the same focused-label checks; five actual account-role cases verify visible keyboard logout at1280/768/360px and100/200% text. Fixtures synthesize authorization/API responses where stated; they are not production credentials or real learner records.
+
+| Role/journey | Retained current-source automated coverage | Scope/limits |
+| --- | --- | --- |
+| Student: Courses → authorized unit → assessments/Practice/history/progress | `student-workspace`, `learning-acceptance`, `teacher-skill-evidence`, existing governed learning and assessment lifecycle tests | Actual pages; synthetic or isolated SQL/Edge fixtures. Original saved scores/pass decisions, prerequisites, context, active-session and listening allowances remain. No production attempt or mark is manufactured. |
+| Student/teacher: own task → recipients → My work → submission → feedback/return/revision | `teacher-task-authoring`, `writing-assignments`, `student-teacher-tasks`, `teacher-task-review`, `task-read-navigation` and privacy cases | Actual isolated SQL/Edge flows retain independent source/response formats, immutable receipts, private drafts, explicit sending, lost-reply recovery, account changes and cleanup. Existing production327/327 delivery baseline remains reused, not re-created for a CSS fix. |
+| Teacher: Today → Classes → subject/unit performance and learner detail → Review | `forest-staff`, `teacher-today`, `teacher-skill-evidence`, retained review/feedback tests | Real teacher page plus synthetic/SQL-backed fixtures; no extra analytics fanout or request/controller change. Existing pending, error/retry, dirty/unknown publication and exact context guards remain. |
+| School Admin: overview/year/teachers/invitations and account | `role-layout`, `forest-staff`, `workspace-usability`, account cases and retained institutional isolation/concurrency tests | Native role-shell activation is simulated; backend policies are unchanged and their existing isolated checks run in required CI. This is not a new signed-in ordinary-school certification. |
+| Master Admin: explicit platform/school oversight, account/security/MFA gate | Existing platform-view lifecycle and terminal-gate tests, all actual staff layouts and account cases | No new privileged production sign-in, administration write or live MFA/security attestation. Ordinary roles gain no administrative paths or rights. The separate security finding below stays open. |
+| Content Reviewer: queue → item → bank/filter return and QA/publication | `content-list-navigation`, `misconception-review`, `unit-materials`, `forest-staff` and account cases | Editorial identity/gates remain independent. Existing dirty-edit, pending QA/publication, wrong-role, signed-out and MFA-before-approval tests remain. No question/content approval is repeated. |
+| All roles: account, keyboard, failure/recovery and navigation | `account-signout`, `student-utilities`, `workspace-usability`, `role-layout`, shared Forest tests | Actual account markup/controller and all five synthetic roles. Existing failed/unknown logout, stale-account, retry, unsaved and reduced-motion behavior remains; physical-device/assistive-technology certification is not claimed. |
+
+Required all-five PR/main CI, final native artifact/digests, inspected images and public source/changed-asset hashes must be recorded before this delivery is called verified. Local Chromium is unavailable; required GitHub native browser execution supplies that evidence. Reuse unchanged backend/content and the independently verified31Oct persistent Production/Blocking control; no settings are changed. All11 main-only browser-QA dependency graphs and their source/fixture/cleanup guards stay in place. Earlier failed Resource41233488573 (326/327, no-response final read) remains failed; separate same-source readonly41233488681 passed91/91 and all54 isolation controls. Neither is relabelled by this work.
+
+## Explicit security disposition
+
+SEC-AAL-01 remains a separate open finding: reviewed direct-database examples `security_audit_admin_read` and `profiles_admin_update` do not themselves require AAL2, unlike the relevant protected API paths. The planned isolated reproduction/path inventory/minimal-fix proposal and separately approved SEC-AAL-02 hardening remain in the existing map. Native menu/MFA-gate checks do not establish complete database assurance coverage. No live impersonation, audit-row retrieval, direct database write, authentication setting or Master Admin migration is undertaken here. The reviewer role remains independent; URL-P1 and MASTER-P2 plans/approval gates are unchanged.
+
+## Owner usability review
+
+After verified delivery, use your ordinary permitted accounts and normal devices. Accepted demo setup, content/audio and all45 capability mappings are preserved. A paired teacher/learner exercise needs an ordinary permitted learner: the accepted demo class’s sole QA enrollment was intentionally ended. Do not restore the protected QA identity or infer submission success from an empty class.
+
+| Role | Review route | Acceptance observation |
+| --- | --- | --- |
+| Student | [Courses](https://www.haiedu.am/index.html?view=courses) → permitted course → learning/progress; [My work](https://www.haiedu.am/index.html?view=work); [Library](https://www.haiedu.am/materials.html); [Account](https://www.haiedu.am/privacy.html) | Read every menu label and reach it by keyboard/touch, including horizontally scrolled compact links. Assigned work and optional Library have distinct purposes. Find existing feedback/revision and use account/logout without losing saved work. |
+| Teacher | [Today](https://www.haiedu.am/teacher.html?view=home) → Classes → selected subject/unit performance; Assign writing; [Review](https://www.haiedu.am/teacher.html?view=review) | Learning/analytics and writing review are both discoverable. Source, required response, private save, explicit recipients/send, submitted work, private feedback, publication and return remain separate and easy to follow. |
+| School Admin | [School workspace](https://www.haiedu.am/school-admin.html) | School-scoped year/programme/class filters and analytics, teacher/invitation controls and account return stay understandable and correctly scoped. |
+| Master Admin | [Platform workspace](https://www.haiedu.am/admin.html) | Platform oversight stays distinct from school administration; security/account controls retain their original access/MFA gates. The separate unresolved assurance finding is not accepted or fixed through a visual review. |
+| Content Reviewer | [Review queue](https://www.haiedu.am/content-review.html) → existing permitted item → return to filtered list | Full labels, stable list context, understandable QA/review/publication states and account/logout, with no added administrative privilege. |
+
+Record an unexercised step honestly; existing permitted submitted/reviewed examples may be used instead of creating new grades. Report any remaining defect with page, triggering action, expected/actual result and viewport/text size. A recurring generic teacher error needs the underlying exception and time, not an inferred backend cause. John’s explicit usability decision is required to close B.12.3/B.12; technical success alone does not close it. Subject expansion stays paused, with classroom speaking, English C47 and the four-subject gate unchanged.
+
+Rollback if a full label, account/logout, focused-task suppression, keyboard control or retained context becomes inaccessible, any required gate fails, or source hashes differ. Restore the previous tested frontend through the existing guarded release process; no data/schema/session migration is needed.

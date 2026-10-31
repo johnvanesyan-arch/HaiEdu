@@ -1,3 +1,4 @@
+import {navigationReadability} from '../fixtures/navigation-readability.mjs';
 import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
 import {teacherHomeReadability} from '../fixtures/teacher-home-readability.mjs';
 import test,{before,after} from 'node:test';
@@ -59,11 +60,23 @@ const pages=[
 for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact account/logout, text enlargement and keyboard`,async t=>{
   const {page,errors,remote}=await pageFixture(t,file,{gate});
   await keyboardSkipAcceptance(page);
-  for(const width of [1280,768,360]) {
+  await page.emulateMedia({reducedMotion:'reduce'});
+  const navigationRows=[];
+  const widths=['teacher.html','school-admin.html','admin.html','content-review.html'].includes(file)?[1280,960,768,390,360]:[1280,768,360];
+  for(const width of widths) {
     await page.setViewportSize({width,height:960});
     for(const scale of [100,200]) {
       await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
       await noPageOverflow(page,`${file}/${width}/${scale}`);
+      const navigation=await page.evaluate(navigationReadability);
+      assert.deepEqual(navigation.errors,[],`${file}/${width}/${scale}: full keyboard-readable navigation`);
+      assert.ok(navigation.links.length>=6,'the role menu and account/logout controls must remain present');
+      navigationRows.push({page:file,width,textScale:scale,controls:navigation.links,keyboard:true,fullWords:true,scope:'actual page/shared role shell; simulated authorization, not authenticated production acceptance'});
+      if(scale===200&&['teacher.html','school-admin.html','admin.html','content-review.html'].includes(file)&&[1280,360].includes(width)){
+        await page.evaluate(()=>window.scrollTo(0,0));
+        const dir=process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR;
+        if(dir){await mkdir(dir,{recursive:true});await page.screenshot({path:`${dir}/navigation-${file.replace('.html','')}-${width}-200.png`});}
+      }
       if(file==='teacher.html'){
         assert.deepEqual(await page.evaluate(teacherHomeReadability),[],`${file}/${width}/${scale}: readable Home`);
         if(scale===200&&width!==768){await page.evaluate(()=>window.scrollTo(0,0));await snapshot(page,`teacher-large-${width}`);}
@@ -85,12 +98,15 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
   assert.equal(await page.evaluate(()=>window.__signouts),1,'the shared logout delegates once to the existing authorized controller');
   await page.evaluate(gate=>{document.getElementById(gate).classList.add('hidden');document.getElementById('authPanel')?.classList.remove('hidden');document.getElementById('signedOut')?.classList.remove('hidden');},gate);
   await expect(page.locator('.hm-role-breadcrumb')).toHaveCount(0);
+  await expect(page.locator('.hm-role-sidebar')).toHaveCount(0);
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){const {writeFile}=await import('node:fs/promises');await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-${file.replace('.html','')}.json`,JSON.stringify(navigationRows,null,2)+'\n');}
   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
 });
 
 test('school administration switches to master presentation without inheriting school navigation',async t=>{
   const {page,errors}=await pageFixture(t,'school-admin.html',{gate:'masterPanel',master:true});
   assert.equal(await page.locator('.hm-role-sidebar').getAttribute('data-workspace'),'Հարթակի ադմին');
+  for(const width of [1280,360])for(const scale of [100,200]){await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);assert.deepEqual((await page.evaluate(navigationReadability)).errors,[],`school/master ${width}/${scale}`);}
   await expect(page.locator('.hm-role-nav a[href="./admin.html#accountsSection"]')).toBeVisible();
   assert.deepEqual(errors,[]);
 });
@@ -154,6 +170,7 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
     await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
     for(const state of ['ready','empty','loading','error','archived']) {
       await page.locator('#previewScenario').selectOption(state);
+      assert.deepEqual((await page.evaluate(navigationReadability)).errors,[],`preview navigation/${width}/${scale}`);
       for(const view of ['home','classes','review']) {
         await page.locator(`[data-preview-view="${view}"]`).click();
         await expect(page.locator(`[data-preview-view="${view}"]`)).toHaveAttribute('aria-current','page');

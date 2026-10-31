@@ -342,10 +342,12 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     inset: auto 0 0 0;
     z-index: 50;
     min-height: var(--amp-mobile-nav-height);
-    display: grid;
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0,1fr);
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-padding-inline: 6px;
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
     background: rgba(255,255,255,.97);
     border-top: 1px solid var(--amp-color-border);
     box-shadow: 0 -8px 24px rgba(22,34,51,.08);
@@ -353,7 +355,9 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
   }
 
   .amp-mobile-link {
-    min-width: 0;
+    flex: 1 0 auto;
+    min-width: max-content;
+    white-space: nowrap;
     min-height: var(--amp-mobile-nav-height);
     display: grid;
     place-items: center;
