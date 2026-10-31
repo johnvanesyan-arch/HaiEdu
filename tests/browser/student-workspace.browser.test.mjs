@@ -122,7 +122,7 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
   assert.ok(metrics.resumeHref.includes('action=practice'));
   assert.deepEqual(errors,[]);
   await page.getByRole('link',{name:'Առաջընթաց',exact:true}).last().click();
-  await page.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='progress' && document.querySelectorAll('#courseContent table').length===2);
+  await page.waitForFunction(()=>new URL(location.href).searchParams.get('tab')==='progress' && document.querySelectorAll('#courseContent table').length===1 && document.querySelector('#courseContent .assessment-history-list>li'));
   assert.match(await page.locator('#courseContent').innerText(),/75%/);
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session')),false);
 });
@@ -157,9 +157,10 @@ test('an unavailable enrollment exposes no student evidence in the full shell',a
 test('expanded provenance stays contained at 200 percent text size',async t=>{
   const {page,errors}=await fixture(t);
   await page.addStyleTag({content:'html { font-size: 200%; }'});
-  await page.locator('#courseContent details summary').click();
-  assert.match(await page.locator('#courseContent details').innerText(),/fixture-blueprint/);
-  assert.match(await page.locator('#courseContent details').innerText(),/fixture-runtime/);
+  const provenance=page.locator('#courseContent .assessment-history-list>li details');
+  await provenance.locator('summary').click();
+  assert.match(await provenance.innerText(),/fixture-blueprint/);
+  assert.match(await provenance.innerText(),/fixture-runtime/);
   const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
     crowdedNavLinks:[...document.querySelectorAll('.amp-nav-link')].filter(el=>{
       const label=el.lastElementChild.getBoundingClientRect(), link=el.getBoundingClientRect();
@@ -280,11 +281,14 @@ test('student saved Practice cards retain assessed zeros, historical scales and 
     await record.locator('details summary').click();await expect(record).toContainText('policy-'+n);await record.locator('details summary').click();
   }
   await p.emulateMedia({reducedMotion:'reduce'});
-  for(const width of [1280,768,390]){
+  for(const width of [1280,960,768,390]){
     await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+    if(width<=1100){await expect(p.locator('.amp-side-nav')).toBeHidden();await expect(p.locator('.amp-mobile-nav')).toBeVisible();}
     await history.locator('h2').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width));
     if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-'+width+'.png'});}
   }
+  await p.setViewportSize({width:1280,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='100%');await history.locator('h2').scrollIntoViewIfNeeded();
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-normal.png'});
   assert.equal(await p.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
   assert.deepEqual(errors,[]);
 });

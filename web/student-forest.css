@@ -151,12 +151,15 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
   body:is([data-haiedu-student],[data-forest-surface]) .amp-subject-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgb(35 57 47 / .09); }
 }
 @media (max-width:1100px) {
+  /* Match the base shell: enlarged tablet text uses compact navigation. */
+  body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { display:none; }
+  body:is([data-haiedu-student],[data-forest-surface]) > main.shell { width:100%; margin:0; padding:1.5rem 1.5rem calc(6rem + env(safe-area-inset-bottom,0px)); }
+  body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display:grid; }
   body:is([data-haiedu-student],[data-forest-surface]) { --amp-nav-width: 14rem; }
-  body:is([data-haiedu-student],[data-forest-surface]) > main.shell { padding: 1.5rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { padding-inline: .75rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-home-welcome { padding: 1.5rem; grid-template-columns: minmax(0,1fr) 9rem; }
 }
-@media (min-width:761px) {
+@media (min-width:1101px) {
   body:is([data-haiedu-student],[data-forest-surface]):not(.amp-focused-task):not([data-student-player=active]) .amp-side-nav { display: flex; }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display: none; }
 }
