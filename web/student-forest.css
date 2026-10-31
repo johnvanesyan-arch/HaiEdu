@@ -153,7 +153,8 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
 @media (max-width:1100px) {
   /* Match the base shell: enlarged tablet text uses compact navigation. */
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { display:none; }
-  body:is([data-haiedu-student],[data-forest-surface]) > main.shell { width:100%; margin:0; padding:1.5rem 1.5rem calc(6rem + env(safe-area-inset-bottom,0px)); }
+  body:is([data-haiedu-student],[data-forest-surface]) > main.shell { padding:1.5rem; }
+  body:is([data-haiedu-student],[data-forest-surface]).amp-student-shell-active > main.shell { width:100%; margin:0; padding:1.5rem 1.5rem calc(6rem + env(safe-area-inset-bottom,0px)); }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-nav { display:grid; }
   body:is([data-haiedu-student],[data-forest-surface]) { --amp-nav-width: 14rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav { padding-inline: .75rem; }
