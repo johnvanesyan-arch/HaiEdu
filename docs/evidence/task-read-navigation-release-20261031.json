@@ -1,0 +1,454 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Yerevan",
+  "state": "Navigation/loading correction merged, all required PR/main gates passed and production49files exact; full hosted postflight and owner usability remain open",
+  "implementation": {
+    "pr": 369,
+    "head": "2b8df2a76caea06fc1dd2ced2e40edce0cbd1fce",
+    "main": "9437f1197b36aea38f5554b41ebbfa71708f1458",
+    "tree": "1a8c42bc0fb15be6b22f142a5b46a17962005537",
+    "statusBlob": "e785a3d434460ed41c4765ede5e11c3d886589b4",
+    "mainTreeStatusVerified": true,
+    "webTree": "b3958dacecbb8b83457c556b211693cee393b80d",
+    "scriptsTree": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c"
+  },
+  "requiredVerification": {
+    "prCi": 41186468258,
+    "mainCi": 41186985753,
+    "allFiveJobs": "passed on exact PR head and merged main",
+    "jobs": [
+      "test",
+      "role-layout-browser",
+      "institutional-concurrency",
+      "phase3-postgres-17",
+      "Platform release checks"
+    ],
+    "unitIntegration": 1630,
+    "native": 364,
+    "newNativeRegressions": 7,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "taskSpecificPg17Races": 16,
+    "focusedChecks": 9,
+    "canonicalTeacherBundles": "rebuilt/checked; unchanged generated wrappers",
+    "syntax": "all103browserfiles pass",
+    "qaTriggerCoverage": "all11 workflow dependency graphs pass"
+  },
+  "nativeCases": [
+    "Student clean inbox read",
+    "Teacher clean submitted queue read",
+    "Teacher clean recipient preview read",
+    "Teacher saved PDF source read",
+    "Teacher custom draft list read",
+    "Teacher published-writing catalog read",
+    "Actual My Work to unit writing link with held independent inbox"
+  ],
+  "scope": "Controlled Auth/API and native DOM/navigation; preserve all existing actual SQL/browser write, uncertain-receipt, dirty-data and actor/context regressions. Not fresh production Auth or owner usability.",
+  "production": {
+    "source": "9437f1197b36aea38f5554b41ebbfa71708f1458",
+    "deployment": "dpl_4bkXK2mRYvM7VcVb1g9AoH2PVT3L",
+    "method": "Provider-authorized public UTF-8 fetch; captured bytes compared with exact merged repository tree, per-file SHA256 and byte count; intended release before and after",
+    "files": [
+      {
+        "path": "teacher-today.css",
+        "bytes": 2383,
+        "sha256": "c88c2f03d4d5ea2c9ad2f9dfbb8b49cd4fdefea63a77311daf62d9d7f68de1e4",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "admin.js",
+        "bytes": 32160,
+        "sha256": "a4ece087d91b629cf5aa742940cae136989ec63e07528312d4d226dfeca9112e",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "admin.css",
+        "bytes": 9796,
+        "sha256": "de26bfab1576ad631f5943e781b76a700c19dc17133e58b60e2474613e7e7d5b",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "school-admin.js",
+        "bytes": 41142,
+        "sha256": "b44a7b01f8e309a8094e0933e2403bbc923756f922d959071039504de6bd1599",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "admin.html",
+        "bytes": 11074,
+        "sha256": "bde29f9ef07010b49913acc7d11d61ff2e969f7b4db186810e6ff1f55f95342d",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "privacy.css",
+        "bytes": 4941,
+        "sha256": "2f21004d802576284bf224d406609613196356e5e62dbc92918d4f5e3b296da6",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "task-privacy-view.mjs",
+        "bytes": 1615,
+        "sha256": "c0c43b3d2be1b9364d8bcb4413d4eeff6cf031844fe195513db05a612ae9208b",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-text.mjs",
+        "bytes": 3417,
+        "sha256": "43d139bf8d77caed19d373716c6710551dabf10766decc60a304da2a17499b6a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-download.mjs",
+        "bytes": 582,
+        "sha256": "a963ccaaa5b43e6e428c2fd1842fa632f579eb1cd6ea65b056239b4860f37024",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-review.mjs",
+        "bytes": 18818,
+        "sha256": "dafc1e294dd3965ed1d4d83b295d51fb2355d363a123810a5b24b24acb608877",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "student-teacher-task-client.mjs",
+        "bytes": 2192,
+        "sha256": "52ca36ceabfe985987b172fae8dc76faf4429052e81e013cd029b34c6cab197b",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "student-teacher-tasks.mjs",
+        "bytes": 19198,
+        "sha256": "281e2f3bc51740da6cda210166edaac4b7f49cdc109b8cc425145fbfcfc514a2",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-send.mjs",
+        "bytes": 12000,
+        "sha256": "428bffc3b8477b1ab568318473412485b08a47b2adaac029eef8b0cee6312c12",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-draft-workspace.mjs",
+        "bytes": 8614,
+        "sha256": "f53bcb9fe59191b79258c3ccf77b4a91a7ed830445672a82d7c70c7f8c948d81",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-editor.mjs",
+        "bytes": 18303,
+        "sha256": "afb9f69d25efea835cc8776aefa4cc227e1e057a93051384d32a3999499b66f0",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-form.mjs",
+        "bytes": 1619,
+        "sha256": "68bc8bbcb2efe43202b9c6103425447d47e752ef5d9bb1cc18c3400efdd6de85",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-task-source-client.mjs",
+        "bytes": 1893,
+        "sha256": "a33c58338abf1bade75aa626e927a8df867e9bd3e3a6474cfe05e670a8b33395",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "writing-assignments.css",
+        "bytes": 5483,
+        "sha256": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "resource-learner-view.mjs",
+        "bytes": 4168,
+        "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "writing-assignments.mjs",
+        "bytes": 25256,
+        "sha256": "6f21820eced3e84b99c1c127d6c66a21f6ccd32253cf25c13b8062947e2714db",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "resource-file-input.mjs",
+        "bytes": 1029,
+        "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "resource-assignments.css",
+        "bytes": 4163,
+        "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "resource-assignments.mjs",
+        "bytes": 26267,
+        "sha256": "5bd5367c1a216355ffb5d650d1e3bb31d67a2c5ae02357af9b19ade87e090dd3",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "supplementary-resources.css",
+        "bytes": 10037,
+        "sha256": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "multi-subject-home.js",
+        "bytes": 13296,
+        "sha256": "3e3ecedc4310cedf83e516ad48458bb8d270ca24571517fe3cf2308c5e328145",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "index.html",
+        "bytes": 16537,
+        "sha256": "ec74f777cc7cc59f66cfee9fbc6428841a9abe9f45ac5e3790ad943fade991ce",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "supplementary-resources.mjs",
+        "bytes": 44236,
+        "sha256": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "resource-library.html",
+        "bytes": 1864,
+        "sha256": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "student-courses.js",
+        "bytes": 2460,
+        "sha256": "bffa476038386f01adde016feb2214e742c123d0eed133646693683086f8e70e",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "role-layout.js",
+        "bytes": 22522,
+        "sha256": "dd74a0cf54e8ec0f538490074becb86b9f5da9962266bb5f3df17151b1a7ec51",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "privacy.js",
+        "bytes": 20442,
+        "sha256": "24d34883468e3c3bca83a27bdacb15fa158cdfd9e45ffd4d849f9051e15f351a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher.css",
+        "bytes": 22894,
+        "sha256": "879f5c700308d74d2e923d7f7f9a46e67a3ae17c782d6d7918687bccdb613109",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher.html",
+        "bytes": 35513,
+        "sha256": "d8ab62bb82302747b66217c717aa6e12931ff28bc3ac97a3301db423da2e0163",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "materials.html",
+        "bytes": 1695,
+        "sha256": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher.js",
+        "bytes": 88482,
+        "sha256": "931e59cfb24fbcc947f4e5e75f9ff3ebfc4766abf423ef22d8381f159fbdb91a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "course-page.js",
+        "bytes": 15414,
+        "sha256": "81ffd0058831e1d6f62e04510918c22803ea47153e0633e7b1071de7e9f66619",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-workflows.html",
+        "bytes": 23843,
+        "sha256": "c3df3f2d8d55a2b8508a858a6a5b1ec02900e57f6ed89c37dd80adb0496d790b",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-workflows.css",
+        "bytes": 2147,
+        "sha256": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "ux.css",
+        "bytes": 6867,
+        "sha256": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-startup.bundle.mjs",
+        "bytes": 3815,
+        "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-review.mjs",
+        "bytes": 13626,
+        "sha256": "a943bc241c77d15588407c2d70989601ef51def4d5c2fac2f22f3e5a1fb52714",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "written-work.css",
+        "bytes": 4991,
+        "sha256": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "written-work.mjs",
+        "bytes": 23889,
+        "sha256": "4b22fd3052ee0687a8421f159dec1251525740e82ffb793e630930a760fc8525",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 8221,
+        "sha256": "ff0b805174cad651aa66c59af9512a0405abdf3167940416a00edabc031c2512",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "ux.js",
+        "bytes": 18834,
+        "sha256": "712f9e3b4fb86210c06c927f3b403d4312ba8001022783e00c4a26e495ae68cf",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "student-surfaces.css",
+        "bytes": 16113,
+        "sha256": "de36f1513f169fd0d62f0e53c9e777db930744f599976c78d8c7283a0f0cf9bd",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "school-admin.html",
+        "bytes": 14763,
+        "sha256": "97b16c5b70b24d597e91bac82ab3d9e5a1c18f4ae4798c9a70974893054a3d04",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "school-teacher.html",
+        "bytes": 3437,
+        "sha256": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c",
+        "exact": true,
+        "status": 200
+      },
+      {
+        "path": "teacher-dependencies.bundle.mjs",
+        "bytes": 285415,
+        "sha256": "28335251dacaaf256a68c78f407fb5b8607485c3920ecee4c475b57b628a3f47",
+        "exact": true,
+        "status": 200
+      }
+    ],
+    "all49Exact": true
+  },
+  "releaseControl": {
+    "savedSettingEvidence": "teacher-task-production-integration-20261031.json#productionReleaseGate",
+    "setting": "Platform release checks / Production / Blocking; independently verified today, unchanged",
+    "currentObservedBehavior": {
+      "candidateReadyBeforeMainAggregate": true,
+      "candidate": "dpl_4bkXK2mRYvM7VcVb1g9AoH2PVT3L",
+      "publicPriorSourceWhilePending": "95d2210c6738e43ab52d8ae33f87c8e788ee2f0c",
+      "promotedAfterAggregate": "9437f1197b36aea38f5554b41ebbfa71708f1458"
+    },
+    "settingsWrites": 0
+  },
+  "backendEvidenceReuse": {
+    "supabaseTree": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "unchanged": true,
+    "redeployed": false,
+    "verifiedPriorScope": "7 migrations/48 SQL bodies/19 denied new RLS tables/12 JWT-true runtimes/53 files",
+    "evidence": "teacher-task-production-integration-20261031.json"
+  },
+  "hosted": {
+    "currentRun": 41186985896,
+    "source": "9437f1197b36aea38f5554b41ebbfa71708f1458",
+    "state": "cancelled by shared one-pending queue replacement before any job started",
+    "jobs": 0,
+    "agentCancellation": false,
+    "authenticatedActionsOrCleanupForThisRun": false,
+    "dispatchToolAvailable": false,
+    "githubBrowser": "saved origin permission remains blocked; no retry/bypass or indirect trigger",
+    "next": "After this evidence/documentation closure, manually Run workflow/main: Resource assignment production acceptance; retain reviewed-main/exact-source/mutex/dedicated-account/run-owned cleanup controls.",
+    "unchangedLastCompletedCustomFlow": {
+      "run": 41181015758,
+      "source": "95d2210c6738e43ab52d8ae33f87c8e788ee2f0c",
+      "customSchoolFlowsPassed": 2,
+      "recordedChecksPassed": 303,
+      "recordedChecks": 303,
+      "overall": "failed at later cross-role reading; original exception not retained",
+      "initialIsolationPassed": 54,
+      "finalIsolation": "not reached",
+      "report": "teacher-task-hosted-second-20261031.json",
+      "allRunOwnedCleanupAcknowledged": true
+    },
+    "freshFullHostedPassClaimed": false
+  },
+  "preservation": {
+    "newDatabaseAuthStorageOperationsInThisCorrection": 0,
+    "ownerContentAudioDemoRechecked": false,
+    "membershipRepairRepeated": false,
+    "productionLearnerAnswersSubmissionsGradesFeedbackPublicationsErasureCreated": false,
+    "all45Capabilities": true,
+    "assessmentAnalyticsMeanings": "unchanged",
+    "classroomSpeaking": "unchanged",
+    "EnglishC47": "open",
+    "fourSubjectGate": "separate/open",
+    "B12B123": "open",
+    "subjectExpansion": "paused"
+  }
+}

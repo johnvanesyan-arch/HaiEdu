@@ -1,8 +1,6 @@
 # Teacher task authoring and independent submission formats
 
-**31 October CI follow-up, not deployed:** PR369 CI41185114174 passes1,630 unit/integration and both PostgreSQL jobs. Native358/362 stops four new component cases at an empty `aria-busy` value; the full My Work → writing navigation case passes. Keep the strict accessibility assertion, correct all seven malformed busy-marker sites across task views and the shared school-admin button helper, and cover draft-list/published-writing loading in two more native cases. Backend/auth/assessment contracts are unchanged. Required current-source CI,49-file production verification and full hosted postflight remain; B.12.3/B.12 stay open and subjects paused.
-
-2026-10-31 Asia/Yerevan · owner-authorized expanded implementation deployed/source verified in PR365. This supersedes the initial published-writing-only scope. The submitted-queue correction is merged; both production schools verify custom delivery/source/inventory/cancellation. The latest run stops during later reading before final isolation. An independently reproduced clean-read navigation guard is corrected in the working branch and awaits current-source native/hosted verification. B.12.3 stays open and subjects remain paused.
+2026-10-31 Asia/Yerevan · owner-authorized expanded implementation is deployed/source verified. This supersedes the initial published-writing-only scope. Both production schools have verified custom source/delivery/queue/privacy/cancellation flows. PR369/main9437f119 corrects clean-read guards and loading markers; all five PR/main gates pass (1,630 unit/integration;364 native) and49 public files match. The normal resource run is replaced before starting; full postflight and final owner usability stay open. No endpoint, assessment or authoring-choice contract changes. [Current release receipt](evidence/task-read-navigation-release-20261031.json).
 
 ## Independent choices
 

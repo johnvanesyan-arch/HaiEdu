@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
-  "state": "Independently reproduced clean-read navigation block; four-controller fix prepared; native/current-source CI and fresh full hosted acceptance pending",
+  "state": "Merged and deployed; all five PR/main checks and49 public files pass; full hosted/owner acceptance pending",
   "story": "Student My Work course/unit link opens writing while an independent custom-task inbox read is pending. Clean read/download loading must permit leaving; actual or uncertain writes and dirty work remain protected.",
   "baselineSource": "95d2210c6738e43ab52d8ae33f87c8e788ee2f0c",
   "baselinePr": 368,
@@ -65,12 +65,6 @@
     "web/teacher-task-review.mjs"
   ],
   "fix": "Use a separate in-flight mutation flag for navigation/dirty guards. Keep busy control locks for reads; retain pending receipt, dirty data, live actor/context and stale-result fencing.",
-  "nativeRegressionsPrepared": {
-    "componentCases": 6,
-    "fullStudentWorkToWritingCase": 1,
-    "transport": "controlled Auth/API; actual modules/DOM/navigation",
-    "preservedCases": "Existing unknown save/send/submit/publication/cancel and actor/context-change coverage"
-  },
   "localNative": "Pinned Chromium download failed with truncated ZIP; native cases require CI. No local native pass claimed.",
   "diagnostics": "Known phase/error kind, whitelisted path/view/tab and selector counts; no raw exception/query values. Screenshot masks written-work content, uses viewport and existing resource-form artifact path.",
   "captureProtocol": "Reset scroll before custom full-page captures, matching existing accepted native capture practice.",
@@ -214,5 +208,15 @@
       "skipped": 0
     },
     "failure": "All six component cases pass semantic busy, canLeave, hasUnsaved and actual outside navigation URL checks, then fail only the destination heading text: test fixture lacks UTF-8 declaration and decodes Armenian as Windows-1252. Add charset in fixture response and meta; do not change product or weaken assertions. Full My Work to writing case and all357 unchanged native cases pass. Aggregate blocks release pending complete current-source pass."
-  }
+  },
+  "nativeRegressionsPassed": {
+    "componentCases": 6,
+    "fullStudentWorkToWritingCase": 1,
+    "transport": "controlled Auth/API; actual modules/DOM/navigation",
+    "preservedCases": "Existing unknown save/send/submit/publication/cancel and actor/context-change coverage",
+    "currentPrCi": 41186468258,
+    "mainCi": 41186985753,
+    "totalSuitePassed": 364
+  },
+  "releaseEvidence": "task-read-navigation-release-20261031.json"
 }
