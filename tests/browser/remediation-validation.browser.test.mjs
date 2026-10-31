@@ -13,13 +13,13 @@ test("guide filter actions align with dropdowns and fit responsive layouts", { t
     const html = (await readFile(new URL("../../web/content-guides.html", import.meta.url), "utf8"))
       .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "")
       .replace('class="hidden guide-console catalog-mode"', 'class="guide-console catalog-mode"')
-      .replace("</body>", '<script src="./role-layout.js"></script></body>');
-    const assets = Object.fromEntries(await Promise.all(["styles.css", "content-guides.css", "ux.css", "role-layout.css", "role-layout.js"]
+      .replace("</body>", '<script type="module" src="./role-layout.js"></script></body>');
+    const assets = Object.fromEntries(await Promise.all(["styles.css", "content-guides.css", "ux.css", "role-layout.css", "role-layout.js", "navigation-focus.mjs"]
       .map(async (name) => [`/${name}`, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
     await page.route("**/*", async (route) => {
       const path = new URL(route.request().url()).pathname;
       if (path === "/content-guides.html") return route.fulfill({ contentType: "text/html", body: html });
-      if (assets[path]) return route.fulfill({ contentType: path.endsWith(".js") ? "text/javascript" : "text/css", body: assets[path] });
+      if (assets[path]) return route.fulfill({ contentType: /\.m?js$/.test(path) ? "text/javascript" : "text/css", body: assets[path] });
       return route.fulfill({ status: 204, body: "" });
     });
     await page.goto("https://reviewer-fixture.test/content-guides.html");

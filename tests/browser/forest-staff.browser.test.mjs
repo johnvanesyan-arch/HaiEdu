@@ -96,8 +96,10 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
   }
   await page.locator('.hm-role-foot .hm-sidebar-signout').click();
   assert.equal(await page.evaluate(()=>window.__signouts),1,'the shared logout delegates once to the existing authorized controller');
-  await page.evaluate(gate=>{document.getElementById(gate).classList.add('hidden');document.getElementById('authPanel')?.classList.remove('hidden');document.getElementById('signedOut')?.classList.remove('hidden');},gate);
+  await page.evaluate(gate=>{document.getElementById(gate).classList.add('hidden');document.getElementById('authPanel')?.classList.remove('hidden');document.getElementById('signedOut')?.classList.remove('hidden');document.getElementById('denied')?.classList.remove('hidden');},gate);
   await expect(page.locator('.hm-role-breadcrumb')).toHaveCount(0);
+  // School pages expose denied rather than authPanel/signedOut; model that
+  // actual terminal surface instead of mistaking their pending skeleton for a menu.
   await expect(page.locator('.hm-role-sidebar')).toHaveCount(0);
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){const {writeFile}=await import('node:fs/promises');await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-${file.replace('.html','')}.json`,JSON.stringify(navigationRows,null,2)+'\n');}
   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
