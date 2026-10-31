@@ -24,7 +24,7 @@ async function pageFixture(t,file,{gate,master=false}={}) {
     try {
       // Staff page tests exercise native layout and the real role shell, with
       // authorization outcomes simulated. They do not claim signed-in acceptance.
-      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js','/account-signout.mjs'].includes(name);
+      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js','/account-signout.mjs','/navigation-focus.mjs'].includes(name);
       const body=blocked?'':await readFile(new URL('../../web'+name,import.meta.url));
       return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{return route.fulfill({status:404,body:''});}
@@ -186,7 +186,8 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
 test('shared keyboard menu reveal binds once across resyncs and ignores pointer focus',async t=>{
  const {page,errors}=await pageFixture(t,'teacher.html',{gate:'dashboardPanel'});
  await page.setViewportSize({width:360,height:960});await page.emulateMedia({reducedMotion:'reduce'});
- await page.evaluate(()=>{
+ await page.evaluate(async()=>{
+   const {installNavigationFocus}=await import('./navigation-focus.mjs');for(let i=0;i<5;i++)installNavigationFocus();
    const original=Element.prototype.scrollIntoView;window.__navRevealCalls=[];
    Element.prototype.scrollIntoView=function(options){if(this.matches('.hm-role-nav a'))window.__navRevealCalls.push({label:this.textContent,options});return original.call(this,options);};
    for(let i=0;i<5;i++)document.body.classList.toggle('synthetic-resync');

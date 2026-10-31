@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - web/writing-assignments.css
+      - web/navigation-focus.mjs
       - web/writing-assignments.mjs
       - web/account-signout.mjs
       - web/teacher-*.mjs

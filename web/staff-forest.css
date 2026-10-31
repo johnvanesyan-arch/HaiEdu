@@ -101,6 +101,11 @@ body[data-role-workspace] :is(.hm-loading-nav span,.hm-loading-card::before,.hm-
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>a { display:flex; }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>span { display:none; }
 }
+/* Fixed labels need room for full words at 200% on a small phone. */
+@media (max-width:560px) {
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { padding:8px; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { padding-inline:6px; }
+}
 @media (max-width:760px) {
   body:is([data-role-workspace],[data-staff-account],[data-staff-preview]) h1,
   body[data-role-workspace] :is(.teacher-topbar,.school-admin-header,.admin-topbar,.content-topbar,.guide-topbar) h1 { font-size:1.75rem; }

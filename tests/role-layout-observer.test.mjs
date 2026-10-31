@@ -3,7 +3,11 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const source = readFileSync(new URL("../web/role-layout.js", import.meta.url), "utf8");
+// Link the actual DOM focus component into this VM fixture. Keyboard geometry
+// and once-only/pointer behavior are verified in native browser tests.
+const focusSource = readFileSync(new URL("../web/navigation-focus.mjs", import.meta.url), "utf8").replace(/^export /gm, "");
+const source = focusSource + "\n" + readFileSync(new URL("../web/role-layout.js", import.meta.url), "utf8")
+  .replace(/^import \{ installNavigationFocus \} from '\.\/navigation-focus\.mjs';\n/m, "");
 const schoolViews = ["overviewPanel", "yearPanel", "teachersPanel", "teacherPanel", "pendingPanel"];
 const platformViews = ["overviewSection", "schoolsSection", "accountsSection", "archiveSection", "deletionsSection", "auditSection"];
 const workspaceGates = {
@@ -160,13 +164,13 @@ function fixture({ page = "school", hash = "", authorized = true, terminal = nul
   topbar.className = "school-admin-header";
   body.append(main);
   main.append(topbar);
-  const document = {
+  const document = Object.assign(new Events(), {
     body, head,
     createElement: tag => new Element(tag),
     getElementById: id => root.querySelector(`#${id}`),
     querySelector: selector => root.querySelector(selector),
     querySelectorAll: selector => root.querySelectorAll(selector),
-  };
+  });
   function add(id, parent = main, closed = true) {
     if (document.getElementById(id)) return document.getElementById(id);
     const element = new Element("section");

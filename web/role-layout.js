@@ -1,3 +1,6 @@
+import { installNavigationFocus } from './navigation-focus.mjs';
+installNavigationFocus();
+
 /* Navigation only: visibility follows each dashboard's existing role check.
    Never use a hidden link or this menu as an authorization decision. */
 const page = document.body.dataset.roleWorkspace;

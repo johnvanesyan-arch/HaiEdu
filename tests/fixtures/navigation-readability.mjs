@@ -44,7 +44,7 @@ export async function checkNavigation(page) {
 
 export function accountWordReadability() {
   const errors=[];
-  for(const el of document.querySelectorAll('.privacy-shell :is(h1,h2,h3,p,dt,label,strong,small,button,.button-link)')){
+  for(const el of document.querySelectorAll('.privacy-shell :is(h1,h2,h3,p,dt,label,strong,small,button,.button-link,#accountRole,#accountStatus)')){
     if(!el.getClientRects().length)continue;
     const box=el.getBoundingClientRect(),walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
     for(let node=walker.nextNode();node;node=walker.nextNode())for(const word of node.textContent.matchAll(/\p{L}[\p{L}\p{M}]*/gu)){
