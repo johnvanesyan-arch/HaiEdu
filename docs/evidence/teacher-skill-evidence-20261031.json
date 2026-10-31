@@ -1,6 +1,6 @@
 {
   "date": "2026-10-31",
-  "status": "working branch; CI/deployment pending",
+  "status": "Repaired; product merged, all five PR/main CI gates passed, production/source exact; final owner usability remains open",
   "issue": "UX-ANALYTICS-01",
   "productionSourceObserved": "f35c4b01f7d1d0b7aff5173654be11b9090371ec",
   "actorScope": "Securely supplied dedicated QA teacher; read-only existing records, ordinary-account acceptance not implied",
@@ -41,5 +41,154 @@
   },
   "noLearnerResponseGradeOrFeedbackWrites": true,
   "logout": "normal UI returned to account-access; no other QA run active at that time",
-  "ownerGate": "B.12.3/B.12 open; subjects paused"
+  "ownerGate": "B.12.3/B.12 open; subjects paused",
+  "ci": {
+    "run": 41200340876,
+    "source": "6c952fbf88425f15b0574ced58fc3ae04ac78b90",
+    "allFiveJobs": "passed",
+    "unitIntegration": 1633,
+    "native": 366,
+    "failures": 0,
+    "skips": 0,
+    "cancelled": 0,
+    "newNativeCases": 2,
+    "initialRun": {
+      "run": 41199547354,
+      "unit": 1633,
+      "nativePassed": 365,
+      "nativeTotal": 366,
+      "failure": "ambiguous descendant-summary selector in new focus regression; corrected to direct child"
+    }
+  },
+  "artifact": {
+    "id": 13042312408,
+    "bytes": 26198857,
+    "sha256": "cabd466f168b593f27e1c375cce85948d383570f57e1847d090452145cb7392f",
+    "downloadDigestVerified": true,
+    "images": [
+      {
+        "path": "teacher-skill-evidence-1280-20261031.png",
+        "sha256": "063fd8236fa89e6292843510820b01262ed421f3d1ba8a94f50a43b822416aeb",
+        "bytes": 122505,
+        "width": 1280,
+        "height": 1000,
+        "computedTextSize": "200%",
+        "scope": "isolated actual teacher page; synthetic contract estimates, not live learner marks",
+        "inspected": true
+      },
+      {
+        "path": "teacher-skill-evidence-390-20261031.png",
+        "sha256": "48612b6f8666b26553c8de7386268f5bc04d34590abc8ce9098bd79fb65ada84",
+        "bytes": 57235,
+        "width": 390,
+        "height": 1000,
+        "computedTextSize": "200%",
+        "scope": "isolated actual teacher page; synthetic contract estimates, not live learner marks",
+        "inspected": true
+      },
+      {
+        "path": "teacher-skill-evidence-768-20261031.png",
+        "sha256": "93df55a7cf477b526cdfc7a0c3840c311f7547f932d78042c95a3ee17017b197",
+        "bytes": 80996,
+        "width": 768,
+        "height": 1000,
+        "computedTextSize": "200%",
+        "scope": "isolated actual teacher page; synthetic contract estimates, not live learner marks",
+        "inspected": true
+      }
+    ]
+  },
+  "implementation": {
+    "pr": 372,
+    "head": "6c952fbf88425f15b0574ced58fc3ae04ac78b90",
+    "merge": "b927b2c23bc9572a143c7896e1524df52fb5cd51",
+    "tree": "b7b15034c448456dadcfb52f7af20ce35945f403",
+    "mainCi": 41200922897,
+    "mainCiStatus": "all five jobs passed"
+  },
+  "releaseControl": {
+    "independentPersistentSettings": "Reused unchanged31OctproductionReleaseGate in teacher-task-production-integration-20261031.json, GitHub Platform release checks / Production / Blocking, selected, Save disabled; no settings writes",
+    "independentSettingsImage": "vercel-production-blocking-20261031.jpg",
+    "settingsImageSha256": "d5b1be297104c0fd3f8bcc9ba87f136e519982743e28a31d653baab83f43ab00",
+    "candidate": "dpl_DQigSZpJtHu8cxMwxMqZz4qj2GzK",
+    "candidateState": "READY",
+    "candidateSource": "b927b2c23bc9572a143c7896e1524df52fb5cd51",
+    "publicSourceWhileMainCiRunning": "f35c4b01f7d1d0b7aff5173654be11b9090371ec",
+    "observation": "READY alone did not promote; public retained previous source while aggregate pending",
+    "publicPromotedAfterMainAggregate": "b927b2c23bc9572a143c7896e1524df52fb5cd51"
+  },
+  "production": {
+    "deployment": "dpl_DQigSZpJtHu8cxMwxMqZz4qj2GzK",
+    "state": "READY/public",
+    "commit": "b927b2c23bc9572a143c7896e1524df52fb5cd51",
+    "releaseJsonExact": true,
+    "webTree": "b809aadbc5e574e37ed9a3f7495507afefceb132",
+    "changedFiles": [
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "bytes": 288645,
+        "sha256": "4ab675866a7ded43fca084a78430cd259a2415f56bf3fb16ad41d53de005522b",
+        "servedSha256": "4ab675866a7ded43fca084a78430cd259a2415f56bf3fb16ad41d53de005522b",
+        "servedBytes": 288645,
+        "exact": true
+      },
+      {
+        "path": "web/teacher-dependencies.mjs",
+        "bytes": 742,
+        "sha256": "3baae88d1dbde44244348628fe482914a6253f13a9e421fa149d1dac6fa4d5d1",
+        "servedSha256": "3baae88d1dbde44244348628fe482914a6253f13a9e421fa149d1dac6fa4d5d1",
+        "servedBytes": 742,
+        "exact": true
+      },
+      {
+        "path": "web/teacher-skill-evidence.mjs",
+        "bytes": 4546,
+        "sha256": "0f3933e7bd72307f9b946522b316f057add134e40df83b89f53bd8411aeb7fe2",
+        "servedSha256": "0f3933e7bd72307f9b946522b316f057add134e40df83b89f53bd8411aeb7fe2",
+        "servedBytes": 4546,
+        "exact": true
+      },
+      {
+        "path": "web/teacher.css",
+        "bytes": 24298,
+        "sha256": "72d702ce08b430aa44e08202266d83eeeae198bd68826d8481b5f31f040f6dd1",
+        "servedSha256": "72d702ce08b430aa44e08202266d83eeeae198bd68826d8481b5f31f040f6dd1",
+        "servedBytes": 24298,
+        "exact": true
+      },
+      {
+        "path": "web/teacher.html",
+        "bytes": 35823,
+        "sha256": "af2d6025cba36206eeadce82a90ffda2229c11ac402959d1ad5ddcf2655e7054",
+        "servedSha256": "af2d6025cba36206eeadce82a90ffda2229c11ac402959d1ad5ddcf2655e7054",
+        "servedBytes": 35823,
+        "exact": true
+      },
+      {
+        "path": "web/teacher.js",
+        "bytes": 88082,
+        "sha256": "ab3e114a217d84c68da1111d76fa74191e3c06a88e58ea6c1498927cdfd52ea4",
+        "servedSha256": "ab3e114a217d84c68da1111d76fa74191e3c06a88e58ea6c1498927cdfd52ea4",
+        "servedBytes": 88082,
+        "exact": true
+      }
+    ],
+    "allSixServedFilesExact": true,
+    "postDeploymentAuthenticatedMatrix": "Not newly exercised. Live defect reproduction was before the fix; current rendering is verified by actual-page isolated native tests plus exact served source."
+  },
+  "preservation": {
+    "priorMain": "f35c4b01f7d1d0b7aff5173654be11b9090371ec",
+    "nonDocumentationRootObjects": 15,
+    "changedRootObjects": [
+      "tests",
+      "web"
+    ],
+    "other13ExactlyUnchanged": true,
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "github": "292fd7e48a981f7cec7215b3ffdcd93498d86401",
+    "newBackendDeploymentOrMigration": false,
+    "unchangedResourceDeliveryEvidence": "teacher-task-hosted-acceptance-20261031.json;327/327+54+54 isolation on6892b730, not a new matrix rendering pass",
+    "originalApprovalsContentAudioSpeakingAndGates": "preserved"
+  }
 }
