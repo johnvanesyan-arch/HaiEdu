@@ -1,0 +1,924 @@
+{
+  "schemaVersion": "haiedu-navigation-role-usability-v1",
+  "baselineCommit": "a6752100fed4eddf9a909536e3c7fd233b16e87e",
+  "baselineTree": "48cc302f1369d732c7f0180cb6324322bac4f893",
+  "productPR": 378,
+  "productHead": "076dad0b035aaf0937c6436226604b03f2bf516b",
+  "productTree": "ec5f604bdc5460c0c5fdb0f5e80078d1b720dbb0",
+  "requiredPRCI": 41245750369,
+  "localUnit": {
+    "tests": 1636,
+    "pass": 1636,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "changedFrontend": [
+    {
+      "path": "web/navigation-focus.mjs",
+      "bytes": 636,
+      "sha256": "6a2fa8c09f24c34e8b7ac55e83199f331ebfb9903e89947c6d70d1c080566806"
+    },
+    {
+      "path": "web/privacy.css",
+      "bytes": 5967,
+      "sha256": "c7962ab8703154f2792a2bc5bcc459f2b89d42dcfbc36ba8cf4334d2a16a62f5"
+    },
+    {
+      "path": "web/privacy.js",
+      "bytes": 20354,
+      "sha256": "e630b60fe37936ebf555f9d70ba50fc1e1e816daec71b76f814ec1ae2cefdf4e"
+    },
+    {
+      "path": "web/responsive-qa.css",
+      "bytes": 2469,
+      "sha256": "d723c93219d5ce607ad29920741faddc2d4df6ff78c4a6620f6eb5443d34e32c"
+    },
+    {
+      "path": "web/role-layout.js",
+      "bytes": 22614,
+      "sha256": "d979fbcd3fa2422f0cfe9d25e2c9d9f797cf71061451a66a67a34f73f790d97b"
+    },
+    {
+      "path": "web/staff-forest.css",
+      "bytes": 14504,
+      "sha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea"
+    },
+    {
+      "path": "web/student-forest.css",
+      "bytes": 19253,
+      "sha256": "f803409ff1968bd8034707a6b154b7c9baa68f23529da313d475efcec47fad48"
+    },
+    {
+      "path": "web/student-shell.css",
+      "bytes": 15411,
+      "sha256": "ec5035fb34d66968348dc0e68fa6c125eb51173fd3265c45888eba8a663bcb56"
+    },
+    {
+      "path": "web/student-shell.js",
+      "bytes": 8256,
+      "sha256": "5da4fbad8d82db5543ad9cea09f4ca1a7e4a52f1c539f6f6b27608bef6eca5bd"
+    },
+    {
+      "path": "web/student-surfaces.css",
+      "bytes": 16494,
+      "sha256": "43afb9ab847f47c30080c5e4a697dc24eb7893fa88a57f0cb87ef7ab06705011"
+    },
+    {
+      "path": "web/teacher-workspace-preview.mjs",
+      "bytes": 10244,
+      "sha256": "1b1da61f90cd05192f2e90c8f98ac09bdda6c02184ddf0759ae5948d3100f9b3"
+    }
+  ],
+  "unchangedRuntimeRoots": {
+    ".env.example": "592f40953fa1255c745341db6752d5b03dde9488",
+    ".gitignore": "4ab8ee1cace081e4360dad20d429748023fc8470",
+    "AGENTS.md": "b44e1dc4a5cd07f67e1c1372873b9f793cc6fd52",
+    "backend": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+    "e2e": "61535703565835ee5328e684f40e482c92c82682",
+    "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+    "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+    "playwright.config.js": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "tsconfig.json": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+    "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f"
+  },
+  "changedRoots": [
+    ".github",
+    "README.md",
+    "docs",
+    "tests",
+    "web"
+  ],
+  "scope": {
+    "staffRolePages": 14,
+    "studentShellPages": 9,
+    "accountRoles": 5,
+    "sharedPreview": true,
+    "JavaScriptChanges": true,
+    "subjectNeutral": true,
+    "accountMinWidth": 320,
+    "courseTabs": true,
+    "studentNavigationStates": 12,
+    "studentMinWidth": 320
+  },
+  "preservation": {
+    "all45Mappings": true,
+    "savedScoresPoliciesAndEvidence": true,
+    "backendSQLAuthRLSAndAPIs": true,
+    "accountLogoutOutcomeControllers": true,
+    "navigationURLsAndExactRecordContext": true,
+    "independentContentReviewer": true,
+    "existingContentAudioAndApprovals": true,
+    "noDomainMFAOrMasterMigration": true,
+    "retainedHostedAcceptance": "41191092937:327/327;54+54 isolation;cleanup",
+    "retainedFailedRun": "41233488573:326/327 remains failed;HTTP0 final own-learner read;cleanup",
+    "independentRead": "41233488681:91/91,54 isolation,same read200;cleanup"
+  },
+  "limits": [
+    "Native role-shell activation/API outcomes are simulated where documented, not new ordinary-account or privileged production/MFA certification.",
+    "200% root font is not physical-device, browser-chrome zoom or assistive-technology certification.",
+    "SEC-AAL-01 direct-database assurance coverage remains a separate open security finding.",
+    "Paired owner review needs an ordinary permitted learner; the ended QA/demo enrollment must not be restored.",
+    "No new production cold/reload p95 timing is claimed. Existing backend/controller/API fanout and performance contract checks are retained; the new small static focus module is separately source/MIME verified."
+  ],
+  "next": "Owner five-role usability review and explicit acceptance after technical release. B12open; subjects paused.",
+  "initialPRCI": {
+    "run": 41239113318,
+    "unit": 1636,
+    "native": {
+      "tests": 375,
+      "pass": 353,
+      "fail": 22
+    },
+    "cause": "17 partially visible focused-menu cases and5 new narrow account-word checks; existing business flows pass. Reveal keyboard focus once; preserve pointer targets; flatten narrow account layout with unchanged body font and inventory counts."
+  },
+  "focusedCurrentSource": {
+    "tests": 84,
+    "passCount": 84,
+    "fail": 0,
+    "skip": 0
+  },
+  "qaPathFilterAdditions": 7,
+  "authHealthUXRestoredExact": true,
+  "secondPRCI": {
+    "id": 41240652150,
+    "unit": 1636,
+    "native": {
+      "tests": 376,
+      "pass": 361,
+      "fail": 15
+    },
+    "cause": "Student navigation, account5roles320px and once-only pointer-negative regression pass.15staff cases expose school/preview missing generalUX and too much compact padding. Direct shared component imports and capped phone spacing address both."
+  },
+  "thirdPRCI": {
+    "id": 41242025597,
+    "unit": {
+      "tests": 1636,
+      "pass": 1635,
+      "fail": 1
+    },
+    "native": {
+      "tests": 376,
+      "pass": 373,
+      "fail": 3
+    },
+    "cause": "Two legacy VM/static fixtures did not link the ESM module; two school terminal cases lacked the actual denied panel. Final correction is fixture/report-only; full navigation, word, account and focus checks already passed on the unchanged web tree."
+  },
+  "productNonDocumentationRoots": {
+    ".env.example": "592f40953fa1255c745341db6752d5b03dde9488",
+    ".github": "fbe21f7df0f50e25d4139b65acc6a345e897dede",
+    ".gitignore": "4ab8ee1cace081e4360dad20d429748023fc8470",
+    "AGENTS.md": "b44e1dc4a5cd07f67e1c1372873b9f793cc6fd52",
+    "backend": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+    "e2e": "61535703565835ee5328e684f40e482c92c82682",
+    "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+    "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+    "playwright.config.js": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "tests": "62ec0ce4b5831dd25c5aa1b580c651021c51d989",
+    "tsconfig.json": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+    "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f",
+    "web": "175f9aa68ea5cff2b6aa1120d8bc700e574f27b9"
+  },
+  "newAccountDefect": "UX-ACCOUNT-05",
+  "historicalAccountDefectPreserved": [
+    "UX-ACCOUNT-01",
+    "UX-ACCOUNT-02",
+    "UX-ACCOUNT-03",
+    "UX-ACCOUNT-04"
+  ],
+  "fourthPRCI": {
+    "id": 41243029787,
+    "unit": {
+      "tests": 1636,
+      "pass": 1636,
+      "fail": 0
+    },
+    "native": {
+      "tests": 376,
+      "pass": 375,
+      "fail": 1
+    },
+    "cause": "Inline ESM fixture execution was not awaited before the initial loading-count assertion. Await module execution marker; original loading, menu/terminal and64-delivery observer assertions remain. Runtime web tree unchanged."
+  },
+  "supersededPRCI": 41243756133,
+  "fifthPRCI": {
+    "id": 41243756133,
+    "head": "3f0921017943d669897539968e425823a8f86f0c",
+    "allFive": "success",
+    "unit": 1636,
+    "native": 376,
+    "scope": "ESM synchronization correction passes; superseded by final course-tab word/readability correction, whose current-head gates remain required."
+  },
+  "sixthPRCI": {
+    "id": 41244175671,
+    "unit": 1636,
+    "native": {
+      "tests": 376,
+      "pass": 375,
+      "fail": 1
+    },
+    "cause": "New320px/200% state: main compact My-work control323px wider than viewport. Course-tab words pass. Cap natural-width item to row and permit word-boundary wrapping, preserving font and test thresholds."
+  },
+  "seventhPRCI": {
+    "id": 41244853061,
+    "native": {
+      "tests": 376,
+      "pass": 375,
+      "fail": 1
+    },
+    "cause": "All menu/course control visibility and word checks pass.320px/200% page-level overflow remains. Exact DOM offender diagnostics are required before another CSS change."
+  },
+  "diagnosticPRCI": {
+    "id": 41245520135,
+    "scope": "Temporary additional native preflight, failed as expected before unchanged full gate; diagnostic only, not a qualifying376-case run",
+    "cause": "Progress hero1fr auto minimum:289px child in224px available width; document337px on320px viewport. minmax(0,1fr), shrinkable children and compact nested padding fix actual cause.",
+    "preflightRemoved": true,
+    "originalCIWorkflowRestoredExact": true
+  },
+  "allFiveProductPR": [
+    {
+      "name": "role-layout-browser",
+      "id": 124668698103,
+      "conclusion": "success"
+    },
+    {
+      "name": "test",
+      "id": 124668698190,
+      "conclusion": "success"
+    },
+    {
+      "name": "institutional-concurrency",
+      "id": 124668698243,
+      "conclusion": "success"
+    },
+    {
+      "name": "phase3-postgres-17",
+      "id": 124668698367,
+      "conclusion": "success"
+    },
+    {
+      "name": "Platform release checks",
+      "id": 124670375167,
+      "conclusion": "success"
+    }
+  ],
+  "finalCounts": {
+    "unit": 1636,
+    "native": 376,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "nativeArtifact": {
+    "id": 13058904525,
+    "run": 41245750369,
+    "archiveBytes": 28722302,
+    "archiveSHA256": "630b5f58c50475035bc73bb56c489ce9d890fe42d09c347322ec94525dc170ca",
+    "directory": "/workspace/scratch/0503b42216ae/navigation-final-41245750369",
+    "images": [
+      {
+        "name": "navigation-admin-1280-200.png",
+        "bytes": 109030,
+        "sha256": "50b22ac832c0dc56eb1a74f6e544a5f35eda7f8ac9903a6e85972f5b4c4ffc3b",
+        "repositoryPath": "docs/evidence/navigation-admin-1280-200-20261101.png"
+      },
+      {
+        "name": "navigation-admin-360-200.png",
+        "bytes": 41134,
+        "sha256": "2dc7ad9d7dd74c3767aaf1a9aabfb168988ed412c278628810f21b54b0736046",
+        "repositoryPath": "docs/evidence/navigation-admin-360-200-20261101.png"
+      },
+      {
+        "name": "navigation-content-review-1280-200.png",
+        "bytes": 108389,
+        "sha256": "e5099ce2bff01224a01147a1dc7f71fe952143eee9a4c0b8660f609b5c54e932",
+        "repositoryPath": "docs/evidence/navigation-content-review-1280-200-20261101.png"
+      },
+      {
+        "name": "navigation-content-review-360-200.png",
+        "bytes": 45597,
+        "sha256": "90bb0dc7c1c2e83627249951b28a6094bb08824095d7c6aacb2f2f180c798762",
+        "repositoryPath": "docs/evidence/navigation-content-review-360-200-20261101.png"
+      },
+      {
+        "name": "navigation-school-admin-1280-200.png",
+        "bytes": 101119,
+        "sha256": "a4cc2ef1540519b3a426d1c2302a27c68102c81e0c10be915405e1132ab441c2",
+        "repositoryPath": "docs/evidence/navigation-school-admin-1280-200-20261101.png"
+      },
+      {
+        "name": "navigation-school-admin-360-200.png",
+        "bytes": 43257,
+        "sha256": "538168095c4c3491c913707412442b550fb871ad26d926af6be31862b01ec28f",
+        "repositoryPath": "docs/evidence/navigation-school-admin-360-200-20261101.png"
+      },
+      {
+        "name": "navigation-student-1280-100.png",
+        "bytes": 95405,
+        "sha256": "9d155a4dc35abec9abf03a3c48b149b07ea737d43b42d0e5332d87cb60f479ac",
+        "repositoryPath": "docs/evidence/navigation-student-1280-100-20261101.png"
+      },
+      {
+        "name": "navigation-student-1280-200.png",
+        "bytes": 91292,
+        "sha256": "ef791c710c4f4508cfc1d05af1387a1a3c5b0d9ac158ce15728a52439aa10334",
+        "repositoryPath": "docs/evidence/navigation-student-1280-200-20261101.png"
+      },
+      {
+        "name": "navigation-student-360-100.png",
+        "bytes": 48310,
+        "sha256": "7c5b6b13abfb7f75ba735268f79edf6f497b02153c8e49a56aafc3bc1a468a06",
+        "repositoryPath": "docs/evidence/navigation-student-360-100-20261101.png"
+      },
+      {
+        "name": "navigation-student-360-200.png",
+        "bytes": 43999,
+        "sha256": "c56c327e4356c4c827f1e877ae1a6ee5fa7734c52e6489a9da4295834a2382d9",
+        "repositoryPath": "docs/evidence/navigation-student-360-200-20261101.png"
+      },
+      {
+        "name": "navigation-student-account-320-200.png",
+        "bytes": 48940,
+        "sha256": "0d568e66359683915514e4f3f065ca41327500100ce235cbfd4438a808c09459",
+        "repositoryPath": "docs/evidence/navigation-student-account-320-200-20261101.png"
+      },
+      {
+        "name": "navigation-teacher-1280-200.png",
+        "bytes": 101510,
+        "sha256": "dde615b06612117447121d1868ec64d6a98c4e8e11bab9132aec4f58637e9693",
+        "repositoryPath": "docs/evidence/navigation-teacher-1280-200-20261101.png"
+      },
+      {
+        "name": "navigation-teacher-360-200.png",
+        "bytes": 39518,
+        "sha256": "3f57d80e8dbafb0daf13f8f98da87664581fbcdaefb5b6689048a03af76a5c7a",
+        "repositoryPath": "docs/evidence/navigation-teacher-360-200-20261101.png"
+      }
+    ],
+    "matrices": [
+      {
+        "name": "navigation-admin-security.json",
+        "bytes": 9233,
+        "sha256": "9b4bf68ff68ff974f4458e538e6850e2f6b77e58ba2e5af0bfc3db7df27d9731",
+        "rows": 6
+      },
+      {
+        "name": "navigation-admin.json",
+        "bytes": 14695,
+        "sha256": "9430a0e2b9763f399880dc8103444d95faa3460abc564508b7ccb989688874a7",
+        "rows": 10
+      },
+      {
+        "name": "navigation-content-bank.json",
+        "bytes": 10337,
+        "sha256": "48addfcea629bc9a0143d9721267577e6f9a56be1413774e96f027029e3e206a",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-curriculum.json",
+        "bytes": 10373,
+        "sha256": "fd4e3ace2c0592b704678ffaeea51d4697a703372fce6bf695a6d6215b11385f",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-evidence.json",
+        "bytes": 10361,
+        "sha256": "b0071b7efe2b2481bd33c4c9f42ad818f3161e5eba5ceb7f04ea820b2ec8459d",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-guides.json",
+        "bytes": 10349,
+        "sha256": "ce5dc0c81b10cb376dce884107ac85995fb8bb5dca54800dd97229a46a6c45b1",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-item.json",
+        "bytes": 10337,
+        "sha256": "317a5256b963a5c4ff91966e8b9a77a3d680dd7a7670525acd84075729da4496",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-materials.json",
+        "bytes": 9539,
+        "sha256": "c4dab517a14e0de5eb6d665558d0ace999c14128785f604a9efea7fb156b383c",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-misconceptions.json",
+        "bytes": 10397,
+        "sha256": "867e2038547c922a818c444e938539779e2d0d2015b5bc5681064db00e8bf2ef",
+        "rows": 6
+      },
+      {
+        "name": "navigation-content-review.json",
+        "bytes": 17245,
+        "sha256": "6d0afa0b146b69153834eb2044287e71504ee45b396139d5584ead7a7d9767cf",
+        "rows": 10
+      },
+      {
+        "name": "navigation-content.json",
+        "bytes": 10307,
+        "sha256": "d645439412bccaacd4e818aa05eb8b62763c31103461c27cf6d2f10e4df0be2a",
+        "rows": 6
+      },
+      {
+        "name": "navigation-school-admin.json",
+        "bytes": 11095,
+        "sha256": "27876e730dffa46359f72edca9fb75155c1d4b650d1b50ed2f3c1f59809c2c3f",
+        "rows": 10
+      },
+      {
+        "name": "navigation-school-teacher.json",
+        "bytes": 7127,
+        "sha256": "8392588660ad51ce283260074f95c20022b92f849dff5e2db55b69af96935258",
+        "rows": 6
+      },
+      {
+        "name": "navigation-student.json",
+        "bytes": 33981,
+        "sha256": "b8784a8a4e983580edb4b49e5c3eb158770823f0d0e04968368be5524913289e",
+        "rows": 12
+      },
+      {
+        "name": "navigation-teacher.json",
+        "bytes": 14515,
+        "sha256": "38953c3d383505839e5cdf209740a6fb35df4d135760523d3be6642b24000364",
+        "rows": 10
+      }
+    ],
+    "recordedStates": 112,
+    "scope": "Actual page/DOM and isolated fixtures; root-font100/200, not ordinary privileged production/device or full browser-chrome zoom certification"
+  },
+  "productMerge": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+  "visualReview": {
+    "inspectedNavigationImages": 13,
+    "artifact": 13058904525,
+    "method": "Original final native PNGs inspected through phone/desktop contact sheets; natural word/focus and page overflow assertions pass at all112 recorded states.",
+    "ownerAcceptance": false
+  },
+  "requiredMainCI": 41246420240,
+  "additionalVisualReview": {
+    "artifact": 13058904525,
+    "image": "shared-progress-360.png",
+    "sha256": "302fab6303b88aa036b0be4ee2f11ac449ff4956da6123ed11c4158408f16a43",
+    "scope": "Original final-source shared progress page at360px/100%; upper2200px inspected, including natural course-tab words and compact progress hero. Fixed bar position in full-page image is the native capture viewport."
+  },
+  "allFiveProductMain": [
+    {
+      "name": "role-layout-browser",
+      "id": 124670683655,
+      "conclusion": "success"
+    },
+    {
+      "name": "test",
+      "id": 124670683915,
+      "conclusion": "success"
+    },
+    {
+      "name": "phase3-postgres-17",
+      "id": 124670683975,
+      "conclusion": "success"
+    },
+    {
+      "name": "institutional-concurrency",
+      "id": 124670684008,
+      "conclusion": "success"
+    },
+    {
+      "name": "Platform release checks",
+      "id": 124672150394,
+      "conclusion": "success"
+    }
+  ],
+  "productionAssets": [
+    {
+      "path": "web/navigation-focus.mjs",
+      "url": "https://www.haiedu.am/navigation-focus.mjs",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedBytes": 636,
+      "expectedSHA256": "6a2fa8c09f24c34e8b7ac55e83199f331ebfb9903e89947c6d70d1c080566806",
+      "bytes": 636,
+      "sha256": "6a2fa8c09f24c34e8b7ac55e83199f331ebfb9903e89947c6d70d1c080566806",
+      "matches": true
+    },
+    {
+      "path": "web/privacy.css",
+      "url": "https://www.haiedu.am/privacy.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 5967,
+      "expectedSHA256": "c7962ab8703154f2792a2bc5bcc459f2b89d42dcfbc36ba8cf4334d2a16a62f5",
+      "bytes": 5967,
+      "sha256": "c7962ab8703154f2792a2bc5bcc459f2b89d42dcfbc36ba8cf4334d2a16a62f5",
+      "matches": true
+    },
+    {
+      "path": "web/privacy.js",
+      "url": "https://www.haiedu.am/privacy.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedBytes": 20354,
+      "expectedSHA256": "e630b60fe37936ebf555f9d70ba50fc1e1e816daec71b76f814ec1ae2cefdf4e",
+      "bytes": 20354,
+      "sha256": "e630b60fe37936ebf555f9d70ba50fc1e1e816daec71b76f814ec1ae2cefdf4e",
+      "matches": true
+    },
+    {
+      "path": "web/responsive-qa.css",
+      "url": "https://www.haiedu.am/responsive-qa.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 2469,
+      "expectedSHA256": "d723c93219d5ce607ad29920741faddc2d4df6ff78c4a6620f6eb5443d34e32c",
+      "bytes": 2469,
+      "sha256": "d723c93219d5ce607ad29920741faddc2d4df6ff78c4a6620f6eb5443d34e32c",
+      "matches": true
+    },
+    {
+      "path": "web/role-layout.js",
+      "url": "https://www.haiedu.am/role-layout.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedBytes": 22614,
+      "expectedSHA256": "d979fbcd3fa2422f0cfe9d25e2c9d9f797cf71061451a66a67a34f73f790d97b",
+      "bytes": 22614,
+      "sha256": "d979fbcd3fa2422f0cfe9d25e2c9d9f797cf71061451a66a67a34f73f790d97b",
+      "matches": true
+    },
+    {
+      "path": "web/staff-forest.css",
+      "url": "https://www.haiedu.am/staff-forest.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 14504,
+      "expectedSHA256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+      "bytes": 14504,
+      "sha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+      "matches": true
+    },
+    {
+      "path": "web/student-forest.css",
+      "url": "https://www.haiedu.am/student-forest.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 19253,
+      "expectedSHA256": "f803409ff1968bd8034707a6b154b7c9baa68f23529da313d475efcec47fad48",
+      "bytes": 19253,
+      "sha256": "f803409ff1968bd8034707a6b154b7c9baa68f23529da313d475efcec47fad48",
+      "matches": true
+    },
+    {
+      "path": "web/student-shell.css",
+      "url": "https://www.haiedu.am/student-shell.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 15411,
+      "expectedSHA256": "ec5035fb34d66968348dc0e68fa6c125eb51173fd3265c45888eba8a663bcb56",
+      "bytes": 15411,
+      "sha256": "ec5035fb34d66968348dc0e68fa6c125eb51173fd3265c45888eba8a663bcb56",
+      "matches": true
+    },
+    {
+      "path": "web/student-shell.js",
+      "url": "https://www.haiedu.am/student-shell.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedBytes": 8256,
+      "expectedSHA256": "5da4fbad8d82db5543ad9cea09f4ca1a7e4a52f1c539f6f6b27608bef6eca5bd",
+      "bytes": 8256,
+      "sha256": "5da4fbad8d82db5543ad9cea09f4ca1a7e4a52f1c539f6f6b27608bef6eca5bd",
+      "matches": true
+    },
+    {
+      "path": "web/student-surfaces.css",
+      "url": "https://www.haiedu.am/student-surfaces.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedBytes": 16494,
+      "expectedSHA256": "43afb9ab847f47c30080c5e4a697dc24eb7893fa88a57f0cb87ef7ab06705011",
+      "bytes": 16494,
+      "sha256": "43afb9ab847f47c30080c5e4a697dc24eb7893fa88a57f0cb87ef7ab06705011",
+      "matches": true
+    },
+    {
+      "path": "web/teacher-workspace-preview.mjs",
+      "url": "https://www.haiedu.am/teacher-workspace-preview.mjs",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedBytes": 10244,
+      "expectedSHA256": "1b1da61f90cd05192f2e90c8f98ac09bdda6c02184ddf0759ae5948d3100f9b3",
+      "bytes": 10244,
+      "sha256": "1b1da61f90cd05192f2e90c8f98ac09bdda6c02184ddf0759ae5948d3100f9b3",
+      "matches": true
+    }
+  ],
+  "productDeployment": {
+    "id": "dpl_8oV5XR2RJvuNcVw8qZr8NJJo7SFk",
+    "state": "READY",
+    "commit": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+    "canonical": "https://www.haiedu.am",
+    "releaseJSON": {
+      "schemaVersion": 1,
+      "commit": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93"
+    }
+  },
+  "closureScope": "README/docs/evidence only; all15 non-documentation roots byte/object-identical to functional PR378; closure PR/main and final source/deployment verification occur before Notion sync.",
+  "postMergeHostedVerification": [
+    {
+      "run": 41246420253,
+      "name": "Chapter V pilot authenticated read-only production acceptance",
+      "source": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "status": "passed",
+      "checks": 191,
+      "passed": 191,
+      "isolation": 54,
+      "runOwnedSessionCleanup": [
+        {
+          "label": "A_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "isolationSessionCleanup": [
+        {
+          "label": "A_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "artifact": 13059761465,
+      "artifactSHA256": "8b0066e286ac6e91f47567bcc9791a3e2f04adee4e975c273e77b8f637a5d687",
+      "reportPath": "docs/evidence/navigation-chapter-v-read-20261101.json",
+      "rawReportSHA256": "9a0d284193c2e859f21d045d5cf81f6df52144caa5b8bc35ffafdff678c495a3",
+      "limitations": [
+        "No learning sessions, answers or exposures are created.",
+        "Read-only switching is not a completed learner attempt or specialist approval.",
+        "Chapters I, II, III and IV are preserved; no student answers are submitted.",
+        "Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation."
+      ],
+      "browserDiagnostics": [
+        {
+          "side": "A",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        },
+        {
+          "side": "B",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        }
+      ]
+    },
+    {
+      "run": 41246420337,
+      "name": "Chapter IV pilot authenticated read-only production acceptance",
+      "source": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "status": "passed",
+      "checks": 155,
+      "passed": 155,
+      "isolation": 54,
+      "runOwnedSessionCleanup": [
+        {
+          "label": "A_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "isolationSessionCleanup": [
+        {
+          "label": "A_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "artifact": 13060210479,
+      "artifactSHA256": "83980be03f96ee518675386d21b7f91088278504c659dd28a26c42e5449bb57f",
+      "reportPath": "docs/evidence/navigation-chapter-iv-read-20261101.json",
+      "rawReportSHA256": "3a912d646f24154925c566167e2ef27dbd94c7f3af4d48dd06c050ebb20ad79e",
+      "limitations": [
+        "No learning sessions, answers or exposures are created.",
+        "Read-only switching is not a completed learner attempt or specialist approval.",
+        "Chapters I, II and III are preserved; no student answers are submitted.",
+        "Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation."
+      ],
+      "browserDiagnostics": [
+        {
+          "side": "A",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        },
+        {
+          "side": "B",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        }
+      ]
+    }
+  ],
+  "postMergeHostedScheduling": [
+    {
+      "id": 41246420349,
+      "name": "English Unit 2 pilot read acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420337,
+      "name": "Chapter IV pilot read acceptance",
+      "status": "completed",
+      "conclusion": "success",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 1
+    },
+    {
+      "id": 41246420318,
+      "name": "Chapter VI pilot read acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420305,
+      "name": "Teacher feedback production acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420302,
+      "name": "English Unit 3 pilot read acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420278,
+      "name": "Sprint 14D authenticated analytics QA",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420275,
+      "name": "Chapter III pilot read acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420253,
+      "name": "Chapter V pilot read acceptance",
+      "status": "completed",
+      "conclusion": "success",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 1
+    },
+    {
+      "id": 41246420245,
+      "name": "English Unit 1 pilot read acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420235,
+      "name": "Resource assignment production acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    },
+    {
+      "id": 41246420229,
+      "name": "Sprint 14 authenticated action QA",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head": "e6e78016ec5bf80a29a4466ea44fc31b5a715a93",
+      "jobs": 0
+    }
+  ],
+  "hostedSummary": "Current-source authenticated read runs [Chapter V](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41246420253) and [Chapter IV](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41246420337) pass191/191 and155/155 respectively, each with54 isolation controls and all run-owned sessions closed. Both schools’ browser diagnostics show zero blocked requests/page errors. No learning session, answer, exposure, submission or grade is created. Nine other automatic workflows were cancelled while pending by the unchanged shared concurrency group, with zero jobs started; they are not counted as passes. Complete Resource41191092937 (327/327,54+54 isolation/cleanup) remains the retained delivery baseline; this is no new full327-case delivery claim.",
+  "allAuthenticatedJobsSettledBeforeClosure": true
+}
