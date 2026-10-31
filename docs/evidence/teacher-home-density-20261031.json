@@ -1,0 +1,206 @@
+{
+  "baselineCommit": "294df9cf171e518079a77789878e9754558f5573",
+  "baselineTree": "acc84cf0bac858e2ab02e42a247ef85a27baacde",
+  "productPR": 374,
+  "productHead": "9d69ae39111426955432d9993ea4d40773cb106a",
+  "productTree": "251c1c4a3443f3f27a96fd84ea8a2cd1ee9ddbae",
+  "changedRoots": [
+    "README.md",
+    "docs",
+    "tests",
+    "web"
+  ],
+  "unchangedRuntimeRoots": {
+    ".env.example": "592f40953fa1255c745341db6752d5b03dde9488",
+    ".github": "292fd7e48a981f7cec7215b3ffdcd93498d86401",
+    ".gitignore": "4ab8ee1cace081e4360dad20d429748023fc8470",
+    "AGENTS.md": "b44e1dc4a5cd07f67e1c1372873b9f793cc6fd52",
+    "backend": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+    "e2e": "61535703565835ee5328e684f40e482c92c82682",
+    "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+    "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+    "playwright.config.js": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+    "scripts": "959ba574c19ea2e312dd6a3a2e39e0039d034b9c",
+    "supabase": "685ba1836c138fb076b1cfd821451a4c6ae4ff6c",
+    "tsconfig.json": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+    "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f"
+  },
+  "requiredPRCI": 41212761216,
+  "localUnit": {
+    "tests": 1633,
+    "pass": 1633,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "changedFrontend": [
+    {
+      "path": "web/teacher-dependencies.bundle.mjs",
+      "httpStatus": 200,
+      "bytes": 288756,
+      "sha256": "84de596257c4671a0fee0fa98bd3f572c116458ff5243eadc9ec642d3d689451",
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher-today.css",
+      "httpStatus": 200,
+      "bytes": 4313,
+      "sha256": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8",
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher-today.mjs",
+      "httpStatus": 200,
+      "bytes": 11380,
+      "sha256": "45ff2250640b6ede666f6592515bcb06b49416978eb16dc20dda26c10a67d81f",
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher.html",
+      "httpStatus": 200,
+      "bytes": 35356,
+      "sha256": "de5adf8f42652c6f7bd2a735ae23108790e184710fb9f7ff28491741f1ebb1e7",
+      "matchesRepository": true
+    },
+    {
+      "path": "web/teacher.js",
+      "httpStatus": 200,
+      "bytes": 87885,
+      "sha256": "8722555e608bdcd80f4c9249f8ee438904bc258d631a3515258f70e783655617",
+      "matchesRepository": true
+    }
+  ],
+  "initialCI": {
+    "id": 41212008155,
+    "unit": 1633,
+    "native": {
+      "pass": 365,
+      "fail": 2,
+      "tests": 367
+    },
+    "failure": "Same long Armenian word in pilot notice at narrow 200% text; retained policy rewritten using shorter natural words, and open-disclosure readability checked at all three widths. New first-screen, Back/navigation, real review action and existing review/context/account cases passed."
+  },
+  "productMerge": "7f3168eeccfd842b1e84cb1707b80d9b78ae6bf8",
+  "requiredMainCI": 41213622015,
+  "requiredPRCIResult": {
+    "allFiveJobs": "success",
+    "unit": {
+      "tests": 1633,
+      "pass": 1633,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "native": {
+      "tests": 367,
+      "pass": 367,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "nativeArtifact": {
+    "id": 13046772695,
+    "run": 41212761216,
+    "zipBytes": 25791234,
+    "sha256": "a7b16cca5c357e22c134e9e669f58d79b0fa6b7177ead3831797df23badfa6bd",
+    "downloadDigestVerified": true
+  },
+  "images": [
+    {
+      "path": "docs/evidence/teacher-home-first-screen-20261031.png",
+      "size": [
+        1280,
+        900
+      ],
+      "bytes": 99860,
+      "sha256": "7f88cd822e64e8341c8b5575ebd7bf3fec1af5159705091a99ccc75e14fd9a9a",
+      "inspected": true,
+      "scope": "isolated actual teacher page, SQL-backed synthetic fixture; normal text1280x900"
+    },
+    {
+      "path": "docs/evidence/teacher-home-enlarged-390-20261031.png",
+      "size": [
+        390,
+        9050
+      ],
+      "bytes": 422376,
+      "sha256": "c3ff05bec8641ed9f35ecbb2866619be78d851c6d1aecd53bde7c63dee843dd1",
+      "inspected": true,
+      "scope": "isolated actual teacher page, SQL-backed synthetic fixture; root text200%"
+    },
+    {
+      "path": "docs/evidence/teacher-home-enlarged-768-20261031.png",
+      "size": [
+        768,
+        6180
+      ],
+      "bytes": 372391,
+      "sha256": "4c03f49a165709d308011b3dc53ddfb87f40151fe74a6e061e46f60b16c764bc",
+      "inspected": true,
+      "scope": "isolated actual teacher page, SQL-backed synthetic fixture; root text200%"
+    },
+    {
+      "path": "docs/evidence/teacher-classes-compact-20261031.png",
+      "size": [
+        1280,
+        900
+      ],
+      "bytes": 65055,
+      "sha256": "d977411701d303b8ab888ce742f159d64715c57c013568f2368d543a19d84aa9",
+      "inspected": true,
+      "scope": "isolated actual teacher page, SQL-backed synthetic fixture; normal text1280x900"
+    },
+    {
+      "path": "docs/evidence/teacher-home-enlarged-1280-20261031.png",
+      "size": [
+        1280,
+        4742
+      ],
+      "bytes": 368797,
+      "sha256": "9e209511499b38cb594ba5239514639ff392ff4d041964dc93bafa8214314da9",
+      "inspected": true,
+      "scope": "isolated actual teacher page, SQL-backed synthetic fixture; root text200%"
+    }
+  ],
+  "preservation": {
+    "backendSQLAuthAPIs": true,
+    "assessmentScoresAndMeaning": true,
+    "membershipsRecordsAndHistory": true,
+    "contentAudioApprovals": true,
+    "all45Mappings": true,
+    "URLAndDomainConfiguration": true,
+    "masterAdminGate": true,
+    "reuseResourceAcceptance": "41191092937:327/327;54+54 isolation; run-owned cleanup; no new production learner evidence"
+  },
+  "limits": [
+    "Isolated native fixtures are not final owner usability acceptance.",
+    "200% root text is not physical-device or browser-chrome zoom acceptance.",
+    "Shared staff navigation rail needs remaining-role enlarged-label follow-up; no full role acceptance claimed."
+  ],
+  "next": "UX-ANALYTICS-02 Practice history, then remaining role checks including shared navigation and explicit owner acceptance. B12open; subjects paused.",
+  "production": {
+    "deploymentId": "dpl_HhzGvwz6AuGP3vmoL6FLFSFHVuo9",
+    "commit": "7f3168eeccfd842b1e84cb1707b80d9b78ae6bf8",
+    "readyState": "READY",
+    "releaseJsonCommit": "7f3168eeccfd842b1e84cb1707b80d9b78ae6bf8",
+    "servedFrontendExact": true
+  },
+  "requiredMainCIResult": {
+    "allFiveJobs": "success",
+    "unit": {
+      "tests": 1633,
+      "pass": 1633,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "native": {
+      "tests": 367,
+      "pass": 367,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  }
+}
