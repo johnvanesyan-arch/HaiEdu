@@ -1,6 +1,6 @@
 # Teacher task authoring and independent submission formats
 
-2026-10-31 Asia/Yerevan · owner-authorized expanded implementation deployed/source verified in PR365. This supersedes the initial published-writing-only scope. Hosted acceptance remains fixture-blocked; B.12.3 stays open and subjects remain paused.
+2026-10-31 Asia/Yerevan · owner-authorized expanded implementation deployed/source verified in PR365. This supersedes the initial published-writing-only scope. The fixture overlap is repaired with owner approval and database/UI evidence; fresh authenticated hosted acceptance awaits manual workflow dispatch. B.12.3 stays open and subjects remain paused.
 
 ## Independent choices
 

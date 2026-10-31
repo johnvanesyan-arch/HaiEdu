@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
   "scope": "B.12.3.2 production integration; approved cross-role consistency preparation",
-  "state": "implementation deployed/source verified; hosted acceptance blocked by QA/demo identity overlap and manual workflow dispatch",
+  "state": "implementation deployed/source verified; owner-authorized QA/demo overlap data repair verified; fresh authenticated acceptance awaits manual dispatch",
   "baselineMain": "18254f44ee950010bb9a17e555c1f51c81cdf168",
   "priorVerifiedSource": "541d1a80d7d5309a054d6870a8f77e20b850d1d7",
   "priorCi": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41058923727",
@@ -1377,9 +1377,8 @@
     ]
   },
   "pending": [
-    "owner decision on restoring QA/demo identity separation",
-    "guarded hosted delivery acceptance via normal workflow dispatch",
-    "final owner usability decision and complete delivery closure"
+    "fresh reviewed-main guarded hosted delivery acceptance via manual workflow dispatch",
+    "remaining consistency and final owner usability decision; B.12.3/B.12 remain open and subjects paused"
   ],
   "retained": [
     "all 45 capabilities",
@@ -2849,7 +2848,7 @@
     "unchangedHomeImagesReused": 5
   },
   "hostedAcceptance": {
-    "status": "blocked",
+    "status": "pending fresh manual dispatch after verified data repair",
     "readRuns": [
       41135838903,
       41135839673
@@ -2861,13 +2860,13 @@
     "resourceRunStatus": "cancelled by pending queue before jobs; no authenticated agent cancellation",
     "browserDispatch": "saved github.com origin permission rejected; no workaround",
     "connectorRerun": "403: This workflow run cannot be retried",
-    "rootCause": "Designated School B QA learner also has an active School A English7 demo membership and enrollment from 2026-10-29; legitimate access conflicts with disjoint-fixture assumptions",
+    "rootCause": "Historical failed runs: the B QA learner also had an active School A demo membership/enrollment. Owner-authorized correction now ends only that extra access; authenticated recheck still pending.",
     "newReadRuntimeChanges": false,
     "unchangedReadRuntimeFileMatches": 9,
     "assertionsWeakened": false,
-    "membershipChanges": false,
+    "membershipChanges": true,
     "proposedAction": {
-      "status": "proposal only; not executed; owner decision required",
+      "status": "owner-approved and completed through existing audited SQL procedure by connected operator; Edge HTTP endpoint not invoked",
       "endpoint": "manage-institutional-membership",
       "body": {
         "action": "end_membership",
@@ -2881,7 +2880,13 @@
       ],
       "ordinaryDemoClassId": "2b2ab295-2ebd-47a1-888a-61622a9e89bf",
       "preserve": "ordinary demo class/teacher; all history/work; School B membership and both original enrollments",
-      "execution": "normal live-session-authorized audited service; no QA impersonation or raw erasure"
-    }
+      "execution": "actual secure school-admin sign-in and validated live-session/school authority; connected operator invoked existing procedure within atomic preservation guard. Not an authenticated QA pass."
+    },
+    "repairEvidence": "qa-fixture-separation-20261031.json",
+    "repairAuditIds": [
+      1639,
+      1640
+    ],
+    "authenticatedRecheck": "not yet run"
   }
 }

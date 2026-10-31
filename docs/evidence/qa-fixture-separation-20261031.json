@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-31",
+  "ownerAuthorization": "User explicitly approved ending only the additional School A membership; preservation boundaries retained.",
+  "method": "Owner-authorized connected database operator invoked the existing audited service procedure. Operator identity verified by secure HaiEdu sign-in/account screen and live-session/School A role checks. No authentication claims, role grants, RLS or service signatures changed. This is an operator data correction, not a substitute for authenticated QA.",
+  "sqlSha256": "c7a01270697b41026e17a079b2232f806aab02008ffb46a661031221f868a969",
+  "preflight": {
+    "id": "df6c81bc-b92a-4a8e-aac5-cee830ad7840",
+    "role": "school_admin",
+    "status": "active",
+    "schoolAAdmin": true,
+    "hasValidatedLiveSession": true
+  },
+  "verification": {
+    "membership": "ended",
+    "enrollment": [
+      "ended"
+    ],
+    "operator": "df6c81bc-b92a-4a8e-aac5-cee830ad7840",
+    "reason": "administrative",
+    "endedAt": "2026-10-31T06:24:03.111035+00:00",
+    "schoolBMembershipExact": true,
+    "schoolBEnrollmentsExact": true,
+    "demoClassExact": true,
+    "audit": [
+      {
+        "id": 1639,
+        "actor": "df6c81bc-b92a-4a8e-aac5-cee830ad7840",
+        "table": "institutional_class_enrollments",
+        "row_id": "4647219d-5153-4c9e-97e4-0ebcf9bb485b",
+        "operation": "UPDATE"
+      },
+      {
+        "id": 1640,
+        "actor": "df6c81bc-b92a-4a8e-aac5-cee830ad7840",
+        "table": "institutional_memberships",
+        "row_id": "4b077073-9ad8-4c1f-a628-c8513b885588",
+        "operation": "UPDATE"
+      }
+    ]
+  },
+  "guardedPublicTables": 135,
+  "entirelyUnchangedPublicTables": 133,
+  "otherRowsInAffectedTablesPreserved": true,
+  "existingAuditPreserved": true,
+  "auditRowsAppended": 2,
+  "firstAttempt": {
+    "result": "atomic rollback before mutation",
+    "reason": "preservation-query quoting syntax; exact status readback remained active before corrected retry"
+  },
+  "apiOrSchemaChanges": false,
+  "schemaVersion": 1,
+  "projectId": "xzyjvwiiibuarpotppid",
+  "sourceCommitAtExecution": "af0dce3b1f96d44ebb02b222768a4c43b6980a11",
+  "membershipSeparation": {
+    "demoClassActive": true,
+    "learnerActiveClassIds": [
+      "07064f4c-be4b-4719-a6de-a785837f727a",
+      "69c3a01d-c393-4b0e-b085-23c8c89cd026"
+    ],
+    "schoolAActiveEnrollmentCount": 0,
+    "learnerActiveMembershipSchools": [
+      "dd92dacb-7889-47f3-8f00-ce9144e3ac4a"
+    ]
+  },
+  "authorizedScope": {
+    "learnerId": "ae4cb419-f894-4d75-8e9f-3f08dc2fcdb7",
+    "schoolAMembershipId": "4b077073-9ad8-4c1f-a628-c8513b885588",
+    "schoolAEnrollmentId": "4647219d-5153-4c9e-97e4-0ebcf9bb485b",
+    "preservedDemoClassId": "2b2ab295-2ebd-47a1-888a-61622a9e89bf",
+    "preservedSchoolBEnrollmentIds": [
+      "07871f94-c3b3-4763-97a2-129af0c66567",
+      "b78d7318-5627-4345-a190-665d5ea43b87"
+    ]
+  },
+  "signedInUiReadback": {
+    "role": "school_admin",
+    "actualHaiEduSession": true,
+    "classActive": true,
+    "studentCount": 0,
+    "image": "qa-demo-class-preserved-20261031.jpg",
+    "sha256": "08882c37f2fc3bc2253adafb7aa9b7b218288975e48ac6add1f2dfefaec4bbc2",
+    "bytes": 12923,
+    "scope": "Class-card-only crop inspected; account emails excluded."
+  },
+  "procedure": "public.service_end_institutional_membership_14b",
+  "edgeHttpEndpointInvoked": false,
+  "guardedSqlFile": "qa-fixture-separation-20261031.sql",
+  "hostedAcceptance": {
+    "status": "pending fresh reviewed-main workflow dispatch",
+    "authenticatedIsolationPassClaimed": false,
+    "assertionsWeakened": false,
+    "learnerResponsesGradesFeedbackOrErasureCreated": false
+  },
+  "operatorUiGap": "Existing backend supports membership ending; the school-admin student withdrawal control is not present. Separate bounded operational follow-up, not implemented by this correction."
+}
