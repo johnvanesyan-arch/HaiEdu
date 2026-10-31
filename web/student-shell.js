@@ -1,3 +1,6 @@
+import { installNavigationFocus } from './navigation-focus.mjs';
+installNavigationFocus();
+
 /* Sprint 10.5B–11G — authenticated student navigation shell.
    Presentation/navigation only. It does not own authentication, mastery,
    recommendation, grading, session eligibility, or authorization truth. */

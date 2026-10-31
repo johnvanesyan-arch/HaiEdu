@@ -29,3 +29,16 @@ body[data-student-utility="account"] .privacy-shell :is(button,.button-link){max
 body[data-student-utility="account"] .privacy-shell :is(h1,h2,h3,p,dt,label){overflow-wrap:normal;word-break:normal}
 body[data-student-utility="account"] .privacy-shell :is(#accountTitle,#accountEmail){overflow-wrap:anywhere}
 body[data-student-utility="account"] .privacy-shell :is(input,select,textarea){min-width:0;max-width:100%}
+
+/* On a small phone, nested card padding must not squeeze complete Armenian
+ * words. Keep the selected body size and let each consent label use a row. */
+@media(max-width:400px){
+ body[data-student-utility="account"] > main.shell.privacy-shell{padding-inline:8px}
+ body[data-student-utility="account"] .privacy-shell .privacy-card{padding:12px 0;border:0;border-block-start:1px solid var(--forest-divider);background:transparent;box-shadow:none}
+ body[data-student-utility="account"] .privacy-shell h2{font-size:1rem;font-weight:600}
+ body[data-student-utility="account"] .privacy-shell .privacy-list dd{font-weight:600}
+ body[data-student-utility="account"] .privacy-shell .privacy-toggle{flex-direction:column;gap:8px;padding:8px}
+ body[data-student-utility="account"] .privacy-shell .privacy-security-form{padding:8px}
+ body[data-student-utility="account"] .privacy-shell :is(button,.button-link){padding-inline:12px}
+ body[data-student-utility="account"] .privacy-shell .mode-kicker{max-width:100%;white-space:normal}
+}

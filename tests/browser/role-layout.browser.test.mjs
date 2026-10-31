@@ -39,10 +39,13 @@ async function fixture(t, workspace = "school", initialView = "") {
     </main></body></html>`;
   const documentURL = `https://role-layout.test/${workspace === "school" ? "school-admin" : "admin"}.html`;
   // Even the main document comes from this route. No external server is used.
-  await context.route("**/*", (route) => {
+  await context.route("**/*", async (route) => {
     const request = route.request();
     if (request.isNavigationRequest() && request.url().split("#")[0] === documentURL) {
       return route.fulfill({ status: 200, contentType: "text/html", body: html });
+    }
+    if (request.url() === 'https://role-layout.test/navigation-focus.mjs') {
+      return route.fulfill({status:200,contentType:'text/javascript',body:await readFile(new URL('../../web/navigation-focus.mjs',import.meta.url),'utf8')});
     }
     return route.abort("blockedbyclient");
   });
@@ -72,7 +75,10 @@ async function fixture(t, workspace = "school", initialView = "") {
       output.textContent = String(Number(output.textContent) + 1);
     });
   });
-  await page.addScriptTag({ content: source });
+  await page.addScriptTag({ type: "module", content: source + "\nwindow.__roleLayoutFixtureReady = true;" });
+  // Inline ESM insertion can resolve before its imported graph has evaluated.
+  // Await actual execution, then exercise the original loading/observer gates.
+  await page.waitForFunction(() => window.__roleLayoutFixtureReady === true);
   return { page, errors, views, workspace };
 }
 

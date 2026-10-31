@@ -25,9 +25,9 @@ test('teacher header returns directly to its home view',()=>{
  assert.match(header,/id="signOutBtn"/);
 });
 test('staff branding targets the correct workspace home',()=>{
- const source=read('web/role-layout.js').split('\nfunction syncTeacherSections()')[0];
+ const source=read('web/navigation-focus.mjs').replace(/^export /gm,'')+'\n'+read('web/role-layout.js').replace(/^import \{ installNavigationFocus \} from '\.\/navigation-focus\.mjs';\n/m,'').split('\nfunction syncTeacherSections()')[0];
  for(const [page,expected] of Object.entries({teacher:'./teacher.html?view=home',school:'./school-admin.html',schoolTeacher:'./school-admin.html',platform:'./admin.html',platformSchools:'./admin.html',platformSecurity:'./admin.html',content:'./content.html'})){
-  const ctx=vm.createContext({document:{body:{dataset:{roleWorkspace:page}},getElementById:()=>null}});vm.runInContext(source,ctx);
+  const ctx=vm.createContext({document:{body:{dataset:{roleWorkspace:page}},getElementById:()=>null,addEventListener(){}}});vm.runInContext(source,ctx);
   assert.equal(vm.runInContext('currentConfig().links[0][1]',ctx),expected);
  }
  assert.match(read('web/role-layout.js'),/brand\.href = config\.links\[0\]\[1\]/);

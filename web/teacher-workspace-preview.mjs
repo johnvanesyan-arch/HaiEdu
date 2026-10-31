@@ -1,3 +1,6 @@
+import { installNavigationFocus } from './navigation-focus.mjs';
+installNavigationFocus();
+
 import {subjectArtwork} from './subject-visuals.mjs';
 
 // A deliberately local, synthetic specimen. No auth, storage, analytics or API calls.

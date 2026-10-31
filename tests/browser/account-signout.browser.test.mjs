@@ -1,3 +1,4 @@
+import {accountWordReadability} from '../fixtures/navigation-readability.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
@@ -145,4 +146,23 @@ for(const mode of ['returnedCleared','returnedActive'])test(`real shared account
  assert.deepEqual(colors,{background:'rgb(255, 255, 255)',color:'rgb(35, 57, 47)',button:'rgb(40, 91, 69)'});
  if(mode==='returnedCleared')await expect(p.locator('#content')).toBeHidden();else await expect(p.locator('#content')).toBeVisible();
  assert.equal(await p.evaluate(()=>window.__logout.calls.length),1);assert.deepEqual(errors,[]);
+});
+
+
+for(const role of ['student','teacher','school_admin','admin','content_admin'])test(`real ${role} account retains visible keyboard logout at compact and enlarged sizes`,async t=>{
+ const {p,errors,button}=await fixture(t,{realPrivacy:true,role,mode:'success'});
+ await p.evaluate(()=>document.fonts.ready);
+ const href=await p.locator('#accountHomeLink').getAttribute('href');
+ for(const width of [1280,768,360,320])for(const scale of [100,200]){
+  await p.setViewportSize({width,height:960});await p.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+  await expect(button).toBeVisible();await button.focus();await expect(button).toBeFocused();
+  const b=await button.evaluate(e=>({height:e.getBoundingClientRect().height,right:e.getBoundingClientRect().right,width:innerWidth}));assert.ok(b.height>=44&&b.right<=b.width+1);
+  assert.equal(await p.locator('#accountHomeLink').getAttribute('href'),href,'the original role return destination stays intact');
+  const geometry=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('main *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,12).map(e=>({tag:e.tagName,id:e.id,class:e.className,right:e.getBoundingClientRect().right}))}));
+  if(geometry.scroll>geometry.width+1&&process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-account-failure-${role}-${width}-${scale}.png`});}
+  assert.ok(geometry.scroll<=geometry.width+1,`${role}/${width}/${scale}: ${JSON.stringify(geometry)}`);
+  assert.deepEqual(await p.evaluate(accountWordReadability),[],`${role}/${width}/${scale}: natural words`);
+ }
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR&&role==='student'){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/navigation-student-account-320-200.png'});}
+ await button.press('Enter');await expect(p.locator('h1')).toContainText('Մուտք գործել');assert.deepEqual(errors,[]);
 });

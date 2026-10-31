@@ -66,13 +66,15 @@ a.ghost,
   }
 
   body.amp-student-shell-active .amp-mobile-nav {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
   }
 
+  /* Scroll the menu instead of splitting a navigation label into letters. */
   .amp-mobile-link > span:last-child {
     max-width: 100%;
     white-space: normal;
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .topbar > .row,

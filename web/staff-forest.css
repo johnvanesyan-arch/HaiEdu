@@ -69,6 +69,14 @@ body[data-staff-account] .student-account-symbol svg { width:2rem; height:2rem; 
 body[data-staff-account] .topbar { align-items:start; flex-wrap:wrap; padding:1.5rem; background:var(--forest-hero); border-radius:1rem; }
 body[data-role-workspace].hm-has-role-sidebar .teacher-header-actions { display:none; }
 body[data-role-workspace].hm-has-role-sidebar :is(.school-admin-header,.admin-topbar,.content-topbar,.guide-topbar) #signOutBtn { display:none !important; }
+/* Text-relative rail and native scrolling retain every existing role link. */
+body:is([data-role-workspace],[data-staff-preview]) { --hm-sidebar-width:max(232px,14.5rem); }
+body:is([data-role-workspace],[data-staff-preview]) :is(.hm-role-brand,.hm-role-foot,.hm-workspace-label) { flex-shrink:0; min-width:0; }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav { min-width:0; padding:6px; scroll-padding:6px; }
+body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { min-width:0; max-width:100%; overflow-wrap:normal; word-break:normal; }
+@media (min-width:1101px) {
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav { flex:1; min-height:0; align-content:start; overflow-y:auto; }
+}
 body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { width:var(--hm-sidebar-width,232px); box-shadow:none; padding:1.5rem .875rem 1rem; overflow-y:auto; }
 body:is([data-role-workspace],[data-staff-preview]) .hm-workspace-label { font-size:.875rem; }
 body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { min-height:2.75rem; display:flex; align-items:center; line-height:1.5; color:var(--forest-muted); }
@@ -88,10 +96,15 @@ body[data-role-workspace] :is(.hm-loading-nav span,.hm-loading-card::before,.hm-
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { position:static; width:100%; display:grid; grid-template-columns:1fr auto; gap:.5rem; overflow:visible; padding:1rem; }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-brand img { width:7.5rem; }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav { grid-column:1/-1; display:flex; overflow-x:auto; max-width:100%; white-space:normal; }
-  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { flex:0 0 auto; max-width:16rem; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { flex:0 0 auto; max-width:100%; }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; padding-top:.5rem; border-top:1px solid var(--forest-divider); }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>a { display:flex; }
   body:is([data-role-workspace],[data-staff-preview]) .hm-role-foot>span { display:none; }
+}
+/* Fixed labels need room for full words at 200% on a small phone. */
+@media (max-width:560px) {
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-sidebar { padding:8px; }
+  body:is([data-role-workspace],[data-staff-preview]) .hm-role-nav a { padding-inline:6px; }
 }
 @media (max-width:760px) {
   body:is([data-role-workspace],[data-staff-account],[data-staff-preview]) h1,

@@ -1,3 +1,4 @@
+import {checkNavigation} from '../fixtures/navigation-readability.mjs';
 import {keyboardSkipAcceptance} from '../fixtures/keyboard-acceptance.mjs';
 import {teacherHomeReadability} from '../fixtures/teacher-home-readability.mjs';
 import test,{before,after} from 'node:test';
@@ -23,7 +24,7 @@ async function pageFixture(t,file,{gate,master=false}={}) {
     try {
       // Staff page tests exercise native layout and the real role shell, with
       // authorization outcomes simulated. They do not claim signed-in acceptance.
-      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js','/account-signout.mjs'].includes(name);
+      const blocked=gate&&/\.m?js$/.test(name)&&!['/role-layout.js','/ux.js','/config.js','/account-signout.mjs','/navigation-focus.mjs'].includes(name);
       const body=blocked?'':await readFile(new URL('../../web'+name,import.meta.url));
       return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});
     }catch{return route.fulfill({status:404,body:''});}
@@ -59,11 +60,23 @@ const pages=[
 for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact account/logout, text enlargement and keyboard`,async t=>{
   const {page,errors,remote}=await pageFixture(t,file,{gate});
   await keyboardSkipAcceptance(page);
-  for(const width of [1280,768,360]) {
+  await page.emulateMedia({reducedMotion:'reduce'});
+  const navigationRows=[];
+  const widths=['teacher.html','school-admin.html','admin.html','content-review.html'].includes(file)?[1280,960,768,390,360]:[1280,768,360];
+  for(const width of widths) {
     await page.setViewportSize({width,height:960});
     for(const scale of [100,200]) {
       await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
       await noPageOverflow(page,`${file}/${width}/${scale}`);
+      const navigation=await checkNavigation(page);
+      assert.deepEqual(navigation.errors,[],`${file}/${width}/${scale}: full keyboard-readable navigation`);
+      assert.ok(navigation.links.length>=6,'the role menu and account/logout controls must remain present');
+      navigationRows.push({page:file,width,textScale:scale,controls:navigation.links,keyboard:true,fullWords:true,scope:'actual page/shared role shell; simulated authorization, not authenticated production acceptance'});
+      if(scale===200&&['teacher.html','school-admin.html','admin.html','content-review.html'].includes(file)&&[1280,360].includes(width)){
+        await page.evaluate(()=>window.scrollTo(0,0));
+        const dir=process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR;
+        if(dir){await mkdir(dir,{recursive:true});await page.screenshot({path:`${dir}/navigation-${file.replace('.html','')}-${width}-200.png`});}
+      }
       if(file==='teacher.html'){
         assert.deepEqual(await page.evaluate(teacherHomeReadability),[],`${file}/${width}/${scale}: readable Home`);
         if(scale===200&&width!==768){await page.evaluate(()=>window.scrollTo(0,0));await snapshot(page,`teacher-large-${width}`);}
@@ -83,14 +96,19 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
   }
   await page.locator('.hm-role-foot .hm-sidebar-signout').click();
   assert.equal(await page.evaluate(()=>window.__signouts),1,'the shared logout delegates once to the existing authorized controller');
-  await page.evaluate(gate=>{document.getElementById(gate).classList.add('hidden');document.getElementById('authPanel')?.classList.remove('hidden');document.getElementById('signedOut')?.classList.remove('hidden');},gate);
+  await page.evaluate(gate=>{document.getElementById(gate).classList.add('hidden');document.getElementById('authPanel')?.classList.remove('hidden');document.getElementById('signedOut')?.classList.remove('hidden');document.getElementById('denied')?.classList.remove('hidden');},gate);
   await expect(page.locator('.hm-role-breadcrumb')).toHaveCount(0);
+  // School pages expose denied rather than authPanel/signedOut; model that
+  // actual terminal surface instead of mistaking their pending skeleton for a menu.
+  await expect(page.locator('.hm-role-sidebar')).toHaveCount(0);
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){const {writeFile}=await import('node:fs/promises');await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-${file.replace('.html','')}.json`,JSON.stringify(navigationRows,null,2)+'\n');}
   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
 });
 
 test('school administration switches to master presentation without inheriting school navigation',async t=>{
   const {page,errors}=await pageFixture(t,'school-admin.html',{gate:'masterPanel',master:true});
   assert.equal(await page.locator('.hm-role-sidebar').getAttribute('data-workspace'),'Հարթակի ադմին');
+  for(const width of [1280,360])for(const scale of [100,200]){await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);assert.deepEqual((await checkNavigation(page)).errors,[],`school/master ${width}/${scale}`);}
   await expect(page.locator('.hm-role-nav a[href="./admin.html#accountsSection"]')).toBeVisible();
   assert.deepEqual(errors,[]);
 });
@@ -154,6 +172,7 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
     await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
     for(const state of ['ready','empty','loading','error','archived']) {
       await page.locator('#previewScenario').selectOption(state);
+      assert.deepEqual((await checkNavigation(page)).errors,[],`preview navigation/${width}/${scale}`);
       for(const view of ['home','classes','review']) {
         await page.locator(`[data-preview-view="${view}"]`).click();
         await expect(page.locator(`[data-preview-view="${view}"]`)).toHaveAttribute('aria-current','page');
@@ -163,4 +182,24 @@ test('teacher preview remains usable at 360/768/1280, 200% text and reduced moti
     if(scale===100&&width===360){await page.locator('#previewScenario').selectOption('ready');await snapshot(page,'preview-review-360');}
   }
   assert.deepEqual(errors,[]);
+});
+
+
+test('shared keyboard menu reveal binds once across resyncs and ignores pointer focus',async t=>{
+ const {page,errors}=await pageFixture(t,'teacher.html',{gate:'dashboardPanel'});
+ await page.setViewportSize({width:360,height:960});await page.emulateMedia({reducedMotion:'reduce'});
+ await page.evaluate(async()=>{
+   const {installNavigationFocus}=await import('./navigation-focus.mjs');for(let i=0;i<5;i++)installNavigationFocus();
+   const original=Element.prototype.scrollIntoView;window.__navRevealCalls=[];
+   Element.prototype.scrollIntoView=function(options){if(this.matches('.hm-role-nav a'))window.__navRevealCalls.push({label:this.textContent,options});return original.call(this,options);};
+   for(let i=0;i<5;i++)document.body.classList.toggle('synthetic-resync');
+   for(const a of document.querySelectorAll('.hm-role-nav a'))a.addEventListener('click',e=>e.preventDefault());
+ });
+ const first=page.locator('.hm-role-nav a').first(),last=page.locator('.hm-role-nav a').last();
+ await first.click();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),0,'pointer focus must not move its target');
+ await page.keyboard.press('Tab');await page.evaluate(()=>window.__navRevealCalls=[]);
+ await last.focus();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),1);
+ await first.focus();assert.equal(await page.evaluate(()=>window.__navRevealCalls.length),2,'reconfiguration must not multiply focus handlers');
+ assert.equal(await page.evaluate(()=>window.__navRevealCalls.every(c=>c.options.inline==='nearest'&&c.options.block==='nearest'&&c.options.behavior==='instant')),true);
+ assert.deepEqual(errors,[]);
 });

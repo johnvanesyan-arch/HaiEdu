@@ -1,3 +1,4 @@
+import {checkNavigation} from '../fixtures/navigation-readability.mjs';
 import {historyEntries,historyReadability} from '../fixtures/assessment-history.mjs';
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -118,7 +119,7 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
   assert.equal(metrics.emptyParagraphs,0,'Empty sections must not add blank grid rows');
   assert.equal(metrics.emptyPlayerDisplay,'none','An inactive player must not occupy layout space');
   assert.ok(metrics.documentWidth<=width+1,'The document must not overflow horizontally');
-  if(width<=820) assert.ok(Math.abs(metrics.mobileLastRight-metrics.mobileWidth)<=2,'Mobile navigation must use its full width');
+  if(width<=1100) assert.ok(Math.abs(metrics.mobileWidth-width)<=2,'The scrollable mobile menu must use the viewport width');
   assert.ok(metrics.resumeHref.includes('action=practice'));
   assert.deepEqual(errors,[]);
   await page.getByRole('link',{name:'Առաջընթաց',exact:true}).last().click();
@@ -293,5 +294,36 @@ test('student saved Practice cards retain assessed zeros, historical scales and 
   await p.setViewportSize({width:1280,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='100%');await history.locator('h2').scrollIntoViewIfNeeded();
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-normal.png'});
   assert.equal(await p.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
+  assert.deepEqual(errors,[]);
+});
+
+
+test('shared student navigation keeps full labels, keyboard access and exact governed links at enlarged text',async t=>{
+  const {page,errors}=await fixture(t,{contextIndex:1,active:false,tab:'progress'});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  const original=await page.locator('.amp-nav-list a').evaluateAll(es=>es.map(e=>({href:e.getAttribute('href'),label:e.textContent.trim(),current:e.getAttribute('aria-current')})));
+  assert.equal(original.length,4);
+  for(const link of original){const url=new URL(link.href,'https://student-workspace.test');assert.equal(url.searchParams.get('release'),contexts[1].curriculumReleaseId);assert.equal(url.searchParams.get('unit'),contexts[1].unitId);}
+  const rows=[];
+  for(const width of [1280,960,768,390,360,320])for(const scale of [100,200]){
+    await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+    const navigation=await checkNavigation(page);
+    if(navigation.errors.length)await capture(page,`navigation-failure-${width}-${scale}`,navigation);
+    assert.deepEqual(navigation.errors,[],`${width}/${scale}`);
+    assert.deepEqual(await page.locator('.amp-nav-list a').evaluateAll(es=>es.map(e=>({href:e.getAttribute('href'),label:e.textContent.trim(),current:e.getAttribute('aria-current')}))),original);
+    if(width<=1100){
+      const bar=page.locator('.amp-mobile-nav');await expect(bar).toBeVisible();
+      const bounds=await bar.evaluate(e=>({height:e.getBoundingClientRect().height,font:parseFloat(getComputedStyle(e.firstElementChild).fontSize)}));
+      assert.ok(bounds.height<=bounds.font*7,`compact menu must not consume most of the screen: ${JSON.stringify(bounds)}`);
+      assert.equal(await bar.locator('a').count(),4);
+    }
+    rows.push({width,textScale:scale,controls:navigation.links,keyboard:true,fullWords:true,contextPreserved:true});
+    if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR&&[1280,360].includes(width)){
+      await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.evaluate(()=>window.scrollTo(0,0));
+      await page.screenshot({path:`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-student-${width}-${scale}.png`});
+    }
+  }
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-student.json`,JSON.stringify(rows,null,2)+'\n');
+  assert.equal(await page.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
   assert.deepEqual(errors,[]);
 });
