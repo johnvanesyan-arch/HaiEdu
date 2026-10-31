@@ -334,5 +334,62 @@
       "skipped": 0,
       "cancelled": 0
     }
+  },
+  "automaticHostedQA": {
+    "resource": {
+      "run": 41233488573,
+      "status": "failed",
+      "checks": 327,
+      "pass": 326,
+      "fail": 1,
+      "stage": "postflight",
+      "failure": {
+        "label": "B: teacher own learner detail",
+        "httpStatus": 0,
+        "meaning": "No HTTP response; helper catch hides raw transport cause. No unauthorized response observed. Remaining negative postflight probes were not run."
+      },
+      "preflight": {
+        "pass": 54,
+        "checks": 54
+      },
+      "postflight": {
+        "pass": 23,
+        "checks": 24
+      },
+      "cleanupAcknowledged": true,
+      "resourcesWithdrawn": 2,
+      "syntheticDeliveriesCancelled": 8,
+      "primarySessionsClosed": 6,
+      "privateDraftsPdfAuditRetained": true,
+      "artifact": {
+        "id": 13054863837,
+        "bytes": 814599,
+        "sha256": "6f636f754802f7779e46d84e18f09b2fd2161e152468c6b6a13c9b74d59e754e",
+        "downloadDigestVerified": true,
+        "reportEqualsJobEvidence": true
+      },
+      "report": "docs/evidence/practice-history-resource-transport-20261031.json"
+    },
+    "independentRead": {
+      "run": 41233488681,
+      "status": "passed",
+      "checks": 91,
+      "pass": 91,
+      "source": "53f880067368b970ad12bca11dc37314569ea978",
+      "fullIsolation": {
+        "pass": 54,
+        "checks": 54,
+        "sameLearnerDetailRead": 200
+      },
+      "noLearningWrites": true,
+      "artifact": {
+        "id": 13054874374,
+        "bytes": 2104,
+        "sha256": "74441220fa9f1d0d9ca1669a914a5e0acd7a8292b5ddef876078ead3ece04843",
+        "downloadDigestVerified": true
+      },
+      "report": "docs/evidence/practice-history-independent-read-20261031.json"
+    },
+    "interpretation": "Failed resource run is not relabeled passed. All326 other checks/cleanup are retained; separate same-source readonly54/54 independently verifies original positive/negative boundary after no-response request. Prior complete327/327 delivery evidence remains reused for unchanged contracts; no full new327/327 claim or speculative Auth/network code change."
   }
 }
