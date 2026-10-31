@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "timezone": "Asia/Yerevan",
   "scope": "B.12.3.2 production integration; approved cross-role consistency preparation",
-  "state": "implementation deployed/source verified; fixture repair passes54 initial Auth isolation; fresh acceptance fails one QA-only queue state; corrected runner in verification",
+  "state": "custom delivery fully verified both schools; later reading operation fails; independently reproduced clean-read navigation correction in verification",
   "baselineMain": "18254f44ee950010bb9a17e555c1f51c81cdf168",
   "priorVerifiedSource": "541d1a80d7d5309a054d6870a8f77e20b850d1d7",
   "priorCi": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41058923727",
@@ -1377,9 +1377,9 @@
     ]
   },
   "pending": [
-    "required CI/merge for genuine QA caller/artifact correction",
-    "fresh reviewed-main exact-source hosted delivery acceptance and final54 isolation",
-    "remaining consistency and final owner usability; B.12.3/B.12 open, subjects paused"
+    "required current-source CI/native for four-controller read navigation correction",
+    "frontend/source readback and complete guarded hosted reading/final54 isolation",
+    "remaining consistency and final owner usability; B.12.3/B.12 open and subjects paused"
   ],
   "retained": [
     "all 45 capabilities",
@@ -2849,19 +2849,19 @@
     "unchangedHomeImagesReused": 5
   },
   "hostedAcceptance": {
-    "status": "failed QA caller contract check; correction prepared, full postflight pending",
+    "status": "partial: both custom flows pass; full reading/postflight pending",
     "readRuns": [
       41135838903,
       41135839673
     ],
-    "outerChecks": "264/265 passed; one invalid QA queue request",
-    "isolationChecks": "54/54 initial isolation passed; final postflight not reached",
+    "outerChecks": "303 recorded assertions passed; later browser operation threw without retained exception",
+    "isolationChecks": "54 initial checks passed; final postflight not reached",
     "allSixLoginsAndOwnSessionCleanup": "passed",
-    "resourceRun": 41178222785,
-    "resourceRunStatus": "manually dispatched exacte7 main; failed264/265 at QA-only pending-state request; run-owned cleanup acknowledged",
+    "resourceRun": 41181015758,
+    "resourceRunStatus": "failed at later cross-role reading;303/303 recorded assertions pass, both custom flows complete",
     "browserDispatch": "saved github.com origin permission rejected; no workaround",
     "connectorRerun": "403: This workflow run cannot be retried",
-    "rootCause": "The prior extra School A membership/one enrollment are ended with owner approval and preserved history. Fresh fixture isolation passes. Current failure is the QA helper sending pending instead of submitted to the strict review queue API.",
+    "rootCause": "Prior invalid QA queue state corrected and verified both schools. A separate clean-read busy navigation defect is independently reproduced; original later-stage exception not retained, so exact cause remains unconfirmed until checkpointed hosted verification.",
     "newReadRuntimeChanges": false,
     "unchangedReadRuntimeFileMatches": 9,
     "assertionsWeakened": false,
@@ -2888,13 +2888,22 @@
       1639,
       1640
     ],
-    "authenticatedRecheck": "initial54 passed; full corrected-source run/final postflight pending",
+    "authenticatedRecheck": "both custom flows and initial54 pass; full checkpointed reading/postflight pending",
     "historicalResourceRun": 41135838917,
     "historicalReadChecks": {
       "outer": "3/4 each; failed",
       "isolation": "22/24 each; stopped at positive controls before negative probes"
     },
     "recoveryEvidence": "teacher-task-qa-runner-recovery-20261031.json",
-    "failedReport": "teacher-task-hosted-failed-20261031.json"
+    "failedReport": "teacher-task-hosted-second-20261031.json",
+    "priorInvalidRequestRun": 41178222785,
+    "navigationEvidence": "task-read-navigation-20261031.json"
+  },
+  "loadingAccessibilityFollowup": {
+    "evidence": "task-read-navigation-20261031.json",
+    "scope": "All seven malformed aria-busy sites; exact protected frontend manifest expanded48 to49 to include school-admin.js",
+    "requiredCi": "pending for corrected source; first PR369 attempt passes1630unit/bothPG, native358of362; aggregate correctly blocks release",
+    "nativePrepared": 7,
+    "deployed": false
   }
 }

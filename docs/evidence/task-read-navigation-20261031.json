@@ -1,0 +1,218 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Yerevan",
+  "state": "Independently reproduced clean-read navigation block; four-controller fix prepared; native/current-source CI and fresh full hosted acceptance pending",
+  "story": "Student My Work course/unit link opens writing while an independent custom-task inbox read is pending. Clean read/download loading must permit leaving; actual or uncertain writes and dirty work remain protected.",
+  "baselineSource": "95d2210c6738e43ab52d8ae33f87c8e788ee2f0c",
+  "baselinePr": 368,
+  "baselinePrCi": 41180461801,
+  "baselineMainCi": 41181015712,
+  "baselineAllFiveRequiredJobs": "passed",
+  "unitIntegration": 1629,
+  "nativeBaseline": 357,
+  "taskSpecificPg17Races": 16,
+  "baselineDeployment": "dpl_5ivhjxQx2j2K4hZs3H3dVHPQEX9i",
+  "supplementaryEnglish3Read": {
+    "run": 41181015762,
+    "status": "passed",
+    "checks": 154,
+    "scope": "Existing guarded read compatibility only; no English C47 or four-subject closure"
+  },
+  "hosted": {
+    "run": 41181015758,
+    "status": "failed",
+    "recordedAssertionsPassed": 303,
+    "recordedAssertionsTotal": 303,
+    "failedStage": "cross-role reading",
+    "originalException": "not retained by old catch; exact failing operation unconfirmed",
+    "initialIsolationPassed": 54,
+    "finalIsolation": "not reached",
+    "customTaskFlow": "complete and passed both schools, including submitted queue, privacy inventory and audited cancellation",
+    "learnerAnswersGradesFeedbackErasureCreated": false,
+    "report": "teacher-task-hosted-second-20261031.json",
+    "artifact": 13035228212,
+    "archiveSha256": "d27700f8a319318dd30109715491ed81fce25df26d8c2af80bc4efa958162670",
+    "archiveVerified": true,
+    "cleanup": {
+      "resourcesWithdrawn": 2,
+      "materialAssignmentsCancelled": 4,
+      "courseWritingDeliveriesCancelled": 2,
+      "customDeliveriesCancelled": 2,
+      "primaryOwnSessionsClosed": 6,
+      "allAcknowledged": true,
+      "privateDraftsPinnedPdfsImmutableAudit": "retained under normal contract"
+    }
+  },
+  "guardReproduction": {
+    "scope": "Actual student component, minimal DOM and transport doubles; not native browser or production Auth",
+    "readOnlyInboxStarted": true,
+    "before": {
+      "canLeave": false,
+      "hasUnsaved": true,
+      "navigationPrevented": true
+    },
+    "after": {
+      "canLeave": true,
+      "hasUnsaved": false,
+      "navigationPrevented": false
+    },
+    "relationshipToHostedFailure": "Reproducible real guard bug consistent with the reported stage; old run did not retain exact exception. Fresh checkpointed production verification required."
+  },
+  "affectedControllers": [
+    "web/student-teacher-tasks.mjs",
+    "web/teacher-task-editor.mjs",
+    "web/teacher-task-send.mjs",
+    "web/teacher-task-review.mjs"
+  ],
+  "fix": "Use a separate in-flight mutation flag for navigation/dirty guards. Keep busy control locks for reads; retain pending receipt, dirty data, live actor/context and stale-result fencing.",
+  "nativeRegressionsPrepared": {
+    "componentCases": 6,
+    "fullStudentWorkToWritingCase": 1,
+    "transport": "controlled Auth/API; actual modules/DOM/navigation",
+    "preservedCases": "Existing unknown save/send/submit/publication/cancel and actor/context-change coverage"
+  },
+  "localNative": "Pinned Chromium download failed with truncated ZIP; native cases require CI. No local native pass claimed.",
+  "diagnostics": "Known phase/error kind, whitelisted path/view/tab and selector counts; no raw exception/query values. Screenshot masks written-work content, uses viewport and existing resource-form artifact path.",
+  "captureProtocol": "Reset scroll before custom full-page captures, matching existing accepted native capture practice.",
+  "currentImages": [
+    {
+      "path": "custom-task-student-A-20261031.png",
+      "sha256": "e4bc097cf3a6393780925be492d4708ac2f99c05ffa7288a6e66e791980a5103",
+      "bytes": 224725,
+      "inspected": true,
+      "scope": "Synthetic designated account; source/delivery view. Full-page capture at current scroll has fixed-element positioning artifacts; not final whole-interface visual acceptance."
+    },
+    {
+      "path": "custom-task-student-B-20261031.png",
+      "sha256": "032d5ac7127a4f5fbbe21f26b8ba9c90108439924387d5cd4b41caeea69599ab",
+      "bytes": 207438,
+      "inspected": true,
+      "scope": "Synthetic designated account; source/delivery view. Full-page capture at current scroll has fixed-element positioning artifacts; not final whole-interface visual acceptance."
+    },
+    {
+      "path": "custom-task-teacher-A-20261031.png",
+      "sha256": "089a5fe8d5e5166d3f80730ad0f85cb5e3180cdf94b8629110c8bc567beeeb50",
+      "bytes": 133580,
+      "inspected": true,
+      "scope": "Synthetic designated account; source/delivery view. Full-page capture at current scroll has fixed-element positioning artifacts; not final whole-interface visual acceptance."
+    },
+    {
+      "path": "custom-task-teacher-B-20261031.png",
+      "sha256": "7ddd3658f45dd8ed1adfb6839290289472bef94c3e2e0433140228877db6f321",
+      "bytes": 133778,
+      "inspected": true,
+      "scope": "Synthetic designated account; source/delivery view. Full-page capture at current scroll has fixed-element positioning artifacts; not final whole-interface visual acceptance."
+    }
+  ],
+  "backendSchemaOrApiChanges": false,
+  "retained": [
+    "all45 capabilities and assessment/analytics meanings",
+    "owner content/audio/demo approvals",
+    "classroom speaking",
+    "English C47 and separate four-subject gate",
+    "B.12.3/B.12 open; subjects paused"
+  ],
+  "focusedVerification": {
+    "tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "scope": "Actual handler/SQL/FunctionsClient and safe diagnostic negative checks; native UI pending"
+  },
+  "consumerAudit": {
+    "directImporters": [
+      "web/multi-subject-home.js",
+      "web/teacher-task-draft-workspace.mjs",
+      "web/teacher-review.mjs"
+    ],
+    "coverage": "All four new custom-task controllers and their student/teacher entry points, across governed subjects/grades/classes",
+    "generatedTeacherBundles": "rebuilt/check passed; byte-identical dynamic dependency wrappers",
+    "browserQaTriggerAudit": "all eleven workflow dependency graphs pass; resource147 paths",
+    "runtimeDeployments": "backend unchanged; no Edge redeploy; verify49 frontend files, including all seven modified modules"
+  },
+  "changedFrontend": [
+    {
+      "path": "student-teacher-tasks.mjs",
+      "sha256": "281e2f3bc51740da6cda210166edaac4b7f49cdc109b8cc425145fbfcfc514a2"
+    },
+    {
+      "path": "teacher-task-editor.mjs",
+      "sha256": "afb9f69d25efea835cc8776aefa4cc227e1e057a93051384d32a3999499b66f0"
+    },
+    {
+      "path": "teacher-task-send.mjs",
+      "sha256": "428bffc3b8477b1ab568318473412485b08a47b2adaac029eef8b0cee6312c12"
+    },
+    {
+      "path": "teacher-task-review.mjs",
+      "sha256": "dafc1e294dd3965ed1d4d83b295d51fb2355d363a123810a5b24b24acb608877"
+    },
+    {
+      "path": "teacher-task-draft-workspace.mjs",
+      "sha256": "f53bcb9fe59191b79258c3ccf77b4a91a7ed830445672a82d7c70c7f8c948d81"
+    },
+    {
+      "path": "writing-assignments.mjs",
+      "sha256": "6f21820eced3e84b99c1c127d6c66a21f6ccd32253cf25c13b8062947e2714db"
+    },
+    {
+      "path": "school-admin.js",
+      "sha256": "b44a7b01f8e309a8094e0933e2403bbc923756f922d959071039504de6bd1599"
+    }
+  ],
+  "prVerificationAttempt": {
+    "run": 41185114174,
+    "source": "10da3bdb9c6408d4ce332b42faeaa3c066ddab8e",
+    "unitIntegration": {
+      "passed": 1630,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgresJobs": "both passed",
+    "native": {
+      "passed": 358,
+      "total": 362,
+      "failed": 4,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failure": "All four new component cases stopped at aria-busy true; toggleAttribute instead produced empty string. The full My Work to writing case passed. Navigation assertions beyond the attribute check were not reached in the four cases. Aggregate correctly blocked release."
+  },
+  "loadingAccessibilityCorrection": {
+    "scope": "All seven malformed toggleAttribute aria-busy call sites in web source",
+    "files": [
+      "web/student-teacher-tasks.mjs",
+      "web/teacher-task-editor.mjs",
+      "web/teacher-task-send.mjs",
+      "web/teacher-task-review.mjs",
+      "web/teacher-task-draft-workspace.mjs",
+      "web/writing-assignments.mjs",
+      "web/school-admin.js"
+    ],
+    "change": "Set aria-busy=true while loading, remove it after completion; preserve disabled controls and all authorization/mutation/dirty guards.",
+    "regression": "Retain strict true assertion; extend actual-component held-read coverage to custom draft list and published writing catalog, six component cases plus the full student journey.",
+    "productionSourceManifestFiles": 49,
+    "schoolAdminScope": "Shared busy-button helper used by every school-admin operation; no action/auth/analytics change."
+  },
+  "correctedPrVerificationAttempt": {
+    "run": 41185883583,
+    "source": "40cfe0c2010c1dc708fb1d07f07c46c00b0868bc",
+    "unitIntegration": {
+      "passed": 1630,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgresJobs": "both passed",
+    "native": {
+      "passed": 358,
+      "total": 364,
+      "failed": 6,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failure": "All six component cases pass semantic busy, canLeave, hasUnsaved and actual outside navigation URL checks, then fail only the destination heading text: test fixture lacks UTF-8 declaration and decodes Armenian as Windows-1252. Add charset in fixture response and meta; do not change product or weaken assertions. Full My Work to writing case and all357 unchanged native cases pass. Aggregate blocks release pending complete current-source pass."
+  }
+}

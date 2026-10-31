@@ -34,7 +34,8 @@ async function functionErrorCode(error) {
 function setButtonBusy(button, busy, busyText) {
   if (!button.dataset.defaultLabel) button.dataset.defaultLabel = button.textContent;
   button.disabled = busy;
-  button.toggleAttribute("aria-busy", busy);
+  if (busy) button.setAttribute("aria-busy", "true");
+  else button.removeAttribute("aria-busy");
   button.textContent = busy ? busyText : button.dataset.defaultLabel;
 }
 
