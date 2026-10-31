@@ -2849,19 +2849,19 @@
     "unchangedHomeImagesReused": 5
   },
   "hostedAcceptance": {
-    "status": "partial: both custom flows pass; full reading/postflight pending",
+    "status": "passed fresh guarded technical acceptance; final owner usability pending",
     "readRuns": [
       41135838903,
       41135839673
     ],
-    "outerChecks": "303 recorded assertions passed; later browser operation threw without retained exception",
-    "isolationChecks": "54 initial checks passed; final postflight not reached",
+    "outerChecks": "327/327 passed",
+    "isolationChecks": "54/54 before and54/54 after",
     "allSixLoginsAndOwnSessionCleanup": "passed",
-    "resourceRun": 41181015758,
-    "resourceRunStatus": "failed at later cross-role reading;303/303 recorded assertions pass, both custom flows complete",
+    "resourceRun": 41191092937,
+    "resourceRunStatus": "passed327/327",
     "browserDispatch": "saved github.com origin permission rejected; no workaround",
     "connectorRerun": "403: This workflow run cannot be retried",
-    "rootCause": "Prior invalid QA queue state corrected and verified both schools. A separate clean-read busy navigation defect is independently reproduced; original later-stage exception not retained, so exact cause remains unconfirmed until checkpointed hosted verification.",
+    "rootCause": "Historical API pending/submitted mismatch and independently reproduced busy-read guard corrected. Original old later exception not retained; fresh full path now passes.",
     "newReadRuntimeChanges": false,
     "unchangedReadRuntimeFileMatches": 9,
     "assertionsWeakened": false,
@@ -2888,7 +2888,7 @@
       1639,
       1640
     ],
-    "authenticatedRecheck": "both custom flows and initial54 pass; full checkpointed reading/postflight pending",
+    "authenticatedRecheck": "complete on6892b730; both custom flows and busy-read writing paths pass; all cleanup acknowledged",
     "historicalResourceRun": 41135838917,
     "historicalReadChecks": {
       "outer": "3/4 each; failed",
@@ -2897,7 +2897,15 @@
     "recoveryEvidence": "teacher-task-qa-runner-recovery-20261031.json",
     "failedReport": "teacher-task-hosted-second-20261031.json",
     "priorInvalidRequestRun": 41178222785,
-    "navigationEvidence": "task-read-navigation-20261031.json"
+    "navigationEvidence": "task-read-navigation-20261031.json",
+    "historicalResourceCheckpoint": {
+      "run": 41181015758,
+      "status": "failed at later cross-role reading;303/303 recorded assertions pass, both custom flows complete",
+      "outer": "303 recorded assertions passed; later browser operation threw without retained exception",
+      "isolation": "54 initial checks passed; final postflight not reached",
+      "rootCause": "Prior invalid QA queue state corrected and verified both schools. A separate clean-read busy navigation defect is independently reproduced; original later-stage exception not retained, so exact cause remains unconfirmed until checkpointed hosted verification."
+    },
+    "currentEvidence": "teacher-task-hosted-acceptance-20261031.json"
   },
   "loadingAccessibilityFollowup": {
     "evidence": "task-read-navigation-20261031.json",
@@ -2913,8 +2921,14 @@
     "deployment": "dpl_4bkXK2mRYvM7VcVb1g9AoH2PVT3L",
     "all49PublicFilesExact": true,
     "evidence": "task-read-navigation-release-20261031.json",
-    "resourceRun": 41186985896,
-    "resourceRunState": "cancelled before any job; manual current-main dispatch required",
-    "fullHostedPass": false
+    "resourceRun": 41191092937,
+    "resourceRunState": "passed327/327 +54+54; all cleanup acknowledged",
+    "fullHostedPass": true
+  },
+  "latestHostedAcceptance": {
+    "source": "6892b7302bedd6dcdb86d762beb94241ae2850e1",
+    "run": 41191092937,
+    "evidence": "teacher-task-hosted-acceptance-20261031.json",
+    "ownerUsabilityAccepted": false
   }
 }

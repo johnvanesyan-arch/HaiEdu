@@ -1,6 +1,6 @@
 # Teacher task authoring and independent submission formats
 
-2026-10-31 Asia/Yerevan · owner-authorized expanded implementation is deployed/source verified. This supersedes the initial published-writing-only scope. Both production schools have verified custom source/delivery/queue/privacy/cancellation flows. PR369/main9437f119 corrects clean-read guards and loading markers; all five PR/main gates pass (1,630 unit/integration;364 native) and49 public files match. The normal resource run is replaced before starting; full postflight and final owner usability stay open. No endpoint, assessment or authoring-choice contract changes. [Current release receipt](evidence/task-read-navigation-release-20261031.json).
+2026-10-31 Asia/Yerevan · owner-authorized expanded implementation and fresh guarded technical acceptance are complete. Manual41191092937 on exact main/production6892b730 passes327/327,54+54 isolation and49 frontend hashes. Independent PDF source/link-response requirements, selected recipients, frozen sent versions, private-draft exclusion, protected bytes, inventory/cancellation and both-school navigation pass. Required source CI is1,630 unit/integration/364 native. Positive learner submit/review/revision remains actual SQL/native evidence; no production learner evidence is manufactured. Ordinary owner usability remains pending; content/audio/demo approvals are retained without repetition. [Current receipt](evidence/teacher-task-hosted-acceptance-20261031.json).
 
 ## Independent choices
 
