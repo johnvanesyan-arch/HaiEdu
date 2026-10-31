@@ -109,3 +109,6 @@
 .skill-estimate.secure{border-left-color:#3a8d5c}
 .skill-estimate.developing{border-left-color:#d6a124}
 .skill-estimate.needs_support{border-left-color:#c84c58}
+.student-drawer-panel{overflow-wrap:anywhere}
+.drawer-head{flex-wrap:wrap}
+.mini-card{min-width:0}

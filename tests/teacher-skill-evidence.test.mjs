@@ -31,6 +31,7 @@ test('missing, insufficient and unavailable evidence cannot become weak or secur
 test('legacy single estimates retain their configured bands and all dynamic labels are escaped',()=>{
   const row={id:'<skill>',code:'<code>',nameHy:'<img src=x onerror=bad()>',percent:72,band:'developing',evidenceCount:5};
   assert.equal(skillEvidenceState(row).kind,'classified');assert.equal(skillAttentionBand(row),'developing');
+  assert.equal(skillEvidenceState({...row,band:'constructor'}).kind,'unavailable');
   for(const html of [skillMatrixCell(row,'<student>'),skillEvidenceMarkup([row])]){
     assert.doesNotMatch(html,/<img|data-student="<|data-skill="</);assert.match(html,/&lt;img/);
   }

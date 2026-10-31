@@ -21,7 +21,7 @@ export function skillEvidenceState(row = {}) {
   if (row.status === 'insufficient_evidence') {
     return { kind: 'insufficient', label: 'Դիտարկումները դեռ քիչ են', band: 'not_assessed' };
   }
-  if (bands[row.band] && Number.isFinite(row.percent)) {
+  if (Object.hasOwn(bands, row.band) && Number.isFinite(row.percent)) {
     return { kind: 'classified', label: `${bands[row.band]} · ${row.percent}%`, band: row.band };
   }
   return Number(row.evidenceCount) > 0

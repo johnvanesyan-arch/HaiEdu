@@ -24,13 +24,13 @@ test('actual teacher matrix exposes split evidence, support counts and direct ke
  await p.locator('#matrixStudentFilter').selectOption('needs_support');await expect(p.locator('#matrixWrap tbody tr')).toHaveCount(1);
  const open=cells.first().getByRole('button');await open.focus();await p.keyboard.press('Enter');
  const detail=p.locator('[data-skill-evidence="s1"]');await expect(detail).toHaveAttribute('open','');
- await expect(detail.locator('summary')).toBeFocused();
+ await expect(detail.locator(':scope > summary')).toBeFocused();
  await expect(detail).toContainText('Կայուն · 88%');await expect(detail).toContainText('Աջակցություն է պետք · 38%');await expect(detail).toContainText('Ախտորոշիչ');await expect(detail).toContainText('Վարժություն');
  assert.equal(await p.locator('#studentDrawerContent').evaluate(e=>[...e.querySelectorAll('h3')].map(n=>n.textContent).indexOf('Հմտությունների տվյալներ')<[...e.querySelectorAll('h3')].map(n=>n.textContent).indexOf('Յուրացման ստուգում և կրկնություն')),true);
  assert.equal(await p.locator('#studentDrawerContent .teacher-skill-grid').count(),0);
  for(const width of [1280,768,390]){
   await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
-  await detail.locator('summary').scrollIntoViewIfNeeded();await expect(detail.locator('summary')).toBeVisible();
+  await detail.locator(':scope > summary').scrollIntoViewIfNeeded();await expect(detail.locator(':scope > summary')).toBeVisible();
   assert.equal(await p.locator('.student-drawer-panel').evaluate(e=>e.scrollWidth<=e.clientWidth+1),true,'drawer fits at '+width);
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/teacher-skill-evidence-'+width+'.png'});}
  }
