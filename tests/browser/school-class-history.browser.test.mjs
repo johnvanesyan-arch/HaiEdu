@@ -71,12 +71,14 @@ for(const width of [390,1280])test(`Master Admin filters exact programmes and re
  const {page:p,errors}=await fixture(t,'admin',{width,large:true});await p.locator('[data-open-school]').click();
  const teacher=p.locator('#schoolDetail details.person-card');await teacher.locator(':scope>summary').click();
  const history=teacher.locator('details.class-history');assert.equal(await history.getAttribute('open'),null);await expect(history).toContainText('Պահպանված դասարան Ա');
+ assert.ok(['none','normal'].includes(await history.locator('summary').evaluate(e=>getComputedStyle(e,'::after').content)),'nested history must not inherit the open parent card’s Close action');
+ await history.locator('summary').press('Enter');assert.equal(await history.getAttribute('open'),'');assert.equal(await teacher.getAttribute('open'),'');await history.locator('summary').press('Enter');assert.equal(await history.getAttribute('open'),null);
  const form=p.locator('#schoolDetail form').filter({has:p.locator('[name=subjectProgramId]')});
  await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=subjectProgramId]').selectOption('a');await expect(form.locator('[name=classId] option')).toHaveCount(2);
  await form.locator('[name=includeArchived]').check();await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=classId]').selectOption('archived-a');
  await expect.poll(()=>form.locator('[name=classId]').inputValue()).toBe('archived-a');await form.locator('[name=includeArchived]').uncheck();await expect(form.locator('[name=classId] option')).toHaveCount(2);
  await screenshot(p,'master-class-history-'+width);
- const layout=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,clipped:[...document.querySelectorAll('.school-analytics-filters button,.class-archive-toggle')].filter(e=>e.getClientRects().length&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));assert.ok(layout.scroll<=layout.width+1,JSON.stringify(layout));assert.deepEqual(layout.clipped,[]);
+ const layout=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('#schoolDetail *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,className:e.className,right:e.getBoundingClientRect().right})),clipped:[...document.querySelectorAll('.school-analytics-filters button,.class-archive-toggle')].filter(e=>e.getClientRects().length&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));assert.ok(layout.scroll<=layout.width+1,JSON.stringify(layout));assert.deepEqual(layout.clipped,[]);
  await p.evaluate(()=>window.__holdAnalytics=true);await form.locator('[name=subjectProgramId]').selectOption('b');await p.waitForFunction(()=>window.__held.length===1);
  await p.locator('[data-open-school]').click();await p.waitForFunction(()=>window.__held.length===2);
  await p.evaluate(()=>{window.__holdAnalytics=false;window.__held.shift()();window.__held.shift()();});
