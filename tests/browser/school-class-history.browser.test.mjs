@@ -1,3 +1,4 @@
+import {wordBreaks} from '../fixtures/word-boundaries.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
@@ -54,6 +55,7 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
  await p.locator('#analyticsClassFilter').selectOption('archived-a');await expect.poll(()=>p.locator('#analyticsClassFilter').inputValue()).toBe('archived-a');
  await p.locator('#analyticsArchivedClasses').uncheck();await expect(p.locator('#analyticsClassFilter option')).toHaveCount(2);assert.equal(await p.locator('#analyticsClassFilter').inputValue(),'');
  await screenshot(p,'school-analytics-classes-'+width);
+ assert.deepEqual(await wordBreaks(p,'.analytics-filters label,.analytics-metric>span'),[]);
  const layout=await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('main *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1&&!e.closest('.hm-role-nav')).slice(0,8).map(e=>({tag:e.tagName,className:e.className,text:e.textContent.slice(0,100),right:e.getBoundingClientRect().right}))}));assert.ok(layout.scrollWidth<=layout.width+1,JSON.stringify(layout));
  await p.locator('.hm-role-nav a[href="#teachersPanel"]').click();
  const history=p.locator('.roster-classes details');await expect(history).toHaveCount(1);assert.equal(await history.getAttribute('open'),null);
@@ -65,7 +67,7 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
  await expect(p.locator('#teacherClasses')).not.toContainText('Անվանում չունեցող');
  await p.locator('#teacherClasses details.class-history>summary').click();await expect(p.locator('#teacherClasses details.class-history')).toContainText('Պահպանված դասարան Ա');
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
- await screenshot(p,'school-teacher-history-'+width);assert.deepEqual(errors,[]);
+ await screenshot(p,'school-teacher-history-'+width);assert.deepEqual(await wordBreaks(p,'.teacher-classes-heading h3,.teacher-class-title strong'),[]);assert.deepEqual(errors,[]);
 });
 for(const width of [390,1280])test(`Master Admin filters exact programmes and retains history at ${width}px/200%`,async t=>{
  const {page:p,errors}=await fixture(t,'admin',{width,large:true});await p.locator('[data-open-school]').click();
@@ -78,6 +80,7 @@ for(const width of [390,1280])test(`Master Admin filters exact programmes and re
  await form.locator('[name=includeArchived]').check();await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=classId]').selectOption('archived-a');
  await expect.poll(()=>form.locator('[name=classId]').inputValue()).toBe('archived-a');await form.locator('[name=includeArchived]').uncheck();await expect(form.locator('[name=classId] option')).toHaveCount(2);
  await screenshot(p,'master-class-history-'+width);
+ assert.deepEqual(await wordBreaks(p,'.class-assignment strong,.class-assignment button,.person-card>summary .person-name,.person-card>summary .admin-actions button'),[]);
  const layout=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('#schoolDetail *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,className:e.className,right:e.getBoundingClientRect().right})),clipped:[...document.querySelectorAll('.school-analytics-filters button,.class-archive-toggle')].filter(e=>e.getClientRects().length&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));assert.ok(layout.scroll<=layout.width+1,JSON.stringify(layout));assert.deepEqual(layout.clipped,[]);
  await p.evaluate(()=>window.__holdAnalytics=true);await form.locator('[name=subjectProgramId]').selectOption('b');await p.waitForFunction(()=>window.__held.length===1);
  await p.locator('[data-open-school]').click();await p.waitForFunction(()=>window.__held.length===2);

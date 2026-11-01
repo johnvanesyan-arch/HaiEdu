@@ -565,3 +565,10 @@
 }
 
 .roster-group-archived>summary,.year-group-archived>summary{cursor:pointer;padding:14px;border:1px solid var(--forest-divider);border-radius:12px;overflow-wrap:anywhere}.roster-group-archived>summary:focus-visible,.year-group-archived>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}
+
+/* Fit labels and metrics to available word space, including enlarged text. */
+@container hm-workspace (max-width: 52rem) {
+  .analytics-heading { flex-direction: column; align-items: stretch; }
+  .analytics-filters { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .analytics-metrics { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+}

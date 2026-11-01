@@ -17,7 +17,7 @@ export function assessmentGroupMarkup(group,{points=false,showPercent=true}={}) 
 }
 export function assessmentSkillRules(policy, skills = []) {
   const minima=Object.entries(policy?.minimumCorrectBySkill ?? {}).map(([id,n],index)=>`<li>${esc(skills.find(s=>s.id===id)?.nameHy || `Հմտություն ${index+1}`)}՝ ${esc(n)}</li>`).join('');
-  return minima ? `<details class="assessment-skill-rules"><summary>Ըստ հմտության պահանջները</summary><p>Յուրաքանչյուր հմտության համար ամբողջությամբ ճիշտ պատասխանների նվազագույն քանակը՝</p><ul>${minima}</ul></details>` : '';
+  return minima ? `<details class="assessment-skill-rules"><summary>Ըստ հմտության պահանջները</summary><p>Ամբողջությամբ ճիշտ պատասխանների նվազագույն թիվը՝</p><ul>${minima}</ul></details>` : '';
 }
 export function assessmentRules(policy, skills = []) {
   const points=['haiedu-assessment-policy-v3','haiedu-assessment-policy-v4'].includes(policy?.schemaVersion);
@@ -31,7 +31,7 @@ export function assessmentRules(policy, skills = []) {
   if(points){
     const partial=policy.responseTypes.some(type=>['typed_fields','matching'].includes(type));
     const ordering=policy.responseTypes.includes('ordering');
-    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Մուտքագրվող պատասխանների և համապատասխանեցումների համար միավորը հաշվվում է ըստ ճիշտ լրացված մասերի բաժնի։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
+    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Դաշտերի ու զույգերի համար միավորը ճիշտ մասերի քանակն է՝ բաժանած բոլոր մասերի քանակին։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
   }
   return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
 }

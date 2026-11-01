@@ -208,7 +208,7 @@ function renderSchoolDetail(data) {
 
 function renderTeacherClasses(classes, schoolId) {
   if (!classes.length) return '<div class="admin-empty">Դասարանային նշանակում չկա։</div>';
-  return classHistoryMarkup(classes,(klass) => `<div class="class-assignment"><strong>${esc(klass.name)}</strong><span>${esc(klass.gradeLabel || "Դասարան նշված չէ")}</span><span>${esc(klass.subjectName || "Առարկա նշված չէ")}</span><span>${esc(klass.academicYear || "")}</span><span>${esc(klass.studentCount || 0)} աշակերտ</span><button type="button" class="ghost" data-load-roster="${esc(klass.id)}" data-school="${esc(schoolId)}">Դիտել աշակերտներին</button></div><div id="roster-${esc(klass.id)}"></div>`,{isActive:klass=>klass.active!==false});
+  return classHistoryMarkup(classes,(klass) => `<div class="class-assignment"><strong>${esc(klass.name)}</strong><span>${esc(klass.gradeLabel || "Դասարան նշված չէ")}</span><span>${esc(klass.subjectName || "Առարկա նշված չէ")}</span><span>${esc(klass.academicYear || "")}</span><span>${esc(klass.studentCount || 0)} աշակերտ</span><button type="button" class="ghost" data-load-roster="${esc(klass.id)}" data-school="${esc(schoolId)}">Աշակերտներ</button></div><div id="roster-${esc(klass.id)}"></div>`,{isActive:klass=>klass.active!==false});
 }
 
 function renderAccounts(data, archived = false) {

@@ -19,3 +19,8 @@ body[data-role-workspace="platform"] .admin-shell .admin-topbar h1{font-size:cla
   .class-assignment { grid-template-columns: minmax(0, 1fr); }
   .school-branch-heading { flex-direction: column; align-items: flex-start; }
 }
+
+@container hm-workspace (max-width: 38rem) {
+  .person-card > summary, .person-card-static { grid-template-columns: minmax(0, 1fr); }
+  .person-card > summary .admin-actions button { flex: 0 0 auto; min-width: max-content; }
+}
