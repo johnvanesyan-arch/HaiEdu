@@ -14,7 +14,7 @@ async function fixture(t,file,{width=1280,large=false}={}){
   const school={id:'school-a',name:'Փորձնական դպրոց',schoolCode:'SYNTHETIC'};
   window.__calls=[];window.__held=[];
   const analytics=body=>({scope:{...body,academicYearId:'year-a'},options:{academicYears:[{id:'year-a',label:'2026–2027'}],programmes:[{id:'a',label:'Առարկա Ա'},{id:'b',label:'Առարկա Բ'}],classes,releases:[],units:[]},analytics:{enrollment:{students:2,contexts:2},participation:{students:1,rate:50},evidence:{completedSessions:0},chapterReview:{completedSessions:0}}});
-  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'actor'}}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}}),mfa:{getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:'aal2'}})}},from:table=>({select(){return this;},eq(){return this;},order:async()=>({data:[{...school,school_code:school.schoolCode}]}),maybeSingle:async()=>({data:{role,account_status:'active'}})}),functions:{invoke:async(name,{body})=>{
+  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'actor'}}}}),getUser:async()=>({data:{user:{id:'actor'}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}}),mfa:{getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:'aal2'}})}},from:table=>({select(){return this;},eq(){return this;},order:async()=>({data:[{...school,school_code:school.schoolCode}]}),maybeSingle:async()=>({data:{role,account_status:'active'}})}),functions:{invoke:async(name,{body})=>{
    window.__calls.push({name,body});
    if(name==='get-school-performance-analytics'){
     if(window.__holdAnalytics)await new Promise(resolve=>window.__held.push(resolve));
@@ -53,13 +53,13 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
  await p.locator('#analyticsArchivedClasses').check();await expect(p.locator('#analyticsClassFilter option')).toHaveCount(3);
  await p.locator('#analyticsClassFilter').selectOption('archived-a');await expect.poll(()=>p.locator('#analyticsClassFilter').inputValue()).toBe('archived-a');
  await p.locator('#analyticsArchivedClasses').uncheck();await expect(p.locator('#analyticsClassFilter option')).toHaveCount(2);assert.equal(await p.locator('#analyticsClassFilter').inputValue(),'');
- assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  await screenshot(p,'school-analytics-classes-'+width);
+ const layout=await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('main *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1&&!e.closest('.hm-role-nav')).slice(0,8).map(e=>({tag:e.tagName,className:e.className,text:e.textContent.slice(0,100),right:e.getBoundingClientRect().right}))}));assert.ok(layout.scrollWidth<=layout.width+1,JSON.stringify(layout));
  await p.locator('.hm-role-nav a[href="#teachersPanel"]').click();
  const history=p.locator('.roster-classes details');await expect(history).toHaveCount(1);assert.equal(await history.getAttribute('open'),null);
  await expect(p.locator('.roster-classes>ul')).toContainText('Ընթացիկ դասարան Ա');await history.locator('summary').focus();await p.keyboard.press('Enter');await expect(history).toContainText('Պահպանված դասարան Ա');
- assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  await screenshot(p,'school-class-history-'+width);
+ const rosterLayout=await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('.roster-card *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,className:e.className,text:e.textContent.slice(0,100),right:e.getBoundingClientRect().right}))}));assert.ok(rosterLayout.scrollWidth<=rosterLayout.width+1,JSON.stringify(rosterLayout));
  await p.locator('.roster-teacher-link').click();await expect(p.locator('#teacherClasses details.class-history')).toHaveCount(1);
  assert.equal(await p.locator('#teacherClasses details.class-history').getAttribute('open'),null);
  await expect(p.locator('#teacherClasses')).not.toContainText('Անվանում չունեցող');
@@ -67,15 +67,16 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  await screenshot(p,'school-teacher-history-'+width);assert.deepEqual(errors,[]);
 });
-test('Master Admin filters exact programmes, preserves historic selection, rejects late analytics after disposal',async t=>{
- const {page:p,errors}=await fixture(t,'admin');await p.locator('[data-open-school]').click();
+for(const width of [390,1280])test(`Master Admin filters exact programmes and retains history at ${width}px/200%`,async t=>{
+ const {page:p,errors}=await fixture(t,'admin',{width,large:true});await p.locator('[data-open-school]').click();
  const teacher=p.locator('#schoolDetail details.person-card');await teacher.locator(':scope>summary').click();
  const history=teacher.locator('details.class-history');assert.equal(await history.getAttribute('open'),null);await expect(history).toContainText('Պահպանված դասարան Ա');
  const form=p.locator('#schoolDetail form').filter({has:p.locator('[name=subjectProgramId]')});
  await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=subjectProgramId]').selectOption('a');await expect(form.locator('[name=classId] option')).toHaveCount(2);
  await form.locator('[name=includeArchived]').check();await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=classId]').selectOption('archived-a');
  await expect.poll(()=>form.locator('[name=classId]').inputValue()).toBe('archived-a');await form.locator('[name=includeArchived]').uncheck();await expect(form.locator('[name=classId] option')).toHaveCount(2);
- await screenshot(p,'master-class-history');
+ await screenshot(p,'master-class-history-'+width);
+ const layout=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,clipped:[...document.querySelectorAll('.school-analytics-filters button,.class-archive-toggle')].filter(e=>e.getClientRects().length&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));assert.ok(layout.scroll<=layout.width+1,JSON.stringify(layout));assert.deepEqual(layout.clipped,[]);
  await p.evaluate(()=>window.__holdAnalytics=true);await form.locator('[name=subjectProgramId]').selectOption('b');await p.waitForFunction(()=>window.__held.length===1);
  await p.locator('[data-open-school]').click();await p.waitForFunction(()=>window.__held.length===2);
  await p.evaluate(()=>{window.__holdAnalytics=false;window.__held.shift()();window.__held.shift()();});

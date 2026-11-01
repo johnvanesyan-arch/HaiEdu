@@ -39,7 +39,7 @@ with database_uri() as uri:
   for key in ['migration','dashboardFixtureSQL','dashboardMigration','writtenMigration']:c.execute(setup[key])
   for q in setup['writtenQueries']:query(c,q)
   c.execute('create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[])')
-  for pattern in ['*_sprint_16_5b_supplementary_materials.sql','*_sprint_16_5b_resource_assignments.sql']:
+  for pattern in ['*_sprint_16_5b_supplementary_materials.sql','*_sprint_16_5b_resource_context_sequence.sql','*_sprint_16_5b_resource_assignments.sql']:
    c.execute(next((ROOT/'supabase/migrations').glob(pattern)).read_text())
   for name in ['20261030203359_teacher_writing_assignments.sql','20261030203404_teacher_task_drafts.sql','20261030203406_teacher_task_source_attachments.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())
   for name in ['20261030203407_teacher_task_delivery.sql','20261030203408_teacher_task_student_work.sql','20261030203409_teacher_task_review.sql']:c.execute((ROOT/'supabase/migrations'/name).read_text())

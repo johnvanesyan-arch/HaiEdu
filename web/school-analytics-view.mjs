@@ -4,7 +4,7 @@ import {analyticsClassOptions,analyticsClassOptionsMarkup} from './class-history
 export function mountSchoolAnalytics(root,supabase,schoolId) {
   let live=true,version=0,classOptions=[];
   const fields=[['academicYearId','Ուսումնական տարի'],['subjectProgramId','Առարկա և դասարան'],['classId','Դասարան'],['curriculumReleaseId','Թողարկում'],['unitId','Գլուխ']];
-  root.innerHTML=`<h3>Ուսումնական վերլուծություն</h3><form class="row">${fields.map(([key,label])=>`<label>${label}<select name="${key}" aria-label="${label}"><option value="">Բոլորը</option></select></label>`).join('')}<label><input type="checkbox" name="includeArchived"> Արխիվացված դասարաններ</label><button type="submit">Թարմացնել</button></form><p role="status"></p><div data-metrics></div><div data-evidence></div>`;
+  root.innerHTML=`<h3>Ուսումնական վերլուծություն</h3><form class="row school-analytics-filters">${fields.map(([key,label])=>`<label>${label}<select name="${key}" aria-label="${label}"><option value="">Բոլորը</option></select></label>`).join('')}<label class="class-archive-toggle"><input type="checkbox" name="includeArchived"><span>Ներառել արխիվը</span></label><button type="submit">Թարմացնել</button></form><p role="status"></p><div data-metrics></div><div data-evidence></div>`;
   const form=root.querySelector('form'),message=root.querySelector('[role=status]');
   async function load() {
     const request=++version;root.querySelector('[data-metrics]').replaceChildren();root.querySelector('[data-evidence]').replaceChildren();message.textContent='Տվյալները բեռնվում են…';
