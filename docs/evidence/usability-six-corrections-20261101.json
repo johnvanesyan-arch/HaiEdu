@@ -1,0 +1,534 @@
+{
+  "schemaVersion": "haiedu-six-usability-corrections-v1",
+  "date": "2026-11-01 Asia/Yerevan",
+  "status": "Six corrections technically delivered and verified within the recorded source/native/hosted-read scope; owner usability acceptance and a fresh Resource delivery rerun remain open.",
+  "functionalPr": 382,
+  "functionalSource": "5b682de58df009fadcf4f37fe58e05d96da02bf4",
+  "functionalMain": "0e541d82cfda680421add90d08b06d18a11e873b",
+  "functionalTree": "408fb5b6586c342d99e5174e9d882d90214a1784",
+  "defects": [
+    "UX-NAV-03",
+    "UX-ORDER-01",
+    "UX-HISTORY-01",
+    "UX-RULES-01",
+    "UX-SCHOOL-01",
+    "UX-SCHOOL-02"
+  ],
+  "scope": "Subject-neutral presentation, governed context ordering and retained historical-class lookup; no new account privilege, educational workflow or content change.",
+  "backend": {
+    "migration": {
+      "version": "20261101200512",
+      "name": "sprint_16_5b_resource_context_sequence"
+    },
+    "sqlCatalog": [
+      {
+        "nspname": "public",
+        "proname": "service_supplementary_resources",
+        "body_md5": "fa1b5dc510409478f2fa5a8155fb23a3",
+        "definition_md5": "da4a78bf3126bc07c0b7e7e62b45ea9d",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "nspname": "private",
+        "proname": "service_supplementary_resources",
+        "body_md5": "6a4dbf4108fe442d318f29a9f6e81263",
+        "definition_md5": "c3a681b86c969a920f5db99abba635ff",
+        "prosecdef": true,
+        "proconfig": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      }
+    ],
+    "edge": {
+      "name": "get-school-admin-overview",
+      "version": 2,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "ezbr_sha256": "b6294e49f6704b29bf1775e7f3dd6a4c2aa8f4c0cae373bf7d9882ee6d8d6a71",
+      "filesExact": true,
+      "sharedAuthUnchanged": true,
+      "files": [
+        {
+          "name": "get-school-admin-overview/index.ts",
+          "sha256": "497a60ec5e432059c861819b2ef32da7d8af531bacb752aa1a3666a532bf4929"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ]
+    }
+  },
+  "prVerification": {
+    "id": 41343626573,
+    "all5": "passed",
+    "unit": 1641,
+    "native": 391,
+    "visual": {
+      "inspected": 17,
+      "fresh": 10,
+      "byteIdenticalReused": 7
+    },
+    "artifact": 13098194984,
+    "sha256": "720bf91467a9c16e1598a58481b955de120a2d052f3655e836876df7181ece6e"
+  },
+  "mainVerification": {
+    "runId": 41345058204,
+    "all5": "passed",
+    "unitIntegration": 1641,
+    "native": 391,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "postgres17": "passed",
+    "institutionalConcurrency": "passed",
+    "aggregateJob": 124965021157
+  },
+  "visualVerification": {
+    "artifactId": 13098194984,
+    "artifactSha256": "720bf91467a9c16e1598a58481b955de120a2d052f3655e836876df7181ece6e",
+    "images": [
+      {
+        "name": "master-class-history-1280.png",
+        "sha256": "bd760956319bcf53a9a72d52fee2b6557d06cce989f08cbdd429a654ecf15023",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "master-class-history-390.png",
+        "sha256": "e019789ace28c12b1e8ae2afb3db2ff51f5d953857563fbe2d56ab93c28b5d68",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "readable-mastery-player-points-1280.png",
+        "sha256": "5bedee98bb05fc730688a523da60cf1f22e54cea6016cb878a86629d4359f2c7",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-player-points-390.png",
+        "sha256": "0a282a2d1884f7a77c2cb5929cd16e1aee125b8ac9b920d526dcdef0c4070bad",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-player-points-768.png",
+        "sha256": "c6910e94be2cbcbb8556981a8b883c8a9fae42eadaaa25d63cd4789f31d107f2",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-legacy-1280.png",
+        "sha256": "1249de6b3de3a30b6462d8972d038c13bd006775662a9e7055c3abb59affd8b8",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-legacy-390.png",
+        "sha256": "f8fa2b95475e7be58c2f7f076416091ab359c0efdaeca2fb1c52bdfcfff93cd4",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-legacy-768.png",
+        "sha256": "d4633e20377725252e8cb9402f2f3780c13c596d2e0e248d0ca70dd12600245c",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-points-1280.png",
+        "sha256": "17219bf5dc856bf77e3a2d04813c47c5123a00cc6a7e22a5d5ffb0c751b03e59",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-points-390.png",
+        "sha256": "0ab3ac8b6fd5b40a1223733d98593939b0ae18062fc2438f611f40b98ece06f2",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "readable-mastery-requirements-points-768.png",
+        "sha256": "d93f5c10b8dd6a0a947191905ad177f9cf2bcee2168325177c795da5986e9157",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "school-analytics-classes-1280.png",
+        "sha256": "40d56ee57f4428c220529e8f9faa38ca07bb608f9d8bf309ec572206822e6faa",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "school-analytics-classes-390.png",
+        "sha256": "e6a3782a1ea03ee0662a65e347895f773a58ce8d4c0b9a03b91325104cdc24c8",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "school-class-history-1280.png",
+        "sha256": "ef5cf26d6db4d158ddfd9ff6298b232cbbb0d04947de69469a88a4cc40f370da",
+        "inspection": "fresh final-source visual inspection"
+      },
+      {
+        "name": "school-class-history-390.png",
+        "sha256": "df752ce9aebcf87e0ab1078a41cd2b166d192ee81d0d7d4762e9b3d2ad143594",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "school-teacher-history-1280.png",
+        "sha256": "e811890250c0756ac68b9649cdc16891480c5487c80a94df1dbc1cbb26a55bf7",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      },
+      {
+        "name": "school-teacher-history-390.png",
+        "sha256": "7510ca4e428ea835acc8d78bbcf0091bcbc5f9e5bd5d76b27f36d6f99c38dacb",
+        "inspection": "byte-identical to separately visually inspected fourth-run staff image"
+      }
+    ],
+    "limit": "Actual controllers/markup/styles with explicitly synthetic Auth/API fixtures; not ordinary-account/MFA or physical-device certification."
+  },
+  "attempts": [
+    {
+      "id": 41339172926,
+      "status": "failed",
+      "native": {
+        "passed": 381,
+        "total": 384
+      },
+      "otherThree": "passed",
+      "artifact": 13096672821,
+      "digest": "d621388c00bf583b356bd9b695b94966410a1bacd8f0a038da7ab61a5ec37935"
+    },
+    {
+      "id": 41340349596,
+      "status": "failed",
+      "native": {
+        "passed": 384,
+        "total": 385
+      },
+      "otherThree": "passed",
+      "artifact": 13096754477,
+      "digest": "2f38790a1b681336e61970a9451d63bae6e642dc0c8a8e347929a7069b67e3f1"
+    },
+    {
+      "id": 41341108533,
+      "status": "all5 passed; not visually accepted",
+      "native": {
+        "passed": 385,
+        "total": 385
+      },
+      "artifact": 13097174527,
+      "digest": "97f246c8ac03ca13cccd1dd6c642e9d6489a7678b4349e7914e71a7ca58d36b7",
+      "visualFinding": "Words split at narrow/enlarged text in rules, Master class buttons and teacher-detail heading; current batch adds glyph-range assertions and font-relative inner layouts."
+    },
+    {
+      "id": 41342649380,
+      "status": "failed",
+      "native": {
+        "passed": 386,
+        "total": 388
+      },
+      "artifact": 13097559125,
+      "digest": "7c673414209bc1aa7bbf3962cf4beb265f7c37cf0483c0c08ac9e8f8a27d7ea9",
+      "finding": "Two phone rule word-boundary failures from CSS specificity; one literal arrangement-rule phrase assertion in unit and PostgreSQL jobs. Original scoring wording restored; current fixtures retain glyph assertions and add focused player coverage."
+    }
+  ],
+  "releaseControl": {
+    "persistentCheck": "Platform release checks",
+    "environment": "Production",
+    "blocking": true,
+    "settingEvidence": "Reuse independently verified persistent setting from 2026-10-31; no setting change or new complete settings audit.",
+    "observedCandidate": "dpl_27Wtajrr7DKrq8ref4xSEsTyJkGW",
+    "observedCanonicalBeforeGates": "e3786ad7fa8817a9ab194f689e8469eb14b42968",
+    "candidateReadyCanonicalHeld": true,
+    "canonicalAfterGates": "0e541d82cfda680421add90d08b06d18a11e873b",
+    "canonicalDeployment": "dpl_27Wtajrr7DKrq8ref4xSEsTyJkGW",
+    "observationLimit": "The candidate was READY while canonical still served e3786ad; after main all5 success, canonical metadata/release moved to0e541d and all15 changed assets matched. Persistent setting evidence is reused, not inferred solely from READY."
+  },
+  "hostedVerification": {
+    "analytics": {
+      "runId": 41345058191,
+      "jobId": 124963004973,
+      "artifactId": 13098319929,
+      "artifactSha256": "08a4a71d4c5b789ff406ae5f93c5b5e924983ebcfeb7efad9352f37d0a59950d",
+      "digestVerified": true,
+      "report": {
+        "scope": "Sprint 14D authenticated production analytics acceptance",
+        "revision": "0e541d82cfda680421add90d08b06d18a11e873b",
+        "target": "https://www.haiedu.am",
+        "startedAt": "2026-11-01T20:13:44.199Z",
+        "status": "passed",
+        "sprint14DGateClosed": true,
+        "checks": [
+          {
+            "label": "A: authenticate dedicated school administrator",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: authenticate dedicated school administrator",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: own-school aggregate is available",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: other-school aggregate is denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: own-school aggregate is available",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: other-school aggregate is denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: authenticated production board loads real scoped analytics",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: authenticated production board loads real scoped analytics",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: close only this QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "B: close only this QA session",
+            "status": "passed",
+            "httpStatus": 204
+          }
+        ],
+        "finishedAt": "2026-11-01T20:14:12.760Z"
+      },
+      "limit": "Dedicated School Admin accounts and real two-school aggregate boards;10 checks, including own-school200/foreign-school403 and own-session204 cleanup. Not a new five-role walkthrough or full delivery/write certification."
+    },
+    "resourceDelivery": {
+      "runId": 41345058251,
+      "status": "cancelled before any job; not executed",
+      "retry": "Connector returned403: This workflow run cannot be retried",
+      "browser": "Saved permission/managed policy denies GitHub browser origin; no bypass attempted",
+      "existingEvidence": "Retain successful41191092937 (327/327 +54before+54after) and bounded41233488681 (91/91 +54), only for unchanged service branches/authorization; no fresh delivery claim."
+    }
+  },
+  "preservation": {
+    "b123": "open",
+    "b12": "open",
+    "ownerAcceptance": false,
+    "subjectExpansion": "paused",
+    "capabilityMappings": 45,
+    "classroomSpeaking": "unchanged",
+    "englishC47": "paused",
+    "fourSubjectGate": "unchanged",
+    "securityAndRoutingGates": [
+      "SEC-AAL-01",
+      "SEC-AAL-02",
+      "URL-P1",
+      "MASTER-P2"
+    ],
+    "originalReadReview": "docs/evidence/live-role-usability-review-20261101.json",
+    "masterReadFollowup": "docs/evidence/master-admin-usability-followup-20261101.json",
+    "historicalReceiptsChanged": false
+  },
+  "unexercised": [
+    "No new ordinary-account signed-in five-role walkthrough after this correction",
+    "No physical-device, assistive-technology or browser-chrome zoom certification",
+    "No new production learner attempt, submission, grade, feedback or content approval",
+    "No administrative mutation, MFA assurance policy/recovery test or origin-isolation migration"
+  ],
+  "closure": {
+    "migrationFileAlignment": "Rename CLI-created migration to actual indexed20261101200512 without changing its bytes; suffix-based consumers verified.",
+    "testTightening": "Assert visible named history/threshold rows and native details open state; make synthetic policy list its true_false fixture item.",
+    "notion": "Existing map; sync only to merged closure source, preserving13 child pages and9 separately scoped security/routing rows",
+    "focusedChecks": {
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "runtimeIdentities": {
+      "web": "abe69e4f8ac4bbcacb5311fb104708b825af56f5",
+      "supabase/functions": "462a4ff379d7e4df99a3ca9bb3e136d218f7e944",
+      ".github": "fd6a1d9202a03496a2c87dfff334a2ec00beaed9",
+      "AGENTS.md": "8989a49e18a9bb3982bc4616127b370be15998dc",
+      "package.json": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+      "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+      "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f"
+    },
+    "limits": "Migration index filename alignment, isolated fixture visibility assertions and docs/evidence only. Required closure PR/main gates and final release metadata must be read back before source-verified Notion synchronization; functional runtime evidence is reused only after exact subtree/source comparison."
+  },
+  "preservedFiles": {
+    "AGENTS.md": {
+      "gitBlob": "8989a49e18a9bb3982bc4616127b370be15998dc",
+      "sha256": "bbbf20adbbc8c51214398eb1050aedbf0acd816e7ce2f2c212a5e1b2f8ead2fa",
+      "unchangedInClosure": true
+    },
+    "package.json": {
+      "gitBlob": "0d4e80bc9050619c3cf66b3ea00982dc820df1de",
+      "sha256": "13c7f763731439756db309b6c8fb7b8a094da21036c78542d110744ee26dd0ef",
+      "unchangedInClosure": true
+    },
+    "package-lock.json": {
+      "gitBlob": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
+      "sha256": "d5e19f2e53d408a2c1c441187e1622e53edd30c36c8bbdf7da31a21d4449f94a",
+      "unchangedInClosure": true
+    },
+    "vercel.json": {
+      "gitBlob": "3c305e4cc7b2f564851a4f8260065de40776742f",
+      "sha256": "0444da90aaedad4bb64af25e05e9105a5c278ce394be3fe65625db6bf2d03af0",
+      "unchangedInClosure": true
+    },
+    "web/teacher-dependencies.bundle.mjs": {
+      "gitBlob": "6bbc09e11590b5d31142dcaf3e8ea2a8209becfd",
+      "sha256": "a8beea5051f98ecddcc6e2924f5e6e33912876104e29e7bab99b19b8fa54ba62",
+      "unchangedInClosure": true
+    },
+    "web/teacher-startup.bundle.mjs": {
+      "gitBlob": "eaab7eb597e7891b9ef389cd7882217101cc1219",
+      "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5",
+      "unchangedInClosure": true
+    },
+    "docs/evidence/live-role-usability-review-20261101.json": {
+      "gitBlob": "2e075aac730fe0f85e4d056d14c43469cd13c4b1",
+      "sha256": "2f368d6a7f845768e16786079ed4249b5f04ba961b5a1a730243cf84c1976405",
+      "unchangedInClosure": true
+    },
+    "docs/evidence/master-admin-usability-followup-20261101.json": {
+      "gitBlob": "f9be83d9114e80f823bad25e96a0b07293f90581",
+      "sha256": "0bf6fdd08ff2a96ed02dab2f8da823164d140082314cc31c79a1b99131aa1267",
+      "unchangedInClosure": true
+    }
+  },
+  "publicVerification": {
+    "checkedAt": "2026-11-01T20:14:09.048870+00:00",
+    "origin": "https://www.haiedu.am",
+    "expectedCommit": "0e541d82cfda680421add90d08b06d18a11e873b",
+    "rows": [
+      {
+        "path": "release.json",
+        "status": 200,
+        "sha256": "c65941c3628fc78eec37ac6632ada4cf96d78a6fcd4816fced0e4f0123f23aee",
+        "release": {
+          "schemaVersion": 1,
+          "commit": "0e541d82cfda680421add90d08b06d18a11e873b"
+        }
+      },
+      {
+        "path": "admin.css",
+        "status": 200,
+        "sha256": "02073cdb364998931867ee5986c7ee7fdf5a5ee3227f4589a21c47a655229ad2",
+        "expectedSha256": "02073cdb364998931867ee5986c7ee7fdf5a5ee3227f4589a21c47a655229ad2",
+        "exact": true
+      },
+      {
+        "path": "admin.js",
+        "status": 200,
+        "sha256": "891bc1e6036b2d0cd0a2ed0f4d9933f334865acc7b7c9d4c91ce8f982c79a7c0",
+        "expectedSha256": "891bc1e6036b2d0cd0a2ed0f4d9933f334865acc7b7c9d4c91ce8f982c79a7c0",
+        "exact": true
+      },
+      {
+        "path": "assessment-reporting.mjs",
+        "status": 200,
+        "sha256": "204486cc63f3702f8effc3d6f11d5b27ce8ad1a9c5a7d52c33a4103c65c75a49",
+        "expectedSha256": "204486cc63f3702f8effc3d6f11d5b27ce8ad1a9c5a7d52c33a4103c65c75a49",
+        "exact": true
+      },
+      {
+        "path": "class-history.mjs",
+        "status": 200,
+        "sha256": "ee1cbcf96f0f1ef1c8a8543b52104f2e264e386a7378f4899ee7fd37fa2e5ecc",
+        "expectedSha256": "ee1cbcf96f0f1ef1c8a8543b52104f2e264e386a7378f4899ee7fd37fa2e5ecc",
+        "exact": true
+      },
+      {
+        "path": "course-page.js",
+        "status": 200,
+        "sha256": "7ef961734b6267732877773a01c2e54d758c3c601a39e2a64d8af2831ce452d3",
+        "expectedSha256": "7ef961734b6267732877773a01c2e54d758c3c601a39e2a64d8af2831ce452d3",
+        "exact": true
+      },
+      {
+        "path": "role-layout.css",
+        "status": 200,
+        "sha256": "e0bcaec21ac350b787ea49cc7e13844bd76c6167f96c88204660461872983aa2",
+        "expectedSha256": "e0bcaec21ac350b787ea49cc7e13844bd76c6167f96c88204660461872983aa2",
+        "exact": true
+      },
+      {
+        "path": "role-layout.js",
+        "status": 200,
+        "sha256": "f3e041938f51108f69f4d8264f73a6fc27025c7cf4713f50b63ed318e4c49a22",
+        "expectedSha256": "f3e041938f51108f69f4d8264f73a6fc27025c7cf4713f50b63ed318e4c49a22",
+        "exact": true
+      },
+      {
+        "path": "school-admin.css",
+        "status": 200,
+        "sha256": "2b7090c9bd66616b6845a9a991ef361781a29bde6ac630acd01e13dd76416e56",
+        "expectedSha256": "2b7090c9bd66616b6845a9a991ef361781a29bde6ac630acd01e13dd76416e56",
+        "exact": true
+      },
+      {
+        "path": "school-admin.html",
+        "status": 200,
+        "sha256": "ba6683ed340253d0c2e89cc1dc2b56b4177c36726bf40a31366d6f8b8fffe864",
+        "expectedSha256": "ba6683ed340253d0c2e89cc1dc2b56b4177c36726bf40a31366d6f8b8fffe864",
+        "exact": true
+      },
+      {
+        "path": "school-admin.js",
+        "status": 200,
+        "sha256": "08b710bdea79e8c2aba84f4a728902a4f3f32df6c7561c2e97b2ddf0edb5a4b5",
+        "expectedSha256": "08b710bdea79e8c2aba84f4a728902a4f3f32df6c7561c2e97b2ddf0edb5a4b5",
+        "exact": true
+      },
+      {
+        "path": "school-analytics-view.mjs",
+        "status": 200,
+        "sha256": "3a045311dbfde302f66166571978b3b3b9d2a646fe0a085defdde4edca366073",
+        "expectedSha256": "3a045311dbfde302f66166571978b3b3b9d2a646fe0a085defdde4edca366073",
+        "exact": true
+      },
+      {
+        "path": "school-teacher.css",
+        "status": 200,
+        "sha256": "e19ecade22c20811a1dc6776ad5761d1c22e048b45f88603126a5ac2ce7309a9",
+        "expectedSha256": "e19ecade22c20811a1dc6776ad5761d1c22e048b45f88603126a5ac2ce7309a9",
+        "exact": true
+      },
+      {
+        "path": "school-teacher.js",
+        "status": 200,
+        "sha256": "554990e5f56c6f0d58bc0fc41cd982c6d834911e3e0ab1e7c22b8ea4db33e872",
+        "expectedSha256": "554990e5f56c6f0d58bc0fc41cd982c6d834911e3e0ab1e7c22b8ea4db33e872",
+        "exact": true
+      },
+      {
+        "path": "student-surfaces.css",
+        "status": 200,
+        "sha256": "4e1cb5d8991131ac3559a4e7b1eda00c861d71ad25327e9e58156b264316bea6",
+        "expectedSha256": "4e1cb5d8991131ac3559a4e7b1eda00c861d71ad25327e9e58156b264316bea6",
+        "exact": true
+      },
+      {
+        "path": "student-teacher-tasks.mjs",
+        "status": 200,
+        "sha256": "7a8c3fe8113e9756ffb08044df9e28c06ad1f79b247b76988766fc56fe435d43",
+        "expectedSha256": "7a8c3fe8113e9756ffb08044df9e28c06ad1f79b247b76988766fc56fe435d43",
+        "exact": true
+      }
+    ]
+  }
+}
