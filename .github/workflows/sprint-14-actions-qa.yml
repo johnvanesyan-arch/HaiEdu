@@ -46,6 +46,7 @@ on:
       - web/learning-navigation.mjs
       - web/analytics-provenance.mjs
       - web/school-analytics-view.mjs
+      - web/class-history.mjs
       - web/config.js
       - web/school-membership-status.js
       - web/tokens.css

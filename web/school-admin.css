@@ -279,6 +279,7 @@
   gap: 14px;
   flex-wrap: wrap;
 }
+.roster-card-head > div { min-width: 0; max-width: 100%; }
 .roster-state-actions { display: flex; align-items: center; justify-content: flex-end; gap: 9px; flex-wrap: wrap; }
 .roster-archive-button { min-width: 112px; }
 .roster-card h3 { margin: 0; font-size: 1.12rem; }
@@ -398,6 +399,9 @@
 .year-row button { flex: 0 0 auto; }
 
 @media (max-width: 560px) {
+  .roster-card { padding: 12px; }
+  .roster-state-actions { width: 100%; }
+  .roster-archive-button { min-width: 0; max-width: 100%; white-space: normal; }
   .overview-stats, .overview-actions { grid-template-columns: 1fr; }
   .year-row { align-items: stretch; flex-direction: column; }
   .year-row button { width: 100%; }
@@ -561,3 +565,10 @@
 }
 
 .roster-group-archived>summary,.year-group-archived>summary{cursor:pointer;padding:14px;border:1px solid var(--forest-divider);border-radius:12px;overflow-wrap:anywhere}.roster-group-archived>summary:focus-visible,.year-group-archived>summary:focus-visible{outline:3px solid #8b551c;outline-offset:3px}
+
+/* Fit labels and metrics to available word space, including enlarged text. */
+@container hm-workspace (max-width: 52rem) {
+  .analytics-heading { flex-direction: column; align-items: stretch; }
+  .analytics-filters { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .analytics-metrics { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+}

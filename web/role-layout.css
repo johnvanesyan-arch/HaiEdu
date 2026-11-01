@@ -34,6 +34,8 @@ body a[href^="mailto:"] {
   overflow-wrap: anywhere;
   word-break: normal;
 }
+.class-history { min-inline-size: 0; max-inline-size: 100%; }
+.class-history > summary { white-space: normal; cursor: pointer; }
 
 /* The existing student navigation supplies enrolled classes and permitted links. */
 body.amp-student-shell-active .amp-side-nav {
@@ -207,3 +209,17 @@ body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-h
 @keyframes hm-loading-shimmer{0%{background-position:200% 0}100%{background-position:-20% 0}}
 @media (prefers-reduced-motion:reduce){.hm-loading-nav span,.hm-loading-card::before,.hm-loading-card span{animation:none}}
 @media(max-width:760px){.hm-loading-grid{grid-template-columns:1fr}}
+
+/* Archive inclusion is a checkbox, not a full-width text input. The label
+   retains the large hit area while each role uses the same control size. */
+body[data-role-workspace] label.class-archive-toggle {
+  display: flex; flex-direction: row; align-items: center; gap: .5rem;
+  min-height: 44px; max-width: 100%;
+}
+body[data-role-workspace] .class-archive-toggle input[type="checkbox"] {
+  width: 1.25rem; height: 1.25rem; min-width: 1.25rem; min-height: 1.25rem;
+  flex: 0 0 1.25rem; padding: 0; margin: 0;
+}
+body[data-role-workspace] .school-analytics-filters > button {
+  flex: 0 0 auto; min-width: max-content;
+}

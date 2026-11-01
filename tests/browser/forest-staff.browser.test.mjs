@@ -51,6 +51,25 @@ async function noPageOverflow(page,label) {
   assert.ok(m.scroll<=m.width+1,`${label}: ${JSON.stringify(m)}`);
 }
 
+test('teacher writing breadcrumb follows direct view, repeated view events and Back/Forward without duplicate navigation',async t=>{
+ const {page,errors}=await pageFixture(t,'teacher.html?view=assign-writing',{gate:'dashboardPanel'});
+ const check=async label=>{
+  await expect(page.locator('.hm-role-nav [aria-current="page"]')).toHaveText(label);
+  await expect(page.locator('.hm-role-breadcrumb [aria-current="page"]')).toHaveText(label);
+  assert.equal(await page.locator('.hm-role-breadcrumb').count(),1);
+ };
+ await check('Հանձնարարել գրավոր');
+ for(const view of ['review','assign-writing','assign-writing']){
+  await page.evaluate(view=>{const u=new URL(location.href);u.searchParams.set('view',view);u.searchParams.set('assignment','exact-assignment');u.searchParams.set('unit','exact-unit');history.pushState({},'',u);window.dispatchEvent(new CustomEvent('haiedu:teacher-view'));},view);
+  await check(view==='review'?'Գրավորի ստուգում':'Հանձնարարել գրավոր');
+ }
+ await page.goBack();await check('Հանձնարարել գրավոր');
+ await page.goBack();await check('Գրավորի ստուգում');
+ await page.goForward();await check('Հանձնարարել գրավոր');
+ assert.match(page.url(),/assignment=exact-assignment/);assert.match(page.url(),/unit=exact-unit/);
+ assert.deepEqual(errors,[]);
+});
+
 const pages=[
   ['teacher.html','dashboardPanel'],['school-admin.html','overviewPanel'],['school-teacher.html','teacherDetailPanel'],
   ['admin.html','console'],['admin-security.html','securityConsole'],

@@ -204,3 +204,7 @@
     white-space: normal;
   }
 }
+
+@container hm-workspace (max-width: 38rem) {
+  .teacher-classes-heading { grid-template-columns: minmax(0, 1fr); align-items: start; }
+}

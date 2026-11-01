@@ -276,7 +276,7 @@ function syncTeacherSections() {
   const requested = params.get("view");
   const selected = requested === "class"
     ? (params.get("source") === "archive" ? "archive" : "classes")
-    : (["home", "profile", "classes", "archive", "create", "review"].includes(requested) ? requested : "home");
+    : (["home", "profile", "classes", "archive", "create", "review", "assign-writing"].includes(requested) ? requested : "home");
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const linkUrl = new URL(link.href, window.location.href);
     const linkView = linkUrl.searchParams.get("view") || "home";

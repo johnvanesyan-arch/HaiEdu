@@ -27,6 +27,7 @@ on:
       - web/analytics-provenance.mjs
       - web/assessment-reporting.mjs
       - web/school-analytics-view.mjs
+      - web/class-history.mjs
       - web/config.js
       - web/school-membership-status.js
       - web/forest-tokens.css

@@ -1,3 +1,4 @@
+import {wordBreaks} from '../fixtures/word-boundaries.mjs';
 import {checkNavigation} from '../fixtures/navigation-readability.mjs';
 import {historyEntries,historyReadability} from '../fixtures/assessment-history.mjs';
 import test, { before, after } from 'node:test';
@@ -18,13 +19,39 @@ let browser;
 before(async () => { browser = await chromium.launch({ headless:true }); });
 after(async () => { await browser?.close(); });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null }={}) {
+for(const kind of ['legacy','points'])for(const width of [390,768,1280])test(`Mastery ${kind} requirements use readable names once at ${width}px with enlarged text`,async t=>{
+ const {page,errors}=await fixture(t,{width,active:false,contextIndex:1,configuredRules:kind});
+ await page.evaluate(()=>document.documentElement.style.fontSize='32px');
+ const rule=page.locator('.assessment-skill-rules');await expect(rule).toHaveCount(1);
+ assert.equal(await rule.getAttribute('open'),null);
+ await rule.locator('summary').focus();await page.keyboard.press('Enter');
+ await expect(rule.locator('li')).toHaveText('Կիրառական խնդիրների լուծում և արդյունքների համեմատություն՝ 2');
+ const text=await page.locator('#courseContent').innerText();assert.doesNotMatch(text.split('Հմտություններ')[0],/MATH8|minimumCorrectBySkill/);
+ const metrics=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,clipped:[...document.querySelectorAll('.assessment-skill-rules li,.assessment-skill-rules summary')].filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));
+ assert.equal(metrics.overflow,false,JSON.stringify(metrics));assert.deepEqual(metrics.clipped,[]);
+ await capture(page,'readable-mastery-requirements-'+kind+'-'+width,metrics);assert.deepEqual(await wordBreaks(page,'.course-mode-card .student-rule-details'),[]);assert.deepEqual(errors,[]);
+});
+
+for(const width of [390,768,1280])test(`focused Mastery player retains full words and thresholds at ${width}px/200%`,async t=>{
+ const {page,errors}=await fixture(t,{width,active:false,player:true,contextIndex:1,configuredRules:'points'});
+ await page.locator('#learningPlayer form').waitFor();
+ await page.evaluate(()=>document.documentElement.style.fontSize='32px');
+ const rule=page.locator('#learningPlayer .assessment-skill-rules');
+ await rule.locator('summary').focus();await page.keyboard.press('Enter');
+ await expect(rule.locator('li')).toHaveText('Կիրառական խնդիրների լուծում և արդյունքների համեմատություն՝ 2');
+ assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),'');
+ const metrics={words:await wordBreaks(page,'#learningPlayer .student-rule-details'),overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)};
+ await capture(page,'readable-mastery-player-points-'+width,metrics);
+ assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
+});
+
+async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory }) => {
+  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules }) => {
     window.__calls=[]; window.__listeners=[];
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
@@ -32,7 +59,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       activeSession:active ? { id:'active-fixture', mode:'practice', answered:5, planned:8, policyBindingId:'fixture-binding' } : null,
       skills:Array.from({length:manySkills?10:1},(_,n)=>({ id:selected.subjectProgramId+'-'+n, code:(selected.extensionKey?'PHY7-U01-':'MATH8-U02-')+'S'+String(n+1).padStart(2,'0'), nameHy:selected.extensionKey?'Ֆիզիկական երևույթների ճանաչում և համեմատություն':'Կիրառական խնդիրների լուծում և արդյունքների համեմատություն', ready:n<3, mastery:{ percent:75-n, evidenceCount:8 } })),
       history:reportingHistory??[{ id:'completed-fixture', mode:'practice', correct:6, answered:8, percent:75, completedAt:'2026-10-01T19:47:56.15+00:00', curriculumReleaseId:selected.curriculumReleaseId, blueprintId:'fixture-blueprint', policyBindingId:'fixture-binding', modelId:'fixture-model', runtimeBuildId:'fixture-runtime', academicMasteryPolicyId:'fixture-lifecycle', provenanceStatus:'registered_legacy' }],
-      modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode => [mode, { status:'configured', questions:8, hintsAllowed:mode==='practice'||mode==='chapter_review', minimumPercent:mode==='mastery_check'?80:null, minimumCorrectBySkill:{} }]))
+      modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode => [mode, { status:'configured', questions:8, hintsAllowed:mode==='practice'||mode==='chapter_review', minimumPercent:mode==='mastery_check'?80:null, minimumCorrectBySkill:configuredRules&&mode==='mastery_check'?{[selected.subjectProgramId+'-0']:2}:{}, ...(configuredRules==='points'&&mode==='mastery_check'?{schemaVersion:'haiedu-assessment-policy-v4',questionCountBySkill:{[selected.subjectProgramId+'-0']:8},scoredSkillIds:[selected.subjectProgramId+'-0'],reportingGroups:[{label:'Գնահատվող հմտություն',skillIds:[selected.subjectProgramId+'-0']}],responseTypes:['typed_fields','matching','ordering']}: {}) }]))
     });
     window.__client={ auth:{ getSession:async()=>({ data:{ session:{ user:{ id:studentId } } } }), getUser:async()=>({ data:{ user:{ id:studentId } } }), onAuthStateChange:fn=>window.__listeners.push(fn) }, from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'student',account_status:'active'}})})})}), functions:{ invoke:async(name,{body})=>{
       window.__calls.push({name,body});
@@ -44,12 +71,12 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
         if(body.action==='open')return {data:{version:'written-work-v1',task:{definition:{title:'My view',locale:'en',prompt:'Explain your view with reasons.',minWords:40,maxWords:70,assistance:{spellcheck:false},criteria:[{key:'meaning',label:'Meaning',descriptors:['Developing','Clear']}] }},work:{state:'changes_requested'},draftText:'My draft.',submissions:[{version:1,text:'My first response.',wordCount:3,submittedAt:'2026-10-01T10:00:00Z',reviews:[{decision:'return',feedback:'Give one more reason.',createdAt:'2026-10-02T10:00:00Z'}]}]}};
       }
       if(name==='start-learning-session') return { data:{ session:{ id:'player-fixture', mode:body.mode } } };
-      if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ plannedQuestionCount:8, hintsAllowed:true } } };
+      if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ ...(configuredRules==='points'?dashboard().modes.mastery_check:{}), plannedQuestionCount:8, hintsAllowed:configuredRules!=='points' } } };
       if(name==='get-chapter-mastery-lifecycle') return {data:{lifecycleState:'not_started',attemptsUsed:0}};
-      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
+      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory });
+  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.origin==='https://esm.sh') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
@@ -62,7 +89,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
     } catch { return route.fulfill({status:404,body:'Not found'}); }
   });
   const selected=contexts[contextIndex];
-  const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:'practice'}:{}) });
+  const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:configuredRules==='points'?'mastery_check':'practice'}:{}) });
   await page.goto(origin+'/'+route+'?'+params);
   if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-nav-list a[href*="view=courses"]')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
   else await page.waitForFunction(()=>document.querySelector('.amp-nav-list a[href*="view=courses"]') && !document.body.dataset.roleRouting);

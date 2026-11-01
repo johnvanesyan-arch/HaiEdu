@@ -40,6 +40,7 @@ with database_uri() as uri:
   for q in setup['writtenQueries']:query(c,q)
   c.execute('create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[])')
   c.execute(next((ROOT/'supabase/migrations').glob('*_sprint_16_5b_supplementary_materials.sql')).read_text())
+  c.execute(next((ROOT/'supabase/migrations').glob('*_sprint_16_5b_resource_context_sequence.sql')).read_text())
   d={'title':'Synthetic reading','description':'Disposable fixture','purpose':'reading','format':'link','url':'https://example.org/fixture','locale':'en','sourceReference':'Synthetic author','rightsConfirmed':True,'assessmentSafe':True}
   m=call(c,'create',{'definition':d})['material'];key={'id':m['id'],'fingerprint':m['fingerprint']}
   revision={'definition':d,'reason':'Fixture revision',**key}

@@ -1,3 +1,4 @@
+import {appendClassHistory,analyticsClassOptions,analyticsClassLabel} from './class-history.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { renderEvidenceGroups } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -122,6 +123,7 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   if (resetFilters) {
     for (const id of ["analyticsYearFilter", "analyticsProgrammeFilter", "analyticsClassFilter","analyticsReleaseFilter","analyticsUnitFilter"]) $(id).replaceChildren();
     dashboardState.analyticsOptions = null;
+    $("analyticsArchivedClasses").checked=false;
   }
   const requestedYearId = resetFilters ? "" : $("analyticsYearFilter").value;
   const requestedProgrammeId = resetFilters ? "" : $("analyticsProgrammeFilter").value;
@@ -164,8 +166,11 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   replaceAnalyticsOptions($("analyticsYearFilter"), data.options.academicYears ?? [], null, data.scope?.academicYearId ?? "");
   replaceAnalyticsOptions($("analyticsProgrammeFilter"), data.options.programmes ?? [], "Բոլոր առարկաները և դասարանները", data.scope?.subjectProgramId ?? "");
   const selectedProgrammeId = data.scope?.subjectProgramId ?? "";
-  const classRows = (data.options.classes ?? []).filter((row) =>
-    !selectedProgrammeId || row.subjectProgramIds?.includes(selectedProgrammeId));
+  const selectedClassId = data.scope?.classId ?? "";
+  if((data.options.classes ?? []).some(row=>row.id===selectedClassId&&row.isActive===false))$("analyticsArchivedClasses").checked=true;
+  const classRows = analyticsClassOptions(data.options.classes ?? [], {
+    programmeId:selectedProgrammeId,includeArchived:$("analyticsArchivedClasses").checked,selectedId:selectedClassId,
+  }).map(row=>({...row,label:analyticsClassLabel(row)}));
   replaceAnalyticsOptions($("analyticsClassFilter"), classRows, "Բոլոր դասարանները", data.scope?.classId ?? "");
   replaceAnalyticsOptions($("analyticsReleaseFilter"),data.options.releases ?? [],"Բոլոր թողարկումները",data.scope?.curriculumReleaseId ?? "");
   replaceAnalyticsOptions($("analyticsUnitFilter"),(data.options.units ?? []).filter(row=>row.curriculumReleaseId===data.scope?.curriculumReleaseId),"Բոլոր գլուխները",data.scope?.unitId ?? "");
@@ -464,15 +469,17 @@ function teacherCard(teacher, schoolId) {
       empty.textContent = "Ակտիվ դասարանային նշանակում չկա։";
       classList.append(empty);
     } else {
+      appendClassHistory(classList, classes, rows => {
       const listElement = document.createElement("ul");
-      for (const klass of classes) {
+      for (const klass of rows) {
         const item = document.createElement("li");
         const scope = [klass.subjectName, klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : ""]
           .filter(Boolean).join(" · ");
         item.textContent = `${klass.name || "Դասարան"}${scope ? ` — ${scope}` : ""}${klass.isActive ? "" : " · Արխիվացված"}`;
         listElement.append(item);
       }
-      classList.append(listElement);
+      return listElement;
+      });
     }
     card.append(classList);
     return card;
@@ -673,6 +680,13 @@ $("analyticsYearFilter").addEventListener("change", () => {
 $("analyticsProgrammeFilter").addEventListener("change", () => {
   $("analyticsClassFilter").value = "";
   $("analyticsReleaseFilter").value = ""; $("analyticsUnitFilter").value = "";
+  loadSchoolAnalytics();
+});
+$("analyticsArchivedClasses").addEventListener("change", () => {
+  const selected=(dashboardState.analyticsOptions?.classes??[]).find(row=>row.id===$("analyticsClassFilter").value);
+  if(!$("analyticsArchivedClasses").checked&&selected?.isActive===false){
+    $("analyticsClassFilter").value="";$("analyticsReleaseFilter").value="";$("analyticsUnitFilter").value="";
+  }
   loadSchoolAnalytics();
 });
 $("analyticsClassFilter").addEventListener("change", () => { $("analyticsReleaseFilter").value="";$("analyticsUnitFilter").value="";loadSchoolAnalytics(); });

@@ -2,6 +2,18 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {database,call,definition,context,id} from './fixtures/supplementary-resources-db.mjs';
 import {resourceUrl,validResourcePdf} from '../supabase/functions/_shared/supplementary-resources-handler.mjs';
 const key=m=>({id:m.id,fingerprint:m.fingerprint});
+test('resource contexts order governed units before random release identity, retaining all versions and scope',async t=>{
+ const db=await database();t.after(()=>db.close());
+ await db.query('update curriculum_release_units set sequence_order_snapshot=2 where unit_id=$1',[id(512)]);
+ const original=(await db.query('select to_jsonb(r) value from curriculum_releases r where id=$1',[id(501)])).rows[0].value;
+ await db.query('insert into curriculum_releases select (jsonb_populate_record(null::curriculum_releases,$1)).*',[JSON.stringify({...original,id:id(900),release_number:2})]);
+ const unit=(await db.query('select to_jsonb(r) value from curriculum_release_units r where curriculum_release_id=$1 and unit_id=$2',[id(501),id(511)])).rows[0].value;
+ await db.query('insert into curriculum_release_units select (jsonb_populate_record(null::curriculum_release_units,$1)).*',[JSON.stringify({...unit,curriculum_release_id:id(900)})]);
+ const contexts=(await call(db,'contexts')).contexts.filter(c=>c.assignmentId===id(351));
+ assert.deepEqual(contexts.map(c=>c.unitId),[id(511),id(511),id(512)]);
+ assert.deepEqual(contexts.filter(c=>c.unitId===id(511)).map(c=>c.curriculumReleaseId),[id(501),id(900)]);
+ assert.equal(contexts.some(c=>c.assignmentId===id(352)),false);
+});
 test('teacher resource lifecycle preserves publication until exact QA revision and withdrawal; optional evidence unchanged',async t=>{
  const db=await database();t.after(()=>db.close());
  const before=(await db.query('select count(*) n from learning_sessions')).rows;
