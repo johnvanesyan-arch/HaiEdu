@@ -1,0 +1,71 @@
+{
+  "source": "17170cc25994d78758ce96fd79262c7f7f506416",
+  "date": "2026-11-01 Asia/Yerevan",
+  "actualChecks": [
+    "Owner reports completing manual sign-in; live protected Master Admin Home loads",
+    "Security page visibly reports AAL2 · հաստատված and protected session",
+    "Two pre-existing verified authenticator factors and recovery guidance visible",
+    "Schools section navigation in progress",
+    "School directory and exact selected-school detail load",
+    "Teacher disclosure exposes class list and on-demand learner list action",
+    "Master Admin school detail and analytics class picker reproduce mixed active/historical class presentation",
+    "Exact English class learner list loads on demand",
+    "Master Admin subject and exact class analytics update; assessment/Practice results remain separate",
+    "Content Reviewer account filter returns only independent reviewer row; no role control used",
+    "Browser Back restores selected school, English programme and exact class; Forward restores reviewer account filter",
+    "Dedicated archived-account list loads; no restore/delete action",
+    "Deletion-request section opens; no request action",
+    "Completed/cancelled deletion-request history loads without actions",
+    "Normal protected audit UI list loads; no export or direct database read",
+    "Own account displays active Master admin and correct return link",
+    "Actual account return opens protected Master Admin Home; desktop Forest layout screenshot inspected",
+    "Normal console logout reaches canonical sign-in page",
+    "Fresh admin URL after logout exposes protected-workspace sign-in gate and no management data"
+  ],
+  "mutations": "No administrative record, role, account, MFA factor or setting changed",
+  "earlierMfaSubmission": "Unknown earlier automation outcome remains historical; not relabelled as a successful verification",
+  "SEC-AAL-01": "Still open; live UI AAL2 does not verify direct-database assurance enforcement",
+  "status": "Bounded Master Admin read-only walkthrough complete; cumulative five-role coverage complete within recorded limits, usability acceptance still changes requested",
+  "B123": "open",
+  "subjects": "paused",
+  "updatedAt": "2026-11-01T16:58:17.807890+00:00",
+  "observations": [
+    {
+      "id": "UX-SCHOOL-01",
+      "status": "Existing open finding confirmed in Master Admin consumer; not a new independent defect",
+      "detail": "Historical class names mix with active classes without a separate history group/status in the Master Admin teacher disclosure; analytics picker includes retained historical classes. English programme selection also leaves unrelated Physics class choices visible in the Master Admin class picker; this remains a usability/filter-scope issue, not demonstrated unauthorized data access."
+    }
+  ],
+  "normalMfaVerified": true,
+  "logoutVerified": true,
+  "signedOutGateVerified": true,
+  "visualInspection": {
+    "surface": "Master Admin Home",
+    "viewport": [
+      1348,
+      936
+    ],
+    "text": "normal",
+    "screenshotInspected": true,
+    "imageRetained": false
+  },
+  "unexercised": [
+    "No privileged account/role/membership/school/erasure/restore mutation",
+    "No MFA enrollment/removal/recovery/revocation or direct-database AAL2 test",
+    "No new learner attempt/submission/feedback/grade or content approval",
+    "No new physical mobile/assistive-technology/browser-chrome zoom/degraded-network verification"
+  ],
+  "schemaVersion": "haiedu-master-admin-usability-followup-v1",
+  "previousEvidence": "docs/evidence/live-role-usability-review-20261101.json",
+  "previousEvidenceBlob": "2e075aac730fe0f85e4d056d14c43469cd13c4b1",
+  "completedRoleCount": 5,
+  "scope": "Cumulative bounded normal-desktop read walkthrough coverage; not all-role usability acceptance or complete security certification",
+  "administrativeWrites": false,
+  "runtimeChanged": false,
+  "configurationChanged": false,
+  "ownerAcceptance": false,
+  "sixUsabilityFindingsFixed": false,
+  "AUTH-REVIEW-01": "Access blocker cleared by owner normal MFA; earlier automation outcome remains unknown historical evidence",
+  "credentialValuesReadOrStored": false,
+  "auditRowsExportedOrStored": false
+}
