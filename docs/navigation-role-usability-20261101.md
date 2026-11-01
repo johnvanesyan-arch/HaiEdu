@@ -72,6 +72,8 @@ SEC-AAL-01 remains a separate open finding: reviewed direct-database examples `s
 
 ## Owner usability review
 
+The six findings from the later read walkthrough now have [deployed shared corrections and bounded verification](usability-six-corrections-20261101.md). Start the focused recheck with writing breadcrumbs, Resource unit order, cancelled-work disclosure, readable Mastery requirements and both admin class/history views. The original read receipts remain historical; a fresh controlled Resource delivery run is unexecuted because its queued run was cancelled and the available restart routes are blocked. All final personal usability decisions remain yours.
+
 After verified delivery, use your ordinary permitted accounts and normal devices. Accepted demo setup, content/audio and all45 capability mappings are preserved. A paired teacher/learner exercise needs an ordinary permitted learner: the accepted demo class’s sole QA enrollment was intentionally ended. Do not restore the protected QA identity or infer submission success from an empty class.
 
 | Role | Review route | Acceptance observation |
