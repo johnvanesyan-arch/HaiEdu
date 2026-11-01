@@ -32,6 +32,19 @@ for(const kind of ['legacy','points'])for(const width of [390,768,1280])test(`Ma
  await capture(page,'readable-mastery-requirements-'+kind+'-'+width,metrics);assert.deepEqual(await wordBreaks(page,'.course-mode-card .student-rule-details'),[]);assert.deepEqual(errors,[]);
 });
 
+for(const width of [390,768,1280])test(`focused Mastery player retains full words and thresholds at ${width}px/200%`,async t=>{
+ const {page,errors}=await fixture(t,{width,active:false,player:true,contextIndex:1,configuredRules:'points'});
+ await page.locator('#learningPlayer form').waitFor();
+ await page.evaluate(()=>document.documentElement.style.fontSize='32px');
+ const rule=page.locator('#learningPlayer .assessment-skill-rules');
+ await rule.locator('summary').focus();await page.keyboard.press('Enter');
+ await expect(rule.locator('li')).toHaveText('Կիրառական խնդիրների լուծում և արդյունքների համեմատություն՝ 2');
+ assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),'');
+ const metrics={words:await wordBreaks(page,'#learningPlayer .student-rule-details'),overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)};
+ await capture(page,'readable-mastery-player-points-'+width,metrics);
+ assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
+});
+
 async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
@@ -58,9 +71,9 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
         if(body.action==='open')return {data:{version:'written-work-v1',task:{definition:{title:'My view',locale:'en',prompt:'Explain your view with reasons.',minWords:40,maxWords:70,assistance:{spellcheck:false},criteria:[{key:'meaning',label:'Meaning',descriptors:['Developing','Clear']}] }},work:{state:'changes_requested'},draftText:'My draft.',submissions:[{version:1,text:'My first response.',wordCount:3,submittedAt:'2026-10-01T10:00:00Z',reviews:[{decision:'return',feedback:'Give one more reason.',createdAt:'2026-10-02T10:00:00Z'}]}]}};
       }
       if(name==='start-learning-session') return { data:{ session:{ id:'player-fixture', mode:body.mode } } };
-      if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ plannedQuestionCount:8, hintsAllowed:true } } };
+      if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ ...(configuredRules==='points'?dashboard().modes.mastery_check:{}), plannedQuestionCount:8, hintsAllowed:configuredRules!=='points' } } };
       if(name==='get-chapter-mastery-lifecycle') return {data:{lifecycleState:'not_started',attemptsUsed:0}};
-      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
+      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
   }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
@@ -76,7 +89,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
     } catch { return route.fulfill({status:404,body:'Not found'}); }
   });
   const selected=contexts[contextIndex];
-  const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:'practice'}:{}) });
+  const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:configuredRules==='points'?'mastery_check':'practice'}:{}) });
   await page.goto(origin+'/'+route+'?'+params);
   if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-nav-list a[href*="view=courses"]')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
   else await page.waitForFunction(()=>document.querySelector('.amp-nav-list a[href*="view=courses"]') && !document.body.dataset.roleRouting);

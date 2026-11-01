@@ -148,6 +148,7 @@ body:is([data-haiedu-student],[data-forest-surface])[data-student-utility=access
 }
 
 /* Nested rules must retain word space at narrow widths and enlarged text. */
-body[data-haiedu-student] .course-mode-card { padding: clamp(12px, 3vw, 1.5rem); }
+body[data-haiedu-student] #courseContent :is(.course-mode-card,.student-task-card) { padding: clamp(12px, 3vw, 1.5rem); }
 body[data-haiedu-student] .student-rule-details { padding: clamp(8px, 2vw, .75rem) clamp(8px, 2vw, 1rem); }
 body[data-haiedu-student] .assessment-skill-rules ul { padding-inline-start: 1rem; }
+body[data-haiedu-student] #courseContent .student-rule-details { width: 100%; min-width: 0; box-sizing: border-box; }

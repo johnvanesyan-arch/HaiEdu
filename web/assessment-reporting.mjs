@@ -31,7 +31,7 @@ export function assessmentRules(policy, skills = []) {
   if(points){
     const partial=policy.responseTypes.some(type=>['typed_fields','matching'].includes(type));
     const ordering=policy.responseTypes.includes('ordering');
-    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Դաշտերի ու զույգերի համար միավորը ճիշտ մասերի քանակն է՝ բաժանած բոլոր մասերի քանակին։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
+    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Դաշտերի ու զույգերի համար միավորը հաշվվում է ըստ ճիշտ լրացված մասերի բաժնի։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
   }
   return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
 }
