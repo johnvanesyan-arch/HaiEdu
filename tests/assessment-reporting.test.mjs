@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {assessmentRules,assessmentResultMarkup,assessmentScopeText,assessmentScopeMarkup,assessmentGroupMarkup} from '../web/assessment-reporting.mjs';
+import {assessmentRules,assessmentSkillRules,assessmentResultMarkup,assessmentScopeText,assessmentScopeMarkup,assessmentGroupMarkup} from '../web/assessment-reporting.mjs';
 import {renderEvidenceGroups} from '../web/analytics-provenance.mjs';
 
 const manifest=JSON.parse(readFileSync('docs/content/english-7-unit-01-release-configuration.json','utf8'));
@@ -14,6 +14,26 @@ test('English rules present the approved four-domain 5/15/4/4 scope without clai
  for(const expected of ['Բառապաշար՝ 5 հարց','Քերականություն՝ 15 հարց','Ընթերցանություն՝ 4 հարց','Ունկնդրում՝ 4 հարց','80%',assessmentScopeText])assert.ok(html.includes(expected));
  assert.doesNotMatch(html,/ENG7|CEFR|Գրավոր խոսք|Բանավոր խոսք/);
  assert.deepEqual(groups.map(g=>g.possible),[5,15,4,4]);
+});
+
+test('v2/v3/v4 and legacy skill requirements use governed names and retain every exact minimum once',()=>{
+ const ids=Object.keys(policy.minimumCorrectBySkill);
+ const skills=ids.map((id,i)=>({id,code:'INTERNAL-'+i,nameHy:i===0?'<img>Meaning':`Readable skill ${i+1}`}));
+ const original=structuredClone(policy);
+ for(const schemaVersion of ['haiedu-assessment-policy-v2','haiedu-assessment-policy-v3','haiedu-assessment-policy-v4']){
+  const html=assessmentRules({...policy,schemaVersion},skills);
+  assert.match(html,/<details class="assessment-skill-rules"><summary>/);
+  assert.doesNotMatch(html,/INTERNAL-|<img>|assessment-skill-rules" open/);
+  for(const[id,n]of Object.entries(policy.minimumCorrectBySkill)){
+   const i=ids.indexOf(id),label=i===0?'&lt;img&gt;Meaning':`Readable skill ${i+1}`;
+   assert.equal(html.split(`<li>${label}՝ ${n}</li>`).length-1,1);
+  }
+ }
+ const legacy=assessmentSkillRules({...policy,schemaVersion:'haiedu-assessment-policy-v1'},skills);
+ assert.match(legacy,/&lt;img&gt;Meaning/);assert.doesNotMatch(legacy,/INTERNAL-/);
+ const absent=assessmentSkillRules({minimumCorrectBySkill:{unknown:0}},[]);
+ assert.match(absent,/Հմտություն 1՝ 0/);assert.doesNotMatch(absent,/unknown|undefined/);
+ assert.deepEqual(policy,original);
 });
 
 test('display follows the saved pass decision even when rounded percentage looks sufficient',()=>{

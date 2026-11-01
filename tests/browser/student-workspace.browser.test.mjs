@@ -18,13 +18,26 @@ let browser;
 before(async () => { browser = await chromium.launch({ headless:true }); });
 after(async () => { await browser?.close(); });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null }={}) {
+for(const width of [390,768,1280])test(`Mastery requirements use readable names once at ${width}px with enlarged text`,async t=>{
+ const {page,errors}=await fixture(t,{width,active:false,contextIndex:1,configuredRules:true});
+ await page.evaluate(()=>document.documentElement.style.fontSize='32px');
+ const rule=page.locator('.assessment-skill-rules');await expect(rule).toHaveCount(1);
+ assert.equal(await rule.getAttribute('open'),null);
+ await rule.locator('summary').focus();await page.keyboard.press('Enter');
+ await expect(rule.locator('li')).toHaveText('Կիրառական խնդիրների լուծում և արդյունքների համեմատություն՝ 2');
+ const text=await page.locator('#courseContent').innerText();assert.doesNotMatch(text.split('Հմտություններ')[0],/MATH8|minimumCorrectBySkill/);
+ const metrics=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,clipped:[...document.querySelectorAll('.assessment-skill-rules li,.assessment-skill-rules summary')].filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));
+ assert.equal(metrics.overflow,false,JSON.stringify(metrics));assert.deepEqual(metrics.clipped,[]);
+ await capture(page,'readable-mastery-requirements-'+width,metrics);assert.deepEqual(errors,[]);
+});
+
+async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory }) => {
+  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules }) => {
     window.__calls=[]; window.__listeners=[];
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
@@ -32,7 +45,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       activeSession:active ? { id:'active-fixture', mode:'practice', answered:5, planned:8, policyBindingId:'fixture-binding' } : null,
       skills:Array.from({length:manySkills?10:1},(_,n)=>({ id:selected.subjectProgramId+'-'+n, code:(selected.extensionKey?'PHY7-U01-':'MATH8-U02-')+'S'+String(n+1).padStart(2,'0'), nameHy:selected.extensionKey?'Ֆիզիկական երևույթների ճանաչում և համեմատություն':'Կիրառական խնդիրների լուծում և արդյունքների համեմատություն', ready:n<3, mastery:{ percent:75-n, evidenceCount:8 } })),
       history:reportingHistory??[{ id:'completed-fixture', mode:'practice', correct:6, answered:8, percent:75, completedAt:'2026-10-01T19:47:56.15+00:00', curriculumReleaseId:selected.curriculumReleaseId, blueprintId:'fixture-blueprint', policyBindingId:'fixture-binding', modelId:'fixture-model', runtimeBuildId:'fixture-runtime', academicMasteryPolicyId:'fixture-lifecycle', provenanceStatus:'registered_legacy' }],
-      modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode => [mode, { status:'configured', questions:8, hintsAllowed:mode==='practice'||mode==='chapter_review', minimumPercent:mode==='mastery_check'?80:null, minimumCorrectBySkill:{} }]))
+      modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode => [mode, { status:'configured', questions:8, hintsAllowed:mode==='practice'||mode==='chapter_review', minimumPercent:mode==='mastery_check'?80:null, minimumCorrectBySkill:configuredRules&&mode==='mastery_check'?{[selected.subjectProgramId+'-0']:2}:{} }]))
     });
     window.__client={ auth:{ getSession:async()=>({ data:{ session:{ user:{ id:studentId } } } }), getUser:async()=>({ data:{ user:{ id:studentId } } }), onAuthStateChange:fn=>window.__listeners.push(fn) }, from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'student',account_status:'active'}})})})}), functions:{ invoke:async(name,{body})=>{
       window.__calls.push({name,body});
@@ -49,7 +62,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory });
+  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.origin==='https://esm.sh') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });

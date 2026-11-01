@@ -15,6 +15,10 @@ export function assessmentGroupMarkup(group,{points=false,showPercent=true}={}) 
   const value=unassessed?'Չի գնահատվել':!assessed?'Տվյալը հասանելի չէ':`${points?Number(numerator.toFixed(2)):numerator}/${denominator}${points?' միավոր':''}${showPercent&&group.percent!=null?` · ${esc(group.percent)}%`:''}`;
   return `<p class="assessment-group" data-assessment-state="${state}">${esc(group.label)}՝ ${value}${group.determinesPass?' · հաշվի է առնվում ստուգարքը հանձնելիս':''}</p>`;
 }
+export function assessmentSkillRules(policy, skills = []) {
+  const minima=Object.entries(policy?.minimumCorrectBySkill ?? {}).map(([id,n],index)=>`<li>${esc(skills.find(s=>s.id===id)?.nameHy || `Հմտություն ${index+1}`)}՝ ${esc(n)}</li>`).join('');
+  return minima ? `<details class="assessment-skill-rules"><summary>Ըստ հմտության պահանջները</summary><p>Յուրաքանչյուր հմտության համար ամբողջությամբ ճիշտ պատասխանների նվազագույն քանակը՝</p><ul>${minima}</ul></details>` : '';
+}
 export function assessmentRules(policy, skills = []) {
   const points=['haiedu-assessment-policy-v3','haiedu-assessment-policy-v4'].includes(policy?.schemaVersion);
   if (!points && policy?.schemaVersion !== 'haiedu-assessment-policy-v2') return '';
@@ -23,13 +27,13 @@ export function assessmentRules(policy, skills = []) {
   const groups=(policy.reportingGroups ?? []).map(g=>`${esc(g.label)}՝ ${g.skillIds.reduce((n,id)=>n+(counts[id] ?? 0),0)} հարց`).join(' · ');
   if (policy.minimumPercent == null) return groups ? `<p>${groups}</p>${assessmentScopeMarkup()}` : '';
   const total=policy.scoredSkillIds.reduce((n,id)=>n+counts[id],0);
-  const minima=Object.entries(policy.minimumCorrectBySkill).map(([id,n])=>`${esc(skills.find(s=>s.id===id)?.code ?? '')}՝ ${n}`).join(' · ');
+  const skillRules=assessmentSkillRules(policy,skills);
   if(points){
     const partial=policy.responseTypes.some(type=>['typed_fields','matching'].includes(type));
     const ordering=policy.responseTypes.includes('ordering');
-    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Մուտքագրվող պատասխանների և համապատասխանեցումների համար միավորը հաշվվում է ըստ ճիշտ լրացված մասերի բաժնի։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Հմտությունների ամբողջությամբ ճիշտ պատասխանների նվազագույն քանակները՝ ${minima}։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${assessmentScopeMarkup()}`;
+    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Մուտքագրվող պատասխանների և համապատասխանեցումների համար միավորը հաշվվում է ըստ ճիշտ լրացված մասերի բաժնի։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
   }
-  return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p><p>Հմտությունների նվազագույն ճիշտ պատասխանները՝ ${minima}։</p>${assessmentScopeMarkup()}`;
+  return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
 }
 export function assessmentResultMarkup(result,{includeScope=true}={}) {
   const scope=includeScope?assessmentScopeMarkup():'';

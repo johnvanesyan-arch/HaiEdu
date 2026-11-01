@@ -74,9 +74,10 @@ function fixture(role = 'school_admin') {
   };
 }
 
-async function invoke({ role = 'school_admin', active = true } = {}) {
+async function invoke({ role = 'school_admin', active = true, mutate = () => {} } = {}) {
   let handler;
   const rows = fixture(role);
+  mutate(rows);
   const admin = {
     auth: {
       getUser: async () => ({ data: { user: { id: actor } }, error: null }),
@@ -125,6 +126,20 @@ test('inactive live sessions are rejected before protected data is queried', asy
   const result = await invoke({ active: false });
   assert.equal(result.status, 403);
   assert.equal(result.body.error, 'account_or_session_inactive');
+});
+
+test('archived class names and identity survive teacher detail without inflating active overview counts',async()=>{
+ const result=await invoke({mutate:rows=>{
+  rows.classes.push({...rows.classes[0],id:'archived-class',name:'Named historical 7B',is_active:false});
+  rows.teacher_assignments.push({...rows.teacher_assignments[0],id:'old-assignment',class_id:'archived-class'});
+ }});
+ assert.equal(result.status,200);
+ const school=result.body.schools[0];assert.equal(school.counts.classes,1);
+ const historical=school.teachers[0].classes.find(c=>c.id==='archived-class');
+ assert.equal(historical.name,'Named historical 7B');assert.equal(historical.isActive,false);
+ assert.equal(historical.assignmentId,'old-assignment');assert.equal(historical.academicYear,'2026–2027');
+ assert.equal(school.teachers[0].classes.find(c=>c.id===klass).isActive,true);
+ assert.equal(result.body.schools.some(s=>s.id===schoolB),false);
 });
 
 test('teacher hierarchy is confined to the sanctioned teacher drill-down', () => {

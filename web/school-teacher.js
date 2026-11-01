@@ -1,3 +1,4 @@
+import {appendClassHistory} from './class-history.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -85,7 +86,11 @@ function renderTeacher(school, teacher) {
     empty.textContent = "Այս ուսուցչին ակտիվ դասարան դեռ չի վերագրվել։";
     classes.append(empty);
   } else {
-    for (const klass of teacher.classes) classes.append(classAccordion(klass));
+    appendClassHistory(classes, teacher.classes, rows => {
+      const group=document.createElement('div');
+      for(const klass of rows)group.append(classAccordion(klass));
+      return group;
+    });
   }
   $("loading").classList.add("hidden");
   $("denied").classList.add("hidden");

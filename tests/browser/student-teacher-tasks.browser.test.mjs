@@ -30,6 +30,36 @@ async function surface(t,{definition=textDefinition,width=1280,large=false,home=
 test('My Work opens a custom task in place, preserves dirty work across access refresh and reloads its saved draft',async t=>{
  const f=await surface(t,{home:true}),p=f.page;await p.locator('[data-task-open]').click();await expect(p).toHaveURL(/view=work.*teacherTask=/);await p.locator('[data-task-text]').fill('My private draft <img src=x onerror=alert(1)>');await p.evaluate(()=>window.dispatchEvent(new CustomEvent('haiedu-course-access',{detail:{accessStatus:'available',contexts:[{...window.__scope,className:'Renamed class'}]}})));await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.locator('[data-task-save]').click();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.reload();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);assert.equal(await p.locator('[data-task-body] img').count(),0);const invalid=new URL(p.url());invalid.searchParams.set('taskUnit','71000000-0000-4000-8000-000000009999');await p.goto(invalid.href);await expect(p.locator('[data-task-read-retry]')).toBeVisible();await p.locator('[data-task-back]').click();await p.locator('[data-task-open]').click();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.locator('[data-task-text]').fill('Save this private draft before logout.');const logout=await p.evaluate(async()=>{const jobs=[];const allowed=document.dispatchEvent(new CustomEvent('haiedu-before-signout',{cancelable:true,detail:{waitUntil:p=>jobs.push(p)}}));return{allowed,results:await Promise.all(jobs)};});assert.equal(logout.allowed,true);assert.deepEqual(logout.results,[true]);assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);assert.deepEqual(f.errors,[]);
 });
+
+test('cancelled history stays folded while later pages expose current work and preserve exact open/deep-link identity',async t=>{
+ const f=await surface(t),p=f.page;
+ await p.evaluate(async()=>{
+  const invoke=window.__client.functions.invoke;
+  const data=(await invoke('manage-teacher-task-student-work',{body:{action:'inbox',context:{},payload:{offset:0}}})).data;
+  const current=data.assignments[0],cancelled={...current,id:'71000000-0000-4000-8000-000000009998',title:'Historical cancelled task',cancelled:true};
+  window.__currentTask=current;
+  window.__client.functions.invoke=async(name,request)=>{
+   if(name==='manage-teacher-task-student-work'&&request.body.action==='inbox')return{data:{...data,assignments:request.body.payload.offset===0?[cancelled]:[current],hasMore:request.body.payload.offset===0,nextOffset:request.body.payload.offset+50}};
+   if(name==='manage-teacher-task-student-work'&&request.body.action==='open'&&request.body.payload.id===cancelled.id){
+    const opened=await invoke(name,{body:{...request.body,payload:{id:current.id}}});
+    return{data:{...opened.data,assignment:{...opened.data.assignment,id:cancelled.id,cancelled:true}}};
+   }
+   return invoke(name,request);
+  };
+ });
+ await p.locator('[data-task-refresh]').click();await expect(p.locator('[data-task-history] summary')).toContainText('Չեղարկված աշխատանքներ · 1');
+ assert.equal(await p.locator('[data-task-history]').getAttribute('open'),null);
+ await expect(p.locator('[data-task-more]')).toBeVisible();await p.locator('[data-task-more]').click();
+ await expect(p.locator('[data-task-body]>article [data-task-open]')).toBeVisible();
+ assert.equal(await p.locator('[data-task-history]').getAttribute('open'),null);
+ await p.locator('[data-task-body]>article [data-task-open]').click();await expect(p.locator('[data-task-text]')).toBeVisible();
+ const current=await p.evaluate(()=>window.__currentTask),url=new URL(p.url());
+ assert.equal(url.searchParams.get('teacherTask'),current.id);assert.equal(url.searchParams.get('taskUnit'),current.context.unitId);
+ await p.locator('[data-task-back]').click();await p.locator('[data-task-history] summary').focus();await p.keyboard.press('Enter');
+ await p.locator('[data-task-history] [data-task-open]').click();await expect(p.locator('[data-task-body]')).toContainText('Հանձնարարումը չեղարկված է');
+ await expect(p.locator('[data-task-save]')).toHaveCount(0);assert.equal(new URL(p.url()).searchParams.get('teacherTask'),'71000000-0000-4000-8000-000000009998');
+ assert.deepEqual(f.errors,[]);
+});
 test('unknown submit locks controls/navigation/logout and retries the same immutable receipt once',async t=>{
  const f=await surface(t),p=f.page;await p.locator('[data-task-open]').click();await p.locator('[data-task-text]').fill('A submitted answer.');f.drop('save');f.drop('submit');await p.locator('[data-task-submit]').click();await expect(p.locator('[data-task-retry]')).toBeVisible();await expect(p.locator('[data-task-text]')).toBeDisabled();await p.locator('a[href="/outside"]').click();await expect(p).toHaveURL(/harness/);assert.equal(await p.evaluate(()=>document.dispatchEvent(new CustomEvent('haiedu-before-signout',{cancelable:true}))),false);
  await p.locator('[data-task-retry]').click();await p.waitForFunction(()=>window.__calls.filter(c=>c.body.action==='submit').length===1);await p.locator('[data-task-retry]').click();await expect(p.locator('[data-task-status]')).toContainText('Ներկայացումը հաստատված է');await expect(p.locator('[data-task-text]')).toHaveCount(0);const sends=await p.evaluate(()=>window.__calls.filter(c=>c.body.action==='submit'));assert.equal(sends.length,2);assert.deepEqual(sends[0],sends[1]);assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,1);await p.reload();await expect(p.locator('[data-task-body]')).toContainText('Ստուգման է սպասում');assert.deepEqual(f.errors,[]);

@@ -139,7 +139,9 @@ Deno.serve(async (req) => {
     const programmeById = new Map((programmeResult.data ?? []).map((programme: any) => [programme.id, programme]));
     const gradeById = new Map((gradeResult.data ?? []).map((grade: any) => [grade.id, grade]));
     const yearById = new Map((yearResult.data ?? []).map((year: any) => [year.id, year]));
-    const classById = new Map(classes.map((klass: any) => [klass.id, klass]));
+    // Historical assignments still reference archived classes. Keep the full
+    // school-scoped lookup while the overview counts continue to use active classes.
+    const classById = new Map((classResult.data ?? []).map((klass: any) => [klass.id, klass]));
 
     const personSummary = (personId: string) => {
       const profile: any = profileById.get(personId);
@@ -173,6 +175,7 @@ Deno.serve(async (req) => {
           id: assignment.class_id,
           assignmentId: assignment.id,
           name: klass?.name || "Անվանում չունեցող դասարան",
+          isActive: Boolean(klass?.is_active),
           subject: subject ? { id: subject.id, code: subject.code, name: subject.name_hy || subject.name_en || subject.code } : null,
           grade: grade ? { id: grade.id, number: grade.grade_number, label: grade.label_hy || grade.label_en || `${grade.grade_number}` } : null,
           academicYear: year?.label || klass?.academic_year || null,

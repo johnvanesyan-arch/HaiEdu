@@ -1,6 +1,6 @@
 import {resourceHref} from './resource-navigation.mjs';
 import {courseHero,modeIcon,readinessBadge,skillEvidence} from './student-course-presentation.mjs';
-import {assessmentRules,assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
+import {assessmentRules,assessmentSkillRules,assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { readLearningSelection, sameContext, sameCourse, contextHref, studentHomeHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
@@ -78,9 +78,8 @@ async function load() {
       const masteryBlocked = mode === 'mastery_check' && !active && !retryReady && !masteryReady;
       const final = ['mastery_passed','mastery_failed_final'].includes(state);
       const disabled = Boolean(active) || !enabled || locked || done || (mode === 'mastery_check' && (masteryBlocked || final));
-      const minima = Object.entries(spec?.minimumCorrectBySkill ?? {}).map(([id,min]) => `${data.skills.find(s=>s.id===id)?.code ?? id}: ${min}`).join(' · ');
-      const rules = assessmentRules(spec,data.skills);
-      return `<article class="card course-mode-card">${modeIcon(mode)}<h3>${label}</h3><p>${enabled ? `${spec.questions} հարց${spec.hintsAllowed ? ' · օգնությունը հասանելի է' : ' · առանց օգնության'}` : 'Կանոնները դեռ չեն ակտիվացվել։'}</p>${spec?.minimumPercent != null ? `<p>Անցողիկ շեմ՝ ${spec.minimumPercent}%</p><p class="subtle">Հմտությունների նվազագույն ճիշտ պատասխաններ՝ ${esc(minima)}</p>` : ''}${rules ? `<details class="student-rule-details" open><summary>Կանոններ և գնահատում</summary>${rules}</details>` : ''}${done ? '<p>Ախտորոշիչն ավարտված է։</p>' : locked ? '<p>Նախ ավարտեք այս գլխի ախտորոշիչը։</p>' : masteryBlocked && mode==='mastery_check' ? '<p>Նախ ամրապնդեք պահանջվող հմտությունները կամ ավարտեք պարտադիր կրկնությունը։</p>' : ''}${disabled ? '' : `<a class="button-link" aria-label="Բացել՝ ${label}" href="${esc(action(mode,spec))}">Բացել</a>`}</article>`;
+      const rules = assessmentRules(spec,data.skills) || assessmentSkillRules(spec,data.skills);
+      return `<article class="card course-mode-card">${modeIcon(mode)}<h3>${label}</h3><p>${enabled ? `${spec.questions} հարց${spec.hintsAllowed ? ' · օգնությունը հասանելի է' : ' · առանց օգնության'}` : 'Կանոնները դեռ չեն ակտիվացվել։'}</p>${spec?.minimumPercent != null ? `<p>Անցողիկ շեմ՝ ${spec.minimumPercent}%</p>` : ''}${rules ? `<details class="student-rule-details" open><summary>Կանոններ և գնահատում</summary>${rules}</details>` : ''}${done ? '<p>Ախտորոշիչն ավարտված է։</p>' : locked ? '<p>Նախ ավարտեք այս գլխի ախտորոշիչը։</p>' : masteryBlocked && mode==='mastery_check' ? '<p>Նախ ամրապնդեք պահանջվող հմտությունները կամ ավարտեք պարտադիր կրկնությունը։</p>' : ''}${disabled ? '' : `<a class="button-link" aria-label="Բացել՝ ${label}" href="${esc(action(mode,spec))}">Բացել</a>`}</article>`;
     }).join('');
     const skills = data.skills.map(s=>`<tr><td>${esc(s.code)} — ${esc(s.nameHy)}</td><td>${skillEvidence(s)}</td><td>${s.requiredForReadiness === false ? 'Չի սահմանափակում ստուգարքի հասանելիությունը · ' : ''}${readinessBadge(s)}</td>${tab === 'progress' ? '' : `<td>${data.practiceAccess.unlocked && ['configured','registered_legacy'].includes(data.modes.practice.status) ? `<a href="${esc(action('practice',data.modes.practice,s.id))}">Վարժանք</a>` : ''}</td>`}</tr>`).join('');
     const legacyCourse = registeredExtensionHref(context.extensionKey,'course',context);
