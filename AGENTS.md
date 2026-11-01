@@ -6,6 +6,12 @@ If a platform-wide change has an exception or cannot safely apply to an affected
 
 For Edge Function shared-code changes, identify every importing function, compare its deployed bundle with the intended repository source, deploy every affected stale runtime dependency, and read back the deployed files. A merged shared helper does not update already-deployed functions. Record affected consumers, verification, and any exceptions in the deployment evidence.
 
+## Capability and evidence honesty — owner instruction, 2026-11-01
+
+If a requested action cannot be performed or its result cannot be verified, tell John promptly and plainly. State the specific blocker, what was actually completed, and what access or input is missing. Do not imply that blocked, planned or merely attempted work is being performed or has succeeded.
+
+Distinguish fresh signed-in live checks, isolated or simulated tests, visual inspection, reused source-equivalent evidence and unexercised steps. Never invent owner acceptance, silently waive an approval gate, or describe technical verification as a personal usability decision. Continue independently authorized work while making the remaining limitation explicit.
+
 ## Documentation status policy
 
 `docs/project-status.md` is the authoritative current delivery/gate register. Update it with dated evidence when status changes, then align affected roadmap, backlog, README and API summaries in the same change. The roadmap defines scope/sequence; dated sprint reports preserve historical evidence. Do not interpret technical or sequencing closure as SME approval, empirical calibration or production release. Sync Notion summaries to the merged source commit while preserving native child pages. API descriptions must match the relevant implementation and state the scope of any deployed verification.
