@@ -2,6 +2,8 @@
 
 2026-11-01 Asia/Yerevan · functional PR378 deployed, required native/visual/public verification complete within the scope below. B.12.3/B.12 remain open and subjects stay paused. This is a subject-neutral shared presentation correction, followed by the existing role usability review. It does not introduce a new educational workflow or routing migration.
 
+**Subsequent live review — 2026-11-01:** [Signed-in observations and limits](live-role-usability-review-20261101.md) record changes requested: four completed read-only role walkthroughs, an incomplete MFA-confirmed Master Admin console review and six open P2 findings. The technical delivery below is retained as its original evidence, not relabelled owner acceptance. B.12.3/B.12 remain open; subjects stay paused.
+
 ## Reproductions and correction
 
 UX-NAV-02: the staff rail stays232px wide while text grows to200%, cropping or breaking its Armenian labels. Four fixed student bottom-menu columns squeeze long words into letters and create a tall fixed panel. The earlier inspected Practice-history images preserve both reproductions.

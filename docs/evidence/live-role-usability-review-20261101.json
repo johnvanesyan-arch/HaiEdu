@@ -1,0 +1,199 @@
+{
+  "source": "88c959dfca55907ee770101a9979d453d235a714",
+  "date": "2026-11-01 Asia/Yerevan",
+  "teacher": {
+    "session": "User supplied credentials through browserAuth; positive live teacher dashboard observed. No secret values read or retained.",
+    "accountScope": "Existing supplied test teacher and synthetic test learner/work examples; not a claim of ordinary-school/device certification.",
+    "freshLiveReadChecks": [
+      "Home and active-class list",
+      "Class/unit/release context and browser Back/Forward",
+      "Learner skill drawer with separate assessment/Practice/history meanings",
+      "Custom-task blank form with independent PDF source and link response",
+      "Cancelled unsaved-navigation confirmation preserves local form",
+      "Defaults restored; unsaved form left without saving",
+      "Review All filter reveals existing reviewed work despite empty pending queue",
+      "Existing rubric, sent feedback and returned/revised history read without editing",
+      "All filter/context restored after returning from detail",
+      "Resource library explicit class/unit picker and PDF-first blank editor",
+      "Teacher account role, correct Home return and visible logout",
+      "Teacher UI denied School Admin/Master Admin/Reviewer workspaces",
+      "Confirmed logout to public landing page",
+      "Account logout completes to public landing; no saved draft/material/grade/account mutation"
+    ],
+    "persistentWrites": "None: no material/draft saved, no publication/delivery/invitation, no submission, no feedback or grade change.",
+    "unexercised": [
+      "New assignment delivery/student response round trip",
+      "PDF upload/download/new link submission",
+      "New feedback publication or revision request",
+      "Network-failure/account-revocation injection",
+      "Physical mobile/assistive technology tests"
+    ],
+    "observations": [
+      {
+        "id": "candidate breadcrumb defect",
+        "reproduction": "Writing assignment view shows the correct page heading while breadcrumb says Գլխավոր, persisting through loaded draft/form screens. Review view correctly says Գրավորի ստուգում.",
+        "status": "Observed; not fixed or accepted."
+      },
+      {
+        "id": "candidate unit-picker ordering",
+        "reproduction": "Resource library visible English options appear Unit2,Unit3,Unit1; Physics options are not in chapter sequence. Other teacher unit selectors show1,2,3.",
+        "status": "Observed ordering; implementation/root cause not yet confirmed."
+      }
+    ]
+  },
+  "otherRoles": {
+    "student": "Fresh signed-in read review completed within recorded limits; no new submission/grade",
+    "schoolAdmin": "Fresh signed-in read review completed within recorded limits; defects found",
+    "masterAdmin": "Actual AAL1 gate/account verified; protected console could not be verified after secure MFA request. No bypass or settings change",
+    "contentReviewer": "Independent Content Reviewer signed-in read review completed, account/logout confirmed"
+  },
+  "ownerAcceptance": false,
+  "B123": "open",
+  "subjects": "paused",
+  "updatedAtUTC": "2026-11-01T16:07:47.291752+00:00",
+  "student": {
+    "session": "Secure browserAuth; positive live supplied test student verified; no credentials retained.",
+    "freshLiveReadChecks": [
+      "Student Home English7 and Physics7 enrollments",
+      "My Work and writing subject card opens tab=writing",
+      "Existing reviewed version2 82word synthetic response,8/12 and feedback match Teacher view",
+      "Progress assessment/Practice/history and unknown-state distinctions",
+      "Assessment overview only; no attempts or answers created",
+      "Assigned existing PDF browser download event succeeded; assigned status unchanged",
+      "Optional Library correctly separates self-study from teacher assignments; same unit context selected",
+      "Account shows correct Student role and returns to Student Home",
+      "Logout confirmed public landing"
+    ],
+    "downloadProof": {
+      "browserDownloadEvent": true,
+      "uiReadyMessage": true,
+      "completionStatusUnchanged": true,
+      "localFileInspection": "Unavailable from shell path; no PDF header/hash/content claim."
+    },
+    "persistentWrites": "No new learning attempts/answers/submissions/grades/enrollments/deliveries.",
+    "observations": [
+      {
+        "id": "cancelled-custom-tasks",
+        "reproduction": "Four cancelled custom tasks expanded ahead of current assignment; other cancellation histories collapsed.",
+        "status": "Observed, not fixed."
+      },
+      {
+        "id": "mastery-rule-readability",
+        "reproduction": "Mastery overview prominently repeats raw skill identifiers/minima.",
+        "status": "Observed, not fixed."
+      }
+    ],
+    "unexercised": [
+      "New writing submission/delivery/feedback",
+      "Physical mobile/assistive technology",
+      "Network failure/revocation injection"
+    ]
+  },
+  "schoolAdmin": {
+    "session": "User supplied secure browserAuth; School Admin workspace positively verified",
+    "freshLiveReadChecks": [
+      "Single permitted Test School selector",
+      "Overview active year/teacher/class/invitation counts",
+      "Analytics separates source/rules, actual/unknown and saved passes",
+      "English subject and exact class filters load100% participation 1/1",
+      "Academic-year controls inspected without opening/archiving a year",
+      "Teacher permissions correctly distinguish English-only and English+Physics assignments",
+      "Teacher detail opened via exact school/membership context",
+      "Teacher detail has exact school/membership and correct English learner disclosure",
+      "Invitation blank form explains school/subject scope; no invitation sent",
+      "Pending invitation empty state clear",
+      "Account shows School Admin role and school-admin Home destination",
+      "Account logout confirmed public landing"
+    ],
+    "persistentWrites": "No year, membership, invitation, assignment or profile changes",
+    "observations": [
+      {
+        "id": "school-archived-class-clutter",
+        "reproduction": "Analytics class selector includes many archived QA classrooms. Teacher roster expands archived classes inline before current Physics classes; former teachers themselves are collapsed.",
+        "status": "Observed; not fixed or accepted"
+      },
+      {
+        "id": "school-classroom-names",
+        "reproduction": "Teacher detail shows many historical classroom rows as Անվանում չունեցող դասարան, despite teacher roster showing their historical names. Current named classes and learner disclosure work.",
+        "status": "Confirmed visible discrepancy; root cause not yet inspected; not fixed."
+      }
+    ],
+    "unexercised": [
+      "No invitation/year/membership/class/grade mutation",
+      "No new ordinary-school paired task run",
+      "No physical mobile/assistive technology or failure/revocation injection"
+    ]
+  },
+  "masterAdmin": {
+    "session": "Secure browserAuth submitted and live Master Admin MFA-gated workspace observed",
+    "freshLiveReadChecks": [
+      "Master Admin console blocks management data and actions pending MFA",
+      "Normal security verification link opens admin-security",
+      "Two existing verified factors and recovery guidance visible at AAL1",
+      "Secure MFA submission returns submitted; no visible success/error. Fresh canonical-origin tab redirects to still-gated admin console",
+      "Non-secret browser validation reports valid six-digit format; no code value inspected",
+      "Own account shows active Master admin and correct admin Home link",
+      "Normal own-account logout confirmed public landing"
+    ],
+    "persistentWrites": "No administrative action or security setting change",
+    "status": "AAL1 gate/account/logout verified. Protected console review incomplete after unknown MFA outcome",
+    "unexercised": [
+      "MFA-confirmed console schools/accounts/archive/audit",
+      "Live privileged writes, revocation and recovery",
+      "Open SEC-AAL-01 database assurance coverage"
+    ]
+  },
+  "contentReviewer": {
+    "session": "User supplied secure browserAuth; live account page confirms active independent Content Reviewer role (content_admin), not Master Admin",
+    "freshLiveReadChecks": [
+      "Content Home navigation and clear review-resume/priority empty state",
+      "Review queue zero-items empty state and queue/search controls",
+      "Question bank opened for existing item read",
+      "Existing accepted Practice listening item ENG7-U01-L01 v2 opens; no duplicate approval needed",
+      "Current QA pass/content approval/SME pending/release distinction visible",
+      "Return to selected bank preserves English Unit1 and exact ENG7-U01-L01 search; one displayed item",
+      "Own account shows Content Reviewer role and correct content Home destination",
+      "Logout confirmed public landing"
+    ],
+    "persistentWrites": "No edit, QA run, content approval or publication",
+    "status": "Fresh signed-in read review completed within limits; no edit/approval/publication",
+    "unexercised": [
+      "No content edits/QA executions/approval/publication",
+      "No fresh reviewer MFA approval operation",
+      "No physical mobile/assistive technology or revoked-account injection"
+    ]
+  },
+  "reviewViewport": {
+    "width": 1348,
+    "height": 936,
+    "rootFont": "16px",
+    "note": "Current shared browser viewport; no physical mobile/browser zoom/assistive-technology test"
+  },
+  "verdict": "changes_requested; no final owner acceptance",
+  "schemaVersion": "haiedu-live-role-usability-review-v1",
+  "instructionPersistence": {
+    "path": "AGENTS.md",
+    "scope": "project guidance",
+    "globalCoreChanged": false,
+    "crossChatMemoryClaimed": false
+  },
+  "evidenceLimits": [
+    "Fresh normal-text desktop read walkthroughs only; prior native/SQL/Edge/production evidence is separately reused",
+    "Master Admin protected console incomplete; secure submission is not MFA verification",
+    "No authored learning/content/institutional/security configuration changed; normal auth and browser-local navigation metadata may update",
+    "No credentials, OTPs, session values, contact details, learner response text or downloaded files retained in this receipt"
+  ],
+  "findingIds": [
+    "UX-NAV-03",
+    "UX-ORDER-01",
+    "UX-HISTORY-01",
+    "UX-RULES-01",
+    "UX-SCHOOL-01",
+    "UX-SCHOOL-02",
+    "AUTH-REVIEW-01"
+  ],
+  "runtimeChanged": false,
+  "productionBehaviorChanged": false,
+  "reviewedRoleCount": 4,
+  "masterAdminProtectedConsoleVerified": false
+}
