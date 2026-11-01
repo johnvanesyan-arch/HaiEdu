@@ -1,7 +1,7 @@
 {
   "schemaVersion": "haiedu-six-usability-corrections-v1",
   "date": "2026-11-01 Asia/Yerevan",
-  "status": "Six corrections technically delivered and verified within the recorded source/native/hosted-read scope; owner usability acceptance and a fresh Resource delivery rerun remain open.",
+  "status": "Six corrections technically deployed/source verified; new-source326 delivery checks plus independent130-read/54-isolation follow-up verified. Original Resource run remains failed; root cause unconfirmed and owner usability acceptance remain open.",
   "functionalPr": 382,
   "functionalSource": "5b682de58df009fadcf4f37fe58e05d96da02bf4",
   "functionalMain": "0e541d82cfda680421add90d08b06d18a11e873b",
@@ -320,7 +320,8 @@
       "retry": "Connector returned403: This workflow run cannot be retried",
       "browser": "Saved permission/managed policy denies GitHub browser origin; no bypass attempted",
       "existingEvidence": "Retain successful41191092937 (327/327 +54before+54after) and bounded41233488681 (91/91 +54), only for unchanged service branches/authorization; no fresh delivery claim."
-    }
+    },
+    "subsequentSourceProof": "docs/evidence/usability-six-corrections-hosted-20261102.json"
   },
   "preservation": {
     "b123": "open",
@@ -366,7 +367,20 @@
       "package-lock.json": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7",
       "vercel.json": "3c305e4cc7b2f564851a4f8260065de40776742f"
     },
-    "limits": "Migration index filename alignment, isolated fixture visibility assertions and docs/evidence only. Required closure PR/main gates and final release metadata must be read back before source-verified Notion synchronization; functional runtime evidence is reused only after exact subtree/source comparison."
+    "limits": "Migration index filename alignment, isolated fixture visibility assertions and docs/evidence only. Required closure PR/main gates and final release metadata must be read back before source-verified Notion synchronization; functional runtime evidence is reused only after exact subtree/source comparison.",
+    "indexedFilenameAligned": true,
+    "pr": 383,
+    "source": "3ccbae3958706c68c28b2e6f38266c39cdf97075",
+    "verification": {
+      "pr": 41346082656,
+      "main": 41346786000,
+      "all5": "passed",
+      "unitIntegration": 1641,
+      "native": 391,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
   },
   "preservedFiles": {
     "AGENTS.md": {
