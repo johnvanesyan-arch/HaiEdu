@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "haiedu-teacher-analytics-colours-v1",
+  "date": "2026-11-02 Asia/Yerevan",
+  "scope": "Shared teacher matrix semantic colours and enlarged class heading/filter layout",
+  "defects": [
+    "UX-ANALYTICS-03",
+    "UX-CLASS-LAYOUT-01"
+  ],
+  "baseline": {
+    "main": "50e7345a7117df4eb736f0d511c3c37deafac7e3",
+    "tree": "c9ebbf71b23b675fa139e56a903e43fd86d1182d",
+    "servedAssets": [
+      {
+        "path": "web/teacher.css",
+        "status": 200,
+        "bytes": 24504,
+        "sourceSha256": "d047802a27764fc01ab255483d708ebce8fea6e892728fce9ea4d5bada4609c7",
+        "servedSha256": "d047802a27764fc01ab255483d708ebce8fea6e892728fce9ea4d5bada4609c7",
+        "matchesBaseline": true
+      },
+      {
+        "path": "web/staff-forest.css",
+        "status": 200,
+        "bytes": 14504,
+        "sourceSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+        "servedSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+        "matchesBaseline": true
+      }
+    ]
+  },
+  "implementation": {
+    "pr": 387,
+    "head": "23c4b48be318a78121f0337ae99fa66f90466342",
+    "main": "5b4f1f04c94d33b514b3650ad2b1302e64455f79",
+    "tree": "e80928190b85c752e2fafa39cb661498981cc097",
+    "runtimeFiles": [
+      "web/teacher.css"
+    ],
+    "nativeTest": "tests/browser/teacher-skill-evidence.browser.test.mjs",
+    "scoringOrApiChanges": false
+  },
+  "cause": "Forest primary-action normal/hover rules outranked matrix data controls. The class heading and fixed/intrinsic filter layout also broke under enlarged text.",
+  "correction": {
+    "semanticControls": "Transparent surface, zero border and inherited governed cell colour; hover strengthens underline",
+    "heading": "Responsive wrapping flex group preserves complete heading/back-link words",
+    "filters": "Text-relative wrapping/grid, width-bounded labels/selects, internal table scrolling retained",
+    "fixture": "Explicit API-null for unavailable recentAccuracy; no production accuracy-renderer change"
+  },
+  "classificationContract": {
+    "serverReported": true,
+    "combinedEstimates": false,
+    "thresholdsChanged": false,
+    "wholeUnitPassRequiredForBand": false,
+    "neutralKinds": [
+      "insufficient",
+      "unavailable",
+      "none"
+    ],
+    "otherKinds": [
+      "classified secure",
+      "classified developing",
+      "classified needs_support",
+      "separate"
+    ],
+    "countersUnchanged": true
+  },
+  "verification": {
+    "local": {
+      "focusedPassed": 10,
+      "failed": 0,
+      "typecheck": "passed",
+      "nodeSyntax": "passed",
+      "qaGraphs": 11,
+      "diff": "passed",
+      "nativeChromium": "unavailable locally; current native execution is GitHub CI"
+    },
+    "pr": {
+      "run": 41448039304,
+      "source": "23c4b48be318a78121f0337ae99fa66f90466342",
+      "allFive": "success",
+      "unitPassed": 1649,
+      "nativePassed": 393,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "main": {
+      "run": 41449602048,
+      "source": "5b4f1f04c94d33b514b3650ad2b1302e64455f79",
+      "allFive": "success",
+      "unitPassed": 1649,
+      "nativePassed": 393,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "nativeCases": {
+      "newCases": 2,
+      "evidenceStates": 7,
+      "distinctSurfaces": 5,
+      "widths": [
+        1280,
+        768,
+        390
+      ],
+      "textSizes": [
+        "100%",
+        "200% computed root text"
+      ],
+      "normalHoverFocus": true,
+      "intactHeadingWords": true,
+      "documentAndControlBounds": true,
+      "targetMinimumPx": 44,
+      "classifiedWithoutPassedUnit": true,
+      "sparsePattern": {
+        "learners": 1,
+        "neutralSkills": 12,
+        "interactiveSparseSkills": 4,
+        "passed": 0,
+        "support": 0,
+        "requiredReview": 0,
+        "noActivity": 0
+      },
+      "learningWrites": 0
+    },
+    "currentGuardedRead": {
+      "run": 41449601588,
+      "source": "5b4f1f04c94d33b514b3650ad2b1302e64455f79",
+      "status": "passed",
+      "readPassed": 324,
+      "isolationPassed": 54,
+      "ownSessionsClosed204": 12,
+      "artifact": 13144393850,
+      "artifactSha256": "e05e4d25916aa834075a0b1c700208bcff9c2d527afcba239d2d603cd92b3e21",
+      "learningWrites": 0,
+      "scope": "Existing automatic protected-fixture Chapter VI read, preserving Chapters I–VI; no manual dispatch or concurrency change",
+      "limits": [
+        "No learning sessions, answers or exposures are created.",
+        "Read-only switching is not a completed learner attempt or specialist approval.",
+        "Chapters I, II, III, IV and V are preserved; no student answers are submitted.",
+        "Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation.",
+        "Not a signed-in teacher colour walkthrough or exact screenshot data certification."
+      ]
+    }
+  },
+  "visual": {
+    "artifact": 13143721435,
+    "run": 41448039304,
+    "zipBytes": 36894229,
+    "zipSha256": "ef92bd7c40a08f54406d7ce2cff8365c34f0bd01c4f2e78976c4e773ee304187",
+    "images": [
+      {
+        "name": "teacher-matrix-colours-1280-large.png",
+        "bytes": 649855,
+        "sha256": "c68383ebe62ccc483d6be998678e604ae84ddb634f277f81460121c34dd25bd0",
+        "width": 1280,
+        "height": 8789,
+        "persistedPath": null
+      },
+      {
+        "name": "teacher-matrix-colours-1280-normal.png",
+        "bytes": 282310,
+        "sha256": "42675b5450daae0c4aa4259d561688b6f6ccbf78976a8caad3a5bf5d99a40b5f",
+        "width": 1280,
+        "height": 3228,
+        "persistedPath": "docs/evidence/teacher-analytics-colours-1280-normal-20261102.png"
+      },
+      {
+        "name": "teacher-matrix-colours-390-large.png",
+        "bytes": 660185,
+        "sha256": "838ddfd348cd7f79f23585fb0480ecd1526292ce301889f1443ef0361e26d1e1",
+        "width": 390,
+        "height": 14118,
+        "persistedPath": null
+      },
+      {
+        "name": "teacher-matrix-colours-390-normal.png",
+        "bytes": 261299,
+        "sha256": "908767ad30982bb42d7818cd62f33504b70e4de8958da888edd047083fcb6535",
+        "width": 390,
+        "height": 5375,
+        "persistedPath": "docs/evidence/teacher-analytics-colours-390-normal-20261102.png"
+      },
+      {
+        "name": "teacher-matrix-colours-768-large.png",
+        "bytes": 603256,
+        "sha256": "21a48d91452a2f181718f6d8c3a3a96e519d1cd074c5646908bc0309bbc13a92",
+        "width": 768,
+        "height": 9320,
+        "persistedPath": "docs/evidence/teacher-analytics-colours-768-large-20261102.png"
+      },
+      {
+        "name": "teacher-matrix-colours-768-normal.png",
+        "bytes": 278260,
+        "sha256": "aaaa88e24484e6d648739c8437a60cc94818e6ef3cb7e3ef725580a3798c6528",
+        "width": 768,
+        "height": 4181,
+        "persistedPath": null
+      }
+    ],
+    "inspection": {
+      "fresh": 4,
+      "reusedExactImages": 2,
+      "total": 6,
+      "allWidthsMatch": true,
+      "headingWords": "pass",
+      "colours": "pass",
+      "filterDocumentBounds": "pass"
+    },
+    "meaning": "Actual-page isolated synthetic fixtures; computed text enlargement, not physical-device/owner acceptance"
+  },
+  "initialReceipts": [
+    {
+      "run": 41443919949,
+      "source": "cdd5ac4cb977192ba0ebe3cf9cb45ef8de2b06e2",
+      "unitPassed": 1649,
+      "nativePassed": 393,
+      "allFive": "success",
+      "visualGap": "Colour fix passed; images exposed class heading letter wrapping at200% text",
+      "artifact": 13142710442,
+      "zipSha256": "87b80d5948637d08147f4a7872e4cee0beb5f3d3c3c0597b609f124e5d9a811c"
+    },
+    {
+      "run": 41446345264,
+      "source": "ae25d6fb355a59e28937501ac94bcc1d923fc8ae",
+      "unitPassed": 1649,
+      "nativePassed": 393,
+      "allFive": "success",
+      "visualGap": "Heading fixed; captured widths1366/882 exceeded1280/768 at200%; filter bounds subsequently corrected",
+      "artifact": 13142658402,
+      "zipSha256": "31eb61352361583a8ad7b384fedd1ddd99c9f789b885569e60db4598bd0f1e8f"
+    }
+  ],
+  "deployment": {
+    "id": "dpl_6Bdpu2GSLWdYm8f3PG3cbbazYoRr",
+    "state": "READY",
+    "canonical": "https://www.haiedu.am",
+    "commit": "5b4f1f04c94d33b514b3650ad2b1302e64455f79",
+    "served": [
+      {
+        "path": "release.json",
+        "httpStatus": 200,
+        "commit": "5b4f1f04c94d33b514b3650ad2b1302e64455f79"
+      },
+      {
+        "path": "teacher.css",
+        "httpStatus": 200,
+        "bytes": 25277,
+        "sourceSha256": "2b574763ef06ccba7935f55301c7550efe7aa01743f65c56d2a89e79c67c3cc7",
+        "servedSha256": "2b574763ef06ccba7935f55301c7550efe7aa01743f65c56d2a89e79c67c3cc7",
+        "matches": true
+      },
+      {
+        "path": "staff-forest.css",
+        "httpStatus": 200,
+        "bytes": 14504,
+        "sourceSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+        "servedSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+        "matches": true
+      }
+    ],
+    "releaseControl": "Observed READY candidate while canonical still served50e7345 during main CI; canonical advanced after all-five pass. Prior independent31Oct Production/Blocking configuration evidence reused; no settings changed."
+  },
+  "consumerAudit": [
+    {
+      "consumer": "Institutional teacher matrices",
+      "coverage": "Shared root/helper across all subjects, grades, classes, units and years"
+    },
+    {
+      "consumer": "Legacy owner-only teacher matrices",
+      "coverage": "Same root; existing single reported bands retained"
+    },
+    {
+      "consumer": "Teacher drawer/roster/support/Home/review",
+      "coverage": "Controller/helper source unchanged; original direct-detail and stale actor/class checks retained"
+    },
+    {
+      "consumer": "School/Master oversight",
+      "coverage": "Separate evidence articles/text, not these matrix buttons; API/renderer/permissions unchanged"
+    },
+    {
+      "consumer": "Student/Content Reviewer/static preview",
+      "coverage": "Different views; source/authority unchanged"
+    }
+  ],
+  "unchangedRoots": [
+    {
+      "path": ".env.example",
+      "sha": "592f40953fa1255c745341db6752d5b03dde9488"
+    },
+    {
+      "path": ".github",
+      "sha": "930dcaabef31afef96f84b9db5850ccbdc12ce5a"
+    },
+    {
+      "path": ".gitignore",
+      "sha": "4ab8ee1cace081e4360dad20d429748023fc8470"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "8989a49e18a9bb3982bc4616127b370be15998dc"
+    },
+    {
+      "path": "backend",
+      "sha": "40c475b4c64b9fe49361e927ca132aadeef104a2"
+    },
+    {
+      "path": "e2e",
+      "sha": "61535703565835ee5328e684f40e482c92c82682"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7"
+    },
+    {
+      "path": "package.json",
+      "sha": "0d4e80bc9050619c3cf66b3ea00982dc820df1de"
+    },
+    {
+      "path": "playwright.config.js",
+      "sha": "94cd2d5ead5734e8a0e25be83280a07f64184768"
+    },
+    {
+      "path": "scripts",
+      "sha": "0e9e22378717f54509ebcdcecaa8e6bc75e7e247"
+    },
+    {
+      "path": "supabase",
+      "sha": "f54886db38b91d5a55ff74a9addc1db8b1680d80"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38"
+    },
+    {
+      "path": "vercel.json",
+      "sha": "3c305e4cc7b2f564851a4f8260065de40776742f"
+    }
+  ],
+  "reusedEvidence": {
+    "apiIsolation": {
+      "source": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+      "run": 41428954766,
+      "readChecks": 191,
+      "isolationChecks": 54,
+      "reason": "Supabase, scripts, packages and runtime API contracts remain exact; only teacher CSS and native fixture assertions changed",
+      "limits": "Reused backend/isolation evidence, not new signed-in teacher colour acceptance"
+    }
+  },
+  "userContext": {
+    "input": "Owner-supplied Physics7 Chapter1 image; raw user image not republished",
+    "cloudBrowser": "signed out; no credentials requested or auth attempted",
+    "exactClassReleaseUrl": "requested; not supplied",
+    "exactLearnerCountsVerified": false,
+    "unrelatedProgrammeFixtures": "not substituted as evidence for image context",
+    "liveReadContext": "Project ACTIVE_HEALTHY; existing advisors read unchanged. Four dashboardHTTP200 log events in11:35–11:55UTC are an uncorrelated bounded sample, not proof of this screenshot's record."
+  },
+  "preserved": {
+    "applicationJavaScript": true,
+    "backendAndSql": true,
+    "authRlsGrants": true,
+    "modelsThresholdsPassDecisions": true,
+    "learnerRecordsAndEnrollments": true,
+    "contentAudioAndApprovals": true,
+    "domainPlanProjectAndQueues": true,
+    "sourceAndFixtureReleaseGuards": true,
+    "all45Mappings": true,
+    "B123": "open",
+    "B12": "open",
+    "subjects": "paused",
+    "ownerAcceptance": false,
+    "separateGates": [
+      "SEC-AAL-01",
+      "SEC-AAL-02",
+      "URL-P1",
+      "MASTER-P2"
+    ],
+    "originalQaTransportCause": "separate and unconfirmed"
+  },
+  "closure": "Verified functional delivery. Documentation closure uses normal PR/main gates, then source-verified existing Notion synchronization; exact screenshot data verification still needs the page URL."
+}
