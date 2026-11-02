@@ -1,0 +1,978 @@
+{
+  "schemaVersion": "haiedu-qa-read-diagnostics-delivery-v1",
+  "date": "2026-11-02 Asia/Yerevan",
+  "scope": "Shared Node QA read diagnostics; original request, isolation and cleanup contracts retained",
+  "baseline": "dcd91922c2923f85bdbd92fb61c91f405549710d",
+  "implementation": {
+    "pr": 385,
+    "head": "02f46e2d1401c5f77f5c48ac4994533e570684e9",
+    "main": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+    "tree": "314c1fb771f782ae64aa092eb9d09370105e832c",
+    "files": 23
+  },
+  "controls": {
+    "timeoutMs": 20000,
+    "automaticRetries": 0,
+    "isolationChecks": 54,
+    "legacyReadMode": "full; no readMode override",
+    "originalMethodsBodiesPredicatesAndDenials": true,
+    "ownSessionCleanup": true,
+    "foreignIdentityScan": true,
+    "newTelemetryDestinations": 0,
+    "unchangedMutex": "sprint-14-isolation-qa"
+  },
+  "consumers": [
+    "scripts/chapter-ii-pilot-read-acceptance.mjs",
+    "scripts/chapter-iii-pilot-read-acceptance.mjs",
+    "scripts/chapter-iv-pilot-read-acceptance.mjs",
+    "scripts/chapter-v-pilot-read-acceptance.mjs",
+    "scripts/chapter-vi-pilot-read-acceptance.mjs",
+    "scripts/english-unit1-pilot-read-acceptance.mjs",
+    "scripts/english-unit2-pilot-read-acceptance.mjs",
+    "scripts/english-unit3-pilot-read-acceptance.mjs",
+    "scripts/resource-assignments-acceptance.mjs",
+    "scripts/sprint-14-actions.mjs",
+    "scripts/supplementary-resources-acceptance.mjs",
+    "scripts/teacher-feedback-acceptance.mjs"
+  ],
+  "constantOnlyConsumers": [
+    "tests/live/english-unit1-learner-acceptance.mjs",
+    "tests/live/english-unit2-learner-acceptance.mjs"
+  ],
+  "standalone": "scripts/sprint-14-isolation.mjs",
+  "validation": {
+    "localFocused": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "localFull": {
+      "passed": 1649,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "typecheck": "passed",
+    "nodeSyntax": "passed",
+    "browserDependencyGraphs": 11,
+    "diffCheck": "passed",
+    "pr": {
+      "run": 41427747912,
+      "source": "02f46e2d1401c5f77f5c48ac4994533e570684e9",
+      "allFiveRequiredJobs": "success",
+      "unitPassed": 1649,
+      "nativePassed": 391,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "main": {
+      "run": 41428954690,
+      "source": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+      "allFiveRequiredJobs": "success",
+      "unitPassed": 1649,
+      "nativePassed": 391,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "initialCiReceipts": [
+    {
+      "run": 41425426290,
+      "source": "296e4cd4c8c7f3a91bd1d90811b2bc049dc7a515",
+      "unitPassed": 1649,
+      "nativePassed": 390,
+      "nativeFailed": 1,
+      "status": "failed",
+      "cause": "Immediate School Admin disclosure attribute read after keyboard action",
+      "disposition": "Auto-wait for the same exact native disclosure state across School Admin, Master Admin and student Home; no dropped assertion or sleep"
+    },
+    {
+      "run": 41426460942,
+      "source": "383dc7032547c79aca5a505b346222d992319399",
+      "unitPassed": 1649,
+      "nativePassed": 390,
+      "nativeFailed": 1,
+      "status": "failed",
+      "cause": "Home browser test lacked the newly used expect import",
+      "disposition": "Test-only import fixed; required CI passed on corrected source; failed receipts retained"
+    }
+  ],
+  "deployment": {
+    "id": "dpl_CWiwJfLw4eerL7YSYcsofMV7i64x",
+    "state": "READY",
+    "canonical": "https://www.haiedu.am",
+    "verifiedPublicCommit": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+    "publicReleaseHttpStatus": 200,
+    "candidateReadyBeforeAlias": "Observed canonical still at dcd919 while main checks were pending; canonical advanced only after all-five main pass",
+    "persistentProductionBlockingSetting": "Reuse independent 2026-10-31 setting evidence; no setting change",
+    "runtimeRoots": [
+      {
+        "path": "web",
+        "sha": "abe69e4f8ac4bbcacb5311fb104708b825af56f5"
+      },
+      {
+        "path": "supabase",
+        "sha": "f54886db38b91d5a55ff74a9addc1db8b1680d80"
+      },
+      {
+        "path": "package.json",
+        "sha": "0d4e80bc9050619c3cf66b3ea00982dc820df1de"
+      },
+      {
+        "path": "package-lock.json",
+        "sha": "86f7fa42e13b461815c21ec4dff8bca1c09ad6b7"
+      },
+      {
+        "path": "vercel.json",
+        "sha": "3c305e4cc7b2f564851a4f8260065de40776742f"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha": "8989a49e18a9bb3982bc4616127b370be15998dc"
+      }
+    ],
+    "visualEvidence": "Reuse source-equivalent inspected functional/hosted images; fresh 391 native tests, not a fresh owner usability session"
+  },
+  "hostedRead": {
+    "run": 41428954766,
+    "attempt": 1,
+    "job": 125222381510,
+    "recipe": "Chapter V pilot read acceptance",
+    "status": "passed",
+    "checks": {
+      "passed": 191,
+      "failed": 0
+    },
+    "revision": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+    "frontendCommit": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+    "startedAt": "2026-11-02T10:35:20.249Z",
+    "finishedAt": "2026-11-02T10:40:57.620Z",
+    "artifact": {
+      "id": 13133788788,
+      "name": "chapter-v-pilot-read-acceptance",
+      "zipSha256": "2901bc9050ab9ebcf4a40f1d68aa4f73cf6533f876e231ce27b662b35f15aa7d",
+      "reportSha256": "463b0dfc17b6510ac96e2a0a72cd85f0ef09f67899ed73c05b1f67801c74c618"
+    },
+    "diagnosticShapeVerified": 54,
+    "uniqueTraceIds": 54,
+    "validProviderRequestIds": 54,
+    "failureKindsObserved": [],
+    "ownSessionLogoutHttp204": 12,
+    "browserDiagnostics": [
+      {
+        "side": "A",
+        "blockedRequestCount": 0,
+        "pageErrorCount": 0,
+        "blockedRequests": [],
+        "pageErrors": []
+      },
+      {
+        "side": "B",
+        "blockedRequestCount": 0,
+        "pageErrorCount": 0,
+        "blockedRequests": [],
+        "pageErrors": []
+      }
+    ],
+    "limitations": [
+      "No learning sessions, answers or exposures are created.",
+      "Read-only switching is not a completed learner attempt or specialist approval.",
+      "Chapters I, II, III and IV are preserved; no student answers are submitted.",
+      "Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation."
+    ]
+  },
+  "readIsolation": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "524a4ee5d8c45117410babeb82b0225ee31f1d16",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "diagnosticsVersion": "haiedu-qa-read-diagnostics-v1",
+    "startedAt": "2026-11-02T10:35:20.392Z",
+    "status": "passed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:20.393Z",
+          "timeoutMs": 20000,
+          "traceId": "d26f06b6a07949be8262504b6d4aaa46",
+          "headersAfterMs": 1589,
+          "providerRequestId": "01a19bd3-f009-7d4b-bcde-5ea385d18cfe",
+          "elapsedMs": 1591
+        }
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:21.984Z",
+          "timeoutMs": 20000,
+          "traceId": "158e65c3cd0d40b79cadb93468b982e4",
+          "headersAfterMs": 287,
+          "providerRequestId": "01a19bd3-f60b-71b8-907c-3d2ce6077283",
+          "elapsedMs": 288
+        }
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:22.272Z",
+          "timeoutMs": 20000,
+          "traceId": "46a2bcaee1234823b46c38311afc0dd3",
+          "headersAfterMs": 288,
+          "providerRequestId": "01a19bd3-f729-7ece-abb0-eb2531a1ee1c",
+          "elapsedMs": 290
+        }
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:22.562Z",
+          "timeoutMs": 20000,
+          "traceId": "473a113dc8f449ecb2e7d4ccd8073e02",
+          "headersAfterMs": 297,
+          "providerRequestId": "01a19bd3-f84b-7b11-82bd-b58b30bd7be6",
+          "elapsedMs": 298
+        }
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:22.860Z",
+          "timeoutMs": 20000,
+          "traceId": "48a0665db07144898e77f90652db4672",
+          "headersAfterMs": 280,
+          "providerRequestId": "01a19bd3-f976-7823-ab75-8ed54dbe39a2",
+          "elapsedMs": 281
+        }
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:23.141Z",
+          "timeoutMs": 20000,
+          "traceId": "080a5c7e7e914684b4c62bb72f7160fe",
+          "headersAfterMs": 279,
+          "providerRequestId": "01a19bd3-fa8e-78e3-baf5-fc5a1675f949",
+          "elapsedMs": 280
+        }
+      },
+      {
+        "label": "A: admin own school",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:23.421Z",
+          "timeoutMs": 20000,
+          "traceId": "c1d155570a64479dbc0652dc815f1a7e",
+          "headersAfterMs": 5015,
+          "providerRequestId": "01a19bd3-fba4-7105-bbbd-48b60e8e6117",
+          "elapsedMs": 5016
+        }
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:28.438Z",
+          "timeoutMs": 20000,
+          "traceId": "e01cbf3e088f40b78ffde92fa655e829",
+          "headersAfterMs": 2449,
+          "providerRequestId": "01a19bd4-0f3e-7568-bac3-eb2957120c43",
+          "elapsedMs": 2450
+        }
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:30.888Z",
+          "timeoutMs": 20000,
+          "traceId": "31ddc0cca5084df4b415e0e6ddb866b3",
+          "headersAfterMs": 4126,
+          "providerRequestId": "01a19bd4-18d2-7155-8498-b1c803d828f3",
+          "elapsedMs": 4127
+        }
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:35.015Z",
+          "timeoutMs": 20000,
+          "traceId": "e7253846656548ebbeefec8b47f93cae",
+          "headersAfterMs": 12521,
+          "providerRequestId": "01a19bd4-28f0-7fbc-8339-bb646191e34f",
+          "elapsedMs": 12526
+        }
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:47.543Z",
+          "timeoutMs": 20000,
+          "traceId": "c8312dee380f4e9c99699b328506e19d",
+          "headersAfterMs": 9496,
+          "providerRequestId": "01a19bd4-59df-71dd-97c3-d83cc01eccb2",
+          "elapsedMs": 9497
+        }
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:57.040Z",
+          "timeoutMs": 20000,
+          "traceId": "4434efa28e8d4a6cbad2be2e287dac65",
+          "headersAfterMs": 2298,
+          "providerRequestId": "01a19bd4-7ef8-7e52-865f-86409a6c9d42",
+          "elapsedMs": 2300
+        }
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:35:59.340Z",
+          "timeoutMs": 20000,
+          "traceId": "b384613735b64221b31a6e50dd3536eb",
+          "headersAfterMs": 2915,
+          "providerRequestId": "01a19bd4-87f6-745b-91ed-e01ace804e45",
+          "elapsedMs": 2916
+        }
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:02.256Z",
+          "timeoutMs": 20000,
+          "traceId": "eb815bace6ce4f7cad5bb783e7c1dcc5",
+          "headersAfterMs": 1171,
+          "providerRequestId": "01a19bd4-9358-7e52-881f-02b8ed90b3e7",
+          "elapsedMs": 1171
+        }
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:03.428Z",
+          "timeoutMs": 20000,
+          "traceId": "e395ace3041d458f92dfaad2e98e383b",
+          "headersAfterMs": 2578,
+          "providerRequestId": "01a19bd4-97eb-752a-99a0-6b76b0a2b90d",
+          "elapsedMs": 2579
+        }
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:06.006Z",
+          "timeoutMs": 20000,
+          "traceId": "6e94245be63c4cb9a636b2ea4796f5b6",
+          "headersAfterMs": 8398,
+          "providerRequestId": "01a19bd4-a1fe-7b67-9891-e24d35b78100",
+          "elapsedMs": 8401
+        }
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:14.408Z",
+          "timeoutMs": 20000,
+          "traceId": "9c2c111652d64c049698f16a05987f00",
+          "headersAfterMs": 6393,
+          "providerRequestId": "01a19bd4-c2d0-7e1c-bb20-a052e7a03fd8",
+          "elapsedMs": 6394
+        }
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:20.801Z",
+          "timeoutMs": 20000,
+          "traceId": "e134005213ac47d38a956b5f49b5b185",
+          "headersAfterMs": 1748,
+          "providerRequestId": "01a19bd4-dbc9-7a4e-9955-be5f30bc7716",
+          "elapsedMs": 1749
+        }
+      },
+      {
+        "label": "A: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:22.550Z",
+          "timeoutMs": 20000,
+          "traceId": "e92b27329cfc4b4cbf8a74d1cc20f03c",
+          "headersAfterMs": 1016,
+          "providerRequestId": "01a19bd4-e2a0-7c02-b804-e20036521a55",
+          "elapsedMs": 1016
+        }
+      },
+      {
+        "label": "A: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:23.566Z",
+          "timeoutMs": 20000,
+          "traceId": "bb770a67577d44058efc22be3d5e18a8",
+          "headersAfterMs": 3366,
+          "providerRequestId": "01a19bd4-e696-7180-8a70-21e8de519f38",
+          "elapsedMs": 3367
+        }
+      },
+      {
+        "label": "A: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:26.934Z",
+          "timeoutMs": 20000,
+          "traceId": "4d249b5ba8e44d1abf045f50294ac40e",
+          "headersAfterMs": 1130,
+          "providerRequestId": "01a19bd4-f3be-714d-b474-cafafade258f",
+          "elapsedMs": 1130
+        }
+      },
+      {
+        "label": "A: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:28.064Z",
+          "timeoutMs": 20000,
+          "traceId": "29e24431e6f04b2999c8ecacf22a6489",
+          "headersAfterMs": 1297,
+          "providerRequestId": "01a19bd4-f827-78b2-b7b0-728faf7ae7e7",
+          "elapsedMs": 1298
+        }
+      },
+      {
+        "label": "A: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:29.362Z",
+          "timeoutMs": 20000,
+          "traceId": "a2cbd75383594c26833b4bbafc13f3e9",
+          "headersAfterMs": 1101,
+          "providerRequestId": "01a19bd4-fd38-7e0b-ad2e-8aae64767155",
+          "elapsedMs": 1102
+        }
+      },
+      {
+        "label": "A: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:30.464Z",
+          "timeoutMs": 20000,
+          "traceId": "193321e17c2641c5a92d57cdfb3d1d64",
+          "headersAfterMs": 2070,
+          "providerRequestId": "01a19bd5-0188-75c3-9922-5486c0770c3c",
+          "elapsedMs": 2071
+        }
+      },
+      {
+        "label": "A: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:32.535Z",
+          "timeoutMs": 20000,
+          "traceId": "cb79b33e27ca4d54af7e20b823c3909b",
+          "headersAfterMs": 1787,
+          "providerRequestId": "01a19bd5-09a1-7288-85d1-b56606286e0b",
+          "elapsedMs": 1787
+        }
+      },
+      {
+        "label": "A: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:34.323Z",
+          "timeoutMs": 20000,
+          "traceId": "da26bd46f9594d2a8672f35522363e24",
+          "headersAfterMs": 801,
+          "providerRequestId": "01a19bd5-109a-7197-aa45-c1d5d6b34b29",
+          "elapsedMs": 801
+        }
+      },
+      {
+        "label": "A: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:35.124Z",
+          "timeoutMs": 20000,
+          "traceId": "1e9797969bc04aa6878a8d5a250e119c",
+          "headersAfterMs": 1693,
+          "providerRequestId": "01a19bd5-13be-77d3-8f5b-0383cddb5310",
+          "elapsedMs": 1694
+        }
+      },
+      {
+        "label": "A: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:36.818Z",
+          "timeoutMs": 20000,
+          "traceId": "3f868cfd9f6f4063b94ac07151ca348a",
+          "headersAfterMs": 645,
+          "providerRequestId": "01a19bd5-1a59-72e2-a0df-6cd4e9271cc8",
+          "elapsedMs": 645
+        }
+      },
+      {
+        "label": "A: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:37.463Z",
+          "timeoutMs": 20000,
+          "traceId": "54790e7008554298bbfbca32730c72f8",
+          "headersAfterMs": 1084,
+          "providerRequestId": "01a19bd5-1cdf-744e-9b71-7033e486c3e3",
+          "elapsedMs": 1084
+        }
+      },
+      {
+        "label": "A: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:38.548Z",
+          "timeoutMs": 20000,
+          "traceId": "c357580af4e443c09370f3b7e3107e56",
+          "headersAfterMs": 633,
+          "providerRequestId": "01a19bd5-211b-714d-b4d7-a95520e27fb3",
+          "elapsedMs": 634
+        }
+      },
+      {
+        "label": "A_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:39.182Z",
+          "timeoutMs": 20000,
+          "traceId": "2267ce217d304a71934bd0f41609e219",
+          "headersAfterMs": 534,
+          "providerRequestId": "01a19bd5-2396-7668-b8b0-01d76a51203c",
+          "elapsedMs": 535
+        }
+      },
+      {
+        "label": "A_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:39.717Z",
+          "timeoutMs": 20000,
+          "traceId": "d52382e417f84c5ab6355ac558432106",
+          "headersAfterMs": 209,
+          "providerRequestId": "01a19bd5-25ac-7eb7-acb4-c0b81694f1c7",
+          "elapsedMs": 209
+        }
+      },
+      {
+        "label": "A_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:39.926Z",
+          "timeoutMs": 20000,
+          "traceId": "8ea7809d8d8b41409747bc3272b0e366",
+          "headersAfterMs": 207,
+          "providerRequestId": "01a19bd5-267d-7a0e-9530-babef9cbe721",
+          "elapsedMs": 209
+        }
+      },
+      {
+        "label": "B: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:40.134Z",
+          "timeoutMs": 20000,
+          "traceId": "4273e0f5429f410db460564d95ae8774",
+          "headersAfterMs": 1552,
+          "providerRequestId": "01a19bd5-2754-7eea-b620-39104f65c3a6",
+          "elapsedMs": 1552
+        }
+      },
+      {
+        "label": "B: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:41.687Z",
+          "timeoutMs": 20000,
+          "traceId": "94c02b55a97a4e829f6adafd546c7bd0",
+          "headersAfterMs": 2201,
+          "providerRequestId": "01a19bd5-2d5e-7793-855a-8c1dd7bbe1a2",
+          "elapsedMs": 2201
+        }
+      },
+      {
+        "label": "B: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:43.888Z",
+          "timeoutMs": 20000,
+          "traceId": "3da4e2263e3548239c13fde71593a290",
+          "headersAfterMs": 1149,
+          "providerRequestId": "01a19bd5-35f7-726b-b79f-fc70bfc2a9bd",
+          "elapsedMs": 1150
+        }
+      },
+      {
+        "label": "B: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:45.038Z",
+          "timeoutMs": 20000,
+          "traceId": "a45a3acba9e44391bf0da0423ff0183d",
+          "headersAfterMs": 1291,
+          "providerRequestId": "01a19bd5-3a78-73d9-bc23-eee168854c7e",
+          "elapsedMs": 1292
+        }
+      },
+      {
+        "label": "B: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:46.330Z",
+          "timeoutMs": 20000,
+          "traceId": "33cd9d6275004d0aa9ed25cd3f8f8c82",
+          "headersAfterMs": 1147,
+          "providerRequestId": "01a19bd5-3f80-73d5-9c14-4bd3fae024b8",
+          "elapsedMs": 1147
+        }
+      },
+      {
+        "label": "B: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:47.477Z",
+          "timeoutMs": 20000,
+          "traceId": "a1dcf56b407f4eea9f49f478c0681d1a",
+          "headersAfterMs": 1873,
+          "providerRequestId": "01a19bd5-43fc-785e-aaef-80a3a1455492",
+          "elapsedMs": 1874
+        }
+      },
+      {
+        "label": "B: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:49.350Z",
+          "timeoutMs": 20000,
+          "traceId": "a2fa86977adb452da57e60f119b8ee93",
+          "headersAfterMs": 1843,
+          "providerRequestId": "01a19bd5-4b4d-71a6-bf91-a27a9b5e704a",
+          "elapsedMs": 1844
+        }
+      },
+      {
+        "label": "B: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:51.194Z",
+          "timeoutMs": 20000,
+          "traceId": "780c1f4580f34aeba0d6b02548ec4e22",
+          "headersAfterMs": 875,
+          "providerRequestId": "01a19bd5-5282-7668-a30a-b955701b6f96",
+          "elapsedMs": 875
+        }
+      },
+      {
+        "label": "B: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:52.069Z",
+          "timeoutMs": 20000,
+          "traceId": "0d4b19702d554ed2a0162d9a973153e8",
+          "headersAfterMs": 1854,
+          "providerRequestId": "01a19bd5-55ec-7c07-acc7-433bb967afbd",
+          "elapsedMs": 1855
+        }
+      },
+      {
+        "label": "B: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:53.924Z",
+          "timeoutMs": 20000,
+          "traceId": "c0112ce15c584611810c6ca95148dc86",
+          "headersAfterMs": 635,
+          "providerRequestId": "01a19bd5-5d2b-774a-b8b9-45bafcb07edb",
+          "elapsedMs": 635
+        }
+      },
+      {
+        "label": "B: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:54.559Z",
+          "timeoutMs": 20000,
+          "traceId": "e7d53e50e5db4ca1904c861a1221ca97",
+          "headersAfterMs": 674,
+          "providerRequestId": "01a19bd5-5fa6-7d6a-89c5-e3ac2be3c3bf",
+          "elapsedMs": 674
+        }
+      },
+      {
+        "label": "B: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:55.234Z",
+          "timeoutMs": 20000,
+          "traceId": "b55fb99a2e19491fba69c03a806d1352",
+          "headersAfterMs": 1371,
+          "providerRequestId": "01a19bd5-624b-7f8a-9182-a12772bbaf12",
+          "elapsedMs": 1372
+        }
+      },
+      {
+        "label": "B_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:56.605Z",
+          "timeoutMs": 20000,
+          "traceId": "b10679ce8399442d8a9fb6bd74201b11",
+          "headersAfterMs": 217,
+          "providerRequestId": "01a19bd5-67a5-721b-9d7d-a6a149bf1870",
+          "elapsedMs": 218
+        }
+      },
+      {
+        "label": "B_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:56.823Z",
+          "timeoutMs": 20000,
+          "traceId": "08c4e29bb2e941ee8da52b79ead4d0b5",
+          "headersAfterMs": 208,
+          "providerRequestId": "01a19bd5-687e-7369-9b0e-3a55f36bdbfd",
+          "elapsedMs": 208
+        }
+      },
+      {
+        "label": "B_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:57.031Z",
+          "timeoutMs": 20000,
+          "traceId": "c960a60555454b7a9e681fa424a0c2cb",
+          "headersAfterMs": 210,
+          "providerRequestId": "01a19bd5-694e-7fa6-bd84-441371cf8de0",
+          "elapsedMs": 211
+        }
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:57.242Z",
+          "timeoutMs": 20000,
+          "traceId": "ddb83e9441e34215a4824b85c36d79f4",
+          "headersAfterMs": 212,
+          "providerRequestId": "01a19bd5-6a22-763e-b056-a54c8fb5516b",
+          "elapsedMs": 212
+        }
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:57.455Z",
+          "timeoutMs": 20000,
+          "traceId": "5ef3cc2b071743d696a889c1c6c51068",
+          "headersAfterMs": 763,
+          "providerRequestId": "01a19bd5-6b3f-7042-b529-4352123e6b12",
+          "elapsedMs": 763
+        }
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:58.218Z",
+          "timeoutMs": 20000,
+          "traceId": "2145474d282b41c284a6167a8c75787c",
+          "headersAfterMs": 388,
+          "providerRequestId": "01a19bd5-6df1-7038-a5fd-522ef840514e",
+          "elapsedMs": 388
+        }
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:58.606Z",
+          "timeoutMs": 20000,
+          "traceId": "9ba9d6a1850f425792e1012cb4fb2f62",
+          "headersAfterMs": 223,
+          "providerRequestId": "01a19bd5-6f84-7121-a1d5-d302ac774554",
+          "elapsedMs": 223
+        }
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:58.829Z",
+          "timeoutMs": 20000,
+          "traceId": "291837467d374e43b0b3b6dcca95dc20",
+          "headersAfterMs": 218,
+          "providerRequestId": "01a19bd5-705b-7d69-b2b0-deb5c568f31e",
+          "elapsedMs": 218
+        }
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204,
+        "diagnostics": {
+          "startedAt": "2026-11-02T10:36:59.048Z",
+          "timeoutMs": 20000,
+          "traceId": "0dc74dca07984280bfe8ff1eceeb62aa",
+          "headersAfterMs": 197,
+          "providerRequestId": "01a19bd5-7131-7334-97d5-56b65a0c2155",
+          "elapsedMs": 197
+        }
+      }
+    ],
+    "finishedAt": "2026-11-02T10:36:59.245Z"
+  },
+  "providerCorrelation": {
+    "project": "xzyjvwiiibuarpotppid",
+    "windowStart": "2026-11-02T10:35:20Z",
+    "windowEnd": "2026-11-02T10:36:05Z",
+    "sample": {
+      "label": "A: teacher own class evidence",
+      "status": "passed",
+      "httpStatus": 200,
+      "diagnostics": {
+        "startedAt": "2026-11-02T10:35:35.015Z",
+        "timeoutMs": 20000,
+        "traceId": "e7253846656548ebbeefec8b47f93cae",
+        "headersAfterMs": 12521,
+        "providerRequestId": "01a19bd4-28f0-7fbc-8339-bb646191e34f",
+        "elapsedMs": 12526
+      }
+    },
+    "rows": [
+      {
+        "exact_trace_id_matches": 0,
+        "provider_request_id_matches": 1,
+        "source": "function_edge_logs"
+      },
+      {
+        "exact_trace_id_matches": 0,
+        "provider_request_id_matches": 1,
+        "source": "function_logs"
+      },
+      {
+        "exact_trace_id_matches": 74,
+        "provider_request_id_matches": 0,
+        "source": "edge_logs"
+      }
+    ],
+    "interpretation": "Exact W3C client trace ID appears in 74 API gateway records. Returned provider request ID matches one function-edge and one function-log record. The function records themselves did not expose that trace ID; do not claim a single record contained both identifiers.",
+    "selectedFields": "Source labels and aggregate counts only; no JWT, body, raw header or learner data"
+  },
+  "historicalIncident": {
+    "run": 41346785982,
+    "status": "failed",
+    "passed": 326,
+    "total": 327,
+    "failure": "Postflight A: teacher own class evidence HTTP 0",
+    "followup": {
+      "run": 41346786035,
+      "attempt": 2,
+      "status": "passed",
+      "checks": 130,
+      "isolation": 54
+    },
+    "refinement": "Previously observed 200/6577ms belonged to fixture teacher B, not the failed A request. No A dashboard invocation was found in the bounded 2026-11-01 20:42:40–20:46:00 UTC window. Old client error category and duration are absent.",
+    "rootCause": "unconfirmed; not reproduced in this fresh controlled read",
+    "noRetroactivePass": true,
+    "noFreePlanCauseEstablished": true
+  },
+  "outcome": "Diagnostic metadata and provider correlation verified. Live read passed; no live failure category exercised. Injected isolated tests verify classification/privacy. Original no-response cause remains open.",
+  "preserved": {
+    "application": true,
+    "supabaseSourceAndDeployment": true,
+    "auth": true,
+    "grants": true,
+    "contentAudioAndLearningEvidence": true,
+    "plansDomainsAndDeploymentProjects": true,
+    "queueAndReleaseGates": true,
+    "originalReadReceipts": true,
+    "ownerAcceptance": false,
+    "B123": "open",
+    "B12": "open",
+    "subjects": "paused",
+    "independentGates": [
+      "SEC-AAL-01",
+      "SEC-AAL-02",
+      "URL-P1",
+      "MASTER-P2"
+    ]
+  },
+  "closure": "This receipt records verified functional source. Documentation closure follows through normal PR/main gates; existing Notion map is updated only after exact merged documentation source verification."
+}
