@@ -1,44 +1,300 @@
 {
+  "schemaVersion": 1,
   "date": "2026-11-02 Asia/Yerevan",
-  "scope": "bounded read-only owner-supplied student chapter navigation review; current production source d556270",
-  "confirmed": {
-    "homePhysicsUnits": 6,
-    "currentCourseUnits": 6,
-    "legacyFutureCards": 5,
-    "legacyChapterLinks": 0,
-    "chapterI": "Diagnostic completed; Mastery readiness incomplete",
-    "chapterII": "existing unfinished Diagnostic",
-    "chaptersIIItoVI": "Diagnostic available; Practice/Mastery/Review correctly require own Diagnostic"
+  "status": "UX-STUDENT-CHAPTERS-01 technically delivered; UX-STUDENT-ACCESS-01 and owner usability acceptance open",
+  "scope": "Shared student chapter navigation and bounded Physics topic-layout correction; no backend, auth, scoring, content or activation change",
+  "preRelease": {
+    "source": "d556270e84fcce0e1677f8f03851dc310da645e8",
+    "confirmed": {
+      "homePhysicsUnits": 6,
+      "currentCourseUnits": 6,
+      "legacyFutureCards": 5,
+      "legacyChapterLinks": 0,
+      "chapterI": "Diagnostic completed; Mastery readiness incomplete",
+      "chapterII": "existing unfinished Diagnostic",
+      "chaptersIIItoVI": "Diagnostic available; Practice/Mastery/Review correctly require own Diagnostic"
+    }
   },
-  "initialCI": {
-    "run": 41470416028,
-    "nativePassed": 396,
-    "nativeFailed": 1,
-    "unitPassed": 1649,
-    "failure": "Practice chapter-selector mount absent; source inspection separately found URL context removal",
-    "disposition": "preserve failed run; corrected candidate requires fresh CI"
+  "delivery": {
+    "observedAt": "2026-11-02T16:35:06.892Z",
+    "functionalMain": "a4e7d7096df7f20607ce14ce95156754a4530eb1",
+    "reviewedHead": "7b694268d6d64e674c8b6efe2b781aee309ade51",
+    "tree": "34749df438e397bab4587e75f6809a532777009c",
+    "pr": 389,
+    "prCi": 41478454909,
+    "mainCi": 41480625003,
+    "deployment": {
+      "id": "dpl_DfYQz7j3auMYa39Rk8L9iJQKbJKM",
+      "domain": "www.haiedu.am",
+      "canonicalCommit": "a4e7d7096df7f20607ce14ce95156754a4530eb1",
+      "state": "READY",
+      "aliasVerified": true
+    },
+    "publicAssets": [
+      {
+        "path": "web/student-courses.js",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 4586,
+        "sha256": "56084fdde250eb65605baca8fabcdb908901917a1dc71ab1e7f184e33579b138"
+      },
+      {
+        "path": "web/physics-7.html",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 5811,
+        "sha256": "d480fb43d31015f4395a85afd0d2ddc7a82989b529af37d9b0300301c4313987"
+      },
+      {
+        "path": "web/assessment.html",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 6734,
+        "sha256": "b726c3f2539852d011efc972d78f02d6fa7a3daac8d0f24a8eb977404d41ac09"
+      },
+      {
+        "path": "web/student-shell.css",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 16199,
+        "sha256": "b84ef72373ba35539b00219ce576b26891bb44ca0b75306c216d69efca0f70c9"
+      },
+      {
+        "path": "web/practice.js",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 37992,
+        "sha256": "8c277fa8e3f3282a3d794486c87e6471acd2d5bbffd13a0189ef419f73c8edc2"
+      },
+      {
+        "path": "web/course.html",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 2656,
+        "sha256": "0d6f4af80e87eca0b5cf96b93c2da798152a00d7e9a1ae0284e640a0e2552706"
+      },
+      {
+        "path": "web/physics-7.css",
+        "status": 200,
+        "exactMatch": true,
+        "bytes": 5255,
+        "sha256": "48b8b75939dafa2137f2813538eaafeb6d9fbf32fb0cacd51269372a1d08a29d"
+      }
+    ],
+    "mainJobs": [
+      {
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "live": {
+      "chapterLinks": 6,
+      "futureCards": 0,
+      "legacySelectedChapter": "I",
+      "chapterVIOpenedFromLegacyList": true,
+      "chapterVIDiagnosticAvailable": true,
+      "chapterVIPracticeMasteryReviewRequireOwnDiagnostic": true,
+      "intentionalAssessmentStarts": 0,
+      "answers": 0,
+      "submissions": 0,
+      "practiceStartNotExercised": true
+    },
+    "availabilityObservation": {
+      "status": "open",
+      "id": "UX-STUDENT-ACCESS-01",
+      "message": "First live legacy topics navigation displayed unavailable chapter access; one reload recovered all six links.",
+      "gatewayWindow": {
+        "start": "2026-11-02T16:30:00Z",
+        "end": "2026-11-02T16:35:00Z",
+        "route": "get-student-classes",
+        "observed401": "2026-11-02T16:30:37.320000",
+        "subsequent200": true
+      },
+      "limits": "No browser request ID was captured; causal correlation and token/session cause remain unconfirmed. No authentication workaround or policy change."
+    },
+    "automaticRead": {
+      "run": 41480624659,
+      "status": "failed",
+      "topLevelPassed": 3,
+      "topLevelTotal": 4,
+      "isolationPassed": 51,
+      "isolationTotal": 54,
+      "unexpected401": 3,
+      "ownSessionsClosed": 6,
+      "cleanupHTTP": 204,
+      "artifact": 13159268489,
+      "artifactSha256": "a33e64f3bf9a75de11a91918e35a5dc405b603bc64f0505ee30b62a86a6570cc",
+      "disposition": "Retain failure; no fresh English Unit 3 acceptance or full hosted-read pass is claimed.",
+      "failedProbes": [
+        {
+          "label": "A: teacher cannot select other context",
+          "status": "failed",
+          "httpStatus": 401,
+          "diagnostics": {
+            "startedAt": "2026-11-02T16:30:40.433Z",
+            "timeoutMs": 20000,
+            "traceId": "65db5f9192fa4657a60a573db3ce67e8",
+            "headersAfterMs": 386,
+            "providerRequestId": "01a19d19-413f-79c3-8e89-9c04303bedab",
+            "elapsedMs": 387
+          }
+        },
+        {
+          "label": "A: teacher cannot read other learner context",
+          "status": "failed",
+          "httpStatus": 401,
+          "diagnostics": {
+            "startedAt": "2026-11-02T16:30:42.120Z",
+            "timeoutMs": 20000,
+            "traceId": "0279f0a5636643789ce210407f173738",
+            "headersAfterMs": 277,
+            "providerRequestId": "01a19d19-47f8-727a-a2c7-75cc21d7686e",
+            "elapsedMs": 278
+          }
+        },
+        {
+          "label": "B: teacher cannot select other dashboard",
+          "status": "failed",
+          "httpStatus": 401,
+          "diagnostics": {
+            "startedAt": "2026-11-02T16:30:56.810Z",
+            "timeoutMs": 20000,
+            "traceId": "ee969e30c425468c96d416ccc5360220",
+            "headersAfterMs": 352,
+            "providerRequestId": "01a19d19-813b-781e-a485-676632a885e1",
+            "elapsedMs": 352
+          }
+        }
+      ]
+    }
   },
-  "visualFinding": "synthetic 200% topic/summary grid compresses existing skill text; content-size reflow added to candidate",
-  "limitations": [
-    "No new assessment/session, answer, submission, mark or feedback publication was intentionally performed.",
-    "No activation, scoring, learner-history, backend or permission change.",
-    "Prepared correction is not merged or deployed; B.12.3 remains open and subjects paused."
+  "ci": {
+    "pr": {
+      "run": 41478454909,
+      "allFiveGates": "passed",
+      "unitPassed": 1649,
+      "nativePassed": 397,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "main": {
+      "run": 41480625003,
+      "allFiveGates": "passed",
+      "unitPassed": 1649,
+      "nativePassed": 397,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "failedCandidateCI": [
+    {
+      "run": 41470416028,
+      "nativePassed": 396,
+      "nativeFailed": 1,
+      "unitPassed": 1649,
+      "failure": "Practice chapter-selector mount absent; source inspection separately found URL context removal",
+      "disposition": "preserve failed run; corrected candidate requires fresh CI"
+    },
+    {
+      "run": 41473477683,
+      "nativePassed": 395,
+      "nativeFailed": 2,
+      "unitPassed": 1649,
+      "failure": "Practice header mount mismatch and enlarged-text word splitting",
+      "disposition": "preserve failed run; corrected candidate requires fresh CI"
+    },
+    {
+      "run": 41476102261,
+      "nativePassed": 395,
+      "nativeFailed": 2,
+      "unitPassed": 1649,
+      "failure": "ambiguous readiness locator for two radios, and shared heading font size causing document overflow",
+      "verified": "Practice chapter list mounts and whole-word checks pass before the remaining document-bound assertion",
+      "disposition": "failed run preserved; named radio and scoped heading font require fresh CI"
+    }
   ],
-  "secondCI": {
-    "run": 41473477683,
-    "nativePassed": 395,
-    "nativeFailed": 2,
-    "unitPassed": 1649,
-    "failure": "Practice header mount mismatch and enlarged-text word splitting",
-    "disposition": "preserve failed run; corrected candidate requires fresh CI"
+  "nativeVisuals": {
+    "scope": "Actual-page isolated browser fixtures with synthetic Auth/Edge responses; fresh image inspection",
+    "artifact": 13158547699,
+    "zipSha256": "6c8312e0eb85a483862a6b64fb4af2d76b799f0639578cc81d37ce2ea414ecac",
+    "captures": [
+      {
+        "viewport": 390,
+        "textPercent": 100,
+        "width": 390,
+        "height": 3074,
+        "sha256": "6586eea6f0c4edd0eb6d9543224907b31d0a855856a7bf0bfc187559a473139f"
+      },
+      {
+        "viewport": 390,
+        "textPercent": 200,
+        "width": 390,
+        "height": 7881,
+        "sha256": "5d5962bdd3194a589729dcbc5b05fb16d125e3e1a47f38c1da69f8260fe219c9"
+      },
+      {
+        "viewport": 1280,
+        "textPercent": 100,
+        "width": 1280,
+        "height": 1918,
+        "sha256": "909d08bab584eb36362d76cabc4c66a84a59e4feaba2eb8400ac235fdfa6a372"
+      },
+      {
+        "viewport": 1280,
+        "textPercent": 200,
+        "width": 1280,
+        "height": 6236,
+        "sha256": "a651c04765edef7aca51fd11176558e5b5aa31a5bf7e95c1cef264e445b90b9b"
+      }
+    ],
+    "documentWidthsEqualViewports": true,
+    "outsideElements": [],
+    "brokenCheckedWords": [],
+    "rootOverflow": false
   },
-  "thirdCI": {
-    "run": 41476102261,
-    "nativePassed": 395,
-    "nativeFailed": 2,
-    "unitPassed": 1649,
-    "failure": "ambiguous readiness locator for two radios, and shared heading font size causing document overflow",
-    "verified": "Practice chapter list mounts and whole-word checks pass before the remaining document-bound assertion",
-    "disposition": "failed run preserved; named radio and scoped heading font require fresh CI"
+  "releaseGate": {
+    "configurationEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "scope": "Reused independent Production/Blocking configuration attestation; no fresh settings audit or failure injection",
+    "observedCanonicalHeldUntilMainGatePassed": true,
+    "manualAliasOrPromotionOverride": false
+  },
+  "limitations": [
+    "Live student review intentionally started no new assessment or Practice, answer or submission; normal page telemetry may occur.",
+    "Practice start/context retention is verified in isolated browser fixtures, not by starting live student work.",
+    "One live availability failure recovered on reload; its cause and connection to gateway401 remain unconfirmed.",
+    "Automatic English Unit3 read remains failed at51/54 isolation; no full fresh hosted-read or English acceptance claim.",
+    "Synthetic capture readiness values are not signed-in learner values.",
+    "No content, learning criteria, auth, permissions, backend or release activation change; original gates and prior approvals remain."
+  ],
+  "acceptance": {
+    "B.12.3": "open",
+    "B.12": "open",
+    "ownerUsability": "pending",
+    "subjects": "paused",
+    "capabilityMappings": 45,
+    "independentSecurityURLMasterGates": "preserved"
   }
 }
