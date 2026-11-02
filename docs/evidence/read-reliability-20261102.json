@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-02",
+  "status": "implementation-prepared-awaiting-release",
+  "baseline": "2cc79ad299cedc7664483b71533e475d439a2d57",
+  "findings": {
+    "teacher503": {
+      "providerRequestId": "01a19d5c-07a3-7f01-b7b6-fd270c5a8e9f",
+      "executionId": "30d396fb-b16b-4849-853e-8f6cfcef03a1",
+      "edgeVersion": 25,
+      "httpStatus": 503,
+      "executionMs": 14593,
+      "postgres": {
+        "timestamp": "2026-11-02T17:43:50.021Z",
+        "code": "57014",
+        "message": "canceling statement due to statement timeout",
+        "outerRpc": "service_teacher_dashboard_initial",
+        "innerRpc": "service_teacher_dashboard_evidence",
+        "stage": "evidence CTE/JSON projection",
+        "authenticatorStatementTimeoutMs": 8000
+      },
+      "association": "Database timeout and Edge 503 occur together; original browser report lacks exact request correlation.",
+      "rootLimit": "Timeout established. Original resource contention and exact historical plan are not retained."
+    },
+    "auth401": {
+      "historicalCause": "unconfirmed",
+      "confirmedCodeIssue": "Transport/JWKS/provider failures were collapsed into an invalid-credential result.",
+      "replacement": "SDK project signature verification plus issuer/audience/expiry/nbf/user/session bounds; existing live Auth SQL and role/tenant guards retained; no unverified claims authorization."
+    }
+  },
+  "scope": {
+    "identityConsumers": [
+      "get-student-classes",
+      "get-teacher-academic-context",
+      "get-teacher-student",
+      "get-teacher-dashboard",
+      "get-teacher-workspace"
+    ],
+    "evidenceProjection": "All consumers of service_teacher_dashboard_evidence; canonical nonbatched analytics output retained.",
+    "sdk": "@supabase/supabase-js@2.118.0",
+    "sharedCore": "role/subject-neutral read verification; no curriculum, score, assignment or permission changes"
+  },
+  "planning": {
+    "method": "Read-only EXPLAIN ANALYZE on existing dedicated QA B English Unit2; stock timeout remains unchanged. Interleaved plans are current diagnostics, not historical end-to-end performance.",
+    "jit": "off",
+    "forcedGenericPlan": {
+      "planningMs": 12.946,
+      "executionMs": 28.975
+    },
+    "paired": [
+      {
+        "variant": "json-distinct",
+        "planningMs": 154.806,
+        "executionMs": 109.515
+      },
+      {
+        "variant": "keys-before-json",
+        "planningMs": 12.797,
+        "executionMs": 19.92
+      },
+      {
+        "variant": "json-distinct",
+        "planningMs": 12.822,
+        "executionMs": 24.391
+      },
+      {
+        "variant": "keys-before-json",
+        "planningMs": 14.786,
+        "executionMs": 19.987
+      }
+    ],
+    "change": "Semi-join distinct frozen version keys before constructing snapshot JSON; avoid DISTINCT over repeated JSON snapshots."
+  },
+  "release": {
+    "migration": "20261102182941_teacher_evidence_version_deduplication.sql",
+    "affectedEdgeFunctions": 5,
+    "state": "pending CI/merge/deploy/readback/live acceptance"
+  },
+  "roadmap": {
+    "current": "16.5B.12.3 stabilization",
+    "B12": "open",
+    "ownerUsability": "open",
+    "subjects": "paused after English C47",
+    "independentGates": "preserved"
+  }
+}

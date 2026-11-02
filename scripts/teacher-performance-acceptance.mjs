@@ -50,14 +50,22 @@ try{
   for(let iteration=0;iteration<10;iteration++){
    const context=await browser.newContext({viewport:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(session)}]}]}});
    await context.addInitScript(installTeacherHomeReadiness);
-   let requests=[],blocked=0;const pageErrors=[];
+   let requests=[],blocked=0;const responses=new Map();const pageErrors=[];
    await context.route('**/functions/v1/**',route=>{const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let b={};try{b=req.postDataJSON()??{};}catch{}
     const allowed=['get-teacher-dashboard','get-teacher-workspace','get-teacher-student','get-profile'].includes(fn)||(fn==='manage-student-invitation'&&b.action==='list')||(fn==='manage-written-work'&&['queue','inspect'].includes(b.action))||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(b.action));
     if(req.method()==='OPTIONS'||allowed)return route.continue();blocked++;return route.abort();});
    const page=await context.newPage();page.setDefaultTimeout(45000);page.on('pageerror',e=>pageErrors.push(e.name));
    const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.setCacheDisabled',{cacheDisabled:false});await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:1600000/8,uploadThroughput:750000/8});
+   page.on('response',res=>responses.set(res.request(),res));
    page.on('request',req=>{const p=new URL(req.url()).pathname;if(p.includes('/functions/v1/')||p.includes('/rest/v1/'))requests.push(req);});
-   async function measure(scenario,action,ready){stage=`${side}:${iteration}:${scenario}`;requests=[];const start=performance.now(),startEpochMs=Date.now();await action();await ready();const ms=performance.now()-start;
+   async function measure(scenario,action,ready){stage=`${side}:${iteration}:${scenario}`;requests=[];const start=performance.now(),startEpochMs=Date.now();
+    try{await action();await ready();}catch(error){
+     // Allowlisted metadata only: no URL query, request/response body, headers,
+     // credential, student identifier or raw assertion/error message.
+     const calls=await Promise.all(requests.map(async req=>{const res=responses.get(req),rawId=await res?.headerValue('sb-request-id');return {endpoint:new URL(req.url()).pathname,status:res?.status()??null,ms:req.timing().responseEnd,requestId:/^[0-9a-f-]{36}$/i.test(rawId??'')?rawId:null,failed:Boolean(req.failure())};}));
+     report.failedObservation={side,iteration,scenario,ms:performance.now()-start,milestone:scenario==='unit-switch'?'selected unit, visible roster and matching matrix title':scenario,calls};await save();throw error;
+    }
+    const ms=performance.now()-start;
     const calls=[];for(const req of requests){const res=await req.response();await res?.finished();const size=await req.sizes().catch(()=>({responseBodySize:0}));calls.push({endpoint:new URL(req.url()).pathname,ms:req.timing().responseEnd,status:res?.status(),bytes:size.responseBodySize,serverTiming:await res?.headerValue('server-timing')});}
     let readiness=null;
     if(['cold-home','warm-home'].includes(scenario)){

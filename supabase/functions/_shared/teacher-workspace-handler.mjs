@@ -32,6 +32,6 @@ export function createTeacherWorkspaceHandler({createAdmin,env}) {
    if(finalActor.error)return json({error:finalActor.error.code==='42501'?'workspace_context_unavailable':'workspace_unavailable'},finalActor.error.code==='42501'?403:503);
    if(finalActor.data?.profile?.role!=='teacher'||finalActor.data?.profile?.account_status!=='active')return json({error:'workspace_context_unavailable'},403);
    return json(r.data,200,`auth;dur=${authDuration},data;dur=${dataDuration},total;dur=${Date.now()-started}`);
-  }catch{return json({error:'workspace_unavailable'},503);}
+  }catch(error){return json({error:error?.code==='auth_verification_unavailable'?'auth_verification_unavailable':'workspace_unavailable'},503);}
  };
 }

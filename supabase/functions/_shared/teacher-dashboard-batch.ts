@@ -34,6 +34,7 @@ export async function readBatchedTeacherDashboard(admin:any,actor:string,token:s
   const {data,error}=await admin.rpc(name,{p_actor:actor,p_session:session,...args});
   if(error){
    const denied=error.code==='42501';
+   if(!denied)console.warn('teacher_dashboard_rpc_unavailable',{rpc:name,code:/^[0-9A-Z]{5}$/.test(error.code??'')?error.code:'transport'});
    throw new TeacherDashboardReadError(denied?403:503,denied?'academic_context_unavailable':'teacher_dashboard_unavailable');
   }
   if(!data)throw new TeacherDashboardReadError(503,'teacher_dashboard_unavailable');

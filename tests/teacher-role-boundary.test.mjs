@@ -32,6 +32,9 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
       institutionalTeacher: true, institutionalOptions: [], classes: [],
       totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
     }),
+    // Role-boundary fixture explicitly stubs signature verification; real crypto is tested separately.
+    verifyReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
+    verifyTeacherReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
     Deno: { env: { get: () => 'test' }, serve: (fn) => { handler = fn; } },
     Response, console, crypto,
   });

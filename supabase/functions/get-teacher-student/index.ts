@@ -1,5 +1,6 @@
+import { verifyReadIdentity } from "../_shared/teacher-read-identity.mjs";
 import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext, type TeacherAcademicSelection } from "../_shared/academic-context.ts";
@@ -29,8 +30,9 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
     const token = authHeader.replace(/^Bearer\s+/i, "");
-    const { data: userData, error: userError } = await admin.auth.getUser(token);
-    if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
+    const identity = await verifyReadIdentity(admin, token, supabaseUrl);
+    if (!identity) return json({ error: "unauthorized" }, 401);
+    const userData = { user: identity };
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
     const teacherId = userData.user.id;
 
@@ -280,6 +282,7 @@ Deno.serve(async (req) => {
       })),
     });
   } catch (err) {
+    if (err?.code === "auth_verification_unavailable") return json({ error: "auth_verification_unavailable" }, 503);
     console.error("get-teacher-student", err);
     return json({ error: "teacher_student_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }

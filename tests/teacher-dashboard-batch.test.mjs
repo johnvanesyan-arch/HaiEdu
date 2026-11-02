@@ -24,9 +24,10 @@ before(async()=>{
  await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_dashboard_batched_reads.sql')),'utf8'));
  await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_evidence_projection.sql')),'utf8'));
  await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_transaction_reads.sql')),'utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(p=>p.endsWith('_teacher_evidence_version_deduplication.sql')),'utf8'));
  const original=f.admin.rpc;f.admin.rpc=async(name,args)=>{calls.push(name);return original(name,args);};
  token=f.credential(id(20),id(420));
- f.admin.auth.getClaims=async value=>{const r=await f.admin.auth.getUser(value);if(r.error)return {error:r.error};return {data:{claims:{...JSON.parse(Buffer.from(value.split('.')[1],'base64url').toString()),sub:r.data.user.id,iss:'synthetic/auth/v1',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600}}};};
+ f.admin.auth.getClaims=async value=>{const r=await f.admin.auth.getUser(value);if(r.error)return {error:{name:"AuthInvalidJwtError"}};return {data:{claims:{...JSON.parse(Buffer.from(value.split('.')[1],'base64url').toString()),sub:r.data.user.id,iss:'synthetic/auth/v1',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600}}};};
  for(const i of [0,1,2,3]){const s=await f.call('start-learning-session',{...learnerSelection(i),mode:'diagnostic'});assert.equal(s.status,200);await finishThroughAPI(f,s.body.session,true);}
 });
 after(async()=>f?.close());

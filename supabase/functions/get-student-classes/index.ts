@@ -1,4 +1,5 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { verifyReadIdentity } from "../_shared/teacher-read-identity.mjs";
+import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { getStudentCourseEntitlements } from "../_shared/course-access.ts";
 import { verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
@@ -31,8 +32,9 @@ Deno.serve(async (req) => {
     });
 
     const token = authHeader.replace(/^Bearer\s+/i, "");
-    const { data: userData, error: userError } = await admin.auth.getUser(token);
-    if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
+    const identity = await verifyReadIdentity(admin, token, supabaseUrl);
+    if (!identity) return json({ error: "unauthorized" }, 401);
+    const userData = { user: identity };
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) {
       return json({ error: "account_or_session_inactive" }, 403);
     }
@@ -66,6 +68,7 @@ Deno.serve(async (req) => {
     // alone control released navigation; keep classes for existing join/roster UI.
     return json({ classes, ...navigation });
   } catch (err) {
+    if (err?.code === "auth_verification_unavailable") return json({ error: "auth_verification_unavailable" }, 503);
     console.error("get-student-classes", err);
     return json({ error: "get_student_classes_failed" }, 500);
   }

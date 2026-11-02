@@ -36,3 +36,14 @@ test('legacy symmetric tokens retain SDK Auth-server verification and forged cre
  const client=createClient(url,'synthetic-key',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:async(_url,opts)=>{calls++;const t=new Headers(opts.headers).get('Authorization')?.replace('Bearer ','')??'',p=t.split('.');const valid=p.length===3&&await crypto.subtle.verify('HMAC',key,Buffer.from(p[2],'base64url'),bytes(p[0]+'.'+p[1]));return new Response(JSON.stringify(valid?{id:id(1),aud:'authenticated',role:'authenticated'}:{message:'Invalid synthetic signature'}),{status:valid?200:401,headers:{'content-type':'application/json'}});}}});
  assert.equal((await verifyTeacherReadIdentity(client,token,url)).id,id(1));assert.equal(await verifyTeacherReadIdentity(client,data+'.AA',url),null);assert.equal(calls,2);
 });
+test('real SDK JWKS/provider/transport failures are availability errors, never invalid-credential results',async()=>{
+ for(const [label,fetcher] of [
+  ['transport',async()=>{throw new TypeError('synthetic network failure');}],
+  ['provider',async()=>new Response('{"message":"synthetic provider failure"}',{status:503,headers:{'content-type':'application/json'}})],
+  ['rate-limit',async()=>new Response('{"message":"synthetic rate limit"}',{status:429,headers:{'content-type':'application/json'}})],
+ ]){
+  const f=await setup('identity-outage-'+label);
+  const client=createClient(f.url,'synthetic-key',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:fetcher}});
+  await assert.rejects(()=>f.sign().then(token=>verifyTeacherReadIdentity(client,token,f.url)),{code:'auth_verification_unavailable'});
+ }
+});

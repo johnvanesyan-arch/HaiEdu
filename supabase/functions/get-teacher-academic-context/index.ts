@@ -1,4 +1,5 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { verifyReadIdentity } from "../_shared/teacher-read-identity.mjs";
+import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext } from "../_shared/academic-context.ts";
 
@@ -27,8 +28,9 @@ Deno.serve(async (req) => {
       auth: { persistSession: false, autoRefreshToken: false },
     });
     const token = authHeader.replace(/^Bearer\s+/i, "");
-    const { data: userData, error: userError } = await admin.auth.getUser(token);
-    if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
+    const identity = await verifyReadIdentity(admin, token, supabaseUrl);
+    if (!identity) return json({ error: "unauthorized" }, 401);
+    const userData = { user: identity };
     const teacherId = userData.user.id;
     if (!(await hasActiveLiveSession(admin, token, teacherId))) {
       return json({ error: "account_or_session_inactive" }, 403);
@@ -59,6 +61,7 @@ Deno.serve(async (req) => {
       throw error;
     }
   } catch (error) {
+    if (error?.code === "auth_verification_unavailable") return json({ error: "auth_verification_unavailable" }, 503);
     console.error("get-teacher-academic-context", error);
     return json({ error: "academic_context_lookup_failed" }, 500);
   }

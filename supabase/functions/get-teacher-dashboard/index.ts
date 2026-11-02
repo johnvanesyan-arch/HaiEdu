@@ -2,7 +2,7 @@ import {verifyTeacherReadIdentity} from '../_shared/teacher-read-identity.mjs';
 import {isTeacherWorkspaceRequest} from '../_shared/teacher-workspace-request.mjs';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../_shared/teacher-dashboard-batch.ts';
 import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 import { getInstitutionalTeacherDashboard } from "../_shared/institutional-teacher-dashboard.ts";
@@ -45,11 +45,10 @@ Deno.serve(async (req) => {
     const admin = readAdmin ??= createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
     const token = authHeader.replace(/^Bearer\s+/i, "");
     const authStarted=Date.now();
-    const optimized=requestBody?.readMode==='directory'||requestBody?.readMode==='class';
-    const identity=optimized ? await verifyTeacherReadIdentity(admin,token,supabaseUrl) : null;
-    const {data:userData,error:userError}=optimized ? {data:{user:identity},error:identity?null:true} : await admin.auth.getUser(token);
+    const identity=await verifyTeacherReadIdentity(admin,token,supabaseUrl);
+    const userData={user:identity};
     const authDuration=Date.now()-authStarted;
-    if(userError||!userData?.user)return json({error:'unauthorized'},401);
+    if(!userData?.user)return json({error:'unauthorized'},401);
     if(!requestBody||typeof requestBody!=='object'||Array.isArray(requestBody))return json({error:'invalid_dashboard_request'},400);
     const readMode=requestBody.readMode ?? "full";
     if(requestBody.workspace!==undefined&&(readMode!=='directory'||requestBody.archive===true||(requestBody.offset!==undefined&&requestBody.offset!==0)||(typeof requestBody.search==='string'&&requestBody.search.trim()!=='')||!isTeacherWorkspaceRequest(requestBody.workspace)))return json({error:'invalid_dashboard_request'},400);
@@ -350,6 +349,7 @@ Deno.serve(async (req) => {
       },
     });
   } catch (err) {
+    if (err?.code === "auth_verification_unavailable") return json({error:"auth_verification_unavailable"},503);
     console.error("get-teacher-dashboard", err);
     return json({ error: "teacher_dashboard_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }

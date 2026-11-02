@@ -23,6 +23,7 @@ async function call({ role = 'teacher', active = true, body = payload, resolver 
   };
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => client,
+    verifyReadIdentity: async () => ({id}),
     hasActiveLiveSession: async () => active,
     AcademicContextDenied: class AcademicContextDenied extends Error {},
     resolveAuthorizedTeacherAcademicContext: async (...args) => {

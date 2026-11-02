@@ -1,3 +1,4 @@
+import { verifyReadIdentity } from '../../supabase/functions/_shared/teacher-read-identity.mjs';
 // Disposable SQL only. Auth.getUser is an explicit credential double; the real
 // Auth-session gate, Edge handler bodies, routers and governed transactions run.
 import { readFileSync } from 'node:fs';
@@ -118,13 +119,14 @@ export async function acceptanceFixture() {
       credentials.set(token,student);return token;
     };
     admin.auth={getUser:async token=>({data:{user:credentials.has(token)?{id:credentials.get(token)}:null},error:credentials.has(token)?null:{message:'invalid fixture credential'}})};
+    admin.auth.getClaims=async token=>credentials.has(token)?{data:{claims:{...JSON.parse(Buffer.from(token.split('.')[1],'base64url')),iss:'fixture-only/auth/v1',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600}}}:{error:{name:'AuthInvalidJwtError'}};
     const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);
     const names=['get-student-classes','get-student-dashboard','start-learning-session','get-session-item','submit-answer','submit-mastery-answer','get-remediation-help','get-mastery-check-status','get-chapter-mastery-lifecycle'];
     const handlers=new Map();
     for(const name of names){
       let handler;
       compile(readFileSync(`supabase/functions/${name}/index.ts`,'utf8'),{
-        routeGovernedLearning,verifiedSessionClaim,routeStudentDashboard,createClient:()=>admin,hasActiveLiveSession,
+        routeGovernedLearning,verifiedSessionClaim,routeStudentDashboard,createClient:()=>admin,hasActiveLiveSession,verifyReadIdentity,
         getStudentCourseEntitlements:async()=>[],
         hasPhysics7Access:async()=>false,
         Deno:{env:{get:()=> 'fixture-only'},serve:fn=>{handler=fn;}},
