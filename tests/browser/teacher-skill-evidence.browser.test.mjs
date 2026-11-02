@@ -15,6 +15,53 @@ const student={id:'student-a',displayName:'Փորձնական աշակերտ',ma
 const studentDetails={student,unitCode:'SYN-1',matrix,skills:matrix,recentAttempts:[],sessions:[],modeSummary:{}};
 const analytics={students:[student],studentCount:1,skills:matrix};
 
+test('matrix evidence controls preserve classified and neutral colours through Forest styling, hover and keyboard focus',async t=>{
+ const rows=[...matrix,...[
+  {skillId:'s5',code:'SYN-1-S05',nameHy:'Հինգերորդ հմտություն',percent:88,band:'secure',status:'secure',evidenceCount:4},
+  {skillId:'s6',code:'SYN-1-S06',nameHy:'Վեցերորդ հմտություն',percent:65,band:'developing',status:'developing',evidenceCount:4},
+  {skillId:'s7',code:'SYN-1-S07',nameHy:'Յոթերորդ հմտություն',percent:35,band:'needs_support',status:'needs_support',evidenceCount:4},
+ ]];
+ const {page:p,errors}=await fixture(browser,t,{analytics:{...analytics,skills:rows,students:[{...student,matrix:rows,masteryCheck:null,chapterReview:null}]}});
+ await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
+ const cells=p.locator('#matrixWrap .matrix-cell');await expect(cells).toHaveCount(7);
+ const colours=await cells.evaluateAll(elements=>elements.map(el=>({band:el.className.split(' ').at(-1),background:getComputedStyle(el).backgroundColor,colour:getComputedStyle(el).color})));
+ assert.equal(new Set(colours.map(c=>c.background)).size,5,'the three classifications, neutral and separate results have distinct surfaces');
+ assert.deepEqual(colours.slice(4).map(c=>[c.background,c.colour]),[
+  ['rgb(233, 248, 239)','rgb(31, 107, 59)'],['rgb(255, 247, 219)','rgb(133, 95, 0)'],['rgb(253, 235, 236)','rgb(152, 58, 69)'],
+ ]);
+ const evidence=p.locator('#matrixWrap .skill-evidence-link');await expect(evidence).toHaveCount(6);
+ for(const width of [1280,768,390])for(const size of ['100%','200%']){
+  await p.setViewportSize({width,height:1000});await p.evaluate(value=>document.documentElement.style.fontSize=value,size);
+  for(const button of await evidence.all()){
+   await button.hover();
+   const state=await button.evaluate(el=>{const own=getComputedStyle(el),cell=getComputedStyle(el.closest('td'));return {background:own.backgroundColor,colour:own.color,parentColour:cell.color,border:own.borderTopWidth,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,cellWidth:el.closest('td').getBoundingClientRect().width};});
+   assert.equal(state.background,'rgba(0, 0, 0, 0)','hover must reveal the evidence band');assert.equal(state.colour,state.parentColour,'hover must preserve the evidence colour');assert.equal(state.border,'0px');assert.ok(state.height>=44);assert.ok(state.width<=state.cellWidth+1);
+  }
+  // Keyboard focus and every normal (non-hover) state keep the same semantics.
+  await evidence.last().focus();await p.keyboard.press('Shift+Tab');
+  const focused=p.locator('#matrixWrap .skill-evidence-link:focus-visible');await expect(focused).toHaveCount(1);
+  const outline=await focused.evaluate(el=>({style:getComputedStyle(el).outlineStyle,width:parseFloat(getComputedStyle(el).outlineWidth)}));assert.equal(outline.style,'solid');assert.ok(outline.width>=2);
+  const normal=await evidence.evaluateAll(elements=>elements.map(el=>({background:getComputedStyle(el).backgroundColor,colour:getComputedStyle(el).color,parentColour:getComputedStyle(el.closest('td')).color})));
+  assert.ok(normal.every(c=>c.background==='rgba(0, 0, 0, 0)'&&c.colour===c.parentColour));
+  await p.locator('#matrixWrap').evaluate(el=>el.scrollLeft=0);await p.locator('.matrix-card').scrollIntoViewIfNeeded();
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/teacher-matrix-colours-${width}-${size==='200%'?'large':'normal'}.png`,fullPage:true});}
+ }
+ await expect(p.locator('#matrixNeedsSupportTotal')).toHaveText('1');await expect(p.locator('#matrixMasteredTotal')).toHaveText('0');
+ const writes=await p.evaluate(()=>window.__teacherFixture.calls.filter(c=>!['get-teacher-dashboard','get-teacher-student','get-teacher-workspace'].includes(c.fn)&&!(c.fn==='manage-student-invitation'&&c.body.action==='list')));assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);
+});
+
+test('sparse observations stay neutral and do not manufacture a classification or passed unit check',async t=>{
+ const rows=Array.from({length:12},(_,i)=>({skillId:'sparse-'+i,code:'SYN-1-S'+String(i+1).padStart(2,'0'),nameHy:'Փորձնական հմտություն '+(i+1),percent:[0,2,4,6].includes(i)?60:null,band:'not_assessed',status:[0,2,4,6].includes(i)?'insufficient_evidence':'not_assessed',evidenceCount:[0,2,4,6].includes(i)?1:0}));
+ const learner={...student,matrix:rows,weakSkills:rows,masteryCheck:null,chapterReview:null};
+ const {page:p,errors}=await fixture(browser,t,{analytics:{students:[learner],studentCount:1,skills:rows}});
+ await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
+ for(const id of ['matrixMasteredTotal','matrixNeedsSupportTotal','matrixRequiredReviewTotal','matrixNoActivityTotal'])await expect(p.locator('#'+id)).toHaveText('0');
+ await expect(p.locator('#matrixStudentTotal')).toHaveText('1');await expect(p.locator('#matrixWrap .matrix-cell.not_assessed')).toHaveCount(12);await expect(p.locator('#matrixWrap .skill-evidence-link')).toHaveCount(4);
+ const sparse=await p.locator('#matrixWrap .skill-evidence-link').evaluateAll(elements=>elements.map(el=>({text:el.textContent,background:getComputedStyle(el).backgroundColor,colour:getComputedStyle(el).color,parentColour:getComputedStyle(el.closest('td')).color})));
+ assert.ok(sparse.every(c=>c.text==='Դիտարկումները դեռ քիչ են'&&c.background==='rgba(0, 0, 0, 0)'&&c.colour===c.parentColour));
+ assert.deepEqual(errors,[]);
+});
+
 test('teacher saved history distinguishes unassessed groups from zero, keeps versions and one keyboard-accessible scope',async t=>{
  const details={...studentDetails,sessions:historyEntries(),latestDiagnostic:{assessmentResult:historyReports[1]},latestMasteryCheck:{assessmentResult:historyReports[2]}};
  const {page:p,errors}=await fixture(browser,t,{analytics,studentDetails:details});
