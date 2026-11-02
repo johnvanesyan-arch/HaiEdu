@@ -4,6 +4,7 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {chromium,expect} from '@playwright/test';
 import {installStudentHomeFixture} from '../fixtures/student-home-fixture.mjs';
+import {mobileUnitLink} from '../../scripts/mobile-qa-navigation.mjs';
 const origin='https://student-home.test';
 const id=n=>`76000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 let browser;
@@ -36,6 +37,20 @@ async function choose(page,course=6,program=9,unit=8,release=7) {
   await page.locator('#studentCourseSelect').selectOption(id(course)+':'+id(program));
   await page.locator('#studentUnitSelect').selectOption(id(course)+':'+id(release)+':'+id(unit));
 }
+test('mobile acceptance selects the chapter link when primary course entry has the same destination',async t=>{
+  const {page,errors}=await fixture(t,{width:390,view:'courses',active:false});
+  const {card,link}=mobileUnitLink(page,id(8));
+  await expect(card).toHaveCount(1);
+  // Reproduce the original harness ambiguity on the real renderer.
+  assert.equal(await card.locator(`a[href*="unit=${id(8)}"]`).count(),2);
+  await card.locator('summary').focus();await page.keyboard.press('Enter');
+  await expect(link).toHaveCount(1);await expect(link).toBeVisible();
+  await link.focus();await page.keyboard.press('Enter');
+  await expect(page.locator('#courseTitle')).toContainText('Անգլերեն');
+  assert.equal(new URL(page.url()).searchParams.get('unit'),id(8));
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.some(c=>c.name==='start-learning-session')),false);
+  assert.deepEqual(errors,[]);
+});
 for(const width of [320,360,768,1280])test(`Forest Home is readable and contained at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{width,selected:true});
   await page.locator('.student-continue').waitFor();

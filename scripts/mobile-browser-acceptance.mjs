@@ -3,6 +3,7 @@ import {chromium, expect as baseExpect} from '@playwright/test';
 import {roles, sides, runIsolation} from './sprint-14-isolation.mjs';
 import {waitForRelease} from './wait-for-production-release.mjs';
 import {mobileSite as site, reportPath, mobilePreflight, mobileReadAllowed, mobileReceipt, closeOwnedSessions} from './mobile-qa-policy.mjs';
+import {mobileUnitLink} from './mobile-qa-navigation.mjs';
 
 const expect = baseExpect.configure({timeout: 45000});
 const state = {revision: process.env.GITHUB_SHA, status: 'failed', checks: [], isolation: {}, cleanup: []};
@@ -88,11 +89,11 @@ try {
         if (role === 'student') {
           stage = 'student-navigation';
           await page.goto(site + '/index.html?view=courses', {waitUntil: 'domcontentloaded'});
-          const card = page.locator('#mySubjects .amp-subject-card').filter({has: page.locator(`a[href*="unit=${selected.unitId}"]`)});
+          const {card, link} = mobileUnitLink(page, selected.unitId);
           await expect(card).toHaveCount(1);
           await card.locator('summary').focus();
           await page.keyboard.press('Enter');
-          const link = card.locator(`a[href*="unit=${selected.unitId}"]`);
+          await expect(link).toHaveCount(1);
           await expect(link).toBeVisible();
           const destination = new URL(await link.getAttribute('href'), site);
           check(stage, destination.searchParams.get('enrollment') === selected.enrollmentId && destination.searchParams.get('release') === selected.curriculumReleaseId && !destination.searchParams.has('action'), dimensions);
@@ -131,7 +132,10 @@ try {
         await layout(page, dimensions);
         check('layout', blocked === 0 && pageErrors === 0 && httpErrors === 0, dimensions);
         console.log(`Mobile ${side} ${role} ${width}: passed`);
-      } finally {await context.close();}
+      } finally {
+        state.lastBrowser = {...dimensions, blockedRequests: blocked, pageErrors, httpErrors};
+        await context.close();
+      }
     }
   }
   stage = 'isolation-after';
@@ -141,8 +145,10 @@ try {
   await waitForRelease({expectedCommit: state.revision});
   check(stage, true);
   state.status = 'passed'; stage = 'complete';
-} catch {
+} catch (error) {
   state.failedStage = stage; process.exitCode = 1;
+  state.failureKind = /strict mode violation/i.test(error?.message ?? '') ? 'ambiguous-locator'
+    : /timeout|timed out/i.test(error?.message ?? '') ? 'timeout' : 'assertion-or-runtime';
   console.error('Mobile acceptance failed at ' + stage + '; authenticated details are intentionally omitted.');
 } finally {
   state.cleanup = await closeOwnedSessions(sessions, async session => (await fetch(url + '/auth/v1/logout?scope=local', {
