@@ -45,14 +45,14 @@ for(const width of [390,768,1280])test(`focused Mastery player retains full word
  assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
 });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false }={}) {
+async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
   await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules }) => {
-    window.__calls=[]; window.__listeners=[];
+    window.__calls=[]; window.__listeners=[]; window.__authorizedContexts=contexts;
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
       progress:{completedSkills:3,totalSkills:10,percent:30},
@@ -63,8 +63,8 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
     });
     window.__client={ auth:{ getSession:async()=>({ data:{ session:{ user:{ id:studentId } } } }), getUser:async()=>({ data:{ user:{ id:studentId } } }), onAuthStateChange:fn=>window.__listeners.push(fn) }, from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'student',account_status:'active'}})})})}), functions:{ invoke:async(name,{body})=>{
       window.__calls.push({name,body});
-      if(name==='get-student-classes') return { data:{ contexts:denied?[]:contexts, navigationVersion:'v1' } };
-      if(name==='get-student-dashboard') return { data:body.navigation?{contexts:denied?[]:contexts,navigationVersion:'v1'}:dashboard() };
+      if(name==='get-student-classes') return { data:{ contexts:denied?[]:window.__authorizedContexts, navigationVersion:'v1' } };
+      if(name==='get-student-dashboard') return { data:body.navigation?{contexts:denied?[]:window.__authorizedContexts,navigationVersion:'v1'}:dashboard() };
       if(name==='get-unit-guides') return {data:{guidesVersion:'unit-guides-v1',availability:'available',guides:[{id:'guide',schemaVersion:'teaching-guide-v1',locale:'en',title:'Read for meaning',text:'Identify the main idea, then find details.',workedExample:'Compare the reasons given by the speakers.'}]}};
       if(name==='manage-written-work') {
         if(body.action==='tasks')return {data:{version:'written-work-v1',tasks:[{id:'task',title:'My view',locale:'en',available:true,state:'changes_requested'}]}};
@@ -76,7 +76,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts, active, denied, studentId:id(10), selected:contexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
+  }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.origin==='https://esm.sh') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
@@ -88,13 +88,92 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       return route.fulfill({contentType,body});
     } catch { return route.fulfill({status:404,body:'Not found'}); }
   });
-  const selected=contexts[contextIndex];
+  const selected=availableContexts[contextIndex];
   const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:configuredRules==='points'?'mastery_check':'practice'}:{}) });
   await page.goto(origin+'/'+route+'?'+params);
   if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-nav-list a[href*="view=courses"]')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
   else await page.waitForFunction(()=>document.querySelector('.amp-nav-list a[href*="view=courses"]') && !document.body.dataset.roleRouting);
   return {page,errors};
 }
+
+const releasedPhysics = [contexts[0], ...[
+  'Նյութի կառուցվածքը', 'Մեխանիկական շարժում', 'Մարմինների փոխազդեցությունը',
+  'Աշխատանք և հզորություն', 'Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում'
+].map((title, n) => ({...contexts[0], curriculumReleaseId:id(100+n), unitId:id(200+n),
+  unitSequence:n+2, unitTitleHy:title, releaseNumber:n+2, extensionKey:null}))];
+const otherClass = {...contexts[0], enrollmentId:id(999), className:'Մյուս դասարան'};
+const releasedContexts = [...releasedPhysics].reverse().concat(contexts[1], otherClass);
+const selectedPhysics = releasedContexts.findIndex(c=>c===contexts[0]);
+
+test('student Home, legacy topics and every course tab agree on the six released chapters', async t => {
+  const {page,errors}=await fixture(t,{route:'index.html',active:false,availableContexts:releasedContexts,contextIndex:selectedPhysics});
+  const selected=releasedPhysics[0];
+  await page.goto(origin+'/index.html?'+new URLSearchParams({view:'courses',enrollment:selected.enrollmentId,release:selected.curriculumReleaseId,unit:selected.unitId}));
+  const card=page.locator('.amp-subject-card').filter({has:page.locator(`.amp-subject-class-list a[href*="unit=${selected.unitId}"][href*="enrollment=${selected.enrollmentId}"]`)});
+  await card.locator('summary').click();
+  await expect(card.locator('.amp-subject-class-list a')).toHaveText(releasedPhysics.map(c=>c.unitTitleHy+' · Թողարկում '+c.releaseNumber));
+  await card.locator('> a').click();
+  await page.getByRole('link',{name:'Դիտել դասընթացի թեմաները',exact:true}).click();
+  const chapters=page.locator('[data-student-chapter-navigation]');
+  await expect(chapters.locator('nav a')).toHaveText(releasedPhysics.map(c=>c.unitTitleHy));
+  await expect(page.locator('body')).not.toContainText('Հետագայում');
+  await expect(page.locator('body')).not.toContainText('չեն ակտիվացվել');
+  await expect(chapters.locator('[aria-current=page]')).toHaveText(selected.unitTitleHy);
+  await chapters.getByRole('link',{name:releasedPhysics[5].unitTitleHy,exact:true}).click();
+  for(const [tab,label] of [['course','Դասընթաց'],['assessment','Գնահատումներ'],['progress','Առաջընթաց'],['guides','Ուղեցույցներ'],['writing','Գրավոր աշխատանքներ']]) {
+    if(tab!=='course')await page.locator('.course-tabs').getByRole('link',{name:label,exact:true}).click();
+    await expect(page.locator('.course-chapters a')).toHaveText(releasedPhysics.map(c=>c.unitTitleHy));
+    const url=new URL(page.url());assert.equal(url.searchParams.get('unit'),releasedPhysics[5].unitId);assert.equal(url.searchParams.get('release'),releasedPhysics[5].curriculumReleaseId);assert.equal(url.searchParams.get('enrollment'),selected.enrollmentId);
+    await expect(page.locator('#courseTitle')).toContainText(releasedPhysics[5].unitTitleHy);
+  }
+  assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session'||c.name==='submit-answer')),false);
+  assert.deepEqual(errors,[]);
+});
+
+test('every legacy student entry lists only the released units of the selected enrollment', async t => {
+  const {page,errors}=await fixture(t,{route:'physics-7.html',active:false,availableContexts:releasedContexts,contextIndex:selectedPhysics});
+  for(const route of ['physics-7.html','assessment.html','progress.html','diagnostic.html','mastery.html','practice.html']) {
+    const selected=releasedPhysics[0];
+    await page.goto(origin+'/'+route+'?'+new URLSearchParams({enrollment:selected.enrollmentId,release:selected.curriculumReleaseId,unit:selected.unitId}));
+    const links=page.locator('[data-student-chapter-navigation] nav a');
+    await expect(links,route).toHaveText(releasedPhysics.map(c=>c.unitTitleHy));
+    for(const href of await links.evaluateAll(nodes=>nodes.map(n=>n.href)))assert.equal(new URL(href).searchParams.get('enrollment'),selected.enrollmentId);
+    const current=page.locator('[data-student-chapter-navigation] [aria-current=page]');await expect(current).toHaveText(selected.unitTitleHy);
+    if(route==='practice.html') {
+      await page.getByRole('radio',{name:'Ճիշտ է',exact:true}).waitFor();
+      await expect(page.locator('[data-student-chapter-navigation]')).toBeHidden();
+      const url=new URL(page.url());assert.equal(url.searchParams.get('enrollment'),selected.enrollmentId);assert.equal(url.searchParams.get('release'),selected.curriculumReleaseId);assert.equal(url.searchParams.get('unit'),selected.unitId);
+    }
+    assert.equal(new URL(page.url()).pathname,'/'+route);
+  }
+  assert.deepEqual(errors,[]);
+});
+
+test('chapter refresh retains keyboard state and access revocation clears prior chapter links', async t => {
+  const {page,errors}=await fixture(t,{route:'physics-7.html',active:false,availableContexts:releasedContexts,contextIndex:selectedPhysics});
+  const chapters=page.locator('[data-student-chapter-navigation]'),details=chapters.locator('details');
+  await expect(details).toHaveAttribute('open','');await details.locator('summary').press('Enter');await expect(details).not.toHaveAttribute('open','');
+  await page.evaluate(()=>window.dispatchEvent(new Event('pageshow')));
+  await expect(details).not.toHaveAttribute('open','');await expect(details.locator('summary')).toBeFocused();
+  await expect(chapters).toHaveCount(1);
+  await page.evaluate(()=>{window.__authorizedContexts=[];window.dispatchEvent(new Event('haiedu-refresh-courses'));});
+  await page.waitForURL('**/index.html?course=required');
+  await expect(page.locator('[data-student-chapter-navigation] nav a')).toHaveCount(0);
+  assert.deepEqual(errors,[]);
+});
+
+test('released chapter navigation retains readable words at mobile and desktop text sizes', async t => {
+  const {page,errors}=await fixture(t,{route:'physics-7.html',active:false,availableContexts:releasedContexts,contextIndex:selectedPhysics});
+  const chapters=page.locator('[data-student-chapter-navigation]');await expect(chapters.locator('nav a')).toHaveCount(6);
+  for(const width of [390,1280])for(const scale of [100,200]) {
+    await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
+    const words=await wordBreaks(page,'[data-student-chapter-navigation], .subject-stat, .subject-heading, .chapter-header, .topic-head h3, .skill-browser-copy h4');
+    const metrics=await chapters.evaluate(el=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left,overflow:el.scrollWidth>el.clientWidth+1,outside:[...document.querySelectorAll('main.shell *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,20).map(e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'',right:e.getBoundingClientRect().right,text:e.textContent.trim().slice(0,80)}))}));
+    await capture(page,`released-chapters-${width}-${scale}`,{...metrics,words});
+    assert.deepEqual(words,[]);assert.equal(metrics.overflow,false);assert.ok(metrics.right<=width+1);assert.ok(metrics.left>=-1);assert.ok(metrics.documentWidth<=width+1,JSON.stringify(metrics));
+  }
+  assert.deepEqual(errors,[]);
+});
 
 async function capture(page, name, metrics) {
   if(!process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR) return;
