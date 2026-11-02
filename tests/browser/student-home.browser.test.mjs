@@ -2,7 +2,7 @@ import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {chromium} from '@playwright/test';
+import {chromium,expect} from '@playwright/test';
 import {installStudentHomeFixture} from '../fixtures/student-home-fixture.mjs';
 const origin='https://student-home.test';
 const id=n=>`76000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
