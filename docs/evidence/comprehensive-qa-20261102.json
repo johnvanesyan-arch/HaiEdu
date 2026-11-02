@@ -1,0 +1,1255 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "timezone": "Asia/Yerevan",
+  "status": "completed_with_open_findings",
+  "authorization": "John requested a comprehensive QA plan and execution; reported that the chapter fix works. Existing fixture and independent approval gates remain.",
+  "source": {
+    "reviewedProductionCommit": "9c9204f22496f2ca0bc509a62212774e160e3d36",
+    "tree": "b56aa253acb8249d36426ae8ca2e121249e23081",
+    "canonicalReleaseVerified": true
+  },
+  "roadmap": {
+    "current": "16.5B.12.3 usability/stabilization",
+    "B12.2": "delivered",
+    "B12": "open",
+    "subjects": "paused",
+    "englishCheckpoint": "C47 Unit3 pilot activation/read acceptance",
+    "nextSubjectWork": "Unit3 full learner/audio/writing acceptance, then Units4-6",
+    "fourSubjectGate": "open; precedes Sprint17"
+  },
+  "sourceEquivalentCI": {
+    "run": 41484818086,
+    "evidenceType": "exact-source reused, not rerun for this request",
+    "allFiveGates": "passed",
+    "unit": 1649,
+    "nativeChromium": 397,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "postgres": "17.6 real isolated concurrency gate passed",
+    "institutionalConcurrency": "passed"
+  },
+  "freshRuns": [
+    {
+      "id": 41489134618,
+      "workflow": "Resource assignment production acceptance",
+      "status": "passed",
+      "passed": 327,
+      "total": 327,
+      "isolationBefore": {
+        "passed": 54,
+        "total": 54
+      },
+      "isolationAfter": {
+        "passed": 54,
+        "total": 54
+      },
+      "publicFrontendMatches": 49,
+      "ownSessionsClosedHTTP204": 6,
+      "resourceCleanup": [
+        {
+          "resourceId": "8aad157d-5b23-4e3f-b294-0f1d9cac7b3f",
+          "withdrawn": true
+        },
+        {
+          "resourceId": "980e780b-408d-4e7b-b147-1faf59d02f1f",
+          "withdrawn": true
+        }
+      ],
+      "writingDeliveryCleanup": [
+        {
+          "id": "8e51bbd4-b6b4-4971-b5e1-a1b6f7d1704e",
+          "canceled": true
+        },
+        {
+          "id": "decf56ac-9575-4c68-8bb8-d80e9bf5b289",
+          "canceled": true
+        }
+      ],
+      "customTaskCleanup": [
+        {
+          "id": "6d7953fb-dc98-4dc7-a575-d29bf5638d76",
+          "cancelled": true
+        },
+        {
+          "id": "6f21a74d-5ff3-451b-a5dd-89ee3e906e37",
+          "cancelled": true
+        }
+      ],
+      "assignmentCleanup": [
+        {
+          "id": "a80f5ed8-d4aa-4f93-bb23-4e73ad851fb8",
+          "canceled": true
+        },
+        {
+          "id": "33e3f357-7e02-4a6d-bceb-2cdc75ab7020",
+          "canceled": true
+        },
+        {
+          "id": "f60ae161-080b-4e58-b561-1bfdcb7ba573",
+          "canceled": true
+        },
+        {
+          "id": "7244957b-b727-4efd-9d8b-0eb591e1948e",
+          "canceled": true
+        }
+      ],
+      "retention": "Run-owned deliveries cancelled; private teacher drafts, pinned PDF sources and immutable delivery audit retained under the normal retention contract.",
+      "learnerSubmissionsOrGradesCreated": false,
+      "existingReviewedFeedback": [
+        {
+          "side": "A",
+          "existingReviewedResponse": true,
+          "productionWritingMutation": false
+        },
+        {
+          "side": "B",
+          "existingReviewedResponse": false,
+          "productionWritingMutation": false
+        }
+      ],
+      "artifact": 13163387696,
+      "artifactSha256": "b48909aa9fe475e7bacb17bfbf05095332a4bdf581600e30556d5a9c2f84b0cb",
+      "visualInspection": [
+        "custom-task-teacher-A.png",
+        "custom-task-student-B.png",
+        "resource-form/teacher-pdf-first.png"
+      ]
+    },
+    {
+      "id": 41489665548,
+      "workflow": "Chapter VI pilot read acceptance",
+      "status": "passed",
+      "passed": 324,
+      "total": 324,
+      "isolation": {
+        "passed": 54,
+        "total": 54
+      },
+      "browserDiagnostics": [
+        {
+          "side": "A",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        },
+        {
+          "side": "B",
+          "blockedRequestCount": 0,
+          "pageErrorCount": 0,
+          "blockedRequests": [],
+          "pageErrors": []
+        }
+      ],
+      "learningWrites": false,
+      "artifact": 13163669276,
+      "artifactSha256": "d102ba50b230bda8d750a14b2de10612934483accb860c5f1f287aaa3d26af05",
+      "mainSessionCleanup": [
+        {
+          "label": "A_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only the session created by this run",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "isolationSessionCleanup": [
+        {
+          "label": "A_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ]
+    },
+    {
+      "id": 41491629527,
+      "workflow": "English Unit3 pilot read acceptance",
+      "status": "passed",
+      "passed": 154,
+      "total": 154,
+      "isolation": {
+        "passed": 54,
+        "total": 54
+      },
+      "learningWrites": false,
+      "artifact": 13164957752,
+      "artifactSha256": "b94232484fd0f098d71ddf01ea3ff185b3b1828b8dc3e5c5f9381ae167be0a0c",
+      "mainSessionCleanup": [
+        {
+          "label": "A_admin: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only this run authentication session",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ],
+      "isolationSessionCleanup": [
+        {
+          "label": "A_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "A_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_admin: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_teacher: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        },
+        {
+          "label": "B_student: close only this QA session",
+          "status": "passed",
+          "httpStatus": 204
+        }
+      ]
+    },
+    {
+      "id": 41492523110,
+      "workflow": "Teacher performance acceptance",
+      "status": "failed",
+      "phase": "after",
+      "fixtureScope": "all",
+      "observationsSaved": 120,
+      "observationsExpected": 150,
+      "failedStage": "B:5:unit-switch",
+      "errorName": "Error",
+      "timeout": true,
+      "profile": {
+        "browser": "Chromium",
+        "runner": "GitHub ubuntu-latest",
+        "viewport": "1365x950",
+        "cpu": "unthrottled shared runner",
+        "network": "CDP 4G: 150 ms latency, 1.6 Mbps down, 750 Kbps up",
+        "cold": "fresh browser context and HTTP cache",
+        "warm": "same context reload",
+        "iterations": 10
+      },
+      "budgets": {
+        "usefulHomeP95Ms": 3000,
+        "selectedClassP95Ms": 2000,
+        "loadedNavigationP95Ms": 200
+      },
+      "finalSummaryProduced": false,
+      "completeBudgetVerdict": "not established; run failed",
+      "cleanup": [
+        {
+          "label": "local QA session closed",
+          "passed": true
+        },
+        {
+          "label": "local QA session closed",
+          "passed": true
+        }
+      ],
+      "artifact": 13165621798,
+      "artifactSha256": "a082f6767d603154aaeb487efdaa76d7e22ca235543a9115e6f1946be6c8a7c7",
+      "sameWindow503": {
+        "event_message": "POST | 503 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "14593",
+        "request_id": "01a19d5c-07a3-7f01-b7b6-fd270c5a8e9f",
+        "timestamp": "2026-11-02T17:43:51.204000"
+      },
+      "correlationLimit": "Failed browser request details are not saved by this runner; timing/route are consistent, but an exact browser/provider request-ID match is unavailable.",
+      "fullRedactedReport": "comprehensive-qa-performance-20261102.json",
+      "fullRedactedReportSha256": "655594255edbef2c56109dee9406197cb9b1789a5cf359d5a5100aa37d764b6a"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "S01",
+      "capability": "Sign in, student registration, sign out",
+      "availability": "E · `account-access.js`, `role-router.js`, Sprint 10/14",
+      "screen": "Top-right account entry; labelled signout at desktop sidebar bottom and below account identity on every size",
+      "states": "Signed out, pending role, blocked, expired, recovery; no institutional access from registration alone",
+      "existingEvidence": "Existing role-routing/account regressions retained; 16.5B redirects, logout and stale data tests",
+      "qaAreas": [
+        "Q03",
+        "Q11",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S02",
+      "capability": "Email/password change and recovery",
+      "availability": "E · `privacy.html`, `privacy.js`, `account-access.js`",
+      "screen": "Account → access/security",
+      "states": "Pending email verification, recovery link, success/error; restore existing identity",
+      "existingEvidence": "Preserve confirmation/recovery behavior; no credential fields in prototype",
+      "qaAreas": [
+        "Q11",
+        "Q16"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S03",
+      "capability": "Invitation acceptance / join by code",
+      "availability": "E · `join.js`, `class-join.js`, `accept-invitation` route; Sprint 14",
+      "screen": "Account utility and no-enrollment CTA",
+      "states": "Valid/expired/used/wrong-actor invitation, no classes, joined; server-validated single-use token",
+      "existingEvidence": "Join/invitation regression; never synthesize memberships from UI",
+      "qaAreas": [
+        "Q02",
+        "Q03"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S04",
+      "capability": "Authorized course discovery",
+      "availability": "E · `student-courses.js`, `learning-navigation.mjs`, `get-student-classes`",
+      "screen": "Home course cards / Courses",
+      "states": "No/single/multiple enrollments, multiple grades/schools; preserve grouping by enrollment/programme",
+      "existingEvidence": "Existing navigation/isolation tests + 16.5B context-switch regression",
+      "qaAreas": [
+        "Q04",
+        "Q05"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S05",
+      "capability": "Selected school/class/year/release",
+      "availability": "E · context labels; P · canonical placement in 18.5",
+      "screen": "Header context; course detail provenance",
+      "states": "Exact returned context, not guessed grade/current year; long Armenian names, unknown placement",
+      "existingEvidence": "Current context test; future placement acceptance under 18.5",
+      "qaAreas": [
+        "Q04",
+        "Q05",
+        "Q15"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S06",
+      "capability": "Unit/topic/skill navigation",
+      "availability": "E · `course-page.js`, registered legacy extensions",
+      "screen": "Course → unit path and skills",
+      "states": "Ordered units from programme; optional, inactive, locked and entitled entries; no release expansion",
+      "existingEvidence": "Existing generic/legacy course tests + breadcrumb/bookmark compatibility",
+      "qaAreas": [
+        "Q04",
+        "Q05"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S07",
+      "capability": "Resume active session",
+      "availability": "E · course dashboard/player; D · prominent Home entry",
+      "screen": "Primary continuation card",
+      "states": "Active diagnostic/practice/review/mastery; exact same saved session, priority within selected context",
+      "existingEvidence": "Resume + no duplicate start + stale-context/account tests",
+      "qaAreas": [
+        "Q04",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S08",
+      "capability": "Recommended next action",
+      "availability": "E · existing governed per-context logic; D · Home presentation",
+      "screen": "Selected-course primary action",
+      "states": "Backend eligibility/prerequisite; no cross-subject ranking or client-generated mastery",
+      "existingEvidence": "Map action to existing service; multiple active contexts require user choice, not score ranking",
+      "qaAreas": [
+        "Q04",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S09",
+      "capability": "Baseline diagnostic",
+      "availability": "E · `learning-player.mjs`, `diagnostic.js`, governed policy",
+      "screen": "Assessments first in course tabs",
+      "states": "Required/available/in progress/completed; question counts from bound policy; no help/per-item correctness",
+      "existingEvidence": "Existing diagnostic tests; 16.5C representative attempts",
+      "qaAreas": [
+        "Q02",
+        "Q04",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S10",
+      "capability": "Adaptive practice",
+      "availability": "E · generic and registered legacy players",
+      "screen": "Course → skill → practice",
+      "states": "Ready/blocked/active/completed; configured counts and deterministic feedback",
+      "existingEvidence": "Existing practice/player and authorized skill routing",
+      "qaAreas": [
+        "Q02",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S11",
+      "capability": "Chapter/unit review",
+      "availability": "E · universal Review/mastery lifecycle (12.5)",
+      "screen": "Assessment prerequisite and course action",
+      "states": "Required review, optional ongoing review, readiness; no automatic extra attempt",
+      "existingEvidence": "Lifecycle regressions retained; finite-bank tests",
+      "qaAreas": [
+        "Q02",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S12",
+      "capability": "Mastery / retry capacity",
+      "availability": "E · policies, `assessment-reporting.mjs`",
+      "screen": "Assessments → readiness/check/results",
+      "states": "Locked/ready/active/pass/fail/review/exhausted/unscored; server attempt/form availability",
+      "existingEvidence": "Existing policy/form/attempt evidence; UI must not assume 3 attempts or universal pass mark",
+      "qaAreas": [
+        "Q02",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S13",
+      "capability": "Single choice / numeric / typed answers",
+      "availability": "E · registered response renderers",
+      "screen": "Focused task workspace",
+      "states": "Empty/draft/submitting/recorded/error; locale and grading contract retained",
+      "existingEvidence": "Existing grading/browser suites; no fake scoring from design",
+      "qaAreas": [
+        "Q02",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S14",
+      "capability": "Matching / categorisation / ordering",
+      "availability": "E · Sprint 16.1B response contracts",
+      "screen": "Focused task workspace",
+      "states": "Keyboard/pointer, changed answer, submit, result, long labels",
+      "existingEvidence": "Existing arrangement regressions; same protected API",
+      "qaAreas": [
+        "Q02",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S15",
+      "capability": "Shared reading and listening task sets",
+      "availability": "E · stimulus/task-set modules",
+      "screen": "Focused source pane with question navigation",
+      "states": "Same exact stimulus/version across linked items, scoped exposure and source protection",
+      "existingEvidence": "Shared-task-set and authorization tests preserved",
+      "qaAreas": [
+        "Q05",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S16",
+      "capability": "Audio delivery / replay / technical exit",
+      "availability": "E · `learning-audio.mjs`, assessed-audio policy",
+      "screen": "Source player / assessed play counter",
+      "states": "Load/play/pause/resume/limit/error/unscored exit; limits from context policy; no transcript leakage",
+      "existingEvidence": "Existing playback suites and per-unit action acceptance; C47 read checks are not Unit3 action proof",
+      "qaAreas": [
+        "Q05",
+        "Q06",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S17",
+      "capability": "Hints / worked examples / guides",
+      "availability": "E · remediation, `unit-guides.mjs`",
+      "screen": "Practice help + separate course guide library",
+      "states": "Hint steps, scoped penalties, guide gating, no protected live-assessment answer reveal",
+      "existingEvidence": "Existing guide/help tests + focus-return check",
+      "qaAreas": [
+        "Q04",
+        "Q05",
+        "Q06"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S18",
+      "capability": "Writing task discovery",
+      "availability": "E · `written-work.mjs`; D · My work index",
+      "screen": "My work → exact course/task",
+      "states": "Available/unstarted/draft/submitted/returned/assessed; no invented all-course counts",
+      "existingEvidence": "B.6 keeps writing discovery, active navigation and return links under My work; cross-class aggregate still requires reviewed projection",
+      "qaAreas": [
+        "Q05",
+        "Q08",
+        "Q09"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S19",
+      "capability": "Writing draft save / submission",
+      "availability": "E · 16.1B.1 written work",
+      "screen": "Focused writing editor",
+      "states": "Autosave/saving/unsaved/conflict/offline/navigation flush/submitting; word range and rubric from task",
+      "existingEvidence": "Existing browser/concurrency suites; preserve all version history",
+      "qaAreas": [
+        "Q08",
+        "Q11"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S20",
+      "capability": "Teacher feedback / returned revision",
+      "availability": "E · written-work service",
+      "screen": "My work → feedback and rubric",
+      "states": "Waiting, returned, revised, assessed, changed review with reason; separate human score",
+      "existingEvidence": "Existing teacher marking and learner feedback evidence; no automatic mastery equivalence",
+      "qaAreas": [
+        "Q08",
+        "Q09",
+        "Q11"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S21",
+      "capability": "Progress / readiness by skill",
+      "availability": "E · dashboard/readiness policy",
+      "screen": "Selected course → Progress → filters/detail panel; Home shortcuts keep selected context",
+      "states": "Not started, insufficient evidence, developing, ready, verified only where supported",
+      "existingEvidence": "Readiness/reporting retained; owner-requested main/mobile menu removal does not remove this function; preserve legacy progress deep links in 16.5B; text labels + denominators; no cross-subject average",
+      "qaAreas": [
+        "Q02",
+        "Q04",
+        "Q05"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S22",
+      "capability": "Assessment and session history",
+      "availability": "E · `course-page.js`, reporting",
+      "screen": "Course Progress → completed work",
+      "states": "Pass/fail/unscored, old/new policy versions, completion timestamp, detail",
+      "existingEvidence": "Preserve historical score model and provenance; no history rewrite",
+      "qaAreas": [
+        "Q02",
+        "Q04",
+        "Q05"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S23",
+      "capability": "Speaking / practical evidence",
+      "availability": "E · classroom disposition; P · 24.5 broader human evidence workflows",
+      "screen": "Course expectations / separate teacher-assessed lane",
+      "states": "Classroom-assessed, not automatically marked or inferred complete",
+      "existingEvidence": "Retain explicit speaking boundary; new marks require owning workflow",
+      "qaAreas": [
+        "Q06",
+        "Q15"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S24",
+      "capability": "Privacy preferences and data inventory",
+      "availability": "E · `privacy.html`, Sprint 10",
+      "screen": "Account → privacy",
+      "states": "Optional analytics/research preferences, saving/error; consent is not an enabled service",
+      "existingEvidence": "Existing privacy endpoints; no new analytics implementation in redesign",
+      "qaAreas": [
+        "Q03",
+        "Q11",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S25",
+      "capability": "Deletion request / cancellation",
+      "availability": "E · privacy and account lifecycle",
+      "screen": "Account → protected destructive-action section",
+      "states": "Requested/cancellable/processing/resolved, distinct from school removal/deactivation",
+      "existingEvidence": "Existing deletion flow/confirmations and audit; never tie to course removal",
+      "qaAreas": [
+        "Q11",
+        "Q16"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S26",
+      "capability": "Suspended / deactivated / revoked access",
+      "availability": "E · account/membership checks, session watchdog",
+      "screen": "Access status screen; safe account route",
+      "states": "Distinguish account state from one class/school removal, expired login, technical error",
+      "existingEvidence": "Backend denial and stale-response tests; never keep old actor/context data",
+      "qaAreas": [
+        "Q02",
+        "Q11",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S27",
+      "capability": "Existing deep links / role surfaces",
+      "availability": "E · old `.html` routes and role routing",
+      "screen": "Canonical legacy entry through shared shell",
+      "states": "Auth return, registered extension, focused task safe exit; teacher/admin routed normally",
+      "existingEvidence": "Full consumer audit; shared CSS/observer lifecycle regressions",
+      "qaAreas": [
+        "Q03",
+        "Q04",
+        "Q11"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S28",
+      "capability": "New account / no enrollment",
+      "availability": "E · auth and join capability",
+      "screen": "Welcoming empty Home",
+      "states": "Account exists but no school entitlement; no fake zero mastery or first-course default",
+      "existingEvidence": "Empty-state navigation and no unauthorized calls",
+      "qaAreas": [
+        "Q03",
+        "Q11"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S29",
+      "capability": "Loading / partial / service error",
+      "availability": "E · service state; D · unified presentation",
+      "screen": "Skeleton, inline message, retry",
+      "states": "Distinguish no records, unknown state, unavailable service; preserve focus/unsaved work",
+      "existingEvidence": "Native browser error/retry/rapid-switch regression",
+      "qaAreas": [
+        "Q03",
+        "Q11",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S30",
+      "capability": "Mobile / keyboard / reduced motion",
+      "availability": "E/D · 10.5/11H/16.5",
+      "screen": "Shared shell and focused tasks",
+      "states": "360/768/1280 px, 200% zoom, long Armenian, visible focus, no hover-only meaning",
+      "existingEvidence": "Three review palettes, 93 responsive checks and targeted contrast/motion checks; actual viewport/200% zoom and full production regression remain 16.5C",
+      "qaAreas": [
+        "Q03",
+        "Q12"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S31",
+      "capability": "Current placement / automatic progression",
+      "availability": "P · Sprint 18.5 academic-year policy",
+      "screen": "Header and pending placement panel",
+      "states": "Canonical current year/grade, unresolved progression, repeat/transfer/leaving; no student rollover controls",
+      "existingEvidence": "Versioned placement API + 18.5 cutover/stale-tab tests; future preview only",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S32",
+      "capability": "Subject delivery pending",
+      "availability": "P · 18.5, separately from no enrollment",
+      "screen": "Home delivery-status card",
+      "states": "Approved placement but missing classroom/programme/release; no extra join invitation for routine rollover",
+      "existingEvidence": "Authorized delivery projection; no inferred readiness from current course list",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S33",
+      "capability": "Previous years / read-only history",
+      "availability": "P · 18.5",
+      "screen": "Dedicated History page",
+      "states": "Original school/year/grade/class/release/model; no resume/write; no current totals",
+      "existingEvidence": "Authorized own-history projection and current/history fence tests",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S34",
+      "capability": "Account recovery without old email",
+      "availability": "P · 18.5 controlled recovery",
+      "screen": "Account help route to authorized school workflow",
+      "states": "Existing identity restoration, replaced sessions revoked; no duplicate learner",
+      "existingEvidence": "Owning recovery API/operator workflow; no student administrative control",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S35",
+      "capability": "School transfer continuity",
+      "availability": "P · 18.5 / Sprint 23",
+      "screen": "Context switch and authorized History",
+      "states": "Separate institutional scopes; neither school gets all other-school history",
+      "existingEvidence": "Explicit transfer/history policy tests; preview second school is synthetic",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S36",
+      "capability": "Longitudinal learner profile",
+      "availability": "P · Sprint 23",
+      "screen": "Account learning profile / History",
+      "states": "Evidence by year/grade/subject/release; no automatic cross-year mastery equivalence",
+      "existingEvidence": "Governed comparison/profile projection before enabling",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S37",
+      "capability": "Notifications / teacher assignments",
+      "availability": "Partial · 16.5B.8 resource assignments delivered; Sprint 17/24.5 broader assignments and notifications",
+      "screen": "My work / updates area",
+      "states": "Teacher-approved task, due date if provided, delivered/read/error; no fabricated deadlines/counts",
+      "existingEvidence": "Assignment/notification entitlement APIs and lifecycle; no working bell in current design",
+      "qaAreas": [
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q15"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass.",
+      "currentImplementationClarification": "Resource and published/custom-writing delivery are implemented; broader notifications/deadlines/assessments remain gated."
+    },
+    {
+      "id": "S38",
+      "capability": "Teacher assessments / intervention / reassessment",
+      "availability": "P · 24.5",
+      "screen": "My work → assigned assessment/review",
+      "states": "Blueprint, preview/edit/approve/assign, intervention reason, retention queue",
+      "existingEvidence": "Owning teacher-controlled services; reuse same evidence/scoping contracts",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S39",
+      "capability": "Accommodations",
+      "availability": "P · 14 foundation / 17 acceptance",
+      "screen": "Task entry rules and accessible player",
+      "states": "Only approved configured accommodations; transparent applicable timing/audio behavior",
+      "existingEvidence": "Governed accommodation API/policy and assessment acceptance; no UI self-unlock",
+      "qaAreas": [
+        "Q02",
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S40",
+      "capability": "Learning-growth / confidence / portability",
+      "availability": "P · 24, Sprint 18 hardening",
+      "screen": "Progress detail and Account export",
+      "states": "Sufficient/insufficient evidence, metric explanation, authorized export; active time not tab-open time",
+      "existingEvidence": "Versioned analytics and export services before controls appear",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S41",
+      "capability": "Controlled AI feedback / help",
+      "availability": "P · 25",
+      "screen": "Reserved helper inside task/work detail",
+      "states": "AI-labelled proposal, failure/fallback, reviewed content; not authoritative grade/access/mastery",
+      "existingEvidence": "Provider-neutral gateway and subject governance; no live AI chat in preview",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S42",
+      "capability": "Future subjects / grades / response types",
+      "availability": "P · 16.2–16.4 / 20–22",
+      "screen": "Same course/cards/player extension slots",
+      "states": "Registered capability, entitlement, curriculum provenance; neutral fallback visuals",
+      "existingEvidence": "Four-subject integration remains open; fixtures not curriculum releases",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S43",
+      "capability": "Localization / help / disputes",
+      "availability": "E · Armenian UI; P · 18/19",
+      "screen": "Shared messages, account support and contextual issue action",
+      "states": "Terminology dictionary, natural errors, content/version reference; existing support vs future ticketing",
+      "existingEvidence": "Armenian review in every release; governed support route before ticket control",
+      "qaAreas": [
+        "Q03",
+        "Q12",
+        "Q15"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    },
+    {
+      "id": "S44",
+      "capability": "Engagement preferences / optional goals/avatar",
+      "availability": "Proposal, not accepted roadmap implementation",
+      "screen": "Account appearance / optional Home goal",
+      "states": "Opt-in, persistent per actor, reduced motion; no effect on scores/eligibility or punitive streak loss",
+      "existingEvidence": "Forest is the owner-selected design direction; the no-motion review control remains local. Production preference/goal/avatar features still require a separate owner decision and preference/event contract",
+      "qaAreas": [
+        "Q15"
+      ],
+      "implementationScope": "not_implemented_or_proposal",
+      "qaDisposition": "dependency_gate_preserved"
+    },
+    {
+      "id": "S45",
+      "capability": "Supplementary subject materials",
+      "availability": "E · 16.5B.3 deployed; available-scope acceptance verified",
+      "screen": "«Նյութերի գրադարան» below My work; course shortcut; no duplicate button inside My work; illustrated cards, goals, search, purpose/topic/provider/format filters",
+      "states": "Published teacher-class or platform resources; explicit provenance; provider-supplied estimates/recommendations only, missing metadata omitted or described neutrally; reduced motion; no records/no filter matches/loading/error/withdrawn/denied; optional access does not alter mastery",
+      "existingEvidence": "[Implementation](student-supplementary-materials-implementation.md) and [release evidence](evidence/student-supplementary-release-20261027.json): real author/student pages, immutable QA/publication, private PDF/HTTPS delivery and two-school production lifecycle; synthetic cards remain labelled visual evidence",
+      "qaAreas": [
+        "Q07",
+        "Q14"
+      ],
+      "implementationScope": "implemented_or_partial",
+      "qaDisposition": "Evidence traced to the QA areas; scope-specific results and gaps apply. No blanket end-to-end capability pass."
+    }
+  ],
+  "capabilityCount": 45,
+  "findingIds": [
+    "UX-STUDENT-ACCESS-01",
+    "QA-TRANSPORT-01",
+    "QA-PERF-01",
+    "QA-EVIDENCE-01",
+    "DOC-QA-01"
+  ],
+  "limits": [
+    "Finite learner-attempt ledgers and the English Unit3 resumption checkpoint are preserved.",
+    "Chromium/emulated phones do not certify real devices, Safari, Firefox or full WCAG conformance.",
+    "No real account credential, factor, permission, deletion, backup restore or load test is authorized by a generic QA pass.",
+    "Owner usability, specialist content, four-subject and separate security/URL/Master gates remain distinct.",
+    "Fresh production submission/grade/revision and destructive account/recovery flows were not performed. Current actual-SQL/browser integration evidence remains available.",
+    "Fresh privileged Master Admin/Content Reviewer sign-in/MFA was not repeated; earlier read receipts remain historical.",
+    "Fresh performance certification failed at120/150 observations and has no complete p95 verdict.",
+    "The authenticated legacy mobile smoke pipeline was not run pending evidence redaction/guard review; no actual credential leak is asserted."
+  ],
+  "backendParity": {
+    "functionsRead": 64,
+    "functionFileInstances": 264,
+    "uniqueRepositorySourceFiles": 112,
+    "byteExactInstances": 257,
+    "trailingNewlineOnlyInstances": 7,
+    "unresolvedMismatches": [],
+    "receipt": "comprehensive-qa-edge-parity-20261102.json"
+  },
+  "evidenceBoundaries": {
+    "liveDelivery": "Authoring, publication, class/selected delivery, pinned-file access, duplicate receipt and cancellation were exercised with owned synthetic tasks. No learner submission or grade was created.",
+    "submissionReviewRevision": "Current isolated browser/actual-SQL/Edge contract evidence; current live existing-feedback read is positive in schoolA, while schoolB has no pre-existing reviewed writing response.",
+    "privilegedRoles": "Five-role isolated UI/authorization coverage; prior normal-MFA Master Admin and Content Reviewer live read receipts are historical. Fresh privileged sign-in is not inferred."
+  },
+  "documentationReconciliation": {
+    "roadmapOverview": "Corrected obsolete16.5 design/implementation-pending summary.",
+    "matrix": "Historical B.8.2 note labelled; current S37 implemented subset clarified; all45IDs/dependencies preserved."
+  },
+  "advisorSummary": {
+    "securityGroups": 2,
+    "performanceGroups": 5,
+    "configurationChanges": false,
+    "rootCauseOf401Established": false,
+    "notices": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "title": "RLS Enabled No Policy",
+        "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "title": "Leaked Password Protection Disabled",
+        "description": "Leaked password protection is currently disabled.",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+      },
+      {
+        "name": "unindexed_foreign_keys",
+        "level": "INFO",
+        "title": "Unindexed foreign keys",
+        "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+      },
+      {
+        "name": "auth_rls_initplan",
+        "level": "WARN",
+        "title": "Auth RLS Initialization Plan",
+        "description": "Detects if calls to \\`current_setting()\\` and \\`auth.<function>()\\` in RLS policies are being unnecessarily re-evaluated for each row",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+      },
+      {
+        "name": "no_primary_key",
+        "level": "INFO",
+        "title": "No Primary Key",
+        "description": "Detects if a table does not have a primary key. Tables without a primary key can be inefficient to interact with at scale.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0004_no_primary_key"
+      },
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "title": "Unused Index",
+        "description": "Detects if an index has never been used and may be a candidate for removal.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+      },
+      {
+        "name": "multiple_permissive_policies",
+        "level": "WARN",
+        "title": "Multiple Permissive Policies",
+        "description": "Detects if multiple permissive row level security policies are present on a table for the same \\`role\\` and \\`action\\` (e.g. insert). Multiple permissive policies are suboptimal for performance as each policy must be executed for every relevant query.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+      }
+    ]
+  },
+  "authInvestigation": {
+    "scope": "16:30:25–16:31:05UTC read-only historical log correlation",
+    "matchedPriorQARequestIds": [
+      "01a19d19-413f-79c3-8e89-9c04303bedab",
+      "01a19d19-47f8-727a-a2c7-75cc21d7686e",
+      "01a19d19-813b-781e-a485-676632a885e1"
+    ],
+    "allFour401sHadExecutionId": true,
+    "jwtAlgorithm": "ES256",
+    "sessionClaimPresent": true,
+    "gatewayUserPresent": true,
+    "observedExecutionMs": [
+      49,
+      362,
+      216,
+      323
+    ],
+    "authLogAggregate": [
+      {
+        "method": "GET",
+        "path": "/",
+        "records": 38,
+        "status": "200"
+      }
+    ],
+    "interpretation": "The401s reached a function invocation. These logs do not identify which SDK verification step failed or its inner request; no expiry, malformed-token, JWKS or provider-outage diagnosis is established.",
+    "disposition": "Keep UX-STUDENT-ACCESS-01 open; next bounded diagnostic should record safe verification error categories and nested provider correlation without tokens or learner data.",
+    "matchedFunctionLogRows": [
+      {
+        "edge_region": "us-east-2",
+        "event_message": "POST | 401 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-student-classes",
+        "execution_present": 1,
+        "execution_time_ms": "49",
+        "gateway_user_present": 1,
+        "jwt_algorithm": "ES256",
+        "request_id": "01a19d19-34d7-723e-ba72-3e29fa2c6c60",
+        "session_claim_present": 1,
+        "timestamp": "2026-11-02T16:30:37.320000"
+      },
+      {
+        "edge_region": "us-east-2",
+        "event_message": "POST | 401 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-academic-context",
+        "execution_present": 1,
+        "execution_time_ms": "362",
+        "gateway_user_present": 1,
+        "jwt_algorithm": "ES256",
+        "request_id": "01a19d19-413f-79c3-8e89-9c04303bedab",
+        "session_claim_present": 1,
+        "timestamp": "2026-11-02T16:30:40.809000"
+      },
+      {
+        "edge_region": "us-east-2",
+        "event_message": "POST | 401 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-student",
+        "execution_present": 1,
+        "execution_time_ms": "216",
+        "gateway_user_present": 1,
+        "jwt_algorithm": "ES256",
+        "request_id": "01a19d19-47f8-727a-a2c7-75cc21d7686e",
+        "session_claim_present": 1,
+        "timestamp": "2026-11-02T16:30:42.384000"
+      },
+      {
+        "edge_region": "us-east-2",
+        "event_message": "POST | 401 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_present": 1,
+        "execution_time_ms": "323",
+        "gateway_user_present": 1,
+        "jwt_algorithm": "ES256",
+        "request_id": "01a19d19-813b-781e-a485-676632a885e1",
+        "session_claim_present": 1,
+        "timestamp": "2026-11-02T16:30:57.150000"
+      }
+    ]
+  },
+  "finishedAt": "2026-11-02T17:51:31.624174+00:00",
+  "productionPostflight": {
+    "main": "9c9204f22496f2ca0bc509a62212774e160e3d36",
+    "canonicalRelease": "9c9204f22496f2ca0bc509a62212774e160e3d36",
+    "verifiedAfterPerformanceFailure": true
+  },
+  "performanceInvestigation": {
+    "windowUTC": {
+      "start": "2026-11-02T17:43:00Z",
+      "end": "2026-11-02T17:44:25Z"
+    },
+    "gatewayRows": [
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "6870",
+        "request_id": "01a19d5b-6dba-7936-9fd0-cf0101354235",
+        "timestamp": "2026-11-02T17:43:04.080000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "7293",
+        "request_id": "01a19d5b-89b7-74f6-822d-9043ff2908b9",
+        "timestamp": "2026-11-02T17:43:11.668000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "4439",
+        "request_id": "01a19d5b-a6a7-751e-9d85-95392f952e93",
+        "timestamp": "2026-11-02T17:43:16.222000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "2518",
+        "request_id": "01a19d5b-b987-72fd-8c67-85eb5aa1e373",
+        "timestamp": "2026-11-02T17:43:19.133000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "2117",
+        "request_id": "01a19d5b-d2e8-7eb6-ae8f-7b07c7b128f9",
+        "timestamp": "2026-11-02T17:43:25.229000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "4634",
+        "request_id": "01a19d5b-e1c1-75b5-912a-289164c9ccd0",
+        "timestamp": "2026-11-02T17:43:31.547000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "1334",
+        "request_id": "01a19d5b-f559-79be-a307-49799b353151",
+        "timestamp": "2026-11-02T17:43:33.263000"
+      },
+      {
+        "event_message": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "2643",
+        "request_id": "01a19d5b-fc9b-7c6f-ada2-8c56bfb20bac",
+        "timestamp": "2026-11-02T17:43:36.430000"
+      },
+      {
+        "event_message": "POST | 503 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-teacher-dashboard",
+        "execution_time_ms": "14593",
+        "request_id": "01a19d5c-07a3-7f01-b7b6-fd270c5a8e9f",
+        "timestamp": "2026-11-02T17:43:51.204000"
+      }
+    ],
+    "finding": "QA-PERF-01",
+    "noAutomaticRerun": true,
+    "noTimeoutOrBudgetChange": true
+  },
+  "findings": [
+    {
+      "id": "QA-PERF-01",
+      "severity": "P2",
+      "status": "open",
+      "finding": "Read-only teacher performance run fails at B:5:unit-switch after120/150 observations. Same-window get-teacher-dashboard503 takes14,593ms.",
+      "next": "Capture safe failing request/response and exact awaited UI state, correlate the503 request, diagnose/reproduce the B unit switch and rerun the unchanged performance profile after correction."
+    },
+    {
+      "id": "UX-STUDENT-ACCESS-01",
+      "severity": "P2",
+      "status": "open",
+      "finding": "Earlier401s reached Edge invocations; three prior QA request IDs correlate exactly. New delivery/Physics/English runs pass; the old cause is not established.",
+      "next": "Safe verification error categories and nested provider correlation before changing getUser/getClaims/session behavior."
+    },
+    {
+      "id": "QA-EVIDENCE-01",
+      "severity": "P2",
+      "status": "open; source-audit risk, no confirmed leak",
+      "finding": "Authenticated legacy mobile suite records retain-on-failure traces/video and uploads test-results. Traces can contain request headers/bodies. No redaction/identity/source guard proof is retained for that path; it was not executed in this pass.",
+      "sourceFiles": [
+        "playwright.config.js",
+        "e2e/auth.setup.js",
+        ".github/workflows/mobile-browser-qa.yml"
+      ],
+      "next": "Disable or redact credential-bearing auth traces, constrain saved evidence and add explicit reviewed-main/exact-revision/designated-identity guards before using this runner. Current397 native checks and fresh390px custom-task capture remain separate mobile evidence.",
+      "reference": "https://playwright.dev/docs/trace-viewer#network"
+    },
+    {
+      "id": "DOC-QA-01",
+      "severity": "P3",
+      "status": "corrected in this documentation change",
+      "finding": "Roadmap overview and S37 note lag delivered work.",
+      "next": "Keep all45IDs/dependencies and history; align current summaries to the authoritative status."
+    }
+  ]
+}

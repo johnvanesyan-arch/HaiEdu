@@ -1,0 +1,2746 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-02T17:32:36.841311+00:00",
+  "sourceCommit": "9c9204f22496f2ca0bc509a62212774e160e3d36",
+  "sourceTree": "b56aa253acb8249d36426ae8ca2e121249e23081",
+  "scope": "Read-only inventory of all64 deployed Edge Functions. Explicit packaging-prefix/entrypoint mappings are recorded; byte differences are never silently normalized. No deployment or configuration change.",
+  "functionsRead": 64,
+  "functionFileInstances": 264,
+  "uniqueRepositorySourceFiles": 112,
+  "byteExactInstances": 257,
+  "trailingNewlineOnlyInstances": 7,
+  "unresolvedMismatches": [],
+  "packagingMappings": [
+    {
+      "function": "get-practice-item",
+      "returned": "source/index.ts",
+      "repository": "supabase/functions/get-practice-item/index.ts"
+    },
+    {
+      "function": "bootstrap-school",
+      "returned": "functions/bootstrap-school/index.ts",
+      "repository": "supabase/functions/bootstrap-school/index.ts"
+    },
+    {
+      "function": "bootstrap-school",
+      "returned": "functions/_shared/auth.ts",
+      "repository": "supabase/functions/_shared/auth.ts"
+    },
+    {
+      "function": "get-school-teachers",
+      "returned": "functions/get-school-teachers/index.ts",
+      "repository": "supabase/functions/get-school-teachers/index.ts"
+    },
+    {
+      "function": "get-school-teachers",
+      "returned": "functions/_shared/auth.ts",
+      "repository": "supabase/functions/_shared/auth.ts"
+    },
+    {
+      "function": "manage-supplementary-resources",
+      "returned": "functions/manage-supplementary-resources/index.ts",
+      "repository": "supabase/functions/manage-supplementary-resources/index.ts"
+    },
+    {
+      "function": "manage-supplementary-resources",
+      "returned": "functions/_shared/auth.ts",
+      "repository": "supabase/functions/_shared/auth.ts"
+    },
+    {
+      "function": "manage-supplementary-resources",
+      "returned": "functions/_shared/supplementary-resources-handler.mjs",
+      "repository": "supabase/functions/_shared/supplementary-resources-handler.mjs"
+    }
+  ],
+  "formattingDifferences": [
+    {
+      "function": "manage-institutional-membership",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "accept-staff-account",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "manage-teacher-subject",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "get-school-subject-options",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "get-student-onboarding-options",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "complete-student-invitation",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    },
+    {
+      "function": "manage-student-invitation",
+      "returnedPath": "_shared/auth.ts",
+      "repositoryPath": "supabase/functions/_shared/auth.ts",
+      "bytes": 1062,
+      "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+      "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "comparison": "trailing_newline_only"
+    }
+  ],
+  "functions": [
+    {
+      "slug": "get-student-classes",
+      "version": 12,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-student-classes/index.ts",
+          "repositoryPath": "supabase/functions/get-student-classes/index.ts",
+          "bytes": 3259,
+          "observedSha256": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+          "expectedSha256": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "submit-answer",
+      "version": 22,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "submit-answer/index.ts",
+          "repositoryPath": "supabase/functions/submit-answer/index.ts",
+          "bytes": 16383,
+          "observedSha256": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+          "expectedSha256": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/practice-diagnostic-gate.ts",
+          "repositoryPath": "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "bytes": 1030,
+          "observedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "expectedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/learning-model.ts",
+          "repositoryPath": "supabase/functions/_shared/learning-model.ts",
+          "bytes": 659,
+          "observedSha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "expectedSha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/recommendation-telemetry.ts",
+          "repositoryPath": "supabase/functions/_shared/recommendation-telemetry.ts",
+          "bytes": 3875,
+          "observedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "expectedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/grading.ts",
+          "repositoryPath": "supabase/functions/_shared/grading.ts",
+          "bytes": 5458,
+          "observedSha256": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+          "expectedSha256": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/recommendation.ts",
+          "repositoryPath": "supabase/functions/_shared/recommendation.ts",
+          "bytes": 966,
+          "observedSha256": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9",
+          "expectedSha256": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-practice-item",
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "source/index.ts",
+          "repositoryPath": "supabase/functions/get-practice-item/index.ts",
+          "bytes": 1970,
+          "observedSha256": "3d438e80ef3b2dd9167c15ba58d9529914aca7e01c11eb109e322d4cb2197dc7",
+          "expectedSha256": "3d438e80ef3b2dd9167c15ba58d9529914aca7e01c11eb109e322d4cb2197dc7",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "start-learning-session",
+      "version": 27,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "start-learning-session/index.ts",
+          "repositoryPath": "supabase/functions/start-learning-session/index.ts",
+          "bytes": 33357,
+          "observedSha256": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+          "expectedSha256": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/practice-diagnostic-gate.ts",
+          "repositoryPath": "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "bytes": 1030,
+          "observedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "expectedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/initial-diagnostic.ts",
+          "repositoryPath": "supabase/functions/_shared/initial-diagnostic.ts",
+          "bytes": 2038,
+          "observedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "expectedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/recommendation-telemetry.ts",
+          "repositoryPath": "supabase/functions/_shared/recommendation-telemetry.ts",
+          "bytes": 3875,
+          "observedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "expectedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-integrity.ts",
+          "repositoryPath": "supabase/functions/_shared/assessment-integrity.ts",
+          "bytes": 11403,
+          "observedSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+          "expectedSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-session-item",
+      "version": 20,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-session-item/index.ts",
+          "repositoryPath": "supabase/functions/get-session-item/index.ts",
+          "bytes": 14569,
+          "observedSha256": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+          "expectedSha256": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/practice-diagnostic-gate.ts",
+          "repositoryPath": "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "bytes": 1030,
+          "observedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "expectedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-integrity.ts",
+          "repositoryPath": "supabase/functions/_shared/assessment-integrity.ts",
+          "bytes": 11403,
+          "observedSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+          "expectedSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-student-dashboard",
+      "version": 28,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-student-dashboard/index.ts",
+          "repositoryPath": "supabase/functions/get-student-dashboard/index.ts",
+          "bytes": 15426,
+          "observedSha256": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+          "expectedSha256": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/learning-model.ts",
+          "repositoryPath": "supabase/functions/_shared/learning-model.ts",
+          "bytes": 659,
+          "observedSha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "expectedSha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/recommendation-telemetry.ts",
+          "repositoryPath": "supabase/functions/_shared/recommendation-telemetry.ts",
+          "bytes": 3875,
+          "observedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "expectedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-dashboard-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-dashboard-handler.mjs",
+          "bytes": 2325,
+          "observedSha256": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf",
+          "expectedSha256": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-remediation-help",
+      "version": 16,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-remediation-help/index.ts",
+          "repositoryPath": "supabase/functions/get-remediation-help/index.ts",
+          "bytes": 10036,
+          "observedSha256": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+          "expectedSha256": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/practice-diagnostic-gate.ts",
+          "repositoryPath": "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "bytes": 1030,
+          "observedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "expectedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "submit-mastery-answer",
+      "version": 11,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "submit-mastery-answer/index.ts",
+          "repositoryPath": "supabase/functions/submit-mastery-answer/index.ts",
+          "bytes": 6990,
+          "observedSha256": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+          "expectedSha256": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-mastery-check-status",
+      "version": 15,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-mastery-check-status/index.ts",
+          "repositoryPath": "supabase/functions/get-mastery-check-status/index.ts",
+          "bytes": 11357,
+          "observedSha256": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+          "expectedSha256": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-teacher-dashboard",
+      "version": 25,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-teacher-dashboard/index.ts",
+          "repositoryPath": "supabase/functions/get-teacher-dashboard/index.ts",
+          "bytes": 24446,
+          "observedSha256": "920436ec2fa24993c3a3802f1508f84ddf5aab1b95bd1fcf1865d83c96785015",
+          "expectedSha256": "920436ec2fa24993c3a3802f1508f84ddf5aab1b95bd1fcf1865d83c96785015",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-read-identity.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-read-identity.mjs",
+          "bytes": 901,
+          "observedSha256": "d0b4927ffb0e51ee56e5b7c3228c5a58054c8092364d28b39da5dd6cfcbac1e6",
+          "expectedSha256": "d0b4927ffb0e51ee56e5b7c3228c5a58054c8092364d28b39da5dd6cfcbac1e6",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-workspace-request.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-workspace-request.mjs",
+          "bytes": 800,
+          "observedSha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+          "expectedSha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-dashboard-batch.ts",
+          "repositoryPath": "supabase/functions/_shared/teacher-dashboard-batch.ts",
+          "bytes": 7160,
+          "observedSha256": "9f2a37b69773a6d03b5e23e5c540ec9bd91fb9c979200015779215dfd6da42fc",
+          "expectedSha256": "9f2a37b69773a6d03b5e23e5c540ec9bd91fb9c979200015779215dfd6da42fc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/institutional-teacher-dashboard.ts",
+          "repositoryPath": "supabase/functions/_shared/institutional-teacher-dashboard.ts",
+          "bytes": 20203,
+          "observedSha256": "f9d5721b1ea2ffffe0b061ee93d037f70b6132cc110ef773b2b5a85e9b8fac0a",
+          "expectedSha256": "f9d5721b1ea2ffffe0b061ee93d037f70b6132cc110ef773b2b5a85e9b8fac0a",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/academic-context.ts",
+          "repositoryPath": "supabase/functions/_shared/academic-context.ts",
+          "bytes": 11609,
+          "observedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "expectedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/institutional-teacher-analytics.ts",
+          "repositoryPath": "supabase/functions/_shared/institutional-teacher-analytics.ts",
+          "bytes": 27191,
+          "observedSha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+          "expectedSha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/initial-diagnostic.ts",
+          "repositoryPath": "supabase/functions/_shared/initial-diagnostic.ts",
+          "bytes": 2038,
+          "observedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "expectedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/analytics-evidence.mjs",
+          "repositoryPath": "supabase/functions/_shared/analytics-evidence.mjs",
+          "bytes": 3100,
+          "observedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "expectedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-teacher-student",
+      "version": 17,
+      "verifyJwt": false,
+      "files": [
+        {
+          "returnedPath": "get-teacher-student/index.ts",
+          "repositoryPath": "supabase/functions/get-teacher-student/index.ts",
+          "bytes": 19136,
+          "observedSha256": "44b2cb054e586c3a41e6716dac3a7d3dac25f23f3b236f0f565e3124b9b7a65d",
+          "expectedSha256": "44b2cb054e586c3a41e6716dac3a7d3dac25f23f3b236f0f565e3124b9b7a65d",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/initial-diagnostic.ts",
+          "repositoryPath": "supabase/functions/_shared/initial-diagnostic.ts",
+          "bytes": 2038,
+          "observedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "expectedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/academic-context.ts",
+          "repositoryPath": "supabase/functions/_shared/academic-context.ts",
+          "bytes": 11609,
+          "observedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "expectedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/institutional-teacher-analytics.ts",
+          "repositoryPath": "supabase/functions/_shared/institutional-teacher-analytics.ts",
+          "bytes": 27191,
+          "observedSha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+          "expectedSha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/analytics-evidence.mjs",
+          "repositoryPath": "supabase/functions/_shared/analytics-evidence.mjs",
+          "bytes": 3100,
+          "observedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "expectedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-class",
+      "version": 6,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-class/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-class/index.ts",
+          "bytes": 6693,
+          "observedSha256": "9e8578f5de3253178fbf30a74bda6f7b46d0f21624c840f8cc80a0a644892104",
+          "expectedSha256": "9e8578f5de3253178fbf30a74bda6f7b46d0f21624c840f8cc80a0a644892104",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "join-class",
+      "version": 6,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "join-class/index.ts",
+          "repositoryPath": "supabase/functions/join-class/index.ts",
+          "bytes": 5627,
+          "observedSha256": "4e2e3694a4844794f597806ec774b8dc59ac803f422a907eeb505372d371ba14",
+          "expectedSha256": "4e2e3694a4844794f597806ec774b8dc59ac803f422a907eeb505372d371ba14",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-content-quality-dashboard",
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-content-quality-dashboard/index.ts",
+          "repositoryPath": "supabase/functions/get-content-quality-dashboard/index.ts",
+          "bytes": 14903,
+          "observedSha256": "2e0b8930a0114cd1a1828d408394aeb326c5a18732a1f0db456873e727a663a9",
+          "expectedSha256": "2e0b8930a0114cd1a1828d408394aeb326c5a18732a1f0db456873e727a663a9",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-content-quality",
+      "version": 15,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-content-quality/index.ts",
+          "repositoryPath": "supabase/functions/manage-content-quality/index.ts",
+          "bytes": 34996,
+          "observedSha256": "006c7fd7c711f358cbda01775d7e124306312f806001f13fb29a58ae582dac60",
+          "expectedSha256": "006c7fd7c711f358cbda01775d7e124306312f806001f13fb29a58ae582dac60",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/arrangement-responses.mjs",
+          "repositoryPath": "supabase/functions/_shared/arrangement-responses.mjs",
+          "bytes": 3266,
+          "observedSha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+          "expectedSha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/typed-fields.mjs",
+          "repositoryPath": "supabase/functions/_shared/typed-fields.mjs",
+          "bytes": 2965,
+          "observedSha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+          "expectedSha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-my-privacy",
+      "version": 11,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-my-privacy/index.ts",
+          "repositoryPath": "supabase/functions/get-my-privacy/index.ts",
+          "bytes": 10623,
+          "observedSha256": "5ac9cd366a2daa02c8cbdf8d423c7afb28c3c00eb196181d8171c7017e6384db",
+          "expectedSha256": "5ac9cd366a2daa02c8cbdf8d423c7afb28c3c00eb196181d8171c7017e6384db",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-my-privacy",
+      "version": 4,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-my-privacy/index.ts",
+          "repositoryPath": "supabase/functions/manage-my-privacy/index.ts",
+          "bytes": 6888,
+          "observedSha256": "c8e5f4de43d946b0526fbcc05768ec3dd9f6664dfa04472cf1f6cc6f5776db84",
+          "expectedSha256": "c8e5f4de43d946b0526fbcc05768ec3dd9f6664dfa04472cf1f6cc6f5776db84",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-admin-dashboard",
+      "version": 3,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-admin-dashboard/index.ts",
+          "repositoryPath": "supabase/functions/get-admin-dashboard/index.ts",
+          "bytes": 22228,
+          "observedSha256": "c66139af98dfe8714e4ead710d5da0316be4eccb49356180219ebf9df80c5b16",
+          "expectedSha256": "c66139af98dfe8714e4ead710d5da0316be4eccb49356180219ebf9df80c5b16",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-admin-account",
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-admin-account/index.ts",
+          "repositoryPath": "supabase/functions/manage-admin-account/index.ts",
+          "bytes": 24201,
+          "observedSha256": "897e1193d920c627a010f2dab2d1b245bd6e161ae9ac06dbb11187cc97e3a656",
+          "expectedSha256": "897e1193d920c627a010f2dab2d1b245bd6e161ae9ac06dbb11187cc97e3a656",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-privacy.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-privacy.mjs",
+          "bytes": 2130,
+          "observedSha256": "65c1fdf7decf4622a4fd000c05ed9463195950068a041e55dddf9d84c538883b",
+          "expectedSha256": "65c1fdf7decf4622a4fd000c05ed9463195950068a041e55dddf9d84c538883b",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-profile",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-profile/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-profile/index.ts",
+          "bytes": 2821,
+          "observedSha256": "591b61317f5b2c5bab52af3d5972813ca49fdb434faf77bf74357255b4cf1701",
+          "expectedSha256": "591b61317f5b2c5bab52af3d5972813ca49fdb434faf77bf74357255b4cf1701",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-content-review-history",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-content-review-history/index.ts",
+          "repositoryPath": "supabase/functions/get-content-review-history/index.ts",
+          "bytes": 4738,
+          "observedSha256": "554a70b97a7874334f94cd00ef8bfa1711f5516ea7c0a91b782e8789acc19d0d",
+          "expectedSha256": "554a70b97a7874334f94cd00ef8bfa1711f5516ea7c0a91b782e8789acc19d0d",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-pilot-item-analytics",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-pilot-item-analytics/index.ts",
+          "repositoryPath": "supabase/functions/get-pilot-item-analytics/index.ts",
+          "bytes": 2665,
+          "observedSha256": "ec208124e0bdff5731b6b2a44304f801047b4855b644f08887655888b205ed7c",
+          "expectedSha256": "ec208124e0bdff5731b6b2a44304f801047b4855b644f08887655888b205ed7c",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "record-recommendation-event",
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "record-recommendation-event/index.ts",
+          "repositoryPath": "supabase/functions/record-recommendation-event/index.ts",
+          "bytes": 4674,
+          "observedSha256": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+          "expectedSha256": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-chapter-mastery-lifecycle",
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-chapter-mastery-lifecycle/index.ts",
+          "repositoryPath": "supabase/functions/get-chapter-mastery-lifecycle/index.ts",
+          "bytes": 4506,
+          "observedSha256": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc",
+          "expectedSha256": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/curriculum-release.ts",
+          "repositoryPath": "supabase/functions/_shared/curriculum-release.ts",
+          "bytes": 2957,
+          "observedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "expectedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/governed-learning-runtime.mjs",
+          "repositoryPath": "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "bytes": 6939,
+          "observedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "expectedSha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/course-access.ts",
+          "repositoryPath": "supabase/functions/_shared/course-access.ts",
+          "bytes": 4665,
+          "observedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "expectedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-teacher-academic-context",
+      "version": 3,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-teacher-academic-context/index.ts",
+          "repositoryPath": "supabase/functions/get-teacher-academic-context/index.ts",
+          "bytes": 3053,
+          "observedSha256": "f3c2b12a58645dde6be001414ebd7b5ee29cd68d26ae1249355c42d04aeba660",
+          "expectedSha256": "f3c2b12a58645dde6be001414ebd7b5ee29cd68d26ae1249355c42d04aeba660",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/academic-context.ts",
+          "repositoryPath": "supabase/functions/_shared/academic-context.ts",
+          "bytes": 11609,
+          "observedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "expectedSha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-institutional-invitation",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-institutional-invitation/index.ts",
+          "repositoryPath": "supabase/functions/manage-institutional-invitation/index.ts",
+          "bytes": 5331,
+          "observedSha256": "082e129ef60d49fc3bd730293f4ea5a1d36465249011467cfad98413f910fee6",
+          "expectedSha256": "082e129ef60d49fc3bd730293f4ea5a1d36465249011467cfad98413f910fee6",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "redeem-institutional-invitation",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "redeem-institutional-invitation/index.ts",
+          "repositoryPath": "supabase/functions/redeem-institutional-invitation/index.ts",
+          "bytes": 2793,
+          "observedSha256": "c57e420f874056e1772679db345e7c034663ea38421218268f64c1a075ecf73f",
+          "expectedSha256": "c57e420f874056e1772679db345e7c034663ea38421218268f64c1a075ecf73f",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-institutional-membership",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-institutional-membership/index.ts",
+          "repositoryPath": "supabase/functions/manage-institutional-membership/index.ts",
+          "bytes": 3294,
+          "observedSha256": "f8b29b1a24f490adce919a7c1cfb2b68e4be6614fe687c79ab187af4f5313c2e",
+          "expectedSha256": "f8b29b1a24f490adce919a7c1cfb2b68e4be6614fe687c79ab187af4f5313c2e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "bootstrap-school",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "functions/bootstrap-school/index.ts",
+          "repositoryPath": "supabase/functions/bootstrap-school/index.ts",
+          "bytes": 3259,
+          "observedSha256": "4a9445850d4d3f833cd87a29c3befda4dbe7d12eb339d006b6500ba0c21a1944",
+          "expectedSha256": "4a9445850d4d3f833cd87a29c3befda4dbe7d12eb339d006b6500ba0c21a1944",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "functions/_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "provision-staff-account",
+      "version": 5,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "provision-staff-account/index.ts",
+          "repositoryPath": "supabase/functions/provision-staff-account/index.ts",
+          "bytes": 4903,
+          "observedSha256": "4a451cd093e147802b9c2a84ec70c823e0d501bbc3964b91e53599cd3a22f0cc",
+          "expectedSha256": "4a451cd093e147802b9c2a84ec70c823e0d501bbc3964b91e53599cd3a22f0cc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "accept-staff-account",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "accept-staff-account/index.ts",
+          "repositoryPath": "supabase/functions/accept-staff-account/index.ts",
+          "bytes": 1789,
+          "observedSha256": "22579fa593a8e4018a05cbc3c9941e5b42cefd093283c44b16864c8efe146e24",
+          "expectedSha256": "22579fa593a8e4018a05cbc3c9941e5b42cefd093283c44b16864c8efe146e24",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-subject",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-subject/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-subject/index.ts",
+          "bytes": 2743,
+          "observedSha256": "56f95f7c99de5edc4a006084104cb909e17171e826424956a08308fb4430af44",
+          "expectedSha256": "56f95f7c99de5edc4a006084104cb909e17171e826424956a08308fb4430af44",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-school-subject-options",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-school-subject-options/index.ts",
+          "repositoryPath": "supabase/functions/get-school-subject-options/index.ts",
+          "bytes": 2128,
+          "observedSha256": "b07d7b3fa112ba07c5ce8d05455bdc9a66f008677ac357f53ee087113bd4f8a3",
+          "expectedSha256": "b07d7b3fa112ba07c5ce8d05455bdc9a66f008677ac357f53ee087113bd4f8a3",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-staff-invitation",
+      "version": 4,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-staff-invitation/index.ts",
+          "repositoryPath": "supabase/functions/manage-staff-invitation/index.ts",
+          "bytes": 4648,
+          "observedSha256": "e150125652cd0e529f2b8b781861b9b14189c41e8d9b642a0ec36852a916e437",
+          "expectedSha256": "e150125652cd0e529f2b8b781861b9b14189c41e8d9b642a0ec36852a916e437",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-school-academic-year",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-school-academic-year/index.ts",
+          "repositoryPath": "supabase/functions/manage-school-academic-year/index.ts",
+          "bytes": 4932,
+          "observedSha256": "2230e0bde8eed471c5d900ba5a759af0dbe9aa5adb722c2acd80b5d9143ffcca",
+          "expectedSha256": "2230e0bde8eed471c5d900ba5a759af0dbe9aa5adb722c2acd80b5d9143ffcca",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-institutional-teacher-class",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-institutional-teacher-class/index.ts",
+          "repositoryPath": "supabase/functions/manage-institutional-teacher-class/index.ts",
+          "bytes": 5008,
+          "observedSha256": "f4cfc82724054e7e1ec065af846fbbcf8dc3f8ee1f9323b8b26250eb93e72c99",
+          "expectedSha256": "f4cfc82724054e7e1ec065af846fbbcf8dc3f8ee1f9323b8b26250eb93e72c99",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-school-teachers",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "functions/get-school-teachers/index.ts",
+          "repositoryPath": "supabase/functions/get-school-teachers/index.ts",
+          "bytes": 2684,
+          "observedSha256": "1e7522cdb01a4b8861839eded1ad6b0e7a855da2d733f61eab4a7a076212fb5c",
+          "expectedSha256": "1e7522cdb01a4b8861839eded1ad6b0e7a855da2d733f61eab4a7a076212fb5c",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "functions/_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-school-teacher",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-school-teacher/index.ts",
+          "repositoryPath": "supabase/functions/manage-school-teacher/index.ts",
+          "bytes": 4526,
+          "observedSha256": "21a188a3edf36cb1bd26538211f15ad771a9298e123f1e5060465998a8905610",
+          "expectedSha256": "21a188a3edf36cb1bd26538211f15ad771a9298e123f1e5060465998a8905610",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-school-admin-overview",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-school-admin-overview/index.ts",
+          "repositoryPath": "supabase/functions/get-school-admin-overview/index.ts",
+          "bytes": 12202,
+          "observedSha256": "497a60ec5e432059c861819b2ef32da7d8af531bacb752aa1a3666a532bf4929",
+          "expectedSha256": "497a60ec5e432059c861819b2ef32da7d8af531bacb752aa1a3666a532bf4929",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "provision-student-account",
+      "version": 4,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "provision-student-account/index.ts",
+          "repositoryPath": "supabase/functions/provision-student-account/index.ts",
+          "bytes": 9171,
+          "observedSha256": "3535c286fa56eafaa02b42df6d98acea63aef4ec74bde72a113325a5cd862fd3",
+          "expectedSha256": "3535c286fa56eafaa02b42df6d98acea63aef4ec74bde72a113325a5cd862fd3",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-student-onboarding-options",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-student-onboarding-options/index.ts",
+          "repositoryPath": "supabase/functions/get-student-onboarding-options/index.ts",
+          "bytes": 2135,
+          "observedSha256": "8d4e424b06ea631259e5d2b64bd5eef6ac9a1e30c6c23ceedd95cfe6f2a45009",
+          "expectedSha256": "8d4e424b06ea631259e5d2b64bd5eef6ac9a1e30c6c23ceedd95cfe6f2a45009",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "complete-student-invitation",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "complete-student-invitation/index.ts",
+          "repositoryPath": "supabase/functions/complete-student-invitation/index.ts",
+          "bytes": 2713,
+          "observedSha256": "92f2bba86d9f7f2e1fed61d3ea1758a7f4a9f5be91364f64120c51611ef43208",
+          "expectedSha256": "92f2bba86d9f7f2e1fed61d3ea1758a7f4a9f5be91364f64120c51611ef43208",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-student-invitation",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-student-invitation/index.ts",
+          "repositoryPath": "supabase/functions/manage-student-invitation/index.ts",
+          "bytes": 7771,
+          "observedSha256": "23d7cf26d458c83d4627d55f42d9878fa21e6470d2885543a2267b1e3b106adf",
+          "expectedSha256": "23d7cf26d458c83d4627d55f42d9878fa21e6470d2885543a2267b1e3b106adf",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1062,
+          "observedSha256": "464b99fbd27dfab529622130b7f91c377bb86e7959badcbed4e89ea434ea7d27",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "trailing_newline_only"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-school-performance-analytics",
+      "version": 4,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-school-performance-analytics/index.ts",
+          "repositoryPath": "supabase/functions/get-school-performance-analytics/index.ts",
+          "bytes": 16146,
+          "observedSha256": "feb6da2c0fbac053bd9e3dfb521f995ac781f625e0c62b5eed1b1305cc89784c",
+          "expectedSha256": "feb6da2c0fbac053bd9e3dfb521f995ac781f625e0c62b5eed1b1305cc89784c",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/school-performance-analytics.ts",
+          "repositoryPath": "supabase/functions/_shared/school-performance-analytics.ts",
+          "bytes": 8340,
+          "observedSha256": "9776bd4a47d18201f479dbfa0177c121be5306fcc08b347f49d70f80b33a40b1",
+          "expectedSha256": "9776bd4a47d18201f479dbfa0177c121be5306fcc08b347f49d70f80b33a40b1",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/analytics-evidence.mjs",
+          "repositoryPath": "supabase/functions/_shared/analytics-evidence.mjs",
+          "bytes": 3100,
+          "observedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "expectedSha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-remediation-guides",
+      "version": 11,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-remediation-guides/index.ts",
+          "repositoryPath": "supabase/functions/manage-remediation-guides/index.ts",
+          "bytes": 16228,
+          "observedSha256": "c4c849953a1ab0006bbd5a6256df8855d15e10ab3dfa5ba313c8ae4484859f52",
+          "expectedSha256": "c4c849953a1ab0006bbd5a6256df8855d15e10ab3dfa5ba313c8ae4484859f52",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/remediation-authoring-validation.mjs",
+          "repositoryPath": "supabase/functions/_shared/remediation-authoring-validation.mjs",
+          "bytes": 12622,
+          "observedSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c",
+          "expectedSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-misconception-reviews",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-misconception-reviews/index.ts",
+          "repositoryPath": "supabase/functions/manage-misconception-reviews/index.ts",
+          "bytes": 526,
+          "observedSha256": "b11fb1e23453e20e21063df6a95578d4c5708eafc5247f0c54efeaa2108f8c47",
+          "expectedSha256": "b11fb1e23453e20e21063df6a95578d4c5708eafc5247f0c54efeaa2108f8c47",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/misconception-review-management.mjs",
+          "repositoryPath": "supabase/functions/_shared/misconception-review-management.mjs",
+          "bytes": 5472,
+          "observedSha256": "c9ce2eca5751569c18d50d708d19fa4b40f4a3288fdf9980f94b5676a73d5409",
+          "expectedSha256": "c9ce2eca5751569c18d50d708d19fa4b40f4a3288fdf9980f94b5676a73d5409",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-learning-context",
+      "version": 5,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-learning-context/index.ts",
+          "repositoryPath": "supabase/functions/get-learning-context/index.ts",
+          "bytes": 509,
+          "observedSha256": "07e4bf30c856a0a7a4ff9c23157481ff25effad0d20cbd00948a4ea030aed3cd",
+          "expectedSha256": "07e4bf30c856a0a7a4ff9c23157481ff25effad0d20cbd00948a4ea030aed3cd",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/learning-context-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/learning-context-handler.mjs",
+          "bytes": 4398,
+          "observedSha256": "405f1074ddfc3fb58ae84bf5f95343aae542ff05633a02742d4a103cfe27cc4a",
+          "expectedSha256": "405f1074ddfc3fb58ae84bf5f95343aae542ff05633a02742d4a103cfe27cc4a",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/student-learning-context.mjs",
+          "repositoryPath": "supabase/functions/_shared/student-learning-context.mjs",
+          "bytes": 6647,
+          "observedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "expectedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessment-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessment-policy.mjs",
+          "bytes": 6860,
+          "observedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "expectedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/assessed-audio-policy.mjs",
+          "repositoryPath": "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "bytes": 589,
+          "observedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "expectedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-written-work",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-written-work/index.ts",
+          "repositoryPath": "supabase/functions/manage-written-work/index.ts",
+          "bytes": 475,
+          "observedSha256": "174070c12973f8d252ae4da426fe3ce661045a4cb71e3b24fa9d8064838ab06e",
+          "expectedSha256": "174070c12973f8d252ae4da426fe3ce661045a4cb71e3b24fa9d8064838ab06e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/written-work-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/written-work-handler.mjs",
+          "bytes": 3537,
+          "observedSha256": "18b19bc0cd4a6ad4773083a5362081b17c9de5c0e84384f1cd4937e71d1aef7f",
+          "expectedSha256": "18b19bc0cd4a6ad4773083a5362081b17c9de5c0e84384f1cd4937e71d1aef7f",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-learning-audio",
+      "version": 2,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-learning-audio/index.ts",
+          "repositoryPath": "supabase/functions/get-learning-audio/index.ts",
+          "bytes": 478,
+          "observedSha256": "22794f72ffb42d8239e7f460ebb75c2db6b9729f3b33f1eb097ec30dc6b22239",
+          "expectedSha256": "22794f72ffb42d8239e7f460ebb75c2db6b9729f3b33f1eb097ec30dc6b22239",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/learning-audio-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/learning-audio-handler.mjs",
+          "bytes": 5943,
+          "observedSha256": "c0278a9eb5c4816d6ab28f026db37afa0a61048e0ca3632a3a0a5d67f96b31dd",
+          "expectedSha256": "c0278a9eb5c4816d6ab28f026db37afa0a61048e0ca3632a3a0a5d67f96b31dd",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-learning-task-set",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-learning-task-set/index.ts",
+          "repositoryPath": "supabase/functions/get-learning-task-set/index.ts",
+          "bytes": 478,
+          "observedSha256": "c88dbf0fb87e9e8c3a385a8b6c2a990fda1fb698dab455fb799f56222ac6d707",
+          "expectedSha256": "c88dbf0fb87e9e8c3a385a8b6c2a990fda1fb698dab455fb799f56222ac6d707",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/learning-task-set-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/learning-task-set-handler.mjs",
+          "bytes": 2479,
+          "observedSha256": "3bdf2d57aee3234ba58a534c8f52c8e14b0bfaf4df752cd8df3293c3d5d42939",
+          "expectedSha256": "3bdf2d57aee3234ba58a534c8f52c8e14b0bfaf4df752cd8df3293c3d5d42939",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-unit-materials",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-unit-materials/index.ts",
+          "repositoryPath": "supabase/functions/manage-unit-materials/index.ts",
+          "bytes": 477,
+          "observedSha256": "245bde6c9c3e06168057da7dc97473d4c176092f9d8c528268b743977ea08bc5",
+          "expectedSha256": "245bde6c9c3e06168057da7dc97473d4c176092f9d8c528268b743977ea08bc5",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/unit-materials-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/unit-materials-handler.mjs",
+          "bytes": 3307,
+          "observedSha256": "2caae2fefaa29cfd9eab3fe9ee72be11f5f32eda111587419b4a631a1315d4ae",
+          "expectedSha256": "2caae2fefaa29cfd9eab3fe9ee72be11f5f32eda111587419b4a631a1315d4ae",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-unit-guides",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-unit-guides/index.ts",
+          "repositoryPath": "supabase/functions/get-unit-guides/index.ts",
+          "bytes": 468,
+          "observedSha256": "a38520f706cb61477430b199e40cd715d71c03a3a5786ce588eab21d42e3aee8",
+          "expectedSha256": "a38520f706cb61477430b199e40cd715d71c03a3a5786ce588eab21d42e3aee8",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/unit-guides-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/unit-guides-handler.mjs",
+          "bytes": 2622,
+          "observedSha256": "95661914a2f6209fd0bab6b93ae3af04176435b30c096a641a60270e1f653c0d",
+          "expectedSha256": "95661914a2f6209fd0bab6b93ae3af04176435b30c096a641a60270e1f653c0d",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-supplementary-resources",
+      "version": 1,
+      "verifyJwt": false,
+      "files": [
+        {
+          "returnedPath": "functions/manage-supplementary-resources/index.ts",
+          "repositoryPath": "supabase/functions/manage-supplementary-resources/index.ts",
+          "bytes": 497,
+          "observedSha256": "4d68178cf26ac18ded0ef75933886e746855192d445cfa4a51bf01847c944397",
+          "expectedSha256": "4d68178cf26ac18ded0ef75933886e746855192d445cfa4a51bf01847c944397",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "functions/_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "functions/_shared/supplementary-resources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/supplementary-resources-handler.mjs",
+          "bytes": 8022,
+          "observedSha256": "eff20c3d8007f28ae069544b011eb331d287861d7d59c58348d9da0a9d2cd988",
+          "expectedSha256": "eff20c3d8007f28ae069544b011eb331d287861d7d59c58348d9da0a9d2cd988",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-resource-assignments",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-resource-assignments/index.ts",
+          "repositoryPath": "supabase/functions/manage-resource-assignments/index.ts",
+          "bytes": 462,
+          "observedSha256": "5c876b67da47c9c7508abd4efae6fc9fb94608e41292b9df20bb992bd052255f",
+          "expectedSha256": "5c876b67da47c9c7508abd4efae6fc9fb94608e41292b9df20bb992bd052255f",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/resource-assignments-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/resource-assignments-handler.mjs",
+          "bytes": 6692,
+          "observedSha256": "3187fd1e5f0480cb281e9f81bb2443f47fe849c35e2b28332a63ef9545eada9d",
+          "expectedSha256": "3187fd1e5f0480cb281e9f81bb2443f47fe849c35e2b28332a63ef9545eada9d",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/supplementary-resources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/supplementary-resources-handler.mjs",
+          "bytes": 8022,
+          "observedSha256": "eff20c3d8007f28ae069544b011eb331d287861d7d59c58348d9da0a9d2cd988",
+          "expectedSha256": "eff20c3d8007f28ae069544b011eb331d287861d7d59c58348d9da0a9d2cd988",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "get-teacher-workspace",
+      "version": 4,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "get-teacher-workspace/index.ts",
+          "repositoryPath": "supabase/functions/get-teacher-workspace/index.ts",
+          "bytes": 461,
+          "observedSha256": "e8d61dd76e1ef281996206de2654ebcd83544e8cb8bd998f6898be4aaac8634d",
+          "expectedSha256": "e8d61dd76e1ef281996206de2654ebcd83544e8cb8bd998f6898be4aaac8634d",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-workspace-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-workspace-handler.mjs",
+          "bytes": 3609,
+          "observedSha256": "0eb0fff1de902c7ab307565f6fabd0e2cd607a1fade65971d53129170ad0a739",
+          "expectedSha256": "0eb0fff1de902c7ab307565f6fabd0e2cd607a1fade65971d53129170ad0a739",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-read-identity.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-read-identity.mjs",
+          "bytes": 901,
+          "observedSha256": "d0b4927ffb0e51ee56e5b7c3228c5a58054c8092364d28b39da5dd6cfcbac1e6",
+          "expectedSha256": "d0b4927ffb0e51ee56e5b7c3228c5a58054c8092364d28b39da5dd6cfcbac1e6",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-workspace-request.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-workspace-request.mjs",
+          "bytes": 800,
+          "observedSha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+          "expectedSha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-feedback",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-feedback/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-feedback/index.ts",
+          "bytes": 469,
+          "observedSha256": "48b4441170a1f7266fb65d79d77a358b5b34bd3ec3d5dd96c5d87d65998207de",
+          "expectedSha256": "48b4441170a1f7266fb65d79d77a358b5b34bd3ec3d5dd96c5d87d65998207de",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-feedback-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-feedback-handler.mjs",
+          "bytes": 3890,
+          "observedSha256": "9ee195b656dd208f69869e1550b78c7945f8d3562fa5e82f45eabbf0fa352c3e",
+          "expectedSha256": "9ee195b656dd208f69869e1550b78c7945f8d3562fa5e82f45eabbf0fa352c3e",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-writing-assignments",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-writing-assignments/index.ts",
+          "repositoryPath": "supabase/functions/manage-writing-assignments/index.ts",
+          "bytes": 478,
+          "observedSha256": "07c2f696f4672b98f6c119a568fe7d9e10bfc46c0a5f77997c744c73928eab66",
+          "expectedSha256": "07c2f696f4672b98f6c119a568fe7d9e10bfc46c0a5f77997c744c73928eab66",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/writing-assignments-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/writing-assignments-handler.mjs",
+          "bytes": 5474,
+          "observedSha256": "5c69b78a09089906aeb2f95d4f9c0cf09a2a5eb082ac97a5f4fbbd96a97d39c3",
+          "expectedSha256": "5c69b78a09089906aeb2f95d4f9c0cf09a2a5eb082ac97a5f4fbbd96a97d39c3",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-drafts",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-drafts/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-drafts/index.ts",
+          "bytes": 476,
+          "observedSha256": "a84f1a0516222d8f4afd3a0050ea5e6ca4eed4caef3ffb68fc56c90c13c1acc6",
+          "expectedSha256": "a84f1a0516222d8f4afd3a0050ea5e6ca4eed4caef3ffb68fc56c90c13c1acc6",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-drafts-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-drafts-handler.mjs",
+          "bytes": 4690,
+          "observedSha256": "d045063e7d00a0b7e3d4d29b889776fa34798e3f5237cf19cd2824380eaba312",
+          "expectedSha256": "d045063e7d00a0b7e3d4d29b889776fa34798e3f5237cf19cd2824380eaba312",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-sources",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-sources/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-sources/index.ts",
+          "bytes": 479,
+          "observedSha256": "63301b03c437767f5f0bdae6c96a6c50ce48496505c884429bf1628c6b6856dc",
+          "expectedSha256": "63301b03c437767f5f0bdae6c96a6c50ce48496505c884429bf1628c6b6856dc",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-sources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "bytes": 6579,
+          "observedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "expectedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-delivery",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-delivery/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-delivery/index.ts",
+          "bytes": 482,
+          "observedSha256": "16558a40fc24f0fd8490cbeee418b83aab09f8db1e7602a046b63965d040d9d6",
+          "expectedSha256": "16558a40fc24f0fd8490cbeee418b83aab09f8db1e7602a046b63965d040d9d6",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-delivery-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-delivery-handler.mjs",
+          "bytes": 4834,
+          "observedSha256": "a1edb90e7308b984cf331f16e398e97446c2b7b5123320fa126a64f43773dea0",
+          "expectedSha256": "a1edb90e7308b984cf331f16e398e97446c2b7b5123320fa126a64f43773dea0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-student-work",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-student-work/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-student-work/index.ts",
+          "bytes": 479,
+          "observedSha256": "954f07ee4f738e7df68d70c718be90cda98d1f3a67d0e6b0e96ceb7fa04384d5",
+          "expectedSha256": "954f07ee4f738e7df68d70c718be90cda98d1f3a67d0e6b0e96ceb7fa04384d5",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-handler.mjs",
+          "bytes": 4512,
+          "observedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "expectedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-response.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-response.mjs",
+          "bytes": 1102,
+          "observedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "expectedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-student-files",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-student-files/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-student-files/index.ts",
+          "bytes": 495,
+          "observedSha256": "879e8eb37528688c3dd72e895ddb246df82fc12f4284c850a2a8e9bf73a228ad",
+          "expectedSha256": "879e8eb37528688c3dd72e895ddb246df82fc12f4284c850a2a8e9bf73a228ad",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-files-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "bytes": 3892,
+          "observedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "expectedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-response.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-response.mjs",
+          "bytes": 1102,
+          "observedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "expectedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-documents.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-documents.mjs",
+          "bytes": 4211,
+          "observedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "expectedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-sources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "bytes": 6579,
+          "observedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "expectedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-handler.mjs",
+          "bytes": 4512,
+          "observedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "expectedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-review",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-review/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-review/index.ts",
+          "bytes": 476,
+          "observedSha256": "7cd9f3bc681b096cb27248c0955ead3af89c87f01b08539682f067e3ef7f8f91",
+          "expectedSha256": "7cd9f3bc681b096cb27248c0955ead3af89c87f01b08539682f067e3ef7f8f91",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-review-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-review-handler.mjs",
+          "bytes": 3977,
+          "observedSha256": "220fc40671d62d599f57f32404092ca10c206e3f16e72577b58413ccfa435372",
+          "expectedSha256": "220fc40671d62d599f57f32404092ca10c206e3f16e72577b58413ccfa435372",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-response.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-response.mjs",
+          "bytes": 1102,
+          "observedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "expectedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-handler.mjs",
+          "bytes": 4512,
+          "observedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "expectedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-files-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "bytes": 3892,
+          "observedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "expectedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-documents.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-documents.mjs",
+          "bytes": 4211,
+          "observedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "expectedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-sources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "bytes": 6579,
+          "observedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "expectedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    },
+    {
+      "slug": "manage-teacher-task-review-files",
+      "version": 1,
+      "verifyJwt": true,
+      "files": [
+        {
+          "returnedPath": "manage-teacher-task-review-files/index.ts",
+          "repositoryPath": "supabase/functions/manage-teacher-task-review-files/index.ts",
+          "bytes": 489,
+          "observedSha256": "76a9795369e7e98e344cd64cbaa8be3c6998b3a17481cfbba4554957804e2545",
+          "expectedSha256": "76a9795369e7e98e344cd64cbaa8be3c6998b3a17481cfbba4554957804e2545",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/auth.ts",
+          "repositoryPath": "supabase/functions/_shared/auth.ts",
+          "bytes": 1061,
+          "observedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "expectedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-review-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-review-handler.mjs",
+          "bytes": 3977,
+          "observedSha256": "220fc40671d62d599f57f32404092ca10c206e3f16e72577b58413ccfa435372",
+          "expectedSha256": "220fc40671d62d599f57f32404092ca10c206e3f16e72577b58413ccfa435372",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-response.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-response.mjs",
+          "bytes": 1102,
+          "observedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "expectedSha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-definition.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-definition.mjs",
+          "bytes": 3912,
+          "observedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "expectedSha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-handler.mjs",
+          "bytes": 4512,
+          "observedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "expectedSha256": "f5cc9bc0be0db992175ee41c6c005408bcd4d465043945176c1e5f61d45a2178",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-student-files-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "bytes": 3892,
+          "observedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "expectedSha256": "68d3ea0a362078a168889f0499caad54b9f25f591e1a86210e7ee12835e3856e",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-documents.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-documents.mjs",
+          "bytes": 4211,
+          "observedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "expectedSha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2",
+          "comparison": "byte_exact"
+        },
+        {
+          "returnedPath": "_shared/teacher-task-sources-handler.mjs",
+          "repositoryPath": "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "bytes": 6579,
+          "observedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "expectedSha256": "3936b7260d6adfda18621b7745d7a283fe8484db434b1d457f676421f01a0d55",
+          "comparison": "byte_exact"
+        }
+      ],
+      "noExecutableSourceDifference": true
+    }
+  ]
+}
