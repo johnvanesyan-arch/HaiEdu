@@ -5,15 +5,32 @@ on:
   schedule:
     - cron: "0 4 * * 1"
 
+  push:
+    branches: [main]
+    paths:
+      - web/**
+      - scripts/**
+      - supabase/functions/**
+      - package.json
+      - package-lock.json
+      - vercel.json
+      - .github/workflows/mobile-browser-qa.yml
+
 permissions:
   contents: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
 
 jobs:
   mobile-production-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     steps:
+      - name: Require reviewed main
+        run: test "$GITHUB_REF" = refs/heads/main
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -37,36 +54,31 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify required QA secrets
-        shell: bash
-        env:
-          QA_LEARNER_EMAIL: ${{ secrets.QA_LEARNER_EMAIL }}
-          QA_LEARNER_PASSWORD: ${{ secrets.QA_LEARNER_PASSWORD }}
-          QA_TEACHER_EMAIL: ${{ secrets.QA_TEACHER_EMAIL }}
-          QA_TEACHER_PASSWORD: ${{ secrets.QA_TEACHER_PASSWORD }}
-        run: |
-          test -n "$QA_LEARNER_EMAIL"
-          test -n "$QA_LEARNER_PASSWORD"
-          test -n "$QA_TEACHER_EMAIL"
-          test -n "$QA_TEACHER_PASSWORD"
+      - name: Verify exact production source before credentials
+        run: node scripts/wait-for-production-release.mjs
 
-      - name: Run authenticated mobile tests
-        run: npm run test:e2e:mobile
+      - name: Run designated read-only mobile acceptance
+        run: node scripts/mobile-browser-acceptance.mjs
         env:
-          PLAYWRIGHT_BASE_URL: https://www.haiedu.am
-          QA_LEARNER_EMAIL: ${{ secrets.QA_LEARNER_EMAIL }}
-          QA_LEARNER_PASSWORD: ${{ secrets.QA_LEARNER_PASSWORD }}
-          QA_TEACHER_EMAIL: ${{ secrets.QA_TEACHER_EMAIL }}
-          QA_TEACHER_PASSWORD: ${{ secrets.QA_TEACHER_PASSWORD }}
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
 
-      - name: Upload browser evidence
+      - name: Upload sanitized acceptance receipt only
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-mobile-report
-          path: |
-            playwright-report/
-            test-results/
+          name: mobile-read-acceptance
+          path: qa-results/mobile-acceptance.json
           if-no-files-found: ignore
           retention-days: 14
-
