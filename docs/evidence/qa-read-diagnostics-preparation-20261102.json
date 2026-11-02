@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "haiedu-qa-read-diagnostics-preparation-v1",
+  "date": "2026-11-02 Asia/Yerevan",
+  "base": "dcd91922c2923f85bdbd92fb61c91f405549710d",
+  "scope": "Shared QA-only observational metadata; no application/backend/auth/content change",
+  "timeoutMs": 20000,
+  "automaticRetries": 0,
+  "fixedCategories": [
+    "timeout",
+    "aborted",
+    "tls",
+    "network",
+    "invalid_request",
+    "invalid_json",
+    "body_read_failed",
+    "fetch_failed",
+    "unclassified"
+  ],
+  "callers": [
+    "scripts/chapter-ii-pilot-read-acceptance.mjs",
+    "scripts/chapter-iii-pilot-read-acceptance.mjs",
+    "scripts/chapter-iv-pilot-read-acceptance.mjs",
+    "scripts/chapter-v-pilot-read-acceptance.mjs",
+    "scripts/chapter-vi-pilot-read-acceptance.mjs",
+    "scripts/english-unit1-pilot-read-acceptance.mjs",
+    "scripts/english-unit2-pilot-read-acceptance.mjs",
+    "scripts/english-unit3-pilot-read-acceptance.mjs",
+    "scripts/resource-assignments-acceptance.mjs",
+    "scripts/sprint-14-actions.mjs",
+    "scripts/supplementary-resources-acceptance.mjs",
+    "scripts/teacher-feedback-acceptance.mjs"
+  ],
+  "constantOnlyConsumers": [
+    "tests/live/english-unit1-learner-acceptance.mjs",
+    "tests/live/english-unit2-learner-acceptance.mjs"
+  ],
+  "standalone": "scripts/sprint-14-isolation.mjs",
+  "focusedChecks": {
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "browserDependencyGraphs": 11,
+  "status": "working branch; full local suite passed; required CI/native/live verification pending",
+  "B123": "open",
+  "subjects": "paused",
+  "ownerAcceptance": false,
+  "localFullTests": {
+    "passed": 1649,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  }
+}

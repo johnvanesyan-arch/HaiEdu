@@ -93,7 +93,7 @@ export function localReferences(filename, source) {
       }
     }
   } else if (/\.[cm]?[jt]s$/.test(filename)) {
-    for (const match of source.matchAll(/\b(?:import|export)\s+(?:[^"'`;]*?\s+from\s*)?["']([^"']+)["']/g)) refs.push(match[1]);
+    for (const match of source.matchAll(/\b(?:import|export)\b\s*(?:[^"'`;]*?\bfrom\s*)?["']([^"']+)["']/g)) refs.push(match[1]);
     for (const match of source.matchAll(/\bimport\s*\(\s*["']([^"']+)["']\s*\)/g)) refs.push(match[1]);
   } else if (filename.endsWith(".css")) {
     for (const match of source.matchAll(/@import\s+(?:url\(\s*)?["']([^"']+)["']/g)) refs.push(match[1]);

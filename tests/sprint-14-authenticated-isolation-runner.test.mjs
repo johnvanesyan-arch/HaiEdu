@@ -63,6 +63,14 @@ test('both directions run only after positive controls and all QA sessions close
   const report=await runIsolation({...input,...mock});
   assert.equal(report.status,'passed'); assert.equal(report.checks.length,54);
   assert.equal(report.sprint14GateClosed,false);
+  assert.equal(report.diagnosticsVersion,'haiedu-qa-read-diagnostics-v1');
+  for (const check of report.checks) {
+    assert.equal(check.diagnostics.timeoutMs,20_000);
+    assert.ok(Number.isFinite(check.diagnostics.elapsedMs));
+    assert.match(check.diagnostics.traceId,/^[0-9a-f]{32}$/);
+    assert.equal(check.diagnostics.failureKind,undefined);
+  }
+  assert.equal(new Set(report.checks.map(c=>c.diagnostics.traceId)).size,54);
   assert.equal(mock.calls.filter(c=>c.path==='/auth/v1/logout'&&c.query==='?scope=local').length,6);
   for(const side of sides) assert.ok(report.checks.some(c=>c.label===`${side}: teacher cannot select other context`));
   assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-|example.invalid.*@|refresh_token|access_token/);
@@ -97,6 +105,54 @@ test('network failure and failed cleanup are reported without tokens', async () 
   const fetchImpl=(url,options)=>url.includes('/logout')?Promise.reject(new Error('PRIVATE token-A_admin')):mock.fetchImpl(url,options);
   const report=await runIsolation({...input,fetchImpl});
   assert.equal(report.status,'failed'); assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-/);
+});
+
+test('a failed legacy full class read is attempted once, fails unchanged and closes every session', async () => {
+  const input=inputs(), mock=server(input), observed=[];
+  const fetchImpl=(url,options)=>{
+    assert.match(options.headers.traceparent,/^00-[0-9a-f]{32}-[0-9a-f]{16}-01$/);
+    assert.ok(options.signal instanceof AbortSignal);
+    if(url.endsWith('/get-teacher-dashboard')&&options.headers.Authorization==='Bearer token-A_teacher'){
+      const body=JSON.parse(options.body);observed.push(body);assert.equal(body.readMode,undefined);
+      return Promise.reject(new TypeError('PRIVATE-URL-TOKEN',{cause:{code:'ECONNRESET',message:'PRIVATE learner'}}));
+    }
+    return mock.fetchImpl(url,options);
+  };
+  const report=await runIsolation({...input,fetchImpl});
+  const check=report.checks.find(c=>c.label==='A: teacher own class evidence');
+  assert.equal(report.status,'failed');assert.equal(check.status,'failed');assert.equal(check.httpStatus,0);
+  assert.equal(check.diagnostics.failurePhase,'fetch');assert.equal(check.diagnostics.failureKind,'network');
+  assert.equal(check.diagnostics.failureCode,'ECONNRESET');assert.equal(check.diagnostics.providerRequestId,undefined);
+  assert.equal(observed.length,1);assert.equal(report.checks.length,24);
+  assert.equal(mock.calls.filter(c=>c.path==='/auth/v1/logout').length,6);
+  assert.ok(!report.checks.some(c=>c.label.includes('cannot read other directory')));
+  assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-/);
+});
+
+test('body decode failure keeps the actual HTTP status and does not become HTTP0', async () => {
+  const input=inputs(), mock=server(input);
+  const fetchImpl=(url,options)=>url.endsWith('/get-teacher-dashboard')&&options.headers.Authorization==='Bearer token-A_teacher'
+    ?Promise.resolve(new Response('PRIVATE invalid JSON',{status:200,headers:{'sb-request-id':id(999)}}))
+    :mock.fetchImpl(url,options);
+  const report=await runIsolation({...input,fetchImpl});
+  const check=report.checks.find(c=>c.label==='A: teacher own class evidence');
+  assert.equal(report.status,'failed');assert.equal(check.httpStatus,200);
+  assert.equal(check.diagnostics.failurePhase,'body');assert.equal(check.diagnostics.failureKind,'invalid_json');
+  assert.equal(check.diagnostics.providerRequestId,id(999));
+  assert.equal(mock.calls.filter(c=>c.path==='/auth/v1/logout').length,6);
+  assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-/);
+});
+
+test('unreadable optional response headers cannot convert successful checks into failures', async () => {
+  const input=inputs(), mock=server(input);
+  const fetchImpl=async(url,options)=>{
+    const reply=await mock.fetchImpl(url,options);
+    return {status:reply.status,get headers(){throw Error('PRIVATE header failure');},json:()=>reply.json()};
+  };
+  const report=await runIsolation({...input,fetchImpl});
+  assert.equal(report.status,'passed');assert.equal(report.checks.length,54);
+  assert.ok(report.checks.every(c=>c.diagnostics.providerRequestId===undefined));
+  assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-/);
 });
 
 test('ended own-school guest history is allowed, live or evidence-bearing foreign rows fail', async () => {

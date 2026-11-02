@@ -23,6 +23,7 @@ on:
       - scripts/sprint-14-actions.mjs
       - scripts/sprint-14-action-guards.mjs
       - scripts/sprint-14-isolation.mjs
+      - scripts/qa-request-diagnostics.mjs
       - scripts/wait-for-production-release.mjs
       - scripts/stamp-release.mjs
       # The runner exercises both pages; shared dependencies must activate it too.
