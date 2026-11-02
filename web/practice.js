@@ -320,7 +320,15 @@ async function startOrResumePractice() {
     reviewRequired: data.required ?? null,
   };
   renderReviewContext();
-  history.replaceState({}, "", isChapterReview ? "./practice.html?mode=chapter_review" : "./practice.html");
+  const destination = new URL(isChapterReview ? "./practice.html?mode=chapter_review" : "./practice.html", window.location.href);
+  // Starting a session consumes the skill hint, not the selected enrollment.
+  // Keep every supplied context value so malformed/ambiguous input still fails
+  // closed in the shared course gate rather than silently choosing a class.
+  const selection = new URLSearchParams(window.location.search);
+  for (const key of ["enrollment", "release", "unit"]) {
+    for (const value of selection.getAll(key)) destination.searchParams.append(key, value);
+  }
+  history.replaceState({}, "", destination);
   showPractice();
   renderInitialMastery(targetSkill ?? currentTargetSkill());
   await loadSessionItem();

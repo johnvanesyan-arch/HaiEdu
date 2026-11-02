@@ -136,10 +136,14 @@ test('every legacy student entry lists only the released units of the selected e
     const selected=releasedPhysics[0];
     await page.goto(origin+'/'+route+'?'+new URLSearchParams({enrollment:selected.enrollmentId,release:selected.curriculumReleaseId,unit:selected.unitId}));
     const links=page.locator('[data-student-chapter-navigation] nav a');
-    await expect(links).toHaveText(releasedPhysics.map(c=>c.unitTitleHy));
+    await expect(links,route).toHaveText(releasedPhysics.map(c=>c.unitTitleHy));
     for(const href of await links.evaluateAll(nodes=>nodes.map(n=>n.href)))assert.equal(new URL(href).searchParams.get('enrollment'),selected.enrollmentId);
     const current=page.locator('[data-student-chapter-navigation] [aria-current=page]');await expect(current).toHaveText(selected.unitTitleHy);
-    if(route==='practice.html')await expect(page.locator('[data-student-chapter-navigation]')).toBeHidden();
+    if(route==='practice.html') {
+      await page.locator('#practicePanel:not(.hidden) input[type=radio]').waitFor();
+      await expect(page.locator('[data-student-chapter-navigation]')).toBeHidden();
+      const url=new URL(page.url());assert.equal(url.searchParams.get('enrollment'),selected.enrollmentId);assert.equal(url.searchParams.get('release'),selected.curriculumReleaseId);assert.equal(url.searchParams.get('unit'),selected.unitId);
+    }
     assert.equal(new URL(page.url()).pathname,'/'+route);
   }
   assert.deepEqual(errors,[]);
@@ -163,10 +167,10 @@ test('released chapter navigation retains readable words at mobile and desktop t
   const chapters=page.locator('[data-student-chapter-navigation]');await expect(chapters.locator('nav a')).toHaveCount(6);
   for(const width of [390,1280])for(const scale of [100,200]) {
     await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
-    const words=await wordBreaks(page,'[data-student-chapter-navigation]');
+    const words=await wordBreaks(page,'[data-student-chapter-navigation], .subject-stat, .subject-heading, .chapter-header, .topic-head h3, .skill-browser-copy h4');
     const metrics=await chapters.evaluate(el=>({viewport:innerWidth,right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left,overflow:el.scrollWidth>el.clientWidth+1}));
     await capture(page,`released-chapters-${width}-${scale}`,{...metrics,words});
-    assert.deepEqual(words,[]);assert.equal(metrics.overflow,false);assert.ok(metrics.right<=width+1);assert.ok(metrics.left>=-1);
+    assert.deepEqual(words,[]);assert.equal(metrics.overflow,false);assert.ok(metrics.right<=width+1);assert.ok(metrics.left>=-1);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   }
   assert.deepEqual(errors,[]);
 });

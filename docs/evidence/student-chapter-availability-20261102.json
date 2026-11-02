@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-02 Asia/Yerevan",
+  "scope": "bounded read-only owner-supplied student chapter navigation review; current production source d556270",
+  "confirmed": {
+    "homePhysicsUnits": 6,
+    "currentCourseUnits": 6,
+    "legacyFutureCards": 5,
+    "legacyChapterLinks": 0,
+    "chapterI": "Diagnostic completed; Mastery readiness incomplete",
+    "chapterII": "existing unfinished Diagnostic",
+    "chaptersIIItoVI": "Diagnostic available; Practice/Mastery/Review correctly require own Diagnostic"
+  },
+  "initialCI": {
+    "run": 41470416028,
+    "nativePassed": 396,
+    "nativeFailed": 1,
+    "unitPassed": 1649,
+    "failure": "legacy Practice history replacement loses enrollment/release/unit during multi-enrollment navigation",
+    "disposition": "preserve failed run; corrected candidate requires fresh CI"
+  },
+  "visualFinding": "synthetic 200% topic/summary grid compresses existing skill text; content-size reflow added to candidate",
+  "limitations": [
+    "No new assessment/session, answer, submission, mark or feedback publication was intentionally performed.",
+    "No activation, scoring, learner-history, backend or permission change.",
+    "Prepared correction is not merged or deployed; B.12.3 remains open and subjects paused."
+  ]
+}
