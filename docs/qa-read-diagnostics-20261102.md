@@ -1,0 +1,33 @@
+# QA read diagnostics — 2026-11-02
+
+Working implementation; not yet a merged delivery or a hosted diagnostic result. This slice instruments the existing shared two-school read-isolation helper. B.12.3/B.12 stay open for owner usability acceptance; subjects remain paused. Earlier failed, cancelled, unknown and passing receipts remain unchanged.
+
+## Scope and invariants
+
+Every request made by `runIsolation` adds `checks[].diagnostics` under report `diagnosticsVersion: haiedu-qa-read-diagnostics-v1`. It records UTC `startedAt`, monotonic `elapsedMs`, `headersAfterMs` when a response is obtained, the existing `timeoutMs:20000`, a random `traceId`, and a UUID-shaped `providerRequestId` only when the `sb-request-id` response header supplies one. No response means no invented provider ID.
+
+Each request carries a fresh W3C `traceparent` with random trace/span identifiers. There is no baggage, tracing SDK, dependency, exporter or additional destination. Supabase documents W3C client-to-server correlation in [client-side tracing](https://supabase.com/docs/guides/observability/client-side-tracing); server-log propagation for this raw-fetch QA client must be checked in the controlled live read, not assumed from that SDK guide.
+
+Failures add only fixed `failurePhase` (fetch/body), `failureKind`, an allowlisted Node `failureCode` if available and `timeoutSource` for timeouts. Client-deadline expiry, transport timeouts, abort, network/DNS, TLS, invalid request, invalid JSON and otherwise unclassified fetch/body failures stay distinct. No error message, stack, arbitrary error name/code, URL/query, request/response body, token, cookie, credential, learner identity or arbitrary header is copied. Only the `sb-request-id` header is considered; malformed values and diagnostic getter/clock failures cannot change the request result.
+
+The20-second deadline, one attempt, request methods/payloads, plain HTTPS-origin validation, original54 positive/negative controls, foreign-identity scan, expected denial codes, stopped-negative-probe rule and own-session cleanup remain. The old full-dashboard positive control is retained; the patch does not switch it to a faster mode. Empty204/logout bodies are normal. A body parse failure retains its actual HTTP status and null data; only a fetch rejection returns the existing HTTP0 placeholder. Diagnostics never decide whether a check passes.
+
+No web/UI, SQL, Supabase Edge source/deployment, Auth configuration, grants, learning/content/audio, role authority, domain, plan, deployment project, queue/mutex or release-gate changes. The normal repository pipeline may stamp a new frontend source revision; existing runtime evidence is reused only after source equality. No browser/credential workaround is introduced.
+
+## Consumer and trigger audit
+
+[Preparation receipt](evidence/qa-read-diagnostics-preparation-20261102.json) lists all12 importing isolation runners, two learner recipes importing constants only, and the standalone isolation CLI. Existing callers automatically retain the new nested fields in their redacted reports. This is shared QA infrastructure and adds no subject, grade or content assumption.
+
+The path checker previously missed valid compact static imports such as `import{...}from'./module.mjs'`. It now recognizes compact imports/re-exports without matching longer identifiers. Regression coverage retains literal dynamic imports and bare relative HTML/CSS dependencies. The newly visible Teacher Feedback dependency chain and its real service dependencies are covered by explicit main paths. Five other affected main workflows include the new helper path. All11 current browser QA graphs pass. Manual-only workflows stay manual; the bounded teacher-performance/rollout recipes keep their existing entrypoint routing and consume the common helper when invoked. Computed recipe calls and direct standalone CLI use were reviewed; no observer, product listener or asynchronous UI code changed.
+
+## Verification and rollout
+
+Focused verification passes27/27 with no failures/skips/cancellations: timing/correlation shape, exact20-second budget, timeout-vs-transport category, allowlisted error codes, malicious error/header privacy, optional diagnostic failure, expected no-content logout, unchanged54-control pass, one-attempt failed full read, actual-status invalid JSON and guaranteed own-session cleanup. Injected failures are isolated tests, not reproduced live incidents. All1,649 local unit/integration checks also pass with zero failures/skips/cancellations. Required all-five PR/main CI and the guarded live read remain pending.
+
+After reviewed main and canonical source confirmation, use one existing protected read-only acceptance recipe with designated fixtures and the unchanged serial mutex. Verify all nested diagnostic fields and, where available, response ID/standard-trace correlation in bounded provider logs. If the read passes, report that no transport failure was reproduced; if it fails, keep its failed state and report the captured category. No assignment writes or learner submissions/marks are required for this controlled check. Other existing automatic workflow outcomes remain separate.
+
+Close with the actual source/test/run/artifact results, aligned merged status/roadmap/backlog/README/API/register documentation and source-verified update of the existing Notion map. Preserve all13 child pages and independent security/routing gates. A passing diagnostic read does not repair or retrospectively pass an older failed run, establish a free-plan cause, close owner usability or resume subjects.
+
+## Historical investigation refinement
+
+The earlier failed Resource41346785982 remains326/327. The prior same-window HTTP200/6577ms record is now correlated through hashed designated-fixture IDs to teacherB; the failing class read was teacherA. No matching teacherA dashboard invocation was found in the bounded20:42:40–20:46:00UTC window. The timing gap is consistent with the existing20-second client deadline, but the old client did not retain an error category, duration or trace ID. This is evidence for better capture, not proof of the underlying network/ingress cause. The earlier independent130/130 plus54-isolation read remains a separate passing receipt. No prior receipt is rewritten.

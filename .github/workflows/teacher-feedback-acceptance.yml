@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/qa-programme-fixtures.mjs
+      - scripts/qa-request-diagnostics.mjs
+      - scripts/sprint-14-isolation.mjs
+      - supabase/functions/get-school-admin-overview/index.ts
+      - supabase/functions/get-school-teachers/index.ts
+      - supabase/functions/get-student-classes/index.ts
+      - supabase/functions/get-teacher-academic-context/index.ts
+      - supabase/functions/get-teacher-student/index.ts
       - web/writing-assignments.css
       - web/navigation-focus.mjs
       - web/writing-assignments.mjs

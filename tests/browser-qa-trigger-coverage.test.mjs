@@ -57,7 +57,11 @@ test("dependency scan follows local HTML, module and stylesheet references", () 
     import "./events.js";
     import("./lazy.js");
     import { remote } from "https://example.test/sdk.js";
-  `), ["web/auth/session.js", "web/context.js", "web/events.js", "web/lazy.js"]);
+    import{ compact }from'./compact.js';
+    export{ value }from'./reexport.js';
+    const important = 'not-a-module.js';
+    const exportable = 'also-not-a-module.js';
+  `), ["web/auth/session.js", "web/context.js", "web/events.js", "web/compact.js", "web/reexport.js", "web/lazy.js"]);
   assert.deepEqual(localReferences("web/styles/page.css", `
     @import "../tokens.css";
     @import url("./mobile.css") screen;

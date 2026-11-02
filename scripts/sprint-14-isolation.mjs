@@ -2,6 +2,7 @@ import { ownStudentClasses } from './qa-programme-fixtures.mjs';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { beginQaRequest, QA_DIAGNOSTICS_VERSION, QA_REQUEST_TIMEOUT_MS } from './qa-request-diagnostics.mjs';
 
 export const roles = ['admin', 'teacher', 'student'];
 export const sides = ['A', 'B'];
@@ -34,21 +35,34 @@ export async function runIsolation({ fixture, credentials, url, key, fetchImpl =
   const origin = new URL(url);
   if (origin.protocol !== 'https:' || origin.username || origin.password || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('A plain HTTPS Supabase origin is required');
   const report = { scope: 'Sprint 14 authenticated read isolation', revision, target: origin.origin,
+    diagnosticsVersion: QA_DIAGNOSTICS_VERSION,
     startedAt: new Date().toISOString(), status: 'running', sprint14GateClosed: false, checks: [] };
   const sessions = new Map();
   async function request(endpoint, token, body = {}, method = 'POST') {
+    const diagnostics = beginQaRequest();
+    let signal;
     try {
+      signal = AbortSignal.timeout(QA_REQUEST_TIMEOUT_MS);
       const response = await fetchImpl(`${origin.origin}${endpoint}`, { method, redirect: 'error',
-        headers: { apikey: key, Authorization: `Bearer ${token ?? key}`, 'Content-Type': 'application/json' },
-        ...(method === 'GET' ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(20000) });
+        headers: { apikey: key, Authorization: `Bearer ${token ?? key}`, 'Content-Type': 'application/json', traceparent: diagnostics.traceparent },
+        ...(method === 'GET' ? {} : { body: JSON.stringify(body) }), signal });
+      let responseHeaders;
+      try { responseHeaders = response.headers; } catch { /* Optional metadata only. */ }
+      diagnostics.received(responseHeaders);
       let data = null;
-      try { data = await response.json(); } catch { /* empty logout response or invalid response */ }
-      return { status: response.status, data };
-    } catch { return { status: 0, data: null }; }
+      try { data = await response.json(); } catch (error) {
+        const emptyAllowed = response.status === 204 || response.status === 205 || endpoint === '/auth/v1/logout?scope=local';
+        diagnostics.failed(error, 'body', signal, emptyAllowed);
+      }
+      return { status: response.status, data, diagnostics: diagnostics.finish() };
+    } catch (error) {
+      diagnostics.failed(error, 'fetch', signal);
+      return { status: 0, data: null, diagnostics: diagnostics.finish() };
+    }
   }
   function record(label, result, passed) {
     // Never include request/response bodies, credentials, tokens, names or learner data.
-    report.checks.push({ label, status: passed ? 'passed' : 'failed', httpStatus: result.status });
+    report.checks.push({ label, status: passed ? 'passed' : 'failed', httpStatus: result.status, diagnostics: result.diagnostics });
     return passed;
   }
   async function call(label, actor, fn, body, predicate) {

@@ -36,6 +36,7 @@ on:
       - scripts/chapter-iii-pilot-read-acceptance.mjs
       - scripts/chapter-iv-pilot-read-acceptance.mjs
       - scripts/sprint-14-isolation.mjs
+      - scripts/qa-request-diagnostics.mjs
       - scripts/stamp-release.mjs
       - scripts/wait-for-production-release.mjs
       - supabase/functions/_shared/teacher-dashboard-batch.ts
