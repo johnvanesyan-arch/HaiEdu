@@ -34,6 +34,9 @@ test('matrix evidence controls preserve classified and neutral colours through F
  for(const width of [1280,768,390])for(const size of ['100%','200%']){
   await p.setViewportSize({width,height:1000});await p.evaluate(value=>document.documentElement.style.fontSize=value,size);
   assert.deepEqual(await wordBreaks(p,'.teacher-class-detail-heading h2,.teacher-class-detail-heading .button-link'),[],`class heading remains readable at ${width}/${size}`);
+  const layout=await p.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,controls:[...document.querySelectorAll('.matrix-controls,.matrix-controls select')].map(el=>({tag:el.tagName,id:el.id,left:el.getBoundingClientRect().left,right:el.getBoundingClientRect().right}))}));
+  assert.ok(layout.documentWidth<=layout.viewport+1,'matrix filters stay inside the page at '+width+'/'+size+': '+JSON.stringify(layout));
+  assert.ok(layout.controls.every(c=>c.left>=-1&&c.right<=layout.viewport+1),'visible filter controls fit the viewport');
   for(const button of await evidence.all()){
    await button.hover();
    const state=await button.evaluate(el=>{const own=getComputedStyle(el),cell=getComputedStyle(el.closest('td'));return {background:own.backgroundColor,colour:own.color,parentColour:cell.color,border:own.borderTopWidth,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,cellWidth:el.closest('td').getBoundingClientRect().width};});

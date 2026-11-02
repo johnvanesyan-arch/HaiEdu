@@ -98,6 +98,11 @@
 .teacher-onboarding-card h3,#institutionalTeacherNotice h2 { font-size:1.125rem; line-height:1.4; }
 .teacher-class-detail-heading { flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
 .teacher-class-detail-heading>div { flex:1 1 min(100%,22rem); min-width:0; }
+.matrix-section-heading { flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
+.matrix-section-heading>div:first-child { flex:1 1 min(100%,22rem); min-width:0; }
+.matrix-section-heading .matrix-controls { flex:1 1 min(100%,26rem); grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr)); min-width:0; max-width:100%; }
+.matrix-controls .matrix-filter-label { min-width:0; }
+.matrix-controls select { width:100%; min-width:0; max-width:100%; }
 .matrix-cell.separate{background:var(--forest-selected);color:var(--forest-ink)}
 .legend-swatch.separate{background:var(--forest-accent)}
 /* Evidence controls reveal their cell's governed band, including after the shared action theme loads. */
