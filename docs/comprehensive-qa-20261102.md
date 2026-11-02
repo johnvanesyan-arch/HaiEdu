@@ -1,5 +1,7 @@
 # Comprehensive QA — 2026-11-02
 
+**Follow-up — read reliability repair verified:** [PR392](https://github.com/johnvanesyan-arch/HaiEdu/pull/392) and [current delivery evidence](read-reliability-20261102.md) record the completed150-observation performance run, passing unchanged budgets, current five-suite production rechecks and deployed read-auth hardening. The original failed runs and limits below remain historical evidence. B.12.3/B.12 and owner usability remain open.
+
 Asia/Yerevan · planned and executed within the current B.12.3 stabilization scope. The reviewed production baseline is `9c9204f22496f2ca0bc509a62212774e160e3d36` (PR390). John reports that the chapter correction now works and requests comprehensive QA; this is bounded confirmation of that correction, with full owner usability acceptance still separate.
 
 ## Roadmap checkpoint

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "status": "implementation-prepared-awaiting-release",
+  "status": "deployed-and-live-verified",
   "baseline": "2cc79ad299cedc7664483b71533e475d439a2d57",
   "findings": {
     "teacher503": {
@@ -72,14 +72,829 @@
   },
   "release": {
     "migration": "20261102182941_teacher_evidence_version_deduplication.sql",
-    "affectedEdgeFunctions": 5,
-    "state": "pending CI/merge/deploy/readback/live acceptance"
+    "sourceBodyMd5": "2cd962c5550786b5d5f3820fe5513401",
+    "migrationDatabaseRecord": {
+      "name": "teacher_evidence_version_deduplication",
+      "version": "20261102184555"
+    },
+    "sqlPermissions": {
+      "anon": false,
+      "bodyMd5": "2cd962c5550786b5d5f3820fe5513401",
+      "definer": false,
+      "serviceRole": true,
+      "authenticated": false
+    },
+    "edgeFunctions": [
+      {
+        "slug": "get-teacher-dashboard",
+        "version": 26,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "files": [
+          {
+            "name": "get-teacher-dashboard/index.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "41bf8d7290e93f19393d658987fb62790087d4d925aad57edace62bbb8212ca3",
+            "bytes": 24344
+          },
+          {
+            "name": "_shared/teacher-read-identity.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "bytes": 1734
+          },
+          {
+            "name": "_shared/teacher-workspace-request.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+            "bytes": 800
+          },
+          {
+            "name": "_shared/teacher-dashboard-batch.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "aaf6f53400b96ce01a205c2b2911b744a5e6aa1fb43ff7d6de721b7101372ea8",
+            "bytes": 7301
+          },
+          {
+            "name": "_shared/institutional-teacher-dashboard.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "f9d5721b1ea2ffffe0b061ee93d037f70b6132cc110ef773b2b5a85e9b8fac0a",
+            "bytes": 20203
+          },
+          {
+            "name": "_shared/academic-context.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+            "bytes": 11609
+          },
+          {
+            "name": "_shared/institutional-teacher-analytics.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+            "bytes": 27191
+          },
+          {
+            "name": "_shared/initial-diagnostic.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+            "bytes": 2038
+          },
+          {
+            "name": "_shared/analytics-evidence.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+            "bytes": 3100
+          },
+          {
+            "name": "_shared/auth.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "bytes": 1061
+          },
+          {
+            "name": "_shared/curriculum-release.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+            "bytes": 2957
+          }
+        ]
+      },
+      {
+        "slug": "get-teacher-student",
+        "version": 18,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "files": [
+          {
+            "name": "get-teacher-student/index.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0644204fd9b79b415b33af74b9e58df22f9ba9c17cbd413f4a79cc0eeee873a1",
+            "bytes": 19349
+          },
+          {
+            "name": "_shared/teacher-read-identity.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "bytes": 1734
+          },
+          {
+            "name": "_shared/initial-diagnostic.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+            "bytes": 2038
+          },
+          {
+            "name": "_shared/auth.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "bytes": 1061
+          },
+          {
+            "name": "_shared/curriculum-release.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+            "bytes": 2957
+          },
+          {
+            "name": "_shared/academic-context.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+            "bytes": 11609
+          },
+          {
+            "name": "_shared/institutional-teacher-analytics.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0457c7c66febeb54d56b5939f39637b1be6d7583652d70718b7dfcc47742f667",
+            "bytes": 27191
+          },
+          {
+            "name": "_shared/analytics-evidence.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+            "bytes": 3100
+          }
+        ]
+      },
+      {
+        "slug": "get-teacher-academic-context",
+        "version": 4,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "files": [
+          {
+            "name": "get-teacher-academic-context/index.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b23c95bf41acba22c2140f95add21727a1575fa1fa1a067d59b1fd262c230756",
+            "bytes": 3268
+          },
+          {
+            "name": "_shared/teacher-read-identity.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "bytes": 1734
+          },
+          {
+            "name": "_shared/auth.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "bytes": 1061
+          },
+          {
+            "name": "_shared/academic-context.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+            "bytes": 11609
+          }
+        ]
+      },
+      {
+        "slug": "get-student-classes",
+        "version": 13,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "files": [
+          {
+            "name": "get-student-classes/index.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "2df6104e43dc6bb6579237cdc219f445677aae1c53efb52de7ad05700d6d7538",
+            "bytes": 3472
+          },
+          {
+            "name": "_shared/teacher-read-identity.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "bytes": 1734
+          },
+          {
+            "name": "_shared/auth.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "bytes": 1061
+          },
+          {
+            "name": "_shared/course-access.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+            "bytes": 4665
+          },
+          {
+            "name": "_shared/governed-learning-runtime.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+            "bytes": 6939
+          },
+          {
+            "name": "_shared/student-learning-context.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+            "bytes": 6647
+          },
+          {
+            "name": "_shared/assessment-policy.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+            "bytes": 6860
+          },
+          {
+            "name": "_shared/assessed-audio-policy.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+            "bytes": 589
+          }
+        ]
+      },
+      {
+        "slug": "get-teacher-workspace",
+        "version": 5,
+        "status": "ACTIVE",
+        "verify_jwt": true,
+        "files": [
+          {
+            "name": "get-teacher-workspace/index.ts",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "a93cb9902f629787f1ee488ce5242320f5defc3ba808d1813ed36cc9ab9d1d92",
+            "bytes": 462
+          },
+          {
+            "name": "_shared/teacher-workspace-handler.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "0c9b84868ec5868d6bc8e5b6af0ef4e5c6a258e8a85f20ee602b0c7e22c076e2",
+            "bytes": 3694
+          },
+          {
+            "name": "_shared/teacher-read-identity.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "bytes": 1734
+          },
+          {
+            "name": "_shared/teacher-workspace-request.mjs",
+            "exact": true,
+            "onlyNewline": false,
+            "sha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb",
+            "bytes": 800
+          }
+        ]
+      }
+    ],
+    "canonical": "8490a9dfa6913ef609a7eeb41d4631708333c03a",
+    "persistentCheck": {
+      "date": "2026-11-02",
+      "method": "Fresh read-only signed-in browser inspection; no settings writes",
+      "settingsUrl": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+      "check": "Platform release checks",
+      "provider": "GitHub",
+      "environment": "Production",
+      "behaviorMenu": "Blocking",
+      "saveDisabled": true,
+      "deployment": "dpl_HFZBi83tnuZbsSxbQ27u4hsyiH2j",
+      "source": "8490a9dfa6913ef609a7eeb41d4631708333c03a",
+      "observedState": "Running Checks; requirements are running and blocking promotion to production; Staged",
+      "canonicalDuringPending": "2cc79ad299cedc7664483b71533e475d439a2d57",
+      "failureInjection": false,
+      "bypass": false
+    },
+    "state": "Migration, all five affected Edge consumers, source readbacks, canonical release and all five fresh production suites verified."
   },
   "roadmap": {
     "current": "16.5B.12.3 stabilization",
     "B12": "open",
     "ownerUsability": "open",
     "subjects": "paused after English C47",
-    "independentGates": "preserved"
+    "independentGates": "preserved",
+    "remaining": [
+      "Owner usability acceptance",
+      "QA-EVIDENCE-01 authenticated mobile evidence",
+      "Historical transport follow-up",
+      "Independent SEC-AAL/URL-P1/MASTER-P2 and content/four-subject gates"
+    ]
+  },
+  "functionalSource": "8490a9dfa6913ef609a7eeb41d4631708333c03a",
+  "pullRequest": 392,
+  "tree": "459552d7a832ec598f2d57a7ac8c53627b14d534",
+  "validation": {
+    "local": {
+      "unitIntegrationPassed": 1654,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pullRequestCI": {
+      "run": 41502247010,
+      "allFive": "success",
+      "nativePassed": 397
+    },
+    "mainCI": {
+      "run": 41503617982,
+      "allFive": "success"
+    },
+    "projectionEquality": [
+      {
+        "n": 0,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 198
+      },
+      {
+        "n": 1,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 167
+      },
+      {
+        "n": 2,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 152
+      },
+      {
+        "n": 3,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 198
+      },
+      {
+        "n": 4,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 167
+      },
+      {
+        "n": 5,
+        "remaining_payload_equal": true,
+        "versions_equal": true,
+        "version_count": 152
+      }
+    ],
+    "publicSource": [
+      {
+        "path": "web/course-gate.js",
+        "exact": true,
+        "bytes": 2024,
+        "sha256": "3d33709583005a9f2d27281eb89ee97fdfaeb54909c26cdd70c69f4f80c4d891"
+      },
+      {
+        "path": "web/course-page.js",
+        "exact": true,
+        "bytes": 15097,
+        "sha256": "7ef961734b6267732877773a01c2e54d758c3c601a39e2a64d8af2831ce452d3"
+      },
+      {
+        "path": "web/teacher.js",
+        "exact": true,
+        "bytes": 88275,
+        "sha256": "e15afc275f5daa03c3ec52fe96f5f88f579cec87b6290938757c325ca5b5ffc7"
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "exact": true,
+        "bytes": 289278,
+        "sha256": "a8beea5051f98ecddcc6e2924f5e6e33912876104e29e7bab99b19b8fa54ba62"
+      }
+    ],
+    "manualStudent": {
+      "frontend": "8490a9dfa6913ef609a7eeb41d4631708333c03a",
+      "physicsChapters": 6,
+      "englishUnits": 3,
+      "courseDiscoveryAndEnglishOpen": true,
+      "diagnosticPrerequisitePreserved": true,
+      "assessmentWrites": 0,
+      "scope": "Fresh signed-in existing student; course/learning navigation only. No new learner submission, grade or usability acceptance."
+    }
+  },
+  "productionAcceptance": {
+    "source": "8490a9dfa6913ef609a7eeb41d4631708333c03a",
+    "actions": {
+      "run": 41503617903,
+      "checks": 206,
+      "isolationBefore": 54,
+      "isolationAfter": 54,
+      "allPassed": true,
+      "mainSessionsClosedHttp204": 6,
+      "ownedEmptyClassesArchived": 4,
+      "ownedGuestMembershipsEnded": 2,
+      "artifact": {
+        "id": 13171011132,
+        "zipSha256": "f289b8493c5b7b845c6da95d5ee9466ad43606f04fe7f33367dc688d2a6a95d1"
+      },
+      "reportSha256": "344e8791c399059a5549815622e10ea2140595d4b43c64c6f59ced8317dda756"
+    },
+    "english": {
+      "run": 41503618095,
+      "checks": 154,
+      "isolation": 54,
+      "allPassed": true,
+      "mainSessionsClosedHttp204": 6,
+      "browserErrors": 0,
+      "attemptedMutations": 0,
+      "artifact": {
+        "id": 13171306086,
+        "zipSha256": "dc459ed17f14c6169a22290f7dc93fbe7cc8f40a3b407cf863b02323a6cbe1c1"
+      },
+      "reportSha256": "1a0418bb898d5ebc254892901a507f4de1458ac3c34b98250db7e3a7648bcf9b"
+    },
+    "physics": {
+      "run": 41507031079,
+      "checks": 324,
+      "isolation": 54,
+      "allPassed": true,
+      "mainSessionsClosedHttp204": 6,
+      "browserErrors": 0,
+      "attemptedMutations": 0,
+      "artifact": {
+        "id": 13173145526,
+        "zipSha256": "b97a8e348c275db3e48959eca735bb1c17516d4401df69de19b9ad5f29dcc501"
+      },
+      "reportSha256": "112c5e90f2ff24be211a61136a3fc565575727b016d9749e4838cd18dbaceacb"
+    },
+    "performance": {
+      "run": 41505847419,
+      "observations": 150,
+      "sideA": 80,
+      "sideB": 70,
+      "budgetResults": [
+        {
+          "scenario": "cold-home",
+          "p95Ms": 2544.8555599999963,
+          "limitMs": 3000,
+          "met": true
+        },
+        {
+          "scenario": "warm-home",
+          "p95Ms": 1804.8407979999902,
+          "limitMs": 3000,
+          "met": true
+        },
+        {
+          "scenario": "selected-class",
+          "p95Ms": 1332.2975829999923,
+          "limitMs": 2000,
+          "met": true
+        },
+        {
+          "scenario": "classes",
+          "p95Ms": 43.96082199999364,
+          "limitMs": 200,
+          "met": true
+        }
+      ],
+      "homeReadinessBudgetResults": [
+        {
+          "scenario": "cold-home",
+          "method": "visible-home-today-v1",
+          "n": 20,
+          "p95Ms": 2502.5,
+          "limitMs": 3000,
+          "met": true,
+          "pollingP95Ms": 2544.8555599999963
+        },
+        {
+          "scenario": "warm-home",
+          "method": "visible-home-today-v1",
+          "n": 20,
+          "p95Ms": 1806.2998046875,
+          "limitMs": 3000,
+          "met": true,
+          "pollingP95Ms": 1804.8407979999902
+        }
+      ],
+      "unexpectedMeasuredHttpErrors": 0,
+      "ownSessionsClosed": 2,
+      "responseOpening": "Existing reviewed-response fixture in school A only; school B fixture absent and not claimed.",
+      "artifact": {
+        "id": 13171386759,
+        "zipSha256": "bbdfd88217b0dc44e36969a2db74c043fdd21d9b9ceb28308ba201ae9e0fd9e7"
+      },
+      "reportSha256": "ed01853ff5d28b4dcef40f814e30e8c3b3a746aec5be55d19a049f0d66fc9408",
+      "reportPath": "docs/evidence/read-reliability-performance-20261102.json",
+      "screenshot": {
+        "path": "docs/evidence/read-reliability-performance-20261102.jpg",
+        "encoding": "base64",
+        "characters": 106724,
+        "bytes": 80042,
+        "sha256": "21558547fc823d8b86dd9a4114c707f728bb1cecb7e70c42a0434031f745eb64",
+        "blob": "fe19dedacf23b31889212cede2e014beec0f112c"
+      }
+    },
+    "resource": {
+      "run": 41507609230,
+      "checks": 327,
+      "isolationBefore": 54,
+      "isolationAfter": 54,
+      "allPassed": true,
+      "mainSessionsClosedHttp204": 6,
+      "verifiedFrontendFiles": 49,
+      "frontendManifest": [
+        {
+          "path": "school-admin.js",
+          "sha256": "08b710bdea79e8c2aba84f4a728902a4f3f32df6c7561c2e97b2ddf0edb5a4b5"
+        },
+        {
+          "path": "teacher-today.css",
+          "sha256": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8"
+        },
+        {
+          "path": "admin.js",
+          "sha256": "891bc1e6036b2d0cd0a2ed0f4d9933f334865acc7b7c9d4c91ce8f982c79a7c0"
+        },
+        {
+          "path": "admin.css",
+          "sha256": "02073cdb364998931867ee5986c7ee7fdf5a5ee3227f4589a21c47a655229ad2"
+        },
+        {
+          "path": "admin.html",
+          "sha256": "bde29f9ef07010b49913acc7d11d61ff2e969f7b4db186810e6ff1f55f95342d"
+        },
+        {
+          "path": "privacy.css",
+          "sha256": "c7962ab8703154f2792a2bc5bcc459f2b89d42dcfbc36ba8cf4334d2a16a62f5"
+        },
+        {
+          "path": "task-privacy-view.mjs",
+          "sha256": "c0c43b3d2be1b9364d8bcb4413d4eeff6cf031844fe195513db05a612ae9208b"
+        },
+        {
+          "path": "teacher-task-text.mjs",
+          "sha256": "43d139bf8d77caed19d373716c6710551dabf10766decc60a304da2a17499b6a"
+        },
+        {
+          "path": "teacher-task-download.mjs",
+          "sha256": "a963ccaaa5b43e6e428c2fd1842fa632f579eb1cd6ea65b056239b4860f37024"
+        },
+        {
+          "path": "teacher-task-review.mjs",
+          "sha256": "dafc1e294dd3965ed1d4d83b295d51fb2355d363a123810a5b24b24acb608877"
+        },
+        {
+          "path": "student-teacher-tasks.mjs",
+          "sha256": "7a8c3fe8113e9756ffb08044df9e28c06ad1f79b247b76988766fc56fe435d43"
+        },
+        {
+          "path": "student-teacher-task-client.mjs",
+          "sha256": "52ca36ceabfe985987b172fae8dc76faf4429052e81e013cd029b34c6cab197b"
+        },
+        {
+          "path": "teacher-task-send.mjs",
+          "sha256": "428bffc3b8477b1ab568318473412485b08a47b2adaac029eef8b0cee6312c12"
+        },
+        {
+          "path": "teacher-task-draft-workspace.mjs",
+          "sha256": "f53bcb9fe59191b79258c3ccf77b4a91a7ed830445672a82d7c70c7f8c948d81"
+        },
+        {
+          "path": "teacher-task-editor.mjs",
+          "sha256": "afb9f69d25efea835cc8776aefa4cc227e1e057a93051384d32a3999499b66f0"
+        },
+        {
+          "path": "teacher-task-form.mjs",
+          "sha256": "68bc8bbcb2efe43202b9c6103425447d47e752ef5d9bb1cc18c3400efdd6de85"
+        },
+        {
+          "path": "teacher-task-source-client.mjs",
+          "sha256": "a33c58338abf1bade75aa626e927a8df867e9bd3e3a6474cfe05e670a8b33395"
+        },
+        {
+          "path": "writing-assignments.mjs",
+          "sha256": "6f21820eced3e84b99c1c127d6c66a21f6ccd32253cf25c13b8062947e2714db"
+        },
+        {
+          "path": "writing-assignments.css",
+          "sha256": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a"
+        },
+        {
+          "path": "resource-learner-view.mjs",
+          "sha256": "076885afc99bfcdff8b418bc5a76f9d638f3d3bb04b716fe43be594839c2a05a"
+        },
+        {
+          "path": "resource-file-input.mjs",
+          "sha256": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3"
+        },
+        {
+          "path": "resource-assignments.mjs",
+          "sha256": "5bd5367c1a216355ffb5d650d1e3bb31d67a2c5ae02357af9b19ade87e090dd3"
+        },
+        {
+          "path": "resource-assignments.css",
+          "sha256": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504"
+        },
+        {
+          "path": "supplementary-resources.css",
+          "sha256": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d"
+        },
+        {
+          "path": "supplementary-resources.mjs",
+          "sha256": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b"
+        },
+        {
+          "path": "multi-subject-home.js",
+          "sha256": "3e3ecedc4310cedf83e516ad48458bb8d270ca24571517fe3cf2308c5e328145"
+        },
+        {
+          "path": "index.html",
+          "sha256": "ec74f777cc7cc59f66cfee9fbc6428841a9abe9f45ac5e3790ad943fade991ce"
+        },
+        {
+          "path": "resource-library.html",
+          "sha256": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7"
+        },
+        {
+          "path": "privacy.js",
+          "sha256": "e630b60fe37936ebf555f9d70ba50fc1e1e816daec71b76f814ec1ae2cefdf4e"
+        },
+        {
+          "path": "student-courses.js",
+          "sha256": "56084fdde250eb65605baca8fabcdb908901917a1dc71ab1e7f184e33579b138"
+        },
+        {
+          "path": "role-layout.js",
+          "sha256": "f3e041938f51108f69f4d8264f73a6fc27025c7cf4713f50b63ed318e4c49a22"
+        },
+        {
+          "path": "teacher.html",
+          "sha256": "de5adf8f42652c6f7bd2a735ae23108790e184710fb9f7ff28491741f1ebb1e7"
+        },
+        {
+          "path": "teacher.js",
+          "sha256": "e15afc275f5daa03c3ec52fe96f5f88f579cec87b6290938757c325ca5b5ffc7"
+        },
+        {
+          "path": "teacher.css",
+          "sha256": "2b574763ef06ccba7935f55301c7550efe7aa01743f65c56d2a89e79c67c3cc7"
+        },
+        {
+          "path": "materials.html",
+          "sha256": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d"
+        },
+        {
+          "path": "course-page.js",
+          "sha256": "7ef961734b6267732877773a01c2e54d758c3c601a39e2a64d8af2831ce452d3"
+        },
+        {
+          "path": "teacher-workflows.html",
+          "sha256": "c3df3f2d8d55a2b8508a858a6a5b1ec02900e57f6ed89c37dd80adb0496d790b"
+        },
+        {
+          "path": "teacher-workflows.css",
+          "sha256": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589"
+        },
+        {
+          "path": "ux.css",
+          "sha256": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac"
+        },
+        {
+          "path": "teacher-dependencies.bundle.mjs",
+          "sha256": "a8beea5051f98ecddcc6e2924f5e6e33912876104e29e7bab99b19b8fa54ba62"
+        },
+        {
+          "path": "teacher-startup.bundle.mjs",
+          "sha256": "7206fd1ed1a3dec8712f39d55ada704e74aabeb5fa7d38c124402ebf0a98f5b5"
+        },
+        {
+          "path": "teacher-review.mjs",
+          "sha256": "a943bc241c77d15588407c2d70989601ef51def4d5c2fac2f22f3e5a1fb52714"
+        },
+        {
+          "path": "written-work.mjs",
+          "sha256": "4b22fd3052ee0687a8421f159dec1251525740e82ffb793e630930a760fc8525"
+        },
+        {
+          "path": "written-work.css",
+          "sha256": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a"
+        },
+        {
+          "path": "privacy.html",
+          "sha256": "ff0b805174cad651aa66c59af9512a0405abdf3167940416a00edabc031c2512"
+        },
+        {
+          "path": "ux.js",
+          "sha256": "712f9e3b4fb86210c06c927f3b403d4312ba8001022783e00c4a26e495ae68cf"
+        },
+        {
+          "path": "student-surfaces.css",
+          "sha256": "4e1cb5d8991131ac3559a4e7b1eda00c861d71ad25327e9e58156b264316bea6"
+        },
+        {
+          "path": "school-admin.html",
+          "sha256": "ba6683ed340253d0c2e89cc1dc2b56b4177c36726bf40a31366d6f8b8fffe864"
+        },
+        {
+          "path": "school-teacher.html",
+          "sha256": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c"
+        }
+      ],
+      "ownedDeliveriesCanceled": 8,
+      "ownedResourcesWithdrawn": 2,
+      "retention": "Run-owned teacher drafts, pinned PDF sources and immutable audit retained under the existing contract.",
+      "artifact": {
+        "id": 13173295779,
+        "zipSha256": "c3b6c2d36e60affd631d7dfda1f4f3a05a0aa1b17cf7e0c25389820a2bf9f543"
+      },
+      "reportSha256": "3b90cdd43a902a3901db10f23163af53cd08df35ea599caf77215a8331e8e21c"
+    }
+  },
+  "observedLogs": {
+    "start": "2026-11-02T18:57:54.105Z",
+    "end": "2026-11-02T19:29:20.694Z",
+    "rows": [
+      {
+        "category": "get-student-classes",
+        "count": 224,
+        "source": "function_edge_logs",
+        "status": "200"
+      },
+      {
+        "category": "get-teacher-academic-context",
+        "count": 11,
+        "source": "function_edge_logs",
+        "status": "200"
+      },
+      {
+        "category": "get-teacher-academic-context",
+        "count": 11,
+        "source": "function_edge_logs",
+        "status": "403"
+      },
+      {
+        "category": "get-teacher-dashboard",
+        "count": 146,
+        "source": "function_edge_logs",
+        "status": "200"
+      },
+      {
+        "category": "get-teacher-dashboard",
+        "count": 12,
+        "source": "function_edge_logs",
+        "status": "403"
+      },
+      {
+        "category": "get-teacher-student",
+        "count": 10,
+        "source": "function_edge_logs",
+        "status": "200"
+      },
+      {
+        "category": "get-teacher-student",
+        "count": 50,
+        "source": "function_edge_logs",
+        "status": "403"
+      }
+    ],
+    "scope": "Selected changed functions and allowlisted verifier/evidence timeout messages only. Expected permission denials remain403. No matching401/5xx, verifier availability warnings or teacher-evidence statement timeouts in this window; not a global outage guarantee.",
+    "earlierWindow": {
+      "start": "2026-11-02T18:46:00Z",
+      "end": "2026-11-02T18:57:54.105Z",
+      "expectedUnauthenticatedWorkspace401": 1,
+      "confirmation": "S14 action suite explicitly asserts unauthenticated Today returns401 and passes. No exact request-ID correlation is claimed for that aggregate."
+    }
+  },
+  "securityAdvisors": {
+    "before": [
+      "rls_enabled_no_policy:INFO",
+      "auth_leaked_password_protection:WARN"
+    ],
+    "after": [
+      "rls_enabled_no_policy:INFO",
+      "auth_leaked_password_protection:WARN"
+    ],
+    "settingsChanged": false
+  },
+  "continuity": {
+    "ownerReported": "Connection interrupted. Waiting for the complete answer",
+    "recovery": "Canonical source, saved files, CI state and run results read back; remaining work continued without duplicate deployments or runs.",
+    "chatCause": "not established; chat stream logs unavailable",
+    "applicationCauseFromBannerEstablished": false
   }
 }
