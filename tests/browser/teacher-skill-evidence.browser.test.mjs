@@ -4,6 +4,7 @@ import {mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import {fixture} from '../fixtures/teacher-performance-browser.mjs';
 import {historyEntries,historyReports,historyReadability} from '../fixtures/assessment-history.mjs';
+import {wordBreaks} from '../fixtures/word-boundaries.mjs';
 
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const estimates=[{percent:88,band:'secure',status:'secure',evidenceCount:4,contract:{mode:'diagnostic',modelId:'model-a'}},{percent:38,band:'needs_support',status:'needs_support',evidenceCount:4,contract:{mode:'practice',modelId:'model-b'}}];
@@ -11,7 +12,7 @@ const matrix=[{skillId:'s1',code:'SYN-1-S01',nameHy:'Առաջին հմտությ
  {skillId:'s2',code:'SYN-1-S02',nameHy:'Երկրորդ հմտություն',percent:60,band:'not_assessed',status:'insufficient_evidence',evidenceCount:1},
  {skillId:'s3',code:'SYN-1-S03',nameHy:'Երրորդ հմտություն',percent:null,band:'not_assessed',status:'provenance_unavailable',evidenceCount:5},
  {skillId:'s4',code:'SYN-1-S04',nameHy:'Չորրորդ հմտություն',percent:null,band:'not_assessed',status:'not_assessed',evidenceCount:0}];
-const student={id:'student-a',displayName:'Փորձնական աշակերտ',matrix,weakSkills:matrix,latestActivityAt:'2026-10-30',masteryCheck:{passed:true}};
+const student={id:'student-a',displayName:'Փորձնական աշակերտ',matrix,weakSkills:matrix,latestActivityAt:'2026-10-30',recentAccuracy:null,masteryCheck:{passed:true}};
 const studentDetails={student,unitCode:'SYN-1',matrix,skills:matrix,recentAttempts:[],sessions:[],modeSummary:{}};
 const analytics={students:[student],studentCount:1,skills:matrix};
 
@@ -32,6 +33,7 @@ test('matrix evidence controls preserve classified and neutral colours through F
  const evidence=p.locator('#matrixWrap .skill-evidence-link');await expect(evidence).toHaveCount(6);
  for(const width of [1280,768,390])for(const size of ['100%','200%']){
   await p.setViewportSize({width,height:1000});await p.evaluate(value=>document.documentElement.style.fontSize=value,size);
+  assert.deepEqual(await wordBreaks(p,'.teacher-class-detail-heading h2,.teacher-class-detail-heading .button-link'),[],`class heading remains readable at ${width}/${size}`);
   for(const button of await evidence.all()){
    await button.hover();
    const state=await button.evaluate(el=>{const own=getComputedStyle(el),cell=getComputedStyle(el.closest('td'));return {background:own.backgroundColor,colour:own.color,parentColour:cell.color,border:own.borderTopWidth,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,cellWidth:el.closest('td').getBoundingClientRect().width};});

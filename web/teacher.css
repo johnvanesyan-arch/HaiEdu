@@ -96,6 +96,8 @@
 .teacher-quick-actions { min-width:0; max-width:100%; justify-content:flex-start; }
 .teacher-onboarding-steps { grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); }
 .teacher-onboarding-card h3,#institutionalTeacherNotice h2 { font-size:1.125rem; line-height:1.4; }
+.teacher-class-detail-heading { flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
+.teacher-class-detail-heading>div { flex:1 1 min(100%,22rem); min-width:0; }
 .matrix-cell.separate{background:var(--forest-selected);color:var(--forest-ink)}
 .legend-swatch.separate{background:var(--forest-accent)}
 /* Evidence controls reveal their cell's governed band, including after the shared action theme loads. */

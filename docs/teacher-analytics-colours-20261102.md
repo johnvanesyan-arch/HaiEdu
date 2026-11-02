@@ -1,6 +1,6 @@
 # B.12.3 — Teacher analytics colours
 
-2026-11-02 Asia/Yerevan. UX-ANALYTICS-03 is a confirmed presentation defect with a working CSS correction. Required native CI, production source verification, merged closure evidence and Notion synchronization remain pending. B.12.3/B.12 and final owner acceptance stay open; subjects remain paused.
+2026-11-02 Asia/Yerevan. UX-ANALYTICS-03 and the class-heading readability finding UX-CLASS-LAYOUT-01 have bounded working CSS corrections. Required native CI, production source verification, merged closure evidence and Notion synchronization remain pending. B.12.3/B.12 and final owner acceptance stay open; subjects remain paused.
 
 ## Reported state and cause
 
@@ -13,6 +13,8 @@ The cloud teacher page is signed out. No sign-in was attempted and no credential
 ## Bounded correction and consumers
 
 The existing normal and hover rules are scoped under `#matrixWrap`. Evidence buttons inherit their cell’s text colour and keep a transparent background/zero border even after the shared action theme loads. Hover strengthens the underline without changing the reported band. Existing keyboard outlines, names, click targets and direct skill-detail behaviour remain.
+
+The initial PR native run 41443919949 passed all 393 checks, including both new colour cases. Inspection of all six captured normal/enlarged images confirmed the colours but exposed a separate existing class-heading flex layout squeezing words into individual letters at 200% text. This candidate now lets that specific heading/action group wrap, gives its copy a responsive flex basis and checks actual glyph ranges for intact words at all six width/text combinations. Normal controls and class identities are unchanged. The synthetic DTO also supplies the API’s explicit null for unavailable recent accuracy, removing an invalid-fixture `undefined%`; no production accuracy value or renderer is changed. The earlier passing CI is retained as history, not final visual acceptance. Final-source native verification remains required.
 
 | Consumer | Disposition |
 | --- | --- |
@@ -28,7 +30,7 @@ This is subject-neutral shared presentation. The CSS does not infer a subject, g
 
 ## Verification plan and current evidence
 
-Ten focused state/reporting checks, typecheck, Node syntax, all 11 browser-QA dependency graphs and diff checks pass locally. No new entrypoint, dependency, workflow path or queue setting is introduced. Local Chromium is absent, so native browser execution is pending required CI rather than claimed from local syntax checks.
+Ten focused state/reporting checks, typecheck, Node syntax, all 11 browser-QA dependency graphs and diff checks pass locally. Initial required PR CI passes 1,649 unit/integration and 393 native checks; the final heading/readability correction still requires fresh native CI. No new entrypoint, dependency, workflow path or queue setting is introduced. Local Chromium is absent, so native browser execution is pending required CI rather than claimed from local syntax checks.
 
 Two new actual-page isolated native regressions are prepared. One covers separate, sparse, unavailable, missing, green, yellow and red evidence; distinct computed surfaces, inherited text colours, transparent/zero-border normal and hover controls, keyboard focus, 44px targets, 1280/768/390 widths at 100%/200% text, unchanged support counts and classified evidence without inventing a passed unit. The second mirrors the screenshot’s one-learner/four-sparse-cells pattern, preserving 12 neutral skills and zero passed/support/review/no-activity counters. Neither creates a learner response, mark or publication. The existing direct-detail and stale class/account regressions remain.
 
