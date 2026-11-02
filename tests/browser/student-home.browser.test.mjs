@@ -98,7 +98,7 @@ test('course and work views retain context, keyboard disclosures and course-only
   assert.equal(await page.locator('.amp-mobile-nav').getByText('Առաջընթաց',{exact:true}).count(),0);
   assert.equal(await page.locator('.amp-mobile-nav').getByText('Իմ աշխատանքները',{exact:true}).count(),1);
   for(const link of await page.locator('.amp-subject-card > a').all())assert.match(await link.getAttribute('href'),/tab=writing/);
-  const details=page.locator('.student-unit-links').first();await details.locator('summary').press('Enter');assert.equal(await details.getAttribute('open'),'');
+  const details=page.locator('.student-unit-links').first();await details.locator('summary').press('Enter');await expect(details).toHaveAttribute('open','');
   assert.ok(await page.locator('[href*="materials"]').count()>=2);
   assert.equal(await page.locator('.amp-mobile-link[aria-label="Նյութերի գրադարան"]').innerText(),'Գրադարան');
   assert.deepEqual(errors,[]);

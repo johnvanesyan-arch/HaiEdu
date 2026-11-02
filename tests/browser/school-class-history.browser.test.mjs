@@ -58,8 +58,8 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
  assert.deepEqual(await wordBreaks(p,'.analytics-filters label,.analytics-metric>span'),[]);
  const layout=await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('main *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1&&!e.closest('.hm-role-nav')).slice(0,8).map(e=>({tag:e.tagName,className:e.className,text:e.textContent.slice(0,100),right:e.getBoundingClientRect().right}))}));assert.ok(layout.scrollWidth<=layout.width+1,JSON.stringify(layout));
  await p.locator('.hm-role-nav a[href="#teachersPanel"]').click();
- const history=p.locator('.roster-classes details');await expect(history).toHaveCount(1);assert.equal(await history.getAttribute('open'),null);
- await expect(p.locator('.roster-classes>ul')).toContainText('Ընթացիկ դասարան Ա');await history.locator('summary').press('Enter');assert.equal(await history.getAttribute('open'),'');await expect(history.locator('li').filter({hasText:'Պահպանված դասարան Ա'})).toBeVisible();
+ const history=p.locator('.roster-classes details');await expect(history).toHaveCount(1);await expect(history).toHaveJSProperty('open',false);
+ await expect(p.locator('.roster-classes>ul')).toContainText('Ընթացիկ դասարան Ա');await history.locator('summary').press('Enter');await expect(history).toHaveAttribute('open','');await expect(history.locator('li').filter({hasText:'Պահպանված դասարան Ա'})).toBeVisible();
  await screenshot(p,'school-class-history-'+width);
  const rosterLayout=await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,outside:[...document.querySelectorAll('.roster-card *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,className:e.className,text:e.textContent.slice(0,100),right:e.getBoundingClientRect().right}))}));assert.ok(rosterLayout.scrollWidth<=rosterLayout.width+1,JSON.stringify(rosterLayout));
  await p.locator('.roster-teacher-link').click();await expect(p.locator('#teacherClasses details.class-history')).toHaveCount(1);
@@ -72,9 +72,9 @@ for(const width of [390,1280])test(`School Admin uses scoped active classes and 
 for(const width of [390,1280])test(`Master Admin filters exact programmes and retains history at ${width}px/200%`,async t=>{
  const {page:p,errors}=await fixture(t,'admin',{width,large:true});await p.locator('[data-open-school]').click();
  const teacher=p.locator('#schoolDetail details.person-card');await teacher.locator(':scope>summary').click();
- const history=teacher.locator('details.class-history');assert.equal(await history.getAttribute('open'),null);await expect(history).toContainText('Պահպանված դասարան Ա');
+ const history=teacher.locator('details.class-history');await expect(history).toHaveJSProperty('open',false);await expect(history).toContainText('Պահպանված դասարան Ա');
  assert.ok(['none','normal'].includes(await history.locator('summary').evaluate(e=>getComputedStyle(e,'::after').content)),'nested history must not inherit the open parent card’s Close action');
- await history.locator('summary').press('Enter');assert.equal(await history.getAttribute('open'),'');assert.equal(await teacher.getAttribute('open'),'');await history.locator('summary').press('Enter');assert.equal(await history.getAttribute('open'),null);
+ await history.locator('summary').press('Enter');await expect(history).toHaveAttribute('open','');await expect(teacher).toHaveAttribute('open','');await history.locator('summary').press('Enter');await expect(history).toHaveJSProperty('open',false);
  const form=p.locator('#schoolDetail form').filter({has:p.locator('[name=subjectProgramId]')});
  await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=subjectProgramId]').selectOption('a');await expect(form.locator('[name=classId] option')).toHaveCount(2);
  await form.locator('[name=includeArchived]').check();await expect(form.locator('[name=classId] option')).toHaveCount(3);await form.locator('[name=classId]').selectOption('archived-a');
