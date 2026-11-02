@@ -15,7 +15,7 @@
     "nativePassed": 396,
     "nativeFailed": 1,
     "unitPassed": 1649,
-    "failure": "legacy Practice history replacement loses enrollment/release/unit during multi-enrollment navigation",
+    "failure": "Practice chapter-selector mount absent; source inspection separately found URL context removal",
     "disposition": "preserve failed run; corrected candidate requires fresh CI"
   },
   "visualFinding": "synthetic 200% topic/summary grid compresses existing skill text; content-size reflow added to candidate",
@@ -23,5 +23,13 @@
     "No new assessment/session, answer, submission, mark or feedback publication was intentionally performed.",
     "No activation, scoring, learner-history, backend or permission change.",
     "Prepared correction is not merged or deployed; B.12.3 remains open and subjects paused."
-  ]
+  ],
+  "secondCI": {
+    "run": 41473477683,
+    "nativePassed": 395,
+    "nativeFailed": 2,
+    "unitPassed": 1649,
+    "failure": "Practice header mount mismatch and enlarged-text word splitting",
+    "disposition": "preserve failed run; corrected candidate requires fresh CI"
+  }
 }

@@ -6,7 +6,7 @@ function renderChapterNavigation(detail, courses, selected) {
   // Compatibility pages describe one unit. Their chapter list must still come
   // from the same authorized release contexts as Home and the course workspace.
   if (!document.body.dataset.learningExtension) return;
-  const header = document.querySelector('main.shell > .topbar');
+  const header = document.querySelector('main.shell > header');
   if (!header) return;
   let root = document.querySelector('[data-student-chapter-navigation]');
   if (!root) {
