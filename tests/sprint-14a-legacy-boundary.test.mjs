@@ -30,6 +30,9 @@ async function invoke(name, body, tables) {
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => client, hasActiveLiveSession: async () => true,
     getStudentCourseEntitlements: async () => { throw new Error('unexpected entitlement read'); },
+    // Role-boundary fixture explicitly stubs signature verification; real crypto is tested separately.
+    verifyReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
+    verifyTeacherReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, console, crypto, TextEncoder,
   });

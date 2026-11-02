@@ -1,4 +1,4 @@
-import {createClient} from 'npm:@supabase/supabase-js@2.57.4';
+import {createClient} from 'npm:@supabase/supabase-js@2.118.0';
 import {createTeacherWorkspaceHandler} from '../_shared/teacher-workspace-handler.mjs';
 let readAdmin:any=null;
 Deno.serve(createTeacherWorkspaceHandler({
