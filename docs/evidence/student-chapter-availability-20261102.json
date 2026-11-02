@@ -31,5 +31,14 @@
     "unitPassed": 1649,
     "failure": "Practice header mount mismatch and enlarged-text word splitting",
     "disposition": "preserve failed run; corrected candidate requires fresh CI"
+  },
+  "thirdCI": {
+    "run": 41476102261,
+    "nativePassed": 395,
+    "nativeFailed": 2,
+    "unitPassed": 1649,
+    "failure": "ambiguous readiness locator for two radios, and shared heading font size causing document overflow",
+    "verified": "Practice chapter list mounts and whole-word checks pass before the remaining document-bound assertion",
+    "disposition": "failed run preserved; named radio and scoped heading font require fresh CI"
   }
 }

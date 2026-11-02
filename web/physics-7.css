@@ -185,7 +185,7 @@ body[data-learning-extension] :is(.chapter-header h2, .topic-head h3, .skill-bro
 @media (max-width: 760px) {
   .chapter-card { padding-inline: clamp(4px, calc((100vw - 12rem) / 2), var(--amp-space-5)); }
   .skill-browser-row { padding-inline: clamp(4px, calc((100vw - 12rem) / 2), var(--amp-space-4)); }
-  .chapter-header h2, .topic-head h3 { font-size: 1rem; }
+  body[data-learning-extension] :is(.chapter-header h2, .topic-head h3) { font-size: 1rem; }
   .subject-heading,
   .chapter-header,
   .active-session-banner,

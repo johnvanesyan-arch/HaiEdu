@@ -140,7 +140,7 @@ test('every legacy student entry lists only the released units of the selected e
     for(const href of await links.evaluateAll(nodes=>nodes.map(n=>n.href)))assert.equal(new URL(href).searchParams.get('enrollment'),selected.enrollmentId);
     const current=page.locator('[data-student-chapter-navigation] [aria-current=page]');await expect(current).toHaveText(selected.unitTitleHy);
     if(route==='practice.html') {
-      await page.locator('#practicePanel:not(.hidden) input[type=radio]').waitFor();
+      await page.getByRole('radio',{name:'Ճիշտ է',exact:true}).waitFor();
       await expect(page.locator('[data-student-chapter-navigation]')).toBeHidden();
       const url=new URL(page.url());assert.equal(url.searchParams.get('enrollment'),selected.enrollmentId);assert.equal(url.searchParams.get('release'),selected.curriculumReleaseId);assert.equal(url.searchParams.get('unit'),selected.unitId);
     }
@@ -168,9 +168,9 @@ test('released chapter navigation retains readable words at mobile and desktop t
   for(const width of [390,1280])for(const scale of [100,200]) {
     await page.setViewportSize({width,height:960});await page.evaluate(scale=>document.documentElement.style.fontSize=scale+'%',scale);
     const words=await wordBreaks(page,'[data-student-chapter-navigation], .subject-stat, .subject-heading, .chapter-header, .topic-head h3, .skill-browser-copy h4');
-    const metrics=await chapters.evaluate(el=>({viewport:innerWidth,right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left,overflow:el.scrollWidth>el.clientWidth+1}));
+    const metrics=await chapters.evaluate(el=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left,overflow:el.scrollWidth>el.clientWidth+1,outside:[...document.querySelectorAll('main.shell *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1).slice(0,20).map(e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'',right:e.getBoundingClientRect().right,text:e.textContent.trim().slice(0,80)}))}));
     await capture(page,`released-chapters-${width}-${scale}`,{...metrics,words});
-    assert.deepEqual(words,[]);assert.equal(metrics.overflow,false);assert.ok(metrics.right<=width+1);assert.ok(metrics.left>=-1);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    assert.deepEqual(words,[]);assert.equal(metrics.overflow,false);assert.ok(metrics.right<=width+1);assert.ok(metrics.left>=-1);assert.ok(metrics.documentWidth<=width+1,JSON.stringify(metrics));
   }
   assert.deepEqual(errors,[]);
 });
