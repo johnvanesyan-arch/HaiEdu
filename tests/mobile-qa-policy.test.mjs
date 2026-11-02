@@ -42,7 +42,8 @@ test('teacher guard permits only queue, existing response inspection and feedbac
 });
 test('failure receipt excludes credentials, raw errors, auth state, URLs and arbitrary fields', () => {
   const secret = 'Bearer secret-password-private-learner-name';
-  const receipt = mobileReceipt({revision:secret,status:'failed',failedStage:secret,error:secret,storageState:secret,
+  const receipt = mobileReceipt({revision:secret,status:'failed',failedStage:secret,failureKind:secret,
+    lastBrowser:{side:secret,role:secret,width:secret,blockedRequests:secret,pageErrors:secret,httpErrors:secret,body:secret},error:secret,storageState:secret,
     checks:[{scenario:secret,side:secret,role:secret,width:secret,passed:false,body:secret}],
     cleanup:[{closed:false,status:secret}],isolation:{before:{status:'failed',checks:[{body:secret}]}}});
   assert.equal(JSON.stringify(receipt).includes(secret),false);
