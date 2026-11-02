@@ -1,5 +1,7 @@
 # Sprint 16.5B.2 — Forest student subpages
 
+**2026-11-02 — Student chapter-availability inconsistency confirmed; correction prepared for review.** UX-STUDENT-CHAPTERS-01: the live database has all six Physics 7 releases active, but the legacy topics page still marks Chapters II–VI as unpublished/later. Home and the governed workspace already use authorized release contexts. The proposed shared selector brings all six compatibility pages to that same context list, scoped to the selected enrollment/programme; per-chapter Diagnostic, Practice and Mastery gates are preserved. [Investigation, consumers and limits](student-chapter-availability-20261102.md). Native CI and signed-in student confirmation remain pending; production is unchanged by this investigation. B.12.3 and owner acceptance remain open; subjects remain paused.
+
 **Current delivery — 2026-10-27:** Home, all existing student subpages and complete S45 supplementary materials are deployed under 16.5B.1–B.3. See [current dashboard acceptance](student-dashboard-acceptance.md) and the [authoritative status](project-status.md). Earlier remaining-work statements below describe their dated checkpoint. Final owner usability sign-off and full four-subject 16.5C remain separate.
 
 **27 October 2026 · Asia/Yerevan · Delivered bounded slice; full dashboard acceptance remains open.**

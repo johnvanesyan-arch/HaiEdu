@@ -1,13 +1,38 @@
-import { groupLearningContexts, readLearningSelection, resolveNavigationContext, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
+import { groupLearningContexts, readLearningSelection, resolveNavigationContext, sameContext, sameCourse, contextHref, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
 import { resourceHref } from './resource-navigation.mjs';
 import { studentIcon } from './student-visuals.mjs';
 const page = document.body.dataset.studentPage;
+function renderChapterNavigation(detail, courses, selected) {
+  // Compatibility pages describe one unit. Their chapter list must still come
+  // from the same authorized release contexts as Home and the course workspace.
+  if (!document.body.dataset.learningExtension) return;
+  const header = document.querySelector('main.shell > .topbar');
+  if (!header) return;
+  let root = document.querySelector('[data-student-chapter-navigation]');
+  if (!root) {
+    root = document.createElement('section');
+    root.className = 'card student-chapter-navigation';
+    root.dataset.studentChapterNavigation = 'true';
+    header.insertAdjacentElement('afterend', root);
+  }
+  const course = courses.find(course => sameCourse(course, selected));
+  const units = course?.units ?? [];
+  const tab = page === 'progress' ? 'progress' : page === 'assessment' ? 'assessment' : 'course';
+  const markup = selected && units.length
+    ? `<p>Այս էջում՝ <strong>${esc(selected.unitTitleHy)}</strong></p><details class="student-unit-links"${page === 'physics' && document.body.dataset.focusedTask !== 'true' ? ' open' : ''}><summary>Դասընթացի բաժինները · ${units.length}</summary><nav class="amp-subject-class-list" aria-label="Դասընթացի գլուխներ">${units.map(unit => `<a href="${esc(contextHref(unit, tab))}"${sameContext(unit, selected) ? ' aria-current="page"' : ''}>${esc(unit.unitTitleHy)}</a>`).join('')}</nav></details>`
+    : `<p role="status">${detail.accessStatus === 'unavailable' ? 'Չհաջողվեց ստուգել բաժինների հասանելիությունը։' : detail.accessStatus === 'signed_out' ? 'Բաժինները տեսնելու համար մուտք գործեք ձեր հաշիվ։' : 'Ստուգում ենք բաժինների հասանելիությունը։'}</p>`;
+  // Same-account refreshes must retain keyboard focus and disclosure state.
+  if (root.dataset.navigationMarkup === markup) return;
+  root.dataset.navigationMarkup = markup;
+  root.innerHTML = markup;
+}
 function render(detail = {}) {
   const contexts = detail.contexts ?? [];
   const courses = groupLearningContexts(contexts);
   let selection;
   try { selection = readLearningSelection(location.search); } catch { selection = {}; }
   const selected = resolveNavigationContext(contexts, selection, document.body.dataset.learningExtension);
+  renderChapterNavigation(detail, courses, selected);
   const params = new URLSearchParams(location.search);
   const requestedView = params.get('view');
   const view = page === 'materials' ? 'materials'

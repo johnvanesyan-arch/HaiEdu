@@ -496,3 +496,7 @@ body[data-student-page="home"]:not(.amp-student-shell-active):not([data-role-rou
 
 /* Keep the unresolved identity route in the same palette before JS runs. */
 html:has(body[data-student-page="home"]), body[data-student-page="home"] { background:#f5f6ef; }
+.student-chapter-navigation { margin-block: var(--amp-space-4); min-width: 0; }
+.student-chapter-navigation > p { margin-top: 0; overflow-wrap: normal; word-break: normal; }
+.student-chapter-navigation .amp-subject-class-list a { white-space: normal; overflow-wrap: normal; word-break: normal; }
+.amp-focused-task .student-chapter-navigation { display: none; }

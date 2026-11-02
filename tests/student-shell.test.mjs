@@ -84,8 +84,8 @@ test("Physics 7 browser exposes chapter-topic-skill hierarchy without privileged
   const code = await read("web/physics-7.js");
   assert.match(html, /data-student-page="physics"/);
   assert.match(html, /id="topicList"/);
-  assert.match(html, /Գլուխ II/);
-  assert.match(html, /Գլուխ VI/);
+  assert.doesNotMatch(html, /Հետագայում|չեն ակտիվացվել|չի հրապարակվել/);
+  assert.match(html, /բաժինների ցանկ/);
   assert.match(code, /PHY7-U01-T01/);
   assert.match(code, /PHY7-U01-S01/);
   assert.match(code, /PHY7-U01-S10/);
