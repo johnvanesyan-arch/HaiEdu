@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "item-snapshot-coverage-v1",
+  "date": "2026-11-03",
+  "environment": "production, SELECT-only",
+  "scope": "All pilot/production releases and their pilot/production blueprints",
+  "inventoryQuery": "scripts/sql/item-snapshot-inventory.sql",
+  "releases": [
+    {
+      "release_key": "english7_u01_review_r1",
+      "references": 256,
+      "distinct_versions": 198,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "english7_u02_review_r1",
+      "references": 214,
+      "distinct_versions": 167,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "english7_u03_review_r1",
+      "references": 204,
+      "distinct_versions": 152,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "references": 360,
+      "distinct_versions": 240,
+      "missing_references": 251,
+      "missing_versions": 174
+    },
+    {
+      "release_key": "physics7_u02_2026_08_14_pilot_r2",
+      "references": 288,
+      "distinct_versions": 192,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "physics7_u03_2026_08_14_pilot_r3",
+      "references": 248,
+      "distinct_versions": 168,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "physics7_u04_2026_08_14_pilot_r4",
+      "references": 359,
+      "distinct_versions": 221,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "physics7_u05_2026_08_14_pilot_r5",
+      "references": 236,
+      "distinct_versions": 148,
+      "missing_references": 0,
+      "missing_versions": 0
+    },
+    {
+      "release_key": "physics7_u06_2026_08_14_pilot_r6",
+      "references": 381,
+      "distinct_versions": 235,
+      "missing_references": 0,
+      "missing_versions": 0
+    }
+  ],
+  "recovery": {
+    "manifest": "docs/evidence/unit1-snapshot-recovery-manifest-20261103.json",
+    "sourceReplayedVersions": 174,
+    "fixedVersions": 110,
+    "deterministicVersions": 64,
+    "blockedVersions": 0,
+    "readonlyPreflight": {
+      "candidate_versions": 174,
+      "verified_versions": 174,
+      "already_present": 0
+    },
+    "appliedToProduction": false
+  },
+  "privacy": "Release and item metadata only; no learner identities, responses, scores or raw question payloads in this receipt."
+}

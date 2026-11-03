@@ -65,7 +65,7 @@ test('class analytics replay only the exact attempts supplied for the authorized
   ];
   const result = buildExactInstitutionalStudentAnalytics({
     student: { id: 'student-a', displayName: 'Անի', enrollmentId: 'enrollment-a' },
-    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:a.items})), reviewSessions: [],
+    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:{...a.items,skill_id:a.skill_id}})), reviewSessions: [],
   });
   assert.equal(result.matrix[0].evidenceCount, 1);
   assert.equal(result.matrix[0].percent, 60);
@@ -99,7 +99,7 @@ test('review and mastery summaries use only exact-context session IDs', () => {
     eligible_pool_size: 8, completed_at: '2026-09-26T09:10:00Z', created_at: '2026-09-26T09:00:00Z' }];
   const result = buildExactInstitutionalStudentAnalytics({
     student: { id: 'student-a', displayName: 'Անի', enrollmentId: 'enrollment-a' },
-    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:a.items})), reviewSessions,
+    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:{...a.items,skill_id:a.skill_id}})), reviewSessions,
   });
   assert.equal(result.chapterReview.lifecycleState, 'mastery_retry_2_ready');
   assert.equal(result.chapterReview.requiredReviewsCompleted, 1);

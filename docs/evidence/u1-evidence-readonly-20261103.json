@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-03",
+  "sourceBaseline": "2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2",
+  "method": "owner-authorized scoped read-only metadata SELECTs",
+  "productionWrites": 0,
+  "rawLearnerDataCommitted": false,
+  "productionCauseConfirmed": true,
+  "selectedScopeCounts": {
+    "enrollments": 1,
+    "sessions": 9,
+    "recordedAnswers": 60,
+    "frozenMatchingAnswers": 11,
+    "missingFrozenVersions": 49
+  },
+  "sessions": {
+    "completedDiagnostic": 1,
+    "completedPractice": 7,
+    "activePractice": 1
+  },
+  "exactExclusion": "Missing item_versions row for the session blueprint's item_version_snapshot; baseline loader filters frozenItem.skill_id === attempt.skill_id",
+  "otherExclusionsObserved": 0,
+  "skills": [
+    {
+      "code": "PHY7-U01-S01",
+      "recorded": 6,
+      "frozenMatching": 1,
+      "missingFrozenVersion": 5
+    },
+    {
+      "code": "PHY7-U01-S02",
+      "recorded": 4,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 4
+    },
+    {
+      "code": "PHY7-U01-S03",
+      "recorded": 10,
+      "frozenMatching": 2,
+      "missingFrozenVersion": 8
+    },
+    {
+      "code": "PHY7-U01-S04",
+      "recorded": 3,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 3
+    },
+    {
+      "code": "PHY7-U01-S05",
+      "recorded": 9,
+      "frozenMatching": 2,
+      "missingFrozenVersion": 7
+    },
+    {
+      "code": "PHY7-U01-S06",
+      "recorded": 2,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 2
+    },
+    {
+      "code": "PHY7-U01-S07",
+      "recorded": 20,
+      "frozenMatching": 6,
+      "missingFrozenVersion": 14
+    },
+    {
+      "code": "PHY7-U01-S08",
+      "recorded": 2,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 2
+    },
+    {
+      "code": "PHY7-U01-S09",
+      "recorded": 2,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 2
+    },
+    {
+      "code": "PHY7-U01-S10",
+      "recorded": 2,
+      "frozenMatching": 0,
+      "missingFrozenVersion": 2
+    }
+  ],
+  "limits": [
+    "Current item version equality does not prove historic content",
+    "School-wide counters were not queried",
+    "No signed-in live UI verification of the prepared patch",
+    "No production mutation, merge or deployment"
+  ]
+}

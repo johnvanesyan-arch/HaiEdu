@@ -24,7 +24,7 @@ export function skillEvidenceState(row = {}) {
   if (Object.hasOwn(bands, row.band) && Number.isFinite(row.percent)) {
     return { kind: 'classified', label: `${bands[row.band]} · ${row.percent}%`, band: row.band };
   }
-  return Number(row.evidenceCount) > 0
+  return Number(row.evidenceCount) > 0 || Number(row.observedEvidenceCount) > 0 || Number(row.excludedEvidenceCount) > 0
     ? { kind: 'unavailable', label: 'Ցուցանիշը հասանելի չէ', band: 'not_assessed' }
     : { kind: 'none', label: 'Տվյալ դեռ չկա', band: 'not_assessed' };
 }
@@ -49,18 +49,19 @@ export function skillMatrixCell(row, studentId) {
 export function skillEvidenceMarkup(rows = [], unitCode = '') {
   const prefix = unitCode ? `${unitCode}-` : '';
   return `<section class="teacher-skill-evidence" aria-label="Հմտությունների տվյալներ"><h3>Հմտությունների տվյալներ</h3>
-    <p class="subtle small">Տարբեր աշխատանքների կամ կանոնների արդյունքները ներկայացված են առանձին։ Գույները ուսումնական ցուցանիշներ են, ոչ ստուգարքի գնահատական։</p>
+    <p class="subtle small">Ցուցադրվում են ընտրված դասարանի տվյալները։ Տարբեր աշխատանքների կամ կանոնների արդյունքները ներկայացված են առանձին։ Գույները ուսումնական ցուցանիշներ են, ոչ ստուգարքի գնահատական։</p>
     ${rows.map(row => {
       const state = skillEvidenceState(row);
       const code = prefix && String(row.code).startsWith(prefix) ? String(row.code).slice(prefix.length) : row.code;
       const estimates = row.estimates?.length ? row.estimates : Number(row.evidenceCount) > 0 ? [row] : [];
       return `<details data-skill-evidence="${esc(row.skillId ?? row.id)}"><summary><strong>${esc(code)}</strong> ${esc(row.nameHy)}<span>${esc(state.label)}</span></summary>
+        ${Number(row.excludedEvidenceCount) > 0 ? `<p class="subtle small" data-evidence-coverage>Գրանցված պատասխաններ՝ ${esc(row.observedEvidenceCount)}։ Ցուցանիշի հաշվարկին մասնակցող պատասխաններ՝ ${esc(row.evidenceCount)}։ Պատասխանները պահպանված են, սակայն հարցերի նախկին տարբերակների տվյալները բավարար չեն բոլոր պատասխաններով ցուցանիշ հաշվարկելու համար։</p>` : ''}
         ${estimates.length ? estimates.map((estimate, index) => {
           const presentation = skillEvidenceState(estimate);
           return `<article class="skill-estimate ${presentation.band}"><h4>${esc(modes[estimate.contract?.mode] ?? 'Ուսումնական աշխատանք')}${estimates.length > 1 ? ` · արդյունք ${index + 1}` : ''}</h4>
             <p>${esc(presentation.label)} · ${esc(estimate.evidenceCount)} պատասխան</p>
             ${presentation.kind !== 'classified' && Number.isFinite(estimate.percent) ? `<p class="subtle small">Նախնական ցուցանիշ՝ ${estimate.percent}%․ դասակարգման համար դիտարկումները դեռ բավարար չեն։</p>` : ''}
             ${estimate.contract ? contractMarkup(estimate.contract) : ''}</article>`;
-        }).join('') : '<p>Այս հմտության համար ուսումնական տվյալ դեռ չկա։</p>'}</details>`;
+        }).join('') : Number(row.excludedEvidenceCount) > 0 ? '<p>Ցուցանիշը հասանելի չէ։</p>' : '<p>Այս հմտության համար ուսումնական տվյալ դեռ չկա։</p>'}</details>`;
     }).join('')}</section>`;
 }
