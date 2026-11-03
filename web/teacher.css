@@ -124,3 +124,10 @@
 /* Saved results keep ordinary group text distinct from the pass decision. */
 .drawer-assessment-result p { margin:.35rem 0; font-size:1rem; line-height:1.6; }
 .teacher-assessment-history { min-width:0; }
+
+/* Keep roster words readable when text grows: a fixed 150px cell still forms
+   two narrow columns on a 430px phone at 200%. Size cells with their text and
+   bound their grid tracks so content cannot enlarge the page. */
+.roster-row>div { grid-template-columns:minmax(0,1fr); flex-basis:9.375rem; min-width:min(100%,9.375rem); }
+.roster-row>div:first-child { flex-basis:12.5rem; }
+.roster-row>.intervention-cell { flex-basis:16.25rem; min-width:min(100%,16.25rem); }
