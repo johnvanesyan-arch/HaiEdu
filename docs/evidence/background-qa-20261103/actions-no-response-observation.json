@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "haiedu-qa-transport-observation-v1",
+  "finding": "QA-TRANSPORT-01",
+  "sourceRevision": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+  "runId": 41621118035,
+  "attempt": 1,
+  "artifactId": 13227376602,
+  "receipt": "run-41621118035-attempt-1.json",
+  "outcome": "failed; preserved",
+  "failedRead": {
+    "actorAlias": "A_teacher",
+    "endpoint": "get-teacher-dashboard",
+    "method": "POST",
+    "body": {},
+    "callerTimeoutMs": 25000,
+    "reportedHttpStatus": 0,
+    "meaning": "The fetch helper produced no HTTP response. Its response-JSON catch preserves HTTP status; HTTP0 here does not establish an authentication, JSON-decode or backend status-code failure.",
+    "point": "After creating a disposable empty class under a temporary second-school membership."
+  },
+  "mainChecks": {
+    "passed": 181,
+    "total": 182
+  },
+  "isolationControls": {
+    "before": 54,
+    "after": 54,
+    "allPassed": true
+  },
+  "cleanup": {
+    "classes": {
+      "count": 4,
+      "acknowledged": 4,
+      "allAcknowledged": true
+    },
+    "memberships": {
+      "count": 2,
+      "acknowledged": 2,
+      "allAcknowledged": true
+    }
+  },
+  "qaSessionClosures": {
+    "main": 6,
+    "isolation": 12,
+    "allAcknowledged": true
+  },
+  "providerLogWindowYerevan": {
+    "start": "2026-11-03T15:26:30+04:00",
+    "end": "2026-11-03T15:33:40+04:00"
+  },
+  "availableFunctionLogSummary": {
+    "requests": 33,
+    "byStatus": {
+      "200": 29,
+      "403": 4
+    },
+    "maximumServerExecutionMs": 17415,
+    "notCorrelatedToClientFailure": true
+  },
+  "correlationLimit": "The failing client request has no retained trace/provider request ID or raw fetch exception kind. The 33 available invocations are not correlated to that exact client failure; successful server entries do not identify its cause.",
+  "retry": {
+    "attempt": 2,
+    "sameSource": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+    "outcome": "passed",
+    "mainChecks": 206,
+    "isolationBefore": 54,
+    "isolationAfter": 54,
+    "callerTimeoutMs": 25000,
+    "inRequestRetries": 0,
+    "receipt": "run-41621118035.json"
+  },
+  "disposition": "Full same-source acceptance succeeds on attempt2; the original attempt remains failed and the no-response cause remains open. No speculative Auth, database, timeout or assertion change is made."
+}
