@@ -1,0 +1,336 @@
+{
+  "schemaVersion": "haiedu-mobile-read-acceptance-v1",
+  "revision": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+  "status": "failed",
+  "failedStage": "layout",
+  "failureKind": "assertion-or-runtime",
+  "lastBrowser": {
+    "side": "A",
+    "role": "teacher",
+    "width": 430,
+    "blockedRequests": 0,
+    "pageErrors": 0,
+    "httpErrors": 0
+  },
+  "checks": [
+    {
+      "side": null,
+      "role": null,
+      "width": null,
+      "scenario": "preflight",
+      "passed": true
+    },
+    {
+      "side": null,
+      "role": null,
+      "width": null,
+      "scenario": "preflight",
+      "passed": true
+    },
+    {
+      "side": null,
+      "role": null,
+      "width": null,
+      "scenario": "release",
+      "passed": true
+    },
+    {
+      "side": null,
+      "role": null,
+      "width": null,
+      "scenario": "isolation-before",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": null,
+      "scenario": "login",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": null,
+      "scenario": "login",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": null,
+      "scenario": "login",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "student-navigation",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "student-course",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "student-navigation",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "student-course",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "student",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": null,
+      "scenario": "login",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": null,
+      "scenario": "login",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "teacher-home",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "teacher-class",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "teacher-review",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 390,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "teacher-home",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "teacher-class",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "teacher-review",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "layout",
+      "passed": true
+    },
+    {
+      "side": "A",
+      "role": "teacher",
+      "width": 430,
+      "scenario": "layout",
+      "passed": false
+    }
+  ],
+  "isolation": [
+    {
+      "phase": "before",
+      "passed": true,
+      "checks": 54
+    },
+    {
+      "phase": "after",
+      "passed": false,
+      "checks": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "closed": true,
+      "status": 204
+    },
+    {
+      "closed": true,
+      "status": 204
+    }
+  ],
+  "browser": "Chromium phone emulation; 390x844 and 430x932; ordinary and 200% text",
+  "recordings": "none; no auth files, traces, video, screenshots, HTML reports or raw errors",
+  "limitation": "Technical read-only acceptance; no personal sign-off, physical-device or assistive-technology acceptance; no learner submission or marking writes"
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "c2-native-before-fix-v1",
+  "date": "2026-11-03",
+  "pr": 399,
+  "sourceCommit": "a197832fac408a8e4c4b81a52aa18c6ab3c3bbad",
+  "workflowRun": 41611446774,
+  "job": 125834076602,
+  "environment": "Isolated native Chromium, real teacher page and stylesheet, synthetic services/data",
+  "case": "populated 430px phone, inline writing-review journey, 200% root text",
+  "result": "failed",
+  "tests": 404,
+  "failures": 1,
+  "geometry": {
+    "size": 200,
+    "viewport": 454,
+    "scrollX": 0,
+    "scroll": 454,
+    "client": 430,
+    "left": 0,
+    "right": 430,
+    "offenders": [
+      {
+        "tag": "A",
+        "id": "",
+        "classes": "",
+        "right": 648,
+        "width": 250
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "classes": "",
+        "right": 1046,
+        "width": 394
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "classes": "",
+        "right": 1383,
+        "width": 333
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "classes": "",
+        "right": 1789,
+        "width": 402
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "classes": "",
+        "right": 2158,
+        "width": 365
+      },
+      {
+        "tag": "TABLE",
+        "id": "",
+        "classes": "skill-matrix",
+        "right": 2850,
+        "width": 2820
+      },
+      {
+        "tag": "THEAD",
+        "id": "",
+        "classes": "",
+        "right": 2850,
+        "width": 2820
+      },
+      {
+        "tag": "TR",
+        "id": "",
+        "classes": "",
+        "right": 2850,
+        "width": 2820
+      },
+      {
+        "tag": "TH",
+        "id": "",
+        "classes": "",
+        "right": 483,
+        "width": 263
+      },
+      {
+        "tag": "TH",
+        "id": "",
+        "classes": "",
+        "right": 746,
+        "width": 263
+      },
+      {
+        "tag": "TH",
+        "id": "",
+        "classes": "",
+        "right": 1009,
+        "width": 263
+      },
+      {
+        "tag": "TH",
+        "id": "",
+        "classes": "",
+        "right": 1272,
+        "width": 263
+      }
+    ]
+  },
+  "limits": "Offender list includes descendants inside intentionally scrollable containers; raw diagnostics are synthetic-only and do not by themselves identify the unclipped root offender. The later correction changes only roster text sizing/tracks."
+}

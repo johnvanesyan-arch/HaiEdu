@@ -1,8 +1,8 @@
 # U1 — recorded answers and unavailable frozen evidence
 
-3 November 2026 (Asia/Yerevan). Baseline `2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2`; initial investigation checkpoint `6ab45023b721f5f48c4801ceae265ffae5e2eb52`. John explicitly authorized narrowly scoped read-only production metadata inspection after that checkpoint. The source correction described here is prepared for review; it is not merged or deployed.
+3 November 2026 (Asia/Yerevan). Baseline `2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2`; initial investigation checkpoint `6ab45023b721f5f48c4801ceae265ffae5e2eb52`. John explicitly authorized narrowly scoped read-only production metadata inspection after that checkpoint. The initial source checkpoint below precedes the now-applied production rollout recorded in the next paragraph.
 
-**Follow-up implementation:** original-source replay now independently verifies all174 absent Unit1 versions. A new bounded recovery migration and platform-wide publication guards are prepared in the same U1 PR. The presentation-only decision and verification below remain their historical checkpoint. See [root repair, current tests and owner readback](item-snapshot-recovery-20261103.md). No production changes have been applied.
+**Current production outcome — 3 November 2026:** all174 source-verified missing snapshots are recovered, publication/reference guards are live, and both analytics consumers/frontend match source. Exact scoped database evidence is now60 recorded/60 countable, including S02=4/4 and S04=3/3; saved learning/content/approval rows are preserved. The initial investigation and presentation-only decision below are historical checkpoints. See [the executed rollout, preservation proof and live-QA limits](u1-rollout-20261103.md).
 
 ## Confirmed cause and decision
 
@@ -61,7 +61,7 @@ Regressions exercise the actual loader/presentation, missing membership/version/
 
 The initial checkpoint passed all five CI gates ([run41582853411](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41582853411)), 1,665 local tests and typecheck. Those results predate the behavior patch. Current-source full tests, generated-bundle parity, syntax, trigger coverage and required Node22/browser/PostgreSQL/aggregate CI are recorded in PR397. Local Chromium is unavailable; the new native cases require actual CI execution and are not claimed from VM tests.
 
-## Remaining handoff
+## Historical handoff prepared before the production rollout
 
 After owner review and passing current-source CI, the owner controls merge/deployment. Deploy both affected Edge functions with the shared helper and verify all deployed bundle files; merging one helper alone does not update existing functions. Verify exact frontend/bundle source, then make a scoped read-only teacher check: S02 must show four recorded/zero counted answers and S04 three/zero, both unavailable rather than no-data. Do not create learner responses or modify historical data for acceptance. Missing-snapshot recovery requires independent governed evidence and owner review.
 

@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "c2-native-correction-v1",
+  "date": "2026-11-03",
+  "pr": 399,
+  "sourceCommit": "4932da47118cc4d4ff126e45f22dc32cc7595e54",
+  "mainCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+  "prCi": 41613406712,
+  "allFivePrGatesPassed": true,
+  "unitIntegrationTests": 1676,
+  "nativeBrowserChecks": 408,
+  "failures": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "newCases": "Eight empty/populated real teacher-page journeys at 390, 430, 768 and1280px; each at100% and200% text, including actual Armenian word-boundary checks.",
+  "correctedGeometry": {
+    "size": 200,
+    "viewport": 430,
+    "scrollX": 0,
+    "scroll": 430,
+    "client": 430,
+    "left": 0,
+    "right": 430,
+    "offenders": [],
+    "roster": [
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      },
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      },
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      },
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      },
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      },
+      {
+        "width": 340,
+        "left": 45,
+        "right": 385
+      }
+    ]
+  },
+  "scope": "Shared teacher roster CSS only; all subjects and both institutional/unscoped class consumers. Student, Edge, scoring and security behavior unchanged.",
+  "productionMobile": {
+    "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+    "runs": [
+      41614299753,
+      41614776938
+    ],
+    "status": "both passed",
+    "results": [
+      {
+        "runId": 41614299753,
+        "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "status": "passed",
+        "checks": 84,
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": true,
+            "checks": 54
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-passed-41614299753.json"
+      },
+      {
+        "runId": 41614776938,
+        "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "status": "passed",
+        "checks": 84,
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": true,
+            "checks": 54
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-passed-41614776938.json"
+      }
+    ]
+  },
+  "mainCi": 41614299578,
+  "allFiveMainGatesPassed": true,
+  "prMainTreeEquivalent": "9b1a7e59494dcff411834faf4d5f021db338a638",
+  "productionGate": {
+    "observedAt": "2026-11-03T09:59:24Z",
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+    "check": "Platform release checks",
+    "provider": "GitHub",
+    "environment": "Production",
+    "behavior": "Blocking",
+    "saveDisabled": true,
+    "settingsWrites": 0,
+    "canonicalBeforeMainCi": "dpl_JBdP7diDZzHyDC3K7ZiVqinrFsMn",
+    "canonicalAfterMainCi": "dpl_H92T7hmifv2Ar1TxyaDzRkPmqhyL",
+    "manualPromotion": false
+  },
+  "frontend": {
+    "deployment": "dpl_H92T7hmifv2Ar1TxyaDzRkPmqhyL",
+    "state": "READY",
+    "canonicalReleaseCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+    "assets": [
+      {
+        "path": "web/course-page.js",
+        "bytes": 15339,
+        "sha256": "4eaa02d7ead5b912c32e17e4c4b8aa10617717326dbf0fd83ef5a269e42d43cb",
+        "match": true
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "bytes": 290044,
+        "sha256": "bbd3e3cbf61ce2fcd8faca8c8d293e553f0e36e1e1758e50528e8b5efb6504f0",
+        "match": true
+      },
+      {
+        "path": "web/teacher-skill-evidence.mjs",
+        "bytes": 5348,
+        "sha256": "bb32fa62dc079c7c3fb5e6e7472d0efc84a92dae2685c7e1f73b41dd1172d7fa",
+        "match": true
+      },
+      {
+        "path": "web/teacher.css",
+        "bytes": 25747,
+        "sha256": "fce0b96c0d96ead49e70fa71e76dd36cd8007acc645a782a95d8147c679252bb",
+        "match": true
+      }
+    ]
+  }
+}
