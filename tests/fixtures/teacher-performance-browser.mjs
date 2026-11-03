@@ -1,6 +1,6 @@
 import {readFile} from 'node:fs/promises';
-export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null}={}){
- const context=await browser.newContext({viewport:{width:1280,height:950}});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false}={}){
+ const context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(({archives,initialFailure,analytics,studentDetails})=>{
   const unit=n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitCode:'SYN-'+n,unitTitleHy:'Բաժին '+n,unitSequence:n,releaseNumber:1});
   const rows=[{id:'a',name:'Ա Դասարան',isActive:true},{id:'b',name:'Բ Դասարան',isActive:true},...Array.from({length:archives},(_,i)=>({id:'history-'+i,name:'Արխիվ '+String(i).padStart(3,'0'),isActive:false}))].map(c=>({...c,assignmentId:'assignment-'+c.id,schoolId:'school-a',academicYear:'2026–2027',subjectName:'Առարկա',schoolName:'Դպրոց',gradeNumber:7,studentCount:null,analyticsAvailable:false}));
