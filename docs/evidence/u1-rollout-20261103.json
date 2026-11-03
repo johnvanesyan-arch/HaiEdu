@@ -1,7 +1,7 @@
 {
   "schemaVersion": "u1-rollout-v1",
   "date": "2026-11-03",
-  "status": "partial; database confirmation blocked",
+  "status": "partial; authorized browser fallback blocked by approval-review capacity/timeouts",
   "authorization": "John authorized the proposed controlled rollout on 3 November 2026.",
   "source": {
     "queue": {
@@ -950,13 +950,21 @@
     "No fresh signed-in positive teacher check claimed.",
     "Direct unauthenticated Edge probe timed out at the outbound proxy before an HTTP response; no application authorization outcome claimed.",
     "Mobile QA is automatically queued; two same-source successful runs are not yet available.",
-    "GitHub connector provides no manual workflow dispatch/cancel operation; browser fallback has not been authorized.",
+    "GitHub connector provides no manual workflow dispatch/cancel operation; browser fallback is authorized but approval-review capacity/timeouts prevented completion.",
     "No historical learning/content/approval rows were intentionally modified; the database repair has not executed."
   ],
   "remaining": [
-    "Authorize browser fallback or complete the Supabase database confirmation.",
+    "Restore working browser approval review, complete secure Supabase sign-in and apply the already-authorized reviewed repair.",
     "Apply the reviewed bounded migration, verify 174 additions and preservation, then verify 60 recorded/60 counted.",
     "Manage stale pre-authentication waits safely and execute two Mobile browser QA runs on the reviewed deployed source.",
     "Finish merged documentation and Notion synchronization; B.12.3/B.12 and subject expansion remain held."
-  ]
+  ],
+  "browserFallback": {
+    "authorized": true,
+    "supabaseSignInObserved": true,
+    "migrationExecuted": false,
+    "credentialEntryPerformed": false,
+    "handoffExecuted": false,
+    "blocker": "Automatic browser approval review repeatedly failed from capacity or timed out before execution, including read-only credential inspection and authentication handoff."
+  }
 }
