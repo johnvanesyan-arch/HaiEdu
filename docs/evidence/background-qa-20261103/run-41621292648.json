@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "haiedu-background-qa-receipt-v1",
+  "runId": 41621292648,
+  "artifactId": 13227351281,
+  "sourceRevision": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+  "frontendCommit": null,
+  "scope": "Sprint 14D authenticated production analytics acceptance",
+  "status": "passed",
+  "startedAt": "2026-11-03T11:34:15.342Z",
+  "finishedAt": "2026-11-03T11:34:44.154Z",
+  "startedAtYerevan": "2026-11-03T15:34:15.342000+04:00",
+  "finishedAtYerevan": "2026-11-03T15:34:44.154000+04:00",
+  "timezone": "Asia/Yerevan",
+  "artifactZipSha256": "021cf01e8f3592720347c0b8b6854a40cf908d0a82dc3d07b3f4a3b07e8a3883",
+  "originalReportSha256": "7d099eab06537623170b101dfc4003d182350c0759454812c92f845e275092cb",
+  "checks": [
+    {
+      "label": "A: authenticate dedicated school administrator",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: authenticate dedicated school administrator",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own-school aggregate is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: other-school aggregate is denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: own-school aggregate is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: other-school aggregate is denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: authenticated production board loads real scoped analytics",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: authenticated production board loads real scoped analytics",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "checkCount": 10,
+  "passedChecks": 10,
+  "failedChecks": 0,
+  "ownedSessionCleanup": [
+    {
+      "label": "A: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "browserDiagnosticsCount": 0,
+  "limitations": [],
+  "redaction": "Allowlisted test labels/status/HTTP codes and aggregate execution metadata only; excludes account identities, credentials, response bodies, request diagnostics and recordings.",
+  "runnerGateFlags": {
+    "sprint14DGateClosed": true
+  },
+  "runAttempt": 1,
+  "workflowPath": ".github/workflows/sprint-14d-analytics-qa.yml",
+  "workflowName": "Sprint 14D authenticated analytics QA",
+  "sourceGuardEvidence": {
+    "jobId": 125891822524,
+    "sourceMatches": 1,
+    "lines": [
+      "2026-11-03T11:34:14.9342124Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+    ]
+  }
+}

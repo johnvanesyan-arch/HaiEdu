@@ -1,0 +1,461 @@
+{
+  "schemaVersion": "haiedu-background-qa-index-v1",
+  "sourceRevision": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+  "applicationEquivalentTo": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+  "verifiedAt": "2026-11-03T15:56:17.615411+04:00",
+  "timezone": "Asia/Yerevan",
+  "status": "eleven complete passing suites; one earlier failed attempt preserved",
+  "uniqueSuites": 11,
+  "executions": 12,
+  "successfulLatestExecutions": 11,
+  "earlierFailedExecutions": 1,
+  "totalsForLatestSuccessfulExecutions": {
+    "mainChecks": 1849,
+    "isolationChecks": 702,
+    "mainSessionClosures": 62,
+    "isolationSessionClosures": 78
+  },
+  "runs": [
+    {
+      "id": 41620877816,
+      "name": "Chapter III pilot read acceptance",
+      "path": ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41620877816",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125865969223,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T10:38:28.9351197Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:38:29.1348098Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:42:51.9408745Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13223707853,
+          "name": "chapter-iii-pilot-read-acceptance",
+          "createdAt": "2026-11-03T10:42:54Z",
+          "digest": "sha256:906554865a5b961bb11b4bdf19e9d3bef97340a6b5c652d0f8a08ab67a026933"
+        }
+      ],
+      "receipt": "run-41620877816.json",
+      "mainChecks": 123,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T14:42:53.199000+04:00"
+    },
+    {
+      "id": 41620929251,
+      "name": "Chapter IV pilot read acceptance",
+      "path": ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41620929251",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125868266662,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T10:43:29.4059363Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:43:29.6206895Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:47:25.6827522Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13222479857,
+          "name": "chapter-iv-pilot-read-acceptance",
+          "createdAt": "2026-11-03T10:47:27Z",
+          "digest": "sha256:54af7947ccbf4f64df539a322cad4352fcd1a45063ea9e9f32a0fa3a79551590"
+        }
+      ],
+      "receipt": "run-41620929251.json",
+      "mainChecks": 155,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T14:47:26.781000+04:00"
+    },
+    {
+      "id": 41620941350,
+      "name": "Chapter V pilot read acceptance",
+      "path": ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41620941350",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125870395260,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T10:48:01.9132457Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:48:02.1646186Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:52:41.9209134Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13225355180,
+          "name": "chapter-v-pilot-read-acceptance",
+          "createdAt": "2026-11-03T10:52:44Z",
+          "digest": "sha256:a83bbbe3c0156bcfc69362a892983720a35c79176ab981aea0a5238de66e4a1f"
+        }
+      ],
+      "receipt": "run-41620941350.json",
+      "mainChecks": 191,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T14:52:43.190000+04:00"
+    },
+    {
+      "id": 41620953836,
+      "name": "Chapter VI pilot read acceptance",
+      "path": ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41620953836",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125872872434,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T10:53:29.9542002Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T10:53:30.1430861Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:00:31.3058113Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13225371564,
+          "name": "chapter-vi-pilot-read-acceptance",
+          "createdAt": "2026-11-03T11:00:34Z",
+          "digest": "sha256:b7eec2aebe9184a93e6be3eacbfd25621b7f26bef4a92c66a1baf55d717c6a2b"
+        }
+      ],
+      "receipt": "run-41620953836.json",
+      "mainChecks": 324,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T15:00:33.088000+04:00"
+    },
+    {
+      "id": 41621035876,
+      "name": "English Unit 1 pilot read acceptance",
+      "path": ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621035876",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125876473837,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T11:01:04.7928957Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:01:05.0412869Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:05:39.3344023Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13223854845,
+          "name": "english-unit1-pilot-read-acceptance",
+          "createdAt": "2026-11-03T11:05:40Z",
+          "digest": "sha256:2fe54c15afaa3a9547c74ab52031fa0731260aba1d080c191c5884f2361c5faa"
+        }
+      ],
+      "receipt": "run-41621035876.json",
+      "mainChecks": 130,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T15:05:40.216000+04:00"
+    },
+    {
+      "id": 41621048664,
+      "name": "English Unit 2 pilot read acceptance",
+      "path": ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621048664",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125878881162,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T11:06:14.2547255Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:06:14.4198546Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:10:16.0311806Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13225259084,
+          "name": "english-unit2-pilot-read-acceptance",
+          "createdAt": "2026-11-03T11:10:17Z",
+          "digest": "sha256:a4aff98c5724c20c9c490970383db9528c519e4fcf3ff6e9cc89bd23660fbb2c"
+        }
+      ],
+      "receipt": "run-41621048664.json",
+      "mainChecks": 142,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T15:10:17.115000+04:00"
+    },
+    {
+      "id": 41621061401,
+      "name": "English Unit 3 pilot read acceptance",
+      "path": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621061401",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125881053135,
+        "sourceMatches": 3,
+        "lines": [
+          "2026-11-03T11:10:59.8683212Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:11:00.2387590Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:17:02.0658821Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13225736795,
+          "name": "english-unit3-pilot-read-acceptance",
+          "createdAt": "2026-11-03T11:17:04Z",
+          "digest": "sha256:a4e6680aca9d0855ad87105479a2d48f6f536e801a57afbdf7ba887875bc77b9"
+        }
+      ],
+      "receipt": "run-41621061401.json",
+      "mainChecks": 154,
+      "isolationChecks": 54,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 6,
+      "finishedAtYerevan": "2026-11-03T15:17:03.752000+04:00"
+    },
+    {
+      "id": 41621102404,
+      "name": "Resource assignment production acceptance",
+      "path": ".github/workflows/resource-assignments-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621102404",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125884253590,
+        "sourceMatches": 2,
+        "lines": [
+          "2026-11-03T11:17:35.8248684Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8.",
+          "2026-11-03T11:17:36.3275176Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13225897898,
+          "name": "resource-assignments-acceptance",
+          "createdAt": "2026-11-03T11:25:56Z",
+          "digest": "sha256:cb2643c1ef4105846b4f990ae5d9f3852f99eb5480473dbbd68bc2ddf09a9d21"
+        }
+      ],
+      "receipt": "run-41621102404.json",
+      "mainChecks": 327,
+      "isolationChecks": 108,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 12,
+      "finishedAtYerevan": "2026-11-03T15:25:55.789000+04:00"
+    },
+    {
+      "id": 41621118035,
+      "name": "Sprint 14 authenticated action QA",
+      "path": ".github/workflows/sprint-14-actions-qa.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621118035",
+      "attempt": 2,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125893999297,
+        "sourceMatches": 1,
+        "lines": [
+          "2026-11-03T11:39:01.5937220Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ],
+        "attempt": 2
+      },
+      "artifacts": [
+        {
+          "id": 13228455109,
+          "name": "sprint-14-actions-evidence",
+          "createdAt": "2026-11-03T11:44:55Z",
+          "digest": "sha256:b0c79cf7001a750dab8819108395f6bcf7f8291a164dfe1e5d6dddbc36f08fb8"
+        }
+      ],
+      "receipt": "run-41621118035.json",
+      "mainChecks": 206,
+      "isolationChecks": 108,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 12,
+      "finishedAtYerevan": "2026-11-03T15:44:54.580000+04:00"
+    },
+    {
+      "id": 41621292648,
+      "name": "Sprint 14D authenticated analytics QA",
+      "path": ".github/workflows/sprint-14d-analytics-qa.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621292648",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125891822524,
+        "sourceMatches": 1,
+        "lines": [
+          "2026-11-03T11:34:14.9342124Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13227351281,
+          "name": "sprint-14d-analytics-evidence",
+          "createdAt": "2026-11-03T11:34:45Z",
+          "digest": "sha256:021cf01e8f3592720347c0b8b6854a40cf908d0a82dc3d07b3f4a3b07e8a3883"
+        }
+      ],
+      "receipt": "run-41621292648.json",
+      "mainChecks": 10,
+      "isolationChecks": 0,
+      "mainSessionClosures": 2,
+      "isolationSessionClosures": 0,
+      "finishedAtYerevan": "2026-11-03T15:34:44.154000+04:00"
+    },
+    {
+      "id": 41621433147,
+      "name": "Teacher feedback production acceptance",
+      "path": ".github/workflows/teacher-feedback-acceptance.yml",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41621433147",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "sourceGuardEvidence": {
+        "jobId": 125892342819,
+        "sourceMatches": 1,
+        "lines": [
+          "2026-11-03T11:35:27.2377029Z Production frontend matches 58f4075ca9050ddffcb35d13a1bf94606a483ec8."
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 13227107436,
+          "name": "teacher-feedback-production",
+          "createdAt": "2026-11-03T11:38:28Z",
+          "digest": "sha256:b3757f70c3ee0067e195571df862584bfb2ed8a93d899fcbfd1e17e0938c4f2a"
+        }
+      ],
+      "receipt": "run-41621433147.json",
+      "mainChecks": 87,
+      "isolationChecks": 108,
+      "mainSessionClosures": 6,
+      "isolationSessionClosures": 12,
+      "finishedAtYerevan": "2026-11-03T15:38:28.024000+04:00"
+    }
+  ],
+  "earlierFailure": {
+    "schemaVersion": "haiedu-qa-transport-observation-v1",
+    "finding": "QA-TRANSPORT-01",
+    "sourceRevision": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+    "runId": 41621118035,
+    "attempt": 1,
+    "artifactId": 13227376602,
+    "receipt": "run-41621118035-attempt-1.json",
+    "outcome": "failed; preserved",
+    "failedRead": {
+      "actorAlias": "A_teacher",
+      "endpoint": "get-teacher-dashboard",
+      "method": "POST",
+      "body": {},
+      "callerTimeoutMs": 25000,
+      "reportedHttpStatus": 0,
+      "meaning": "The fetch helper produced no HTTP response. Its response-JSON catch preserves HTTP status; HTTP0 here does not establish an authentication, JSON-decode or backend status-code failure.",
+      "point": "After creating a disposable empty class under a temporary second-school membership."
+    },
+    "mainChecks": {
+      "passed": 181,
+      "total": 182
+    },
+    "isolationControls": {
+      "before": 54,
+      "after": 54,
+      "allPassed": true
+    },
+    "cleanup": {
+      "classes": {
+        "count": 4,
+        "acknowledged": 4,
+        "allAcknowledged": true
+      },
+      "memberships": {
+        "count": 2,
+        "acknowledged": 2,
+        "allAcknowledged": true
+      }
+    },
+    "qaSessionClosures": {
+      "main": 6,
+      "isolation": 12,
+      "allAcknowledged": true
+    },
+    "providerLogWindowYerevan": {
+      "start": "2026-11-03T15:26:30+04:00",
+      "end": "2026-11-03T15:33:40+04:00"
+    },
+    "availableFunctionLogSummary": {
+      "requests": 33,
+      "byStatus": {
+        "200": 29,
+        "403": 4
+      },
+      "maximumServerExecutionMs": 17415,
+      "notCorrelatedToClientFailure": true
+    },
+    "correlationLimit": "The failing client request has no retained trace/provider request ID or raw fetch exception kind. The 33 available invocations are not correlated to that exact client failure; successful server entries do not identify its cause.",
+    "retry": {
+      "attempt": 2,
+      "sameSource": "58f4075ca9050ddffcb35d13a1bf94606a483ec8",
+      "outcome": "passed",
+      "mainChecks": 206,
+      "isolationBefore": 54,
+      "isolationAfter": 54,
+      "callerTimeoutMs": 25000,
+      "inRequestRetries": 0,
+      "receipt": "run-41621118035.json"
+    },
+    "disposition": "Full same-source acceptance succeeds on attempt2; the original attempt remains failed and the no-response cause remains open. No speculative Auth, database, timeout or assertion change is made."
+  },
+  "sourceAfterAllAcceptance": {
+    "checkedAtYerevan": "2026-11-03T15:51:31.013099+04:00",
+    "canonicalMarker": "58f4075ca9050ddffcb35d13a1bf94606a483ec8"
+  },
+  "sourceAndCleanupLimits": "Exact source guards and public asset comparisons are retained per harness; source remains fixed throughout the serial queue. HTTP logout acknowledgements and owned-record cleanup are recorded, not a personal usability or physical-device certification.",
+  "remainingGates": [
+    "QA-TRANSPORT-01 exact no-response cause unconfirmed",
+    "Owner usability/B.12.3/B.12",
+    "Subject expansion after EnglishC47",
+    "Full S2 historical migration/fresh-install reconciliation",
+    "Independent content/SME/security/URL/Master gates"
+  ]
+}
