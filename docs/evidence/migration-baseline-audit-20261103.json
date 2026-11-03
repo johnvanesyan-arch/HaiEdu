@@ -1,0 +1,4037 @@
+{
+  "schemaVersion": "migration-baseline-audit-v1",
+  "date": "2026-11-03",
+  "mode": "SELECT-only; existing history unchanged",
+  "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+  "repositoryFiles": 204,
+  "productionEntries": 213,
+  "uniqueNameMatches": 188,
+  "exactRecordedStatementBytes": 156,
+  "interpretation": "Names establish a crosswalk only. Recorded statement arrays can differ in splitting/formatting; unequal byte hashes are not asserted to be semantic differences. Unmatched legacy files have not been replayed or marked applied. Full fresh-install/S2 reconciliation remains open.",
+  "repository": [
+    {
+      "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+      "version": "20261006065508",
+      "name": "sprint_15b12c_learning_runtime",
+      "sha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+      "production": [
+        {
+          "version": "20261006080021",
+          "name": "sprint_15b12c_learning_runtime",
+          "statementSha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0057_sprint_12a4_scope_indexes.sql",
+      "version": "0057",
+      "name": "sprint_12a4_scope_indexes",
+      "sha256": "6c234bad05b05ec5087aefd4a0136e2ca7df4f9cf4124c109ea9b1c37f3fdf36",
+      "production": [
+        {
+          "version": "20260920193935",
+          "name": "sprint_12a4_scope_indexes",
+          "statementSha256": "041b7f76a7eaef18a314741ff5d9e1c8500050cad1afa4917d8235ec53efc9c1"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0016_sprint_11c_preview_idempotency.sql",
+      "version": "0016",
+      "name": "sprint_11c_preview_idempotency",
+      "sha256": "b63b61851244bc445892f554633f255ac56ed5446a5ab858293c42895e6c0b75",
+      "production": [
+        {
+          "version": "20260915205641",
+          "name": "sprint_11c_preview_idempotency",
+          "statementSha256": "b63b61851244bc445892f554633f255ac56ed5446a5ab858293c42895e6c0b75"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0085_global_mcq_option_presentation_runtime_final.sql",
+      "version": "0085",
+      "name": "global_mcq_option_presentation_runtime_final",
+      "sha256": "11e98d913e60564c8a0db16199d58cffdfa728cc98dcc0626d26962a5b2cf51c",
+      "production": [
+        {
+          "version": "20260922213314",
+          "name": "global_mcq_option_presentation_runtime_final",
+          "statementSha256": "f00bd2d96345890bd119ef67712a34683a4bc68cdacd797bd57443fce22dbf9f"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql",
+      "version": "20261020170445",
+      "name": "sprint_16_1b_protected_audio",
+      "sha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053",
+      "production": [
+        {
+          "version": "20261020170445",
+          "name": "sprint_16_1b_protected_audio",
+          "statementSha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0013_sprint_11a_item_identity_exposure_pools.sql",
+      "version": "0013",
+      "name": "sprint_11a_item_identity_exposure_pools",
+      "sha256": "9302fae14073219b811ab687cb92b80d28829e4d61d4e22f22d3a369ab001673",
+      "production": [
+        {
+          "version": "20260915200931",
+          "name": "sprint_11a_item_identity_exposure_pools",
+          "statementSha256": "de734f0a3bf9b2bb1f68ffc447f775eca96ab0ca0531b63f969aeee7f2656c37"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261006164457_sprint_15b13_s02_i10_diversity_revision.sql",
+      "version": "20261006164457",
+      "name": "sprint_15b13_s02_i10_diversity_revision",
+      "sha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df",
+      "production": [
+        {
+          "version": "20261006171437",
+          "name": "sprint_15b13_s02_i10_diversity_revision",
+          "statementSha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0043_sprint_12a_hinting_v2_index_cleanup.sql",
+      "version": "0043",
+      "name": "sprint_12a_hinting_v2_index_cleanup",
+      "sha256": "4f7350a8755cd455b5e2ac3378bdafd52e84df9cb0e86312e2b26aa8d8aa38dc",
+      "production": [
+        {
+          "version": "20260920111829",
+          "name": "sprint_12a_hinting_v2_index_cleanup",
+          "statementSha256": "4f7350a8755cd455b5e2ac3378bdafd52e84df9cb0e86312e2b26aa8d8aa38dc"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0041_sprint_11l_pilot_evidence_classification.sql",
+      "version": "0041",
+      "name": "sprint_11l_pilot_evidence_classification",
+      "sha256": "386a624b9905dfbcf599b8b684a6b878c0b17e1b93db8a0575a433786a1882cf",
+      "production": [
+        {
+          "version": "20260919114146",
+          "name": "sprint_11l_pilot_evidence_classification",
+          "statementSha256": "386a624b9905dfbcf599b8b684a6b878c0b17e1b93db8a0575a433786a1882cf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql",
+      "version": "20260930204139",
+      "name": "sprint_15a_authoring_role_cast",
+      "sha256": "7bc2143b27be94c07b8ce934a304443e698e0da264d3722ffaf5a3095b3de68a",
+      "production": [
+        {
+          "version": "20260930204139",
+          "name": "sprint_15a_authoring_role_cast",
+          "statementSha256": "d989a6c5f4c0feb62340f1a9756583bb8d1dcb2ceedd5ec973f85d74b0bee135"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261030203408_teacher_task_student_work.sql",
+      "version": "20261030203408",
+      "name": "teacher_task_student_work",
+      "sha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157",
+      "production": [
+        {
+          "version": "20261030203408",
+          "name": "teacher_task_student_work",
+          "statementSha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0078_sprint_12_5_teacher_localization_runtime.sql",
+      "version": "0078",
+      "name": "sprint_12_5_teacher_localization_runtime",
+      "sha256": "e7c5c3574b150cbacd18ad7c62bb846a9e4a82a8529d440c48b0d071d9518e01",
+      "production": [
+        {
+          "version": "20260922114732",
+          "name": "sprint_12_5_teacher_localization_runtime",
+          "statementSha256": "e7c5c3574b150cbacd18ad7c62bb846a9e4a82a8529d440c48b0d071d9518e01"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0082_sprint_14a_legacy_class_boundary.sql",
+      "version": "0082",
+      "name": "sprint_14a_legacy_class_boundary",
+      "sha256": "c52f1803eea3537fee2d5cb792c11638821dd94fcbb4f82337b9004029acdc4c",
+      "production": [
+        {
+          "version": "20260923183846",
+          "name": "sprint_14a_legacy_class_boundary",
+          "statementSha256": "c52f1803eea3537fee2d5cb792c11638821dd94fcbb4f82337b9004029acdc4c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006091733_sprint_15b12d_runtime_provenance.sql",
+      "version": "20261006091733",
+      "name": "sprint_15b12d_runtime_provenance",
+      "sha256": "39d5e509b1e4dfc28167c6520c831228b334fc62c00d7adf370d0bba61491fa9",
+      "production": [
+        {
+          "version": "20261006091838",
+          "name": "sprint_15b12d_runtime_provenance",
+          "statementSha256": "39d5e509b1e4dfc28167c6520c831228b334fc62c00d7adf370d0bba61491fa9"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql",
+      "version": "20261020153856",
+      "name": "sprint_16_1b_matching_ordering",
+      "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
+      "production": [
+        {
+          "version": "20261020153856",
+          "name": "sprint_16_1b_matching_ordering",
+          "statementSha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261005162651_misconception_review_workspace.sql",
+      "version": "20261005162651",
+      "name": "misconception_review_workspace",
+      "sha256": "947c3e2420e61a301d149fd6877c251adb582de887c5358a6b33bf10bf5a5e8d",
+      "production": [
+        {
+          "version": "20261005165520",
+          "name": "misconception_review_workspace",
+          "statementSha256": "947c3e2420e61a301d149fd6877c251adb582de887c5358a6b33bf10bf5a5e8d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0014_sprint_11b_repetition_selection_policy.sql",
+      "version": "0014",
+      "name": "sprint_11b_repetition_selection_policy",
+      "sha256": "86f3a4d672d995465d19f172fdda48c9f0873597c1fb585beda629af0c611718",
+      "production": [
+        {
+          "version": "20260915202418",
+          "name": "sprint_11b_repetition_selection_policy",
+          "statementSha256": "4eee94c53901296d5c0c905921e5150c45b6cbe0cb590142cc73b04cd9a67a81"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0034_sprint_11i_standards_source_registry.sql",
+      "version": "0034",
+      "name": "sprint_11i_standards_source_registry",
+      "sha256": "57f183d3f22db753453b0f207375e7b8ddd706a797529341a536c90269f0779d",
+      "production": [
+        {
+          "version": "20260918075120",
+          "name": "sprint_11i_standards_source_registry",
+          "statementSha256": "57f183d3f22db753453b0f207375e7b8ddd706a797529341a536c90269f0779d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0055_sprint_12a4_calibration_analysis_views.sql",
+      "version": "0055",
+      "name": "sprint_12a4_calibration_analysis_views",
+      "sha256": "2918c64e7b5dac7bd78a86520712e4fc6d5d15f6967767651482f1f6f9144c19",
+      "production": [
+        {
+          "version": "20260920184151",
+          "name": "sprint_12a4_calibration_analysis_views",
+          "statementSha256": "2918c64e7b5dac7bd78a86520712e4fc6d5d15f6967767651482f1f6f9144c19"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261007074640_sprint_15b13_s06_practice_expansion.sql",
+      "version": "20261007074640",
+      "name": "sprint_15b13_s06_practice_expansion",
+      "sha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310",
+      "production": [
+        {
+          "version": "20261007080810",
+          "name": "sprint_15b13_s06_practice_expansion",
+          "statementSha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_14a_academic_identity_foundation.sql",
+      "version": "0080",
+      "name": "sprint_14a_academic_identity_foundation",
+      "sha256": "ecbbdb2746ca558a56ce16f67c3bb58135659cd32648a90036870b9967e2c3b0",
+      "production": [
+        {
+          "version": "20260923181904",
+          "name": "sprint_14a_academic_identity_foundation",
+          "statementSha256": "ecbbdb2746ca558a56ce16f67c3bb58135659cd32648a90036870b9967e2c3b0"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006112455_sprint_15b12e_dashboard_uuid_provenance.sql",
+      "version": "20261006112455",
+      "name": "sprint_15b12e_dashboard_uuid_provenance",
+      "sha256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0",
+      "production": [
+        {
+          "version": "20261006113145",
+          "name": "sprint_15b12e_dashboard_uuid_provenance",
+          "statementSha256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001161000_sprint_15b_answer_position_integrity.sql",
+      "version": "20261001161000",
+      "name": "sprint_15b_answer_position_integrity",
+      "sha256": "455cc8acb01e7d917f08e60bce109b402a16803abfe4a3f9c7abe190dc78ef17",
+      "production": [
+        {
+          "version": "20261001152808",
+          "name": "sprint_15b_answer_position_integrity",
+          "statementSha256": "455cc8acb01e7d917f08e60bce109b402a16803abfe4a3f9c7abe190dc78ef17"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0042_sprint_12a_hinting_remediation_v2.sql",
+      "version": "0042",
+      "name": "sprint_12a_hinting_remediation_v2",
+      "sha256": "5b3628aeee35fda32a8dc02aac2cc077cbfbde22400defcbb8a0fe1394e1c2e4",
+      "production": [
+        {
+          "version": "20260920111625",
+          "name": "sprint_12a_hinting_remediation_v2",
+          "statementSha256": "5b3628aeee35fda32a8dc02aac2cc077cbfbde22400defcbb8a0fe1394e1c2e4"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0076_sprint_12_5_chapter_review_exposure_integration.sql",
+      "version": "0076",
+      "name": "sprint_12_5_chapter_review_exposure_integration",
+      "sha256": "988f1636b47d73d329f18a510fc1b69baca54f95e526162ef566f609c253bcf7",
+      "production": [
+        {
+          "version": "20260922111739",
+          "name": "sprint_12_5_chapter_review_exposure_integration",
+          "statementSha256": "988f1636b47d73d329f18a510fc1b69baca54f95e526162ef566f609c253bcf7"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001072000_sprint_15b3_mapping_trigger_privileges.sql",
+      "version": "20261001072000",
+      "name": "sprint_15b3_mapping_trigger_privileges",
+      "sha256": "16b79c25c63ea366f1b1fc67b2bc208ab80c1d5fd136e23f16cb6cd7b6ea2d99",
+      "production": [
+        {
+          "version": "20261001073409",
+          "name": "sprint_15b3_mapping_trigger_privileges",
+          "statementSha256": "16b79c25c63ea366f1b1fc67b2bc208ab80c1d5fd136e23f16cb6cd7b6ea2d99"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0084_global_mcq_option_semantic_guard.sql",
+      "version": "0084",
+      "name": "global_mcq_option_semantic_guard",
+      "sha256": "e08a0c10de93295c66c4efc2a75c11dff7292d245875312dea6054c60da15499",
+      "production": [
+        {
+          "version": "20260922213212",
+          "name": "global_mcq_option_semantic_guard",
+          "statementSha256": "3ca4fce5b699cf9269a036f2453b8c01e4ebb158d5f49c31bd2fceeca4f432d3"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261001002000_sprint_15b1_physics7_chapter_ii_foundation.sql",
+      "version": "20261001002000",
+      "name": "sprint_15b1_physics7_chapter_ii_foundation",
+      "sha256": "d4923047b70badacad3cafbd45fa47245eb6dc5ce342de80301715304c8ace9f",
+      "production": [
+        {
+          "version": "20260930214031",
+          "name": "sprint_15b1_physics7_chapter_ii_foundation",
+          "statementSha256": "d4923047b70badacad3cafbd45fa47245eb6dc5ce342de80301715304c8ace9f"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261102182941_teacher_evidence_version_deduplication.sql",
+      "version": "20261102182941",
+      "name": "teacher_evidence_version_deduplication",
+      "sha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71",
+      "production": [
+        {
+          "version": "20261102184555",
+          "name": "teacher_evidence_version_deduplication",
+          "statementSha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0089_sprint_14b_school_bootstrap.sql",
+      "version": "0089",
+      "name": "sprint_14b_school_bootstrap",
+      "sha256": "8e670c0f6e8f1b0b16c28e81830d3b319338b3d3407db8127453fa4530e1924f",
+      "production": [
+        {
+          "version": "20260923195112",
+          "name": "sprint_14b_school_bootstrap",
+          "statementSha256": "8e670c0f6e8f1b0b16c28e81830d3b319338b3d3407db8127453fa4530e1924f"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0006_adaptive_practice_v2.sql",
+      "version": "0006",
+      "name": "adaptive_practice_v2",
+      "sha256": "25af3d8555c9ad3e9c5bb34b15d83d308808b9e96b4e8aa628370011a41b8d7c",
+      "production": [
+        {
+          "version": "20260914125201",
+          "name": "adaptive_practice_v2",
+          "statementSha256": "96e6c1409fdda6ee186687d1aea90fce04a00d7b1deaf6fbcaf57ca53887525a"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql",
+      "version": "20261027121246",
+      "name": "sprint_16_5b_supplementary_materials",
+      "sha256": "6ebd57050df0a20bd5d87d0b93f8bc8f05274ee3af5017c3a8c42891f0b5b2e0",
+      "production": [
+        {
+          "version": "20261027121246",
+          "name": "sprint_16_5b_supplementary_materials",
+          "statementSha256": "6ebd57050df0a20bd5d87d0b93f8bc8f05274ee3af5017c3a8c42891f0b5b2e0"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0051_sprint_12a_audited_calibration_r2.sql",
+      "version": "0051",
+      "name": "sprint_12a_audited_calibration_r2",
+      "sha256": "0e6050cccfc10b915d27c8d9580a7b77be1cf3f184dcb1b9b16eeebb62173159",
+      "production": [
+        {
+          "version": "20260920173910",
+          "name": "sprint_12a_audited_calibration_r2",
+          "statementSha256": "0e6050cccfc10b915d27c8d9580a7b77be1cf3f184dcb1b9b16eeebb62173159"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0099_sprint_14b_teacher_subject_fk_index.sql",
+      "version": "0099",
+      "name": "sprint_14b_teacher_subject_fk_index",
+      "sha256": "7f00f4f0aa86547e07e878af4a3d229f8ec32c6591f7203d3b260db6133308d4",
+      "production": [
+        {
+          "version": "20260924052104",
+          "name": "sprint_14b_teacher_subject_fk_index",
+          "statementSha256": "7f00f4f0aa86547e07e878af4a3d229f8ec32c6591f7203d3b260db6133308d4"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql",
+      "version": "0021",
+      "name": "sprint_11d_purpose_exclusive_pools",
+      "sha256": "329d3317a811581b11cb08d6d577cb0ca64da526f64bd5ba9a6d064e719779a8",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0071_sprint_12_5_learner_lifecycle_runtime.sql",
+      "version": "0071",
+      "name": "sprint_12_5_learner_lifecycle_runtime",
+      "sha256": "14327d9b4bf62822734e5d557dae55282086e36fac37a7aa688db5798d9a6e84",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0063_sprint_12_5_lifecycle_indexes.sql",
+      "version": "0063",
+      "name": "sprint_12_5_lifecycle_indexes",
+      "sha256": "8ce2f5b8989df75b8219d0913a6817579bf37f6857824722034e640ff75f91d4",
+      "production": [
+        {
+          "version": "20260921205236",
+          "name": "sprint_12_5_lifecycle_indexes",
+          "statementSha256": "8ce2f5b8989df75b8219d0913a6817579bf37f6857824722034e640ff75f91d4"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0095_sprint_14b_staff_invite_recipient_lookup.sql",
+      "version": "0095",
+      "name": "sprint_14b_staff_invite_recipient_lookup",
+      "sha256": "fde40cce119fcbc45bc0d69e122f66c49f0e0d17be2bffaff4dc85bfcb31ec57",
+      "production": [
+        {
+          "version": "20260924051342",
+          "name": "sprint_14b_staff_invite_recipient_lookup",
+          "statementSha256": "fde40cce119fcbc45bc0d69e122f66c49f0e0d17be2bffaff4dc85bfcb31ec57"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0107_school_admin_archiving.sql",
+      "version": "0107",
+      "name": "school_admin_archiving",
+      "sha256": "0b5c2a22ec9732e88dc54ac42c4b5c14cad1895d49cf19b31f7e18b2ff261141",
+      "production": [
+        {
+          "version": "20260925112914",
+          "name": "school_admin_archiving",
+          "statementSha256": "0b5c2a22ec9732e88dc54ac42c4b5c14cad1895d49cf19b31f7e18b2ff261141"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0026_sprint_11d_complete_candidate_bank.sql",
+      "version": "0026",
+      "name": "sprint_11d_complete_candidate_bank",
+      "sha256": "78aa4559b6ce051b5dc55d5d5c038d488ec00ababf01ae6a12607b54c45493df",
+      "production": [
+        {
+          "version": "20260916053010",
+          "name": "sprint_11d_complete_candidate_bank",
+          "statementSha256": "bb4afc0718aa5de69d7ee938292585ee936ba2556240cf9641b47b483d0bba47"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20260925214539_sprint_14c_teacher_owned_student_invitations.sql",
+      "version": "20260925214539",
+      "name": "sprint_14c_teacher_owned_student_invitations",
+      "sha256": "af6bbed31c58a2245ef7d05984053052f7723c48831f6c5b27a687ec7066be5a",
+      "production": [
+        {
+          "version": "20260925215705",
+          "name": "sprint_14c_teacher_owned_student_invitations",
+          "statementSha256": "af6bbed31c58a2245ef7d05984053052f7723c48831f6c5b27a687ec7066be5a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0085_sprint_14b_existing_account_email_lookup.sql",
+      "version": "0085",
+      "name": "sprint_14b_existing_account_email_lookup",
+      "sha256": "c5c4472081cfc6aefd91a6e5849a8cbe3139746c6f9713d778259ddc8a05aa7b",
+      "production": [
+        {
+          "version": "20260923191041",
+          "name": "sprint_14b_existing_account_email_lookup",
+          "statementSha256": "c5c4472081cfc6aefd91a6e5849a8cbe3139746c6f9713d778259ddc8a05aa7b"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql",
+      "version": "20261007191924",
+      "name": "sprint_15b13_s09_practice_expansion",
+      "sha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb",
+      "production": [
+        {
+          "version": "20261007191924",
+          "name": "sprint_15b13_s09_practice_expansion",
+          "statementSha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261022141634_sprint_16_1c_unit_material_review.sql",
+      "version": "20261022141634",
+      "name": "sprint_16_1c_unit_material_review",
+      "sha256": "b3de3ddf5eeb2a4e8bb336fc3fe6d2b30068688c23740a52aa80b9656d07be1e",
+      "production": [
+        {
+          "version": "20261022144639",
+          "name": "sprint_16_1c_unit_material_review",
+          "statementSha256": "b3de3ddf5eeb2a4e8bb336fc3fe6d2b30068688c23740a52aa80b9656d07be1e"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260927183816_single_initial_diagnostic.sql",
+      "version": "20260927183816",
+      "name": "single_initial_diagnostic",
+      "sha256": "915f558634caf6c19b494f8a5067c6adf9d8feed901191c47280dddcc5a3a061",
+      "production": [
+        {
+          "version": "20260927185025",
+          "name": "single_initial_diagnostic",
+          "statementSha256": "915f558634caf6c19b494f8a5067c6adf9d8feed901191c47280dddcc5a3a061"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0044_sprint_12a_freeze_learning_model_baseline.sql",
+      "version": "0044",
+      "name": "sprint_12a_freeze_learning_model_baseline",
+      "sha256": "0a2b7d5a41c98486da62298d5ed0dbc8e921acb13004feca931adee7739a4a9b",
+      "production": [
+        {
+          "version": "20260920164534",
+          "name": "sprint_12a_freeze_learning_model_baseline",
+          "statementSha256": "0a2b7d5a41c98486da62298d5ed0dbc8e921acb13004feca931adee7739a4a9b"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0030_content_editor_11d_review_hold.sql",
+      "version": "0030",
+      "name": "content_editor_11d_review_hold",
+      "sha256": "ea2c1de72bc36ef241bf783db9c539a8e354ac8a488cc3962c083a19410bf6dd",
+      "production": [
+        {
+          "version": "20260916062827",
+          "name": "content_editor_11d_review_hold",
+          "statementSha256": "607586f1f7fc9e9986067599b7831d727517a881755ea4ca8c3a2c9f5c736d8a"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261006134149_sprint_15b13_s02_practice_expansion.sql",
+      "version": "20261006134149",
+      "name": "sprint_15b13_s02_practice_expansion",
+      "sha256": "fd5df47ee45a415665b68dde76829790b88679a1b36a2a7067f2b0a505d481d4",
+      "production": [
+        {
+          "version": "20261006140336",
+          "name": "sprint_15b13_s02_practice_expansion",
+          "statementSha256": "fd5df47ee45a415665b68dde76829790b88679a1b36a2a7067f2b0a505d481d4"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0049_sprint_12a_remediation_guide_provenance.sql",
+      "version": "0049",
+      "name": "sprint_12a_remediation_guide_provenance",
+      "sha256": "48436a249484ff889bfcd2ecfb81da96fa72793036b287d314d248aa6817639c",
+      "production": [
+        {
+          "version": "20260920173105",
+          "name": "sprint_12a_remediation_guide_provenance",
+          "statementSha256": "48436a249484ff889bfcd2ecfb81da96fa72793036b287d314d248aa6817639c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0052_sprint_12a_closure_corrections.sql",
+      "version": "0052",
+      "name": "sprint_12a_closure_corrections",
+      "sha256": "9626aea84ba1b65c20b1d8bc45a92f4d2126e475edc4071537bd3e3f136b9733",
+      "production": [
+        {
+          "version": "20260920181523",
+          "name": "sprint_12a_closure_corrections",
+          "statementSha256": "9626aea84ba1b65c20b1d8bc45a92f4d2126e475edc4071537bd3e3f136b9733"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0075_sprint_12_5_integrity_coverage_runtime.sql",
+      "version": "0075",
+      "name": "sprint_12_5_integrity_coverage_runtime",
+      "sha256": "9ceb4fa9d6c65e1b3d7a55faa42a821d871c24b7b346c3268c84c9bd24297a49",
+      "production": [
+        {
+          "version": "20260922105823",
+          "name": "sprint_12_5_integrity_coverage_runtime",
+          "statementSha256": "9ceb4fa9d6c65e1b3d7a55faa42a821d871c24b7b346c3268c84c9bd24297a49"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0022_sprint_11d_family_audit_corrections.sql",
+      "version": "0022",
+      "name": "sprint_11d_family_audit_corrections",
+      "sha256": "8ab2e0a1f851a67d54d1f341d6f6027a6e9ce92cd1553fcad8d44e7227b1a148",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0032_sprint_11d_activate_reviewed_bank.sql",
+      "version": "0032",
+      "name": "sprint_11d_activate_reviewed_bank",
+      "sha256": "c547702b4ad9f5edee878eb318fc35ff93b2476330655e2b8435c5fc2ffdfa38",
+      "production": [
+        {
+          "version": "20260916143809",
+          "name": "sprint_11d_activate_reviewed_bank",
+          "statementSha256": "e10f0e1affdc377c140c8095750a53ad7876a0fc06bbb142f5f0643e05790c36"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0101_sprint_14b_staff_invitation_management.sql",
+      "version": "0101",
+      "name": "sprint_14b_staff_invitation_management",
+      "sha256": "63ca1d73cdbc36ca7521aa3f3dd5d9fe21efe2cec064288d4dfaf9ee373135f0",
+      "production": [
+        {
+          "version": "20260924102647",
+          "name": "sprint_14b_staff_invitation_management",
+          "statementSha256": "63ca1d73cdbc36ca7521aa3f3dd5d9fe21efe2cec064288d4dfaf9ee373135f0"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0012_live_session_gate.sql",
+      "version": "0012",
+      "name": "live_session_gate",
+      "sha256": "1336b108426496ab9d51f6aff97f1ba743e15581c53ec4ee9e56893c212a9a2c",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0103_sprint_14b_staff_invitation_resend.sql",
+      "version": "0103",
+      "name": "sprint_14b_staff_invitation_resend",
+      "sha256": "2aa6eaf06f610b34cbc02d5a3dd749c63d63e800d6366a2587c5ca34f7be1287",
+      "production": [
+        {
+          "version": "20260924123021",
+          "name": "sprint_14b_staff_invitation_resend",
+          "statementSha256": "2aa6eaf06f610b34cbc02d5a3dd749c63d63e800d6366a2587c5ca34f7be1287"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0106_school_teacher_roster.sql",
+      "version": "0106",
+      "name": "school_teacher_roster",
+      "sha256": "fc618120812e242237420d975098069f7526477caa0ab716c1d215f4bf0c834f",
+      "production": [
+        {
+          "version": "20260925110623",
+          "name": "school_teacher_roster",
+          "statementSha256": "fc618120812e242237420d975098069f7526477caa0ab716c1d215f4bf0c834f"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0083_global_mcq_option_presentation_runtime.sql",
+      "version": "0083",
+      "name": "global_mcq_option_presentation_runtime",
+      "sha256": "4c5169e24ba680fc11a2de4ca80b9c5da7ed32317ece0fc180d6cee4875636d7",
+      "production": [
+        {
+          "version": "20260922212645",
+          "name": "global_mcq_option_presentation_runtime",
+          "statementSha256": "3f54179618a8342ca2eafa1900cc2b0d1d9cafa3d24ddefb5427a289c67def64"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0094_sprint_14b_teacher_subject_enforcement.sql",
+      "version": "0094",
+      "name": "sprint_14b_teacher_subject_enforcement",
+      "sha256": "73a5a1db553690bc70d1a995500c2d594790a11598e72794245e81f71b1d8555",
+      "production": [
+        {
+          "version": "20260924051127",
+          "name": "sprint_14b_teacher_subject_enforcement",
+          "statementSha256": "73a5a1db553690bc70d1a995500c2d594790a11598e72794245e81f71b1d8555"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261023064305_sprint_16_1c_audio_progress_jitter.sql",
+      "version": "20261023064305",
+      "name": "sprint_16_1c_audio_progress_jitter",
+      "sha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e",
+      "production": [
+        {
+          "version": "20261023064305",
+          "name": "sprint_16_1c_audio_progress_jitter",
+          "statementSha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0036_sprint_11j_physics7_current_standard_reconciliation.sql",
+      "version": "0036",
+      "name": "sprint_11j_physics7_current_standard_reconciliation",
+      "sha256": "87c773d20eadb2bcbbfee7f29a9ca2c00c46143bc40e07ee8772a1bc044ab691",
+      "production": [
+        {
+          "version": "20260918204817",
+          "name": "sprint_11j_physics7_current_standard_reconciliation",
+          "statementSha256": "87c773d20eadb2bcbbfee7f29a9ca2c00c46143bc40e07ee8772a1bc044ab691"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261030214222_teacher_task_privacy.sql",
+      "version": "20261030214222",
+      "name": "teacher_task_privacy",
+      "sha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762",
+      "production": [
+        {
+          "version": "20261030214222",
+          "name": "teacher_task_privacy",
+          "statementSha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261004100236_atomic_answer_runtime_provenance.sql",
+      "version": "20261004100236",
+      "name": "atomic_answer_runtime_provenance",
+      "sha256": "06467a2ef83bb79a7c58f4457be242ada1df39c6bd1032badf33244096d403ad",
+      "production": [
+        {
+          "version": "20261004101010",
+          "name": "atomic_answer_runtime_provenance",
+          "statementSha256": "06467a2ef83bb79a7c58f4457be242ada1df39c6bd1032badf33244096d403ad"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0039_sprint_11k_curriculum_releases_and_evidence_provenance.sql",
+      "version": "0039",
+      "name": "sprint_11k_curriculum_releases_and_evidence_provenance",
+      "sha256": "f2d42947a61b5d1bbc0394695739f30e3b92839b7aa931c61b65b92fb65168cf",
+      "production": [
+        {
+          "version": "20260919064524",
+          "name": "sprint_11k_curriculum_releases_and_evidence_provenance",
+          "statementSha256": "f2d42947a61b5d1bbc0394695739f30e3b92839b7aa931c61b65b92fb65168cf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0040_sprint_11k_advisor_hardening.sql",
+      "version": "0040",
+      "name": "sprint_11k_advisor_hardening",
+      "sha256": "1ec071ddd762e14e1d33698ee3a3df09886b44d52bb2897097354cfb72792ef8",
+      "production": [
+        {
+          "version": "20260919064837",
+          "name": "sprint_11k_advisor_hardening",
+          "statementSha256": "1ec071ddd762e14e1d33698ee3a3df09886b44d52bb2897097354cfb72792ef8"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0098_sprint_14b_school_subject_options.sql",
+      "version": "0098",
+      "name": "sprint_14b_school_subject_options",
+      "sha256": "5c1dc459c339094f61f2d0faafc75fc9826c59e1419e512f5c14fbfdf4cf3f6e",
+      "production": [
+        {
+          "version": "20260924051839",
+          "name": "sprint_14b_school_subject_options",
+          "statementSha256": "5c1dc459c339094f61f2d0faafc75fc9826c59e1419e512f5c14fbfdf4cf3f6e"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261005090747_sprint_15b10_eighth_item_family.sql",
+      "version": "20261005090747",
+      "name": "sprint_15b10_eighth_item_family",
+      "sha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237",
+      "production": [
+        {
+          "version": "20261005090747",
+          "name": "sprint_15b10_eighth_item_family",
+          "statementSha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql",
+      "version": "20261013101644",
+      "name": "disjoint_curriculum_release_units",
+      "sha256": "fa56ebd36865c813499762a4c6d1ec51fca582c90ccc35a7c3942194b546154a",
+      "production": [
+        {
+          "version": "20261013101644",
+          "name": "disjoint_curriculum_release_units",
+          "statementSha256": "fa56ebd36865c813499762a4c6d1ec51fca582c90ccc35a7c3942194b546154a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0097_sprint_14b_assignment_guard_privilege.sql",
+      "version": "0097",
+      "name": "sprint_14b_assignment_guard_privilege",
+      "sha256": "642a264c45eacf6cb7a7554bc64c526141d31925ba351a9b62a2b451beeef192",
+      "production": [
+        {
+          "version": "20260924051548",
+          "name": "sprint_14b_assignment_guard_privilege",
+          "statementSha256": "642a264c45eacf6cb7a7554bc64c526141d31925ba351a9b62a2b451beeef192"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261002080000_sprint_15b8_atomic_family_approval.sql",
+      "version": "20261002080000",
+      "name": "sprint_15b8_atomic_family_approval",
+      "sha256": "4b1dda4a167681eb3e65a653f1df7aa2fce89b969594ce1a230b9bd7ed89e241",
+      "production": [
+        {
+          "version": "20261002080734",
+          "name": "sprint_15b8_atomic_family_approval",
+          "statementSha256": "4b1dda4a167681eb3e65a653f1df7aa2fce89b969594ce1a230b9bd7ed89e241"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006092832_sprint_15b12d_dashboard_acceptance_provenance.sql",
+      "version": "20261006092832",
+      "name": "sprint_15b12d_dashboard_acceptance_provenance",
+      "sha256": "e2e86bbfa46a6a9d57388a861ea0e399db58b1dc919938040fd9f2d8f4fcc67d",
+      "production": [
+        {
+          "version": "20261006094301",
+          "name": "sprint_15b12d_dashboard_acceptance_provenance",
+          "statementSha256": "e2e86bbfa46a6a9d57388a861ea0e399db58b1dc919938040fd9f2d8f4fcc67d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0084_sprint_14b_invitation_role_cast.sql",
+      "version": "0084",
+      "name": "sprint_14b_invitation_role_cast",
+      "sha256": "b5653cfb75642a6b2a3885da7a1d776ad71701908992d4b7f9a6894ee27dca50",
+      "production": [
+        {
+          "version": "20260923190451",
+          "name": "sprint_14b_invitation_role_cast",
+          "statementSha256": "b5653cfb75642a6b2a3885da7a1d776ad71701908992d4b7f9a6894ee27dca50"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0104_admin_account_archiving.sql",
+      "version": "0104",
+      "name": "admin_account_archiving",
+      "sha256": "18df9c808d28454cc99057abf3205b71ce889e2b607dc3413870676b4503d15c",
+      "production": [
+        {
+          "version": "20260924171035",
+          "name": "admin_account_archiving",
+          "statementSha256": "18df9c808d28454cc99057abf3205b71ce889e2b607dc3413870676b4503d15c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0066_sprint_12_5_chapter_review_blueprint.sql",
+      "version": "0066",
+      "name": "sprint_12_5_chapter_review_blueprint",
+      "sha256": "689b55838e25dee226362d7eced9a100e551ce2be8b9ed0fccc9bbb9d58f93df",
+      "production": [
+        {
+          "version": "20260921211032",
+          "name": "sprint_12_5_chapter_review_blueprint",
+          "statementSha256": "689b55838e25dee226362d7eced9a100e551ce2be8b9ed0fccc9bbb9d58f93df"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261002073000_sprint_15b8_unique_evidence_flag.sql",
+      "version": "20261002073000",
+      "name": "sprint_15b8_unique_evidence_flag",
+      "sha256": "8c58fc6503c122506785394c25182bfe3255f7942695216d9e26f67d24668b79",
+      "production": [
+        {
+          "version": "20261002073239",
+          "name": "sprint_15b8_unique_evidence_flag",
+          "statementSha256": "8c58fc6503c122506785394c25182bfe3255f7942695216d9e26f67d24668b79"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0056_sprint_12a4_audit_corrections.sql",
+      "version": "0056",
+      "name": "sprint_12a4_audit_corrections",
+      "sha256": "2c63fe4d87c20ca7faf8ee3dca81aaa31510a13ff9e9cd2406b84bb17ad870af",
+      "production": [
+        {
+          "version": "20260920193624",
+          "name": "sprint_12a4_audit_corrections",
+          "statementSha256": "2c63fe4d87c20ca7faf8ee3dca81aaa31510a13ff9e9cd2406b84bb17ad870af"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261028180038_teacher_today_workspace.sql",
+      "version": "20261028180038",
+      "name": "teacher_today_workspace",
+      "sha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1",
+      "production": [
+        {
+          "version": "20261028180038",
+          "name": "teacher_today_workspace",
+          "statementSha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261028194137_teacher_feedback_workspace.sql",
+      "version": "20261028194137",
+      "name": "teacher_feedback_workspace",
+      "sha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb",
+      "production": [
+        {
+          "version": "20261028194137",
+          "name": "teacher_feedback_workspace",
+          "statementSha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0072_sprint_12_5_review_analytics_and_evidence.sql",
+      "version": "0072",
+      "name": "sprint_12_5_review_analytics_and_evidence",
+      "sha256": "f0e3baa93c6761d38bfa932ee97ab8c804ba296476b704763fb10035f0be59a4",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/20261020112724_sprint_16_1b_written_work.sql",
+      "version": "20261020112724",
+      "name": "sprint_16_1b_written_work",
+      "sha256": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4",
+      "production": [
+        {
+          "version": "20261020112724",
+          "name": "sprint_16_1b_written_work",
+          "statementSha256": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261030203407_teacher_task_delivery.sql",
+      "version": "20261030203407",
+      "name": "teacher_task_delivery",
+      "sha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5",
+      "production": [
+        {
+          "version": "20261030203407",
+          "name": "teacher_task_delivery",
+          "statementSha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261027175521_teacher_dashboard_directory.sql",
+      "version": "20261027175521",
+      "name": "teacher_dashboard_directory",
+      "sha256": "e9e723fd9a70a02896c43a6da4208ae4c5a17bc40354b36814e3c4b600ea7114",
+      "production": [
+        {
+          "version": "20261027190048",
+          "name": "teacher_dashboard_directory",
+          "statementSha256": "e9e723fd9a70a02896c43a6da4208ae4c5a17bc40354b36814e3c4b600ea7114"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260926211500_restore_institutional_join_codes.sql",
+      "version": "20260926211500",
+      "name": "restore_institutional_join_codes",
+      "sha256": "e01d095027db3eca43560d6c0910a60035e3a986130ecfa648c6cdd40cbce43e",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0048_sprint_12a_session_model_provenance.sql",
+      "version": "0048",
+      "name": "sprint_12a_session_model_provenance",
+      "sha256": "f8b754e21b426665c590f5f920c329ffb147553788576ca80802db6855798c52",
+      "production": [
+        {
+          "version": "20260920172952",
+          "name": "sprint_12a_session_model_provenance",
+          "statementSha256": "f8b754e21b426665c590f5f920c329ffb147553788576ca80802db6855798c52"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0047_sprint_12a_calibration_metric_set.sql",
+      "version": "0047",
+      "name": "sprint_12a_calibration_metric_set",
+      "sha256": "a416ad1ae897a0aaeb30213e1c482443329dfabacaf2924d984e58e6f7969ddf",
+      "production": [
+        {
+          "version": "20260920165836",
+          "name": "sprint_12a_calibration_metric_set",
+          "statementSha256": "a416ad1ae897a0aaeb30213e1c482443329dfabacaf2924d984e58e6f7969ddf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0088_sprint_14b_school_admin_role.sql",
+      "version": "0088",
+      "name": "sprint_14b_school_admin_role",
+      "sha256": "d80c6fed821950fd8334a29c20a287b6086f8846bea996bb2605bda0db20d283",
+      "production": [
+        {
+          "version": "20260923195110",
+          "name": "sprint_14b_school_admin_role",
+          "statementSha256": "d80c6fed821950fd8334a29c20a287b6086f8846bea996bb2605bda0db20d283"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0045_sprint_12a_learning_model_baseline_indexes.sql",
+      "version": "0045",
+      "name": "sprint_12a_learning_model_baseline_indexes",
+      "sha256": "0f2ec5ab596afaf704fcb8beb46f97b798bf4e3ae190a44ca749a6c06ae3c86d",
+      "production": [
+        {
+          "version": "20260920164619",
+          "name": "sprint_12a_learning_model_baseline_indexes",
+          "statementSha256": "0f2ec5ab596afaf704fcb8beb46f97b798bf4e3ae190a44ca749a6c06ae3c86d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001071000_sprint_15b3_mapping_integrity_gate.sql",
+      "version": "20261001071000",
+      "name": "sprint_15b3_mapping_integrity_gate",
+      "sha256": "b5cf945dfb6a380f2ebb912f82293a16028b5947c97442bf1786bee2d1303f9d",
+      "production": [
+        {
+          "version": "20261001073050",
+          "name": "sprint_15b3_mapping_integrity_gate",
+          "statementSha256": "b5cf945dfb6a380f2ebb912f82293a16028b5947c97442bf1786bee2d1303f9d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0008_teacher_dashboard.sql",
+      "version": "0008",
+      "name": "teacher_dashboard",
+      "sha256": "91d1bf1e0b0c6e8b4b976cc238427796166ffe6712bd2a296d1f79d2025077e2",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0069_sprint_12_5_review_cycles.sql",
+      "version": "0069",
+      "name": "sprint_12_5_review_cycles",
+      "sha256": "ccc97af637870b5a89b8b00a58913f8449d63c82a085dc56dd2156ccbe1c9710",
+      "production": [
+        {
+          "version": "20260921214002",
+          "name": "sprint_12_5_review_cycles",
+          "statementSha256": "ccc97af637870b5a89b8b00a58913f8449d63c82a085dc56dd2156ccbe1c9710"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0004_add_item_code.sql",
+      "version": "0004",
+      "name": "add_item_code",
+      "sha256": "851c64a707450126b0c66340efe80fc5d598fea66e0691ec86b4a2585c75f250",
+      "production": [
+        {
+          "version": "20260913213607",
+          "name": "add_item_code",
+          "statementSha256": "43b82f47aaf4023fe8153255e61313dc1b518603e81c2fe2a0c17f669bdc73a9"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql",
+      "version": "20261021220954",
+      "name": "sprint_16_1c_assessed_listening",
+      "sha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af",
+      "production": [
+        {
+          "version": "20261021220954",
+          "name": "sprint_16_1c_assessed_listening",
+          "statementSha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0108_sprint_14c_student_onboarding_context.sql",
+      "version": "0108",
+      "name": "sprint_14c_student_onboarding_context",
+      "sha256": "a89db813a5df72060ba3bc652e98c8ad45fc75bf32ad01cec94685a70c044ed1",
+      "production": [
+        {
+          "version": "20260925200859",
+          "name": "sprint_14c_student_onboarding_context",
+          "statementSha256": "a89db813a5df72060ba3bc652e98c8ad45fc75bf32ad01cec94685a70c044ed1"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql",
+      "version": "20261006083216",
+      "name": "sprint_15b12d_student_dashboard_read",
+      "sha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf",
+      "production": [
+        {
+          "version": "20261006091534",
+          "name": "sprint_15b12d_student_dashboard_read",
+          "statementSha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0077_sprint_12_5_chapter_review_exposure_runtime.sql",
+      "version": "0077",
+      "name": "sprint_12_5_chapter_review_exposure_runtime",
+      "sha256": "4599e3bbb080b1eb27164422970a1607136c16276e8719a33ad306ef01814df8",
+      "production": [
+        {
+          "version": "20260922111936",
+          "name": "sprint_12_5_chapter_review_exposure_runtime",
+          "statementSha256": "4599e3bbb080b1eb27164422970a1607136c16276e8719a33ad306ef01814df8"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql",
+      "version": "20260930120000",
+      "name": "sprint_15a_remediation_authoring_foundation",
+      "sha256": "e5202a7ef875dc5d40f24aad2704532fbf95cd12087041fd1db086f270c9c9cb",
+      "production": [
+        {
+          "version": "20260930194814",
+          "name": "sprint_15a_remediation_authoring_foundation",
+          "statementSha256": "e5202a7ef875dc5d40f24aad2704532fbf95cd12087041fd1db086f270c9c9cb"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001004000_sprint_15b2_chapter_ii_first_item_family.sql",
+      "version": "20261001004000",
+      "name": "sprint_15b2_chapter_ii_first_item_family",
+      "sha256": "f26d6a26504eb26dbca13ea5a08651b1d922ff0d6cf76a576c55e4c8ae7e8ada",
+      "production": [
+        {
+          "version": "20260930220743",
+          "name": "sprint_15b2_chapter_ii_first_item_family",
+          "statementSha256": "f26d6a26504eb26dbca13ea5a08651b1d922ff0d6cf76a576c55e4c8ae7e8ada"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001140000_sprint_15b4_second_item_family.sql",
+      "version": "20261001140000",
+      "name": "sprint_15b4_second_item_family",
+      "sha256": "95d9086ed243b95ee4185606a07978ca8a729b811aeb4f8f1446a45a4d40c0a5",
+      "production": [
+        {
+          "version": "20261001131429",
+          "name": "sprint_15b4_second_item_family",
+          "statementSha256": "95d9086ed243b95ee4185606a07978ca8a729b811aeb4f8f1446a45a4d40c0a5"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0046_sprint_12a_calibration_evidence_contract.sql",
+      "version": "0046",
+      "name": "sprint_12a_calibration_evidence_contract",
+      "sha256": "025d9d5314e89a38195e31b74caa6d38df79bc0a27b73281600012405b7eb2f6",
+      "production": [
+        {
+          "version": "20260920165400",
+          "name": "sprint_12a_calibration_evidence_contract",
+          "statementSha256": "025d9d5314e89a38195e31b74caa6d38df79bc0a27b73281600012405b7eb2f6"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0025_sprint_11d_fixed_audit_and_candidate_gate.sql",
+      "version": "0025",
+      "name": "sprint_11d_fixed_audit_and_candidate_gate",
+      "sha256": "aa21d8fdc08e5176eccab92c0fb6325f598ab9ed450b162da8f9c0bac6b27504",
+      "production": [
+        {
+          "version": "20260916052844",
+          "name": "sprint_11d_fixed_audit_and_candidate_gate",
+          "statementSha256": "7bd295010da83c4029e30837cfd227a1cbe2a045242fe43171f72015739cdbaf"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0086_sprint_14b_membership_termination.sql",
+      "version": "0086",
+      "name": "sprint_14b_membership_termination",
+      "sha256": "e1ed9e21b02d4a129da6fd0054f73324821bbc730cdf29b90b57e4e08eb6fd36",
+      "production": [
+        {
+          "version": "20260923193320",
+          "name": "sprint_14b_membership_termination",
+          "statementSha256": "e1ed9e21b02d4a129da6fd0054f73324821bbc730cdf29b90b57e4e08eb6fd36"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0059_sprint_12a5_protocol_indexes.sql",
+      "version": "0059",
+      "name": "sprint_12a5_protocol_indexes",
+      "sha256": "42a258ed0c7525116d09c02e90ff66d50c9926bdb7a666bbabbc7c92b06dc625",
+      "production": [
+        {
+          "version": "20260921095351",
+          "name": "sprint_12a5_protocol_indexes",
+          "statementSha256": "42a258ed0c7525116d09c02e90ff66d50c9926bdb7a666bbabbc7c92b06dc625"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261003224148_phase3_analytics_answered_help_scope.sql",
+      "version": "20261003224148",
+      "name": "phase3_analytics_answered_help_scope",
+      "sha256": "23064e59a69ac452076e3ae74204daa9f4897b14307653067df363408bbd7d29",
+      "production": [
+        {
+          "version": "20261003224749",
+          "name": "phase3_analytics_answered_help_scope",
+          "statementSha256": "23064e59a69ac452076e3ae74204daa9f4897b14307653067df363408bbd7d29"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0081_sprint_14a_academic_identity_fk_indexes.sql",
+      "version": "0081",
+      "name": "sprint_14a_academic_identity_fk_indexes",
+      "sha256": "23766d6fd581e2ce0eed7186f22e3207234e0a419d68dac80e5dc59bd53c9496",
+      "production": [
+        {
+          "version": "20260923182829",
+          "name": "sprint_14a_academic_identity_fk_indexes",
+          "statementSha256": "23766d6fd581e2ce0eed7186f22e3207234e0a419d68dac80e5dc59bd53c9496"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0018_sprint_11d_numeric_pool_rebuild.sql",
+      "version": "0018",
+      "name": "sprint_11d_numeric_pool_rebuild",
+      "sha256": "d4318bba6ae852d1e6af8922ceee38ce58c790ace57758fbca7eb8dc1e8f914b",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0005_add_bounded_learning_sessions.sql",
+      "version": "0005",
+      "name": "add_bounded_learning_sessions",
+      "sha256": "2d0465736bfa7e708346476bf99edb4f13c27bb1b59bcb6e99d46dfa48e8b5b8",
+      "production": [
+        {
+          "version": "20260914113416",
+          "name": "add_bounded_learning_sessions",
+          "statementSha256": "7331d475fa2cbd41e8ab5dfa51fc045f88f708e4141cc96bc9e918c4ad333a70"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261030203409_teacher_task_review.sql",
+      "version": "20261030203409",
+      "name": "teacher_task_review",
+      "sha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee",
+      "production": [
+        {
+          "version": "20261030203409",
+          "name": "teacher_task_review",
+          "statementSha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0003_security_hardening.sql",
+      "version": "0003",
+      "name": "security_hardening",
+      "sha256": "40ba7d71b2ca9b18731eb4b77fb82508ebcabb8026f6e3af1600b8fdb9bf5971",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql",
+      "version": "20260930195500",
+      "name": "sprint_15a_authoring_parent_index",
+      "sha256": "c7df17dec409886de50ba1d742baaad0707bc13d442b148c9e61ca6da3be82f6",
+      "production": [
+        {
+          "version": "20260930195107",
+          "name": "sprint_15a_authoring_parent_index",
+          "statementSha256": "c7df17dec409886de50ba1d742baaad0707bc13d442b148c9e61ca6da3be82f6"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0015_sprint_11c_deterministic_variants.sql",
+      "version": "0015",
+      "name": "sprint_11c_deterministic_variants",
+      "sha256": "df29cf7a9bd5497356c28047ba9b8ff6b297bfb329549872bd46809c43e2bf37",
+      "production": [
+        {
+          "version": "20260915205542",
+          "name": "sprint_11c_deterministic_variants",
+          "statementSha256": "7a92b17f7452d4c3250b3d1ef11a14459a3e12b737b163662815ae1219119eb1"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0007_mastery_checks.sql",
+      "version": "0007",
+      "name": "mastery_checks",
+      "sha256": "4d3ef1346913671b97a96c76331b82494bfe56104250d67f91c39bde9afad5b5",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0029_content_editor_atomic_revision.sql",
+      "version": "0029",
+      "name": "content_editor_atomic_revision",
+      "sha256": "abd35686c8b626e9de38e8d9a17e829768c1e65526ffe8d27afd7be10b0d8328",
+      "production": [
+        {
+          "version": "20260916062342",
+          "name": "content_editor_atomic_revision",
+          "statementSha256": "6e98d8b96949911b7e4dd0d2ba851fffbc219d6b899b548299a75e21fe61f4ed"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0011_security_privacy_administration.sql",
+      "version": "0011",
+      "name": "security_privacy_administration",
+      "sha256": "7d18e0a6271896365fc41a93e7be19b7bf9c54b96d0df39d82c781158e4428a8",
+      "production": [
+        {
+          "version": "20260914170007",
+          "name": "security_privacy_administration",
+          "statementSha256": "420b802c3cd97f312b9e8fab9cf8d9cba72c7a32253bdea7abad6c53c43a7e90"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0083_sprint_14b_targeted_invitations.sql",
+      "version": "0083",
+      "name": "sprint_14b_targeted_invitations",
+      "sha256": "aaed0ad1e04b7e1297ee8f9bb7bcea32204165ca35719f74cd17992c0756e7fd",
+      "production": [
+        {
+          "version": "20260923185605",
+          "name": "sprint_14b_targeted_invitations",
+          "statementSha256": "aaed0ad1e04b7e1297ee8f9bb7bcea32204165ca35719f74cd17992c0756e7fd"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261007132158_sprint_15b13_s07_practice_expansion.sql",
+      "version": "20261007132158",
+      "name": "sprint_15b13_s07_practice_expansion",
+      "sha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41",
+      "production": [
+        {
+          "version": "20261007134437",
+          "name": "sprint_15b13_s07_practice_expansion",
+          "statementSha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0002_public_read_policies.sql",
+      "version": "0002",
+      "name": "public_read_policies",
+      "sha256": "41d9580a07da2afbe9c5f50fb57240f00a397ac726557afbd65b5a6d742b7a27",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0031_content_curriculum_scopes.sql",
+      "version": "0031",
+      "name": "content_curriculum_scopes",
+      "sha256": "60b700e303fd095b16a6f789dfee344a3f89053b25a71a3047d4df0bf505ed34",
+      "production": [
+        {
+          "version": "20260916121437",
+          "name": "content_curriculum_scopes",
+          "statementSha256": "4ef4ff580edea4ea798dffef72f7e55f5a7e11a44cd13fdf5eeefa65584b3a1e"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0065_sprint_12_5_chapter_review_runtime.sql",
+      "version": "0065",
+      "name": "sprint_12_5_chapter_review_runtime",
+      "sha256": "3f5448ad688f95b641f0c58002f511859b4cf5a5ed6629e6e63d7e402551ff37",
+      "production": [
+        {
+          "version": "20260921210730",
+          "name": "sprint_12_5_chapter_review_runtime",
+          "statementSha256": "3f5448ad688f95b641f0c58002f511859b4cf5a5ed6629e6e63d7e402551ff37"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260927190434_chapter_diagnostic_practice_gate.sql",
+      "version": "20260927190434",
+      "name": "chapter_diagnostic_practice_gate",
+      "sha256": "02749a4a493838ebf366d8826f23266142cc0413405ad00f8893776e33b78d30",
+      "production": [
+        {
+          "version": "20260927191312",
+          "name": "chapter_diagnostic_practice_gate",
+          "statementSha256": "02749a4a493838ebf366d8826f23266142cc0413405ad00f8893776e33b78d30"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0074_sprint_12_5_integrity_coverage_and_closure.sql",
+      "version": "0074",
+      "name": "sprint_12_5_integrity_coverage_and_closure",
+      "sha256": "e3e7f312bf43eb1396faaf7c76236445d4dfa27353d5f134fbfc06c92beaa740",
+      "production": [
+        {
+          "version": "20260922105355",
+          "name": "sprint_12_5_integrity_coverage_and_closure",
+          "statementSha256": "e3e7f312bf43eb1396faaf7c76236445d4dfa27353d5f134fbfc06c92beaa740"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006100728_sprint_15b12d_batched_context_provenance.sql",
+      "version": "20261006100728",
+      "name": "sprint_15b12d_batched_context_provenance",
+      "sha256": "d6ae470c9774f5443f7fe0cc4788647ae0eaa4f0709f4ec1b27a9bf7f91b1525",
+      "production": [
+        {
+          "version": "20261006101003",
+          "name": "sprint_15b12d_batched_context_provenance",
+          "statementSha256": "d6ae470c9774f5443f7fe0cc4788647ae0eaa4f0709f4ec1b27a9bf7f91b1525"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261022165640_sprint_16_1c_unit_guide_delivery.sql",
+      "version": "20261022165640",
+      "name": "sprint_16_1c_unit_guide_delivery",
+      "sha256": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3",
+      "production": [
+        {
+          "version": "20261022170732",
+          "name": "sprint_16_1c_unit_guide_delivery",
+          "statementSha256": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001000000_sprint_15b_governed_guide_creation.sql",
+      "version": "20261001000000",
+      "name": "sprint_15b_governed_guide_creation",
+      "sha256": "7dd45d9e28ea47564ac6cf71a5a2084cbe62cc09f806cdf7b4ae5c976fb60207",
+      "production": [
+        {
+          "version": "20260930214016",
+          "name": "sprint_15b_governed_guide_creation",
+          "statementSha256": "7dd45d9e28ea47564ac6cf71a5a2084cbe62cc09f806cdf7b4ae5c976fb60207"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0010_content_quality_trigger_safety.sql",
+      "version": "0010",
+      "name": "content_quality_trigger_safety",
+      "sha256": "bc57c0ee1fab38b5460c788e2be2b1a54752d038eb4a8b0e9b46699bd60ab511",
+      "production": [
+        {
+          "version": "20260914161238",
+          "name": "content_quality_trigger_safety",
+          "statementSha256": "22033800f8fae7d0960b71d4cdce319de642ddce2978b9aa426fbfa15860dbbc"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20260926224000_teacher_class_rename.sql",
+      "version": "20260926224000",
+      "name": "teacher_class_rename",
+      "sha256": "012d8359eea1b98add413fef12af05fd68841004d2f0efe74eb3bc02ae1fd644",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0033_sprint_11e_pilot_item_analytics.sql",
+      "version": "0033",
+      "name": "sprint_11e_pilot_item_analytics",
+      "sha256": "8df8ff932376509a339c0195398702d28f085c298ef7d2d17c94dccf8bafe54c",
+      "production": [
+        {
+          "version": "20260916144018",
+          "name": "sprint_11e_pilot_item_analytics",
+          "statementSha256": "3b2b0d23e2a4064ffcd35b874925f041c0a91b1487af0988d58fecbefff80034"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261001183000_sprint_15b6_fourth_item_family.sql",
+      "version": "20261001183000",
+      "name": "sprint_15b6_fourth_item_family",
+      "sha256": "ad9b6536163f9bb7f7eeb2babb4a8f7df69d56b336261ab13ad555fce6b059ae",
+      "production": [
+        {
+          "version": "20261001163711",
+          "name": "sprint_15b6_fourth_item_family",
+          "statementSha256": "ad9b6536163f9bb7f7eeb2babb4a8f7df69d56b336261ab13ad555fce6b059ae"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260925133000_lock_profile_account_types.sql",
+      "version": "20260925133000",
+      "name": "lock_profile_account_types",
+      "sha256": "e46f29b51b1fb6ab611a10307d3f4a31bb267c2bb5ec81af66ff457aaf3bb685",
+      "production": [
+        {
+          "version": "20260925132359",
+          "name": "lock_profile_account_types",
+          "statementSha256": "e46f29b51b1fb6ab611a10307d3f4a31bb267c2bb5ec81af66ff457aaf3bb685"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001120500_sprint_15b3_activate_approved_misconceptions.sql",
+      "version": "20261001120500",
+      "name": "sprint_15b3_activate_approved_misconceptions",
+      "sha256": "ca779f3600ebfa3a47d4563107978effdb2a8ce1cc32ea6b9c587c4e4df11f30",
+      "production": [
+        {
+          "version": "20261001121229",
+          "name": "sprint_15b3_activate_approved_misconceptions",
+          "statementSha256": "ca779f3600ebfa3a47d4563107978effdb2a8ce1cc32ea6b9c587c4e4df11f30"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0035_sprint_11i_registry_advisor_hardening.sql",
+      "version": "0035",
+      "name": "sprint_11i_registry_advisor_hardening",
+      "sha256": "b1070febcb4fe93a345789e4e22d46cd86f9dd32cba0409bc1a3976528ee0825",
+      "production": [
+        {
+          "version": "20260918075215",
+          "name": "sprint_11i_registry_advisor_hardening",
+          "statementSha256": "b1070febcb4fe93a345789e4e22d46cd86f9dd32cba0409bc1a3976528ee0825"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001001000_sprint_15b_multi_unit_release_governance.sql",
+      "version": "20261001001000",
+      "name": "sprint_15b_multi_unit_release_governance",
+      "sha256": "2bc8f7f91ed2afe1ac254992ceb965452db8ab6f032fc631db5d1c20089b33b8",
+      "production": [
+        {
+          "version": "20260930214023",
+          "name": "sprint_15b_multi_unit_release_governance",
+          "statementSha256": "2bc8f7f91ed2afe1ac254992ceb965452db8ab6f032fc631db5d1c20089b33b8"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0110_sprint_14c_onboarding_grade_type.sql",
+      "version": "0110",
+      "name": "sprint_14c_onboarding_grade_type",
+      "sha256": "4244dc0df3dc5c4e61f697800b46dc5180534a36ce0d49f32f79c7bb6685c838",
+      "production": [
+        {
+          "version": "20260925202000",
+          "name": "sprint_14c_onboarding_grade_type",
+          "statementSha256": "4244dc0df3dc5c4e61f697800b46dc5180534a36ce0d49f32f79c7bb6685c838"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0058_sprint_12a5_calibration_decision_protocol.sql",
+      "version": "0058",
+      "name": "sprint_12a5_calibration_decision_protocol",
+      "sha256": "7ea50a0b2f52291bcf5610031a62407945e541802dd35272dba13de0b219385a",
+      "production": [
+        {
+          "version": "20260921095307",
+          "name": "sprint_12a5_calibration_decision_protocol",
+          "statementSha256": "7ea50a0b2f52291bcf5610031a62407945e541802dd35272dba13de0b219385a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261015160934_sprint_15c15_assessment_policy_v2.sql",
+      "version": "20261015160934",
+      "name": "sprint_15c15_assessment_policy_v2",
+      "sha256": "ec8839020cd43b96ae222c4dd8324bfd743b47bd626c2faf0171a74df6b8bb49",
+      "production": [
+        {
+          "version": "20261015163519",
+          "name": "sprint_15c15_assessment_policy_v2",
+          "statementSha256": "ec8839020cd43b96ae222c4dd8324bfd743b47bd626c2faf0171a74df6b8bb49"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0070_sprint_12_5_review_cycle_runtime.sql",
+      "version": "0070",
+      "name": "sprint_12_5_review_cycle_runtime",
+      "sha256": "9d5f79bb67181bb69d0769efa07500a1ab807e44219c0a3b6aa1d8f878e9b0f8",
+      "production": [
+        {
+          "version": "20260921214319",
+          "name": "sprint_12_5_review_cycle_runtime",
+          "statementSha256": "9d5f79bb67181bb69d0769efa07500a1ab807e44219c0a3b6aa1d8f878e9b0f8"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0062_sprint_12_5_runtime_build_activation.sql",
+      "version": "0062",
+      "name": "sprint_12_5_runtime_build_activation",
+      "sha256": "44342ac898c4a549dc4093dd2b9f17760d77591f3ae7694cdef130fb80a616aa",
+      "production": [
+        {
+          "version": "20260921204923",
+          "name": "sprint_12_5_runtime_build_activation",
+          "statementSha256": "44342ac898c4a549dc4093dd2b9f17760d77591f3ae7694cdef130fb80a616aa"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0067_sprint_12_5_review_runtime_correction.sql",
+      "version": "0067",
+      "name": "sprint_12_5_review_runtime_correction",
+      "sha256": "9fc8d6a7916acb6075a5fda6cd7dfc3912260dfc6b1f0cdb0340c15d0fa5b2a1",
+      "production": [
+        {
+          "version": "20260921211234",
+          "name": "sprint_12_5_review_runtime_correction",
+          "statementSha256": "9fc8d6a7916acb6075a5fda6cd7dfc3912260dfc6b1f0cdb0340c15d0fa5b2a1"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0091_sprint_14b_school_read_policy.sql",
+      "version": "0091",
+      "name": "sprint_14b_school_read_policy",
+      "sha256": "8282dac6afa5f05dc66d55f86035274daf8fe2fb962e2243d7ad847ce7263ffa",
+      "production": [
+        {
+          "version": "20260923200017",
+          "name": "sprint_14b_school_read_policy",
+          "statementSha256": "8282dac6afa5f05dc66d55f86035274daf8fe2fb962e2243d7ad847ce7263ffa"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0087_sprint_14b_teacher_assignment_termination_race.sql",
+      "version": "0087",
+      "name": "sprint_14b_teacher_assignment_termination_race",
+      "sha256": "0c971ceb9e7636eea7ddf9211434aeff46c2bd7c74660701a054508c773d6b59",
+      "production": [
+        {
+          "version": "20260923193706",
+          "name": "sprint_14b_teacher_assignment_termination_race",
+          "statementSha256": "0c971ceb9e7636eea7ddf9211434aeff46c2bd7c74660701a054508c773d6b59"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006200559_sprint_15b13_s04_practice_expansion.sql",
+      "version": "20261006200559",
+      "name": "sprint_15b13_s04_practice_expansion",
+      "sha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb",
+      "production": [
+        {
+          "version": "20261006202205",
+          "name": "sprint_15b13_s04_practice_expansion",
+          "statementSha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261103061948_item_snapshot_integrity.sql",
+      "version": "20261103061948",
+      "name": "item_snapshot_integrity",
+      "sha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/0037_sprint_11j_reconciliation_advisor_hardening.sql",
+      "version": "0037",
+      "name": "sprint_11j_reconciliation_advisor_hardening",
+      "sha256": "c26d3145fca277c0fd64920e4449013f4fe0e328462eb77e27bc2478f61f10d5",
+      "production": [
+        {
+          "version": "20260918204906",
+          "name": "sprint_11j_reconciliation_advisor_hardening",
+          "statementSha256": "c26d3145fca277c0fd64920e4449013f4fe0e328462eb77e27bc2478f61f10d5"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0082_global_mcq_option_presentation_activation.sql",
+      "version": "0082",
+      "name": "global_mcq_option_presentation_activation",
+      "sha256": "e4afbe9fff5e0394990d734901129127299dff0add0739eb9e3219cf86bc80af",
+      "production": [
+        {
+          "version": "20260922212309",
+          "name": "global_mcq_option_presentation_activation",
+          "statementSha256": "ac6a62b540b04405c8e3a07bef22292b7a6a3fea2795e5ec85033bc3ead1833f"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261030203406_teacher_task_source_attachments.sql",
+      "version": "20261030203406",
+      "name": "teacher_task_source_attachments",
+      "sha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a",
+      "production": [
+        {
+          "version": "20261030203406",
+          "name": "teacher_task_source_attachments",
+          "statementSha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0081_global_mcq_option_presentation_integrity.sql",
+      "version": "0081",
+      "name": "global_mcq_option_presentation_integrity",
+      "sha256": "6ca1c194850aabb1157ca7e2de9ee473d27800e265679babaf7e053ec8e862f4",
+      "production": [
+        {
+          "version": "20260922212021",
+          "name": "global_mcq_option_presentation_integrity",
+          "statementSha256": "504a3b9dd03d273199f9b1d16d91d9a98058afcc0b4c572bfc807419fe9f669a"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql",
+      "version": "20261020140928",
+      "name": "sprint_16_1b_typed_fields",
+      "sha256": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+      "production": [
+        {
+          "version": "20261020140928",
+          "name": "sprint_16_1b_typed_fields",
+          "statementSha256": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0019_sprint_11d_numeric_pool_rebuild_v2.sql",
+      "version": "0019",
+      "name": "sprint_11d_numeric_pool_rebuild_v2",
+      "sha256": "bd2a7e0e163b6ff8d53eee886042422b413dcd38b22a30cb92eedcc0602714f4",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/20261015163749_sprint_15c15_runtime_provenance.sql",
+      "version": "20261015163749",
+      "name": "sprint_15c15_runtime_provenance",
+      "sha256": "85f52628aef640b52789df5f6c4beb189935029b9081ede61f2f2503bb1d3b30",
+      "production": [
+        {
+          "version": "20261015163749",
+          "name": "sprint_15c15_runtime_provenance",
+          "statementSha256": "4bb15e61138d0c1e03e88790d7ae3daa219368fb1d2fc86ed57f61a2bf88e268"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261002070000_sprint_15b8_prospective_evidence_blueprint.sql",
+      "version": "20261002070000",
+      "name": "sprint_15b8_prospective_evidence_blueprint",
+      "sha256": "9393da9e7206eb99ea65cef16a6bb1d20f58215c48e76e7290f3b9ebafea42b2",
+      "production": [
+        {
+          "version": "20261002072909",
+          "name": "sprint_15b8_prospective_evidence_blueprint",
+          "statementSha256": "9393da9e7206eb99ea65cef16a6bb1d20f58215c48e76e7290f3b9ebafea42b2"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0027_sprint_11d_stage_candidate_pools_forms.sql",
+      "version": "0027",
+      "name": "sprint_11d_stage_candidate_pools_forms",
+      "sha256": "2606c7b8733b09340b4f84c710a3b53d510d6b7158cb132f58623f00f9d27247",
+      "production": [
+        {
+          "version": "20260916053207",
+          "name": "sprint_11d_stage_candidate_pools_forms",
+          "statementSha256": "41cd371d1c62ca81cd3f7aa474367e7e21fec61622af9e10b9a41c4696aee73e"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_12_5_mastery_retry_start_gate_runtime.sql",
+      "version": "0080",
+      "name": "sprint_12_5_mastery_retry_start_gate_runtime",
+      "sha256": "4bf0e80014e9bfc9714b215f0154b083291327969c735ecf8f8c6618259c0f11",
+      "production": [
+        {
+          "version": "20260922202129",
+          "name": "sprint_12_5_mastery_retry_start_gate_runtime",
+          "statementSha256": "f5663669ee02d227fccf2ebff9034e7fa28143665e68dc9b822299eeee099b2c"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0102_sprint_14b_generated_school_codes.sql",
+      "version": "0102",
+      "name": "sprint_14b_generated_school_codes",
+      "sha256": "bb85303e22a4b63b62105589e3fa0503ed572cfdada08941d11aa0f53303f14a",
+      "production": [
+        {
+          "version": "20260924115252",
+          "name": "sprint_14b_generated_school_codes",
+          "statementSha256": "bb85303e22a4b63b62105589e3fa0503ed572cfdada08941d11aa0f53303f14a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261007065442_sprint_15b13_s05_practice_expansion.sql",
+      "version": "20261007065442",
+      "name": "sprint_15b13_s05_practice_expansion",
+      "sha256": "a26099a632bd5c80fa0aeb01388f06dd63ea3a3a33106302a12027ff94d17f91",
+      "production": [
+        {
+          "version": "20261007071149",
+          "name": "sprint_15b13_s05_practice_expansion",
+          "statementSha256": "a26099a632bd5c80fa0aeb01388f06dd63ea3a3a33106302a12027ff94d17f91"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0028_sprint_11d_seed_index_search_path.sql",
+      "version": "0028",
+      "name": "sprint_11d_seed_index_search_path",
+      "sha256": "c06085520d510ea2278606a613a638ba8ae77541be9132762e61a767f9fb33f8",
+      "production": [
+        {
+          "version": "20260916053344",
+          "name": "sprint_11d_seed_index_search_path",
+          "statementSha256": "0e53e1473b0bbd061c5a810f0d06f477eae4d2cee38b9f791cebca59301ae185"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0073_sprint_12_5_analytics_recommendation_runtime.sql",
+      "version": "0073",
+      "name": "sprint_12_5_analytics_recommendation_runtime",
+      "sha256": "7d4ab11cf109d84e593d2fc30d92ecbaf01d5e09fa0b8b558e0cc79850e16b40",
+      "production": [
+        {
+          "version": "20260922063714",
+          "name": "sprint_12_5_analytics_recommendation_runtime",
+          "statementSha256": "04ca90e168837f4b4b56c38de41e1526f239eb8d1499a0bb5feee9c97e21e9bf"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0096_sprint_14b_staff_invite_audit_actor.sql",
+      "version": "0096",
+      "name": "sprint_14b_staff_invite_audit_actor",
+      "sha256": "6f37638b7f09b53d0a77a659ef321ebdabb4f007325484450408bfa0d9b4444b",
+      "production": [
+        {
+          "version": "20260924051430",
+          "name": "sprint_14b_staff_invite_audit_actor",
+          "statementSha256": "6f37638b7f09b53d0a77a659ef321ebdabb4f007325484450408bfa0d9b4444b"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0054_sprint_12a_evidence_view_preservation.sql",
+      "version": "0054",
+      "name": "sprint_12a_evidence_view_preservation",
+      "sha256": "5adeff38aa251b1dae36aa40f7ee800a7c42519dec1ed925e60a6f9d30bbefda",
+      "production": [
+        {
+          "version": "20260920181838",
+          "name": "sprint_12a_evidence_view_preservation",
+          "statementSha256": "5adeff38aa251b1dae36aa40f7ee800a7c42519dec1ed925e60a6f9d30bbefda"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261013065104_protect_direct_question_reads.sql",
+      "version": "20261013065104",
+      "name": "protect_direct_question_reads",
+      "sha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a",
+      "production": [
+        {
+          "version": "20261013065104",
+          "name": "protect_direct_question_reads",
+          "statementSha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0050_sprint_12a_recommendation_telemetry.sql",
+      "version": "0050",
+      "name": "sprint_12a_recommendation_telemetry",
+      "sha256": "6eabc456b348e87355bc15ee903745ec81f8aaaf4014e3a5c6cb8f3ae7fa8377",
+      "production": [
+        {
+          "version": "20260920173230",
+          "name": "sprint_12a_recommendation_telemetry",
+          "statementSha256": "6eabc456b348e87355bc15ee903745ec81f8aaaf4014e3a5c6cb8f3ae7fa8377"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0024_sprint_11d_partial_state_recovery.sql",
+      "version": "0024",
+      "name": "sprint_11d_partial_state_recovery",
+      "sha256": "e530c70f1e0cedf8400704e532cf99c509043061e2898619d4f4af6e7399bf09",
+      "production": [
+        {
+          "version": "20260916051509",
+          "name": "sprint_11d_partial_state_recovery",
+          "statementSha256": "c26ab45d5d2a989e0cd21822eca7494dc5fdf7563caf98dd30aa044a1d5f6813"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql",
+      "version": "0020",
+      "name": "sprint_11d_review_safe_bank_expansion",
+      "sha256": "481c30de22ac74e2d5aa77b43f8ebe485754827db61103b7e2768653f5512ffe",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+      "version": "20261028220526",
+      "name": "teacher_dashboard_batched_reads",
+      "sha256": "33acf07d73b9d07254e471fa8235402d07f8051fa51521e513d85ab011eed588",
+      "production": [
+        {
+          "version": "20261028220526",
+          "name": "teacher_dashboard_batched_reads",
+          "statementSha256": "33acf07d73b9d07254e471fa8235402d07f8051fa51521e513d85ab011eed588"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0061_sprint_12_5_mastery_lifecycle_foundation.sql",
+      "version": "0061",
+      "name": "sprint_12_5_mastery_lifecycle_foundation",
+      "sha256": "e07e3986e8795a1e38fdf015759944b05051ea90f3950cd0a22b7979f375a350",
+      "production": [
+        {
+          "version": "20260921204507",
+          "name": "sprint_12_5_mastery_lifecycle_foundation",
+          "statementSha256": "e07e3986e8795a1e38fdf015759944b05051ea90f3950cd0a22b7979f375a350"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0109_sprint_14c_context_fk_indexes.sql",
+      "version": "0109",
+      "name": "sprint_14c_context_fk_indexes",
+      "sha256": "947f9b6bf82d03c980004ba70da18cb60cd7ceb119e1c1d63e601f9b95042b0f",
+      "production": [
+        {
+          "version": "20260925201258",
+          "name": "sprint_14c_context_fk_indexes",
+          "statementSha256": "947f9b6bf82d03c980004ba70da18cb60cd7ceb119e1c1d63e601f9b95042b0f"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260927185120_single_initial_diagnostic_runtime.sql",
+      "version": "20260927185120",
+      "name": "single_initial_diagnostic_runtime",
+      "sha256": "9d13f5c0c53fbdb42f61790d6507222da2babf4485f8ed76c4003020b1aa5643",
+      "production": [
+        {
+          "version": "20260927185225",
+          "name": "single_initial_diagnostic_runtime",
+          "statementSha256": "9d13f5c0c53fbdb42f61790d6507222da2babf4485f8ed76c4003020b1aa5643"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261013101825_governed_mastery_form_selection.sql",
+      "version": "20261013101825",
+      "name": "governed_mastery_form_selection",
+      "sha256": "d3638976d1ab90824cb1a68915048e2eafc196500cae870147d259335818e12a",
+      "production": [
+        {
+          "version": "20261013101825",
+          "name": "governed_mastery_form_selection",
+          "statementSha256": "d3638976d1ab90824cb1a68915048e2eafc196500cae870147d259335818e12a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261028234350_teacher_transaction_reads.sql",
+      "version": "20261028234350",
+      "name": "teacher_transaction_reads",
+      "sha256": "f2da4dfa67724f32bf89ad9d4b7d866b8e134f29aea2d98cb64197ec9142d116",
+      "production": [
+        {
+          "version": "20261028234350",
+          "name": "teacher_transaction_reads",
+          "statementSha256": "f2da4dfa67724f32bf89ad9d4b7d866b8e134f29aea2d98cb64197ec9142d116"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001003000_sprint_15b_release_reconciliation_index.sql",
+      "version": "20261001003000",
+      "name": "sprint_15b_release_reconciliation_index",
+      "sha256": "e02eafea8854cbe7900388faf6cebe9734fd41fa211207f5b90602bc7085e667",
+      "production": [
+        {
+          "version": "20260930214346",
+          "name": "sprint_15b_release_reconciliation_index",
+          "statementSha256": "e02eafea8854cbe7900388faf6cebe9734fd41fa211207f5b90602bc7085e667"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261013160458_sprint_15c2_chapter_iii_draft_foundation.sql",
+      "version": "20261013160458",
+      "name": "sprint_15c2_chapter_iii_draft_foundation",
+      "sha256": "a47c4941b88969d7451b4e5918c2fc4bfba5bb21d260e8411b6b91901af7be3c",
+      "production": [
+        {
+          "version": "20261013160458",
+          "name": "sprint_15c2_chapter_iii_draft_foundation",
+          "statementSha256": "a47c4941b88969d7451b4e5918c2fc4bfba5bb21d260e8411b6b91901af7be3c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261101200512_sprint_16_5b_resource_context_sequence.sql",
+      "version": "20261101200512",
+      "name": "sprint_16_5b_resource_context_sequence",
+      "sha256": "54c09a4f150c491e16654d49c838045d9296923aea7460249e85e8a34ab7d828",
+      "production": [
+        {
+          "version": "20261101200512",
+          "name": "sprint_16_5b_resource_context_sequence",
+          "statementSha256": "54c09a4f150c491e16654d49c838045d9296923aea7460249e85e8a34ab7d828"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0090_sprint_14b_school_bootstrap_boundary.sql",
+      "version": "0090",
+      "name": "sprint_14b_school_bootstrap_boundary",
+      "sha256": "c0734db4ebc773a2984774ed68786425a3e9acf4c32ebab2e3258290030ecedb",
+      "production": [
+        {
+          "version": "20260923195835",
+          "name": "sprint_14b_school_bootstrap_boundary",
+          "statementSha256": "c0734db4ebc773a2984774ed68786425a3e9acf4c32ebab2e3258290030ecedb"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0068_sprint_12_5_review_indexes.sql",
+      "version": "0068",
+      "name": "sprint_12_5_review_indexes",
+      "sha256": "75572f1cea090860be9e8443141943f429962d3fed04ee3eea04066c085650fa",
+      "production": [
+        {
+          "version": "20260921211318",
+          "name": "sprint_12_5_review_indexes",
+          "statementSha256": "75572f1cea090860be9e8443141943f429962d3fed04ee3eea04066c085650fa"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260927191054_chapter_diagnostic_practice_gate_runtime.sql",
+      "version": "20260927191054",
+      "name": "chapter_diagnostic_practice_gate_runtime",
+      "sha256": "270cba2ec411d44ea656112dad1eb611732d17bbf48d725c5c3bf490e9082881",
+      "production": [
+        {
+          "version": "20260927191333",
+          "name": "chapter_diagnostic_practice_gate_runtime",
+          "statementSha256": "270cba2ec411d44ea656112dad1eb611732d17bbf48d725c5c3bf490e9082881"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261005083017_sprint_15b9_seventh_item_family.sql",
+      "version": "20261005083017",
+      "name": "sprint_15b9_seventh_item_family",
+      "sha256": "6585d10ee7f52e7391b4427df922dd5cb1ecaca3586b20b3711ef28c915f5aaf",
+      "production": [
+        {
+          "version": "20261005083017",
+          "name": "sprint_15b9_seventh_item_family",
+          "statementSha256": "6585d10ee7f52e7391b4427df922dd5cb1ecaca3586b20b3711ef28c915f5aaf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0060_sprint_11_5_single_adult_feasibility_pilot.sql",
+      "version": "0060",
+      "name": "sprint_11_5_single_adult_feasibility_pilot",
+      "sha256": "8c9f578427714681c03a2b978996a2fdf91d096c8ec6a18fe6ccdae2fc83097d",
+      "production": [
+        {
+          "version": "20260921101010",
+          "name": "sprint_11_5_single_adult_feasibility_pilot",
+          "statementSha256": "8c9f578427714681c03a2b978996a2fdf91d096c8ec6a18fe6ccdae2fc83097d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0053_sprint_12a_runtime_build_activation.sql",
+      "version": "0053",
+      "name": "sprint_12a_runtime_build_activation",
+      "sha256": "63e770c50c7e8d074bad2e2d5dee081fbcbc61ad65cb1c7dac883efd607ad3d3",
+      "production": [
+        {
+          "version": "20260920181727",
+          "name": "sprint_12a_runtime_build_activation",
+          "statementSha256": "63e770c50c7e8d074bad2e2d5dee081fbcbc61ad65cb1c7dac883efd607ad3d3"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0038_sprint_11j_preserve_official_outcome_wording.sql",
+      "version": "0038",
+      "name": "sprint_11j_preserve_official_outcome_wording",
+      "sha256": "9df88b6aac7875a92cb319c33a60ee8b852f84358522143e883c439786912f7e",
+      "production": [
+        {
+          "version": "20260918205807",
+          "name": "sprint_11j_preserve_official_outcome_wording",
+          "statementSha256": "d1a8a886e8e7124dd3f6276d88349e1aa9e44f3dc90c31e4a28b54244aa817ca"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0079_sprint_12_5_mastery_retry_eligibility_runtime.sql",
+      "version": "0079",
+      "name": "sprint_12_5_mastery_retry_eligibility_runtime",
+      "sha256": "8c6eca9c9f990c4617995f9c2a312e1dd3957603c600bfd218b6c691b7ed62fc",
+      "production": [
+        {
+          "version": "20260922201040",
+          "name": "sprint_12_5_mastery_retry_eligibility_runtime",
+          "statementSha256": "d51d7b7c2ecd84e4f6c9329c556c166cba561851faf95514704f265b43ecf49e"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/0093_sprint_14b_staff_provisioning.sql",
+      "version": "0093",
+      "name": "sprint_14b_staff_provisioning",
+      "sha256": "852a1ed3554ffa9068972c34277b31eb9ab55050880b9a420d7c114092c9e696",
+      "production": [
+        {
+          "version": "20260924051125",
+          "name": "sprint_14b_staff_provisioning",
+          "statementSha256": "852a1ed3554ffa9068972c34277b31eb9ab55050880b9a420d7c114092c9e696"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0064_sprint_12_5_chapter_review_gate.sql",
+      "version": "0064",
+      "name": "sprint_12_5_chapter_review_gate",
+      "sha256": "b64da8c8f99d556f119a873e7ede5ccee83bc4d05f52ad31525dcc2b1e98da05",
+      "production": [
+        {
+          "version": "20260921210036",
+          "name": "sprint_12_5_chapter_review_gate",
+          "statementSha256": "b64da8c8f99d556f119a873e7ede5ccee83bc4d05f52ad31525dcc2b1e98da05"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0009_content_assessment_quality.sql",
+      "version": "0009",
+      "name": "content_assessment_quality",
+      "sha256": "b4ec43254ad968e557281a138c72b10b15abac096e05316f81ee52a3d4ebca22",
+      "production": [
+        {
+          "version": "20260914160603",
+          "name": "content_assessment_quality",
+          "statementSha256": "f95aea59b4f5ff2501ba006ce307a6f0e263a4ca7dc4af1b34ec5f90062445e3"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql",
+      "version": "20261027200600",
+      "name": "sprint_16_5b_resource_assignments",
+      "sha256": "034b69e8f68e4e03517b71bdbe5ea8c3d3e58106141dd4635be98c7edff4a45a",
+      "production": [
+        {
+          "version": "20261027205636",
+          "name": "sprint_16_5b_resource_assignments",
+          "statementSha256": "034b69e8f68e4e03517b71bdbe5ea8c3d3e58106141dd4635be98c7edff4a45a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001153000_sprint_15b5_third_item_family.sql",
+      "version": "20261001153000",
+      "name": "sprint_15b5_third_item_family",
+      "sha256": "c81711121c255c9f3cb0ffcf4c3a94e0c3f536d3f2da8856e36b0903ac087552",
+      "production": [
+        {
+          "version": "20261001145034",
+          "name": "sprint_15b5_third_item_family",
+          "statementSha256": "c81711121c255c9f3cb0ffcf4c3a94e0c3f536d3f2da8856e36b0903ac087552"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001070000_content_revision_preserve_draft_misconceptions.sql",
+      "version": "20261001070000",
+      "name": "content_revision_preserve_draft_misconceptions",
+      "sha256": "91d16971f1b9d2bbc60c26cbee69bea9b72548026d39e41cf68be6cbdcf47508",
+      "production": [
+        {
+          "version": "20261001065908",
+          "name": "content_revision_preserve_draft_misconceptions",
+          "statementSha256": "91d16971f1b9d2bbc60c26cbee69bea9b72548026d39e41cf68be6cbdcf47508"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0023_sprint_11d_authored_parallel_template_semantics.sql",
+      "version": "0023",
+      "name": "sprint_11d_authored_parallel_template_semantics",
+      "sha256": "1b5ffa4b5be50806907ee1b1909c7f14d28a8a894743b85019c5758329b282ea",
+      "production": []
+    },
+    {
+      "path": "supabase/migrations/20261006184457_sprint_15b13_s03_practice_expansion.sql",
+      "version": "20261006184457",
+      "name": "sprint_15b13_s03_practice_expansion",
+      "sha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a",
+      "production": [
+        {
+          "version": "20261006190037",
+          "name": "sprint_15b13_s03_practice_expansion",
+          "statementSha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261028225658_teacher_evidence_projection.sql",
+      "version": "20261028225658",
+      "name": "teacher_evidence_projection",
+      "sha256": "a151d083e11c699cab4737c7d5116817292f40967b7cf2058f16a3027e3cf9fa",
+      "production": [
+        {
+          "version": "20261028225658",
+          "name": "teacher_evidence_projection",
+          "statementSha256": "a151d083e11c699cab4737c7d5116817292f40967b7cf2058f16a3027e3cf9fa"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006154828_sprint_15b13_s02_practice_completion.sql",
+      "version": "20261006154828",
+      "name": "sprint_15b13_s02_practice_completion",
+      "sha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7",
+      "production": [
+        {
+          "version": "20261006155942",
+          "name": "sprint_15b13_s02_practice_completion",
+          "statementSha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260925121942_protect_master_admin_identity.sql",
+      "version": "20260925121942",
+      "name": "protect_master_admin_identity",
+      "sha256": "99a8bd4f8763d58f6c6b5da4c884375ae1586eea4c97cf5deb7c9949bfe4f03a",
+      "production": [
+        {
+          "version": "20260925122948",
+          "name": "protect_master_admin_identity",
+          "statementSha256": "99a8bd4f8763d58f6c6b5da4c884375ae1586eea4c97cf5deb7c9949bfe4f03a"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006074342_sprint_15b12c_runtime_provenance.sql",
+      "version": "20261006074342",
+      "name": "sprint_15b12c_runtime_provenance",
+      "sha256": "0fcf47dbf480be7c567fd2f8ba6e9605aa75014ef230d9745bc032e20a128534",
+      "production": [
+        {
+          "version": "20261006080857",
+          "name": "sprint_15b12c_runtime_provenance",
+          "statementSha256": "0fcf47dbf480be7c567fd2f8ba6e9605aa75014ef230d9745bc032e20a128534"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261030203404_teacher_task_drafts.sql",
+      "version": "20261030203404",
+      "name": "teacher_task_drafts",
+      "sha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf",
+      "production": [
+        {
+          "version": "20261030203404",
+          "name": "teacher_task_drafts",
+          "statementSha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0017_sprint_11d_conceptual_bank_expansion.sql",
+      "version": "0017",
+      "name": "sprint_11d_conceptual_bank_expansion",
+      "sha256": "e3bb8b1bab0aa59bd96c1312423c9c26f1dee1c22ab9f5f3861c447072d99e12",
+      "production": [
+        {
+          "version": "20260915211445",
+          "name": "sprint_11d_conceptual_bank_expansion",
+          "statementSha256": "66bd8badf7433f758f83eb6fd2fdb30f347b7d6c0e419dcd1f5c9dd78a7ef166"
+        }
+      ],
+      "exactStatementBytes": false
+    },
+    {
+      "path": "supabase/migrations/20261007163943_sprint_15b13_s08_practice_expansion.sql",
+      "version": "20261007163943",
+      "name": "sprint_15b13_s08_practice_expansion",
+      "sha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094",
+      "production": [
+        {
+          "version": "20261007173858",
+          "name": "sprint_15b13_s08_practice_expansion",
+          "statementSha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001005000_sprint_15b2_authored_catalogue_qa_fix.sql",
+      "version": "20261001005000",
+      "name": "sprint_15b2_authored_catalogue_qa_fix",
+      "sha256": "29a998ab3ee3a0e697e46f018bb6d46530dea90ee0fd07db85c8aee2a0ebd94d",
+      "production": [
+        {
+          "version": "20260930221946",
+          "name": "sprint_15b2_authored_catalogue_qa_fix",
+          "statementSha256": "29a998ab3ee3a0e697e46f018bb6d46530dea90ee0fd07db85c8aee2a0ebd94d"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0100_sprint_14b_teacher_activation_history_guard.sql",
+      "version": "0100",
+      "name": "sprint_14b_teacher_activation_history_guard",
+      "sha256": "0ce331100471bcbbe43e1c2abe7b03378bc96a59eaad0f38c64e1f28245fd9ce",
+      "production": [
+        {
+          "version": "20260924052413",
+          "name": "sprint_14b_teacher_activation_history_guard",
+          "statementSha256": "0ce331100471bcbbe43e1c2abe7b03378bc96a59eaad0f38c64e1f28245fd9ce"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261004094811_atomic_answer_mastery_evidence.sql",
+      "version": "20261004094811",
+      "name": "atomic_answer_mastery_evidence",
+      "sha256": "d7da2710f43e46e5c3e28dd6d6fce82e66d4ba43dd9559d3e4fa405fb0b84498",
+      "production": [
+        {
+          "version": "20261004100828",
+          "name": "atomic_answer_mastery_evidence",
+          "statementSha256": "d7da2710f43e46e5c3e28dd6d6fce82e66d4ba43dd9559d3e4fa405fb0b84498"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20260927193107_sprint_14b_teacher_offboarding_closure.sql",
+      "version": "20260927193107",
+      "name": "sprint_14b_teacher_offboarding_closure",
+      "sha256": "968694799542e96f44f051e048cf7a6f20cab85635b945e36c99ac52afaee3e2",
+      "production": [
+        {
+          "version": "20260927194633",
+          "name": "sprint_14b_teacher_offboarding_closure",
+          "statementSha256": "968694799542e96f44f051e048cf7a6f20cab85635b945e36c99ac52afaee3e2"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261001190000_sprint_15b7_fifth_item_family.sql",
+      "version": "20261001190000",
+      "name": "sprint_15b7_fifth_item_family",
+      "sha256": "13693c47434480dbf3b1ae3465528f461abdf4826b28a4e01e11a29d8dce7a5e",
+      "production": [
+        {
+          "version": "20261001171021",
+          "name": "sprint_15b7_fifth_item_family",
+          "statementSha256": "13693c47434480dbf3b1ae3465528f461abdf4826b28a4e01e11a29d8dce7a5e"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261030203359_teacher_writing_assignments.sql",
+      "version": "20261030203359",
+      "name": "teacher_writing_assignments",
+      "sha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12",
+      "production": [
+        {
+          "version": "20261030203359",
+          "name": "teacher_writing_assignments",
+          "statementSha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0105_sprint_14b_school_class_workspace.sql",
+      "version": "0105",
+      "name": "sprint_14b_school_class_workspace",
+      "sha256": "8aa28f09622c58e45eea922bfe4eafab023cc13aa957f1d393d5ca03a87e33a9",
+      "production": [
+        {
+          "version": "20260925075624",
+          "name": "sprint_14b_school_class_workspace",
+          "statementSha256": "8aa28f09622c58e45eea922bfe4eafab023cc13aa957f1d393d5ca03a87e33a9"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql",
+      "version": "20261006053843",
+      "name": "sprint_15b12b_policy_session_bindings",
+      "sha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137",
+      "production": [
+        {
+          "version": "20261006062951",
+          "name": "sprint_15b12b_policy_session_bindings",
+          "statementSha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261023070516_sprint_16_1c_audio_progress_provenance.sql",
+      "version": "20261023070516",
+      "name": "sprint_16_1c_audio_progress_provenance",
+      "sha256": "aceccbd39018a6695e883ad2fda4b7423609c8d65be0b27e6db1ab3be149174c",
+      "production": [
+        {
+          "version": "20261023070516",
+          "name": "sprint_16_1c_audio_progress_provenance",
+          "statementSha256": "aceccbd39018a6695e883ad2fda4b7423609c8d65be0b27e6db1ab3be149174c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql",
+      "version": "20261020182309",
+      "name": "sprint_16_1b_shared_task_sets",
+      "sha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c",
+      "production": [
+        {
+          "version": "20261020182309",
+          "name": "sprint_16_1b_shared_task_sets",
+          "statementSha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c"
+        }
+      ],
+      "exactStatementBytes": true
+    },
+    {
+      "path": "supabase/migrations/0092_sprint_14b_bootstrap_evidence_guard.sql",
+      "version": "0092",
+      "name": "sprint_14b_bootstrap_evidence_guard",
+      "sha256": "371703fff3306c7eb704ef8c7c6e3373eafb50c00385267be16f20b6aa434bb5",
+      "production": [
+        {
+          "version": "20260923200128",
+          "name": "sprint_14b_bootstrap_evidence_guard",
+          "statementSha256": "371703fff3306c7eb704ef8c7c6e3373eafb50c00385267be16f20b6aa434bb5"
+        }
+      ],
+      "exactStatementBytes": true
+    }
+  ],
+  "production": [
+    {
+      "version": "20260913173327",
+      "name": "initial_core_schema",
+      "statement_count": 1,
+      "statement_sha256": "c7db7fa55d4603824de179d2e5dade2090a9c8169f6ce7c9007a17e5d1c24bb5"
+    },
+    {
+      "version": "20260913173347",
+      "name": "initial_functions",
+      "statement_count": 1,
+      "statement_sha256": "5fdfa885164a7ba148ba5f11113ea8e4c75cb92a3603a89d28a3c36315bb97bf"
+    },
+    {
+      "version": "20260913173410",
+      "name": "initial_rls_policies",
+      "statement_count": 1,
+      "statement_sha256": "8776bada2602dbc7738d210d076b23d9ae862269023f3dab3b335bbaf63bd8bf"
+    },
+    {
+      "version": "20260913173431",
+      "name": "seed_structural_data",
+      "statement_count": 1,
+      "statement_sha256": "e275d22fea2d3842f120e774ce0e0593509c65a991b1352031a09073ec1cf41a"
+    },
+    {
+      "version": "20260913173436",
+      "name": "fix_seed_migration_tracking",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260913173441",
+      "name": "add_public_curriculum_read_rls",
+      "statement_count": 1,
+      "statement_sha256": "9c1d4814fcb2dc1149585b1b037aee60393ef38e761a5ae3f5454c9957340bc5"
+    },
+    {
+      "version": "20260913173450",
+      "name": "add_public_items_rls",
+      "statement_count": 1,
+      "statement_sha256": "1072b7b90fe98f1b155240fbc60ecbcacffc588b2be878cb055e2c2893f83698"
+    },
+    {
+      "version": "20260913173456",
+      "name": "noop_prepare_edge",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260913173502",
+      "name": "noop_before_edge_deploy",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260913173508",
+      "name": "noop_edge_marker",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260913173924",
+      "name": "harden_security_helpers",
+      "statement_count": 1,
+      "statement_sha256": "dcbac6fa9e83eebf1ae127517b65b1f25c5e589f2417213765b1fe0994365072"
+    },
+    {
+      "version": "20260913213607",
+      "name": "add_item_code",
+      "statement_count": 1,
+      "statement_sha256": "43b82f47aaf4023fe8153255e61313dc1b518603e81c2fe2a0c17f669bdc73a9"
+    },
+    {
+      "version": "20260914113416",
+      "name": "add_bounded_learning_sessions",
+      "statement_count": 1,
+      "statement_sha256": "7331d475fa2cbd41e8ab5dfa51fc045f88f708e4141cc96bc9e918c4ad333a70"
+    },
+    {
+      "version": "20260914125201",
+      "name": "adaptive_practice_v2",
+      "statement_count": 1,
+      "statement_sha256": "96e6c1409fdda6ee186687d1aea90fce04a00d7b1deaf6fbcaf57ca53887525a"
+    },
+    {
+      "version": "20260914130013",
+      "name": "adaptive_practice_v2_indexes",
+      "statement_count": 1,
+      "statement_sha256": "421b3c32a253d3140ebf4aac001501c6374d3e18c9b36b852b8f466fcb8bba98"
+    },
+    {
+      "version": "20260914130022",
+      "name": "adaptive_practice_v2_indexes_backfill",
+      "statement_count": 1,
+      "statement_sha256": "107a90b52fa8a08dbc6e170696446c70e294cfda6f556326e5bda23089df880d"
+    },
+    {
+      "version": "20260914130047",
+      "name": "adaptive_practice_v2_guard",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260914132802",
+      "name": "noop_check_session_runtime",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260914132825",
+      "name": "cleanup_noop_marker",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260914144223",
+      "name": "sprint6_mastery_checks",
+      "statement_count": 1,
+      "statement_sha256": "df44e4893b7eb66965570e2ae55f048d5065c25105df22c964a258e8db34eb49"
+    },
+    {
+      "version": "20260914144352",
+      "name": "sprint6_mastery_check_result_indexes",
+      "statement_count": 1,
+      "statement_sha256": "0acbf0fe900d24339047b3e45a106dc91dfe72e53dc29057fc7e9c569e372a10"
+    },
+    {
+      "version": "20260914144543",
+      "name": "sprint6_mastery_check_metadata_guard",
+      "statement_count": 1,
+      "statement_sha256": "fa042734b11ffcf865db32a0f245f162532307070a7fbab5091ec19b1c41648b"
+    },
+    {
+      "version": "20260914150742",
+      "name": "sprint7_teacher_dashboard",
+      "statement_count": 1,
+      "statement_sha256": "8b88ef84e46631a10132699bf9fd2e6b2b9982a10c55948cd29b0945349b2227"
+    },
+    {
+      "version": "20260914160603",
+      "name": "content_assessment_quality",
+      "statement_count": 1,
+      "statement_sha256": "f95aea59b4f5ff2501ba006ce307a6f0e263a4ca7dc4af1b34ec5f90062445e3"
+    },
+    {
+      "version": "20260914161238",
+      "name": "content_quality_trigger_safety",
+      "statement_count": 1,
+      "statement_sha256": "22033800f8fae7d0960b71d4cdce319de642ddce2978b9aa426fbfa15860dbbc"
+    },
+    {
+      "version": "20260914170007",
+      "name": "security_privacy_administration",
+      "statement_count": 1,
+      "statement_sha256": "420b802c3cd97f312b9e8fab9cf8d9cba72c7a32253bdea7abad6c53c43a7e90"
+    },
+    {
+      "version": "20260914214924",
+      "name": "sprint10_live_session_gate",
+      "statement_count": 1,
+      "statement_sha256": "f53b1422a2ac03a3d91c946e0cf6556d621413637d0d1b60979c4af8b4dddef3"
+    },
+    {
+      "version": "20260915200931",
+      "name": "sprint_11a_item_identity_exposure_pools",
+      "statement_count": 1,
+      "statement_sha256": "de734f0a3bf9b2bb1f68ffc447f775eca96ab0ca0531b63f969aeee7f2656c37"
+    },
+    {
+      "version": "20260915202418",
+      "name": "sprint_11b_repetition_selection_policy",
+      "statement_count": 1,
+      "statement_sha256": "4eee94c53901296d5c0c905921e5150c45b6cbe0cb590142cc73b04cd9a67a81"
+    },
+    {
+      "version": "20260915205542",
+      "name": "sprint_11c_deterministic_variants",
+      "statement_count": 1,
+      "statement_sha256": "7a92b17f7452d4c3250b3d1ef11a14459a3e12b737b163662815ae1219119eb1"
+    },
+    {
+      "version": "20260915205641",
+      "name": "sprint_11c_preview_idempotency",
+      "statement_count": 1,
+      "statement_sha256": "b63b61851244bc445892f554633f255ac56ed5446a5ab858293c42895e6c0b75"
+    },
+    {
+      "version": "20260915211445",
+      "name": "sprint_11d_conceptual_bank_expansion",
+      "statement_count": 1,
+      "statement_sha256": "66bd8badf7433f758f83eb6fd2fdb30f347b7d6c0e419dcd1f5c9dd78a7ef166"
+    },
+    {
+      "version": "20260916051509",
+      "name": "sprint_11d_partial_state_recovery",
+      "statement_count": 1,
+      "statement_sha256": "c26ab45d5d2a989e0cd21822eca7494dc5fdf7563caf98dd30aa044a1d5f6813"
+    },
+    {
+      "version": "20260916051741",
+      "name": "sprint_11d_review_safe_bank_expansion_superseded",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260916051749",
+      "name": "sprint_11d_purpose_exclusive_pools_superseded",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260916051758",
+      "name": "sprint_11d_family_audit_corrections_superseded",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260916051807",
+      "name": "sprint_11d_authored_parallel_template_semantics_superseded",
+      "statement_count": 1,
+      "statement_sha256": "354b7196c9ba5fb4b21cf615bb6ec4cd5c07503c34229feef033fc081a8c03f4"
+    },
+    {
+      "version": "20260916052844",
+      "name": "sprint_11d_fixed_audit_and_candidate_gate",
+      "statement_count": 1,
+      "statement_sha256": "7bd295010da83c4029e30837cfd227a1cbe2a045242fe43171f72015739cdbaf"
+    },
+    {
+      "version": "20260916053010",
+      "name": "sprint_11d_complete_candidate_bank",
+      "statement_count": 1,
+      "statement_sha256": "bb4afc0718aa5de69d7ee938292585ee936ba2556240cf9641b47b483d0bba47"
+    },
+    {
+      "version": "20260916053207",
+      "name": "sprint_11d_stage_candidate_pools_forms",
+      "statement_count": 1,
+      "statement_sha256": "41cd371d1c62ca81cd3f7aa474367e7e21fec61622af9e10b9a41c4696aee73e"
+    },
+    {
+      "version": "20260916053344",
+      "name": "sprint_11d_seed_index_search_path",
+      "statement_count": 1,
+      "statement_sha256": "0e53e1473b0bbd061c5a810f0d06f477eae4d2cee38b9f791cebca59301ae185"
+    },
+    {
+      "version": "20260916062342",
+      "name": "content_editor_atomic_revision",
+      "statement_count": 1,
+      "statement_sha256": "6e98d8b96949911b7e4dd0d2ba851fffbc219d6b899b548299a75e21fe61f4ed"
+    },
+    {
+      "version": "20260916062827",
+      "name": "content_editor_11d_review_hold",
+      "statement_count": 1,
+      "statement_sha256": "607586f1f7fc9e9986067599b7831d727517a881755ea4ca8c3a2c9f5c736d8a"
+    },
+    {
+      "version": "20260916121437",
+      "name": "content_curriculum_scopes",
+      "statement_count": 1,
+      "statement_sha256": "4ef4ff580edea4ea798dffef72f7e55f5a7e11a44cd13fdf5eeefa65584b3a1e"
+    },
+    {
+      "version": "20260916143809",
+      "name": "sprint_11d_activate_reviewed_bank",
+      "statement_count": 1,
+      "statement_sha256": "e10f0e1affdc377c140c8095750a53ad7876a0fc06bbb142f5f0643e05790c36"
+    },
+    {
+      "version": "20260916144018",
+      "name": "sprint_11e_pilot_item_analytics",
+      "statement_count": 1,
+      "statement_sha256": "3b2b0d23e2a4064ffcd35b874925f041c0a91b1487af0988d58fecbefff80034"
+    },
+    {
+      "version": "20260918075120",
+      "name": "sprint_11i_standards_source_registry",
+      "statement_count": 1,
+      "statement_sha256": "57f183d3f22db753453b0f207375e7b8ddd706a797529341a536c90269f0779d"
+    },
+    {
+      "version": "20260918075215",
+      "name": "sprint_11i_registry_advisor_hardening",
+      "statement_count": 1,
+      "statement_sha256": "b1070febcb4fe93a345789e4e22d46cd86f9dd32cba0409bc1a3976528ee0825"
+    },
+    {
+      "version": "20260918204817",
+      "name": "sprint_11j_physics7_current_standard_reconciliation",
+      "statement_count": 1,
+      "statement_sha256": "87c773d20eadb2bcbbfee7f29a9ca2c00c46143bc40e07ee8772a1bc044ab691"
+    },
+    {
+      "version": "20260918204906",
+      "name": "sprint_11j_reconciliation_advisor_hardening",
+      "statement_count": 1,
+      "statement_sha256": "c26d3145fca277c0fd64920e4449013f4fe0e328462eb77e27bc2478f61f10d5"
+    },
+    {
+      "version": "20260918205807",
+      "name": "sprint_11j_preserve_official_outcome_wording",
+      "statement_count": 1,
+      "statement_sha256": "d1a8a886e8e7124dd3f6276d88349e1aa9e44f3dc90c31e4a28b54244aa817ca"
+    },
+    {
+      "version": "20260919064524",
+      "name": "sprint_11k_curriculum_releases_and_evidence_provenance",
+      "statement_count": 1,
+      "statement_sha256": "f2d42947a61b5d1bbc0394695739f30e3b92839b7aa931c61b65b92fb65168cf"
+    },
+    {
+      "version": "20260919064837",
+      "name": "sprint_11k_advisor_hardening",
+      "statement_count": 1,
+      "statement_sha256": "1ec071ddd762e14e1d33698ee3a3df09886b44d52bb2897097354cfb72792ef8"
+    },
+    {
+      "version": "20260919114146",
+      "name": "sprint_11l_pilot_evidence_classification",
+      "statement_count": 1,
+      "statement_sha256": "386a624b9905dfbcf599b8b684a6b878c0b17e1b93db8a0575a433786a1882cf"
+    },
+    {
+      "version": "20260920111625",
+      "name": "sprint_12a_hinting_remediation_v2",
+      "statement_count": 1,
+      "statement_sha256": "5b3628aeee35fda32a8dc02aac2cc077cbfbde22400defcbb8a0fe1394e1c2e4"
+    },
+    {
+      "version": "20260920111829",
+      "name": "sprint_12a_hinting_v2_index_cleanup",
+      "statement_count": 1,
+      "statement_sha256": "4f7350a8755cd455b5e2ac3378bdafd52e84df9cb0e86312e2b26aa8d8aa38dc"
+    },
+    {
+      "version": "20260920164534",
+      "name": "sprint_12a_freeze_learning_model_baseline",
+      "statement_count": 1,
+      "statement_sha256": "0a2b7d5a41c98486da62298d5ed0dbc8e921acb13004feca931adee7739a4a9b"
+    },
+    {
+      "version": "20260920164619",
+      "name": "sprint_12a_learning_model_baseline_indexes",
+      "statement_count": 1,
+      "statement_sha256": "0f2ec5ab596afaf704fcb8beb46f97b798bf4e3ae190a44ca749a6c06ae3c86d"
+    },
+    {
+      "version": "20260920165400",
+      "name": "sprint_12a_calibration_evidence_contract",
+      "statement_count": 1,
+      "statement_sha256": "025d9d5314e89a38195e31b74caa6d38df79bc0a27b73281600012405b7eb2f6"
+    },
+    {
+      "version": "20260920165836",
+      "name": "sprint_12a_calibration_metric_set",
+      "statement_count": 1,
+      "statement_sha256": "a416ad1ae897a0aaeb30213e1c482443329dfabacaf2924d984e58e6f7969ddf"
+    },
+    {
+      "version": "20260920172952",
+      "name": "sprint_12a_session_model_provenance",
+      "statement_count": 1,
+      "statement_sha256": "f8b754e21b426665c590f5f920c329ffb147553788576ca80802db6855798c52"
+    },
+    {
+      "version": "20260920173105",
+      "name": "sprint_12a_remediation_guide_provenance",
+      "statement_count": 1,
+      "statement_sha256": "48436a249484ff889bfcd2ecfb81da96fa72793036b287d314d248aa6817639c"
+    },
+    {
+      "version": "20260920173230",
+      "name": "sprint_12a_recommendation_telemetry",
+      "statement_count": 1,
+      "statement_sha256": "6eabc456b348e87355bc15ee903745ec81f8aaaf4014e3a5c6cb8f3ae7fa8377"
+    },
+    {
+      "version": "20260920173910",
+      "name": "sprint_12a_audited_calibration_r2",
+      "statement_count": 1,
+      "statement_sha256": "0e6050cccfc10b915d27c8d9580a7b77be1cf3f184dcb1b9b16eeebb62173159"
+    },
+    {
+      "version": "20260920181523",
+      "name": "sprint_12a_closure_corrections",
+      "statement_count": 1,
+      "statement_sha256": "9626aea84ba1b65c20b1d8bc45a92f4d2126e475edc4071537bd3e3f136b9733"
+    },
+    {
+      "version": "20260920181727",
+      "name": "sprint_12a_runtime_build_activation",
+      "statement_count": 1,
+      "statement_sha256": "63e770c50c7e8d074bad2e2d5dee081fbcbc61ad65cb1c7dac883efd607ad3d3"
+    },
+    {
+      "version": "20260920181838",
+      "name": "sprint_12a_evidence_view_preservation",
+      "statement_count": 1,
+      "statement_sha256": "5adeff38aa251b1dae36aa40f7ee800a7c42519dec1ed925e60a6f9d30bbefda"
+    },
+    {
+      "version": "20260920184151",
+      "name": "sprint_12a4_calibration_analysis_views",
+      "statement_count": 1,
+      "statement_sha256": "2918c64e7b5dac7bd78a86520712e4fc6d5d15f6967767651482f1f6f9144c19"
+    },
+    {
+      "version": "20260920193624",
+      "name": "sprint_12a4_audit_corrections",
+      "statement_count": 1,
+      "statement_sha256": "2c63fe4d87c20ca7faf8ee3dca81aaa31510a13ff9e9cd2406b84bb17ad870af"
+    },
+    {
+      "version": "20260920193935",
+      "name": "sprint_12a4_scope_indexes",
+      "statement_count": 1,
+      "statement_sha256": "041b7f76a7eaef18a314741ff5d9e1c8500050cad1afa4917d8235ec53efc9c1"
+    },
+    {
+      "version": "20260921095307",
+      "name": "sprint_12a5_calibration_decision_protocol",
+      "statement_count": 1,
+      "statement_sha256": "7ea50a0b2f52291bcf5610031a62407945e541802dd35272dba13de0b219385a"
+    },
+    {
+      "version": "20260921095351",
+      "name": "sprint_12a5_protocol_indexes",
+      "statement_count": 1,
+      "statement_sha256": "42a258ed0c7525116d09c02e90ff66d50c9926bdb7a666bbabbc7c92b06dc625"
+    },
+    {
+      "version": "20260921101010",
+      "name": "sprint_11_5_single_adult_feasibility_pilot",
+      "statement_count": 1,
+      "statement_sha256": "8c9f578427714681c03a2b978996a2fdf91d096c8ec6a18fe6ccdae2fc83097d"
+    },
+    {
+      "version": "20260921204507",
+      "name": "sprint_12_5_mastery_lifecycle_foundation",
+      "statement_count": 1,
+      "statement_sha256": "e07e3986e8795a1e38fdf015759944b05051ea90f3950cd0a22b7979f375a350"
+    },
+    {
+      "version": "20260921204923",
+      "name": "sprint_12_5_runtime_build_activation",
+      "statement_count": 1,
+      "statement_sha256": "44342ac898c4a549dc4093dd2b9f17760d77591f3ae7694cdef130fb80a616aa"
+    },
+    {
+      "version": "20260921205236",
+      "name": "sprint_12_5_lifecycle_indexes",
+      "statement_count": 1,
+      "statement_sha256": "8ce2f5b8989df75b8219d0913a6817579bf37f6857824722034e640ff75f91d4"
+    },
+    {
+      "version": "20260921210036",
+      "name": "sprint_12_5_chapter_review_gate",
+      "statement_count": 1,
+      "statement_sha256": "b64da8c8f99d556f119a873e7ede5ccee83bc4d05f52ad31525dcc2b1e98da05"
+    },
+    {
+      "version": "20260921210730",
+      "name": "sprint_12_5_chapter_review_runtime",
+      "statement_count": 1,
+      "statement_sha256": "3f5448ad688f95b641f0c58002f511859b4cf5a5ed6629e6e63d7e402551ff37"
+    },
+    {
+      "version": "20260921211032",
+      "name": "sprint_12_5_chapter_review_blueprint",
+      "statement_count": 1,
+      "statement_sha256": "689b55838e25dee226362d7eced9a100e551ce2be8b9ed0fccc9bbb9d58f93df"
+    },
+    {
+      "version": "20260921211234",
+      "name": "sprint_12_5_review_runtime_correction",
+      "statement_count": 1,
+      "statement_sha256": "9fc8d6a7916acb6075a5fda6cd7dfc3912260dfc6b1f0cdb0340c15d0fa5b2a1"
+    },
+    {
+      "version": "20260921211318",
+      "name": "sprint_12_5_review_indexes",
+      "statement_count": 1,
+      "statement_sha256": "75572f1cea090860be9e8443141943f429962d3fed04ee3eea04066c085650fa"
+    },
+    {
+      "version": "20260921214002",
+      "name": "sprint_12_5_review_cycles",
+      "statement_count": 1,
+      "statement_sha256": "ccc97af637870b5a89b8b00a58913f8449d63c82a085dc56dd2156ccbe1c9710"
+    },
+    {
+      "version": "20260921214319",
+      "name": "sprint_12_5_review_cycle_runtime",
+      "statement_count": 1,
+      "statement_sha256": "9d5f79bb67181bb69d0769efa07500a1ab807e44219c0a3b6aa1d8f878e9b0f8"
+    },
+    {
+      "version": "20260922063714",
+      "name": "sprint_12_5_analytics_recommendation_runtime",
+      "statement_count": 1,
+      "statement_sha256": "04ca90e168837f4b4b56c38de41e1526f239eb8d1499a0bb5feee9c97e21e9bf"
+    },
+    {
+      "version": "20260922105355",
+      "name": "sprint_12_5_integrity_coverage_and_closure",
+      "statement_count": 1,
+      "statement_sha256": "e3e7f312bf43eb1396faaf7c76236445d4dfa27353d5f134fbfc06c92beaa740"
+    },
+    {
+      "version": "20260922105823",
+      "name": "sprint_12_5_integrity_coverage_runtime",
+      "statement_count": 1,
+      "statement_sha256": "9ceb4fa9d6c65e1b3d7a55faa42a821d871c24b7b346c3268c84c9bd24297a49"
+    },
+    {
+      "version": "20260922111739",
+      "name": "sprint_12_5_chapter_review_exposure_integration",
+      "statement_count": 1,
+      "statement_sha256": "988f1636b47d73d329f18a510fc1b69baca54f95e526162ef566f609c253bcf7"
+    },
+    {
+      "version": "20260922111936",
+      "name": "sprint_12_5_chapter_review_exposure_runtime",
+      "statement_count": 1,
+      "statement_sha256": "4599e3bbb080b1eb27164422970a1607136c16276e8719a33ad306ef01814df8"
+    },
+    {
+      "version": "20260922114732",
+      "name": "sprint_12_5_teacher_localization_runtime",
+      "statement_count": 1,
+      "statement_sha256": "e7c5c3574b150cbacd18ad7c62bb846a9e4a82a8529d440c48b0d071d9518e01"
+    },
+    {
+      "version": "20260922201040",
+      "name": "sprint_12_5_mastery_retry_eligibility_runtime",
+      "statement_count": 1,
+      "statement_sha256": "d51d7b7c2ecd84e4f6c9329c556c166cba561851faf95514704f265b43ecf49e"
+    },
+    {
+      "version": "20260922202129",
+      "name": "sprint_12_5_mastery_retry_start_gate_runtime",
+      "statement_count": 1,
+      "statement_sha256": "f5663669ee02d227fccf2ebff9034e7fa28143665e68dc9b822299eeee099b2c"
+    },
+    {
+      "version": "20260922212021",
+      "name": "global_mcq_option_presentation_integrity",
+      "statement_count": 1,
+      "statement_sha256": "504a3b9dd03d273199f9b1d16d91d9a98058afcc0b4c572bfc807419fe9f669a"
+    },
+    {
+      "version": "20260922212309",
+      "name": "global_mcq_option_presentation_activation",
+      "statement_count": 1,
+      "statement_sha256": "ac6a62b540b04405c8e3a07bef22292b7a6a3fea2795e5ec85033bc3ead1833f"
+    },
+    {
+      "version": "20260922212645",
+      "name": "global_mcq_option_presentation_runtime",
+      "statement_count": 1,
+      "statement_sha256": "3f54179618a8342ca2eafa1900cc2b0d1d9cafa3d24ddefb5427a289c67def64"
+    },
+    {
+      "version": "20260922213212",
+      "name": "global_mcq_option_semantic_guard",
+      "statement_count": 1,
+      "statement_sha256": "3ca4fce5b699cf9269a036f2453b8c01e4ebb158d5f49c31bd2fceeca4f432d3"
+    },
+    {
+      "version": "20260922213314",
+      "name": "global_mcq_option_presentation_runtime_final",
+      "statement_count": 1,
+      "statement_sha256": "f00bd2d96345890bd119ef67712a34683a4bc68cdacd797bd57443fce22dbf9f"
+    },
+    {
+      "version": "20260923181904",
+      "name": "sprint_14a_academic_identity_foundation",
+      "statement_count": 1,
+      "statement_sha256": "ecbbdb2746ca558a56ce16f67c3bb58135659cd32648a90036870b9967e2c3b0"
+    },
+    {
+      "version": "20260923182829",
+      "name": "sprint_14a_academic_identity_fk_indexes",
+      "statement_count": 1,
+      "statement_sha256": "23766d6fd581e2ce0eed7186f22e3207234e0a419d68dac80e5dc59bd53c9496"
+    },
+    {
+      "version": "20260923183846",
+      "name": "sprint_14a_legacy_class_boundary",
+      "statement_count": 1,
+      "statement_sha256": "c52f1803eea3537fee2d5cb792c11638821dd94fcbb4f82337b9004029acdc4c"
+    },
+    {
+      "version": "20260923185605",
+      "name": "sprint_14b_targeted_invitations",
+      "statement_count": 1,
+      "statement_sha256": "aaed0ad1e04b7e1297ee8f9bb7bcea32204165ca35719f74cd17992c0756e7fd"
+    },
+    {
+      "version": "20260923190451",
+      "name": "sprint_14b_invitation_role_cast",
+      "statement_count": 1,
+      "statement_sha256": "b5653cfb75642a6b2a3885da7a1d776ad71701908992d4b7f9a6894ee27dca50"
+    },
+    {
+      "version": "20260923191041",
+      "name": "sprint_14b_existing_account_email_lookup",
+      "statement_count": 1,
+      "statement_sha256": "c5c4472081cfc6aefd91a6e5849a8cbe3139746c6f9713d778259ddc8a05aa7b"
+    },
+    {
+      "version": "20260923193320",
+      "name": "sprint_14b_membership_termination",
+      "statement_count": 1,
+      "statement_sha256": "e1ed9e21b02d4a129da6fd0054f73324821bbc730cdf29b90b57e4e08eb6fd36"
+    },
+    {
+      "version": "20260923193706",
+      "name": "sprint_14b_teacher_assignment_termination_race",
+      "statement_count": 1,
+      "statement_sha256": "0c971ceb9e7636eea7ddf9211434aeff46c2bd7c74660701a054508c773d6b59"
+    },
+    {
+      "version": "20260923195110",
+      "name": "sprint_14b_school_admin_role",
+      "statement_count": 1,
+      "statement_sha256": "d80c6fed821950fd8334a29c20a287b6086f8846bea996bb2605bda0db20d283"
+    },
+    {
+      "version": "20260923195112",
+      "name": "sprint_14b_school_bootstrap",
+      "statement_count": 1,
+      "statement_sha256": "8e670c0f6e8f1b0b16c28e81830d3b319338b3d3407db8127453fa4530e1924f"
+    },
+    {
+      "version": "20260923195835",
+      "name": "sprint_14b_school_bootstrap_boundary",
+      "statement_count": 1,
+      "statement_sha256": "c0734db4ebc773a2984774ed68786425a3e9acf4c32ebab2e3258290030ecedb"
+    },
+    {
+      "version": "20260923200017",
+      "name": "sprint_14b_school_read_policy",
+      "statement_count": 1,
+      "statement_sha256": "8282dac6afa5f05dc66d55f86035274daf8fe2fb962e2243d7ad847ce7263ffa"
+    },
+    {
+      "version": "20260923200128",
+      "name": "sprint_14b_bootstrap_evidence_guard",
+      "statement_count": 1,
+      "statement_sha256": "371703fff3306c7eb704ef8c7c6e3373eafb50c00385267be16f20b6aa434bb5"
+    },
+    {
+      "version": "20260924051125",
+      "name": "sprint_14b_staff_provisioning",
+      "statement_count": 1,
+      "statement_sha256": "852a1ed3554ffa9068972c34277b31eb9ab55050880b9a420d7c114092c9e696"
+    },
+    {
+      "version": "20260924051127",
+      "name": "sprint_14b_teacher_subject_enforcement",
+      "statement_count": 1,
+      "statement_sha256": "73a5a1db553690bc70d1a995500c2d594790a11598e72794245e81f71b1d8555"
+    },
+    {
+      "version": "20260924051342",
+      "name": "sprint_14b_staff_invite_recipient_lookup",
+      "statement_count": 1,
+      "statement_sha256": "fde40cce119fcbc45bc0d69e122f66c49f0e0d17be2bffaff4dc85bfcb31ec57"
+    },
+    {
+      "version": "20260924051430",
+      "name": "sprint_14b_staff_invite_audit_actor",
+      "statement_count": 1,
+      "statement_sha256": "6f37638b7f09b53d0a77a659ef321ebdabb4f007325484450408bfa0d9b4444b"
+    },
+    {
+      "version": "20260924051548",
+      "name": "sprint_14b_assignment_guard_privilege",
+      "statement_count": 1,
+      "statement_sha256": "642a264c45eacf6cb7a7554bc64c526141d31925ba351a9b62a2b451beeef192"
+    },
+    {
+      "version": "20260924051839",
+      "name": "sprint_14b_school_subject_options",
+      "statement_count": 1,
+      "statement_sha256": "5c1dc459c339094f61f2d0faafc75fc9826c59e1419e512f5c14fbfdf4cf3f6e"
+    },
+    {
+      "version": "20260924052104",
+      "name": "sprint_14b_teacher_subject_fk_index",
+      "statement_count": 1,
+      "statement_sha256": "7f00f4f0aa86547e07e878af4a3d229f8ec32c6591f7203d3b260db6133308d4"
+    },
+    {
+      "version": "20260924052413",
+      "name": "sprint_14b_teacher_activation_history_guard",
+      "statement_count": 1,
+      "statement_sha256": "0ce331100471bcbbe43e1c2abe7b03378bc96a59eaad0f38c64e1f28245fd9ce"
+    },
+    {
+      "version": "20260924102647",
+      "name": "sprint_14b_staff_invitation_management",
+      "statement_count": 1,
+      "statement_sha256": "63ca1d73cdbc36ca7521aa3f3dd5d9fe21efe2cec064288d4dfaf9ee373135f0"
+    },
+    {
+      "version": "20260924115252",
+      "name": "sprint_14b_generated_school_codes",
+      "statement_count": 1,
+      "statement_sha256": "bb85303e22a4b63b62105589e3fa0503ed572cfdada08941d11aa0f53303f14a"
+    },
+    {
+      "version": "20260924123021",
+      "name": "sprint_14b_staff_invitation_resend",
+      "statement_count": 1,
+      "statement_sha256": "2aa6eaf06f610b34cbc02d5a3dd749c63d63e800d6366a2587c5ca34f7be1287"
+    },
+    {
+      "version": "20260924171035",
+      "name": "admin_account_archiving",
+      "statement_count": 1,
+      "statement_sha256": "18df9c808d28454cc99057abf3205b71ce889e2b607dc3413870676b4503d15c"
+    },
+    {
+      "version": "20260925075624",
+      "name": "sprint_14b_school_class_workspace",
+      "statement_count": 1,
+      "statement_sha256": "8aa28f09622c58e45eea922bfe4eafab023cc13aa957f1d393d5ca03a87e33a9"
+    },
+    {
+      "version": "20260925110623",
+      "name": "school_teacher_roster",
+      "statement_count": 1,
+      "statement_sha256": "fc618120812e242237420d975098069f7526477caa0ab716c1d215f4bf0c834f"
+    },
+    {
+      "version": "20260925112914",
+      "name": "school_admin_archiving",
+      "statement_count": 1,
+      "statement_sha256": "0b5c2a22ec9732e88dc54ac42c4b5c14cad1895d49cf19b31f7e18b2ff261141"
+    },
+    {
+      "version": "20260925122948",
+      "name": "protect_master_admin_identity",
+      "statement_count": 1,
+      "statement_sha256": "99a8bd4f8763d58f6c6b5da4c884375ae1586eea4c97cf5deb7c9949bfe4f03a"
+    },
+    {
+      "version": "20260925132359",
+      "name": "lock_profile_account_types",
+      "statement_count": 1,
+      "statement_sha256": "e46f29b51b1fb6ab611a10307d3f4a31bb267c2bb5ec81af66ff457aaf3bb685"
+    },
+    {
+      "version": "20260925200859",
+      "name": "sprint_14c_student_onboarding_context",
+      "statement_count": 1,
+      "statement_sha256": "a89db813a5df72060ba3bc652e98c8ad45fc75bf32ad01cec94685a70c044ed1"
+    },
+    {
+      "version": "20260925201258",
+      "name": "sprint_14c_context_fk_indexes",
+      "statement_count": 1,
+      "statement_sha256": "947f9b6bf82d03c980004ba70da18cb60cd7ceb119e1c1d63e601f9b95042b0f"
+    },
+    {
+      "version": "20260925202000",
+      "name": "sprint_14c_onboarding_grade_type",
+      "statement_count": 1,
+      "statement_sha256": "4244dc0df3dc5c4e61f697800b46dc5180534a36ce0d49f32f79c7bb6685c838"
+    },
+    {
+      "version": "20260925215705",
+      "name": "sprint_14c_teacher_owned_student_invitations",
+      "statement_count": 1,
+      "statement_sha256": "af6bbed31c58a2245ef7d05984053052f7723c48831f6c5b27a687ec7066be5a"
+    },
+    {
+      "version": "20260927185025",
+      "name": "single_initial_diagnostic",
+      "statement_count": 1,
+      "statement_sha256": "915f558634caf6c19b494f8a5067c6adf9d8feed901191c47280dddcc5a3a061"
+    },
+    {
+      "version": "20260927185225",
+      "name": "single_initial_diagnostic_runtime",
+      "statement_count": 1,
+      "statement_sha256": "9d13f5c0c53fbdb42f61790d6507222da2babf4485f8ed76c4003020b1aa5643"
+    },
+    {
+      "version": "20260927191312",
+      "name": "chapter_diagnostic_practice_gate",
+      "statement_count": 1,
+      "statement_sha256": "02749a4a493838ebf366d8826f23266142cc0413405ad00f8893776e33b78d30"
+    },
+    {
+      "version": "20260927191333",
+      "name": "chapter_diagnostic_practice_gate_runtime",
+      "statement_count": 1,
+      "statement_sha256": "270cba2ec411d44ea656112dad1eb611732d17bbf48d725c5c3bf490e9082881"
+    },
+    {
+      "version": "20260927194633",
+      "name": "sprint_14b_teacher_offboarding_closure",
+      "statement_count": 1,
+      "statement_sha256": "968694799542e96f44f051e048cf7a6f20cab85635b945e36c99ac52afaee3e2"
+    },
+    {
+      "version": "20260930194814",
+      "name": "sprint_15a_remediation_authoring_foundation",
+      "statement_count": 1,
+      "statement_sha256": "e5202a7ef875dc5d40f24aad2704532fbf95cd12087041fd1db086f270c9c9cb"
+    },
+    {
+      "version": "20260930195107",
+      "name": "sprint_15a_authoring_parent_index",
+      "statement_count": 1,
+      "statement_sha256": "c7df17dec409886de50ba1d742baaad0707bc13d442b148c9e61ca6da3be82f6"
+    },
+    {
+      "version": "20260930204139",
+      "name": "sprint_15a_authoring_role_cast",
+      "statement_count": 1,
+      "statement_sha256": "d989a6c5f4c0feb62340f1a9756583bb8d1dcb2ceedd5ec973f85d74b0bee135"
+    },
+    {
+      "version": "20260930214016",
+      "name": "sprint_15b_governed_guide_creation",
+      "statement_count": 1,
+      "statement_sha256": "7dd45d9e28ea47564ac6cf71a5a2084cbe62cc09f806cdf7b4ae5c976fb60207"
+    },
+    {
+      "version": "20260930214023",
+      "name": "sprint_15b_multi_unit_release_governance",
+      "statement_count": 1,
+      "statement_sha256": "2bc8f7f91ed2afe1ac254992ceb965452db8ab6f032fc631db5d1c20089b33b8"
+    },
+    {
+      "version": "20260930214031",
+      "name": "sprint_15b1_physics7_chapter_ii_foundation",
+      "statement_count": 1,
+      "statement_sha256": "d4923047b70badacad3cafbd45fa47245eb6dc5ce342de80301715304c8ace9f"
+    },
+    {
+      "version": "20260930214346",
+      "name": "sprint_15b_release_reconciliation_index",
+      "statement_count": 1,
+      "statement_sha256": "e02eafea8854cbe7900388faf6cebe9734fd41fa211207f5b90602bc7085e667"
+    },
+    {
+      "version": "20260930220743",
+      "name": "sprint_15b2_chapter_ii_first_item_family",
+      "statement_count": 1,
+      "statement_sha256": "f26d6a26504eb26dbca13ea5a08651b1d922ff0d6cf76a576c55e4c8ae7e8ada"
+    },
+    {
+      "version": "20260930221946",
+      "name": "sprint_15b2_authored_catalogue_qa_fix",
+      "statement_count": 1,
+      "statement_sha256": "29a998ab3ee3a0e697e46f018bb6d46530dea90ee0fd07db85c8aee2a0ebd94d"
+    },
+    {
+      "version": "20261001065908",
+      "name": "content_revision_preserve_draft_misconceptions",
+      "statement_count": 1,
+      "statement_sha256": "91d16971f1b9d2bbc60c26cbee69bea9b72548026d39e41cf68be6cbdcf47508"
+    },
+    {
+      "version": "20261001073050",
+      "name": "sprint_15b3_mapping_integrity_gate",
+      "statement_count": 1,
+      "statement_sha256": "b5cf945dfb6a380f2ebb912f82293a16028b5947c97442bf1786bee2d1303f9d"
+    },
+    {
+      "version": "20261001073409",
+      "name": "sprint_15b3_mapping_trigger_privileges",
+      "statement_count": 1,
+      "statement_sha256": "16b79c25c63ea366f1b1fc67b2bc208ab80c1d5fd136e23f16cb6cd7b6ea2d99"
+    },
+    {
+      "version": "20261001121229",
+      "name": "sprint_15b3_activate_approved_misconceptions",
+      "statement_count": 1,
+      "statement_sha256": "ca779f3600ebfa3a47d4563107978effdb2a8ce1cc32ea6b9c587c4e4df11f30"
+    },
+    {
+      "version": "20261001131429",
+      "name": "sprint_15b4_second_item_family",
+      "statement_count": 1,
+      "statement_sha256": "95d9086ed243b95ee4185606a07978ca8a729b811aeb4f8f1446a45a4d40c0a5"
+    },
+    {
+      "version": "20261001145034",
+      "name": "sprint_15b5_third_item_family",
+      "statement_count": 1,
+      "statement_sha256": "c81711121c255c9f3cb0ffcf4c3a94e0c3f536d3f2da8856e36b0903ac087552"
+    },
+    {
+      "version": "20261001152808",
+      "name": "sprint_15b_answer_position_integrity",
+      "statement_count": 1,
+      "statement_sha256": "455cc8acb01e7d917f08e60bce109b402a16803abfe4a3f9c7abe190dc78ef17"
+    },
+    {
+      "version": "20261001163711",
+      "name": "sprint_15b6_fourth_item_family",
+      "statement_count": 1,
+      "statement_sha256": "ad9b6536163f9bb7f7eeb2babb4a8f7df69d56b336261ab13ad555fce6b059ae"
+    },
+    {
+      "version": "20261001171021",
+      "name": "sprint_15b7_fifth_item_family",
+      "statement_count": 1,
+      "statement_sha256": "13693c47434480dbf3b1ae3465528f461abdf4826b28a4e01e11a29d8dce7a5e"
+    },
+    {
+      "version": "20261002072909",
+      "name": "sprint_15b8_prospective_evidence_blueprint",
+      "statement_count": 1,
+      "statement_sha256": "9393da9e7206eb99ea65cef16a6bb1d20f58215c48e76e7290f3b9ebafea42b2"
+    },
+    {
+      "version": "20261002073239",
+      "name": "sprint_15b8_unique_evidence_flag",
+      "statement_count": 1,
+      "statement_sha256": "8c58fc6503c122506785394c25182bfe3255f7942695216d9e26f67d24668b79"
+    },
+    {
+      "version": "20261002080734",
+      "name": "sprint_15b8_atomic_family_approval",
+      "statement_count": 1,
+      "statement_sha256": "4b1dda4a167681eb3e65a653f1df7aa2fce89b969594ce1a230b9bd7ed89e241"
+    },
+    {
+      "version": "20261003224749",
+      "name": "phase3_analytics_answered_help_scope",
+      "statement_count": 1,
+      "statement_sha256": "23064e59a69ac452076e3ae74204daa9f4897b14307653067df363408bbd7d29"
+    },
+    {
+      "version": "20261004100828",
+      "name": "atomic_answer_mastery_evidence",
+      "statement_count": 1,
+      "statement_sha256": "d7da2710f43e46e5c3e28dd6d6fce82e66d4ba43dd9559d3e4fa405fb0b84498"
+    },
+    {
+      "version": "20261004101010",
+      "name": "atomic_answer_runtime_provenance",
+      "statement_count": 1,
+      "statement_sha256": "06467a2ef83bb79a7c58f4457be242ada1df39c6bd1032badf33244096d403ad"
+    },
+    {
+      "version": "20261005083017",
+      "name": "sprint_15b9_seventh_item_family",
+      "statement_count": 1,
+      "statement_sha256": "6585d10ee7f52e7391b4427df922dd5cb1ecaca3586b20b3711ef28c915f5aaf"
+    },
+    {
+      "version": "20261005090747",
+      "name": "sprint_15b10_eighth_item_family",
+      "statement_count": 1,
+      "statement_sha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237"
+    },
+    {
+      "version": "20261005165520",
+      "name": "misconception_review_workspace",
+      "statement_count": 1,
+      "statement_sha256": "947c3e2420e61a301d149fd6877c251adb582de887c5358a6b33bf10bf5a5e8d"
+    },
+    {
+      "version": "20261006062951",
+      "name": "sprint_15b12b_policy_session_bindings",
+      "statement_count": 1,
+      "statement_sha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137"
+    },
+    {
+      "version": "20261006080021",
+      "name": "sprint_15b12c_learning_runtime",
+      "statement_count": 1,
+      "statement_sha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314"
+    },
+    {
+      "version": "20261006080857",
+      "name": "sprint_15b12c_runtime_provenance",
+      "statement_count": 1,
+      "statement_sha256": "0fcf47dbf480be7c567fd2f8ba6e9605aa75014ef230d9745bc032e20a128534"
+    },
+    {
+      "version": "20261006091534",
+      "name": "sprint_15b12d_student_dashboard_read",
+      "statement_count": 1,
+      "statement_sha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf"
+    },
+    {
+      "version": "20261006091838",
+      "name": "sprint_15b12d_runtime_provenance",
+      "statement_count": 1,
+      "statement_sha256": "39d5e509b1e4dfc28167c6520c831228b334fc62c00d7adf370d0bba61491fa9"
+    },
+    {
+      "version": "20261006094301",
+      "name": "sprint_15b12d_dashboard_acceptance_provenance",
+      "statement_count": 1,
+      "statement_sha256": "e2e86bbfa46a6a9d57388a861ea0e399db58b1dc919938040fd9f2d8f4fcc67d"
+    },
+    {
+      "version": "20261006101003",
+      "name": "sprint_15b12d_batched_context_provenance",
+      "statement_count": 1,
+      "statement_sha256": "d6ae470c9774f5443f7fe0cc4788647ae0eaa4f0709f4ec1b27a9bf7f91b1525"
+    },
+    {
+      "version": "20261006113145",
+      "name": "sprint_15b12e_dashboard_uuid_provenance",
+      "statement_count": 1,
+      "statement_sha256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0"
+    },
+    {
+      "version": "20261006140336",
+      "name": "sprint_15b13_s02_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "fd5df47ee45a415665b68dde76829790b88679a1b36a2a7067f2b0a505d481d4"
+    },
+    {
+      "version": "20261006155942",
+      "name": "sprint_15b13_s02_practice_completion",
+      "statement_count": 1,
+      "statement_sha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7"
+    },
+    {
+      "version": "20261006171437",
+      "name": "sprint_15b13_s02_i10_diversity_revision",
+      "statement_count": 1,
+      "statement_sha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df"
+    },
+    {
+      "version": "20261006190037",
+      "name": "sprint_15b13_s03_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a"
+    },
+    {
+      "version": "20261006202205",
+      "name": "sprint_15b13_s04_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb"
+    },
+    {
+      "version": "20261007071149",
+      "name": "sprint_15b13_s05_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "a26099a632bd5c80fa0aeb01388f06dd63ea3a3a33106302a12027ff94d17f91"
+    },
+    {
+      "version": "20261007080810",
+      "name": "sprint_15b13_s06_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310"
+    },
+    {
+      "version": "20261007134437",
+      "name": "sprint_15b13_s07_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41"
+    },
+    {
+      "version": "20261007173858",
+      "name": "sprint_15b13_s08_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094"
+    },
+    {
+      "version": "20261007191924",
+      "name": "sprint_15b13_s09_practice_expansion",
+      "statement_count": 1,
+      "statement_sha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb"
+    },
+    {
+      "version": "20261013065104",
+      "name": "protect_direct_question_reads",
+      "statement_count": 1,
+      "statement_sha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a"
+    },
+    {
+      "version": "20261013101644",
+      "name": "disjoint_curriculum_release_units",
+      "statement_count": 1,
+      "statement_sha256": "fa56ebd36865c813499762a4c6d1ec51fca582c90ccc35a7c3942194b546154a"
+    },
+    {
+      "version": "20261013101825",
+      "name": "governed_mastery_form_selection",
+      "statement_count": 1,
+      "statement_sha256": "d3638976d1ab90824cb1a68915048e2eafc196500cae870147d259335818e12a"
+    },
+    {
+      "version": "20261013160458",
+      "name": "sprint_15c2_chapter_iii_draft_foundation",
+      "statement_count": 1,
+      "statement_sha256": "a47c4941b88969d7451b4e5918c2fc4bfba5bb21d260e8411b6b91901af7be3c"
+    },
+    {
+      "version": "20261015163519",
+      "name": "sprint_15c15_assessment_policy_v2",
+      "statement_count": 1,
+      "statement_sha256": "ec8839020cd43b96ae222c4dd8324bfd743b47bd626c2faf0171a74df6b8bb49"
+    },
+    {
+      "version": "20261015163749",
+      "name": "sprint_15c15_runtime_provenance",
+      "statement_count": 1,
+      "statement_sha256": "4bb15e61138d0c1e03e88790d7ae3daa219368fb1d2fc86ed57f61a2bf88e268"
+    },
+    {
+      "version": "20261020112724",
+      "name": "sprint_16_1b_written_work",
+      "statement_count": 1,
+      "statement_sha256": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4"
+    },
+    {
+      "version": "20261020140928",
+      "name": "sprint_16_1b_typed_fields",
+      "statement_count": 1,
+      "statement_sha256": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15"
+    },
+    {
+      "version": "20261020153856",
+      "name": "sprint_16_1b_matching_ordering",
+      "statement_count": 1,
+      "statement_sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805"
+    },
+    {
+      "version": "20261020170445",
+      "name": "sprint_16_1b_protected_audio",
+      "statement_count": 1,
+      "statement_sha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053"
+    },
+    {
+      "version": "20261020182309",
+      "name": "sprint_16_1b_shared_task_sets",
+      "statement_count": 1,
+      "statement_sha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c"
+    },
+    {
+      "version": "20261021220954",
+      "name": "sprint_16_1c_assessed_listening",
+      "statement_count": 1,
+      "statement_sha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af"
+    },
+    {
+      "version": "20261022144639",
+      "name": "sprint_16_1c_unit_material_review",
+      "statement_count": 1,
+      "statement_sha256": "b3de3ddf5eeb2a4e8bb336fc3fe6d2b30068688c23740a52aa80b9656d07be1e"
+    },
+    {
+      "version": "20261022170732",
+      "name": "sprint_16_1c_unit_guide_delivery",
+      "statement_count": 1,
+      "statement_sha256": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3"
+    },
+    {
+      "version": "20261023064305",
+      "name": "sprint_16_1c_audio_progress_jitter",
+      "statement_count": 1,
+      "statement_sha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e"
+    },
+    {
+      "version": "20261023070516",
+      "name": "sprint_16_1c_audio_progress_provenance",
+      "statement_count": 1,
+      "statement_sha256": "aceccbd39018a6695e883ad2fda4b7423609c8d65be0b27e6db1ab3be149174c"
+    },
+    {
+      "version": "20261027121246",
+      "name": "sprint_16_5b_supplementary_materials",
+      "statement_count": 1,
+      "statement_sha256": "6ebd57050df0a20bd5d87d0b93f8bc8f05274ee3af5017c3a8c42891f0b5b2e0"
+    },
+    {
+      "version": "20261027190048",
+      "name": "teacher_dashboard_directory",
+      "statement_count": 1,
+      "statement_sha256": "e9e723fd9a70a02896c43a6da4208ae4c5a17bc40354b36814e3c4b600ea7114"
+    },
+    {
+      "version": "20261027205636",
+      "name": "sprint_16_5b_resource_assignments",
+      "statement_count": 1,
+      "statement_sha256": "034b69e8f68e4e03517b71bdbe5ea8c3d3e58106141dd4635be98c7edff4a45a"
+    },
+    {
+      "version": "20261028180038",
+      "name": "teacher_today_workspace",
+      "statement_count": 1,
+      "statement_sha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1"
+    },
+    {
+      "version": "20261028194137",
+      "name": "teacher_feedback_workspace",
+      "statement_count": 1,
+      "statement_sha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb"
+    },
+    {
+      "version": "20261028220526",
+      "name": "teacher_dashboard_batched_reads",
+      "statement_count": 1,
+      "statement_sha256": "33acf07d73b9d07254e471fa8235402d07f8051fa51521e513d85ab011eed588"
+    },
+    {
+      "version": "20261028225658",
+      "name": "teacher_evidence_projection",
+      "statement_count": 1,
+      "statement_sha256": "a151d083e11c699cab4737c7d5116817292f40967b7cf2058f16a3027e3cf9fa"
+    },
+    {
+      "version": "20261028234350",
+      "name": "teacher_transaction_reads",
+      "statement_count": 1,
+      "statement_sha256": "f2da4dfa67724f32bf89ad9d4b7d866b8e134f29aea2d98cb64197ec9142d116"
+    },
+    {
+      "version": "20261030203359",
+      "name": "teacher_writing_assignments",
+      "statement_count": 1,
+      "statement_sha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12"
+    },
+    {
+      "version": "20261030203404",
+      "name": "teacher_task_drafts",
+      "statement_count": 1,
+      "statement_sha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf"
+    },
+    {
+      "version": "20261030203406",
+      "name": "teacher_task_source_attachments",
+      "statement_count": 1,
+      "statement_sha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a"
+    },
+    {
+      "version": "20261030203407",
+      "name": "teacher_task_delivery",
+      "statement_count": 1,
+      "statement_sha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5"
+    },
+    {
+      "version": "20261030203408",
+      "name": "teacher_task_student_work",
+      "statement_count": 1,
+      "statement_sha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157"
+    },
+    {
+      "version": "20261030203409",
+      "name": "teacher_task_review",
+      "statement_count": 1,
+      "statement_sha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee"
+    },
+    {
+      "version": "20261030214222",
+      "name": "teacher_task_privacy",
+      "statement_count": 1,
+      "statement_sha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762"
+    },
+    {
+      "version": "20261101200512",
+      "name": "sprint_16_5b_resource_context_sequence",
+      "statement_count": 1,
+      "statement_sha256": "54c09a4f150c491e16654d49c838045d9296923aea7460249e85e8a34ab7d828"
+    },
+    {
+      "version": "20261102184555",
+      "name": "teacher_evidence_version_deduplication",
+      "statement_count": 1,
+      "statement_sha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71"
+    }
+  ]
+}
