@@ -32,7 +32,7 @@ async function actualTeacherRow(input) {
     status: 'active', valid_from: '2026-09-26T20:57:00Z', valid_to: null };
   const data = await loadExactInstitutionalClassAnalytics({}, context, [student], { ...input,
     skillRows: [{ skill_id: 'skill', skill_code_snapshot: 'SYN-U01-S02', name_hy_snapshot: 'Հմտություն', sequence_order_snapshot: 1 }],
-    models: [], lifecyclePolicies: [], reviewSessions: [], roster: { enrollments: [rosterRow],
+    models: input.models ?? [], lifecyclePolicies: [], reviewSessions: [], roster: { enrollments: [rosterRow],
       studentProfiles: [{ id: student.id, role: 'student', account_status: 'active' }],
       studentMemberships: [{ id: 'membership', person_id: student.id, school_id: context.schoolId,
         role: 'student', status: 'active', valid_from: rosterRow.valid_from, valid_to: null }] } });
@@ -43,18 +43,20 @@ test('offline diagnosis agrees with the actual teacher pipeline for frozen-item 
   for (const [reason, change] of [
     ['blueprint_item_missing', f => { f.sessions[0].assessment_blueprint_id = 'other'; f.blueprintRows.push({ id: 'other' }); }],
     ['frozen_version_missing', f => { f.blueprintItems[0].item_version_snapshot = 2; }],
-    ['frozen_skill_mismatch', f => { f.attempts[0].skill_id = 'different-skill'; }],
+    ['frozen_skill_mismatch', f => { f.versions[0].snapshot.item.skill_id = 'different-skill'; }],
     ['assessment_incomplete', f => { f.sessions[0].mode = 'diagnostic'; f.sessions[0].status = 'active'; }],
   ]) {
     const f = fixture(); change(f);
     assert.deepEqual(inspectTeacherEvidence(f).skills[0].excludedReasons, { [reason]: 1 });
     const row = await actualTeacherRow(f);
     assert.equal(row.evidenceCount, 0);
-    assert.equal(skillEvidenceState(row).kind, 'none');
+    assert.equal(skillEvidenceState(row).kind, reason === 'assessment_incomplete' ? 'none' : 'unavailable');
+    assert.equal(row.observedEvidenceCount, reason === 'assessment_incomplete' ? 0 : 1);
+    assert.equal(row.excludedEvidenceCount, reason === 'assessment_incomplete' ? 0 : 1);
   }
 });
 
-test('two S02 and one S04 post-enrollment practice answers can be lost without a date cutoff', async () => {
+test('two S02 and one S04 post-enrollment practice answers remain recorded without inventing an estimate', async () => {
   const f = fixture();
   f.blueprintItems[0].item_version_snapshot = 2;
   f.attempts = [0, 1].map(i => ({ ...f.attempts[0], id: 's02-' + i }));
@@ -62,13 +64,47 @@ test('two S02 and one S04 post-enrollment practice answers can be lost without a
   assert.equal(s02.observedAttempts, 2);
   assert.equal(s02.includedAttempts, 0);
   assert.deepEqual(s02.excludedReasons, { frozen_version_missing: 2 });
-  assert.equal((await actualTeacherRow(f)).evidenceCount, 0);
+  let row = await actualTeacherRow(f);
+  assert.equal(row.evidenceCount, 0);
+  assert.equal(row.observedEvidenceCount, 2);
+  assert.equal(row.excludedEvidenceCount, 2);
+  assert.equal(skillEvidenceState(row).kind, 'unavailable');
   f.attempts.length = 1;
   assert.equal(inspectTeacherEvidence(f).skills[0].observedAttempts, 1);
-  assert.equal((await actualTeacherRow(f)).evidenceCount, 0);
+  row = await actualTeacherRow(f);
+  assert.equal(row.evidenceCount, 0);
+  assert.equal(row.observedEvidenceCount, 1);
+  assert.equal(skillEvidenceState(row).kind, 'unavailable');
   // Synthetic possibility, not a claim about the real learner's versions.
   f.blueprintItems[0].item_version_snapshot = 1;
   assert.equal((await actualTeacherRow(f)).evidenceCount, 1);
+});
+
+test('missing every frozen version retains the recorded skill and release name', async () => {
+  const f = fixture(); f.versions = [];
+  const row = await actualTeacherRow(f);
+  assert.equal(row.code, 'SYN-U01-S02');
+  assert.equal(row.observedEvidenceCount, 1);
+  assert.equal(row.excludedEvidenceCount, 1);
+  assert.equal(row.evidenceCount, 0);
+  assert.equal(row.percent, null);
+  assert.equal(row.band, 'not_assessed');
+  assert.equal(skillEvidenceState(row).kind, 'unavailable');
+});
+
+test('partial coverage preserves the original governed estimate while reporting the missing observations', async () => {
+  const f = fixture();
+  f.models = [{ id: 'model', configuration: { mastery: { priorAlpha: 2, priorBeta: 2,
+    minimumEvidenceCount: 3, needsSupportBelow: .45, secureAtOrAbove: .72, hintedPositiveMultiplier: .65,
+    incorrectEvidenceHintReduction: false, difficultyWeight: { formula: '0.8 + 0.1*difficulty', difficultyMin: 1, difficultyMax: 5 } } } }];
+  const before = await actualTeacherRow(f);
+  f.attempts.push({ ...f.attempts[0], id: 'missing-attempt', item_id: 'missing-item', score: 0 });
+  const after = await actualTeacherRow(f);
+  for (const key of ['score', 'percent', 'band', 'evidenceCount', 'estimates']) assert.deepEqual(after[key], before[key], key);
+  assert.equal(after.observedEvidenceCount, 2);
+  assert.equal(after.excludedEvidenceCount, 1);
+  assert.equal(after.percent, 60);
+  assert.equal(after.status, 'insufficient_evidence');
 });
 
 test('context, enrollment and unit exclusions remain distinct from frozen evidence', () => {

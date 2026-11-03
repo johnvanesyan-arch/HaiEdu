@@ -154,9 +154,18 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     .filter((row) => row.student_id === student.id && row.institutional_class_enrollment_id === student.enrollmentId)
     .sort((a, b) => Date.parse(b.started_at) - Date.parse(a.started_at));
   const sessionIds = new Set(studentSessions.map((row) => row.id));
-  const studentAttempts = attempts
+  const recordedAttempts = attempts
     .filter((row) => row.student_id === student.id && sessionIds.has(row.learning_session_id) && (studentSessions.find(s => s.id === row.learning_session_id)?.status === "completed" || !["diagnostic", "mastery_check"].includes(studentSessions.find(s => s.id === row.learning_session_id)?.mode)))
     .sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at));
+  // Missing historical metadata cannot become a score, or erase the fact that
+  // an authorized learner answered. Keep recorded and estimable counts separate.
+  const studentAttempts = recordedAttempts.filter(row => row.frozenItem?.skill_id === row.skill_id);
+  const recordedBySkill = new Map<string, any[]>();
+  for (const attempt of recordedAttempts) {
+    const rows = recordedBySkill.get(attempt.skill_id) ?? [];
+    rows.push(attempt);
+    recordedBySkill.set(attempt.skill_id, rows);
+  }
   const attemptsBySkill = new Map<string, any[]>();
   for (const attempt of studentAttempts) {
     const rows = attemptsBySkill.get(attempt.skill_id) ?? [];
@@ -165,6 +174,8 @@ export function buildExactInstitutionalStudentAnalytics(args: {
   }
   const matrix = skills.map((skill) => {
     const rows = attemptsBySkill.get(skill.id) ?? [];
+    const recorded = recordedBySkill.get(skill.id) ?? [];
+    const excludedEvidenceCount = recorded.length - rows.length;
     const contracts = new Map<string, any[]>();
     for (const attempt of rows) {
       const key = evidenceContractKey(attempt.originalSession ?? {});
@@ -180,8 +191,9 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     return {
       skillId: skill.id, code: skill.code, nameHy: skill.nameHy, layer: skill.layer,
       score, percent: score === null ? null : Math.round(score * 100),
-      evidenceCount: rows.length, status: single?.status ?? (rows.length ? "mixed_contracts" : "not_assessed"), band, estimates, scope: "class_contract_evidence",
-      lastAttemptAt: rows.at(-1)?.created_at ?? null,
+      evidenceCount: rows.length, observedEvidenceCount: recorded.length, excludedEvidenceCount,
+      status: single?.status ?? (rows.length ? "mixed_contracts" : excludedEvidenceCount ? "provenance_unavailable" : "not_assessed"), band, estimates, scope: "class_contract_evidence",
+      lastAttemptAt: recorded.at(-1)?.created_at ?? null,
     };
   });
   const weak = matrix.filter((row) => row.band !== "secure").sort((a, b) => {
@@ -222,6 +234,8 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     institutionalClassEnrollmentId: student.enrollmentId,
     latestActivityAt: attemptsDescending[0]?.created_at ?? studentSessions[0]?.started_at ?? null,
     attempts: studentAttempts.length,
+    observedAttempts: recordedAttempts.length,
+    excludedEvidenceCount: recordedAttempts.length - studentAttempts.length,
     recentAccuracy: new Set(recentAttempts.map(row => evidenceContractKey(row.originalSession ?? {}))).size === 1 && recentAttempts.length ? Math.round((recentCorrect / recentAttempts.length) * 100) : null,
     latestDiagnostic: latestDiagnostic ? {
       correct: Number(latestDiagnostic.correct_count), answered: Number(latestDiagnostic.answered_count),
@@ -243,7 +257,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     intervention,
     recommendation: intervention,
     matrix,
-    skills: matrix.map((row) => ({ id: row.skillId, code: row.code, nameHy: row.nameHy, layer: row.layer, percent: row.percent, evidenceCount: row.evidenceCount, status: row.status, band: row.band, lastAttemptAt: row.lastAttemptAt })),
+    skills: matrix.map((row) => ({ id: row.skillId, code: row.code, nameHy: row.nameHy, layer: row.layer, percent: row.percent, evidenceCount: row.evidenceCount, observedEvidenceCount: row.observedEvidenceCount, excludedEvidenceCount: row.excludedEvidenceCount, status: row.status, band: row.band, lastAttemptAt: row.lastAttemptAt })),
     modeSummary: sessionsByMode,
     recentAttempts: recentAttempts.map((row) => ({
       id: row.id, skillId: row.skill_id, itemCode: row.frozenItem?.code ?? null,
@@ -288,12 +302,6 @@ export async function loadExactInstitutionalClassAnalytics(
     .select("skill_id,skill_code_snapshot,name_hy_snapshot,layer_snapshot,sequence_order_snapshot")
     .eq("curriculum_release_id", context.curriculumReleaseId)
     .order("sequence_order_snapshot", { ascending: true }));
-  const skills = skillRows.filter(row => unitSkillIds.has(row.skill_id)).map((row) => ({
-    id: row.skill_id, code: row.skill_code_snapshot, nameHy: row.name_hy_snapshot,
-    layer: row.layer_snapshot, sequenceOrder: Number(row.sequence_order_snapshot),
-  }));
-  if (!studentIds.length) return { skills, students: [] };
-
   const sessions = (batchedRows ? batchedRows.sessions : await paged((from, to) => admin.from("learning_sessions")
     .select("id,student_id,unit_code,mode,status,target_skill_id,planned_item_count,answered_count,correct_count,assessment_result,score_percent,metadata,mastery_attempt_number,started_at,completed_at,institutional_class_enrollment_id,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id,curriculum_release_id,academic_context_status,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status")
     .eq("academic_context_status", "exact")
@@ -316,6 +324,18 @@ export async function loadExactInstitutionalClassAnalytics(
       .in("learning_session_id", ids).order("created_at", { ascending: true }).range(from, to)));
   }
   }
+  // A unit's recorded skill must remain visible even if every frozen item for
+  // it is unavailable. Use only attempts from the already scoped sessions and
+  // names in the immutable release skill registry, never current item content.
+  const scopedSessionById = new Map(sessions.map(session => [session.id, session]));
+  for (const attempt of attempts) {
+    const session = scopedSessionById.get(attempt.learning_session_id);
+    if (session?.student_id === attempt.student_id && studentIds.includes(attempt.student_id)) unitSkillIds.add(attempt.skill_id);
+  }
+  const skills = skillRows.filter(row => unitSkillIds.has(row.skill_id)).map((row) => ({
+    id: row.skill_id, code: row.skill_code_snapshot, nameHy: row.name_hy_snapshot,
+    layer: row.layer_snapshot, sequenceOrder: Number(row.sequence_order_snapshot),
+  }));
   const models: any[] = batchedRows?.models ?? [], lifecyclePolicies: any[] = batchedRows?.lifecyclePolicies ?? [];
   if(!batchedRows){
   for (const ids of chunks([...new Set(sessions.map(row=>row.learning_model_configuration_id).filter(Boolean))])) models.push(...requireRows(await admin.from("learning_model_configurations").select("id,configuration").in("id",ids)));
@@ -353,7 +373,7 @@ export async function loadExactInstitutionalClassAnalytics(
   return {
     skills,
     students: authorizedStudents.map((student) => buildExactInstitutionalStudentAnalytics({
-      student, context, skills, sessions, attempts: enrichedAttempts.filter(row => row.frozenItem?.skill_id === row.skill_id), reviewSessions,
+      student, context, skills, sessions, attempts: enrichedAttempts, reviewSessions,
     })),
   };
 }

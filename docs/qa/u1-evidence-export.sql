@@ -1,4 +1,4 @@
--- OWNER-RUN, read-only investigation preparation; never executed by Codex.
+-- Read-only investigation export; production execution requires owner authorization.
 -- Contains IDs and learning metadata, not names, email, answers or question text.
 -- Export the single JSON result privately; do not commit actual learner data.
 -- Zero rows means the supplied identity/context did not identify one enrollment.

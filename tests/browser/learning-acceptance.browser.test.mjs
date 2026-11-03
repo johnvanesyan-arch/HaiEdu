@@ -87,6 +87,18 @@ test('native switching and revoked SQL authorization cannot expose another chapt
  assert.equal(await page.locator('#courseContent').innerText(),'');assert.deepEqual(errors,[]);
 });
 
+test('course and progress skill tables disclose learner-wide release scope without creating learning evidence',async t=>{
+ const {f,page,origin,errors}=await fixture(t);
+ for(const tab of ['course','progress']){
+  await page.goto(origin+href(0)+'&tab='+tab);
+  await expect(page.locator('[data-learner-evidence-scope]')).toBeVisible();
+  await expect(page.locator('[data-learner-evidence-scope]')).toContainText('այս թողարկման ձեր ուսումնական պատմությանը');
+  await expect(page.locator('[data-learner-evidence-scope]')).toContainText('Դասարանի առանձին աշխատանքների արդյունքները կարող են տարբերվել');
+ }
+ assert.equal((await f.db.query('select count(*)::int n from learning_sessions')).rows[0].n,0);
+ assert.deepEqual(errors,[]);
+});
+
 
 test('v2 native player and history show the 10/2/4 scales and preserve mandatory-only readiness',async t=>{
  const {f,page,origin,errors}=await fixture(t);

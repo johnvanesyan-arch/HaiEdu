@@ -100,6 +100,26 @@ test('evidence transfer includes only the frozen fields consumed by analytics',a
  assert.ok(r.data.versions.length>0);assert.ok(r.data.versions.every(v=>JSON.stringify(Object.keys(v.snapshot.item).sort())===JSON.stringify(['code','difficulty','prompt_hy','skill_id'])));
 });
 
+test('real SQL and both teacher read paths retain recorded observations when historical versions are missing',async()=>{
+ const otherRequest={readMode:'class',classId:id(322),selection:{assignmentId:id(352),curriculumReleaseId:id(502),unitId:id(513)}};
+ const otherToken=f.credential(id(21),id(421));
+ const beforeOther=await read(otherRequest,otherToken,id(21));
+ assert.ok(beforeOther.classes[0].students[0].matrix.length>0);
+ await changed(`delete from item_versions where item_id in (
+  select bi.item_id from assessment_blueprint_items bi join assessment_blueprints b on b.id=bi.assessment_blueprint_id
+  where b.curriculum_release_id='${id(501)}' and b.unit_id='${id(511)}')`,async()=>{
+  const expected=await getInstitutionalTeacherDashboard(f.admin,id(20),'Synthetic account',selection,id(321),id(351));
+  const actual=await read();assert.deepEqual(json(actual),json(expected));
+  const learner=actual.classes[0].students[0];
+  assert.equal(learner.observedAttempts,3);assert.equal(learner.attempts,0);assert.equal(learner.excludedEvidenceCount,3);
+  assert.equal(learner.matrix.length,2);
+  assert.ok(learner.matrix.every(row=>row.observedEvidenceCount>0&&row.evidenceCount===0&&row.excludedEvidenceCount===row.observedEvidenceCount&&row.status==='provenance_unavailable'&&row.percent===null&&row.band==='not_assessed'&&row.estimates.length===0));
+  assert.equal(learner.modeSummary.diagnostic.completed,1);
+  const other=await read(otherRequest,otherToken,id(21));
+  assert.deepEqual(json(other),json(beforeOther));
+ });
+});
+
 test('one initial transaction resolves the canonical governed default without reading another unit',async()=>{
  for(const [actor,session,assignment,klass] of [[20,420,351,321],[21,421,352,322]]){
   const expected=await getInstitutionalTeacherDashboard(f.admin,id(actor),'Synthetic account',null,id(klass),id(assignment));

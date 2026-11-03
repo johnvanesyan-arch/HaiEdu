@@ -1,38 +1,68 @@
-# U1 — teacher evidence investigation, 3 November 2026
+# U1 — recorded answers and unavailable frozen evidence
 
-Baseline: `2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2`. Source inspection and isolated synthetic execution only. No production request, SQL, deployment or learning-data change was made. **U1 remains open. The supplied counts cannot identify the real S02/S04 exclusion.**
+3 November 2026 (Asia/Yerevan). Baseline `2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2`; initial investigation checkpoint `6ab45023b721f5f48c4801ceae265ffae5e2eb52`. John explicitly authorized narrowly scoped read-only production metadata inspection after that checkpoint. The source correction described here is prepared for review; it is not merged or deployed.
 
-## Confirmed source findings
+## Confirmed cause and decision
 
-Teacher dashboard and learner drawer both use `loadExactInstitutionalClassAnalytics` in `supabase/functions/_shared/institutional-teacher-analytics.ts`. Its database and direct-read paths use the same inclusion contract:
+The selected learner/release export identifies one enrollment, nine sessions and 60 answers. The exact academic/enrollment/unit predicates admit all 60. A second grouped SELECT confirms that 49 answers have blueprint membership but **no matching `item_versions` row**; there are no missing-membership or frozen-skill-mismatch exclusions in this export. Both S02 Practice answers and the one S04 Practice answer are among the missing versions. Each skill also has two Diagnostic answers whose versions are missing.
 
-1. Sessions must have `academic_context_status='exact'` and the selected school, year, class, teacher assignment, programme, release and unit-code tuple (direct path around lines 298–307; batched predicate in `20261102182941_teacher_evidence_version_deduplication.sql`, lines 37–42). The enrolled learner and enrollment must match. Governed unit must match, or a null unit must resolve through a blueprint in that unit. A date cutoff alone is not used.
-2. The loader builds a `(blueprint ID, item ID)` map via `assessment_blueprint_items.item_version_snapshot` and `item_versions.snapshot.item` (lines 284–285). Before calling the student analytics builder it requires **`row.frozenItem?.skill_id === row.skill_id`** (line 356). Missing blueprint membership, a missing frozen version, or a different frozen skill silently removes an attempt. A still-registered skill then receives zero observations and the existing UI renders «Տվյալ դեռ չկա».
-3. The builder excludes unfinished Diagnostic/Mastery assessments, but includes ordinary Practice answers from active or ended sessions (lines 153–160). Policy, model and runtime IDs separate estimates; they are not independently used to discard observations. A missing model produces `provenance_unavailable` with a positive evidence count. Replacing all old/null contracts with the current contract would falsify history.
-4. The student course view routes through `routeStudentDashboard` to `service_student_learning_dashboard`; the older fallback in `get-student-dashboard/index.ts` is not the whole path. The selected-context SQL still reads learner/release/skill totals from `student_skill_mastery_by_release` (`20261006083216_sprint_15b12d_student_dashboard_read.sql`, lines 135–145). Its explicit scope is `learner_release_skill`; teacher estimates are `class_contract_evidence`. Their percentages and counts are different metrics and must not be forced to agree by changing mastery thresholds or reattributing old evidence.
-5. The brief's school-wide “3 Practice sessions” is **not established** by the source. `web/school-admin.html:100` labels the summary «Ավարտված գլխի կրկնություններ»; `web/school-admin.js:109` reads `chapterReview.completedSessions`. That counts Chapter Review, whereas the teacher's `modeSummary.practice.completed` counts Practice. `web/school-analytics-view.mjs:27` also labels its Chapter Review metric «կրկնություն». Confirm the exact observed element/payload before treating 3 versus 7 as an aggregation defect.
+The baseline loader at `supabase/functions/_shared/institutional-teacher-analytics.ts:356` drops any attempt failing `row.frozenItem?.skill_id === row.skill_id`. Its map at lines 284–285 resolves `(session blueprint, item)` through `item_version_snapshot` to `item_versions.snapshot.item`. That exact missing-version condition explains the reported zero teacher observations. This is not a date cutoff, hint filter, null-contract filter or enrollment mismatch.
 
-## Reproduction and safe diagnostic
+| Skill | Recorded answers | Usable frozen observations | Missing frozen version |
+|---|---:|---:|---:|
+| S01 | 6 | 1 | 5 |
+| S02 | 4 | 0 | 4 |
+| S03 | 10 | 2 | 8 |
+| S04 | 3 | 0 | 3 |
+| S05 | 9 | 2 | 7 |
+| S06 | 2 | 0 | 2 |
+| S07 | 20 | 6 | 14 |
+| S08 | 2 | 0 | 2 |
+| S09 | 2 | 0 | 2 |
+| S10 | 2 | 0 | 2 |
+| Total | 60 | 11 | 49 |
 
-`tests/teacher-evidence-investigation.test.mjs` runs the real teacher loader and presentation function with synthetic data. Two post-enrollment Practice answers (S02-shaped fixture), or one (S04-shaped), disappear when their referenced frozen version is absent even though another frozen item registers the skill. Restoring the matching frozen version makes the same attempts count. The tests also cover blueprint membership, skill mismatch, incomplete assessments, active Practice, null governed units, null policy/runtime provenance, malformed exports and output redaction. **This proves a possible mechanism, not which mechanism affected the real learner.**
+The nine sessions comprise one completed Diagnostic, seven completed Practice sessions and one active Practice session. Of the 49 missing snapshots, 20 belong to Diagnostic and 29 to Practice answers. All 49 current item version numbers still match the corresponding blueprint versions, but present mutable item content does not prove the historical snapshot. No names, email addresses, learner answers, question text or raw learner export are committed. The [sanitized finding receipt](../evidence/u1-evidence-readonly-20261103.json) contains aggregate counts only.
 
-The offline inspector accepts an owner-supplied JSON file or stdin:
+**Decision recorded in PR397 before behavior edits:** keep frozen-version eligibility for score estimation and correct the false no-data presentation. This is a presentation/data-completeness bug around an intentional scoring guard. Reuse the existing neutral «Ցուցանիշը հասանելի չէ» label for recorded answers lacking historical metadata. Do not reconstruct snapshots from current items, change readiness/pass decisions or combine original contracts. Missing historical snapshots remain a separate data-governance repair; this patch does not restore them or produce new classifications from them.
 
-```sh
-node scripts/inspect-teacher-evidence.mjs /private/path/u1-evidence.json
-node scripts/inspect-teacher-evidence.mjs < /private/path/u1-evidence.json
-```
+## Behavior and API contract
 
-Input has one `student: {id, enrollmentId}`, a complete `context: {schoolId, academicYearId, classId, assignmentId, subjectProgramId, curriculumReleaseId, unitId, unitCode}`, and arrays `sessions`, `attempts`, `blueprintRows`, `blueprintItems`, `versions`. Field names within the arrays match the database columns. The prepared [owner-run read-only export](u1-evidence-export.sql) selects only the reported learner and release, requires a unique enrollment, and omits names, email, answers and question text. Do not commit an actual export. Other enrollment candidates are intentionally not guessed.
+The exact-class loader now preserves recorded attempts into the analytics builder. The builder first applies the existing learner/enrollment/session and assessment-completion rules, then separates matching frozen observations from those without a matching frozen skill. Incomplete Diagnostic/Mastery answers still contribute neither displayed count nor score; active ordinary Practice remains observable under the existing rule.
 
-Output contains per-skill observed/included totals and exclusion categories. It creates no client and cannot connect to a database. It is an investigation aid, not an authorization check, score estimator or proof of production schema equivalence. Actor authorization, roster checks and clock expiry remain the live handlers' responsibility. A zero-observation output alone cannot prove that the owner supplied every relevant row.
+Existing `evidenceCount`, scores, bands, estimates and original-contract grouping retain their meaning. Additive fields are:
 
-## Decision and remaining work
+| Location | Field | Meaning |
+|---|---|---|
+| Skill matrix and short skill rows | `observedEvidenceCount` | Authorized, visible recorded answers for the selected class/enrollment/release/unit/skill. |
+| Skill matrix and short skill rows | `excludedEvidenceCount` | Those recorded answers lacking a matching frozen item/skill; `observedEvidenceCount - evidenceCount`. |
+| Student analytics | `observedAttempts` | Recorded answers after the same visibility rules. |
+| Student analytics | `excludedEvidenceCount` | Recorded answers excluded from frozen observation estimates. |
 
-**Do not change evidence behavior yet.** The report does not include S02/S04's enrollment attribution, blueprint item/version keys, frozen skill or parent-session status. Therefore neither (a) a projection bug nor (b) intentional exclusion has been demonstrated for those rows. Read-only production access is also outside the supplied brief's authorization.
+When recorded answers exist but zero frozen observations are available, the skill has `status: provenance_unavailable`, `band: not_assessed`, no percentage and no estimate. It is not an empty skill. Partial coverage retains the original estimate calculated from matching frozen observations, with a disclosure of recorded versus counted answers. A skill remains visible from its recorded scoped attempt plus immutable release skill registry even when all its frozen versions are absent; current item content is never read as fallback. Unregistered skills cannot acquire a release label.
 
-Next, use the private export (or obtain explicit scoped read-only authorization), map the affected skill UUIDs to the known skill codes, and report the precise failing predicate and row counts. If valid evidence was dropped, add the actual failing regression and repair that projection in a new migration where necessary. If exclusion is intentional, preserve inclusion/scoring and propose accurate Armenian labels for excluded observations, with John's wording decision. Make learner-wide versus class-scoped counts explicit across student, teacher, School Admin and Master Admin consumers. Verify the alleged school counter against the same mode and context first.
+The teacher matrix retains neutral styling and opens its existing keyboard-accessible drawer. Details show recorded and counted totals and explain the missing historical data. Support filters/counts still use only actual configured classifications. Student Course and Progress views identify their learner/release history scope. No pass/fail, readiness, scoring, model or content rule changes.
 
-Any later shared-helper change must audit both importing Edge functions (`get-teacher-dashboard`, `get-teacher-student`) and their deployed bundles at the owner-authorized deployment handoff. This investigation changes neither helper. B.12.3/B.12 and the English C47/subject-expansion hold remain open. No native-browser, fresh live, owner usability or content approval is claimed.
+## One cross-role counting rule
 
-Validation at preparation: six focused investigation tests pass. `npm run typecheck` and the full `npm test` suite also pass: 1,665 tests, zero failures, skips or cancellations (Node 24.22.1 locally). Current-source GitHub CI and owner review remain distinct from production acceptance.
+Every metric must name its unit and scope; percentages with different populations or original contracts must not be combined to force equality.
+
+- Student skill estimates are cached `learner_release_skill` learning-history indicators. They are not a replay of one teacher/class's frozen evidence.
+- Teacher recorded counts use the selected exact class/enrollment/release/unit and the original assessment visibility rules. Teacher estimates use only matching frozen observations, separated by original contract. Recorded-but-unclassifiable answers are explicit.
+- School Admin and Master Admin count authorized sessions under their selected filters; evidence groups retain mode and original contract. Their Chapter Review summary counts completed Chapter Reviews. The cited school summary is labelled «Ավարտված գլխի կրկնություններ» in `web/school-admin.html:100` and reads `chapterReview.completedSessions` at `web/school-admin.js:109`; `web/school-analytics-view.mjs` uses the same metric. The alleged school-wide 3-versus-7 Practice discrepancy is unconfirmed and must be compared against a Practice metric with matching scope, not the Review summary. This investigation did not query school-wide learner data.
+
+## Verification and affected consumers
+
+Both Edge consumers of the helper are affected: `get-teacher-dashboard` (through both `teacher-dashboard-batch.ts` and `institutional-teacher-dashboard.ts`) and `get-teacher-student`. Both read paths execute the same builder. No SQL function, schema, RLS policy or error/status contract changes. The canonical browser module is `web/teacher-skill-evidence.mjs`; its generated `teacher-dependencies.bundle.mjs` is rebuilt. The student scope sentence changes `web/course-page.js` only. The registered schoolless adapter retains its separate existing path.
+
+Regressions exercise the actual loader/presentation, missing membership/version/skill, no frozen versions for a whole skill, S02/S04-shaped counts, partial coverage preserving the prior estimate, unfinished assessments, active Practice, original contract separation and redacted offline input/output. A disposable SQL regression deletes all relevant frozen versions, compares both real teacher read paths and verifies another subject's evidence stays intact. Native browser cases cover keyboard drawer access, 375 px/200% neutral recorded counts, and learner scope on Course/Progress without starting a learning session. Existing two-school authorization/roster-revocation and batched parity tests remain.
+
+The initial checkpoint passed all five CI gates ([run41582853411](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41582853411)), 1,665 local tests and typecheck. Those results predate the behavior patch. Current-source full tests, generated-bundle parity, syntax, trigger coverage and required Node22/browser/PostgreSQL/aggregate CI are recorded in PR397. Local Chromium is unavailable; the new native cases require actual CI execution and are not claimed from VM tests.
+
+## Remaining handoff
+
+After owner review and passing current-source CI, the owner controls merge/deployment. Deploy both affected Edge functions with the shared helper and verify all deployed bundle files; merging one helper alone does not update existing functions. Verify exact frontend/bundle source, then make a scoped read-only teacher check: S02 must show four recorded/zero counted answers and S04 three/zero, both unavailable rather than no-data. Do not create learner responses or modify historical data for acceptance. Missing-snapshot recovery requires independent governed evidence and owner review.
+
+B.12.3/B.12, final owner usability and the English C47/subject-expansion hold remain open. This work performs no production mutation, live acceptance dispatch, merge or deployment; fresh signed-in UI acceptance of the patch is unexercised. Notion synchronization follows an authorized merged source checkpoint, not this draft.
+
+The offline inspector remains usable with `node scripts/inspect-teacher-evidence.mjs < private-export.json` or a file path. The [prepared read-only export](u1-evidence-export.sql) requires owner authorization to run on production, refuses ambiguous enrollment selection, and excludes question/answer/personal text. Never commit an actual learner export. Its generic output does not itself attest production provenance; the confirmed finding above comes from the explicitly authorized export and independent grouped SELECT.

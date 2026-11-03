@@ -36,3 +36,14 @@ test('legacy single estimates retain their configured bands and all dynamic labe
     assert.doesNotMatch(html,/<img|data-student="<|data-skill="</);assert.match(html,/&lt;img/);
   }
 });
+
+test('recorded answers with missing frozen evidence expose neutral details instead of false no-data',()=>{
+  const row={skillId:'s',code:'SYN-S02',nameHy:'Հմտություն',percent:null,band:'not_assessed',
+    status:'provenance_unavailable',evidenceCount:0,observedEvidenceCount:4,excludedEvidenceCount:4,estimates:[]};
+  assert.equal(skillEvidenceState(row).kind,'unavailable');assert.equal(skillAttentionBand(row),null);
+  assert.match(skillMatrixCell(row,'student'),/data-skill="s"/);
+  const html=skillEvidenceMarkup([row]);
+  assert.match(html,/Գրանցված պատասխաններ՝ 4/);assert.match(html,/հաշվարկին մասնակցող պատասխաններ՝ 0/);
+  assert.doesNotMatch(html,/Տվյալ դեռ չկա|ուսումնական տվյալ դեռ չկա/);
+  assert.equal(skillEvidenceState({...row,status:'not_assessed'}).kind,'unavailable','additive counts remain truthful during a mixed-version rollout');
+});

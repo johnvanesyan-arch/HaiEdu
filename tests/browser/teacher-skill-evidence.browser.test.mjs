@@ -16,6 +16,30 @@ const student={id:'student-a',displayName:'Փորձնական աշակերտ',ma
 const studentDetails={student,unitCode:'SYN-1',matrix,skills:matrix,recentAttempts:[],sessions:[],modeSummary:{}};
 const analytics={students:[student],studentCount:1,skills:matrix};
 
+test('recorded S02/S04-shaped answers with missing versions open neutral keyboard details at phone width',async t=>{
+ const rows=[['s02',4],['s04',3]].map(([skillId,count])=>({skillId,code:'SYN-1-'+skillId.toUpperCase(),nameHy:'Հմտություն',
+  percent:null,band:'not_assessed',status:'provenance_unavailable',evidenceCount:0,observedEvidenceCount:count,excludedEvidenceCount:count,estimates:[]}));
+ const learner={...student,matrix:rows,weakSkills:rows,masteryCheck:null};
+ const {page:p,errors}=await fixture(browser,t,{analytics:{students:[learner],studentCount:1,skills:rows},
+  studentDetails:{...studentDetails,matrix:rows,skills:rows,student:learner}});
+ await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
+ await expect(p.locator('#matrixNeedsSupportTotal')).toHaveText('0');
+ await expect(p.locator('#matrixWrap .skill-evidence-link')).toHaveCount(2);
+ for(const skill of ['s02','s04']){
+  await p.locator(`#matrixWrap [data-skill="${skill}"]`).focus();await p.keyboard.press('Enter');
+  const detail=p.locator(`[data-skill-evidence="${skill}"]`);await expect(detail).toHaveAttribute('open','');
+  await expect(detail.locator(':scope > summary')).toBeFocused();
+  await expect(detail).toContainText('Գրանցված պատասխաններ՝ '+(skill==='s02'?4:3));
+  await expect(detail).toContainText('հաշվարկին մասնակցող պատասխաններ՝ 0');
+  assert.doesNotMatch(await detail.innerText(),/Տվյալ դեռ չկա|ուսումնական տվյալ դեռ չկա/);
+  await p.setViewportSize({width:375,height:900});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
+  await detail.scrollIntoViewIfNeeded();assert.equal(await p.locator('.student-drawer-panel').evaluate(el=>el.scrollWidth<=el.clientWidth+1),true);
+  await p.locator('#closeDrawerBtn').click();await p.setViewportSize({width:1280,height:950});await p.evaluate(()=>document.documentElement.style.fontSize='100%');
+ }
+ const writes=await p.evaluate(()=>window.__teacherFixture.calls.filter(c=>!['get-teacher-dashboard','get-teacher-student','get-teacher-workspace'].includes(c.fn)&&!(c.fn==='manage-student-invitation'&&c.body.action==='list')));
+ assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);
+});
+
 test('matrix evidence controls preserve classified and neutral colours through Forest styling, hover and keyboard focus',async t=>{
  const rows=[...matrix,...[
   {skillId:'s5',code:'SYN-1-S05',nameHy:'Հինգերորդ հմտություն',percent:88,band:'secure',status:'secure',evidenceCount:4},
