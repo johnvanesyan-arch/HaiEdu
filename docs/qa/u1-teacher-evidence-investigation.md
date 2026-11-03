@@ -2,6 +2,8 @@
 
 3 November 2026 (Asia/Yerevan). Baseline `2ebb84f8b5d03a0afc23e86ec3a53399de7bf8c2`; initial investigation checkpoint `6ab45023b721f5f48c4801ceae265ffae5e2eb52`. John explicitly authorized narrowly scoped read-only production metadata inspection after that checkpoint. The source correction described here is prepared for review; it is not merged or deployed.
 
+**Follow-up implementation:** original-source replay now independently verifies all174 absent Unit1 versions. A new bounded recovery migration and platform-wide publication guards are prepared in the same U1 PR. The presentation-only decision and verification below remain their historical checkpoint. See [root repair, current tests and owner readback](item-snapshot-recovery-20261103.md). No production changes have been applied.
+
 ## Confirmed cause and decision
 
 The selected learner/release export identifies one enrollment, nine sessions and 60 answers. The exact academic/enrollment/unit predicates admit all 60. A second grouped SELECT confirms that 49 answers have blueprint membership but **no matching `item_versions` row**; there are no missing-membership or frozen-skill-mismatch exclusions in this export. Both S02 Practice answers and the one S04 Practice answer are among the missing versions. Each skill also has two Diagnostic answers whose versions are missing.
@@ -53,7 +55,7 @@ Every metric must name its unit and scope; percentages with different population
 
 ## Verification and affected consumers
 
-Both Edge consumers of the helper are affected: `get-teacher-dashboard` (through both `teacher-dashboard-batch.ts` and `institutional-teacher-dashboard.ts`) and `get-teacher-student`. Both read paths execute the same builder. No SQL function, schema, RLS policy or error/status contract changes. The canonical browser module is `web/teacher-skill-evidence.mjs`; its generated `teacher-dependencies.bundle.mjs` is rebuilt. The student scope sentence changes `web/course-page.js` only. The registered schoolless adapter retains its separate existing path.
+Both Edge consumers of the helper are affected: `get-teacher-dashboard` (through both `teacher-dashboard-batch.ts` and `institutional-teacher-dashboard.ts`) and `get-teacher-student`. Both read paths execute the same builder. The presentation patch itself changes no SQL function, schema, RLS policy or error/status contract. The canonical browser module is `web/teacher-skill-evidence.mjs`; its generated `teacher-dependencies.bundle.mjs` is rebuilt. The student scope sentence changes `web/course-page.js` only. The registered schoolless adapter retains its separate existing path.
 
 Regressions exercise the actual loader/presentation, missing membership/version/skill, no frozen versions for a whole skill, S02/S04-shaped counts, partial coverage preserving the prior estimate, unfinished assessments, active Practice, original contract separation and redacted offline input/output. A disposable SQL regression deletes all relevant frozen versions, compares both real teacher read paths and verifies another subject's evidence stays intact. Native browser cases cover keyboard drawer access, 375 px/200% neutral recorded counts, and learner scope on Course/Progress without starting a learning session. Existing two-school authorization/roster-revocation and batched parity tests remain.
 

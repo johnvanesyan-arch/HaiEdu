@@ -171,6 +171,8 @@ jobs:
         run: python tests/assessed-audio-concurrency.py
       - name: Verify shared-source exposure and allocation races
         run: python tests/shared-task-sets-concurrency.py
+      - name: Verify snapshot recovery and publication integrity on PostgreSQL 17
+        run: node --test tests/item-snapshot-integrity.test.mjs
       - name: Verify governed whole-form mastery selection races
         run: python tests/governed-mastery-forms-concurrency.py
 
