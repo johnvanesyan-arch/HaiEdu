@@ -48,6 +48,7 @@ permissions:
 concurrency:
   group: sprint-14-isolation-qa
   cancel-in-progress: false
+  queue: max
 
 jobs:
   authenticated-school-analytics:
