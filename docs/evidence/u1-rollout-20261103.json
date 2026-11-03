@@ -1,7 +1,7 @@
 {
   "schemaVersion": "u1-rollout-v1",
   "date": "2026-11-03",
-  "status": "partial; authorized browser fallback blocked by approval-review capacity/timeouts",
+  "status": "U1 repair and C2 layout correction verified in production; both same-source live mobile runs passed",
   "authorization": "John authorized the proposed controlled rollout on 3 November 2026.",
   "source": {
     "queue": {
@@ -18,6 +18,18 @@
       "tests": 1676,
       "nativeBrowserChecks": 400,
       "allFiveGatesPassed": true
+    },
+    "c2": {
+      "pr": 399,
+      "sourceCommit": "4932da47118cc4d4ff126e45f22dc32cc7595e54",
+      "mainCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+      "prCi": 41613406712,
+      "mainCi": 41614299578,
+      "allFivePrGatesPassed": true,
+      "allFiveMainGatesPassed": true,
+      "unitIntegrationTests": 1676,
+      "nativeBrowserChecks": 408,
+      "prMainTreeEquivalent": "9b1a7e59494dcff411834faf4d5f021db338a638"
     }
   },
   "frontend": {
@@ -138,12 +150,12 @@
     }
   ],
   "database": {
-    "applied": false,
+    "applied": true,
     "confirmationAttempts": 2,
-    "confirmationResult": "expired before execution",
-    "snapshotCount": 1890,
-    "newRecoveryRows": 0,
-    "newMigrationRows": 0,
+    "confirmationResult": "Two earlier connector confirmations expired; the later owner-authorized browser transaction succeeded.",
+    "snapshotCount": 2064,
+    "newRecoveryRows": 174,
+    "newMigrationRows": 1,
     "preflight": [
       {
         "candidate_versions": 174,
@@ -154,7 +166,8 @@
     "checksums": {
       "length": 107081,
       "sourceSha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084",
-      "envelopeSha256": "bb14385314b8a04aa7a307cbaf770a6b27a2e0e7baaf54382f9e010e36fec419"
+      "envelopeSha256": "bb14385314b8a04aa7a307cbaf770a6b27a2e0e7baaf54382f9e010e36fec419",
+      "executionSha256": "417429500b16375cf65791fe433439c5b1e57420d622a84174ceb044442c4890"
     },
     "beforeTableFingerprints": [
       {
@@ -204,8 +217,8 @@
       },
       {
         "scope": "public.academic_identity_events",
-        "row_count": 1245,
-        "digest": "0ef20bb519670cd62d32688385851793"
+        "row_count": 1321,
+        "digest": "9692a9190b20b45a62da9dcb706d0f0e"
       },
       {
         "scope": "public.academic_mastery_policy_activation",
@@ -339,8 +352,8 @@
       },
       {
         "scope": "public.classes",
-        "row_count": 131,
-        "digest": "cddb74049eda1a6e2b89361a65435642"
+        "row_count": 139,
+        "digest": "8e180940ae1a89b7ee2ac8198e1bcc88"
       },
       {
         "scope": "public.curriculum_authorities",
@@ -409,18 +422,18 @@
       },
       {
         "scope": "public.institutional_invitations",
-        "row_count": 123,
-        "digest": "698a74147122b28cc41afcf57c521632"
+        "row_count": 131,
+        "digest": "248792898f5721c8f71ae3729e734b97"
       },
       {
         "scope": "public.institutional_join_codes",
-        "row_count": 64,
-        "digest": "6f2df309520f648fd039ad77483c829f"
+        "row_count": 68,
+        "digest": "c11e0c5b49cc2c3ebb2dbe69d1d28de1"
       },
       {
         "scope": "public.institutional_memberships",
-        "row_count": 68,
-        "digest": "5480fb8a8977ec88181e0fa4395623fd"
+        "row_count": 72,
+        "digest": "0705c4267e9ff6df3da44b6c84eb2fdc"
       },
       {
         "scope": "public.item_answer_keys",
@@ -729,13 +742,13 @@
       },
       {
         "scope": "public.teacher_assignments",
-        "row_count": 131,
-        "digest": "02918df59a144d24aa2d833b0c18ad7d"
+        "row_count": 139,
+        "digest": "17c469bb973f95c244a3db473a49b4da"
       },
       {
         "scope": "public.teacher_subject_authorizations",
-        "row_count": 64,
-        "digest": "5a7ac1687240f5f52414c9cb8be4cad9"
+        "row_count": 68,
+        "digest": "976d2c34e2f5560e840ea70cf1f81a51"
       },
       {
         "scope": "public.teacher_task_cleanup_runs",
@@ -886,85 +899,1534 @@
     "deploymentEnvelope": {
       "protectedTables": 145,
       "rehearsalPassed": 5,
-      "executedAgainstProduction": false
-    }
+      "executedAgainstProduction": true,
+      "transactionCommitted": true,
+      "preservedOtherTables": 144,
+      "preservedExistingVersions": 1890,
+      "existingVersionsDigestBefore": "8fb793d70b596e625848fa017f793866",
+      "existingVersionsDigestAfter": "8fb793d70b596e625848fa017f793866"
+    },
+    "migrationVersion": "20261103061948",
+    "migrationName": "item_snapshot_integrity",
+    "migrationStatementSha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084",
+    "appliedMetadata": [
+      {
+        "recovered_versions": 174,
+        "applied_transaction_time": "2026-11-03 08:28:33.754384+00",
+        "last_insert_time": "2026-11-03 08:28:33.754384+00",
+        "distinct_assessment_hashes": 174
+      }
+    ],
+    "afterTableFingerprints": [
+      {
+        "scope": "private.active_curriculum_release_units",
+        "row_count": 9,
+        "digest": "a2bcf1a552606afb309f9c9a6f85f6ab"
+      },
+      {
+        "scope": "private.assessment_presentation_configuration",
+        "row_count": 1,
+        "digest": "44a36c7a982b21a2b70e8fe8cbbcbcc4"
+      },
+      {
+        "scope": "private.learning_session_item_option_orders",
+        "row_count": 219,
+        "digest": "8b398d87c16360c5ed7b143a60410464"
+      },
+      {
+        "scope": "private.mastery_form_selection_bindings",
+        "row_count": 8,
+        "digest": "84eb18a8aecc03fa9f1a2cf845227514"
+      },
+      {
+        "scope": "private.mastery_form_serialization_fences",
+        "row_count": 1546,
+        "digest": "86137d2c7090a4000c33b71a097e3fd8"
+      },
+      {
+        "scope": "private.teacher_feedback_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_feedback_receipts",
+        "row_count": 1,
+        "digest": "ee1cbb65abfbdcef5a2a21e898151bfa"
+      },
+      {
+        "scope": "private.teacher_feedback_snippets",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_task_privacy_scopes",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.academic_identity_events",
+        "row_count": 1321,
+        "digest": "9692a9190b20b45a62da9dcb706d0f0e"
+      },
+      {
+        "scope": "public.academic_mastery_policy_activation",
+        "row_count": 1,
+        "digest": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "scope": "public.academic_mastery_policy_versions",
+        "row_count": 1,
+        "digest": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "scope": "public.academic_years",
+        "row_count": 2,
+        "digest": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "scope": "public.account_deletion_requests",
+        "row_count": 3,
+        "digest": "9d26fbe7ff14a20de122917038a8dc1c"
+      },
+      {
+        "scope": "public.assessment_blueprint_items",
+        "row_count": 2546,
+        "digest": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "scope": "public.assessment_blueprints",
+        "row_count": 39,
+        "digest": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "scope": "public.assessment_form_items",
+        "row_count": 832,
+        "digest": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "scope": "public.assessment_forms",
+        "row_count": 44,
+        "digest": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "scope": "public.assessment_policy_bindings",
+        "row_count": 32,
+        "digest": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "scope": "public.assessment_pool_curriculum_reconciliations",
+        "row_count": 27,
+        "digest": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "scope": "public.assessment_pool_items",
+        "row_count": 1761,
+        "digest": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "scope": "public.assessment_pools",
+        "row_count": 28,
+        "digest": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "scope": "public.assignment_skills",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.assignments",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.attempts",
+        "row_count": 250,
+        "digest": "4a18d34a825183b1b08d5e145cb882cd"
+      },
+      {
+        "scope": "public.calibration_analysis_scopes",
+        "row_count": 1,
+        "digest": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "scope": "public.calibration_change_decisions",
+        "row_count": 1,
+        "digest": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "scope": "public.calibration_decision_protocols",
+        "row_count": 1,
+        "digest": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "scope": "public.calibration_evidence_contracts",
+        "row_count": 2,
+        "digest": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "scope": "public.calibration_metric_sets",
+        "row_count": 2,
+        "digest": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "scope": "public.chapter_mastery_states",
+        "row_count": 3,
+        "digest": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "scope": "public.chapter_review_cycles",
+        "row_count": 2,
+        "digest": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "scope": "public.chapter_review_item_exposures",
+        "row_count": 24,
+        "digest": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "scope": "public.chapter_review_requirements",
+        "row_count": 2,
+        "digest": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "scope": "public.chapter_review_sessions",
+        "row_count": 2,
+        "digest": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "scope": "public.class_memberships",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.classes",
+        "row_count": 139,
+        "digest": "8e180940ae1a89b7ee2ac8198e1bcc88"
+      },
+      {
+        "scope": "public.curriculum_authorities",
+        "row_count": 2,
+        "digest": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "scope": "public.curriculum_frameworks",
+        "row_count": 1,
+        "digest": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "scope": "public.curriculum_reconciliation_runs",
+        "row_count": 9,
+        "digest": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "scope": "public.curriculum_release_gate_checks",
+        "row_count": 63,
+        "digest": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "scope": "public.curriculum_release_item_families",
+        "row_count": 1580,
+        "digest": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "scope": "public.curriculum_release_outcomes",
+        "row_count": 86,
+        "digest": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "scope": "public.curriculum_release_reconciliations",
+        "row_count": 9,
+        "digest": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "scope": "public.curriculum_release_skills",
+        "row_count": 108,
+        "digest": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "scope": "public.curriculum_release_units",
+        "row_count": 10,
+        "digest": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "scope": "public.curriculum_releases",
+        "row_count": 10,
+        "digest": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "scope": "public.curriculum_source_documents",
+        "row_count": 6,
+        "digest": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "scope": "public.grades",
+        "row_count": 12,
+        "digest": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "scope": "public.institutional_class_enrollments",
+        "row_count": 6,
+        "digest": "ed49de9bbdc2b4d550fb75699bcdf7c0"
+      },
+      {
+        "scope": "public.institutional_invitations",
+        "row_count": 131,
+        "digest": "248792898f5721c8f71ae3729e734b97"
+      },
+      {
+        "scope": "public.institutional_join_codes",
+        "row_count": 68,
+        "digest": "c11e0c5b49cc2c3ebb2dbe69d1d28de1"
+      },
+      {
+        "scope": "public.institutional_memberships",
+        "row_count": 72,
+        "digest": "0705c4267e9ff6df3da44b6c84eb2fdc"
+      },
+      {
+        "scope": "public.item_answer_keys",
+        "row_count": 1803,
+        "digest": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "scope": "public.item_curriculum_scopes",
+        "row_count": 1803,
+        "digest": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "scope": "public.item_families",
+        "row_count": 1581,
+        "digest": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "scope": "public.item_family_curriculum_reconciliations",
+        "row_count": 1581,
+        "digest": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "scope": "public.item_misconception_mappings",
+        "row_count": 3212,
+        "digest": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "scope": "public.item_options",
+        "row_count": 6122,
+        "digest": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "scope": "public.item_qa_runs",
+        "row_count": 2304,
+        "digest": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "scope": "public.item_reviews",
+        "row_count": 2088,
+        "digest": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "scope": "public.item_template_remediation_guides",
+        "row_count": 518,
+        "digest": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "scope": "public.item_templates",
+        "row_count": 1581,
+        "digest": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "scope": "public.item_versions",
+        "row_count": 2064,
+        "digest": "4705ac35d13f6cfc657e488756c5090b"
+      },
+      {
+        "scope": "public.items",
+        "row_count": 1803,
+        "digest": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "scope": "public.learning_assessed_audio",
+        "row_count": 11,
+        "digest": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "scope": "public.learning_audio_deliveries",
+        "row_count": 14,
+        "digest": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "scope": "public.learning_audio_versions",
+        "row_count": 44,
+        "digest": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "scope": "public.learning_model_configurations",
+        "row_count": 9,
+        "digest": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "scope": "public.learning_model_runtime_bindings",
+        "row_count": 9,
+        "digest": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "scope": "public.learning_outcome_normative_mappings",
+        "row_count": 86,
+        "digest": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "scope": "public.learning_outcomes",
+        "row_count": 86,
+        "digest": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "scope": "public.learning_response_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.learning_session_items",
+        "row_count": 318,
+        "digest": "ab8783302c76e36f603120dd8ed275b3"
+      },
+      {
+        "scope": "public.learning_sessions",
+        "row_count": 31,
+        "digest": "388eff2e8126d3406126aa70398ffe37"
+      },
+      {
+        "scope": "public.learning_source_family_exposures",
+        "row_count": 70,
+        "digest": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "scope": "public.learning_task_set_versions",
+        "row_count": 82,
+        "digest": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "scope": "public.legacy_learning_blueprint_mappings",
+        "row_count": 7,
+        "digest": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "scope": "public.mastery_check_attempts",
+        "row_count": 5,
+        "digest": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "scope": "public.misconception_review_events",
+        "row_count": 1026,
+        "digest": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "scope": "public.misconceptions",
+        "row_count": 1033,
+        "digest": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "scope": "public.pilot_evidence_classifications",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_gate_checks",
+        "row_count": 11,
+        "digest": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "scope": "public.pilot_participant_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_participants",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_runs",
+        "row_count": 1,
+        "digest": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "scope": "public.privacy_preferences",
+        "row_count": 2,
+        "digest": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "scope": "public.profiles",
+        "row_count": 12,
+        "digest": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "scope": "public.recommendation_events",
+        "row_count": 935,
+        "digest": "cefc13bc7e9848a320d405f7a9d6e993"
+      },
+      {
+        "scope": "public.remediation_events",
+        "row_count": 10,
+        "digest": "db70b7181a736e81033f20995e34cfac"
+      },
+      {
+        "scope": "public.remediation_guide_authoring_versions",
+        "row_count": 1708,
+        "digest": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "scope": "public.remediation_guide_versions",
+        "row_count": 1067,
+        "digest": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "scope": "public.resource_assignment_events",
+        "row_count": 145,
+        "digest": "55810dffd3feae1a634eb4807e03013b"
+      },
+      {
+        "scope": "public.resource_assignment_recipients",
+        "row_count": 91,
+        "digest": "62c0cbbba39c5c4afc4f3901e7c6c14e"
+      },
+      {
+        "scope": "public.resource_assignments",
+        "row_count": 73,
+        "digest": "2374fcbb6f2d6c68f71a0fe4a1f1d95e"
+      },
+      {
+        "scope": "public.runtime_builds",
+        "row_count": 30,
+        "digest": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "scope": "public.schools",
+        "row_count": 2,
+        "digest": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "scope": "public.security_audit_log",
+        "row_count": 34,
+        "digest": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "scope": "public.skill_curriculum_reconciliations",
+        "row_count": 108,
+        "digest": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "scope": "public.skill_outcome_curriculum_mappings",
+        "row_count": 137,
+        "digest": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "scope": "public.skill_outcomes",
+        "row_count": 137,
+        "digest": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "scope": "public.skill_prerequisites",
+        "row_count": 17,
+        "digest": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "scope": "public.skill_remediation_guides",
+        "row_count": 10,
+        "digest": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "scope": "public.skills",
+        "row_count": 109,
+        "digest": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "scope": "public.staff_account_provisioning",
+        "row_count": 6,
+        "digest": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "scope": "public.student_account_acceptances",
+        "row_count": 1,
+        "digest": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "scope": "public.student_item_exposure_events",
+        "row_count": 254,
+        "digest": "cd0db13febdcdf3a5c54d0d0f405cd23"
+      },
+      {
+        "scope": "public.student_skill_mastery",
+        "row_count": 34,
+        "digest": "198911afb40c3a2a27fbb03e22a5f3b9"
+      },
+      {
+        "scope": "public.student_skill_mastery_by_release",
+        "row_count": 34,
+        "digest": "94853e7f6b3a5c5c484a91aaaf4b117a"
+      },
+      {
+        "scope": "public.subject_program_source_bindings",
+        "row_count": 3,
+        "digest": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "scope": "public.subject_programs",
+        "row_count": 3,
+        "digest": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "scope": "public.subjects",
+        "row_count": 3,
+        "digest": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "scope": "public.supplementary_resource_events",
+        "row_count": 348,
+        "digest": "e799370ed4388743149c510cf8ec2493"
+      },
+      {
+        "scope": "public.supplementary_resource_versions",
+        "row_count": 78,
+        "digest": "d39efbb1352ef880459bf9929db4eb3b"
+      },
+      {
+        "scope": "public.teacher_assignments",
+        "row_count": 139,
+        "digest": "17c469bb973f95c244a3db473a49b4da"
+      },
+      {
+        "scope": "public.teacher_subject_authorizations",
+        "row_count": 68,
+        "digest": "976d2c34e2f5560e840ea70cf1f81a51"
+      },
+      {
+        "scope": "public.teacher_task_cleanup_runs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_deliveries",
+        "row_count": 15,
+        "digest": "ed878e520b9e0228a8c1435b45b83456"
+      },
+      {
+        "scope": "public.teacher_task_delivery_cancellations",
+        "row_count": 15,
+        "digest": "90546bd50dcf5d1991cb23fc77d6ae2c"
+      },
+      {
+        "scope": "public.teacher_task_delivery_events",
+        "row_count": 15,
+        "digest": "cd69d15403f5f29d3069a76785860fdf"
+      },
+      {
+        "scope": "public.teacher_task_delivery_recipients",
+        "row_count": 15,
+        "digest": "dd1679e88f12c5e78713b20d15521169"
+      },
+      {
+        "scope": "public.teacher_task_drafts",
+        "row_count": 15,
+        "digest": "341c14ea35b6d254d5cfdb7779a57bb6"
+      },
+      {
+        "scope": "public.teacher_task_erasure_jobs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_response_files",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_review_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_reviews",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_source_files",
+        "row_count": 15,
+        "digest": "deae4ed5b5be2d5feb95d71b1e886332"
+      },
+      {
+        "scope": "public.teacher_task_storage_deletions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_student_work",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_submissions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_versions",
+        "row_count": 15,
+        "digest": "21e8be260a0deafcd15007118a304712"
+      },
+      {
+        "scope": "public.teacher_task_work_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbook_mappings",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbooks",
+        "row_count": 1,
+        "digest": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "scope": "public.topics",
+        "row_count": 33,
+        "digest": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "scope": "public.unit_material_events",
+        "row_count": 90,
+        "digest": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "scope": "public.unit_material_versions",
+        "row_count": 28,
+        "digest": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "scope": "public.units",
+        "row_count": 10,
+        "digest": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "scope": "public.writing_assignment_events",
+        "row_count": 32,
+        "digest": "52de7e07f9d8b3116bcf2253fb3a5b1a"
+      },
+      {
+        "scope": "public.writing_assignment_recipients",
+        "row_count": 16,
+        "digest": "f4c20847c27af36e2c5921bf92f57d5f"
+      },
+      {
+        "scope": "public.writing_assignments",
+        "row_count": 16,
+        "digest": "984a3096a74d6977b40c32218c6dda18"
+      },
+      {
+        "scope": "public.written_reviews",
+        "row_count": 5,
+        "digest": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "scope": "public.written_submissions",
+        "row_count": 5,
+        "digest": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "scope": "public.written_task_versions",
+        "row_count": 3,
+        "digest": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "scope": "public.written_work",
+        "row_count": 3,
+        "digest": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ],
+    "guardFunctions": [
+      {
+        "proname": "assert_item_version_snapshot",
+        "body_sha256": "9b5bdb039a728dd196be0d1d3435f2f2d8d141525fe1824848019ab89c574c20",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "proname": "capture_published_item_snapshot",
+        "body_sha256": "ec26afb6a8d408f4e04f64de23d4f678b3da6039787bdf1a14802ed07d875e42",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "proname": "current_item_version_snapshot",
+        "body_sha256": "97422f7df19ab50caafd4ab1b4bf274978911c82a6e1303a9c586d987c5793de",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "proname": "enforce_blueprint_item_snapshots",
+        "body_sha256": "4491c9fd2cbb1e935645810f9099a31b50343b5b08cd8547019994d5519d7bfb",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "proname": "item_snapshot_assessment_content",
+        "body_sha256": "2b4c94fcd3654fad031b1d029f923ffe0801a17ada24e9982365e23c6ac4ad88",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "proname": "preserve_item_version_snapshot",
+        "body_sha256": "5d3d02060f6670722f93af6aa6c5d5eaeabd9d744069b5340f98977e52d3746d",
+        "prosecdef": false,
+        "proconfig": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      }
+    ],
+    "triggers": [
+      {
+        "tgname": "blueprint_member_snapshot_integrity",
+        "relname": "assessment_blueprint_items",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER blueprint_member_snapshot_integrity AFTER INSERT OR UPDATE ON public.assessment_blueprint_items DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.enforce_blueprint_item_snapshots()"
+      },
+      {
+        "tgname": "blueprint_snapshot_integrity",
+        "relname": "assessment_blueprints",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER blueprint_snapshot_integrity AFTER INSERT OR UPDATE ON public.assessment_blueprints DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.enforce_blueprint_item_snapshots()"
+      },
+      {
+        "tgname": "item_version_snapshot_immutable",
+        "relname": "item_versions",
+        "tgdeferrable": false,
+        "tginitdeferred": false,
+        "tgenabled": "O",
+        "definition": "CREATE TRIGGER item_version_snapshot_immutable BEFORE INSERT OR DELETE OR UPDATE ON public.item_versions FOR EACH ROW EXECUTE FUNCTION private.preserve_item_version_snapshot()"
+      },
+      {
+        "tgname": "published_answer_snapshot",
+        "relname": "item_answer_keys",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER published_answer_snapshot AFTER INSERT OR DELETE OR UPDATE ON public.item_answer_keys DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.capture_published_item_snapshot()"
+      },
+      {
+        "tgname": "published_item_snapshot",
+        "relname": "items",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER published_item_snapshot AFTER INSERT OR UPDATE ON public.items DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.capture_published_item_snapshot()"
+      },
+      {
+        "tgname": "published_option_snapshot",
+        "relname": "item_options",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER published_option_snapshot AFTER INSERT OR DELETE OR UPDATE ON public.item_options DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.capture_published_item_snapshot()"
+      },
+      {
+        "tgname": "release_snapshot_integrity",
+        "relname": "curriculum_releases",
+        "tgdeferrable": true,
+        "tginitdeferred": true,
+        "tgenabled": "O",
+        "definition": "CREATE CONSTRAINT TRIGGER release_snapshot_integrity AFTER INSERT OR UPDATE ON public.curriculum_releases DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.enforce_blueprint_item_snapshots()"
+      }
+    ],
+    "releaseCoverage": [
+      {
+        "release_key": "english7_u01_review_r1",
+        "references": 256,
+        "distinct_versions": 198,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "english7_u02_review_r1",
+        "references": 214,
+        "distinct_versions": 167,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "english7_u03_review_r1",
+        "references": 204,
+        "distinct_versions": 152,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u01_2026_08_14_pilot_r1",
+        "references": 360,
+        "distinct_versions": 240,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u02_2026_08_14_pilot_r2",
+        "references": 288,
+        "distinct_versions": 192,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u03_2026_08_14_pilot_r3",
+        "references": 248,
+        "distinct_versions": 168,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u04_2026_08_14_pilot_r4",
+        "references": 359,
+        "distinct_versions": 221,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u05_2026_08_14_pilot_r5",
+        "references": 236,
+        "distinct_versions": 148,
+        "missing_references": 0,
+        "missing_versions": 0
+      },
+      {
+        "release_key": "physics7_u06_2026_08_14_pilot_r6",
+        "references": 381,
+        "distinct_versions": 235,
+        "missing_references": 0,
+        "missing_versions": 0
+      }
+    ]
   },
   "learnerAggregate": [
     {
       "skill": "PHY7-U01-S01",
       "recorded": 6,
-      "counted": 1
+      "counted": 6
     },
     {
       "skill": "PHY7-U01-S02",
       "recorded": 4,
-      "counted": 0
+      "counted": 4
     },
     {
       "skill": "PHY7-U01-S03",
       "recorded": 10,
-      "counted": 2
+      "counted": 10
     },
     {
       "skill": "PHY7-U01-S04",
       "recorded": 3,
-      "counted": 0
+      "counted": 3
     },
     {
       "skill": "PHY7-U01-S05",
       "recorded": 9,
-      "counted": 2
+      "counted": 9
     },
     {
       "skill": "PHY7-U01-S06",
       "recorded": 2,
-      "counted": 0
+      "counted": 2
     },
     {
       "skill": "PHY7-U01-S07",
       "recorded": 20,
-      "counted": 6
+      "counted": 20
     },
     {
       "skill": "PHY7-U01-S08",
       "recorded": 2,
-      "counted": 0
+      "counted": 2
     },
     {
       "skill": "PHY7-U01-S09",
       "recorded": 2,
-      "counted": 0
+      "counted": 2
     },
     {
       "skill": "PHY7-U01-S10",
       "recorded": 2,
-      "counted": 0
+      "counted": 2
     },
     {
       "skill": "TOTAL",
       "recorded": 60,
-      "counted": 11
+      "counted": 60
     }
   ],
   "verificationLimits": [
-    "No fresh signed-in positive teacher check claimed.",
-    "Direct unauthenticated Edge probe timed out at the outbound proxy before an HTTP response; no application authorization outcome claimed.",
-    "Mobile QA is automatically queued; two same-source successful runs are not yet available.",
-    "GitHub connector provides no manual workflow dispatch/cancel operation; browser fallback is authorized but approval-review capacity/timeouts prevented completion.",
-    "No historical learning/content/approval rows were intentionally modified; the database repair has not executed."
+    "The selected learner60/60 outcome is verified by scoped production SQL; the personal owner-teacher view was not exercised. Fresh mobile acceptance uses designated accounts.",
+    "The earlier direct unauthenticated Edge probe timed out at the outbound proxy before an HTTP response; no authorization outcome inferred from it.",
+    "Both complete corrected-source mobile runs pass; this is Chromium phone emulation and technical read-only acceptance, not physical-device, assistive-technology or owner usability sign-off.",
+    "Full historic migration/fresh-install reconciliation (S2) remains open; the new migration alone has an exact canonical version and SQL checksum.",
+    "The repair added snapshots and guards without rewriting any prior learning, content or approval row; fresh QA uses designated run-owned fixtures."
   ],
   "remaining": [
-    "Restore working browser approval review, complete secure Supabase sign-in and apply the already-authorized reviewed repair.",
-    "Apply the reviewed bounded migration, verify 174 additions and preservation, then verify 60 recorded/60 counted.",
-    "Manage stale pre-authentication waits safely and execute two Mobile browser QA runs on the reviewed deployed source.",
-    "Finish merged documentation and Notion synchronization; B.12.3/B.12 and subject expansion remain held."
+    "Finish the documentation release with all-five PR/main CI and canonical-source verification; sync Notion to final merged source while preserving native child pages.",
+    "Restore the 11 unique deferred background suites on final verified main and retain the exact readback in the synchronized roadmap.",
+    "Obtain owner usability acceptance before closing B.12.3/B.12 or resuming subject expansion; independent content/security gates remain separate.",
+    "Complete full S2 historical migration/fresh-install reconciliation; 15 unmatched legacy source names remain unreplayed."
   ],
   "browserFallback": {
     "authorized": true,
     "supabaseSignInObserved": true,
-    "migrationExecuted": false,
+    "migrationExecuted": true,
     "credentialEntryPerformed": false,
-    "handoffExecuted": false,
-    "blocker": "Automatic browser approval review repeatedly failed from capacity or timed out before execution, including read-only credential inspection and authentication handoff."
+    "authenticationState": "User signed in directly; the agent verified the project before execution.",
+    "priorBlocker": "Earlier service confirmations expired; browser approval review later recovered."
+  },
+  "liveQa": {
+    "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+    "mobileRunIds": [
+      41614299753,
+      41614776938
+    ],
+    "status": "both corrected-source live mobile runs passed, including isolation-before/after, exact-source-after and owned cleanup",
+    "obsoleteUnstartedRunsCancelled": [
+      41595036067,
+      41595036029,
+      41595035888,
+      41595036023,
+      41595036097,
+      41595036089,
+      41595036011
+    ],
+    "obsoleteActiveRun": {
+      "id": 41595036096,
+      "result": "failed source check before credential-bearing acceptance; preserved rather than cancelled"
+    },
+    "deferredUnstartedRuns": [
+      {
+        "id": 41596338980,
+        "name": "Chapter V pilot read acceptance",
+        "workflow": ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338912,
+        "name": "Chapter III pilot read acceptance",
+        "workflow": ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338897,
+        "name": "Chapter IV pilot read acceptance",
+        "workflow": ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596339008,
+        "name": "English Unit 1 pilot read acceptance",
+        "workflow": ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338944,
+        "name": "Sprint 14D authenticated analytics QA",
+        "workflow": ".github/workflows/sprint-14d-analytics-qa.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338933,
+        "name": "Resource assignment production acceptance",
+        "workflow": ".github/workflows/resource-assignments-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338925,
+        "name": "Chapter VI pilot read acceptance",
+        "workflow": ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      },
+      {
+        "id": 41596338819,
+        "name": "English Unit 3 pilot read acceptance",
+        "workflow": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+        "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389"
+      }
+    ],
+    "deferredSuitesRequeue": "Post-merge delivery step: restore all 11 unique deferred suites on final verified main, using matching automatic runs or explicit dispatch for any missing suite. Exact restored run IDs are recorded with final-source verification in the synchronized Notion roadmap.",
+    "initialFailures": [
+      {
+        "run": 41596338898,
+        "source": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+        "status": "failed",
+        "failedStage": "layout",
+        "lastBrowser": {
+          "side": "A",
+          "role": "teacher",
+          "width": 430,
+          "blockedRequests": 0,
+          "pageErrors": 0,
+          "httpErrors": 0
+        },
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": false,
+            "checks": 0
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-failed-41596338898.json"
+      },
+      {
+        "run": 41605257811,
+        "source": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+        "status": "failed",
+        "failedStage": "layout",
+        "lastBrowser": {
+          "side": "A",
+          "role": "teacher",
+          "width": 430,
+          "blockedRequests": 0,
+          "pageErrors": 0,
+          "httpErrors": 0
+        },
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": false,
+            "checks": 0
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-failed-41605257811.json"
+      }
+    ],
+    "initialMobileRunIds": [
+      41596338898,
+      41605257811
+    ],
+    "deferredUnstartedC2Runs": [
+      {
+        "id": 41614299494,
+        "name": "Chapter VI pilot read acceptance",
+        "workflow": ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299494"
+      },
+      {
+        "id": 41614299480,
+        "name": "Teacher feedback production acceptance",
+        "workflow": ".github/workflows/teacher-feedback-acceptance.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299480"
+      },
+      {
+        "id": 41614299434,
+        "name": "Resource assignment production acceptance",
+        "workflow": ".github/workflows/resource-assignments-acceptance.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299434"
+      },
+      {
+        "id": 41614299723,
+        "name": "English Unit 3 pilot read acceptance",
+        "workflow": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299723"
+      },
+      {
+        "id": 41614299687,
+        "name": "English Unit 2 pilot read acceptance",
+        "workflow": ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299687"
+      },
+      {
+        "id": 41614299559,
+        "name": "Sprint 14 authenticated action QA",
+        "workflow": ".github/workflows/sprint-14-actions-qa.yml",
+        "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41614299559"
+      }
+    ],
+    "initialFailureSourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+    "followupResults": [
+      {
+        "runId": 41614299753,
+        "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "status": "passed",
+        "checks": 84,
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": true,
+            "checks": 54
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-passed-41614299753.json"
+      },
+      {
+        "runId": 41614776938,
+        "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+        "status": "passed",
+        "checks": 84,
+        "isolation": [
+          {
+            "phase": "before",
+            "passed": true,
+            "checks": 54
+          },
+          {
+            "phase": "after",
+            "passed": true,
+            "checks": 54
+          }
+        ],
+        "cleanup": [
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          },
+          {
+            "closed": true,
+            "status": 204
+          }
+        ],
+        "receipt": "docs/evidence/mobile-acceptance-passed-41614776938.json"
+      }
+    ],
+    "queueRestorationPlan": [
+      {
+        "workflow": ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+        "name": "Chapter III pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+        "name": "Chapter IV pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+        "name": "Chapter V pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+        "name": "Chapter VI pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+        "name": "English Unit 1 pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+        "name": "English Unit 2 pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+        "name": "English Unit 3 pilot read acceptance"
+      },
+      {
+        "workflow": ".github/workflows/resource-assignments-acceptance.yml",
+        "name": "Resource assignment production acceptance"
+      },
+      {
+        "workflow": ".github/workflows/sprint-14-actions-qa.yml",
+        "name": "Sprint 14 authenticated action QA"
+      },
+      {
+        "workflow": ".github/workflows/sprint-14d-analytics-qa.yml",
+        "name": "Sprint 14D authenticated analytics QA"
+      },
+      {
+        "workflow": ".github/workflows/teacher-feedback-acceptance.yml",
+        "name": "Teacher feedback production acceptance"
+      }
+    ]
+  },
+  "proofImage": "docs/evidence/u1-recovery-confirmation-20261103.jpg",
+  "c2Correction": {
+    "schemaVersion": "c2-native-correction-v1",
+    "date": "2026-11-03",
+    "pr": 399,
+    "sourceCommit": "4932da47118cc4d4ff126e45f22dc32cc7595e54",
+    "mainCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+    "prCi": 41613406712,
+    "allFivePrGatesPassed": true,
+    "unitIntegrationTests": 1676,
+    "nativeBrowserChecks": 408,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "newCases": "Eight empty/populated real teacher-page journeys at 390, 430, 768 and1280px; each at100% and200% text, including actual Armenian word-boundary checks.",
+    "correctedGeometry": {
+      "size": 200,
+      "viewport": 430,
+      "scrollX": 0,
+      "scroll": 430,
+      "client": 430,
+      "left": 0,
+      "right": 430,
+      "offenders": [],
+      "roster": [
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        },
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        },
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        },
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        },
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        },
+        {
+          "width": 340,
+          "left": 45,
+          "right": 385
+        }
+      ]
+    },
+    "scope": "Shared teacher roster CSS only; all subjects and both institutional/unscoped class consumers. Student, Edge, scoring and security behavior unchanged.",
+    "productionMobile": {
+      "sourceCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+      "runs": [
+        41614299753,
+        41614776938
+      ],
+      "status": "both passed",
+      "results": [
+        {
+          "runId": 41614299753,
+          "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+          "status": "passed",
+          "checks": 84,
+          "isolation": [
+            {
+              "phase": "before",
+              "passed": true,
+              "checks": 54
+            },
+            {
+              "phase": "after",
+              "passed": true,
+              "checks": 54
+            }
+          ],
+          "cleanup": [
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            }
+          ],
+          "receipt": "docs/evidence/mobile-acceptance-passed-41614299753.json"
+        },
+        {
+          "runId": 41614776938,
+          "revision": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+          "status": "passed",
+          "checks": 84,
+          "isolation": [
+            {
+              "phase": "before",
+              "passed": true,
+              "checks": 54
+            },
+            {
+              "phase": "after",
+              "passed": true,
+              "checks": 54
+            }
+          ],
+          "cleanup": [
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            },
+            {
+              "closed": true,
+              "status": 204
+            }
+          ],
+          "receipt": "docs/evidence/mobile-acceptance-passed-41614776938.json"
+        }
+      ]
+    },
+    "mainCi": 41614299578,
+    "allFiveMainGatesPassed": true,
+    "prMainTreeEquivalent": "9b1a7e59494dcff411834faf4d5f021db338a638",
+    "productionGate": {
+      "observedAt": "2026-11-03T09:59:24Z",
+      "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+      "check": "Platform release checks",
+      "provider": "GitHub",
+      "environment": "Production",
+      "behavior": "Blocking",
+      "saveDisabled": true,
+      "settingsWrites": 0,
+      "canonicalBeforeMainCi": "dpl_JBdP7diDZzHyDC3K7ZiVqinrFsMn",
+      "canonicalAfterMainCi": "dpl_H92T7hmifv2Ar1TxyaDzRkPmqhyL",
+      "manualPromotion": false
+    },
+    "frontend": {
+      "deployment": "dpl_H92T7hmifv2Ar1TxyaDzRkPmqhyL",
+      "state": "READY",
+      "canonicalReleaseCommit": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+      "assets": [
+        {
+          "path": "web/course-page.js",
+          "bytes": 15339,
+          "sha256": "4eaa02d7ead5b912c32e17e4c4b8aa10617717326dbf0fd83ef5a269e42d43cb",
+          "match": true
+        },
+        {
+          "path": "web/teacher-dependencies.bundle.mjs",
+          "bytes": 290044,
+          "sha256": "bbd3e3cbf61ce2fcd8faca8c8d293e553f0e36e1e1758e50528e8b5efb6504f0",
+          "match": true
+        },
+        {
+          "path": "web/teacher-skill-evidence.mjs",
+          "bytes": 5348,
+          "sha256": "bb32fa62dc079c7c3fb5e6e7472d0efc84a92dae2685c7e1f73b41dd1172d7fa",
+          "match": true
+        },
+        {
+          "path": "web/teacher.css",
+          "bytes": 25747,
+          "sha256": "fce0b96c0d96ead49e70fa71e76dd36cd8007acc645a782a95d8147c679252bb",
+          "match": true
+        }
+      ]
+    }
+  },
+  "edgesSourceEquivalentThroughC2": {
+    "from": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+    "to": "09d621b7e9b328e94fb2326b266fc329f26f60b0",
+    "supabaseFunctionDiffEmpty": true,
+    "additionalDeploymentRequired": false
   }
 }

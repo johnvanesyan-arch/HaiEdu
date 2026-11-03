@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "c2-style-source-verification-v1",
+  "date": "2026-11-03",
+  "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
+  "canonicalOrigin": "https://www.haiedu.am",
+  "scope": "Every stylesheet linked by teacher.html and both imported Forest stylesheets; public anonymous byte comparison only.",
+  "stylesheets": [
+    {
+      "file": "tokens.css",
+      "bytes": 1743,
+      "match": true,
+      "localSha256": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d",
+      "servedSha256": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d"
+    },
+    {
+      "file": "base.css",
+      "bytes": 1835,
+      "match": true,
+      "localSha256": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6",
+      "servedSha256": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6"
+    },
+    {
+      "file": "styles.css",
+      "bytes": 9700,
+      "match": true,
+      "localSha256": "def90527a28c21d8e88ebe0121c17eef2759d45657e565aaebc43615dac96c78",
+      "servedSha256": "def90527a28c21d8e88ebe0121c17eef2759d45657e565aaebc43615dac96c78"
+    },
+    {
+      "file": "ux.css",
+      "bytes": 6867,
+      "match": true,
+      "localSha256": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+      "servedSha256": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac"
+    },
+    {
+      "file": "components.css",
+      "bytes": 6950,
+      "match": true,
+      "localSha256": "896f44f0242d534f7d95894edb668f736156896dcb081b3a718ab9ba8314164b",
+      "servedSha256": "896f44f0242d534f7d95894edb668f736156896dcb081b3a718ab9ba8314164b"
+    },
+    {
+      "file": "teacher.css",
+      "bytes": 25277,
+      "match": true,
+      "localSha256": "2b574763ef06ccba7935f55301c7550efe7aa01743f65c56d2a89e79c67c3cc7",
+      "servedSha256": "2b574763ef06ccba7935f55301c7550efe7aa01743f65c56d2a89e79c67c3cc7"
+    },
+    {
+      "file": "responsive-qa.css",
+      "bytes": 2469,
+      "match": true,
+      "localSha256": "d723c93219d5ce607ad29920741faddc2d4df6ff78c4a6620f6eb5443d34e32c",
+      "servedSha256": "d723c93219d5ce607ad29920741faddc2d4df6ff78c4a6620f6eb5443d34e32c"
+    },
+    {
+      "file": "role-layout.css",
+      "bytes": 12148,
+      "match": true,
+      "localSha256": "e0bcaec21ac350b787ea49cc7e13844bd76c6167f96c88204660461872983aa2",
+      "servedSha256": "e0bcaec21ac350b787ea49cc7e13844bd76c6167f96c88204660461872983aa2"
+    },
+    {
+      "file": "written-work.css",
+      "bytes": 4991,
+      "match": true,
+      "localSha256": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+      "servedSha256": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a"
+    },
+    {
+      "file": "writing-assignments.css",
+      "bytes": 5483,
+      "match": true,
+      "localSha256": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a",
+      "servedSha256": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a"
+    },
+    {
+      "file": "teacher-today.css",
+      "bytes": 4313,
+      "match": true,
+      "localSha256": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8",
+      "servedSha256": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8"
+    },
+    {
+      "file": "staff-forest.css",
+      "bytes": 14504,
+      "match": true,
+      "localSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea",
+      "servedSha256": "bcead655cb94fa0ce6017c51bf4a6ce5c77bf4c3bfa94c7d0b9025b18a497bea"
+    },
+    {
+      "file": "forest-tokens.css",
+      "bytes": 1059,
+      "match": true,
+      "localSha256": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31",
+      "servedSha256": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31"
+    }
+  ]
+}

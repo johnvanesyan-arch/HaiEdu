@@ -1,6 +1,6 @@
 # U1 snapshot recovery and publication integrity
 
-3 November 2026. Prepared in PR397 after the read-only finding and the recorded-versus-counted correction. **Not applied to production.** The QA brief leaves merge, database changes and deployment with the owner after review.
+3 November 2026. Prepared in PR397 after the read-only finding and the recorded-versus-counted correction, then **applied and verified in production after John authorized the controlled rollout and browser fallback**. All174 missing snapshots are recovered; all1,890 prior versions and the other144 public/private tables are preserved. The [rollout receipt and current live-QA limits](u1-rollout-20261103.md) supersede the historical preparation status below.
 
 ## Coverage and cause
 

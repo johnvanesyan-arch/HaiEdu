@@ -1,13 +1,13 @@
 {
   "schemaVersion": "migration-baseline-audit-v1",
   "date": "2026-11-03",
-  "mode": "SELECT-only; existing history unchanged",
+  "mode": "Before/after SELECT audit; 213 old entries preserved, one canonical source-exact recovery entry added in the repair transaction",
   "sourceCommit": "d5b3fc0afed436cd49894e98e0a801dbaffa7389",
   "repositoryFiles": 204,
-  "productionEntries": 213,
-  "uniqueNameMatches": 188,
-  "exactRecordedStatementBytes": 156,
-  "interpretation": "Names establish a crosswalk only. Recorded statement arrays can differ in splitting/formatting; unequal byte hashes are not asserted to be semantic differences. Unmatched legacy files have not been replayed or marked applied. Full fresh-install/S2 reconciliation remains open.",
+  "productionEntries": 214,
+  "uniqueNameMatches": 189,
+  "exactRecordedStatementBytes": 157,
+  "interpretation": "The new recovery migration matches its repository version, name and SQL SHA256 exactly. All 213 old version/name/statement digests are preserved. The 189 name matches are a crosswalk; unequal old statement byte hashes are not asserted to be semantic differences. Fifteen unmatched legacy source names have not been replayed or marked applied; full S2/fresh-install reconciliation remains open.",
   "repository": [
     {
       "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
@@ -1890,7 +1890,14 @@
       "version": "20261103061948",
       "name": "item_snapshot_integrity",
       "sha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084",
-      "production": []
+      "production": [
+        {
+          "version": "20261103061948",
+          "name": "item_snapshot_integrity",
+          "statementSha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084"
+        }
+      ],
+      "exactStatementBytes": true
     },
     {
       "path": "supabase/migrations/0037_sprint_11j_reconciliation_advisor_hardening.sql",
@@ -4032,6 +4039,17 @@
       "name": "teacher_evidence_version_deduplication",
       "statement_count": 1,
       "statement_sha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71"
+    },
+    {
+      "version": "20261103061948",
+      "name": "item_snapshot_integrity",
+      "statement_count": 1,
+      "statement_sha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084"
     }
-  ]
+  ],
+  "beforeRecovery": {
+    "productionEntries": 213,
+    "uniqueNameMatches": 188,
+    "exactRecordedStatementBytes": 156
+  }
 }
