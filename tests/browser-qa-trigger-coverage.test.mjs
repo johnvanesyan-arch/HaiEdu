@@ -6,6 +6,7 @@ import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   checkBrowserQaTriggers, collectDependencies, localReferences, mainPushPaths, pathCovered,
+  assertProductionQaConcurrency, checkProductionQaConcurrency,
 } from "../scripts/check-browser-qa-triggers.mjs";
 
 function workflow(paths, { before = "", after = "" } = {}) {
@@ -20,6 +21,7 @@ permissions:
   contents: read
 concurrency:
   group: sprint-14-isolation-qa
+  queue: max
   cancel-in-progress: false
 jobs:
   qa:
@@ -137,6 +139,27 @@ test("production workflow parser fails closed when branch or serial guards are w
   assert.throws(() => mainPushPaths(original.replace('test "$GITHUB_REF" = refs/heads/main', "echo ready")), /guard missing/);
   assert.throws(() => mainPushPaths(original.replace('- run: test "$GITHUB_REF"', '# - run: test "$GITHUB_REF"')), /guard missing/);
   assert.throws(() => mainPushPaths(original.replace("cancel-in-progress: false", "cancel-in-progress: true")), /non-cancelling/);
+  assert.throws(() => mainPushPaths(original.replace("  queue: max\n", "")), /queue: max/);
+  assert.throws(() => mainPushPaths(original.replace("queue: max", "queue: single")), /queue: max/);
+  assert.throws(() => mainPushPaths(original.replace("group: sprint-14-isolation-qa", "group: individual-workflow")), /shared concurrency/);
+});
+
+test('all designated-fixture workflows preserve multiple pending runs and one shared serial lock', async () => {
+  const filenames = await checkProductionQaConcurrency(fileURLToPath(new URL('../', import.meta.url)));
+  assert.equal(filenames.length, 19);
+  for (const filename of ['mobile-browser-qa.yml', 'sprint-14-isolation-qa.yml',
+    'supplementary-resources-acceptance.yml', 'english-unit1-learner-acceptance.yml',
+    'english-unit2-learner-acceptance.yml', 'teacher-performance.yml']) assert.ok(filenames.includes(filename));
+});
+
+test('manual-only fixture workflows cannot silently revert to single-pending cancellation', async t => {
+  const filename = '.github/workflows/manual.yml';
+  const source = workflow(['**']).replace(/  push:[\s\S]*?(?=^permissions:)/m, '') + '\n# QA_TENANT_FIXTURES_JSON\n';
+  const root = await fixture(t, { [filename]: source });
+  assert.deepEqual(await checkProductionQaConcurrency(root), ['manual.yml']);
+  await writeFile(path.join(root, filename), source.replace('  queue: max\n', ''));
+  await assert.rejects(() => checkProductionQaConcurrency(root), /manual.yml.*queue: max/);
+  assert.throws(() => assertProductionQaConcurrency(source.replace('concurrency:', '# concurrency:')), /shared concurrency/);
 });
 
 test("a newly imported shared module and API cannot silently miss the main QA trigger", async (t) => {

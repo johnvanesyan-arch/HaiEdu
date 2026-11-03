@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -134,6 +134,30 @@ export async function collectDependencies(root, entries) {
 
 // Only the small literal subset used by these workflows is accepted. Fail
 // closed on new trigger syntax rather than silently skipping its meaning.
+export function assertProductionQaConcurrency(source) {
+  const block = source.match(/^concurrency:\s*\n([\s\S]*?)(?=^\S|(?![\s\S]))/m)?.[1] ?? '';
+  if (!/^  group: sprint-14-isolation-qa\s*$/m.test(block) ||
+      !/^  cancel-in-progress: false\s*$/m.test(block) || !/^  queue: max\s*$/m.test(block)) {
+    throw new Error("Production fixture workflows must retain their non-cancelling shared concurrency group and queue: max");
+  }
+}
+
+// Cover manual-only and scheduled suites as well as browser path triggers:
+// every workflow using the designated fixture registry shares the same lock.
+export async function checkProductionQaConcurrency(root) {
+  const directory = path.join(root, '.github/workflows');
+  const checked = [];
+  for (const filename of (await readdir(directory)).sort()) {
+    if (!/\.ya?ml$/.test(filename)) continue;
+    const source = await readFile(path.join(directory, filename), 'utf8');
+    if (!source.includes('QA_TENANT_FIXTURES_JSON')) continue;
+    try { assertProductionQaConcurrency(source); }
+    catch (error) { throw new Error(`${filename}: ${error.message}`); }
+    checked.push(filename);
+  }
+  return checked;
+}
+
 export function mainPushPaths(source) {
   if (/^  pull_request(?:_target)?:/m.test(source)) throw new Error("Production acceptance must not receive PR credentials");
   const push = source.match(/^  push:\s*\n([\s\S]*?)(?=^  \S|^\S|(?![\s\S]))/m)?.[1];
@@ -141,9 +165,7 @@ export function mainPushPaths(source) {
   if (!source.split("\n").some((line) => /^(?:- )?run: test "\$GITHUB_REF" = refs\/heads\/main$/.test(line.trim()))) {
     throw new Error("Reviewed-main execution guard missing");
   }
-  if (!/^  group: sprint-14-isolation-qa\s*$/m.test(source) || !/^  cancel-in-progress: false\s*$/m.test(source)) {
-    throw new Error("Production fixture workflows must retain their non-cancelling shared concurrency group");
-  }
+  assertProductionQaConcurrency(source);
   const pathsBlock = push.match(/^    paths:\s*\n([\s\S]*?)(?=^    \S|(?![\s\S]))/m)?.[1];
   if (!pathsBlock) throw new Error("Main push must declare dependency paths");
   return pathsBlock.split("\n").filter((line) => line.trim() && !line.trim().startsWith("#")).map((line) => {
@@ -227,6 +249,8 @@ export async function checkBrowserQaTriggers(root, targets = browserQaTargets) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const root = fileURLToPath(new URL("../", import.meta.url));
   try {
+    const queues = await checkProductionQaConcurrency(root);
+    console.log(`${queues.length} designated-fixture workflows retain shared serialization and queue: max.`);
     const results = await checkBrowserQaTriggers(root);
     for (const result of results) {
       if (result.missing.length) {
