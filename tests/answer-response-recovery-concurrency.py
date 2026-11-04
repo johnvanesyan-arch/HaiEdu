@@ -44,13 +44,15 @@ def race(uri,first,second,rollback=False):
 
 with database_uri() as uri:
     with psycopg.connect(uri,autocommit=True) as c:
+        c.execute("set statement_timeout='15s'")
         print(c.execute('select version()').fetchone()[0],flush=True)
         c.execute((ROOT/'tests/fixtures/answer-scoring.sql').read_text())
         guards=(ROOT/'supabase/migrations/20260927190434_chapter_diagnostic_practice_gate.sql').read_text()
         c.execute(guards[:guards.index('-- A locked pre-diagnostic')])
         c.execute((ROOT/'supabase/migrations/20261004094811_atomic_answer_mastery_evidence.sql').read_text())
-        for sql in json.loads(subprocess.check_output(['node','tests/fixtures/answer-recovery-export.mjs'],cwd=ROOT,text=True)):
+        for sql in json.loads(subprocess.check_output(['node','tests/fixtures/answer-recovery-export.mjs'],cwd=ROOT,text=True,timeout=30)):
             c.execute(sql)
+        print('PASS: answer-recovery fixture initialized',flush=True)
         def reset():
             c.execute('truncate private.learning_answer_receipts,recommendation_events,attempts,student_skill_mastery,student_skill_mastery_by_release,fixture_exposures')
             c.execute('update learning_session_items set attempt_id=null,answered_at=null')
