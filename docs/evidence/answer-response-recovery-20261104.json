@@ -58,8 +58,24 @@
   },
   "releasePrerequisites": {
     "BF-01": {
-      "mainProtected": false,
-      "rulesets": []
+      "initialReadback": {
+        "mainProtected": false,
+        "rulesets": []
+      },
+      "currentMainProtection": {
+        "mainProtected": true,
+        "rulesetId": 26520838,
+        "enforcement": "active",
+        "bypassActors": [],
+        "currentUserCanBypass": "never",
+        "requiredCheck": "Platform release checks",
+        "sourceAppId": 15368,
+        "strict": true,
+        "pullRequestRequired": true,
+        "forcePushBlocked": true,
+        "deletionBlocked": true
+      },
+      "independentRiskReviewAndCodeowners": "separately open"
     },
     "BF-02": {
       "backupEvidence": "unverified",

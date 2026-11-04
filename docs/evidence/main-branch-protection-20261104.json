@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "haiedu-main-protection-evidence-v1",
+  "date": "2026-11-04",
+  "timezone": "Asia/Dubai",
+  "status": "active_configuration_verified",
+  "repository": "johnvanesyan-arch/HaiEdu",
+  "ownerAuthorized": true,
+  "before": {
+    "mainProtected": false,
+    "rulesets": []
+  },
+  "after": {
+    "mainProtected": true,
+    "mainSha": "7b88f1b18db4571f87b4eb7e120e12d6a584ffc6",
+    "visibility": "public",
+    "ruleset": {
+      "id": 26520838,
+      "name": "HaiEdu main release protection",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "johnvanesyan-arch/HaiEdu",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/main"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "pull_request",
+          "parameters": {
+            "required_approving_review_count": 0,
+            "dismiss_stale_reviews_on_push": false,
+            "required_reviewers": [],
+            "require_code_owner_review": false,
+            "require_last_push_approval": false,
+            "required_review_thread_resolution": false,
+            "require_extra_approval_for_unattributed_changes": true,
+            "allowed_merge_methods": [
+              "merge",
+              "squash",
+              "rebase"
+            ]
+          }
+        },
+        {
+          "type": "required_status_checks",
+          "parameters": {
+            "strict_required_status_checks_policy": true,
+            "do_not_enforce_on_create": false,
+            "required_status_checks": [
+              {
+                "context": "Platform release checks",
+                "integration_id": 15368
+              }
+            ]
+          }
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5RlCBxzgGUrQY",
+      "created_at": "2026-11-04T13:22:55.702+04:00",
+      "updated_at": "2026-11-04T13:22:55.970+04:00",
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/rulesets/26520838"
+        },
+        "html": {
+          "href": "https://github.com/johnvanesyan-arch/HaiEdu/rules/26520838"
+        }
+      }
+    }
+  },
+  "verification": "read-only API readback after signed-in settings save and account re-authentication",
+  "forbiddenMainWriteProbe": false,
+  "productionDatabaseWrite": false,
+  "productionDeployment": false,
+  "limitations": [
+    "No deliberate forbidden update or failing merge attempted on main",
+    "CODEOWNERS and independent risky-change review remain separately open",
+    "BF-02 backup/restore evidence remains unverified"
+  ],
+  "candidatePullRequest": 401,
+  "candidateFunctionalCommit": "6c94f71867a351e1260b581e0f8c552d117f9dc8",
+  "screenshot": "main-branch-protection-20261104.jpg"
+}
