@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "haiedu-answer-recovery-read-qa-v1",
+  "date": "2026-11-04",
+  "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+  "status": "all13_completed_passing",
+  "suites": [
+    {
+      "run": 41819028277,
+      "name": "Sprint 14D authenticated analytics QA",
+      "artifact": 13317110999,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028277",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 10,
+        "passed": 10,
+        "failed": 0
+      },
+      "isolation": {},
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": null,
+      "finishedAt": "2026-11-04T11:22:26.017Z"
+    },
+    {
+      "run": 41819028385,
+      "name": "Chapter II pilot read acceptance",
+      "artifact": 13317531699,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028385",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 91,
+        "passed": 91,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T11:40:42.130Z"
+    },
+    {
+      "run": 41819028653,
+      "name": "English Unit 1 pilot read acceptance",
+      "artifact": 13320306848,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028653",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 130,
+        "passed": 130,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T12:17:40.610Z"
+    },
+    {
+      "run": 41819028273,
+      "name": "Chapter V pilot read acceptance",
+      "artifact": 13316918908,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028273",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 191,
+        "passed": 191,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T11:36:34.684Z"
+    },
+    {
+      "run": 41819028439,
+      "name": "Sprint 14 authenticated action QA",
+      "artifact": 13319170509,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028439",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 206,
+        "passed": 206,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolationBefore": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        },
+        "readIsolationAfter": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": null,
+      "finishedAt": "2026-11-04T11:53:45.264Z"
+    },
+    {
+      "run": 41819028436,
+      "name": "Chapter III pilot read acceptance",
+      "artifact": 13318772964,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028436",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 123,
+        "passed": 123,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T12:01:51.587Z"
+    },
+    {
+      "run": 41819028480,
+      "name": "Teacher feedback production acceptance",
+      "artifact": 13318293567,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028480",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 87,
+        "passed": 87,
+        "failed": 0
+      },
+      "isolation": {
+        "isolationBefore": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        },
+        "isolationAfter": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": null,
+      "finishedAt": "2026-11-04T11:57:04.307Z"
+    },
+    {
+      "run": 41819028611,
+      "name": "Chapter VI pilot read acceptance",
+      "artifact": 13318406406,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028611",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 324,
+        "passed": 324,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T11:47:51.076Z"
+    },
+    {
+      "run": 41819028320,
+      "name": "Resource assignment production acceptance",
+      "artifact": 13317721384,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028320",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 327,
+        "passed": 327,
+        "failed": 0
+      },
+      "isolation": {
+        "isolationBefore": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        },
+        "isolationAfter": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": null,
+      "finishedAt": "2026-11-04T11:29:49.912Z"
+    },
+    {
+      "run": 41819028172,
+      "name": "Chapter IV pilot read acceptance",
+      "artifact": 13322620717,
+      "attempt": 2,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028172",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 155,
+        "passed": 155,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T12:27:25.624Z"
+    },
+    {
+      "run": 41819028459,
+      "name": "Mobile browser QA",
+      "artifact": 13318738912,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028459",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 84,
+        "passed": 84,
+        "failed": 0
+      },
+      "isolation": {
+        "isolationBefore": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        },
+        "isolationAfter": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": null,
+      "finishedAt": null
+    },
+    {
+      "run": 41819028469,
+      "name": "English Unit 2 pilot read acceptance",
+      "artifact": 13322055136,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028469",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 142,
+        "passed": 142,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T12:22:38.946Z"
+    },
+    {
+      "run": 41819028509,
+      "name": "English Unit 3 pilot read acceptance",
+      "artifact": 13319019237,
+      "attempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028509",
+      "status": "passed",
+      "main": {
+        "status": "passed",
+        "total": 154,
+        "passed": 154,
+        "failed": 0
+      },
+      "isolation": {
+        "readIsolation": {
+          "status": "passed",
+          "total": 54,
+          "passed": 54,
+          "failed": 0
+        }
+      },
+      "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "frontendCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "finishedAt": "2026-11-04T12:12:34.045Z"
+    }
+  ],
+  "totals": {
+    "suites": 13,
+    "mainAssertions": 2024,
+    "isolationControls": 864
+  },
+  "retainedOriginalFailure": {
+    "run": 41819028172,
+    "attempt": 1,
+    "job": 126537156079,
+    "stage": "Wait for this frontend revision on production",
+    "disposition": "Intentionally held frontend exceeded source-wait deadline before app assertions; attempt2 passes on the same source. Original failure remains.",
+    "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41819028172/attempts/1"
+  },
+  "limits": [
+    "Fresh guarded authenticated read/action/delivery acceptance with the existing designated fixtures and cleanup.",
+    "This is not a fresh production lost-response/final-item learner write, personal usability sign-off, physical-device certification or independent review."
+  ]
+}
