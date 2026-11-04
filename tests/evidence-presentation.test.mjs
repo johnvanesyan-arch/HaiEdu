@@ -26,6 +26,9 @@ test('a different runtime alone never becomes proof of compatible scoring or a d
   const contexts=[{...rows[0],context:{classId:'class-a'}},{...rows[0],context:{classId:'class-b'}}];
   assert.match(evidenceSeparationMarkup(contexts),/ըստ դասարանի և ուսումնական համատեքստի/);
   assert.doesNotMatch(evidenceSeparationMarkup(contexts),/համատեղելիությունը հաստատված չէ/);
+  const missing=structuredClone(rows);missing[1].contract.unitId=null;missing[1].contract.modelId=null;
+  assert.doesNotMatch(evidenceSeparationMarkup(missing),/Տարբեր են/);
+  assert.match(evidenceSeparationMarkup(missing),/համատեղելիությունը հաստատված չէ/);
 });
 
 test('teacher purpose sections preserve all percentages, attention and original runtime IDs',()=>{
@@ -82,6 +85,8 @@ test('unknown purposes and untrusted labels are literal text without losing orig
   const root={innerHTML:''};renderEvidenceGroups(root,{options:{classes:[{id:'class',label:'<img onerror=bad()>'}]},analytics:{evidenceGroups:[{mode:'__proto__',context:{classId:'class'},sessions:1,correct:0,answered:1,accuracy:0,contract:{runtimeBuildId:'<script>bad()</script>'}}]}});
   assert.doesNotMatch(root.innerHTML,/<img|<script>/);assert.match(root.innerHTML,/&lt;img/);assert.match(root.innerHTML,/&lt;script/);
   assert.match(root.innerHTML,/Ուսումնական աշխատանք/);assert.match(root.innerHTML,/0\/1/);assert.match(root.innerHTML,/0%/);
+  const teacher=skillEvidenceMarkup([{skillId:'s',code:'ANY',nameHy:'Հմտություն',estimates:[estimate('__proto__',75)]}]);
+  assert.match(teacher,/Ուսումնական աշխատանք/);assert.doesNotMatch(teacher,/\[object Object\]/);
 });
 
 test('an empty selected scope has an explicit empty result without a fabricated score',()=>{

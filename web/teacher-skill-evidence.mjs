@@ -4,10 +4,7 @@ import { contractMarkup, evidencePurposeGroups, evidenceSeparationMarkup, eviden
 const bands = {
   secure: 'Կայուն', developing: 'Զարգացող', needs_support: 'Աջակցություն է պետք',
 };
-const modes = {
-  diagnostic: 'Ախտորոշիչ', practice: 'Վարժություն',
-  chapter_review: 'Գլխի կրկնություն', mastery_check: 'Յուրացման ստուգում',
-};
+
 
 // Present the server's governed classifications; never combine contracts or
 // derive a skill classification from an assessment's overall pass decision.
@@ -61,7 +58,7 @@ export function skillEvidenceMarkup(rows = [], unitCode = '', context = {}) {
         ${Number(row.excludedEvidenceCount) > 0 ? `<p class="subtle small" data-evidence-coverage>Գրանցված պատասխաններ՝ ${esc(row.observedEvidenceCount)}։ Ցուցանիշի հաշվարկին մասնակցող պատասխաններ՝ ${esc(row.evidenceCount)}։ Պատասխանները պահպանված են, սակայն հարցերի նախկին տարբերակների տվյալները բավարար չեն բոլոր պատասխաններով ցուցանիշ հաշվարկելու համար։</p>` : ''}
         ${estimates.length ? evidencePurposeGroups(estimates).map(purpose=>`<section class="evidence-purpose" data-evidence-purpose="${esc(purpose.mode)}"><h4>${esc(purpose.label)}</h4><p class="subtle small">${esc(purpose.description)}${purpose.entries.length>1?` ${purpose.entries.length} առանձին ցուցանիշ։`:''}</p>${evidenceSeparationMarkup(purpose.entries)}${evidenceVersionsMarkup(purpose.entries,(estimate,index)=>{
           const presentation = skillEvidenceState(estimate);
-          return `<article class="skill-estimate ${presentation.band}"><h5>${esc(modes[estimate.contract?.mode] ?? 'Ուսումնական աշխատանք')}${purpose.entries.length > 1 ? ` · տարբերակ ${index + 1}` : ''}</h5>
+          return `<article class="skill-estimate ${presentation.band}"><h5>${esc(purpose.label)}${purpose.entries.length > 1 ? ` · արդյունք ${index + 1}` : ''}</h5>
             <p>${esc(presentation.label)} · ${esc(estimate.evidenceCount)} պատասխան${Number.isInteger(estimate.sessionCount)?` · ${estimate.sessionCount} աշխատանք`:''}</p>
             ${presentation.kind !== 'classified' && Number.isFinite(estimate.percent) ? `<p class="subtle small">Նախնական ցուցանիշ՝ ${estimate.percent}%․ դասակարգման համար դիտարկումները դեռ բավարար չեն։</p>` : ''}
             ${estimate.contract ? contractMarkup(estimate.contract) : ''}</article>`;
