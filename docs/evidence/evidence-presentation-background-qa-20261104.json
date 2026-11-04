@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "haiedu-bf05-background-qa-v1",
+  "source": "5b2492787cd8785496a3b03ca5a08a545aa322b8",
+  "date": "2026-11-04",
+  "status": "passed",
+  "suites": [
+    {
+      "run": 41829734828,
+      "attempt": 1,
+      "report": "teacher-feedback.json",
+      "reportSha256": "f6fa49f468fa8206fcfc4b20ccf0bbf24f3127dc8d36011d87dd85ddd5bb901f",
+      "status": "passed",
+      "mainChecks": 87,
+      "isolationChecks": 108
+    },
+    {
+      "run": 41829734875,
+      "attempt": 2,
+      "report": "english-unit3-pilot-read-acceptance.json",
+      "reportSha256": "9e27636105397a42d6a57272c06c5185672f2f85c45bf31b64cef1f38344f7c3",
+      "status": "passed",
+      "mainChecks": 154,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829734909,
+      "attempt": 1,
+      "report": "sprint-14-actions.json",
+      "reportSha256": "bead11aa8426345d9184043c201f41e5c78e52c788b36f787ae52407ccc89b90",
+      "status": "passed",
+      "mainChecks": 206,
+      "isolationChecks": 108
+    },
+    {
+      "run": 41829734940,
+      "attempt": 1,
+      "report": "chapter-v-pilot-read-acceptance.json",
+      "reportSha256": "77b722071b2453c6eac3b3f63f60c8e9a06539565e55c579e6b40fd414b4620b",
+      "status": "passed",
+      "mainChecks": 191,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829734964,
+      "attempt": 1,
+      "report": "english-unit1-pilot-read-acceptance.json",
+      "reportSha256": "f4b381d13f24e4d306f2af930bf7585d61fae2f6fcac14449ba16cbf0ee1e996",
+      "status": "passed",
+      "mainChecks": 130,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829734993,
+      "attempt": 1,
+      "report": "resource-assignments.json",
+      "reportSha256": "98154b69ff466dffd3b9edc6e44ca9eefdc022645bd44ffb0187ee8dd85efe99",
+      "status": "passed",
+      "mainChecks": 327,
+      "isolationChecks": 108
+    },
+    {
+      "run": 41829734995,
+      "attempt": 1,
+      "report": "chapter-vi-pilot-read-acceptance.json",
+      "reportSha256": "25b636c00e129298d930433622d5ce3f1cfe3b20a25b669fd712a489ee327262",
+      "status": "passed",
+      "mainChecks": 324,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829735001,
+      "attempt": 1,
+      "report": "sprint-14d-analytics.json",
+      "reportSha256": "59138a10a12ad39607b2affff58ce9406891d6cf230197e552a04234e42f0f03",
+      "status": "passed",
+      "mainChecks": 10,
+      "isolationChecks": 0
+    },
+    {
+      "run": 41829735006,
+      "attempt": 1,
+      "report": "english-unit2-pilot-read-acceptance.json",
+      "reportSha256": "ebebfc44796baa1f9a814142527d058f3cdc4febc2a070a695ceee805f350642",
+      "status": "passed",
+      "mainChecks": 142,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829735050,
+      "attempt": 1,
+      "report": "chapter-iv-pilot-read-acceptance.json",
+      "reportSha256": "79dbac24d570c819310885615dffd2b8f2b49b113831fb3ab665a4398ccf19db",
+      "status": "passed",
+      "mainChecks": 155,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829735121,
+      "attempt": 1,
+      "report": "chapter-iii-pilot-read-acceptance.json",
+      "reportSha256": "7af3aa25e2296290697c44aa4f4789d6b90bb815964f134a2205c889d19d4599",
+      "status": "passed",
+      "mainChecks": 123,
+      "isolationChecks": 54
+    },
+    {
+      "run": 41829735155,
+      "attempt": 1,
+      "report": "mobile-acceptance.json",
+      "reportSha256": "e824098bb1af40c5cce78fee3de520b6170fc1f12f080c342d7bfeaac03b146b",
+      "status": "passed",
+      "mainChecks": 84,
+      "isolationChecks": 108
+    }
+  ],
+  "retainedFailures": [
+    {
+      "run": 41829734875,
+      "attempt": 1,
+      "job": 126573517292,
+      "stage": "source preflight",
+      "cause": "Held frontend source did not reach expected commit within 600000ms; before application tests",
+      "retryAttempt": 2,
+      "retryStatus": "passed"
+    }
+  ],
+  "limits": [
+    "No fresh lost-response learner write in these twelve suites.",
+    "Automated authenticated UI and read/action/delivery coverage does not confer owner usability, physical-device, MFA or independent approval."
+  ],
+  "totals": {
+    "suites": 12,
+    "mainChecks": 1933,
+    "isolationChecks": 810
+  }
+}
