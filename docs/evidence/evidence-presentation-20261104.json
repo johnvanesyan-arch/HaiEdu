@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "haiedu-evidence-presentation-v1",
+  "date": "2026-11-04",
+  "timezone": "Asia/Dubai",
+  "status": "candidate_current_head_ci_pending",
+  "pr": 402,
+  "inventory": "evidence-compatibility-inventory-20261104.json",
+  "chapterMappingReadback": {
+    "scope": "all completed exact institutional sessions, current and history; no learner IDs",
+    "completedSessions": 26,
+    "governedChapterResolved": 18,
+    "legacyChapterResolved": 8,
+    "unresolvedChapter": 0,
+    "contextualDisplayGroups": 12,
+    "answered": 235,
+    "correct": 210,
+    "readOnly": true
+  },
+  "decisions": {
+    "historicalCrossBuildPooling": false,
+    "sameOriginalContractDifferentClasses": "context separation; no unsupported compatibility warning",
+    "differingOriginalContracts": "remain separate; no equivalence inferred",
+    "schoolPercentages": "explicit class-scoped answer denominators; former cross-class percentages can split; stored results and formula unchanged",
+    "teacherPercentages": "original per-contract percentages/support classifications unchanged"
+  },
+  "verificationLimits": [
+    "Native captures use actual documents/controllers with synthetic authorized DTOs.",
+    "Production aggregate mapping readback is not a fresh signed-in staff UI walkthrough.",
+    "Owner usability and independent gates remain open."
+  ]
+}

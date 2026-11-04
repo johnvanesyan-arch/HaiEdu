@@ -1178,7 +1178,7 @@ async function openStudent(studentId, skillId = null) {
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
     <p class="mode-kicker">${escapeHtml(contextKicker)}</p>
     <p class="subtle small">${escapeHtml(unitTitle)}</p>
-    ${skillEvidenceMarkup(data.matrix ?? data.skills ?? [], data.unitCode)}
+    ${skillEvidenceMarkup(data.matrix ?? data.skills ?? [], data.unitCode, data.academicContext)}
     <h3>Յուրացման ստուգում և կրկնություն</h3>
     <section class="drawer-summary-grid">
       <div class="mini-card"><span>Յուրացման ստուգման արդյունք</span><strong>${escapeHtml(masteryStatus)}</strong></div>

@@ -6,15 +6,16 @@ import {chromium,expect} from '@playwright/test';
 // Actual staff documents/controllers, isolated Auth and endpoint DTOs. This is
 // browser usability evidence, not privileged hosted authorization acceptance.
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
-async function fixture(t,file,{width=1280,large=false}={}){
+async function fixture(t,file,{width=1280,large=false,evidence=false}={}){
  const role=file==='admin'?'admin':'school_admin';
  const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});t.after(()=>context.close());
  const page=await context.newPage(),errors=[];page.setDefaultTimeout(8000);page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(({role,large})=>{
+ await page.addInitScript(({role,large,evidence})=>{
   const classes=[{id:'archived-a',name:'Պահպանված դասարան Ա',isActive:false,subjectProgramIds:['a']},{id:'current-b',name:'Ընթացիկ դասարան Բ',isActive:true,subjectProgramIds:['b']},{id:'current-a',name:'Ընթացիկ դասարան Ա',isActive:true,subjectProgramIds:['a']}];
   const school={id:'school-a',name:'Փորձնական դպրոց',schoolCode:'SYNTHETIC'};
   window.__calls=[];window.__held=[];
-  const analytics=body=>({scope:{...body,academicYearId:'year-a'},options:{academicYears:[{id:'year-a',label:'2026–2027'}],programmes:[{id:'a',label:'Առարկա Ա'},{id:'b',label:'Առարկա Բ'}],classes,releases:[],units:[]},analytics:{enrollment:{students:2,contexts:2},participation:{students:1,rate:50},evidence:{completedSessions:0},chapterReview:{completedSessions:0}}});
+  const groups=evidence?['diagnostic','practice','practice'].map((mode,index)=>({mode,sessions:1,correct:index===1?0:4,answered:5,accuracy:index===1?0:80,lastActivityAt:'2026-11-0'+(index+1)+'T10:00:00Z',context:{classId:'current-a',subjectProgramId:'a',unitCode:'SYN-U'},contract:{mode,releaseId:'release-a',unitId:index===1?null:'unit-a',blueprintId:'blueprint-'+mode,policyBindingId:'binding-'+mode,modelId:'model-a',runtimeBuildId:'build-'+index}})):[];
+  const analytics=body=>({scope:{...body,academicYearId:'year-a'},options:{academicYears:[{id:'year-a',label:'2026–2027'}],programmes:[{id:'a',label:'Առարկա Ա'},{id:'b',label:'Առարկա Բ'}],classes,releases:evidence?[{id:'release-a',label:'Թողարկում 1',subjectProgramId:'a'}]:[],units:evidence?[{id:'unit-a',unitCode:'SYN-U',curriculumReleaseId:'release-a',label:'Փորձնական գլուխ'}]:[]},analytics:{enrollment:{students:2,contexts:2},participation:{students:1,rate:50},diagnostic:{completedContexts:evidence?1:0,eligibleContexts:2,completionRate:evidence?50:0,averageAccuracy:evidence?80:null},mastery:{attemptedContexts:0,passedContexts:0,passRate:null},evidence:{exactSessions:groups.length,completedSessions:groups.length},chapterReview:{completedSessions:0},evidenceGroups:groups}});
   window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'actor'}}}}),getUser:async()=>({data:{user:{id:'actor'}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}}),mfa:{getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:'aal2'}})}},from:table=>({select(){return this;},eq(){return this;},order:async()=>({data:[{...school,school_code:school.schoolCode}]}),maybeSingle:async()=>({data:{role,account_status:'active'}})}),functions:{invoke:async(name,{body})=>{
    window.__calls.push({name,body});
    if(name==='get-school-performance-analytics'){
@@ -35,7 +36,7 @@ async function fixture(t,file,{width=1280,large=false}={}){
    throw Error('Unexpected isolated endpoint '+name);
   }}};
   if(large)document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize='32px');
- },{role,large});
+ },{role,large,evidence});
  await context.route('**/*',async route=>{
   const u=new URL(route.request().url());
   if(u.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__haieduSupabaseClient;'});
@@ -47,6 +48,27 @@ async function fixture(t,file,{width=1280,large=false}={}){
  return{page,errors};
 }
 async function screenshot(page,name){if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/'+name+'.png',fullPage:true});}}
+for(const file of ['school-admin','admin'])for(const width of [390,1280])test(`${file} preserves separate practice versions and baseline at ${width}px/200%`,async t=>{
+ const {page:p,errors}=await fixture(t,file,{width,large:true,evidence:true});
+ if(file==='admin')await p.locator('[data-open-school]').click();
+ const root=file==='admin'?p.locator('#schoolDetail [data-evidence]'):p.locator('#analyticsEvidenceGroups');
+ const practice=root.locator('[data-evidence-purpose=practice]'),baseline=root.locator('[data-evidence-purpose=diagnostic]');
+ await expect(practice).toBeVisible();await expect(baseline).toBeVisible();
+ assert.ok(await root.evaluate(el=>[...el.querySelectorAll('[data-evidence-purpose]')].map(e=>e.dataset.evidencePurpose).join(',')==='practice,diagnostic'));
+ await expect(practice).toContainText('2 առանձին արդյունք');await expect(practice).toContainText('Ընթացիկ դասարան Ա');await expect(practice).toContainText('Փորձնական գլուխ');
+ const older=practice.locator('.evidence-other-versions');await expect(older).toHaveJSProperty('open',false);
+ await older.locator(':scope>summary').focus();await p.keyboard.press('Enter');await expect(older).toHaveAttribute('open','');
+ await expect(older).toContainText('0/5');await expect(older).toContainText('0%');await expect(older).toContainText('Փորձնական գլուխ');
+ if(file==='school-admin')await expect(p.locator('#analyticsMessage')).toBeEmpty();
+ await expect(root.locator('.evidence-technical-details[open]')).toHaveCount(0);
+ const technical=older.locator('.evidence-technical-details');await technical.locator('summary').press('Enter');await expect(technical).toContainText('build-1');
+ await technical.locator('summary').press('Enter');await older.scrollIntoViewIfNeeded();
+ const layout=await p.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth,evidence:[...document.querySelectorAll('.evidence-purpose,.evidence-other-versions')].filter(e=>e.getClientRects().length).map(e=>({width:e.clientWidth,scroll:e.scrollWidth}))}));
+ assert.ok(layout.document<=layout.viewport+1,JSON.stringify(layout));assert.ok(layout.evidence.every(e=>e.scroll<=e.width+1),JSON.stringify(layout));
+ await screenshot(p,'bf05-'+file+'-'+width);
+ assert.deepEqual(await wordBreaks(p,'.evidence-purpose h4,.evidence-purpose h5,.evidence-other-versions>summary'),[]);
+ assert.deepEqual(errors,[]);
+});
 for(const width of [390,1280])test(`School Admin uses scoped active classes and folded named history at ${width}px/200%`,async t=>{
  const {page:p,errors}=await fixture(t,'school-admin',{width,large:true});
  await expect(p.locator('#analyticsClassFilter option')).toHaveCount(3);

@@ -16,6 +16,28 @@ const student={id:'student-a',displayName:'Փորձնական աշակերտ',ma
 const studentDetails={student,unitCode:'SYN-1',matrix,skills:matrix,recentAttempts:[],sessions:[],modeSummary:{}};
 const analytics={students:[student],studentCount:1,skills:matrix};
 
+for(const width of [390,1280])test(`teacher separates two practice versions from baseline at ${width}px/200%`,async t=>{
+ const versions=[{...estimates[0],contract:{...estimates[0].contract,runtimeBuildId:'baseline-build'}},
+  {...estimates[1],lastAttemptAt:'2026-11-01T10:00:00Z',sessionCount:1,contract:{...estimates[1].contract,runtimeBuildId:'old-build'}},
+  {...estimates[1],percent:75,band:'secure',status:'secure',lastAttemptAt:'2026-11-04T10:00:00Z',sessionCount:2,contract:{...estimates[1].contract,runtimeBuildId:'new-build'}}];
+ const rows=[{...matrix[0],evidenceCount:12,estimates:versions}],learner={...student,matrix:rows,weakSkills:rows,masteryCheck:null};
+ const {page:p,errors}=await fixture(browser,t,{analytics:{students:[learner],studentCount:1,skills:rows},
+  studentDetails:{...studentDetails,student:learner,matrix:rows,skills:rows,academicContext:{subjectNameHy:'Առարկա',gradeLabelHy:'7-րդ դասարան',unitTitleHy:'Փորձնական գլուխ'}}});
+ await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
+ await p.locator('#matrixWrap [data-skill=s1]').click();const detail=p.locator('[data-skill-evidence=s1]');await expect(detail).toHaveAttribute('open','');
+ await expect(detail.locator('[data-evidence-purpose=practice]')).toHaveCount(1);await expect(detail.locator('[data-evidence-purpose=diagnostic]')).toHaveCount(1);
+ await expect(p.locator('.teacher-skill-evidence > .evidence-context-label')).toContainText('Առարկա · 7-րդ դասարան · Փորձնական գլուխ');
+ const practice=detail.locator('[data-evidence-purpose=practice]');await expect(practice).toContainText('Կայուն · 75%');
+ const older=practice.locator('.evidence-other-versions');await expect(older).toHaveJSProperty('open',false);await older.locator(':scope>summary').focus();await p.keyboard.press('Enter');await expect(older).toHaveAttribute('open','');
+ await expect(older).toContainText('Աջակցություն է պետք · 38%');await expect(detail.locator('[data-evidence-purpose=diagnostic]')).toContainText('Կայուն · 88%');
+ await expect(detail.locator('.evidence-technical-details[open]')).toHaveCount(0);await expect(p.locator('#matrixNeedsSupportTotal')).toHaveText('1');
+ await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');await practice.scrollIntoViewIfNeeded();
+ assert.equal(await p.locator('.student-drawer-panel').evaluate(el=>el.scrollWidth<=el.clientWidth+1),true);
+ assert.deepEqual(await wordBreaks(p,'.evidence-purpose h4,.evidence-purpose h5,.evidence-other-versions>summary'),[]);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/bf05-teacher-'+width+'.png'});}
+ assert.deepEqual(errors,[]);
+});
+
 test('recorded S02/S04-shaped answers with missing versions open neutral keyboard details at phone width',async t=>{
  const rows=[['s02',4],['s04',3]].map(([skillId,count])=>({skillId,code:'SYN-1-'+skillId.toUpperCase(),nameHy:'Հմտություն',
   percent:null,band:'not_assessed',status:'provenance_unavailable',evidenceCount:0,observedEvidenceCount:count,excludedEvidenceCount:count,estimates:[]}));
@@ -126,7 +148,7 @@ test('actual teacher matrix exposes split evidence, support counts and direct ke
  await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
  await expect(p.locator('#matrixStudentTotal')).toHaveText('1');await expect(p.locator('#matrixMasteredTotal')).toHaveText('1');await expect(p.locator('#matrixNeedsSupportTotal')).toHaveText('1');
  const cells=p.locator('#matrixWrap td');
- for(const [i,text] of ['Առանձին արդյունքներ','Դիտարկումները դեռ քիչ են','Ցուցանիշը հասանելի չէ','Տվյալ դեռ չկա'].entries())await expect(cells.nth(i)).toHaveText(text);
+ for(const [i,text] of ['Առանձին արդյունքներՎարժություն · Ախտորոշիչ','Դիտարկումները դեռ քիչ են','Ցուցանիշը հասանելի չէ','Տվյալ դեռ չկա'].entries())await expect(cells.nth(i)).toHaveText(text);
  await expect(p.locator('#roster')).toContainText('S01');assert.doesNotMatch(await p.locator('#roster .stat-label').filter({hasText:'Ուշադրության հմտություններ'}).locator('..').innerText(),/S02|S03|S04/);
  await p.locator('#matrixStudentFilter').selectOption('needs_support');await expect(p.locator('#matrixWrap tbody tr')).toHaveCount(1);
  const open=cells.first().getByRole('button');await open.focus();await p.keyboard.press('Enter');

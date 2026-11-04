@@ -1,0 +1,2248 @@
+{
+  "schemaVersion": "haiedu-answer-recovery-rollout-v1",
+  "date": "2026-11-04",
+  "timezone": "Asia/Dubai",
+  "status": "deployed_source_verified_authenticated_acceptance_in_progress",
+  "authorization": "John explicitly requested: make PR401 live and proceed with BF-05.",
+  "source": {
+    "pr": 401,
+    "reviewedHead": "d9a5bfe4ac1698d1f85b51f0bdc1c6bd3eef77da",
+    "main": "c86564d428e1f6a694c42373dc896dc463e91398",
+    "prCI": 41816928620,
+    "mainCI": 41819028161
+  },
+  "ownerDecisions": {
+    "BF02": "deferred; backup and restore remain unverified",
+    "independentHumanReview": "not claimed; owner authorized release after authoring-agent technical review and required CI"
+  },
+  "migration": {
+    "sourcePath": "supabase/migrations/20261104111921_answer_response_recovery.sql",
+    "sourceSha256": "2843e63b3b5e2181a53cf1eb8890f502d40d2dfe435e0b8b1fa8a38863a9d5c7",
+    "bodyHashes": {
+      "private.protect_learning_answer_receipt": "b28f671af06b3c7726f9f4686cb1ba8e",
+      "public.service_record_session_answer_atomic": "b9979e88dc4758939299b5e57a6ce825",
+      "private.authorized_legacy_answer_result": "74226488305df4ca04b9ca10b826230a",
+      "public.service_legacy_answer_response": "7be5c8bc7a9d2f4a029c92c99ac26197",
+      "public.service_governed_learning_operation": "ff6c3189b187206f9bee3f608b666f20"
+    },
+    "applied": true,
+    "preservedTables": 145,
+    "beforeFingerprints": [
+      {
+        "scope": "private.active_curriculum_release_units",
+        "row_count": 9,
+        "digest": "a2bcf1a552606afb309f9c9a6f85f6ab"
+      },
+      {
+        "scope": "private.assessment_presentation_configuration",
+        "row_count": 1,
+        "digest": "44a36c7a982b21a2b70e8fe8cbbcbcc4"
+      },
+      {
+        "scope": "private.learning_session_item_option_orders",
+        "row_count": 219,
+        "digest": "8b398d87c16360c5ed7b143a60410464"
+      },
+      {
+        "scope": "private.mastery_form_selection_bindings",
+        "row_count": 8,
+        "digest": "84eb18a8aecc03fa9f1a2cf845227514"
+      },
+      {
+        "scope": "private.mastery_form_serialization_fences",
+        "row_count": 1546,
+        "digest": "a37624fbb3dbb898804c05e9c3050a2e"
+      },
+      {
+        "scope": "private.teacher_feedback_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_feedback_receipts",
+        "row_count": 1,
+        "digest": "ee1cbb65abfbdcef5a2a21e898151bfa"
+      },
+      {
+        "scope": "private.teacher_feedback_snippets",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_task_privacy_scopes",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.academic_identity_events",
+        "row_count": 1433,
+        "digest": "dda1f35341cfee762752d1f7bea3bcb6"
+      },
+      {
+        "scope": "public.academic_mastery_policy_activation",
+        "row_count": 1,
+        "digest": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "scope": "public.academic_mastery_policy_versions",
+        "row_count": 1,
+        "digest": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "scope": "public.academic_years",
+        "row_count": 2,
+        "digest": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "scope": "public.account_deletion_requests",
+        "row_count": 3,
+        "digest": "9d26fbe7ff14a20de122917038a8dc1c"
+      },
+      {
+        "scope": "public.assessment_blueprint_items",
+        "row_count": 2546,
+        "digest": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "scope": "public.assessment_blueprints",
+        "row_count": 39,
+        "digest": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "scope": "public.assessment_form_items",
+        "row_count": 832,
+        "digest": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "scope": "public.assessment_forms",
+        "row_count": 44,
+        "digest": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "scope": "public.assessment_policy_bindings",
+        "row_count": 32,
+        "digest": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "scope": "public.assessment_pool_curriculum_reconciliations",
+        "row_count": 27,
+        "digest": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "scope": "public.assessment_pool_items",
+        "row_count": 1761,
+        "digest": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "scope": "public.assessment_pools",
+        "row_count": 28,
+        "digest": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "scope": "public.assignment_skills",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.assignments",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.attempts",
+        "row_count": 252,
+        "digest": "f817ca3bb330cae5f933c30a7425a4ed"
+      },
+      {
+        "scope": "public.calibration_analysis_scopes",
+        "row_count": 1,
+        "digest": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "scope": "public.calibration_change_decisions",
+        "row_count": 1,
+        "digest": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "scope": "public.calibration_decision_protocols",
+        "row_count": 1,
+        "digest": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "scope": "public.calibration_evidence_contracts",
+        "row_count": 2,
+        "digest": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "scope": "public.calibration_metric_sets",
+        "row_count": 2,
+        "digest": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "scope": "public.chapter_mastery_states",
+        "row_count": 3,
+        "digest": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "scope": "public.chapter_review_cycles",
+        "row_count": 2,
+        "digest": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "scope": "public.chapter_review_item_exposures",
+        "row_count": 24,
+        "digest": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "scope": "public.chapter_review_requirements",
+        "row_count": 2,
+        "digest": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "scope": "public.chapter_review_sessions",
+        "row_count": 2,
+        "digest": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "scope": "public.class_memberships",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.classes",
+        "row_count": 151,
+        "digest": "6a36087b6969a38e48fba6790354beee"
+      },
+      {
+        "scope": "public.curriculum_authorities",
+        "row_count": 2,
+        "digest": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "scope": "public.curriculum_frameworks",
+        "row_count": 1,
+        "digest": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "scope": "public.curriculum_reconciliation_runs",
+        "row_count": 9,
+        "digest": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "scope": "public.curriculum_release_gate_checks",
+        "row_count": 63,
+        "digest": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "scope": "public.curriculum_release_item_families",
+        "row_count": 1580,
+        "digest": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "scope": "public.curriculum_release_outcomes",
+        "row_count": 86,
+        "digest": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "scope": "public.curriculum_release_reconciliations",
+        "row_count": 9,
+        "digest": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "scope": "public.curriculum_release_skills",
+        "row_count": 108,
+        "digest": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "scope": "public.curriculum_release_units",
+        "row_count": 10,
+        "digest": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "scope": "public.curriculum_releases",
+        "row_count": 10,
+        "digest": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "scope": "public.curriculum_source_documents",
+        "row_count": 6,
+        "digest": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "scope": "public.grades",
+        "row_count": 12,
+        "digest": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "scope": "public.institutional_class_enrollments",
+        "row_count": 6,
+        "digest": "ed49de9bbdc2b4d550fb75699bcdf7c0"
+      },
+      {
+        "scope": "public.institutional_invitations",
+        "row_count": 142,
+        "digest": "d3119a96b6713d6f44314a038ac89c5a"
+      },
+      {
+        "scope": "public.institutional_join_codes",
+        "row_count": 73,
+        "digest": "9499afdbb52f3ec99f575b14e28fc826"
+      },
+      {
+        "scope": "public.institutional_memberships",
+        "row_count": 78,
+        "digest": "ce7881a4c7bd40ae98f9a08d03ce1170"
+      },
+      {
+        "scope": "public.item_answer_keys",
+        "row_count": 1803,
+        "digest": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "scope": "public.item_curriculum_scopes",
+        "row_count": 1803,
+        "digest": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "scope": "public.item_families",
+        "row_count": 1581,
+        "digest": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "scope": "public.item_family_curriculum_reconciliations",
+        "row_count": 1581,
+        "digest": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "scope": "public.item_misconception_mappings",
+        "row_count": 3212,
+        "digest": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "scope": "public.item_options",
+        "row_count": 6122,
+        "digest": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "scope": "public.item_qa_runs",
+        "row_count": 2304,
+        "digest": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "scope": "public.item_reviews",
+        "row_count": 2088,
+        "digest": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "scope": "public.item_template_remediation_guides",
+        "row_count": 518,
+        "digest": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "scope": "public.item_templates",
+        "row_count": 1581,
+        "digest": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "scope": "public.item_versions",
+        "row_count": 2064,
+        "digest": "4705ac35d13f6cfc657e488756c5090b"
+      },
+      {
+        "scope": "public.items",
+        "row_count": 1803,
+        "digest": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "scope": "public.learning_assessed_audio",
+        "row_count": 11,
+        "digest": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "scope": "public.learning_audio_deliveries",
+        "row_count": 14,
+        "digest": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "scope": "public.learning_audio_versions",
+        "row_count": 44,
+        "digest": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "scope": "public.learning_model_configurations",
+        "row_count": 9,
+        "digest": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "scope": "public.learning_model_runtime_bindings",
+        "row_count": 9,
+        "digest": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "scope": "public.learning_outcome_normative_mappings",
+        "row_count": 86,
+        "digest": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "scope": "public.learning_outcomes",
+        "row_count": 86,
+        "digest": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "scope": "public.learning_response_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.learning_session_items",
+        "row_count": 320,
+        "digest": "248c31ae1ddef169ed70c31160ecfdba"
+      },
+      {
+        "scope": "public.learning_sessions",
+        "row_count": 31,
+        "digest": "6cfeab6cdd3d325e5b0d2c9afe62cbc3"
+      },
+      {
+        "scope": "public.learning_source_family_exposures",
+        "row_count": 70,
+        "digest": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "scope": "public.learning_task_set_versions",
+        "row_count": 82,
+        "digest": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "scope": "public.legacy_learning_blueprint_mappings",
+        "row_count": 7,
+        "digest": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "scope": "public.mastery_check_attempts",
+        "row_count": 5,
+        "digest": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "scope": "public.misconception_review_events",
+        "row_count": 1026,
+        "digest": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "scope": "public.misconceptions",
+        "row_count": 1033,
+        "digest": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "scope": "public.pilot_evidence_classifications",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_gate_checks",
+        "row_count": 11,
+        "digest": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "scope": "public.pilot_participant_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_participants",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_runs",
+        "row_count": 1,
+        "digest": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "scope": "public.privacy_preferences",
+        "row_count": 2,
+        "digest": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "scope": "public.profiles",
+        "row_count": 12,
+        "digest": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "scope": "public.recommendation_events",
+        "row_count": 941,
+        "digest": "db776ae6d50304885fbe81972600753b"
+      },
+      {
+        "scope": "public.remediation_events",
+        "row_count": 10,
+        "digest": "db70b7181a736e81033f20995e34cfac"
+      },
+      {
+        "scope": "public.remediation_guide_authoring_versions",
+        "row_count": 1708,
+        "digest": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "scope": "public.remediation_guide_versions",
+        "row_count": 1067,
+        "digest": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "scope": "public.resource_assignment_events",
+        "row_count": 153,
+        "digest": "cf010d07947df4565ca002d15d6c9e79"
+      },
+      {
+        "scope": "public.resource_assignment_recipients",
+        "row_count": 96,
+        "digest": "cb583591e459e62aeabb8da2da681338"
+      },
+      {
+        "scope": "public.resource_assignments",
+        "row_count": 77,
+        "digest": "37eeb8de5546edb4e36f7a4ae9c7c523"
+      },
+      {
+        "scope": "public.runtime_builds",
+        "row_count": 30,
+        "digest": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "scope": "public.schools",
+        "row_count": 2,
+        "digest": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "scope": "public.security_audit_log",
+        "row_count": 34,
+        "digest": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "scope": "public.skill_curriculum_reconciliations",
+        "row_count": 108,
+        "digest": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "scope": "public.skill_outcome_curriculum_mappings",
+        "row_count": 137,
+        "digest": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "scope": "public.skill_outcomes",
+        "row_count": 137,
+        "digest": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "scope": "public.skill_prerequisites",
+        "row_count": 17,
+        "digest": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "scope": "public.skill_remediation_guides",
+        "row_count": 10,
+        "digest": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "scope": "public.skills",
+        "row_count": 109,
+        "digest": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "scope": "public.staff_account_provisioning",
+        "row_count": 6,
+        "digest": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "scope": "public.student_account_acceptances",
+        "row_count": 1,
+        "digest": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "scope": "public.student_item_exposure_events",
+        "row_count": 256,
+        "digest": "af4020ab018580448c1279a89667f55a"
+      },
+      {
+        "scope": "public.student_skill_mastery",
+        "row_count": 34,
+        "digest": "cd2ff4bdec484231a9f2aba65bb71a83"
+      },
+      {
+        "scope": "public.student_skill_mastery_by_release",
+        "row_count": 34,
+        "digest": "99aa6fd7de53142e5c12b087798ecc94"
+      },
+      {
+        "scope": "public.subject_program_source_bindings",
+        "row_count": 3,
+        "digest": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "scope": "public.subject_programs",
+        "row_count": 3,
+        "digest": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "scope": "public.subjects",
+        "row_count": 3,
+        "digest": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "scope": "public.supplementary_resource_events",
+        "row_count": 366,
+        "digest": "63457532d23c60d26155620bdd414d90"
+      },
+      {
+        "scope": "public.supplementary_resource_versions",
+        "row_count": 82,
+        "digest": "9ee0ee670bbb41669b4a807c2c346f74"
+      },
+      {
+        "scope": "public.teacher_assignments",
+        "row_count": 151,
+        "digest": "98bd5924512c1acafe265f5b05c8014c"
+      },
+      {
+        "scope": "public.teacher_subject_authorizations",
+        "row_count": 74,
+        "digest": "cea031765f61e1fcc2e61d1863d44001"
+      },
+      {
+        "scope": "public.teacher_task_cleanup_runs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_deliveries",
+        "row_count": 17,
+        "digest": "d87f2afc0ee89a3b2e01855dbf476a4c"
+      },
+      {
+        "scope": "public.teacher_task_delivery_cancellations",
+        "row_count": 17,
+        "digest": "7728c9a24d35595467f57563078e1fb6"
+      },
+      {
+        "scope": "public.teacher_task_delivery_events",
+        "row_count": 17,
+        "digest": "02791d1f1fcb44fe8eca58a6de9fd2f8"
+      },
+      {
+        "scope": "public.teacher_task_delivery_recipients",
+        "row_count": 17,
+        "digest": "b3fc3b047e37f964701f8aa53bdea107"
+      },
+      {
+        "scope": "public.teacher_task_drafts",
+        "row_count": 17,
+        "digest": "77fa18df6a8a360e77173b5f07fc08aa"
+      },
+      {
+        "scope": "public.teacher_task_erasure_jobs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_response_files",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_review_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_reviews",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_source_files",
+        "row_count": 17,
+        "digest": "c012b12b02848000f8d73c932dc81b7a"
+      },
+      {
+        "scope": "public.teacher_task_storage_deletions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_student_work",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_submissions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_versions",
+        "row_count": 17,
+        "digest": "19b325bc9a237a4aa1447702563caea9"
+      },
+      {
+        "scope": "public.teacher_task_work_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbook_mappings",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbooks",
+        "row_count": 1,
+        "digest": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "scope": "public.topics",
+        "row_count": 33,
+        "digest": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "scope": "public.unit_material_events",
+        "row_count": 90,
+        "digest": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "scope": "public.unit_material_versions",
+        "row_count": 28,
+        "digest": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "scope": "public.units",
+        "row_count": 10,
+        "digest": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "scope": "public.writing_assignment_events",
+        "row_count": 36,
+        "digest": "60a675d0449736bc50a1f875c49d3943"
+      },
+      {
+        "scope": "public.writing_assignment_recipients",
+        "row_count": 18,
+        "digest": "c76a236f74fdc60520eaca9b3be51285"
+      },
+      {
+        "scope": "public.writing_assignments",
+        "row_count": 18,
+        "digest": "e368388a4cc040c0992bab95a1a89bde"
+      },
+      {
+        "scope": "public.written_reviews",
+        "row_count": 5,
+        "digest": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "scope": "public.written_submissions",
+        "row_count": 5,
+        "digest": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "scope": "public.written_task_versions",
+        "row_count": 3,
+        "digest": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "scope": "public.written_work",
+        "row_count": 3,
+        "digest": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ],
+    "appliedVersion": "20261104111921",
+    "toolGeneratedVersionDiffersFromReviewedFilename": true,
+    "readback": {
+      "table": {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true
+      },
+      "receipts": 0,
+      "functions": [
+        {
+          "acl": "{postgres=X/postgres}",
+          "name": "protect_learning_answer_receipt",
+          "owner": "postgres",
+          "schema": "private",
+          "bodyMd5": "b28f671af06b3c7726f9f4686cb1ba8e",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": false
+        },
+        {
+          "acl": "{postgres=X/postgres,service_role=X/postgres}",
+          "name": "service_record_session_answer_atomic",
+          "owner": "postgres",
+          "schema": "public",
+          "bodyMd5": "b9979e88dc4758939299b5e57a6ce825",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": true
+        },
+        {
+          "acl": "{postgres=X/postgres}",
+          "name": "authorized_legacy_answer_result",
+          "owner": "postgres",
+          "schema": "private",
+          "bodyMd5": "74226488305df4ca04b9ca10b826230a",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": false
+        },
+        {
+          "acl": "{postgres=X/postgres,service_role=X/postgres}",
+          "name": "service_legacy_answer_response",
+          "owner": "postgres",
+          "schema": "public",
+          "bodyMd5": "7be5c8bc7a9d2f4a029c92c99ac26197",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": true
+        },
+        {
+          "acl": "{postgres=X/postgres,service_role=X/postgres}",
+          "name": "service_governed_learning_operation",
+          "owner": "postgres",
+          "schema": "public",
+          "bodyMd5": "ff6c3189b187206f9bee3f608b666f20",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": true
+        },
+        {
+          "acl": "{postgres=X/postgres}",
+          "name": "record_session_answer_before_recovery",
+          "owner": "postgres",
+          "schema": "private",
+          "bodyMd5": "34cec3c1f63695e8768f4e384e0b0c95",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": true
+        },
+        {
+          "acl": "{postgres=X/postgres}",
+          "name": "governed_operation_before_recovery",
+          "owner": "postgres",
+          "schema": "private",
+          "bodyMd5": "b8e28bedc47404c64e12274cb23d216f",
+          "settings": [
+            "search_path=\"\""
+          ],
+          "securityDefiner": true
+        }
+      ],
+      "migration": {
+        "name": "answer_response_recovery",
+        "version": "20261104111921"
+      }
+    },
+    "afterFingerprints": [
+      {
+        "scope": "private.active_curriculum_release_units",
+        "row_count": 9,
+        "digest": "a2bcf1a552606afb309f9c9a6f85f6ab"
+      },
+      {
+        "scope": "private.assessment_presentation_configuration",
+        "row_count": 1,
+        "digest": "44a36c7a982b21a2b70e8fe8cbbcbcc4"
+      },
+      {
+        "scope": "private.learning_session_item_option_orders",
+        "row_count": 219,
+        "digest": "8b398d87c16360c5ed7b143a60410464"
+      },
+      {
+        "scope": "private.mastery_form_selection_bindings",
+        "row_count": 8,
+        "digest": "84eb18a8aecc03fa9f1a2cf845227514"
+      },
+      {
+        "scope": "private.mastery_form_serialization_fences",
+        "row_count": 1546,
+        "digest": "a37624fbb3dbb898804c05e9c3050a2e"
+      },
+      {
+        "scope": "private.teacher_feedback_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_feedback_receipts",
+        "row_count": 1,
+        "digest": "ee1cbb65abfbdcef5a2a21e898151bfa"
+      },
+      {
+        "scope": "private.teacher_feedback_snippets",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "private.teacher_task_privacy_scopes",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.academic_identity_events",
+        "row_count": 1433,
+        "digest": "dda1f35341cfee762752d1f7bea3bcb6"
+      },
+      {
+        "scope": "public.academic_mastery_policy_activation",
+        "row_count": 1,
+        "digest": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "scope": "public.academic_mastery_policy_versions",
+        "row_count": 1,
+        "digest": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "scope": "public.academic_years",
+        "row_count": 2,
+        "digest": "1a1542decf778bf3de4b19bbcaa8e975"
+      },
+      {
+        "scope": "public.account_deletion_requests",
+        "row_count": 3,
+        "digest": "9d26fbe7ff14a20de122917038a8dc1c"
+      },
+      {
+        "scope": "public.assessment_blueprint_items",
+        "row_count": 2546,
+        "digest": "f24358e36428adc5e0977ee6bce21a6e"
+      },
+      {
+        "scope": "public.assessment_blueprints",
+        "row_count": 39,
+        "digest": "f6835f2608f97d8e783ae5cba711adea"
+      },
+      {
+        "scope": "public.assessment_form_items",
+        "row_count": 832,
+        "digest": "ce4edb76dcfc66f5271166d4aa135773"
+      },
+      {
+        "scope": "public.assessment_forms",
+        "row_count": 44,
+        "digest": "84e401f99632789030be9d2189b8dca4"
+      },
+      {
+        "scope": "public.assessment_policy_bindings",
+        "row_count": 32,
+        "digest": "b1d2bf1fdb8fdd2c68583774fb153dc6"
+      },
+      {
+        "scope": "public.assessment_pool_curriculum_reconciliations",
+        "row_count": 27,
+        "digest": "e30b9b71c24777a907e31fb328a0e2c6"
+      },
+      {
+        "scope": "public.assessment_pool_items",
+        "row_count": 1761,
+        "digest": "e9fd51d0dae373c878ec8e93047370aa"
+      },
+      {
+        "scope": "public.assessment_pools",
+        "row_count": 28,
+        "digest": "80fa85a74b9ab79dcb95e0b67b80be5a"
+      },
+      {
+        "scope": "public.assignment_skills",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.assignments",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.attempts",
+        "row_count": 252,
+        "digest": "f817ca3bb330cae5f933c30a7425a4ed"
+      },
+      {
+        "scope": "public.calibration_analysis_scopes",
+        "row_count": 1,
+        "digest": "66a320758699f273bbb063911d160789"
+      },
+      {
+        "scope": "public.calibration_change_decisions",
+        "row_count": 1,
+        "digest": "8b0c4bf4e83fce4a7e200da3dbd07129"
+      },
+      {
+        "scope": "public.calibration_decision_protocols",
+        "row_count": 1,
+        "digest": "4ca5dc7272d02d37a44484f34a20d01a"
+      },
+      {
+        "scope": "public.calibration_evidence_contracts",
+        "row_count": 2,
+        "digest": "daa564081564e197fd9aeea97ba1719f"
+      },
+      {
+        "scope": "public.calibration_metric_sets",
+        "row_count": 2,
+        "digest": "996427ab7940c882c6e8a73af7183da2"
+      },
+      {
+        "scope": "public.chapter_mastery_states",
+        "row_count": 3,
+        "digest": "4ea21d945d9c78b0f0bd2e5be5c5d5a0"
+      },
+      {
+        "scope": "public.chapter_review_cycles",
+        "row_count": 2,
+        "digest": "9f8af2cd56e924515222b8183c28ed4f"
+      },
+      {
+        "scope": "public.chapter_review_item_exposures",
+        "row_count": 24,
+        "digest": "24416ff62f1b72fbbeac4fd13f14907b"
+      },
+      {
+        "scope": "public.chapter_review_requirements",
+        "row_count": 2,
+        "digest": "f8f7b7c71162ec11c2ba1a1f5d74a12b"
+      },
+      {
+        "scope": "public.chapter_review_sessions",
+        "row_count": 2,
+        "digest": "bc58b832b84c7da03691191a9c771f01"
+      },
+      {
+        "scope": "public.class_memberships",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.classes",
+        "row_count": 151,
+        "digest": "6a36087b6969a38e48fba6790354beee"
+      },
+      {
+        "scope": "public.curriculum_authorities",
+        "row_count": 2,
+        "digest": "f00891e16d79dfa59fd01aa81703c4e7"
+      },
+      {
+        "scope": "public.curriculum_frameworks",
+        "row_count": 1,
+        "digest": "0638e3ed36e82f0798ffacfa0dab576f"
+      },
+      {
+        "scope": "public.curriculum_reconciliation_runs",
+        "row_count": 9,
+        "digest": "0530fb16ab8ea1ff3930d2a2b1772dd0"
+      },
+      {
+        "scope": "public.curriculum_release_gate_checks",
+        "row_count": 63,
+        "digest": "bc7412191a4d1cebdd073fedd7647c3b"
+      },
+      {
+        "scope": "public.curriculum_release_item_families",
+        "row_count": 1580,
+        "digest": "25f33fa8e0b50207c337372408ddb034"
+      },
+      {
+        "scope": "public.curriculum_release_outcomes",
+        "row_count": 86,
+        "digest": "d8dbba6e46eaca889e8f7764a1fc66db"
+      },
+      {
+        "scope": "public.curriculum_release_reconciliations",
+        "row_count": 9,
+        "digest": "4a95e0a8ce27af3b01cf34d928f5d4e5"
+      },
+      {
+        "scope": "public.curriculum_release_skills",
+        "row_count": 108,
+        "digest": "7f7f281930b55887aafe290ca1d379b2"
+      },
+      {
+        "scope": "public.curriculum_release_units",
+        "row_count": 10,
+        "digest": "3147469b66eb5c7e84bf000bae22c812"
+      },
+      {
+        "scope": "public.curriculum_releases",
+        "row_count": 10,
+        "digest": "e5bf35d72d0310fbceaf2ca09b9716a4"
+      },
+      {
+        "scope": "public.curriculum_source_documents",
+        "row_count": 6,
+        "digest": "775621fe10666f986a06027db7cf9dda"
+      },
+      {
+        "scope": "public.grades",
+        "row_count": 12,
+        "digest": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+      },
+      {
+        "scope": "public.institutional_class_enrollments",
+        "row_count": 6,
+        "digest": "ed49de9bbdc2b4d550fb75699bcdf7c0"
+      },
+      {
+        "scope": "public.institutional_invitations",
+        "row_count": 142,
+        "digest": "d3119a96b6713d6f44314a038ac89c5a"
+      },
+      {
+        "scope": "public.institutional_join_codes",
+        "row_count": 73,
+        "digest": "9499afdbb52f3ec99f575b14e28fc826"
+      },
+      {
+        "scope": "public.institutional_memberships",
+        "row_count": 78,
+        "digest": "ce7881a4c7bd40ae98f9a08d03ce1170"
+      },
+      {
+        "scope": "public.item_answer_keys",
+        "row_count": 1803,
+        "digest": "5056c07a59687c0e5cf5d8ef96e8cb10"
+      },
+      {
+        "scope": "public.item_curriculum_scopes",
+        "row_count": 1803,
+        "digest": "c742f1dcd53ef531a438ac7919afd908"
+      },
+      {
+        "scope": "public.item_families",
+        "row_count": 1581,
+        "digest": "556a33ec05a10b3989a499922b11dbb3"
+      },
+      {
+        "scope": "public.item_family_curriculum_reconciliations",
+        "row_count": 1581,
+        "digest": "3ebd1eab4a3d1e89a56cb9d223793057"
+      },
+      {
+        "scope": "public.item_misconception_mappings",
+        "row_count": 3212,
+        "digest": "4fc5cd2c40c3abb3929a180b70cf4336"
+      },
+      {
+        "scope": "public.item_options",
+        "row_count": 6122,
+        "digest": "9f4b75e00fb16a4e4b50bd73eaddecec"
+      },
+      {
+        "scope": "public.item_qa_runs",
+        "row_count": 2304,
+        "digest": "dcb75df1b3b5655c2794232233ba79a9"
+      },
+      {
+        "scope": "public.item_reviews",
+        "row_count": 2088,
+        "digest": "a5004aab88541dac7f12c4fdbb3efd24"
+      },
+      {
+        "scope": "public.item_template_remediation_guides",
+        "row_count": 518,
+        "digest": "4c96c727bdf5170b824051b1403c896c"
+      },
+      {
+        "scope": "public.item_templates",
+        "row_count": 1581,
+        "digest": "b2fd62ae4e584ecbf238707ca7646f33"
+      },
+      {
+        "scope": "public.item_versions",
+        "row_count": 2064,
+        "digest": "4705ac35d13f6cfc657e488756c5090b"
+      },
+      {
+        "scope": "public.items",
+        "row_count": 1803,
+        "digest": "b32a8e37e529628466f6b22b8155fa2b"
+      },
+      {
+        "scope": "public.learning_assessed_audio",
+        "row_count": 11,
+        "digest": "ea1f2ac0cd43c80a6e1bf31e1d5ecf71"
+      },
+      {
+        "scope": "public.learning_audio_deliveries",
+        "row_count": 14,
+        "digest": "52ef4ea71b75390333a546d4b5411b1f"
+      },
+      {
+        "scope": "public.learning_audio_versions",
+        "row_count": 44,
+        "digest": "60955cfed35b4c1d4feb050f4c49f9c7"
+      },
+      {
+        "scope": "public.learning_model_configurations",
+        "row_count": 9,
+        "digest": "3a98d8ac066a2e2a7df53e583d276f29"
+      },
+      {
+        "scope": "public.learning_model_runtime_bindings",
+        "row_count": 9,
+        "digest": "ef5f03d8424ef25e8a285555caaecc31"
+      },
+      {
+        "scope": "public.learning_outcome_normative_mappings",
+        "row_count": 86,
+        "digest": "9ee90df7c3e03e1d190e303d35efbc80"
+      },
+      {
+        "scope": "public.learning_outcomes",
+        "row_count": 86,
+        "digest": "ae7a5d55eedcca93070237615c3e1702"
+      },
+      {
+        "scope": "public.learning_response_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.learning_session_items",
+        "row_count": 320,
+        "digest": "248c31ae1ddef169ed70c31160ecfdba"
+      },
+      {
+        "scope": "public.learning_sessions",
+        "row_count": 31,
+        "digest": "6cfeab6cdd3d325e5b0d2c9afe62cbc3"
+      },
+      {
+        "scope": "public.learning_source_family_exposures",
+        "row_count": 70,
+        "digest": "aa6acdc52e55600550d90e1d26b52629"
+      },
+      {
+        "scope": "public.learning_task_set_versions",
+        "row_count": 82,
+        "digest": "f9cd2c27afebe2628c7a42793bb64099"
+      },
+      {
+        "scope": "public.legacy_learning_blueprint_mappings",
+        "row_count": 7,
+        "digest": "57efa30bbcff4c536f428f490071af7a"
+      },
+      {
+        "scope": "public.mastery_check_attempts",
+        "row_count": 5,
+        "digest": "93faaa52a0203be9d79ffab1d58ec537"
+      },
+      {
+        "scope": "public.misconception_review_events",
+        "row_count": 1026,
+        "digest": "2f50d13afdd9bc8991867f99d5aa940f"
+      },
+      {
+        "scope": "public.misconceptions",
+        "row_count": 1033,
+        "digest": "8bc62a2cc2653d8c93688e96cb8f52fe"
+      },
+      {
+        "scope": "public.pilot_evidence_classifications",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_gate_checks",
+        "row_count": 11,
+        "digest": "3e41b79199790e11902129d4a9904e67"
+      },
+      {
+        "scope": "public.pilot_participant_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_participants",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.pilot_runs",
+        "row_count": 1,
+        "digest": "585ce8b9927e4db5865e2b08b06c76bb"
+      },
+      {
+        "scope": "public.privacy_preferences",
+        "row_count": 2,
+        "digest": "2973d89d91d51e1ffdb58c236077bd45"
+      },
+      {
+        "scope": "public.profiles",
+        "row_count": 12,
+        "digest": "a33b437a5dacb1c9f7d0233503ec8c05"
+      },
+      {
+        "scope": "public.recommendation_events",
+        "row_count": 941,
+        "digest": "db776ae6d50304885fbe81972600753b"
+      },
+      {
+        "scope": "public.remediation_events",
+        "row_count": 10,
+        "digest": "db70b7181a736e81033f20995e34cfac"
+      },
+      {
+        "scope": "public.remediation_guide_authoring_versions",
+        "row_count": 1708,
+        "digest": "f7caff31ac6487b0e8529ab078b58584"
+      },
+      {
+        "scope": "public.remediation_guide_versions",
+        "row_count": 1067,
+        "digest": "39cad006e92f6ef2caf04006cd424b38"
+      },
+      {
+        "scope": "public.resource_assignment_events",
+        "row_count": 153,
+        "digest": "cf010d07947df4565ca002d15d6c9e79"
+      },
+      {
+        "scope": "public.resource_assignment_recipients",
+        "row_count": 96,
+        "digest": "cb583591e459e62aeabb8da2da681338"
+      },
+      {
+        "scope": "public.resource_assignments",
+        "row_count": 77,
+        "digest": "37eeb8de5546edb4e36f7a4ae9c7c523"
+      },
+      {
+        "scope": "public.runtime_builds",
+        "row_count": 30,
+        "digest": "de13d85838ed041109316bf415dbed1e"
+      },
+      {
+        "scope": "public.schools",
+        "row_count": 2,
+        "digest": "9865da797be602b85b211d112a007b60"
+      },
+      {
+        "scope": "public.security_audit_log",
+        "row_count": 34,
+        "digest": "709dd2f00d574bae5f7a3b4c09399835"
+      },
+      {
+        "scope": "public.skill_curriculum_reconciliations",
+        "row_count": 108,
+        "digest": "8304140a7080a41664884e011e1e737f"
+      },
+      {
+        "scope": "public.skill_outcome_curriculum_mappings",
+        "row_count": 137,
+        "digest": "e8e7251ce7bc2456eaf7be904e4d9fcb"
+      },
+      {
+        "scope": "public.skill_outcomes",
+        "row_count": 137,
+        "digest": "67d77049dbe8637274d24557714900fb"
+      },
+      {
+        "scope": "public.skill_prerequisites",
+        "row_count": 17,
+        "digest": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "scope": "public.skill_remediation_guides",
+        "row_count": 10,
+        "digest": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "scope": "public.skills",
+        "row_count": 109,
+        "digest": "e15aa483594370c92292e2922803f7b2"
+      },
+      {
+        "scope": "public.staff_account_provisioning",
+        "row_count": 6,
+        "digest": "0f6f57cf0ce9bf94067348b29e7d7746"
+      },
+      {
+        "scope": "public.student_account_acceptances",
+        "row_count": 1,
+        "digest": "0bb495a0246142dba06a3cab138ee6b8"
+      },
+      {
+        "scope": "public.student_item_exposure_events",
+        "row_count": 256,
+        "digest": "af4020ab018580448c1279a89667f55a"
+      },
+      {
+        "scope": "public.student_skill_mastery",
+        "row_count": 34,
+        "digest": "cd2ff4bdec484231a9f2aba65bb71a83"
+      },
+      {
+        "scope": "public.student_skill_mastery_by_release",
+        "row_count": 34,
+        "digest": "99aa6fd7de53142e5c12b087798ecc94"
+      },
+      {
+        "scope": "public.subject_program_source_bindings",
+        "row_count": 3,
+        "digest": "06309553ebfce42d9715b134e5c9cffc"
+      },
+      {
+        "scope": "public.subject_programs",
+        "row_count": 3,
+        "digest": "d4f570f76f47e8414a48512844289d84"
+      },
+      {
+        "scope": "public.subjects",
+        "row_count": 3,
+        "digest": "5b376a85ad7b36a521ed9ef1fb8c5510"
+      },
+      {
+        "scope": "public.supplementary_resource_events",
+        "row_count": 366,
+        "digest": "63457532d23c60d26155620bdd414d90"
+      },
+      {
+        "scope": "public.supplementary_resource_versions",
+        "row_count": 82,
+        "digest": "9ee0ee670bbb41669b4a807c2c346f74"
+      },
+      {
+        "scope": "public.teacher_assignments",
+        "row_count": 151,
+        "digest": "98bd5924512c1acafe265f5b05c8014c"
+      },
+      {
+        "scope": "public.teacher_subject_authorizations",
+        "row_count": 74,
+        "digest": "cea031765f61e1fcc2e61d1863d44001"
+      },
+      {
+        "scope": "public.teacher_task_cleanup_runs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_deliveries",
+        "row_count": 17,
+        "digest": "d87f2afc0ee89a3b2e01855dbf476a4c"
+      },
+      {
+        "scope": "public.teacher_task_delivery_cancellations",
+        "row_count": 17,
+        "digest": "7728c9a24d35595467f57563078e1fb6"
+      },
+      {
+        "scope": "public.teacher_task_delivery_events",
+        "row_count": 17,
+        "digest": "02791d1f1fcb44fe8eca58a6de9fd2f8"
+      },
+      {
+        "scope": "public.teacher_task_delivery_recipients",
+        "row_count": 17,
+        "digest": "b3fc3b047e37f964701f8aa53bdea107"
+      },
+      {
+        "scope": "public.teacher_task_drafts",
+        "row_count": 17,
+        "digest": "77fa18df6a8a360e77173b5f07fc08aa"
+      },
+      {
+        "scope": "public.teacher_task_erasure_jobs",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_response_files",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_review_drafts",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_reviews",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_source_files",
+        "row_count": 17,
+        "digest": "c012b12b02848000f8d73c932dc81b7a"
+      },
+      {
+        "scope": "public.teacher_task_storage_deletions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_student_work",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_submissions",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.teacher_task_versions",
+        "row_count": 17,
+        "digest": "19b325bc9a237a4aa1447702563caea9"
+      },
+      {
+        "scope": "public.teacher_task_work_events",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbook_mappings",
+        "row_count": 0,
+        "digest": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "scope": "public.textbooks",
+        "row_count": 1,
+        "digest": "2bc41205920960439a10b062b665430e"
+      },
+      {
+        "scope": "public.topics",
+        "row_count": 33,
+        "digest": "015f2ca646d7a3e2639f8759acdf3acd"
+      },
+      {
+        "scope": "public.unit_material_events",
+        "row_count": 90,
+        "digest": "3ebad75a55520ad70448d44723afa70b"
+      },
+      {
+        "scope": "public.unit_material_versions",
+        "row_count": 28,
+        "digest": "80fbd7aa889e381e9f692873317c88c8"
+      },
+      {
+        "scope": "public.units",
+        "row_count": 10,
+        "digest": "f6666b73cce100d26bc2412bccae46be"
+      },
+      {
+        "scope": "public.writing_assignment_events",
+        "row_count": 36,
+        "digest": "60a675d0449736bc50a1f875c49d3943"
+      },
+      {
+        "scope": "public.writing_assignment_recipients",
+        "row_count": 18,
+        "digest": "c76a236f74fdc60520eaca9b3be51285"
+      },
+      {
+        "scope": "public.writing_assignments",
+        "row_count": 18,
+        "digest": "e368388a4cc040c0992bab95a1a89bde"
+      },
+      {
+        "scope": "public.written_reviews",
+        "row_count": 5,
+        "digest": "01bba2c02dc2c367cb17c1fb88394f9c"
+      },
+      {
+        "scope": "public.written_submissions",
+        "row_count": 5,
+        "digest": "3e769afe49eb2eb888ad6c06230da38d"
+      },
+      {
+        "scope": "public.written_task_versions",
+        "row_count": 3,
+        "digest": "81fc6941798e51f12a50f99e42ce40ea"
+      },
+      {
+        "scope": "public.written_work",
+        "row_count": 3,
+        "digest": "5ca2353ce05855ea91fe36576ef2aa0b"
+      }
+    ],
+    "allExistingApplicationTablesPreserved": true,
+    "reviewedSourcePath": "supabase/migrations/20261104070205_answer_response_recovery.sql",
+    "filenameReconciliation": "Only this newly applied migration is renamed to the tool-assigned ledger version; SQL bytes unchanged; old S2 ledger untouched."
+  },
+  "edges": [
+    {
+      "slug": "submit-answer",
+      "beforeVersion": 22,
+      "version": 23,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "submit-answer/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/answer-response-recovery.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/practice-diagnostic-gate.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/learning-model.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/recommendation-telemetry.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/grading.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/recommendation.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": [
+        "_shared/types.ts"
+      ]
+    },
+    {
+      "slug": "submit-mastery-answer",
+      "beforeVersion": 11,
+      "version": 12,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "submit-mastery-answer/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/answer-response-recovery.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-student-classes",
+      "beforeVersion": 13,
+      "version": 14,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "get-student-classes/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/teacher-read-identity.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "start-learning-session",
+      "beforeVersion": 27,
+      "version": 28,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "start-learning-session/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/practice-diagnostic-gate.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/initial-diagnostic.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/recommendation-telemetry.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-integrity.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-remediation-help",
+      "beforeVersion": 16,
+      "version": 17,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "get-remediation-help/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/practice-diagnostic-gate.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "record-recommendation-event",
+      "beforeVersion": 7,
+      "version": 8,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "record-recommendation-event/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-chapter-mastery-lifecycle",
+      "beforeVersion": 7,
+      "version": 8,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "get-chapter-mastery-lifecycle/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-session-item",
+      "beforeVersion": 20,
+      "version": 21,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "get-session-item/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/practice-diagnostic-gate.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-integrity.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-mastery-check-status",
+      "beforeVersion": 15,
+      "version": 16,
+      "verify_jwt": true,
+      "files": [
+        {
+          "name": "get-mastery-check-status/index.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/governed-learning-runtime.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/student-learning-context.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessment-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/assessed-audio-policy.mjs",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/auth.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/course-access.ts",
+          "match": "byte_exact"
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "match": "byte_exact"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    }
+  ],
+  "frontend": {
+    "autoAssignHoldRequested": true,
+    "canonicalBefore": "7b88f1b18db4571f87b4eb7e120e12d6a584ffc6",
+    "stagedDeployment": "dpl_A37VLUv5psQv3agpfRSUdMfTqTW1",
+    "promoted": true,
+    "autoAssignmentRestored": true,
+    "canonicalRelease": "c86564d428e1f6a694c42373dc896dc463e91398",
+    "assets": [
+      {
+        "path": "web/app.js",
+        "bytes": 30817,
+        "sha256": "54fa6d7be9f1d94f9fdba17f8eddeb42ffe14fd01e7320cf44e56f261e7f4967",
+        "match": true
+      },
+      {
+        "path": "web/practice.js",
+        "bytes": 38363,
+        "sha256": "2683d7436bb4671b69f3a8f7d51754940828770a92013cbd7d4fa7ada40e5cb2",
+        "match": true
+      },
+      {
+        "path": "web/diagnostic.js",
+        "bytes": 17814,
+        "sha256": "9f06080d01385d2a6b343964eb90d8c5222f8c17a830dbb0e255c57b1e1b9c4b",
+        "match": true
+      },
+      {
+        "path": "web/mastery.js",
+        "bytes": 22642,
+        "sha256": "f61af7bafbba79b921ea681c00bbcfbede6adbc635883f3a2070a27b7f3aa2de",
+        "match": true
+      },
+      {
+        "path": "web/learning-player.mjs",
+        "bytes": 12677,
+        "sha256": "56ddd29ee621042a5b8cf01fc66ef403530d2773563f7dbea09bd8177dad771d",
+        "match": true
+      },
+      {
+        "path": "web/ux.js",
+        "bytes": 18930,
+        "sha256": "025bbf1ebbfe57cb85407d41220f7f9db5f6d65816ea8a4b08f0a6422f34c555",
+        "match": true
+      },
+      {
+        "path": "web/answer-response-recovery.mjs",
+        "bytes": 6248,
+        "sha256": "e7d14d92a44a3085dafbc70e6987137dd8b0472136e643919b087a5773b55442",
+        "match": true
+      }
+    ],
+    "allChangedAssetsMatch": true
+  },
+  "liveAcceptance": {
+    "status": "in_progress",
+    "lostReplyInProduction": "not exercised; isolated real SQL/handler/native recovery coverage passed",
+    "initialDeploymentWaitFailure": {
+      "run": 41819028172,
+      "job": 126537156079,
+      "stage": "Wait for this frontend revision on production",
+      "reason": "frontend intentionally staged until main CI/backend verification; expected commit not yet canonical",
+      "rerunUnchangedSource": true
+    },
+    "analyticsRun": {
+      "run": 41819028277,
+      "status": "passed"
+    },
+    "otherRuns": "automatic designated-fixture queue still running",
+    "completedSuiteSummaries": [
+      {
+        "run": 41819028277,
+        "file": "sprint-14d-analytics.json",
+        "main": {
+          "status": "passed",
+          "total": 10,
+          "passed": 10,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:22:26.017Z",
+        "nested": {},
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028385,
+        "file": "chapter-ii-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 91,
+          "passed": 91,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:40:42.130Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028273,
+        "file": "chapter-v-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 191,
+          "passed": 191,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:36:34.684Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028439,
+        "file": "sprint-14-actions.json",
+        "main": {
+          "status": "passed",
+          "total": 206,
+          "passed": 206,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:53:45.264Z",
+        "nested": {
+          "readIsolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "readIsolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {
+          "cleanup": [
+            "classes",
+            "memberships"
+          ]
+        }
+      },
+      {
+        "run": 41819028480,
+        "file": "teacher-feedback.json",
+        "main": {
+          "status": "passed",
+          "total": 87,
+          "passed": 87,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:57:04.307Z",
+        "nested": {
+          "isolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "isolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028611,
+        "file": "chapter-vi-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 324,
+          "passed": 324,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:47:51.076Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028320,
+        "file": "resource-assignments.json",
+        "main": {
+          "status": "passed",
+          "total": 327,
+          "passed": 327,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:29:49.912Z",
+        "nested": {
+          "isolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "isolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {
+          "writingDeliveryCleanup": "list",
+          "customTaskCleanup": "list",
+          "assignmentCleanup": "list",
+          "sessionCleanup": "list",
+          "cleanup": "list"
+        }
+      }
+    ],
+    "observedPassingMainChecks": 1236,
+    "observedPassingIsolationChecks": 486,
+    "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+    "completion": "7 of13 automatic suites passed; remaining suites retain shared serialization; fresh lost-response learner write unexercised"
+  },
+  "BF05": {
+    "status": "read-only compatibility inventory complete; presentation implementation starting; historical builds remain separate"
+  },
+  "mainCI": {
+    "run": 41819028161,
+    "allFivePassed": true,
+    "unitIntegration": 1698,
+    "nativeBrowser": 414,
+    "postgresRecoveryScenarios": 14,
+    "postgresReceiptHandlers": 16
+  }
+}

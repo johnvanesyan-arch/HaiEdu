@@ -184,6 +184,8 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     const estimates = [...contracts.values()].map(group => ({
       ...estimateScopedEvidence(group, group[0].originalModel),
       evidenceCount: group.length, contract: evidenceContract(group[0].originalSession ?? {}),
+      sessionCount: new Set(group.map(row => row.learning_session_id)).size,
+      lastAttemptAt: group.at(-1)?.created_at ?? null,
     }));
     const single = estimates.length === 1 ? estimates[0] : null;
     const score = single?.score ?? null;
