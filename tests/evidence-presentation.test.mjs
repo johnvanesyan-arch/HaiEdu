@@ -23,6 +23,9 @@ test('a different runtime alone never becomes proof of compatible scoring or a d
   assert.doesNotMatch(html,/տարբեր են.*մոդել|Տարբեր են.*մոդել/);
   const changed=structuredClone(rows);changed[1].contract.modelId='other-model';
   assert.match(evidenceSeparationMarkup(changed),/հաշվարկի մոդելները/);
+  const contexts=[{...rows[0],context:{classId:'class-a'}},{...rows[0],context:{classId:'class-b'}}];
+  assert.match(evidenceSeparationMarkup(contexts),/ըստ դասարանի և ուսումնական համատեքստի/);
+  assert.doesNotMatch(evidenceSeparationMarkup(contexts),/համատեղելիությունը հաստատված չէ/);
 });
 
 test('teacher purpose sections preserve all percentages, attention and original runtime IDs',()=>{

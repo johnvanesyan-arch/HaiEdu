@@ -21,6 +21,8 @@ export function evidencePurposeGroups(rows = []) {
 }
 export function evidenceSeparationMarkup(rows = []) {
   if (rows.length < 2) return '';
+  if (rows.every(row => JSON.stringify(row.contract ?? {}) === JSON.stringify(rows[0].contract ?? {})))
+    return '<p class="subtle small evidence-separation">Արդյունքները ներկայացված են առանձին՝ ըստ դասարանի և ուսումնական համատեքստի։</p>';
   const fields = [['releaseId','թողարկումները'],['unitId','գլուխները'],['blueprintId','հարցաշարերը'],['policyBindingId','գնահատման կանոնները'],['modelId','հաշվարկի մոդելները'],['academicPolicyId','փորձերի կանոնները']];
   const differences = fields.filter(([key]) => new Set(rows.map(r => r.contract?.[key] ?? null)).size > 1).map(([, label]) => label);
   return `<p class="subtle small evidence-separation">${differences.length ? `Տարբեր են ${esc(differences.join(', '))}։ ` : ''}Ամբողջական համատեղելիությունը հաստատված չէ․ արդյունքները չեն միավորվում։</p>`;
