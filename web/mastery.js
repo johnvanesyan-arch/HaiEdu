@@ -304,9 +304,7 @@ async function submit(event) {
     $("progressBar").style.width = `${progress}%`;
     $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
     if (data.finalResult) {
-      const currentStatus = await status();
-      if (!isCurrentSubmission()) return;
-      return renderFinalResult({ ...data.finalResult, ...currentStatus });
+      return renderFinalResult({ ...data.finalResult.lifecycle, ...data.finalResult });
     }
 
     $("feedback").className = "feedback neutral";

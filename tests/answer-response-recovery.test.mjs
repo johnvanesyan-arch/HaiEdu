@@ -64,6 +64,15 @@ test('legacy replay keeps the original mastery and recommendation after later an
   assert.equal((await db.query('select count(*)::int n from recommendation_events')).rows[0].n,2);
 });
 
+test('legacy recovery preserves server-owned help without confusing it with the client hint flag',async t=>{
+  const {db,api}=await legacyFixture(t);
+  await db.query('update learning_session_items set hint_level_used=1 where id=$1',[id(601)]);
+  const first=await api.call(legacyBody(1));assert.equal(first.status,200);assert.equal(first.body.grading.usedHelp,true);
+  const replay=await api.call(legacyBody(1));assert.equal(replay.status,200);assert.deepEqual(originalResult(replay.body),originalResult(first.body));
+  const other={...legacyBody(2),hintUsed:true};const forged=await api.call(other);assert.equal(forged.status,200);assert.equal(forged.body.grading.usedHelp,false);
+  assert.equal((await db.query('select count(*)::int n from attempts')).rows[0].n,2);
+});
+
 test('legacy response construction resumes from frozen core state without invoking the grader',async t=>{
   const {db,api}=await legacyFixture(t,{gradeAnswer:()=>{throw Error('must not regrade');}});
   const args=[actor,id(401),id(601),id(501),id(50),JSON.stringify({value:5}),null,1,true,null,false,1000,'2026-11-04T07:00:00Z'];

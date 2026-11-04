@@ -123,7 +123,7 @@ function createFixture({ file, handler }) {
     clearTimeout,
     updateMastery() {},
     showGate: (...args) => gates.push(args),
-    status: () => statusResult,
+    status: () => { throw new Error("Unexpected post-answer status read"); },
     renderFinalResult: (result) => finalResults.push(result),
   });
   vm.runInContext([
@@ -279,17 +279,15 @@ test("practice.js: delayed diagnostic-gate decoding cannot replace the new quest
   assert.equal(fixture.elements.submitBtn.disabled, false);
 });
 
-test("mastery.js: final-status rejection does not unlock an accepted answer", async () => {
+test("mastery.js: the frozen final result renders without another status read", async () => {
   const fixture = createFixture(consumers.find(({ file }) => file === "mastery.js"));
-  const finalStatus = deferred();
-  fixture.useStatus(finalStatus.promise);
   const submitted = fixture.submit();
   await tick();
-  fixture.calls[0].resolve({ data: { finalResult: {} } });
-  await Promise.resolve();
-  await Promise.resolve();
-  finalStatus.reject(new Error("Fixture status failed"));
-  await assert.rejects(submitted, /Fixture status failed/);
+  fixture.calls[0].resolve({ data: { finalResult: {passed:false,score:{correct:0,answered:1,percent:0},lifecycle:{attemptNumber:3,lifecycleState:"mastery_failed_final"}} } });
+  await submitted;
+  assert.equal(fixture.finalResults.length,1);
+  assert.equal(fixture.finalResults[0].attemptNumber,3);
+  assert.equal(fixture.finalResults[0].lifecycleState,"mastery_failed_final");
   assert.equal(fixture.elements.answerForm.dataset.answerSubmitting, undefined);
   assert.equal(fixture.elements.submitBtn.disabled, true);
   assert.equal(fixture.refreshEvents.length, 0);

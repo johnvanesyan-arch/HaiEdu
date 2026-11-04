@@ -224,7 +224,7 @@ Deno.serve(async (req) => {
         p_score: grade.score,
         p_correct: grade.correct,
         p_error_code: grade.errorCode,
-        p_hint_used: serverHintUsed,
+        p_hint_used: Boolean(payload.hintUsed),
         p_response_time_ms: payload.responseTimeMs ?? null,
         p_attempted_at: now,
       });
