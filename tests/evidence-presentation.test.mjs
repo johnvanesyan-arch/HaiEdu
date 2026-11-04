@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {evidencePurposeGroups,evidenceSeparationMarkup,renderEvidenceGroups} from '../web/analytics-provenance.mjs';
+import {evidencePurposeGroups,evidenceSeparationMarkup,evidenceContextMarkup,renderEvidenceGroups} from '../web/analytics-provenance.mjs';
 import {skillEvidenceMarkup,skillEvidenceState,skillAttentionBand} from '../web/teacher-skill-evidence.mjs';
 import {aggregateSchoolPerformanceAnalytics} from '../supabase/functions/_shared/school-performance-analytics.ts';
 
@@ -84,4 +84,17 @@ test('unknown purposes and untrusted labels are literal text without losing orig
 test('an empty selected scope has an explicit empty result without a fabricated score',()=>{
   const root={innerHTML:''};renderEvidenceGroups(root,{analytics:{evidenceGroups:[]}});
   assert.match(root.innerHTML,/ավարտված աշխատանք դեռ չկա/);assert.doesNotMatch(root.innerHTML,/0\/0|0%/);
+});
+
+
+test('legacy chapter labels require one exact authorized release/code mapping and never guess across releases',()=>{
+  const group={contract:{releaseId:'release',unitId:null},context:{unitCode:'ANY-U'}};
+  const payload={options:{units:[{id:'unit',unitCode:'ANY-U',curriculumReleaseId:'release',label:'Պահպանված գլուխ'},{id:'other',unitCode:'ANY-U',curriculumReleaseId:'other-release',label:'Այլ գլուխ'}]}};
+  assert.match(evidenceContextMarkup(payload,group),/Պահպանված գլուխ/);
+  assert.doesNotMatch(evidenceContextMarkup(payload,group),/Այլ գլուխ/);
+  const ambiguous=structuredClone(payload);ambiguous.options.units.push({id:'second',unitCode:'ANY-U',curriculumReleaseId:'release',label:'Երկրորդ գլուխ'});
+  assert.match(evidenceContextMarkup(ambiguous,group),/Գլուխը հստակեցված չէ/);
+  assert.doesNotMatch(evidenceContextMarkup(ambiguous,group),/Պահպանված գլուխ|Երկրորդ գլուխ/);
+  assert.match(evidenceContextMarkup(payload,{...group,contract:{...group.contract,unitId:'missing'}}),/Գլուխը հստակեցված չէ/);
+  assert.match(evidenceContextMarkup(payload,{...group,context:{unitCode:'UNKNOWN'}}),/Գլուխը հստակեցված չէ/);
 });

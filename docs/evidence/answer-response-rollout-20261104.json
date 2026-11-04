@@ -2057,7 +2057,182 @@
       "run": 41819028277,
       "status": "passed"
     },
-    "otherRuns": "automatic designated-fixture queue still running"
+    "otherRuns": "automatic designated-fixture queue still running",
+    "completedSuiteSummaries": [
+      {
+        "run": 41819028277,
+        "file": "sprint-14d-analytics.json",
+        "main": {
+          "status": "passed",
+          "total": 10,
+          "passed": 10,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:22:26.017Z",
+        "nested": {},
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028385,
+        "file": "chapter-ii-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 91,
+          "passed": 91,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:40:42.130Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028273,
+        "file": "chapter-v-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 191,
+          "passed": 191,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:36:34.684Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028439,
+        "file": "sprint-14-actions.json",
+        "main": {
+          "status": "passed",
+          "total": 206,
+          "passed": 206,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:53:45.264Z",
+        "nested": {
+          "readIsolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "readIsolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {
+          "cleanup": [
+            "classes",
+            "memberships"
+          ]
+        }
+      },
+      {
+        "run": 41819028480,
+        "file": "teacher-feedback.json",
+        "main": {
+          "status": "passed",
+          "total": 87,
+          "passed": 87,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:57:04.307Z",
+        "nested": {
+          "isolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "isolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028611,
+        "file": "chapter-vi-pilot-read-acceptance.json",
+        "main": {
+          "status": "passed",
+          "total": 324,
+          "passed": 324,
+          "failed": 0
+        },
+        "source": "c86564d428e1f6a694c42373dc896dc463e91398",
+        "finishedAt": "2026-11-04T11:47:51.076Z",
+        "nested": {
+          "readIsolation": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {}
+      },
+      {
+        "run": 41819028320,
+        "file": "resource-assignments.json",
+        "main": {
+          "status": "passed",
+          "total": 327,
+          "passed": 327,
+          "failed": 0
+        },
+        "source": null,
+        "finishedAt": "2026-11-04T11:29:49.912Z",
+        "nested": {
+          "isolationBefore": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          },
+          "isolationAfter": {
+            "status": "passed",
+            "total": 54,
+            "passed": 54,
+            "failed": 0
+          }
+        },
+        "cleanupKeys": {
+          "writingDeliveryCleanup": "list",
+          "customTaskCleanup": "list",
+          "assignmentCleanup": "list",
+          "sessionCleanup": "list",
+          "cleanup": "list"
+        }
+      }
+    ],
+    "observedPassingMainChecks": 1236,
+    "observedPassingIsolationChecks": 486,
+    "sourceRevision": "c86564d428e1f6a694c42373dc896dc463e91398",
+    "completion": "7 of13 automatic suites passed; remaining suites retain shared serialization; fresh lost-response learner write unexercised"
   },
   "BF05": {
     "status": "read-only compatibility inventory complete; presentation implementation starting; historical builds remain separate"

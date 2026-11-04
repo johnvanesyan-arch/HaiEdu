@@ -34,8 +34,10 @@ export function evidenceContextMarkup(payload = {}, group = {}) {
   const release = options.releases?.find(r => r.id === group.contract?.releaseId);
   const programme = options.programmes?.find(r => r.id === (scope.subjectProgramId ?? release?.subjectProgramId));
   const klass = options.classes?.find(r => r.id === scope.classId);
-  const unit = options.units?.find(r => r.id === group.contract?.unitId && r.curriculumReleaseId === group.contract?.releaseId);
-  const labels = [programme?.label ?? programme?.name, klass?.label ?? klass?.name, unit?.label, release?.label].filter(Boolean);
+  const units = (options.units ?? []).filter(r => r.curriculumReleaseId === group.contract?.releaseId && (group.contract?.unitId != null
+    ? r.id === group.contract.unitId : scope.unitCode != null && r.unitCode === scope.unitCode));
+  const unit = units.length === 1 ? units[0] : null;
+  const labels = [programme?.label ?? programme?.name, klass?.label ?? klass?.name, unit?.label ?? 'Գլուխը հստակեցված չէ', release?.label].filter(Boolean);
   return labels.length ? `<p class="evidence-context-label">${labels.map(esc).join(' · ')}</p>` : '';
 }
 export function contractMarkup(contract = {}) {

@@ -250,7 +250,7 @@ Deno.serve(async (req) => {
         programmes: programmeOptions,
         classes: classOptions,
         releases: permittedReleases.map(row=>({id:row.id,label:`Թողարկում ${row.release_number}`,subjectProgramId:row.subject_program_id,status:row.status})),
-        units: releasedUnits.map(row=>({id:row.unit_id,curriculumReleaseId:row.curriculum_release_id,label:row.title_hy_snapshot,sequenceOrder:row.sequence_order_snapshot})),
+        units: releasedUnits.map(row=>({id:row.unit_id,unitCode:row.unit_code_snapshot,curriculumReleaseId:row.curriculum_release_id,label:row.title_hy_snapshot,sequenceOrder:row.sequence_order_snapshot})),
       },
       analytics: aggregateSchoolPerformanceAnalytics({
         enrollments: selectedEnrollments,
