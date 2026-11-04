@@ -13,7 +13,8 @@ import {postgresClient} from './fixtures/learning-acceptance.mjs';
 
 const options=async()=>process.env.PHASE3_POSTGRES_17_CI==='1'?{client:await postgresClient()}:{};
 const legacyDatabase=async()=>scoringDatabase(await options());
-const currentGovernedDatabase=async()=>governedDatabase(await options());
+// This fixture already selects/owns its PostgreSQL bridge in CI.
+const currentGovernedDatabase=async()=>governedDatabase();
 
 const legacyBody = n => ({sessionId:id(401),sessionItemId:id(600+n),itemId:id(500+n),response:{value:5},responseTimeMs:1000,hintUsed:false});
 const originalResult = value => {const {replayed,...rest}=value;return rest;};
@@ -186,7 +187,7 @@ test('the final mastery response is replayable without another scored attempt or
 });
 
 test('receipt storage and renamed implementation functions are private; account deletion cascades new receipts',async t=>{
-  const {db,api}=await legacyFixture(t);assert.equal((await api.call(legacyBody(1))).status,200);
+  const {db,api}=await legacyFixture(t);const first=await api.call(legacyBody(1));assert.equal(first.status,200,JSON.stringify({body:first.body,logs:api.logs}));
   await assert.rejects(db.query("update private.learning_answer_receipts set response='{}'"),/answer_receipt_immutable/);
   for(const role of ['anon','authenticated','service_role']) {
     await db.exec('set role '+role);

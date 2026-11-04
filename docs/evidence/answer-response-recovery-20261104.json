@@ -25,10 +25,36 @@
   },
   "sdkTests": 6,
   "existingOwnershipTests": 30,
-  "nativeAddedPrepared": 6,
-  "postgresConcurrencyPrepared": 8,
   "ci": {
-    "status": "pending"
+    "currentHeadGate": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401",
+    "requireAllFiveJobs": true,
+    "observedUnitIntegration": {
+      "runId": 41796404966,
+      "source": "5cd711da5b97f5a4e691579d1bb9b4182a82b06b",
+      "tests": 1695,
+      "passed": 1695,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "observedNative": {
+      "runId": 41797331239,
+      "source": "0ab35290c9b3c8c2cfc947331c16d27872da09a9",
+      "tests": 414,
+      "passed": 414,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "addedRecoveryCases": 6
+    },
+    "observedPostgresRaces": {
+      "runId": 41796042949,
+      "postgres": "17.6",
+      "scenarios": 8,
+      "passed": 8,
+      "overallJob": "cancelled after separate handler-fixture failures and leaked fixture bridges"
+    },
+    "finalPostgresHandlerHarness": "explicit scalar jsonb binding and no unused governed client; current-head verification required"
   },
   "releasePrerequisites": {
     "BF-01": {
@@ -56,5 +82,7 @@
     "URL",
     "Master isolation",
     "QA-TRANSPORT-01"
-  ]
+  ],
+  "focusedLocalSqlCases": 13,
+  "localPostgres": "not executed: server account/process group creation unavailable"
 }
