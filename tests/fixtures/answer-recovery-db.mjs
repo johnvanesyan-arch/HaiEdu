@@ -6,10 +6,10 @@ export async function installAnswerRecovery(db,{legacy=false}={}) {
     create table profiles(id uuid primary key,role text default 'student',account_status text default 'active');
     insert into profiles(id) select distinct student_id from learning_sessions;
     create schema auth;
-    create table auth.sessions(id uuid primary key,user_id uuid);
-    insert into auth.sessions values('60000000-0000-4000-8000-000000000901','10000000-0000-4000-8000-000000000010');
-    create function public.service_validate_active_session(p_user_id uuid,p_session_id uuid) returns boolean
-    language sql as $$select exists(select 1 from auth.sessions a join public.profiles p on p.id=a.user_id where a.id=p_session_id and a.user_id=p_user_id and p.account_status='active')$$;
+    create table auth.users(id uuid primary key,deleted_at timestamptz,banned_until timestamptz);
+    insert into auth.users(id) select id from profiles;
+    create table auth.sessions(id uuid primary key,user_id uuid,not_after timestamptz);
+    insert into auth.sessions(id,user_id) values('60000000-0000-4000-8000-000000000901','10000000-0000-4000-8000-000000000010');
     create function private.lock_governed_learning_session(uuid,uuid,uuid) returns public.learning_sessions
     language plpgsql as $$begin raise exception 'not_a_governed_fixture'; end$$;
     create function public.service_governed_learning_operation(uuid,uuid,uuid,text,jsonb default '{}') returns jsonb
@@ -19,5 +19,6 @@ export async function installAnswerRecovery(db,{legacy=false}={}) {
       assessment_blueprint_id uuid,learning_model_configuration_id uuid,model_provenance_status text,learning_session_id uuid,
       attempt_id uuid,state_snapshot jsonb,recommendation_snapshot jsonb);
   `);
+  if(legacy) await db.exec(readFileSync('supabase/migrations/0012_live_session_gate.sql','utf8'));
   await db.exec(readFileSync(recoveryMigration,'utf8'));
 }

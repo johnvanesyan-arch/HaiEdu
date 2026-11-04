@@ -89,6 +89,32 @@ $$;
 revoke all on function public.service_record_session_answer_atomic(uuid,uuid,uuid,uuid,uuid,jsonb,jsonb,numeric,boolean,text,boolean,integer,timestamptz) from public,anon,authenticated;
 grant execute on function public.service_record_session_answer_atomic(uuid,uuid,uuid,uuid,uuid,jsonb,jsonb,numeric,boolean,text,boolean,integer,timestamptz) to service_role;
 
+-- Match the profile -> Auth user -> Auth session revocation lock order before
+-- taking learning-session locks. Reuse at each successful return: now() is the
+-- transaction-start time and cannot detect expiry during a row/telemetry wait.
+create function private.authorized_legacy_answer_result(
+  p_student_id uuid,p_auth_session_id uuid,p_result jsonb
+) returns jsonb language plpgsql set search_path='' as $$
+declare profile_status text; deleted_at timestamptz; banned_until timestamptz;
+  not_after timestamptz; checked_at timestamptz;
+begin
+  select p.account_status into profile_status from public.profiles p
+    where p.id=p_student_id for share;
+  if not found or profile_status is distinct from 'active' then raise exception 'learning_context_unavailable'; end if;
+  select u.deleted_at,u.banned_until into deleted_at,banned_until from auth.users u
+    where u.id=p_student_id for share;
+  if not found then raise exception 'learning_context_unavailable'; end if;
+  select a.not_after into not_after from auth.sessions a
+    where a.id=p_auth_session_id and a.user_id=p_student_id for share;
+  if not found then raise exception 'learning_context_unavailable'; end if;
+  checked_at:=clock_timestamp();
+  if deleted_at is not null or (banned_until is not null and banned_until>checked_at)
+    or (not_after is not null and not_after<=checked_at) then raise exception 'learning_context_unavailable'; end if;
+  return p_result;
+end;
+$$;
+revoke all on function private.authorized_legacy_answer_result(uuid,uuid,jsonb) from public,anon,authenticated,service_role;
+
 -- One transaction wins final response + telemetry publication. An interrupted
 -- Edge response builder can resume from the frozen core state without grading.
 create function public.service_legacy_answer_response(
@@ -100,7 +126,8 @@ declare s public.learning_sessions%rowtype; li public.learning_session_items%row
   final jsonb; event_id uuid; issued public.recommendation_events%rowtype;
 begin
   if p_kind is null or p_kind not in ('legacy-answer','legacy-mastery') or jsonb_typeof(p_request) is distinct from 'object'
-    or public.service_validate_active_session(p_student_id,p_auth_session_id) is distinct from true then raise exception 'learning_context_unavailable'; end if;
+    then raise exception 'learning_context_unavailable'; end if;
+  perform private.authorized_legacy_answer_result(p_student_id,p_auth_session_id,null);
   select * into s from public.learning_sessions where id=(p_request->>'sessionId')::uuid and student_id=p_student_id for update;
   if not found or s.assessment_policy_binding_id is not null or s.status not in ('active','completed')
     or (p_kind='legacy-mastery' and s.mode<>'mastery_check')
@@ -112,12 +139,14 @@ begin
   select * into r from private.learning_answer_receipts where session_item_id=li.id and kind=p_kind;
   if found and (r.student_id<>p_student_id or r.session_id<>s.id or r.request is distinct from p_request)
     then raise exception 'answer_response_conflict'; end if;
-  if r.response is not null then return jsonb_build_object('response',r.response,'replayed',true); end if;
+  if r.response is not null then
+    return private.authorized_legacy_answer_result(p_student_id,p_auth_session_id,jsonb_build_object('response',r.response,'replayed',true));
+  end if;
   select * into core from private.learning_answer_receipts where session_item_id=li.id and kind='legacy-answer';
   if core.session_item_id is not null and core.request is distinct from p_request then raise exception 'answer_response_conflict'; end if;
   if p_response is null then
     if li.attempt_id is not null and core.session_item_id is null then raise exception 'answer_result_unavailable'; end if;
-    return jsonb_build_object('response',null,'coreResult',core.core_result,'replayed',false);
+    return private.authorized_legacy_answer_result(p_student_id,p_auth_session_id,jsonb_build_object('response',null,'coreResult',core.core_result,'replayed',false));
   end if;
   if core.attempt_id is null or core.attempt_id is distinct from li.attempt_id or jsonb_typeof(p_response) is distinct from 'object'
     then raise exception 'answer_result_unavailable'; end if;
@@ -156,7 +185,7 @@ begin
   else
     update private.learning_answer_receipts set response=final where session_item_id=li.id and kind=p_kind;
   end if;
-  return jsonb_build_object('response',final,'replayed',false);
+  return private.authorized_legacy_answer_result(p_student_id,p_auth_session_id,jsonb_build_object('response',final,'replayed',false));
 end;
 $$;
 revoke all on function public.service_legacy_answer_response(uuid,uuid,text,jsonb,jsonb,jsonb) from public,anon,authenticated;

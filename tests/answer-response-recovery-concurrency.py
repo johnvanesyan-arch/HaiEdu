@@ -42,6 +42,25 @@ def race(uri,first,second,rollback=False):
             assert blocked,'The second request must wait for the transaction boundary'
             return original,result
 
+def wait_for_lock(watch,connection,pending):
+    deadline=time.monotonic()+5
+    while time.monotonic()<deadline:
+        if pending.done():
+            raise AssertionError(f'Expected a lock wait, got {pending.result()!r}')
+        row=watch.execute('select wait_event_type from pg_stat_activity where pid=%s',(connection.info.backend_pid,)).fetchone()
+        if row and row[0]=='Lock':return
+        time.sleep(.02)
+    raise AssertionError('The test request never reached its expected lock wait')
+
+def denied_receipt(connection,response=None):
+    try:receipt(connection,response=response)
+    except psycopg.Error as error:
+        connection.rollback()
+        assert 'learning_context_unavailable' in str(error),error
+        return True
+    connection.rollback()
+    return False
+
 with database_uri() as uri:
     with psycopg.connect(uri,autocommit=True) as c:
         c.execute("set statement_timeout='15s'")
@@ -104,9 +123,78 @@ with database_uri() as uri:
             older.rollback()
         once();print('PASS: repeatable-read stale snapshots cannot invent an absent receipt',flush=True)
 
+        # A replay starts valid, waits for a real learning-session row lock, and
+        # resumes after expiry. The transaction-start validator alone permits it.
+        receipt(c,response=final)
+        with psycopg.connect(uri) as blocker,psycopg.connect(uri) as caller,psycopg.connect(uri,autocommit=True) as watch:
+            caller.execute("set statement_timeout='10s'")
+            blocker.execute('select id from learning_sessions where id=%s for update',(ident(401),))
+            expires=c.execute("update auth.sessions set not_after=clock_timestamp()+interval '1 second' returning not_after").fetchone()[0]
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                pending=pool.submit(denied_receipt,caller)
+                try:
+                    wait_for_lock(watch,caller,pending)
+                    watch.execute('select pg_sleep(greatest(0,extract(epoch from (%s-clock_timestamp())))+.02)',(expires,))
+                finally:blocker.commit()
+                assert pending.result(timeout=12),'An expired queued replay returned private feedback'
+        c.execute('update auth.sessions set not_after=null');once()
+        print('PASS: replay rechecks expiry after an independent learning-session lock wait',flush=True)
+
+        # Each revocation wins before the reply acquires identity locks. The
+        # request must wait, observe the committed cutover, and return no feedback.
+        revocations=[
+            ('Auth session deletion','delete from auth.sessions where id=%s',(ident(901),),
+             "insert into auth.sessions(id,user_id) values('"+ident(901)+"','"+ACTOR+"')"),
+            ('profile suspension',"update profiles set account_status='suspended' where id=%s",(ACTOR,),
+             "update profiles set account_status='active'"),
+            ('Auth user ban',"update auth.users set banned_until=clock_timestamp()+interval '1 day' where id=%s",(ACTOR,),
+             'update auth.users set banned_until=null'),
+        ]
+        for label,change,params,restore in revocations:
+            with psycopg.connect(uri) as revoker,psycopg.connect(uri) as caller,psycopg.connect(uri,autocommit=True) as watch:
+                caller.execute("set statement_timeout='10s'")
+                revoker.execute(change,params)
+                with ThreadPoolExecutor(max_workers=1) as pool:
+                    pending=pool.submit(denied_receipt,caller)
+                    try:wait_for_lock(watch,caller,pending)
+                    finally:revoker.commit()
+                    assert pending.result(timeout=12),label+' did not deny the queued receipt'
+            c.execute(restore);once()
+            print('PASS: '+label+' wins before queued receipt authorization',flush=True)
+
+        # In the reverse order, a valid replay keeps its identity locks through
+        # commit. Logout waits; no response may straddle a completed revocation.
+        with psycopg.connect(uri) as caller,psycopg.connect(uri) as revoker,psycopg.connect(uri,autocommit=True) as watch:
+            revoker.execute("set statement_timeout='10s'")
+            assert receipt(caller)['replayed']
+            def revoke():
+                revoker.execute('delete from auth.sessions where id=%s',(ident(901),));revoker.commit();return True
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                pending=pool.submit(revoke)
+                try:wait_for_lock(watch,revoker,pending)
+                finally:caller.commit()
+                assert pending.result(timeout=12)
+        c.execute('insert into auth.sessions(id,user_id) values(%s,%s)',(ident(901),ACTOR));once()
+        print('PASS: a valid replay retains its Auth lock until commit before logout proceeds',flush=True)
+
+        # Finalization waits in real SQL telemetry before its final clock check.
+        # Expiry must roll back only new publication, preserving the saved core.
+        reset();record(c)
+        c.execute("create function private.fixture_wait_for_expiry() returns trigger language plpgsql as $$begin perform pg_sleep_until((select not_after from auth.sessions limit 1)+interval '20 milliseconds');return new;end$$")
+        c.execute('create trigger fixture_wait_for_expiry before insert on recommendation_events for each row execute function private.fixture_wait_for_expiry()')
+        c.execute("update auth.sessions set not_after=clock_timestamp()+interval '1 second'")
+        assert denied_receipt(c,response=final)
+        assert c.execute('select response is null from private.learning_answer_receipts').fetchone()[0]
+        assert c.execute('select count(*) from recommendation_events').fetchone()[0]==0
+        once()
+        c.execute('drop trigger fixture_wait_for_expiry on recommendation_events')
+        c.execute('update auth.sessions set not_after=null')
+        assert receipt(c,response=final)['response']['recommendation']['instanceId']
+        once();print('PASS: publication expiry rolls back telemetry/response and resumes the saved core once',flush=True)
+
         c.execute('delete from auth.sessions where id=%s',(ident(901),))
         try:receipt(c)
         except psycopg.Error as error:assert 'learning_context_unavailable' in str(error)
         else:raise AssertionError('Revoked session received a receipt')
         once();print('PASS: revoked Auth cannot recover private feedback',flush=True)
-print('PASS: 8 independent-connection answer-recovery scenarios',flush=True)
+print('PASS: 14 PostgreSQL answer-recovery scenarios, including independent expiry/revocation waits',flush=True)

@@ -186,6 +186,63 @@ test('the final mastery response is replayable without another scored attempt or
   assert.deepEqual((await db.query('select (select count(*) from attempts)::int answers,(select count(*) from mastery_check_attempts)::int checks')).rows[0],counts);
 });
 
+test('legacy receipt authorization denies suspended, deleted, banned and mismatched identities',async t=>{
+  const {db,api}=await legacyFixture(t);
+  assert.equal((await api.call(legacyBody(1))).status,200);
+  const changes=[
+    "update profiles set account_status='suspended' where id='"+actor+"'",
+    'update auth.users set deleted_at=clock_timestamp()',
+    "update auth.users set banned_until=clock_timestamp()+interval '1 day'",
+    "update auth.sessions set user_id='"+id(999)+"'",
+  ];
+  for(const sql of changes) {
+    await db.exec('begin');await db.exec(sql);
+    try {
+      await assert.rejects(db.query('select public.service_legacy_answer_response($1,$2,$3,$4::jsonb)',
+        [actor,id(901),'legacy-answer',JSON.stringify(legacyBody(1))]),/learning_context_unavailable/);
+    } finally {await db.exec('rollback');}
+  }
+  assert.equal((await api.call(legacyBody(1))).status,200);
+  assert.equal((await db.query('select count(*)::int n from attempts')).rows[0].n,1);
+});
+
+test('legacy replay denies an Auth session that expired after transaction start',async t=>{
+  const {db,api}=await legacyFixture(t);
+  assert.equal((await api.call(legacyBody(1))).status,200);
+  await db.query("update auth.sessions set not_after=clock_timestamp()+interval '100 milliseconds'");
+  await db.exec('begin; select pg_sleep(0.15)');
+  try {
+    const clocks=(await db.query('select now()<not_after as valid_at_start,clock_timestamp()>not_after as expired_now from auth.sessions')).rows[0];
+    assert.equal(clocks.valid_at_start,true);assert.equal(clocks.expired_now,true);
+    await assert.rejects(db.query('select public.service_legacy_answer_response($1,$2,$3,$4::jsonb)',
+      [actor,id(901),'legacy-answer',JSON.stringify(legacyBody(1))]),/learning_context_unavailable/);
+  } finally {await db.exec('rollback');}
+  assert.equal((await db.query('select count(*)::int n from attempts')).rows[0].n,1);
+});
+
+test('legacy publication rechecks expiry after telemetry waits and rolls back only the unfinished response',async t=>{
+  const {db}=await legacyFixture(t);
+  const args=[actor,id(401),id(601),id(501),id(50),JSON.stringify({value:5}),null,1,true,null,false,1000,'2026-11-04T07:00:00Z'];
+  await db.query('select service_record_session_answer_atomic('+args.map((_,i)=>'$'+(i+1)).join(',')+')',args);
+  await db.exec(`create function private.fixture_wait_for_answer_expiry() returns trigger language plpgsql as $$
+    begin perform pg_sleep_until((select not_after from auth.sessions limit 1)+interval '20 milliseconds'); return new; end$$;
+    create trigger fixture_wait_for_answer_expiry before insert on recommendation_events for each row execute function private.fixture_wait_for_answer_expiry();`);
+  await db.query("update auth.sessions set not_after=clock_timestamp()+interval '500 milliseconds'");
+  const response={grading:{correct:true},recommendation:{action:'practice_skill',instanceId:null}};
+  const telemetry={policyScope:'core_after_attempt',surface:'submit_answer_api',action:'practice_skill',modelProvenanceStatus:'exact',stateSnapshot:{},recommendationSnapshot:{action:'practice_skill'}};
+  await assert.rejects(db.query('select public.service_legacy_answer_response($1,$2,$3,$4::jsonb,$5::jsonb,$6::jsonb)',
+    [actor,id(901),'legacy-answer',JSON.stringify(legacyBody(1)),JSON.stringify(response),JSON.stringify(telemetry)]),/learning_context_unavailable/);
+  assert.equal((await db.query('select response is null as unfinished from private.learning_answer_receipts')).rows[0].unfinished,true);
+  assert.equal((await db.query('select count(*)::int n from recommendation_events')).rows[0].n,0);
+  assert.equal((await db.query('select count(*)::int n from attempts')).rows[0].n,1);
+  assert.equal((await db.query('select evidence_count from student_skill_mastery')).rows[0].evidence_count,1);
+  await db.exec('drop trigger fixture_wait_for_answer_expiry on recommendation_events; update auth.sessions set not_after=null;');
+  const resumed=(await db.query('select public.service_legacy_answer_response($1,$2,$3,$4::jsonb,$5::jsonb,$6::jsonb) as result',
+    [actor,id(901),'legacy-answer',JSON.stringify(legacyBody(1)),JSON.stringify(response),JSON.stringify(telemetry)])).rows[0].result;
+  assert.equal(resumed.replayed,false);assert.ok(resumed.response.recommendation.instanceId);
+  assert.equal((await db.query('select count(*)::int n from attempts')).rows[0].n,1);
+});
+
 test('receipt storage and renamed implementation functions are private; account deletion cascades new receipts',async t=>{
   const {db,api}=await legacyFixture(t);const first=await api.call(legacyBody(1));assert.equal(first.status,200,JSON.stringify({body:first.body,logs:api.logs}));
   await assert.rejects(db.query("update private.learning_answer_receipts set response='{}'"),/answer_receipt_immutable/);
@@ -193,6 +250,7 @@ test('receipt storage and renamed implementation functions are private; account 
     await db.exec('set role '+role);
     await assert.rejects(db.query('select * from private.learning_answer_receipts'),/permission denied/);
     await assert.rejects(db.query("select private.governed_operation_before_recovery(null,null,null,'status','{}')"),/permission denied/);
+    await assert.rejects(db.query("select private.authorized_legacy_answer_result(null,null,'{}')"),/permission denied/);
     await db.exec('reset role');
   }
   const denied=await endpoint(db,'submit-answer',{routeGovernedLearning,gradeAnswer,recommendNext,getPracticeDiagnosticBlock,

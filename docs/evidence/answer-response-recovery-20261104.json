@@ -82,7 +82,10 @@
       "restoreDrill": "unverified",
       "ui": "redirected to sign-in",
       "projectHealth": "ACTIVE_HEALTHY",
-      "postgres": "17.6.1.166"
+      "postgres": "17.6.1.166",
+      "ownerDecision": "deferred",
+      "decisionDate": "2026-11-04",
+      "scope": "inventory/export/isolated restore work skipped for now; recovery not demonstrated"
     }
   },
   "productionWrites": false,
@@ -99,6 +102,44 @@
     "Master isolation",
     "QA-TRANSPORT-01"
   ],
-  "focusedLocalSqlCases": 13,
-  "localPostgres": "not executed: server account/process group creation unavailable"
+  "focusedLocalSqlCases": 16,
+  "localPostgres": "not executed: server account/process group creation unavailable",
+  "migrationReviewFollowup": {
+    "reviewedHead": "612185ad1c0484608c99fd61e1df8ecdd02d7a7a",
+    "reviewUrl": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401#pullrequestreview-5767006308",
+    "finding": "P2: legacy saved response could outlive Auth expiry during transaction wait",
+    "baselineExpiryRegressions": {
+      "tests": 2,
+      "failedWithMissingExpectedRejection": 2
+    },
+    "fix": "private ordered identity locks and actual-clock validation on every successful receipt return",
+    "addedSqlCases": 3,
+    "postgresRecoveryScenarios": 14,
+    "newPostgresScenarios": 6,
+    "finalCurrentHeadCI": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401",
+    "independentHumanApproval": false,
+    "productionWrites": false,
+    "localFullSuite": {
+      "tests": 1698,
+      "passed": 1698,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "focusedReceiptHandlerCases": {
+      "tests": 16,
+      "passed": 16
+    },
+    "localChecks": {
+      "typecheck": "pass",
+      "browserDependencyTriggers": "pass",
+      "diffWhitespace": "pass"
+    },
+    "sourceSha256": {
+      "supabase/migrations/20261104070205_answer_response_recovery.sql": "2843e63b3b5e2181a53cf1eb8890f502d40d2dfe435e0b8b1fa8a38863a9d5c7",
+      "tests/answer-response-recovery.test.mjs": "8a141e72048e13c5a40f98436c708c92ccbe8b34dc8c6e847466a69c7225921e",
+      "tests/answer-response-recovery-concurrency.py": "b1aa977823a724312d86ecc8268c5ff48445fb03fb1c8f5b506cbeccb04f7575",
+      "tests/fixtures/answer-recovery-db.mjs": "e6d4278af89b28cc2f3f746d400a46365a81d76d40d0e1203114381a5123a366"
+    }
+  }
 }
