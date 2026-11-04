@@ -26,7 +26,7 @@ for(const width of [390,1280])test(`teacher separates two practice versions from
  await p.locator('.hm-role-nav a[href$="view=classes"]').click();await p.locator('#classList .teacher-class-button').first().click();
  await p.locator('#matrixWrap [data-skill=s1]').click();const detail=p.locator('[data-skill-evidence=s1]');await expect(detail).toHaveAttribute('open','');
  await expect(detail.locator('[data-evidence-purpose=practice]')).toHaveCount(1);await expect(detail.locator('[data-evidence-purpose=diagnostic]')).toHaveCount(1);
- await expect(detail.locator('.evidence-context-label')).toContainText('Առարկա · 7-րդ դասարան · Փորձնական գլուխ');
+ await expect(p.locator('.teacher-skill-evidence > .evidence-context-label')).toContainText('Առարկա · 7-րդ դասարան · Փորձնական գլուխ');
  const practice=detail.locator('[data-evidence-purpose=practice]');await expect(practice).toContainText('Կայուն · 75%');
  const older=practice.locator('.evidence-other-versions');await expect(older).toHaveJSProperty('open',false);await older.locator(':scope>summary').focus();await p.keyboard.press('Enter');await expect(older).toHaveAttribute('open','');
  await expect(older).toContainText('Աջակցություն է պետք · 38%');await expect(detail.locator('[data-evidence-purpose=diagnostic]')).toContainText('Կայուն · 88%');
