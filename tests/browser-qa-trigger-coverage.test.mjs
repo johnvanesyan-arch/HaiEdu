@@ -146,7 +146,7 @@ test("production workflow parser fails closed when branch or serial guards are w
 
 test('all designated-fixture workflows preserve multiple pending runs and one shared serial lock', async () => {
   const filenames = await checkProductionQaConcurrency(fileURLToPath(new URL('../', import.meta.url)));
-  assert.equal(filenames.length, 19);
+  assert.equal(filenames.length, 20);
   for (const filename of ['mobile-browser-qa.yml', 'sprint-14-isolation-qa.yml',
     'supplementary-resources-acceptance.yml', 'english-unit1-learner-acceptance.yml',
     'english-unit2-learner-acceptance.yml', 'teacher-performance.yml']) assert.ok(filenames.includes(filename));

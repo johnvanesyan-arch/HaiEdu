@@ -1,0 +1,87 @@
+name: Live answer recovery acceptance
+
+# One retained dedicated-QA diagnostic; never run automatically or on a PR.
+on:
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: 'Execute one retained dedicated QA diagnostic, at most 20 answers'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  bounded-answer-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Require reviewed main branch and explicit execution
+        env:
+          QA_EXECUTE: ${{ inputs.execute }}
+        run: |
+          test "$GITHUB_REF" = refs/heads/main
+          test "$GITHUB_REPOSITORY" = johnvanesyan-arch/HaiEdu
+          test "$QA_EXECUTE" = true
+      - uses: actions/checkout@v4
+      - name: Require all five release jobs on this exact main commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          const base=`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}`;
+          const get=async path=>{const r=await fetch(base+path,{headers:{Authorization:`Bearer ${process.env.GH_TOKEN}`,Accept:'application/vnd.github+json'},signal:AbortSignal.timeout(25000)});if(!r.ok)throw Error('Release check unavailable');return r.json();};
+          const {workflow_runs:runs}=await get(`/actions/runs?head_sha=${process.env.GITHUB_SHA}&per_page=100`);
+          const run=runs.find(r=>r.path==='.github/workflows/ci.yml'&&r.event==='push'&&r.head_branch==='main'&&r.head_sha===process.env.GITHUB_SHA&&r.conclusion==='success');
+          if(!run)throw Error('Successful exact-main CI required');
+          const {jobs}=await get(`/actions/runs/${run.id}/jobs?per_page=100`);
+          for(const name of ['test','role-layout-browser','institutional-concurrency','phase3-postgres-17','Platform release checks'])if(!jobs.some(j=>j.name===name&&j.conclusion==='success'))throw Error('All five release jobs required');
+          console.log(`Verified all five release jobs: ${run.id}`);
+          NODE
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Bound Ubuntu downloads for browser acceptance
+        run: |
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
+      - name: Recover committed first and final answers through the normal learner UI
+        run: node tests/live/answer-recovery-acceptance.mjs
+        env:
+          QA_EXECUTE: ${{ inputs.execute }}
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
+      - name: Upload redacted receipt and designated QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-answer-recovery
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 14
