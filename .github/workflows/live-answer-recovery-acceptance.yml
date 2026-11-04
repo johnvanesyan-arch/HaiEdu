@@ -5,10 +5,14 @@ on:
   workflow_dispatch:
     inputs:
       execute:
-        description: 'Execute one retained dedicated QA diagnostic, at most 20 answers'
+        description: 'Execute bounded QA: fresh diagnostic or selected zero-answer followup'
         required: true
         default: false
         type: boolean
+      followup_run_id:
+        description: 'Completed original run: Auth/isolation only, zero new answers'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -46,24 +50,43 @@ jobs:
           for(const name of ['test','role-layout-browser','institutional-concurrency','phase3-postgres-17','Platform release checks'])if(!jobs.some(j=>j.name===name&&j.conclusion==='success'))throw Error('All five release jobs required');
           console.log(`Verified all five release jobs: ${run.id}`);
           NODE
+      - name: Validate zero-answer followup selector
+        env:
+          FOLLOWUP_RUN_ID: ${{ inputs.followup_run_id }}
+        run: |
+          if [ -n "$FOLLOWUP_RUN_ID" ]; then
+            test "$FOLLOWUP_RUN_ID" = 41906362478
+          fi
+      - name: Load the pinned retained original result
+        if: inputs.followup_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: live-answer-recovery
+          path: qa-prior
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.followup_run_id }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
       - name: Bound Ubuntu downloads for browser acceptance
+        if: inputs.followup_run_id == ''
         run: |
           if [ -f /etc/apt/apt-mirrors.txt ]; then
             sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
           fi
           printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
       - run: npx playwright install --with-deps chromium
+        if: inputs.followup_run_id == ''
+
       - name: Wait for this frontend revision on production
         run: node scripts/wait-for-production-release.mjs
-      - name: Recover committed first and final answers through the normal learner UI
+      - name: Verify bounded recovery or selected zero-answer Auth followup
         run: node tests/live/answer-recovery-acceptance.mjs
         env:
           QA_EXECUTE: ${{ inputs.execute }}
+          QA_FOLLOWUP_RUN_ID: ${{ inputs.followup_run_id }}
           QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
           QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
           QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}

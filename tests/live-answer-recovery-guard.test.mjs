@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {preflight,browserAllowed,frozenResponse,digest,scope} from './live/answer-recovery-acceptance.mjs';
+import {preflight,browserAllowed,frozenResponse,digest,scope,savedResultDenied,validAuthFollowup} from './live/answer-recovery-acceptance.mjs';
 const id=n=>`${String(n).padStart(8,'0')}-1111-4111-8111-111111111111`;
 const fixture={dedicatedQa:true},credentials={};
 for(const [i,side] of ['A','B'].entries()){
@@ -58,4 +58,18 @@ test('production recovery is manual, source guarded, serialized and credential b
  assert.ok(workflow.indexOf('Require all five release jobs')<workflow.indexOf('QA_SCHOOL_A_ADMIN_EMAIL:'));
  assert.doesNotMatch(workflow,/SERVICE_ROLE|SUPABASE_ACCESS_TOKEN/);
  assert.equal(scope.maximumAnswers,20);assert.equal(scope.maximumSessions,1);
+});
+
+test('revocation accepts exact Auth401 or live-session403 and rejects every feedback-bearing denial',()=>{
+ for(const [status,error] of [[401,'unauthorized'],[403,'account_or_session_inactive']]){
+  assert.equal(savedResultDenied({status,data:{error}}),true);
+  for(const extra of [{attemptId:id(60)},{response:{}},{replayed:true},{accepted:true}])assert.equal(savedResultDenied({status,data:{error,...extra}}),false);
+ }
+ for(const r of [{status:200,data:{error:'unauthorized'}},{status:401,data:{error:'other'}},{status:403,data:{error:'unauthorized'}},{status:401,data:null}])assert.equal(savedResultDenied(r),false);
+});
+test('zero-answer followup refuses incomplete, different and already-passing original runs',()=>{
+ const hash='a'.repeat(64),prior={schemaVersion:'haiedu-live-answer-recovery-v1',workflowRunId:scope.authFollowup.originalRunId,revision:scope.authFollowup.originalRevision,case:scope.case,status:'failed',sessionId:id(70),answers:Array.from({length:20},(_,i)=>({position:i+1,attemptId:id(100+i),sessionItemId:id(200+i)})),recoveries:[1,20].map(position=>({position,committedHttpStatus:200,responseDiscarded:true,identicalRequest:true,unchangedEvidence:true,requestSha256:hash,responseSha256:hash})),checks:[...Array.from({length:103},()=>({status:'passed'})),{status:'failed',label:'revoked session cannot recover saved feedback',httpStatus:401}],isolationBefore:{status:'passed',checks:Array(54)},cleanup:Array.from({length:6},()=>({status:204}))};
+ assert.equal(validAuthFollowup(prior,prior.workflowRunId),true);
+ for(const changed of [{status:'passed'},{answers:prior.answers.slice(1)},{revision:'f'.repeat(40)},{recoveries:[]},{cleanup:[]}])assert.equal(validAuthFollowup({...prior,...changed},prior.workflowRunId),false);
+ assert.equal(validAuthFollowup(prior,'different'),false);
 });

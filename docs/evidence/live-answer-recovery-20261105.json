@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "haiedu-live-recovery-execution-v1",
+  "date": "2026-11-05",
+  "timezone": "Asia/Dubai",
+  "status": "core_recovery_verified_auth_isolation_followup_prepared",
+  "originalRun": {
+    "id": 41906362478,
+    "artifact": 13361515802,
+    "source": "8fa0d9b2b6c7b32995857496b8ba353a7beb93d1",
+    "status": "failed",
+    "checksPassed": 103,
+    "checksTotal": 104,
+    "reportSha256": "6edcf646af88036b1e869f7061dc7ae3d819559af2df2e4c3f69bce8f2682e5a",
+    "failedCheck": {
+      "label": "revoked session cannot recover saved feedback",
+      "status": "failed",
+      "httpStatus": 401
+    },
+    "disposition": "Both committed first/final UI retries, identical requests/frozen responses, unchanged evidence, completed final replay and conflict/foreign denial passed. Original aggregate remains failed: revoked JWT returned401, while the harness required403. Exact original denial body was not captured; the auth-only followup will verify its exact safe shape.",
+    "unexecuted": [
+      "Original postflight54 isolation controls",
+      "Original terminal zero-page-error/blocked-request assertion"
+    ]
+  },
+  "recoveries": [
+    {
+      "position": 1,
+      "committedHttpStatus": 200,
+      "responseDiscarded": true,
+      "requestSha256": "ae308f47f7686a122f3bee044495db2636d56f56f8d3e60ee62f0bd2cd3a099f",
+      "responseSha256": "2229fd43d7645cbbc8dcb1704764afcb04cef832d2bd2a24cd4f9c7438d133b8",
+      "identicalRequest": true,
+      "unchangedEvidence": true
+    },
+    {
+      "position": 20,
+      "committedHttpStatus": 200,
+      "responseDiscarded": true,
+      "requestSha256": "b0832d4428d3c29190877dff7286228d290e0f2da7da556d296ba7dd98284be3",
+      "responseSha256": "25d1932871ed6992f7142572d0e2e1edc4e385f421bdf6f0c6c2824da7a8e4d3",
+      "identicalRequest": true,
+      "unchangedEvidence": true
+    }
+  ],
+  "retainedSyntheticAnswers": 20,
+  "originalAuthCleanup": [
+    {
+      "actor": "B_student",
+      "status": 204
+    },
+    {
+      "actor": "A_admin",
+      "status": 204
+    },
+    {
+      "actor": "A_teacher",
+      "status": 204
+    },
+    {
+      "actor": "A_student",
+      "status": 204
+    },
+    {
+      "actor": "B_admin",
+      "status": 204
+    },
+    {
+      "actor": "B_teacher",
+      "status": 204
+    }
+  ],
+  "isolationBefore": {
+    "status": "passed",
+    "checks": 54
+  },
+  "database": {
+    "before": {
+      "b_sessions": 0,
+      "b_attempts": 0,
+      "b_mastery_rows": 0,
+      "b_release_mastery_rows": 0,
+      "a_sessions_fingerprint": "e8f13023a1868d1beffc09d89b4e866e",
+      "a_attempts_fingerprint": "9fa30a2bd25b91363f37f05a3aefea59"
+    },
+    "after": {
+      "b_sessions": 1,
+      "mode": "diagnostic",
+      "status": "completed",
+      "planned": 20,
+      "answered": 20,
+      "attempts": 20,
+      "unique_attempted_items": 20,
+      "unrelated_attempts": 0,
+      "receipts": 20,
+      "invalid_receipts": 0,
+      "answered_slots": 20,
+      "global_evidence": 20,
+      "release_evidence": 20,
+      "a_sessions_fingerprint": "e8f13023a1868d1beffc09d89b4e866e",
+      "a_attempts_fingerprint": "9fa30a2bd25b91363f37f05a3aefea59"
+    },
+    "followupBefore": {
+      "b_sessions_fingerprint": "6d03264f7a142fd1fa02c1df5e819581",
+      "b_attempts_fingerprint": "599a8897c37ed763b770d68811d0367a",
+      "b_receipts_fingerprint": "8649df79476a8991b8510bd037738be7",
+      "b_mastery_fingerprint": "1e0ef2f2de10131f5e8071369a4c596f",
+      "b_release_mastery_fingerprint": "5dd7832e0685b169cfe44aa4879784e2"
+    }
+  },
+  "frontend": {
+    "commit": "8fa0d9b2b6c7b32995857496b8ba353a7beb93d1",
+    "verifiedAt": "2026-11-04T20:23:38.887Z",
+    "assets": [
+      {
+        "path": "diagnostic.js",
+        "bytes": 17814,
+        "sha256": "9f06080d01385d2a6b343964eb90d8c5222f8c17a830dbb0e255c57b1e1b9c4b"
+      },
+      {
+        "path": "answer-response-recovery.mjs",
+        "bytes": 6248,
+        "sha256": "e7d14d92a44a3085dafbc70e6987137dd8b0472136e643919b087a5773b55442"
+      },
+      {
+        "path": "config.js",
+        "bytes": 1159,
+        "sha256": "721242de821877470224c671fc8069c1fbe4ae860f082062e13dae36a61d0eae"
+      },
+      {
+        "path": "analytics-provenance.mjs",
+        "bytes": 7089,
+        "sha256": "c30e16dd10bc795dbefd9a29090e936643a649e6437319901c7b2e6d8bd60b0b"
+      },
+      {
+        "path": "teacher-skill-evidence.mjs",
+        "bytes": 6106,
+        "sha256": "4dbdb7188c8da6ee4ea22b3651c1b3c1cd01db824f05840327dfde67c05979d3"
+      },
+      {
+        "path": "teacher-dependencies.bundle.mjs",
+        "bytes": 293181,
+        "sha256": "0bd7616b279299bcb3b72495514a8e52fba6d2e3fac063df6cd2b044078deb60"
+      },
+      {
+        "path": "staff-forest.css",
+        "bytes": 16043,
+        "sha256": "8def746d22e40133923b36a9cd82494fbdb56fe9b8e03e05051cabce6b7d34a8"
+      }
+    ]
+  },
+  "ci": {
+    "pr": 404,
+    "prHead": "6f2401865da618433f7ead3718676d68d867c993",
+    "prRun": 41903292722,
+    "mainRun": 41904731566,
+    "requiredJobsPassed": 5,
+    "unitIntegration": 1713,
+    "native": 420,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "authFollowup": {
+    "status": "prepared",
+    "originalRunId": "41906362478",
+    "maximumNewSessions": 0,
+    "maximumNewAnswers": 0,
+    "scope": "Pinned original completed QA baseline; authenticated no-answer400 probe, own local signout, exact401/403 error-only denial, before/after54 isolation. Never resume or replay learner answers."
+  },
+  "limits": [
+    "Fresh first/final live UI recovery is legacy diagnostic only; other interfaces/purposes remain isolated CI coverage.",
+    "Original failed run is preserved; no blanket zero-browser-error claim.",
+    "Retained diagnostic is exposed synthetic QA history, not attainment or unseen content.",
+    "Owner usability, physical devices, MFA, independent gates and deferred BF02 are not closed."
+  ]
+}
