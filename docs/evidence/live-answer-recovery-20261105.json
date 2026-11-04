@@ -2,7 +2,7 @@
   "schemaVersion": "haiedu-live-recovery-execution-v1",
   "date": "2026-11-05",
   "timezone": "Asia/Dubai",
-  "status": "core_recovery_verified_auth_isolation_followup_prepared",
+  "status": "live_core_recovery_and_zero_answer_auth_isolation_verified_with_retained_original_harness_failure",
   "originalRun": {
     "id": 41906362478,
     "artifact": 13361515802,
@@ -16,7 +16,7 @@
       "status": "failed",
       "httpStatus": 401
     },
-    "disposition": "Both committed first/final UI retries, identical requests/frozen responses, unchanged evidence, completed final replay and conflict/foreign denial passed. Original aggregate remains failed: revoked JWT returned401, while the harness required403. Exact original denial body was not captured; the auth-only followup will verify its exact safe shape.",
+    "disposition": "Both UI recoveries, completed final replay and conflict/foreign denial passed. Original aggregate remains failed103/104 at a strict403 expectation after actual401. PR405 corrects the predicate; separate zero-answer followup passes19/19 and54+54 isolation with exact401 error-only denial. Original body and unreached terminal assertions are not retrospectively claimed.",
     "unexecuted": [
       "Original postflight54 isolation controls",
       "Original terminal zero-page-error/blocked-request assertion"
@@ -105,6 +105,18 @@
       "b_receipts_fingerprint": "8649df79476a8991b8510bd037738be7",
       "b_mastery_fingerprint": "1e0ef2f2de10131f5e8071369a4c596f",
       "b_release_mastery_fingerprint": "5dd7832e0685b169cfe44aa4879784e2"
+    },
+    "followupAfter": {
+      "b_sessions": 1,
+      "b_attempts": 20,
+      "b_receipts": 20,
+      "b_sessions_fingerprint": "6d03264f7a142fd1fa02c1df5e819581",
+      "b_attempts_fingerprint": "599a8897c37ed763b770d68811d0367a",
+      "b_receipts_fingerprint": "8649df79476a8991b8510bd037738be7",
+      "b_mastery_fingerprint": "1e0ef2f2de10131f5e8071369a4c596f",
+      "b_release_mastery_fingerprint": "5dd7832e0685b169cfe44aa4879784e2",
+      "a_sessions_fingerprint": "e8f13023a1868d1beffc09d89b4e866e",
+      "a_attempts_fingerprint": "9fa30a2bd25b91363f37f05a3aefea59"
     }
   },
   "frontend": {
@@ -161,16 +173,80 @@
     "cancelled": 0
   },
   "authFollowup": {
-    "status": "prepared",
+    "status": "passed",
+    "run": 41911100007,
+    "artifact": 13363500091,
+    "source": "e63fc74350e21f9b23f8039d4441fbe4cb416c3b",
     "originalRunId": "41906362478",
-    "maximumNewSessions": 0,
-    "maximumNewAnswers": 0,
-    "scope": "Pinned original completed QA baseline; authenticated no-answer400 probe, own local signout, exact401/403 error-only denial, before/after54 isolation. Never resume or replay learner answers."
+    "phase": "auth-isolation-followup",
+    "reportSha256": "2aac399e497bb62c6c03e6baaaa234d111103588cfe875df78f336c4b606a6f6",
+    "checksPassed": 19,
+    "checksTotal": 19,
+    "authDenial": {
+      "httpStatus": 401,
+      "errorCode": "unauthorized",
+      "bodyKeys": [
+        "error"
+      ]
+    },
+    "newSessions": 0,
+    "newAnswers": 0,
+    "isolationBefore": {
+      "status": "passed",
+      "checks": 54
+    },
+    "isolationAfter": {
+      "status": "passed",
+      "checks": 54
+    },
+    "ownAuthCleanup": [
+      {
+        "actor": "B_student",
+        "status": 204
+      },
+      {
+        "actor": "A_admin",
+        "status": 204
+      },
+      {
+        "actor": "A_teacher",
+        "status": 204
+      },
+      {
+        "actor": "A_student",
+        "status": 204
+      },
+      {
+        "actor": "B_admin",
+        "status": 204
+      },
+      {
+        "actor": "B_teacher",
+        "status": 204
+      }
+    ],
+    "finishedAt": "2026-11-04T20:58:31.461Z",
+    "probe": "Intentionally incomplete request reaches400 while authenticated, then exact401 error-only denial after own local logout; cannot grade an answer. Original full saved-request401 body remains uncaptured.",
+    "databaseFingerprintsUnchanged": true
   },
   "limits": [
     "Fresh first/final live UI recovery is legacy diagnostic only; other interfaces/purposes remain isolated CI coverage.",
     "Original failed run is preserved; no blanket zero-browser-error claim.",
     "Retained diagnostic is exposed synthetic QA history, not attainment or unseen content.",
     "Owner usability, physical devices, MFA, independent gates and deferred BF02 are not closed."
-  ]
+  ],
+  "authHarnessCorrection": {
+    "pr": 405,
+    "head": "0f2c9ec3505b8ec9697b710d6eb41ec45a575c00",
+    "main": "e63fc74350e21f9b23f8039d4441fbe4cb416c3b",
+    "prCI": 41908635055,
+    "mainCI": 41909754731,
+    "requiredJobsPassed": 5,
+    "unitIntegration": 1715,
+    "native": 420,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "runtimeChanged": false
+  }
 }
