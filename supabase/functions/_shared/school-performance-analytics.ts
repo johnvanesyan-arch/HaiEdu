@@ -83,9 +83,12 @@ export function aggregateSchoolPerformanceAnalytics(args: {
     .filter((value): value is string => Boolean(value)));
   const contractGroups = new Map<string, any>();
   for (const session of completed) {
-    const key = evidenceContractKey(session);
-    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0, reportingGroups: [] as any[], passScore: null as any };
+    const context = { schoolId: session.school_id ?? null, academicYearId: session.academic_year_id ?? null,
+      classId: session.class_id ?? null, subjectProgramId: session.subject_program_id ?? null };
+    const key = JSON.stringify([context, evidenceContractKey(session)]);
+    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), context, mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0, reportingGroups: [] as any[], passScore: null as any, lastActivityAt: null as string | null };
     group.sessions++; group.answered += Number(session.answered_count ?? 0); group.correct += Number(session.correct_count ?? 0);
+    group.lastActivityAt = latestIso([group.lastActivityAt, session.completed_at || session.started_at]);
     if (session.assessment_result === "passed") group.masteryPassed++;
     const report=session.metadata?.assessmentResultReporting;
     if (['haiedu-assessment-result-v2','haiedu-assessment-result-v3'].includes(report?.schemaVersion)) {

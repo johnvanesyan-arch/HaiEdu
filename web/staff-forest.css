@@ -115,3 +115,18 @@ body[data-role-workspace] :is(.hm-loading-nav span,.hm-loading-card::before,.hm-
   body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) *,
   body:is([data-role-workspace],[data-resource-staff],[data-staff-account],[data-staff-preview]) *::before { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
 }
+
+/* Evidence purpose sections keep original results readable at enlarged text. */
+body[data-role-workspace] .evidence-purpose-list { display:grid; gap:1.25rem; min-width:0; }
+body[data-role-workspace] .evidence-purpose { min-width:0; border-top:1px solid var(--forest-divider); padding-top:.75rem; }
+body[data-role-workspace] .evidence-purpose :is(h4,h5,p,summary,dt,dd) { overflow-wrap:anywhere; }
+body[data-role-workspace] .evidence-purpose h4 { margin:.25rem 0; }
+body[data-role-workspace] .evidence-purpose h5 { margin:.3rem 0; font:inherit; font-weight:700; }
+body[data-role-workspace] .evidence-context-label { font-weight:600; line-height:1.6; overflow-wrap:anywhere; }
+body[data-role-workspace] .evidence-other-versions { margin-top:.75rem; padding:.75rem; border:1px solid var(--forest-divider); border-radius:10px; min-width:0; }
+body[data-role-workspace] .evidence-other-versions>summary { cursor:pointer; min-height:44px; line-height:1.6; }
+body[data-role-workspace] .evidence-other-versions>summary:focus-visible { outline:3px solid var(--amp-color-focus); outline-offset:2px; }
+body[data-role-workspace] .evidence-version { margin-top:.75rem; min-width:0; }
+body[data-role-workspace] .evidence-technical-details dl { display:grid; grid-template-columns:minmax(0,1fr); gap:.25rem; }
+body[data-role-workspace] .evidence-technical-details dd { margin:0 0 .5rem; overflow-wrap:anywhere; }
+body[data-role-workspace] .evidence-purpose-caption { display:block; font-size:.75em; line-height:1.5; margin-top:.3rem; font-weight:400; }

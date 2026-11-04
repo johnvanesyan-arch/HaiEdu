@@ -1,5 +1,5 @@
 import {readFileSync} from 'node:fs';
-export const recoveryMigration='supabase/migrations/20261104070205_answer_response_recovery.sql';
+export const recoveryMigration='supabase/migrations/20261104111921_answer_response_recovery.sql';
 export async function installAnswerRecovery(db,{legacy=false}={}) {
   if(legacy) await db.exec(`
     alter table learning_sessions add column assessment_result text,add column score_percent numeric;
