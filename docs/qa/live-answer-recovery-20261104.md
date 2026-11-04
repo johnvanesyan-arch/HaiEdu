@@ -1,6 +1,6 @@
 # Fresh production answer-recovery acceptance — 4 November 2026
 
-Status: **prepared, not executed**. John requested proceeding with the remaining QA. BF-04/PR401 and BF-05/PR402 are already deployed; this change adds only a manual acceptance workflow, guards and evidence documentation. No runtime, migration, curriculum, permission or grading change is included.
+Status: **first/final live recovery and completed replay verified; original aggregate failed on a strict revocation-code assertion; zero-answer Auth/isolation followup prepared**. [Run41906362478](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41906362478) ran on reviewed main8fa0d9b after all-five PR/main gates and seven exact public assets. The original failed run is retained. No production Auth, grading, runtime or schema change is required.
 
 ## Bounded scope
 
@@ -22,3 +22,13 @@ If interrupted after session creation, inspect the saved own-session ledger and 
 ## Separate review
 
 Technical verification does not grant John’s usability acceptance. For BF-05, review Teacher skill detail with Practice first and Diagnostic/Mastery/Review separate; expand additional results and context/provenance; then check School Admin and Master Admin class/year/programme/chapter scope. Different original contracts/builds remain separate unless equivalence is demonstrated. B.12.3/B.12, EnglishC47, full S2, independent review and deferred BF-02 recovery are unchanged.
+
+## Executed result and bounded followup — 5 November Asia/Dubai
+
+Both committed response losses (positions1/20) recover the identical immutable request, original attempt/frozen response and unchanged mastery/counters through normal UI Retry. The completed final replay, changed-payload409 and foreign-learner409 checks also pass. Independent database readback confirms one completed20-item diagnostic,20 distinct attempted slots/attempts and20 valid saved receipts; no extra attempts exist, both evidence counters total20 and the other designated learner’s full session/attempt fingerprints are unchanged. All six own main Auth sessions close with204. [Sanitized execution receipt](../evidence/live-answer-recovery-20261105.json).
+
+The original aggregate is103/104, **failed**, because its last Auth check required only403. Actual revoked-session recovery returned401. The deployed handler checks `auth.getUser()` before its application live-session check, so rejection can occur at either boundary; the test must permit only401 `unauthorized` or403 `account_or_session_inactive`, each with exactly one error field and no feedback. This matches [Supabase’s server-side Auth guidance](https://supabase.com/docs/guides/auth/server-side/advanced-guide) and the deployed source. The original denial body was not captured, so its safe shape is not retrospectively claimed.
+
+The new optional `followup_run_id=41906362478` is pinned to that completed original report/source, its20 unique attempts, both recoveries, the one known failure and six acknowledged closures. It authenticates the same designated actors, verifies the same completed baseline, and sends an intentionally incomplete no-answer request. A valid session must reach400 missing-answer validation; after only its own local signout, the identical probe must return one of the exact safe Auth denial bodies. Because it has no item/response, even unexpected authentication success cannot grade anything. It runs54 isolation controls before and54 after and closes only its own Auth sessions. It cannot start a learner session, consume a form, resume answers or reset history. Ordinary fresh execution continues to refuse the completed learner.
+
+The original postflight54 controls and terminal zero-page-error/blocked-request assertion were not reached after the strict-code failure. They are not marked passed. The followup supplies new Auth/isolation evidence; the two original successful UI recoveries retain their own scope. No blanket zero-browser-error or personal usability certification is claimed.

@@ -11,6 +11,20 @@ const uuid=x=>typeof x==='string'&&/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}
 export const canonical=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 export const digest=x=>createHash('sha256').update(canonical(x)).digest('hex');
 export function frozenResponse(x){const copy=structuredClone(x);delete copy.replayed;return copy;}
+// getUser may reject a revoked JWT before the application's live-session check.
+// Accept only the two exact handler denial bodies; never an arbitrary 401/403.
+export function savedResultDenied(r){return Boolean(r.data&&typeof r.data==='object'&&!Array.isArray(r.data)&&Object.keys(r.data).length===1&&((r.status===401&&r.data.error==='unauthorized')||(r.status===403&&r.data.error==='account_or_session_inactive')));}
+export function validAuthFollowup(prior,selected){
+ const failed=prior?.checks?.filter(c=>c.status!=='passed');
+ return selected===scope.authFollowup.originalRunId&&prior?.workflowRunId===selected&&prior.revision===scope.authFollowup.originalRevision
+  &&prior.schemaVersion==='haiedu-live-answer-recovery-v1'&&prior.case===scope.case&&prior.status==='failed'&&uuid(prior.sessionId)
+  &&prior.answers?.length===20&&new Set(prior.answers.map(a=>a.attemptId)).size===20&&new Set(prior.answers.map(a=>a.sessionItemId)).size===20
+  &&prior.answers.every((a,i)=>a.position===i+1&&uuid(a.attemptId)&&uuid(a.sessionItemId))
+  &&prior.recoveries?.length===2&&[1,20].every(position=>prior.recoveries.some(r=>r.position===position&&r.committedHttpStatus===200&&r.responseDiscarded===true&&r.identicalRequest===true&&r.unchangedEvidence===true&&/^[a-f0-9]{64}$/.test(r.requestSha256)&&/^[a-f0-9]{64}$/.test(r.responseSha256)))
+  &&prior.checks.length===104&&failed?.length===1&&failed[0].label==='revoked session cannot recover saved feedback'&&failed[0].httpStatus===401
+  &&prior.isolationBefore?.status==='passed'&&prior.isolationBefore.checks.length===54
+  &&prior.cleanup?.length===6&&prior.cleanup.every(c=>c.status===204);
+}
 export function preflight({env,fixture,credentials,dashboard}){
  return env.GITHUB_REPOSITORY==='johnvanesyan-arch/HaiEdu'&&env.GITHUB_REF==='refs/heads/main'
   &&env.GITHUB_EVENT_NAME==='workflow_dispatch'&&env.QA_EXECUTE==='true'&&/^[a-f0-9]{40}$/.test(env.GITHUB_SHA??'')
@@ -51,6 +65,26 @@ async function main(){
   request=async(actor,endpoint,body={})=>{try{const r=await fetch(url+endpoint,{method:'POST',redirect:'error',headers:clientHeaders(key,sessions.get(actor)?.access_token),body:JSON.stringify(body),signal:AbortSignal.timeout(25000)});return{status:r.status,data:await r.json().catch(()=>null)};}catch{return{status:0,data:null};}};
   report.isolationBefore=await runIsolation({fixture,credentials,url,key,revision:env.GITHUB_SHA});check('all54 preflight isolation controls',report.isolationBefore.status==='passed'&&report.isolationBefore.checks.length===54);
   for(const side of sides)for(const role of roles){const actor=`${side}_${role}`,r=await request(null,'/auth/v1/token?grant_type=password',credentials[actor]);if(r.data?.access_token)sessions.set(actor,{...r.data,expires_at:r.data.expires_at??Math.floor(Date.now()/1000)+r.data.expires_in});check(`${actor}: exact designated identity`,r.status===200&&r.data?.user?.id===fixture[side][`${role}Id`],r.status);}
+  if(env.QA_FOLLOWUP_RUN_ID){
+   stage='auth-isolation-followup';report.phase=stage;report.originalWorkflowRunId=env.QA_FOLLOWUP_RUN_ID;report.limitations.push('Auth/isolation followup only: zero new learner answers or session starts. Original failed UI run remains separate.');
+   const bytes=await readFile('qa-prior/live-answer-recovery.json','utf8'),prior=JSON.parse(bytes);
+   check('only the pinned completed original run may use the zero-answer followup',validAuthFollowup(prior,env.QA_FOLLOWUP_RUN_ID)&&fixture.B.curriculumReleaseId===scope.curriculumReleaseId&&fixture.B.unitId===scope.unitId);
+   report.originalReportSha256=createHash('sha256').update(bytes).digest('hex');report.sessionId=prior.sessionId;
+   const baseline=await call('B_student','get-student-dashboard',{});
+   check('same owned retained completed baseline; no active work',!baseline.activeSession&&baseline.latestDiagnostic?.id===prior.sessionId&&baseline.latestDiagnostic.answered===20&&baseline.latestDiagnostic.planned===20);
+   const preserved=digest(evidenceProjection(baseline));
+   // This intentionally incomplete no-answer request cannot grade or start anything,
+   // including if authentication unexpectedly succeeds. The auth gate runs first.
+   const probe={sessionId:prior.sessionId};
+   const live=await request('B_student','/functions/v1/submit-answer',probe);
+   check('valid session reaches only missing-answer validation',live.status===400&&live.data?.error==='itemId_and_response_required'&&Object.keys(live.data).length===1,live.status);
+   check('no-answer probe preserves retained learning evidence',preserved===digest(evidenceProjection(await call('B_student','get-student-dashboard',{}))));
+   const logout=await request('B_student','/auth/v1/logout?scope=local');if(logout.status===204)closed.add('B_student');report.cleanup.push({actor:'B_student',status:logout.status});check('close only own followup Auth session',logout.status===204,logout.status);
+   const denied=await request('B_student','/functions/v1/submit-answer',probe);report.authDenial={httpStatus:denied.status,errorCode:denied.data?.error,bodyKeys:Object.keys(denied.data??{}).sort()};
+   check('revoked session returns only an exact authentication denial',savedResultDenied(denied),denied.status);
+   report.isolationAfter=await runIsolation({fixture,credentials,url,key,revision:env.GITHUB_SHA});check('all54 followup postflight isolation controls',report.isolationAfter.status==='passed'&&report.isolationAfter.checks.length===54);
+   check('zero new learner answers or sessions in followup',report.answers.length===0&&report.recoveries.length===0);report.status='passed';return;
+  }
   const initial=await call('B_student','get-student-dashboard',{});check('one unused designated diagnostic; no existing work may resume',preflight({env,fixture,credentials,dashboard:initial}));
   const preserved=digest(evidenceProjection(await call('A_student','get-student-dashboard',{})));
   const nav=await call('B_student','get-student-classes',{}),context=nav.contexts?.filter(c=>c.classId===fixture.B.classId&&c.curriculumReleaseId===scope.curriculumReleaseId&&c.unitId===scope.unitId);
@@ -114,8 +148,9 @@ async function main(){
   const conflict=await request('B_student','/functions/v1/submit-answer',{...firstPayload,responseTimeMs:firstPayload.responseTimeMs+1});check('changed retry is a conflict without feedback',conflict.status===409&&conflict.data?.error==='answer_response_conflict'&&Object.keys(conflict.data).length===1,conflict.status);
   const foreign=await request('A_student','/functions/v1/submit-answer',lastPayload);check('another QA learner receives no saved result',foreign.status===409&&foreign.data?.error==='session_not_active'&&Object.keys(foreign.data).length===1,foreign.status);
   check('original other learner evidence unchanged',preserved===digest(evidenceProjection(await call('A_student','get-student-dashboard',{}))));
+  report.browser={blockedRequests:blocked,pageErrors:pageErrors.length};
   const logout=await request('B_student','/auth/v1/logout?scope=local');closed.add('B_student');report.cleanup.push({actor:'B_student',status:logout.status});check('close only this QA authentication session',logout.status===204,logout.status);
-  const revoked=await request('B_student','/functions/v1/submit-answer',lastPayload);check('revoked session cannot recover saved feedback',revoked.status===403&&revoked.data?.error==='account_or_session_inactive'&&Object.keys(revoked.data).length===1,revoked.status);
+  const revoked=await request('B_student','/functions/v1/submit-answer',lastPayload);check('revoked session cannot recover saved feedback',savedResultDenied(revoked),revoked.status);
   await browser.close();browser=null;report.isolationAfter=await runIsolation({fixture,credentials,url,key,revision:env.GITHUB_SHA});check('all54 postflight isolation controls',report.isolationAfter.status==='passed'&&report.isolationAfter.checks.length===54);
   check('no unapproved browser write or page exception',blocked===0&&pageErrors.length===0);report.status='passed';
  }catch{report.status='failed';report.failedStage=stage;process.exitCode=1;}

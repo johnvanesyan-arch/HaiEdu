@@ -71,3 +71,8 @@ The existing authenticated acceptance queue is running on this exact production 
 ## Completed guarded production QA — 2026-11-04
 
 All13 automatic suites completed successfully on exact productionc86564d:2,024 main assertions and864 isolation controls. The original Chapter IV attempt1 exceeded the held-frontend wait before app assertions; attempt2 passes on the same source and the original remains. [Complete suite/attempt/artifact index](../evidence/answer-recovery-qa-20261104.json). Existing designated-fixture and cleanup guards remain. This includes read/action/delivery acceptance, not a fresh live lost-response/final-item learner submission, personal usability approval, device certification or independent review. BF-04 remains installed in the subsequent BF-05 app release5b24927. Backup/restore stays owner-deferred and unverified.
+
+
+## Later bounded live write — 5 November Asia/Dubai
+
+The two live first/final legacy diagnostic reply-loss UI recoveries and completed final replay pass on runtime-equivalent main8fa0d9b. Independent SQL verifies20 attempts/20 valid receipts with no duplicates and preserved other-QA-learner history. Original run41906362478 remains failed103/104 at a401-versus403 revocation expectation; a zero-answer Auth/isolation followup is prepared. No new Mastery form, history reset or runtime/schema change is involved. [Execution and exact limits](../evidence/live-answer-recovery-20261105.json) · [Procedure](live-answer-recovery-20261104.md).
