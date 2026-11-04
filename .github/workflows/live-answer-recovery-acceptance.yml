@@ -61,7 +61,7 @@ jobs:
       - name: Wait for this frontend revision on production
         run: node scripts/wait-for-production-release.mjs
       - name: Recover committed first and final answers through the normal learner UI
-        run: node scripts/live-answer-recovery-acceptance.mjs
+        run: node tests/live/answer-recovery-acceptance.mjs
         env:
           QA_EXECUTE: ${{ inputs.execute }}
           QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}

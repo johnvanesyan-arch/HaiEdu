@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {preflight,browserAllowed,frozenResponse,digest,scope} from '../scripts/live-answer-recovery-acceptance.mjs';
+import {preflight,browserAllowed,frozenResponse,digest,scope} from './live/answer-recovery-acceptance.mjs';
 const id=n=>`${String(n).padStart(8,'0')}-1111-4111-8111-111111111111`;
 const fixture={dedicatedQa:true},credentials={};
 for(const [i,side] of ['A','B'].entries()){
