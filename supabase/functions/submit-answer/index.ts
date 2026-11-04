@@ -1,4 +1,5 @@
-import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
+import { routeGovernedLearning, verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
+import { legacyAnswerReceipt, finishLegacyAnswer } from "../_shared/answer-response-recovery.mjs";
 import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -74,6 +75,8 @@ Deno.serve(async (req) => {
     return json({ error: "itemId_and_response_required" }, 400);
   }
 
+  let recovery: any = null;
+
   let session: any = null;
   let sessionItem: any = null;
   if (payload.sessionId || payload.sessionItemId) {
@@ -86,7 +89,7 @@ Deno.serve(async (req) => {
       .eq("id", payload.sessionId)
       .eq("student_id", studentId)
       .single();
-    if (sessionError || !sessionData || sessionData.status !== "active") {
+    if (sessionError || !sessionData || !["active","completed"].includes(sessionData.status)) {
       return json({ error: "session_not_active" }, 409);
     }
 
@@ -99,15 +102,22 @@ Deno.serve(async (req) => {
     if (sessionItemError || !sessionItemData || sessionItemData.item_id !== payload.itemId) {
       return json({ error: "session_item_mismatch" }, 409);
     }
-    if (sessionItemData.answered_at) {
-      return json({ error: "session_item_already_answered" }, 409);
-    }
     session = sessionData;
     sessionItem = sessionItemData;
   }
 
   const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, session?.unit_code ?? "PHY7-U01", session?.mode ?? "practice");
   if (practiceBlock) return json(practiceBlock.body, practiceBlock.status);
+
+  const authSessionId = verifiedSessionClaim(token);
+  if (session) {
+    recovery = await legacyAnswerReceipt(admin,studentId,authSessionId,"legacy-answer",payload);
+    if (recovery.error) return json({error:recovery.error},recovery.status);
+    if (recovery.response) return json({...recovery.response,replayed:true});
+    if (!recovery.coreResult && (session.status !== "active" || sessionItem.answered_at)) {
+      return json({error:sessionItem.answered_at?"session_item_already_answered":"session_not_active"},409);
+    }
+  }
 
   let curriculumReleaseId: string;
   try {
@@ -119,66 +129,72 @@ Deno.serve(async (req) => {
     return json({ error: "curriculum_release_unavailable" }, 503);
   }
 
-  const { data: item, error: itemError } = await admin
-    .from("items")
-    .select("id, skill_id, item_type, difficulty, status")
-    .eq("id", payload.itemId)
-    .single();
-  if (itemError || !item || item.status !== "published") {
-    return json({ error: "item_not_found" }, 404);
-  }
-
-  let gradingResponse: StudentResponse = payload.response;
+  let item = recovery?.coreResult?.item;
+  let grade = recovery?.coreResult?.grading;
+  let answerRow: any = grade ? {feedback_code:grade.feedbackCode} : null;
   let normalizedPresentationResponse: Record<string, unknown> | null = null;
-  if (item.item_type === "single_choice" && sessionItem) {
-    const { data: presentation, error: presentationError } = await admin.rpc(
-      "service_ensure_session_item_option_order",
-      { p_session_item_id: sessionItem.id },
-    );
-    if (presentationError || !presentation?.canonicalOptionOrder) {
-      return json({ error: "option_presentation_unavailable" }, 500);
+  if (!recovery?.coreResult) {
+    const { data: loadedItem, error: itemError } = await admin
+      .from("items")
+      .select("id, skill_id, item_type, difficulty, status")
+      .eq("id", payload.itemId)
+      .single();
+    item = loadedItem;
+    if (itemError || !item || item.status !== "published") {
+      return json({ error: "item_not_found" }, 404);
     }
 
-    const order = presentation.canonicalOptionOrder.map((key: unknown) => String(key));
-    const index = presentationIndex(payload.response.value);
-    if (index < 0 || index >= order.length) {
-      return json({ error: "invalid_option_presentation_key" }, 400);
+    let gradingResponse: StudentResponse = payload.response;
+    if (item.item_type === "single_choice" && sessionItem) {
+      const { data: presentation, error: presentationError } = await admin.rpc(
+        "service_ensure_session_item_option_order",
+        { p_session_item_id: sessionItem.id },
+      );
+      if (presentationError || !presentation?.canonicalOptionOrder) {
+        return json({ error: "option_presentation_unavailable" }, 500);
+      }
+
+      const order = presentation.canonicalOptionOrder.map((key: unknown) => String(key));
+      const index = presentationIndex(payload.response.value);
+      if (index < 0 || index >= order.length) {
+        return json({ error: "invalid_option_presentation_key" }, 400);
+      }
+
+      const canonicalOptionKey = order[index];
+      gradingResponse = { ...payload.response, value: canonicalOptionKey };
+      normalizedPresentationResponse = {
+        value: canonicalOptionKey,
+        presentationValue: String(payload.response.value).trim().toUpperCase(),
+        optionPresentationVersion: String(presentation.algorithmVersion ?? "unknown"),
+      };
     }
 
-    const canonicalOptionKey = order[index];
-    gradingResponse = { ...payload.response, value: canonicalOptionKey };
-    normalizedPresentationResponse = {
-      value: canonicalOptionKey,
-      presentationValue: String(payload.response.value).trim().toUpperCase(),
-      optionPresentationVersion: String(presentation.algorithmVersion ?? "unknown"),
+    const { data: loadedAnswerRow, error: answerError } = await admin
+      .from("item_answer_keys")
+      .select("answer, tolerance, canonical_unit, accepted_units, feedback_code")
+      .eq("item_id", item.id)
+      .single();
+    answerRow = loadedAnswerRow;
+    if (answerError || !answerRow) return json({ error: "answer_key_missing" }, 500);
+
+    const storedAnswer = answerRow.answer as { value?: unknown } | unknown;
+    const answerValue = typeof storedAnswer === "object" && storedAnswer !== null && "value" in storedAnswer
+      ? (storedAnswer as { value?: unknown }).value
+      : storedAnswer;
+    const key: AnswerKey = {
+      type: item.item_type as ItemType,
+      answer: answerValue,
+      tolerance: answerRow.tolerance ?? undefined,
+      canonicalUnit: answerRow.canonical_unit ?? undefined,
+      acceptedUnits: answerRow.accepted_units ?? undefined,
     };
-  }
 
-  const { data: answerRow, error: answerError } = await admin
-    .from("item_answer_keys")
-    .select("answer, tolerance, canonical_unit, accepted_units, feedback_code")
-    .eq("item_id", item.id)
-    .single();
-  if (answerError || !answerRow) return json({ error: "answer_key_missing" }, 500);
-
-  const storedAnswer = answerRow.answer as { value?: unknown } | unknown;
-  const answerValue = typeof storedAnswer === "object" && storedAnswer !== null && "value" in storedAnswer
-    ? (storedAnswer as { value?: unknown }).value
-    : storedAnswer;
-  const key: AnswerKey = {
-    type: item.item_type as ItemType,
-    answer: answerValue,
-    tolerance: answerRow.tolerance ?? undefined,
-    canonicalUnit: answerRow.canonical_unit ?? undefined,
-    acceptedUnits: answerRow.accepted_units ?? undefined,
-  };
-
-  let grade;
-  try {
-    grade = gradeAnswer(key, gradingResponse);
-  } catch (err) {
-    console.error("grade_error", err);
-    return json({ error: "grading_failed" }, 500);
+    try {
+      grade = gradeAnswer(key, gradingResponse);
+    } catch (err) {
+      console.error("grade_error", err);
+      return json({ error: "grading_failed" }, 500);
+    }
   }
 
   let serverHintUsed = sessionItem
@@ -189,34 +205,50 @@ Deno.serve(async (req) => {
   let prior: MasteryState;
   let updated: MasteryState;
   let attemptId: string | null = null;
+  let committedSession = recovery?.coreResult?.sessionAfter;
   if (session) {
-    const { data, error } = await admin.rpc("service_record_session_answer_atomic", {
-      p_student_id: studentId,
-      p_session_id: payload.sessionId,
-      p_session_item_id: payload.sessionItemId,
-      p_item_id: item.id,
-      p_skill_id: item.skill_id,
-      p_response: payload.response,
-      p_normalized_response: normalizedPresentationResponse ?? grade.normalizedResponse ?? null,
-      p_score: grade.score,
-      p_correct: grade.correct,
-      p_error_code: grade.errorCode,
-      p_hint_used: serverHintUsed,
-      p_response_time_ms: payload.responseTimeMs ?? null,
-      p_attempted_at: now,
-    });
-    if (error) {
-      console.error("session attempt record failed", error);
-      return json({ error: "attempt_record_failed" }, 500);
+    if (recovery?.coreResult) {
+      attemptId = recovery.coreResult.attemptId;
+      prior = recovery.coreResult.masteryBefore;
+      updated = recovery.coreResult.masteryAfter;
+      serverHintUsed = Boolean(recovery.coreResult.hintUsed);
+    } else {
+      const { data, error } = await admin.rpc("service_record_session_answer_atomic", {
+        p_student_id: studentId,
+        p_session_id: payload.sessionId,
+        p_session_item_id: payload.sessionItemId,
+        p_item_id: item.id,
+        p_skill_id: item.skill_id,
+        p_response: payload.response,
+        p_normalized_response: normalizedPresentationResponse ?? grade.normalizedResponse ?? null,
+        p_score: grade.score,
+        p_correct: grade.correct,
+        p_error_code: grade.errorCode,
+        p_hint_used: serverHintUsed,
+        p_response_time_ms: payload.responseTimeMs ?? null,
+        p_attempted_at: now,
+      });
+      if (error) {
+        console.error("session attempt record failed", error);
+        return json({ error: "attempt_record_failed" }, 500);
+      }
+      if (!data?.attemptId || !data?.masteryBefore || !data?.masteryAfter) {
+        return json({ error: "attempt_record_failed" }, 500);
+      }
+      attemptId = data.attemptId;
+      prior = data.masteryBefore;
+      updated = data.masteryAfter;
+      serverHintUsed = Boolean(data.hintUsed);
+      committedSession = data.sessionAfter;
+      // Another identical request may have committed while this caller was grading.
+      if (data.replayed) {
+        const receipt = await legacyAnswerReceipt(admin,studentId,authSessionId,"legacy-answer",payload);
+        if (receipt.error) return json({error:receipt.error},receipt.status);
+        if (receipt.response) return json({...receipt.response,replayed:true});
+        grade = data.grading;
+        answerRow = {feedback_code:grade.feedbackCode};
+      }
     }
-    if (data?.replayed) return json({ error: "session_item_already_answered" }, 409);
-    if (!data?.attemptId || !data?.masteryBefore || !data?.masteryAfter) {
-      return json({ error: "attempt_record_failed" }, 500);
-    }
-    attemptId = data.attemptId;
-    prior = data.masteryBefore;
-    updated = data.masteryAfter;
-    serverHintUsed = Boolean(data.hintUsed);
   } else {
     const { data, error } = await admin.rpc("service_record_answer_atomic", {
       p_student_id: studentId,
@@ -241,21 +273,18 @@ Deno.serve(async (req) => {
     serverHintUsed = Boolean(data.hintUsed);
   }
 
-  if (session?.mode === "diagnostic") {
-    const { data: refreshed } = await admin
-      .from("learning_sessions")
-      .select("status, planned_item_count, answered_count, correct_count")
-      .eq("id", session.id)
-      .single();
-    return json({
+  if (session && ["diagnostic","mastery_check"].includes(session.mode)) {
+    const response = {
       accepted: true,
       revealCorrect: false,
       attemptId,
       curriculumReleaseId,
       assessmentBlueprintId: session.assessment_blueprint_id,
       provenanceStatus: session.provenance_status,
-      session: refreshed,
-    });
+      session: {...committedSession,...(committedSession?.status==='active'?{correct_count:null}:{})},
+    };
+    const saved = await finishLegacyAnswer(admin,studentId,authSessionId,"legacy-answer",payload,response);
+    return json(saved.body??{error:saved.error},saved.status);
   }
 
   const { data: prereqRows } = await admin
@@ -298,10 +327,10 @@ Deno.serve(async (req) => {
     }
   }
 
-  const recommendationInstanceId = await issueRecommendationEvent({
+  const telemetry = {
     admin,
     studentId,
-    policyScope: "core_after_attempt",
+    policyScope: "core_after_attempt" as const,
     surface: "submit_answer_api",
     action: recommendation.action,
     targetSkillId: recommendation.targetSkillId ?? null,
@@ -330,7 +359,8 @@ Deno.serve(async (req) => {
     recommendationSnapshot: {
       ...recommendation,
     },
-  });
+  };
+  const recommendationInstanceId = session ? null : await issueRecommendationEvent(telemetry);
 
   const response: Record<string, unknown> = {
     attemptId,
@@ -373,12 +403,8 @@ Deno.serve(async (req) => {
   };
 
   if (session) {
-    const { data: refreshed, error: refreshError } = await admin
-      .from("learning_sessions")
-      .select("status, planned_item_count, answered_count, correct_count")
-      .eq("id", session.id)
-      .single();
-    if (refreshError || !refreshed) return json({ error: "session_refresh_failed" }, 500);
+    const refreshed = committedSession;
+    if (!refreshed) return json({ error: "session_refresh_failed" }, 500);
     response.session = refreshed;
 
     if (session.mode === "chapter_review" && refreshed.status === "completed") {
@@ -406,5 +432,10 @@ Deno.serve(async (req) => {
     }
   }
 
+  if (session) {
+    const {admin: _client, ...receiptTelemetry} = telemetry;
+    const saved = await finishLegacyAnswer(admin,studentId,authSessionId,"legacy-answer",payload,response,receiptTelemetry);
+    return json(saved.body??{error:saved.error},saved.status);
+  }
   return json(response);
 });

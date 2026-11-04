@@ -4,6 +4,7 @@ import { renderLearningStimulus } from './learning-stimulus.mjs';
 import {decodeLearningAudio} from './learning-audio.mjs';
 import {typedFieldsMarkup,collectTypedResponse} from './typed-fields-ui.mjs';
 import {arrangementMarkup,collectArrangementResponse,bindArrangement} from './arrangement-ui.mjs';
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 const draftable=type=>['typed_fields','matching','ordering'].includes(type);
 const collectResponse=(root,item)=>item.type==='typed_fields'?collectTypedResponse(root,item.responseDefinition):collectArrangementResponse(root,item.type,item.responseDefinition);
 // Server-owned counts, option presentation, scoring, help and original bound policy.
@@ -11,7 +12,9 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
   let live=true, busy=false, session, current, started, serial=0, policy, saveTimer,disposeStimulus;
   const valid = () => live && isCurrent();
   const guardUnsaved = event => {
-    if(!valid()||!draftable(current?.item.type)||current.answerAccepted)return;
+    if(!valid()||!current||current.answerAccepted)return;
+    if(current.answerRequest?.uncertain||busy){event.preventDefault();event.returnValue='';return;}
+    if(!draftable(current.item.type))return;
     let dirty=true;try{dirty=JSON.stringify(collectResponse(root,current.item))!==current.savedSignature;}catch{}
     if(dirty){event.preventDefault();event.returnValue='';}
   };
@@ -19,7 +22,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
   const invoke = async(name,body) => {
     // Bound stalled transport without racing the server's playback lease or
     // rejecting a healthy, slow initial state/begin response.
-    const {data,error,response}=await supabase.functions.invoke(name,{body,...(name==='get-learning-audio'&&body.playbackPolicy==='assessed-recording-v1'?{timeout:body.action==='load'?60000:15000}:{})});
+    const {data,error,response}=await invokeLearnerFunction(supabase,name,{body,...(name==='get-learning-audio'?{timeout:body.action==='load'?60000:15000}:{})});
     if(!valid())throw new Error('stale_context');
     if(error || data?.error){const detail=data?.error??error?.error??(error?.context instanceof Response?await error.context.clone().json().then(x=>x.error).catch(()=>null):null);throw new Error(['typed_fields_draft_conflict','response_draft_conflict'].includes(detail)?'Պատասխանը փոփոխվել է մեկ այլ պատուհանում։ Պահպանեք ձեր պատասխանի պատճենը և վերաբեռնեք էջը՝ վերջին տարբերակը տեսնելու համար։':'Այս գործողությունն այս պահին հասանելի չէ։ Ձեր պատասխանը պահպանեք և կրկին փորձեք։');}
     return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
@@ -68,22 +71,35 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     const value=root.querySelector('input[name="answer"]:checked')?.value;
     const typed=draftable(current.item.type);
     if(!typed&&!value)return;
-    busy=true;const item=current;root.querySelector('button[type="submit"]').disabled=true;root.querySelector('fieldset').disabled=true;
+    busy=true;const item=current;const form=root.querySelector('form');form.dataset.answerSubmitting='true';root.querySelector('button[type="submit"]').disabled=true;root.querySelector('fieldset').disabled=true;
     try {
-      if(typed)await saveDraft(item);
+      if(typed&&!item.answerRequest)await saveDraft(item);
       if(!valid()||current!==item)return;
-      const data=await invoke(current.session.mode==='mastery_check'?'submit-mastery-answer':'submit-answer',{sessionId:session.id,sessionItemId:item.sessionItemId,itemId:item.item.id,response:typed?collectResponse(root,item.item):{value},...(typed?{draftRevision:item.draftRevision??0}:{}),responseTimeMs:Math.round(performance.now()-started)});
+      if(!item.answerRequest)item.helpBeforeAnswer=root.querySelector('[data-help]')?.disabled;
+      const request=item.answerRequest??=createAnswerRequest(supabase,current.session.mode==='mastery_check'?'submit-mastery-answer':'submit-answer',{
+        body:{sessionId:session.id,sessionItemId:item.sessionItemId,itemId:item.item.id,response:typed?collectResponse(root,item.item):{value},...(typed?{draftRevision:item.draftRevision??0}:{}),responseTimeMs:Math.round(performance.now()-started)},
+      },{isCurrent:()=>valid()&&current===item});
+      const {data,error,stale}=await request.send();
       if(!valid() || current!==item)return;
+      if(stale)return;
+      if(error){
+        const locked=showAnswerRecovery(form,root.querySelector('[data-feedback]'),request,{error});
+        if(!locked)item.answerRequest=null;
+        if(root.querySelector('[data-help]'))root.querySelector('[data-help]').disabled=locked||Boolean(item.helpBeforeAnswer);
+        return;
+      }
+      clearAnswerRecovery(form);item.answerRequest=null;
+      if(root.querySelector('[data-help]'))root.querySelector('[data-help]').disabled=Boolean(item.helpBeforeAnswer);
       item.answerAccepted=true;
       disposeStimulus?.();disposeStimulus=null;
       const feedback=root.querySelector('[data-feedback]');
       feedback.textContent=data.revealCorrect===false?'Պատասխանն ընդունված է։ Արդյունքները կտեսնեք ավարտից հետո։':typed?`${item.item.type==='matching'?'Ճիշտ համապատասխանեցումներ':item.item.type==='ordering'?'Ճիշտ հերթականություն':'Ճիշտ լրացված դաշտեր'}՝ ${data.grading.correctComponents}/${data.grading.requiredComponents}։ Միավոր՝ ${Number(data.grading.score.toFixed(2))}/1։`:data.grading?.correct?'Ճիշտ պատասխան։':'Պատասխանը սխալ է։';
       const next=document.createElement('button');next.type='button';next.textContent='Հաջորդը';next.onclick=()=>{ if(busy)return;busy=true;serve().catch(fail).finally(()=>{busy=false;}); };feedback.appendChild(next);
     }catch(error){fail(error);if(valid()&&current===item){root.querySelector('button[type="submit"]').disabled=!item.audioReady;root.querySelector('fieldset').disabled=false;}}
-    finally{busy=false;}
+    finally{delete form.dataset.answerSubmitting;busy=false;}
   }
   async function help() {
-    if(busy||!valid())return;busy=true;const item=current;const button=root.querySelector('[data-help]');button.disabled=true;
+    if(busy||!valid()||current?.answerRequest?.uncertain)return;busy=true;const item=current;const button=root.querySelector('[data-help]');button.disabled=true;
     try{const data=await invoke('get-remediation-help',{sessionId:session.id,sessionItemId:item.sessionItemId});if(valid()&&current===item){root.querySelector('[data-help-content]').textContent=[data.titleHy,data.strategyHy,data.contentHy].filter(Boolean).join('\n');button.disabled=!data.moreHelpAvailable;}}
     catch(error){fail(error);if(valid()&&current===item)button.disabled=false;}finally{busy=false;}
   }

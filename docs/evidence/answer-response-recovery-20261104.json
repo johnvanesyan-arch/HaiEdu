@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "haiedu-answer-recovery-evidence-v1",
+  "date": "2026-11-04",
+  "status": "prepared_not_deployed",
+  "baseCommit": "7b88f1b18db4571f87b4eb7e120e12d6a584ffc6",
+  "branch": "qa/bf04-answer-response-recovery",
+  "defect": "UX-ANSWER-RECOVERY-01",
+  "reports": [
+    "P3:N1",
+    "P3:N2",
+    "P3:N3"
+  ],
+  "baselineReproduction": {
+    "isolatedActualHandlerAndSql": true,
+    "identicalRetryHttp": 409,
+    "expectedHttp": 200
+  },
+  "localFullSuite": {
+    "tests": 1693,
+    "passed": 1693,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "before additional rollout-window regression; final CI governs current source"
+  },
+  "sdkTests": 6,
+  "existingOwnershipTests": 30,
+  "nativeAddedPrepared": 6,
+  "postgresConcurrencyPrepared": 8,
+  "ci": {
+    "status": "pending"
+  },
+  "releasePrerequisites": {
+    "BF-01": {
+      "mainProtected": false,
+      "rulesets": []
+    },
+    "BF-02": {
+      "backupEvidence": "unverified",
+      "restoreDrill": "unverified",
+      "ui": "redirected to sign-in",
+      "projectHealth": "ACTIVE_HEALTHY",
+      "postgres": "17.6.1.166"
+    }
+  },
+  "productionWrites": false,
+  "merged": false,
+  "deployed": false,
+  "openIndependentGates": [
+    "B.12.3",
+    "B.12",
+    "EnglishC47",
+    "full S2",
+    "content/SME",
+    "security",
+    "URL",
+    "Master isolation",
+    "QA-TRANSPORT-01"
+  ]
+}

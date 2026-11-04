@@ -2,6 +2,8 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 import * as validation from '../../supabase/functions/_shared/remediation-authoring-validation.mjs';
+import {legacyAnswerReceipt,finishLegacyAnswer} from '../../supabase/functions/_shared/answer-response-recovery.mjs';
+import {verifiedSessionClaim} from '../../supabase/functions/_shared/governed-learning-runtime.mjs';
 import { ids } from './phase3-db-harness.mjs';
 
 // The actual handlers and SQL run locally. Auth/live-session inputs are doubles;
@@ -9,7 +11,7 @@ import { ids } from './phase3-db-harness.mjs';
 export async function endpoint(db, name = 'manage-remediation-guides', bindings = {}) {
   let handler, active = true;
   const logs = [];
-  const token = (actor = ids.actor, aal = 'aal1') => 'fixture.' + Buffer.from(JSON.stringify({ sub: actor, aal })).toString('base64url') + '.fixture';
+  const token = (actor = ids.actor, aal = 'aal1') => 'fixture.' + Buffer.from(JSON.stringify({ sub: actor, aal, ...(bindings.fixtureAuthSessionId?{session_id:bindings.fixtureAuthSessionId}:{}) })).toString('base64url') + '.fixture';
   const query = table => {
     const where = [], params = [], orders = [];
     let cols = '*', limit = null, offset = 0, single = false, mutation = null;
@@ -67,7 +69,7 @@ export async function endpoint(db, name = 'manage-remediation-guides', bindings 
   let source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import[\s\S]*?;\n/gm, '');
   source = ts.transpile(source, { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None });
   vm.runInNewContext(source, {
-    ...validation, ...bindings, createClient: () => admin, hasActiveLiveSession: async () => active,
+    ...validation, legacyAnswerReceipt, finishLegacyAnswer, verifiedSessionClaim, ...bindings, createClient: () => admin, hasActiveLiveSession: async () => active,
     Deno: { env: { get: n => n === 'SUPABASE_URL' ? 'http://isolated.invalid' : 'fixture-only' }, serve: fn => { handler = fn; } },
     Response, Request, atob, URL, console: { error: (...args) => logs.push(args) },
   });

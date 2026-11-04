@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {chooseInitialDiagnosticForm,firstCompletedDiagnostic,loadInitialDiagnostics} from '../supabase/functions/_shared/initial-diagnostic.ts';
 import {buildExactInstitutionalStudentAnalytics} from '../supabase/functions/_shared/institutional-teacher-analytics.ts';
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from '../web/answer-response-recovery.mjs';
 
 test('initial assignment is stable, independent of form query order, and uses both forms',()=>{
   const forms=[{id:'a',code:'FORM-A'},{id:'b',code:'FORM-B'}];
@@ -61,6 +62,7 @@ function diagnosticUi(dashboard, startResponse={}) {
     .replace(/^import .*;\n/gm,'').replace('const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);','').replace(/prepare\(\);\s*$/,'');
   const calls=[];
   const context=vm.createContext({document:{getElementById:node},window:{location:{replace(){},assign(){}}},
+    invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,
     supabase:{auth:{getSession:async()=>({data:{session:{}}})},functions:{invoke:async name=>{calls.push(name);return {data:name==='get-student-dashboard'?dashboard:startResponse};}}},
     recordRecommendationTelemetry:async()=>{},performance:{now:()=>0}});
   vm.runInContext(source,context);

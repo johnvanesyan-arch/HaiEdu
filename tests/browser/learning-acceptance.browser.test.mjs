@@ -8,6 +8,7 @@ import {chromium,expect} from '@playwright/test';
 import {verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
 import {acceptanceFixture,href,id} from '../fixtures/learning-acceptance.mjs';
 import {installTyped,configureTyped} from '../fixtures/typed-fields-db.mjs';
+import {installAnswerRecovery} from '../fixtures/answer-recovery-db.mjs';
 
 let browser;
 before(async()=>{browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});});
@@ -231,4 +232,50 @@ test('ordering starts blank; keyboard moves, failed saves, resume and exact-sequ
  await page.getByRole('button',{name:'Ուղարկել պատասխանը',exact:true}).click();await page.getByRole('button',{name:'Հաջորդը',exact:true}).waitFor();
  const attempts=(await f.db.query('select response,score from attempts')).rows;assert.equal(attempts.length,1);assert.deepEqual(attempts[0].response.sequence,['a','b','c']);assert.equal(Number(attempts[0].score),1);assert.equal((await f.db.query('select count(*) n from learning_response_drafts')).rows[0].n,0);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
+});
+
+test('native governed form recovers a committed answer after its response is dropped',async t=>{
+ const {f,page,origin,errors}=await fixture(t);await installAnswerRecovery(f.db);
+ await page.setViewportSize({width:390,height:844});
+ let dropped=false;
+ await page.route('**/functions/v1/submit-answer',async route=>{
+  const response=await route.fetch();
+  if(!dropped&&response.status()===200){dropped=true;await route.abort('failed');}
+  else await route.fulfill({response});
+ });
+ await page.goto(origin+href(0,'diagnostic'));
+ await page.locator('#learningPlayer input[name=answer]').first().check();
+ await page.locator('#learningPlayer button[type=submit]').click();
+ await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('գրանցումը դեռ հաստատված չէ');
+ assert.equal(await page.locator('#learningPlayer fieldset').isDisabled(),true);
+ await page.locator('#learningPlayer button[type=submit]').click();
+ await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
+ assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
+ const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
+ await page.locator('#learningPlayer [data-feedback] button').click();
+ await expect(page.locator('#learningPlayer h2')).toContainText('Հարց 2/');
+ assert.deepEqual(errors,[]);
+});
+
+test('native governed deadline recovery ignores the late original reply and preserves one answer',async t=>{
+ const {f,page,origin,errors}=await fixture(t);await installAnswerRecovery(f.db);await page.clock.install();
+ let release;const held=new Promise(resolve=>{release=resolve;});let first=true;
+ await page.route('**/functions/v1/submit-answer',async route=>{
+  const response=await route.fetch();
+  if(first){first=false;await held;await route.fulfill({response}).catch(()=>{});}
+  else await route.fulfill({response});
+ });
+ await page.goto(origin+href(0,'diagnostic'));
+ await page.locator('#learningPlayer input[name=answer]').first().check();
+ await page.locator('#learningPlayer button[type=submit]').click();
+ await expect.poll(async()=>(await f.db.query('select count(*)::int n from attempts')).rows[0].n).toBe(1);
+ await page.clock.fastForward(15001);
+ await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('գրանցումը դեռ հաստատված չէ');
+ await page.locator('#learningPlayer button[type=submit]').click();
+ await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
+ release();
+ await expect(page.locator('#learningPlayer [data-feedback] button')).toHaveCount(1);
+ assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
+ const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
+ assert.deepEqual(errors,[]);
 });

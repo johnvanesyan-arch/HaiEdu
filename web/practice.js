@@ -1,3 +1,4 @@
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -285,7 +286,7 @@ async function startOrResumePractice() {
     : targetSkill?.id
       ? { mode: "practice", targetSkillId: targetSkill.id, recommendationInstanceId }
       : { mode: "practice", recommendationInstanceId };
-  const { data, error } = await supabase.functions.invoke("start-learning-session", { body });
+  const { data, error } = await invokeLearnerFunction(supabase,"start-learning-session", { body });
   starting = false;
 
   if (!error && recommendationInstanceId) {
@@ -348,7 +349,7 @@ async function loadSessionItem() {
   $("stimulus").classList.add("hidden");
   $("nextExplanation").textContent = "Հաջորդ հարցը կընտրվի ձեր պատասխանի հիման վրա։";
 
-  const { data, error } = await supabase.functions.invoke("get-session-item", {
+  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", {
     body: { sessionId: currentSession.id },
   });
 
@@ -370,6 +371,7 @@ async function loadSessionItem() {
     return;
   }
 
+  clearAnswerRecovery($("answerForm"));
   current = data;
   currentSession = { ...currentSession, ...data.session };
   questionStartedAt = performance.now();
@@ -493,7 +495,7 @@ async function submitAnswer(event) {
   $("submitBtn").disabled = true;
   try {
     const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
-    const { data, error } = await supabase.functions.invoke("submit-answer", {
+    const request = submission.item.answerRequest ??= createAnswerRequest(supabase,"submit-answer", {
       body: {
         sessionId: submission.sessionId,
         sessionItemId: submission.item.sessionItemId,
@@ -502,18 +504,19 @@ async function submitAnswer(event) {
         responseTimeMs,
         hintUsed: false,
       },
-    }).catch((error) => ({ error }));
-    if (!isCurrentSubmission()) return;
+    }, {isCurrent: () => current === submission.item && currentSession?.id === submission.sessionId});
+    const {data,error,stale} = await request.send();
+    if (stale || !isCurrentSubmission()) return;
 
     if (await handleDiagnosticGateError(error, data, isCurrentSubmission)) return;
     if (!isCurrentSubmission()) return;
     if (error) {
-      $("submitBtn").disabled = false;
-      $("feedback").className = "feedback bad";
-      $("feedback").textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
+      if (!showAnswerRecovery(form,$("feedback"),request,{error})) submission.item.answerRequest = null;
       return;
     }
 
+    clearAnswerRecovery(form);
+    submission.item.answerRequest = null;
     lockAnswerControls();
     const total = current.session.total;
     const done = Math.min(100, (current.session.position / total) * 100);
@@ -556,6 +559,7 @@ async function submitAnswer(event) {
       answerSubmission = null;
       delete form.dataset.answerSubmitting;
       if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        clearAnswerRecovery($("answerForm"));
         form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
       }
     }
@@ -797,9 +801,9 @@ async function initialize() {
   }
 
   const [{ data: dash, error: dashError }, { data: check, error: checkError }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
-    supabase.functions.invoke("get-student-dashboard", { body: {} }),
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
-    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+    invokeLearnerFunction(supabase,"get-student-dashboard", { body: {} }),
+    invokeLearnerFunction(supabase,"get-mastery-check-status", { body: {} }),
+    invokeLearnerFunction(supabase,"get-chapter-mastery-lifecycle", { body: {} }),
   ]);
 
   if (dashError) {
