@@ -41,7 +41,7 @@ Five explicit workflow dependency paths are extended; the static trigger audit p
 
 Historical answers without a receipt cannot reconstruct frozen original feedback: return an explicit unavailable/conflict outcome without fabrication or regrading. For a legacy core committed before its full response exists, later response construction preserves frozen grading/mastery but cannot promise a historical HTTP response that never existed. Sessionless legacy calls retain their prior semantics and have no automatic retry UI. BF-37's unrelated Actions dashboard HTTP0 root cause remains open.
 
-## Release prerequisites and ordered handoff
+## Historical release prerequisites and ordered handoff
 
 **Main protection configured:** active ruleset26520838 now protects main with PR-only changes, strict GitHub Actions aggregate checks and no force push/deletion or bypass. [Actual readback](main-branch-protection-20261104.md). **Owner decision:** John deferred BF-02 inventory/export/restore testing on 2026-11-04; recoverability remains unverified. Applicable independent review and authorized deployment are separate. The initial, pre-configuration GitHub reads showed `main.protected=false` and repository rulesets `[]`; those are retained as the original finding. Supabase is ACTIVE_HEALTHY on PostgreSQL17.6.1.166, but that does not prove backup or restoration. The backup UI redirected to sign-in; no backup/drill evidence was obtained. Do not infer that backups are absent. That pre-release observation is superseded by the rollout below; no manufactured learner write or fresh live lost-response submission is claimed.
 
@@ -66,3 +66,8 @@ All nine affected Edge consumers were deployed and read back:82 returned file in
 The existing authenticated acceptance queue is running on this exact production source. Analytics, resource assignment, Chapter V and Chapter II have passed; remaining suites are serialized under the original lock. Chapter IV attempt1 failed only its intended-source wait while the frontend was held, before app assertions; its original failure remains and the same job is queued for retry. No fresh live learner lost-response/final-item write is claimed: those behaviors were exercised in isolated native/Edge/SQL tests. Production log sampling showed no5xx; HTTP400/403 entries are not automatically classified as expected without exact correlation.
 
 [Complete rollout receipt](../evidence/answer-response-rollout-20261104.json). BF-02 backup/export/restore stays owner-deferred and recovery unverified. B.12.3/B.12, EnglishC47, full S2, CODEOWNERS/independent review and content/security/URL/Master gates remain separately open.
+
+
+## Completed guarded production QA — 2026-11-04
+
+All13 automatic suites completed successfully on exact productionc86564d:2,024 main assertions and864 isolation controls. The original Chapter IV attempt1 exceeded the held-frontend wait before app assertions; attempt2 passes on the same source and the original remains. [Complete suite/attempt/artifact index](../evidence/answer-recovery-qa-20261104.json). Existing designated-fixture and cleanup guards remain. This includes read/action/delivery acceptance, not a fresh live lost-response/final-item learner submission, personal usability approval, device certification or independent review. BF-04 remains installed in the subsequent BF-05 app release5b24927. Backup/restore stays owner-deferred and unverified.

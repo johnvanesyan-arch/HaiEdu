@@ -1,6 +1,6 @@
 # BF-05 — clearer teacher/admin evidence presentation
 
-2026-11-04 Asia/Dubai. Candidate implementation; no BF-05 production deployment yet. Reports P3:D5/P4:A2. Shared, subject-neutral presentation using authorized context. BF-04 is already live at mainc86564d.
+2026-11-04 Asia/Dubai. Deployed/source and native verified through PR402/main `5b2492787cd8785496a3b03ca5a08a545aa322b8`. Reports P3:D5/P4:A2. Shared, subject-neutral presentation using authorized context; BF-04 recovery remains installed. The dated candidate checkpoints below are historical.
 
 ## Evidence and decision
 
@@ -22,7 +22,7 @@ School evidence now separates school/year/class/programme/unit code plus the ful
 
 Static import/dependency-trigger audit covers all designated production acceptance entrypoints, including generated teacher sources. No computed importer exception was identified.
 
-## Verification and limits
+## Pre-release verification checkpoints (historical)
 
 All1,707 local unit/integration tests pass with zero failures/skips/cancellations, including nine new tests for purpose order/nonmutation, original percentages/support, runtime-only compatibility uncertainty, two subject labels, class/build separation with reconciled descriptive sums, genuine zeros, friendly context, escaped malicious labels explicit empty scope, and legacy chapter mapping without cross-release or ambiguous guesses. Typecheck, five-module core parity and browser-trigger audit pass. The generated teacher bundle matches canonical source. Authored files pass whitespace checks; esbuild retains existing SDK multiline-string trailing whitespace in generated output, which is not hand-normalized.
 
@@ -37,3 +37,16 @@ The first four School/Master captures were inspected at390/1280px200% text. Thei
 Final scope review distinguishes context separation from uncertain semantics: identical original contracts in different classes are described as separate classroom contexts; only differing contracts get the unproven-compatibility explanation. The regression covers both cases without pooling either. Read-only production mapping checks26 completed exact institutional sessions:18 governed chapter IDs and8 legacy release/code mappings resolve uniquely, zero unresolved;12 context/contract display groups retain235 answered and210 correct counts. This is aggregate database readback, not a signed-in staff UI walkthrough. [Receipt](../evidence/evidence-presentation-20261104.json).
 
 Visual follow-up corrects a misleading missing-value warning: one absent chapter/model identifier is uncertainty, not evidence of a different chapter/model. Only two distinct known identifiers are described as differing. Cards use display-result ordinals rather than invented semantic version numbers, and Teacher reuses the same safe purpose label as the shared renderer. Focused regressions retain unknown-purpose/missing-value/context cases. All required checks run again on the final head; earlier passing revisions are retained as historical evidence.
+
+
+## Verified production release — 2026-11-04
+
+Final head `6f61d6515bc6a08b23e986a47d286314f9657e5f` passes all-five [PR CI41828062184](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41828062184); merge `5b2492787cd8785496a3b03ca5a08a545aa322b8` passes all-five [main CI41829734992](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41829734992). Both unit/native runs pass1,707/1,707 and420/420 with zero failures/skips/cancellations. All six final actual-document/controller synthetic captures are freshly inspected at390/1280px200% text. Original failed selector CI41823716175 remains; the correction retained all expected-text/layout/score/support/provenance assertions.
+
+The frontend was staged while main CI finished. Every affected Edge consumer was freshly compared with its audited live bundle, then deployed and read back: get-teacher-dashboard27→28 (JWT=true;11 files), get-teacher-student19→20 (existing JWT=false;8 files; handler authentication retained), get-school-performance-analytics4→5 (JWT=true;4 files). All23 returned file instances are byte-exact. No BF-05 SQL migration or learning/authorization change. The BF-04 filename reconciliation keeps the same applied SQL bytes and does not replay the unmatched S2 ledger.
+
+Vercel deployment `dpl_89WG2Uz2T3qCVZz2obaSTnUvV5KX` was promoted after backend verification. Canonical release is5b24927 and all five changed public assets match exact source hashes. Normal domain assignment was restored after app promotion. A docs-only follow-up may stage its newer release stamp while preserving5b24927 for queued source-guarded acceptance; it changes no runtime code. The previously separately verified persistent Production/Blocking check is retained, without a new settings-UI attestation.
+
+The current automatic acceptance queue is continuing on5b24927. English Unit3 attempt1 failed only its600,000ms source wait while the frontend was held, before app assertions; the same guarded job is retried after canonical verification and the original failure remains. This is not evidence of an application-test regression. No new live lost-response learner write or complete owner/independent five-role usability acceptance is claimed. B.12.3/B.12, EnglishC47, full S2, recovery verification and independent gates remain open.
+
+[Complete source/CI/visual/Edge/frontend receipt](../evidence/evidence-presentation-20261104.json). Next owner review: open Teacher skill detail, compare Practice and baseline without a shared percent, expand additional results, then check class/year/chapter scope and provenance in School Admin/Master Admin. Any future cross-build equivalence needs demonstrated semantics and a separate bounded decision; unknown/incompatible evidence remains separate.

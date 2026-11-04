@@ -2,7 +2,7 @@
   "schemaVersion": "haiedu-evidence-presentation-v1",
   "date": "2026-11-04",
   "timezone": "Asia/Dubai",
-  "status": "candidate_current_head_ci_pending",
+  "status": "deployed_source_verified_authenticated_acceptance_in_progress",
   "pr": 402,
   "inventory": "evidence-compatibility-inventory-20261104.json",
   "chapterMappingReadback": {
@@ -27,5 +27,334 @@
     "Native captures use actual documents/controllers with synthetic authorized DTOs.",
     "Production aggregate mapping readback is not a fresh signed-in staff UI walkthrough.",
     "Owner usability and independent gates remain open."
-  ]
+  ],
+  "source": {
+    "pr": 402,
+    "head": "6f61d6515bc6a08b23e986a47d286314f9657e5f",
+    "main": "5b2492787cd8785496a3b03ca5a08a545aa322b8",
+    "tree": "2aa45187dc8fcf571b0a036782d992d84ff89d91",
+    "prCI": 41828062184,
+    "mainCI": 41829734992
+  },
+  "tests": {
+    "unitIntegration": 1707,
+    "nativeBrowser": 420,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "focused": 19
+  },
+  "visuals": {
+    "head": "6f61d6515bc6a08b23e986a47d286314f9657e5f",
+    "run": 41828062184,
+    "artifact": 13323150097,
+    "images": [
+      {
+        "name": "bf05-admin-1280.png",
+        "bytes": 529510,
+        "size": [
+          1280,
+          6440
+        ],
+        "sha256": "981f32920a5bced03399fd965a9dbc6fd8b2cfe2c12e38d2d51f5ba78807513c",
+        "inspected": true
+      },
+      {
+        "name": "bf05-admin-390.png",
+        "bytes": 579363,
+        "size": [
+          390,
+          11662
+        ],
+        "sha256": "206cc2b9c19c6fb1b27923d07314d2c5a434df8e2aa0c28531d84626d2350f15",
+        "inspected": true
+      },
+      {
+        "name": "bf05-school-admin-1280.png",
+        "bytes": 1041488,
+        "size": [
+          1280,
+          8248
+        ],
+        "sha256": "5fd7cccd0b1845df84fc1f3c92ab893b7151777e0d49a035a28c4e5875bbf206",
+        "inspected": true
+      },
+      {
+        "name": "bf05-school-admin-390.png",
+        "bytes": 940868,
+        "size": [
+          390,
+          13265
+        ],
+        "sha256": "84a5cb539a4e1c00b3c63e05bbab3d572aece1a3300b6b81db1c174a2dd4c766",
+        "inspected": true
+      },
+      {
+        "name": "bf05-teacher-1280.png",
+        "bytes": 122727,
+        "size": [
+          1280,
+          1000
+        ],
+        "sha256": "3443dd569afa01c11dda1aa7d638348aaf83ad5f2896e9b7d3ce4699e876d2c2",
+        "inspected": true
+      },
+      {
+        "name": "bf05-teacher-390.png",
+        "bytes": 56252,
+        "size": [
+          390,
+          1000
+        ],
+        "sha256": "ea5b92e9fef58e252c4bb9d2e46d3adec78903f824367787377b277a00e093b4",
+        "inspected": true
+      }
+    ],
+    "scope": "Actual Teacher, School Admin and Master Admin documents/controllers with synthetic DTOs;390/1280px at200% text. Phone/desktop cards, labels, separate scores and keyboard disclosures inspected; no fresh ordinary-account or physical-device acceptance."
+  },
+  "assets": [
+    {
+      "path": "web/analytics-provenance.mjs",
+      "bytes": 7089,
+      "sha256": "c30e16dd10bc795dbefd9a29090e936643a649e6437319901c7b2e6d8bd60b0b"
+    },
+    {
+      "path": "web/staff-forest.css",
+      "bytes": 16043,
+      "sha256": "8def746d22e40133923b36a9cd82494fbdb56fe9b8e03e05051cabce6b7d34a8"
+    },
+    {
+      "path": "web/teacher-dependencies.bundle.mjs",
+      "bytes": 293181,
+      "sha256": "0bd7616b279299bcb3b72495514a8e52fba6d2e3fac063df6cd2b044078deb60"
+    },
+    {
+      "path": "web/teacher-skill-evidence.mjs",
+      "bytes": 6106,
+      "sha256": "4dbdb7188c8da6ee4ea22b3651c1b3c1cd01db824f05840327dfde67c05979d3"
+    },
+    {
+      "path": "web/teacher.js",
+      "bytes": 88297,
+      "sha256": "ff868bcd67edf948b006033ce4f41e32b53cc3a9cf29c9c1e2a9a473646649a6"
+    }
+  ],
+  "ownerDecisions": {
+    "BF02": "owner-deferred; restore unverified",
+    "historicalCrossBuildEquivalence": "not demonstrated or approved; no pooling",
+    "ownerUsability": "open; no personal acceptance claimed",
+    "independentReview": "not claimed; owner-authorized release under enforced branch rules"
+  },
+  "mainCIJobs": [
+    {
+      "id": 126573517664,
+      "name": "institutional-concurrency",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126573518137,
+      "name": "phase3-postgres-17",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126573518320,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126573518422,
+      "name": "role-layout-browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126577506853,
+      "name": "Platform release checks",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "edges": [
+    {
+      "slug": "get-teacher-dashboard",
+      "beforeVersion": 27,
+      "afterVersion": 28,
+      "verify_jwt": true,
+      "fileCount": 11,
+      "files": [
+        {
+          "name": "get-teacher-dashboard/index.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/teacher-read-identity.mjs",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/teacher-workspace-request.mjs",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/teacher-dashboard-batch.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/institutional-teacher-dashboard.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/academic-context.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/institutional-teacher-analytics.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/initial-diagnostic.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/analytics-evidence.mjs",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/auth.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slug": "get-teacher-student",
+      "beforeVersion": 19,
+      "afterVersion": 20,
+      "verify_jwt": false,
+      "fileCount": 8,
+      "files": [
+        {
+          "name": "get-teacher-student/index.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/teacher-read-identity.mjs",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/initial-diagnostic.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/auth.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/curriculum-release.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/academic-context.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/institutional-teacher-analytics.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/analytics-evidence.mjs",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slug": "get-school-performance-analytics",
+      "beforeVersion": 4,
+      "afterVersion": 5,
+      "verify_jwt": true,
+      "fileCount": 4,
+      "files": [
+        {
+          "name": "get-school-performance-analytics/index.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/auth.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/school-performance-analytics.ts",
+          "byteExact": true
+        },
+        {
+          "name": "_shared/analytics-evidence.mjs",
+          "byteExact": true
+        }
+      ]
+    }
+  ],
+  "frontend": {
+    "deploymentId": "dpl_89WG2Uz2T3qCVZz2obaSTnUvV5KX",
+    "target": "production",
+    "canonical": "https://www.haiedu.am",
+    "sourceVerified": true,
+    "release": {
+      "schemaVersion": 1,
+      "commit": "5b2492787cd8785496a3b03ca5a08a545aa322b8"
+    },
+    "assets": [
+      {
+        "path": "web/analytics-provenance.mjs",
+        "bytes": 7089,
+        "sha256": "c30e16dd10bc795dbefd9a29090e936643a649e6437319901c7b2e6d8bd60b0b"
+      },
+      {
+        "path": "web/staff-forest.css",
+        "bytes": 16043,
+        "sha256": "8def746d22e40133923b36a9cd82494fbdb56fe9b8e03e05051cabce6b7d34a8"
+      },
+      {
+        "path": "web/teacher-dependencies.bundle.mjs",
+        "bytes": 293181,
+        "sha256": "0bd7616b279299bcb3b72495514a8e52fba6d2e3fac063df6cd2b044078deb60"
+      },
+      {
+        "path": "web/teacher-skill-evidence.mjs",
+        "bytes": 6106,
+        "sha256": "4dbdb7188c8da6ee4ea22b3651c1b3c1cd01db824f05840327dfde67c05979d3"
+      },
+      {
+        "path": "web/teacher.js",
+        "bytes": 88297,
+        "sha256": "ff868bcd67edf948b006033ce4f41e32b53cc3a9cf29c9c1e2a9a473646649a6"
+      }
+    ],
+    "autoAssignment": "Normal assignment restored after the app promotion; a later docs-only deployment may be staged to preserve the application source required by queued QA.",
+    "persistentProductionBlockingCheck": "Previously verified separately and retained; settings UI was not freshly re-attested.",
+    "appReleaseNormalAssignmentRestoredAt": "2026-11-04T12:46:34.756Z"
+  },
+  "databaseMigration": "None for BF05. Only the newly applied BF04 migration filename is reconciled to actual ledger20261104111921 with identical SQL bytes; legacy S2 ledger untouched.",
+  "releaseAuthorization": "John explicitly requested making PR401 live and proceeding with BF05.",
+  "liveAcceptance": {
+    "status": "automatic source-guarded designated-fixture suites queued/running on main5b24927",
+    "personalUsability": "open",
+    "limits": "No fresh production lost-response learner write or complete independent/owner five-role acceptance is claimed.",
+    "originalFailure": {
+      "run": 41829734875,
+      "attempt": 1,
+      "job": 126573517292,
+      "stage": "Wait for this frontend revision on production",
+      "expectedCommit": "5b2492787cd8785496a3b03ca5a08a545aa322b8",
+      "observedCommit": "c86564d428e1f6a694c42373dc896dc463e91398",
+      "deadlineMs": 600000,
+      "appAssertionsStarted": false,
+      "disposition": "Release hold exceeded source-wait deadline; same guarded job retried after canonical source verification; original failure retained."
+    },
+    "retryRequested": true
+  }
 }
