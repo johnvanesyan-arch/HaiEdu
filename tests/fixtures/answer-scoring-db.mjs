@@ -3,8 +3,8 @@ import {readFileSync,readdirSync} from 'node:fs';
 export const id=n=>`60000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 export const actor='10000000-0000-4000-8000-000000000010';
 export const migrationPath='supabase/migrations/'+readdirSync('supabase/migrations').find(n=>n.endsWith('_atomic_answer_mastery_evidence.sql'));
-export async function scoringDatabase({baseline=false}={}) {
- const db=new PGlite();
+export async function scoringDatabase({baseline=false,client=null}={}) {
+ const db=client??new PGlite();
  try {
   await db.exec(readFileSync('tests/fixtures/answer-scoring.sql','utf8'));
   const guards=readFileSync('supabase/migrations/20260927190434_chapter_diagnostic_practice_gate.sql','utf8');

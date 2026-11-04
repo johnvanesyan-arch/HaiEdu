@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/answer-response-recovery.mjs
       - web/writing-assignments.css
       - web/navigation-focus.mjs
       - web/writing-assignments.mjs

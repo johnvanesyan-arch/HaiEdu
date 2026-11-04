@@ -8,6 +8,7 @@ import {initialMasteryState,updateMastery} from '../supabase/functions/_shared/m
 import {gradeAnswer} from '../supabase/functions/_shared/grading.ts';
 import {recommendNext} from '../supabase/functions/_shared/recommendation.ts';
 import {getPracticeDiagnosticBlock} from '../supabase/functions/_shared/practice-diagnostic-gate.ts';
+import {installAnswerRecovery} from './fixtures/answer-recovery-db.mjs';
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-12,`${a} != ${b}`);
 async function fixture(t,options){const db=await scoringDatabase(options);t.after(()=>db.close());return db;}
 async function legacy(db,n,correct){const a=args(n,correct),m=updateMastery(initialMasteryState(),{score:correct?1:0,difficulty:3,hintUsed:false});a.splice(12,0,m.alpha,m.beta,m.masteryScore,m.evidenceCount,m.status);return (await db.query('select record_session_graded_attempt('+a.map((_,i)=>'$'+(i+1)).join(',')+') result',a)).rows[0].result;}
@@ -87,14 +88,16 @@ test('legacy sessionless writes use the same accumulator and retain the diagnost
 });
 test('actual answer handler returns committed progress and telemetry and retains Auth/course guards',async t=>{
  const db=await fixture(t),events=[];
- const bindings={routeGovernedLearning,gradeAnswer,recommendNext,getPracticeDiagnosticBlock,hasPhysics7Access:async()=>true,issueRecommendationEvent:async e=>{events.push(e);return 'fixture-event';}};
+ await installAnswerRecovery(db,{legacy:true});
+ const bindings={routeGovernedLearning,gradeAnswer,recommendNext,getPracticeDiagnosticBlock,fixtureAuthSessionId:id(901),hasPhysics7Access:async()=>true,issueRecommendationEvent:async e=>{events.push(e);return 'fixture-event';}};
  const api=await endpoint(db,'submit-answer',bindings);
  const body=n=>({sessionId:id(401),sessionItemId:id(600+n),itemId:id(500+n),response:{value:n===1?5:0}});
  const results=await Promise.all([api.call(body(1)),api.call(body(2))]);assert.ok(results.every(r=>r.status===200));
  const committed=await state(db);near(committed.mastery_score,.5);assert.equal(committed.evidence_count,2);
  assert.deepEqual(results.map(r=>r.body.mastery.evidenceCount).sort(),[1,2]);
- assert.deepEqual(events.map(e=>e.stateSnapshot.masteryAfter.evidenceCount).sort(),[1,2]);
- assert.equal((await api.call(body(1))).status,409);assert.equal(events.length,2);
+ assert.deepEqual((await db.query('select state_snapshot from recommendation_events')).rows.map(e=>e.state_snapshot.masteryAfter.evidenceCount).sort(),[1,2]);
+ assert.equal((await api.call(body(1))).status,200);assert.equal(events.length,0);
+ assert.equal((await db.query('select count(*)::int n from recommendation_events')).rows[0].n,2);
  assert.equal((await api.call(body(3),{anonymous:true})).status,401);
  api.revoke();assert.equal((await api.call(body(3))).status,403);
  const denied=await endpoint(db,'submit-answer',{...bindings,hasPhysics7Access:async()=>false});assert.equal((await denied.call(body(3))).status,403);

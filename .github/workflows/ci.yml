@@ -159,6 +159,11 @@ jobs:
         run: python tests/written-work-concurrency.py
       - name: Verify atomic answer scoring with independent PostgreSQL 17.6 connections
         run: python tests/answer-scoring-concurrency.py
+      - name: Verify answer-response recovery, receipts and authorization on PostgreSQL 17.6
+        timeout-minutes: 3
+        run: |
+          python tests/answer-response-recovery-concurrency.py
+          node --test tests/answer-response-recovery.test.mjs
       - name: Verify governed policy and session authorization races on PostgreSQL 17.6
         run: python tests/governed-session-concurrency.py
       - name: Verify read-only learning navigation and dashboard revocation races

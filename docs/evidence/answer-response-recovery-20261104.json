@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "haiedu-answer-recovery-evidence-v1",
+  "date": "2026-11-04",
+  "status": "prepared_not_deployed",
+  "baseCommit": "7b88f1b18db4571f87b4eb7e120e12d6a584ffc6",
+  "branch": "qa/bf04-answer-response-recovery",
+  "defect": "UX-ANSWER-RECOVERY-01",
+  "reports": [
+    "P3:N1",
+    "P3:N2",
+    "P3:N3"
+  ],
+  "baselineReproduction": {
+    "isolatedActualHandlerAndSql": true,
+    "identicalRetryHttp": 409,
+    "expectedHttp": 200
+  },
+  "localFullSuite": {
+    "tests": 1693,
+    "passed": 1693,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "before additional rollout-window regression; final CI governs current source"
+  },
+  "sdkTests": 6,
+  "existingOwnershipTests": 30,
+  "ci": {
+    "currentHeadGate": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401",
+    "requireAllFiveJobs": true,
+    "observedUnitIntegration": {
+      "runId": 41796404966,
+      "source": "5cd711da5b97f5a4e691579d1bb9b4182a82b06b",
+      "tests": 1695,
+      "passed": 1695,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "observedNative": {
+      "runId": 41797331239,
+      "source": "0ab35290c9b3c8c2cfc947331c16d27872da09a9",
+      "tests": 414,
+      "passed": 414,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "addedRecoveryCases": 6
+    },
+    "observedPostgresRaces": {
+      "runId": 41796042949,
+      "postgres": "17.6",
+      "scenarios": 8,
+      "passed": 8,
+      "overallJob": "cancelled after separate handler-fixture failures and leaked fixture bridges"
+    },
+    "finalPostgresHandlerHarness": "explicit scalar jsonb binding and no unused governed client; current-head verification required"
+  },
+  "releasePrerequisites": {
+    "BF-01": {
+      "initialReadback": {
+        "mainProtected": false,
+        "rulesets": []
+      },
+      "currentMainProtection": {
+        "mainProtected": true,
+        "rulesetId": 26520838,
+        "enforcement": "active",
+        "bypassActors": [],
+        "currentUserCanBypass": "never",
+        "requiredCheck": "Platform release checks",
+        "sourceAppId": 15368,
+        "strict": true,
+        "pullRequestRequired": true,
+        "forcePushBlocked": true,
+        "deletionBlocked": true
+      },
+      "independentRiskReviewAndCodeowners": "separately open"
+    },
+    "BF-02": {
+      "backupEvidence": "unverified",
+      "restoreDrill": "unverified",
+      "ui": "redirected to sign-in",
+      "projectHealth": "ACTIVE_HEALTHY",
+      "postgres": "17.6.1.166",
+      "ownerDecision": "deferred",
+      "decisionDate": "2026-11-04",
+      "scope": "inventory/export/isolated restore work skipped for now; recovery not demonstrated"
+    }
+  },
+  "productionWrites": false,
+  "merged": false,
+  "deployed": false,
+  "openIndependentGates": [
+    "B.12.3",
+    "B.12",
+    "EnglishC47",
+    "full S2",
+    "content/SME",
+    "security",
+    "URL",
+    "Master isolation",
+    "QA-TRANSPORT-01"
+  ],
+  "focusedLocalSqlCases": 16,
+  "localPostgres": "not executed: server account/process group creation unavailable",
+  "migrationReviewFollowup": {
+    "reviewedHead": "612185ad1c0484608c99fd61e1df8ecdd02d7a7a",
+    "reviewUrl": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401#pullrequestreview-5767006308",
+    "finding": "P2: legacy saved response could outlive Auth expiry during transaction wait",
+    "baselineExpiryRegressions": {
+      "tests": 2,
+      "failedWithMissingExpectedRejection": 2
+    },
+    "fix": "private ordered identity locks and actual-clock validation on every successful receipt return",
+    "addedSqlCases": 3,
+    "postgresRecoveryScenarios": 14,
+    "newPostgresScenarios": 6,
+    "finalCurrentHeadCI": "https://github.com/johnvanesyan-arch/HaiEdu/pull/401",
+    "independentHumanApproval": false,
+    "productionWrites": false,
+    "localFullSuite": {
+      "tests": 1698,
+      "passed": 1698,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "focusedReceiptHandlerCases": {
+      "tests": 16,
+      "passed": 16
+    },
+    "localChecks": {
+      "typecheck": "pass",
+      "browserDependencyTriggers": "pass",
+      "diffWhitespace": "pass"
+    },
+    "sourceSha256": {
+      "supabase/migrations/20261104070205_answer_response_recovery.sql": "2843e63b3b5e2181a53cf1eb8890f502d40d2dfe435e0b8b1fa8a38863a9d5c7",
+      "tests/answer-response-recovery.test.mjs": "8a141e72048e13c5a40f98436c708c92ccbe8b34dc8c6e847466a69c7225921e",
+      "tests/answer-response-recovery-concurrency.py": "b1aa977823a724312d86ecc8268c5ff48445fb03fb1c8f5b506cbeccb04f7575",
+      "tests/fixtures/answer-recovery-db.mjs": "e6d4278af89b28cc2f3f746d400a46365a81d76d40d0e1203114381a5123a366"
+    }
+  }
+}

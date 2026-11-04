@@ -1,4 +1,5 @@
-import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
+import { routeGovernedLearning, verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
+import { legacyAnswerReceipt, finishLegacyAnswer } from "../_shared/answer-response-recovery.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -109,6 +110,10 @@ Deno.serve(async (req) => {
     if (!body?.sessionId || !body?.sessionItemId || !body?.itemId || !body?.response) {
       return json({ error: "missing_required_fields" }, 400);
     }
+    const authSessionId = verifiedSessionClaim(token);
+    const recovery = await legacyAnswerReceipt(admin,userData.user.id,authSessionId,"legacy-mastery",body);
+    if (recovery.error) return json({error:recovery.error},recovery.status);
+    if (recovery.response) return json({...recovery.response,replayed:true});
 
     const { data: session, error: sessionError } = await admin
       .from("learning_sessions")
@@ -118,7 +123,7 @@ Deno.serve(async (req) => {
       .single();
     if (sessionError || !session) return json({ error: "session_not_found" }, 404);
     if (session.mode !== "mastery_check") return json({ error: "not_mastery_check" }, 409);
-    if (session.status !== "active") return json({ error: "session_not_active" }, 409);
+    if (session.status !== "active" && !recovery.coreResult) return json({ error: "session_not_active" }, 409);
 
     const upstream = await fetch(`${supabaseUrl}/functions/v1/submit-answer`, {
       method: "POST",
@@ -149,7 +154,7 @@ Deno.serve(async (req) => {
     let finalResult = null;
     if (refreshed.status === "completed") finalResult = await evaluate(admin, refreshed);
 
-    return json({
+    const result = {
       accepted: true,
       revealCorrect: false,
       session: {
@@ -158,7 +163,9 @@ Deno.serve(async (req) => {
         answered: Number(refreshed.answered_count),
       },
       finalResult,
-    });
+    };
+    const saved = await finishLegacyAnswer(admin,userData.user.id,authSessionId,"legacy-mastery",body,result);
+    return json(saved.body??{error:saved.error},saved.status);
   } catch (err) {
     console.error("submit-mastery-answer", err);
     return json({ error: "submit_mastery_answer_failed", detail: err instanceof Error ? err.message : String(err) }, 500);

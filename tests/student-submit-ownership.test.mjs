@@ -24,6 +24,8 @@ function functionSource(source, name) {
 const uxSource = read("ux.js");
 const uxSync = functionSource(uxSource, "syncAnswerSubmit");
 const refreshBinding = uxSource.match(/^document\.addEventListener\("haiedu-answer-controls-refresh", syncAnswerSubmit\);$/m)?.[0];
+const recoverySource=read('answer-response-recovery.mjs').replace(/^export /gm,'');
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
 assert.ok(refreshBinding, "Shared UX must bind the stale-owner release signal");
 const consumers = [
   { file: "app.js", handler: "submitAnswer" },
@@ -61,7 +63,7 @@ function createFixture({ file, handler }) {
   ];
   const assessment = ["diagnostic.js", "mastery.js"].includes(file);
   const elements = {
-    submitBtn: { disabled: false },
+    submitBtn: { disabled: false, dataset:{}, textContent:'Ուղարկել պատասխանը' },
     nextBtn: { disabled: !assessment, dataset: {}, classList: classList(assessment ? ["hidden"] : []) },
     answerForm: { dataset: {}, querySelectorAll: () => radios },
     answerArea: { querySelectorAll: () => radios },
@@ -71,6 +73,10 @@ function createFixture({ file, handler }) {
     nextExplanation: { textContent: "" },
   };
   const calls = [];
+  elements.answerForm.querySelector=()=>elements.submitBtn;
+  elements.answerForm.toggleAttribute=(name,on)=>{if(!on)delete elements.answerForm.dataset[name.replace(/^data-/,'').replace(/-([a-z])/g,(_,c)=>c.toUpperCase())];};
+  elements.feedback.replaceChildren=function(){this.textContent='';this.innerHTML='';};
+  elements.feedback.appendChild=function(node){this.textContent+=node.textContent;};
   const listeners = new Map();
   const refreshEvents = [];
   const gates = [];
@@ -95,6 +101,7 @@ function createFixture({ file, handler }) {
       getElementById: (id) => elements[id] ?? null,
       querySelector: () => radios.find((radio) => radio.checked),
       addEventListener: (name, callback) => listeners.set(name, callback),
+      createElement:()=>({textContent:'',dataset:{}}),
     },
     supabase: {
       functions: {
@@ -111,12 +118,16 @@ function createFixture({ file, handler }) {
     feedback: elements.feedback,
     $: (id) => elements[id],
     Event,
+    AbortController,
+    setTimeout:(fn,ms)=>{const timer=setTimeout(fn,ms);timer.unref();return timer;},
+    clearTimeout,
     updateMastery() {},
     showGate: (...args) => gates.push(args),
-    status: () => statusResult,
+    status: () => { throw new Error("Unexpected post-answer status read"); },
     renderFinalResult: (result) => finalResults.push(result),
   });
   vm.runInContext([
+    recoverySource,
     ownershipState,
     functionSource(source, "collectResponse"),
     ...(file === "practice.js" ? [
@@ -159,9 +170,10 @@ function createFixture({ file, handler }) {
 }
 
 for (const consumer of consumers) {
-  test(`${consumer.file}: answer changes keep a pending submission disabled`, () => {
+  test(`${consumer.file}: answer changes keep a pending submission disabled`, async () => {
     const fixture = createFixture(consumer);
     fixture.submit();
+    await tick();
     assert.equal(fixture.calls.length, 1);
     assert.equal(fixture.elements.submitBtn.disabled, true);
     fixture.changeAnswer();
@@ -169,11 +181,13 @@ for (const consumer of consumers) {
       "Shared UX must not re-enable Submit while its answer request is pending");
   });
 
-  test(`${consumer.file}: repeated submission starts only one pending request`, () => {
+  test(`${consumer.file}: repeated submission starts only one pending request`, async () => {
     const fixture = createFixture(consumer);
     fixture.submit();
+    await tick();
     fixture.changeAnswer();
     fixture.submit();
+    await tick();
     assert.equal(fixture.calls.length, 1,
       "The request owner must reject a second submission while the first is pending");
     assert.equal(fixture.calls[0].body.response.value, "A");
@@ -183,15 +197,18 @@ for (const consumer of consumers) {
     test(`${consumer.file}: ${failure} request error releases ownership for retry`, async () => {
       const fixture = createFixture(consumer);
       const submitted = fixture.submit();
+    await tick();
       const error = new Error("Fixture request failed");
       if (failure === "returned") fixture.calls[0].resolve({ error });
       else fixture.calls[0].reject(error);
       await submitted;
       assert.equal(fixture.elements.answerForm.dataset.answerSubmitting, undefined);
       assert.equal(fixture.elements.submitBtn.disabled, false);
-      assert.match(fixture.elements.feedback.textContent, /Fixture request failed/);
+      assert.match(fixture.elements.feedback.textContent, /գրանցումը դեռ հաստատված չէ/);
+      assert.doesNotMatch(fixture.elements.feedback.textContent, /Fixture request failed/);
       assert.equal(fixture.refreshEvents.length, 0);
       void fixture.submit();
+    await tick();
       assert.equal(fixture.calls.length, 2);
       assert.equal(fixture.elements.answerForm.dataset.answerSubmitting, "true");
     });
@@ -201,6 +218,7 @@ for (const consumer of consumers) {
     test(`${consumer.file}: stale ${outcome} preserves the new question and releases its controls`, async () => {
       const fixture = createFixture(consumer);
       const submitted = fixture.submit();
+    await tick();
       fixture.replaceItem();
       assert.equal(fixture.elements.submitBtn.disabled, true,
         "Only one answer request is allowed until the current owner settles");
@@ -214,6 +232,7 @@ for (const consumer of consumers) {
       assert.equal(fixture.elements.answerForm.dataset.answerSubmitting, undefined);
       assert.deepEqual(fixture.refreshEvents, ["haiedu-answer-controls-refresh"]);
       void fixture.submit();
+    await tick();
       assert.equal(fixture.calls.length, 2);
       assert.equal(fixture.calls[1].body.sessionItemId, "new-session-item");
     });
@@ -222,6 +241,7 @@ for (const consumer of consumers) {
   test(`${consumer.file}: successful acceptance preserves payload and keeps Submit disabled`, async () => {
     const fixture = createFixture(consumer);
     const submitted = fixture.submit();
+    await tick();
     assert.deepEqual(JSON.parse(JSON.stringify(fixture.calls[0].body)), {
       sessionId: "fixture-session",
       sessionItemId: "fixture-session-item",
@@ -246,6 +266,7 @@ test("practice.js: delayed diagnostic-gate decoding cannot replace the new quest
   const fixture = createFixture(consumers.find(({ file }) => file === "practice.js"));
   const decoded = deferred();
   const submitted = fixture.submit();
+  await tick();
   fixture.calls[0].resolve({ error: {
     context: { json() {}, clone: () => ({ json: () => decoded.promise }) },
   } });
@@ -258,16 +279,15 @@ test("practice.js: delayed diagnostic-gate decoding cannot replace the new quest
   assert.equal(fixture.elements.submitBtn.disabled, false);
 });
 
-test("mastery.js: final-status rejection does not unlock an accepted answer", async () => {
+test("mastery.js: the frozen final result renders without another status read", async () => {
   const fixture = createFixture(consumers.find(({ file }) => file === "mastery.js"));
-  const finalStatus = deferred();
-  fixture.useStatus(finalStatus.promise);
   const submitted = fixture.submit();
-  fixture.calls[0].resolve({ data: { finalResult: {} } });
-  await Promise.resolve();
-  await Promise.resolve();
-  finalStatus.reject(new Error("Fixture status failed"));
-  await assert.rejects(submitted, /Fixture status failed/);
+  await tick();
+  fixture.calls[0].resolve({ data: { finalResult: {passed:false,score:{correct:0,answered:1,percent:0},lifecycle:{attemptNumber:3,lifecycleState:"mastery_failed_final"}} } });
+  await submitted;
+  assert.equal(fixture.finalResults.length,1);
+  assert.equal(fixture.finalResults[0].attemptNumber,3);
+  assert.equal(fixture.finalResults[0].lifecycleState,"mastery_failed_final");
   assert.equal(fixture.elements.answerForm.dataset.answerSubmitting, undefined);
   assert.equal(fixture.elements.submitBtn.disabled, true);
   assert.equal(fixture.refreshEvents.length, 0);

@@ -309,6 +309,7 @@ function syncAnswerSubmit() {
     submit.disabled = true;
     return;
   }
+  if (form.dataset.answerUncertain === "true" || form.dataset.answerBlocked === "true") return;
   const next = document.getElementById("nextBtn");
   const responseAccepted = next && !next.classList.contains("hidden") && next.disabled === false;
   if (responseAccepted) return;

@@ -1,3 +1,4 @@
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { routeSession, roleRoutingReady } from "./role-router.js";
@@ -115,7 +116,7 @@ async function showDashboard({ force = false } = {}) {
   $("dashboardContent").classList.add("hidden");
   setModeMessage("");
 
-  const { data, error } = await supabase.functions.invoke("get-student-dashboard", { body: { navigation: true } });
+  const { data, error } = await invokeLearnerFunction(supabase,"get-student-dashboard", { body: { navigation: true } });
   if (epoch !== dashboardEpoch) return;
   if (error) {
     $("dashboardLoading").textContent = "Չհաջողվեց բեռնել առաջընթացը։";
@@ -268,7 +269,7 @@ async function startSession(mode, targetSkillId = null) {
   $("resumeLearningBtn").disabled = true;
 
   const body = mode === "practice" && targetSkillId ? { mode, targetSkillId } : { mode };
-  const { data, error } = await supabase.functions.invoke("start-learning-session", { body });
+  const { data, error } = await invokeLearnerFunction(supabase,"start-learning-session", { body });
 
   $("startDiagnosticBtn").disabled = false;
   $("startPracticeBtn").disabled = false;
@@ -319,7 +320,7 @@ async function loadSessionItem() {
   stimulusEl.innerHTML = "";
   stimulusEl.classList.add("hidden");
 
-  const { data, error } = await supabase.functions.invoke("get-session-item", { body: { sessionId: currentSession.id } });
+  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
   if (error) {
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     feedback.className = "feedback bad";
@@ -334,6 +335,7 @@ async function loadSessionItem() {
     return;
   }
 
+  clearAnswerRecovery(answerForm);
   current = data;
   currentSession = { ...currentSession, ...data.session };
   questionStartedAt = performance.now();
@@ -433,7 +435,7 @@ async function submitAnswer(event) {
   submitBtn.disabled = true;
   try {
     const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
-    const { data, error } = await supabase.functions.invoke("submit-answer", {
+    const request = submission.item.answerRequest ??= createAnswerRequest(supabase,"submit-answer", {
       body: {
         sessionId: submission.sessionId,
         sessionItemId: submission.item.sessionItemId,
@@ -442,16 +444,17 @@ async function submitAnswer(event) {
         responseTimeMs,
         hintUsed: false
       }
-    }).catch((error) => ({ error }));
-    if (!isCurrentSubmission()) return;
+    }, {isCurrent: () => current === submission.item && currentSession?.id === submission.sessionId});
+    const {data,error,stale} = await request.send();
+    if (stale || !isCurrentSubmission()) return;
 
     if (error) {
-      submitBtn.disabled = false;
-      feedback.className = "feedback bad";
-      feedback.textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
+      if (!showAnswerRecovery(answerForm,feedback,request,{error})) submission.item.answerRequest = null;
       return;
     }
 
+    clearAnswerRecovery(answerForm);
+    submission.item.answerRequest = null;
     const total = current.session.total;
     $("sessionProgressBar").style.width = `${Math.min(100, (current.session.position / total) * 100)}%`;
     nextBtn.disabled = false;
@@ -472,6 +475,7 @@ async function submitAnswer(event) {
       answerSubmission = null;
       delete answerForm.dataset.answerSubmitting;
       if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        clearAnswerRecovery(answerForm);
         answerForm.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
       }
     }

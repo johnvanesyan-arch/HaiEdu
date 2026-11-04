@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - web/answer-response-recovery.mjs
       - scripts/qa-programme-fixtures.mjs
       - scripts/qa-request-diagnostics.mjs
       - scripts/sprint-14-isolation.mjs

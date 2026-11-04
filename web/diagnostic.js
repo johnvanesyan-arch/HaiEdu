@@ -1,3 +1,4 @@
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
@@ -41,7 +42,7 @@ function routeForActive(active) {
 }
 
 async function loadDashboard() {
-  const { data, error } = await supabase.functions.invoke("get-student-dashboard", { body: {} });
+  const { data, error } = await invokeLearnerFunction(supabase,"get-student-dashboard", { body: {} });
   if (error) throw error;
   dashboard = data;
   return data;
@@ -105,7 +106,7 @@ async function startDiagnostic() {
     return;
   }
 
-  const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode: "diagnostic" } });
+  const { data, error } = await invokeLearnerFunction(supabase,"start-learning-session", { body: { mode: "diagnostic" } });
   $("startBtn").disabled = false;
   if (data?.diagnosticCompleted) return showFreshResults();
   if (error || !data?.session) {
@@ -133,7 +134,7 @@ async function loadItem() {
   $("nextBtn").classList.add("hidden");
   $("submitBtn").disabled = true;
 
-  const { data, error } = await supabase.functions.invoke("get-session-item", { body: { sessionId: currentSession.id } });
+  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
   if (error) {
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     $("feedback").className = "feedback bad";
@@ -148,6 +149,7 @@ async function loadItem() {
     return;
   }
 
+  clearAnswerRecovery($("answerForm"));
   current = data;
   currentSession = { ...currentSession, ...data.session };
   startedAt = performance.now();
@@ -233,7 +235,7 @@ async function submit(event) {
   $("submitBtn").disabled = true;
   try {
     const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
-    const { data, error } = await supabase.functions.invoke("submit-answer", {
+    const request = submission.item.answerRequest ??= createAnswerRequest(supabase,"submit-answer", {
       body: {
         sessionId: submission.sessionId,
         sessionItemId: submission.item.sessionItemId,
@@ -242,16 +244,17 @@ async function submit(event) {
         responseTimeMs,
         hintUsed: false,
       },
-    }).catch((error) => ({ error }));
-    if (!isCurrentSubmission()) return;
+    }, {isCurrent: () => current === submission.item && currentSession?.id === submission.sessionId});
+    const {data,error,stale} = await request.send();
+    if (stale || !isCurrentSubmission()) return;
 
     if (error) {
-      $("submitBtn").disabled = false;
-      $("feedback").className = "feedback bad";
-      $("feedback").textContent = error.message;
+      if (!showAnswerRecovery(form,$("feedback"),request,{error})) submission.item.answerRequest = null;
       return;
     }
 
+    clearAnswerRecovery(form);
+    submission.item.answerRequest = null;
     const position = current.session.position;
     const total = current.session.total;
     const progress = Math.min(100, (position / total) * 100);
@@ -266,6 +269,7 @@ async function submit(event) {
       answerSubmission = null;
       delete form.dataset.answerSubmitting;
       if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        clearAnswerRecovery($("answerForm"));
         form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
       }
     }

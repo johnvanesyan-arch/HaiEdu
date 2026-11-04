@@ -1,3 +1,4 @@
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { assessmentScopeText } from './assessment-reporting.mjs';
@@ -34,8 +35,8 @@ function routeForActive(active) {
 
 async function status() {
   const [{ data, error }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
-    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+    invokeLearnerFunction(supabase,"get-mastery-check-status", { body: {} }),
+    invokeLearnerFunction(supabase,"get-chapter-mastery-lifecycle", { body: {} }),
   ]);
   if (error) throw error;
   if (lifecycleError) console.warn("mastery lifecycle unavailable", lifecycleError);
@@ -148,7 +149,7 @@ async function prepare() {
 async function startCheck() {
   $("startBtn").disabled = true;
   $("stateText").textContent = "Յուրացման ստուգումը կազմվում է…";
-  const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode: "mastery_check" } });
+  const { data, error } = await invokeLearnerFunction(supabase,"start-learning-session", { body: { mode: "mastery_check" } });
   $("startBtn").disabled = false;
   if (error) {
     $("stateText").textContent = error.message;
@@ -181,7 +182,7 @@ async function loadItem() {
   $("nextBtn").classList.add("hidden");
   $("submitBtn").disabled = true;
 
-  const { data, error } = await supabase.functions.invoke("get-session-item", { body: { sessionId: currentSession.id } });
+  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
   if (error) {
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     $("feedback").className = "feedback bad";
@@ -195,6 +196,7 @@ async function loadItem() {
     if (s.latestCheck) return renderStoredResult(s.latestCheck, s.unitComplete, s);
     return;
   }
+  clearAnswerRecovery($("answerForm"));
   current = data;
   startedAt = performance.now();
   renderQuestion(data);
@@ -278,7 +280,7 @@ async function submit(event) {
   $("submitBtn").disabled = true;
   try {
     const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
-    const { data, error } = await supabase.functions.invoke("submit-mastery-answer", {
+    const request = submission.item.answerRequest ??= createAnswerRequest(supabase,"submit-mastery-answer", {
       body: {
         sessionId: submission.sessionId,
         sessionItemId: submission.item.sessionItemId,
@@ -286,24 +288,23 @@ async function submit(event) {
         response,
         responseTimeMs,
       },
-    }).catch((error) => ({ error }));
-    if (!isCurrentSubmission()) return;
+    }, {isCurrent: () => current === submission.item && currentSession?.id === submission.sessionId});
+    const {data,error,stale} = await request.send();
+    if (stale || !isCurrentSubmission()) return;
     if (error) {
-      $("submitBtn").disabled = false;
-      $("feedback").className = "feedback bad";
-      $("feedback").textContent = error.message;
+      if (!showAnswerRecovery(form,$("feedback"),request,{error})) submission.item.answerRequest = null;
       return;
     }
 
+    clearAnswerRecovery(form);
+    submission.item.answerRequest = null;
     const position = current.session.position;
     const total = current.session.total;
     const progress = Math.min(100, (position / total) * 100);
     $("progressBar").style.width = `${progress}%`;
     $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
     if (data.finalResult) {
-      const currentStatus = await status();
-      if (!isCurrentSubmission()) return;
-      return renderFinalResult({ ...data.finalResult, ...currentStatus });
+      return renderFinalResult({ ...data.finalResult.lifecycle, ...data.finalResult });
     }
 
     $("feedback").className = "feedback neutral";
@@ -315,6 +316,7 @@ async function submit(event) {
       answerSubmission = null;
       delete form.dataset.answerSubmitting;
       if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        clearAnswerRecovery($("answerForm"));
         form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
       }
     }
