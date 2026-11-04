@@ -247,7 +247,8 @@ test('native governed form recovers a committed answer after its response is dro
  await page.locator('#learningPlayer input[name=answer]').first().check();
  await page.locator('#learningPlayer button[type=submit]').click();
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('գրանցումը դեռ հաստատված չէ');
- assert.equal(await page.locator('#learningPlayer fieldset').isDisabled(),true);
+ assert.equal(await page.locator('#learningPlayer fieldset').evaluate(el=>el.disabled),true);
+ assert.equal(await page.locator('#learningPlayer input[name=answer]').first().isDisabled(),true);
  await page.locator('#learningPlayer button[type=submit]').click();
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
  assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
