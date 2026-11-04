@@ -65,6 +65,7 @@ async function main(){
   await bc.route(url+'/**',async route=>{
    const req=route.request(),u=new URL(req.url());let body;try{body=req.postDataJSON();}catch{body=null;}
    if(!browserAllowed({pathname:u.pathname,method:req.method(),search:u.search,body,ledger:report,current,recommendations})){blocked++;return route.abort();}
+   if(req.method()==='OPTIONS'){await route.continue();return;}
    const fn=u.pathname.replace('/functions/v1/','');
    if(fn==='submit-answer'){
     const response=await route.fetch(),result=await response.json();
