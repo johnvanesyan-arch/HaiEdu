@@ -1,0 +1,1 @@
+var e=Object.freeze({active:Object.freeze({key:"active",label:"Ակտիվ այս դպրոցում"}),archived:Object.freeze({key:"archived",label:"Արխիվացված այս դպրոցում"}),ended:Object.freeze({key:"ended",label:"Անդամակցությունն ավարտված է"})});function c(r){return r==="active"?e.active:r==="archived"?e.archived:e.ended}export{c as a};

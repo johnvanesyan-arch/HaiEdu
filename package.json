@@ -15,7 +15,10 @@
     "build:teacher": "node scripts/build-teacher-entry.mjs",
     "check:teacher-bundle": "node scripts/build-teacher-entry.mjs --check",
     "build:browser-sdk": "node scripts/build-browser-sdk.mjs",
-    "check:browser-sdk": "node scripts/build-browser-sdk.mjs --check"
+    "check:browser-sdk": "node scripts/build-browser-sdk.mjs --check",
+    "build:web-assets": "node scripts/build-web-assets.mjs --update",
+    "check:web-assets": "node scripts/build-web-assets.mjs --check && node scripts/check-web-archive.mjs",
+    "build:web": "node scripts/build-web-assets.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

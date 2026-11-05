@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-web-assets.mjs
+      - scripts/check-web-archive.mjs
+      - scripts/verify-built-release.mjs
+      - web-build/**
       - web/**
       - supabase/functions/**
       - supabase/migrations/**

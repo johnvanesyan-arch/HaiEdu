@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-web-assets.mjs
+      - scripts/check-web-archive.mjs
+      - scripts/verify-built-release.mjs
+      - web-build/**
       - scripts/chapter-ii-pilot-read-acceptance.mjs
       - .github/workflows/chapter-ii-pilot-read-acceptance.yml
       # Verify preserved pilot access after reviewed shared reporting/runtime changes.

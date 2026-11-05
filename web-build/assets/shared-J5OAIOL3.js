@@ -1,0 +1,1 @@
+var e=new WeakSet;function s(n=document){e.has(n)||(e.add(n),n.addEventListener("focusin",t=>{let a=t.target.closest?.(".hm-role-nav a,.amp-nav-list a,.amp-mobile-nav a,.course-tabs a");!a||!a.matches(":focus-visible")||a.scrollIntoView({block:"nearest",inline:"nearest",behavior:"instant"})}))}export{s as a};

@@ -58,6 +58,9 @@ export async function waitForRelease({
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     await waitForRelease({ expectedCommit: process.env.GITHUB_SHA });
+    const { verifyBuiltRelease } = await import('./verify-built-release.mjs');
+    const built = await verifyBuiltRelease({ expectedCommit: process.env.GITHUB_SHA });
+    console.log(`Executed browser build matches ${built.buildId}: ${built.pages} pages and ${built.assets} assets.`);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

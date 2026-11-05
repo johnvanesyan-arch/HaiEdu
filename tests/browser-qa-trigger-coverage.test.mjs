@@ -84,7 +84,7 @@ test("dependency traversal handles cycles and reports missing local imports", as
 
 test("font preloads and CSS fallback binaries remain in production QA routing", async t => {
   const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html"], runner: "scripts/qa.mjs" };
-  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "package.json", "package-lock.json", "vercel.json"];
+  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "web-build/**", "package.json", "package-lock.json", "vercel.json"];
   const root = await fixture(t, {
     [target.workflow]: workflow(patterns),
     "web/page.html": '<link rel="preload" href="./assets/ui.woff2?v=1" as="font" crossorigin><link rel="stylesheet" href="./base.css">',
@@ -101,7 +101,7 @@ test("font preloads and CSS fallback binaries remain in production QA routing", 
 
 test("bare relative HTML and CSS URLs cannot bypass dependency trigger coverage", async (t) => {
   const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html"], runner: "scripts/qa.mjs" };
-  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "package.json", "package-lock.json", "vercel.json"];
+  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/base.css", "web-build/**", "package.json", "package-lock.json", "vercel.json"];
   const root = await fixture(t, {
     [target.workflow]: workflow(patterns),
     "web/page.html": `
@@ -164,7 +164,7 @@ test('manual-only fixture workflows cannot silently revert to single-pending can
 
 test("a newly imported shared module and API cannot silently miss the main QA trigger", async (t) => {
   const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html", "scripts/qa.mjs"], runner: "scripts/qa.mjs" };
-  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/page.js", "package.json", "package-lock.json", "vercel.json"];
+  const patterns = [".github/workflows/qa.yml", "scripts/**", "web/page.html", "web/page.js", "web-build/**", "package.json", "package-lock.json", "vercel.json"];
   const root = await fixture(t, {
     [target.workflow]: workflow(patterns),
     "web/page.html": '<script src="./page.js"></script>',

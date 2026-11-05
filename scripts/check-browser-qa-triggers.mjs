@@ -228,7 +228,7 @@ export async function checkBrowserQaTriggers(root, targets = browserQaTargets) {
       }
     }
     const sources = await collectDependencies(root, target.entries);
-    const required = new Set([...sources.keys(), target.workflow, "scripts/wait-for-production-release.mjs", "scripts/stamp-release.mjs", "package.json", "package-lock.json", "vercel.json"]);
+    const required = new Set([...sources.keys(), target.workflow, "scripts/wait-for-production-release.mjs", "scripts/stamp-release.mjs", "scripts/build-web-assets.mjs", "scripts/check-web-archive.mjs", "scripts/verify-built-release.mjs", "web-build/current.json", "package.json", "package-lock.json", "vercel.json"]);
     const apiEntries = new Set();
     for (const [filename, source] of sources) {
       if (!filename.startsWith("scripts/")) continue;

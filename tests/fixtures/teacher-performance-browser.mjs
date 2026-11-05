@@ -1,7 +1,12 @@
 import {readFile} from 'node:fs/promises';
 export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false}={}){
  const context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(({archives,initialFailure,analytics,studentDetails})=>{
+ await page.addInitScript(installTeacherPerformanceFixture,{archives,initialFailure,analytics,studentDetails});
+ await context.route('**/*',async route=>{const u=new URL(route.request().url());if(u.origin!=='https://teacher.test')return route.abort();const name=u.pathname==='/teacher'?'/teacher.html':u.pathname;try{const body=await readFile(new URL('../../web'+name,import.meta.url));return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}});
+ await page.goto(startUrl);await page.locator(initialFailure?'#teacherDashboardRetry':'#dashboardPanel:not(.hidden)').waitFor();return {page,errors};
+}
+
+export const installTeacherPerformanceFixture = ({archives,initialFailure,analytics,studentDetails})=>{
   const unit=n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitCode:'SYN-'+n,unitTitleHy:'Բաժին '+n,unitSequence:n,releaseNumber:1});
   const rows=[{id:'a',name:'Ա Դասարան',isActive:true},{id:'b',name:'Բ Դասարան',isActive:true},...Array.from({length:archives},(_,i)=>({id:'history-'+i,name:'Արխիվ '+String(i).padStart(3,'0'),isActive:false}))].map(c=>({...c,assignmentId:'assignment-'+c.id,schoolId:'school-a',academicYear:'2026–2027',subjectName:'Առարկա',schoolName:'Դպրոց',gradeNumber:7,studentCount:null,analyticsAvailable:false}));
   const state=window.__teacherFixture={analytics,studentDetails,calls:[],holds:[],queueStates:[],queueRows:[],fail:initialFailure?['directory:false']:[],resolvers:{},listeners:[],actor:'teacher-a',release(key){this.holds=this.holds.filter(k=>k!==key);for(const fn of this.resolvers[key]??[])fn();delete this.resolvers[key];}};
@@ -23,7 +28,4 @@ export async function fixture(browser,t,{archives=60,initialFailure=false,startU
     if(fn==='manage-written-work'&&body.action==='queue'){state.queueStates.push(body.payload.state);return {data:{version:'written-work-v1',queue:state.queueRows,readOnly:false}};}
     throw Error('Unexpected synthetic request: '+fn);
   }}};
- },{archives,initialFailure,analytics,studentDetails});
- await context.route('**/*',async route=>{const u=new URL(route.request().url());if(u.origin!=='https://teacher.test')return route.abort();const name=u.pathname==='/teacher'?'/teacher.html':u.pathname;try{const body=await readFile(new URL('../../web'+name,import.meta.url));return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}});
- await page.goto(startUrl);await page.locator(initialFailure?'#teacherDashboardRetry':'#dashboardPanel:not(.hidden)').waitFor();return {page,errors};
-}
+ };
