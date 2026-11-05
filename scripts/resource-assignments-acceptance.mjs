@@ -1,4 +1,5 @@
 import { expectedBrowserDigest } from './expected-browser-digest.mjs';
+import { createResourceQaRequest, RESOURCE_QA_DIAGNOSTICS_VERSION } from './resource-qa-request.mjs';
 import {createWritingDeliveryAcceptance} from './writing-assignment-delivery-acceptance.mjs';
 import {createCustomTaskAcceptance} from './teacher-custom-task-acceptance.mjs';
 import {createUsabilityReads} from './b123-usability-reads.mjs';
@@ -19,7 +20,8 @@ const assigned=[],assignmentIntents=[];
 const sessions=new Map(),created=[],intents=[],originals=new Set(),selectors=new Map();
 const prefix=`B123-QA-${process.env.GITHUB_RUN_ID}-${randomUUID()}`;let stage='preflight';
 const check=(label,ok,status)=>{report.checks.push({label,status:ok?'passed':'failed',...(status===undefined?{}:{httpStatus:status})});if(!ok)throw Error(label);};
-async function request(actor,path,body){try{const r=await fetch(url+path,{method:'POST',redirect:'error',headers:{apikey:key,Authorization:'Bearer '+(sessions.get(actor)?.access_token??key),...(body instanceof FormData?{}:{'Content-Type':'application/json'})},body:body instanceof FormData?body:JSON.stringify(body??{}),signal:AbortSignal.timeout(25000)});return{status:r.status,headers:r.headers,data:r.headers.get('content-type')?.startsWith('application/pdf')?new Uint8Array(await r.arrayBuffer()):await r.json().catch(()=>null)};}catch{return{status:0,data:null};}}
+report.requestDiagnosticsVersion=RESOURCE_QA_DIAGNOSTICS_VERSION;report.requestDiagnostics=[];
+const request=createResourceQaRequest({url,key,getSession:actor=>sessions.get(actor),record:entry=>report.requestDiagnostics.push(entry)});
 async function resource(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': '+action){const r=await request(actor,'/functions/v1/manage-supplementary-resources',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
 async function assignment(actor,action,payload={},context=selectors.get(actor),predicate=r=>r.status===200,label=actor+': assignment '+action){const r=await request(actor,'/functions/v1/manage-resource-assignments',{action,context,payload});check(label,predicate(r),r.status);return r.data;}
 const writingDelivery=createWritingDeliveryAcceptance({fixture,request,browserContext,check,report});
