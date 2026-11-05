@@ -1,5 +1,7 @@
 # BF-06 — resource acceptance failure investigation and safe request diagnostics
 
+**Verified delivery update — 5 November 2026:** BF-06 implementation and technical acceptance are complete on PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f`. All five PR/main gates and the complete five-suite automatic production batch pass. The original preparation/investigation snapshot below is retained; [the final delivery record](browser-build-delivery-20261105.md) supplies actual source provenance, cleanup and limits. BF-37 transport cause, owner usability and other independent gates remain open.
+
 Date: 5 November 2026, Asia/Dubai. Live source: PR411/main `c9c1632d8b58cc1a384a9df677f65f27e648cefd`. This is QA-only work; the compiled build remains `1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57`.
 
 ## Confirmed results and retained failures

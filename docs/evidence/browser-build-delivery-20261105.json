@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-05",
+  "functionalSource": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+  "ci": {
+    "pullRequest": 42011524917,
+    "main": 42012852929,
+    "requiredJobsPassed": 5,
+    "unitIntegration": 1740,
+    "nativeBrowser": 455,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "selectedCoverage": {
+    "suites": 13,
+    "mainAssertions": 2024,
+    "isolationControls": 864,
+    "freshSuites": 5,
+    "reusedSourceEquivalentSuites": 8,
+    "notOneFreshThirteenSuiteBatch": true
+  },
+  "runs": [
+    {
+      "runId": 41994612270,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Chapter II pilot authenticated read-only production acceptance",
+      "status": "passed",
+      "mainPassed": 91,
+      "mainTotal": 91,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612270"
+    },
+    {
+      "runId": 41994612285,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Chapter V pilot authenticated read-only production acceptance",
+      "status": "passed",
+      "mainPassed": 191,
+      "mainTotal": 191,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612285"
+    },
+    {
+      "runId": 41994612304,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Chapter IV pilot authenticated read-only production acceptance",
+      "status": "passed",
+      "mainPassed": 155,
+      "mainTotal": 155,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612304"
+    },
+    {
+      "runId": 41994612333,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Sprint 14D authenticated production analytics acceptance",
+      "status": "passed",
+      "mainPassed": 10,
+      "mainTotal": 10,
+      "isolation": [],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612333"
+    },
+    {
+      "runId": 41994612389,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Chapter VI pilot authenticated read-only production acceptance",
+      "status": "passed",
+      "mainPassed": 324,
+      "mainTotal": 324,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612389"
+    },
+    {
+      "runId": 41994612446,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Sprint 14 authenticated actions",
+      "status": "passed",
+      "mainPassed": 206,
+      "mainTotal": 206,
+      "isolation": [
+        {
+          "phase": "readIsolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "readIsolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612446"
+    },
+    {
+      "runId": 41994612465,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "Chapter III pilot authenticated read-only production acceptance",
+      "status": "passed",
+      "mainPassed": 123,
+      "mainTotal": 123,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612465"
+    },
+    {
+      "runId": 42003567595,
+      "revision": "c9c1632d8b58cc1a384a9df677f65f27e648cefd",
+      "scope": "16.5B.11 teacher feedback production read acceptance",
+      "status": "passed",
+      "mainPassed": 87,
+      "mainTotal": 87,
+      "isolation": [
+        {
+          "phase": "isolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "isolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "reused source-equivalent execution",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42003567595"
+    },
+    {
+      "runId": 42012852728,
+      "revision": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+      "scope": "mobile-read-acceptance",
+      "status": "passed",
+      "mainPassed": 84,
+      "mainTotal": 84,
+      "isolation": [
+        {
+          "phase": "before",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "after",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "fresh on final functional source",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42012852728"
+    },
+    {
+      "runId": 42012852806,
+      "revision": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+      "scope": "English Unit 2 provisional pilot authenticated read acceptance",
+      "status": "passed",
+      "mainPassed": 142,
+      "mainTotal": 142,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "fresh on final functional source",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42012852806"
+    },
+    {
+      "runId": 42012852807,
+      "revision": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+      "scope": "English Unit 3 provisional pilot authenticated read acceptance",
+      "status": "passed",
+      "mainPassed": 154,
+      "mainTotal": 154,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "fresh on final functional source",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42012852807"
+    },
+    {
+      "runId": 42012852861,
+      "revision": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+      "scope": "16.5B.12.3 cross-role usability and recipient delivery verification",
+      "status": "passed",
+      "mainPassed": 327,
+      "mainTotal": 327,
+      "isolation": [
+        {
+          "phase": "isolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "isolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "fresh on final functional source",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42012852861"
+    },
+    {
+      "runId": 42012852866,
+      "revision": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+      "scope": "English Unit 1 provisional pilot authenticated read acceptance",
+      "status": "passed",
+      "mainPassed": 130,
+      "mainTotal": 130,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "failedChecks": [],
+      "evidenceType": "fresh on final functional source",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42012852866"
+    }
+  ],
+  "sourceEquivalence": {
+    "80d05455f34553c2645399cb881d8e3b58fbeef3": {
+      "unchangedPaths": [
+        "web",
+        "web-build",
+        "supabase",
+        "package.json",
+        "package-lock.json",
+        "vercel.json",
+        "scripts/sprint-14-isolation.mjs",
+        "scripts/qa-request-diagnostics.mjs",
+        "scripts/verify-built-release.mjs"
+      ],
+      "changedPaths": []
+    },
+    "c9c1632d8b58cc1a384a9df677f65f27e648cefd": {
+      "unchangedPaths": [
+        "web",
+        "web-build",
+        "supabase",
+        "package.json",
+        "package-lock.json",
+        "vercel.json",
+        "scripts/sprint-14-isolation.mjs",
+        "scripts/qa-request-diagnostics.mjs",
+        "scripts/verify-built-release.mjs"
+      ],
+      "changedPaths": []
+    }
+  },
+  "liveReadback": {
+    "commitBefore": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+    "commitAfter": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+    "files": [
+      {
+        "path": "asset-manifest.json",
+        "status": 200,
+        "byteExact": true,
+        "cacheControl": "no-store"
+      },
+      {
+        "path": "admin.html",
+        "status": 200,
+        "byteExact": true,
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "privacy.html",
+        "status": 200,
+        "byteExact": true,
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "byteExact": true,
+        "cacheControl": "public, max-age=0, must-revalidate"
+      }
+    ]
+  },
+  "fullCompiledPreflight": {
+    "runId": 42012852807,
+    "jobId": 127195959231,
+    "commit": "e25cebe257054041e1aaa82d7367f03b453d9d6f",
+    "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+    "pages": 29,
+    "assets": 119,
+    "exactBytesAndCachePolicies": true,
+    "releaseIdentityBeforeAndAfter": true,
+    "logTimestamp": "2026-11-05T10:50:11.2896623Z"
+  },
+  "resourceDiagnostics": {
+    "version": "haiedu-resource-request-diagnostics-v1",
+    "requests": 149,
+    "uniqueTraceIds": 149,
+    "actualDeadlineMs": 25000,
+    "providerIdsCaptured": 149,
+    "failureKinds": {},
+    "httpStatusCounts": {
+      "200": 125,
+      "404": 18,
+      "204": 6
+    },
+    "allowlistedMetadataValidated": true,
+    "credentialsPayloadsRawErrorsPublished": false
+  },
+  "resourceCleanup": {
+    "cleanup": {
+      "records": 2,
+      "allAcknowledged": true
+    },
+    "assignmentCleanup": {
+      "records": 4,
+      "allAcknowledged": true
+    },
+    "writingDeliveryCleanup": {
+      "records": 2,
+      "allAcknowledged": true
+    },
+    "customTaskCleanup": {
+      "records": 2,
+      "allAcknowledged": true
+    },
+    "sessionCleanup": {
+      "records": 6,
+      "allAcknowledged": true
+    }
+  },
+  "retention": "Run-owned deliveries cancelled; private teacher drafts, pinned PDF sources and immutable delivery audit retained under the normal retention contract.",
+  "originalBuildFailures": [
+    {
+      "runId": 41994612320,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "16.5B.12.3 cross-role usability and recipient delivery verification",
+      "status": "failed",
+      "mainPassed": 5,
+      "mainTotal": 6,
+      "isolation": [],
+      "failedChecks": [
+        "production source parity: admin.html"
+      ]
+    },
+    {
+      "runId": 41994612346,
+      "revision": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+      "scope": "16.5B.11 teacher feedback production read acceptance",
+      "status": "failed",
+      "mainPassed": 4,
+      "mainTotal": 5,
+      "isolation": [],
+      "failedChecks": [
+        "current frontend bytes: privacy.html"
+      ]
+    }
+  ],
+  "resourceFailures": {
+    "schemaVersion": 1,
+    "date": "2026-11-05",
+    "timezone": "Asia/Dubai",
+    "scope": "Resource acceptance on PR411; retain both failed attempts without private identifiers",
+    "attempts": [
+      {
+        "schemaVersion": 1,
+        "revision": "c9c1632d8b58cc1a384a9df677f65f27e648cefd",
+        "runId": 42003567660,
+        "runAttempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42003567660/attempts/1",
+        "status": "failed",
+        "mainPassed": 254,
+        "mainTotal": 255,
+        "failedStage": "custom teacher task delivery",
+        "failedCheck": {
+          "label": "A_student: custom manage-teacher-task-student-work/inbox",
+          "httpStatus": 401
+        },
+        "compiledPreflight": {
+          "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+          "pages": 29,
+          "assets": 119,
+          "passed": true
+        },
+        "isolationBefore": 54,
+        "isolationAfter": "not reached",
+        "cause": {
+          "confirmed": true,
+          "globalLogoutAt": "2026-11-05T10:07:45Z",
+          "failedRequestAt": "2026-11-05T10:07:46.995Z",
+          "logoutPath": "/auth/v1/logout?scope=global",
+          "actor": "A separate non-headless browser used the same designated QA account.",
+          "correlation": "Auth audit and request logs identify a successful global logout for that account; the next QA request fails because its session was removed. Its access-token expiry had not been reached.",
+          "authError": "session_not_found"
+        },
+        "cleanup": {
+          "resourcesWithdrawn": 2,
+          "resourceAssignmentsCancelled": 4,
+          "writingAssignmentsCancelled": 2,
+          "customTaskDeliveriesCancelled": 1,
+          "mainSessionsClosed204": 5,
+          "revokedMainSession": {
+            "cleanupStatus": 403,
+            "cleanupAcknowledged": false,
+            "readOnlyDatabaseCheck": "The exact failed-run session is absent; no session remains to close."
+          },
+          "privateDraftRetention": "Run-owned teacher drafts, pinned source PDFs and immutable delivery audits remain under the existing retention contract."
+        },
+        "unreached": [
+          "Remaining custom-task acceptance",
+          "Cross-role usability reads",
+          "Final isolation"
+        ],
+        "response": "Retain the failed attempt. One complete same-source retry with fresh ordinary authorized sessions, only after verified owned cleanup and the existing queue completed. No application/Auth settings, authorization checks, timeout or grading changes."
+      },
+      {
+        "schemaVersion": 1,
+        "revision": "c9c1632d8b58cc1a384a9df677f65f27e648cefd",
+        "runId": 42003567660,
+        "runAttempt": 2,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42003567660/attempts/2",
+        "status": "failed",
+        "mainPassed": 110,
+        "mainTotal": 111,
+        "failedStage": "A: class and selected delivery",
+        "failedChecks": [
+          {
+            "label": "A_student: assignment inbox",
+            "status": "failed",
+            "httpStatus": 0
+          }
+        ],
+        "isolationBefore": 54,
+        "isolationAfter": "not reached",
+        "compiledPreflight": {
+          "pages": 29,
+          "assets": 119,
+          "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+          "passed": true
+        },
+        "cleanup": {
+          "resourcesWithdrawn": 1,
+          "resourceAssignmentsCancelled": 2,
+          "writingAssignmentsCreated": 0,
+          "customTaskDeliveriesCreated": 0,
+          "ownSessionsClosed204": 6
+        },
+        "cause": "Unconfirmed. The old request wrapper discards the exception and emits HTTP0. Available Edge/gateway logs did not identify the missing assignment-inbox request; no exact timeout/network/body-read cause is asserted.",
+        "response": "Add privacy-safe request diagnostics while preserving single requests, the25-second deadline, response semantics, authorization, fixtures and owned cleanup. Do not hide the failure with automatic retries or longer timeouts."
+      }
+    ],
+    "productionChange": "None; investigation used read-only provider logs and one exact-session presence query. Request diagnostics are a QA-only prepared change.",
+    "closure": "BF-06 and QA-TRANSPORT-01/BF-37 remain open pending their distinct evidence."
+  },
+  "limits": [
+    "BF-37 intermittent transport root cause remains unconfirmed.",
+    "Isolated Home cache measurements are not real-user/WAN or all-role performance.",
+    "Open-tab rollback requires a new tested deployment preserving all archived assets; Instant Rollback is not covered.",
+    "BF-02 remains deferred; independent review, replacement QA account/evidence decisions and owner usability remain open.",
+    "No new learner-answer recovery write; BF-07 is not implemented."
+  ],
+  "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57"
+}
