@@ -51,7 +51,11 @@ function render() {
     : view === 'courses'
       ? ['Բացեք նոր էջ ձեր ուսուցման մեջ', 'Ընտրեք դասընթացը և շարունակեք ձեր աշխատանքը։']
       : ['Բարի գալուստ։ Շարունակե՞նք սովորել։', 'Ընտրեք դասընթացն ու բաժինը։ Ձեր ընթացիկ աշխատանքը կհայտնվի այստեղ։'];
-  root.innerHTML = `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>${view === 'home' ? selectorMarkup() + '<div id="studentNextStep" aria-live="polite" aria-atomic="true"></div>' : ''}${view==='work'?'<section aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>':''}${courseCards()}`;
+  // Home leads with the one continuation action; the decorative welcome stays on the courses/work views.
+  const intro = view === 'home'
+    ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section>' + selectorMarkup()
+    : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
+  root.innerHTML = `${intro}${view==='work'?'<section aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>':''}${courseCards()}`;
   if (view === 'home') void loadSelected();
   if(view==='work')customTaskView=mountStudentTeacherTasks({root:root.querySelector('#studentCustomTasks'),client:supabase,actorId,onClean:()=>queueMicrotask(()=>{if(deferredTaskAccess&&!customTaskView?.hasUnsaved()){const latest=deferredTaskAccess;deferredTaskAccess=null;updateAccess(latest);}})});
   if(view==='work')writingAssignmentView=mountStudentWritingAssignments({root:root.querySelector('#studentWritingAssignments'),client:supabase});
@@ -68,7 +72,7 @@ async function loadSelected() {
   const target = root.querySelector('#studentNextStep');
   if (!target) return;
   const context = selected;
-  if (!context) { target.innerHTML = state('Ո՞ր բաժնից շարունակենք', 'Ընտրեք դասընթացն ու բաժինը վերևի ցանկերից։'); return; }
+  if (!context) { target.innerHTML = state('Ո՞ր բաժնից շարունակենք', 'Ընտրեք դասընթացն ու բաժինը ստորև՝ ցանկերից։'); return; }
   target.innerHTML = state('Բեռնվում է ձեր աշխատանքը…', 'Ստուգում ենք ընտրված բաժնի հասանելի աշխատանքները։');
   const current = () => request === epoch && sameContext(context, selected) && contexts.some(item => sameContext(item, context));
   try {

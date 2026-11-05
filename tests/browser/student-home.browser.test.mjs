@@ -247,3 +247,32 @@ for(const width of [320,768,1280])test(`public landing uses Forest at ${width}px
  assert.equal(await page.locator('.public-entry a[href="./account-access?view=register"]').count(),2);
  assert.deepEqual(errors,[]);
 });
+for(const width of [375,1280])test(`Home leads with the next learning step at ${width}px; course choice and the pilot note follow`,async t=>{
+  const {page,errors}=await fixture(t,{width,selected:true});
+  await page.locator('.student-continue').waitFor();
+  const layout=await page.evaluate(()=>{
+    const next=document.querySelector('#studentNextStep'),select=document.querySelector('#studentCourseSelect'),cards=document.querySelector('#mySubjects');
+    const note=document.querySelector('.student-pilot-note'),panel=document.querySelector('#modePanel'),action=document.querySelector('.student-continue');
+    const nav=[...document.querySelectorAll('.amp-mobile-nav')].find(el=>el.getClientRects().length&&getComputedStyle(el).position==='fixed');
+    const after=(a,b)=>Boolean(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING);
+    return {
+      nextBeforeSelect:after(next,select),selectBeforeCards:after(select,cards),noteAfterContent:after(panel,note),
+      welcome:document.querySelectorAll('#multiSubjectHome .student-home-welcome').length,
+      sectionTitle:next.closest('section')?.querySelector('h2')?.id,
+      actionVisible:action.getBoundingClientRect().bottom<=innerHeight-(nav?nav.getBoundingClientRect().height:0),
+      note:{bg:getComputedStyle(note).backgroundColor,fg:getComputedStyle(note).color},
+    };
+  });
+  assert.deepEqual(layout,{nextBeforeSelect:true,selectBeforeCards:true,noteAfterContent:true,welcome:0,sectionTitle:'studentNextTitle',actionVisible:true,
+    note:{bg:'rgb(238, 241, 235)',fg:'rgb(88, 105, 95)'}});
+  assert.deepEqual(errors,[]);
+});
+test('Home without a selection points to the course lists below; courses view keeps its welcome',async t=>{
+  const {page,errors}=await fixture(t);
+  await expect(page.locator('#studentNextStep')).toContainText('ստորև');
+  assert.equal(await page.locator('#multiSubjectHome .student-home-welcome').count(),0);
+  const courses=await fixture(t,{view:'courses'});
+  await courses.page.locator('#mySubjects').waitFor();
+  assert.equal(await courses.page.locator('#multiSubjectHome .student-home-welcome').count(),1);
+  assert.deepEqual([...errors,...courses.errors],[]);
+});
