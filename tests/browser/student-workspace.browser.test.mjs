@@ -45,13 +45,13 @@ for(const width of [390,768,1280])test(`focused Mastery player retains full word
  assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
 });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts }={}) {
+async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts, submitResult=null }={}) {
   const context=await browser.newContext({ viewport:{ width, height:900 } });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules }) => {
+  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules, submitResult }) => {
     window.__calls=[]; window.__listeners=[]; window.__authorizedContexts=contexts;
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
@@ -73,10 +73,12 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
       if(name==='start-learning-session') return { data:{ session:{ id:'player-fixture', mode:body.mode } } };
       if(name==='get-mastery-check-status') return { data:{ eligible:false,requiredSkills:[],messageHy:'Ամրապնդեք պահանջվող հմտությունները։', assessmentPolicy:{ ...(configuredRules==='points'?dashboard().modes.mastery_check:{}), plannedQuestionCount:8, hintsAllowed:configuredRules!=='points' } } };
       if(name==='get-chapter-mastery-lifecycle') return {data:{lifecycleState:'not_started',attemptsUsed:0}};
+      // Opt-in practice answer outcomes; 'drop-then-correct' loses the first reply (unknown outcome).
+      if(name==='submit-answer'&&submitResult){window.__submits=(window.__submits||0)+1;if(submitResult==='drop-then-correct'&&window.__submits===1)return {data:null,error:new Error('network lost')};return {data:{grading:{correct:submitResult!=='incorrect'}}};}
       if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
+  }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules, submitResult });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.pathname==='/supabase-browser.bundle.mjs') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
@@ -433,4 +435,39 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-student.json`,JSON.stringify(rows,null,2)+'\n');
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
   assert.deepEqual(errors,[]);
+});
+
+for(const [result,outcome,colour] of [['correct','correct','rgb(231, 245, 238)'],['incorrect','incorrect','rgb(255, 242, 222)']])test(`practice shows the skill, progress and a ${outcome} outcome in its semantic colour`,async t=>{
+ const {page,errors}=await fixture(t,{width:390,active:false,player:true,contextIndex:1,submitResult:result});
+ await page.locator('#learningPlayer form').waitFor();
+ await expect(page.locator('#learningPlayer .learning-skill')).not.toHaveText('');
+ assert.equal(await page.locator('#learningPlayer .learning-progress').getAttribute('aria-hidden'),'true');
+ assert.equal(await page.locator('#learningPlayer .learning-progress > span').evaluate(el=>el.style.width),'13%');
+ await page.locator('#learningPlayer input[name=answer]').first().check();await page.locator('#learningPlayer button[type=submit]').click();
+ const feedback=page.locator('#learningPlayer [data-feedback]');
+ await expect(feedback).toContainText(result==='correct'?'Ճիշտ պատասխան։':'Պատասխանը սխալ է։');
+ assert.equal(await feedback.getAttribute('data-outcome'),outcome);
+ assert.equal(await feedback.evaluate(el=>getComputedStyle(el).backgroundColor),colour);
+ await expect(feedback.getByRole('button',{name:'Հաջորդը',exact:true})).toBeVisible();
+ assert.deepEqual(errors,[]);
+});
+
+test('a lost practice reply shows an attention recovery that keeps the answer, then clears on retry',async t=>{
+ const {page,errors}=await fixture(t,{width:390,active:false,player:true,contextIndex:1,submitResult:'drop-then-correct'});
+ await page.locator('#learningPlayer form').waitFor();
+ await page.locator('#learningPlayer input[name=answer]').first().check();await page.locator('#learningPlayer button[type=submit]').click();
+ const feedback=page.locator('#learningPlayer [data-feedback]'),panel=feedback;
+ await expect(panel).toHaveAttribute('data-recovery','uncertain');
+ await expect(panel.locator('.answer-recovery-title')).toHaveText('Կապը ընդհատվեց');
+ await expect(panel).toContainText('Պատասխանի գրանցումը դեռ հաստատված չէ');
+ await expect(panel.locator('.answer-recovery-kept')).toHaveText('Ձեր պատասխանը մնում է այս էջում՝ անփոփոխ։');
+ assert.equal(await feedback.evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(255, 242, 222)','Unknown outcome is attention, not error');
+ assert.equal(await page.locator('#learningPlayer input[name=answer]').first().isChecked(),true,'The chosen answer stays on the page');
+ await expect(page.locator('#learningPlayer button[type=submit]')).toHaveText('Կրկին փորձել');
+ await page.locator('#learningPlayer button[type=submit]').click();
+ await expect(feedback).toContainText('Ճիշտ պատասխան։');
+ assert.equal(await feedback.getAttribute('data-recovery'),null,'Recovery styling disappears with the result');
+ assert.equal(await feedback.getAttribute('data-outcome'),'correct');
+ assert.equal(await page.evaluate(()=>window.__submits),2);
+ assert.deepEqual(errors,[]);
 });

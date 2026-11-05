@@ -79,6 +79,7 @@ export function createAnswerRequest(supabase,name,{body},{isCurrent=()=>true,tim
   return request;
 }
 
+const recoveryFeedback=new WeakMap();
 export function showAnswerRecovery(form,feedback,request,result) {
   const error=result.error,locked=request.uncertain||conflictCodes.has(error?.code);
   form.toggleAttribute('data-answer-uncertain',locked);
@@ -92,9 +93,20 @@ export function showAnswerRecovery(form,feedback,request,result) {
     submit.textContent=locked?'Կրկին փորձել':submit.dataset.answerLabel;
   }
   feedback.replaceChildren();feedback.className='feedback bad';
+  // Presentation: an unknown outcome is not a failure (the answer may be recorded),
+  // so it is styled as attention; a lost reply with no HTTP status is named as such.
+  // clearAnswerRecovery removes the state when the result arrives.
+  if(feedback.dataset){feedback.dataset.recovery=locked?'uncertain':'failed';recoveryFeedback.set(form,feedback);}
+  if(locked&&error?.unknown&&!Number(error?.status)){
+    const title=document.createElement('p');title.className='answer-recovery-title';title.textContent='Կապը ընդհատվեց';feedback.appendChild(title);
+  }
   const message=document.createElement('p');
   message.textContent=locked&&error?.retryable!==false?uncertainMessage:error?.message??studentErrorMessage(null,0,true);
   feedback.appendChild(message);
+  if(locked){
+    const kept=document.createElement('p');kept.className='answer-recovery-kept';
+    kept.textContent='Ձեր պատասխանը մնում է այս էջում՝ անփոփոխ։';feedback.appendChild(kept);
+  }
   if(error?.retryable===false){
     const reload=document.createElement('button');reload.type='button';reload.textContent='Թարմացնել էջը';
     reload.onclick=()=>window.location.reload();feedback.appendChild(reload);
@@ -103,6 +115,7 @@ export function showAnswerRecovery(form,feedback,request,result) {
 }
 
 export function clearAnswerRecovery(form) {
+  const feedback=recoveryFeedback.get(form);if(feedback?.dataset){delete feedback.dataset.recovery;recoveryFeedback.delete(form);}
   delete form.dataset.answerUncertain;
   delete form.dataset.answerBlocked;
   const submit=form.querySelector('[type="submit"]');

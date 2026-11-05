@@ -105,7 +105,7 @@ try {
             stage = 'student-course';
             await page.locator(`.course-tabs a[href*="tab=${tab}"]`).click();
             await expect(page.locator('#courseLoading')).toBeHidden();
-            await expect(page.locator('.course-tabs')).toBeVisible();
+            await expect(page.locator('.course-tabs').first()).toBeVisible(); // primary and secondary section navs (PR417)
             if (tab === 'guides') await expect(page.locator('[data-guides-body]')).not.toContainText('բեռնվում են');
             if (tab === 'writing') await expect(page.locator('.written-list')).toBeVisible();
             await layout(page, dimensions);
