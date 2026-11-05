@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-browser-sdk.mjs
+      - web/supabase-browser.mjs
+      - web/supabase-browser.bundle.mjs
       - web/account-signout.mjs
       - web/navigation-focus.mjs
       - web/task-privacy-view.mjs

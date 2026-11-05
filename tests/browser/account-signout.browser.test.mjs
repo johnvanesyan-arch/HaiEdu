@@ -48,7 +48,7 @@ async function fixture(t,{file=null,mode='returnedActive',readsFail=0,held=false
  const generic=`<!doctype html><html lang="hy"><head>${accountHead}</head><body data-forest-surface data-student-utility="account"><main class="shell privacy-shell"><h1>Հաշիվ</h1><button id="${file==='role-router.js'?'blockedSignOutBtn':'signOutBtn'}">Դուրս գալ</button><input id="displayNameInput" value="Synthetic name"><input id="newEmailInput"><input type="checkbox" id="analyticsOptIn"><input type="checkbox" id="researchOptIn"><input id="privateDraft" value="Unsaved synthetic work"></main><script type="module">${setup}</script></body></html>`;
 
  await bc.route('**/*',async r=>{
-  const u=new URL(r.request().url());if(u.hostname==='esm.sh')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  const u=new URL(r.request().url());if(u.pathname==='/supabase-browser.bundle.mjs')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.origin!==origin)return r.abort();
   if(u.pathname==='/fixture'){
    let html=generic;if(realPrivacy){html=(await readFile('web/privacy.html','utf8')).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace('</body>','<script type="module" src="./privacy.js"></script></body>');}

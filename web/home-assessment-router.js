@@ -1,4 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 /* Sprint 10.5E transition adapter.
@@ -6,7 +6,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
    on Home only until the final 10.5F cleanup, but intended Home actions no longer
    enter that state machine. */
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const diagnosticBtn = document.getElementById("startDiagnosticBtn");
 const resumeBtn = document.getElementById("resumeLearningBtn");
 const dashboardContent = document.getElementById("dashboardContent");

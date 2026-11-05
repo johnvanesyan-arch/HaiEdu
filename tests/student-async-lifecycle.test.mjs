@@ -78,7 +78,7 @@ function helpFixture() {
   } } };
   const context = vm.createContext({
     document: { getElementById: id => nodes.get(id) || null, createElement: () => new Element(), head: new Element() },
-    createClient: () => supabase,
+    window: {}, createClient: () => supabase,
     SUPABASE_URL: "https://example.invalid", SUPABASE_PUBLISHABLE_KEY: "fixture",
     MutationObserver, HTMLInputElement: Element,
   });

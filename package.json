@@ -13,7 +13,9 @@
     "check:favicon": "node scripts/check-favicon-coverage.mjs",
     "check:ui-font": "node scripts/check-forest-font.mjs",
     "build:teacher": "node scripts/build-teacher-entry.mjs",
-    "check:teacher-bundle": "node scripts/build-teacher-entry.mjs --check"
+    "check:teacher-bundle": "node scripts/build-teacher-entry.mjs --check",
+    "build:browser-sdk": "node scripts/build-browser-sdk.mjs",
+    "check:browser-sdk": "node scripts/build-browser-sdk.mjs --check"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

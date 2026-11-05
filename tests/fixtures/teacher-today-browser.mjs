@@ -31,7 +31,7 @@ export async function todayFixture(browser,t,{count=2,initialURL='?view=home',co
  });
  await bc.route('**/*',async route=>{
   const u=new URL(route.request().url());
-  if(u.hostname==='esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__haieduSupabaseClient;'});
+
   if(u.origin!=='https://today.test')return route.abort();
   if(u.pathname==='/fixture-rpc'){
    const {fn,body,actor}=route.request().postDataJSON();let data,status=200;

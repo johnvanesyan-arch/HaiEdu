@@ -59,7 +59,7 @@ function diagnosticUi(dashboard, startResponse={}) {
     return nodes.get(id);
   }
   let source=readFileSync(new URL('../web/diagnostic.js',import.meta.url),'utf8')
-    .replace(/^import .*;\n/gm,'').replace('const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);','').replace(/prepare\(\);\s*$/,'');
+    .replace(/^import .*;\n/gm,'').replace('const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);','').replace(/prepare\(\);\s*$/,'');
   const calls=[];
   const context=vm.createContext({document:{getElementById:node},window:{location:{replace(){},assign(){}}},
     invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,

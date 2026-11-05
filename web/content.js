@@ -5,7 +5,7 @@ import {arrangementEditorMarkup,bindArrangementEditor,collectArrangementEditor} 
 import {arrangementMarkup} from './arrangement-ui.mjs';
 import {typedEditorMarkup,bindTypedEditor,collectTypedEditor} from './typed-fields-editor.mjs';
 import {typedFieldsMarkup} from './typed-fields-ui.mjs';
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { clearContentDashboardCache, loadContentDashboard } from "./content-workspace.js";
 import { renderLearningStimulus } from "./learning-stimulus.mjs";

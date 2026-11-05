@@ -24,7 +24,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 let uxClientPromise = null;
 async function getUxSupabase() {
   if (window.__haieduSupabaseClient) return window.__haieduSupabaseClient;
-  if (!uxClientPromise) uxClientPromise = import("https://esm.sh/@supabase/supabase-js@2")
+  if (!uxClientPromise) uxClientPromise = import("./supabase-browser.bundle.mjs")
     .then(({ createClient }) => window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY))
     .finally(() => { uxClientPromise = null; });
   return uxClientPromise;

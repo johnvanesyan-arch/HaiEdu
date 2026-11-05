@@ -20,7 +20,7 @@ async function teacherFixture(t,{history=false}={}) {
  },{history});
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
-  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(url.pathname==='/teacher.html')return route.fulfill({contentType:'text/html',body:html});
   if(url.origin===origin&&/\.(mjs|js)$/.test(url.pathname))return route.fulfill({contentType:'text/javascript',body:await readFile(new URL('../../web'+url.pathname,import.meta.url),'utf8')});
@@ -101,7 +101,7 @@ async function fixture(t,{holdFirst=false,player=false,retired=false,completeAft
  },{contexts:contexts.map((c,i)=>splitReleases&&i===1?{...c,curriculumReleaseId:id(20),releaseNumber:3}:c),holdFirst,player,retired,completeAfterAnswer,id:id(10)});
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
-  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(url.pathname==='/course.html')return route.fulfill({contentType:'text/html',body:'<html><head><style>.hidden{display:none}</style></head><body data-student-page="course"><nav class="amp-nav-list"></nav><h1 id="courseTitle"></h1><p id="courseSubtitle"></p><div id="courseLoading"></div><main id="courseContent"></main><script type="module" src="./course-page.js"></script><script type="module" src="./student-courses.js"></script><script type="module" src="./course-gate.js"></script></body></html>'});
   if(url.origin===origin&&/\.(mjs|js)$/.test(url.pathname))return route.fulfill({contentType:'text/javascript',body:await readFile(new URL('../../web'+url.pathname,import.meta.url),'utf8')});

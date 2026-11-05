@@ -12,7 +12,7 @@ test('P3-27: late curriculum read cannot restore catalog after sign-out',async()
 test('P3-27: late companion analytics catalog cannot start another protected read after sign-out',async()=>{
  const nodes=new Map();const get=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};let listener;const calls=[];
  const client={auth:{getSession:async()=>({data:{session:null}}),onAuthStateChange:f=>{listener=f;}},functions:{invoke(name,{body}){const request=deferred();calls.push({name,body,...request});return request.promise;}}};
- const api=await vm.runInNewContext(`(async()=>{${moduleSource('web/content-pilot-analytics.js')};return{loadAnalytics,snapshot:()=>({analytics,catalog})};})()`,{createClient:()=>client,SUPABASE_URL:'http://isolated.invalid',SUPABASE_PUBLISHABLE_KEY:'fixture-only',document:{getElementById:get,querySelector:()=>null},setTimeout,Response});
+ const api=await vm.runInNewContext(`(async()=>{${moduleSource('web/content-pilot-analytics.js')};return{loadAnalytics,snapshot:()=>({analytics,catalog})};})()`,{window:{},createClient:()=>client,SUPABASE_URL:'http://isolated.invalid',SUPABASE_PUBLISHABLE_KEY:'fixture-only',document:{getElementById:get,querySelector:()=>null},setTimeout,Response});
  const pending=api.loadAnalytics({forceCatalog:true});listener('SIGNED_OUT',null);calls[0].resolve({data:{catalog:{units:[{id:'QA-private'}]}},error:null});await pending;assert.equal(calls.length,1);assert.equal(api.snapshot().catalog,null);assert.equal(api.snapshot().analytics,null);await api.loadAnalytics({forceCatalog:true});assert.equal(calls.length,1);
 });
 

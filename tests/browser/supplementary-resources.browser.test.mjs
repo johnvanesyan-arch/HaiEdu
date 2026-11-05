@@ -9,7 +9,7 @@ async function surface(t,f,actor=10,width=1280){const bc=await browser.newContex
  window.__resourceCalls.push({name,action:body instanceof FormData?'upload':body.action});const r=await fetch('/fixture/'+name,{method:'POST',headers:{Authorization:'Bearer '+token.replace('PLACEHOLDER',window.__aal),...(body instanceof FormData?{}:{'Content-Type':'application/json'})},body:body instanceof FormData?body:JSON.stringify(body)});const data=r.headers.get('content-type')==='application/pdf'?await r.blob():await r.json();return r.ok?{data}:{data,error:{message:data.error}};}}};},{actor,id:id(actor),token:token(actor)});
  // Ensure tests use server-verified fixture assurance; client cannot pass p_aal in request JSON.
  await page.route('**/*',async route=>{const req=route.request(),u=new URL(req.url());
-  if(u.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(['/fixture/manage-supplementary-resources','/fixture/manage-resource-assignments'].includes(u.pathname)){
    const action=req.headers()['content-type']?.startsWith('multipart/')?'upload':req.postDataJSON().action;

@@ -112,7 +112,7 @@ function ensureNavigation() {
   side.querySelector('[data-student-signout]').addEventListener('click', async () => {
     const existing = document.getElementById('signOutBtn');
     if (existing) { existing.click(); return; }
-    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    const { createClient } = await import('./supabase-browser.bundle.mjs');
     const { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } = await import('./config.js');
     const client = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
     await signOutStudent(client);

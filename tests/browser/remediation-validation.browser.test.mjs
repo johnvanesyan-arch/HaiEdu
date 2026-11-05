@@ -73,7 +73,7 @@ test("reviewer validation identifies all failing questions and safely renders th
       if (path === "/account-signout.mjs") return route.fulfill({ contentType: "text/javascript", body: await readFile(new URL("../../web/account-signout.mjs", import.meta.url), "utf8") });
       if (path === "/content-guides.js") return route.fulfill({ contentType: "text/javascript", body: script + "\nwindow.__renderValidation = renderValidation;" });
       if (path === "/config.js") return route.fulfill({ contentType: "text/javascript", body: 'export const SUPABASE_URL="fixture", SUPABASE_PUBLISHABLE_KEY="fixture";' });
-      if (route.request().url() === "https://esm.sh/@supabase/supabase-js@2") return route.fulfill({ contentType: "text/javascript", body: "export function createClient() {}" });
+      if (new URL(route.request().url()).pathname === "/supabase-browser.bundle.mjs") return route.fulfill({ contentType: "text/javascript", body: "export function createClient() {}" });
       return route.fulfill({ contentType: "text/css", body: "" });
     });
     await page.goto("https://reviewer-fixture.test/content-guides.html");

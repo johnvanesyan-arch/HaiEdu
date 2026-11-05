@@ -1,0 +1,2 @@
+# Preserve literal whitespace inside the generated SDK's base64 alphabet.
+web/supabase-browser.bundle.mjs whitespace=-blank-at-eol

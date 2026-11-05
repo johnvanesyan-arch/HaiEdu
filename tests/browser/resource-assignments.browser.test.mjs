@@ -35,7 +35,7 @@ async function surface(t,f,{actor=20,width=1280,view='work'}={}){
  },{actor,identity:id(actor),token:token(actor)});
  await page.route('**/*',async route=>{
   const req=route.request(),u=new URL(req.url());
-  if(u.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic";'});
   if(u.pathname.startsWith('/fixture/')){
    const body=req.headers()['content-type']?.startsWith('multipart/')?JSON.parse((await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData()).get('request')):req.postDataJSON(),handler=u.pathname.endsWith('manage-resource-assignments')?f.handleAssignments:f.handle;

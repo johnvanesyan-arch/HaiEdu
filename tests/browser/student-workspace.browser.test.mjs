@@ -79,7 +79,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
   }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
-    if(url.origin==='https://esm.sh') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
+    if(url.pathname==='/supabase-browser.bundle.mjs') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
     if(url.pathname==='/config.js') return route.fulfill({ contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture-only";' });
     if(url.origin!==origin || url.pathname.includes('..')) return route.abort();
     try {
