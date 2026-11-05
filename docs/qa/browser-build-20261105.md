@@ -1,5 +1,7 @@
 # BF-06 — hashed browser assets and deployment continuity
 
+**Verified delivery update — 5 November 2026:** BF-06 implementation and technical acceptance are complete on PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f`. All five PR/main gates and the complete five-suite automatic production batch pass. The original preparation/investigation snapshot below is retained; [the final delivery record](browser-build-delivery-20261105.md) supplies actual source provenance, cleanup and limits. BF-37 transport cause, owner usability and other independent gates remain open.
+
 Date: 5 November 2026, Asia/Dubai. Base: PR409/main `e79ea71940705005db13b476963660bd9b42d782`.
 
 ## Delivery scope

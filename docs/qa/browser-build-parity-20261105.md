@@ -1,5 +1,7 @@
 # BF-06 — production HTML parity correction
 
+**Verified delivery update — 5 November 2026:** BF-06 implementation and technical acceptance are complete on PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f`. All five PR/main gates and the complete five-suite automatic production batch pass. The original preparation/investigation snapshot below is retained; [the final delivery record](browser-build-delivery-20261105.md) supplies actual source provenance, cleanup and limits. BF-37 transport cause, owner usability and other independent gates remain open.
+
 Date: 5 November 2026, Asia/Dubai. Base: PR410/main `80d05455f34553c2645399cb881d8e3b58fbeef3`.
 
 ## Observed failure
