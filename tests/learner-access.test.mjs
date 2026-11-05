@@ -37,3 +37,9 @@ test('clients never share reads and only persisted page restoration invalidates 
  const event=new Event('pageshow');Object.defineProperty(event,'persisted',{value:true});a.events.dispatchEvent(event);
  a.reads[0]({data:{contexts:['a']}});b.reads[0]({data:{contexts:['b']}});assert.equal((await pa).stale,true);assert.deepEqual((await pb).data.contexts,['b']);
 });
+test('an already-delivered new auth event wins over a stale getSession snapshot',async()=>{
+ const f=fixture();f.emit('INITIAL_SESSION');f.emit('SIGNED_IN',{user:{id:'learner-b'},access_token:'b1'});
+ f.client.auth.getSession=async()=>({data:{session:{user:{id:'learner-a'},access_token:'a1'}}});
+ assert.equal((await f.store.read()).stale,true);assert.equal(f.reads.length,0);
+ f.emit('SIGNED_OUT',null);assert.equal((await f.store.read()).data.accessStatus,'signed_out');assert.equal(f.reads.length,0);
+});

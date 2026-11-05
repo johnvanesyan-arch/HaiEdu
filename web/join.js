@@ -54,6 +54,9 @@ joinBtn.addEventListener("click", async () => {
   setMessage("Միանում ենք…");
   try {
 
+  const {data:auth,error:authError}=await supabase.auth.getSession();
+  if(!valid())return;
+  if(authError||!auth?.session||!access.matchesSession(auth.session))return setMessage('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։',true);
   const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
   if(!valid())return;
   if (error || !data?.joined || !data?.class?.id) {

@@ -26,7 +26,7 @@ async function refresh() {
 }
 if(!owned){
  access.subscribe(({reason,session})=>{
-  ++version;
+  clearTimeout(timer);++version;
   if(['SIGNED_OUT','SIGNED_IN','session','pagehide'].includes(reason))publish({contexts:[],accessStatus:session?'loading':'signed_out'});
   if(reason!=='pagehide')schedule();
  });

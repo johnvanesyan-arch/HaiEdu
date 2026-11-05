@@ -97,5 +97,5 @@ if (dashboard) {
   observer.observe(dashboard, { attributes: true, attributeFilter: ["class"] });
 }
 
-access.subscribe(({reason})=>{++version;loading=false;document.getElementById('homeClassCard')?.remove();if(reason!=='pagehide')schedule();});
+access.subscribe(({reason})=>{clearTimeout(timer);++version;loading=false;document.getElementById('homeClassCard')?.remove();if(reason!=='pagehide')schedule();});
 schedule();

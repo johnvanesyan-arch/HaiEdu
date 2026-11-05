@@ -35,6 +35,7 @@ export async function learnerFixture(browser,t,{route='index.html',action='',...
   if(u.pathname==='/supabase-browser.bundle.mjs')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.pathname==='/config.js')return r.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic";'});
   if(u.origin!==learnerOrigin)return r.abort();
+  if(u.pathname==='/legacy-class.html')return r.fulfill({contentType:'text/html',body:'<!doctype html><html><style>.hidden{display:none}</style><body><div id=dashboardContent></div><script type=module src=/home-class.js></script><script type=module src=/course-gate.js></script></body></html>'});
   try{return r.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:u.pathname.endsWith('.html')?'text/html':/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':'application/octet-stream'});}catch{return r.fulfill({status:404,body:''});}
  });
  const query=new URLSearchParams({enrollment:id(6),release:id(7),unit:id(8),...(action?{action}:{})});

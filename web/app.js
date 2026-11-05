@@ -119,6 +119,9 @@ async function showDashboard({ force = false } = {}) {
   $("dashboardContent").classList.add("hidden");
   setModeMessage("");
 
+  const {data:auth,error:authError}=await supabase.auth.getSession();
+  if(epoch!==dashboardEpoch)return;
+  if(authError||!auth?.session||!access.matchesSession(auth.session)){publishLearnerAccess({contexts:[],accessStatus:'unavailable'});return;}
   const { data, error } = await invokeLearnerFunction(supabase,"get-student-dashboard", { body: { navigation: true } });
   if (epoch !== dashboardEpoch) return;
   if (error) {

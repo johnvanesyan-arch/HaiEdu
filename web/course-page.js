@@ -37,7 +37,9 @@ function completionDate(value) {
 }
 function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
 async function load() {
-  if (disposeWriting.flush && !(await disposeWriting.flush())) { history.replaceState({}, '', lastCourseUrl); window.dispatchEvent(new CustomEvent('haiedu-home-selection')); return; }
+  const previousVersion=version,writer=disposeWriting;
+  if(writer.flush){const saved=await writer.flush();if(previousVersion!==version||writer!==disposeWriting)return;
+    if(!saved){history.replaceState({},'',lastCourseUrl);window.dispatchEvent(new CustomEvent('haiedu-home-selection'));return;}}
   lastCourseUrl = location.href;
   const request = ++version;
   loading=true;
@@ -152,8 +154,9 @@ access.subscribe(({reason,session})=>{
    else publishLearnerAccess(data);
   },0);return;
  }
- ++version;accountId=session?.user?.id??null;clear();publishLearnerAccess({contexts:[],accessStatus:accountId?'loading':'signed_out'});
- if(reason!=='pagehide')scheduleLoad();
+ clearTimeout(loadTimer);++version;accountId=session?.user?.id??null;clear();publishLearnerAccess({contexts:[],accessStatus:accountId?'loading':'signed_out'});
+ if(reason==='pagehide'||!session){loading=false;document.getElementById('courseLoading').classList.add('hidden');return;}
+ scheduleLoad();
 });
 window.addEventListener('popstate',scheduleLoad);
 scheduleLoad();

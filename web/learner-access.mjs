@@ -17,6 +17,7 @@ export function learnerAccess(client,events=globalThis.window){
  };
  const stale=()=>({data:null,error:new Error('stale_access'),stale:true});
  const read=()=>{
+  if(key!==undefined&&!session)return Promise.resolve({data:{contexts:[],classes:[],accessStatus:"signed_out"},error:null});
   if(pending)return pending;
   const epoch=generation;
   const request=(async()=>{
@@ -24,6 +25,9 @@ export function learnerAccess(client,events=globalThis.window){
     const {data,error}=await client.auth.getSession();
     if(epoch!==generation)return stale();
     if(error)return {data:null,error};
+    // An auth event is newer authority than a contradictory SDK snapshot.
+    // Never adopt an old actor/token after a switch or sign-out.
+    if(key!==undefined&&key!==identity(data?.session??null))return stale();
     observe(data?.session??null);
     if(epoch!==generation)return stale();
     if(!session)return {data:{contexts:[],classes:[],accessStatus:'signed_out'},error:null};
@@ -33,7 +37,7 @@ export function learnerAccess(client,events=globalThis.window){
   })().finally(()=>{if(pending===request)pending=null;});
   pending=request;return request;
  };
- const store={read,invalidate,subscribe(fn){listeners.add(fn);return()=>listeners.delete(fn);},get generation(){return generation;}};
+ const store={read,invalidate,matchesSession(next){return key===undefined||key===identity(next);},subscribe(fn){listeners.add(fn);return()=>listeners.delete(fn);},get generation(){return generation;}};
  stores.set(client,store);
  client.auth.onAuthStateChange((event,next)=>observe(next,event));
  events?.addEventListener('haiedu-refresh-courses',()=>invalidate('access'));

@@ -9,11 +9,12 @@ export async function fixture(browser,t,{archives=60,initialFailure=false,startU
 export const installTeacherPerformanceFixture = ({archives,initialFailure,analytics,studentDetails})=>{
   const unit=n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitCode:'SYN-'+n,unitTitleHy:'Բաժին '+n,unitSequence:n,releaseNumber:1});
   const rows=[{id:'a',name:'Ա Դասարան',isActive:true},{id:'b',name:'Բ Դասարան',isActive:true},...Array.from({length:archives},(_,i)=>({id:'history-'+i,name:'Արխիվ '+String(i).padStart(3,'0'),isActive:false}))].map(c=>({...c,assignmentId:'assignment-'+c.id,schoolId:'school-a',academicYear:'2026–2027',subjectName:'Առարկա',schoolName:'Դպրոց',gradeNumber:7,studentCount:null,analyticsAvailable:false}));
-  const state=window.__teacherFixture={analytics,studentDetails,calls:[],holds:[],queueStates:[],queueRows:[],fail:initialFailure?['directory:false']:[],resolvers:{},listeners:[],actor:'teacher-a',release(key){this.holds=this.holds.filter(k=>k!==key);for(const fn of this.resolvers[key]??[])fn();delete this.resolvers[key];}};
+  const state=window.__teacherFixture={analytics,studentDetails,calls:[],holds:[],denied:[],queueStates:[],queueRows:[],fail:initialFailure?['directory:false']:[],resolvers:{},listeners:[],actor:'teacher-a',release(key){this.holds=this.holds.filter(k=>k!==key);for(const fn of this.resolvers[key]??[])fn();delete this.resolvers[key];}};
   const session=()=>({user:{id:state.actor,email:'fixture@example.invalid'},access_token:'synthetic'});
   const client=window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:session()}}),getUser:async()=>({data:{user:session().user}}),onAuthStateChange(fn){state.listeners.push(fn);return {data:{subscription:{unsubscribe(){}}}};},signOut:async()=>{}},from(){const q={select:()=>q,eq:()=>q,maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})};return q;},functions:{async invoke(fn,{body}){
     state.calls.push({fn,body,actor:state.actor});const actor=state.actor,key=fn==='get-teacher-dashboard'?(body.readMode==='class'?'class:'+body.classId:'directory:'+Boolean(body.archive)):fn;
     if(state.holds.includes(key))await new Promise(resolve=>(state.resolvers[key]??=[]).push(resolve));
+    if(state.denied.includes(key))return {data:{error:'assignment_forbidden'},error:new Error('Synthetic authorization denial')};
     if(state.fail.includes(key))return {error:new Error('Synthetic read unavailable')};
     if(fn==='get-teacher-workspace')return {data:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:2,coverage:'active_writable_school_contexts'}};
     if(fn==='get-teacher-dashboard'){

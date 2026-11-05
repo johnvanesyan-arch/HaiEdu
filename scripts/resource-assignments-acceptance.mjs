@@ -1,3 +1,4 @@
+import {studentWorkReadAllowed} from './student-work-read-guard.mjs';
 import { expectedBrowserDigest } from './expected-browser-digest.mjs';
 import { createResourceQaRequest, RESOURCE_QA_DIAGNOSTICS_VERSION } from './resource-qa-request.mjs';
 import {createWritingDeliveryAcceptance} from './writing-assignment-delivery-acceptance.mjs';
@@ -34,7 +35,7 @@ async function browserContext(actor,materialId=null,creation=null){
  await bc.route('**/functions/v1/**',async route=>{
   const req=route.request(),fn=new URL(req.url()).pathname.split('/').pop();let body={},file=null;try{if(req.headers()['content-type']?.startsWith('multipart/')){const form=await new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}).formData();body=JSON.parse(form.get('request'));file=form.get('file');}else body=req.postDataJSON()??{};}catch{}
   if(req.method()==='OPTIONS')return route.continue();
-  const read=customTasks.readAllowed(actor,fn,body)||writingDelivery.readAllowed(actor,fn,body)||usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
+  const read=studentWorkReadAllowed({actor,method:req.method(),fn,body})||customTasks.readAllowed(actor,fn,body)||writingDelivery.readAllowed(actor,fn,body)||usability.allowed(actor,fn,body)||['get-student-classes','get-student-dashboard','get-teacher-dashboard','get-teacher-workspace','get-teacher-academic-context'].includes(fn)
    ||(fn==='manage-teacher-feedback'&&['open','snippets'].includes(body.action))
    ||(fn==='manage-supplementary-resources'&&['contexts','list','get'].includes(body.action))
    ||(fn==='manage-teacher-task-student-work'&&['inbox','open'].includes(body.action))
