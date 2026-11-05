@@ -7,6 +7,7 @@ import path from 'node:path';
 import { buildWebAssets, digest, projectRoot } from '../scripts/build-web-assets.mjs';
 import { checkWebArchive } from '../scripts/check-web-archive.mjs';
 import { verifyBuiltRelease } from '../scripts/verify-built-release.mjs';
+import { expectedBrowserDigest } from '../scripts/expected-browser-digest.mjs';
 import { serveWeb } from './fixtures/built-web-server.mjs';
 
 async function fixture(t) {
@@ -81,6 +82,21 @@ test('production preflight verifies executed HTML and chunks even when compatibi
   await writeFile(path.join(output, compiled), 'throw Error("wrong build");');
   assert.equal(await readFile(path.join(output, 'app.js'), 'utf8'), await readFile(path.join(root, 'web/app.js'), 'utf8'));
   await assert.rejects(verifyBuiltRelease(args), /Executed browser artifact differs/);
+});
+
+test('supplemental production parity uses compiled HTML, retains stable-file checks and fails closed', async t => {
+  const root = await fixture(t), manifest = await buildWebAssets({ root, update: true });
+  const source = await readFile(path.join(root, 'web/index.html'));
+  const compiled = await readFile(path.join(root, 'dist-web/index.html'));
+  const expected = await expectedBrowserDigest('index.html', { root });
+  assert.equal(expected, manifest.pages['index.html'].sha256);
+  assert.equal(expected, digest(compiled));
+  assert.notEqual(expected, digest(source), 'Reproduces the old raw-template comparison failure');
+  assert.equal(await expectedBrowserDigest('app.js', { root }), digest(await readFile(path.join(root, 'web/app.js'))));
+  await assert.rejects(expectedBrowserDigest('missing.html', { root }), /Missing compiled HTML digest/);
+  await assert.rejects(expectedBrowserDigest('../package.json', { root }), /Unsafe browser source path/);
+  await writeFile(path.join(root, 'web-build/current.json'), JSON.stringify({ schemaVersion: 2, pages: manifest.pages }));
+  await assert.rejects(expectedBrowserDigest('index.html', { root }), /Missing compiled HTML digest/);
 });
 
 test('all page dependencies are local hashed files; teacher startup and student startup exclude heavy teacher modules', async () => {
