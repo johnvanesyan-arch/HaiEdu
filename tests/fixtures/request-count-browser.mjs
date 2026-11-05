@@ -10,16 +10,23 @@ export async function learnerFixture(browser,t,{route='index.html',action='',...
  await page.addInitScript(`window.__client=(${installStudentHomeFixture.toString()})(${JSON.stringify(options)});`);
  await page.addInitScript(()=>{
   const invoke=window.__client.functions.invoke;
-  const state=window.__requestCounts={calls:[],active:0,wave:0};
+  const state=window.__requestCounts={calls:[],active:0,wave:0,holds:[],pending:[],joined:false,release(name){this.holds=this.holds.filter(x=>x!==name);for(const p of this.pending.filter(x=>x.name===name))p.resolve();this.pending=this.pending.filter(x=>x.name!==name);}};
   window.__client.functions.invoke=async(name,args)=>{
    if(!state.active++)state.wave++;
    const call={name,body:args.body,wave:state.wave};state.calls.push(call);
    try{
+    const result=await(async()=>{
     await new Promise(resolve=>setTimeout(resolve,60));
     if(name==='start-learning-session')return {data:{session:{id:'synthetic-player',mode:args.body.mode}}};
     if(name==='get-mastery-check-status')return {data:{assessmentPolicy:{plannedQuestionCount:8,hintsAllowed:true}}};
     if(name==='get-session-item')return {data:{complete:false,session:{id:'synthetic-player',mode:'practice',position:1,total:8},sessionItemId:'synthetic-item',item:{id:'synthetic-question',type:'true_false',promptHy:'Ընտրեք պատասխանը։'},remediation:{available:false}}};
-    return await invoke(name,args);
+    if(name==='join-class'){state.joined=true;return {data:{joined:true,class:{id:'synthetic-class',name:'Փորձնական դասարան'}}};}
+    const result=await invoke(name,args);
+    if(name==='get-student-classes'&&result.data)result.data.classes=state.joined?[{id:'synthetic-class',name:'Փորձնական դասարան'}]:[];
+    return result;
+    })();
+    if(state.holds.includes(name))await new Promise(resolve=>state.pending.push({name,resolve}));
+    return result;
    }finally{state.active--;call.done=true;}
   };
  });

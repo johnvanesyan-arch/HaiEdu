@@ -22,7 +22,8 @@ test("Home class card distinguishes no-class and joined-class states", async () 
   const home = await read("web/home-dashboard.js");
   const classes = await read("web/home-class.js");
   assert.match(home, /import\("\.\/home-class\.js"\)/);
-  assert.match(classes, /get-student-classes/);
+  assert.match(classes, /learner-access\.mjs/);
+  assert.match(await read("web/learner-access.mjs"), /get-student-classes/);
   assert.match(classes, /Միացեք ձեր ուսուցչի դասարանին/);
   assert.match(classes, /Դուք միացված եք ուսուցչի դասարանին/);
   assert.match(classes, /\.\/join\.html/);

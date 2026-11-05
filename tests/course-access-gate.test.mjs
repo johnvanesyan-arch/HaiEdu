@@ -51,7 +51,7 @@ test("student shell resolves navigation from exact authorized contexts", async (
   assert.match(shell,/student-courses\.js/);assert.match(shell,/course-gate\.js/);
   assert.match(courses,/groupLearningContexts/);assert.match(courses,/studentHomeHref/);
   assert.doesNotMatch(courses,/physics:7|physics-7|mathematics/);
-  assert.match(gate,/get-student-classes/);assert.match(gate,/resolveNavigationContext/);assert.match(gate,/request !== version/);
+  assert.match(gate,/learner-access\.mjs/);assert.match(gate,/resolveNavigationContext/);assert.match(gate,/request\s*!==\s*version/);
 });
 
 test("global Home keeps every enrollment and release distinct", async () => {
@@ -62,14 +62,14 @@ test("global Home keeps every enrollment and release distinct", async () => {
 
 test("generic course shell verifies the exact selection before its dashboard", async () => {
   const page=await read("web/course-page.js");
-  assert.match(page,/readLearningSelection/);assert.match(page,/sameContext/);assert.match(page,/get-student-classes/);assert.match(page,/get-student-dashboard/);
+  assert.match(page,/readLearningSelection/);assert.match(page,/sameContext/);assert.match(page,/access\.read\(/);assert.match(page,/get-student-dashboard/);
   assert.match(page,/registeredExtensionHref/);assert.doesNotMatch(page,/physics:7|physics-7\.html/);
 });
 
 test("successful class join is verified through the entitlement endpoint before returning home", async () => {
   const source = await read("web/join.js");
   assert.match(source, /join-class/);
-  assert.match(source, /get-student-classes/);
+  assert.match(source, /access\.read\(/);
   assert.match(source, /classes\.some/);
   assert.match(source, /window\.location\.replace\("\.\/index\.html\?joined=1"\)/);
 });

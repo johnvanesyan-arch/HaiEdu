@@ -1,3 +1,4 @@
+import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {resourceHref} from './resource-navigation.mjs';
 import {courseHero,modeIcon,readinessBadge,readinessSummary,skillEvidence} from './student-course-presentation.mjs';
 import {assessmentRules,assessmentSkillRules,assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
@@ -9,6 +10,9 @@ import { mountLearningPlayer } from './learning-player.mjs';
 import { mountWrittenWork } from './written-work.mjs';
 import { mountUnitGuides } from './unit-guides.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const access=learnerAccess(supabase);
+let loading=false,loadTimer;
+function scheduleLoad(){clearTimeout(loadTimer);loadTimer=setTimeout(load,0);}
 const root = document.getElementById('courseContent');
 let version = 0, accountId = null, lastCourseUrl = location.href, disposePlayer = () => {}, disposeWriting = () => {}, disposeGuides = () => {};
 function collectionNavigation(tab, context = null) {
@@ -36,6 +40,7 @@ async function load() {
   if (disposeWriting.flush && !(await disposeWriting.flush())) { history.replaceState({}, '', lastCourseUrl); window.dispatchEvent(new CustomEvent('haiedu-home-selection')); return; }
   lastCourseUrl = location.href;
   const request = ++version;
+  loading=true;
   clear();
   const tab = new URLSearchParams(location.search).get('tab') || 'course';
   root.classList.remove('hidden');
@@ -48,10 +53,12 @@ async function load() {
     if (!valid()) return;
     if (!auth.session) throw new Error('Մուտք գործեք ձեր հաշիվ։');
     accountId = auth.session.user.id;
-    const { data: navigation, error: accessError } = await supabase.functions.invoke('get-student-classes',{body:{}});
+    const {data:navigation,error:accessError,stale}=await access.read();
+    if(stale)return;
     if (!valid()) return;
     const context = navigation?.contexts?.find(c => sameContext(c,selection));
     if (accessError || !context) throw new Error('Ընտրված դասընթացն այս պահին հասանելի չէ։');
+    publishLearnerAccess(navigation);
     collectionNavigation(tab, context);
     const { data, error } = await supabase.functions.invoke('get-student-dashboard',{body:selection});
     if (!valid()) return;
@@ -126,13 +133,27 @@ async function load() {
       disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,skills:data.skills,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');window.history.replaceState({},'',url);load(); }});
     }
   } catch(error) {
+    if(valid())publishLearnerAccess({contexts:[],accessStatus:'unavailable'});
     if (valid()) root.textContent = error.message === 'invalid_context_selection'
       ? 'Ընտրեք դասընթացը գլխավոր էջից։'
       : /[\u0531-\u0587]/.test(error.message ?? '') ? error.message
       : 'Չհաջողվեց բեռնել դասընթացը։ Փորձեք նորից։';
   }
-  finally { if (valid()) document.getElementById('courseLoading').classList.add('hidden'); }
+  finally { if (valid()) {loading=false;document.getElementById('courseLoading').classList.add('hidden');} }
 }
-supabase.auth.onAuthStateChange((_event,session)=>{ const next=session?.user?.id??null;if(next&&next===accountId)return;accountId=next;++version;clear();if(session)setTimeout(load,0); });
-window.addEventListener('popstate',load);
-load();
+access.subscribe(({reason,session})=>{
+ if(reason==='TOKEN_REFRESHED'&&!loading){
+  // Keep an active answer/focus intact. Every action still authorizes on the
+  // server; recheck navigation without restarting a learning session.
+  const request=version;
+  setTimeout(async()=>{const {data,error,stale}=await access.read();if(stale||request!==version)return;
+   let selection;try{selection=readLearningSelection(location.search);}catch{selection=null;}
+   if(!selection||error||!data?.contexts?.some(c=>sameContext(c,selection))){++version;clear();root.textContent='Ընտրված դասընթացն այս պահին հասանելի չէ։';publishLearnerAccess({contexts:[]});}
+   else publishLearnerAccess(data);
+  },0);return;
+ }
+ ++version;accountId=session?.user?.id??null;clear();publishLearnerAccess({contexts:[],accessStatus:accountId?'loading':'signed_out'});
+ if(reason!=='pagehide')scheduleLoad();
+});
+window.addEventListener('popstate',scheduleLoad);
+scheduleLoad();
