@@ -1,0 +1,1 @@
+var i="application/pdf",t="application/vnd.openxmlformats-officedocument.wordprocessingml.document";function n(o){if(!(o instanceof Blob)||o.size<1||o.size>10*1024*1024)throw Error("task_file_invalid");if(o.type==="application/octet-stream")return new Blob([o],{type:t});if(o.type!==i&&o.type!==t)throw Error("task_file_invalid");return o}export{n as a};

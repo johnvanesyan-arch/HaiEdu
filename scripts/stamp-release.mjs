@@ -21,7 +21,11 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     const { buildBrowserSdk } = await import("./build-browser-sdk.mjs");
     await buildBrowserSdk();
     await import("./build-teacher-entry.mjs");
-    const metadata = await stampRelease();
+    const { buildWebAssets } = await import("./build-web-assets.mjs");
+    const { checkWebArchive } = await import("./check-web-archive.mjs");
+    await checkWebArchive(undefined, { history: false });
+    await buildWebAssets();
+    const metadata = await stampRelease(resolve("dist-web/release.json"));
     console.log(`Frontend release: ${metadata.commit}`);
   } catch (error) {
     console.error(error.message);
