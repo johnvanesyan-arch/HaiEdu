@@ -101,6 +101,7 @@ async function signOut() {
 }
 
 async function showDashboard({ force = false } = {}) {
+  if(force){dashboardData=null;window.__HAIEDU_DASHBOARD__=null;}
   if (!force && dashboardData) {
     renderDashboard(dashboardData);
     $("dashboardLoading").classList.add("hidden");
@@ -119,7 +120,7 @@ async function showDashboard({ force = false } = {}) {
   $("dashboardContent").classList.add("hidden");
   setModeMessage("");
 
-  const {data:auth,error:authError}=await supabase.auth.getSession();
+  const {data:auth,error:authError}=await supabase.auth.getSession().catch(error=>({error}));
   if(epoch!==dashboardEpoch)return;
   if(authError||!auth?.session||!access.matchesSession(auth.session)){publishLearnerAccess({contexts:[],accessStatus:'unavailable'});return;}
   const { data, error } = await invokeLearnerFunction(supabase,"get-student-dashboard", { body: { navigation: true } });

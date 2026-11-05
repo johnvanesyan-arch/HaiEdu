@@ -376,9 +376,19 @@
       }
     ],
     "otherRetainedFailedRuns": [
-      42073819506,
-      42073819881,
-      42073819497
+      {
+        "run": 42073819506,
+        "reason": "Chapter II preservation"
+      },
+      {
+        "run": 42073819497,
+        "reason": "Chapter II preservation"
+      },
+      {
+        "run": 42073819881,
+        "reason": "isolation: learner A own enrollment403 and local Auth closure403",
+        "causeConfirmed": false
+      }
     ],
     "readOnlyInvestigation": {
       "fixture": "designated learner A",

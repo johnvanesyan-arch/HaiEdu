@@ -5,6 +5,12 @@ import {learnerFixture,id} from '../fixtures/request-count-browser.mjs';
 import {fixture as teacherFixture} from '../fixtures/teacher-performance-browser.mjs';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
 const settle=page=>page.waitForFunction(()=>window.__requestCounts.active===0);
+test('failed SDK confirmation on explicit Home refresh clears access without an unhandled error or service call',async t=>{
+ const {page,errors}=await learnerFixture(browser,t);await page.locator('.student-continue').waitFor();await settle(page);
+ const before=await page.evaluate(()=>{const count=window.__requestCounts.calls.length;window.__client.auth.getSession=async()=>{throw Error('Synthetic session failure');};document.getElementById('refreshDashboardBtn').click();return count;});
+ await expect(page.locator('.amp-subject-card')).toHaveCount(0);await expect(page.locator('[data-retry-access]')).toBeVisible();
+ assert.equal(await page.evaluate(()=>window.__requestCounts.calls.length),before);assert.equal(await page.evaluate(()=>window.__HAIEDU_DASHBOARD__),null);assert.deepEqual(errors,[]);
+});
 test('Home refuses a stale SDK account snapshot and recovers only after current session confirmation',async t=>{
  const {page,errors}=await learnerFixture(browser,t);await page.locator('.student-continue').waitFor();await settle(page);
  const before=await page.evaluate(async()=>{const client=window.__client,old=await client.auth.getSession();window.__originalGetSession=client.auth.getSession;client.auth.getSession=async()=>old;window.__homeFixture.switchAccount();return window.__requestCounts.calls.length;});
@@ -78,6 +84,15 @@ test('teacher selector handoff still requests fresh authorized work and fails cl
  await expect(page.locator('#teacherAssignWritingLink')).toHaveAttribute('href',/view=assign-writing/);
  await page.evaluate(()=>window.__teacherFixture.denied.push('manage-writing-assignments'));await page.locator('#teacherAssignWritingLink').click();await expect(page.locator('[data-wa-read-retry]')).toBeVisible();
  await expect(page.locator('[data-wa-task]')).toHaveCount(0);await expect(page.locator('[data-wa-send]')).toHaveCount(0);assert.deepEqual(errors,[]);
+});
+test('teacher class-to-review reuses only selectors and freshly authorizes the exact work queue',async t=>{
+ const {page,errors}=await teacherFixture(browser,t,{startUrl:'https://teacher.test/teacher.html?view=class&class=a&assignment=assignment-a&release=release-a&unit=unit-2'});
+ await expect(page.locator('#teacherAssignWritingLink')).toHaveAttribute('href',/unit=unit-2/);
+ const before=await page.evaluate(()=>window.__teacherFixture.calls.length);
+ await page.locator('.hm-role-nav a[href="./teacher.html?view=review"]').click();await page.waitForFunction(()=>window.__teacherFixture.queueStates.length===1);
+ const calls=await page.evaluate(n=>window.__teacherFixture.calls.slice(n),before);
+ assert.equal(calls.filter(c=>c.fn==='get-teacher-dashboard'&&c.body.readMode==='class').length,0);
+ const queue=calls.filter(c=>c.fn==='manage-written-work');assert.equal(queue.length,1);assert.deepEqual(queue[0].body.context,{assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-2'});assert.deepEqual(errors,[]);
 });
 test('teacher token rotation prevents selector handoff and forces a fresh exact-context read',async t=>{
  const {page,errors}=await teacherFixture(browser,t,{startUrl:'https://teacher.test/teacher.html?view=class&class=a&assignment=assignment-a&release=release-a&unit=unit-1'});
