@@ -128,3 +128,34 @@ test('a many-chapter course keeps the selected chapter visible in one phone row'
   assert.equal(await noLearningWrites(page),false);
   assert.deepEqual(errors,[]);
 });
+
+test('compact phone header and secondary links after current work keep the continue action on the first screen',async t=>{
+  const {page,errors}=await course(t,{width:375,height:812});
+  const m=await page.evaluate(()=>{
+    const bar=document.querySelector('main.shell > .topbar'),back=document.getElementById('courseCollectionLink'),account=bar.querySelector('.student-account-link');
+    const resume=document.querySelector('.course-resume').getBoundingClientRect(),nav=document.querySelector('.amp-mobile-nav').getBoundingClientRect();
+    const more=document.querySelector('.course-tabs-more'),session=document.querySelector('.course-active-session');
+    return {header:Math.round(bar.getBoundingClientRect().height),sameRow:Math.abs(back.getBoundingClientRect().top-account.getBoundingClientRect().top)<=1,
+      backBeforeTitle:back.getBoundingClientRect().bottom<=bar.querySelector('h1').getBoundingClientRect().top+1,
+      resumeBottom:Math.round(resume.bottom),navTop:Math.round(nav.top),moreFollowsSession:session.nextElementSibling===more,
+      moreLabel:more.getAttribute('aria-label'),overflow:document.documentElement.scrollWidth>innerWidth+1};
+  });
+  assert.equal(m.sameRow,true,'Back link and account share one row');
+  assert.equal(m.backBeforeTitle,true);
+  assert.ok(m.header<=240,`Course header stays compact (${m.header}px)`);
+  assert.ok(m.resumeBottom<=m.navTop,`Continue (${m.resumeBottom}px) is fully visible above the mobile navigation (${m.navTop}px)`);
+  assert.equal(m.moreFollowsSession,true,'Guides, written work and materials follow the current work');
+  assert.equal(m.moreLabel,'Լրացուցիչ բաժիններ');
+  assert.equal(m.overflow,false);
+  assert.deepEqual(errors,[]);
+});
+
+test('a skill with too few answers shows the server status instead of needing strengthening',async t=>{
+  const {page,errors}=await course(t,{width:375,fewAnswers:true});
+  const badge=page.locator('.course-table tbody tr').nth(2).locator('.student-evidence-badge');
+  await expect(badge).toHaveText('Դեռ քիչ պատասխաններ');
+  assert.equal(await badge.getAttribute('data-readiness'),'insufficient');
+  assert.deepEqual(await badge.evaluate(el=>[getComputedStyle(el).backgroundColor,getComputedStyle(el).color]),['rgb(238, 241, 235)','rgb(88, 105, 95)']);
+  await expect(page.locator('.course-table tbody tr').nth(3).locator('.student-evidence-badge')).toHaveText('Ամրապնդում է պետք');
+  assert.deepEqual(errors,[]);
+});

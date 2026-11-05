@@ -254,4 +254,21 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-work-none { margin
 @media (max-width: 420px) {
   body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button { padding-inline: .375rem; font-size: .8125rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-work-refresh { flex: 1 1 100%; }
+/* Compact phone header on learning pages: the back link and account share one
+   row, a lone account button sits beside the title, and long course titles use
+   a smaller size so the current work reaches the first screen. */
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: .5rem .75rem; padding: .75rem 1rem 1rem; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > div:first-child { flex: 1 1 0; min-width: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar h1 { margin: 0; font-size: 1.5rem; line-height: 1.3; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar p { margin: .25rem 0 0; font-size: .8125rem; line-height: 1.45; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > .row { flex: 0 0 auto; width: auto; flex-wrap: nowrap; align-items: center; gap: .5rem; margin: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > .row:has(.button-link) { order: -1; flex-basis: 100%; justify-content: space-between; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > .row .button-link { width: auto; min-height: 2.75rem; padding: .5rem .75rem; font-size: .875rem; }
+  body:is([data-haiedu-student],[data-forest-surface])[data-student-page="course"] main.shell > .topbar h1 { font-size: 1.25rem; }
+}
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface])[data-student-page="course"] #courseContent { gap: 1rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters .button-link { max-inline-size: 16rem; padding: .5rem .75rem; font-size: .8125rem; line-height: 1.35; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-active-session { padding: 1rem 1.25rem; }
 }

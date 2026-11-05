@@ -21,3 +21,9 @@ test('the course tab readiness summary matches the banner evidence and stays emp
  for(const skills of [[],[{ready:null}],[{ready:true},{ready:undefined}]])assert.equal(readinessSummary({skills}),'');
  assert.equal(readinessSummary({}),'');
 });
+test('too few answers mirrors the server status and never overrides server readiness',()=>{
+ assert.match(readinessBadge({ready:false,mastery:{status:'insufficient_evidence',evidenceCount:2}}),/data-readiness="insufficient">Դեռ քիչ պատասխաններ</);
+ assert.match(readinessBadge({ready:null,mastery:{status:'insufficient_evidence'}}),/Դեռ քիչ պատասխաններ/);
+ assert.match(readinessBadge({ready:true,mastery:{status:'insufficient_evidence'}}),/Պատրաստ է/);
+ assert.match(readinessBadge({ready:false,mastery:{status:'developing',evidenceCount:2}}),/Ամրապնդում է պետք/,'No browser-side answer-count threshold');
+});
