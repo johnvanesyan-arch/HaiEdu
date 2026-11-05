@@ -61,6 +61,11 @@ export function mountTeacherAssignmentWorkspace({root,client,context,actorId,isC
  published();
  return{canLeave:()=>view?.canLeave?.()??true,hasUnsaved:()=>Boolean(view?.hasUnsaved?.()),dispose(){alive=false;view?.dispose();}};
 }
+// My work list: open one assigned writing task exactly as the inbox button does.
+export function createStudentWritingOpener(root,client){
+ const life=session(root,client);
+ return {ready:life.ready,message:text,async open(a){const data=await life.invoke('open',{id:a.id},a.context);if(life.current())location.assign(contextHref(data.assignment.context,'writing',{writingTask:data.assignment.task.id}));},dispose:()=>life.dispose()};
+}
 export function mountStudentWritingAssignments({root,client,hubRefresh=false,onRender=()=>{}}){
  const life=session(root,client),$=s=>root.querySelector(s);let generation=0,busy=false,rows=[],offset=0,history=false;
  root.classList.add('writing-assignment-workspace');root.innerHTML='<section aria-labelledby="assignedWritingTitle"><div class="wa-heading"><h3 id="assignedWritingTitle">Գրավոր առաջադրանքներ</h3>'+(hubRefresh?'':'<button type="button" class="ghost" data-wa-refresh>Թարմացնել</button>')+'</div><p data-wa-message role="status" aria-live="polite"></p><div data-wa-list data-work-list></div><button type="button" class="ghost" data-wa-more hidden>Բեռնել ավելին</button><details data-wa-history><summary>Չեղարկված ուղարկումները</summary></details></section>';

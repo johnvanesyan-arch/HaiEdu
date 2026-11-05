@@ -16,8 +16,8 @@ export function installStudentHomeFixture(options = {}) {
   // My work: synthetic items in every state for each assigned-work source (opt-in).
   const scope={context:{enrollmentId:id(6),curriculumReleaseId:id(7),unitId:id(8)},subjectName:'Անգլերեն',subjectNameHy:'Անգլերեն',className:'7Ա',unitTitle:'Բաժին 1',unitTitleHy:'Բաժին 1',schoolName:'Փորձնական դպրոց Ա',teacherName:'Ուսուցիչ Ա'};
   const workItems={
-    tasks:['not_started','returned','submitted'].map((state,n)=>({...scope,id:id(600+n),title:['Նախագծի պլան','Լաբորատոր աշխատանքի շտկում','Ընթերցանության ամփոփում'][n],state,cancelled:false,response:{kind:'text'}})).concat([{...scope,id:id(609),title:'Չեղարկված առաջադրանք',state:'not_started',cancelled:true,response:{kind:'text'}}]),
-    writing:['draft','reviewed','submitted'].map((workState,n)=>({...scope,id:id(610+n),task:{id:id(620+n),definition:{locale:'hy',title:['Գրավոր սևագիր','Ստուգված շարադրություն','Ներկայացված էսսե'][n]}},workState,available:true})),
+    tasks:['not_started','returned','submitted'].map((state,n)=>({...scope,id:id(600+n),title:['Նախագծի պլան','Լաբորատոր աշխատանքի շտկում','Ընթերցանության ամփոփում'][n],state,cancelled:false,response:{kind:'text'},sentAt:`2026-11-0${4-n}T09:00:00Z`})).concat([{...scope,id:id(609),title:'Չեղարկված առաջադրանք',state:'not_started',cancelled:true,response:{kind:'text'}}]),
+    writing:['draft','reviewed','submitted'].map((workState,n)=>({...scope,id:id(610+n),task:{id:id(620+n),definition:{locale:'hy',title:['Գրավոր սևագիր','Ստուգված շարադրություն','Ներկայացված էսսե'][n]}},workState,available:true,assignedAt:`2026-11-0${3-n}T12:00:00Z`})),
     materials:[{...scope,id:id(630),assignedAt:'2026-11-01T08:00:00Z',status:'active',available:true,material:{id:id(631),version:1,provider:'teacher',definition:{title:'Լրացուցիչ վարժություններ',locale:'hy',purpose:'practice',format:'pdf'}}}],
   };
   let contexts = options.contexts ?? (options.empty ? [] : options.single ? [all[2]] : all);
@@ -59,6 +59,17 @@ export function installStudentHomeFixture(options = {}) {
       }
       if(name==='manage-writing-assignments'&&body.action==='inbox')return {data:{version:'writing-assignments-v1',assignments:options.workItems&&body.payload?.state!=='history'?workItems.writing:[],hasMore:false,nextOffset:50}};
       if(name==='manage-resource-assignments'&&body.action==='inbox')return {data:{assignments:options.workItems&&body.payload?.state!=='history'?workItems.materials:[],hasMore:false,nextOffset:50}};
+      // Opt-in combined My work list, built from the same synthetic source rows.
+      if(name==='get-student-work'&&options.combinedWork){
+        if(options.combinedWork==='unavailable')return {data:{error:'service_unavailable'},error:Object.assign(new Error('Edge Function returned a non-2xx status code'),{context:{status:503}})};
+        const physics={...workItems.tasks[0],id:id(640),title:'Ֆիզիկայի չափումներ',subjectName:'Ֆիզիկա',subjectNameHy:'Ֆիզիկա',unitTitle:'Գլուխ I',unitTitleHy:'Գլուխ I',context:{enrollmentId:id(1),curriculumReleaseId:id(2),unitId:id(3)},sentAt:'2026-11-05T08:00:00Z'};
+        const history=body.payload?.state==='history';
+        const rows=[...[physics,...workItems.tasks].map(row=>({source:'task',row})),...workItems.writing.map(row=>({source:'writing',row})),...workItems.materials.map(row=>({source:'material',row}))]
+          .filter(i=>history?i.row.cancelled===true:i.row.cancelled!==true).sort((a,b)=>Date.parse(b.row.sentAt??b.row.assignedAt)-Date.parse(a.row.sentAt??a.row.assignedAt));
+        const failing=options.combinedWorkSourceFail;
+        return {data:{version:'student-work-v1',state:history?'history':'current',items:rows.filter(i=>i.source!==failing),sources:Object.fromEntries(['task','writing','material'].map(k=>[k,k===failing?{status:'unavailable'}:{status:'ok',complete:!(options.workMore&&k==='task')}]))}};
+      }
+      if(name==='manage-writing-assignments'&&body.action==='open'&&options.combinedWork){const row=workItems.writing.find(r=>r.id===body.payload.id);return {data:{version:'writing-assignments-v1',assignment:{context:row.context,task:{id:row.task.id}}}};}
       if(name==='manage-written-work') return {data:{version:'written-work-v1',tasks:options.writingTasks ? ['draft','submitted','reviewed'].map((state,n)=>({id:id(400+n),title:['Գրավոր սևագիր','Ներկայացված աշխատանք','Ստուգված աշխատանք'][n],locale:'hy',state,available:true,baselineRequired:false})) : []}};
       throw Error('Unexpected API '+name);
     }},
