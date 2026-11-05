@@ -35,6 +35,9 @@ jobs:
       - name: Check browser QA dependency coverage
         run: node scripts/check-browser-qa-triggers.mjs
 
+      - name: Check public email identifiers
+        run: node tests/support/public-email-scan.mjs
+
       - name: Run tests
         run: npm test
 

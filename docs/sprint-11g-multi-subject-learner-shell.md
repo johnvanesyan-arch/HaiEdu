@@ -82,7 +82,7 @@ Production QA fixture used for this spike:
 - class: `QA 11G Math 7`;
 - academic year: `2026-2027`;
 - join code: `MATH7QA1`;
-- QA student: `bestenglishac@gmail.com`;
+- QA student: `designated legacy multi-subject QA learner`;
 - the same QA student has an active `7A Physics` membership, producing the intended simultaneous Mathematics 7 + Physics 7 entitlement state.
 
 The Mathematics fixture contains no Mathematics item bank, diagnostic, practice, mastery or learner evidence. Its purpose is only to pressure-test course separation and learner-shell scaling.

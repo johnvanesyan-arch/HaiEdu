@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-05",
+  "sourceCommit": "d0bbaa5488139b92346b8b720a760601896d5f29",
+  "scope": "Tracked repository text and automated OCR of docs/evidence and docs/design PNG/JPEG images; no history, remote Actions artifact, private account or full PII audit.",
+  "baseline": {
+    "trackedUtf8Files": 2030,
+    "binaryAssets": 142,
+    "unapprovedEmailLocations": 2,
+    "unapprovedEmailFiles": [
+      "docs/sprint-11g-multi-subject-learner-shell.md",
+      "docs/sprint-roadmap.md"
+    ],
+    "jsonEvidenceFiles": 548,
+    "filesWithDirectAccountClassSessionUuidFields": 23
+  },
+  "screeningLimits": [
+    "UUID key matching is a candidate inventory, not proof of personal data or a complete identifier inventory.",
+    "Content/release UUIDs must not be automatically treated as account identifiers.",
+    "English OCR can miss text; no claim of complete screenshot privacy review is made.",
+    "Public Git history and old branches remain; no rewriting or deletion was performed."
+  ],
+  "imageOcr": {
+    "engine": "Tesseract eng --psm 11, OMP_THREAD_LIMIT=1",
+    "imagesChecked": 72,
+    "failedImages": 0,
+    "unapprovedEmailMatches": 0,
+    "reservedPlaceholderMatches": 6,
+    "placeholderImagePaths": [
+      "docs/evidence/teacher-analytics-colours-1280-normal-20261102.png",
+      "docs/evidence/teacher-analytics-colours-390-normal-20261102.png",
+      "docs/evidence/teacher-analytics-colours-768-large-20261102.png"
+    ],
+    "visualSpotCheck": "docs/evidence/teacher-analytics-colours-390-normal-20261102.png"
+  },
+  "operationalIdentifierCandidates": [
+    {
+      "path": "docs/evidence/assessment-policy-v2-release-20261015.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/b123-final-followup-investigation-20261029.json",
+      "identifier_field_counts": {
+        "classId": 1
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-learner-run-39911840258.json",
+      "identifier_field_counts": {
+        "studentId": 1,
+        "sessionItemId": 1,
+        "sessionId": 1
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-learner-run-39915749327.json",
+      "identifier_field_counts": {
+        "studentId": 1,
+        "sessionId": 13,
+        "sessionItemId": 12
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-learner-run-39918663688.json",
+      "identifier_field_counts": {
+        "studentId": 1,
+        "sessionId": 13,
+        "sessionItemId": 12
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-learner-verification-20261023.json",
+      "identifier_field_counts": {
+        "sessionId": 17,
+        "sessionItemId": 12
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-pilot-verification-20261023.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-02-learner-closure-20261024.json",
+      "identifier_field_counts": {
+        "designatedStudentId": 1
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-02-learner-interruption-20261024.json",
+      "identifier_field_counts": {
+        "studentId": 1,
+        "sessionItemId": 3,
+        "sessionId": 3
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-02-learner-readback-20261024.json",
+      "identifier_field_counts": {
+        "designatedStudentId": 1,
+        "sessionId": 11
+      }
+    },
+    {
+      "path": "docs/evidence/english-7-unit-02-learner-transport-interruption-20261024.json",
+      "identifier_field_counts": {
+        "studentId": 1,
+        "sessionItemId": 3,
+        "sessionId": 3
+      }
+    },
+    {
+      "path": "docs/evidence/forest-staff-acceptance-20261028.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/matching-ordering-production-actions-20261020.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/qa-fixture-separation-20261031.json",
+      "identifier_field_counts": {
+        "actor": 2,
+        "learnerActiveClassIds": 2,
+        "learnerActiveMembershipSchools": 1,
+        "learnerId": 1,
+        "schoolAMembershipId": 1,
+        "schoolAEnrollmentId": 1,
+        "preservedDemoClassId": 1,
+        "preservedSchoolBEnrollmentIds": 2
+      }
+    },
+    {
+      "path": "docs/evidence/sprint-14-actions-20260928.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/sprint-14-actions-navigation-repair-20261013.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/sprint-15b12d-release-20261006.json",
+      "identifier_field_counts": {
+        "schoolId": 4
+      }
+    },
+    {
+      "path": "docs/evidence/sprint-15b12e-release-20261006.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/student-supplementary-staff-actions-20261027.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/teacher-performance-staff-20261027.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/teacher-task-production-integration-20261031.json",
+      "identifier_field_counts": {
+        "affectedSchoolId": 1,
+        "ordinaryDemoClassId": 1
+      }
+    },
+    {
+      "path": "docs/evidence/teacher-today-acceptance-20261028.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    },
+    {
+      "path": "docs/evidence/teacher-workspace-actions-20261027.json",
+      "identifier_field_counts": {
+        "schoolId": 2
+      }
+    }
+  ],
+  "pending": [
+    "Owner supplies the replacement dedicated QA email before coordinated account/CI changes.",
+    "Owner chooses a restricted destination or approved redacted publication scope for operational evidence before real learner use.",
+    "Existing public history exposure is not erased by editing current docs."
+  ]
+}
