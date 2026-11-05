@@ -37,6 +37,7 @@ on:
       - package-lock.json
       - package.json
       - scripts/stamp-release.mjs
+      - scripts/expected-browser-digest.mjs
       - scripts/teacher-feedback-acceptance.mjs
       - scripts/wait-for-production-release.mjs
       - supabase/functions/_shared/**

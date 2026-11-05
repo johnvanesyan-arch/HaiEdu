@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "source": "80d05455f34553c2645399cb881d8e3b58fbeef3",
+  "runId": 41994612320,
+  "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41994612320",
+  "status": "failed",
+  "failedStage": "preflight",
+  "checks": [
+    {
+      "label": "reviewed main and complete dedicated fixtures",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: school-admin.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: teacher-today.css",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: admin.js",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: admin.css",
+      "status": "passed"
+    },
+    {
+      "label": "production source parity: admin.html",
+      "status": "failed"
+    }
+  ],
+  "compiledPreflight": {
+    "pages": 29,
+    "assets": 119,
+    "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+    "passed": true
+  },
+  "createdResources": 0,
+  "mainAuthSessions": 0,
+  "cleanupRecords": 0,
+  "unreached": "Authentication, isolation and browser/delivery acceptance",
+  "cause": "Supplemental raw-template digest expected for compiled admin.html; live compiled bytes match the reviewed manifest."
+}
