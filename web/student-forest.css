@@ -254,6 +254,7 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-work-none { margin
 @media (max-width: 420px) {
   body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button { padding-inline: .375rem; font-size: .8125rem; }
   body:is([data-haiedu-student],[data-forest-surface]) .student-work-refresh { flex: 1 1 100%; }
+}
 /* Compact phone header on learning pages: the back link and account share one
    row, a lone account button sits beside the title, and long course titles use
    a smaller size so the current work reaches the first screen. */
@@ -272,3 +273,18 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-work-none { margin
   body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters .button-link { max-inline-size: 16rem; padding: .5rem .75rem; font-size: .8125rem; line-height: 1.35; }
   body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-active-session { padding: 1rem 1.25rem; }
 }
+
+/* Practice: outcome colour after an answer, and recovery states. Wording and
+   grading are unchanged; colour is never the only cue (each state has text). */
+body:is([data-haiedu-student],[data-forest-surface]) .learning-skill { margin: 0; color: var(--student-hero-muted, var(--student-muted)); font-size: .875rem; font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) .learning-progress { display: block; height: .375rem; margin: -.25rem 0 .5rem; border-radius: 999px; background: var(--student-quiet); overflow: hidden; }
+body:is([data-haiedu-student],[data-forest-surface]) .learning-progress > span { display: block; height: 100%; border-radius: inherit; background: var(--student-accent); }
+body:is([data-haiedu-student],[data-forest-surface]) [data-feedback][data-outcome]:not(:empty) { border-inline-start: 4px solid var(--student-border-control); font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) [data-feedback][data-outcome=correct]:not(:empty) { background: var(--student-success-bg); border-color: var(--student-success); color: var(--student-success); }
+body:is([data-haiedu-student],[data-forest-surface]) [data-feedback]:is([data-outcome=incorrect],[data-outcome=partial]):not(:empty) { background: var(--student-attention-bg); border-color: var(--student-attention); color: var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) [data-feedback][data-outcome] button { font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.feedback,[data-feedback])[data-recovery=uncertain] { background: var(--student-attention-bg); color: var(--student-ink); border-inline-start: 4px solid var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.feedback,[data-feedback])[data-recovery=failed] { background: var(--student-error-bg); color: var(--student-ink); border-inline-start: 4px solid var(--student-error); }
+body:is([data-haiedu-student],[data-forest-surface]) [data-recovery] > p { margin: 0 0 .5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) [data-recovery] > p:last-child { margin-bottom: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .answer-recovery-title { color: var(--student-attention); font-size: 1.0625rem; font-weight: 700; }
