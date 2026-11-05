@@ -42,7 +42,7 @@ async function fixture(t) {
    const data=await response.json();return {data:response.ok?data:null,error:response.ok?null:data};
   }}};
  },{token:f.defaultToken,student:id(10)});
- await page.route('https://esm.sh/**',route=>route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'}));
+ await page.route('**/supabase-browser.bundle.mjs',route=>route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'}));
  await page.route('**/config.js',route=>route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="http://isolated.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture";'}));
  return {f,page,errors,origin};
 }

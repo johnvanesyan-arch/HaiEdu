@@ -1,7 +1,7 @@
 import {resourceHref} from './resource-navigation.mjs';
 import {courseHero,modeIcon,readinessBadge,skillEvidence} from './student-course-presentation.mjs';
 import {assessmentRules,assessmentSkillRules,assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from './supabase-browser.bundle.mjs';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { readLearningSelection, sameContext, sameCourse, contextHref, studentHomeHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
 import { registeredExtensionHref } from './learning-extensions.mjs';

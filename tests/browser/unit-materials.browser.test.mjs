@@ -14,7 +14,7 @@ async function pageFixture(t,f,{mobile=false,aal='aal2'}={}){
  let hold=null;
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
-  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
   if(url.pathname==='/fixture-api'){
    const {name,body,aal}=route.request().postDataJSON();assert.equal(name,'manage-unit-materials');const response=await f.request(body.action,body.payload,{aal});const result=await response.text();

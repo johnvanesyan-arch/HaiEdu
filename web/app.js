@@ -1,5 +1,5 @@
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { routeSession, roleRoutingReady } from "./role-router.js";
 import { signOutStudent } from "./student-signout.mjs";

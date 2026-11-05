@@ -1,11 +1,11 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 /* Sprint 10.5D transition adapter.
    Diagnostic remains in the legacy Home state machine until 10.5E, while all
    practice entry/resume actions are moved to practice.html. */
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const resumeBtn = document.getElementById("resumeLearningBtn");
 const practiceBtn = document.getElementById("startPracticeBtn");
 

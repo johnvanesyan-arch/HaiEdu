@@ -35,7 +35,7 @@ async function surface(t,{mode='privacy',actor=10,width=390,large=false}={}){
   if(large)document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize='32px');
  },{actor:id(mode==='admin'?40:actor),credential:privacyToken(mode==='admin'?40:actor),large});
  await bc.route('**/*',async route=>{
-  const req=route.request(),u=new URL(req.url());if(u.hostname==='esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  const req=route.request(),u=new URL(req.url());if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.origin!==origin)return route.abort();
   if(u.pathname.startsWith('/fixture/')){
    const name=u.pathname.split('/').at(-1),body=req.postDataJSON();let response;

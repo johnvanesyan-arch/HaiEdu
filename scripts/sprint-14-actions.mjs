@@ -87,7 +87,7 @@ async function pageFor(actor, pathname, width = 1365) {
   pages.push({ actor, page });
   page.on('requestfailed', req => {
     const target = new URL(req.url());
-    if (target.hostname === new URL(site).hostname || target.hostname === new URL(url).hostname || target.hostname === 'esm.sh') {
+    if (target.hostname === new URL(site).hostname || target.hostname === new URL(url).hostname) {
       (report.browserRequestFailures ??= []).push({ actor, host: target.hostname, path: target.pathname, failure: req.failure()?.errorText });
     }
   });

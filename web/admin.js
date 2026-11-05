@@ -2,7 +2,7 @@ import {classHistoryMarkup} from './class-history.mjs';
 import {erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { mountSchoolAnalytics } from "./school-analytics-view.mjs";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { schoolMembershipStatus } from "./school-membership-status.js";
 

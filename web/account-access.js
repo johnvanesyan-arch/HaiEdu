@@ -1,5 +1,5 @@
 import { showSignOutNotice } from './account-signout.mjs';
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { roleDestination, studentDestination } from "./account-roles.js";
 

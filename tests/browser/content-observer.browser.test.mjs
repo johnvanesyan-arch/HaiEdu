@@ -89,7 +89,7 @@ window.__editorFixture = { wireEditorRows, addOptionRow, selectItem, collect:()=
       body = 'export const SUPABASE_URL="https://fixture.invalid", SUPABASE_PUBLISHABLE_KEY="fixture-only";';
     } else if (url.origin === origin && url.pathname === "/content-workspace.js") {
       body = "export function clearContentDashboardCache() {} export async function loadContentDashboard() { if(window.__failDashboard) throw new Error('QA տվյալները չհաջողվեց թարմացնել'); return window.__dashboardResponse || {items: [], stats: {}}; }";
-    } else if (url.href === "https://esm.sh/@supabase/supabase-js@2") {
+    } else if (url.pathname === "/supabase-browser.bundle.mjs") {
       body = "export function createClient() { return window.__haieduSupabaseClient; }";
     } else return route.abort("blockedbyclient");
     await route.fulfill({ status: 200, contentType, headers: { "access-control-allow-origin": "*" }, body });

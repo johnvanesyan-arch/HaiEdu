@@ -18,7 +18,7 @@ async function fixture(t,{route='privacy.html',role='student',width=360,held=fal
   }}};
  },{role,held,offline,register:route.includes('account-access')});
  await page.route('**/*',async r=>{
-  const u=new URL(r.request().url());if(u.origin==='https://esm.sh')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  const u=new URL(r.request().url());if(u.pathname==='/supabase-browser.bundle.mjs')return r.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(u.pathname==='/config.js')return r.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic";'});
   if(u.origin!=='https://utilities.test')return r.abort();
   try{const body=await readFile(new URL('../../web'+u.pathname,import.meta.url));return r.fulfill({body,contentType:/\.html$/.test(u.pathname)?'text/html':/\.(mjs|js)$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.ttf')?'font/ttf':'image/svg+xml'});}catch{return r.fulfill({status:404,body:''});}

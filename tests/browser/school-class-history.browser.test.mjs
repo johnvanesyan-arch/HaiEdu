@@ -39,7 +39,7 @@ async function fixture(t,file,{width=1280,large=false,evidence=false}={}){
  },{role,large,evidence});
  await context.route('**/*',async route=>{
   const u=new URL(route.request().url());
-  if(u.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__haieduSupabaseClient;'});
+  if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__haieduSupabaseClient;'});
   if(u.origin!=='https://class-history.test')return route.abort();
   try{return route.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:u.pathname.endsWith('.html')?'text/html':/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.ttf')?'font/ttf':'image/svg+xml'});}catch{return route.fulfill({status:404,body:''});}
  });

@@ -78,7 +78,7 @@ try {
           try { body = req.postDataJSON(); } catch { /* An unparseable data request fails closed. */ }
           const allowed = target.origin === url
             ? mobileReadAllowed({pathname: target.pathname, search: target.search, method: req.method(), body, role, contexts})
-            : ['GET','HEAD'].includes(req.method()) && [site,'https://esm.sh'].includes(target.origin);
+            : ['GET','HEAD'].includes(req.method()) && target.origin === site;
           if (allowed) return route.continue();
           blocked++; return route.abort();
         });

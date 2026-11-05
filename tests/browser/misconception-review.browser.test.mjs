@@ -24,7 +24,7 @@ async function fixture(t,{width=1280,aal='aal2',denied=false}={}){
  },{aal,denied});
  await ctx.route('**/*',async route=>{
   const u=new URL(route.request().url());
-  if(u.href==='https://esm.sh/@supabase/supabase-js@2')return route.fulfill({contentType:'text/javascript',body:'export function createClient(){return window.__haieduSupabaseClient}'});
+  if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export function createClient(){return window.__haieduSupabaseClient}'});
   if(u.origin!==origin)return route.abort();
   const name=u.pathname.slice(1);if(!/^[a-z0-9.-]+$/.test(name))return route.abort();
   try{let body=await readFile(new URL('../../web/'+name,import.meta.url),'utf8');if(name.endsWith('.html'))body=body.replace('<script type="module" src="./ux.js"></script>','');return route.fulfill({contentType:name.endsWith('.html')?'text/html':name.endsWith('.css')?'text/css':'text/javascript',body});}catch{return route.abort();}

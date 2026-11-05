@@ -17,7 +17,7 @@ async function fixture(t,{width=1280,view='',selected=false,...options}={}) {
   await page.addInitScript(`window.__client=(${installStudentHomeFixture.toString()})(${JSON.stringify(options)});`);
   await page.route('**/*',async route=>{
     const url=new URL(route.request().url());
-    if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+    if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>{window.__sdkConstructions=(window.__sdkConstructions||0)+1;return window.__client;};'});
     if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic";'});
     if(url.origin!==origin || url.pathname.includes('..'))return route.abort();
     try {
@@ -37,6 +37,15 @@ async function choose(page,course=6,program=9,unit=8,release=7) {
   await page.locator('#studentCourseSelect').selectOption(id(course)+':'+id(program));
   await page.locator('#studentUnitSelect').selectOption(id(course)+':'+id(release)+':'+id(unit));
 }
+test('Home modules share one SDK client and load no teacher bundle',async t=>{
+  const {page,errors}=await fixture(t,{width:390,selected:true});
+  await page.locator('.student-continue').waitFor();
+  assert.equal(await page.evaluate(()=>window.__sdkConstructions),1);
+  assert.deepEqual(errors,[]);
+  assert.equal(await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>new URL(e.name).pathname==='/supabase-browser.bundle.mjs').length),1);
+  assert.equal(await page.evaluate(()=>performance.getEntriesByType('resource').some(e=>new URL(e.name).hostname==='esm.sh'||new URL(e.name).pathname.includes('teacher-dependencies'))),false);
+});
+
 test('mobile acceptance selects the chapter link when primary course entry has the same destination',async t=>{
   const {page,errors}=await fixture(t,{width:390,view:'courses',active:false});
   const {card,link}=mobileUnitLink(page,id(8));

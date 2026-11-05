@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/build-browser-sdk.mjs
+      - web/supabase-browser.mjs
+      - web/supabase-browser.bundle.mjs
       - web/answer-response-recovery.mjs
       - web/writing-assignments.css
       - web/navigation-focus.mjs

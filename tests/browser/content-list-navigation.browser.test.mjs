@@ -16,7 +16,7 @@ async function fixture(t,{width=1365}={}){
  let hold=null,failure=null;
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
-  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture-only";'});
   if(url.pathname==='/fixture-api'){
    const {name,body}=route.request().postDataJSON();calls.push({name,body});let data={};

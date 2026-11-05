@@ -8,4 +8,4 @@ export {contractMarkup} from './analytics-provenance.mjs';
 export {skillEvidenceState,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup} from './teacher-skill-evidence.mjs';
 export {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from './config.js';
 export {roleDestination} from './account-roles.js';
-export {createClient} from '@supabase/supabase-js';
+export {createClient} from './supabase-browser.bundle.mjs';

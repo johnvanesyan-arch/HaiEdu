@@ -1,6 +1,6 @@
 import {mountStudentTeacherTasks} from './student-teacher-tasks.mjs';
 import {mountStudentWritingAssignments} from './writing-assignments.mjs';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from './supabase-browser.bundle.mjs';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
 import { subjectArtwork } from './subject-visuals.mjs';

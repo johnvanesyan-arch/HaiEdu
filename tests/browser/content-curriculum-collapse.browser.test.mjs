@@ -12,7 +12,7 @@ for(const width of [1365,390])test(`curriculum subjects toggle independently by 
  await page.addInitScript(d=>{const session={user:{id:'fixture-reviewer'}};window.__client={auth:{getSession:async()=>({data:{session}}),getUser:async()=>({data:{user:session.user}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},functions:{invoke:async()=>({data:d})}};},dashboard);
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
-  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
   if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture-only";'});
   if(url.origin==='https://coverage.test'&&/\.(html|css|js|mjs|svg)$/.test(url.pathname))return route.fulfill({contentType:url.pathname.endsWith('.html')?'text/html':url.pathname.endsWith('.css')?'text/css':url.pathname.endsWith('.svg')?'image/svg+xml':'text/javascript',body:await readFile(new URL('../../web'+url.pathname,import.meta.url),'utf8')});
   return route.abort();
