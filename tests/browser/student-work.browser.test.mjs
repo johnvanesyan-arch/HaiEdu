@@ -99,3 +99,15 @@ test('an empty My work has no counts noise and still offers the single refresh',
   assert.equal(await page.locator('[data-work-refresh]').isVisible(),true);
   assert.deepEqual(errors,[]);
 });
+
+test('compact phone header keeps the account button beside the page title',async t=>{
+  const {page,errors}=await work(t,{width:375});
+  const m=await page.evaluate(()=>{
+    const bar=document.querySelector('main.shell > .topbar'),title=bar.querySelector('h1').getBoundingClientRect(),account=bar.querySelector('.student-account-link').getBoundingClientRect();
+    return {height:Math.round(bar.getBoundingClientRect().height),beside:account.left>=title.right-1&&account.top<title.bottom,target:Math.min(account.width,account.height)};
+  });
+  assert.equal(m.beside,true,'Account button sits beside the title');
+  assert.ok(m.height<=120,`Header stays compact (${m.height}px)`);
+  assert.ok(m.target>=44);
+  assert.deepEqual(errors,[]);
+});

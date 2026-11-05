@@ -25,9 +25,12 @@ export function courseHero(tab, data) {
 export function modeIcon(mode) {
  return `<span class="student-feature-icon">${studentIcon(({diagnostic:'assessment',practice:'practice',mastery_check:'progress',chapter_review:'review'})[mode])}</span>`;
 }
+// "Too few answers yet" mirrors the server's own mastery status (insufficient_evidence);
+// the browser applies no answer-count threshold of its own.
 export function readinessBadge(skill) {
- const state=skill.ready===true?'ready':skill.ready===false?'developing':'unknown';
- const label=skill.ready===true?'Պատրաստ է':skill.ready===false?'Ամրապնդում է պետք':'Տվյալը դեռ չկա';
+ const few=skill.ready!==true && skill.mastery?.status==='insufficient_evidence';
+ const state=skill.ready===true?'ready':few?'insufficient':skill.ready===false?'developing':'unknown';
+ const label=skill.ready===true?'Պատրաստ է':few?'Դեռ քիչ պատասխաններ':skill.ready===false?'Ամրապնդում է պետք':'Տվյալը դեռ չկա';
  return `<span class="student-evidence-badge" data-readiness="${state}">${label}</span>`;
 }
 export function skillEvidence(skill) {
