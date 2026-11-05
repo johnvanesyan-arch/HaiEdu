@@ -7,13 +7,14 @@ import { subjectArtwork } from './subject-visuals.mjs';
 import { studentIcon, learningArtwork } from './student-visuals.mjs';
 import { homeLearningSummary } from './student-home-model.mjs';
 import { mountStudentResourceAssignments } from './resource-assignments.mjs';
+import { mountWorkHub, workToolbarMarkup } from './student-work-hub.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const panel = document.getElementById('modePanel');
 const requestedView = new URLSearchParams(location.search).get('view');
 const view = ['courses', 'work'].includes(requestedView) ? requestedView : 'home';
 let root, contexts = [], courses = [], selected = null, requestedCourse = '';
-let assignmentView = null,writingAssignmentView=null,customTaskView=null,deferredTaskAccess=null;
-function clearAssignments() { customTaskView?.dispose();customTaskView=null; writingAssignmentView?.dispose();writingAssignmentView=null; assignmentView?.dispose(); assignmentView = null; }
+let assignmentView = null,writingAssignmentView=null,customTaskView=null,deferredTaskAccess=null,workHub=null;
+function clearAssignments() { workHub?.dispose();workHub=null; customTaskView?.dispose();customTaskView=null; writingAssignmentView?.dispose();writingAssignmentView=null; assignmentView?.dispose(); assignmentView = null; }
 let epoch = 0, accessSignature = null, actorId = null;
 
 function ensureRoot() {
@@ -46,20 +47,21 @@ function courseCards() {
 }
 function render() {
   clearAssignments();
-  const welcome = view === 'work'
-    ? ['Ձեր աշխատանքներն ու ուսուցչի արձագանքը', 'Այստեղ են ուսուցչի հանձնարարությունները, ձեր գրավոր աշխատանքները և ստացած մեկնաբանությունները։']
-    : view === 'courses'
+  const welcome = view === 'courses'
       ? ['Բացեք նոր էջ ձեր ուսուցման մեջ', 'Ընտրեք դասընթացը և շարունակեք ձեր աշխատանքը։']
       : ['Բարի գալուստ։ Շարունակե՞նք սովորել։', 'Ընտրեք դասընթացն ու բաժինը։ Ձեր ընթացիկ աշխատանքը կհայտնվի այստեղ։'];
-  // Home leads with the one continuation action; the decorative welcome stays on the courses/work views.
+  // Home leads with the one continuation action; the decorative welcome stays on the courses view.
+  // My work leads with one status filter and one refresh instead of the decorative welcome.
   const intro = view === 'home'
     ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section>' + selectorMarkup()
+    : view === 'work' ? workToolbarMarkup()
     : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
-  root.innerHTML = `${intro}${view==='work'?'<section aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>':''}${courseCards()}`;
+  root.innerHTML = `${intro}${view==='work'?'<section class="student-work-sources" aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>':''}${courseCards()}`;
   if (view === 'home') void loadSelected();
-  if(view==='work')customTaskView=mountStudentTeacherTasks({root:root.querySelector('#studentCustomTasks'),client:supabase,actorId,onClean:()=>queueMicrotask(()=>{if(deferredTaskAccess&&!customTaskView?.hasUnsaved()){const latest=deferredTaskAccess;deferredTaskAccess=null;updateAccess(latest);}})});
-  if(view==='work')writingAssignmentView=mountStudentWritingAssignments({root:root.querySelector('#studentWritingAssignments'),client:supabase});
-  if (view === 'work') assignmentView = mountStudentResourceAssignments({root:root.querySelector('#studentResourceAssignments'),client:supabase});
+  if(view==='work')workHub=mountWorkHub({toolbar:root.querySelector('.student-work-toolbar'),scope:root.querySelector('.student-work-sources'),sources:3,refresh:()=>{customTaskView?.refresh();writingAssignmentView?.refresh();assignmentView?.refresh();}});
+  if(view==='work')customTaskView=mountStudentTeacherTasks({root:root.querySelector('#studentCustomTasks'),client:supabase,actorId,hubRefresh:true,onRender:state=>workHub?.report('task',state),onClean:()=>queueMicrotask(()=>{if(deferredTaskAccess&&!customTaskView?.hasUnsaved()){const latest=deferredTaskAccess;deferredTaskAccess=null;updateAccess(latest);}})});
+  if(view==='work')writingAssignmentView=mountStudentWritingAssignments({root:root.querySelector('#studentWritingAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('writing',state)});
+  if (view === 'work') assignmentView = mountStudentResourceAssignments({root:root.querySelector('#studentResourceAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('material',state)});
 }
 function syncSelectionUrl() {
   const url = new URL(studentHomeHref(view, selected), location.href);

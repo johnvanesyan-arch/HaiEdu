@@ -49,14 +49,14 @@ function lifetime(root,client){
  }
  return {ready,invoke,open,current:()=>valid(epoch),dispose(){disposed=true;epoch++;subscription.data.subscription.unsubscribe();for(const u of urls)URL.revokeObjectURL(u);urls.clear();root.querySelectorAll('dialog').forEach(d=>d.remove());root.removeAttribute('aria-busy');root.replaceChildren();}};
 }
-function assignmentCard(a,teacher=false){if(!teacher)return studentAssignmentCard(a);
+function assignmentCard(a,teacher=false,work=false){if(!teacher)return studentAssignmentCard(a,{work});
  const m=a.material,d=m.definition;
  return '<article class="assignment-card"><div class="assignment-card-icon" aria-hidden="true">'+studentIcon(d.format==='pdf'?'work':'courses')+'</div><div class="assignment-card-copy"><p class="assignment-context">'+esc(scopeText(a))+'</p><h4 lang="'+esc(d.locale)+'">'+esc(d.title)+'</h4><p class="assignment-meta">v'+m.version+' · '+new Date(a.assignedAt).toLocaleDateString('hy-AM')+(teacher?' · Ստացողներ՝ '+a.recipientCount:a.teacherName?' · '+esc(a.teacherName):'')+'</p>'+(a.instructions?'<p class="assignment-instructions">'+esc(a.instructions)+'</p>':'')+'<p class="assignment-status">'+(a.status==='canceled'?'Չեղարկված է':a.available?(teacher?'Ուղարկված է':'Հանձնարարված է'):'Նյութը հասանելի չէ')+'</p>'+(a.cancelReason?'<p>'+esc(a.cancelReason)+'</p>':'')+'</div><div class="assignment-card-actions">'+(teacher?'<button type="button" class="ghost" data-assignment-inspect="'+esc(a.id)+'">Ստացողներ և պատմություն</button>':a.available?'<button type="button" data-assignment-open="'+esc(a.id)+'">'+(d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը')+'</button>':'')+'</div></article>';
 }
-export function mountStudentResourceAssignments({root,client}){
+export function mountStudentResourceAssignments({root,client,hubRefresh=false,onRender=()=>{}}){
  const life=lifetime(root,client);let generation=0,busy=false,rows=[],offset=0,state='current';
  root.classList.add('resource-assignment-workspace');
- root.innerHTML='<section aria-labelledby="assignedMaterialsTitle"><div class="assignment-heading"><div><h3 id="assignedMaterialsTitle">Նյութերով առաջադրանքներ</h3><p>Բացեք նյութը և հետևեք ուսուցչի հրահանգներին։ PDF-ի ներբեռնումը կատարված աշխատանք չի գրանցում։</p></div><button type="button" class="ghost" data-assignment-refresh>Թարմացնել</button></div><p data-assignment-message role="status" aria-live="polite"></p><div data-assignment-list></div><button type="button" class="ghost" data-assignment-more hidden>Բեռնել ավելին</button><details data-assignment-history><summary>Չեղարկված առաջադրանքների պատմություն</summary><p>Բացելու դեպքում ցանկում կտեսնեք չեղարկված առաջադրանքները։</p></details></section>';
+ root.innerHTML='<section aria-labelledby="assignedMaterialsTitle"><div class="assignment-heading"><div><h3 id="assignedMaterialsTitle">Նյութերով առաջադրանքներ</h3><p>Բացեք նյութը և հետևեք ուսուցչի հրահանգներին։ PDF-ի ներբեռնումը կատարված աշխատանք չի գրանցում։</p></div>'+(hubRefresh?'':'<button type="button" class="ghost" data-assignment-refresh>Թարմացնել</button>')+'</div><p data-assignment-message role="status" aria-live="polite"></p><div data-assignment-list data-work-list></div><button type="button" class="ghost" data-assignment-more hidden>Բեռնել ավելին</button><details data-assignment-history><summary>Չեղարկված առաջադրանքների պատմություն</summary><p>Բացելու դեպքում ցանկում կտեսնեք չեղարկված առաջադրանքները։</p></details></section>';
  const $=q=>root.querySelector(q);
  const message=(t,bad=false)=>{const m=$('[data-assignment-message]');if(m){m.textContent=t;m.classList.toggle('bad',bad);}};
  async function load(more=false){
@@ -66,9 +66,9 @@ export function mountStudentResourceAssignments({root,client}){
    const data=await life.invoke('inbox',{offset,state});
    if(!life.current()||token!==generation)return;
    rows=more?[...rows,...data.assignments]:data.assignments;offset=data.nextOffset;
-   $('[data-assignment-list]').innerHTML=rows.map(a=>assignmentCard(a)).join('')||'<div class="assignment-empty"><p>'+(state==='history'?'Չեղարկված առաջադրանք չկա։':'Ուսուցիչը դեռ առաջադրանք չի ուղարկել։ Երբ ուղարկի, այն կհայտնվի այստեղ։')+'</p></div>';
-   $('[data-assignment-more]').hidden=!data.hasMore;message('');
-  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);if(!more)$('[data-assignment-list]').innerHTML='<button type="button" class="ghost" data-assignment-refresh>Փորձել նորից</button>';}}
+   $('[data-assignment-list]').innerHTML=rows.map(a=>assignmentCard(a,false,state!=='history')).join('')||'<div class="assignment-empty"><p>'+(state==='history'?'Չեղարկված առաջադրանք չկա։':'Ուսուցիչը դեռ առաջադրանք չի ուղարկել։ Երբ ուղարկի, այն կհայտնվի այստեղ։')+'</p></div>';
+   $('[data-assignment-more]').hidden=!data.hasMore;message('');onRender({hasMore:data.hasMore,partial:state==='history'});
+  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);if(!more)$('[data-assignment-list]').innerHTML='<button type="button" class="ghost" data-assignment-refresh>Փորձել նորից</button>';onRender({partial:true});}}
   finally{if(life.current()&&token===generation){busy=false;root.removeAttribute('aria-busy');}}
  }
  const click=e=>{
@@ -81,7 +81,7 @@ export function mountStudentResourceAssignments({root,client}){
  const toggle=e=>{if(e.target.matches('[data-assignment-history]')){state=e.target.open?'history':'current';void load();}};
  root.addEventListener('click',click);root.addEventListener('toggle',toggle,true);
  life.ready.then(ok=>{if(ok&&life.current())void load();else if(life.current())message('Մուտք գործեք առաջադրանքները տեսնելու համար։');}).catch(()=>message('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։',true));
- return {dispose(){generation++;root.removeEventListener('click',click);root.removeEventListener('toggle',toggle,true);life.dispose();}};
+ return {refresh(){if(!busy&&life.current())void load();},dispose(){generation++;root.removeEventListener('click',click);root.removeEventListener('toggle',toggle,true);life.dispose();}};
 }
 export function mountTeacherResourceAssignments({root,client,context,materialId=null,onClose=()=>{}}){
  const life=lifetime(root,client);let generation=0,busy=false,preview=null,mode='class',selected=new Set(),offset=0,search='',timer=null,pending=null,listRows=[],listOffset=0,listState='current',currentReceipt=null,previewNotice='';

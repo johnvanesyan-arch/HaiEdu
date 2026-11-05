@@ -78,3 +78,18 @@ for(const width of [390,768,1280])test('learner custom form retains keyboard act
  const f=await surface(t,{width,large:true,definition:{...textDefinition,response:{kind:'document',allowedFormats:['pdf','docx']}}}),p=f.page;await p.locator('[data-task-open]').click();await p.evaluate(()=>document.fonts.ready);await p.locator('[data-task-file]').focus();assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');const metrics=await p.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,clipped:[...document.querySelectorAll('button')].filter(e=>e.getClientRects().length&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)}));assert.equal(metrics.overflow,false,JSON.stringify(metrics));assert.deepEqual(metrics.clipped,[]);assert.equal(await p.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(245, 246, 239)');
  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-custom-task-'+width+'-200.png',fullPage:true});}assert.deepEqual(f.errors,[]);
 });
+test('My work refresh never closes an open teacher task and its counts wait for the list',async t=>{
+ const f=await surface(t,{home:true}),p=f.page;
+ const calls=name=>p.evaluate(n=>window.__calls.filter(c=>c.name===n&&c.body.action==='inbox').length,name);
+ await expect(p.locator('[data-work-count=todo]')).toHaveText(' · 1');
+ const tasksBefore=await calls('manage-teacher-task-student-work'),writingBefore=await calls('manage-writing-assignments');
+ await p.locator('[data-task-open]').click();await p.locator('[data-task-text]').waitFor();
+ await expect(p.locator('[data-work-count=todo]')).toHaveText('');
+ await p.locator('[data-task-text]').fill('Unsaved answer');
+ await p.locator('[data-work-refresh]').click();
+ await expect.poll(()=>calls('manage-writing-assignments')).toBe(writingBefore+1);
+ await expect(p.locator('[data-task-text]')).toHaveValue('Unsaved answer');
+ assert.equal(await calls('manage-teacher-task-student-work'),tasksBefore,'The open task is not reloaded or closed');
+ assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);
+ assert.deepEqual(f.errors,[]);
+});

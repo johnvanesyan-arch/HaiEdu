@@ -13,6 +13,13 @@ export function installStudentHomeFixture(options = {}) {
     const codes=['english','physics','mathematics','armenian','chemistry','geography','biology','history','unknown'];
     all.splice(0,all.length,...codes.map((code,n)=>({...all[4],subjectCode:code,subjectNameHy:'Առարկա '+code,enrollmentId:id(200+n),subjectProgramId:id(300+n)})));
   }
+  // My work: synthetic items in every state for each assigned-work source (opt-in).
+  const scope={context:{enrollmentId:id(6),curriculumReleaseId:id(7),unitId:id(8)},subjectName:'Անգլերեն',subjectNameHy:'Անգլերեն',className:'7Ա',unitTitle:'Բաժին 1',unitTitleHy:'Բաժին 1',schoolName:'Փորձնական դպրոց Ա',teacherName:'Ուսուցիչ Ա'};
+  const workItems={
+    tasks:['not_started','returned','submitted'].map((state,n)=>({...scope,id:id(600+n),title:['Նախագծի պլան','Լաբորատոր աշխատանքի շտկում','Ընթերցանության ամփոփում'][n],state,cancelled:false,response:{kind:'text'}})).concat([{...scope,id:id(609),title:'Չեղարկված առաջադրանք',state:'not_started',cancelled:true,response:{kind:'text'}}]),
+    writing:['draft','reviewed','submitted'].map((workState,n)=>({...scope,id:id(610+n),task:{id:id(620+n),definition:{locale:'hy',title:['Գրավոր սևագիր','Ստուգված շարադրություն','Ներկայացված էսսե'][n]}},workState,available:true})),
+    materials:[{...scope,id:id(630),assignedAt:'2026-11-01T08:00:00Z',status:'active',available:true,material:{id:id(631),version:1,provider:'teacher',definition:{title:'Լրացուցիչ վարժություններ',locale:'hy',purpose:'practice',format:'pdf'}}}],
+  };
   let contexts = options.contexts ?? (options.empty ? [] : options.single ? [all[2]] : all);
   let session = options.signedOut ? null : { user:{id:options.actorId??id(90)}, access_token:'synthetic-only' };
   let failed = Boolean(options.error), held = Boolean(options.held);
@@ -46,12 +53,12 @@ export function installStudentHomeFixture(options = {}) {
         return result;
       }
       if(name==='manage-teacher-task-student-work'&&body.action==='inbox'){
-        const result={data:{version:'teacher-task-student-work-v1',assignments:[],hasMore:false,nextOffset:50}};
+        const result={data:{version:'teacher-task-student-work-v1',assignments:options.workItems?workItems.tasks:[],hasMore:Boolean(options.workMore),nextOffset:50}};
         if(options.holdCustomInbox)return new Promise(resolve=>pending.push(()=>resolve(result)));
         return result;
       }
-      if(name==='manage-writing-assignments'&&body.action==='inbox')return {data:{version:'writing-assignments-v1',assignments:[],hasMore:false,nextOffset:50}};
-      if(name==='manage-resource-assignments'&&body.action==='inbox')return {data:{assignments:[],hasMore:false,nextOffset:50}};
+      if(name==='manage-writing-assignments'&&body.action==='inbox')return {data:{version:'writing-assignments-v1',assignments:options.workItems&&body.payload?.state!=='history'?workItems.writing:[],hasMore:false,nextOffset:50}};
+      if(name==='manage-resource-assignments'&&body.action==='inbox')return {data:{assignments:options.workItems&&body.payload?.state!=='history'?workItems.materials:[],hasMore:false,nextOffset:50}};
       if(name==='manage-written-work') return {data:{version:'written-work-v1',tasks:options.writingTasks ? ['draft','submitted','reviewed'].map((state,n)=>({id:id(400+n),title:['Գրավոր սևագիր','Ներկայացված աշխատանք','Ստուգված աշխատանք'][n],locale:'hy',state,available:true,baselineRequired:false})) : []}};
       throw Error('Unexpected API '+name);
     }},
