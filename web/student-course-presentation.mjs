@@ -8,13 +8,18 @@ const views = {
  guides: ['Օգնություն՝ սովորելու համար', 'Բացեք տվյալ բաժնի հասանելի ուղեցույցը։', 'courses'],
  writing: ['Ձեր մտքերը՝ ձեր բառերով', 'Սևագրեր, ներկայացված աշխատանքներ և ուսուցչի արձագանք՝ մեկ վայրում։', 'work'],
 };
-export function courseHero(tab, data) {
- const [title,description,icon] = views[tab] || views.course;
+// Readiness is factual evidence, not decoration: it is shared by the banner and
+// by the course tab, which shows it beside the skills it summarizes.
+export function readinessSummary(data) {
  const required=(data.skills || []).filter(s=>s.requiredForReadiness!==false);
  const known=required.length>0 && required.every(s=>typeof s.ready==='boolean');
+ if(!known) return '';
  const ready=required.filter(s=>s.ready===true).length;
- const evidence=known && ['course','progress'].includes(tab)
-  ? `<div class="student-course-readiness"><strong>${ready} / ${required.length}</strong><span>Պահանջվող հմտություններ՝ պատրաստ ստուգման</span><meter min="0" max="${required.length}" value="${ready}" aria-label="Պահանջվող հմտությունների պատրաստություն">${ready}/${required.length}</meter></div>` : '';
+ return `<div class="student-course-readiness"><strong>${ready} / ${required.length}</strong><span>Պահանջվող հմտություններ՝ պատրաստ ստուգման</span><meter min="0" max="${required.length}" value="${ready}" aria-label="Պահանջվող հմտությունների պատրաստություն">${ready}/${required.length}</meter></div>`;
+}
+export function courseHero(tab, data) {
+ const [title,description,icon] = views[tab] || views.course;
+ const evidence=['course','progress'].includes(tab) ? readinessSummary(data) : '';
  return `<section class="student-course-hero" aria-labelledby="studentViewTitle"><div>${tab === 'course' ? `<span class="student-course-subject-art">${subjectArtwork(data.context?.subjectCode)}</span>` : `<span class="student-feature-icon">${studentIcon(icon)}</span>`}<h2 id="studentViewTitle">${title}</h2><p>${description}</p></div>${evidence}</section>`;
 }
 export function modeIcon(mode) {

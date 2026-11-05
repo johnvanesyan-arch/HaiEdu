@@ -289,7 +289,8 @@ for(const width of [360,768,1920]) for(const tab of ['course','progress']) test(
   assert.equal(await table.locator('thead th').count(),tab==='progress'?3:4);
   const metrics=await page.evaluate(()=>({
     viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
-    tables:[...document.querySelectorAll('#courseContent table')].map(el=>({collapse:getComputedStyle(el).borderCollapse,padding:parseFloat(getComputedStyle(el.querySelector('td')).paddingTop)}))
+    // Phone skill cards move row spacing from the cell to the card; either must stay readable.
+    tables:[...document.querySelectorAll('#courseContent table')].map(el=>{const cell=getComputedStyle(el.querySelector('td')),card=cell.display==='block'?getComputedStyle(el.querySelector('tbody tr')):null;return {collapse:getComputedStyle(el).borderCollapse,padding:card?Math.min(parseFloat(card.paddingTop),parseFloat(card.paddingLeft)):parseFloat(cell.paddingTop)};})
   }));
   await capture(page,'shared-'+tab+'-'+width,metrics);
   assert.ok(metrics.documentWidth<=width+1);

@@ -202,3 +202,41 @@ body:is([data-haiedu-student],[data-forest-surface]).amp-focused-task > main.she
 /* Subject-aware artwork is decorative; curriculum labels remain live text. */
 .student-subject-art { display:block; flex:0 0 auto; width:10rem; height:6.125rem; max-width:100%; color:var(--student-accent,#285b45); }
 .student-course-subject-art { display:block; margin-bottom:1rem; }
+
+/* Course page: three primary sections, secondary links, current work first and
+   skills as cards on phones. Presentation only; routes and data are unchanged. */
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs { display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; padding: 0; border: 0; background: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary { display: flex; flex-wrap: wrap; gap: .25rem; padding: .25rem; border-radius: .875rem; background: var(--student-quiet); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a { flex: 1 1 0; min-inline-size: min-content; min-height: 2.75rem; padding: .5rem; border: 0; border-radius: .625rem; background: transparent; color: var(--student-ink); font-size: .875rem; font-weight: 600; text-align: center; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a:hover { background: var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a[aria-current=page] { background: var(--student-accent); color: var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-secondary { display: flex; flex-wrap: wrap; gap: .5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-secondary a { flex: 0 1 auto; flex-basis: auto; inline-size: auto; min-height: 2.75rem; padding: .5rem .875rem; border: 1px solid var(--student-divider); border-radius: 999px; background: var(--student-surface); color: var(--student-ink); font-size: .875rem; font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-secondary a[aria-current=page] { background: var(--student-selected); border-color: var(--student-accent); color: var(--student-accent); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-session-bar { display: block; height: .5rem; margin-top: .75rem; border-radius: 999px; background: var(--student-divider); overflow: hidden; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-session-bar > span { display: block; height: 100%; border-radius: inherit; background: var(--student-accent); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-data-section .student-course-readiness { width: auto; margin: 0 0 1rem; padding: 0; background: none; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: .75rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-data-section .student-course-readiness strong { font-size: 1.5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .course-data-section .student-course-readiness meter { grid-column: 1 / -1; width: 100%; }
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .matrix-wrap { overflow: visible; border: 0; border-radius: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table { min-width: 0; table-layout: auto; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table :is(tbody,tr,td) { display: block; width: auto; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tbody { display: grid; gap: .75rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .5rem .75rem; padding: .875rem 1rem; border: 1px solid var(--student-divider); border-radius: 1rem; background: var(--student-surface); }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table td { padding: 0; border: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table td:nth-child(-n+2) { grid-column: 1 / -1; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table td:first-child { color: var(--student-ink); font-size: 1rem; font-weight: 600; line-height: 1.5; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table td:empty { display: none; }
+}
+/* Many-chapter courses: one horizontally scrollable row on phones instead of a
+   full-width button per chapter, so the current work stays near the top. */
+@media (max-width: 760px) {
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters { display: flex; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; padding: .5rem; scroll-padding-inline: .5rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters .button-link { flex: 0 0 auto; max-inline-size: 15rem; white-space: normal; text-align: start; }
+}
+/* Keep the three primary sections on one row on common phones (≥360px). */
+@media (max-width: 420px) {
+  body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a { padding-inline: .375rem; font-size: .8125rem; }
+}
