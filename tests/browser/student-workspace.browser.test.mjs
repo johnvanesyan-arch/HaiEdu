@@ -314,6 +314,7 @@ const studentRoutes=[
 for(const width of [320,360,1280]) for(const [route,ready] of studentRoutes) test(`student route ${route} retains its complete interface at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{width,route,manySkills:true});
   await page.waitForSelector(ready,{state:'visible'});
+  if(route==='practice.html'&&width===320)t.diagnostic('BF07_LEGACY_PRACTICE '+JSON.stringify(await page.evaluate(()=>window.__calls)));
   if(route==='mastery.html') await page.waitForFunction(()=>document.getElementById('masteryStateBadge').textContent!=='Բեռնվում է');
   const metrics=await page.evaluate(()=>{
     const nav=document.querySelector('.amp-nav-list');
