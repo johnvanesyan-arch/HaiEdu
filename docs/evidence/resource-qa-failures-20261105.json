@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-05",
+  "timezone": "Asia/Dubai",
+  "scope": "Resource acceptance on PR411; retain both failed attempts without private identifiers",
+  "attempts": [
+    {
+      "schemaVersion": 1,
+      "revision": "c9c1632d8b58cc1a384a9df677f65f27e648cefd",
+      "runId": 42003567660,
+      "runAttempt": 1,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42003567660/attempts/1",
+      "status": "failed",
+      "mainPassed": 254,
+      "mainTotal": 255,
+      "failedStage": "custom teacher task delivery",
+      "failedCheck": {
+        "label": "A_student: custom manage-teacher-task-student-work/inbox",
+        "httpStatus": 401
+      },
+      "compiledPreflight": {
+        "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+        "pages": 29,
+        "assets": 119,
+        "passed": true
+      },
+      "isolationBefore": 54,
+      "isolationAfter": "not reached",
+      "cause": {
+        "confirmed": true,
+        "globalLogoutAt": "2026-11-05T10:07:45Z",
+        "failedRequestAt": "2026-11-05T10:07:46.995Z",
+        "logoutPath": "/auth/v1/logout?scope=global",
+        "actor": "A separate non-headless browser used the same designated QA account.",
+        "correlation": "Auth audit and request logs identify a successful global logout for that account; the next QA request fails because its session was removed. Its access-token expiry had not been reached.",
+        "authError": "session_not_found"
+      },
+      "cleanup": {
+        "resourcesWithdrawn": 2,
+        "resourceAssignmentsCancelled": 4,
+        "writingAssignmentsCancelled": 2,
+        "customTaskDeliveriesCancelled": 1,
+        "mainSessionsClosed204": 5,
+        "revokedMainSession": {
+          "cleanupStatus": 403,
+          "cleanupAcknowledged": false,
+          "readOnlyDatabaseCheck": "The exact failed-run session is absent; no session remains to close."
+        },
+        "privateDraftRetention": "Run-owned teacher drafts, pinned source PDFs and immutable delivery audits remain under the existing retention contract."
+      },
+      "unreached": [
+        "Remaining custom-task acceptance",
+        "Cross-role usability reads",
+        "Final isolation"
+      ],
+      "response": "Retain the failed attempt. One complete same-source retry with fresh ordinary authorized sessions, only after verified owned cleanup and the existing queue completed. No application/Auth settings, authorization checks, timeout or grading changes."
+    },
+    {
+      "schemaVersion": 1,
+      "revision": "c9c1632d8b58cc1a384a9df677f65f27e648cefd",
+      "runId": 42003567660,
+      "runAttempt": 2,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42003567660/attempts/2",
+      "status": "failed",
+      "mainPassed": 110,
+      "mainTotal": 111,
+      "failedStage": "A: class and selected delivery",
+      "failedChecks": [
+        {
+          "label": "A_student: assignment inbox",
+          "status": "failed",
+          "httpStatus": 0
+        }
+      ],
+      "isolationBefore": 54,
+      "isolationAfter": "not reached",
+      "compiledPreflight": {
+        "pages": 29,
+        "assets": 119,
+        "buildId": "1b2a2a8183caa8e581c44bc4f642ce797f4d3511cae944c67c31aedd7a58ed57",
+        "passed": true
+      },
+      "cleanup": {
+        "resourcesWithdrawn": 1,
+        "resourceAssignmentsCancelled": 2,
+        "writingAssignmentsCreated": 0,
+        "customTaskDeliveriesCreated": 0,
+        "ownSessionsClosed204": 6
+      },
+      "cause": "Unconfirmed. The old request wrapper discards the exception and emits HTTP0. Available Edge/gateway logs did not identify the missing assignment-inbox request; no exact timeout/network/body-read cause is asserted.",
+      "response": "Add privacy-safe request diagnostics while preserving single requests, the25-second deadline, response semantics, authorization, fixtures and owned cleanup. Do not hide the failure with automatic retries or longer timeouts."
+    }
+  ],
+  "productionChange": "None; investigation used read-only provider logs and one exact-session presence query. Request diagnostics are a QA-only prepared change.",
+  "closure": "BF-06 and QA-TRANSPORT-01/BF-37 remain open pending their distinct evidence."
+}
