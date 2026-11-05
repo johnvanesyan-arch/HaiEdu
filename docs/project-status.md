@@ -1,6 +1,6 @@
 # Project status register
 
-**2026-11-05 Asia/Dubai — Sprint 16.5B student experience refinement delivered; production QA partly open.** Owner-approved refinements are merged and live. All are shared-core presentation changes, except one read-only endpoint:
+**2026-11-05 Asia/Dubai — Sprint 16.5B student experience refinement delivered; production QA failures open.** Owner-approved refinements are merged and live. All are shared-core presentation changes, except one read-only endpoint:
 - [PR412](https://github.com/johnvanesyan-arch/HaiEdu/pull/412) `2a8c954`: Home next step first.
 - [PR413](https://github.com/johnvanesyan-arch/HaiEdu/pull/413) `6dc058c`: course page current work first and three primary sections.
 - [PR416](https://github.com/johnvanesyan-arch/HaiEdu/pull/416) `793669b`: My work status filter and single refresh.
@@ -13,8 +13,13 @@
 - The canonical site served each merged build: release identity matches main.
 - Production suites on PR417 `b9cde5b`: 11/13 pass. Mobile failed on Playwright strict mode, caused by PR417's second `.course-tabs`; fixed in PR418.
 - Production suites on PR418 `9128da5`: 11/13 pass, including Mobile.
-- Resource-assignment acceptance failed on both builds with all recorded checks passing (204/204) and a thrown step. Its stage and error are only in the run artifact, which was not retrieved, so the cause is **unconfirmed**.
-- Teacher-feedback reads failed 28/29 on `9128da5` after passing on `b9cde5b`; the failing check is likewise unconfirmed.
+- Resource-assignment acceptance failed on `b9cde5b` and `9128da5` (204/204 recorded checks, then a thrown step) and on `071e5e5` (204/207). The `071e5e5` run made no `get-student-work` call, so it stopped before My work.
+- Teacher-feedback reads failed 28/29 on `9128da5`, then passed on `071e5e5`.
+- Production suites on PR419 `071e5e5`: 7/13 pass (Teacher feedback, Mobile, English Units 1 and 3, Sprint 14 actions, Sprint 14D analytics).
+  - Chapters II–VI and English Unit 2 each failed exactly one check, and Chapter IV stopped at 3/4. They had passed on `9128da5`.
+  - PR419 changed no page or function these suites use (Home and course reads, `get-student-classes`, `get-student-dashboard`); its only Home change applies to `view=work`.
+  - Their failing checks and the resource stage and error are only in run artifacts, which were not retrieved. The causes are **unconfirmed**; data or environment changes are not excluded.
+- Edge logs show two live `get-student-work` POSTs returning 200 during the passing teacher-feedback run.
 - 22 superseded queued production runs were cancelled with the owner's approval.
 
 **Limits.** No signed-in live usability check was made, owner usability acceptance is not given, and BF-07 and the existing gates are unchanged.
@@ -134,7 +139,7 @@ Records: [Home](student-home-next-step-20261105.md) · [course](student-course-p
 **Historical Sprint 16.5B.2 — all existing student subpages delivered, 2026-10-27.** [PR309](https://github.com/johnvanesyan-arch/HaiEdu/pull/309) extends Forest across shared and legacy course/assessment/progress/task/results, guides, writing/teacher feedback, account/privacy, join and the shared identity gateway. All five required PR/main CI jobs pass, including **1,456 unit/integration tests and 165 native-browser checks**. Production source `e7efc028d90e351270bec6606078b6867546db8c` and all 18 changed frontend assets match; authenticated acceptance passes **324 Physics, 154 English and 10 staff-analytics checks**. All 45 capabilities and service dependencies remain; no backend/content/scoring/replay changes. S45 complete resource authoring/delivery and full 16.5C/four-subject acceptance remain open. English stays paused after C47. [Subpage delivery](student-subpages-implementation.md) · [Release evidence](evidence/student-subpages-release-20261027.json).
 
 
-**Updated:** 2026-11-05 Asia/Dubai · 16.5B student refinement live (PR412–419; get-student-work v1 deployed); resource/teacher-feedback production QA failures unconfirmed; BF-06 technical delivery verified; BF-07 next; BF-37 transport cause, owner usability/B.12.3/B.12 and subject-expansion gates remain open; BF-02 deferred · **Roadmap:** 4.149
+**Updated:** 2026-11-05 Asia/Dubai · 16.5B student refinement live (PR412–419; get-student-work v1 deployed); PR419 production QA 7/13 with chapter/English U2/resource failures unconfirmed; BF-06 technical delivery verified; BF-07 next; BF-37 transport cause, owner usability/B.12.3/B.12 and subject-expansion gates remain open; BF-02 deferred · **Roadmap:** 4.149
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 

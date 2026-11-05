@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform
 
-**2026-11-05 — 16.5B student experience refinement live; production QA partly open.**
+**2026-11-05 — 16.5B student experience refinement live; production QA failures open.**
 - What is live (PR412–PR419, all five required checks pass):
   - Home leads with the next step.
   - The course page shows the current work first.
@@ -8,7 +8,7 @@
   - The phone header is compact, and the evidence badge mirrors the server status.
   - Practice shows outcome colours and a connection-lost state.
 - PR418 also fixed an unclosed stylesheet block introduced by the PR416/PR417 merge, plus the mobile QA selector.
-- Production suites pass 11/13 on PR418. Resource-assignment and teacher-feedback failures remain unconfirmed: their artifacts were not retrieved.
+- Production suites pass 11/13 on PR418 and 7/13 on PR419: Chapters II–VI, English Unit 2 and resource assignment each fail, with causes unconfirmed because their artifacts were not retrieved. Teacher feedback passes on PR419.
 - No live usability check has been made, and owner acceptance is not given. See the [status register](docs/project-status.md).
 
 **2026-11-05 — BF-06 implementation and technical verification complete; BF-07 is next.** Functional PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f` was verified on the canonical site and passes all five PR/main checks (1,740 unit/integration;455 native). All five automatic production suites pass, including instrumented resource 327/327 plus 54+54 isolation with owned cleanup and six 204 session closures. Selected coverage across 13 scopes totals2,024 main assertions and 864 isolation controls: five fresh e25cebe2 executions and eight explicitly reused source-equivalent executions, not one fresh 13-suite batch. The29-page/119-asset build, exact compiled bytes/cache policies, isolated cache measurements and archive-preserving redeployment rollback are verified. Original raw-template, global-logout and HTTP0 failures remain recorded; BF-37's intermittent transport cause stays unconfirmed. No database/Edge/Auth-settings/grading change or repeated learner recovery write. BF-02 remains deferred; independent/account/owner/content gates remain open. [Verified delivery and exact limits](docs/qa/browser-build-delivery-20261105.md).
