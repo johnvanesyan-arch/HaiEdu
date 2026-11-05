@@ -20,13 +20,28 @@ Vercel Instant Rollback points at an older deployment that lacks newer archived 
 
 ## Verification
 
+PR409’s foundation completed all thirteen guarded production QA runs on the base commit: **2,024 main assertions and 864 isolation controls**, verified from downloaded artifact revisions and passing checks. [Sanitized execution index](../evidence/browser-dependency-qa-20261105.json). This is separate from the compiled-build release below.
+
+[PR410 CI41992311130](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41992311130) passes all five required jobs on candidate `577c6cf3539892ecbf65c74597f847fc3ee9089e`: 1,732 unit/integration and 455 native tests, zero failures/skips/cancellations. All 33 new compiled-build cases pass, including 29 page entrypoints, signed-in Home/teacher tools, isolated SDK construction, real HTTP caching and delayed imports across deployment/redeployed rollback with retained unsaved input. The canonical preview manifest matches exactly; preview HTML has `max-age=0, must-revalidate`, metadata `no-store`, and the byte-exact startup chunk `max-age=31536000, immutable`. This is preview verification, not production delivery. Final-head/main/live results are recorded in the PR.
+
 The new required production preflight checks the expected release commit before and after fetching the exact compiled manifest, all 29 rendered HTML pages and current hashed artifacts. It checks byte hashes and cache headers. Existing raw-source assertions remain additional evidence. Every active production browser workflow includes the shared build inputs and archive in its path triggers, preserving reviewed-main, designated fixtures, cleanup and serial non-cancelling queue guards.
 
 New unit/integration checks cover immutable retention/tampering, stale source rejection, safe output directories, output-directory independence, dynamic stylesheet hash propagation, deletion of a whole historical release, compiled-output substitution despite matching source copies, and separate teacher/student startup graphs.
 
 Native tests run actual compiled output over HTTP, including all 29 signed-out entrypoints, signed-in Home and teacher class tools with synthetic clients, and a real isolated SDK client. A separate two-version fixture reproduces delayed lazy imports with unsaved input across forward deployment and a newly deployed rollback. A local gzip server records cold/warm Home requests and body bytes; no Playwright route interception is used because it disables browser caching. The artifact `bf06-build-cache.json` records measurements. These are isolated fixture/browser-cache measurements, not production WAN/CDN latency, full signed-in usability or owner acceptance. The existing source-browser suite remains required alongside compiled-output coverage.
 
-Release evidence, native measurements and PR/main/live results must be attached before calling this build delivered. Local Chromium is unavailable in the current workspace; CI runs the native checks with its pinned browser installation. A successful local build or Vercel READY alone is insufficient.
+Measured isolated Home results from the CI artifact:
+
+| Variant | HTTP requests | Compressed response-body bytes |
+| --- | ---: | ---: |
+| Source, cold | 55 | 243,648 |
+| Compiled, cold | 44 | 219,106 |
+| Source, warm | 55 | 0 |
+| Compiled, warm | 2 | 0 |
+
+Both warm cases transferred zero bodies; the improvement is avoiding subresource revalidation requests. The compiled warm case makes no `/_assets/` server requests. [Full isolated measurement](../evidence/browser-build-cache-20261105.json). This is one synthetic signed-out Home comparison, not all-role or real-user latency evidence.
+
+Final-head/main/live results must be attached before calling this build delivered. Local Chromium is unavailable in the current workspace; CI runs the native checks with its pinned browser installation. A successful local build or Vercel READY alone is insufficient.
 
 ## Retained decisions and next item
 

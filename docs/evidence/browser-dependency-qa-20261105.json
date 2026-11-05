@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "revision": "e79ea71940705005db13b476963660bd9b42d782",
+  "mainAssertions": 2024,
+  "isolationControls": 864,
+  "runs": [
+    {
+      "runId": 41983291299,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291299",
+      "status": "passed",
+      "mainChecks": 87,
+      "isolation": [
+        {
+          "phase": "isolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "isolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291299"
+    },
+    {
+      "runId": 41983291318,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291318",
+      "status": "passed",
+      "mainChecks": 191,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291318"
+    },
+    {
+      "runId": 41983291364,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291364",
+      "status": "passed",
+      "mainChecks": 155,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291364"
+    },
+    {
+      "runId": 41983291381,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291381",
+      "status": "passed",
+      "mainChecks": 142,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291381"
+    },
+    {
+      "runId": 41983291421,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291421",
+      "status": "passed",
+      "mainChecks": 10,
+      "isolation": [],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291421"
+    },
+    {
+      "runId": 41983291435,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291435",
+      "status": "passed",
+      "mainChecks": 206,
+      "isolation": [
+        {
+          "phase": "readIsolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "readIsolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291435"
+    },
+    {
+      "runId": 41983291471,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291471",
+      "status": "passed",
+      "mainChecks": 84,
+      "isolation": [
+        {
+          "phase": "before",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "after",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291471"
+    },
+    {
+      "runId": 41983291495,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291495",
+      "status": "passed",
+      "mainChecks": 154,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291495"
+    },
+    {
+      "runId": 41983291561,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291561",
+      "status": "passed",
+      "mainChecks": 130,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291561"
+    },
+    {
+      "runId": 41983291577,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291577",
+      "status": "passed",
+      "mainChecks": 91,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291577"
+    },
+    {
+      "runId": 41983291595,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291595",
+      "status": "passed",
+      "mainChecks": 123,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291595"
+    },
+    {
+      "runId": 41983291611,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291611",
+      "status": "passed",
+      "mainChecks": 324,
+      "isolation": [
+        {
+          "phase": "readIsolation",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291611"
+    },
+    {
+      "runId": 41983291621,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291621",
+      "status": "passed",
+      "mainChecks": 327,
+      "isolation": [
+        {
+          "phase": "isolationBefore",
+          "passed": 54,
+          "failed": 0
+        },
+        {
+          "phase": "isolationAfter",
+          "passed": 54,
+          "failed": 0
+        }
+      ],
+      "artifact": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/41983291621"
+    }
+  ],
+  "checkedAt": "2026-11-05",
+  "scope": "All thirteen source-guarded production QA suites after PR409; downloaded JSON artifacts checked for exact revision and passing controls. No extra answer-recovery run.",
+  "limits": [
+    "Main assertion counts and nested isolation controls are distinct.",
+    "Existing owner usability, independent review, subject/content and coverage gates remain open.",
+    "BF-02 remains owner-deferred.",
+    "This receipt does not establish the new hashed build; PR410 has separate release gates."
+  ]
+}
