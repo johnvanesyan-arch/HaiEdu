@@ -16,6 +16,7 @@ on:
       - web/writing-assignments.css
       - web/navigation-focus.mjs
       - web/writing-assignments.mjs
+      - web/student-work-hub.mjs
       - web/student-teacher-tasks.mjs
       - web/student-teacher-task-client.mjs
       - web/account-signout.mjs

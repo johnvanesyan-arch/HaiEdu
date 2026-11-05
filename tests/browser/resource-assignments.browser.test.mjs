@@ -64,12 +64,12 @@ test('teacher class send survives lost response without duplicates and arrives i
  await p.locator('[data-assignment-retry-send]').click();await p.locator('.assignment-receipt').waitFor();
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);
  const calls=await p.evaluate(()=>window.__assignmentCalls.filter(c=>c.body.action==='assign'));assert.equal(calls.length,2);assert.deepEqual(calls[0].body,calls[1].body);
- await s.locator('[data-assignment-refresh]').click();await s.locator('[data-assignment-open]').waitFor();assert.match(await s.locator('.assignment-instructions').innerText(),/Compare the two ideas/);
+ await s.locator('[data-work-refresh]').click();await s.locator('[data-assignment-open]').waitFor();assert.match(await s.locator('.assignment-instructions').innerText(),/Compare the two ideas/);
  assert.equal(new URL(s.url()).searchParams.get('view'),'work');
  for(const href of await s.locator('.amp-subject-card .button-link').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))))assert.match(href,/tab=writing/);
  await s.locator('[data-assignment-open]').click();await s.locator('dialog[open]').waitFor();assert.equal(await s.locator('dialog a').getAttribute('rel'),'noopener noreferrer');await s.keyboard.press('Escape');
  await p.locator('[data-assignment-inspect]').click();await p.locator('.assignment-cancel summary').click();await p.locator('[data-assignment-cancel-reason]').fill('Class plan changed.');await p.locator('[data-assignment-cancel]').click();await p.waitForFunction(()=>document.querySelector('.assignment-receipt h4')?.textContent.includes('չեղարկված'));
- await s.locator('[data-assignment-refresh]').click();await s.locator('.assignment-empty').waitFor();await s.locator('[data-assignment-history] summary').click();await s.locator('.assignment-card').waitFor();assert.equal(await s.locator('[data-assignment-open]').count(),0);
+ await s.locator('[data-work-refresh]').click();await s.locator('.assignment-empty').waitFor();await s.locator('[data-assignment-history] summary').click();await s.locator('.assignment-card').waitFor();assert.equal(await s.locator('[data-assignment-open]').count(),0);
  assert.deepEqual(teacher.errors,[]);assert.deepEqual(student.errors,[]);
 });
 test('selected learner snapshot excludes an eligible classmate, stale roster requires a fresh preview',async t=>{
@@ -122,7 +122,7 @@ test('file-first teacher creation publishes and hands off to selected recipients
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0,'publication does not send silently');
  await p.locator('[name=assignmentAudience][value=selected]').check();await p.locator('[data-recipient="'+context(0).enrollmentId+'"]').check();
  await p.locator('[data-assignment-send]').click();await p.locator('.assignment-receipt').waitFor();
- await s.locator('[data-assignment-refresh]').click();await s.locator('[data-assignment-open]').waitFor();
+ await s.locator('[data-work-refresh]').click();await s.locator('[data-assignment-open]').waitFor();
  const download=s.waitForEvent('download');await s.locator('[data-assignment-open]').click();const result=await download;
  assert.deepEqual(await readFile(await result.path()),pdfUpload.buffer);
  assert.equal((await call(f.db,'inbox',{}, {actor:12})).assignments.length,0);
@@ -182,13 +182,13 @@ test('library publication stays optional until a separate explicit assignment cr
  assert.equal(await p.locator('[data-assignment-send]').count(),0);
  const library=await surface(t,f,{actor:10,view:'materials',width:360});await library.page.locator('[data-resource-open]').waitFor();
  assert.equal(await library.page.locator('h1').innerText(),'Նյութերի գրադարան');
- await s.locator('[data-assignment-refresh]').click();await s.locator('.assignment-empty').waitFor();
+ await s.locator('[data-work-refresh]').click();await s.locator('.assignment-empty').waitFor();
  assert.equal(await s.locator('#multiSubjectHome a[href*="materials"]').count(),0,'My work has no duplicated library shortcut');
  assert.equal(await s.locator('.amp-nav-link[aria-label="Նյութերի գրադարան"]').count(),1);
  await p.locator('[data-resource-publish-assign]').click();await p.locator('[data-assignment-send]').waitFor();
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0,'recipient confirmation remains explicit');
  await p.locator('[data-assignment-send]').click();await p.locator('.assignment-receipt').waitFor();
- await s.locator('[data-assignment-refresh]').click();await s.locator('[data-assignment-open]').waitFor();
+ await s.locator('[data-work-refresh]').click();await s.locator('[data-assignment-open]').waitFor();
  assert.equal((await f.db.query('select count(*)::int n from supplementary_resource_versions')).rows[0].n,1,'one published material supports library and assignment');
  assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,1);
  assert.match(await s.locator('.assignment-status').innerText(),/Հանձնարարված է/);

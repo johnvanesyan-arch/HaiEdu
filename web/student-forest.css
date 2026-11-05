@@ -240,3 +240,18 @@ body:is([data-haiedu-student],[data-forest-surface]) .course-data-section .stude
 @media (max-width: 420px) {
   body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a { padding-inline: .375rem; font-size: .8125rem; }
 }
+
+/* My work: one status filter and one refresh above the assigned-work sources. */
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-filter { display: flex; flex: 1 1 18rem; flex-wrap: wrap; gap: .25rem; padding: .25rem; border-radius: .875rem; background: var(--student-quiet); min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button { flex: 1 1 0; min-inline-size: min-content; min-height: 2.75rem; margin: 0; padding: .5rem; border: 0; border-radius: .625rem; background: transparent; color: var(--student-ink); font: inherit; font-size: .875rem; font-weight: 600; line-height: 1.3; box-shadow: none; overflow-wrap: normal; word-break: normal; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button:hover { background: var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button[aria-pressed=true] { background: var(--student-accent); color: var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-refresh { flex: 0 0 auto; min-height: 2.75rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-count { white-space: nowrap; }
+body:is([data-haiedu-student],[data-forest-surface]) [data-work-hidden] { display: none !important; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-none { margin: .5rem 0; padding: .75rem 1rem; border-radius: .75rem; background: var(--student-quiet); color: var(--student-muted); font-size: .875rem; }
+@media (max-width: 420px) {
+  body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button { padding-inline: .375rem; font-size: .8125rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) .student-work-refresh { flex: 1 1 100%; }
+}
