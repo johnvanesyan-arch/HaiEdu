@@ -288,3 +288,26 @@ body:is([data-haiedu-student],[data-forest-surface]) :is(.feedback,[data-feedbac
 body:is([data-haiedu-student],[data-forest-surface]) [data-recovery] > p { margin: 0 0 .5rem; }
 body:is([data-haiedu-student],[data-forest-surface]) [data-recovery] > p:last-child { margin-bottom: 0; }
 body:is([data-haiedu-student],[data-forest-surface]) .answer-recovery-title { color: var(--student-attention); font-size: 1.0625rem; font-weight: 700; }
+
+/* My work as one list (combined endpoint). */
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-course { display: grid; gap: .25rem; flex: 1 1 14rem; min-width: 0; font-size: .875rem; font-weight: 600; color: var(--student-ink); }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.student-work-course,.student-work-toolbar,.student-work-list,.student-work-focus)[hidden] { display: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-course select { min-height: 2.75rem; width: 100%; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-list { display: grid; gap: .75rem; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-list > h2 { margin: .5rem 0 0; font-size: 1.25rem; }
+body:is([data-haiedu-student],[data-forest-surface]) [data-work-items] { display: grid; gap: .75rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-item { display: grid; gap: .5rem; min-width: 0; padding: 1rem; border: 1px solid var(--student-divider); border-radius: 1rem; background: var(--student-surface); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-item > * { margin: 0; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-item h3 { font-size: 1.0625rem; line-height: 1.45; color: var(--student-ink); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-context { font-size: .875rem; color: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .875rem; color: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-chip { padding: .125rem .625rem; border-radius: 999px; background: var(--student-quiet); color: var(--student-muted); font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-chip[data-work-chip=returned] { background: var(--student-feedback-bg); color: var(--student-feedback); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-item button { justify-self: start; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-instructions { white-space: pre-wrap; overflow-wrap: anywhere; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-unavailable { margin: 0; padding: .75rem 1rem; border-radius: .75rem; background: var(--student-attention-bg); color: var(--student-ink); border-inline-start: 4px solid var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) [data-work-history] > summary { min-height: 2.75rem; display: flex; align-items: center; font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) [data-work-history-items] { display: grid; gap: .75rem; }
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]) .student-work-item button { justify-self: stretch; }
+}

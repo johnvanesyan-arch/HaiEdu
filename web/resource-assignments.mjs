@@ -53,6 +53,11 @@ function assignmentCard(a,teacher=false,work=false){if(!teacher)return studentAs
  const m=a.material,d=m.definition;
  return '<article class="assignment-card"><div class="assignment-card-icon" aria-hidden="true">'+studentIcon(d.format==='pdf'?'work':'courses')+'</div><div class="assignment-card-copy"><p class="assignment-context">'+esc(scopeText(a))+'</p><h4 lang="'+esc(d.locale)+'">'+esc(d.title)+'</h4><p class="assignment-meta">v'+m.version+' · '+new Date(a.assignedAt).toLocaleDateString('hy-AM')+(teacher?' · Ստացողներ՝ '+a.recipientCount:a.teacherName?' · '+esc(a.teacherName):'')+'</p>'+(a.instructions?'<p class="assignment-instructions">'+esc(a.instructions)+'</p>':'')+'<p class="assignment-status">'+(a.status==='canceled'?'Չեղարկված է':a.available?(teacher?'Ուղարկված է':'Հանձնարարված է'):'Նյութը հասանելի չէ')+'</p>'+(a.cancelReason?'<p>'+esc(a.cancelReason)+'</p>':'')+'</div><div class="assignment-card-actions">'+(teacher?'<button type="button" class="ghost" data-assignment-inspect="'+esc(a.id)+'">Ստացողներ և պատմություն</button>':a.available?'<button type="button" data-assignment-open="'+esc(a.id)+'">'+(d.format==='pdf'?'Ներբեռնել PDF':'Բացել նյութը')+'</button>':'')+'</div></article>';
 }
+// My work list: open or download one assigned material exactly as the inbox button does.
+export function createStudentMaterialOpener(root,client){
+ const life=lifetime(root,client);
+ return {ready:life.ready,message:errorText,open:(assignment,message)=>life.open(assignment,message),dispose:()=>life.dispose()};
+}
 export function mountStudentResourceAssignments({root,client,hubRefresh=false,onRender=()=>{}}){
  const life=lifetime(root,client);let generation=0,busy=false,rows=[],offset=0,state='current';
  root.classList.add('resource-assignment-workspace');

@@ -2,7 +2,12 @@ import test,{before,after} from 'node:test';import assert from 'node:assert/stri
 import {readFile,mkdir} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
 import {studentTaskFixture,textDefinition,docxBytes,pdf,id,context,token} from '../fixtures/teacher-task-student-api.mjs';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
-async function surface(t,{definition=textDefinition,width=1280,large=false,home=false}={}){
+import {createStudentWorkHandler} from '../../supabase/functions/_shared/student-work-handler.mjs';
+import {compile} from '../fixtures/learning-acceptance.mjs';
+const {hasActiveLiveSession:liveSession}=compile((await readFile(new URL('../../supabase/functions/_shared/auth.ts',import.meta.url),'utf8')),{},['hasActiveLiveSession']);
+const combinedHandlers=new WeakMap();
+const combinedHandler=f=>{if(!combinedHandlers.has(f))combinedHandlers.set(f,createStudentWorkHandler({createAdmin:()=>f.admin,hasActiveLiveSession:liveSession,env:{url:'https://fixture.invalid',key:'fixture'}}));return combinedHandlers.get(f);};
+async function surface(t,{definition=textDefinition,width=1280,large=false,home=false,combined=false}={}){
  const f=await studentTaskFixture();t.after(()=>f.db.close());const delivery=await f.send(definition,'selected',[id(371)]);
  const css=[...(await readFile(new URL('../../web/index.html',import.meta.url),'utf8')).matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/g)].map(m=>m[0].replace('href="./','href="/')).join('');
  const bc=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});t.after(()=>bc.close());const page=await bc.newPage(),errors=[];const drops=new Set();let hold=null;page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
@@ -20,12 +25,12 @@ async function surface(t,{definition=textDefinition,width=1280,large=false,home=
  await page.route('**/*',async route=>{
   const req=route.request(),u=new URL(req.url());if(u.pathname==='/supabase-browser.bundle.mjs')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});if(u.origin!=='https://custom-work.test')return route.abort();
   if(u.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture";'});
-  if(u.pathname.startsWith('/fixture/')){const request=new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}),multipart=req.headers()['content-type']?.includes('multipart');const body=multipart?JSON.parse((await request.clone().formData()).get('request')):req.postDataJSON();const response=await(u.pathname.endsWith('manage-teacher-task-student-files')?f.handleFiles:f.handleWork)(request);
+  if(u.pathname.startsWith('/fixture/')){const request=new Request('https://fixture.invalid',{method:'POST',headers:req.headers(),body:req.postDataBuffer()}),multipart=req.headers()['content-type']?.includes('multipart');const body=multipart?JSON.parse((await request.clone().formData()).get('request')):req.postDataJSON();const response=await(u.pathname.endsWith('manage-teacher-task-student-files')?f.handleFiles:combined&&u.pathname.endsWith('get-student-work')?combinedHandler(f):f.handleWork)(request);
    if(hold&&hold.action===body.action){const slot=hold;hold=null;await new Promise(r=>slot.release=r);}if(drops.has(body.action)){drops.delete(body.action);return route.fulfill({status:503,contentType:'application/json',body:'{"error":"unknown_transport"}'});}return route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:Buffer.from(await response.arrayBuffer())});}
   if(u.pathname==='/harness')return route.fulfill({contentType:'text/html',body:`<!doctype html><html lang="hy"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${css}<body data-haiedu-student="true"><main style="max-width:65rem;margin:auto;padding:1rem"><a href="/outside">Գլխավոր էջ</a>${home?'<section id="modePanel"></section>':'<div id="root"></div>'}</main><script type="module">${home?'import"/multi-subject-home.js";':'import{mountStudentTeacherTasks}from"/student-teacher-tasks.mjs";window.__view=mountStudentTeacherTasks({root:document.querySelector("#root"),client:window.__client,actorId:window.__actor});'}if(window.__large)document.documentElement.style.fontSize="32px";</script>`});
   try{return route.fulfill({body:await readFile(new URL('../../web'+u.pathname,import.meta.url)),contentType:/\.m?js$/.test(u.pathname)?'text/javascript':u.pathname.endsWith('.css')?'text/css':u.pathname.endsWith('.woff2')?'font/woff2':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}
  });
- await page.goto('https://custom-work.test/harness?view=work');await expect(page.locator('[data-task-open]')).toBeVisible();return{...f,page,errors,delivery,drop(action){drops.add(action);},hold(action){const slot={action};hold=slot;return slot;}};
+ await page.goto('https://custom-work.test/harness?view=work');await expect(page.locator(combined?'[data-work-open]':'[data-task-open]')).toBeVisible();return{...f,page,errors,delivery,drop(action){drops.add(action);},hold(action){const slot={action};hold=slot;return slot;}};
 }
 test('My Work opens a custom task in place, preserves dirty work across access refresh and reloads its saved draft',async t=>{
  const f=await surface(t,{home:true}),p=f.page;await p.locator('[data-task-open]').click();await expect(p).toHaveURL(/view=work.*teacherTask=/);await p.locator('[data-task-text]').fill('My private draft <img src=x onerror=alert(1)>');await p.evaluate(()=>window.dispatchEvent(new CustomEvent('haiedu-course-access',{detail:{accessStatus:'available',contexts:[{...window.__scope,className:'Renamed class'}]}})));await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.locator('[data-task-save]').click();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.reload();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);assert.equal(await p.locator('[data-task-body] img').count(),0);const invalid=new URL(p.url());invalid.searchParams.set('taskUnit','71000000-0000-4000-8000-000000009999');await p.goto(invalid.href);await expect(p.locator('[data-task-read-retry]')).toBeVisible();await p.locator('[data-task-back]').click();await p.locator('[data-task-open]').click();await expect(p.locator('[data-task-text]')).toHaveValue(/My private draft/);await p.locator('[data-task-text]').fill('Save this private draft before logout.');const logout=await p.evaluate(async()=>{const jobs=[];const allowed=document.dispatchEvent(new CustomEvent('haiedu-before-signout',{cancelable:true,detail:{waitUntil:p=>jobs.push(p)}}));return{allowed,results:await Promise.all(jobs)};});assert.equal(logout.allowed,true);assert.deepEqual(logout.results,[true]);assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);assert.deepEqual(f.errors,[]);
@@ -91,5 +96,27 @@ test('My work refresh never closes an open teacher task and its counts wait for 
  await expect(p.locator('[data-task-text]')).toHaveValue('Unsaved answer');
  assert.equal(await calls('manage-teacher-task-student-work'),tasksBefore,'The open task is not reloaded or closed');
  assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0);
+ assert.deepEqual(f.errors,[]);
+});
+
+test('My work list opens a teacher task in place and never loses unsaved text when returning',async t=>{
+ const f=await surface(t,{home:true,combined:true}),p=f.page;
+ const item=p.locator('[data-work-items] .student-work-item[data-work-source=task]');await expect(item).toHaveCount(1);
+ await expect(p.locator('[data-work-count=todo]')).toHaveText(' · 1');
+ await item.getByRole('button').click();
+ await expect(p).toHaveURL(/view=work.*teacherTask=/);await p.locator('[data-task-text]').waitFor();
+ assert.equal(await p.locator('.student-work-list').isVisible(),false,'The list steps aside for the open task');
+ await p.locator('[data-task-text]').fill('Unsaved list answer');
+ let asked=0;p.once('dialog',async d=>{asked++;assert.equal(d.type(),'confirm');await d.dismiss();});
+ await p.locator('[data-task-back]').click();
+ await expect.poll(()=>asked).toBe(1);
+ await expect(p.locator('[data-task-text]')).toHaveValue('Unsaved list answer');
+ await p.locator('[data-task-save]').click();await expect(p.locator('[data-task-text]')).toHaveValue('Unsaved list answer');
+ await expect.poll(async()=>(await f.db.query('select count(*)::int n from teacher_task_student_work')).rows[0].n).toBe(1);
+ await p.locator('[data-task-back]').click();
+ await expect(p.locator('.student-work-list')).toBeVisible();
+ assert.equal(new URL(p.url()).searchParams.get('teacherTask'),null,'Leaving the task clears its deep link');
+ await expect(item.locator('.student-work-chip')).toHaveText('Սևագիր');
+ assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0,'Nothing was submitted');
  assert.deepEqual(f.errors,[]);
 });

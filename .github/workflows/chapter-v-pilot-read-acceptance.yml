@@ -17,6 +17,7 @@ on:
       - web/navigation-focus.mjs
       - web/writing-assignments.mjs
       - web/student-work-hub.mjs
+      - web/student-work-list.mjs
       - web/teacher-task-draft-workspace.mjs
       - web/teacher-task-editor.mjs
       - web/teacher-task-form.mjs

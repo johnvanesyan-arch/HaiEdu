@@ -8,6 +8,7 @@ import { studentIcon, learningArtwork } from './student-visuals.mjs';
 import { homeLearningSummary } from './student-home-model.mjs';
 import { mountStudentResourceAssignments } from './resource-assignments.mjs';
 import { mountWorkHub, workToolbarMarkup } from './student-work-hub.mjs';
+import { mountStudentWorkList } from './student-work-list.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const panel = document.getElementById('modePanel');
 const requestedView = new URLSearchParams(location.search).get('view');
@@ -54,14 +55,24 @@ function render() {
   // My work leads with one status filter and one refresh instead of the decorative welcome.
   const intro = view === 'home'
     ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section>' + selectorMarkup()
-    : view === 'work' ? workToolbarMarkup()
+    : view === 'work' ? ''
     : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
-  root.innerHTML = `${intro}${view==='work'?'<section class="student-work-sources" aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>':''}${courseCards()}`;
+  root.innerHTML = `${intro}${view==='work'?'<div id="studentWork"></div>':''}${courseCards()}`;
   if (view === 'home') void loadSelected();
-  if(view==='work')workHub=mountWorkHub({toolbar:root.querySelector('.student-work-toolbar'),scope:root.querySelector('.student-work-sources'),sources:3,refresh:()=>{customTaskView?.refresh();writingAssignmentView?.refresh();assignmentView?.refresh();}});
-  if(view==='work')customTaskView=mountStudentTeacherTasks({root:root.querySelector('#studentCustomTasks'),client:supabase,actorId,hubRefresh:true,onRender:state=>workHub?.report('task',state),onClean:()=>queueMicrotask(()=>{if(deferredTaskAccess&&!customTaskView?.hasUnsaved()){const latest=deferredTaskAccess;deferredTaskAccess=null;updateAccess(latest);}})});
-  if(view==='work')writingAssignmentView=mountStudentWritingAssignments({root:root.querySelector('#studentWritingAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('writing',state)});
-  if (view === 'work') assignmentView = mountStudentResourceAssignments({root:root.querySelector('#studentResourceAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('material',state)});
+  if(view==='work')mountWork(root.querySelector('#studentWork'));
+}
+// Re-check access only after an open teacher task has no unsaved work.
+const taskClean=()=>queueMicrotask(()=>{if(deferredTaskAccess&&!customTaskView?.hasUnsaved()){const latest=deferredTaskAccess;deferredTaskAccess=null;updateAccess(latest);}});
+// My work: one combined list; the three source sections remain the fallback.
+function mountWork(target){
+  customTaskView=mountStudentWorkList({root:target,client:supabase,actorId,onClean:taskClean,onFallback:()=>{customTaskView=null;mountWorkSections(target);}});
+}
+function mountWorkSections(target){
+  target.innerHTML=workToolbarMarkup()+'<section class="student-work-sources" aria-label="Ուսուցչի առաջադրանքները"><h2>Ուսուցչի առաջադրանքները</h2><div id="studentCustomTasks"></div><div id="studentWritingAssignments"></div><div id="studentResourceAssignments"></div></section>';
+  workHub=mountWorkHub({toolbar:target.querySelector('.student-work-toolbar'),scope:target.querySelector('.student-work-sources'),sources:3,refresh:()=>{customTaskView?.refresh();writingAssignmentView?.refresh();assignmentView?.refresh();}});
+  customTaskView=mountStudentTeacherTasks({root:target.querySelector('#studentCustomTasks'),client:supabase,actorId,hubRefresh:true,onRender:state=>workHub?.report('task',state),onClean:taskClean});
+  writingAssignmentView=mountStudentWritingAssignments({root:target.querySelector('#studentWritingAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('writing',state)});
+  assignmentView=mountStudentResourceAssignments({root:target.querySelector('#studentResourceAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('material',state)});
 }
 function syncSelectionUrl() {
   const url = new URL(studentHomeHref(view, selected), location.href);

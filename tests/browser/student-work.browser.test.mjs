@@ -111,3 +111,77 @@ test('compact phone header keeps the account button beside the page title',async
   assert.ok(m.target>=44);
   assert.deepEqual(errors,[]);
 });
+
+// Combined list (get-student-work). Without the endpoint the suites above cover the fallback sections.
+const listTitles=page=>page.locator('[data-work-items] .student-work-item:visible h3').allInnerTexts();
+for(const width of [375,1280])test(`My work shows one newest-first list with exact counts across sources at ${width}px`,async t=>{
+  const {page,errors}=await work(t,{width,workItems:true,combinedWork:true});
+  await page.locator('[data-work-items] .student-work-item').first().waitFor();
+  assert.equal(await page.locator('.student-work-sources,#studentCustomTasks,#studentWritingAssignments,#studentResourceAssignments').count(),0,'No per-source sections in list mode');
+  await expect(page.locator('.student-work-filter [data-work-filter]')).toHaveText(['Կատարելու · 4','Վերադարձված · 2','Ներկայացված · 2']);
+  assert.deepEqual(await listTitles(page),['Ֆիզիկայի չափումներ','Նախագծի պլան','Գրավոր սևագիր','Լրացուցիչ վարժություններ'],'To-do items from all three sources, newest first');
+  assert.deepEqual(await page.locator('[data-work-items] .student-work-item').evaluateAll(n=>n.map(e=>e.dataset.workSource)),['task','task','writing','material']);
+  await page.locator('[data-work-filter=returned]').click();
+  assert.deepEqual(await listTitles(page),['Լաբորատոր աշխատանքի շտկում','Ստուգված շարադրություն']);
+  assert.equal(await page.locator('[data-work-items] [data-work-chip=returned]').first().evaluate(e=>getComputedStyle(e).color),'rgb(116, 83, 165)');
+  const layout=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,small:[...document.querySelectorAll('.student-work-toolbar button,.student-work-toolbar select,.student-work-item button')].filter(e=>e.getClientRects().length).map(e=>e.getBoundingClientRect()).filter(r=>r.height<44).length}));
+  assert.equal(layout.overflow,false);assert.equal(layout.small,0,'Controls keep 44px targets');
+  assert.deepEqual(errors,[]);
+});
+
+test('course filter narrows the list and its counts; one refresh reloads the single endpoint',async t=>{
+  const {page,errors}=await work(t,{workItems:true,combinedWork:true});
+  const select=page.locator('[data-work-course-filter]');await expect(select).toBeVisible();
+  await expect(select.locator('option')).toHaveText(['Բոլոր դասընթացները','Ֆիզիկա · 7Ա','Անգլերեն · 7Ա']);
+  await select.selectOption({label:'Ֆիզիկա · 7Ա'});
+  assert.deepEqual(await listTitles(page),['Ֆիզիկայի չափումներ']);
+  await expect(page.locator('.student-work-filter [data-work-filter]')).toHaveText(['Կատարելու · 1','Վերադարձված · 0','Ներկայացված · 0']);
+  const calls=()=>page.evaluate(()=>window.__homeFixture.calls.filter(c=>c.name==='get-student-work').length);
+  const before=await calls();await page.locator('[data-work-refresh]').click();
+  await expect.poll(calls).toBe(before+1);
+  assert.notEqual(await select.inputValue(),'','The chosen course survives a refresh');
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.some(c=>['manage-teacher-task-student-work','manage-writing-assignments','manage-resource-assignments'].includes(c.name))),false,'List mode reads only the combined endpoint');
+  assert.deepEqual(errors,[]);
+});
+
+test('a source that fails is named, counts are withheld and the rest of the list stays usable',async t=>{
+  const {page,errors}=await work(t,{workItems:true,combinedWork:true,combinedWorkSourceFail:'writing'});
+  await expect(page.locator('.student-work-unavailable')).toHaveText('Չհաջողվեց բեռնել՝ Գրավոր առաջադրանք։ Սեղմեք «Թարմացնել»։');
+  await expect(page.locator('[data-work-count=todo]')).toHaveText('');
+  assert.deepEqual(await listTitles(page),['Ֆիզիկայի չափումներ','Նախագծի պլան','Լրացուցիչ վարժություններ']);
+  assert.deepEqual(errors,[]);
+});
+
+test('unloaded pages mark counts with + and history shows cancelled work without actions',async t=>{
+  const {page,errors}=await work(t,{workItems:true,combinedWork:true,workMore:true});
+  await expect(page.locator('[data-work-count=todo]')).toHaveText(' · 4+');
+  await page.locator('[data-work-history] summary').click();
+  await expect(page.locator('[data-work-history-items] h3')).toHaveText(['Չեղարկված առաջադրանք']);
+  assert.equal(await page.locator('[data-work-history-items] [data-work-state]').count(),0,'Cancelled work is never counted or filtered');
+  assert.deepEqual(errors,[]);
+});
+
+test('opening a writing assignment from the list uses its existing open request and lands on the pinned task',async t=>{
+  const {page,errors}=await work(t,{width:375,workItems:true,combinedWork:true});
+  await page.locator('[data-work-items] .student-work-item').filter({hasText:'Գրավոր սևագիր'}).getByRole('button',{name:'Շարունակել գրելը'}).click();
+  await page.waitForURL(url=>new URL(url).searchParams.get('tab')==='writing');
+  const url=new URL(page.url());assert.equal(url.searchParams.get('writingTask'),'76000000-0000-4000-8000-000000000620');assert.equal(url.searchParams.get('enrollment'),'76000000-0000-4000-8000-000000000006');
+  assert.deepEqual(errors,[]);
+});
+
+test('without the combined endpoint My work falls back to the three source sections',async t=>{
+  const {page,errors}=await work(t,{workItems:true,combinedWork:'unavailable'});
+  await page.locator('.student-work-sources').waitFor();
+  await expect(page.locator('.student-work-filter [data-work-filter]')).toHaveText(['Կատարելու · 3','Վերադարձված · 2','Ներկայացված · 2']);
+  assert.equal(await page.locator('[data-work-items]').count(),0);
+  assert.deepEqual(errors,[]);
+});
+
+test('list buttons keep the per-source selectors that production acceptance uses',async t=>{
+  const {page,errors}=await work(t,{workItems:true,combinedWork:true});
+  await page.locator('[data-work-items] .student-work-item').first().waitFor();
+  await expect(page.locator('[data-assignment-open="76000000-0000-4000-8000-000000000630"]')).toBeVisible();
+  await expect(page.locator('[data-wa-open="76000000-0000-4000-8000-000000000610"]')).toBeVisible();
+  await expect(page.locator('[data-task-body] article').filter({hasText:'Նախագծի պլան'}).locator('[data-task-open]')).toBeVisible();
+  assert.deepEqual(errors,[]);
+});
