@@ -254,7 +254,7 @@ test('native governed form recovers a committed answer after its response is dro
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
  assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
  const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
- await page.locator('#learningPlayer [data-feedback] button').click();
+ await page.locator('#learningPlayer').getByRole('button',{name:'Հաջորդը',exact:true}).click();
  await expect(page.locator('#learningPlayer h2')).toContainText('Հարց 2/');
  assert.deepEqual(errors,[]);
 });
@@ -276,7 +276,7 @@ test('native governed deadline recovery ignores the late original reply and pres
  await page.locator('#learningPlayer button[type=submit]').click();
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
  release();
- await expect(page.locator('#learningPlayer [data-feedback] button')).toHaveCount(1);
+ await expect(page.locator('#learningPlayer').getByRole('button',{name:'Հաջորդը',exact:true})).toHaveCount(1);
  assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
  const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
  assert.deepEqual(errors,[]);
@@ -298,7 +298,7 @@ test('BF-08 narrow practice reloads a stale hint, keeps a draft, and puts feedba
   await tab.locator('[data-help]').waitFor();
   await tab.addStyleTag({content:'html { font-size: 200% !important; }'});
  }
- const sessionId=f.calls.find(x=>x.name==='get-session-item').body.sessionId;
+ const sessionId=f.calls.findLast(x=>x.name==='get-session-item').body.sessionId;
  const {body:item}=await f.call('get-session-item',{sessionId});
  const {response:{value}}=await answerBody(f.db,item,false);
  const draft=second.locator(`#learningPlayer input[value="${value}"]`);

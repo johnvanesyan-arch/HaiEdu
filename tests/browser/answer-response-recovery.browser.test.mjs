@@ -40,7 +40,7 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
       const $=id=>document.getElementById(id),answerForm=$('answerForm'),submitBtn=$('submitBtn'),nextBtn=$('nextBtn'),feedback=$('feedback');
       let currentSession={id:${JSON.stringify(id(401))}},current={sessionItemId:${JSON.stringify(id(601))},item:{id:${JSON.stringify(id(501))},type:'numeric'},session:{position:1,total:2,mode:${JSON.stringify(mode)}}};
       let answerSubmission=null,questionStartedAt=performance.now(),startedAt=questionStartedAt;
-      function updateMastery(){} async function recordRecommendationTelemetry(){} async function status(){throw Error('Unexpected final-status read');} function renderFinalResult(){} function showGate(){throw Error('Unexpected gate');}
+      function updateMastery(){} function setRemediationQuestion(){} async function recordRecommendationTelemetry(){} async function status(){throw Error('Unexpected final-status read');} function renderFinalResult(){} function showGate(){throw Error('Unexpected gate');}
       ${['collectResponse',...(file==='practice.js'?['escapeHtml','lockAnswerControls','handleDiagnosticGateError']:[]),handler].map(name=>fn(source,name)).join('\n')}
       answerForm.addEventListener('submit',${handler});`;
     const html=`<!doctype html><html lang="hy"><meta charset="utf-8"><style>.hidden{display:none}</style><main>
