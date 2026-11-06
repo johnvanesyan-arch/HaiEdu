@@ -7,7 +7,7 @@
 - Both PRs change QA scripts and tests only; there is no product, Edge, schema or data change.
 
 **Limits.**
-- Chapters II, IV, V and VI have not run since 5 November.
+- Chapters II, IV, V and VI have not run since 5 November. On 6 November John decided no re-run is needed, which closes this item. Their next scheduled runs will exercise them.
 - Owner usability acceptance for PR412–PR419 is still not given.
 - BF-07 and the existing gates are unchanged.
 
@@ -152,7 +152,7 @@ Records: [Home](student-home-next-step-20261105.md) · [course](student-course-p
 **Historical Sprint 16.5B.2 — all existing student subpages delivered, 2026-10-27.** [PR309](https://github.com/johnvanesyan-arch/HaiEdu/pull/309) extends Forest across shared and legacy course/assessment/progress/task/results, guides, writing/teacher feedback, account/privacy, join and the shared identity gateway. All five required PR/main CI jobs pass, including **1,456 unit/integration tests and 165 native-browser checks**. Production source `e7efc028d90e351270bec6606078b6867546db8c` and all 18 changed frontend assets match; authenticated acceptance passes **324 Physics, 154 English and 10 staff-analytics checks**. All 45 capabilities and service dependencies remain; no backend/content/scoring/replay changes. S45 complete resource authoring/delivery and full 16.5C/four-subject acceptance remain open. English stays paused after C47. [Subpage delivery](student-subpages-implementation.md) · [Release evidence](evidence/student-subpages-release-20261027.json).
 
 
-**Updated:** 2026-11-06 Asia/Dubai · 16.5B student refinement live (PR412–419; get-student-work v1 deployed); its production QA failures resolved by QA-script corrections PR422/PR423 (Resource 329/329 on `b6e2bef`; Chapters II, IV–VI not yet re-run); BF-06 technical delivery verified; BF-07 next; BF-37 transport cause, owner usability/B.12.3/B.12 and subject-expansion gates remain open; BF-02 deferred · **Roadmap:** 4.150
+**Updated:** 2026-11-06 Asia/Dubai · 16.5B student refinement live (PR412–419; get-student-work v1 deployed); its production QA failures resolved by QA-script corrections PR422/PR423 (Resource 329/329 on `b6e2bef`; Chapters II, IV–VI re-run waived by owner 2026-11-06); BF-06 technical delivery verified; BF-07 next; BF-37 transport cause, owner usability/B.12.3/B.12 and subject-expansion gates remain open; BF-02 deferred · **Roadmap:** 4.150
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 

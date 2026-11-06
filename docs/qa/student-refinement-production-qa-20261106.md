@@ -19,7 +19,7 @@ Product behaviour is unchanged: finished work is not listed as «to do».
 
 ## Limits
 
-- Chapters II, IV, V and VI have not run since their 5 November failures. Their pass on a later build is not yet evidenced.
+- Chapters II, IV, V and VI have not run since their 5 November failures, so a pass on a later build is not evidenced. On 6 November John decided no re-run is needed, which closes this item.
 - The one-off cause of the 5 November chapter window remains unconfirmed.
 - No owner usability acceptance has been given for PR412–PR419.
 
