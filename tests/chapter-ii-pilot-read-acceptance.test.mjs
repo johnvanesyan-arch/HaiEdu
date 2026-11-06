@@ -203,3 +203,11 @@ test('credential workflow is main-only and retains verified activation and exact
   assert.ok(workflow.indexOf('node scripts/wait-for-production-release.mjs') < workflow.indexOf('node scripts/chapter-ii-pilot-read-acceptance.mjs'));
   assert.doesNotMatch(workflow, /SERVICE_ROLE|playwright\/\.auth|trace|screenshot|video/);
 });
+
+test('pilot read acceptance allows Home\'s read-only My work list and nothing wider', () => {
+  const post = body => allowedBrowserRequest({pathname:'/functions/v1/get-student-work',method:'POST',body});
+  assert.equal(post({action:'inbox',payload:{state:'current'}}), true);
+  assert.equal(allowedBrowserRequest({pathname:'/functions/v1/get-student-work',method:'GET',body:null}), false);
+  for (const body of [{action:'inbox',payload:{state:'all'}}, {action:'inbox'}, {action:'inbox',payload:{state:'current'},extra:1}, null])
+    assert.equal(post(body), false, JSON.stringify(body));
+});

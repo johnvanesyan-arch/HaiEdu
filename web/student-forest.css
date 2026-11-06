@@ -319,7 +319,7 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-path > h2 { margin
 body:is([data-haiedu-student],[data-forest-surface]) .student-path ol { list-style: none; margin: 0; padding: 0; display: grid; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-path li { display: flex; gap: .75rem; align-items: flex-start; padding: .5rem 0; min-width: 0; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-path li + li { border-top: 1px solid var(--student-divider); }
-body:is([data-haiedu-student],[data-forest-surface]) .student-path li > span:last-child { display: grid; gap: .125rem; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-path li > span:last-child { display: grid; grid-template-columns: minmax(0, 1fr); gap: .125rem; flex: 1 1 0; min-width: 0; overflow-wrap: anywhere; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-path strong { font-size: 1rem; color: var(--student-ink); }
 body:is([data-haiedu-student],[data-forest-surface]) .student-path-detail { font-size: .875rem; color: var(--student-muted); overflow-wrap: anywhere; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-path-marker { flex: 0 0 2rem; height: 2rem; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: .875rem; font-weight: 700; background: var(--student-quiet); color: var(--student-muted); }
@@ -327,3 +327,40 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-path-marker .stude
 body:is([data-haiedu-student],[data-forest-surface]) [data-path-state=done] .student-path-marker { background: var(--student-success-bg); color: var(--student-success); }
 body:is([data-haiedu-student],[data-forest-surface]) [data-path-state=done] .student-path-detail { color: var(--student-success); }
 body:is([data-haiedu-student],[data-forest-surface]) :is([data-path-state=current],[data-path-state=next]) .student-path-marker { background: var(--student-accent); color: #fff; }
+
+/* Home: compact course cards (refinement mockup). Readiness shows on the selected course only. */
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-compact { display: flex; gap: .75rem; align-items: flex-start; padding: 1rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-compact.is-selected { border: 2px solid var(--student-accent); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-mark { flex: 0 0 3rem; height: 3rem; border-radius: .75rem; background: var(--student-selected, var(--student-quiet)); color: var(--student-accent); display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-body { display: grid; gap: .5rem; flex: 1; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-kicker { font-weight: 600; color: var(--student-accent) !important; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-kicker[hidden] { display: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-readiness-slot:empty { display: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-readiness-slot { display: grid; gap: .375rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-readiness-line { display: flex; justify-content: space-between; gap: .5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-readiness-slot meter { width: 100%; height: .5rem; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-readiness-slot .student-evidence-badge { justify-self: start; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-compact .button-link { justify-self: start; width: auto; }
+
+/* Home: teacher feedback card (work returned for revision). */
+body:is([data-haiedu-student],[data-forest-surface]) #studentFeedback:empty { display: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-card { display: grid; gap: .5rem; padding: 1rem 1.25rem; background: var(--student-feedback-bg); border-color: transparent; min-width: 0; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-card > * { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-kicker { font-size: .875rem; font-weight: 600; color: var(--student-feedback); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-card h2 { font-size: 1.125rem; line-height: 1.45; color: var(--student-ink); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-card p:not(.student-feedback-kicker) { font-size: .875rem; color: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-feedback-card a { min-height: 2.75rem; display: inline-flex; align-items: center; justify-self: start; font-weight: 600; color: var(--student-feedback); }
+
+/* Home desktop (mockup): next step beside the unit path; course cards beside the feedback card. */
+@media (min-width: 1024px) {
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > * { grid-column: 1 / -1; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > .student-next-section { grid-column: 1; grid-row: 1; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > #studentPath { grid-column: 2; grid-row: 1; align-self: end; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > .student-selection { grid-row: 2; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > #mySubjects { grid-column: 1; grid-row: 3; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid > #studentFeedback { grid-column: 2; grid-row: 3; margin-top: 3.25rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid:has(> #studentPath:empty) > .student-next-section,
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid:has(> #studentFeedback:empty) > #mySubjects { grid-column: 1 / -1; }
+  body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome.student-home-grid .amp-subject-grid { grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr)); }
+}

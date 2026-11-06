@@ -58,3 +58,10 @@ test('all owned sessions are locally closed, including an identity mismatch; cle
   assert.deepEqual(seen,['expected','unexpected','last']);
   assert.deepEqual(results,[{closed:true,status:204},{closed:false,status:null},{closed:true,status:204}]);
 });
+
+test('mobile acceptance allows only the exact read-only My work list for students', () => {
+  assert.equal(request('get-student-work', {action:'inbox',payload:{state:'current'}}), true);
+  assert.equal(request('get-student-work', {action:'inbox',payload:{state:'current'}}, 'teacher'), false);
+  for (const body of [{action:'open',payload:{state:'current'}}, {action:'inbox',payload:{state:'current',offset:50}}, {action:'inbox',payload:{state:'current'},context:{}}])
+    assert.equal(request('get-student-work', body), false, JSON.stringify(body));
+});

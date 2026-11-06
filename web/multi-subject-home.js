@@ -8,7 +8,7 @@ import { studentIcon, learningArtwork } from './student-visuals.mjs';
 import { homeLearningSummary, homeLearningPath } from './student-home-model.mjs';
 import { mountStudentResourceAssignments } from './resource-assignments.mjs';
 import { mountWorkHub, workToolbarMarkup } from './student-work-hub.mjs';
-import { mountStudentWorkList } from './student-work-list.mjs';
+import { mountStudentWorkList, describeWorkItem } from './student-work-list.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const panel = document.getElementById('modePanel');
 const requestedView = new URLSearchParams(location.search).get('view');
@@ -43,6 +43,9 @@ function courseCards() {
   return `<section id="mySubjects" aria-labelledby="mySubjectsTitle"><div class="amp-subjects-heading"><div><h2 id="mySubjectsTitle">${writing ? 'Գրավոր աշխատանքներ՝ ըստ դասընթացի' : 'Իմ դասընթացները'}</h2></div><a class="student-help-link" href="./join.html">Միանալ դասարանին</a></div><div class="amp-subject-grid">${courses.map(course => {
     const unit = selected && courseKey(selected) === course.key ? selected : course.units[0];
     const tab = writing ? 'writing' : 'course';
+    // Home uses the compact card from the refinement mockup; the card, its links and the
+    // unit list keep their hooks for every other view and for production acceptance.
+    if (view === 'home') return `<article class="card amp-subject-card student-course-compact" data-course-key="${esc(course.key)}"><span class="student-course-mark" aria-hidden="true">${esc(courseLabel(course).trim().charAt(0))}</span><div class="student-course-body"><p class="student-course-kicker" hidden>Ընտրված դասընթաց</p><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)} · ${esc(course.academicYearLabel)}</p><div class="student-course-readiness-slot"></div><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">Բացել դասընթացը</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></div></article>`;
     return `<article class="card amp-subject-card"><div class="student-card-art" aria-hidden="true">${subjectArtwork(course.subjectCode)}</div><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)}<br>${esc(course.academicYearLabel)}</p><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">${writing ? 'Բացել գրավոր աշխատանքները' : 'Բացել դասընթացը'}</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></article>`;
   }).join('')}</div></section>`;
 }
@@ -54,11 +57,12 @@ function render() {
   // Home leads with the one continuation action; the decorative welcome stays on the courses view.
   // My work leads with one status filter and one refresh instead of the decorative welcome.
   const intro = view === 'home'
-    ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section><div id="studentPath"></div>' + selectorMarkup()
+    ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section><div id="studentPath"></div><div id="studentFeedback"></div>' + selectorMarkup()
     : view === 'work' ? ''
     : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
   root.innerHTML = `${intro}${view==='work'?'<div id="studentWork"></div>':''}${courseCards()}`;
-  if (view === 'home') void loadSelected();
+  root.classList.toggle('student-home-grid', view === 'home');
+  if (view === 'home') { void loadSelected(); void loadFeedback(); }
   if(view==='work')mountWork(root.querySelector('#studentWork'));
 }
 // Re-check access only after an open teacher task has no unsaved work.
@@ -82,8 +86,40 @@ function syncSelectionUrl() {
 }
 // «Your path in this unit»: the three learning steps of the selected unit (same reply as the next step).
 const pathMarker = (step, n) => step.state === 'done' ? studentIcon('check') : step.state === 'locked' || step.state === 'unavailable' ? studentIcon('lock') : String(n);
+// Only the selected course has a dashboard reply, so only its card shows readiness
+// (no extra request per course, by the owner's decision of 6 November 2026).
+function markSelectedCourse(context, data) {
+  for (const card of root.querySelectorAll('.student-course-compact')) {
+    const chosen = Boolean(context) && card.dataset.courseKey === courseKey(context);
+    card.classList.toggle('is-selected', chosen);
+    card.querySelector('.student-course-kicker').hidden = !chosen;
+    const slot = card.querySelector('.student-course-readiness-slot');
+    const summary = chosen && data ? homeLearningSummary(context, data).readiness : null;
+    slot.innerHTML = summary ? `<p class="student-course-readiness-line"><span>Ստուգման պատրաստ</span><span>${summary.ready} / ${summary.required}</span></p><meter min="0" max="${summary.required}" value="${summary.ready}" aria-label="Պահանջվող հմտություններ՝ պատրաստ ստուգման">${summary.ready}/${summary.required}</meter>${summary.ready === summary.required ? '<span class="student-evidence-badge" data-readiness="ready">Պատրաստ է ստուգման</span>' : ''}` : '';
+  }
+}
 function pathMarkup(data) {
   return `<section class="card student-path" aria-labelledby="studentPathTitle"><h2 id="studentPathTitle">Ձեր ուղին այս բաժնում</h2><ol>${homeLearningPath(data).map((step, i) => `<li data-path-state="${step.state}"><span class="student-path-marker" aria-hidden="true">${pathMarker(step, i + 1)}</span><span><strong>${esc(step.label)}</strong><span class="student-path-detail">${esc(step.detail)}</span></span></li>`).join('')}</ol></section>`;
+}
+// «Teacher feedback»: work returned for revision (teacher task «returned», writing
+// «changes_requested») from the read-only combined My work list. Failure hides the card.
+let feedbackTicket = 0;
+async function loadFeedback() {
+  const ticket = ++feedbackTicket, target = root.querySelector('#studentFeedback');
+  if (!target || !courses.length) return;
+  target.replaceChildren();
+  try {
+    const { data: auth } = await supabase.auth.getSession();
+    if (ticket !== feedbackTicket || !auth.session) return;
+    const account = auth.session.user.id;
+    const { data, error } = await supabase.functions.invoke('get-student-work', { body: { action: 'inbox', payload: { state: 'current' } } });
+    if (ticket !== feedbackTicket || !target.isConnected || (actorId && actorId !== account)) return;
+    if (error || data?.version !== 'student-work-v1' || !Array.isArray(data.items)) return;
+    const returned = data.items.filter(({ source, row }) => (source === 'task' && row.state === 'returned') || (source === 'writing' && row.workState === 'changes_requested'));
+    if (!returned.length) return;
+    const latest = describeWorkItem(returned[0]);
+    target.innerHTML = `<section class="card student-feedback-card" aria-labelledby="studentFeedbackTitle"><p class="student-feedback-kicker">Ուսուցչի արձագանք</p><h2 id="studentFeedbackTitle">${returned.length === 1 ? 'Ձեր աշխատանքը վերադարձվել է վերանայման' : `${returned.length} աշխատանք վերադարձվել է վերանայման`}</h2><p><span${latest.locale ? ` lang="${esc(latest.locale)}"` : ''}>${esc(latest.title ?? '')}</span>${latest.scope ? ` · ${esc(latest.scope)}` : ''}</p><a href="./index.html?view=work&amp;show=returned">Դիտել արձագանքը</a></section>`;
+  } catch { /* The card is optional: Home stays usable without it. */ }
 }
 async function loadSelected() {
   const request = ++epoch;
@@ -91,6 +127,7 @@ async function loadSelected() {
   if (!target) return;
   if (path) path.replaceChildren();
   const context = selected;
+  markSelectedCourse(context, null);
   if (!context) { target.innerHTML = state('Ո՞ր բաժնից շարունակենք', 'Ընտրեք դասընթացն ու բաժինը ստորև՝ ցանկերից։'); return; }
   target.innerHTML = state('Բեռնվում է ձեր աշխատանքը…', 'Ստուգում ենք ընտրված բաժնի հասանելի աշխատանքները։');
   const current = () => request === epoch && sameContext(context, selected) && contexts.some(item => sameContext(item, context));
@@ -107,6 +144,7 @@ async function loadSelected() {
     if (error || !data?.dashboardVersion || (data.context && !sameContext(data.context, context))) throw Error('unavailable');
     const summary = homeLearningSummary(context, data), readiness = summary.readiness;
     if (path) path.innerHTML = pathMarkup(data);
+    markSelectedCourse(context, data);
     target.innerHTML = `<section class="card student-next"><div><p class="student-context">${esc(courseLabel(context))} · ${esc(context.unitTitleHy)}<br>${esc(context.schoolName)} · ${esc(context.className)} · ${esc(context.academicYearLabel)}</p><h3>${esc(summary.title)}</h3><p>${esc(summary.description)}</p>${summary.count ? `<p>${esc(summary.count)}</p>` : ''}<a class="button-link student-continue" href="${esc(summary.href)}">${esc(summary.action)}${studentIcon('arrow')}</a></div>${readiness ? `<a class="student-readiness" href="${esc(contextHref(context,'progress'))}" aria-label="Ստուգարքի պատրաստություն՝ ${readiness.ready}՝ ${readiness.required} պահանջվող հմտությունից։ Բացել առաջընթացը"><span class="student-readiness-ring" style="--ready-angle:${360 * readiness.ready / readiness.required}deg" aria-hidden="true"><strong>${readiness.ready} / ${readiness.required}</strong></span><span>Ստուգարքի պատրաստություն<br><small>Պահանջվող հմտություններ</small></span></a>` : ''}</section>`;
   } catch {
     if (current()) {
@@ -164,7 +202,7 @@ supabase.auth.onAuthStateChange((event, session) => {
   const next = session?.user?.id ?? null;
   if (event === 'INITIAL_SESSION') { actorId = next; return; }
   if (next === actorId && event !== 'SIGNED_OUT') return;
-  actorId = next; deferredTaskAccess=null; ++epoch; clearAssignments(); accessSignature = null; selected = null; contexts = []; courses = [];
+  actorId = next; deferredTaskAccess=null; ++epoch; ++feedbackTicket; clearAssignments(); accessSignature = null; selected = null; contexts = []; courses = [];
   if (root) root.innerHTML = state('Դասընթացները բեռնվում են…', 'Ստուգում ենք հաշվի հասանելիությունը։');
 });
 window.addEventListener('haiedu-course-access', event => updateAccess(event.detail));

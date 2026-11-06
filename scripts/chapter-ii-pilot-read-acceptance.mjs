@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { validateFixture, roles, sides, runIsolation } from './sprint-14-isolation.mjs';
 import { waitForRelease } from './wait-for-production-release.mjs';
+import { studentWorkReadBody } from './student-work-qa-read.mjs';
 
 // Deliberately bounded production acceptance, not a reusable release mechanism.
 // No answers, sessions, exposures, invitations, memberships or content are written.
@@ -62,6 +63,8 @@ export function allowedBrowserRequest({ pathname, method, body, search = '' }) {
   if (pathname === '/rest/v1/profiles') return method === 'GET';
   if (method !== 'POST') return false;
   if (pathname === '/functions/v1/get-student-classes') return body && Object.keys(body).length === 0;
+  // Home's teacher-feedback card reads the combined, read-only My work list (exact shape only).
+  if (pathname === '/functions/v1/get-student-work') return studentWorkReadBody(body);
   if (pathname === '/functions/v1/get-student-dashboard') {
     if (body?.navigation === true && Object.keys(body).length === 1) return true;
     return body && Object.keys(body).length === 3 && ['enrollmentId', 'curriculumReleaseId', 'unitId'].every(k => uuid(body[k]));

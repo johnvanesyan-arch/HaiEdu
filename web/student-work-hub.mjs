@@ -11,6 +11,11 @@ export const workFilters = [['todo', 'Կատարելու'], ['returned', 'Վեր
 
 // Material assignments record no completion (opening a PDF is not completed work),
 // so they stay in "to do". Unknown states get no bucket and are never hidden.
+// A link may open My work on one tab (Home's teacher-feedback card opens «Returned»).
+export function initialWorkFilter(search = globalThis.location?.search ?? '') {
+  const shown = new URLSearchParams(search).get('show');
+  return workFilters.some(([key]) => key === shown) ? shown : 'todo';
+}
 export function workBucket(source, state) {
   if (source === 'material') return 'todo';
   if (state == null) return buckets[source] ? 'todo' : null;
@@ -27,7 +32,7 @@ export function workToolbarMarkup() {
 
 // sources: number of sources that report; refresh(): asks every source to reload.
 export function mountWorkHub({ toolbar, scope, sources, refresh }) {
-  let filter = 'todo';
+  let filter = initialWorkFilter();
   const reports = new Map();
   function apply() {
     scope.dataset.workShowing = filter;
