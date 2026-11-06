@@ -317,7 +317,19 @@ test('BF-08 narrow practice reloads a stale hint, keeps a draft, and puts feedba
  await expect(second.locator('[data-help-content]')).toContainText('Հարցը թարմացվել է');
  await expect(draft).toBeChecked();
  assert.equal(f.calls.filter(x=>x.name==='get-remediation-help').length,2);
- await second.locator('#learningPlayer button[type=submit]').click();
+ let dropped=false;
+ await second.route('**/functions/v1/submit-answer',async route=>{
+  const response=await route.fetch();
+  if(!dropped&&response.ok()){
+   dropped=true;
+   await route.abort('failed');
+  }else await route.fulfill({response});
+ });
+ const submit=second.locator('#learningPlayer button[type=submit]');
+ await submit.click();
+ await expect(second.locator('[data-feedback]')).toContainText('գրանցումը դեռ հաստատված չէ');
+ await expect(second.locator('[data-help]')).toBeDisabled();
+ await submit.click();
  const next=second.getByRole('button',{name:'Հաջորդը',exact:true});
  await expect(next).toBeVisible();
  await second.getByRole('button',{name:'Բացատրել սխալը',exact:true}).click();

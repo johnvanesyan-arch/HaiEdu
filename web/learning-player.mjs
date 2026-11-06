@@ -95,8 +95,9 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
       if(helpButton){
         const afterMistake=data.grading?.correct===false&&data.session?.status==='active';
         helpButton.hidden=!afterMistake;
+        helpButton.disabled=!afterMistake||(!item.refreshHint&&item.hintLevel>=3);
         root.querySelector('[data-help-content]').hidden=true;
-        if(afterMistake&&!item.refreshHint)helpButton.textContent='Բացատրել սխալը';
+        if(afterMistake&&!helpButton.disabled&&!item.refreshHint)helpButton.textContent='Բացատրել սխալը';
       }
       disposeStimulus?.();disposeStimulus=null;
       const feedback=root.querySelector('[data-feedback]');

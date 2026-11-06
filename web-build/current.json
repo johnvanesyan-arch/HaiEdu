@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "buildId": "fbf3378877bea42cbd4d54c0da742dc49c08deb286ac2594e5dd49026e5c5808",
+  "buildId": "22c0f14c394f1d9aa6b65bd5c8fc7f33c1d0b98a91ec692f23d9fa830236b0de",
   "inputs": {
     "node_modules/@supabase/auth-js/dist/module/AuthAdminApi.js": "f18bf53f4c43d232f849f9000c1f61bdd43eee7bceb42f829339c5053b6eee41",
     "node_modules/@supabase/auth-js/dist/module/AuthClient.js": "684b46b2be095e71fe7546e72f6791753f1cae9ebdaacd167b4905a5b7a87903",
@@ -124,7 +124,7 @@
     "web/learning-audio.mjs": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9",
     "web/learning-extensions.mjs": "c3c161b1d83fe8de6b3c1f61fce1fc5084103df38db9746b4d5a998c97f7fa11",
     "web/learning-navigation.mjs": "d500a81e08d64d95e96e869f64fc346734961eaa510c4c362973bb2d55468a11",
-    "web/learning-player.mjs": "98bf574d66f804f2a148bc932f650bec89aeb5713ed3d87ace012e31399d01fe",
+    "web/learning-player.mjs": "7307a3a9aca44f45977952b20200b29ce722d27e92762a3d6e75df31f25d928a",
     "web/learning-stimulus.mjs": "2c843af3ddf9578dbd1e0fc1be213c5fdc0e67d4edcf9200477be3b67f6b6cbe",
     "web/learning-task-set.mjs": "9600b680895d668261747d5ce7fcec1b366a179dd1b1d55f5ad7e11e2dae7755",
     "web/mastery.html": "3860658bef195905f07e02c971cc037d43b6206b16ef60b589d61b8bad58a698",
@@ -344,9 +344,9 @@
       "sha256": "d47c592082cc7ea29b27b9b3ea1648f4408960de7e59b6f3aa9b9d6083933118",
       "bytes": 12841
     },
-    "_assets/course-page-CHMWSQND.js": {
-      "sha256": "209c15a63dee43ab799c2a64b2628d3976e051b500c8f613d2bc83b31f187025",
-      "bytes": 29885
+    "_assets/course-page-O2ZMIOZA.js": {
+      "sha256": "a2932236f1164f9a32673ad39002a7c9834ffff0df821af90b66f3ddb2c4b803",
+      "bytes": 29944
     },
     "_assets/course-workspace-3LKFRZV6.css": {
       "sha256": "1f39ce05efb486cb8f7e43144ddad5ac160b3a78ebbe52cba0c5ec3e537385ed",
@@ -719,7 +719,7 @@
   },
   "pages": {
     "account-access.html": {
-      "sha256": "9a56406218eec625e69ded50092a1234d43bbfe6e1285873bb1d55a76b8d4a05",
+      "sha256": "e720091666018c7c2436326f3bfc51414e8b35a5950fd12f465d3b64496c5566",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -730,7 +730,7 @@
       ]
     },
     "admin-security.html": {
-      "sha256": "98891f5fce62c1972efd27ff057d2bdd46a3a4cec57a3147b373769789c563a3",
+      "sha256": "f79d6277aed109ada6b99a69d1c07bcedffc724a5cb6a10fcc82cfc7bba151a1",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -744,7 +744,7 @@
       ]
     },
     "admin.html": {
-      "sha256": "51ded03aa5f8d6fa1f92cd51affed3b18c128e01310e846bf69d2bc8e5ab1fb4",
+      "sha256": "25d60f0850535cd8158a18270acdb444a2c4c3c6d66c629f600e057c6260d448",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -757,7 +757,7 @@
       ]
     },
     "assessment.html": {
-      "sha256": "3c8ffa593f4fd5be213a47e9b1025ad5352cd2a8d0aaef260847b11719de19a6",
+      "sha256": "637fe4a27cdf1c6d59141352ae48aabc88834581bfb78b82de8f1d92842772ca",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -776,7 +776,7 @@
       ]
     },
     "content-bank.html": {
-      "sha256": "63ba2579261786a4427b3f59bfbf3386d91f1f2896b61f053ff8d339fbd18887",
+      "sha256": "d5c14b9de25696500d58bf7045ea4d48f3642770a7083d130d5c23363fe6d62c",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -792,7 +792,7 @@
       ]
     },
     "content-curriculum.html": {
-      "sha256": "5225af2a7c0c03f2967b3d3534919b42749eb8a809e6ec97bc024f13e544b3cb",
+      "sha256": "3a3a86c5ce025b454ad9f67cbacd397ac9a2c4560430f5df3c857314ee43738e",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -806,7 +806,7 @@
       ]
     },
     "content-evidence.html": {
-      "sha256": "5622fdaa7939d61fd1c21eb6bb8501a21ce10586c7b16a456b9e24fa5ba68025",
+      "sha256": "bfd19062771b8132cc05ad2a72e6fe28bc54c8ba775e39c7ea20b04070fae810",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -820,7 +820,7 @@
       ]
     },
     "content-guides.html": {
-      "sha256": "95faa10ebe7acfef57f0988d12192f76736ba97236386a06ff26ec554ace9ae1",
+      "sha256": "1f7f6ac8fc95728260aeb9928e2051f4bb4c1f6d274bcab1e179033c2177dd3a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -833,7 +833,7 @@
       ]
     },
     "content-item.html": {
-      "sha256": "686dd68567899a6d62960bd403b214c570ec72f0ec9944d8047fb8f54f134c48",
+      "sha256": "6f694fd5108a844de12d770d54d95da49e5d7d05a742eb3db1d932c50dadbdba",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -848,7 +848,7 @@
       ]
     },
     "content-materials.html": {
-      "sha256": "ecd71a342f02930d83e4c611b453720cbcde1bd4b3db7bd90c1ae0316a4a43e8",
+      "sha256": "e491a69cea9b599054b9227f42f9c425435011dbf95dae9e6fae1ad2f0b55d15",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -863,7 +863,7 @@
       ]
     },
     "content-misconceptions.html": {
-      "sha256": "2e1586eb275fc35eaf649b99a5dcf179d94ccbf349051d04a9ce82dabc57988c",
+      "sha256": "e9e892888095a3aed1a7a5c362cb863f95dd1fb2612a2bbe1891f259562c1879",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -876,7 +876,7 @@
       ]
     },
     "content-review.html": {
-      "sha256": "2f48fac9ddee4c118a4774b20e6878c677ba1335e555b6554179aba7ec691747",
+      "sha256": "2c2243c3cd223e1aa74cf3f855ab6da733fe36e8d6bf30b07c3c5e619ac3fbed",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -890,7 +890,7 @@
       ]
     },
     "content.html": {
-      "sha256": "530c1dc583e6ca6476d7a21ef2d6bc7b8e9ffbd96ac7ee6762021d241bf99668",
+      "sha256": "92c09c54515d0bbe6a3e8d29cc487a596d72c79441d74c4d9bbf08ca5878bb8d",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -904,7 +904,7 @@
       ]
     },
     "course.html": {
-      "sha256": "fb1610b366048a5e5b89e1e96f19f028a11d7910c5a6496a055dfc2e44ecc1b2",
+      "sha256": "b3d742a365ed1e07f180f7c78890ffcbecb185bcfe62ee204a6dc73b9343a275",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -919,12 +919,12 @@
         "/_assets/written-work-7XVQLYUX.css",
         "/_assets/student-forest-TZM4XC2R.css",
         "/_assets/student-shell-WEACHEO3.js",
-        "/_assets/course-page-CHMWSQND.js",
+        "/_assets/course-page-O2ZMIOZA.js",
         "/_assets/ux-GHGL6VQ3.js"
       ]
     },
     "diagnostic.html": {
-      "sha256": "f212591160b3a1c3341cce165157f88032140bb2772be0d10fcfa2dc0808907b",
+      "sha256": "89f1607ab6a40f07743e9c9de992fce9c55d65986866b427c83441cab845d136",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -944,7 +944,7 @@
       ]
     },
     "index.html": {
-      "sha256": "c4e8374a4a4f545461098e537f03e59ff042028a660dd31c1f5f3b68a5df19cf",
+      "sha256": "7d3a56708f2dcd9cc36cd50902b5779d5350a2db3face00e7a000290ba2a31ff",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -968,7 +968,7 @@
       ]
     },
     "join.html": {
-      "sha256": "764d02832894c6519a794de7b27625571c44b4dfbeb8aeb5e8dd71c9f1b85964",
+      "sha256": "d64a28f9f4c58ba61566a482bf6c98791432c5a0d09a26a38170093a4f6da43f",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -984,7 +984,7 @@
       ]
     },
     "mastery.html": {
-      "sha256": "bfdcc8ad3f1b31a88e3775cad65e3d9c583ab441b223a975f4f3ac5644218a39",
+      "sha256": "82f81f52ff9e41322bbc8253ea2b3f7c0da16d7857c94dfa2f3d95d33173072a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1004,7 +1004,7 @@
       ]
     },
     "materials.html": {
-      "sha256": "53a5c22189c18cb4f848ab1ba3a0e5ecf06e31a5311f713df106316bb66d3144",
+      "sha256": "0b261ba6030ace9380382c4292a74982967420c9cfa88305408e9345fc9cc225",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1022,7 +1022,7 @@
       ]
     },
     "physics-7.html": {
-      "sha256": "82773e105481fdd62457e19adbd141033f85693f90107de53e800ab55ef36548",
+      "sha256": "8f046c62d0b80e1bf6db7b381b0a7a7e75eead25e0de72019de62058adb7b0a9",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1041,7 +1041,7 @@
       ]
     },
     "practice.html": {
-      "sha256": "4728433bd911134939fd008f2b56156c8c011956530e88a890f4834134942360",
+      "sha256": "b35bb487160f112fa01961ecc7a9ccb1880a84d7d50876d4689958946ea8c36a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1061,7 +1061,7 @@
       ]
     },
     "privacy.html": {
-      "sha256": "92e1992bef14e92362c335bcd28a6282846534f77749f22d7da432bf913c494a",
+      "sha256": "060d80305eab027425d00671e533f6fe5d931151358936dec17e7d6e4fd233d2",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1075,7 +1075,7 @@
       ]
     },
     "progress.html": {
-      "sha256": "d6a7ccb53841bd90f01cd4eacee7a5e24efbbe1b57cc7959df80c5ec0efeb522",
+      "sha256": "fe842b1e4625b640de0bfa768b55301bb7414560bf27d138cd3478ceb3410ddf",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1093,7 +1093,7 @@
       ]
     },
     "resource-library.html": {
-      "sha256": "d9c7d6df269c87fb1558a631bb15fbb4e41fdc168b19e58041cbced61538eb17",
+      "sha256": "c2988575e739fb44b988dac96bec3f47282c58567be27b1daeba5fa609755a72",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1112,7 +1112,7 @@
       ]
     },
     "school-admin.html": {
-      "sha256": "bd956c88dafa6fe5ca1cac5a333ec4a1fae307986c729ac3fbfd86859053768f",
+      "sha256": "434cc270ab755e1bf4c3f151193129bfc5c451f87c542f2289fde97dbdc6fd0e",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1124,7 +1124,7 @@
       ]
     },
     "school-teacher.html": {
-      "sha256": "77048a9768821f39369202b05b54bc2bcd9575f2119a4a719af6f9197ec2f4c1",
+      "sha256": "b34e1f8ba085cef58d2a064c74916e81866c283f5c8e188bd6d9ea2993b15702",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1137,7 +1137,7 @@
       ]
     },
     "teacher-workflows.html": {
-      "sha256": "496509f44fdd269b3098ce2ac466f8b36d9b39411bb8e48a709218332d89dbd1",
+      "sha256": "8ffd95b5127569655c7ed4d739ea59d924b6dc475a49b3f658845d4b209079b5",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1147,7 +1147,7 @@
       ]
     },
     "teacher-workspace-preview.html": {
-      "sha256": "58bd23425b8558d3ca2e4ecb1c11c120bfc88b1d08ab03911d6b7006378f2e25",
+      "sha256": "887fdb57a62dd7f0defa66166905d3b74589d1ed57dcf139cf1d544ed6b827e1",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1158,7 +1158,7 @@
       ]
     },
     "teacher.html": {
-      "sha256": "a9e8a3777b40acc58111387f112d2b4bfe71f68c47f83de34a676c8915793758",
+      "sha256": "0f172c08ef3eb3942b70cd4292796baf991c8c347c6df80e23a89d2419560428",
       "assets": [
         "/_assets/teacher-startup.bundle-NKCMYRSD.js",
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
@@ -1214,7 +1214,7 @@
     "content.css": "/_assets/content-6UCIOIY4.css",
     "content.js": "/_assets/content-M4C24BCS.js",
     "course-gate.js": "/_assets/shared-EJ5KELFP.js",
-    "course-page.js": "/_assets/course-page-CHMWSQND.js",
+    "course-page.js": "/_assets/course-page-O2ZMIOZA.js",
     "course-workspace.css": "/_assets/course-workspace-3LKFRZV6.css",
     "diagnostic.js": "/_assets/diagnostic-HHSWXKTI.js",
     "forest-tokens.css": "/_assets/forest-tokens-PHQMDKG3.css",
@@ -1677,7 +1677,7 @@
         }
       ]
     },
-    "_assets/course-page-CHMWSQND.js": {
+    "_assets/course-page-O2ZMIOZA.js": {
       "inputs": [
         "web/course-page.js",
         "web/learning-player.mjs",
