@@ -1,5 +1,25 @@
 # Project status register
 
+**2026-11-06 Asia/Dubai — 16.5B Home refinement mockup complete and live; production QA green.**
+- [PR426](https://github.com/johnvanesyan-arch/HaiEdu/pull/426) `97a8902`: the Home greeting («Բարև, {display name}», from the existing role-check profile read) and «Ձեր ուղին այս բաժնում» (Diagnostic → Practice → Mastery check for the selected unit, using the same rules as the course page, no score).
+- [PR428](https://github.com/johnvanesyan-arch/HaiEdu/pull/428) `da9b294`:
+  - compact Home course cards, with readiness on the **selected course only** (John's decision: no request per course);
+  - the «Ուսուցչի արձագանք» card for work returned for revision (John's decision: build it, at one read-only `get-student-work` request per Home load), linking to My work «Վերադարձված»;
+  - the desktop side-by-side layout;
+  - production request lists and Chapter III–VI trigger paths updated for the new read.
+- **Production verification:**
+  - **`97a8902`: 13/13.** Chapter II's first attempt hit a deploy switch-over before running any check; it passed 91/91 on re-run, which also verifies Codex's [PR427](https://github.com/johnvanesyan-arch/HaiEdu/pull/427).
+  - **`da9b294`: 13/13.** English Unit 1 and Chapter IV first failed because John's own browser was signed in as School A's QA student from 13:11 to 13:12 UTC, which invalidated the run's live session. They passed 130/130 and 155/155 on re-run.
+  - **Earlier QA-account sessions:** the 5 November chapter failures and the 6 November Chapter II failure trace to an owner iPhone session on the same QA account (17:43–18:12 UTC on 5 November), which also completed its Chapter II diagnostic; PR427 accepts that state.
+- **Deliberate differences from the mockup:** no diagnostic score; «բաժին», not «գլուխ»; the two selectors stay; no course-level «Ամրապնդում է պետք» chip; reviewed (final) work is not shown as feedback. The phone bottom navigation still truncates its fourth tab at 390 px (BF-10, Codex).
+
+**Limits.**
+- Owner usability acceptance for the Home changes is not given.
+- QA student accounts must not be used for manual checks while production QA can run.
+- BF-07 is released; the existing gates are unchanged.
+
+[Home record](student-home-mockup-20261106.md).
+
 **2026-11-06 — BF-07 is ready for release checks.** John approved publication and release of [PR421](https://github.com/johnvanesyan-arch/HaiEdu/pull/421). Its browser code and compiled assets match the candidate that passed all five jobs in CI42088189300 (1,772 unit/integration and 502 native Chromium tests). The branch now includes PR420–425, including the production QA fixes and the decision about the earlier chapter reruns. Selected synthetic service counts fall from 4 to 2 on Home, 4 to 2 on course entry, 7 to 5 for the first question and 3 to 2 when moving from a teacher class to writing. Reads respect account and session boundaries, and the teacher catalog, review queue and actions authorize each request. Fresh PR checks and production verification are pending. BF-02 remains deferred. [Measurements and verification](qa/request-deduplication-20261105.md).
 
 **2026-11-06 Asia/Dubai — 16.5B production QA failures resolved: both Resource causes were acceptance-script defects from PR416/PR419; corrected and passing.**

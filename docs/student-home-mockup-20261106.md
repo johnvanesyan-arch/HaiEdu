@@ -83,3 +83,12 @@ All production scripts that open Home were searched for the changed selectors, t
   - desktop side-by-side placement and phone single column;
   - containment at 200% text.
 - **Owner usability acceptance:** not given. **Live production check:** after merge.
+
+## Production verification (6 November 2026, designated QA fixtures)
+
+- **`97a8902` (step 1): 13/13 suites.** Chapter II's first attempt stopped in the release wait ("Production commit changed during built-asset verification") while the deploy switched over, before any check ran. It passed 91/91 on re-run.
+- **`da9b294` (step 2): 13/13 suites.**
+  - English Unit 1 (3/4) and Chapter IV (22/23) first failed while John's own browser was signed in as School A's QA student, from 13:11:11 to 13:11:55 UTC. That login invalidated the run's live session; edge logs show the 403s on both sides.
+  - They passed 130/130 and 155/155 on re-run. Resource passes, including the writing step through the combined list.
+- **Live site:** `www.haiedu.am` served the step 1 build `cca5c7ac…` after merge. Vercel reports the step 2 deployment READY.
+- **Owner usability acceptance:** not given.
