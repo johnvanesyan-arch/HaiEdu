@@ -39,5 +39,6 @@ with database_uri() as uri, psycopg.connect(uri, autocommit=True, row_factory=di
             rows = cursor.fetchall() if cursor.description else []
             result = {'id': request['id'], 'rows': rows}
         except psycopg.Error as error:
-            result = {'id': request['id'], 'error': str(error), 'code': error.sqlstate}
+            # PostgREST exposes the primary message separately from diagnostics.
+            result = {'id': request['id'], 'error': error.diag.message_primary or str(error), 'code': error.sqlstate}
         print(json.dumps(result, default=encode), flush=True)
