@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {homeLearningSummary} from '../web/student-home-model.mjs';
+import {homeLearningSummary,homeLearningPath} from '../web/student-home-model.mjs';
 import {studentHomeHref,contextHref} from '../web/learning-navigation.mjs';
 const id=n=>`76000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 const context={enrollmentId:id(1),curriculumReleaseId:id(2),unitId:id(3)};
@@ -29,4 +29,30 @@ test('Home navigation carries enrollment, release and unit without player action
   assert.equal(url.searchParams.get('release'),id(2));
   assert.equal(url.searchParams.has('action'),false);
   assert.throws(()=>studentHomeHref('home',{...context,unitId:'other'}),/invalid_context_selection/);
+});
+
+const configured=Object.fromEntries(['diagnostic','practice','mastery_check'].map(m=>[m,{status:'configured'}]));
+const states=data=>homeLearningPath({modes:configured,...data}).map(s=>[s.mode,s.state,s.detail]);
+test('Home path mirrors the course page sequence without scores or eligibility of its own',()=>{
+  // Before the diagnostic: practice and the check are locked; no score is ever shown.
+  assert.deepEqual(states({practiceAccess:{unlocked:false},skills:[{ready:false},{ready:false}]}),[
+    ['diagnostic','next','Հաջորդ քայլը'],['practice','locked','Կբացվի ախտորոշիչից հետո'],
+    ['mastery_check','locked','Կբացվի, երբ 2 պահանջվող հմտություններն էլ պատրաստ լինեն']]);
+  assert.equal(states({activeSession:{mode:'diagnostic',answered:4,planned:20},practiceAccess:{unlocked:false},skills:[]})[0][2],'Ընթացքի մեջ է · պատասխանված է 4 / 20');
+  const after={baseline:{correct:16,answered:20,percent:80},practiceAccess:{unlocked:true}};
+  const practising=states({...after,skills:[{ready:true},{ready:false},{ready:false,requiredForReadiness:false}]});
+  assert.deepEqual(practising[0],['diagnostic','done','Ավարտված է']);
+  assert.deepEqual(practising[1],['practice','current','Ընթացքի մեջ է · պատրաստ է 1 / 2 պահանջվող հմտություն']);
+  assert.equal(practising[2][1],'locked');
+  assert.ok(practising.every(([, ,d])=>!/16|80%/.test(d)),'No assessment score on Home');
+  // The check opens only on the same evidence the course page uses; an active session defers it.
+  assert.deepEqual(states({...after,skills:[{ready:true},{ready:true}]})[2],['mastery_check','next','Հասանելի է']);
+  assert.equal(states({...after,activeSession:{mode:'practice',answered:1,planned:8},skills:[{ready:true}]})[2][2],'Հասանելի կլինի ընթացիկ աշխատանքն ավարտելուց հետո');
+  assert.equal(states({...after,lifecycle:{state:'mastery_retry_2_ready'},skills:[{ready:false}]})[2][1],'next');
+  assert.equal(states({...after,lifecycle:{state:'review_required_attempt_2'},skills:[{ready:false}]})[2][2],'Նախ ավարտեք պարտադիր կրկնությունը');
+  assert.deepEqual(states({...after,lifecycle:{state:'mastery_passed'},skills:[]})[2],['mastery_check','done','Հանձնված է']);
+  assert.deepEqual(states({...after,lifecycle:{state:'mastery_failed_final'},skills:[]})[2],['mastery_check','done','Ավարտված է']);
+  // Unknown readiness never claims a count; unconfigured modes say so.
+  assert.equal(states({...after,skills:[{ready:null}]})[2][2],'Կբացվի, երբ պահանջվող հմտությունները պատրաստ լինեն');
+  assert.deepEqual(homeLearningPath({modes:{},skills:[]}).map(s=>s.state),['unavailable','unavailable','unavailable']);
 });

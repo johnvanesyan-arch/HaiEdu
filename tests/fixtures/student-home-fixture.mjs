@@ -30,6 +30,7 @@ export function installStudentHomeFixture(options = {}) {
     practiceAccess:{unlocked:!options.required}, baseline:options.required?null:{correct:12,answered:16,percent:75},
     activeSession:options.active===false || options.required ? null : {id:'synthetic-session',mode:'practice',answered:3,planned:8,policyBindingId:'synthetic-binding',targetSkillId:id(70)},
     skills:Array.from({length:6},(_,n)=>({id:id(70+n),code:'S'+n,nameHy:'Ուսումնական հմտություն',ready:n<2,mastery:options.fewAnswers&&n===2?{percent:50,evidenceCount:2,status:'insufficient_evidence'}:{percent:60,evidenceCount:5},requiredForReadiness:n!==5})),
+    ...(options.lifecycle?{lifecycle:{state:options.lifecycle}}:{}),
     history:[],modes:Object.fromEntries(['diagnostic','practice','mastery_check','chapter_review'].map(mode=>[mode,{status:'configured',questions:8,hintsAllowed:mode==='practice'||mode==='chapter_review'}])),
   });
   const emit = event => listeners.forEach(listener=>listener(event,session));
@@ -40,7 +41,7 @@ export function installStudentHomeFixture(options = {}) {
       onAuthStateChange:listener=>{listeners.push(listener);queueMicrotask(()=>listener('INITIAL_SESSION',session));return {data:{subscription:{unsubscribe(){}}}};},
       signOut:async()=>{ calls.push({name:'signOut'}); await Promise.resolve(); session=null; emit('SIGNED_OUT'); if(options.signOutHeld)await new Promise(resolve=>pending.push(resolve)); return {error:null}; },
     },
-    from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:options.role || 'student',account_status:'active'}})})})}),
+    from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:options.role || 'student',account_status:'active',...(options.displayName?{display_name:options.displayName}:{})}})})})}),
     functions:{invoke:async(name,{body})=>{
       calls.push({name,body});
       if(name==='get-student-classes' || (name==='get-student-dashboard' && body.navigation)) {

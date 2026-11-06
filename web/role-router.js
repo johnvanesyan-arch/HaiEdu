@@ -19,6 +19,13 @@ function revealStudentRoute() {
   document.body?.removeAttribute("data-role-routing");
 }
 
+// The signed-in student's own display name, read in the same profile request as the
+// role (no extra request), for the Home greeting. Cleared on any account change.
+function publishStudentProfile(profile) {
+  window.HaiEduStudentProfile = profile;
+  window.dispatchEvent(new CustomEvent("haiedu-student-profile", { detail: profile }));
+}
+
 function blockStudentRoute() {
   document.body?.setAttribute("data-role-routing", "blocked");
   const panel = document.getElementById("roleBlockedPanel");
@@ -32,6 +39,7 @@ export async function routeSession(session) {
   if (lastRouteKey === key && lastRouteResult && Date.now() - lastRouteAt < 1500) return lastRouteResult;
 
   routePromiseKey = key;
+  if (window.HaiEduStudentProfile && window.HaiEduStudentProfile.accountId !== key) publishStudentProfile(null);
   routePromise = (async () => {
   if (!session?.user) {
     revealStudentRoute();
@@ -46,7 +54,7 @@ export async function routeSession(session) {
 
   const { data, error } = await supabase
     .from("profiles")
-    .select("role, account_status")
+    .select("role, account_status, display_name")
     .eq("id", session.user.id)
     .maybeSingle();
 
@@ -69,6 +77,8 @@ export async function routeSession(session) {
     return { redirected: true, role };
   }
 
+  const displayName = typeof data.display_name === "string" ? data.display_name.trim().replace(/\s+/g, " ").slice(0, 80) : "";
+  publishStudentProfile({ accountId: key, displayName });
   revealStudentRoute();
   return { redirected: false, role };
   })();
