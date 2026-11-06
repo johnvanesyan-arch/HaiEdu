@@ -8,6 +8,7 @@ import {chromium} from '@playwright/test';
 import {createHash,randomUUID} from 'node:crypto';
 import {validateFixture,roles,sides,runIsolation} from './sprint-14-isolation.mjs';
 import {waitForRelease} from './wait-for-production-release.mjs';
+import {studentWorkReadAllowed} from './student-work-qa-read.mjs';
 // Reviewed main only. Ordinary designated QA sessions; no service key or user impersonation.
 // Only this run's newly created supplementary resources can be revised/withdrawn.
 const fixture=JSON.parse(process.env.QA_TENANT_FIXTURES_JSON??'{}');
@@ -40,7 +41,8 @@ async function browserContext(actor,materialId=null,creation=null){
    ||(fn==='manage-teacher-task-student-work'&&['inbox','open'].includes(body.action))
    ||(fn==='manage-teacher-task-student-files'&&['source','open'].includes(body.action))
    ||(fn==='manage-writing-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action))
-   ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action));
+   ||(fn==='manage-resource-assignments'&&['catalog','preview','list','inbox','get','open'].includes(body.action))
+   ||studentWorkReadAllowed(actor,fn,body);
   if(read)return route.continue();
   const exactContext=Object.entries(selectors.get(actor)).every(([k,v])=>body.context?.[k]===v)&&Object.keys(body.context??{}).length===3;
   if(creation&&actor.endsWith('teacher')&&exactContext&&fn==='manage-supplementary-resources'){
