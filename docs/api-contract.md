@@ -317,6 +317,8 @@ The current Practice and Chapter Review clients send `sessionId`, `sessionItemId
 
 A changed level or answer phase, an exhausted item, or a question that has advanced returns HTTP 409 `hint_state_conflict` without recording another hint. The client offers an authorized `get-session-item` refresh and keeps draft input when the same item is returned. Refresh never requests another hint. An unexpected recording failure returns HTTP 500 `hint_recording_failed`. Access failures retain their own responses. Previously loaded clients can still use the earlier request shape and must load the current client to get the expected-state recovery flow.
 
+The live rollout and isolated stale-state regression are documented in the [BF-08 release evidence](qa/hint-state-recovery-20261106.md).
+
 ## Answer request
 
 Illustrative single-choice request; substitute UUIDs returned by the session APIs:
