@@ -1,9 +1,12 @@
+import {learnerAccess} from './learner-access.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const dashboard = document.getElementById("dashboardContent");
-let loading = false;
+const access=learnerAccess(supabase);
+let loading=false,version=0,timer;
+function schedule(){clearTimeout(timer);timer=setTimeout(refreshClasses,0);}
 
 function ensureCard() {
   let card = document.getElementById("homeClassCard");
@@ -47,7 +50,7 @@ function renderClasses(classes) {
   }
 
   title.textContent = classes.length === 1 ? "Դուք միացված եք ուսուցչի դասարանին" : `Դուք միացված եք ${classes.length} դասարանի`;
-  text.textContent = "Ուսուցիչը կարող է հետևել ձեր Ֆիզիկա 7 · Գլուխ I առաջընթացին իր դասարանի վահանակից։";
+  text.textContent = "Ուսուցիչը կարող է հետևել ձեր դասընթացի առաջընթացին իր դասարանի վահանակից։";
   list.classList.remove("hidden");
 
   for (const klass of classes) {
@@ -69,10 +72,13 @@ function renderClasses(classes) {
 async function refreshClasses() {
   if (loading || !dashboard || dashboard.classList.contains("hidden")) return;
   loading = true;
+  const request=++version;
   ensureCard();
-  const { data, error } = await supabase.functions.invoke("get-student-classes", { body: {} });
+  const {data,error,stale}=await access.read();
+  if(stale||request!==version)return;
   loading = false;
 
+  if(!dashboard||dashboard.classList.contains("hidden"))return;
   if (error) {
     const title = document.getElementById("homeClassTitle");
     const text = document.getElementById("homeClassText");
@@ -86,12 +92,10 @@ async function refreshClasses() {
 
 if (dashboard) {
   const observer = new MutationObserver(() => {
-    if (!dashboard.classList.contains("hidden")) queueMicrotask(refreshClasses);
+    if (!dashboard.classList.contains("hidden")) schedule();
   });
   observer.observe(dashboard, { attributes: true, attributeFilter: ["class"] });
 }
 
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(refreshClasses, 200);
-});
-setTimeout(refreshClasses, 550);
+access.subscribe(({reason})=>{clearTimeout(timer);++version;loading=false;document.getElementById('homeClassCard')?.remove();if(reason!=='pagehide')schedule();});
+schedule();

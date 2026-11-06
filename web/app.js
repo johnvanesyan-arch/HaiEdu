@@ -1,3 +1,4 @@
+import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -5,6 +6,8 @@ import { routeSession, roleRoutingReady } from "./role-router.js";
 import { signOutStudent } from "./student-signout.mjs";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const access=learnerAccess(supabase);
+let initialAuthSequence=0,refreshTimer;
 const $ = (id) => document.getElementById(id);
 
 const authPanel = $("authPanel");
@@ -98,6 +101,7 @@ async function signOut() {
 }
 
 async function showDashboard({ force = false } = {}) {
+  if(force){dashboardData=null;window.__HAIEDU_DASHBOARD__=null;}
   if (!force && dashboardData) {
     renderDashboard(dashboardData);
     $("dashboardLoading").classList.add("hidden");
@@ -116,9 +120,13 @@ async function showDashboard({ force = false } = {}) {
   $("dashboardContent").classList.add("hidden");
   setModeMessage("");
 
+  const {data:auth,error:authError}=await supabase.auth.getSession().catch(error=>({error}));
+  if(epoch!==dashboardEpoch)return;
+  if(authError||!auth?.session||!access.matchesSession(auth.session)){publishLearnerAccess({contexts:[],accessStatus:'unavailable'});return;}
   const { data, error } = await invokeLearnerFunction(supabase,"get-student-dashboard", { body: { navigation: true } });
   if (epoch !== dashboardEpoch) return;
   if (error) {
+    publishLearnerAccess({contexts:[],accessStatus:"unavailable"});
     $("dashboardLoading").textContent = "Չհաջողվեց բեռնել առաջընթացը։";
     return setModeMessage(error.message, true);
   }
@@ -650,6 +658,7 @@ nextBtn.addEventListener("click", handleNext);
 answerForm.addEventListener("submit", submitAnswer);
 
 supabase.auth.onAuthStateChange((event, session) => {
+  if(event!=="INITIAL_SESSION")initialAuthSequence++;
   const accountId = session?.user?.id ?? null;
   if (authenticatedAccountId !== accountId || event === "SIGNED_OUT") {
     authenticatedAccountId = accountId; ++dashboardEpoch;
@@ -667,6 +676,25 @@ supabase.auth.onAuthStateChange((event, session) => {
     if (authEpoch === dashboardEpoch && !route.redirected && !route.blocked) setAuthenticated(Boolean(session));
   }, 0);
 });
+// Home owns the navigation response; its shell must not fetch the same access
+// independently. Refreshes discard pending work without retaining permissions.
+access.subscribe(({reason})=>{
+ if(!['access','join','restore','pagehide','TOKEN_REFRESHED','USER_UPDATED','session'].includes(reason))return;
+ ++dashboardEpoch;dashboardData=null;dashboardLoadPromise=null;window.__HAIEDU_DASHBOARD__=null;
+ clearTimeout(refreshTimer);
+ if(reason==='pagehide'){publishLearnerAccess({contexts:[]});return;}
+ const epoch=dashboardEpoch;
+ refreshTimer=setTimeout(async()=>{
+  try{
+  const {data,error}=await supabase.auth.getSession();
+  if(epoch!==dashboardEpoch)return;
+  if(error||!data?.session){publishLearnerAccess({contexts:[],accessStatus:'signed_out'});setAuthenticated(false);return;}
+  const route=await routeSession(data.session);
+  if(epoch===dashboardEpoch&&!route.redirected&&!route.blocked)await showDashboard({force:true});
+  }catch{if(epoch===dashboardEpoch)publishLearnerAccess({contexts:[],accessStatus:"unavailable"});}
+ },0);
+});
+const startupAuthSequence=initialAuthSequence;
 const { data: sessionData } = await supabase.auth.getSession();
 const route = await roleRoutingReady;
-if (!route.redirected && !route.blocked) setAuthenticated(Boolean(sessionData.session));
+if(startupAuthSequence===initialAuthSequence&&!route.redirected&&!route.blocked)setAuthenticated(Boolean(sessionData.session));

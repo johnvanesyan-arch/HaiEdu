@@ -1,3 +1,4 @@
+import {classNavigationHandoff} from './teacher-class-handoff.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,assessmentScopeMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
@@ -21,14 +22,22 @@ let directoryRequestVersion = 0;
 let invitationRequestVersion = 0;
 let archiveSearchTimer;
 let retryClass=()=>{};
-const pendingReads = new Map();
+const pendingReads = new Map(),classReadGenerations=new WeakMap();
 function readOnce(fn,body) {
-  const key=JSON.stringify([actorId,dashboardLoadVersion,fn,body]);
-  if (!pendingReads.has(key)) pendingReads.set(key, supabase.functions.invoke(fn,{body})
-    .catch(()=>({error:new Error("dashboard_read_failed")})).finally(()=>pendingReads.delete(key)));
-  return pendingReads.get(key);
+  const generation=teacherAuthGeneration;
+  const key=JSON.stringify([actorId,generation,dashboardLoadVersion,fn,body]);
+  if(pendingReads.has(key))return pendingReads.get(key);
+  const pending=supabase.functions.invoke(fn,{body})
+    .then(result=>generation===teacherAuthGeneration?result:{error:new Error('stale_session')})
+    .catch(()=>({error:new Error("dashboard_read_failed")}))
+    .finally(()=>{if(pendingReads.get(key)===pending)pendingReads.delete(key);});
+  pendingReads.set(key,pending);return pending;
 }
-const dashboardRead=body=>readOnce("get-teacher-dashboard",body);
+const dashboardRead=async body=>{
+ const generation=teacherAuthGeneration,result=await readOnce('get-teacher-dashboard',body);
+ if(body.readMode==='class'&&!result.error)for(const klass of result.data?.classes??[])classReadGenerations.set(klass,generation);
+ return result;
+};
 function clearDetail() {
   disposeAssignments();disposeAssignments=()=>{};
   disposeReview();disposeReview=()=>{};
@@ -115,7 +124,7 @@ function teacherViewUrl(view,clearToday=false) {
   return `${url.pathname}${url.search}`;
 }
 
-function renderTeacherView(view = navigationSelection().view) {
+function renderTeacherView(view = navigationSelection().view,initialClass=null) {
   const selected = TEACHER_VIEWS.has(view) ? view : "home";
   document.querySelectorAll("[data-teacher-view]").forEach((section) => {
     section.classList.toggle("hidden", section.dataset.teacherView !== selected);
@@ -127,18 +136,21 @@ function renderTeacherView(view = navigationSelection().view) {
   window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
   window.scrollTo({ top: 0, behavior: "auto" });
   lastTeacherUrl=window.location.pathname+window.location.search;
-  if(selected==="assign-writing"&&dashboard){disposeAssignments();const version=dashboardLoadVersion;const page=directoryPages[directoryKey(navigationSelection().source==="archive")];disposeAssignments=mountTeacherReview({root:$("teacherAssignWritingRoot"),supabase,actorId,assignmentMode:true,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
-  if(selected==="review"&&dashboard){disposeReview();const version=dashboardLoadVersion;const key=directoryKey(navigationSelection().source==="archive");const page=directoryPages[key];disposeReview=mountTeacherReview({root:$("teacherReviewRoot"),supabase,actorId,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
+  if(selected==="assign-writing"&&dashboard){disposeAssignments();const version=dashboardLoadVersion;const page=directoryPages[directoryKey(navigationSelection().source==="archive")];disposeAssignments=mountTeacherReview({root:$("teacherAssignWritingRoot"),supabase,actorId,readDashboard:dashboardRead,initialClass,assignmentMode:true,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
+  if(selected==="review"&&dashboard){disposeReview();const version=dashboardLoadVersion;const key=directoryKey(navigationSelection().source==="archive");const page=directoryPages[key];disposeReview=mountTeacherReview({root:$("teacherReviewRoot"),supabase,actorId,readDashboard:dashboardRead,initialClass,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="home"&&dashboard&&$("teacherToday")){disposeToday();const version=dashboardLoadVersion;disposeToday=mountTeacherToday({root:$("teacherToday"),supabase,actorId,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,initialResponse:todayBoot,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});todayBoot=null;}
 }
 
 function navigateTeacherView(view, push = true) {
   if (!allowTeacherLeave()) return;
+  const navigation=navigationSelection(),klass=selectedClass(),generation=teacherAuthGeneration,version=dashboardLoadVersion,actor=actorId;
+  const initialClass=push&&navigation.view==='class'&&['review','assign-writing'].includes(view)&&classReadGenerations.get(klass)===generation
+   ? classNavigationHandoff({actorId:actor,klass,institutionalTeacher:dashboard?.institutionalTeacher,isCurrent:()=>actor===actorId&&generation===teacherAuthGeneration&&version===dashboardLoadVersion}) : null;
   clearDetail();
   const next = teacherViewUrl(view,push);
   const current = `${window.location.pathname}${window.location.search}`;
   if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
-  renderTeacherView(view);
+  renderTeacherView(view,initialClass);
   if(dashboard?.directoryMode && ["classes","archive"].includes(view) && !directoryPages[directoryKey(view==="archive")]) void loadDirectory(view==="archive");
 }
 

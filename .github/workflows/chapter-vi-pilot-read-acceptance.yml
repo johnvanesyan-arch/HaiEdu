@@ -36,6 +36,7 @@ on:
       - web/teacher-today.css
       - web/teacher-today.mjs
       - web/teacher.html
+      - web/teacher-class-handoff.mjs
       - web/teacher.js
       - web/archive-browser.mjs
       - web/analytics-provenance.mjs
@@ -104,6 +105,7 @@ on:
       - web/base.css
       - web/components.css
       - web/config.js
+      - web/learner-access.mjs
       - web/course-gate.js
       - web/course-page.js
       - web/unit-guides.mjs

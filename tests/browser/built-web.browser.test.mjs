@@ -44,7 +44,8 @@ test('compiled signed-in Home and lazy teacher class tools use the shared fixtur
   const home = await pageFor(t, `window.__haieduSupabaseClient=window.__client=(${installStudentHomeFixture.toString()})({});`);
   await home.page.goto(server.origin + '/index.html');
   await expect(home.page.locator('.amp-subject-card').first()).toBeVisible();
-  assert.ok(await home.page.evaluate(() => window.__homeFixture.calls.some(call => call.name === 'get-student-classes')));
+  assert.equal(await home.page.evaluate(() => window.__homeFixture.calls.filter(call => call.name === 'get-student-classes').length),0);
+  assert.equal(await home.page.evaluate(() => window.__homeFixture.calls.filter(call => call.name === 'get-student-dashboard' && call.body.navigation).length),1);
   assert.deepEqual(home.errors, []); assert.deepEqual(home.external, []);
 
   const teacher = await pageFor(t, installTeacherPerformanceFixture, { archives: 0, initialFailure: false, analytics: null, studentDetails: null });

@@ -5,7 +5,7 @@ const states=new Set(['submitted','changes_requested','reviewed','all']);
 
 // Discovery only. The existing class and writing services authorize every exact
 // assignment/release/unit; a menu choice never confers permission.
-export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,isCurrent=()=>true,onRoute=()=>{},assignmentMode=false}){
+export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,initialClass=null,readDashboard=body=>supabase.functions.invoke("get-teacher-dashboard",{body}),isCurrent=()=>true,onRoute=()=>{},assignmentMode=false}){
  let alive=true,ticket=0,directoryTicket=0,writing=()=>{},rows=[],directory=null,chosen=null,context=null;
  const q=new URLSearchParams(location.search);
  let taskKind=q.get('taskKind')==='custom'?'custom':'course';
@@ -39,7 +39,7 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
   $('[data-review-more]').disabled=true;$('[data-review-retry]').classList.add('hidden');message('Դասարանները բեռնվում են…');
   retry=()=>loadDirectory({more,initial});
   try{
-   const response=initial&&initialDirectory?.directory?.archive===archive?{data:initialDirectory}:await supabase.functions.invoke('get-teacher-dashboard',{body:{readMode:'directory',archive,offset}});
+   const response=initial&&initialDirectory?.directory?.archive===archive?{data:initialDirectory}:await readDashboard({readMode:'directory',archive,offset});
    if(!active()||request!==directoryTicket)return;
    const {data,error}=response;if(error||!data?.directory||!Array.isArray(data.classes))throw Error('directory_unavailable');
    rows=more?[...new Map([...rows,...data.classes].map(c=>[JSON.stringify([c.id,c.assignmentId]),c])).values()]:data.classes;directory={...data.directory,nextOffset:offset+data.classes.length};options();message(rows.length?'':'Այս ցանկում հասանելի դասարան չկա։');
@@ -65,7 +65,9 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
   $('[data-review-retry]').classList.add('hidden');message('Դասարանի տվյալները բեռնվում են…');if(!initial)route();
   retry=()=>loadClass(klass,selection,initial);
   try{
-   const {data,error}=await supabase.functions.invoke('get-teacher-dashboard',{body:{readMode:'class',classId:klass.id,...(klass.assignmentId?{assignmentId:klass.assignmentId}:{}),...(selection?{selection}:{})}});
+   const handoff=initial?initialClass?.({actorId,classId:klass.id,selection}):null;
+   initialClass=null;
+   const {data,error}=handoff?{data:handoff}:await readDashboard({readMode:'class',classId:klass.id,...(klass.assignmentId?{assignmentId:klass.assignmentId}:{}),...(selection?{selection}:{})});
    if(!active()||request!==ticket)return;
    const detail=data?.classes?.find(c=>c.id===klass.id&&(!klass.assignmentId||c.assignmentId===klass.assignmentId));
    if(error||!detail)throw Error('class_unavailable');

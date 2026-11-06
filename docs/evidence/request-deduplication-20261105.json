@@ -1,0 +1,476 @@
+{
+  "schemaVersion": "haiedu-bf07-request-evidence-v1",
+  "status": "implementation-awaiting-final-verification",
+  "date": "2026-11-05",
+  "baseline": {
+    "main": "071e5e5d6feabef1a3ea55fd9763620b1a69932e",
+    "testCommit": "7a9841875c8c4a0d04be3a8431b452550000c17f",
+    "ciRun": 42081822366,
+    "allFiveJobsPassed": true,
+    "nativeTests": 489,
+    "measurements": [
+      {
+        "name": "home",
+        "calls": [
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "navigation": true
+            },
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 2,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 2,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 3,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-dashboard": 2,
+          "get-student-classes": 2
+        }
+      },
+      {
+        "name": "course",
+        "calls": [
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 1,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-classes": 3,
+          "get-student-dashboard": 1
+        }
+      },
+      {
+        "name": "first-question",
+        "calls": [
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "start-learning-session",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008",
+              "mode": "practice"
+            },
+            "wave": 2,
+            "done": true
+          },
+          {
+            "name": "get-mastery-check-status",
+            "body": {
+              "sessionId": "synthetic-player"
+            },
+            "wave": 3,
+            "done": true
+          },
+          {
+            "name": "get-session-item",
+            "body": {
+              "sessionId": "synthetic-player"
+            },
+            "wave": 4,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-classes": 3,
+          "get-student-dashboard": 1,
+          "start-learning-session": 1,
+          "get-mastery-check-status": 1,
+          "get-session-item": 1
+        }
+      },
+      {
+        "name": "teacher-class-writing",
+        "calls": [
+          {
+            "fn": "get-teacher-dashboard",
+            "body": {
+              "readMode": "directory",
+              "archive": false,
+              "offset": 0
+            },
+            "actor": "teacher-a"
+          },
+          {
+            "fn": "get-teacher-dashboard",
+            "body": {
+              "readMode": "class",
+              "classId": "a",
+              "assignmentId": "assignment-a",
+              "selection": {
+                "assignmentId": "assignment-a",
+                "curriculumReleaseId": "release-a",
+                "unitId": "unit-1"
+              }
+            },
+            "actor": "teacher-a"
+          },
+          {
+            "fn": "manage-writing-assignments",
+            "body": {
+              "action": "catalog",
+              "context": {
+                "assignmentId": "assignment-a",
+                "curriculumReleaseId": "release-a",
+                "unitId": "unit-1"
+              },
+              "payload": {
+                "offset": 0
+              }
+            },
+            "actor": "teacher-a"
+          }
+        ]
+      }
+    ]
+  },
+  "candidate": {
+    "commit": "308ca69b359b4d8d41329d2699d1e5934f1a1b35",
+    "ciRun": 42084005661,
+    "unitTests": 1769,
+    "nativePassed": 489,
+    "nativeFailed": 9,
+    "measurements": [
+      {
+        "name": "home",
+        "calls": [
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "navigation": true
+            },
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 2,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-dashboard": 2
+        }
+      },
+      {
+        "name": "course",
+        "calls": [
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 2,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-classes": 1,
+          "get-student-dashboard": 1
+        }
+      },
+      {
+        "name": "first-question",
+        "calls": [
+          {
+            "name": "get-student-classes",
+            "body": {},
+            "wave": 1,
+            "done": true
+          },
+          {
+            "name": "get-student-dashboard",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008"
+            },
+            "wave": 2,
+            "done": true
+          },
+          {
+            "name": "start-learning-session",
+            "body": {
+              "enrollmentId": "76000000-0000-4000-8000-000000000006",
+              "curriculumReleaseId": "76000000-0000-4000-8000-000000000007",
+              "unitId": "76000000-0000-4000-8000-000000000008",
+              "mode": "practice"
+            },
+            "wave": 3,
+            "done": true
+          },
+          {
+            "name": "get-mastery-check-status",
+            "body": {
+              "sessionId": "synthetic-player"
+            },
+            "wave": 4,
+            "done": true
+          },
+          {
+            "name": "get-session-item",
+            "body": {
+              "sessionId": "synthetic-player"
+            },
+            "wave": 5,
+            "done": true
+          }
+        ],
+        "counts": {
+          "get-student-classes": 1,
+          "get-student-dashboard": 1,
+          "start-learning-session": 1,
+          "get-mastery-check-status": 1,
+          "get-session-item": 1
+        }
+      },
+      {
+        "name": "teacher-class-writing",
+        "calls": [
+          {
+            "fn": "get-teacher-dashboard",
+            "body": {
+              "readMode": "directory",
+              "archive": false,
+              "offset": 0
+            },
+            "actor": "teacher-a"
+          },
+          {
+            "fn": "manage-writing-assignments",
+            "body": {
+              "action": "catalog",
+              "context": {
+                "assignmentId": "assignment-a",
+                "curriculumReleaseId": "release-a",
+                "unitId": "unit-1"
+              },
+              "payload": {
+                "offset": 0
+              }
+            },
+            "actor": "teacher-a"
+          }
+        ]
+      }
+    ]
+  },
+  "productionBaseline": {
+    "main": "071e5e5d6feabef1a3ea55fd9763620b1a69932e",
+    "allRunsTerminal": true,
+    "retainedFailures": [
+      {
+        "run": 42073819463,
+        "passed": 108,
+        "total": 109,
+        "reason": "learning-state preservation",
+        "concurrentChapterIIAnswers": 1
+      },
+      {
+        "run": 42073819511,
+        "passed": 173,
+        "total": 174,
+        "reason": "learning-state preservation",
+        "concurrentChapterIIAnswers": 2
+      },
+      {
+        "run": 42073819643,
+        "passed": 85,
+        "total": 86,
+        "reason": "learning-state preservation",
+        "concurrentChapterIIAnswers": 3
+      },
+      {
+        "run": 42073819609,
+        "passed": 204,
+        "total": 207,
+        "reason": "new combined My work read blocked by old guard",
+        "ownedCleanupConfirmed": true,
+        "authClosures204": 6
+      }
+    ],
+    "otherRetainedFailedRuns": [
+      {
+        "run": 42073819506,
+        "reason": "Chapter II preservation"
+      },
+      {
+        "run": 42073819497,
+        "reason": "Chapter II preservation"
+      },
+      {
+        "run": 42073819881,
+        "reason": "isolation: learner A own enrollment403 and local Auth closure403",
+        "causeConfirmed": false
+      }
+    ],
+    "readOnlyInvestigation": {
+      "fixture": "designated learner A",
+      "chapter": "Chapter II",
+      "answers": 24,
+      "firstAnswer": "2026-11-05T17:44:14.879430Z",
+      "lastAnswer": "2026-11-05T18:12:43.712993Z",
+      "changedByThisTask": false
+    }
+  },
+  "limits": [
+    "Native measurement uses real Chromium and application modules with synthetic Auth/Edge services, not production latency.",
+    "The wave field marks contiguous busy intervals, not causal critical-path depth.",
+    "The first-question dependency chain stays access, dashboard, start, policy, item; no learning write was duplicated to measure production.",
+    "Corrected candidate CI passes; combined-head/main CI and canonical production verification remain pending.",
+    "BF-02 remains deferred; existing owner, independent-review and content gates are unchanged."
+  ],
+  "correctedCandidate": {
+    "commit": "bd89007f16aee3e0a3be33e424ff913f2d3680b8",
+    "ciRun": 42088189300,
+    "allFiveRequiredJobs": "success",
+    "unitTests": 1772,
+    "nativeTests": 502,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "isolated CI; synthetic browser services, not live acceptance"
+  },
+  "continuation": {
+    "mainDocumentationCommit": "9af8bda1c90ab717744ba669b9a20e0290df734d",
+    "mainPullRequest": 420,
+    "conflictsResolved": [
+      "README.md",
+      "docs/project-status.md",
+      "docs/sprint-roadmap.md"
+    ],
+    "runtimeChanges": false,
+    "combinedHeadCI": "pending",
+    "mainCI": "pending",
+    "productionAcceptance": "pending",
+    "publication": "prior_automatic_review_block_resolved_by_explicit_owner_approval_for_retry",
+    "reviewReason": "Missing explicit publication approval and unverified destination",
+    "destinationReadback": {
+      "repository": "johnvanesyan-arch/HaiEdu",
+      "repositoryId": "1368662129",
+      "owner": "johnvanesyan-arch",
+      "permissions": [
+        "admin",
+        "push"
+      ],
+      "visibility": "public"
+    },
+    "localChecks": {
+      "diffCheck": true,
+      "noConflictMarkers": true,
+      "evidenceJSON": true,
+      "browserQADependencyCoverage": true,
+      "serializedFixtureWorkflows": 20,
+      "runtimeTestBuildWorkflowParityWithCandidate": true,
+      "publicEmailGuard": true
+    },
+    "persistentDeploymentCheck": {
+      "source": "Vercel dashboard read-only inspection",
+      "name": "Platform release checks",
+      "environment": "Production",
+      "behavior": "Blocking",
+      "configurationChanged": false
+    },
+    "merged": false,
+    "deployed": false,
+    "notionSynced": false
+  },
+  "releaseContinuation20261106": {
+    "ownerApprovedRelease": true,
+    "latestMainParent": "4c5ea30035a42f0882c47bd8e4ec692066005341",
+    "preservedQAUpdates": [
+      422,
+      423
+    ],
+    "preservedBaselineRerunDecision": 425,
+    "browserSourceAndBuildMatchCorrectedCandidate": true,
+    "requiredReleaseCI": "pending",
+    "productionAcceptance": "pending"
+  }
+}

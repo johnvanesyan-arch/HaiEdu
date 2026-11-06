@@ -79,6 +79,7 @@ on:
       - web/base.css
       - web/components.css
       - web/config.js
+      - web/learner-access.mjs
       - web/course-gate.js
       - web/course-page.js
       - web/unit-guides.mjs
