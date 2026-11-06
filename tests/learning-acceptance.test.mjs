@@ -131,7 +131,7 @@ test('15B.12E connected Edge-to-SQL acceptance: two chapters in each of two subj
 test('BF-08 serializes help at the level and answer phase the learner saw',async t=>{
  const f=await acceptanceFixture();t.after(()=>f.close());
  await installAnswerRecovery(f.db);
- await f.db.exec(readFileSync('supabase/migrations/20261106172235_hint_state_recovery.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261106175539_hint_state_recovery.sql','utf8'));
  await finishThroughAPI(f,(await start(f,0,'diagnostic')).body.session,false);
  await f.db.query("insert into item_template_remediation_guides values($1,$2,'published',null,1,'Title','Strategy','Hint','Hint2','Example','[]')",[id(951),id(902)]);
  const {body:{session}}=await start(f,0,'practice');

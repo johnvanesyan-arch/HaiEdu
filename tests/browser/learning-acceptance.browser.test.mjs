@@ -286,7 +286,7 @@ test('native governed deadline recovery ignores the late original reply and pres
 test('BF-08 narrow practice reloads a stale hint, keeps a draft, and puts feedback and Next in focus order',async t=>{
  const {f,page,errors,origin,context}=await fixture(t);
  await installAnswerRecovery(f.db);
- await f.db.exec(await readFile('supabase/migrations/20261106172235_hint_state_recovery.sql','utf8'));
+ await f.db.exec(await readFile('supabase/migrations/20261106175539_hint_state_recovery.sql','utf8'));
  const diagnostic=await f.call('start-learning-session',{...selection(0),mode:'diagnostic'});
  await finishThroughAPI(f,diagnostic.body.session,false);
  await f.db.query("insert into item_template_remediation_guides values($1,$2,'published',null,1,'Hint title','Try the strategy','First hint','Second hint','Example','[]')",[id(951),id(902)]);
