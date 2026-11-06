@@ -43,6 +43,9 @@ on:
       - package-lock.json
       - package.json
       - scripts/chapter-ii-pilot-read-acceptance.mjs
+      - scripts/student-work-qa-read.mjs
+      - supabase/functions/_shared/student-work-handler.mjs
+      - supabase/functions/get-student-work/index.ts
       - scripts/chapter-iii-pilot-read-acceptance.mjs
       - scripts/chapter-iv-pilot-read-acceptance.mjs
       - scripts/sprint-14-isolation.mjs

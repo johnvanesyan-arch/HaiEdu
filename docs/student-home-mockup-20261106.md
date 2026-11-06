@@ -61,6 +61,7 @@ All production scripts that open Home were searched for the changed selectors, t
   - `mobileReadAllowed`, used by Mobile.
 
   Both now allow exactly that read through `studentWorkReadBody` (shared with PR422's Resource rule), with unit tests for accepted and rejected shapes. The Resource script already allowed it.
+- **Trigger paths:** Chapters III–VI now depend on `scripts/student-work-qa-read.mjs` and on the `get-student-work` source that Home calls. Their workflows list these paths, so a change to either re-runs them (`check-browser-qa-triggers.mjs` passes).
 - **Course cards:** the scripts' hooks are kept on Home's compact cards: `#mySubjects .amp-subject-card`, its single `summary`, and `.amp-subject-class-list a[href*="unit=…"]`.
 
 ## Verification (isolated, synthetic fixtures — not a live production check)
