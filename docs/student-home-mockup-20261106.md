@@ -48,7 +48,7 @@ John's decisions on 6 November:
 **More deliberate differences:**
 - **No «Ամրապնդում է պետք» chip on partly ready courses.** The count and meter already state it, and a course-level judgement is not a server status.
 - **Reviewed (final) work is not feedback to act on.** Only work returned for revision appears, so old graded work does not keep the card visible forever.
-- **The desktop sidebar navigation is not built.** It is a navigation change, owned by BF-10.
+- **The existing desktop sidebar is unchanged.** The live shell already has one; its contents, such as join-by-code and account at the bottom, are navigation, owned by BF-10.
 - **«Բոլոր դասընթացները» is not added.** The bottom navigation already links to Courses.
 
 ## Production acceptance audit (before merge)
