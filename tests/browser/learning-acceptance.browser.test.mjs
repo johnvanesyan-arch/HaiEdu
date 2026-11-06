@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile,mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
-import {verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
+import {verifyChapterIIPracticeGate,verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
 import {acceptanceFixture,href,id} from '../fixtures/learning-acceptance.mjs';
 import {installTyped,configureTyped} from '../fixtures/typed-fields-db.mjs';
 import {installAnswerRecovery} from '../fixtures/answer-recovery-db.mjs';
@@ -51,9 +51,11 @@ test('native course, actual Edge handlers and real SQL complete independent base
  const {f,page,origin,errors}=await fixture(t);
  for(let idx=0;idx<4;idx++){
   await page.goto(origin+href(idx));await page.waitForSelector('#courseContent article');
+  const query = new URL(page.url()).searchParams;
+  const context = { enrollmentId: query.get('enrollment'), curriculumReleaseId: query.get('release'), unitId: query.get('unit') };
   assert.match(await page.locator('#courseTitle').innerText(),idx<2?/Առարկա Ա/:/Առարկա Բ/);
   const cards=page.locator('#courseContent article');assert.match(await cards.nth(0).innerText(),new RegExp(`${idx===3?5:3} հարց`));
-  assert.equal(await cards.nth(1).locator('a').count(),0);
+  await verifyChapterIIPracticeGate({page,expect,cards,context,practiceUnlocked:false});
   await cards.nth(0).locator('a').click();
   for(let n=0;n<(idx===3?5:3);n++){
    await page.waitForFunction(position=>document.querySelector('#learningPlayer h2')?.textContent.startsWith('Հարց '+position+'/'),n+1);
@@ -64,8 +66,7 @@ test('native course, actual Edge handlers and real SQL complete independent base
   await page.locator('#learningPlayer button').filter({hasText:'Թարմացնել արդյունքները'}).click();
   await page.waitForSelector('#courseContent article');
   assert.equal(new URL(page.url()).searchParams.has('action'),false);
-  assert.equal(await page.locator('#courseContent article').nth(0).locator('a').count(),0);
-  assert.equal(await page.locator('#courseContent article').nth(1).locator('a').count(),1);
+  await verifyChapterIIPracticeGate({page,expect,cards,context,practiceUnlocked:true});
  }
  const sessions=(await f.db.query("select * from learning_sessions where mode='diagnostic'")).rows;
  assert.equal(sessions.length,4);assert.ok(sessions.every(s=>s.status==='completed'));assert.equal(new Set(sessions.map(s=>s.governed_unit_id)).size,4);
@@ -109,7 +110,7 @@ test('v2 native player and history show the 10/2/4 scales and preserve mandatory
  const query=new URL(page.url()).searchParams;
  const selected={enrollmentId:query.get('enrollment'),curriculumReleaseId:query.get('release'),unitId:query.get('unit')};
  const saved=(await f.db.query('select answered_count,planned_item_count from learning_sessions where id=$1',[baseline.session.id])).rows[0];
- const active={answered:saved.answered_count,planned:saved.planned_item_count};
+ const active={mode:'diagnostic',answered:saved.answered_count,planned:saved.planned_item_count};
  await verifyChapterIIVisibleState({page,expect,activeSession:active,context:selected});
  // Wrong counts or routing must fail the same browser assertion used in production.
  await assert.rejects(verifyChapterIIVisibleState({page,expect:expect.configure({timeout:100}),activeSession:{...active,planned:8},context:selected}));
