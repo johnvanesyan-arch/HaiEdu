@@ -1,5 +1,10 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-06 — Student Home refinement mockup complete and live.**
+- **What's new on Home:** a greeting, the unit path (diagnostic → practice → mastery check), compact course cards with readiness on the selected course, a teacher-feedback card for work returned for revision, and a desktop side-by-side layout. Delivered in PR426 and PR428.
+- **Production QA:** 13/13 on both builds, after re-runs of suites interrupted by a deploy switch-over and by a manual sign-in to a QA account.
+- **Not yet given:** owner usability acceptance. See the [Home record](docs/student-home-mockup-20261106.md).
+
 **2026-11-06 — BF-07 is ready for release checks.** John approved publication and release of [PR421](https://github.com/johnvanesyan-arch/HaiEdu/pull/421). Its browser code and compiled assets match the candidate that passed all five jobs in CI42088189300 (1,772 unit/integration and 502 native Chromium tests). The branch now includes PR420–425, including the production QA fixes and the decision about the earlier chapter reruns. Selected synthetic service counts fall from 4 to 2 on Home, 4 to 2 on course entry, 7 to 5 for the first question and 3 to 2 when moving from a teacher class to writing. Reads respect account and session boundaries, and the teacher catalog, review queue and actions authorize each request. Fresh PR checks and production verification are pending. BF-02 remains deferred. [Measurements and verification](docs/qa/request-deduplication-20261105.md).
 
 **2026-11-06 — 16.5B production QA failures resolved.**
