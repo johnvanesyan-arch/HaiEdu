@@ -1,5 +1,7 @@
 # Project status register
 
+**BF-09 candidate prepared — decimal input formatting.** The owner selected automatic decimal comma. A numeric or quantity answer such as `10,800` means `10.8`, while `10 800` means `10800`. Malformed syntax keeps the current question editable and uses no scored attempt. The candidate covers the legacy Physics 7 Chapter I answer routes. Hosted checks and live verification are pending. [BF-09 evidence](qa/numeric-answer-format.md).
+
 **2026-11-06 — BF-08 is live and technically verified.** [PR430](https://github.com/johnvanesyan-arch/HaiEdu/pull/430) released at `beb26011cf298f459d9002cc9f3c2dfe92e675c1`. Stale hint requests recover by refreshing the authorized question, with same-item drafts preserved. Help takes focus and the next action remains reachable. Main CI passed 1,780 unit and integration tests, 511 Chromium tests and all five release jobs. All 13 production suites passed after the Chapter VI cutover retry. BF-02 remains deferred and B.12.3 stays open for owner usability acceptance. [BF-08 evidence](qa/hint-state-recovery-20261106.md).
 
 **2026-11-06 Asia/Dubai — 16.5B Home refinement mockup complete and live; production QA green.**

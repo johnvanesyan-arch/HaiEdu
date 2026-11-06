@@ -102,3 +102,38 @@ test('actual answer handler returns committed progress and telemetry and retains
  api.revoke();assert.equal((await api.call(body(3))).status,403);
  const denied=await endpoint(db,'submit-answer',{...bindings,hasPhysics7Access:async()=>false});assert.equal((await denied.call(body(3))).status,403);
 });
+
+test('numeric format rejection keeps the question unscored and existing receipts replay',async t=>{
+ const db=await fixture(t);await installAnswerRecovery(db,{legacy:true});
+ const api=await endpoint(db,'submit-answer',{routeGovernedLearning,gradeAnswer,recommendNext,getPracticeDiagnosticBlock,fixtureAuthSessionId:id(901),hasPhysics7Access:async()=>true});
+ const response=(n,value,unit)=>({sessionId:id(401),sessionItemId:id(600+n),itemId:id(500+n),response:{value,...(unit?{unit}:{})}});
+ const progress=async()=>(await db.query('select answered_count from learning_sessions where id=$1',[id(401)])).rows[0].answered_count;
+ await db.query("update items set item_type='quantity' where id=$1",[id(501)]);
+ await db.query("update item_answer_keys set answer='10800'::jsonb,canonical_unit='m/s',accepted_units=array['km/h'] where item_id=$1",[id(501)]);
+ const rejected=await api.call(response(1,'388 80','կմ/ժ'));
+ assert.deepEqual(rejected,{status:422,body:{error:'invalid_numeric_format',inputFormatVersion:'haiedu-decimal-input-v1'}});
+ assert.equal(await progress(),0);
+ assert.equal(await state(db),undefined);
+ for(const table of ['attempts','fixture_exposures','recommendation_events','private.learning_answer_receipts']){
+  assert.equal((await db.query('select count(*)::int as n from '+table)).rows[0].n,0,table);
+ }
+ const corrected=await api.call(response(1,'38 880','կմ/ժ'));
+ assert.equal(corrected.status,200);
+ assert.equal(corrected.body.grading.correct,true);
+ assert.equal(await progress(),1);
+
+ // Simulate an answer the earlier grader already scored and stored.
+ const previous=response(2,'108 00');
+ await db.query(
+  "select service_record_session_answer_atomic($1,$2,$3,$4,$5,$6::jsonb,null,0,false,'invalid_number',false,null,$7)",
+  [actor,previous.sessionId,previous.sessionItemId,previous.itemId,id(50),JSON.stringify(previous.response),'2026-10-04T09:00:00Z'],
+ );
+ const saved=await api.call(previous);
+ assert.equal(saved.status,200);
+ assert.equal(saved.body.grading.errorCode,'invalid_number');
+ const replay=await api.call(previous);
+ assert.equal(replay.body.replayed,true);
+ assert.equal(replay.body.attemptId,saved.body.attemptId);
+ assert.equal(await progress(),2);
+ assert.equal((await db.query('select count(*)::int as n from attempts')).rows[0].n,2);
+});

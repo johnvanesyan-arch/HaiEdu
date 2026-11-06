@@ -1,6 +1,6 @@
 import {setRemediationQuestion} from "./remediation.js";
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
-import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { routeSession, roleRoutingReady } from "./role-router.js";
@@ -406,13 +406,13 @@ function renderAnswerInput(item) {
     return;
   }
   if (item.type === "numeric") {
-    answerArea.innerHTML = `<label>Պատասխան<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>`;
+    answerArea.innerHTML = numericAnswerInput("Պատասխան");
     return;
   }
   if (item.type === "quantity") {
     answerArea.innerHTML = `
       <div class="quantity-row">
-        <label>Թվային արժեք<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>
+        ${numericAnswerInput("Թվային արժեք")}
         <label>Միավոր<input id="unitAnswer" autocomplete="off" placeholder="Մուտքագրեք միավորը"></label>
       </div>`;
   }

@@ -70,3 +70,30 @@ test("rejects malformed true/false response", () => {
   assert.equal(result.correct, false);
   assert.equal(result.errorCode, "invalid_boolean");
 });
+
+test("decimal input accepts grouped thousands, Unicode minus and decimal comma", () => {
+  for (const [value, expected] of [
+    ["10 800", 10800], ["10\u00a0800", 10800], ["10\u202f800", 10800],
+    ["1 234 567,89", 1234567.89], ["−5", -5], ["−1.5e−3", -0.0015],
+    ["–5", -5], ["—5", -5], ["0٫35", 0.35], ["0,35", 0.35], ["0,125", 0.125], ["10,800", 10.8], ["10.800", 10.8],
+    ["1e3", 1000], [10800, 10800],
+  ]) {
+    assert.deepEqual(gradeAnswer({ type: "numeric", answer: expected }, { value }), {
+      correct: true, score: 1, errorCode: null, normalizedResponse: expected,
+    }, JSON.stringify(value));
+  }
+  assert.equal(gradeAnswer({ type: "numeric", answer: 10800 }, { value: "10,800" }).errorCode, "incorrect_value");
+});
+
+test("malformed grouping and unsupported number notation are invalid", () => {
+  for (const value of ["108 00", "10  800", "10\t800", "1,234,567", "1.234,56", "0x2A", "1e", "1e999", ".", ""]) {
+    assert.equal(gradeAnswer({ type: "numeric", answer: 42 }, { value }).errorCode, "invalid_number", value);
+  }
+});
+
+test("quantity values use the same formatting rule before unit conversion", () => {
+  const key = { type: "quantity", answer: 10800, canonicalUnit: "m/s", acceptedUnits: ["km/h"] };
+  assert.deepEqual(gradeAnswer(key, { value: "38 880", unit: "կմ/ժ" }).normalizedResponse, { value: 10800, unit: "m/s" });
+  assert.equal(gradeAnswer(key, { value: "38 880", unit: "կգ" }).errorCode, "unsupported_unit");
+  assert.equal(gradeAnswer(key, { value: "388 80", unit: "կմ/ժ" }).errorCode, "invalid_number");
+});

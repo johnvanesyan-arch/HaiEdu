@@ -347,6 +347,12 @@ The governed answer router allows only these six top-level fields. Extra keys re
 
 Single-choice `A/B/C/…` values are **presentation positions**, not canonical authoring keys. The served option presentation is persisted and stable on refresh/resume. The server resolves the selected position through the private session-item mapping before grading. Never reconstruct canonical order or reuse a presentation key from another exposure. Protected keys and private mappings are not returned.
 
+### Legacy numeric and quantity format
+
+The BF-09 candidate introduces `haiedu-decimal-input-v1` for numeric and quantity learner inputs in the registered legacy adapter. A comma or period marks the decimal fraction. For example, `10,800` means `10.8`. Grouped integers accept a regular space, no-break space or narrow no-break space between groups of three digits. The parser also accepts finite JSON numbers and decimal exponent notation. It accepts the ASCII minus, Unicode minus, and the dash aliases and Arabic decimal separator the earlier browser input supported. Quantity requests still carry the unit in the separate `response.unit` field.
+
+Both legacy answer endpoints return HTTP 422 with `error: "invalid_numeric_format"` and `inputFormatVersion: "haiedu-decimal-input-v1"` for malformed numeric syntax. That response confirms that the submitted format was unscored. The learner can edit the same question. Stored answer receipts take precedence for an already recorded request. This format applies to legacy numeric and quantity questions. Governed sessions use the response types enabled in their bound policy.
+
 ## Success responses
 
 Success is HTTP 200; fields vary by mode and adapter. These are response descriptions, not interchangeable fixed schemas.

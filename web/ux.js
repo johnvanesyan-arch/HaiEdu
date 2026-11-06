@@ -181,14 +181,6 @@ function showTerminalAuthMessage() {
   announce(message, true);
 }
 
-function normalizeDecimal(value) {
-  return String(value ?? "")
-    .replace(/[−–—]/g, "-")
-    .replace(/[٫,]/g, ".")
-    .replace(/\s+/g, "")
-    .replace(/[^0-9.+-]/g, "");
-}
-
 function setFieldError(input, message) {
   input.setAttribute("aria-invalid", "true");
   let error = input.parentElement?.querySelector(":scope > .field-error");
@@ -248,8 +240,6 @@ function configureInput(input) {
     if (!input.dataset.uxNumericBound) {
       input.dataset.uxNumericBound = "true";
       input.addEventListener("input", () => {
-        const normalized = normalizeDecimal(input.value);
-        if (normalized !== input.value) input.value = normalized;
         clearFieldError(input);
         syncAnswerSubmit();
       });
@@ -285,14 +275,6 @@ function validateKnownInput(input) {
     setFieldError(input, "Կոդը պետք է պարունակի ճիշտ 8 տառ կամ թիվ։");
     return false;
   }
-  if (input.id === "numericAnswer") {
-    const value = normalizeDecimal(input.value);
-    input.value = value;
-    if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) {
-      setFieldError(input, "Մուտքագրեք միայն թիվ, օրինակ՝ 2 կամ 2.5։");
-      return false;
-    }
-  }
   if (input.id === "unitAnswer" && !input.value.trim()) {
     setFieldError(input, "Մուտքագրեք չափման միավորը։");
     return false;
@@ -322,7 +304,8 @@ function syncAnswerSubmit() {
   const numeric = document.getElementById("numericAnswer");
   const unit = document.getElementById("unitAnswer");
   if (numeric) {
-    const numericOk = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalizeDecimal(numeric.value));
+    // The server validates decimal syntax without rewriting the entered value.
+    const numericOk = Boolean(numeric.value.trim());
     const unitOk = !unit || Boolean(unit.value.trim());
     submit.disabled = !(numericOk && unitOk);
   }
