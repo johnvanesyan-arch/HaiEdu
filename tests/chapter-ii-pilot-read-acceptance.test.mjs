@@ -139,6 +139,24 @@ test('a pre-existing diagnostic is preserved, while invalid or changing active s
   }
 });
 
+test('completed fixture diagnostic unlocks practice and its history must stay unchanged', async () => {
+  const input = inputs(), m = mock(input), dashboard = m.dashboards.A[1];
+  dashboard.baseline = { id: id(810), answered: 16, correct: 12,
+    curriculumReleaseId: chapterII.curriculumReleaseId, completedAt: '2026-11-05T18:00:45Z' };
+  dashboard.history = [{ ...dashboard.baseline, mode: 'diagnostic', status: 'completed' }];
+  dashboard.practiceAccess = { unlocked: true, reason: null };
+  const result = await runReadChecks({ ...input, ...m });
+  assert.equal(result.chapterIIStates.A.practiceUnlocked, true);
+  assert.equal(result.chapterIIStates.B.practiceUnlocked, false);
+  await result.verifyPreserved();
+  dashboard.history[0].correct--;
+  await assert.rejects(result.verifyPreserved(), /unchanged/);
+  await assert.rejects(runReadChecks({ ...input, ...m }), /completed Chapter II baseline/);
+  dashboard.history[0].correct++;
+  dashboard.practiceAccess = { unlocked: false, reason: 'chapter_diagnostic_required' };
+  await assert.rejects(runReadChecks({ ...input, ...m }), /completed Chapter II baseline/);
+});
+
 test('foreign context, protected row and 401 substituted for authorization denial are failures', async () => {
   for (const alter of [
     ({ actor, endpoint, body, contexts, dashboards }) => actor === 'A_student' && endpoint.endsWith('get-student-dashboard') && body.enrollmentId === contexts.B[1].enrollmentId ? { status: 200, data: dashboards.B[1] } : null,

@@ -1,6 +1,6 @@
 # BF-07 — request measurement and isolation
 
-Date: 5 November 2026. Status on 6 November: release approved and the branch reconciled with main. Fresh CI and production verification are pending. BF-02 remains deferred. This report does not close independent review, account/evidence publication, owner usability, content or BF-37 transport gates.
+Date: 5 November 2026. Status on 6 November: PR421 is live and passed required release checks. Signed-in production verification is open while the Chapter II acceptance correction is validated. BF-02 remains deferred. This report does not close independent review, account/evidence publication, owner usability, content or BF-37 transport gates.
 
 ## Baseline and measured change
 
@@ -43,6 +43,14 @@ John approved pushing the resolved PR421, merging and releasing after the requir
 PR422/423 independently fixed the baseline Resource acceptance defects. Resource acceptance subsequently passed 329/329 on `b6e2bef` with owned cleanup and session closure. Chapter III and English Unit 2 passed on `58796b1`. PR425 records John's waiver of the earlier Chapter II, IV, V and VI reruns. That decision concerns those baseline failures. The existing automatic workflows will evaluate the BF-07 release on its own commit. [Student refinement QA record](student-refinement-production-qa-20261106.md).
 
 On 5 November, automatic approval review blocked the first attempt to publish the documentation resolution. The repository and branch were subsequently verified, and John explicitly approved publication on 6 November. The Vercel dashboard independently showed `Platform release checks` configured as Blocking for Production on 5 November.
+
+## 6 November live release and Chapter II finding
+
+PR421 is merged at `c20a747f5bcc60ab3788ef748d7e3b8f4a12188c`. All five required jobs pass on the [PR](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42193415091) and [main](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42194517335), with 1,771 unit and integration tests and 504 Chromium tests in each. The canonical release marker and compiled build match 29 pages and 121 assets with their required cache policies. Notion's roadmap and defect register show the merged release and verification status.
+
+The first [Chapter II run](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42194517356) failed at 25/26 before browser navigation. Its initial 54 isolation controls, authorized dashboard and scoring contract passed. All six run sessions closed with HTTP 204. The failing assertion required the designated School A learner to have an incomplete diagnostic. A bounded read-only check found a 16-answer diagnostic and eight-answer practice already completed on 5 November, before the BF-07 release. The dashboard should unlock Practice for this learner.
+
+The correction checks a completed baseline against its release and diagnostic history, verifies the Practice link carries the exact context, and still requires Practice to stay locked with no completed baseline. It keeps the pre/post evidence comparison, authorization checks and mutation guards. Chapter III–VI retain their existing incomplete-baseline checks. The Chapter II learner history was preserved. The first failure stays in the record. Fresh hosted Chromium and signed-in acceptance are required for this QA correction.
 
 ## Remaining delivery checks
 
