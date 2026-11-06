@@ -5,13 +5,16 @@ export const hintRefreshLabel = 'Թարմացնել հարցը';
 
 export async function invokeForHint(supabase, name, body, isCurrent) {
   const identity = async () => (await supabase.auth.getSession()).data?.session?.user?.id;
-  const actor = await identity();
-  const authorized = async () => Boolean(actor) && isCurrent() && actor === await identity();
+  let actor;
   const result = await invokeLearnerFunction(supabase, name, {
-    body, beforeRequest: authorized, afterRequest: authorized,
+    body,
+    beforeRequest: async () => {
+      actor = await identity();
+      return Boolean(actor) && isCurrent();
+    },
+    afterRequest: async () => isCurrent() && actor === await identity(),
   });
-  // A timed-out request can finish after the next question or a sign-in change.
-  return await authorized() ? result : {stale:true};
+  return isCurrent() ? result : {stale:true};
 }
 
 export function focusHint(panel) {

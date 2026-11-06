@@ -335,3 +335,20 @@ test("accepted wrong answers retain help while correct answers close it", async 
   await help;
   assert.equal(f.nodes.get("helpTitle").textContent,"explanation");
 });
+
+
+test("a stalled auth read expires a hint request without dispatching it", async t => {
+  t.mock.timers.enable({apis:["setTimeout"]});
+  let finishIdentity;
+  let sent = 0;
+  const client = {
+    auth:{getSession:()=>new Promise(resolve => { finishIdentity = resolve; })},
+    functions:{invoke:async()=>{sent++;return hint("too late");}},
+  };
+  const request = invokeForHint(client,"get-remediation-help",{},()=>true);
+  t.mock.timers.tick(15_000);
+  assert.equal((await request).error.code,"learner_request_timeout");
+  finishIdentity({data:{session:{user:{id:"student"}}}});
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(sent,0);
+});
