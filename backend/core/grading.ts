@@ -70,6 +70,16 @@ function numeric(value: unknown): number | null {
   return null;
 }
 
+// Learner inputs use spaces for grouping and either decimal marker.
+const decimalInput = /^[+-]?(?:(?:\d{1,3}(?:[ \u00a0\u202f]\d{3})+|\d+)(?:[.,]\d*)?|[.,]\d+)(?:[eE][+-]?\d+)?$/;
+
+function learnerNumeric(value: unknown): number | null {
+  if (typeof value !== "string") return numeric(value);
+  const input = value.trim().replaceAll("−", "-");
+  if (!decimalInput.test(input)) return null;
+  return numeric(input.replaceAll(/[ \u00a0\u202f]/g, ""));
+}
+
 function withinTolerance(actual: number, expected: number, tolerance = 1e-9): boolean {
   return Math.abs(actual - expected) <= tolerance;
 }
@@ -97,7 +107,7 @@ export function gradeAnswer(key: AnswerKey, response: StudentResponse): GradeRes
       return { correct, score: correct ? 1 : 0, errorCode: correct ? null : "incorrect_boolean" };
     }
     case "numeric": {
-      const actual = numeric(response.value);
+      const actual = learnerNumeric(response.value);
       const expected = numeric(key.answer);
       if (actual === null) return { correct: false, score: 0, errorCode: "invalid_number" };
       if (expected === null) throw new Error("Invalid numeric answer key");
@@ -105,11 +115,11 @@ export function gradeAnswer(key: AnswerKey, response: StudentResponse): GradeRes
       return { correct, score: correct ? 1 : 0, errorCode: correct ? null : "incorrect_value", normalizedResponse: actual };
     }
     case "quantity": {
-      const actual = numeric(response.value);
+      const actual = learnerNumeric(response.value);
+      if (actual === null) return { correct: false, score: 0, errorCode: "invalid_number" };
       const expected = numeric(key.answer);
       const rawUnit = response.unit?.trim();
       const rawCanonicalUnit = key.canonicalUnit?.trim();
-      if (actual === null) return { correct: false, score: 0, errorCode: "invalid_number" };
       if (expected === null || !rawCanonicalUnit) throw new Error("Invalid quantity answer key");
       if (!rawUnit) return { correct: false, score: 0, errorCode: "missing_unit" };
 

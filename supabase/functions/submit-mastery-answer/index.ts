@@ -142,6 +142,9 @@ Deno.serve(async (req) => {
       }),
     });
     const upstreamData = await upstream.json().catch(() => ({}));
+    if (upstream.status === 422 && upstreamData?.error === "invalid_numeric_format") {
+      return json({ error: upstreamData.error, inputFormatVersion: upstreamData.inputFormatVersion }, 422);
+    }
     if (!upstream.ok) return json({ error: "grading_failed", detail: upstreamData?.error ?? upstream.statusText }, upstream.status);
 
     const { data: refreshed, error: refreshError } = await admin

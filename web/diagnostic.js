@@ -1,4 +1,4 @@
-import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
+import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
@@ -189,11 +189,11 @@ function renderAnswer(item) {
     return;
   }
   if (item.type === "numeric") {
-    area.innerHTML = `<label>Պատասխան<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>`;
+    area.innerHTML = numericAnswerInput("Պատասխան");
     return;
   }
   if (item.type === "quantity") {
-    area.innerHTML = `<div class="quantity-row"><label>Թվային արժեք<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label><label>Միավոր<input id="unitAnswer" autocomplete="off" placeholder="Մուտքագրեք միավորը"></label></div>`;
+    area.innerHTML = `<div class="quantity-row">${numericAnswerInput("Թվային արժեք")}<label>Միավոր<input id="unitAnswer" autocomplete="off" placeholder="Մուտքագրեք միավորը"></label></div>`;
   }
 }
 

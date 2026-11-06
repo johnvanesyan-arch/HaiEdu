@@ -68,3 +68,23 @@ test('known HTTP errors keep stable codes but never expose SDK or server text',a
     assert.equal(result.error.retryable,status===400);
   }
 });
+
+test('a confirmed numeric format rejection clears uncertainty after an identical retry',async()=>{
+  const calls=[];
+  const c=client(async(_url,options)=>{
+    calls.push(JSON.parse(options.body));
+    if(calls.length===1)throw TypeError('Reply lost');
+    return json({error:'invalid_numeric_format',inputFormatVersion:'haiedu-decimal-input-v1'},422);
+  });
+  const body={...payload(),response:{value:'108 00'}};
+  const request=createAnswerRequest(c,'submit-answer',{body});
+  await request.send();
+  assert.equal(request.uncertain,true);
+  const retry=await request.send();
+  assert.equal(retry.error.code,'invalid_numeric_format');
+  assert.equal(retry.error.unknown,false);
+  assert.equal(retry.error.retryable,true);
+  assert.match(retry.error.message,/Ստուգեք թվի գրությունը/);
+  assert.equal(request.uncertain,false);
+  assert.deepEqual(calls,[body,body]);
+});

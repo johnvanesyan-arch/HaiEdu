@@ -3,8 +3,16 @@ export const learnerRequestTimeoutMs = 15000;
 const uncertainMessage = 'Պատասխանի գրանցումը դեռ հաստատված չէ։ Կրկին փորձեք՝ նույն պատասխանի արդյունքը ստանալու համար։';
 const conflictCodes = new Set(['answer_response_conflict','answer_result_unavailable','session_item_already_answered']);
 
+const numericFormatHint = 'Տասնորդական մասից առաջ դրեք կետ կամ ստորակետ։ Հազարավորների խմբերը բաժանեք բացատով։';
+const isNumericFormatRejection = error => error?.status === 422 && error?.code === 'invalid_numeric_format';
+
+export function numericAnswerInput(label) {
+  return `<label>${label}<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը" aria-describedby="numericAnswerFormat"><small id="numericAnswerFormat">${numericFormatHint}</small></label>`;
+}
+
 export function studentErrorMessage(code, status, unknown=false) {
   if(unknown) return uncertainMessage;
+  if(isNumericFormatRejection({code,status})) return 'Ստուգեք թվի գրությունը։ Հարցը դեռ չի գնահատվել։';
   if(conflictCodes.has(code)) return 'Այս հարցի պատասխանը կարող է արդեն գրանցված լինել։ Թարմացրեք էջը՝ ընթացիկ վիճակը տեսնելու համար։';
   if(status===401||status===403) return 'Այս գործողությունն այլևս հասանելի չէ։ Ստուգեք մուտքն ու դասընթացի հասանելիությունը։';
   if(status===429) return 'Հարցումները չափազանց հաճախ են։ Մի փոքր սպասեք և կրկին փորձեք։';
@@ -70,7 +78,8 @@ export function createAnswerRequest(supabase,name,{body},{isCurrent=()=>true,tim
           beforeRequest:async()=>{initial=await actor;return isCurrent()&&initial===await identity();},
           afterRequest:async()=>isCurrent()&&initial===await identity(),
         });
-        uncertain ||= result.error?.unknown===true;
+        if(isNumericFormatRejection(result.error)) uncertain=false;
+        else uncertain ||= result.error?.unknown===true;
         return result;
       })().finally(()=>{flight=null;});
       return flight;
@@ -103,6 +112,7 @@ export function showAnswerRecovery(form,feedback,request,result) {
   const message=document.createElement('p');
   message.textContent=locked&&error?.retryable!==false?uncertainMessage:error?.message??studentErrorMessage(null,0,true);
   feedback.appendChild(message);
+  if(!locked&&isNumericFormatRejection(error)) form.querySelector('#numericAnswer')?.focus();
   if(locked){
     const kept=document.createElement('p');kept.className='answer-recovery-kept';
     kept.textContent='Ձեր պատասխանը մնում է այս էջում՝ անփոփոխ։';feedback.appendChild(kept);

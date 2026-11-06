@@ -195,6 +195,9 @@ Deno.serve(async (req) => {
       console.error("grade_error", err);
       return json({ error: "grading_failed" }, 500);
     }
+    if (grade.errorCode === "invalid_number") {
+      return json({ error: "invalid_numeric_format", inputFormatVersion: "haiedu-decimal-input-v1" }, 422);
+    }
   }
 
   let serverHintUsed = sessionItem
