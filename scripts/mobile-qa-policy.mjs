@@ -1,4 +1,5 @@
 import {validateFixture} from './sprint-14-isolation.mjs';
+import {studentWorkReadBody} from './student-work-qa-read.mjs';
 
 export const mobileSite = 'https://www.haiedu.am';
 export const reportPath = 'qa-results/mobile-acceptance.json';
@@ -25,6 +26,7 @@ export function mobileReadAllowed({pathname, method, search = '', body, role, co
     if (pathname === '/functions/v1/get-student-dashboard') return (
       body.navigation === true && Object.keys(body).length === 1 || exactSelection(body, contexts));
     if (pathname === '/functions/v1/get-unit-guides') return exactSelection(body, contexts);
+    if (pathname === '/functions/v1/get-student-work') return studentWorkReadBody(body);
     if (pathname === '/functions/v1/manage-written-work') return Object.keys(body).length === 3 &&
       body.action === 'tasks' && exactSelection(body.context, contexts) && empty(body.payload);
     return false;

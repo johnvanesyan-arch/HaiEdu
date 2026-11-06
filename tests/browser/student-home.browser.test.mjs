@@ -303,3 +303,60 @@ test('Home path stays hidden without a selection and greets plainly without a na
   assert.deepEqual(await page.locator('#studentPath li').evaluateAll(l=>l.map(e=>e.dataset.pathState)),['next','locked','locked']);
   assert.deepEqual(errors,[]);
 });
+
+// Home mockup step 2: compact course cards (readiness on the selected course only),
+// a teacher-feedback card from the read-only combined list, and the desktop layout.
+test('Home course cards are compact, keep their hooks and show readiness only for the selected course',async t=>{
+  const {page,errors}=await fixture(t,{width:390,selected:true});
+  const cards=page.locator('#mySubjects .amp-subject-card');
+  await expect(page.locator('.student-course-compact.is-selected')).toHaveCount(1);
+  assert.equal(await page.locator('#mySubjects .student-card-art').count(),0,'No large artwork on Home');
+  const selected=page.locator('.student-course-compact.is-selected');
+  await expect(selected.locator('.student-course-kicker')).toBeVisible();
+  await expect(selected.locator('.student-course-readiness-line')).toContainText('2 / 5');
+  assert.equal(await page.locator('.student-course-compact:not(.is-selected) .student-course-readiness-slot:not(:empty)').count(),0);
+  // The production acceptance hooks remain: card, unit list behind the summary, unit links.
+  const first=cards.first();await first.locator('summary').click();
+  await expect(first.locator('.amp-subject-class-list a').first()).toBeVisible();
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.filter(c=>c.name==='get-student-dashboard'&&!c.body.navigation).length),1,'No dashboard read per course');
+  // Courses view keeps its full cards.
+  const courses=await fixture(t,{view:'courses'});
+  assert.ok(await courses.page.locator('#mySubjects .student-card-art').count()>0);
+  assert.deepEqual([...errors,...courses.errors],[]);
+});
+test('Home feedback card lists work returned for revision and opens My work on «Returned»',async t=>{
+  const {page,errors}=await fixture(t,{width:390,workItems:true,combinedWork:true});
+  const card=page.locator('#studentFeedback .student-feedback-card');
+  await expect(card).toContainText('Ձեր աշխատանքը վերադարձվել է վերանայման');
+  await expect(card).toContainText('Լաբորատոր աշխատանքի շտկում');
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.filter(c=>c.name==='get-student-work').length),1);
+  assert.deepEqual(await page.evaluate(()=>window.__homeFixture.calls.find(c=>c.name==='get-student-work').body),{action:'inbox',payload:{state:'current'}});
+  await card.locator('a').click();
+  await page.locator('.student-work-toolbar').waitFor();
+  await expect(page.locator('[data-work-filter="returned"]')).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('.student-work-item h3').first()).toHaveText('Լաբորատոր աշխատանքի շտկում');
+  assert.deepEqual(errors,[]);
+});
+test('Home without returned work, or when the list fails, shows no feedback card',async t=>{
+  for(const options of [{},{workItems:true,combinedWork:'unavailable'}]){
+    const {page,errors}=await fixture(t,{width:390,...options});
+    await expect.poll(()=>page.evaluate(()=>window.__homeFixture.calls.some(c=>c.name==='get-student-work'))).toBe(true);
+    await page.waitForTimeout(200);
+    await expect(page.locator('#studentFeedback')).toBeEmpty();
+    assert.deepEqual(errors,[]);
+  }
+});
+test('Home desktop places the path beside the next step and the feedback beside the courses',async t=>{
+  const {page,errors}=await fixture(t,{width:1280,selected:true,workItems:true,combinedWork:true});
+  await page.locator('#studentPath li').first().waitFor();await page.locator('.student-feedback-card').waitFor();
+  const box=s=>page.locator(s).boundingBox();
+  const [next,path,courses,feedback]=await Promise.all(['.student-next-section','#studentPath','#mySubjects','#studentFeedback'].map(box));
+  assert.ok(path.x>next.x+next.width-1,'Path is right of the next step');
+  assert.ok(feedback.x>courses.x+courses.width-1,'Feedback is right of the courses');
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  // Phone keeps one column.
+  await page.setViewportSize({width:390,height:900});
+  const [n2,p2]=await Promise.all(['.student-next-section','#studentPath'].map(box));
+  assert.ok(p2.y>=n2.y+n2.height-1,'Path below the next step on a phone');
+  assert.deepEqual(errors,[]);
+});

@@ -4,7 +4,7 @@
 // the writing open→navigate request, the material download/link dialog).
 // Presentation only: no scoring, submission or authorization logic here.
 import {escapeHtml as esc} from './learning-navigation.mjs';
-import {workBucket,workFilters} from './student-work-hub.mjs';
+import {workBucket,workFilters,initialWorkFilter} from './student-work-hub.mjs';
 import {mountStudentTeacherTasks} from './student-teacher-tasks.mjs';
 import {createStudentWritingOpener} from './writing-assignments.mjs';
 import {createStudentMaterialOpener} from './resource-assignments.mjs';
@@ -44,9 +44,9 @@ ${v.action?`<button type="button" class="${v.bucket==='todo'?'':'secondary'}" da
 }
 
 export function mountStudentWorkList({root,client,actorId,onFallback,onClean=()=>{}}){
- let alive=true,generation=0,filter='todo',course='',current=null,historyData=null,taskView=null,busy=false,openers=null;
+ let alive=true,generation=0,filter=initialWorkFilter(),course='',current=null,historyData=null,taskView=null,busy=false,openers=null;
  const $=s=>root.querySelector(s);
- root.innerHTML=`<section class="student-work-toolbar" aria-label="Աշխատանքների ցուցակի կառավարում"><div class="student-work-filter" role="group" aria-label="Ցույց տալ ըստ վիճակի">${workFilters.map(([key,label],i)=>`<button type="button" data-work-filter="${key}" aria-pressed="${i===0}"><span>${label}</span><span class="student-work-count" data-work-count="${key}"></span></button>`).join('')}</div><label class="student-work-course" hidden><span>Դասընթաց</span><select data-work-course-filter><option value="">Բոլոր դասընթացները</option></select></label><button type="button" class="ghost student-work-refresh" data-work-refresh>Թարմացնել</button></section>
+ root.innerHTML=`<section class="student-work-toolbar" aria-label="Աշխատանքների ցուցակի կառավարում"><div class="student-work-filter" role="group" aria-label="Ցույց տալ ըստ վիճակի">${workFilters.map(([key,label],i)=>`<button type="button" data-work-filter="${key}" aria-pressed="${key===filter}"><span>${label}</span><span class="student-work-count" data-work-count="${key}"></span></button>`).join('')}</div><label class="student-work-course" hidden><span>Դասընթաց</span><select data-work-course-filter><option value="">Բոլոր դասընթացները</option></select></label><button type="button" class="ghost student-work-refresh" data-work-refresh>Թարմացնել</button></section>
 <section class="student-work-list" aria-labelledby="studentWorkListTitle"><h2 id="studentWorkListTitle">Ուսուցչի առաջադրանքները</h2><p data-work-message role="status" aria-live="polite"></p><div data-work-items data-task-body></div><details data-work-history><summary>Չեղարկված աշխատանքներ</summary><div data-work-history-items></div></details></section>
 <div class="student-work-focus" data-work-focus hidden></div>`;
  const message=(text,bad=false)=>{const m=$('[data-work-message]');if(m){m.textContent=text;m.classList.toggle('bad',bad);}};

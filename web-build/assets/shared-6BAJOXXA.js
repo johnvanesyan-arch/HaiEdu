@@ -1,0 +1,1 @@
+import{a,b,c,d}from"/_assets/shared-YASYPBDY.js";import"/_assets/shared-P32XCHNE.js";import"/_assets/shared-GHAIHVNR.js";import"/_assets/shared-2OPZOLFV.js";export{c as createStudentWritingOpener,d as mountStudentWritingAssignments,b as mountTeacherAssignmentWorkspace,a as mountTeacherWritingAssignments};
