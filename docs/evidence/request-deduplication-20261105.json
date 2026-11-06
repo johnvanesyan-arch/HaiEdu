@@ -403,7 +403,74 @@
     "Native measurement uses real Chromium and application modules with synthetic Auth/Edge services, not production latency.",
     "The wave field marks contiguous busy intervals, not causal critical-path depth.",
     "The first-question dependency chain stays access, dashboard, start, policy, item; no learning write was duplicated to measure production.",
-    "Final corrected-head CI and canonical production verification remain pending.",
+    "Corrected candidate CI passes; combined-head/main CI and canonical production verification remain pending.",
     "BF-02 remains deferred; existing owner, independent-review and content gates are unchanged."
-  ]
+  ],
+  "correctedCandidate": {
+    "commit": "bd89007f16aee3e0a3be33e424ff913f2d3680b8",
+    "ciRun": 42088189300,
+    "allFiveRequiredJobs": "success",
+    "unitTests": 1772,
+    "nativeTests": 502,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "isolated CI; synthetic browser services, not live acceptance"
+  },
+  "continuation": {
+    "mainDocumentationCommit": "9af8bda1c90ab717744ba669b9a20e0290df734d",
+    "mainPullRequest": 420,
+    "conflictsResolved": [
+      "README.md",
+      "docs/project-status.md",
+      "docs/sprint-roadmap.md"
+    ],
+    "runtimeChanges": false,
+    "combinedHeadCI": "pending",
+    "mainCI": "pending",
+    "productionAcceptance": "pending",
+    "publication": "prior_automatic_review_block_resolved_by_explicit_owner_approval_for_retry",
+    "reviewReason": "Missing explicit publication approval and unverified destination",
+    "destinationReadback": {
+      "repository": "johnvanesyan-arch/HaiEdu",
+      "repositoryId": "1368662129",
+      "owner": "johnvanesyan-arch",
+      "permissions": [
+        "admin",
+        "push"
+      ],
+      "visibility": "public"
+    },
+    "localChecks": {
+      "diffCheck": true,
+      "noConflictMarkers": true,
+      "evidenceJSON": true,
+      "browserQADependencyCoverage": true,
+      "serializedFixtureWorkflows": 20,
+      "runtimeTestBuildWorkflowParityWithCandidate": true,
+      "publicEmailGuard": true
+    },
+    "persistentDeploymentCheck": {
+      "source": "Vercel dashboard read-only inspection",
+      "name": "Platform release checks",
+      "environment": "Production",
+      "behavior": "Blocking",
+      "configurationChanged": false
+    },
+    "merged": false,
+    "deployed": false,
+    "notionSynced": false
+  },
+  "releaseContinuation20261106": {
+    "ownerApprovedRelease": true,
+    "latestMainParent": "4c5ea30035a42f0882c47bd8e4ec692066005341",
+    "preservedQAUpdates": [
+      422,
+      423
+    ],
+    "preservedBaselineRerunDecision": 425,
+    "browserSourceAndBuildMatchCorrectedCandidate": true,
+    "requiredReleaseCI": "pending",
+    "productionAcceptance": "pending"
+  }
 }

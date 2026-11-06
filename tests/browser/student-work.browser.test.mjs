@@ -185,3 +185,18 @@ test('list buttons keep the per-source selectors that production acceptance uses
   await expect(page.locator('[data-task-body] article').filter({hasText:'Նախագծի պլան'}).locator('[data-task-open]')).toBeVisible();
   assert.deepEqual(errors,[]);
 });
+
+// Production acceptance (writing delivery) reuses an approved task the QA learner already
+// finished, so the new assignment arrives as «reviewed» and sits under its own state tab,
+// not the default «To do». The acceptance must open that tab, in list and fallback mode.
+for(const combinedWork of [true,false])test(`a reviewed writing assignment is found under its state tab (${combinedWork?'combined list':'fallback sections'})`,async t=>{
+  const {workBucket}=await import('../../web/student-work-hub.mjs');
+  const {page,errors}=await work(t,{workItems:true,combinedWork});
+  const title=page.locator('h3,h4',{hasText:'Ստուգված շարադրություն'});
+  await page.locator('[data-work-filter="todo"][aria-pressed="true"]').waitFor();
+  await expect(title,'Not shown on the default «To do» tab').toBeHidden();
+  // The acceptance step: choose the item's state tab, then find its writing button.
+  await page.locator(`[data-work-filter="${workBucket('writing','reviewed')}"]`).click();
+  await expect(page.locator('article',{has:title}).locator('[data-wa-open]')).toBeVisible();
+  assert.deepEqual(errors,[]);
+});

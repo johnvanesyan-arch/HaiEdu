@@ -1,6 +1,22 @@
 # Armenian Curriculum Mastery Platform
 
-**2026-11-05 — BF-07 measured and implemented; final verification remains open.** Draft PR421 starts from current main `071e5e5d6feabef1a3ea55fd9763620b1a69932e`, preserving PR412–419 student changes. Native synthetic-service measurements show selected Home 4→2 calls, course entry 4→2, first question 7→5, and teacher class-to-writing 3→2. Pending learner reads are scoped to client/session generation; exact teacher selector handoff remains separate from fresh catalog/queue authorization. Candidate browser failures revealed sign-out handling gaps, now corrected and awaiting final-head CI. The pre-existing live batch retains concurrent-fixture preservation failures and a blocked PR419 My work read; its request guard is updated without permitting writes. No database, Edge, Auth-setting, grading or learner-history changes. BF-02 stays deferred. [Scope, measurements and remaining checks](docs/qa/request-deduplication-20261105.md).
+**2026-11-06 — BF-07 is ready for release checks.** John approved publication and release of [PR421](https://github.com/johnvanesyan-arch/HaiEdu/pull/421). Its browser code and compiled assets match the candidate that passed all five jobs in CI42088189300 (1,772 unit/integration and 502 native Chromium tests). The branch now includes PR420–425, including the production QA fixes and the decision about the earlier chapter reruns. Selected synthetic service counts fall from 4 to 2 on Home, 4 to 2 on course entry, 7 to 5 for the first question and 3 to 2 when moving from a teacher class to writing. Reads respect account and session boundaries, and the teacher catalog, review queue and actions authorize each request. Fresh PR checks and production verification are pending. BF-02 remains deferred. [Measurements and verification](docs/qa/request-deduplication-20261105.md).
+
+**2026-11-06 — 16.5B production QA failures resolved.**
+- Both Resource-assignment failures were defects in the production acceptance script, not the product. They are fixed in PR422 (allow the read-only `get-student-work` call) and PR423 (open the assignment's My work state tab).
+- Resource now passes 329/329 on `b6e2bef`. The 5 November Chapter III and English Unit 2 failures passed on re-run. John waived re-running Chapters II and IV–VI on 6 November.
+- Owner usability acceptance is still not given. See [causes and evidence](docs/qa/student-refinement-production-qa-20261106.md).
+
+**2026-11-05 — 16.5B student experience refinement live; production QA failures open.**
+- What is live (PR412–PR419, all five required checks pass):
+  - Home leads with the next step.
+  - The course page shows the current work first.
+  - My work is one list from the new read-only `get-student-work` v1, deployed and read back byte-identical, with the PR416 sections as fallback.
+  - The phone header is compact, and the evidence badge mirrors the server status.
+  - Practice shows outcome colours and a connection-lost state.
+- PR418 also fixed an unclosed stylesheet block introduced by the PR416/PR417 merge, plus the mobile QA selector.
+- Production suites pass 11/13 on PR418 and 6/13 on PR419: Chapters II–VI, English Unit 2 and resource assignment each fail, with causes unconfirmed because their artifacts were not retrieved. Teacher feedback passes on PR419.
+- No live usability check has been made, and owner acceptance is not given. See the [status register](docs/project-status.md).
 
 **2026-11-05 — BF-06 implementation and technical verification complete; BF-07 is next.** Functional PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f` was verified on the canonical site and passes all five PR/main checks (1,740 unit/integration;455 native). All five automatic production suites pass, including instrumented resource 327/327 plus 54+54 isolation with owned cleanup and six 204 session closures. Selected coverage across 13 scopes totals2,024 main assertions and 864 isolation controls: five fresh e25cebe2 executions and eight explicitly reused source-equivalent executions, not one fresh 13-suite batch. The29-page/119-asset build, exact compiled bytes/cache policies, isolated cache measurements and archive-preserving redeployment rollback are verified. Original raw-template, global-logout and HTTP0 failures remain recorded; BF-37's intermittent transport cause stays unconfirmed. No database/Edge/Auth-settings/grading change or repeated learner recovery write. BF-02 remains deferred; independent/account/owner/content gates remain open. [Verified delivery and exact limits](docs/qa/browser-build-delivery-20261105.md).
 

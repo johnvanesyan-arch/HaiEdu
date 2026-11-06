@@ -1,6 +1,45 @@
 # Project status register
 
-**2026-11-05 — BF-07 measured and implemented; final verification remains open.** Draft PR421 starts from current main `071e5e5d6feabef1a3ea55fd9763620b1a69932e`, preserving PR412–419 student changes. Native synthetic-service measurements show selected Home 4→2 calls, course entry 4→2, first question 7→5, and teacher class-to-writing 3→2. Pending learner reads are scoped to client/session generation; exact teacher selector handoff remains separate from fresh catalog/queue authorization. Candidate browser failures revealed sign-out handling gaps, now corrected and awaiting final-head CI. The pre-existing live batch retains concurrent-fixture preservation failures and a blocked PR419 My work read; its request guard is updated without permitting writes. No database, Edge, Auth-setting, grading or learner-history changes. BF-02 stays deferred. [Scope, measurements and remaining checks](qa/request-deduplication-20261105.md).
+**2026-11-06 — BF-07 is ready for release checks.** John approved publication and release of [PR421](https://github.com/johnvanesyan-arch/HaiEdu/pull/421). Its browser code and compiled assets match the candidate that passed all five jobs in CI42088189300 (1,772 unit/integration and 502 native Chromium tests). The branch now includes PR420–425, including the production QA fixes and the decision about the earlier chapter reruns. Selected synthetic service counts fall from 4 to 2 on Home, 4 to 2 on course entry, 7 to 5 for the first question and 3 to 2 when moving from a teacher class to writing. Reads respect account and session boundaries, and the teacher catalog, review queue and actions authorize each request. Fresh PR checks and production verification are pending. BF-02 remains deferred. [Measurements and verification](qa/request-deduplication-20261105.md).
+
+**2026-11-06 Asia/Dubai — 16.5B production QA failures resolved: both Resource causes were acceptance-script defects from PR416/PR419; corrected and passing.**
+- [PR422](https://github.com/johnvanesyan-arch/HaiEdu/pull/422) `58796b1`: the Resource acceptance allows PR419's read-only `get-student-work` call (exact read shape only).
+- [PR423](https://github.com/johnvanesyan-arch/HaiEdu/pull/423) `b6e2bef`: the writing-delivery step opens the assignment's My work state tab. The QA learner's reused task is already `reviewed`, so since PR416 it was listed under «Returned», not the default «To do». This failure was present on every build from `b9cde5b`.
+- Production on `b6e2bef`: Resource passes 329/329 (writing delivery for both schools, owned cleanup and session closure), plus English Units 1–3 and Mobile. On `58796b1`, Chapter III (owner-approved dispatch) and English Unit 2 pass, so the 5 November chapter/English Unit 2 failures were a one-off with an undetermined cause.
+- Both PRs change QA scripts and tests only; there is no product, Edge, schema or data change.
+
+**Limits.**
+- Chapters II, IV, V and VI have not run since 5 November. On 6 November John decided no re-run is needed, which closes this item. Their next scheduled runs will exercise them.
+- Owner usability acceptance for PR412–PR419 is still not given.
+- BF-07 and the existing gates are unchanged.
+
+[Causes, evidence and limits](qa/student-refinement-production-qa-20261106.md).
+
+**2026-11-05 Asia/Dubai — Sprint 16.5B student experience refinement delivered; production QA failures open (resolved 2026-11-06, see above).** Owner-approved refinements are merged and live. All are shared-core presentation changes, except one read-only endpoint:
+- [PR412](https://github.com/johnvanesyan-arch/HaiEdu/pull/412) `2a8c954`: Home next step first.
+- [PR413](https://github.com/johnvanesyan-arch/HaiEdu/pull/413) `6dc058c`: course page current work first and three primary sections.
+- [PR416](https://github.com/johnvanesyan-arch/HaiEdu/pull/416) `793669b`: My work status filter and single refresh.
+- [PR417](https://github.com/johnvanesyan-arch/HaiEdu/pull/417) `b9cde5b`: compact phone header, and the skill badge mirrors the server `insufficient_evidence` status with no browser threshold.
+- [PR418](https://github.com/johnvanesyan-arch/HaiEdu/pull/418) `9128da5`: practice outcome colours and connection-lost recovery. It also fixes a PR416/PR417 merge defect: an unclosed `@media` block that limited the phone header to 420 px, now guarded by a stylesheet-balance regression. It also updates the mobile QA selector for the second course nav.
+- [PR419](https://github.com/johnvanesyan-arch/HaiEdu/pull/419) `071e5e5`: My work as one list, served by the new read-only Edge Function `get-student-work` v1. That function was deployed with the owner's go-ahead (`verify_jwt` true), and its three files were read back byte-identical to source. It calls the existing three inbox service functions as the same actor and session, with no schema or SQL change. The page falls back to the PR416 sections if the endpoint is unavailable.
+
+**Verification.**
+- Every PR passed all five required checks. At PR419: 1,751 unit/integration and 485 native-browser tests locally.
+- The canonical site served each merged build: release identity matches main.
+- Production suites on PR417 `b9cde5b`: 11/13 pass. Mobile failed on Playwright strict mode, caused by PR417's second `.course-tabs`; fixed in PR418.
+- Production suites on PR418 `9128da5`: 11/13 pass, including Mobile.
+- Resource-assignment acceptance failed on `b9cde5b` and `9128da5` (204/204 recorded checks, then a thrown step) and on `071e5e5` (204/207). The `071e5e5` run made no `get-student-work` call, so it stopped before My work.
+- Teacher-feedback reads failed 28/29 on `9128da5`, then passed on `071e5e5`.
+- Production suites on PR419 `071e5e5`: 6/13 pass (Teacher feedback, Mobile, English Units 1 and 3, Sprint 14 actions, Sprint 14D analytics).
+  - Chapters II–VI and English Unit 2 each failed exactly one check, and Chapter IV stopped at 3/4. They had passed on `9128da5`.
+  - PR419 changed no page or function these suites use (Home and course reads, `get-student-classes`, `get-student-dashboard`); its only Home change applies to `view=work`.
+  - Their failing checks and the resource stage and error are only in run artifacts, which were not retrieved. The causes are **unconfirmed**; data or environment changes are not excluded.
+- Edge logs show two live `get-student-work` POSTs returning 200 during the passing teacher-feedback run.
+- 22 superseded queued production runs were cancelled with the owner's approval.
+
+**Limits.** No signed-in live usability check was made, owner usability acceptance is not given, and BF-07 and the existing gates are unchanged.
+
+Records: [Home](student-home-next-step-20261105.md) · [course](student-course-page-20261105.md) · [My work filter](student-my-work-20261105.md) · [phone header and badge](student-phone-header-20261105.md) · [practice](student-practice-screens-20261105.md) · [My work list](student-my-work-list-20261105.md).
 
 **2026-11-05 — BF-06 implementation and technical verification complete; BF-07 is next.** Functional PR414/main `e25cebe257054041e1aaa82d7367f03b453d9d6f` was verified on the canonical site and passes all five PR/main checks (1,740 unit/integration;455 native). All five automatic production suites pass, including instrumented resource 327/327 plus 54+54 isolation with owned cleanup and six 204 session closures. Selected coverage across 13 scopes totals2,024 main assertions and 864 isolation controls: five fresh e25cebe2 executions and eight explicitly reused source-equivalent executions, not one fresh 13-suite batch. The29-page/119-asset build, exact compiled bytes/cache policies, isolated cache measurements and archive-preserving redeployment rollback are verified. Original raw-template, global-logout and HTTP0 failures remain recorded; BF-37's intermittent transport cause stays unconfirmed. No database/Edge/Auth-settings/grading change or repeated learner recovery write. BF-02 remains deferred; independent/account/owner/content gates remain open. [Verified delivery and exact limits](qa/browser-build-delivery-20261105.md).
 
@@ -115,7 +154,7 @@
 **Historical Sprint 16.5B.2 — all existing student subpages delivered, 2026-10-27.** [PR309](https://github.com/johnvanesyan-arch/HaiEdu/pull/309) extends Forest across shared and legacy course/assessment/progress/task/results, guides, writing/teacher feedback, account/privacy, join and the shared identity gateway. All five required PR/main CI jobs pass, including **1,456 unit/integration tests and 165 native-browser checks**. Production source `e7efc028d90e351270bec6606078b6867546db8c` and all 18 changed frontend assets match; authenticated acceptance passes **324 Physics, 154 English and 10 staff-analytics checks**. All 45 capabilities and service dependencies remain; no backend/content/scoring/replay changes. S45 complete resource authoring/delivery and full 16.5C/four-subject acceptance remain open. English stays paused after C47. [Subpage delivery](student-subpages-implementation.md) · [Release evidence](evidence/student-subpages-release-20261027.json).
 
 
-**Updated:** 2026-11-05 Asia/Dubai · BF-07 implementation prepared; final verification open; BF-37 and owner/content gates preserved; BF-02 deferred · **Roadmap:** 4.149
+**Updated:** 2026-11-06 Asia/Dubai · 16.5B student refinement live (PR412–419; get-student-work v1 deployed); its production QA failures resolved by QA-script corrections PR422/PR423 (Resource 329/329 on `b6e2bef`; Chapters II, IV–VI re-run waived by owner 2026-11-06); BF-06 technical delivery verified; BF-07 approved for release checks; BF-37 transport cause, owner usability/B.12.3/B.12 and subject-expansion gates remain open; BF-02 deferred · **Roadmap:** 4.151
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
