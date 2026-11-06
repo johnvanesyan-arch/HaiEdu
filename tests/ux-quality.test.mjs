@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { numericAnswerInput } from "../web/answer-response-recovery.mjs";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
@@ -17,11 +18,14 @@ test("student pages declare Armenian language, viewport and shared UX layer", ()
 });
 
 test("student numeric inputs use neutral placeholders with no answer examples", () => {
-  const app = read("web/app.js");
-  const mastery = read("web/mastery.js");
-  for (const source of [app, mastery]) {
-    assert.match(source, /placeholder="Մուտքագրեք թիվը"/);
-    assert.doesNotMatch(source, /placeholder="Օր\./);
+  const markup = numericAnswerInput("Պատասխան");
+  assert.match(markup, /placeholder="Մուտքագրեք թիվը"/);
+  assert.match(markup, /aria-describedby="numericAnswerFormat"/);
+  assert.doesNotMatch(markup, /Օրինակ|placeholder="Օր\./);
+  for (const name of ["app", "practice", "diagnostic", "mastery"]) {
+    const source = read("web/" + name + ".js");
+    assert.match(source, /numericAnswerInput\("Պատասխան"\)/);
+    assert.match(source, /numericAnswerInput\("Թվային արժեք"\)/);
   }
 });
 
@@ -35,9 +39,9 @@ test("shared UX layer includes focus visibility, reduced motion and responsive b
   assert.match(css, /min-height: 44px/);
 });
 
-test("shared UX layer validates decimal answers and 8-character class codes", () => {
+test("shared UX layer leaves numeric syntax to the server and validates class codes", () => {
   const js = read("web/ux.js");
-  assert.match(js, /normalizeDecimal/);
+  assert.match(js, /const numericOk = Boolean\(numeric.value.trim\(\)\)/);
   assert.match(js, /\[A-Z0-9\]\{8\}/);
   assert.match(js, /aria-invalid/);
   assert.match(js, /radiogroup/);

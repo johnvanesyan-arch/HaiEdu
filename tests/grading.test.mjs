@@ -75,7 +75,7 @@ test("decimal input accepts grouped thousands, Unicode minus and decimal comma",
   for (const [value, expected] of [
     ["10 800", 10800], ["10\u00a0800", 10800], ["10\u202f800", 10800],
     ["1 234 567,89", 1234567.89], ["−5", -5], ["−1.5e−3", -0.0015],
-    ["0,35", 0.35], ["0,125", 0.125], ["10,800", 10.8], ["10.800", 10.8],
+    ["–5", -5], ["—5", -5], ["0٫35", 0.35], ["0,35", 0.35], ["0,125", 0.125], ["10,800", 10.8], ["10.800", 10.8],
     ["1e3", 1000], [10800, 10800],
   ]) {
     assert.deepEqual(gradeAnswer({ type: "numeric", answer: expected }, { value }), {

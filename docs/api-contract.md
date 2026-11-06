@@ -349,7 +349,7 @@ Single-choice `A/B/C/…` values are **presentation positions**, not canonical a
 
 ### Legacy numeric and quantity format
 
-The BF-09 candidate introduces `haiedu-decimal-input-v1` for numeric and quantity learner inputs in the registered legacy adapter. A comma or period marks the decimal fraction. For example, `10,800` means `10.8`. Grouped integers accept a regular space, no-break space or narrow no-break space between groups of three digits. The parser also accepts finite JSON numbers, either minus sign, and decimal exponent notation. Quantity requests still carry the unit in the separate `response.unit` field.
+The BF-09 candidate introduces `haiedu-decimal-input-v1` for numeric and quantity learner inputs in the registered legacy adapter. A comma or period marks the decimal fraction. For example, `10,800` means `10.8`. Grouped integers accept a regular space, no-break space or narrow no-break space between groups of three digits. The parser also accepts finite JSON numbers and decimal exponent notation. It accepts the ASCII minus, Unicode minus, and the dash aliases and Arabic decimal separator the earlier browser input supported. Quantity requests still carry the unit in the separate `response.unit` field.
 
 Both legacy answer endpoints return HTTP 422 with `error: "invalid_numeric_format"` and `inputFormatVersion: "haiedu-decimal-input-v1"` for malformed numeric syntax. That response confirms that the submitted format was unscored. The learner can edit the same question. Stored answer receipts take precedence for an already recorded request. This format applies to legacy numeric and quantity questions. Governed sessions use the response types enabled in their bound policy.
 

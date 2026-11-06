@@ -75,7 +75,8 @@ const decimalInput = /^[+-]?(?:(?:\d{1,3}(?:[ \u00a0\u202f]\d{3})+|\d+)(?:[.,]\d
 
 function learnerNumeric(value: unknown): number | null {
   if (typeof value !== "string") return numeric(value);
-  const input = value.trim().replaceAll("−", "-");
+  // Retain the sign and decimal aliases the browser previously converted.
+  const input = value.trim().replace(/[−–—]/g, "-").replaceAll("٫", ".");
   if (!decimalInput.test(input)) return null;
   return numeric(input.replaceAll(/[ \u00a0\u202f]/g, ""));
 }
