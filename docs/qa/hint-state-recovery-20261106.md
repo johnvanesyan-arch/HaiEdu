@@ -37,3 +37,29 @@ On 6 November 2026 the shared Edge module and help endpoint were rolled out and 
 The migration ledger has one `hint_state_recovery` entry at `20261106175539`. The checked-in filename uses that assigned version, with the tested SQL unchanged (SHA-256 `8d4c7aef35c9e2c90656b459ead78639c643abc2d109f780095e1a1a3550d307`). The live recorder and governed wrapper body digests are `a1300cc87e38560303ebe18e61467e99` and `6683c60837e237b31d88c0369f54ef7a`. Their invoker/definer settings, empty search paths and service-role-only execute privileges matched the preflight. This migration replaces function definitions and does not write learner records.
 
 Vercel's persistent GitHub check `Platform release checks` was read back in Production with Blocking selected. Final frontend CI and production verification are tracked on [PR430](https://github.com/johnvanesyan-arch/HaiEdu/pull/430).
+
+## Production verification
+
+[PR430](https://github.com/johnvanesyan-arch/HaiEdu/pull/430) merged at `beb26011cf298f459d9002cc9f3c2dfe92e675c1`. [Main CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338724) passed all five jobs, with 1,780 unit and integration tests and 511 native Chromium tests. The 390 CSS pixel and 200% text regression exercised two-tab recovery, a preserved draft, recovery of a lost wrong-answer reply, post-error help focus and keyboard access to Next. The legacy controller tests also verify that account changes suppress stale responses and a stalled sign-in read cannot dispatch after the deadline.
+
+Vercel deployed `dpl_2ERxCiBwB6zPuub17njJxELx1caD`. The canonical commit and browser manifest matched the reviewed source, with exact hashes and expected cache headers for all 29 rendered pages and 122 current assets in build `4a0ff2c548195f7960c3bd19baaf7cefc47169bea01c36c4f2b8cdc0e4c6fc2b`.
+
+All 13 authenticated production suites passed on that commit. The first Chapter VI attempt stopped at the artifact preflight during the deploy transition. It reported a mismatch for `content-bank.html` before signing in. Full canonical verification passed after the transition, and the same Chapter VI run passed 324/324 checks on attempt 2.
+
+| Production suite | Run | Accepted attempt | Result |
+| --- | --- | --- | --- |
+| Chapter II pilot read acceptance | [42267338748](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338748) | 1 | Passed |
+| Chapter III pilot read acceptance | [42267338774](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338774) | 1 | Passed |
+| Chapter IV pilot read acceptance | [42267338618](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338618) | 1 | Passed |
+| Chapter V pilot read acceptance | [42267338620](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338620) | 1 | Passed |
+| Chapter VI pilot read acceptance | [42267338614](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338614) | 2 | Passed |
+| English Unit 1 pilot read acceptance | [42267338751](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338751) | 1 | Passed |
+| English Unit 2 pilot read acceptance | [42267338757](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338757) | 1 | Passed |
+| English Unit 3 pilot read acceptance | [42267338646](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338646) | 1 | Passed |
+| Mobile browser QA | [42267338743](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338743) | 1 | Passed |
+| Resource assignment production acceptance | [42267338630](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338630) | 1 | Passed |
+| Sprint 14 authenticated action QA | [42267338703](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338703) | 1 | Passed |
+| Sprint 14D authenticated analytics QA | [42267338826](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338826) | 1 | Passed |
+| Teacher feedback production acceptance | [42267338692](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42267338692) | 1 | Passed |
+
+The live suite results establish production coverage on the released source. The two-tab race and lost-answer-reply checks use isolated fixtures. B.12.3 remains open for the owner's usability acceptance.
