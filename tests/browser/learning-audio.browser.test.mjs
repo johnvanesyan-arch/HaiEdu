@@ -68,7 +68,7 @@ test('native private audio: failed load, actual WAV playback, normal speed, serv
  await expect(page.locator('button[type=submit]')).toBeEnabled();assert.equal(await page.locator('audio').evaluate(a=>a.playbackRate),1);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.setViewportSize({width:1365,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();await expect(page.locator('[data-feedback]')).toContainText('Հաջորդը');
+ await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();await expect(page.getByRole('button',{name:'Հաջորդը',exact:true})).toBeVisible();
  assert.equal(Number((await f.db.query('select count(*) n from attempts')).rows[0].n),count+1);
  assert.deepEqual(await page.evaluate(()=>window.revoked),await page.evaluate(()=>window.created));assert.deepEqual(errors,[]);
 });

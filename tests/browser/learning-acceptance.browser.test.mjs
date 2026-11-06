@@ -6,7 +6,7 @@ import {createServer} from 'node:http';
 import {readFile,mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import {verifyChapterIIPracticeGate,verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
-import {acceptanceFixture,href,id} from '../fixtures/learning-acceptance.mjs';
+import {acceptanceFixture,answerBody,finishThroughAPI,href,id,selection} from '../fixtures/learning-acceptance.mjs';
 import {installTyped,configureTyped} from '../fixtures/typed-fields-db.mjs';
 import {installAnswerRecovery} from '../fixtures/answer-recovery-db.mjs';
 
@@ -36,15 +36,15 @@ async function fixture(t) {
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>new Promise(resolve=>{server.closeAllConnections();server.close(resolve);}));
  const origin='http://127.0.0.1:'+server.address().port;
  const context=await browser.newContext();t.after(()=>context.close());const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(({token,student})=>{
+ await context.addInitScript(({token,student})=>{
   window.__listeners=[];window.__client={auth:{getSession:async()=>({data:{session:{user:{id:student}}}}),onAuthStateChange:fn=>window.__listeners.push(fn)},functions:{invoke:async(name,{body})=>{
    const response=await fetch('/functions/v1/'+name,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify(body)});
    const data=await response.json();return {data:response.ok?data:null,error:response.ok?null:data};
   }}};
  },{token:f.defaultToken,student:id(10)});
- await page.route('**/supabase-browser.bundle.mjs',route=>route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'}));
- await page.route('**/config.js',route=>route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="http://isolated.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture";'}));
- return {f,page,errors,origin};
+ await context.route('**/supabase-browser.bundle.mjs',route=>route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'}));
+ await context.route('**/config.js',route=>route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="http://isolated.invalid";export const SUPABASE_PUBLISHABLE_KEY="fixture";'}));
+ return {f,page,errors,origin,context};
 }
 
 test('native course, actual Edge handlers and real SQL complete independent baselines in four contexts',async t=>{
@@ -254,7 +254,7 @@ test('native governed form recovers a committed answer after its response is dro
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
  assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
  const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
- await page.locator('#learningPlayer [data-feedback] button').click();
+ await page.locator('#learningPlayer').getByRole('button',{name:'Հաջորդը',exact:true}).click();
  await expect(page.locator('#learningPlayer h2')).toContainText('Հարց 2/');
  assert.deepEqual(errors,[]);
 });
@@ -276,8 +276,73 @@ test('native governed deadline recovery ignores the late original reply and pres
  await page.locator('#learningPlayer button[type=submit]').click();
  await expect(page.locator('#learningPlayer [data-feedback]')).toContainText('Պատասխանն ընդունված է');
  release();
- await expect(page.locator('#learningPlayer [data-feedback] button')).toHaveCount(1);
+ await expect(page.locator('#learningPlayer').getByRole('button',{name:'Հաջորդը',exact:true})).toHaveCount(1);
  assert.equal((await f.db.query('select count(*)::int n from attempts')).rows[0].n,1);
  const writes=f.calls.filter(c=>c.name==='submit-answer');assert.equal(writes.length,2);assert.deepEqual(writes[0].body,writes[1].body);
+ assert.deepEqual(errors,[]);
+});
+
+
+test('BF-08 narrow practice reloads a stale hint, keeps a draft, and puts feedback and Next in focus order',async t=>{
+ const {f,page,errors,origin,context}=await fixture(t);
+ await installAnswerRecovery(f.db);
+ await f.db.exec(await readFile('supabase/migrations/20261106175539_hint_state_recovery.sql','utf8'));
+ const diagnostic=await f.call('start-learning-session',{...selection(0),mode:'diagnostic'});
+ await finishThroughAPI(f,diagnostic.body.session,false);
+ await f.db.query("insert into item_template_remediation_guides values($1,$2,'published',null,1,'Hint title','Try the strategy','First hint','Second hint','Example','[]')",[id(951),id(902)]);
+ const second=await context.newPage();second.on('pageerror',e=>errors.push(e.message));
+ const viewport={width:390,height:844};
+ for(const tab of [page,second]){
+  await tab.setViewportSize(viewport);
+  await tab.goto(origin+href(0,'practice'));
+  await tab.locator('[data-help]').waitFor();
+  await tab.addStyleTag({content:'html { font-size: 200% !important; }'});
+ }
+ const sessionId=f.calls.findLast(x=>x.name==='get-session-item').body.sessionId;
+ const {body:item}=await f.call('get-session-item',{sessionId});
+ const {response:{value}}=await answerBody(f.db,item,false);
+ const draft=second.locator(`#learningPlayer input[value="${value}"]`);
+ await draft.check();
+ await page.locator('[data-help]').click();
+ const firstHint=page.locator('[data-help-content]');
+ await expect(firstHint).toContainText('First hint');
+ await expect(firstHint).toBeFocused();
+ await second.locator('[data-help]').click();
+ const reload=second.getByRole('button',{name:'Թարմացնել հարցը',exact:true});
+ await expect(reload).toBeVisible();
+ await expect(second.locator('[data-help-content]')).toBeFocused();
+ await second.keyboard.press('Tab');
+ await expect(reload).toBeFocused();
+ await second.keyboard.press('Enter');
+ await expect(second.locator('[data-help-content]')).toContainText('Հարցը թարմացվել է');
+ await expect(draft).toBeChecked();
+ assert.equal(f.calls.filter(x=>x.name==='get-remediation-help').length,2);
+ let dropped=false;
+ await second.route('**/functions/v1/submit-answer',async route=>{
+  const response=await route.fetch();
+  if(!dropped&&response.ok()){
+   dropped=true;
+   await route.abort('failed');
+  }else await route.fulfill({response});
+ });
+ const submit=second.locator('#learningPlayer button[type=submit]');
+ await submit.click();
+ await expect(second.locator('[data-feedback]')).toContainText('գրանցումը դեռ հաստատված չէ');
+ await expect(second.locator('[data-help]')).toBeDisabled();
+ await submit.click();
+ const next=second.getByRole('button',{name:'Հաջորդը',exact:true});
+ await expect(next).toBeVisible();
+ await second.getByRole('button',{name:'Բացատրել սխալը',exact:true}).click();
+ const explanation=second.locator('[data-help-content]');
+ await expect(explanation).toContainText('Second hint');
+ await expect(explanation).toBeFocused();
+ const panel=await explanation.boundingBox();
+ assert.ok(panel.x>=0 && panel.x+panel.width<=viewport.width+1);
+ await second.keyboard.press('Tab');
+ await expect(second.locator('[data-help]')).toBeFocused();
+ await second.keyboard.press('Tab');
+ await expect(next).toBeFocused();
+ await second.keyboard.press('Enter');
+ await expect(second.locator('#learningPlayer h2')).toHaveText('Հարց 2/3');
  assert.deepEqual(errors,[]);
 });

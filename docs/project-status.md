@@ -1,5 +1,7 @@
 # Project status register
 
+**2026-11-06 — BF-08 backend verified and frontend candidate prepared.** Practice and Chapter Review now bind a hint request to the displayed question, hint level and answer phase. The stale tab can refresh the question and keep a draft on the same item. Opened help takes focus, with the next action below it. The database migration and nine Edge bundles are live with exact readback. The two-tab browser and database regressions passed on the earlier candidate. The final frontend checks and production verification are pending. BF-02 remains deferred and B.12.3 remains open for owner usability acceptance. [BF-08 evidence](qa/hint-state-recovery-20261106.md).
+
 **2026-11-06 Asia/Dubai — 16.5B Home refinement mockup complete and live; production QA green.**
 - [PR426](https://github.com/johnvanesyan-arch/HaiEdu/pull/426) `97a8902`: the Home greeting («Բարև, {display name}», from the existing role-check profile read) and «Ձեր ուղին այս բաժնում» (Diagnostic → Practice → Mastery check for the selected unit, using the same rules as the course page, no score).
 - [PR428](https://github.com/johnvanesyan-arch/HaiEdu/pull/428) `da9b294`:

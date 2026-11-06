@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {installAnswerRecovery} from './fixtures/answer-recovery-db.mjs';
 import {acceptanceFixture,acceptanceScopes,selection,id,finishThroughAPI,answerBody,analyticsReaders} from './fixtures/learning-acceptance.mjs';
 
 const start=(f,idx,mode)=>f.call('start-learning-session',{...selection(idx),mode});
@@ -123,4 +125,45 @@ test('15B.12E connected Edge-to-SQL acceptance: two chapters in each of two subj
   for(const [name,body] of [['get-student-classes',{}],['get-student-dashboard',selection(0)],['start-learning-session',{...selection(0),mode:'practice'}],['get-session-item',{sessionId:baselines[0].id}],['get-mastery-check-status',{sessionId:baselines[0].id}],['get-chapter-mastery-lifecycle',{sessionId:baselines[0].id}],['submit-answer',{sessionId:baselines[0].id}],['get-remediation-help',{sessionId:baselines[0].id}]])assert.equal((await f.call(name,body)).status,403,name);
   assert.deepEqual(await writes(f.db),before);assert.deepEqual(f.logs,[]);
  });
+});
+
+
+test('BF-08 serializes help at the level and answer phase the learner saw',async t=>{
+ const f=await acceptanceFixture();t.after(()=>f.close());
+ await installAnswerRecovery(f.db);
+ await f.db.exec(readFileSync('supabase/migrations/20261106175539_hint_state_recovery.sql','utf8'));
+ await finishThroughAPI(f,(await start(f,0,'diagnostic')).body.session,false);
+ await f.db.query("insert into item_template_remediation_guides values($1,$2,'published',null,1,'Title','Strategy','Hint','Hint2','Example','[]')",[id(951),id(902)]);
+ const {body:{session}}=await start(f,0,'practice');
+ const {body:item}=await f.call('get-session-item',{sessionId:session.id});
+ const hint=(level,afterAnswer=false)=>({sessionId:session.id,sessionItemId:item.sessionItemId,hintState:{level,afterAnswer}});
+ const [a,b]=await Promise.all([f.call('get-remediation-help',hint(0)),f.call('get-remediation-help',hint(0))]);
+ assert.deepEqual([a.status,b.status].sort(),[200,409]);
+ assert.equal([a,b].find(x=>x.status===200).body.level,1);
+ const conflict={status:409,body:{error:'hint_state_conflict'}};
+ assert.deepEqual([a,b].find(x=>x.status===409),conflict);
+ assert.equal((await writes(f.db)).help,1);
+ assert.equal((await f.call('get-session-item',{sessionId:session.id})).body.remediation.hintLevelUsed,1);
+ assert.equal((await f.call('get-remediation-help',hint(1),f.credential(id(11),id(402)))).status,403);
+ assert.equal((await f.call('get-remediation-help',hint(4))).status,400);
+ // A different SQLSTATE with the same text must remain a server failure and roll back the level.
+ await f.db.exec(`create function pg_temp.reject_hint() returns trigger language plpgsql as $$
+   begin raise check_violation using message='hint_state_conflict'; end $$;
+   create trigger reject_hint before insert on remediation_events for each row execute function pg_temp.reject_hint();`);
+ assert.deepEqual(await f.call('get-remediation-help',hint(1)),{status:500,body:{error:'hint_recording_failed'}});
+ assert.equal((await writes(f.db)).help,1);
+ assert.equal((await f.call('get-session-item',{sessionId:session.id})).body.remediation.hintLevelUsed,1);
+ await f.db.exec('drop trigger reject_hint on remediation_events');
+ const wrong=await f.call('submit-answer',await answerBody(f.db,item,false));
+ assert.equal(wrong.status,200);
+ assert.equal(wrong.body.grading.correct,false);
+ assert.deepEqual(await f.call('get-remediation-help',hint(1)),conflict);
+ const explanation=await f.call('get-remediation-help',hint(1,true));
+ assert.equal(explanation.status,200);
+ assert.equal(explanation.body.postAnswer,true);
+ assert.equal(explanation.body.level,2);
+ const {body:next}=await f.call('get-session-item',{sessionId:session.id});
+ assert.notEqual(next.sessionItemId,item.sessionItemId);
+ assert.deepEqual(await f.call('get-remediation-help',hint(2,true)),conflict);
+ assert.equal((await writes(f.db)).help,2);
 });

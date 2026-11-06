@@ -449,7 +449,7 @@ for(const [result,outcome,colour] of [['correct','correct','rgb(231, 245, 238)']
  await expect(feedback).toContainText(result==='correct'?'Ճիշտ պատասխան։':'Պատասխանը սխալ է։');
  assert.equal(await feedback.getAttribute('data-outcome'),outcome);
  assert.equal(await feedback.evaluate(el=>getComputedStyle(el).backgroundColor),colour);
- await expect(feedback.getByRole('button',{name:'Հաջորդը',exact:true})).toBeVisible();
+ await expect(page.locator('#learningPlayer').getByRole('button',{name:'Հաջորդը',exact:true})).toBeVisible();
  assert.deepEqual(errors,[]);
 });
 

@@ -196,30 +196,31 @@
       <section class="card question-card">
         <div class="question-heading">
           <div><p id="skillName" class="skill-name">—</p><p id="itemCode" class="item-code">—</p></div>
-          <div class="question-actions"><span id="difficulty" class="pill">—</span><button id="nextBtn" class="ghost" disabled>Հաջորդ հարց</button></div>
+          <div class="question-actions"><span id="difficulty" class="pill">—</span></div>
         </div>
 
         <div class="session-progress-track"><div id="sessionProgressBar" class="session-progress-bar" style="width:0%"></div></div>
         <div id="stimulus" class="stimulus hidden"></div>
-        <h2 id="prompt" aria-live="polite">Ընտրեք ռեժիմ և սկսեք։</h2>
+        <h2 id="prompt" tabindex="-1" aria-live="polite">Ընտրեք ռեժիմ և սկսեք։</h2>
 
-        <div id="helpControls" class="help-controls hidden">
-          <button id="helpBtn" type="button" class="secondary">Օգնություն</button>
-          <span class="subtle small">Վարժանքի ժամանակ կարող եք ստանալ աստիճանական հուշում՝ առանց ընթացիկ հարցի պատասխանը բացահայտելու։</span>
-        </div>
-        <section id="helpPanel" class="help-panel hidden" aria-live="polite">
+        <section id="helpPanel" class="help-panel hidden" tabindex="-1" aria-labelledby="helpTitle">
           <span class="mode-kicker">Ուսուցման օգնություն</span>
           <h3 id="helpTitle">Օգնություն</h3>
           <p id="helpStrategy" class="help-strategy"></p>
           <p id="helpContent" class="help-content"></p>
           <p id="helpNote" class="subtle small"></p>
         </section>
+        <div id="helpControls" class="help-controls hidden">
+          <button id="helpBtn" aria-controls="helpPanel" type="button" class="secondary">Օգնություն</button>
+          <span class="subtle small">Վարժանքի ժամանակ կարող եք ստանալ աստիճանական հուշում՝ առանց ընթացիկ հարցի պատասխանը բացահայտելու։</span>
+        </div>
 
         <form id="answerForm" novalidate>
           <div id="answerArea"></div>
           <button id="submitBtn" type="submit" disabled>Պատասխանել</button>
         </form>
         <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        <button id="nextBtn" type="button" class="ghost" disabled>Հաջորդ հարց</button>
       </section>
 
       <section id="masteryCard" class="card mastery-card">
@@ -243,7 +244,6 @@
   <script type="module" src="./role-router.js"></script>
   <script type="module" src="./app.js"></script>
   <script type="module" src="./home-class.js"></script>
-  <script type="module" src="./remediation.js"></script>
   <script type="module" src="./session-watchdog.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./student-shell.js"></script>

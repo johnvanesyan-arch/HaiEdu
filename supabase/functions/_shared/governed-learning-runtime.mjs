@@ -13,8 +13,19 @@ export function verifiedSessionClaim(token) {
 
 async function rpc(admin, name, args) {
   const {data,error} = await admin.rpc(name,args);
-  if (error || !data) throw new Error(error?.message ?? 'governed_learning_unavailable');
+  if (error || !data) throw Object.assign(new Error(error?.message ?? 'governed_learning_unavailable'), {code:error?.code});
   return data;
+}
+
+export function validHintState(value) {
+  return value && typeof value === 'object' && Object.keys(value).length === 2
+    && Number.isInteger(value.level) && value.level >= 0 && value.level <= 3
+    && typeof value.afterAnswer === 'boolean';
+}
+
+export function isHintStateConflict(error) {
+  return (error?.code === 'HNT01' && error.message === 'hint_state_conflict')
+    || (error?.code === 'P0001' && error.message === 'stale or invalid remediation state');
 }
 
 export async function routeGovernedLearning({admin,studentId,token,request,operation}) {
@@ -65,6 +76,10 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
     if (['answer','mastery','help'].includes(operation) && !uuid(body.sessionItemId)) return {status:400,body:{error:'session_item_required'}};
     if (['answer','mastery'].includes(operation) && (!uuid(body.itemId) || !body.response || typeof body.response !== 'object' || Array.isArray(body.response))) return {status:400,body:{error:'answer_required'}};
     const allowed = ['sessionId','sessionItemId','itemId','response','responseTimeMs','hintUsed','saveDraft','draftRevision'];
+    if (operation === 'help') {
+      allowed.push('hintState');
+      if (body.hintState !== undefined && !validHintState(body.hintState)) return {status:400,body:{error:'invalid_session_request'}};
+    }
     if ((body.saveDraft !== undefined && (typeof body.saveDraft !== 'boolean' || !['answer','mastery'].includes(operation))) || (body.draftRevision !== undefined && (!Number.isSafeInteger(body.draftRevision) || body.draftRevision < 0))) return {status:400,body:{error:'invalid_session_request'}};
     if (Object.keys(body).some(key=>!allowed.includes(key))) return {status:400,body:{error:'invalid_session_request'}};
     return {status:200,body:await rpc(admin,'service_governed_learning_operation',{
@@ -73,6 +88,13 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
     })};
   } catch (error) {
     const message = String(error?.message ?? '');
+    if (operation === 'help') {
+      if (isHintStateConflict(error)) return {status:409,body:{error:'hint_state_conflict'}};
+      if (['session_not_active','help_not_available_in_assessment','help_not_needed_after_correct_answer','remediation_guide_missing'].includes(message)) return {status:409,body:{error:message}};
+      if (message === 'learning_context_unavailable') return {status:403,body:{error:'learning_context_unavailable'}};
+      console.error('governed remediation failed', error);
+      return {status:500,body:{error:'hint_recording_failed'}};
+    }
     // Never expose tenant/catalogue details or raw SQL errors.
     const code = ['chapter_diagnostic_required','skills_not_ready','mastery_check_not_allowed','chapter_review_not_available','assessment_policy_unconfigured','session_item_already_answered','answer_response_conflict','answer_result_unavailable','invalid_option_presentation_key','help_not_available_in_assessment','remediation_guide_missing','session_not_active','typed_fields_response_invalid','typed_fields_draft_conflict','arrangement_response_invalid','response_draft_conflict'].find(value=>message.includes(value));
     return {status:code ? 409 : 403,body:{error:code ?? 'learning_context_unavailable'}};

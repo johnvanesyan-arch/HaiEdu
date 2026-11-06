@@ -8,7 +8,7 @@ import vm from 'node:vm';
 import ts from 'typescript';
 import { database, id } from './learning-dashboard-db.mjs';
 import { scopes, blueprintId, slot } from './governed-session-db.mjs';
-import { routeGovernedLearning, verifiedSessionClaim } from '../../supabase/functions/_shared/governed-learning-runtime.mjs';
+import { isHintStateConflict, routeGovernedLearning, validHintState, verifiedSessionClaim } from '../../supabase/functions/_shared/governed-learning-runtime.mjs';
 import { routeStudentDashboard } from '../../supabase/functions/_shared/student-dashboard-handler.mjs';
 import * as evidence from '../../supabase/functions/_shared/analytics-evidence.mjs';
 
@@ -126,7 +126,7 @@ export async function acceptanceFixture() {
     for(const name of names){
       let handler;
       compile(readFileSync(`supabase/functions/${name}/index.ts`,'utf8'),{
-        routeGovernedLearning,verifiedSessionClaim,routeStudentDashboard,createClient:()=>admin,hasActiveLiveSession,verifyReadIdentity,
+        isHintStateConflict,routeGovernedLearning,validHintState,verifiedSessionClaim,routeStudentDashboard,createClient:()=>admin,hasActiveLiveSession,verifyReadIdentity,
         getStudentCourseEntitlements:async()=>[],
         hasPhysics7Access:async()=>false,
         Deno:{env:{get:()=> 'fixture-only'},serve:fn=>{handler=fn;}},

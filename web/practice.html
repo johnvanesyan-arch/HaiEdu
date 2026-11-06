@@ -71,26 +71,26 @@
         </div>
 
         <div id="stimulus" class="stimulus hidden"></div>
-        <h2 id="prompt" class="practice-prompt" aria-live="polite">Հարցը բեռնվում է…</h2>
+        <h2 id="prompt" tabindex="-1" class="practice-prompt" aria-live="polite">Հարցը բեռնվում է…</h2>
 
         <form id="answerForm" novalidate>
           <div id="answerArea"></div>
+          <section id="helpPanel" class="help-panel hidden" tabindex="-1" aria-labelledby="helpTitle">
+            <span class="mode-kicker">Ուսուցման օգնություն</span>
+            <h3 id="helpTitle">Օգնություն</h3>
+            <p id="helpStrategy" class="help-strategy"></p>
+            <p id="helpContent" class="help-content"></p>
+            <p id="helpNote" class="subtle small"></p>
+          </section>
           <div class="practice-answer-actions">
             <div id="helpControls" class="help-controls hidden">
-              <button id="helpBtn" type="button" class="secondary">Հուշում</button>
+              <button id="helpBtn" aria-controls="helpPanel" type="button" class="secondary">Հուշում</button>
               <span class="subtle small">Հուշումները տրվում են քայլ առ քայլ՝ ուղղություն → ռազմավարություն → նման օրինակ։ Դրանք չեն լուծում ընթացիկ հարցը, իսկ հմտությունը հետագայում պետք է հաստատվի ինքնուրույն։</span>
             </div>
             <button id="submitBtn" type="submit" disabled>Ստուգել պատասխանը</button>
           </div>
         </form>
 
-        <section id="helpPanel" class="help-panel hidden" aria-live="polite">
-          <span class="mode-kicker">Ուսուցման օգնություն</span>
-          <h3 id="helpTitle">Օգնություն</h3>
-          <p id="helpStrategy" class="help-strategy"></p>
-          <p id="helpContent" class="help-content"></p>
-          <p id="helpNote" class="subtle small"></p>
-        </section>
 
         <div id="feedback" class="feedback hidden" aria-live="polite"></div>
 
@@ -145,7 +145,6 @@
 
   <script type="module" src="./role-router.js"></script>
   <script type="module" src="./practice.js"></script>
-  <script type="module" src="./remediation.js"></script>
   <script type="module" src="./session-watchdog.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./student-shell.js"></script>

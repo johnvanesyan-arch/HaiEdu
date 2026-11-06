@@ -1,3 +1,4 @@
+import {setRemediationQuestion} from "./remediation.js";
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -318,6 +319,7 @@ function clearQuestion() {
 
 async function loadSessionItem() {
   if (!currentSession?.id) return;
+  setRemediationQuestion(null);
   nextBtn.disabled = true;
   nextBtn.dataset.action = "next";
   submitBtn.disabled = true;
@@ -336,7 +338,12 @@ async function loadSessionItem() {
     return;
   }
 
+  renderSessionItem(data);
+}
+
+function renderSessionItem(data) {
   if (data?.complete) {
+    setRemediationQuestion(null);
     current = null;
     questionStartedAt = null;
     renderSessionCompletion(data);
@@ -348,7 +355,15 @@ async function loadSessionItem() {
   currentSession = { ...currentSession, ...data.session };
   questionStartedAt = performance.now();
   renderQuestion(data);
+  setRemediationQuestion(data);
 }
+
+answerForm.addEventListener("haiedu-hint-refresh", (event) => {
+  $("feedback").className = "feedback hidden";
+  $("feedback").textContent = "";
+  renderSessionItem(event.detail);
+  if (!event.detail.complete) $("prompt").focus();
+});
 
 function renderQuestion(data) {
   const { skill, item, session } = data;
@@ -475,6 +490,7 @@ async function submitAnswer(event) {
     }
 
     const correct = data.grading?.correct;
+    setRemediationQuestion(current, correct === false && data.session?.status === "active" ? "incorrect" : "closed");
     feedback.className = `feedback ${correct ? "good" : "bad"}`;
     feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Սեսիան սահմանափակ է և անվերջ չի շարունակվի։"}</div>`;
     updateMastery(data.mastery, data.recommendation);

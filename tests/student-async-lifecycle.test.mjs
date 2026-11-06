@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
+import {focusHint, hintConflictMessage, hintRefreshLabel, invokeForHint} from "../web/remediation-request.mjs";
 
 const remediationSource = readFileSync(new URL("../web/remediation.js", import.meta.url), "utf8")
-  .replace(/^import .*;\s*$/gm, "");
+  .replace(/^import .*;\s*$/gm, "").replace(/^export /gm, "");
 
 // These tests execute the real help controller with deferred API promises and
 // a bounded DOM observer double. No network, authentication, scoring, or browser
@@ -12,6 +13,8 @@ const remediationSource = readFileSync(new URL("../web/remediation.js", import.m
 function helpFixture() {
   const observers = [];
   const calls = [];
+  let actor = "student-a";
+  let authListener;
   const nodes = new Map();
   const observedMutation = (target, type, attributeName) => {
     for (const observer of observers) {
@@ -53,6 +56,8 @@ function helpFixture() {
     get textContent() { return this._text; }
     set textContent(value) { this._text = String(value); observedMutation(this, "childList"); }
     querySelectorAll() { return this.controls; }
+    focus() { this.focused = true; }
+    scrollIntoView() {}
     appendChild(child) { this.children.push(child); }
     addEventListener(type, callback) {
       if (!this.listeners.has(type)) this.listeners.set(type, []);
@@ -60,7 +65,7 @@ function helpFixture() {
     }
     dispatch(type) { for (const callback of this.listeners.get(type) || []) callback({ type }); }
   }
-  const ids = ["practicePanel", "sessionMode", "itemCode", "submitBtn", "answerArea", "feedback", "helpControls", "helpBtn", "helpPanel", "helpTitle", "helpStrategy", "helpContent", "helpNote"];
+  const ids = ["practicePanel", "sessionMode", "answerForm", "itemCode", "submitBtn", "answerArea", "feedback", "helpControls", "helpBtn", "helpPanel", "helpTitle", "helpStrategy", "helpContent", "helpNote"];
   ids.forEach(id => nodes.set(id, new Element(id)));
   nodes.get("sessionMode").textContent = "Վարժանք";
   nodes.get("itemCode").dataset.itemCode = "question-a";
@@ -70,7 +75,10 @@ function helpFixture() {
     constructor(callback) { this.callback = callback; this.targets = new Map(); this.records = []; observers.push(this); }
     observe(target, options) { assert.ok(target); this.targets.set(target, options); }
   }
-  const supabase = { functions: { invoke(name, options) {
+  const supabase = { auth:{
+    getSession:async()=>({data:{session:{user:{id:actor}}}}),
+    onAuthStateChange(callback){authListener=callback;callback("INITIAL_SESSION",{user:{id:actor}});},
+  }, functions: { invoke(name, options) {
     const call = { name, options };
     call.promise = new Promise((resolve, reject) => { call.resolve = resolve; call.reject = reject; });
     calls.push(call);
@@ -81,8 +89,9 @@ function helpFixture() {
     window: {}, createClient: () => supabase,
     SUPABASE_URL: "https://example.invalid", SUPABASE_PUBLISHABLE_KEY: "fixture",
     MutationObserver, HTMLInputElement: Element,
+    focusHint, hintConflictMessage, hintRefreshLabel, invokeForHint,
   });
-  vm.runInContext(`${remediationSource}\n;globalThis.testController = { requestHelp, syncHelpVisibility };`, context, { timeout: 1000 });
+  vm.runInContext(`${remediationSource}\n;globalThis.testController = { requestHelp, syncHelpVisibility, setRemediationQuestion };`, context, { timeout: 1000 });
   function flush() {
     let deliveries = 0;
     while (observers.some(observer => observer.records.length)) {
@@ -93,11 +102,17 @@ function helpFixture() {
       }
     }
   }
+  const setQuestion = (sessionItemId, phase, level=0) => context.testController.setRemediationQuestion({
+    session:{id:"practice-session"},sessionItemId,remediation:{available:true,hintLevelUsed:level},
+  },phase);
+  setQuestion("question-a");
   flush();
   return {
     nodes, calls, flush,
     request: () => context.testController.requestHelp(),
-    question(code) { nodes.get("itemCode").dataset.itemCode = code; flush(); },
+    question: setQuestion,
+    changeAccount() { actor = "student-b"; authListener("SIGNED_IN",{user:{id:actor}}); },
+    started: () => new Promise(resolve => setImmediate(resolve)),
     hidePractice() { nodes.get("practicePanel").classList.add("hidden"); flush(); },
     showPractice() { nodes.get("practicePanel").classList.remove("hidden"); flush(); },
   };
@@ -108,17 +123,21 @@ const hint = title => ({ data: { titleHy: title, contentHy: `${title} content`, 
 test("help request renders a current answer and coalesces repeated activation", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   await f.request();
   assert.equal(f.calls.length, 1);
   f.calls[0].resolve(hint("current"));
   await first;
   assert.equal(f.nodes.get("helpTitle").textContent, "current");
+  assert.equal(f.nodes.get("helpPanel").focused,true);
+  assert.deepEqual(JSON.parse(JSON.stringify(f.calls[0].options.body)),{sessionId:"practice-session",sessionItemId:"question-a",hintState:{level:0,afterAnswer:false}});
   assert.equal(f.nodes.get("helpBtn").disabled, false);
 });
 
 test("late help response cannot paint a previous question's hint into the current question", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.question("question-b");
   f.calls[0].resolve(hint("old question"));
   await first;
@@ -130,7 +149,8 @@ test("late help response cannot paint a previous question's hint into the curren
 test("completion rechecks the item before its observer notification is delivered", async () => {
   const f = helpFixture();
   const first = f.request();
-  f.nodes.get("itemCode").dataset.itemCode = "question-b";
+  await f.started();
+  f.question("question-b");
   f.calls[0].resolve(hint("old question"));
   await first;
   assert.equal(f.nodes.get("helpPanel").classList.contains("hidden"), true);
@@ -141,6 +161,7 @@ test("completion rechecks the item before its observer notification is delivered
 test("question changes retain one pending help request and allow the new item after it settles", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.question("question-b");
   await f.request();
   assert.equal(f.calls.length, 1, "context changes do not create concurrent server help requests");
@@ -150,6 +171,7 @@ test("question changes retain one pending help request and allow the new item af
   assert.equal(f.nodes.get("helpBtn").disabled, false, "old completion releases the current control");
   assert.equal(f.nodes.get("helpContent").textContent, "");
   const second = f.request();
+  await f.started();
   assert.equal(f.calls.length, 2);
   f.calls[1].resolve(hint("new question"));
   await second;
@@ -160,6 +182,7 @@ test("question changes retain one pending help request and allow the new item af
 test("leaving practice invalidates a pending help response even if the item code is reused", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.hidePractice();
   f.showPractice();
   f.calls[0].resolve(hint("prior practice"));
@@ -171,6 +194,7 @@ test("leaving practice invalidates a pending help response even if the item code
 test("late help failure cannot replace the newer question's help state", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.question("question-b");
   f.calls[0].resolve({ data: null, error: { message: "old failure" } });
   await first;
@@ -181,6 +205,7 @@ test("late help failure cannot replace the newer question's help state", async (
 test("mode changes invalidate pending hints and retain existing help restrictions", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.nodes.get("sessionMode").textContent = "help-disabled-mode";
   f.flush();
   await f.request();
@@ -194,6 +219,7 @@ test("mode changes invalidate pending hints and retain existing help restriction
 test("draft entry during pending help prevents late display and clearing the draft permits retry", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   const answer = { value: "draft" };
   f.nodes.get("answerArea").controls = [answer];
   f.nodes.get("answerArea").dispatch("input");
@@ -206,6 +232,7 @@ test("draft entry during pending help prevents late display and clearing the dra
   answer.value = "";
   f.nodes.get("answerArea").dispatch("input");
   const retry = f.request();
+  await f.started();
   assert.equal(f.calls.length, 2);
   f.calls[1].resolve(hint("retry"));
   await retry;
@@ -215,6 +242,7 @@ test("draft entry during pending help prevents late display and clearing the dra
 test("exhausted help stays disabled and cannot issue another help request", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.calls[0].resolve({ data: { ...hint("final help").data, level: 3, moreHelpAvailable: false }, error: null });
   await first;
   const blocked = f.request();
@@ -226,10 +254,12 @@ test("exhausted help stays disabled and cannot issue another help request", asyn
 test("current help failure releases the button and allows retry", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.calls[0].resolve({ data: null, error: { message: "temporary failure" } });
   await first;
   assert.equal(f.nodes.get("helpBtn").disabled, false);
   const retry = f.request();
+  await f.started();
   assert.equal(f.calls.length, 2);
   f.calls[1].resolve(hint("retry"));
   await retry;
@@ -239,12 +269,86 @@ test("current help failure releases the button and allows retry", async () => {
 test("unexpected rejected help promise releases pending state and allows retry", async () => {
   const f = helpFixture();
   const first = f.request();
+  await f.started();
   f.calls[0].reject(new Error("unexpected request failure"));
   await assert.doesNotReject(first);
   assert.equal(f.nodes.get("helpBtn").disabled, false);
   const retry = f.request();
+  await f.started();
   assert.equal(f.calls.length, 2);
   f.calls[1].resolve(hint("retry"));
   await retry;
   assert.equal(f.nodes.get("helpTitle").textContent, "retry");
+});
+
+
+test("a help response is discarded after an account change on the same question", async () => {
+  const f = helpFixture();
+  const first = f.request();
+  await f.started();
+  f.changeAccount();
+  f.question("question-a");
+  f.calls[0].resolve(hint("another account"));
+  await first;
+  assert.equal(f.nodes.get("helpPanel").classList.contains("hidden"), true);
+});
+
+test("only a stale hint conflict offers an authorized question refresh", async () => {
+  const f = helpFixture();
+  const first = f.request();
+  await f.started();
+  f.calls[0].resolve({data:null,error:{code:"hint_state_conflict",status:409}});
+  await first;
+  assert.equal(f.nodes.get("helpBtn").textContent,hintRefreshLabel);
+  const draft = {value:"Keep this answer"};
+  f.nodes.get("answerArea").controls = [draft];
+  f.nodes.get("answerArea").dispatch("input");
+  const refresh = f.request();
+  await f.started();
+  assert.equal(f.calls[1].name,"get-session-item");
+  assert.deepEqual(JSON.parse(JSON.stringify(f.calls[1].options.body)),{sessionId:"practice-session"});
+  f.calls[1].resolve({data:{sessionItemId:"question-a",remediation:{hintLevelUsed:1}}});
+  await refresh;
+  assert.equal(draft.value,"Keep this answer");
+  assert.equal(f.calls.length,2);
+  assert.equal(f.nodes.get("helpControls").classList.contains("hidden"),true);
+  draft.value="";
+  f.nodes.get("answerArea").dispatch("input");
+  const second = f.request();
+  await f.started();
+  assert.equal(f.calls[2].options.body.hintState.level,1);
+  f.calls[2].resolve({data:null,error:{code:"hint_recording_failed",status:500}});
+  await second;
+  assert.equal(f.nodes.get("helpBtn").textContent,"Կրկին փորձել");
+});
+
+test("accepted wrong answers retain help while correct answers close it", async () => {
+  const f = helpFixture();
+  f.question("question-a","closed");
+  await f.request();
+  assert.equal(f.calls.length,0);
+  f.question("question-b","incorrect");
+  const help = f.request();
+  await f.started();
+  assert.equal(f.calls[0].options.body.hintState.afterAnswer,true);
+  f.calls[0].resolve(hint("explanation"));
+  await help;
+  assert.equal(f.nodes.get("helpTitle").textContent,"explanation");
+});
+
+
+test("a stalled auth read expires a hint request without dispatching it", async t => {
+  t.mock.timers.enable({apis:["setTimeout"]});
+  let finishIdentity;
+  let sent = 0;
+  const client = {
+    auth:{getSession:()=>new Promise(resolve => { finishIdentity = resolve; })},
+    functions:{invoke:async()=>{sent++;return hint("too late");}},
+  };
+  const request = invokeForHint(client,"get-remediation-help",{},()=>true);
+  t.mock.timers.tick(15_000);
+  assert.equal((await request).error.code,"learner_request_timeout");
+  finishIdentity({data:{session:{user:{id:"student"}}}});
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(sent,0);
 });

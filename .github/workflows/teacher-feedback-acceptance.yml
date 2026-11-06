@@ -72,6 +72,7 @@ on:
       - web/learning-extensions.mjs
       - web/learning-navigation.mjs
       - web/learning-player.mjs
+      - web/remediation-request.mjs
       - web/learning-stimulus.mjs
       - web/learning-task-set.mjs
       - web/multi-subject-home.js
