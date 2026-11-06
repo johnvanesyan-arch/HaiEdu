@@ -81,6 +81,7 @@ function createFixture({ file, handler }) {
   const refreshEvents = [];
   const gates = [];
   const finalResults = [];
+  const remediationPhases = [];
   let statusResult = Promise.resolve({});
   elements.answerForm.dispatchEvent = (event) => {
     refreshEvents.push(event.type);
@@ -122,6 +123,7 @@ function createFixture({ file, handler }) {
     setTimeout:(fn,ms)=>{const timer=setTimeout(fn,ms);timer.unref();return timer;},
     clearTimeout,
     updateMastery() {},
+    setRemediationQuestion: (_item, phase) => remediationPhases.push(phase),
     showGate: (...args) => gates.push(args),
     status: () => { throw new Error("Unexpected post-answer status read"); },
     renderFinalResult: (result) => finalResults.push(result),
@@ -146,6 +148,7 @@ function createFixture({ file, handler }) {
     refreshEvents,
     gates,
     finalResults,
+    remediationPhases,
     submit() {
       return vm.runInContext(`${handler}({ preventDefault() {} });`, context, { timeout: 1000 });
     },
@@ -207,6 +210,7 @@ for (const consumer of consumers) {
       assert.match(fixture.elements.feedback.textContent, /գրանցումը դեռ հաստատված չէ/);
       assert.doesNotMatch(fixture.elements.feedback.textContent, /Fixture request failed/);
       assert.equal(fixture.refreshEvents.length, 0);
+      assert.deepEqual(fixture.remediationPhases, []);
       void fixture.submit();
     await tick();
       assert.equal(fixture.calls.length, 2);
@@ -257,6 +261,7 @@ for (const consumer of consumers) {
     assert.equal(fixture.elements.submitBtn.disabled, true);
     assert.equal(fixture.elements.nextBtn.classList.contains("hidden"), false);
     assert.equal(fixture.refreshEvents.length, 0);
+    assert.deepEqual(fixture.remediationPhases, ["app.js","practice.js"].includes(consumer.file) ? ["closed"] : []);
     fixture.changeAnswer();
     assert.equal(fixture.elements.submitBtn.disabled, true);
   });

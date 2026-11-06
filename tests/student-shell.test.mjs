@@ -113,7 +113,7 @@ test("Sprint 10.5D practice page is a focused authenticated task surface", async
   assert.match(html, /id="helpControls"/);
   assert.match(html, /id="masteryCard"/);
   assert.match(html, /practice\.js/);
-  assert.match(html, /remediation\.js/);
+  assert.match(await read("web/practice.js"), /from "\.\/remediation\.js"/);
   assert.match(html, /session-watchdog\.js/);
   assert.match(html, /student-shell\.js/);
 });

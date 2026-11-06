@@ -11,8 +11,9 @@ function handler(name,mode='practice',historyError=false){
  const saved={id:'saved',student_id:'learner',unit_code:'MATH8-U02',mode,status:'active'};
  const admin={auth:{getUser:async()=>({data:{user:{id:'learner'}}})},from(table){
   tables.push(table);
-  const chain={select(){return this},eq(){return this},limit(){return this},
-   maybeSingle:async()=>({data:null,error:historyError?new Error('offline'):null}),
+  const filters={};
+  const chain={select(){return this},eq(key,value){filters[key]=value;return this},limit(){return this},
+   maybeSingle:async()=>({data:table==='learning_sessions'&&filters.id===saved.id?saved:null,error:historyError?new Error('offline'):null}),
    single:async()=>({data:table==='learning_sessions'?saved:{id:'si',item_id:'item',answered_at:null}})};
   return chain;
  }};
