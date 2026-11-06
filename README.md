@@ -2,7 +2,7 @@
 
 **2026-11-06 — 16.5B production QA failures resolved.**
 - Both Resource-assignment failures were defects in the production acceptance script, not the product. They are fixed in PR422 (allow the read-only `get-student-work` call) and PR423 (open the assignment's My work state tab).
-- Resource now passes 329/329 on `b6e2bef`. The 5 November Chapter III and English Unit 2 failures passed on re-run. Chapters II, IV–VI have not been re-run yet.
+- Resource now passes 329/329 on `b6e2bef`. The 5 November Chapter III and English Unit 2 failures passed on re-run. John waived re-running Chapters II and IV–VI on 6 November.
 - Owner usability acceptance is still not given. See [causes and evidence](docs/qa/student-refinement-production-qa-20261106.md).
 
 **2026-11-05 — 16.5B student experience refinement live; production QA failures open.**
