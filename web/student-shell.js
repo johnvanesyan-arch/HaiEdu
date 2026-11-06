@@ -150,7 +150,9 @@ function syncHomeHeader(authenticated) {
   const subtitle = document.querySelector(".topbar p.subtle");
   const view = new URLSearchParams(location.search).get('view');
   const titles = { courses: 'Դասընթացներ', work: 'Իմ աշխատանքները' };
-  if (heading) heading.textContent = authenticated ? (titles[view] || "Գլխավոր") : "Ուսուցման հարթակ";
+  // Home greets the student by the display name from their own profile (role check request).
+  const name = window.HaiEduStudentProfile?.displayName;
+  if (heading) heading.textContent = !authenticated ? "Ուսուցման հարթակ" : titles[view] || (name ? `Բարև, ${name}` : "Գլխավոր");
   if (subtitle) {
     subtitle.textContent = !authenticated
       ? "Ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք ձեր առկա հաշվով։"
@@ -194,6 +196,7 @@ if (observed.length) {
 }
 
 window.addEventListener("haiedu-course-access", syncShellState);
+window.addEventListener("haiedu-student-profile", syncShellState);
 window.addEventListener("pageshow", syncShellState);
 window.addEventListener("DOMContentLoaded", syncShellState);
 

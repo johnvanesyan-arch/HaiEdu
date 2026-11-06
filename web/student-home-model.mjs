@@ -39,3 +39,47 @@ export function homeLearningSummary(context, data) {
     href: contextHref(context, diagnosticRequired ? 'assessment' : 'course'), readiness,
   };
 }
+
+const enabledMode = spec => spec?.status === 'configured' || spec?.status === 'registered_legacy';
+
+// «Your path in this unit»: the diagnostic → practice → mastery-check sequence of the
+// exact selected unit, read from the same dashboard reply and the same rules the course
+// page uses for its mode cards. Presentation only: it starts nothing, decides no
+// eligibility of its own and shows no assessment score.
+export function homeLearningPath(data) {
+  const active = data.activeSession, modes = data.modes || {};
+  const required = (data.skills || []).filter(skill => skill.requiredForReadiness !== false);
+  const known = required.length > 0 && required.every(skill => typeof skill.ready === 'boolean');
+  const ready = required.filter(skill => skill.ready === true).length;
+  const lifecycle = data.lifecycle?.state ?? '';
+  const progress = mode => active?.mode === mode && Number.isInteger(active.answered) && Number.isInteger(active.planned)
+    ? `Ընթացքի մեջ է · պատասխանված է ${active.answered} / ${active.planned}` : 'Ընթացքի մեջ է';
+  const step = (mode, state, detail) => ({ mode, label: learningModeLabels[mode], state, detail });
+  const unavailable = mode => step(mode, 'unavailable', 'Դեռ ակտիվացված չէ');
+
+  const diagnostic = !enabledMode(modes.diagnostic) && !data.baseline ? unavailable('diagnostic')
+    : data.baseline ? step('diagnostic', 'done', 'Ավարտված է')
+    : active?.mode === 'diagnostic' ? step('diagnostic', 'current', progress('diagnostic'))
+    : step('diagnostic', 'next', 'Հաջորդ քայլը');
+
+  const readiness = known ? `պատրաստ է ${ready} / ${required.length} պահանջվող հմտություն` : '';
+  const practice = !enabledMode(modes.practice) ? unavailable('practice')
+    : data.practiceAccess?.unlocked !== true ? step('practice', 'locked', 'Կբացվի ախտորոշիչից հետո')
+    : active?.mode === 'practice' ? step('practice', 'current', [progress('practice'), readiness].filter(Boolean).join(' · '))
+    : step('practice', 'current', readiness ? `Ընթացքի մեջ է · ${readiness}` : 'Ընթացքի մեջ է');
+
+  const masteryReady = known && ready === required.length;
+  const retryReady = /^mastery_retry_\d+_ready$/.test(lifecycle);
+  const mastery = lifecycle === 'mastery_passed' ? step('mastery_check', 'done', 'Հանձնված է')
+    : lifecycle === 'mastery_failed_final' ? step('mastery_check', 'done', 'Ավարտված է')
+    : !enabledMode(modes.mastery_check) ? unavailable('mastery_check')
+    : active?.mode === 'mastery_check' ? step('mastery_check', 'current', progress('mastery_check'))
+    : data.practiceAccess?.unlocked === true && (masteryReady || retryReady)
+      ? step('mastery_check', 'next', active ? 'Հասանելի կլինի ընթացիկ աշխատանքն ավարտելուց հետո' : 'Հասանելի է')
+    : /^review_required/.test(lifecycle) ? step('mastery_check', 'locked', 'Նախ ավարտեք պարտադիր կրկնությունը')
+    : step('mastery_check', 'locked', known
+      ? `Կբացվի, երբ ${required.length} պահանջվող հմտություններն էլ պատրաստ լինեն`
+      : 'Կբացվի, երբ պահանջվող հմտությունները պատրաստ լինեն');
+
+  return [diagnostic, practice, mastery];
+}

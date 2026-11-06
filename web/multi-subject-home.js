@@ -5,7 +5,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
 import { subjectArtwork } from './subject-visuals.mjs';
 import { studentIcon, learningArtwork } from './student-visuals.mjs';
-import { homeLearningSummary } from './student-home-model.mjs';
+import { homeLearningSummary, homeLearningPath } from './student-home-model.mjs';
 import { mountStudentResourceAssignments } from './resource-assignments.mjs';
 import { mountWorkHub, workToolbarMarkup } from './student-work-hub.mjs';
 import { mountStudentWorkList } from './student-work-list.mjs';
@@ -54,7 +54,7 @@ function render() {
   // Home leads with the one continuation action; the decorative welcome stays on the courses view.
   // My work leads with one status filter and one refresh instead of the decorative welcome.
   const intro = view === 'home'
-    ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section>' + selectorMarkup()
+    ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section><div id="studentPath"></div>' + selectorMarkup()
     : view === 'work' ? ''
     : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
   root.innerHTML = `${intro}${view==='work'?'<div id="studentWork"></div>':''}${courseCards()}`;
@@ -80,10 +80,16 @@ function syncSelectionUrl() {
   history.replaceState({}, '', url);
   window.dispatchEvent(new CustomEvent('haiedu-home-selection'));
 }
+// «Your path in this unit»: the three learning steps of the selected unit (same reply as the next step).
+const pathMarker = (step, n) => step.state === 'done' ? studentIcon('check') : step.state === 'locked' || step.state === 'unavailable' ? studentIcon('lock') : String(n);
+function pathMarkup(data) {
+  return `<section class="card student-path" aria-labelledby="studentPathTitle"><h2 id="studentPathTitle">Ձեր ուղին այս բաժնում</h2><ol>${homeLearningPath(data).map((step, i) => `<li data-path-state="${step.state}"><span class="student-path-marker" aria-hidden="true">${pathMarker(step, i + 1)}</span><span><strong>${esc(step.label)}</strong><span class="student-path-detail">${esc(step.detail)}</span></span></li>`).join('')}</ol></section>`;
+}
 async function loadSelected() {
   const request = ++epoch;
-  const target = root.querySelector('#studentNextStep');
+  const target = root.querySelector('#studentNextStep'), path = root.querySelector('#studentPath');
   if (!target) return;
+  if (path) path.replaceChildren();
   const context = selected;
   if (!context) { target.innerHTML = state('Ո՞ր բաժնից շարունակենք', 'Ընտրեք դասընթացն ու բաժինը ստորև՝ ցանկերից։'); return; }
   target.innerHTML = state('Բեռնվում է ձեր աշխատանքը…', 'Ստուգում ենք ընտրված բաժնի հասանելի աշխատանքները։');
@@ -100,6 +106,7 @@ async function loadSelected() {
     if (!current() || (actorId && actorId !== account)) return;
     if (error || !data?.dashboardVersion || (data.context && !sameContext(data.context, context))) throw Error('unavailable');
     const summary = homeLearningSummary(context, data), readiness = summary.readiness;
+    if (path) path.innerHTML = pathMarkup(data);
     target.innerHTML = `<section class="card student-next"><div><p class="student-context">${esc(courseLabel(context))} · ${esc(context.unitTitleHy)}<br>${esc(context.schoolName)} · ${esc(context.className)} · ${esc(context.academicYearLabel)}</p><h3>${esc(summary.title)}</h3><p>${esc(summary.description)}</p>${summary.count ? `<p>${esc(summary.count)}</p>` : ''}<a class="button-link student-continue" href="${esc(summary.href)}">${esc(summary.action)}${studentIcon('arrow')}</a></div>${readiness ? `<a class="student-readiness" href="${esc(contextHref(context,'progress'))}" aria-label="Ստուգարքի պատրաստություն՝ ${readiness.ready}՝ ${readiness.required} պահանջվող հմտությունից։ Բացել առաջընթացը"><span class="student-readiness-ring" style="--ready-angle:${360 * readiness.ready / readiness.required}deg" aria-hidden="true"><strong>${readiness.ready} / ${readiness.required}</strong></span><span>Ստուգարքի պատրաստություն<br><small>Պահանջվող հմտություններ</small></span></a>` : ''}</section>`;
   } catch {
     if (current()) {

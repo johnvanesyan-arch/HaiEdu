@@ -276,3 +276,30 @@ test('Home without a selection points to the course lists below; courses view ke
   assert.equal(await courses.page.locator('#multiSubjectHome .student-home-welcome').count(),1);
   assert.deepEqual([...errors,...courses.errors],[]);
 });
+
+// Home mockup step 1: greeting by the student's own display name and the unit path,
+// both from requests Home already makes (role check; selected-unit dashboard).
+test('Home greets the student and shows the selected unit path from the same requests',async t=>{
+  const {page,errors}=await fixture(t,{width:390,selected:true,displayName:'Անի Պետրոսյան'});
+  await expect(page.locator('.topbar h1')).toHaveText('Բարև, Անի Պետրոսյան');
+  const path=page.locator('#studentPath .student-path');
+  await expect(path.locator('li')).toHaveCount(3);
+  await expect(path.locator('li strong')).toHaveText(['Ախտորոշիչ','Վարժանք','Յուրացման ստուգում']);
+  assert.deepEqual(await path.locator('li').evaluateAll(l=>l.map(e=>e.dataset.pathState)),['done','current','locked']);
+  await expect(path).toContainText('պատասխանված է 3 / 8');
+  assert.equal(await path.textContent().then(t=>/12|75%/.test(t)),false,'No diagnostic score on Home');
+  // Order: next step, then path, then the selectors; one dashboard read for both.
+  assert.ok(await page.evaluate(()=>{const n=document.querySelector('.student-next-section'),p=document.querySelector('#studentPath'),s=document.querySelector('.student-selection');return n.compareDocumentPosition(p)&Node.DOCUMENT_POSITION_FOLLOWING&&p.compareDocumentPosition(s)&Node.DOCUMENT_POSITION_FOLLOWING;}));
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.filter(c=>c.name==='get-student-dashboard'&&!c.body.navigation).length),1);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  assert.deepEqual(errors,[]);
+});
+test('Home path stays hidden without a selection and greets plainly without a name',async t=>{
+  const {page,errors}=await fixture(t,{required:true});
+  await expect(page.locator('.topbar h1')).toHaveText('Գլխավոր');
+  await expect(page.locator('#studentPath')).toBeEmpty();
+  await choose(page);
+  await expect(page.locator('#studentPath li')).toHaveCount(3);
+  assert.deepEqual(await page.locator('#studentPath li').evaluateAll(l=>l.map(e=>e.dataset.pathState)),['next','locked','locked']);
+  assert.deepEqual(errors,[]);
+});
