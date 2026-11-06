@@ -14,8 +14,8 @@ test("pre-submit hinting is disabled once a draft answer exists", async () => {
   );
   assert.match(
     remediation,
-    /const answerSubmitted = !feedback\.classList\.contains\("hidden"\)/,
-    "hint visibility must use actual submission state rather than submit-button enabled state",
+    /const incorrectAnswered = helpContext\?\.phase === "incorrect"/,
+    "hint visibility must use accepted grading state",
   );
   assert.match(
     remediation,

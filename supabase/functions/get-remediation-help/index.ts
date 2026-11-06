@@ -1,4 +1,4 @@
-import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
+import { isHintStateConflict, routeGovernedLearning, validHintState } from "../_shared/governed-learning-runtime.mjs";
 import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -58,24 +58,30 @@ Deno.serve(async (req) => {
     return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
   }
 
-  let body: { sessionId?: string; sessionItemId?: string } = {};
+  let body: { sessionId?: string; sessionItemId?: string; hintState?: { level: number; afterAnswer: boolean } } = {};
   try {
     body = await req.json();
   } catch {
     body = {};
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)
+    || (body.hintState !== undefined && (!body.sessionId || !body.sessionItemId || !validHintState(body.hintState)))) {
+    return json({ error: "invalid_session_request" }, 400);
+  }
+
   let session: any = null;
   if (body.sessionId) {
-    const { data } = await admin
+    const { data, error } = await admin
       .from("learning_sessions")
       .select("id, student_id, unit_code, mode, status")
       .eq("id", body.sessionId)
       .eq("student_id", studentId)
-      .single();
+      .maybeSingle();
+    if (error) return json({ error: "hint_recording_failed" }, 500);
     session = data;
   } else {
-    const { data: rows } = await admin
+    const { data: rows, error } = await admin
       .from("learning_sessions")
       .select("id, student_id, unit_code, mode, status, started_at")
       .eq("student_id", studentId)
@@ -85,11 +91,12 @@ Deno.serve(async (req) => {
       .eq("status", "active")
       .order("started_at", { ascending: false })
       .limit(1);
+    if (error) return json({ error: "hint_recording_failed" }, 500);
     session = rows?.[0] ?? null;
   }
 
   if (!session) return json({ error: "session_not_found" }, 404);
-  if (session.status !== "active") return json({ error: "session_not_active" }, 409);
+  if (session.status !== "active") return json({ error: body.hintState ? "hint_state_conflict" : "session_not_active" }, 409);
   if (!["practice", "chapter_review"].includes(session.mode)) return json({ error: "help_not_available_in_assessment" }, 409);
 
   const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, session.unit_code, session.mode);
@@ -97,37 +104,44 @@ Deno.serve(async (req) => {
 
   let sessionItem: any = null;
   if (body.sessionItemId) {
-    const { data } = await admin
+    const { data, error } = await admin
       .from("learning_session_items")
       .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
       .eq("id", body.sessionItemId)
       .eq("session_id", session.id)
-      .single();
+      .maybeSingle();
+    if (error) return json({ error: "hint_recording_failed" }, 500);
     sessionItem = data;
   } else {
-    const { data: pendingRows } = await admin
+    const { data: pendingRows, error } = await admin
       .from("learning_session_items")
       .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
       .eq("session_id", session.id)
       .is("answered_at", null)
       .order("ordinal", { ascending: true })
       .limit(1);
+    if (error) return json({ error: "hint_recording_failed" }, 500);
     sessionItem = pendingRows?.[0] ?? null;
 
     if (!sessionItem) {
-      const { data: answeredRows } = await admin
+      const { data: answeredRows, error } = await admin
         .from("learning_session_items")
         .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
         .eq("session_id", session.id)
         .not("answered_at", "is", null)
         .order("ordinal", { ascending: false })
         .limit(1);
+      if (error) return json({ error: "hint_recording_failed" }, 500);
       sessionItem = answeredRows?.[0] ?? null;
     }
   }
 
   if (!sessionItem) return json({ error: "session_item_not_found" }, 404);
   const postAnswer = Boolean(sessionItem.answered_at);
+  const level = Number(sessionItem.hint_level_used ?? 0);
+  if (level >= 3 || (body.hintState && (body.hintState.level !== level || body.hintState.afterAnswer !== postAnswer))) {
+    return json({ error: "hint_state_conflict" }, 409);
+  }
   if (postAnswer && sessionItem.correct === true) {
     return json({ error: "help_not_needed_after_correct_answer" }, 409);
   }
@@ -136,16 +150,18 @@ Deno.serve(async (req) => {
     .from("items")
     .select("id, item_template_id, variant_parameters")
     .eq("id", sessionItem.item_id)
-    .single();
-  if (itemError || !item) return json({ error: "item_not_found" }, 404);
+    .maybeSingle();
+  if (itemError) return json({ error: "hint_recording_failed" }, 500);
+  if (!item) return json({ error: "item_not_found" }, 404);
 
   let errorCode: string | null = null;
   if (postAnswer && sessionItem.attempt_id) {
-    const { data: attempt } = await admin
+    const { data: attempt, error } = await admin
       .from("attempts")
       .select("error_code")
       .eq("id", sessionItem.attempt_id)
       .maybeSingle();
+    if (error) return json({ error: "hint_recording_failed" }, 500);
     errorCode = typeof attempt?.error_code === "string" ? attempt.error_code : null;
   }
 
@@ -156,6 +172,7 @@ Deno.serve(async (req) => {
     .eq("status", "published");
   if (templateGuideError) {
     console.error("template remediation guide lookup failed", templateGuideError);
+    return json({ error: "hint_recording_failed" }, 500);
   }
 
   const templateGuide = (templateGuides ?? []).find((g: any) =>
@@ -174,7 +191,8 @@ Deno.serve(async (req) => {
       .eq("status", "published")
       .limit(1)
       .maybeSingle();
-    if (skillGuideError || !skillGuide) return json({ error: "remediation_guide_missing" }, 404);
+    if (skillGuideError) return json({ error: "hint_recording_failed" }, 500);
+    if (!skillGuide) return json({ error: "remediation_guide_missing" }, 404);
     guide = skillGuide;
     guideScope = "skill";
     guideVersion = Number(skillGuide.guide_version);
@@ -190,7 +208,7 @@ Deno.serve(async (req) => {
     ? renderTemplate(String(value ?? ""), allowedKeys, params)
     : String(value ?? "");
 
-  const nextLevel = Math.min(3, Number(sessionItem.hint_level_used ?? 0) + 1);
+  const nextLevel = level + 1;
   const stage = nextLevel === 1 ? "hint_1" : nextLevel === 2 ? "hint_2" : "worked_example";
   const contentHy = nextLevel === 1
     ? render(guide.hint_1_hy)
@@ -224,6 +242,7 @@ Deno.serve(async (req) => {
     },
   });
   if (recordError) {
+    if (isHintStateConflict(recordError)) return json({ error: "hint_state_conflict" }, 409);
     console.error("atomic remediation recording failed", recordError);
     return json({ error: "hint_recording_failed" }, 500);
   }

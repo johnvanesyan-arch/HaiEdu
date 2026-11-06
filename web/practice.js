@@ -1,3 +1,4 @@
+import {setRemediationQuestion} from "./remediation.js";
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -337,6 +338,7 @@ async function startOrResumePractice() {
 
 async function loadSessionItem() {
   if (!currentSession?.id) return;
+  setRemediationQuestion(null);
   const nextBtn = $("nextBtn");
   const submitBtn = $("submitBtn");
   nextBtn.disabled = true;
@@ -364,7 +366,12 @@ async function loadSessionItem() {
     return;
   }
 
+  renderSessionItem(data);
+}
+
+function renderSessionItem(data) {
   if (data?.complete) {
+    setRemediationQuestion(null);
     current = null;
     questionStartedAt = null;
     renderCompletion(data);
@@ -376,7 +383,15 @@ async function loadSessionItem() {
   currentSession = { ...currentSession, ...data.session };
   questionStartedAt = performance.now();
   renderQuestion(data);
+  setRemediationQuestion(data);
 }
+
+$("answerForm").addEventListener("haiedu-hint-refresh", (event) => {
+  $("feedback").className = "feedback hidden";
+  $("feedback").textContent = "";
+  renderSessionItem(event.detail);
+  if (!event.detail.complete) $("prompt").focus();
+});
 
 function renderQuestion(data) {
   const { skill, item, session } = data;
@@ -529,6 +544,7 @@ async function submitAnswer(event) {
     nextBtn.dataset.action = "next";
 
     const correct = Boolean(data.grading?.correct);
+    setRemediationQuestion(current, data.grading?.correct === false && data.session?.status === "active" ? "incorrect" : "closed");
     const usedHelp = Boolean(data.grading?.usedHelp);
     const remediation = data.remediation?.messageHy ?? "";
     const feedback = $("feedback");

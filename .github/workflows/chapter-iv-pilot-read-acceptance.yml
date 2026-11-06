@@ -96,6 +96,7 @@ on:
       - web/learning-extensions.mjs
       - web/learning-navigation.mjs
       - web/learning-player.mjs
+      - web/remediation-request.mjs
       - web/learning-audio.mjs
       - web/assessed-audio.mjs
       - web/learning-task-set.mjs

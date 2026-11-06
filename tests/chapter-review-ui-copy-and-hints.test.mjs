@@ -30,6 +30,6 @@ test("Hinting controls are available in ordinary Practice and Chapter Review", (
   );
   assert.match(
     remediation,
-    /practiceVisible && isHelpEnabledMode && hasQuestion/,
+    /practiceVisible && isHelpEnabledMode \? question : null/,
   );
 });

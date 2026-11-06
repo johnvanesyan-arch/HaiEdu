@@ -152,3 +152,10 @@ body[data-haiedu-student] #courseContent :is(.course-mode-card,.student-task-car
 body[data-haiedu-student] .student-rule-details { padding: clamp(8px, 2vw, .75rem) clamp(8px, 2vw, 1rem); }
 body[data-haiedu-student] .assessment-skill-rules ul { padding-inline-start: 1rem; }
 body[data-haiedu-student] #courseContent .student-rule-details { width: 100%; min-width: 0; box-sizing: border-box; }
+
+body[data-haiedu-student] [data-help-content] {
+  overflow-wrap: anywhere;
+  scroll-margin-block-start: 5rem;
+}
+body[data-haiedu-student] [data-next]:not(:empty) { margin-block-start: 1rem; }
+body[data-haiedu-student] [data-help][hidden] { display: none; }
