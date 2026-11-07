@@ -45,6 +45,7 @@ test('failure receipt excludes credentials, raw errors, auth state, URLs and arb
   const receipt = mobileReceipt({revision:secret,status:'failed',failedStage:secret,failureKind:secret,
     lastBrowser:{side:secret,role:secret,width:secret,blockedRequests:secret,pageErrors:secret,httpErrors:secret,body:secret},error:secret,storageState:secret,
     checks:[{scenario:secret,side:secret,role:secret,width:secret,textScale:secret,passed:false,body:secret}],
+    navigationLayout:[{version:secret,side:secret,width:secret,textScale:secret,position:secret,height:secret,reserved:secret,menuWidth:secret,scrollWidth:secret,destinations:secret,observations:secret,settled:secret,firstErrors:[secret],errors:[secret],body:secret}],
     cleanup:[{closed:false,status:secret}],isolation:{before:{status:'failed',checks:[{body:secret}]}}});
   assert.equal(JSON.stringify(receipt).includes(secret),false);
   assert.equal(receipt.status,'failed');

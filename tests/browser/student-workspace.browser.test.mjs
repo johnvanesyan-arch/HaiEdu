@@ -466,6 +466,7 @@ test('actual Home navigation remains readable in phone emulation at 320/360/375/
     const geometry=await page.locator('.amp-mobile-nav').evaluate(el=>({viewport:{width:innerWidth,height:innerHeight,visualWidth:visualViewport?.width,visualHeight:visualViewport?.height,scale:visualViewport?.scale},layout:el.dataset.layout,textOnly:el.dataset.textOnly,navWidth:el.clientWidth,navScroll:el.scrollWidth,mainTop:document.querySelector('main.shell').getBoundingClientRect().top,navBottom:el.getBoundingClientRect().bottom,links:[...el.querySelectorAll('a')].map(a=>({text:a.textContent.trim(),width:a.clientWidth,scroll:a.scrollWidth,font:getComputedStyle(a).fontSize}))}));
     if(navigation.errors.length||width===320&&scale===200)await capture(page,`bf10-phone-emulation-${width}-${scale}`,{...navigation,later,geometry});
     assert.deepEqual(navigation.errors,[],JSON.stringify({width,scale,navigation,later,geometry}));
+    assert.equal(navigation.settled,true);
   }
   assert.deepEqual(errors,[]);
 });

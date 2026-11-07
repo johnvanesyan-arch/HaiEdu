@@ -74,8 +74,21 @@ test('compiled Home retains all navigation words in phone emulation at narrow wi
       await page.screenshot({path:path.join(dir,`bf10-compiled-phone-${width}-${scale}.png`),fullPage:true});
     }
     assert.deepEqual(initial.errors,[],JSON.stringify({width,scale,initial,later,geometry}));
+    assert.equal(initial.settled,true);
   }
   assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
+});
+
+test('mobile layout readiness still rejects a persistently clipped compiled menu', {timeout:15000}, async t=>{
+  const {page,errors}=await pageFor(t,`window.__haieduSupabaseClient=window.__client=(${installStudentHomeFixture.toString()})({});`,undefined,{viewport:{width:320,height:844},isMobile:true,hasTouch:true});
+  await page.goto(server.origin+'/index.html?view=courses');await expect(page.locator('.amp-subject-card').first()).toBeVisible();
+  await page.evaluate(()=>document.documentElement.style.fontSize='200%');
+  assert.deepEqual((await page.evaluate(mobileNavigationLayout)).errors,[]);
+  // A permanently constrained grid must fail the same geometry rules after waiting.
+  await page.addStyleTag({content:'.amp-mobile-nav { grid-template-columns:repeat(4,minmax(0,1fr)) !important; }'});
+  const blocked=await page.evaluate(mobileNavigationLayout);
+  assert.equal(blocked.settled,false);assert.ok(blocked.errors.includes('clipped or split word'));
+  assert.ok(blocked.errors.includes('layout did not settle'));assert.deepEqual(errors,[]);
 });
 
 test('compiled SDK constructs an isolated client without contacting Auth', { timeout: 15000 }, async t => {
