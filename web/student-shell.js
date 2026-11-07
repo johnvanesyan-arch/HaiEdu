@@ -7,6 +7,7 @@ installNavigationFocus();
 
 import { studentIcon } from './student-visuals.mjs';
 import { signOutStudent } from './student-signout.mjs';
+import { installStudentMobileNavigation } from './student-mobile-navigation.mjs';
 const page = document.body.dataset.studentPage || "";
 const focusedByPage = document.body.dataset.focusedTask === "true";
 
@@ -104,11 +105,14 @@ function ensureNavigation() {
 
   const mobile = document.createElement("nav");
   mobile.className = "amp-mobile-nav";
+  mobile.dataset.layout = 'flow';
   mobile.setAttribute("aria-label", "Բջջային ուսումնական նավարկում");
   mobile.innerHTML = destinations.map((item) => navItem(item, true)).join("");
 
   document.body.prepend(side);
-  document.body.append(mobile);
+  const main = document.querySelector('main.shell');
+  if (main) main.before(mobile); else document.body.append(mobile);
+  installStudentMobileNavigation(mobile);
   side.querySelector('[data-student-signout]').addEventListener('click', async () => {
     const existing = document.getElementById('signOutBtn');
     if (existing) { existing.click(); return; }

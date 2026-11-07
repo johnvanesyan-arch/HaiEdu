@@ -62,14 +62,14 @@ a.ghost,
 /* Allow bottom navigation to coexist with iOS/Android safe areas. */
 @media (max-width: 820px) {
   body.amp-student-shell-active > main.shell {
-    padding-bottom: calc(var(--amp-mobile-nav-height) + var(--amp-space-5) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(var(--amp-mobile-nav-space, var(--amp-mobile-nav-height)) + var(--amp-space-5));
   }
 
   body.amp-student-shell-active .amp-mobile-nav {
     padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* Scroll the menu instead of splitting a navigation label into letters. */
+  /* Keep whole navigation words when the measured grid changes columns. */
   .amp-mobile-link > span:last-child {
     max-width: 100%;
     white-space: normal;
