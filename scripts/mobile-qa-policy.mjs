@@ -43,6 +43,9 @@ export function mobileReadAllowed({pathname, method, search = '', body, role, co
 // payloads, auth state or arbitrary assertion messages (even on failure).
 export function mobileReceipt(state) {
   const stages = ['preflight','release','isolation-before','login','student-navigation','student-course','teacher-home','teacher-class','teacher-review','layout','isolation-after','release-after','cleanup','complete'];
+  const geometryErrors = ['student menu unavailable','horizontal menu scroll','missing destination','destination outside menu','small touch target','clipped or split word','fixed menu covers too much workspace','last action can be covered','expanded menu overlaps workspace','fonts still loading','layout did not settle'];
+  const safeErrors = value => Array.isArray(value) ? [...new Set(value.filter(e => geometryErrors.includes(e)))] : [];
+  const pixels = value => Number.isFinite(value) && value >= 0 && value <= 100000 ? value : null;
   return {schemaVersion: 'haiedu-mobile-read-acceptance-v1',
     revision: /^[a-f0-9]{40}$/.test(state.revision ?? '') ? state.revision : null,
     status: state.status === 'passed' ? 'passed' : 'failed',
@@ -59,6 +62,15 @@ export function mobileReceipt(state) {
       width: [320,360,375,390,430,449].includes(c.width) ? c.width : null,
       textScale: [100,200].includes(c.textScale) ? c.textScale : null,
       scenario: stages.includes(c.scenario) ? c.scenario : null, passed: c.passed === true})),
+    navigationLayout: (Array.isArray(state.navigationLayout) ? state.navigationLayout : []).map(n => ({
+      version: n.version === 'haiedu-mobile-navigation-layout-v2' ? n.version : null,
+      side: ['A','B'].includes(n.side) ? n.side : null, width: [320,360,375,390,430,449].includes(n.width) ? n.width : null,
+      textScale: [100,200].includes(n.textScale) ? n.textScale : null, position: ['fixed','relative'].includes(n.position) ? n.position : null,
+      height: pixels(n.height), reserved: pixels(n.reserved), menuWidth: pixels(n.menuWidth), scrollWidth: pixels(n.scrollWidth),
+      destinations: Number.isSafeInteger(n.destinations) && n.destinations >= 0 && n.destinations <= 100 ? n.destinations : null,
+      observations: Number.isSafeInteger(n.observations) && n.observations >= 1 && n.observations <= 1000 ? n.observations : null,
+      settled: n.settled === true, firstErrors: safeErrors(n.firstErrors), errors: safeErrors(n.errors),
+    })),
     isolation: ['before','after'].map(phase => ({phase, passed: state.isolation?.[phase]?.status === 'passed',
       checks: state.isolation?.[phase]?.checks?.length ?? 0})),
     cleanup: (state.cleanup ?? []).map(c => ({closed: c.closed === true, status: Number.isInteger(c.status) && c.status >= 100 && c.status <= 599 ? c.status : null})),

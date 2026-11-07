@@ -8,6 +8,7 @@ import { buildWebAssets, projectRoot } from '../../scripts/build-web-assets.mjs'
 import { serveWeb, installSignedOutClient } from '../fixtures/built-web-server.mjs';
 import { installStudentHomeFixture } from '../fixtures/student-home-fixture.mjs';
 import { installTeacherPerformanceFixture } from '../fixtures/teacher-performance-browser.mjs';
+import { mobileNavigationLayout } from '../../scripts/mobile-navigation-layout.mjs';
 
 let browser, server, manifest;
 before(async () => {
@@ -17,8 +18,8 @@ before(async () => {
 });
 after(async () => { await browser?.close(); await server?.close(); });
 
-async function pageFor(t, install = installSignedOutClient, argument) {
-  const context = await browser.newContext(); t.after(() => context.close());
+async function pageFor(t, install = installSignedOutClient, argument, contextOptions = {}) {
+  const context = await browser.newContext(contextOptions); t.after(() => context.close());
   const page = await context.newPage(); page.setDefaultTimeout(8000);
   const errors = [], external = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -55,6 +56,39 @@ test('compiled signed-in Home and lazy teacher class tools use the shared fixtur
   await teacher.page.locator('#classList .teacher-class-button').first().click();
   await expect(teacher.page.locator('#rosterAnalyticsCard')).toBeVisible();
   assert.deepEqual(teacher.errors, []); assert.deepEqual(teacher.external, []);
+});
+
+test('compiled Home retains all navigation words in phone emulation at narrow widths and enlarged text', {timeout:30000}, async t=>{
+  const {page,errors,external}=await pageFor(t,`window.__haieduSupabaseClient=window.__client=(${installStudentHomeFixture.toString()})({});`,undefined,{viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.goto(server.origin+'/index.html?view=courses');
+  await expect(page.locator('.amp-subject-card').first()).toBeVisible();
+  for(const width of [320,360,375,390,430,449])for(const scale of [100,200]){
+    await page.setViewportSize({width,height:844});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+    const initial=await page.evaluate(mobileNavigationLayout);
+    await page.evaluate(async()=>{for(let i=0;i<8;i++)await new Promise(requestAnimationFrame);});
+    const later=await page.evaluate(mobileNavigationLayout);
+    const geometry=await page.locator('.amp-mobile-nav').evaluate(el=>({viewport:{width:innerWidth,height:innerHeight,visualWidth:visualViewport?.width,visualHeight:visualViewport?.height,scale:visualViewport?.scale},layout:el.dataset.layout,textOnly:el.dataset.textOnly,navWidth:el.clientWidth,navScroll:el.scrollWidth,links:[...el.querySelectorAll('a')].map(a=>({text:a.textContent.trim(),width:a.clientWidth,scroll:a.scrollWidth,font:getComputedStyle(a).fontSize}))}));
+    if(initial.errors.length||width===320&&scale===200){
+      const dir=process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR||'artifacts/student-workspace';await mkdir(dir,{recursive:true});
+      await writeFile(path.join(dir,`bf10-compiled-phone-${width}-${scale}.json`),JSON.stringify({initial,later,geometry},null,2));
+      await page.screenshot({path:path.join(dir,`bf10-compiled-phone-${width}-${scale}.png`),fullPage:true});
+    }
+    assert.deepEqual(initial.errors,[],JSON.stringify({width,scale,initial,later,geometry}));
+    assert.equal(initial.settled,true);
+  }
+  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
+});
+
+test('mobile layout readiness still rejects a persistently clipped compiled menu', {timeout:15000}, async t=>{
+  const {page,errors}=await pageFor(t,`window.__haieduSupabaseClient=window.__client=(${installStudentHomeFixture.toString()})({});`,undefined,{viewport:{width:320,height:844},isMobile:true,hasTouch:true});
+  await page.goto(server.origin+'/index.html?view=courses');await expect(page.locator('.amp-subject-card').first()).toBeVisible();
+  await page.evaluate(()=>document.documentElement.style.fontSize='200%');
+  assert.deepEqual((await page.evaluate(mobileNavigationLayout)).errors,[]);
+  // A permanently constrained grid must fail the same geometry rules after waiting.
+  await page.addStyleTag({content:'.amp-mobile-nav { grid-template-columns:repeat(4,minmax(0,1fr)) !important; }'});
+  const blocked=await page.evaluate(mobileNavigationLayout);
+  assert.equal(blocked.settled,false);assert.ok(blocked.errors.includes('clipped or split word'));
+  assert.ok(blocked.errors.includes('layout did not settle'));assert.deepEqual(errors,[]);
 });
 
 test('compiled SDK constructs an isolated client without contacting Auth', { timeout: 15000 }, async t => {

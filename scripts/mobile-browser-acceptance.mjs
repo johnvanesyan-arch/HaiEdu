@@ -101,6 +101,7 @@ try {
               await page.setViewportSize({width: navWidth, height: 844});
               await page.evaluate(scale => { document.documentElement.style.fontSize = scale + '%'; }, textScale);
               const navigation = await page.evaluate(mobileNavigationLayout);
+              (state.navigationLayout ??= []).push({side,width:navWidth,textScale,...navigation});
               check('student-navigation', navigation.errors.length === 0, {side,role,width:navWidth,textScale});
             }
             await page.setViewportSize({width, height:844});
