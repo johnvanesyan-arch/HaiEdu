@@ -46,8 +46,8 @@ for(const width of [390,768,1280])test(`focused Mastery player retains full word
  assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
 });
 
-async function fixture(t, { width=1280, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts, submitResult=null }={}) {
-  const context=await browser.newContext({ viewport:{ width, height:900 } });
+async function fixture(t, { width=1280, height=900, isMobile=false, view=null, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts, submitResult=null }={}) {
+  const context=await browser.newContext({ viewport:{ width, height }, isMobile, hasTouch:isMobile });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
@@ -93,6 +93,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
   });
   const selected=availableContexts[contextIndex];
   const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab, ...(player?{action:configuredRules==='points'?'mastery_check':'practice'}:{}) });
+  if(view)params.set('view',view);
   await page.goto(origin+'/'+route+'?'+params);
   if(route==='course.html') await page.waitForFunction(denied=>(denied || document.querySelector('.amp-nav-list a[href*="view=courses"]')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
   else await page.waitForFunction(()=>document.querySelector('.amp-nav-list a[href*="view=courses"]') && !document.body.dataset.roleRouting);
@@ -451,6 +452,21 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
   }
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-student.json`,JSON.stringify(rows,null,2)+'\n');
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
+  assert.deepEqual(errors,[]);
+});
+
+test('actual Home navigation remains readable in phone emulation at 320/360/375/390/430/449 and 200 percent text',async t=>{
+  const {page,errors}=await fixture(t,{route:'index.html',view:'courses',width:390,height:844,isMobile:true,active:false,availableContexts:releasedContexts,contextIndex:selectedPhysics});
+  for(const width of [320,360,375,390,430,449])for(const scale of [100,200]){
+    await page.setViewportSize({width,height:844});
+    await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+    const navigation=await page.evaluate(mobileNavigationLayout);
+    await page.evaluate(async()=>{for(let i=0;i<8;i++)await new Promise(requestAnimationFrame);});
+    const later=await page.evaluate(mobileNavigationLayout);
+    const geometry=await page.locator('.amp-mobile-nav').evaluate(el=>({viewport:{width:innerWidth,height:innerHeight,visualWidth:visualViewport?.width,visualHeight:visualViewport?.height,scale:visualViewport?.scale},layout:el.dataset.layout,textOnly:el.dataset.textOnly,navWidth:el.clientWidth,navScroll:el.scrollWidth,mainTop:document.querySelector('main.shell').getBoundingClientRect().top,navBottom:el.getBoundingClientRect().bottom,links:[...el.querySelectorAll('a')].map(a=>({text:a.textContent.trim(),width:a.clientWidth,scroll:a.scrollWidth,font:getComputedStyle(a).fontSize}))}));
+    if(navigation.errors.length||width===320&&scale===200)await capture(page,`bf10-phone-emulation-${width}-${scale}`,{...navigation,later,geometry});
+    assert.deepEqual(navigation.errors,[],JSON.stringify({width,scale,navigation,later,geometry}));
+  }
   assert.deepEqual(errors,[]);
 });
 
