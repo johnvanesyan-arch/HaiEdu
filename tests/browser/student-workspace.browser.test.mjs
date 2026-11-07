@@ -1,5 +1,6 @@
 import {wordBreaks} from '../fixtures/word-boundaries.mjs';
 import {checkNavigation} from '../fixtures/navigation-readability.mjs';
+import {mobileNavigationLayout} from '../../scripts/mobile-navigation-layout.mjs';
 import {historyEntries,historyReadability} from '../fixtures/assessment-history.mjs';
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -227,7 +228,7 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
   assert.equal(metrics.emptyParagraphs,0,'Empty sections must not add blank grid rows');
   assert.equal(metrics.emptyPlayerDisplay,'none','An inactive player must not occupy layout space');
   assert.ok(metrics.documentWidth<=width+1,'The document must not overflow horizontally');
-  if(width<=1100) assert.ok(Math.abs(metrics.mobileWidth-width)<=2,'The scrollable mobile menu must use the viewport width');
+  if(width<=1100) assert.ok(Math.abs(metrics.mobileWidth-width)<=2,'The mobile menu must use the viewport width');
   assert.ok(metrics.resumeHref.includes('action=practice'));
   assert.deepEqual(errors,[]);
   await page.getByRole('link',{name:'Առաջընթաց',exact:true}).last().click();
@@ -415,8 +416,23 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
   assert.equal(original.length,4);
   for(const link of original){const url=new URL(link.href,'https://student-workspace.test');assert.equal(url.searchParams.get('release'),contexts[1].curriculumReleaseId);assert.equal(url.searchParams.get('unit'),contexts[1].unitId);}
   const rows=[];
-  for(const width of [1280,960,768,390,360,320])for(const scale of [100,200]){
+  for(const width of [1280,960,768,449,430,390,375,360,320])for(const scale of [100,200]){
     await page.setViewportSize({width,height:960});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+    await page.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+    if(width<=1100){
+      const visible=await page.locator('.amp-mobile-nav').evaluate(el=>({
+        layout:el.dataset.layout,position:getComputedStyle(el).position,height:el.getBoundingClientRect().height,viewportHeight:innerHeight,
+        overflow:el.scrollWidth>el.clientWidth+1,
+        clipped:[...el.querySelectorAll('a')].filter(a=>{const r=a.getBoundingClientRect(),n=el.getBoundingClientRect();return r.left<n.left-1||r.right>n.right+1;}).map(a=>a.textContent),
+        bottom:el.getBoundingClientRect().bottom,mainTop:document.querySelector('main.shell').getBoundingClientRect().top,
+        reserved:parseFloat(document.body.style.getPropertyValue('--amp-mobile-nav-space')),
+      }));
+      assert.equal(visible.overflow,false,JSON.stringify(visible));assert.deepEqual(visible.clipped,[],JSON.stringify(visible));
+      assert.deepEqual((await page.evaluate(mobileNavigationLayout)).errors,[],`${width}/${scale} mobile layout`);
+      if(visible.layout==='fixed'){assert.ok(visible.height<=visible.viewportHeight*.2+1);assert.ok(visible.reserved>=visible.height);}
+      else{assert.equal(visible.position,'relative');assert.equal(visible.reserved,0);assert.ok(visible.bottom<=visible.mainTop+1);}
+      await capture(page,`bf10-navigation-${width}-${scale}`,visible);
+    }
     const navigation=await checkNavigation(page);
     if(navigation.errors.length)await capture(page,`navigation-failure-${width}-${scale}`,navigation);
     assert.deepEqual(navigation.errors,[],`${width}/${scale}`);
@@ -424,7 +440,7 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
     if(width<=1100){
       const bar=page.locator('.amp-mobile-nav');await expect(bar).toBeVisible();
       const bounds=await bar.evaluate(e=>({height:e.getBoundingClientRect().height,font:parseFloat(getComputedStyle(e.firstElementChild).fontSize)}));
-      assert.ok(bounds.height<=bounds.font*7,`compact menu must not consume most of the screen: ${JSON.stringify(bounds)}`);
+      if(await bar.getAttribute('data-layout')==='fixed')assert.ok(bounds.height<=960*.2+1,`fixed menu must leave the workspace visible: ${JSON.stringify(bounds)}`);
       assert.equal(await bar.locator('a').count(),4);
     }
     rows.push({width,textScale:scale,controls:navigation.links,keyboard:true,fullWords:true,contextPreserved:true});
@@ -434,6 +450,36 @@ test('shared student navigation keeps full labels, keyboard access and exact gov
     }
   }
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await writeFile(`${process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR}/navigation-student.json`,JSON.stringify(rows,null,2)+'\n');
+  assert.equal(await page.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
+  assert.deepEqual(errors,[]);
+});
+
+test('mobile navigation settles after repeated setup, text changes and orientation changes without replacing a focused link',async t=>{
+  const {page,errors}=await fixture(t,{width:390,contextIndex:1,active:false});
+  const link=page.locator('.amp-mobile-nav a').last();await link.focus();
+  const href=await link.getAttribute('href');
+  const state=await page.evaluate(async()=>{
+    const {installStudentMobileNavigation}=await import('/student-mobile-navigation.mjs');
+    const nav=document.querySelector('.amp-mobile-nav'),first=installStudentMobileNavigation(nav);
+    const same=Array.from({length:20},()=>installStudentMobileNavigation(nav)===first).every(Boolean);
+    for(let i=0;i<20;i++)first.refresh();
+    for(let i=0;i<8;i++)await new Promise(requestAnimationFrame);
+    let changes=0;const observer=new MutationObserver(records=>{changes+=records.length;});
+    observer.observe(nav,{attributes:true});observer.observe(document.body,{attributes:true,attributeFilter:['style']});
+    for(let i=0;i<8;i++)await new Promise(requestAnimationFrame);
+    observer.disconnect();return {same,changes};
+  });
+  assert.deepEqual(state,{same:true,changes:0});
+  for(const [width,height,scale] of [[320,568,200],[844,390,100],[390,844,100]]){
+    await page.setViewportSize({width,height});await page.evaluate(s=>document.documentElement.style.fontSize=s+'%',scale);
+    await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+    assert.equal(await page.evaluate(()=>document.activeElement?.getAttribute('href')),href);
+    assert.equal(await page.locator('.amp-mobile-nav').evaluate(el=>el.scrollWidth>el.clientWidth+1),false);
+  }
+  // The same renderer can replace its labels on a fresh course-access event.
+  await page.evaluate(()=>window.dispatchEvent(new Event('pageshow')));
+  await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+  await expect(page.locator('.amp-mobile-nav a')).toHaveCount(4);
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>!['get-student-dashboard','get-student-classes'].includes(c.name))),false);
   assert.deepEqual(errors,[]);
 });

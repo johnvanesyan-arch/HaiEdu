@@ -56,12 +56,13 @@ export function mobileReceipt(state) {
       httpErrors: Number.isSafeInteger(state.lastBrowser.httpErrors) ? state.lastBrowser.httpErrors : null} : null,
     checks: (state.checks ?? []).map(c => ({side: ['A','B'].includes(c.side) ? c.side : null,
       role: ['student','teacher'].includes(c.role) ? c.role : null,
-      width: [390,430].includes(c.width) ? c.width : null,
+      width: [320,360,375,390,430,449].includes(c.width) ? c.width : null,
+      textScale: [100,200].includes(c.textScale) ? c.textScale : null,
       scenario: stages.includes(c.scenario) ? c.scenario : null, passed: c.passed === true})),
     isolation: ['before','after'].map(phase => ({phase, passed: state.isolation?.[phase]?.status === 'passed',
       checks: state.isolation?.[phase]?.checks?.length ?? 0})),
     cleanup: (state.cleanup ?? []).map(c => ({closed: c.closed === true, status: Number.isInteger(c.status) && c.status >= 100 && c.status <= 599 ? c.status : null})),
-    browser: 'Chromium phone emulation; 390x844 and 430x932; ordinary and 200% text',
+    browser: 'Chromium phone emulation; original 390x844 and 430x932 journeys plus student navigation at 320/360/375/390/430/449x844; ordinary and 200% text',
     recordings: 'none; no auth files, traces, video, screenshots, HTML reports or raw errors',
     limitation: 'Technical read-only acceptance; no personal sign-off, physical-device or assistive-technology acceptance; no learner submission or marking writes'};
 }

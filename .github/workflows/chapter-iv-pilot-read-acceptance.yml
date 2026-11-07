@@ -117,6 +117,7 @@ on:
       - web/resource-navigation.mjs
       - web/student-shell.css
       - web/student-shell.js
+      - web/student-mobile-navigation.mjs
       - web/student-home-model.mjs
       - web/student-signout.mjs
       - web/student-visuals.mjs

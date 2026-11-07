@@ -4,6 +4,7 @@ import {roles, sides, runIsolation} from './sprint-14-isolation.mjs';
 import {waitForRelease} from './wait-for-production-release.mjs';
 import {mobileSite as site, reportPath, mobilePreflight, mobileReadAllowed, mobileReceipt, closeOwnedSessions} from './mobile-qa-policy.mjs';
 import {mobileUnitLink} from './mobile-qa-navigation.mjs';
+import {mobileNavigationLayout} from './mobile-navigation-layout.mjs';
 
 const expect = baseExpect.configure({timeout: 45000});
 const state = {revision: process.env.GITHUB_SHA, status: 'failed', checks: [], isolation: {}, cleanup: []};
@@ -95,6 +96,17 @@ try {
           await page.keyboard.press('Enter');
           await expect(link).toHaveCount(1);
           await expect(link).toBeVisible();
+          if (width === 390) {
+            for (const navWidth of [320,360,375,390,430,449]) for (const textScale of [100,200]) {
+              await page.setViewportSize({width: navWidth, height: 844});
+              await page.evaluate(scale => { document.documentElement.style.fontSize = scale + '%'; }, textScale);
+              const navigation = await page.evaluate(mobileNavigationLayout);
+              check('student-navigation', navigation.errors.length === 0, {side,role,width:navWidth,textScale});
+            }
+            await page.setViewportSize({width, height:844});
+            await page.evaluate(() => { document.documentElement.style.fontSize = '100%'; });
+            check('student-navigation', (await page.evaluate(mobileNavigationLayout)).errors.length === 0, dimensions);
+          }
           const destination = new URL(await link.getAttribute('href'), site);
           check(stage, destination.searchParams.get('enrollment') === selected.enrollmentId && destination.searchParams.get('release') === selected.curriculumReleaseId && !destination.searchParams.has('action'), dimensions);
           await layout(page, dimensions);

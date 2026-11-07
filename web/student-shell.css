@@ -334,7 +334,7 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: var(--amp-space-4) var(--amp-space-4) calc(var(--amp-mobile-nav-height) + var(--amp-space-5));
+    padding: var(--amp-space-4) var(--amp-space-4) calc(var(--amp-mobile-nav-space, var(--amp-mobile-nav-height)) + var(--amp-space-5));
   }
 
   body.amp-student-shell-active .amp-mobile-nav {
@@ -342,12 +342,10 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     inset: auto 0 0 0;
     z-index: 50;
     min-height: var(--amp-mobile-nav-height);
-    display: flex;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: thin;
-    scroll-padding-inline: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+    padding-inline: max(6px, env(safe-area-inset-left, 0px)) max(6px, env(safe-area-inset-right, 0px));
     background: rgba(255,255,255,.97);
     border-top: 1px solid var(--amp-color-border);
     box-shadow: 0 -8px 24px rgba(22,34,51,.08);
@@ -355,8 +353,7 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
   }
 
   .amp-mobile-link {
-    flex: 1 0 auto;
-    min-width: min-content;
+    min-width: 0;
     max-width: 100%;
     white-space: normal;
     min-height: var(--amp-mobile-nav-height);
@@ -381,6 +378,29 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     opacity: 0.42;
     background: transparent;
     color: var(--amp-color-text-muted);
+  }
+
+  body.amp-student-shell-active .amp-mobile-nav[data-layout="flow"] {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    padding-bottom: 6px;
+    box-shadow: none;
+    border-bottom: 1px solid var(--amp-color-border);
+  }
+  .amp-mobile-nav[data-layout="flow"] .amp-mobile-link {
+    grid-template-columns: 1.5em minmax(0, 1fr);
+    min-height: 44px;
+    padding: .35em .4em;
+    gap: .4em;
+    text-align: left;
+    justify-items: start;
+  }
+  .amp-mobile-nav[data-layout="flow"][data-text-only="true"] .amp-mobile-link {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .amp-mobile-nav[data-layout="flow"][data-text-only="true"] :is(.student-icon,.amp-nav-icon) {
+    display: none;
   }
 
   body.amp-student-shell-active.amp-focused-task > main.shell {
