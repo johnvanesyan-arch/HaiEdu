@@ -35,7 +35,20 @@ function completionDate(value) {
   }).formatToParts(date).map(({type,value}) => [type,value]));
   return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
-function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
+// Focused practice: the course header shrinks to one title line and this link leaves
+// the player for the course page. An unfinished session stays resumable there.
+function showPlayerExit(href) {
+  let link = document.getElementById('playerExitLink');
+  if (!link) {
+    link = document.createElement('a');
+    link.id = 'playerExitLink';
+    link.className = 'ghost button-link student-player-exit';
+    document.querySelector('.topbar .row')?.prepend(link);
+  }
+  link.href = href;
+  link.textContent = '← Դասընթացի էջ';
+}
+function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.body.removeAttribute('data-student-player'); document.getElementById('playerExitLink')?.remove(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; collectionNavigation(new URLSearchParams(location.search).get('tab')); }
 async function load() {
   const previousVersion=version,writer=disposeWriting;
   if(writer.flush){const saved=await writer.flush();if(previousVersion!==version||writer!==disposeWriting)return;
@@ -132,6 +145,7 @@ async function load() {
     const requestedMode = new URLSearchParams(location.search).get('action');
     if (requestedMode && Object.hasOwn(modes,requestedMode) && (data.modes[requestedMode]?.status==='configured' || active?.policyBindingId)) {
       document.body.dataset.studentPlayer = 'active';
+      showPlayerExit(contextHref(context, tab));
       disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,skills:data.skills,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');window.history.replaceState({},'',url);load(); }});
     }
   } catch(error) {

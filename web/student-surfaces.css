@@ -75,6 +75,12 @@ body[data-haiedu-student] #learningPlayer { max-width:51.25rem; width:100%; marg
 body[data-haiedu-student][data-student-player=active] :is(.amp-side-nav,.amp-mobile-nav) { display:none; }
 body[data-haiedu-student][data-student-player=active] > main.shell { max-width:61.25rem; margin-inline:auto; }
 body[data-haiedu-student][data-student-player=active] #courseContent > :is(.student-course-hero,.course-overview,.course-active-session,.amp-subject-grid,.course-data-section,.course-chapters) { display:none; }
+/* Focused practice (16.5B refinement): the question comes first. Section links and the
+   page eyebrow/subtitle step aside; the title stays (as one compact line) for context. */
+body[data-haiedu-student][data-student-player=active] #courseContent > .course-tabs { display:none; }
+body[data-haiedu-student][data-student-player=active] .topbar :is(#courseCollectionLabel,#courseSubtitle,#courseCollectionLink) { display:none; }
+body[data-haiedu-student][data-student-player=active] #courseTitle { font-size:1.125rem; line-height:1.4; }
+body[data-haiedu-student][data-student-player=active] .topbar { padding-block:.75rem; }
 body[data-haiedu-student] :is(.practice-prompt,.assessment-question-card #prompt,.student-task-card > h2) { font-size:1.375rem; line-height:1.6; }
 body[data-haiedu-student] :is(.feedback,.help-card,[data-feedback]:not(:empty),[data-help-content]:not(:empty)) { padding:1rem; border-radius:.75rem; background:var(--student-quiet); color:var(--student-ink); margin-block:1rem; }
 body[data-haiedu-student] [data-feedback] button { display:block; margin-top:1rem; }

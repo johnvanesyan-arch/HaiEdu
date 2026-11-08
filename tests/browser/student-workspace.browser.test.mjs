@@ -46,13 +46,13 @@ for(const width of [390,768,1280])test(`focused Mastery player retains full word
  assert.deepEqual(metrics.words,[]);assert.equal(metrics.overflow,false);assert.deepEqual(errors,[]);
 });
 
-async function fixture(t, { width=1280, height=900, isMobile=false, view=null, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts, submitResult=null }={}) {
+async function fixture(t, { width=1280, height=900, isMobile=false, view=null, active=true, player=false, contextIndex=0, denied=false, route='course.html', tab='assessment', locked=false, manySkills=false, reportingHistory=null, configuredRules=false, availableContexts=contexts, submitResult=null, position=1 }={}) {
   const context=await browser.newContext({ viewport:{ width, height }, isMobile, hasTouch:isMobile });
   t.after(() => context.close());
   const page=await context.newPage(), errors=[];
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules, submitResult }) => {
+  await page.addInitScript(({ contexts, active, denied, studentId, selected, locked, manySkills, reportingHistory, configuredRules, submitResult, position }) => {
     window.__calls=[]; window.__listeners=[]; window.__authorizedContexts=contexts;
     const dashboard=()=>({ dashboardVersion:'v1', practiceAccess:{ unlocked:!locked }, baseline:locked?null:{ correct:16, answered:20, percent:80 },
       latestDiagnostic:locked?null:{correct:16,answered:20,percent:80,completedAt:'2026-10-01T19:47:56.15+00:00'},
@@ -76,10 +76,10 @@ async function fixture(t, { width=1280, height=900, isMobile=false, view=null, a
       if(name==='get-chapter-mastery-lifecycle') return {data:{lifecycleState:'not_started',attemptsUsed:0}};
       // Opt-in practice answer outcomes; 'drop-then-correct' loses the first reply (unknown outcome).
       if(name==='submit-answer'&&submitResult){window.__submits=(window.__submits||0)+1;if(submitResult==='drop-then-correct'&&window.__submits===1)return {data:null,error:new Error('network lost')};return {data:{grading:{correct:submitResult!=='incorrect'}}};}
-      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position:1,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
+      if(name==='get-session-item') return { data:{ complete:false, session:{ id:'player-fixture', mode:configuredRules==='points'?'mastery_check':'practice', position,total:8 }, skill:dashboard().skills[0], sessionItemId:'item-fixture', item:{ id:'question-fixture', code:'QA-001', difficulty:2, type:'true_false', promptHy:'Կարդացեք պնդումը և ընտրեք պատասխանը։', stimulus:{} }, remediation:{ available:false } } };
       throw Error('Unexpected API '+name);
     } } };
-  }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules, submitResult });
+  }, { contexts:availableContexts, active, denied, studentId:id(10), selected:availableContexts[contextIndex], locked, manySkills, reportingHistory, configuredRules, submitResult, position });
   await page.route('**/*', async route => {
     const url=new URL(route.request().url());
     if(url.pathname==='/supabase-browser.bundle.mjs') return route.fulfill({ contentType:'text/javascript',body:'export const createClient=()=>window.__client;' });
@@ -534,4 +534,44 @@ test('a lost practice reply shows an attention recovery that keeps the answer, t
  assert.equal(await feedback.getAttribute('data-outcome'),'correct');
  assert.equal(await page.evaluate(()=>window.__submits),2);
  assert.deepEqual(errors,[]);
+});
+
+
+// Focused practice (16.5B refinement): the question comes first on a phone; section links,
+// eyebrow and subtitle step aside, the unit title stays, and one link leaves the player.
+for (const width of [360,390,1280]) test(`focused practice shows the question first at ${width}px`, async t => {
+  const {page,errors}=await fixture(t,{width,height:width<1000?740:900,active:false,player:true,contextIndex:1});
+  await page.locator('#learningPlayer form').waitFor();
+  for (const hidden of ['.course-tabs','#courseCollectionLabel','#courseSubtitle','#courseCollectionLink'])
+    assert.equal(await page.locator(hidden).first().isVisible(),false,hidden+' hidden while practising');
+  await expect(page.locator('#courseTitle')).toBeVisible();
+  const exit=page.locator('#playerExitLink');
+  await expect(exit).toHaveText('← Դասընթացի էջ');
+  const href=new URL(await exit.getAttribute('href'),page.url());
+  assert.equal(href.searchParams.has('action'),false,'Leaving opens the course page, not a new session');
+  assert.equal(href.searchParams.get('unit'),new URL(page.url()).searchParams.get('unit'));
+  const top=await page.locator('#learningPlayer h2').evaluate(e=>e.getBoundingClientRect().top);
+  assert.ok(top<420,`question starts at ${Math.round(top)}px`);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+  assert.deepEqual(errors,[]);
+});
+test('rules stay open on the first question and fold away afterwards',async t=>{
+  for (const [position,open] of [[1,''],[2,null]]) {
+    const {page,errors}=await fixture(t,{width:390,height:844,active:false,player:true,contextIndex:1,position});
+    await page.locator('#learningPlayer form').waitFor();
+    assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),open,'question '+position);
+    await page.locator('#learningPlayer .student-rule-details summary').click();
+    assert.equal(await page.locator('#learningPlayer .student-rule-details').getAttribute('open'),open===null?'':null,'still openable');
+    assert.deepEqual(errors,[]);
+  }
+});
+test('leaving the player restores the course page sections',async t=>{
+  const {page,errors}=await fixture(t,{width:390,height:844,active:false,player:true,contextIndex:1});
+  await page.locator('#learningPlayer form').waitFor();
+  await page.locator('#playerExitLink').click();
+  await page.locator('.course-tabs').first().waitFor();
+  assert.equal(await page.locator('#playerExitLink').count(),0);
+  assert.equal(await page.locator('body').getAttribute('data-student-player'),null);
+  await expect(page.locator('#courseCollectionLink')).toBeVisible();
+  assert.deepEqual(errors,[]);
 });
