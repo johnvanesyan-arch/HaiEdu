@@ -45,4 +45,10 @@ From question 2 the collapsed rules panel moves the question up by roughly anoth
   - the rules panel is open on question 1, collapsed on question 2, and openable either way;
   - leaving restores the course sections.
 - **Existing focused-player regressions** (Mastery rules at 390/768/1280 and 200% text; the hidden-menu checks) pass unchanged.
-- **Owner usability acceptance:** not given. **Live production check:** after merge.
+- **Owner usability acceptance:** not given.
+
+## Production verification (8 November 2026, designated QA fixtures)
+
+- **Release:** PR437 merged at `824243b`; the Vercel production deployment was READY.
+- **`824243b`: 13/13 suites.** English Unit 2 was first in the queue. Its first attempt stopped in the release wait during the deploy switch-over («Production browser manifest does not match the reviewed source»), before any check ran. It passed 142/142 on re-run.
+- **Coverage:** no production suite opens the learning player, so the practice layout itself is verified by the isolated Chromium regressions above. The suites confirm that the course page hooks outside practice are unchanged.
