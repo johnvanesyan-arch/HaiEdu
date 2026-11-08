@@ -1,5 +1,18 @@
 # Project status register
 
+**2026-11-08 — Student focused practice is live; production QA 13/13.**
+- [PR437](https://github.com/johnvanesyan-arch/HaiEdu/pull/437), released at `824243b`, is Phase 1 of the 7 November student design review (E1, E2), approved by John.
+- **What changes while any learning-player session is open** (practice, diagnostic, mastery check, chapter review):
+  - the section links, eyebrow, subtitle and «Դասընթացներ» link step aside;
+  - the full unit title stays;
+  - «← Դասընթացի էջ» returns to the course page, and an unfinished session stays resumable;
+  - the rules panel is open on question 1 and folded afterwards.
+- **Effect:** on a 390 × 844 phone the question moves from 616 px to 366 px, and the submit button reaches the first screen.
+- **Production QA:** 13/13 on `824243b`. English Unit 2's first attempt stopped in the release wait during the deploy switch-over («browser manifest does not match», before any check); it passed 142/142 on re-run.
+- **Unchanged:** the session, answer, retry, scoring and hint logic.
+
+**Limits.** Owner usability acceptance is not given. Phases 2–5 of the review are proposed and not started. [Record](student-focused-practice-20261108.md).
+
 **2026-11-07 — BF-10 is live and technically verified.** The student menu keeps all four full labels visible without hidden horizontal scrolling. Fixed menus reserve their actual height; oversized menus move before the workspace in normal flow. Functional [PR434](https://github.com/johnvanesyan-arch/HaiEdu/pull/434) and QA-only [PR435](https://github.com/johnvanesyan-arch/HaiEdu/pull/435) are merged. All five repaired-main checks pass, including 1,785 unit/integration and 515 Chromium tests. The canonical 29-page/122-asset build matches source. All twelve compatibility suites passed on the functional runtime; fresh corrected mobile acceptance passes 110/110 plus54+54 isolation on runtime-identical repaired main. Original mobile/investigation failures are retained; four redundant pre-login repeats were cancelled and are not passing evidence. B.12.3 remains open for owner usability acceptance; subjects stay paused. [Scope and verification](qa/student-mobile-navigation-20261107.md).
 
 **2026-11-07 — BF-09 is live and technically verified.** [PR432](https://github.com/johnvanesyan-arch/HaiEdu/pull/432) released at `3dcfc5dc2f0885d119448e5ff816e4f93737cfe0`. The owner chose automatic interpretation; the implementation retains the existing decimal-comma convention: `10,800` means `10.8`, while `10 800` means `10800`. Malformed numeric syntax keeps the question editable without a scored attempt. All five PR/main checks passed, including 1,785 unit/integration and 511 native Chromium tests. All 13 signed-in production suites passed. Chapter VI passed on an unchanged-suite retry after a 20-second read timeout; the original failure is retained. Both affected Edge bundles and the canonical browser build match the released source. BF-02 remains deferred and B.12.3 stays open for owner usability acceptance. [BF-09 evidence](qa/numeric-answer-format.md).
