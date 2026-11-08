@@ -1,5 +1,15 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student Home and Courses clean-up is live.**
+- **What changed:**
+  - the next-step card names the concrete step (Home still never starts an attempt) and is the page's one hero card;
+  - shorter dropdowns;
+  - the join link sits after the course list;
+  - course illustrations are back on Home cards;
+  - Courses opens on the list.
+- **Production QA:** 13/13 on `291250e`.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-home-cleanup-20261109.md).
+
 **2026-11-08 — Student focused practice is live.**
 - **What changed:** practice, diagnostic and mastery-check screens show the question first. Section links and extra header text step aside while answering, «← Դասընթացի էջ» leaves the player, and the rules fold away after question 1.
 - **Production QA:** 13/13 on `824243b`.

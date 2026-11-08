@@ -1,5 +1,15 @@
 # Project status register
 
+**2026-11-09 — Student Home and Courses clean-up is live; production QA 13/13.**
+- [PR439](https://github.com/johnvanesyan-arch/HaiEdu/pull/439), released at `291250e`, is Phase 2a of the 7 November student design review (B1–B6, B8, B9, C1, C2), approved by John.
+- **Next-step card:** it names the concrete step from the unit path's rules (diagnostic, practice, mastery check) as an entry link to the course's assessments. **Home still never starts an attempt** (16.5B.1). It is now the page's one hero card, with one context line and no readiness ring; readiness stays in the path and on the selected course card.
+- **Rest of the page:** dropdowns name the course and unit only, the join link sits after the course list, Home course cards show the subject illustration, and Courses opens on the list with artwork beside the text on phones.
+- **Production QA:** 13/13 on `291250e`, first attempt. Production scripts read none of the changed elements; course card hooks are unchanged.
+
+**Open owner decision.** A one-tap «Start» from Home would change the 16.5B.1 rule; it is not changed.
+
+**Limits.** Owner usability acceptance is not given. [Record](student-home-cleanup-20261109.md).
+
 **2026-11-08 — Student focused practice is live; production QA 13/13.**
 - [PR437](https://github.com/johnvanesyan-arch/HaiEdu/pull/437), released at `824243b`, is Phase 1 of the 7 November student design review (E1, E2), approved by John.
 - **What changes while any learning-player session is open** (practice, diagnostic, mastery check, chapter review):
