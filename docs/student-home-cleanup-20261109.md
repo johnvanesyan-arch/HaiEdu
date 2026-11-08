@@ -54,4 +54,9 @@ This is Phase 2a of the 7 November student design review: items B1–B6, B8, B9,
 - **Updated by design:**
   - the Courses-banner test now expects no banner (C1);
   - the subject-illustration test keeps all nine distinct decorative illustrations, with a phone size floor of 88 × 50 px instead of 150 × 90 px (C2).
-- **Owner usability acceptance:** not given. **Live production check:** after merge.
+- **Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR439 merged at `291250e`; the Vercel production deployment was READY.
+- **`291250e`: 13/13 suites on the first attempt.** This includes Chapters II–VI, English Units 1–3, Mobile and B12.3 usability reads through Resource. Those suites open Home and Courses and use the course card hooks.
