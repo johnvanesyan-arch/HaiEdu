@@ -29,14 +29,34 @@ export function homeLearningSummary(context, data) {
     };
   }
   // Unknown active modes must remain within the existing course workspace.
+  // Without a session, name the concrete next step from the same rules as the unit path.
+  // Home stays read-only (16.5B.1): every step is an entry link to the course's
+  // assessments, never a link that starts an attempt.
   const diagnosticRequired = !active && data.practiceAccess?.unlocked === false;
+  const [diagnostic, practice, mastery] = active ? [] : homeLearningPath(data);
+  const entry = { count: '', href: contextHref(context, 'assessment'), readiness };
+  if (diagnosticRequired && diagnostic?.state === 'next') return { ...entry,
+    title: 'Սկսեք ախտորոշիչից',
+    description: Number.isInteger(data.modes?.diagnostic?.questions)
+      ? `${data.modes.diagnostic.questions} հարց։ Ախտորոշիչը ցույց է տալիս, թե որտեղից սկսել վարժանքը։`
+      : 'Ախտորոշիչը ցույց է տալիս, թե որտեղից սկսել վարժանքը։',
+    action: 'Անցնել ախտորոշիչին' };
+  if (diagnosticRequired) return { ...entry,
+    title: 'Սկսեք ձեր մեկնարկային մակարդակից',
+    description: 'Գնահատումների բաժնում տեսեք այս բաժնի ախտորոշիչը և դրա պայմանները։',
+    action: 'Անցնել գնահատումներին' };
+  if (mastery?.state === 'next') return { ...entry,
+    title: 'Կարող եք անցնել յուրացման ստուգմանը',
+    description: 'Սկսելուց առաջ կարդացեք ստուգման կանոնները։',
+    action: 'Անցնել ստուգմանը' };
+  if (practice?.state === 'current') return { ...entry,
+    title: 'Շարունակեք վարժանքով',
+    description: 'Վարժանքի հարցերը հիմնված են այս բաժնի պահանջվող հմտությունների վրա։',
+    action: 'Անցնել վարժանքին' };
   return {
-    title: diagnosticRequired ? 'Սկսեք ձեր մեկնարկային մակարդակից' : 'Ձեր հաջորդ ուսումնական քայլը',
-    description: diagnosticRequired
-      ? 'Բացեք գնահատումները՝ այս բաժնի ախտորոշիչը և դրա պայմանները տեսնելու համար։'
-      : 'Բացեք ընտրված բաժինը՝ հասանելի աշխատանքները և հմտությունները տեսնելու համար։',
-    count: '', action: diagnosticRequired ? 'Դիտել գնահատումները' : 'Բացել դասընթացը',
-    href: contextHref(context, diagnosticRequired ? 'assessment' : 'course'), readiness,
+    title: 'Ձեր հաջորդ ուսումնական քայլը',
+    description: 'Բացեք ընտրված բաժինը՝ հասանելի աշխատանքները և հմտությունները տեսնելու համար։',
+    count: '', action: 'Բացել դասընթացը', href: contextHref(context, 'course'), readiness,
   };
 }
 

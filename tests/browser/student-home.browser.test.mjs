@@ -236,7 +236,8 @@ for(const view of ['courses','work'])test(`all eight subject illustrations and u
  const {page,errors}=await fixture(t,{view,allSubjects:true,width:360});
  const art=await page.locator('.student-card-art svg').evaluateAll(nodes=>nodes.map(n=>({key:n.dataset.subjectArt,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height,hidden:n.getAttribute('aria-hidden'),paths:n.innerHTML})));
  assert.equal(art.length,9);assert.deepEqual(art.map(a=>a.key).sort(),['english','physics','mathematics','armenian','chemistry','geography','biology','history','generic'].sort());
- assert.equal(new Set(art.map(a=>a.paths)).size,9);assert.ok(art.every(a=>a.width>=150&&a.height>=90&&a.hidden==='true'),JSON.stringify(art));
+ // Phones show the artwork beside the course text (7 November review C2), so it is smaller but still legible.
+ assert.equal(new Set(art.map(a=>a.paths)).size,9);assert.ok(art.every(a=>a.width>=88&&a.height>=50&&a.hidden==='true'),JSON.stringify(art));
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);
 });
 for(const width of [320,768,1280])test(`public landing uses Forest at ${width}px with unchanged access routes`,async t=>{
@@ -267,13 +268,14 @@ for(const width of [375,1280])test(`Home leads with the next learning step at ${
     note:{bg:'rgb(238, 241, 235)',fg:'rgb(88, 105, 95)'}});
   assert.deepEqual(errors,[]);
 });
-test('Home without a selection points to the course lists below; courses view keeps its welcome',async t=>{
+test('Home without a selection points to the course lists below; Courses opens on the course list',async t=>{
   const {page,errors}=await fixture(t);
   await expect(page.locator('#studentNextStep')).toContainText('ստորև');
   assert.equal(await page.locator('#multiSubjectHome .student-home-welcome').count(),0);
   const courses=await fixture(t,{view:'courses'});
   await courses.page.locator('#mySubjects').waitFor();
-  assert.equal(await courses.page.locator('#multiSubjectHome .student-home-welcome').count(),1);
+  assert.equal(await courses.page.locator('#multiSubjectHome .student-home-welcome').count(),0,'No decorative banner (review C1)');
+  assert.equal(await courses.page.locator('#multiSubjectHome > :first-child').getAttribute('id'),'mySubjects');
   assert.deepEqual([...errors,...courses.errors],[]);
 });
 
@@ -359,4 +361,58 @@ test('Home desktop places the path beside the next step and the feedback beside 
   const [n2,p2]=await Promise.all(['.student-next-section','#studentPath'].map(box));
   assert.ok(p2.y>=n2.y+n2.height-1,'Path below the next step on a phone');
   assert.deepEqual(errors,[]);
+});
+
+
+// Phase 2a (7 November review): the next step names the concrete step, stays an entry
+// link (Home never starts an attempt, 16.5B.1), is the one hero card, and shows its
+// context once; readiness appears in the path and the selected course card only.
+test('Home next step names the concrete step and links without starting an attempt',async t=>{
+  for (const [options,title,action] of [
+    [{required:true},'Սկսեք ախտորոշիչից','Անցնել ախտորոշիչին'],
+    [{active:false},'Շարունակեք վարժանքով','Անցնել վարժանքին'],
+    [{active:false,lifecycle:'mastery_retry_1_ready'},'Կարող եք անցնել յուրացման ստուգմանը','Անցնել ստուգմանը'],
+    [{},'Շարունակեք այնտեղից, որտեղ կանգ եք առել','Շարունակել'],
+  ]) {
+    const {page,errors}=await fixture(t,{width:390,selected:true,...options});
+    const card=page.locator('#studentNextStep .student-next');
+    await expect(card.locator('h3')).toHaveText(title);
+    await expect(card.locator('.student-continue')).toHaveText(action);
+    const href=new URL(await card.locator('.student-continue').getAttribute('href'),page.url());
+    if (title!=='Շարունակեք այնտեղից, որտեղ կանգ եք առել') {
+      assert.equal(href.searchParams.has('action'),false,title+': entry link only');
+      assert.equal(href.searchParams.get('tab'),'assessment');
+    }
+    assert.equal(await card.locator('.student-context').evaluate(e=>e.innerText.includes('\n')),false,'One context line');
+    assert.equal(await page.locator('.student-readiness-ring').count(),0,'No readiness ring (shown in the path)');
+    assert.equal(await card.evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(230, 240, 230)','Hero card');
+    assert.deepEqual(errors,[]);
+  }
+});
+test('Home dropdowns name the course and unit without repeating class, school or release',async t=>{
+  const {page,errors}=await fixture(t,{width:390,selected:true});
+  const courses=await page.locator('#studentCourseSelect option:not([value=""])').allTextContents();
+  assert.ok(courses.every(label=>!label.includes('Փորձնական')),'No school in course options: '+courses.join(' | '));
+  assert.equal(new Set(courses).size,courses.length,'Options stay distinguishable');
+  const units=await page.locator('#studentUnitSelect option:not([value=""])').allTextContents();
+  assert.ok(units.every(label=>!label.includes('Թողարկում')),'No release number when unit titles differ');
+  assert.deepEqual(errors,[]);
+});
+test('Home and Courses put the join link after the course list; cards show the course illustration',async t=>{
+  for (const view of ['','courses']) {
+    const {page,errors}=await fixture(t,{width:390,view,selected:view===''});
+    const list=page.locator('#mySubjects');await list.waitFor();
+    assert.equal(await list.locator('.amp-subjects-heading a').count(),0,'No link inside the heading row');
+    const hint=list.locator('.student-join-hint a');
+    await expect(hint).toHaveAttribute('href','./join.html');
+    assert.ok(await page.evaluate(()=>Boolean(document.querySelector('#mySubjects .amp-subject-grid').compareDocumentPosition(document.querySelector('.student-join-hint'))&Node.DOCUMENT_POSITION_FOLLOWING)));
+    if (view==='') assert.ok(await page.locator('.student-course-compact .student-course-mark svg').count()>0);
+    else {
+      const card=page.locator('#mySubjects .amp-subject-card').first();
+      const [art,title]=await Promise.all([card.locator('.student-card-art').boundingBox(),card.locator('h3').boundingBox()]);
+      assert.ok(title.x>art.x+art.width-1,'Artwork beside the title on a phone');
+    }
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+    assert.deepEqual(errors,[]);
+  }
 });
