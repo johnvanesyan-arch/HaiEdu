@@ -159,3 +159,41 @@ test('a skill with too few answers shows the server status instead of needing st
   await expect(page.locator('.course-table tbody tr').nth(3).locator('.student-evidence-badge')).toHaveText('Ամրապնդում է պետք');
   assert.deepEqual(errors,[]);
 });
+
+
+// Phase 2c (7 November review): the unit is the title, the chapter row shows when more
+// chapters are scrolled away, and Progress no longer repeats the current-work card.
+// Section links stay on every tab (production acceptance navigates through them).
+test('course page titles the unit and keeps course, class and year in one line',async t=>{
+  const {page,errors}=await course(t,{width:390,height:844});
+  const title=await page.locator('#courseTitle').innerText(), subtitle=await page.locator('#courseSubtitle').innerText();
+  assert.doesNotMatch(title,/ · /,'Title is the unit only: '+title);
+  assert.match(subtitle,/^Անգլերեն · 7-րդ դասարան · /);
+  assert.doesNotMatch(subtitle,/Թողարկում|Փորձնական/,'No release or school in the subtitle');
+  // The longest pilot unit title still needs three lines at 390px (four before, with the course in front).
+  assert.ok(await page.locator('#courseTitle').evaluate(e=>e.getBoundingClientRect().height<=3*parseFloat(getComputedStyle(e).lineHeight)+2),'Title within three lines at 390px');
+  assert.deepEqual(errors,[]);
+});
+test('the phone chapter row fades the edge with more chapters',async t=>{
+  const titles=['Նյութի կառուցվածքը','Մեխանիկական շարժում','Մարմինների փոխազդեցությունը','Աշխատանք և հզորություն','Ճնշում'];
+  const contexts=titles.map((unitTitleHy,n)=>({enrollmentId:id(6),curriculumReleaseId:id(7),unitId:n===0?id(8):id(600+n),subjectProgramId:id(9),unitSequence:n+1,subjectCode:'physics',subjectNameHy:'Ֆիզիկա',gradeLabelHy:'7-րդ դասարան',gradeNumber:7,schoolId:id(1),schoolName:'Փորձնական դպրոց Ա',classId:id(2),className:'7Ա',academicYearId:id(3),academicYearLabel:'2026–2027',releaseNumber:n+1,unitTitleHy}));
+  const {page,errors}=await course(t,{width:375,contexts});
+  const row=page.locator('.course-chapters');
+  await expect(row).toHaveAttribute('data-more-after','');
+  assert.equal(await row.getAttribute('data-more-before'),null,'First chapter selected: nothing hidden before it');
+  assert.notEqual(await row.evaluate(e=>getComputedStyle(e).maskImage||getComputedStyle(e).webkitMaskImage),'none');
+  await row.evaluate(e=>{e.scrollLeft=e.scrollWidth;});
+  await expect(row).toHaveAttribute('data-more-before','');
+  assert.equal(await row.getAttribute('data-more-after'),null);
+  assert.deepEqual(errors,[]);
+});
+test('Progress drops the current-work card; every tab keeps the section links',async t=>{
+  for (const tab of ['course','assessment','progress','guides','writing']) {
+    const {page,errors}=await course(t,{width:390,height:844,tab});
+    await page.locator('.course-tabs-primary').waitFor();
+    for (const section of ['assessment','progress','guides','writing']) assert.equal(await page.locator(`.course-tabs a[href*="tab=${section}"]`).count(),1,tab+' links '+section);
+    if (['course','assessment'].includes(tab)) await expect(page.locator('.course-active-session')).toBeVisible();
+    if (tab==='progress') assert.equal(await page.locator('.course-active-session').count(),0,'No current-work card on Progress');
+    assert.deepEqual(errors,[]);
+  }
+});

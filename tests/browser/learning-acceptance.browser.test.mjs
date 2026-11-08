@@ -53,7 +53,7 @@ test('native course, actual Edge handlers and real SQL complete independent base
   await page.goto(origin+href(idx));await page.waitForSelector('#courseContent article');
   const query = new URL(page.url()).searchParams;
   const context = { enrollmentId: query.get('enrollment'), curriculumReleaseId: query.get('release'), unitId: query.get('unit') };
-  assert.match(await page.locator('#courseTitle').innerText(),idx<2?/Առարկա Ա/:/Առարկա Բ/);
+  assert.match(await page.locator('.topbar').innerText(),idx<2?/Առարկա Ա/:/Առարկա Բ/); // course name in the subtitle since D1
   const cards=page.locator('#courseContent article');assert.match(await cards.nth(0).innerText(),new RegExp(`${idx===3?5:3} հարց`));
   await verifyChapterIIPracticeGate({page,expect,cards,context,practiceUnlocked:false});
   await cards.nth(0).locator('a').click();
