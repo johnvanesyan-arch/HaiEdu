@@ -53,7 +53,7 @@ test('course refresh rejects delayed old membership, respects revoked selection 
  await page.evaluate(()=>window.__homeFixture.switchAccount());await page.evaluate(()=>window.__requestCounts.release('get-student-classes'));
  await expect(page.locator('#courseContent')).toContainText('Ընտրված դասընթացն այս պահին հասանելի չէ');await expect(page.locator('.course-tabs')).toHaveCount(0);
  await page.evaluate(({enrollment,release,unit})=>{history.pushState({},'',`?enrollment=${enrollment}&release=${release}&unit=${unit}`);dispatchEvent(new PopStateEvent('popstate'));},{enrollment:id(11),release:id(12),unit:id(13)});
- await expect(page.locator('#courseTitle')).toContainText('Մաթեմատիկա');await page.goBack();await expect(page.locator('#courseContent')).toContainText('Ընտրված դասընթացն այս պահին հասանելի չէ');assert.deepEqual(errors,[]);
+ await expect(page.locator('#courseSubtitle')).toContainText('Մաթեմատիկա');await page.goBack();await expect(page.locator('#courseContent')).toContainText('Ընտրված դասընթացն այս պահին հասանելի չէ');assert.deepEqual(errors,[]);
 });
 test('same-account token refresh keeps an active answer and starts no second learning session',async t=>{
  const {page,errors}=await learnerFixture(browser,t,{route:'course.html',action:'practice'});await page.locator('#learningPlayer form').waitFor();

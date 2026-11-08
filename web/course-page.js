@@ -78,8 +78,9 @@ async function load() {
     const { data, error } = await supabase.functions.invoke('get-student-dashboard',{body:selection});
     if (!valid()) return;
     if (error || !data?.dashboardVersion) throw new Error('Չհաջողվեց բեռնել տվյալները։ Փորձեք նորից։');
-    document.getElementById('courseTitle').textContent = `${courseLabel(context)} · ${context.unitTitleHy}`;
-    document.getElementById('courseSubtitle').textContent = `${context.schoolName} · ${context.className} · ${context.academicYearLabel} · Թողարկում ${context.releaseNumber}`;
+    // 16.5B review D1: the unit is the page title; course, class and year form one short line.
+    document.getElementById('courseTitle').textContent = context.unitTitleHy;
+    document.getElementById('courseSubtitle').textContent = `${courseLabel(context)} · ${context.className} · ${context.academicYearLabel}`;
     const modes = { diagnostic:'Ախտորոշիչ', practice:'Վարժանք', mastery_check:'Յուրացման ստուգում', chapter_review:'Գլխի կրկնություն' };
     const action = (mode, spec, skillId) => {
       const legacy = registeredExtensionHref(spec.extensionKey,mode,context);
@@ -122,11 +123,17 @@ async function load() {
     const moreSections = `<nav class="row course-tabs course-tabs-more" aria-label="Լրացուցիչ բաժիններ"><div class="course-tabs-secondary">${[['guides','Ուղեցույցներ'],['writing','Գրավոր աշխատանքներ']].map(sectionLink).join('')}<a class="button-link ghost" href="${esc(resourceHref(context))}">Նյութերի գրադարան</a></div></nav>`;
     // The course tab leads with the learner's current work; its decorative banner is omitted.
     root.innerHTML = `${chapterLinks}${sections}${tab === 'course' ? '' : courseHero(tab,data)}
-      ${resume}${moreSections}<section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline?.assessmentResult ? assessmentResultMarkup(data.baseline.assessmentResult) : data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
+      ${tab === 'progress' ? '' : resume}${moreSections}<section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline?.assessmentResult ? assessmentResultMarkup(data.baseline.assessmentResult) : data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
       ${legacyCourse ? `<div><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></div>` : ''}<div id="learningPlayer"></div>${learningContent}
       <section class="card course-data-section course-history-section" aria-labelledby="courseHistoryTitle"><h2 id="courseHistoryTitle">Ավարտված աշխատանքներ</h2>${history?assessmentScopeMarkup({disclosure:true}):''}<ol class="assessment-history-list" aria-label="Ավարտված աշխատանքների պատմություն">${history || '<li>Ավարտված աշխատանք դեռ չկա։</li>'}</ol></section>`;
     // Keep the selected chapter visible in the phone's scrollable chapter row (horizontal only).
     const chapterRow = root.querySelector('.course-chapters'), currentChapter = chapterRow?.querySelector('[aria-current=page]');
+    // 16.5B review D2: a fade marks chips scrolled out of view in the phone's chapter row.
+    if (chapterRow) {
+      const edges = () => { chapterRow.toggleAttribute('data-more-before', chapterRow.scrollLeft > 2); chapterRow.toggleAttribute('data-more-after', chapterRow.scrollLeft + chapterRow.clientWidth < chapterRow.scrollWidth - 2); };
+      chapterRow.addEventListener('scroll', edges, { passive: true });
+      requestAnimationFrame(edges);
+    }
     if (chapterRow && currentChapter && chapterRow.scrollWidth > chapterRow.clientWidth) chapterRow.scrollLeft += currentChapter.getBoundingClientRect().left - chapterRow.getBoundingClientRect().left - 8;
     if (tab === 'guides') {
       root.querySelectorAll(':scope > :not(nav):not(.student-course-hero)').forEach(node => node.remove());

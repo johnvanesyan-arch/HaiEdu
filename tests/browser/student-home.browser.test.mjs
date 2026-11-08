@@ -55,7 +55,7 @@ test('mobile acceptance selects the chapter link when primary course entry has t
   await card.locator('summary').focus();await page.keyboard.press('Enter');
   await expect(link).toHaveCount(1);await expect(link).toBeVisible();
   await link.focus();await page.keyboard.press('Enter');
-  await expect(page.locator('#courseTitle')).toContainText('Անգլերեն');
+  await expect(page.locator('#courseSubtitle')).toContainText('Անգլերեն');
   assert.equal(new URL(page.url()).searchParams.get('unit'),id(8));
   assert.equal(await page.evaluate(()=>window.__homeFixture.calls.some(c=>c.name==='start-learning-session')),false);
   assert.deepEqual(errors,[]);

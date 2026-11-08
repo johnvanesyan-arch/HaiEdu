@@ -375,3 +375,10 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-join-hint a { disp
   body:is([data-haiedu-student],[data-forest-surface]) .amp-subject-card:not(.student-course-compact) > :not(.student-card-art) { grid-column: 2; min-width: 0; }
   body:is([data-haiedu-student],[data-forest-surface]) .amp-subject-card:not(.student-course-compact) > :is(.button-link, details) { grid-column: 1 / -1; }
 }
+
+/* Course page chapter row (16.5B review D2): fade the edge where more chapters are scrolled away. */
+@media (max-width: 760px) {
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters[data-more-after] { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent); }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters[data-more-before] { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 3rem), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 3rem), transparent); }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-chapters[data-more-before][data-more-after] { -webkit-mask-image: linear-gradient(to right, transparent, #000 3rem, #000 calc(100% - 3rem), transparent); mask-image: linear-gradient(to right, transparent, #000 3rem, #000 calc(100% - 3rem), transparent); }
+}
