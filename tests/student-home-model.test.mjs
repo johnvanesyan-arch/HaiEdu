@@ -56,3 +56,21 @@ test('Home path mirrors the course page sequence without scores or eligibility o
   assert.equal(states({...after,skills:[{ready:null}]})[2][2],'Կբացվի, երբ պահանջվող հմտությունները պատրաստ լինեն');
   assert.deepEqual(homeLearningPath({modes:{},skills:[]}).map(s=>s.state),['unavailable','unavailable','unavailable']);
 });
+
+test('Home next step follows the path and never adds a player action (16.5B.1)',()=>{
+  const cfg={diagnostic:{status:'configured',questions:20},practice:{status:'configured'},mastery_check:{status:'configured'}};
+  const cases=[
+    [{practiceAccess:{unlocked:false},modes:cfg,skills:[{ready:false}]},'Անցնել ախտորոշիչին','assessment'],
+    [{practiceAccess:{unlocked:false},modes:{},skills:[]},'Անցնել գնահատումներին','assessment'],
+    [{practiceAccess:{unlocked:true},baseline:{},modes:cfg,skills:[{ready:true},{ready:false}]},'Անցնել վարժանքին','assessment'],
+    [{practiceAccess:{unlocked:true},baseline:{},modes:cfg,skills:[{ready:true}]},'Անցնել ստուգմանը','assessment'],
+    [{practiceAccess:{unlocked:true},baseline:{},modes:{},skills:[]},'Բացել դասընթացը','course'],
+  ];
+  for (const [data,action,tab] of cases) {
+    const summary=homeLearningSummary(context,data), url=new URL(summary.href,'https://fixture.invalid');
+    assert.equal(summary.action,action);
+    assert.equal(url.searchParams.get('tab'),tab);
+    assert.equal(url.searchParams.has('action'),false,action);
+  }
+  assert.match(homeLearningSummary(context,cases[0][0]).description,/^20 հարց/);
+});

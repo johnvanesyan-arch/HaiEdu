@@ -4,7 +4,7 @@ import { createClient } from './supabase-browser.bundle.mjs';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
 import { subjectArtwork } from './subject-visuals.mjs';
-import { studentIcon, learningArtwork } from './student-visuals.mjs';
+import { studentIcon } from './student-visuals.mjs';
 import { homeLearningSummary, homeLearningPath } from './student-home-model.mjs';
 import { mountStudentResourceAssignments } from './resource-assignments.mjs';
 import { mountWorkHub, workToolbarMarkup } from './student-work-hub.mjs';
@@ -31,35 +31,40 @@ function ensureRoot() {
 function state(title, message, retry = false) {
   return `<section class="card student-state${retry ? ' student-error' : ''}" role="status"><h3>${title}</h3><p>${message}</p>${retry ? '<button type="button" data-retry-access>Փորձել նորից</button>' : ''}</section>`;
 }
+// Phone selects cannot wrap, so options name the course only; class and school are added
+// only when two of the student's courses would otherwise read the same.
+function courseOptionLabel(course) {
+  const label = courseLabel(course);
+  if (courses.filter(other => courseLabel(other) === label).length < 2) return label;
+  const detailed = `${label} · ${course.className}`;
+  return courses.filter(other => `${courseLabel(other)} · ${other.className}` === detailed).length < 2 ? detailed : `${detailed} · ${course.schoolName}`;
+}
 function selectorMarkup() {
-  return `<div class="student-selection"><label for="studentCourseSelect">Դասընթացը<select id="studentCourseSelect"><option value="">Ընտրեք դասընթացը</option>${courses.map(course => `<option value="${esc(course.key)}"${course.key === requestedCourse ? ' selected' : ''}>${esc(courseLabel(course))} · ${esc(course.className)} · ${esc(course.schoolName)}</option>`).join('')}</select></label><label for="studentUnitSelect">Բաժինը<select id="studentUnitSelect"${requestedCourse ? '' : ' disabled'}>${unitOptions()}</select></label></div>`;
+  return `<div class="student-selection"><label for="studentCourseSelect">Դասընթացը<select id="studentCourseSelect"><option value="">Ընտրեք դասընթացը</option>${courses.map(course => `<option value="${esc(course.key)}"${course.key === requestedCourse ? ' selected' : ''}>${esc(courseOptionLabel(course))}</option>`).join('')}</select></label><label for="studentUnitSelect">Բաժինը<select id="studentUnitSelect"${requestedCourse ? '' : ' disabled'}>${unitOptions()}</select></label></div>`;
 }
 function unitOptions() {
   const course = courses.find(course => course.key === requestedCourse);
-  return '<option value="">Ընտրեք բաժինը</option>' + (course?.units ?? []).map(unit => `<option value="${esc(contextKey(unit))}"${sameContext(unit, selected) ? ' selected' : ''}>${esc(unit.unitTitleHy)} · Թողարկում ${esc(unit.releaseNumber)}</option>`).join('');
+  return '<option value="">Ընտրեք բաժինը</option>' + (course?.units ?? []).map(unit => `<option value="${esc(contextKey(unit))}"${sameContext(unit, selected) ? ' selected' : ''}>${esc(unit.unitTitleHy)}${course.units.filter(other => other.unitTitleHy === unit.unitTitleHy).length > 1 ? ` · Թողարկում ${esc(unit.releaseNumber)}` : ''}</option>`).join('');
 }
 function courseCards() {
   const writing = view === 'work';
-  return `<section id="mySubjects" aria-labelledby="mySubjectsTitle"><div class="amp-subjects-heading"><div><h2 id="mySubjectsTitle">${writing ? 'Գրավոր աշխատանքներ՝ ըստ դասընթացի' : 'Իմ դասընթացները'}</h2></div><a class="student-help-link" href="./join.html">Միանալ դասարանին</a></div><div class="amp-subject-grid">${courses.map(course => {
+  return `<section id="mySubjects" aria-labelledby="mySubjectsTitle"><div class="amp-subjects-heading"><div><h2 id="mySubjectsTitle">${writing ? 'Գրավոր աշխատանքներ՝ ըստ դասընթացի' : 'Իմ դասընթացները'}</h2></div></div><div class="amp-subject-grid">${courses.map(course => {
     const unit = selected && courseKey(selected) === course.key ? selected : course.units[0];
     const tab = writing ? 'writing' : 'course';
     // Home uses the compact card from the refinement mockup; the card, its links and the
     // unit list keep their hooks for every other view and for production acceptance.
-    if (view === 'home') return `<article class="card amp-subject-card student-course-compact" data-course-key="${esc(course.key)}"><span class="student-course-mark" aria-hidden="true">${esc(courseLabel(course).trim().charAt(0))}</span><div class="student-course-body"><p class="student-course-kicker" hidden>Ընտրված դասընթաց</p><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)} · ${esc(course.academicYearLabel)}</p><div class="student-course-readiness-slot"></div><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">Բացել դասընթացը</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></div></article>`;
+    if (view === 'home') return `<article class="card amp-subject-card student-course-compact" data-course-key="${esc(course.key)}"><span class="student-course-mark" aria-hidden="true">${subjectArtwork(course.subjectCode)}</span><div class="student-course-body"><p class="student-course-kicker" hidden>Ընտրված դասընթաց</p><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)} · ${esc(course.academicYearLabel)}</p><div class="student-course-readiness-slot"></div><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">Բացել դասընթացը</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></div></article>`;
     return `<article class="card amp-subject-card"><div class="student-card-art" aria-hidden="true">${subjectArtwork(course.subjectCode)}</div><h3>${esc(courseLabel(course))}</h3><p>${esc(course.className)} · ${esc(course.schoolName)}<br>${esc(course.academicYearLabel)}</p><a class="button-link ghost" href="${esc(contextHref(unit, tab))}">${writing ? 'Բացել գրավոր աշխատանքները' : 'Բացել դասընթացը'}</a><details class="student-unit-links"><summary>Բաժինների ցանկ · ${course.units.length}</summary><div class="amp-subject-class-list">${course.units.map(unit => `<a href="${esc(contextHref(unit, tab))}">${esc(unit.unitTitleHy)} <small>· Թողարկում ${esc(unit.releaseNumber)}</small></a>`).join('')}</div></details></article>`;
-  }).join('')}</div></section>`;
+  }).join('')}</div>${writing ? '' : '<p class="student-join-hint">Ուսուցիչը տվե՞լ է նոր դասարանի կոդ։ <a class="student-help-link" href="./join.html">Միանալ դասարանին</a></p>'}</section>`;
 }
 function render() {
   clearAssignments();
-  const welcome = view === 'courses'
-      ? ['Բացեք նոր էջ ձեր ուսուցման մեջ', 'Ընտրեք դասընթացը և շարունակեք ձեր աշխատանքը։']
-      : ['Բարի գալուստ։ Շարունակե՞նք սովորել։', 'Ընտրեք դասընթացն ու բաժինը։ Ձեր ընթացիկ աշխատանքը կհայտնվի այստեղ։'];
-  // Home leads with the one continuation action; the decorative welcome stays on the courses view.
+  // Home leads with the one continuation action.
   // My work leads with one status filter and one refresh instead of the decorative welcome.
   const intro = view === 'home'
     ? '<section class="student-next-section" aria-labelledby="studentNextTitle"><h2 id="studentNextTitle">Ձեր հաջորդ քայլը</h2><div id="studentNextStep" aria-live="polite" aria-atomic="true"></div></section><div id="studentPath"></div><div id="studentFeedback"></div>' + selectorMarkup()
-    : view === 'work' ? ''
-    : `<section class="student-home-welcome"><div><span class="mode-kicker">Իմ ուսուցումը</span><h2>${welcome[0]}</h2><p>${welcome[1]}</p></div>${learningArtwork()}</section>`;
+    // Courses opens directly on the course list (16.5B review C1: no decorative banner).
+    : '';
   root.innerHTML = `${intro}${view==='work'?'<div id="studentWork"></div>':''}${courseCards()}`;
   root.classList.toggle('student-home-grid', view === 'home');
   if (view === 'home') { void loadSelected(); void loadFeedback(); }
@@ -142,10 +147,10 @@ async function loadSelected() {
     } });
     if (!current() || (actorId && actorId !== account)) return;
     if (error || !data?.dashboardVersion || (data.context && !sameContext(data.context, context))) throw Error('unavailable');
-    const summary = homeLearningSummary(context, data), readiness = summary.readiness;
+    const summary = homeLearningSummary(context, data);
     if (path) path.innerHTML = pathMarkup(data);
     markSelectedCourse(context, data);
-    target.innerHTML = `<section class="card student-next"><div><p class="student-context">${esc(courseLabel(context))} · ${esc(context.unitTitleHy)}<br>${esc(context.schoolName)} · ${esc(context.className)} · ${esc(context.academicYearLabel)}</p><h3>${esc(summary.title)}</h3><p>${esc(summary.description)}</p>${summary.count ? `<p>${esc(summary.count)}</p>` : ''}<a class="button-link student-continue" href="${esc(summary.href)}">${esc(summary.action)}${studentIcon('arrow')}</a></div>${readiness ? `<a class="student-readiness" href="${esc(contextHref(context,'progress'))}" aria-label="Ստուգարքի պատրաստություն՝ ${readiness.ready}՝ ${readiness.required} պահանջվող հմտությունից։ Բացել առաջընթացը"><span class="student-readiness-ring" style="--ready-angle:${360 * readiness.ready / readiness.required}deg" aria-hidden="true"><strong>${readiness.ready} / ${readiness.required}</strong></span><span>Ստուգարքի պատրաստություն<br><small>Պահանջվող հմտություններ</small></span></a>` : ''}</section>`;
+    target.innerHTML = `<section class="card student-next"><div><p class="student-context">${esc(courseLabel(context))} · ${esc(context.unitTitleHy)}</p><h3>${esc(summary.title)}</h3><p>${esc(summary.description)}</p>${summary.count ? `<p>${esc(summary.count)}</p>` : ''}<a class="button-link student-continue" href="${esc(summary.href)}">${esc(summary.action)}${studentIcon('arrow')}</a></div></section>`;
   } catch {
     if (current()) {
       target.innerHTML = state('Չհաջողվեց բեռնել աշխատանքը', 'Ստուգեք կապը և փորձեք նորից։ Դասընթացների ցանկը հասանելի է ստորև։');
