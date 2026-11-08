@@ -1,5 +1,16 @@
 # Project status register
 
+**2026-11-09 — Student course page clean-up is live; production QA 13/13.**
+- [PR441](https://github.com/johnvanesyan-arch/HaiEdu/pull/441), released at `cdfb321`, is Phase 2c of the 7 November student design review (D1, D2, reduced D3), approved by John.
+- **Title:** `#courseTitle` is the unit title; the subtitle reads course · grade · class · year, without school or release.
+- **Chapter row:** on phones it fades the edge where more chapters are scrolled away.
+- **Current-work card:** dropped on Progress only. Section links stay on every tab and the card stays on Course and Assessments, because English 1–3, Mobile and Chapters II–VI acceptance navigate through them.
+- **Production QA:** 13/13 on `cdfb321`, first attempt.
+
+**Owner decision (9 November).** Home still never starts an attempt (16.5B.1): John kept the rule rather than adding a one-tap «Start».
+
+**Limits.** Owner usability acceptance is not given. [Record](student-course-page-cleanup-20261109.md).
+
 **2026-11-09 — Student Home and Courses clean-up is live; production QA 13/13.**
 - [PR439](https://github.com/johnvanesyan-arch/HaiEdu/pull/439), released at `291250e`, is Phase 2a of the 7 November student design review (B1–B6, B8, B9, C1, C2), approved by John.
 - **Next-step card:** it names the concrete step from the unit path's rules (diagnostic, practice, mastery check) as an entry link to the course's assessments. **Home still never starts an attempt** (16.5B.1). It is now the page's one hero card, with one context line and no readiness ring; readiness stays in the path and on the selected course card.

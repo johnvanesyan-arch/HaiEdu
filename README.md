@@ -1,5 +1,13 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student course page clean-up is live.**
+- **What changed:**
+  - the page title is the unit, with course · grade · class · year on one line below;
+  - the phone chapter row fades the edge where more chapters are scrolled away;
+  - Progress no longer repeats the current-work card.
+- **Production QA:** 13/13 on `cdfb321`.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-course-page-cleanup-20261109.md).
+
 **2026-11-09 — Student Home and Courses clean-up is live.**
 - **What changed:**
   - the next-step card names the concrete step (Home still never starts an attempt) and is the page's one hero card;

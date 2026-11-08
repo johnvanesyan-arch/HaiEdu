@@ -40,4 +40,9 @@ Hiding them would have broken nine production suites. The links also remain a us
   - the chapter-row fade before and after scrolling;
   - Progress without the current-work card, and every tab keeping all section links.
 - **Updated by design:** three tests that looked for the course name in `#courseTitle` now read the subtitle or header (`learning-acceptance`, `request-isolation`, `student-home`).
-- **Owner usability acceptance:** not given. **Live production check:** after merge.
+- **Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR441 merged at `cdfb321`.
+- **`cdfb321`: 13/13 suites on the first attempt.** This includes Chapters II–VI, English Units 1–3 and Mobile, which read `#courseTitle` and navigate the course page's section links.
