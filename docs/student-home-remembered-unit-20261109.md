@@ -69,4 +69,10 @@ A student with more than one unit who opened Home fresh had to choose a course a
 
 The new positive tests fail on the previous source.
 
-**Owner usability acceptance:** not given. **Live production check:** after merge.
+**Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR443 merged at `c59398d`. Its first CI run caught a stale teacher bundle (`learning-navigation.mjs` is bundled into teacher pages). The rebuild changed only minified identifiers; the new helpers are tree-shaken out, and 130/130 teacher and built-site browser tests passed.
+- **`c59398d`: 13/13 suites.** English Unit 2 was first in the queue. Its first attempt stopped in the release wait during the deploy switch-over («Production browser manifest does not match the reviewed source»), before any check ran. It passed 142/142 on re-run.
+- **Coverage:** the production suites start with fresh storage, so they confirm that Home without a remembered unit, the course cards and the course page hooks are unchanged. The remembering itself is verified by the isolated Chromium regressions above.
