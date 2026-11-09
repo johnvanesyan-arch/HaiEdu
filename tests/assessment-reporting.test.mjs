@@ -106,3 +106,21 @@ test('school and master aggregates use the same empty-group distinction without 
  assert.ok(root.innerHTML.includes('points-contract')&&root.innerHTML.includes('legacy-contract'));
  assert.deepEqual(payload,before);
 });
+
+// 16.5B review, Phase 4 (R3/R4): student results omit unassessed groups and a pass-determining
+// group that only repeats the overall score; teacher output (default options) is unchanged.
+test('student results drop unassessed groups and a group that repeats the score; teachers keep both',()=>{
+  const result={schemaVersion:'haiedu-assessment-result-v3',score:{earned:22.3888,possible:28,percent:80},passed:false,groups:[
+    {label:'Պարտադիր հմտություններ',earned:22.3888,possible:28,percent:80,determinesPass:true},
+    {label:'Այլ հմտություն',earned:0,possible:0,percent:null,determinesPass:false}]};
+  const student=assessmentResultMarkup(result,{hideUnassessed:true}),teacher=assessmentResultMarkup(result);
+  assert.equal(student.match(/22\.39\/28/g).length,1);assert.doesNotMatch(student,/Չի գնահատվել|Պարտադիր հմտություններ/);assert.match(student,/Ստուգարքը չի անցել/);
+  assert.equal(teacher.match(/22\.39\/28/g).length,2);assert.match(teacher,/Չի գնահատվել/);
+  const differs={...result,groups:[{...result.groups[0],earned:20,percent:71.43}]};
+  assert.match(assessmentResultMarkup(differs,{hideUnassessed:true}),/Պարտադիր հմտություններ՝ 20\/28/,'a group that differs from the score stays');
+  const legacy={schemaVersion:'haiedu-assessment-result-v2',score:{correct:7,answered:8,percent:87.5},passed:true,groups:[{label:'Պարտադիր',correct:7,answered:8,percent:87.5,determinesPass:true}]};
+  assert.equal(assessmentResultMarkup(legacy,{hideUnassessed:true}).match(/7\/8/g).length,1);assert.equal(assessmentResultMarkup(legacy).match(/7\/8/g).length,2);
+  // Beside other assessed groups the required line stays: its label says what the score covers.
+  const mixed={...legacy,groups:[...legacy.groups,{label:'Օժանդակ',correct:0,answered:2,percent:0,determinesPass:false}]};
+  assert.match(assessmentResultMarkup(mixed,{hideUnassessed:true}),/Պարտադիր՝ 7\/8/);
+});

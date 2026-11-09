@@ -265,13 +265,14 @@ test('an unavailable enrollment exposes no student evidence in the full shell',a
   assert.deepEqual(errors,[]);
 });
 
-test('expanded provenance stays contained at 200 percent text size',async t=>{
+// Phase 4: student history cards no longer carry the internal version IDs; the page still has
+// to stay contained at 200 percent text size.
+test('history without internal version IDs stays contained at 200 percent text size',async t=>{
   const {page,errors}=await fixture(t);
   await page.addStyleTag({content:'html { font-size: 200%; }'});
-  const provenance=page.locator('#courseContent .assessment-history-list>li details');
-  await provenance.locator('summary').click();
-  assert.match(await provenance.innerText(),/fixture-blueprint/);
-  assert.match(await provenance.innerText(),/fixture-runtime/);
+  await expect(page.locator('#courseContent .assessment-history-list>li')).not.toHaveCount(0);
+  await expect(page.locator('#courseContent .assessment-history-list>li details')).toHaveCount(0);
+  assert.doesNotMatch(await page.locator('#courseContent .assessment-history-list').innerText(),/fixture-blueprint|fixture-runtime/);
   const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
     crowdedNavLinks:[...document.querySelectorAll('.amp-nav-link')].filter(el=>{
       const label=el.lastElementChild.getBoundingClientRect(), link=el.getBoundingClientRect();
@@ -380,25 +381,25 @@ test('generic focused player retains readable rules and suppresses competing ove
  assert.equal(await page.locator('#learningPlayer button[type=submit]').isVisible(),true);
  assert.deepEqual(errors,[]);
 });
+// Phase 4 (R3/R4): student history omits groups with nothing assessed and the internal IDs; teachers keep both.
 test('student saved Practice cards retain assessed zeros, historical scales and accessible scope without a wide history table',async t=>{
   const {page:p,errors}=await fixture(t,{contextIndex:1,tab:'progress',active:false,reportingHistory:historyEntries()});
   const history=p.locator('section[aria-labelledby=courseHistoryTitle]');
   await expect(history.locator('.assessment-history-list>li')).toHaveCount(3);await expect(history.locator('table')).toHaveCount(0);
-  await expect(history.locator('[data-assessment-state=unassessed]')).toHaveCount(3);assert.doesNotMatch(await history.innerText(),/0\/0/);
+  await expect(history.locator('[data-assessment-state=unassessed]')).toHaveCount(0);assert.doesNotMatch(await history.innerText(),/0\/0|Չի գնահատվել|Սկզբնական տարբերակները/);
   await expect(history).toContainText('0/3 միավոր · 0%');await expect(history).toContainText('2/3 · 66.67%');
   await expect(history).toContainText('Ստուգարքը չի անցել · 22.39/28 միավոր · 80%');
   await expect(history.locator('[data-assessment-scope]')).toHaveCount(1);await expect(history.locator('[data-assessment-scope]')).toBeHidden();
   await history.locator('.assessment-scope summary').focus();await p.keyboard.press('Enter');
   await expect(history.locator('[data-assessment-scope]')).toBeVisible();await expect(history.locator('[data-assessment-scope]')).toContainText('ամբողջ դասընթացի ընդհանուր գնահատականը չէ');await p.keyboard.press('Enter');
-  for(const [n,record] of (await history.locator('.assessment-history-list>li').all()).entries()){
-    await record.locator('details summary').click();await expect(record).toContainText('policy-'+n);await record.locator('details summary').click();
-  }
+  // Phase 4: the internal version IDs are not shown on student cards (teachers keep them), and the
+  // pass-determining line that only repeats the Mastery score is shown once.
+  await expect(history.locator('.assessment-history-list>li details')).toHaveCount(0);assert.doesNotMatch(await history.innerText(),/policy-\d|blueprint-\d/);
+  assert.equal((await history.innerText()).match(/22\.39\/28/g).length,1);
   await p.emulateMedia({reducedMotion:'reduce'});
   for(const width of [1280,960,768,390,360]){
     await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');
     if(width<=1100){await expect(p.locator('.amp-side-nav')).toBeHidden();await expect(p.locator('.amp-mobile-nav')).toBeVisible();}
-    const versions=history.locator('.assessment-history-list>li').first().locator('details summary');await versions.click();
-    assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width)+' expanded versions');await versions.click();
     await history.locator('h2').scrollIntoViewIfNeeded();assert.deepEqual(await p.evaluate(historyReadability,'section[aria-labelledby=courseHistoryTitle]'),[],String(width));
     await history.locator('.assessment-history-list>li').first().evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
     if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/student-practice-history-'+width+'.png'});}
@@ -573,5 +574,43 @@ test('leaving the player restores the course page sections',async t=>{
   assert.equal(await page.locator('#playerExitLink').count(),0);
   assert.equal(await page.locator('body').getAttribute('data-student-player'),null);
   await expect(page.locator('#courseCollectionLink')).toBeVisible();
+  assert.deepEqual(errors,[]);
+});
+
+// 16.5B review, Phase 4 — how results and progress are shown.
+test('Progress bars take the colour of the server readiness status, not a percentage',async t=>{
+  const {page,errors}=await fixture(t,{tab:'progress',active:false,contextIndex:1,manySkills:true});
+  const rows=await page.locator('#courseContent .course-table tr:has(meter)').evaluateAll(rs=>rs.map(r=>{const m=r.querySelector('meter');return {state:m.dataset.evidenceState,badge:r.querySelector('.student-evidence-badge')?.textContent.trim(),accent:getComputedStyle(m).accentColor};}));
+  assert.equal(rows.length,10);
+  const ready=rows.filter(r=>r.badge==='Պատրաստ է'),developing=rows.filter(r=>r.badge==='Ամրապնդում է պետք');
+  assert.ok(ready.length&&developing.length,JSON.stringify(rows));
+  assert.ok(ready.every(r=>r.state==='ready')&&developing.every(r=>r.state==='developing'));
+  assert.notEqual(ready[0].accent,developing[0].accent);assert.equal(new Set(ready.map(r=>r.accent)).size,1);
+  assert.deepEqual(errors,[]);
+});
+test('phone Progress rows put the status beside the evidence under the skill name',async t=>{
+  const {page,errors}=await fixture(t,{width:390,height:844,tab:'progress',active:false,contextIndex:1,manySkills:true});
+  const rows=await page.locator('#courseContent .course-table tr:has(meter)').evaluateAll(rs=>rs.map(r=>{const c=[...r.children].map(e=>e.getBoundingClientRect());return {h:r.getBoundingClientRect().height,name:c[0],evidence:c[1],status:c[2]};}));
+  assert.equal(rows.length,10);
+  for(const r of rows){assert.ok(r.status.top>=r.name.bottom-1&&Math.abs(r.status.top-r.evidence.top)<24,JSON.stringify(r));assert.ok(r.h<=170,`row ${r.h}`);}
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  assert.deepEqual(errors,[]);
+});
+test('students see skill names without internal codes unless two names are the same',async t=>{
+  const single=await fixture(t,{tab:'progress',active:false,contextIndex:1});
+  const name=await single.page.locator('#courseContent .course-table tr:has(meter) td').first().innerText();
+  assert.doesNotMatch(name,/MATH8-U02/);assert.match(name,/Կիրառական խնդիրների լուծում/);
+  const many=await fixture(t,{tab:'progress',active:false,contextIndex:1,manySkills:true});
+  await expect(many.page.locator('#courseContent .course-table .student-skill-code')).toHaveCount(10);
+  assert.doesNotMatch(await many.page.locator('#courseContent .course-table td').first().innerText(),/ — /);
+  assert.deepEqual([...single.errors,...many.errors],[]);
+});
+test('Progress folds the explanations and shows the baseline in its banner',async t=>{
+  const {page,errors}=await fixture(t,{width:390,height:844,tab:'progress',active:false,contextIndex:1,manySkills:true});
+  await expect(page.locator('.student-course-hero')).toContainText('16/20');
+  assert.equal(await page.locator('.course-overview').count(),0);
+  await expect(page.locator('.student-evidence-notes')).toHaveJSProperty('open',false);
+  const [hero,table]=await Promise.all([page.locator('.student-course-hero').boundingBox(),page.locator('#courseContent .course-table').boundingBox()]);
+  assert.ok(table.y-(hero.y+hero.height)<=320,`skills start ${table.y-(hero.y+hero.height)} px under the banner`);
   assert.deepEqual(errors,[]);
 });

@@ -35,8 +35,21 @@ export function assessmentRules(policy, skills = []) {
   }
   return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p>${skillRules}${assessmentScopeMarkup()}`;
 }
-export function assessmentResultMarkup(result,{includeScope=true}={}) {
+// hideUnassessed (student pages, 16.5B review, Phase 4): omit groups with nothing assessed
+// (R3) and a lone pass-determining group that only repeats the overall score (R4). Teacher views
+// keep every group. Nothing is inferred: only saved groups and the saved score are shown.
+export function assessmentResultMarkup(result,{includeScope=true,hideUnassessed=false}={}) {
   const scope=includeScope?assessmentScopeMarkup():'';
+  const total=result?.score;
+  const repeatsScore=group=>Boolean(total&&group.determinesPass&&group.percent===total.percent&&
+    (group.earned??group.correct)===(total.earned??total.correct)&&(group.possible??group.answered)===(total.possible??total.answered));
+  const assessed=group=>!(((group.earned??group.correct)===0)&&((group.possible??group.answered)===0));
+  if (result?.groups && hideUnassessed) {
+    const groups=result.groups.filter(assessed);
+    // The repeated line goes only when it is the sole group; beside other groups its label
+    // says which part the score refers to.
+    result={...result,groups:groups.length===1&&repeatsScore(groups[0])?[]:groups};
+  }
   if (result?.schemaVersion === 'haiedu-assessment-result-v3') {
     const format=s=>`${Number(Number(s.earned).toFixed(2))}/${s.possible} միավոր${s.percent==null?'':` · ${s.percent}%`}`;
     return `${result.score?`<p><strong>${result.passed?'Ստուգարքն անցած է':'Ստուգարքը չի անցել'} · ${format(result.score)}</strong></p>`:''}${result.groups.map(g=>assessmentGroupMarkup(g,{points:true})).join('')}${scope}`;

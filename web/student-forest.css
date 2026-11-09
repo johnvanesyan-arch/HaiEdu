@@ -415,3 +415,41 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-writing-card .butt
 }
 /* S5: sidebar labels fit on one line. */
 body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav .amp-nav-link { font-size: .9375rem; padding-inline: .625rem; gap: .625rem; }
+/* 16.5B review, Phase 4 — how results and progress are shown.
+   R1: each skill's bar takes the colour of the server's readiness status. */
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state] { accent-color: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=ready] { accent-color: var(--student-success); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=developing] { accent-color: var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state]::-webkit-meter-optimum-value { background: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=ready]::-webkit-meter-optimum-value { background: var(--student-success); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=developing]::-webkit-meter-optimum-value { background: var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state]::-moz-meter-bar { background: var(--student-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=ready]::-moz-meter-bar { background: var(--student-success); }
+body:is([data-haiedu-student],[data-forest-surface]) meter[data-evidence-state=developing]::-moz-meter-bar { background: var(--student-attention); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-skill-note { display: block; margin-top: .25rem; color: var(--student-muted); font-size: .8125rem; font-weight: 400; line-height: 1.4; }
+/* R2: on phones the Progress skill name has its own line; the status and the evidence share
+   the next. Course-tab rows (with a practice link, four cells) keep their existing layout. */
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) { grid-template-columns: auto minmax(0, 1fr); padding: .75rem .875rem; gap: .375rem .75rem; align-items: center; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) > td:first-child { grid-column: 1 / -1; grid-row: 1; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) > td:nth-child(3) { grid-column: 1; grid-row: 2; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) > td:nth-child(2) { grid-column: 2; grid-row: 2; font-size: .8125rem; color: var(--student-muted); }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) > td:first-child { font-size: .9375rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) .student-evidence-badge { padding: .25rem .5rem; font-size: .8125rem; white-space: nowrap; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) meter { margin-top: .25rem; height: .5rem; width: 100%; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) > td { min-width: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) .student-skill-evidence { min-width: 0; }
+  body:is([data-haiedu-student],[data-forest-surface]) #courseContent .course-table tr:not(:has(> td:nth-child(4))) .student-evidence-badge { white-space: normal; max-width: 100%; }
+}
+/* R5: the Progress banner carries the baseline result; on phones it drops the decorative icon. */
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero-summary { color: var(--student-hero-muted); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero-summary p { margin: 0 0 .25rem; color: var(--student-hero-ink); }
+body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero-summary [data-assessment-scope] { display: none; }
+body:is([data-haiedu-student],[data-forest-surface]) .student-evidence-notes { margin: 0 0 1rem; }
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero[data-hero-tab=progress] { padding: 1rem; gap: .75rem; }
+  body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero[data-hero-tab=progress] .student-feature-icon { display: none; }
+  body:is([data-haiedu-student],[data-forest-surface]) .student-course-hero[data-hero-tab=progress] h2 { margin: 0 0 .25rem; font-size: 1.25rem; }
+}
+/* R6: a skill code shown only to tell apart two skills with the same name. */
+body:is([data-haiedu-student],[data-forest-surface]) .student-skill-code { color: var(--student-muted); font-size: .8125rem; font-weight: 400; }

@@ -93,6 +93,8 @@ test('course and progress skill tables disclose learner-wide release scope witho
  const {f,page,origin,errors}=await fixture(t);
  for(const tab of ['course','progress']){
   await page.goto(origin+href(0)+'&tab='+tab);
+  // Phase 4 (R5): on Progress the scope notes are in a labelled fold-out.
+  if(tab==='progress'){await expect(page.locator('[data-learner-evidence-scope]')).toBeHidden();await page.locator('.student-evidence-notes summary').click();}
   await expect(page.locator('[data-learner-evidence-scope]')).toBeVisible();
   await expect(page.locator('[data-learner-evidence-scope]')).toContainText('այս թողարկման ձեր ուսումնական պատմությանը');
   await expect(page.locator('[data-learner-evidence-scope]')).toContainText('Դասարանի առանձին աշխատանքների արդյունքները կարող են տարբերվել');
