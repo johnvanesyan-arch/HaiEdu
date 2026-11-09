@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readLearningSelection,groupLearningContexts,contextHref,sameContext,sameCourse,resolveNavigationContext} from '../web/learning-navigation.mjs';
+import {readLearningSelection,groupLearningContexts,contextHref,sameContext,sameCourse,resolveNavigationContext,rememberLearningSelection,recallLearningSelection,forgetLearningSelection} from '../web/learning-navigation.mjs';
 import {registeredExtensionHref} from '../web/learning-extensions.mjs';
 import {estimateScopedEvidence} from '../supabase/functions/_shared/analytics-evidence.mjs';
 import {aggregateSchoolPerformanceAnalytics} from '../supabase/functions/_shared/school-performance-analytics.ts';
@@ -42,4 +42,24 @@ test('school evidence pairs enrollment with its actual student and separates ori
  const session={institutional_class_enrollment_id:'ea',student_id:'sa',curriculum_release_id:'r',unit_code:'reused',mode:'diagnostic',status:'completed',academic_context_status:'exact',answered_count:4,correct_count:3,assessment_blueprint_id:'bp',learning_model_configuration_id:'m'};
  const result=aggregateSchoolPerformanceAnalytics({enrollments,sessions:[{...session,id:'a'},{...session,id:'b',learning_model_configuration_id:'other'},{...session,id:'forged',student_id:'sb'}],reviewSessions:[]});
  assert.equal(result.evidence.exactSessions,2);assert.equal(result.diagnostic.averageAccuracy,null);assert.equal(result.evidenceGroups.length,2);assert.ok(result.evidenceGroups.every(g=>g.accuracy===75));
+});
+
+test('the remembered unit belongs to one account, keeps only selection IDs and fails closed',()=>{
+ const store=new Map();globalThis.localStorage={getItem:k=>store.has(k)?store.get(k):null,setItem:(k,v)=>store.set(k,String(v)),removeItem:k=>store.delete(k)};
+ try{
+  const u='00000000-0000-4000-8000-000000000090',other='00000000-0000-4000-8000-000000000091';
+  const c={enrollmentId:'00000000-0000-4000-8000-000000000006',curriculumReleaseId:'00000000-0000-4000-8000-000000000007',unitId:'00000000-0000-4000-8000-000000000008',unitTitleHy:'Բաժին',schoolName:'Դպրոց'};
+  assert.equal(recallLearningSelection(u),null);
+  rememberLearningSelection(u,c);
+  assert.deepEqual(recallLearningSelection(u),{enrollmentId:c.enrollmentId,curriculumReleaseId:c.curriculumReleaseId,unitId:c.unitId});
+  assert.deepEqual(Object.keys(JSON.parse([...store.values()][0])).sort(),['curriculumReleaseId','enrollmentId','unitId','userId']);
+  assert.equal(recallLearningSelection(other),null,'another account never sees it');
+  assert.equal(recallLearningSelection(null),null);
+  rememberLearningSelection(null,c);rememberLearningSelection(u,{...c,unitId:'x'});
+  assert.equal(recallLearningSelection(u).unitId,c.unitId,'invalid input does not overwrite');
+  store.set([...store.keys()][0],'{bad');assert.equal(recallLearningSelection(u),null);
+  rememberLearningSelection(u,c);forgetLearningSelection();assert.equal(recallLearningSelection(u),null);
+  globalThis.localStorage={getItem(){throw new Error('blocked');},setItem(){throw new Error('blocked');},removeItem(){throw new Error('blocked');}};
+  assert.doesNotThrow(()=>{rememberLearningSelection(u,c);forgetLearningSelection();});assert.equal(recallLearningSelection(u),null);
+ }finally{delete globalThis.localStorage;}
 });
