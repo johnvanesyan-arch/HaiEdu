@@ -1,5 +1,16 @@
 # Project status register
 
+**2026-11-09 — Student results presentation is live; production QA 13/13.**
+- [PR449](https://github.com/johnvanesyan-arch/HaiEdu/pull/449), released at `f7ba460`, is Phase 4 of the 7 November student design review (R1–R6, fresh audit), approved by John. Student pages only; teacher views are unchanged.
+- **Progress:** skill bars take the colour of the server's readiness status instead of one green for all. Phone rows put status and evidence on one line under the name (Progress 4,135 → 3,066 px at 390 px). Explanations fold into one disclosure, and the baseline sits in the banner.
+- **Results:** groups with nothing assessed and a lone pass-determining line that repeats the score are omitted. Skill names show without internal codes unless two names match. The per-card fold-out of eight internal IDs is removed from student pages; the data is still stored.
+- **Rules kept:** no outcome is inferred. A failed Mastery check still shows no reason, because the saved result carries none.
+- **Production QA:** 13/13 on `f7ba460`. Sprint 14 authenticated action QA, first in the queue, stopped in the release wait during the deploy switch-over before any check ran, and passed 206/206 on re-run.
+
+**Process note.** A run of this session partly built Phase 4 before its conversation record was lost in a container restart. The files were set aside, the audit was repeated on clean main and approved by John, and the draft was reviewed and corrected before use (see the record).
+
+**Limits.** Owner usability acceptance is not given. [Record](student-results-cleanup-20261109.md).
+
 **2026-11-09 — Student navigation shell clean-up is live; production QA 13/13.**
 - [PR447](https://github.com/johnvanesyan-arch/HaiEdu/pull/447), released at `51a2e0a`, is Phase 3 of the 7 November student design review (S1–S5, fresh audit), approved by John.
 - **Phone menu:** when it needs two rows, each link puts its icon beside the full label (12 px text): 157 → 109 px. It stays fixed at 390 × 844, 390 × 667, 360 × 640 and 320 × 568; before, 667 px phones exceeded BF-10's 20% limit and the menu moved into the page flow. BF-10's fallbacks are unchanged.

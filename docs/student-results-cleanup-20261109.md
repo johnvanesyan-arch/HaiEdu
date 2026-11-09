@@ -76,4 +76,9 @@ None of these changes. No script reads the history card contents, the provenance
 - the saved-Practice-cards test no longer opens the removed fold-out and checks the Mastery score appears once;
 - the 200% provenance test now checks that the IDs are absent while the page stays contained.
 
-**Owner usability acceptance:** not given. **Live production check:** after merge.
+**Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR449 merged at `f7ba460`, after John's «Yes merge it». Main was unchanged and no workflow was running.
+- **`f7ba460`: 13/13 suites.** Sprint 14 authenticated action QA was first in the queue. Its first attempt stopped in the release wait during the deploy switch-over («Production browser manifest does not match the reviewed source»), before any check ran, and it passed 206/206 on re-run. The other twelve suites passed on the first attempt, including Chapters II–VI and English Units 1–3, which read the mode cards, the session-history heading and the Mastery scope note on the course page.
