@@ -26,6 +26,15 @@ export function workStateAttribute(source, state) {
   return bucket ? ` data-work-state="${bucket}"` : '';
 }
 
+// The count reads « · n» as text; the separator is its own span so phones can put the
+// number under the label (16.5B review, Phase 2d).
+export function writeWorkCount(node, text) {
+  node.textContent = '';
+  if (!text) return;
+  const separator = document.createElement('span');
+  separator.className = 'student-work-sep'; separator.textContent = ' · ';
+  node.append(separator, text);
+}
 export function workToolbarMarkup() {
   return `<section class="student-work-toolbar" aria-label="Աշխատանքների ցուցակի կառավարում"><div class="student-work-filter" role="group" aria-label="Ցույց տալ ըստ վիճակի">${workFilters.map(([key, label], index) => `<button type="button" data-work-filter="${key}" aria-pressed="${index === 0}"><span>${label}</span><span class="student-work-count" data-work-count="${key}"></span></button>`).join('')}</div><button type="button" class="ghost student-work-refresh" data-work-refresh>Թարմացնել</button></section>`;
 }
@@ -48,7 +57,7 @@ export function mountWorkHub({ toolbar, scope, sources, refresh }) {
     const more = [...reports.values()].some(r => r.hasMore);
     for (const [key] of workFilters) {
       const count = toolbar.querySelector(`[data-work-count="${key}"]`);
-      count.textContent = known ? ` · ${scope.querySelectorAll(`[data-work-state="${key}"]`).length}${more ? '+' : ''}` : '';
+      writeWorkCount(count, known ? `${scope.querySelectorAll(`[data-work-state="${key}"]`).length}${more ? '+' : ''}` : '');
     }
     for (const button of toolbar.querySelectorAll('[data-work-filter]')) button.setAttribute('aria-pressed', String(button.dataset.workFilter === filter));
   }
