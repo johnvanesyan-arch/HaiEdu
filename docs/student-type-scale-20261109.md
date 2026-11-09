@@ -67,4 +67,25 @@ No production script reads font sizes, weights or radii. The Mobile suite only s
   - **Home, Courses and My work** at 390 and 1280 px: one page-title size, one section size, card headings 18 px, corners within 8/12/16 px/pill, weights within 400/600/700.
   - **The five course tabs and the learning player:** the same checks, with the course phone title at 20 px.
 - **Existing readability regressions pass unchanged**, including history at 200% text, the BF-10 phone menu and Mastery rules at 200%.
-- **Owner usability acceptance:** not given. **Live production check:** after merge.
+- **Owner usability acceptance:** not given.
+
+## Release and production verification (9 November 2026)
+
+**PR CI.** `role-layout-browser` failed once in `supplementary-resources` at 360 px with 200% text, an overflow of the resource library page. It passed on re-run and five local runs.
+- It had not failed in the previous 40 CI runs.
+- The page measures identically on main and the branch (no overflow).
+- It is recorded as a probable timing flake: the test resizes and measures before the phone menu settles.
+
+**Release.** PR451 merged at `bd65885`.
+- Vercel built it in seconds but did not assign `www.haiedu.am`/`haiedu.am` for over 15 minutes. All 12 waiting suites were cancelled, and with John's approval the build was promoted manually; the domains moved at 16:48:40 UTC.
+- The following merge (`77b8b08`) switched on its own after about 7 minutes.
+- John confirmed «Auto-assign Custom Production Domains» is enabled. The cause is presumed to be a slow domain assignment on Vercel's side; it is not confirmed.
+
+**QA on `bd65885`: 12/13.**
+- English Unit 3 first stopped in the release wait (production not yet switched) and passed on re-run.
+- Chapter III failed 29/30 twice. The designated School A QA learner had completed the Chapter III diagnostic (16/16) and a practice session (8/8) by hand on 9 November, 19:03–19:17 Asia/Yerevan, and the suite required an incomplete baseline.
+- No production script reads anything this change touches.
+
+**QA after the Chapter III QA fix (PR452, `77b8b08`, same student pages): all 10 triggered suites passed.**
+- Chapter III passed 123/123, including the completed-diagnostic browser branch on its first run.
+- Mobile passed on re-run. A server slowdown (8–16 s responses) stopped its first isolation step before the negative controls.

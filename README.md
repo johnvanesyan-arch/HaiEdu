@@ -1,5 +1,10 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student type and shape scale is live; the 7 November student design review is complete.**
+- **What changed:** one size per heading level on student pages, four corner sizes and three font weights. Teacher and staff pages are unchanged.
+- **Production QA:** Phase 5 at `bd65885` 12/13. Chapter III failed only because the School A QA learner completed its diagnostic by hand. After the QA-only Chapter III fix ([PR452](https://github.com/johnvanesyan-arch/HaiEdu/pull/452)), all 10 triggered suites passed at `77b8b08`, including Chapter III 123/123.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-type-scale-20261109.md).
+
 **2026-11-09 — Student results presentation is live.**
 - **What changed:**
   - skill bars take the colour of the readiness status;
