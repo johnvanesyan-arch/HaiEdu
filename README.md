@@ -1,5 +1,15 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student results presentation is live.**
+- **What changed:**
+  - skill bars take the colour of the readiness status;
+  - phone Progress rows are compact;
+  - results drop unassessed and repeated lines and internal IDs;
+  - Progress folds its explanations;
+  - skills show names without internal codes.
+- **Production QA:** 13/13 on `f7ba460`.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-results-cleanup-20261109.md).
+
 **2026-11-09 — Student navigation shell clean-up is live.**
 - **What changed:**
   - the phone menu is 109 px instead of 157 px, with the icon beside each full label, and stays at the bottom down to 320 × 568;
