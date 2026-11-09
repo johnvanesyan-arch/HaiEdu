@@ -197,3 +197,14 @@ test('Progress drops the current-work card; every tab keeps the section links',a
     assert.deepEqual(errors,[]);
   }
 });
+
+// 16.5B review B7: the unit a student opens becomes the one Home reopens on.
+test('opening a unit records it as this account\'s last unit for Home, and Home reopens there',async t=>{
+  const {page,errors}=await course(t,{unit:10});
+  assert.deepEqual(JSON.parse(await page.evaluate(()=>localStorage.getItem('haiedu.lastLearningSelection'))),{userId:id(90),enrollmentId:id(6),curriculumReleaseId:id(7),unitId:id(10)});
+  await page.goto(origin+'/index.html');await page.locator('.student-continue').waitFor();
+  assert.equal(await page.locator('#studentUnitSelect').inputValue(),id(6)+':'+id(7)+':'+id(10));
+  assert.equal(new URL(page.url()).searchParams.get('unit'),id(10));
+  assert.equal(await noLearningWrites(page),false);
+  assert.deepEqual(errors,[]);
+});

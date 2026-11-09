@@ -416,3 +416,51 @@ test('Home and Courses put the join link after the course list; cards show the c
     assert.deepEqual(errors,[]);
   }
 });
+
+// 16.5B review B7: Home reopens on the unit this account last opened.
+const remember=(page,record)=>page.evaluate(r=>localStorage.setItem('haiedu.lastLearningSelection',JSON.stringify(r)),record);
+const dashboardReads=page=>page.evaluate(()=>window.__homeFixture.calls.filter(c=>c.name==='get-student-dashboard'&&!c.body.navigation).map(c=>c.body));
+test('Home reopens on the unit this account last chose, with one dashboard read and no start',async t=>{
+  const {page,errors}=await fixture(t);
+  await choose(page,1,4,5,20);await page.locator('.student-continue').waitFor();
+  assert.deepEqual(JSON.parse(await page.evaluate(()=>localStorage.getItem('haiedu.lastLearningSelection'))),{userId:id(90),enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(5)});
+  await page.goto(origin+'/index.html');await page.locator('.student-continue').waitFor();
+  assert.equal(await page.locator('#studentCourseSelect').inputValue(),id(1)+':'+id(4));
+  assert.equal(await page.locator('#studentUnitSelect').inputValue(),id(1)+':'+id(20)+':'+id(5));
+  assert.deepEqual(await dashboardReads(page),[{enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(5)}]);
+  const url=new URL(page.url());assert.equal(url.searchParams.get('unit'),id(5));assert.equal(url.searchParams.has('action'),false);
+  assert.match(await page.locator('#mySubjects .amp-subject-card.is-selected').innerText(),/Ֆիզիկա/);
+  assert.equal(await page.evaluate(()=>window.__homeFixture.calls.some(c=>c.name==='start-learning-session')),false);
+  assert.deepEqual(errors,[]);
+});
+test('Home ignores a remembered unit from another account, a revoked unit or broken storage',async t=>{
+  const {page,errors}=await fixture(t);
+  for(const record of [{userId:id(91),enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(5)},{userId:id(90),enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(99)},'{broken']){
+    await page.evaluate(r=>localStorage.setItem('haiedu.lastLearningSelection',typeof r==='string'?r:JSON.stringify(r)),record);
+    await page.goto(origin+'/index.html');await page.locator('#studentCourseSelect').waitFor();
+    await page.getByText('Ո՞ր բաժնից շարունակենք',{exact:true}).waitFor();
+    assert.equal(await page.locator('#studentCourseSelect').inputValue(),'');
+    assert.deepEqual(await dashboardReads(page),[]);
+  }
+  assert.deepEqual(errors,[]);
+});
+test('an explicit link selection wins over the remembered unit and becomes the new one',async t=>{
+  const {page,errors}=await fixture(t);
+  await remember(page,{userId:id(90),enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(5)});
+  const params=new URLSearchParams({enrollment:id(6),release:id(7),unit:id(8)});
+  await page.goto(origin+'/index.html?'+params);await page.locator('.student-continue').waitFor();
+  assert.equal(await page.locator('#studentUnitSelect').inputValue(),id(6)+':'+id(7)+':'+id(8));
+  assert.deepEqual(await dashboardReads(page),[{enrollmentId:id(6),curriculumReleaseId:id(7),unitId:id(8)}]);
+  assert.equal(JSON.parse(await page.evaluate(()=>localStorage.getItem('haiedu.lastLearningSelection'))).unitId,id(8));
+  assert.deepEqual(errors,[]);
+});
+test('Courses and My work do not apply the remembered unit; signing out forgets it',async t=>{
+  const {page,errors}=await fixture(t,{view:'courses'});
+  await remember(page,{userId:id(90),enrollmentId:id(1),curriculumReleaseId:id(20),unitId:id(5)});
+  await page.goto(origin+'/index.html?view=courses');await page.locator('.amp-subject-card').first().waitFor();
+  assert.equal(new URL(page.url()).searchParams.has('unit'),false);
+  assert.deepEqual(await dashboardReads(page),[]);
+  await page.evaluate(()=>window.__client.auth.signOut());
+  await page.waitForFunction(()=>localStorage.getItem('haiedu.lastLearningSelection')===null);
+  assert.deepEqual(errors,[]);
+});

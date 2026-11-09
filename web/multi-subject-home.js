@@ -2,7 +2,7 @@ import {mountStudentTeacherTasks} from './student-teacher-tasks.mjs';
 import {mountStudentWritingAssignments} from './writing-assignments.mjs';
 import { createClient } from './supabase-browser.bundle.mjs';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
-import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, escapeHtml as esc } from './learning-navigation.mjs';
+import { groupLearningContexts, courseLabel, courseKey, contextKey, contextHref, sameContext, readLearningSelection, studentHomeHref, rememberLearningSelection, recallLearningSelection, forgetLearningSelection, escapeHtml as esc } from './learning-navigation.mjs';
 import { subjectArtwork } from './subject-visuals.mjs';
 import { studentIcon } from './student-visuals.mjs';
 import { homeLearningSummary, homeLearningPath } from './student-home-model.mjs';
@@ -83,6 +83,7 @@ function mountWorkSections(target){
   writingAssignmentView=mountStudentWritingAssignments({root:target.querySelector('#studentWritingAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('writing',state)});
   assignmentView=mountStudentResourceAssignments({root:target.querySelector('#studentResourceAssignments'),client:supabase,hubRefresh:true,onRender:state=>workHub?.report('material',state)});
 }
+function readSelectionSafely() { try { return readLearningSelection(location.search); } catch { return {}; } }
 function syncSelectionUrl() {
   const url = new URL(studentHomeHref(view, selected), location.href);
   url.hash = location.hash;
@@ -179,12 +180,19 @@ function updateAccess(detail = {}) {
     root.innerHTML = state('Ձեր ուսուցումը սկսվում է այստեղ', 'Հասանելի դասընթացներ դեռ չկան։ Միացեք ձեր ուսուցչի դասարանին տրամադրված կոդով կամ հրավերով։') + '<a class="button-link" href="./join.html">Միանալ դասարանին</a>';
     return;
   }
-  let selection;
-  try { selection = readLearningSelection(location.search); } catch { selection = {}; }
+  const selection = readSelectionSafely();
   selected = contexts.find(context => sameContext(context, selection)) ?? null;
+  let recalled = false;
   if (!selection && contexts.length === 1) selected = contexts[0];
+  else if (!selection && view === 'home') {
+    // B7: reopen the unit this account last opened, if it is still one of its units.
+    selected = contexts.find(context => sameContext(context, recallLearningSelection(actorId))) ?? null;
+    recalled = Boolean(selected);
+  }
+  if (selection && selected) rememberLearningSelection(actorId, selected);
   requestedCourse = selected ? courseKey(selected) : courses.length === 1 ? courses[0].key : '';
   render();
+  if (recalled) syncSelectionUrl();
 }
 ensureRoot();
 root?.addEventListener('change', event => {
@@ -197,6 +205,7 @@ root?.addEventListener('change', event => {
   } else if (event.target.id === 'studentUnitSelect') {
     selected = contexts.find(item => contextKey(item) === event.target.value && courseKey(item) === requestedCourse) ?? null;
   } else return;
+  if (selected) rememberLearningSelection(actorId, selected);
   syncSelectionUrl(); void loadSelected();
 });
 root?.addEventListener('click', event => {
@@ -205,7 +214,15 @@ root?.addEventListener('click', event => {
 });
 supabase.auth.onAuthStateChange((event, session) => {
   const next = session?.user?.id ?? null;
-  if (event === 'INITIAL_SESSION') { actorId = next; return; }
+  if (event === 'INITIAL_SESSION') {
+    actorId = next;
+    // Course access can arrive before the session event; remember a linked unit, or apply
+    // the remembered one, now that the account is known.
+    if (view === 'home' && selected && readSelectionSafely()) rememberLearningSelection(actorId, selected);
+    if (view === 'home' && !selected && contexts.length > 1 && Array.isArray(window.HaiEduCourseAccess?.contexts)) { accessSignature = null; updateAccess(window.HaiEduCourseAccess); }
+    return;
+  }
+  if (event === 'SIGNED_OUT') forgetLearningSelection();
   if (next === actorId && event !== 'SIGNED_OUT') return;
   actorId = next; deferredTaskAccess=null; ++epoch; ++feedbackTicket; clearAssignments(); accessSignature = null; selected = null; contexts = []; courses = [];
   if (root) root.innerHTML = state('Դասընթացները բեռնվում են…', 'Ստուգում ենք հաշվի հասանելիությունը։');

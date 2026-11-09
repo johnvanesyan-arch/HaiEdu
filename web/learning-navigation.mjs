@@ -10,6 +10,26 @@ export function readLearningSelection(search) {
   }
   return result;
 }
+// 16.5B review B7: Home reopens on the unit this account last opened. Only the three
+// selection IDs and the account ID are kept, in this browser; callers must still match
+// the record against the student's current learning contexts.
+const lastSelectionKey = 'haiedu.lastLearningSelection';
+export function rememberLearningSelection(userId, context) {
+  if (!uuid(userId) || !Object.values(keys).every(key => uuid(context?.[key]))) return;
+  const record = { userId };
+  for (const field of Object.values(keys)) record[field] = context[field];
+  try { localStorage.setItem(lastSelectionKey, JSON.stringify(record)); } catch {}
+}
+export function recallLearningSelection(userId) {
+  if (!uuid(userId)) return null;
+  let record;
+  try { record = JSON.parse(localStorage.getItem(lastSelectionKey)); } catch { return null; }
+  if (record?.userId !== userId || !Object.values(keys).every(key => uuid(record[key]))) return null;
+  return Object.fromEntries(Object.values(keys).map(field => [field, record[field]]));
+}
+export function forgetLearningSelection() {
+  try { localStorage.removeItem(lastSelectionKey); } catch {}
+}
 export const contextKey = c => [c.enrollmentId, c.curriculumReleaseId, c.unitId].join(':');
 export const sameContext = (a, b) => Boolean(a && b && contextKey(a) === contextKey(b));
 export const courseKey = c => [c.enrollmentId, c.subjectProgramId].join(':');

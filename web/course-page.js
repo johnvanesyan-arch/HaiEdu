@@ -4,7 +4,7 @@ import {courseHero,modeIcon,readinessBadge,readinessSummary,skillEvidence} from 
 import {assessmentRules,assessmentSkillRules,assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
 import { createClient } from './supabase-browser.bundle.mjs';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
-import { readLearningSelection, sameContext, sameCourse, contextHref, studentHomeHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
+import { readLearningSelection, sameContext, sameCourse, contextHref, studentHomeHref, courseLabel, rememberLearningSelection, escapeHtml as esc } from './learning-navigation.mjs';
 import { registeredExtensionHref } from './learning-extensions.mjs';
 import { mountLearningPlayer } from './learning-player.mjs';
 import { mountWrittenWork } from './written-work.mjs';
@@ -74,6 +74,7 @@ async function load() {
     const context = navigation?.contexts?.find(c => sameContext(c,selection));
     if (accessError || !context) throw new Error('Ընտրված դասընթացն այս պահին հասանելի չէ։');
     publishLearnerAccess(navigation);
+    rememberLearningSelection(accountId, context);
     collectionNavigation(tab, context);
     const { data, error } = await supabase.functions.invoke('get-student-dashboard',{body:selection});
     if (!valid()) return;
