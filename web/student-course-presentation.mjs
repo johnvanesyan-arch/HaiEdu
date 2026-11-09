@@ -17,25 +17,32 @@ export function readinessSummary(data) {
  const ready=required.filter(s=>s.ready===true).length;
  return `<div class="student-course-readiness"><strong>${ready} / ${required.length}</strong><span>Պահանջվող հմտություններ՝ պատրաստ ստուգման</span><meter min="0" max="${required.length}" value="${ready}" aria-label="Պահանջվող հմտությունների պատրաստություն">${ready}/${required.length}</meter></div>`;
 }
-export function courseHero(tab, data) {
+// summary: optional markup that replaces the generic description (Progress puts the
+// learner's baseline result there instead of a separate card; Phase 4, R5).
+export function courseHero(tab, data, summary = '') {
  const [title,description,icon] = views[tab] || views.course;
  const evidence=['course','progress'].includes(tab) ? readinessSummary(data) : '';
- return `<section class="student-course-hero" aria-labelledby="studentViewTitle"><div>${tab === 'course' ? `<span class="student-course-subject-art">${subjectArtwork(data.context?.subjectCode)}</span>` : `<span class="student-feature-icon">${studentIcon(icon)}</span>`}<h2 id="studentViewTitle">${title}</h2><p>${description}</p></div>${evidence}</section>`;
+ return `<section class="student-course-hero" data-hero-tab="${esc(tab)}" aria-labelledby="studentViewTitle"><div>${tab === 'course' ? `<span class="student-course-subject-art">${subjectArtwork(data.context?.subjectCode)}</span>` : `<span class="student-feature-icon">${studentIcon(icon)}</span>`}<h2 id="studentViewTitle">${title}</h2>${summary ? `<div class="student-course-hero-summary">${summary}</div>` : `<p>${description}</p>`}</div>${evidence}</section>`;
 }
 export function modeIcon(mode) {
  return `<span class="student-feature-icon">${studentIcon(({diagnostic:'assessment',practice:'practice',mastery_check:'progress',chapter_review:'review'})[mode])}</span>`;
 }
 // "Too few answers yet" mirrors the server's own mastery status (insufficient_evidence);
 // the browser applies no answer-count threshold of its own.
-export function readinessBadge(skill) {
+function readinessState(skill) {
  const few=skill.ready!==true && skill.mastery?.status==='insufficient_evidence';
- const state=skill.ready===true?'ready':few?'insufficient':skill.ready===false?'developing':'unknown';
- const label=skill.ready===true?'Պատրաստ է':few?'Դեռ քիչ պատասխաններ':skill.ready===false?'Ամրապնդում է պետք':'Տվյալը դեռ չկա';
+ return skill.ready===true?'ready':few?'insufficient':skill.ready===false?'developing':'unknown';
+}
+export function readinessBadge(skill) {
+ const state=readinessState(skill);
+ const label={ready:'Պատրաստ է',insufficient:'Դեռ քիչ պատասխաններ',developing:'Ամրապնդում է պետք',unknown:'Տվյալը դեռ չկա'}[state];
  return `<span class="student-evidence-badge" data-readiness="${state}">${label}</span>`;
 }
 export function skillEvidence(skill) {
  if(!skill.mastery) return 'Տվյալը հասանելի չէ';
  const {percent,evidenceCount}=skill.mastery;
- const bar=Number.isFinite(percent) && percent>=0 && percent<=100 ? `<meter min="0" max="100" value="${percent}" aria-label="${esc(skill.nameHy)}՝ վարժանքի ցուցանիշ">${percent}%</meter>` : '';
+ // 16.5B review, Phase 4 (R1): the bar takes the colour of the server's readiness status,
+ // because readiness is not a percentage threshold the learner could read off the bar.
+ const bar=Number.isFinite(percent) && percent>=0 && percent<=100 ? `<meter min="0" max="100" value="${percent}" data-evidence-state="${readinessState(skill)}" aria-label="${esc(skill.nameHy)}՝ վարժանքի ցուցանիշ">${percent}%</meter>` : '';
  return `<span class="student-skill-evidence">${esc(percent)}% · ${esc(evidenceCount)} պատասխան${bar}</span>`;
 }

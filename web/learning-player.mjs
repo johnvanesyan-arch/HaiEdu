@@ -35,7 +35,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     const request=++serial;
     const data=refreshed??await invoke('get-session-item',{sessionId:session.id});
     if(!valid() || request!==serial)return;
-    if(data.complete){ current=null;root.innerHTML=`<h2>Աշխատանքն ավարտված է</h2>${assessmentResultMarkup(data.assessmentResult) || `<p>${data.summary.correct}/${data.summary.answered} · ${data.summary.percent}%</p>`}<button type="button">Թարմացնել արդյունքները</button>`;root.querySelector('button').onclick=onComplete;return; }
+    if(data.complete){ current=null;root.innerHTML=`<h2>Աշխատանքն ավարտված է</h2>${assessmentResultMarkup(data.assessmentResult,{hideUnassessed:true}) || `<p>${data.summary.correct}/${data.summary.answered} · ${data.summary.percent}%</p>`}<button type="button">Թարմացնել արդյունքները</button>`;root.querySelector('button').onclick=onComplete;return; }
     current=data;started=performance.now();
     data.hintLevel=Number(data.remediation?.hintLevelUsed??0);
     const type=data.item.type;
