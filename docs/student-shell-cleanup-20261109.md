@@ -47,4 +47,12 @@ The new layout passes it at every size above. The existing BF-10 regression also
 
 **Bug found and fixed during development.** A layout pass measured words while the previous pass's inline styling was still applied. At 320 px with 200% text, this let the in-flow menu keep its icons and overflow by 9 px. The pass now measures in the stacked state first, as before. The BF-10 enlarged-text regression covers it.
 
-**Owner usability acceptance:** not given. **Live production check:** after merge.
+**Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR447 merged at `51a2e0a`. Before merging, main was unchanged since PR446 and no workflow was running. John said «you do it» without confirming the Codex question, and Codex activity cannot be seen from this session.
+- **`51a2e0a`: 13/13 suites.**
+  - **Mobile** passed on the live menu for both schools, as student and as teacher, at 390 and 430 px.
+  - **Chapter V** was first in the queue. Its first attempt stopped in the release wait during the deploy switch-over («Production browser manifest does not match the reviewed source»), before any check ran. It passed 191/191 on re-run.
+  - **The other eleven suites** passed on the first attempt.
