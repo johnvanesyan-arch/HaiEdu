@@ -157,10 +157,10 @@ function syncHomeHeader(authenticated) {
   // Home greets the student by the display name from their own profile (role check request).
   const name = window.HaiEduStudentProfile?.displayName;
   if (heading) heading.textContent = !authenticated ? "Ուսուցման հարթակ" : titles[view] || (name ? `Բարև, ${name}` : "Գլխավոր");
+  // 16.5B review, Phase 3 (S2): signed-in pages drop the generic tagline under the title.
   if (subtitle) {
-    subtitle.textContent = !authenticated
-      ? "Ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք ձեր առկա հաշվով։"
-      : "Ձեր ուսուցումը՝ քայլ առ քայլ։";
+    subtitle.textContent = !authenticated ? "Ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք ձեր առկա հաշվով։" : "";
+    subtitle.hidden = authenticated;
   }
 }
 
