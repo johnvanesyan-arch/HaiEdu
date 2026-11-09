@@ -499,3 +499,49 @@ test('My work course cards are compact and keep the writing hooks used by produc
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   assert.deepEqual(errors,[]);
 });
+
+// 16.5B review, Phase 3 — navigation shell.
+test('phone menu: two rows with the icon beside each full label stay fixed and within 20% of small screens',async t=>{
+  const {mobileNavigationLayout}=await import('../../scripts/mobile-navigation-layout.mjs');
+  const {page,errors}=await fixture(t,{width:390});
+  for(const [width,height] of [[390,844],[390,667],[360,640],[320,568]]){
+    await page.setViewportSize({width,height});
+    await page.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+    const nav=await page.locator('.amp-mobile-nav').evaluate(el=>({layout:el.dataset.layout,inline:el.dataset.inline,position:getComputedStyle(el).position,height:el.getBoundingClientRect().height,
+      links:[...el.querySelectorAll('a')].map(a=>{const i=a.firstElementChild.getBoundingClientRect(),l=a.lastElementChild.getBoundingClientRect();return {iconBeside:i.right<=l.left+1&&Math.abs((i.top+i.height/2)-(l.top+l.height/2))<8,font:parseFloat(getComputedStyle(a).fontSize),h:a.getBoundingClientRect().height};})}));
+    assert.equal(nav.layout,'fixed',`${width}x${height}`);assert.equal(nav.position,'fixed');assert.equal(nav.inline,'true');
+    assert.ok(nav.height<=120&&nav.height<=height*.2,`${width}x${height}: ${nav.height}`);
+    assert.ok(nav.links.every(l=>l.iconBeside&&l.font>=12&&l.h>=44),JSON.stringify(nav.links));
+    assert.deepEqual((await page.evaluate(mobileNavigationLayout)).errors,[],`${width}x${height}`);
+  }
+  assert.deepEqual(errors,[]);
+});
+test('signed-in Home, Courses and My work drop the generic tagline under the title',async t=>{
+  for(const view of ['','courses','work']){
+    const {page,errors}=await fixture(t,{view,width:390});
+    await expect(page.locator('main.shell > .topbar h1')).not.toHaveText('');
+    assert.equal(await page.locator('main.shell > .topbar p.subtle').isVisible(),false);
+    assert.equal((await page.locator('main.shell > .topbar').innerText()).includes('քայլ առ քայլ'),false);
+    assert.deepEqual(errors,[]);
+  }
+});
+test('desktop header does not repeat sign-out and account; the sidebar keeps both on one line each',async t=>{
+  for(const width of [1101,1280]){
+    const {page,errors}=await fixture(t,{width});
+    assert.equal(await page.locator('main.shell > .topbar #signOutBtn').isVisible(),false);
+    assert.equal(await page.locator('main.shell > .topbar .student-account-link').isVisible(),false);
+    await expect(page.locator('.amp-side-nav [data-student-signout]')).toBeVisible();
+    await expect(page.locator('.amp-side-nav a[href*="privacy"]').first()).toBeVisible();
+    const heights=await page.locator('.amp-side-nav .amp-nav-link').evaluateAll(es=>es.map(e=>Math.round(e.getBoundingClientRect().height)));
+    assert.equal(heights.length,4);assert.equal(new Set(heights).size,1,`${width}: ${heights}`);
+    assert.deepEqual(errors,[]);
+  }
+});
+test('tablet header keeps sign-out and account on the title row',async t=>{
+  const {page,errors}=await fixture(t,{width:768});
+  const [title,actions,bar]=await Promise.all([page.locator('main.shell > .topbar h1').boundingBox(),page.locator('main.shell > .topbar > .row').boundingBox(),page.locator('main.shell > .topbar').boundingBox()]);
+  assert.ok(actions.y<title.y+title.height&&actions.x>title.x+title.width-1,JSON.stringify({title,actions}));
+  assert.ok(bar.height<=110,`header ${bar.height}`);
+  await expect(page.locator('main.shell > .topbar #signOutBtn')).toBeVisible();
+  assert.deepEqual(errors,[]);
+});

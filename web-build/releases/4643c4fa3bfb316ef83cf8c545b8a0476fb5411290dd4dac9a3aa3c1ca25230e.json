@@ -1,0 +1,2838 @@
+{
+  "schemaVersion": 1,
+  "buildId": "4643c4fa3bfb316ef83cf8c545b8a0476fb5411290dd4dac9a3aa3c1ca25230e",
+  "inputs": {
+    "node_modules/@supabase/auth-js/dist/module/AuthAdminApi.js": "f18bf53f4c43d232f849f9000c1f61bdd43eee7bceb42f829339c5053b6eee41",
+    "node_modules/@supabase/auth-js/dist/module/AuthClient.js": "684b46b2be095e71fe7546e72f6791753f1cae9ebdaacd167b4905a5b7a87903",
+    "node_modules/@supabase/auth-js/dist/module/GoTrueAdminApi.js": "9c8cc87d4c27e74b5d20d0921baf54f718bf9c8a22cd39f5f0280ffbcfcc38a5",
+    "node_modules/@supabase/auth-js/dist/module/GoTrueClient.js": "172daa9cc0a76073d0c2baa995a02f5ddbdc538bb6ac95711f4ae99037a8aebe",
+    "node_modules/@supabase/auth-js/dist/module/index.js": "9be5694df0e46b33d4f3b7bb8bad0ecef05ce343a5734376d6b4c93a8233eba7",
+    "node_modules/@supabase/auth-js/dist/module/lib/base64url.js": "2c04328375ce233068e3defa27649a5991f1f1686753e4e4649a9586f30aac0f",
+    "node_modules/@supabase/auth-js/dist/module/lib/constants.js": "8692f4223b2764c186131a58dfeaf6a024785bed84cbf63e9c73df2dd79cc274",
+    "node_modules/@supabase/auth-js/dist/module/lib/errors.js": "fcbfa357dab595c78a4e934b828808e59fe3aded885f90240e349d9fcfb76e59",
+    "node_modules/@supabase/auth-js/dist/module/lib/fetch.js": "a2ad61127a66873e5aa411e599de32deef155e3cb0daaefc59e7a6a65964edde",
+    "node_modules/@supabase/auth-js/dist/module/lib/helpers.js": "bb6677e71a904ff17ec0e047489e990617a318a8c59cbb3d71ac1936eb4a816a",
+    "node_modules/@supabase/auth-js/dist/module/lib/local-storage.js": "b43bf10da0dbcc5bc91c902c05624b82fc640de82555026c40d03e85549d9f13",
+    "node_modules/@supabase/auth-js/dist/module/lib/locks.js": "dff51f514d51045d15216c9c76239290b15a646f12e34449234960622e0366ff",
+    "node_modules/@supabase/auth-js/dist/module/lib/polyfills.js": "cd45893a74c685ad8267585114c890cd2515ef584fa79ffc19b134a4333f0544",
+    "node_modules/@supabase/auth-js/dist/module/lib/types.js": "f0e120b7f867b9adb9d003e332cbc5cb9396001c603e86e2e17db598d64ff446",
+    "node_modules/@supabase/auth-js/dist/module/lib/version.js": "db7a540456ca1ce3def3f7499496dc40a1e7ece945b43bbb6b3d405e6fc5395f",
+    "node_modules/@supabase/auth-js/dist/module/lib/web3/ethereum.js": "3c8177cf4fe06f5c675778b0bd296fd20d5f313202471f4117e7e43a358a6a47",
+    "node_modules/@supabase/auth-js/dist/module/lib/webauthn.errors.js": "0ee6d345e33a254c30e444d7d2466a410519999b7128a83c43c79ab2c1851516",
+    "node_modules/@supabase/auth-js/dist/module/lib/webauthn.js": "816b695280e032e881525ac7c0cc7de52936e7da12e2df25c4e6bf1179946d67",
+    "node_modules/@supabase/functions-js/dist/module/FunctionsClient.js": "1ef163dd6d24f5a1389f55951a6631baa960d76ef16a14a0597e640dc76dff22",
+    "node_modules/@supabase/functions-js/dist/module/helper.js": "b68c1869da88161063d23f7944c71bc1c444229b22bca0680386f4ab33e0c967",
+    "node_modules/@supabase/functions-js/dist/module/index.js": "cbbfe306ef3197b924ce2e7cad93e2271165995cfff05bfba29d16122477235b",
+    "node_modules/@supabase/functions-js/dist/module/types.js": "bb251c280cb70f197775c8e5a66f38246ea2a09e4283ca11f954c557af37fe2e",
+    "node_modules/@supabase/phoenix/priv/static/phoenix.mjs": "6e095ff0168d6005f52e1f27cfa029ac4eb31214545d659847e023ac87e40b0f",
+    "node_modules/@supabase/postgrest-js/dist/index.mjs": "1bed557508b6bc15f77eb4c78bc6fdd620abdf7d1ad39b670df92d83547cc538",
+    "node_modules/@supabase/realtime-js/dist/module/index.js": "0615b93f9c384133d7a703749eb4c8477f25adaea99f4eefc4eec73b2bfa1aa4",
+    "node_modules/@supabase/realtime-js/dist/module/lib/constants.js": "9fb3a8406936da59b8b7867bded526c4e50319e4ef398b0f19059837d338491f",
+    "node_modules/@supabase/realtime-js/dist/module/lib/normalizeChannelError.js": "6a80956a048f351557bf4372a13837b67e214af5a3570e67dcc5f23663b4ab2b",
+    "node_modules/@supabase/realtime-js/dist/module/lib/serializer.js": "d4b778ad571f17005d83dde8b7c2814bf51e87663dd59f8bad64b4f192b6db77",
+    "node_modules/@supabase/realtime-js/dist/module/lib/transformers.js": "a907c21984ed100e56cac3b952e32faf108f4f5efe23dfbcdd3fb63a76581d74",
+    "node_modules/@supabase/realtime-js/dist/module/lib/version.js": "db7a540456ca1ce3def3f7499496dc40a1e7ece945b43bbb6b3d405e6fc5395f",
+    "node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js": "629232bc6bd2f354504f383dbce81de37c5544bb4fcb7835b865d697ff7bdbb0",
+    "node_modules/@supabase/realtime-js/dist/module/phoenix/channelAdapter.js": "fb11d798ed7550d8cecba3d8295de1a5ddb88dc45429605346e7581bf2866896",
+    "node_modules/@supabase/realtime-js/dist/module/phoenix/presenceAdapter.js": "5bf404713b44ae899c94c7b346afbc7cbc454ad51f9d91b944a9adc00baaeede",
+    "node_modules/@supabase/realtime-js/dist/module/phoenix/socketAdapter.js": "bf7df4962367e9a314391b4df7b51e9ffef68eb79da6e9445705ed76ed2f483a",
+    "node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js": "0c0a61c4aca65c5cfaa03ccee3a25e94941fb7aff8c8271a7908feb0ee3d2244",
+    "node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js": "9f1e90b797ebbde54cf14b3641b2d8c5a019229b3c26eec128c020041feb47b3",
+    "node_modules/@supabase/realtime-js/dist/module/RealtimePostgresFilterBuilder.js": "e05a58149d9cc0f9ac8fb1a7915db7e13d7c8e5a4988a1b7ad8a7b328a797050",
+    "node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js": "462bb638ab2ad7ee41b71cccf64a35c9c3f3610003c80fb831b1758d84742e11",
+    "node_modules/@supabase/storage-js/dist/index.mjs": "f47886ecf37940ad574bce4db96f518be010b17bf39ddde57a48f6cc237ee4c4",
+    "node_modules/@supabase/supabase-js/dist/index.mjs": "5ff2a352cefac11d3e93e29d3c8396e7bea471323cb3cd42fe612adb604aa228",
+    "node_modules/@supabase/supabase-js/dist/tracingRegistry.mjs": "1682402eb4078c171f9b70e9a8e52c17eeefee593d94b167059c354ba74eac8f",
+    "node_modules/iceberg-js/dist/index.mjs": "15ed0530ab67a7bfb541eb2cea764023c159312b7f1888e42c029840fafd381d",
+    "node_modules/tslib/tslib.es6.mjs": "0929993220938091ede542d688b0fdb87dad99a7e77678e1983c32d18a503339",
+    "package-lock.json": "d5e19f2e53d408a2c1c441187e1622e53edd30c36c8bbdf7da31a21d4449f94a",
+    "package.json": "bf324f41ea03e5396820d7d97fd9cffefefd5663c5bde29b562d2aa24f94c688",
+    "scripts/build-web-assets.mjs": "b032cc4e67c0e4ee73e48fbdbed52d527a6bfcc2c68944f4069ac3dc4eee5aa1",
+    "web/account-access.css": "7fbcda39deb1ce1ee465a0550b3569ef64dac7af2db4606509aa67cc22dbea2f",
+    "web/account-access.html": "85fc427744754ea0ee94540c279ab55fb0b79ab9e1583a7074023a331f432583",
+    "web/account-access.js": "e4cac3aeaad1b8f4550c7a882c83eb1cab3ce8229472a262e9b3b94e013dca3e",
+    "web/account-roles.js": "80fac1c2fb89129aa06ded469fa52bf35a2701c6271dac30929b80da064af2b5",
+    "web/account-signout.mjs": "78592e50111a56d5f3f4d9272783d2803cce92639cad5d9f5e3166e24cded1eb",
+    "web/admin-security.css": "6b6f3235c5b284fee05d6b065bdcf09d3e54ea6fb7929e0905be179cc3766b66",
+    "web/admin-security.html": "1751e97054c19caa066593f69b6322edf9b4cf6ddffbfb4008f6689bbd12f8ec",
+    "web/admin-security.js": "2ee85f615def695b38286e408f3b4b16fbe4f7e0520e4bb70041007aaf2fb079",
+    "web/admin.css": "02073cdb364998931867ee5986c7ee7fdf5a5ee3227f4589a21c47a655229ad2",
+    "web/admin.html": "bde29f9ef07010b49913acc7d11d61ff2e969f7b4db186810e6ff1f55f95342d",
+    "web/admin.js": "9bb8b2d58a863529ee26858042af1f5e3d39e3fd4474029c178f27334ebb27fe",
+    "web/analytics-provenance.mjs": "c30e16dd10bc795dbefd9a29090e936643a649e6437319901c7b2e6d8bd60b0b",
+    "web/answer-response-recovery.mjs": "c83825b82c134cfff504cf772d37e9ef0224ca686d2eced68b2a4257c9975b78",
+    "web/app.js": "a450a262ccd9d86da196b3f58c5996c3947c9affb74fc91a0e10043b5179d338",
+    "web/archive-browser.mjs": "f1f5fa59915e67423f17ba92dd3e8fedb6e955dd6a444cd7fc0238ea04994bea",
+    "web/arrangement-contract.mjs": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+    "web/arrangement-editor.mjs": "9cfa4fae53ab3f8dd80344d790ec19fb653b59631e56ee8395d2ebe0d10c5e0f",
+    "web/arrangement-ui.mjs": "047bcad2991c83ccebc65f46d5f2d88b8085005bb8e5e882587336908f337723",
+    "web/assessed-audio.mjs": "8d0f09848696e514bc7e57b4f3bffc26fc35ae7ea019d3b34c32a7cde4288a4e",
+    "web/assessment-reporting.mjs": "204486cc63f3702f8effc3d6f11d5b27ce8ad1a9c5a7d52c33a4103c65c75a49",
+    "web/assessment-task.css": "a971aeba0e5b8d16118f8918631e16379c1e3291fb40571ddd61b1d2fff2c8b1",
+    "web/assessment.css": "391ec6a38611f3207d2277cf6c3c8e071c874f7f9643edc19edc70aee67fe5a2",
+    "web/assessment.html": "b726c3f2539852d011efc972d78f02d6fa7a3daac8d0f24a8eb977404d41ac09",
+    "web/assessment.js": "d295264f059d0d7e7ac1091bc4f7244c9256ec5ee302610a19a02e5076d53f84",
+    "web/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f",
+    "web/assets/fonts/noto-sans-armenian-variable.ttf": "0870908d8318435a5daf1cd280ae15063f990cd9ad60f3e94c734ce9e1ffef71",
+    "web/base.css": "6d5a7a0ddaa3e81430bbc238a57ef8c92c2f4114269148ebe0308c90032458f6",
+    "web/class-history.mjs": "ee1cbcf96f0f1ef1c8a8543b52104f2e264e386a7378f4899ee7fd37fa2e5ecc",
+    "web/components.css": "896f44f0242d534f7d95894edb668f736156896dcb081b3a718ab9ba8314164b",
+    "web/config.js": "721242de821877470224c671fc8069c1fbe4ae860f082062e13dae36a61d0eae",
+    "web/content-bank.html": "909370ed610b8d88436af0def50f19bd1bfa9f9ebbdb0d2159be343bd13afb09",
+    "web/content-curriculum-map.js": "8876e6400ea7bd2f830eac2459b55dc8db7845df3a54ad7289b44ced44848423",
+    "web/content-curriculum.css": "864f680a4885cab7c98bce192946366e2b42b9085a267421ea16505dff70ea50",
+    "web/content-curriculum.html": "6cce5453fe2a9d522ba0c3c86eb585d102ae104cf7a64960b23f419827c26683",
+    "web/content-curriculum.js": "ce15b70dc16fa502cbd258cf7022619096937fe51d1af6489ed09ade4cea51c8",
+    "web/content-evidence-page.js": "03f2d070f5cad81c0f7166e1689edc3eb4b8a56ac7b9866ff117e3ce013d5d23",
+    "web/content-evidence.html": "1ee3c9bc71d93f17ffb573d4a1540cbb5749b82174451f4ff89762c3df1b8b14",
+    "web/content-guides.css": "99f254106c4974cc10d139a735a6caed25804f908bb08c979dc5d7a01650817c",
+    "web/content-guides.html": "50490485aa12cc450344cb9d5a7b487eff5a17f8d59bec336471babfdbb0f111",
+    "web/content-guides.js": "03a9add2f2a1cb27da7d1031908937a81a10617c8e8558358c4f614b4b3b2475",
+    "web/content-home.js": "4338a0975a45a7b4b80ab2cd0c569478de61bb30ed76aa9d2625ce6f8ceb8705",
+    "web/content-item.html": "fdb9a851aff7754382aa1f08a9a5bbc298a73d082e00328db482c2024523a1fc",
+    "web/content-list-navigation.mjs": "2af9791869c6cc66de0e610ca3eb72b3d6a72fe9508ab5f5bbed50214181eb87",
+    "web/content-material-mfa.mjs": "c29ef6c0a23e9e5af14df85e63d31c7ca8692d3bb4b43e7978d324eeea89c9b8",
+    "web/content-materials.css": "e3d289cc0192d270eab93bf90b49131aab44024243d15960bad06a66dce2febd",
+    "web/content-materials.html": "2f1d19f9e9d60798957f1fc7593df04b88f64ac0aeb9c3ffa2435412e74421d9",
+    "web/content-materials.js": "967c13372c23779bf84855e19245e59af6df05a84cc433dd47e305fea3e6a0c2",
+    "web/content-misconceptions.css": "484944562c68406b946730e22098577787f048cd02178a7e0be1bc151ca50259",
+    "web/content-misconceptions.html": "4a74daaf29b4b6f0284e829c8621e2d48a94cd5ad2ec354b6c973659ca375670",
+    "web/content-misconceptions.js": "0b6997537d27d99ab7a0d57aa619491111b35b70deffbe98f382aff257b6c464",
+    "web/content-pilot-analytics.css": "19059e279568530457f0fe8797b422a1097f07b919cffba01d2f2d83f7e5c4c2",
+    "web/content-review-resume.mjs": "40e30579a869797fe9a5e4f4ffa844404688964994e9667374ae7e60315531bf",
+    "web/content-review-workflow.js": "0924850f38b8204b53b35e03330e0cadcb2c1d28bd785cab8e6304e39d1ecc28",
+    "web/content-review.html": "a7d8ca7594fb415d375a64d55abece91c397502adb330e3de89a675cec1d0682",
+    "web/content-review.js": "8e1d8f104346f1c346cded747d9705e4f2198fbc3a8dc05ae24108f2c394190f",
+    "web/content-workspace.css": "3d1bb18dd1b9a506b63b2024fe480ffcf81cd1727bc6bc70e68a3b4d421302d1",
+    "web/content-workspace.js": "de647de79e8e7d0554e0102d3efe422f547d87a5eef540d68bde295acf224c9a",
+    "web/content.css": "4dd3aa4497cd4f4f3e8076225fca0f13cda0fc3dfadd12c48ee6d9a7dc14e38d",
+    "web/content.html": "c67f96557deb0dc9ef74c5644abb72869adde5819c1c9b3e5e221ec9f375c81f",
+    "web/content.js": "ea32018a90367917335d5e199e16cadaa82284f4f9d01fb53198a3ed2b80af07",
+    "web/course-gate.js": "4d0d0e153b14adc7cb61b345165d225f4ac7dd740b89fc6ea48fef369fa4906e",
+    "web/course-page.js": "1520b0dff4ed716153ba876bbe058c8d976f5d509114830bdffc5ce273f1391a",
+    "web/course-workspace.css": "8838b94cd16513f955a3f50fd453699af682001c25f22de55acb9a97b95b089e",
+    "web/course.html": "0d6f4af80e87eca0b5cf96b93c2da798152a00d7e9a1ae0284e640a0e2552706",
+    "web/diagnostic.html": "35412a01e531cd817347e1fe981ddcb44bc65b47a57a5fba8ddb1fbd9e8e3410",
+    "web/diagnostic.js": "bff35c66935ceff272aa4e56d91df4e58dbdd47d5adee27ccc45ed630e38b085",
+    "web/forest-tokens.css": "426d3faa86a18ad142aa0ba63b676329df9d99edbbf2248d8129208b9d406e31",
+    "web/home-class.js": "1799cb19d7355c2ec1bf2ee8fa761ff58c6ca13feda47b6ef70aa02804af707a",
+    "web/home.css": "5dc78c59f75cb82bbcb76f1eb8343cf100fccd2d33d3b824db3df7aa30b0d63c",
+    "web/index.html": "f9612f228a32002f63b79255ef818992d34efd083c6d2061dbfca36a8413f5ba",
+    "web/join.html": "8f5c0a5dbbafaaf7225c385b19e3501eb716075081b26747ce5e8831c40d3e47",
+    "web/join.js": "48fe083e6c6c6e51d2c1705a1dddca4dab800ce1ae2842c4348ff183fae52cee",
+    "web/learner-access.mjs": "d6e95103bab7e8082117cf1b01cc4dcef8dcd2ff0ff06d5188ba09b50adc77e4",
+    "web/learning-audio.mjs": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9",
+    "web/learning-extensions.mjs": "c3c161b1d83fe8de6b3c1f61fce1fc5084103df38db9746b4d5a998c97f7fa11",
+    "web/learning-navigation.mjs": "e4b70e1b8bf7c48feb87660e129dc6a81de1670d3fccf073dc28069603ef5441",
+    "web/learning-player.mjs": "2fb6f443beb18638c8b449d17cfa7f335f93b2d3a2cb5a73e43ab92dfa124898",
+    "web/learning-stimulus.mjs": "2c843af3ddf9578dbd1e0fc1be213c5fdc0e67d4edcf9200477be3b67f6b6cbe",
+    "web/learning-task-set.mjs": "9600b680895d668261747d5ce7fcec1b366a179dd1b1d55f5ad7e11e2dae7755",
+    "web/mastery.html": "3860658bef195905f07e02c971cc037d43b6206b16ef60b589d61b8bad58a698",
+    "web/mastery.js": "b2fe3cf5d2448031efc1e1cafa75437b94498d1ce3a1fcc0f2656322c1527976",
+    "web/materials-page.js": "ae9fee64def1abb98c8e19ed66a5071598ec854c0830d997bbff7ece61d0a162",
+    "web/materials.html": "e82bf52eb200bba5e434109e83fac03e28bb08519ec2da4fb3078e527e9bb81d",
+    "web/multi-subject-home.js": "c220950a7060fb626689ad83413e197eeab68b25f1ef9ec04e0a739b54e9af01",
+    "web/multi-subject.css": "c48ebb9d0b4e85b24bd6f6e979e9975c6316569722e1e5262096bad382295b4c",
+    "web/navigation-focus.mjs": "6a2fa8c09f24c34e8b7ac55e83199f331ebfb9903e89947c6d70d1c080566806",
+    "web/physics-7.css": "48b8b75939dafa2137f2813538eaafeb6d9fbf32fb0cacd51269372a1d08a29d",
+    "web/physics-7.html": "d480fb43d31015f4395a85afd0d2ddc7a82989b529af37d9b0300301c4313987",
+    "web/physics-7.js": "92ec4a7fd381f75135b36b39c688cbf8ae398394bfae7932ac66e464ef1a17e6",
+    "web/practice.css": "ff992691c394f81058ea531aee557a8bd40e61b36a5435e6468641aff7602715",
+    "web/practice.html": "29160fd2dbabcf143dfb3dc3335fc4a503d8a528a8d87ddba6022eff30581a2a",
+    "web/practice.js": "286b7f119375e700b26a002192228028f1f9215d24ea79cde3d3ad8bde14c58e",
+    "web/privacy.css": "c7962ab8703154f2792a2bc5bcc459f2b89d42dcfbc36ba8cf4334d2a16a62f5",
+    "web/privacy.html": "ff0b805174cad651aa66c59af9512a0405abdf3167940416a00edabc031c2512",
+    "web/privacy.js": "88b0479dda4c296e5ce3e4ee277a11d4a6f9ac28e6609f8c24b7d3516aaeef19",
+    "web/progress.css": "b27f25dbb0ebe326425d7580c91349b8b37c08af6315e861ed221198c44e2ef7",
+    "web/progress.html": "b898721b75ca3c1cd93e8ce3badc521b372b22acc4d6578ef04392b3f04e7603",
+    "web/progress.js": "58bf0f3671c5ef8df3c97b45b30d9e336558bb3e870070ba00dee4c8581d4a49",
+    "web/recommendation-telemetry.js": "083779348f1bb3d7634b1379bae9c80a2425020125a48f60e5e784b5c6a8e987",
+    "web/remediation-request.mjs": "684af8be4c36c3aecb4a934dac7daf0b0225e701261abcbb45d84d6939d3b2ba",
+    "web/remediation.css": "3c4245325a76265e1542010fa9fade405bfdef5de71f92a0e39df04b34920689",
+    "web/remediation.js": "671602af0a079957c41585fc5db2e84a93908d1f243d06f234c42af405c3ad42",
+    "web/resource-assignments.css": "fe975c735807bed61d0f742473c5f7901f3ef5c83fc90c06fca9dd7f70126504",
+    "web/resource-assignments.mjs": "741942c68c7a061165d80a8d114ab84499dd72701e8e313cb7a57c9e60500816",
+    "web/resource-file-input.mjs": "fa764c48d505f14f2aebc4842f70d0a174178a347101303334f9908b97b1d5d3",
+    "web/resource-learner-view.mjs": "d664fab3702e630f4444d5cd51fe4c0b462b2907bbd9c3ffed8f4d8f5d7e4d88",
+    "web/resource-library.html": "dcb7c4028180f7aeba17d9712ecf38f0329e619bb476b5285d12ff74105fcef7",
+    "web/resource-navigation.mjs": "a99c86ba427f4a2223a933431eae3c090eff3c702c0f44c1d46f9176dbd1009d",
+    "web/responsive-qa.css": "e9d85bb54552a2e946ff2fb1ddb063a4d662a9bbf110cf7a2386e27b8779b76f",
+    "web/role-layout.css": "e0bcaec21ac350b787ea49cc7e13844bd76c6167f96c88204660461872983aa2",
+    "web/role-layout.js": "f3e041938f51108f69f4d8264f73a6fc27025c7cf4713f50b63ed318e4c49a22",
+    "web/role-router.js": "efe556cd62d0b3916f51f34e72adcc9288142456cba8dbd9d1330a256dbac401",
+    "web/school-admin.css": "2b7090c9bd66616b6845a9a991ef361781a29bde6ac630acd01e13dd76416e56",
+    "web/school-admin.html": "ba6683ed340253d0c2e89cc1dc2b56b4177c36726bf40a31366d6f8b8fffe864",
+    "web/school-admin.js": "0b707e77770cc3a4755590c97faf86cf90e90bee9c8482bf9c968546b4b7ba14",
+    "web/school-analytics-view.mjs": "3a045311dbfde302f66166571978b3b3b9d2a646fe0a085defdde4edca366073",
+    "web/school-membership-status.js": "44db0c828a82c220f20b038b1b1f97bacc4391a8c458e157a2f7a9bf0c6fa2b7",
+    "web/school-teacher.css": "e19ecade22c20811a1dc6776ad5761d1c22e048b45f88603126a5ac2ce7309a9",
+    "web/school-teacher.html": "dbfa9633497569c1d8bbe92282e7ddd0093334ff7c2da4a02423a14b3439f02c",
+    "web/school-teacher.js": "d8178045430941ca1e80a3446a7ec6149a11a6fa969800adff4b2d8ecc7458a0",
+    "web/session-watchdog.js": "3d660cdc13d509b3f271d40bc83eccdda43fcf8f5850183d7bf6b9110c34aed9",
+    "web/staff-forest.css": "8def746d22e40133923b36a9cd82494fbdb56fe9b8e03e05051cabce6b7d34a8",
+    "web/student-course-presentation.mjs": "e73c3d5c98a55ac2b5464417d11fc93b9a2ed4e58702d745ccb43ed920172d28",
+    "web/student-courses.js": "56084fdde250eb65605baca8fabcdb908901917a1dc71ab1e7f184e33579b138",
+    "web/student-forest.css": "fc978b07f99f860b8fa0af195925d0a00362848d87c358ee07c30a143b961084",
+    "web/student-home-model.mjs": "b1475005e224a9584d05a65eb6ecb659f5009b7344fc760b7fdb1fe9ef95084f",
+    "web/student-mobile-navigation.mjs": "8da81475bf0a26e871468607855fd13866be37bf953294f93f3f0d1300466e86",
+    "web/student-shell.css": "f38276149c7f0c59a7345ec1aafabeada9606e27839fd8cd8882c6bdc1ce7d2d",
+    "web/student-shell.js": "f575cf5aa6c5618bb9f213ba8f14a797bfc4621ae8cb1f056fca7a45d55a42d4",
+    "web/student-signout.mjs": "3245fff99ada5b039563586e0f0a7b736c292f66341131b8f0d92ce93e08f8bf",
+    "web/student-surfaces.css": "34963797666a1a8e5836f7278f7a6d8594fe5bd7c18f2401a24dbe94dafcba07",
+    "web/student-teacher-task-client.mjs": "52ca36ceabfe985987b172fae8dc76faf4429052e81e013cd029b34c6cab197b",
+    "web/student-teacher-tasks.mjs": "0c007decf0d451505ba38aa013abf2666a265230117502c3d036100a004ad40b",
+    "web/student-visuals.mjs": "b48de1ce01f59c057bf1949c24bfabb479e255c5f355b435710acbd7a0a36afa",
+    "web/student-work-hub.mjs": "4492345953e5145f07670d858343a47c394a77043c08cb83929b88985c514f77",
+    "web/student-work-list.mjs": "a754056fe9d76d7ddb0a9f0b28ef0fea4d2ea0ed0a75b66fa14a7e77de2e3157",
+    "web/styles.css": "def90527a28c21d8e88ebe0121c17eef2759d45657e565aaebc43615dac96c78",
+    "web/subject-visuals.mjs": "a04660dd3ce99b07e4c4e74e806917abddb325455eb3c8ac6f88393205fae4c1",
+    "web/supabase-browser.mjs": "7c4de19197ef4e80f7eb250cb238867620c05372ca5e857b969180986f400e42",
+    "web/supplementary-resources.css": "d757a641a6f30ffd92940512a325b196a73402fbbd1fbdcd3c8b318418eb666d",
+    "web/supplementary-resources.mjs": "f629fe1a94482f87b9be1ed87d6ba8d1277d4381f2730bb2c8063b61d9d8f14b",
+    "web/task-privacy-view.mjs": "c0c43b3d2be1b9364d8bcb4413d4eeff6cf031844fe195513db05a612ae9208b",
+    "web/teacher-class-handoff.mjs": "399e3987deb89cf1135e0090eb30c9da38e9e5e0a87402651f56e72b411bbe5b",
+    "web/teacher-dependencies.mjs": "f0c6733979ffa7956066bee8b78e25ce44d4feacc26d574bc9baff44119bf062",
+    "web/teacher-feedback.mjs": "73bc7067472cb584285a49a74979996c6cf801acba593ff2fe8168acade7822c",
+    "web/teacher-home-request.mjs": "3ba2ff02cbd3bf9ba4fce624a578e2129a9259fc133632f18f6dc66a14e4e245",
+    "web/teacher-home-startup.mjs": "b1388821e578d7fbdf8c2bdf50fe14ab39cb786136695f52aa759d6120d9394f",
+    "web/teacher-review.mjs": "32f19ccc14c55f337169296ebc9eb2a620728297baff0260403b5a949ede0121",
+    "web/teacher-skill-evidence.mjs": "4dbdb7188c8da6ee4ea22b3651c1b3c1cd01db824f05840327dfde67c05979d3",
+    "web/teacher-startup.mjs": "4a29b6b2b1dd129758dc3e72145d001c73be9caa292589d8146266d415562bd1",
+    "web/teacher-task-download.mjs": "a963ccaaa5b43e6e428c2fd1842fa632f579eb1cd6ea65b056239b4860f37024",
+    "web/teacher-task-draft-workspace.mjs": "f53bcb9fe59191b79258c3ccf77b4a91a7ed830445672a82d7c70c7f8c948d81",
+    "web/teacher-task-editor.mjs": "afb9f69d25efea835cc8776aefa4cc227e1e057a93051384d32a3999499b66f0",
+    "web/teacher-task-form.mjs": "68bc8bbcb2efe43202b9c6103425447d47e752ef5d9bb1cc18c3400efdd6de85",
+    "web/teacher-task-review.mjs": "dafc1e294dd3965ed1d4d83b295d51fb2355d363a123810a5b24b24acb608877",
+    "web/teacher-task-send.mjs": "428bffc3b8477b1ab568318473412485b08a47b2adaac029eef8b0cee6312c12",
+    "web/teacher-task-source-client.mjs": "a33c58338abf1bade75aa626e927a8df867e9bd3e3a6474cfe05e670a8b33395",
+    "web/teacher-task-text.mjs": "43d139bf8d77caed19d373716c6710551dabf10766decc60a304da2a17499b6a",
+    "web/teacher-today.css": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8",
+    "web/teacher-today.mjs": "45ff2250640b6ede666f6592515bcb06b49416978eb16dc20dda26c10a67d81f",
+    "web/teacher-workflows.css": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
+    "web/teacher-workflows.html": "c3df3f2d8d55a2b8508a858a6a5b1ec02900e57f6ed89c37dd80adb0496d790b",
+    "web/teacher-workspace-preview.css": "8a200fa3040a652211cfc9fcde3a27cff335714f799483884ff23f479e212a6e",
+    "web/teacher-workspace-preview.html": "62ec90c79db758706aba8c04d05978433415585ce9a77e14d29d9178e509fcd1",
+    "web/teacher-workspace-preview.mjs": "1b1da61f90cd05192f2e90c8f98ac09bdda6c02184ddf0759ae5948d3100f9b3",
+    "web/teacher.css": "fce0b96c0d96ead49e70fa71e76dd36cd8007acc645a782a95d8147c679252bb",
+    "web/teacher.html": "de5adf8f42652c6f7bd2a735ae23108790e184710fb9f7ff28491741f1ebb1e7",
+    "web/teacher.js": "6b3632b28752abff8f71143a4cc79e3ed4d75351a4152d1b01ea100ea2d34493",
+    "web/tokens.css": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d",
+    "web/typed-fields-contract.mjs": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+    "web/typed-fields-editor.mjs": "1b5663a1ef2c75076d6c37da25595bd6bf70fc4a8e594d495b4f1202336d95a2",
+    "web/typed-fields-ui.mjs": "7c99f658c882dfff69614dd38bfe46c3d1ccfa446f8ce405c99e6ef1ccbc3dc4",
+    "web/unit-guides.mjs": "968ddfd2701a762a0cf80a7e0865c941fde1257395ca3b84089660b5c52b90fc",
+    "web/ux.css": "a68f04d48468dca6661db5a386a303f04d66745b4a8bf125b0b1b73b4ed0feac",
+    "web/ux.js": "bf62068d0e9da0377fcfee7109e1e839e824827cf99620201c3594df67c79f8f",
+    "web/writing-assignments.css": "2621ed590a3c1e9a6f193ca597934993a852901ce5c8e8dc78c4d6066aa00e1a",
+    "web/writing-assignments.mjs": "d0592e1221d95ba4125ad7b7c7c5858649f605178f134923b41bdb0ab901a5c1",
+    "web/written-work.css": "c1a980027b6efed1c96a7af9965b6ee009de1e33ea8b03bc8632d2cd23f71c1a",
+    "web/written-work.mjs": "4b22fd3052ee0687a8421f159dec1251525740e82ffb793e630930a760fc8525"
+  },
+  "assets": {
+    "_assets/account-access-7LIPLNSA.css": {
+      "sha256": "fa4a847444f2d5639a4356cdc4e8270edee732c43f7269fdaa889caa75f0428d",
+      "bytes": 3155
+    },
+    "_assets/account-access-RJJTYYWB.js": {
+      "sha256": "baa812fdf345a939fccbc6b460e2955a75853e439c0253c50c18d97833bf821a",
+      "bytes": 8395
+    },
+    "_assets/admin-CEBGG3GL.js": {
+      "sha256": "23e8518d7630a6d3a75eca75735ce202ce6db835fa4ed2e8ed52f34a443740ba",
+      "bytes": 26717
+    },
+    "_assets/admin-security-2XZTY6FT.css": {
+      "sha256": "6b6f3235c5b284fee05d6b065bdcf09d3e54ea6fb7929e0905be179cc3766b66",
+      "bytes": 2350
+    },
+    "_assets/admin-security-IYK2ZCVW.js": {
+      "sha256": "07cba3a3205cb6fa63663ea4bd44d98f53d9dbd028a22d268d43a7d85697e2f7",
+      "bytes": 5615
+    },
+    "_assets/admin-VCSQCAVE.css": {
+      "sha256": "26f4a084e9fb4464cb66e0a21fb439c71b70bce8416189570f5706820279f653",
+      "bytes": 10125
+    },
+    "_assets/app-S7PM3APL.js": {
+      "sha256": "7711bae4e20c19b46c98ff4657205471160c68f70809a238931c36cf294be066",
+      "bytes": 21858
+    },
+    "_assets/assessment-AOHQCLDT.js": {
+      "sha256": "aaf41df17528ea2be1c58c31ce47f782d3731f106701d408657c297eadb68b7d",
+      "bytes": 6214
+    },
+    "_assets/assessment-I2UB7WND.css": {
+      "sha256": "7a2a20cae5645c04a058c0bc0eb54a6db9afba56c56c382c592195b2aaa8f520",
+      "bytes": 2390
+    },
+    "_assets/assessment-task-DSMRRM4M.css": {
+      "sha256": "14c15842eb688aa0cf5008999de3c7b1238bd7a97804f0feea210d2d2ff59ff2",
+      "bytes": 3058
+    },
+    "_assets/base-QRMLSLIF.css": {
+      "sha256": "fdb9ece4c07945112519df416b6c4605bfa8528336a6d5a87402264a22af3ae2",
+      "bytes": 1518
+    },
+    "_assets/components-FKVPVA6X.css": {
+      "sha256": "3ba592ff3eeefe08bfc48cfbecf8b7d7a95e4febca4d89f8d2007b881a30ef34",
+      "bytes": 5989
+    },
+    "_assets/content-6UCIOIY4.css": {
+      "sha256": "0d694d3af0d20551f8069698d0b9fdd01d925df846581c1007df511045235fd9",
+      "bytes": 9002
+    },
+    "_assets/content-curriculum-7QVRS2Q7.css": {
+      "sha256": "8928e9d45a1b8a8b639303dfe428f91acaacea32a10ec7cafefc0441d774ce5c",
+      "bytes": 1583
+    },
+    "_assets/content-curriculum-BJUPCHCX.js": {
+      "sha256": "e26cb328eb385ff3f1ad12478860ce581b95250d56f5fbbe47c14dfe795f06ec",
+      "bytes": 9269
+    },
+    "_assets/content-curriculum-map-NNA7DBGH.js": {
+      "sha256": "14484fb0778169d05cd5278ab2865bf0dd04cd71fdc922be55436b41f893c2c1",
+      "bytes": 2145
+    },
+    "_assets/content-evidence-page-K3BLYXFS.js": {
+      "sha256": "c6d04f66f2d6a551452cc2fc6e4aeed00df866ce7573ce247dc68de7f6804770",
+      "bytes": 4892
+    },
+    "_assets/content-guides-FXLMWTW5.js": {
+      "sha256": "9e04ce41a3e6085ecdf59677efe5e40db96bb5d032749dfdaa0205cb8c4a40d5",
+      "bytes": 45704
+    },
+    "_assets/content-guides-NVGEZVLP.css": {
+      "sha256": "55b44736a75eb6a7b473a8bb4931d005b167b37d98728406e729845413fddbb7",
+      "bytes": 12656
+    },
+    "_assets/content-home-SF54K4GL.js": {
+      "sha256": "68fc8e2919aca92db723549d5f4e5a04e7f7d3d459028f50dee49573415141a1",
+      "bytes": 4423
+    },
+    "_assets/content-materials-IP3IMNMS.css": {
+      "sha256": "800952c115560be8eba4e1093c1c856d1a459182c847515b9fc63ba2e901269c",
+      "bytes": 6500
+    },
+    "_assets/content-materials-VXB77KBN.js": {
+      "sha256": "4380b58f537d43079ca6f3d2e7bf7abca77a0a075e40d482d6d369130a52af5d",
+      "bytes": 19737
+    },
+    "_assets/content-misconceptions-5UL6RTDX.js": {
+      "sha256": "33da164e4514b8295f218d08a5610c8ffe63e8c475429e0641aa3557d64f5ea0",
+      "bytes": 15627
+    },
+    "_assets/content-misconceptions-O4JIJMUF.css": {
+      "sha256": "51e83d0c9f8f3673e1ffe303fe94cf1e8ee581eab4502062a6319cba8cd27dd7",
+      "bytes": 3354
+    },
+    "_assets/content-NZIEC7AA.js": {
+      "sha256": "28ac1d3d4c7abecf69a310a32ceeabd097c2f8d9049fc7e8d63ccdbc989e4f37",
+      "bytes": 70872
+    },
+    "_assets/content-pilot-analytics-7PY5537L.css": {
+      "sha256": "3ac0810ad73cdf984525972fbe5990f45d296bc32b84fc867b23e6ce80a70efc",
+      "bytes": 1947
+    },
+    "_assets/content-review-MFHCV5G7.js": {
+      "sha256": "247346067b7f476090731db7bf7e8b224c25cbc8e9194ea2affece3648831c6d",
+      "bytes": 3478
+    },
+    "_assets/content-review-workflow-UGX6MXQJ.js": {
+      "sha256": "693fa37e680422e1d427406210dd643ed78ed8ba0f837b3eb21d3a2c31b7c20e",
+      "bytes": 6875
+    },
+    "_assets/content-workspace-OEM5JCGT.css": {
+      "sha256": "d47c592082cc7ea29b27b9b3ea1648f4408960de7e59b6f3aa9b9d6083933118",
+      "bytes": 12841
+    },
+    "_assets/course-page-LU5753G5.js": {
+      "sha256": "05179b976e1fa2e2251cd44f2c9e0466c680c696d35c2307e2e63c2762fe2d2e",
+      "bytes": 30508
+    },
+    "_assets/course-workspace-3LKFRZV6.css": {
+      "sha256": "1f39ce05efb486cb8f7e43144ddad5ac160b3a78ebbe52cba0c5ec3e537385ed",
+      "bytes": 3797
+    },
+    "_assets/diagnostic-SI6TUQUE.js": {
+      "sha256": "fcf873983c703a29823cc53800a8fd7b8e1c5a3b8c97190b15355c9a957dfc41",
+      "bytes": 12329
+    },
+    "_assets/forest-tokens-PHQMDKG3.css": {
+      "sha256": "afa92bda44c226ff6077699eb3fa5436e7797ffe44136dc9b8547d81e7240033",
+      "bytes": 880
+    },
+    "_assets/home-class-ZX2C54GL.js": {
+      "sha256": "8c3eba5414a434364bfe78b3b53c25af80aa680ba81a46057ce46ad346469d03",
+      "bytes": 3288
+    },
+    "_assets/home-VCXJ3AB6.css": {
+      "sha256": "758e610b2c2a4e327dfbbd6cc8c47f0fc81fc40cf4ae0d32dd4f95732b682edd",
+      "bytes": 2799
+    },
+    "_assets/join-KXPNRKDF.js": {
+      "sha256": "8f14e2c88a4740d592785b208bbd505761aa865398a335e7c4b1a84eaefb4d04",
+      "bytes": 3380
+    },
+    "_assets/mastery-FHXBL3RV.js": {
+      "sha256": "3f06120f2683f164c62702be028c534e073cc0ada2d7e9fa1f5671fbbe51b598",
+      "bytes": 16061
+    },
+    "_assets/materials-page-J34CIFS2.js": {
+      "sha256": "f1ccb3fd7015230dbdcc4e473dfab9ba8ab05d43fb9fa759676231471042ab8e",
+      "bytes": 38176
+    },
+    "_assets/multi-subject-2LCRVJW7.css": {
+      "sha256": "9f68fc8e3cf0962727bf10b06c750b0f0fb8cec6b47ba6579820a29fd8ecf35f",
+      "bytes": 5317
+    },
+    "_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2": {
+      "sha256": "ded672ae8d54254becab87c64d048230278dbc50862f6da5b4a65b50871b039f",
+      "bytes": 64600
+    },
+    "_assets/noto-sans-armenian-variable-TTSIYCDV.ttf": {
+      "sha256": "0870908d8318435a5daf1cd280ae15063f990cd9ad60f3e94c734ce9e1ffef71",
+      "bytes": 221936
+    },
+    "_assets/physics-7-DA47ODEP.js": {
+      "sha256": "e76ca98036f15b139f634d91e86ec7bca206d7c893535e1ded3a68450ab1b758",
+      "bytes": 13829
+    },
+    "_assets/physics-7-T34MKSRT.css": {
+      "sha256": "8fc49cbbad2c1fd74c069d2418f0ed51086028adb1fcc044401b09f0ba6d728a",
+      "bytes": 4425
+    },
+    "_assets/practice-PJR2ABOU.css": {
+      "sha256": "02b091f4797d56cb4e3724761b327f2151b8d760d9dbf1e8ab330b7c0c07482d",
+      "bytes": 3348
+    },
+    "_assets/practice-QG2763HN.js": {
+      "sha256": "7464bda5648c47f4e47dfed0133d06f342083ab5f6ae5a7bc9a97b63ff8bbe98",
+      "bytes": 26692
+    },
+    "_assets/privacy-J6EPIVST.js": {
+      "sha256": "4bde7088ff3f75ff3cfeec5722a03c70104bfd39bf69298eba209761c3a90f4f",
+      "bytes": 15560
+    },
+    "_assets/privacy-UGV7BAJT.css": {
+      "sha256": "145bc002e761734430fded155d387ccd78b4ee3a9c6294c8851fd2110861f477",
+      "bytes": 5438
+    },
+    "_assets/progress-ATV5XFWF.css": {
+      "sha256": "423d16b1781568577f87156d76f1d75ea39e1d4cebe0566a1af8a22bb4c29e88",
+      "bytes": 3861
+    },
+    "_assets/progress-Q2U3LPZN.js": {
+      "sha256": "5dbf6ed2a8defac64d27281b1e32b173d218226861873b78faf4bfb46a7c626c",
+      "bytes": 11158
+    },
+    "_assets/remediation-ZO3BPHJR.css": {
+      "sha256": "e27aa1fda7d2f9d97966d53bde951d97dda48fd09b8930c9f994aa3d0f072658",
+      "bytes": 506
+    },
+    "_assets/resource-assignments-P2CQULLK.css": {
+      "sha256": "d8441153e58db8b588890fb8eb3a4c7fc398d09d992f26d5b8df849e8380e20f",
+      "bytes": 3978
+    },
+    "_assets/responsive-qa-QX32ARRV.css": {
+      "sha256": "db076431174d0cb88efb3f42cc6a1cfc11515f22c9cac5b60b32eb05f26313c4",
+      "bytes": 1663
+    },
+    "_assets/role-layout-KJKKZJRJ.css": {
+      "sha256": "81598b5048b50d345bf3b3c70131627139745ce7afc9f29083540072d099c73a",
+      "bytes": 25864
+    },
+    "_assets/role-layout-Y7ZG3NIU.js": {
+      "sha256": "bf74ef2032c057919b6ed402afeb18497a351b0e622cf395f057fab8bb1cdf60",
+      "bytes": 16789
+    },
+    "_assets/role-router-3RD4Z2XV.js": {
+      "sha256": "62c8a86e4f1071a1e6d71ae9231a01f9eaadd1d0739cba029ae1eeb5a2acab42",
+      "bytes": 238
+    },
+    "_assets/school-admin-DL2AXRAC.css": {
+      "sha256": "c1621017a25e8982df4f989f5e85133a724a693997e60d8b8d2835e7b9654c33",
+      "bytes": 10287
+    },
+    "_assets/school-admin-VYHUXXGP.js": {
+      "sha256": "bb83fe4b8a8b0f52681ffbaee32ee41296fe5b3f1dfbca955c3231def07e814a",
+      "bytes": 28346
+    },
+    "_assets/school-teacher-5LFL2GBQ.css": {
+      "sha256": "2da77e1d6f8b89d75d70d4ce6bcea40885a642a364c93203cee58ec547e1fc56",
+      "bytes": 3003
+    },
+    "_assets/school-teacher-UBUX4V6U.js": {
+      "sha256": "2b6d2e26357b6b40d02ae6eeb847165b5e080ec0968f65c5cdb99be340854662",
+      "bytes": 3752
+    },
+    "_assets/session-watchdog-BKUEKGDI.js": {
+      "sha256": "0783ba768cc8d109b184ff4b2b2f82927606d3a1193ee06a10299fc6a8cfab45",
+      "bytes": 550
+    },
+    "_assets/shared-226WBVLT.js": {
+      "sha256": "b2a9130fb468d201051c56e157dbb7dbb082ae5084a9102fe9f1c18b7c5e6948",
+      "bytes": 448
+    },
+    "_assets/shared-2C5QJHFW.js": {
+      "sha256": "52874e05fd794267ad17df6a9e403d3983fd0728a4bdc4e48d8bf677bb9ae545",
+      "bytes": 1087
+    },
+    "_assets/shared-2S3Z3G4T.js": {
+      "sha256": "3f33fa39989311d80a2c59484eb7b0c63e7f9d2e2185b907cf8a9dd04a1b4ec1",
+      "bytes": 496
+    },
+    "_assets/shared-2WKSYBBJ.js": {
+      "sha256": "6e046c6c4054196041ff9f7c58ac93c159a04689241d62a29f4bde0f9cfdd137",
+      "bytes": 15670
+    },
+    "_assets/shared-4XAZLRCM.js": {
+      "sha256": "0ab42921fc0866f6ce38066732f2d72480bf217a3766316c692153ab3d3db282",
+      "bytes": 1059
+    },
+    "_assets/shared-7MKESS6R.js": {
+      "sha256": "5436b864df36350013c159dc0dd0b93dbac496952c9922d046f14063cd0237c7",
+      "bytes": 2187
+    },
+    "_assets/shared-ANVDJKJC.js": {
+      "sha256": "3950df9b77ea9902fb005e89770a828ea3c0ac8f57c54b0f0f456fea9c596b24",
+      "bytes": 2606
+    },
+    "_assets/shared-AOHFE3PZ.js": {
+      "sha256": "3ff970425f13b4d76203d0aa88f3554fa8627e6ba0c61cad1e39dec8d4795655",
+      "bytes": 2574
+    },
+    "_assets/shared-AVLIDLNM.js": {
+      "sha256": "d51e1e4c4857d00f358fd36b2f320c2ab778b5c9ce09be710ed1725f0017ed60",
+      "bytes": 4623
+    },
+    "_assets/shared-CFKK5H7G.js": {
+      "sha256": "3076f4cec1f6cfeab6c223f072a8bda94742b781d144bb10ac90872e291417e9",
+      "bytes": 102
+    },
+    "_assets/shared-CGSWWRPL.js": {
+      "sha256": "4c1387840793d4efd479c2008b40c8576a4d83ecbfc5ba74dcd7c15142611a02",
+      "bytes": 18782
+    },
+    "_assets/shared-CXD25HK7.js": {
+      "sha256": "9659daa67d656150b8e879ab5c47dd083f9de67eab8948fa9a9dec242294da9b",
+      "bytes": 148
+    },
+    "_assets/shared-EJQDSPG6.js": {
+      "sha256": "702186d8f06a0432abcd63100ee32100a8dd9a32c3f9a624c3a506f7d2975c49",
+      "bytes": 386
+    },
+    "_assets/shared-F6UBGUSM.js": {
+      "sha256": "990ee94fbfc8c9c692f52d77a0e72cd71fb07c0195a818af7a8837295e7772cb",
+      "bytes": 4831
+    },
+    "_assets/shared-FGGAZXF2.js": {
+      "sha256": "3d07952f055754c7306ed79a4f1b01054b466281a5cdc6097089e6a31db3c4d8",
+      "bytes": 1343
+    },
+    "_assets/shared-FNEOZ7TV.js": {
+      "sha256": "308a9d947e14325dd6f54fac82953ab36d3149731b543d95c6c7e4a2475a075f",
+      "bytes": 25656
+    },
+    "_assets/shared-GNWZN3PG.js": {
+      "sha256": "e57bc66aa0eb5f44c9cd8f2728390a642f34fd61d089813d2273e82afef75a61",
+      "bytes": 1072
+    },
+    "_assets/shared-HB2V2XUR.js": {
+      "sha256": "a2ae292f705bb7e6a7ae27956a51a392b65b663f60f9f73849efc67a0cfd9eaf",
+      "bytes": 1170
+    },
+    "_assets/shared-HMMDDP6B.js": {
+      "sha256": "a0acb6533db8ddb0055b289bef889a1c0e6e03502c67b2e172b9bb8bbe41b559",
+      "bytes": 2601
+    },
+    "_assets/shared-J5OAIOL3.js": {
+      "sha256": "f6c70c96ac01d26249cb418ddcbce200b2f69bbe3b9373249a388fe5e87be79d",
+      "bytes": 311
+    },
+    "_assets/shared-JB4IWHJH.js": {
+      "sha256": "0e6e59b7d165cb525e83fad938cf8c9042dd89c3955b38f56682aa2229b71d6b",
+      "bytes": 545
+    },
+    "_assets/shared-JQVIHIUS.js": {
+      "sha256": "29a2158a4d5af071f67a0e0678db79d8a5dc7f27fdeabc3b7af42cc6a159a85f",
+      "bytes": 4160
+    },
+    "_assets/shared-LELF3NI6.js": {
+      "sha256": "6becd554931e5c5a3f14a60495b179eab5feb55963db70fcdd37ce65980c4c0e",
+      "bytes": 222678
+    },
+    "_assets/shared-MKLPP4Z6.js": {
+      "sha256": "ae5c4d759e2eadd4f87bf2dcdc95f18fadf8594111d55836b23bbeba766a107b",
+      "bytes": 5641
+    },
+    "_assets/shared-NL3HTU43.js": {
+      "sha256": "2a01d922ebdc55be4b215243bcd7064d7a588df2bed32122957f8a410abc8c97",
+      "bytes": 3076
+    },
+    "_assets/shared-NLFBVCCY.js": {
+      "sha256": "f5891c556055b2b913cb6ff972fdb0e9887f2ac85886a0c19423851661a978fe",
+      "bytes": 5210
+    },
+    "_assets/shared-OXSWS2H5.js": {
+      "sha256": "01df5ff9d75571229ad43231dc5d2acd1eabed997134c36d90a44848fea1fd75",
+      "bytes": 711
+    },
+    "_assets/shared-OZKO6444.js": {
+      "sha256": "11b56dc442a1c1f92820fc60fd495856dd9198426731246c4c820326e57f562f",
+      "bytes": 355
+    },
+    "_assets/shared-SBQDBI7G.js": {
+      "sha256": "d98a36a57c3227a16eb0044c9042654f58cc764cf0f78dacf8d6fdea551220b4",
+      "bytes": 3534
+    },
+    "_assets/shared-SSDV4YZQ.js": {
+      "sha256": "a1aae2eddf87ff2340581600aba8d9e272ce2cf901b276aa21bd72a33f0270a2",
+      "bytes": 577
+    },
+    "_assets/shared-UAXM22WY.js": {
+      "sha256": "28d3feeff4a86e4973e39b59639a5e5996612ac973cb4e045166b036ce0cf02c",
+      "bytes": 307
+    },
+    "_assets/shared-UM52EFKO.js": {
+      "sha256": "4fcd4aa1f0db9e585b6fa07f04612af3cd5f2ea8a720cf82308b36a92be212c3",
+      "bytes": 26710
+    },
+    "_assets/shared-UMZ3QPX4.js": {
+      "sha256": "4b2feeb1c66a1f2890cc4baffe6a5748baf730426891cb52cdd9c8d0f34035f9",
+      "bytes": 725
+    },
+    "_assets/shared-UVHAC5IJ.js": {
+      "sha256": "ec25db41f41fa2f7b88e705f6d31bb1a7c57972f0ec35dd71aec0d6eab223c96",
+      "bytes": 416
+    },
+    "_assets/shared-W2EAZEXU.js": {
+      "sha256": "84078c1ce74d7606810e96c22787af08d6bd7792c65d78d3906ecd6afaecb9ed",
+      "bytes": 2985
+    },
+    "_assets/shared-W5S6JDMC.js": {
+      "sha256": "ad82975c7cd99307a5f8c54a5480f61862f8cace892a10248405aec7975cd6fb",
+      "bytes": 33885
+    },
+    "_assets/shared-X7USMAEH.js": {
+      "sha256": "7ab5d012fbf733eaa3140cc60007c2ed07b2c71534dd076844e617b08830e7d0",
+      "bytes": 1580
+    },
+    "_assets/shared-XSF7THW5.js": {
+      "sha256": "098d654c69ff93935278f2a9b17203f7c443ea2682f29e4ab74a4cc4bd25cf81",
+      "bytes": 56047
+    },
+    "_assets/shared-YHH575T2.js": {
+      "sha256": "80381cc9f98906a0aafa2b1a8fe6e8bea011b239835ea5632f5603ae409c1d15",
+      "bytes": 2699
+    },
+    "_assets/shared-YSRRNOOY.js": {
+      "sha256": "00e199318a4e54c392cd9abfdcc85a0aea6f6735087e706710d59204820819b9",
+      "bytes": 2044
+    },
+    "_assets/shared-YZBGSJO3.js": {
+      "sha256": "67daccff78951238948fc8dd5dc2999b4244b7e422d6f31c02bff62a927edf9b",
+      "bytes": 46082
+    },
+    "_assets/shared-ZSQNV5D5.js": {
+      "sha256": "aff3fdfbf87895e47a91f80ac026466447ab9482d18f92e617f8d62b1a31b4a3",
+      "bytes": 70
+    },
+    "_assets/staff-forest-SFBTK7XO.css": {
+      "sha256": "48bafa4cc3be5dddbd203a4edcf4a193005989b9301d12d9436c6879ed26267c",
+      "bytes": 15665
+    },
+    "_assets/student-forest-RVQOWVNM.css": {
+      "sha256": "a2909bd7948bed3f1e8292f07053491b3791ecc1dc33a8177ddbd8963217f6ad",
+      "bytes": 57552
+    },
+    "_assets/student-shell-NTR26LVO.js": {
+      "sha256": "802788a1c97d4f1951c02f1a92e70e759ee700309a7d5699105e343c723dea5f",
+      "bytes": 8972
+    },
+    "_assets/student-shell-OK3LGJPW.css": {
+      "sha256": "afa46ef201ef34979a5b9c1a04e3283560ac5ace7ce4efc91283b1fd1f38f138",
+      "bytes": 14087
+    },
+    "_assets/student-surfaces-VMNWXW2U.css": {
+      "sha256": "cb7da56375e0a6eb6e28bc95e49ec2608b3598300c15de5981e63e7c561964b3",
+      "bytes": 16178
+    },
+    "_assets/styles-T4TKJNSY.css": {
+      "sha256": "fa71b41d0ae2557bdc84c1383c4c1f3d46e07a6faf7ec667ab559a0d7a7bac9f",
+      "bytes": 8126
+    },
+    "_assets/supplementary-resources-CE5S7CLA.css": {
+      "sha256": "20b7a5c62ae6ec66597bc0ae68629787301baeeb0eef111a5f8c654da957c906",
+      "bytes": 9740
+    },
+    "_assets/teacher-5XPMUPWN.css": {
+      "sha256": "86a5bed13cd3b5762864ddc5f6d509dccb91c2a66072360e9c56ef7535a34ffd",
+      "bytes": 24578
+    },
+    "_assets/teacher-dependencies.bundle-7RLZUHR6.js": {
+      "sha256": "a016de74f8add49684c854f37c59c9b829293e71f28fc184d98cda94409fb4ba",
+      "bytes": 969
+    },
+    "_assets/teacher-startup.bundle-NKCMYRSD.js": {
+      "sha256": "897715ec80c7e2077674189c6ccf89775066e77c2650b7c473f897a734c95f52",
+      "bytes": 2638
+    },
+    "_assets/teacher-today-N7NG7USZ.css": {
+      "sha256": "cb63472d61b5d0a3342af01f88234cb90366e50d3774f64120decf14c2a3e943",
+      "bytes": 3889
+    },
+    "_assets/teacher-workflows-TV6TZFOC.css": {
+      "sha256": "488ac8f8f3aba80f109faeed2a6960a18a9712e9aa5c6787d55946693aa1696d",
+      "bytes": 2124
+    },
+    "_assets/teacher-workspace-preview-IHPELTTH.js": {
+      "sha256": "e7bde50e24e7ad02a65049f5c0a941d7a97e2ff29727fdfac8d766f4ef42b8c2",
+      "bytes": 8969
+    },
+    "_assets/teacher-workspace-preview-UM4QN4LL.css": {
+      "sha256": "340de36889cd5e35f86510c5bbdcb3f33edb7936f9f386d4957b21fedada97ac",
+      "bytes": 3908
+    },
+    "_assets/teacher-X7Q2S6A6.js": {
+      "sha256": "202019712fcd2f3c42cf30d79ca64497e8bf036f2a2b50a9230c74dd01029cd1",
+      "bytes": 62334
+    },
+    "_assets/tokens-CRMQSGAY.css": {
+      "sha256": "092abef99e06f9c8eb8cb82395a17899efbcc2ea5afaa00994ee5c289f8c891b",
+      "bytes": 1502
+    },
+    "_assets/ux-FFXEA6D5.css": {
+      "sha256": "d40db7b17438ec0b3277dadfb988ceb5e9a22fdb5b0d63ee1bd98cedee9a40cf",
+      "bytes": 5278
+    },
+    "_assets/ux-O7YNXZDL.js": {
+      "sha256": "2767736797eff6bea54d95d3c4f61ee458fac39b8f300020e261da6a5868e2f9",
+      "bytes": 11640
+    },
+    "_assets/writing-assignments-SVUAVM2Z.css": {
+      "sha256": "a88020a7fc0b794742461c72a33b971eca8a05bc69b4a599e20ddd842948526d",
+      "bytes": 5102
+    },
+    "_assets/written-work-7XVQLYUX.css": {
+      "sha256": "6a808ed9c6685b9915d8733f92e3ddbc33896c3d9b8220804a2dee4cec5758fb",
+      "bytes": 4703
+    }
+  },
+  "pages": {
+    "account-access.html": {
+      "sha256": "a0628820b85e09ed3e7fd2aa08294a8f0099bbce265bd5d0f77d61a782cf5a32",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/account-access-7LIPLNSA.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/account-access-RJJTYYWB.js"
+      ]
+    },
+    "admin-security.html": {
+      "sha256": "976ce72ba8b1694ad21196c6f7078bd2299f22ebebd9a5fcb6ddce484457f97d",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/admin-VCSQCAVE.css",
+        "/_assets/admin-security-2XZTY6FT.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/admin-security-IYK2ZCVW.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "admin.html": {
+      "sha256": "5ff0115baa18f85dad6af1e237692c14d26ffeb91125aa9ea292d91c31efbb73",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/admin-VCSQCAVE.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/admin-CEBGG3GL.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "assessment.html": {
+      "sha256": "2c9e7411d1f4d73e71c80082decd7202b4c71cac6c7b889227ae5ae7e93a64c2",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/assessment-I2UB7WND.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/assessment-AOHQCLDT.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "content-bank.html": {
+      "sha256": "016f6b121d0ad234a10b88adc40ae20b8957ba36f662393da8046b6161f55d56",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-curriculum-7QVRS2Q7.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-NZIEC7AA.js",
+        "/_assets/content-curriculum-BJUPCHCX.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-curriculum.html": {
+      "sha256": "df2026be2dac1549ef8bc87874f80019a55ff0118b178cb6f8c0e07feb7b9f07",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-curriculum-map-NNA7DBGH.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-evidence.html": {
+      "sha256": "7d0ff37f0a07410f336b6f9b3ba4a339d57adea4025ed01bced9102f3491f529",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-evidence-page-K3BLYXFS.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-guides.html": {
+      "sha256": "3312d0ce0b582ad039fa966f43362b2b4b32951a9eb9b2317153d7696d7f4417",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-guides-NVGEZVLP.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-guides-FXLMWTW5.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-item.html": {
+      "sha256": "1b8309d1f987bff032a59f09f273fe04752202e45f3bc26732fa9ef1750c7408",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-NZIEC7AA.js",
+        "/_assets/content-review-workflow-UGX6MXQJ.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-materials.html": {
+      "sha256": "bd1b0dd262e5deebd1c97ca0a809d9a667001c1807c22db8b7325fc315e5f0c1",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-materials-IP3IMNMS.css",
+        "/_assets/content-materials-VXB77KBN.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-misconceptions.html": {
+      "sha256": "b15289ea519b75616545816e06f5f6c956020d8d301c556cf7a2735ddde84ff6",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-misconceptions-O4JIJMUF.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-misconceptions-5UL6RTDX.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content-review.html": {
+      "sha256": "4a53f44eff8fa12d1d03f68c66afedbbb2fea92fca75177ee2ff10c7909c8b5a",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-review-MFHCV5G7.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "content.html": {
+      "sha256": "2af9efa6670e1358a18f75f8f67c0dd0ceb16b0eedcec609fdb2baee789a300d",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/content-6UCIOIY4.css",
+        "/_assets/content-workspace-OEM5JCGT.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/content-home-SF54K4GL.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "course.html": {
+      "sha256": "002fa1a18a5b807221d371a027a35cab1a6e088a04a92a1ab92ea7736db67c5b",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/multi-subject-2LCRVJW7.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/course-workspace-3LKFRZV6.css",
+        "/_assets/written-work-7XVQLYUX.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/student-shell-NTR26LVO.js",
+        "/_assets/course-page-LU5753G5.js",
+        "/_assets/ux-O7YNXZDL.js"
+      ]
+    },
+    "diagnostic.html": {
+      "sha256": "b8273711219ae9ab76bb98376926fd8e72613c02ae9a4c481c7db5403c027d42",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/assessment-task-DSMRRM4M.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/diagnostic-SI6TUQUE.js",
+        "/_assets/session-watchdog-BKUEKGDI.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "index.html": {
+      "sha256": "e5bafb5a20e33892f37e5e86c8791c81cc65b08a48c6579b6b5600ebd88fb28b",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/home-VCXJ3AB6.css",
+        "/_assets/multi-subject-2LCRVJW7.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/resource-assignments-P2CQULLK.css",
+        "/_assets/writing-assignments-SVUAVM2Z.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/app-S7PM3APL.js",
+        "/_assets/home-class-ZX2C54GL.js",
+        "/_assets/session-watchdog-BKUEKGDI.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "join.html": {
+      "sha256": "63c7b10b423f373f7470cdb9e8b83b81aa6fa67e10d9bd0363eea09db1c55703",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/responsive-qa-QX32ARRV.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/join-KXPNRKDF.js",
+        "/_assets/ux-O7YNXZDL.js"
+      ]
+    },
+    "mastery.html": {
+      "sha256": "17662516bedac244c2d15446c42f8029e460257eb24357f21f91a00784772926",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/assessment-task-DSMRRM4M.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/mastery-FHXBL3RV.js",
+        "/_assets/session-watchdog-BKUEKGDI.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "materials.html": {
+      "sha256": "4bbee5a224c1aa2485456af3e76b83180f45eb4b46ec6c7dc6dedc7963a0df26",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/supplementary-resources-CE5S7CLA.css",
+        "/_assets/content-materials-IP3IMNMS.css",
+        "/_assets/student-shell-NTR26LVO.js",
+        "/_assets/materials-page-J34CIFS2.js",
+        "/_assets/ux-O7YNXZDL.js"
+      ]
+    },
+    "physics-7.html": {
+      "sha256": "df5f46bb244d65d133d7c98bd24606d509edc320555047218fb1865a2e601a98",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/physics-7-T34MKSRT.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/physics-7-DA47ODEP.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "practice.html": {
+      "sha256": "874853dd90cc7c455b6e68579b126a2261ae2d009a84e215a8017fda55b32327",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/practice-PJR2ABOU.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/role-router-3RD4Z2XV.js",
+        "/_assets/practice-QG2763HN.js",
+        "/_assets/session-watchdog-BKUEKGDI.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "privacy.html": {
+      "sha256": "9c02d8eb30033d6d1085f2673318a3bcd6795b1934ec1d528aca4efcec3a91a8",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/staff-forest-SFBTK7XO.css",
+        "/_assets/privacy-UGV7BAJT.css",
+        "/_assets/privacy-J6EPIVST.js",
+        "/_assets/ux-O7YNXZDL.js"
+      ]
+    },
+    "progress.html": {
+      "sha256": "1a03ba07db4a51ca51b0db3d5f853dc4bddd9f3582ca1da8253347301724c271",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/progress-ATV5XFWF.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/progress-Q2U3LPZN.js",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/student-shell-NTR26LVO.js"
+      ]
+    },
+    "resource-library.html": {
+      "sha256": "86953dee5969d97d79d5b96dbbb8d96e7a7ac23b070235d6bae4663ed3898c29",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/student-shell-OK3LGJPW.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/supplementary-resources-CE5S7CLA.css",
+        "/_assets/content-materials-IP3IMNMS.css",
+        "/_assets/resource-assignments-P2CQULLK.css",
+        "/_assets/staff-forest-SFBTK7XO.css",
+        "/_assets/materials-page-J34CIFS2.js",
+        "/_assets/ux-O7YNXZDL.js"
+      ]
+    },
+    "school-admin.html": {
+      "sha256": "412692eb53205b6d85453664518edfb470dff0c358ec684467e0b64940d3783a",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/school-admin-DL2AXRAC.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/school-admin-VYHUXXGP.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "school-teacher.html": {
+      "sha256": "da219c77e75ad346dfc1c8425bb718ce31ff5e7b23f7df3581af696cd197f3bf",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/school-admin-DL2AXRAC.css",
+        "/_assets/school-teacher-5LFL2GBQ.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/school-teacher-UBUX4V6U.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    },
+    "teacher-workflows.html": {
+      "sha256": "c05ed8c37a07205957f9e3149dfcc49e111b27c962ec87d44efc8277bcd64481",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/student-forest-RVQOWVNM.css",
+        "/_assets/teacher-workflows-TV6TZFOC.css"
+      ]
+    },
+    "teacher-workspace-preview.html": {
+      "sha256": "f0b973c8ee9419abf251313cd2467b18da71d76187d466a673897d3f66ef4c7d",
+      "assets": [
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/teacher-workspace-preview-UM4QN4LL.css",
+        "/_assets/teacher-workspace-preview-IHPELTTH.js"
+      ]
+    },
+    "teacher.html": {
+      "sha256": "f7e1073cf01f2648d0a3363ec004518e47647235db84afb5608ad485c5669730",
+      "assets": [
+        "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+        "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "/_assets/teacher-X7Q2S6A6.js",
+        "/_assets/teacher-dependencies.bundle-7RLZUHR6.js",
+        "/_assets/tokens-CRMQSGAY.css",
+        "/_assets/base-QRMLSLIF.css",
+        "/_assets/styles-T4TKJNSY.css",
+        "/_assets/ux-FFXEA6D5.css",
+        "/_assets/components-FKVPVA6X.css",
+        "/_assets/teacher-5XPMUPWN.css",
+        "/_assets/responsive-qa-QX32ARRV.css",
+        "/_assets/role-layout-KJKKZJRJ.css",
+        "/_assets/written-work-7XVQLYUX.css",
+        "/_assets/writing-assignments-SVUAVM2Z.css",
+        "/_assets/teacher-today-N7NG7USZ.css",
+        "/_assets/ux-O7YNXZDL.js",
+        "/_assets/role-layout-Y7ZG3NIU.js"
+      ]
+    }
+  },
+  "entries": {
+    "account-access.css": "/_assets/account-access-7LIPLNSA.css",
+    "account-access.js": "/_assets/account-access-RJJTYYWB.js",
+    "admin-security.css": "/_assets/admin-security-2XZTY6FT.css",
+    "admin-security.js": "/_assets/admin-security-IYK2ZCVW.js",
+    "admin.css": "/_assets/admin-VCSQCAVE.css",
+    "admin.js": "/_assets/admin-CEBGG3GL.js",
+    "app.js": "/_assets/app-S7PM3APL.js",
+    "assessment-task.css": "/_assets/assessment-task-DSMRRM4M.css",
+    "assessment.css": "/_assets/assessment-I2UB7WND.css",
+    "assessment.js": "/_assets/assessment-AOHQCLDT.js",
+    "assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+    "assets/fonts/noto-sans-armenian-variable.ttf": "/_assets/noto-sans-armenian-variable-TTSIYCDV.ttf",
+    "base.css": "/_assets/base-QRMLSLIF.css",
+    "components.css": "/_assets/components-FKVPVA6X.css",
+    "config.js": "/_assets/shared-CFKK5H7G.js",
+    "content-curriculum-map.js": "/_assets/content-curriculum-map-NNA7DBGH.js",
+    "content-curriculum.css": "/_assets/content-curriculum-7QVRS2Q7.css",
+    "content-curriculum.js": "/_assets/content-curriculum-BJUPCHCX.js",
+    "content-evidence-page.js": "/_assets/content-evidence-page-K3BLYXFS.js",
+    "content-guides.css": "/_assets/content-guides-NVGEZVLP.css",
+    "content-guides.js": "/_assets/content-guides-FXLMWTW5.js",
+    "content-home.js": "/_assets/content-home-SF54K4GL.js",
+    "content-materials.css": "/_assets/content-materials-IP3IMNMS.css",
+    "content-materials.js": "/_assets/content-materials-VXB77KBN.js",
+    "content-misconceptions.css": "/_assets/content-misconceptions-O4JIJMUF.css",
+    "content-misconceptions.js": "/_assets/content-misconceptions-5UL6RTDX.js",
+    "content-pilot-analytics.css": "/_assets/content-pilot-analytics-7PY5537L.css",
+    "content-review-workflow.js": "/_assets/content-review-workflow-UGX6MXQJ.js",
+    "content-review.js": "/_assets/content-review-MFHCV5G7.js",
+    "content-workspace.css": "/_assets/content-workspace-OEM5JCGT.css",
+    "content.css": "/_assets/content-6UCIOIY4.css",
+    "content.js": "/_assets/content-NZIEC7AA.js",
+    "course-gate.js": "/_assets/shared-4XAZLRCM.js",
+    "course-page.js": "/_assets/course-page-LU5753G5.js",
+    "course-workspace.css": "/_assets/course-workspace-3LKFRZV6.css",
+    "diagnostic.js": "/_assets/diagnostic-SI6TUQUE.js",
+    "forest-tokens.css": "/_assets/forest-tokens-PHQMDKG3.css",
+    "home-class.js": "/_assets/home-class-ZX2C54GL.js",
+    "home.css": "/_assets/home-VCXJ3AB6.css",
+    "join.js": "/_assets/join-KXPNRKDF.js",
+    "mastery.js": "/_assets/mastery-FHXBL3RV.js",
+    "materials-page.js": "/_assets/materials-page-J34CIFS2.js",
+    "multi-subject-home.js": "/_assets/shared-YZBGSJO3.js",
+    "multi-subject.css": "/_assets/multi-subject-2LCRVJW7.css",
+    "physics-7.css": "/_assets/physics-7-T34MKSRT.css",
+    "physics-7.js": "/_assets/physics-7-DA47ODEP.js",
+    "practice.css": "/_assets/practice-PJR2ABOU.css",
+    "practice.js": "/_assets/practice-QG2763HN.js",
+    "privacy.css": "/_assets/privacy-UGV7BAJT.css",
+    "privacy.js": "/_assets/privacy-J6EPIVST.js",
+    "progress.css": "/_assets/progress-ATV5XFWF.css",
+    "progress.js": "/_assets/progress-Q2U3LPZN.js",
+    "remediation.css": "/_assets/remediation-ZO3BPHJR.css",
+    "resource-assignments.css": "/_assets/resource-assignments-P2CQULLK.css",
+    "responsive-qa.css": "/_assets/responsive-qa-QX32ARRV.css",
+    "role-layout.css": "/_assets/role-layout-KJKKZJRJ.css",
+    "role-layout.js": "/_assets/role-layout-Y7ZG3NIU.js",
+    "role-router.js": "/_assets/role-router-3RD4Z2XV.js",
+    "school-admin.css": "/_assets/school-admin-DL2AXRAC.css",
+    "school-admin.js": "/_assets/school-admin-VYHUXXGP.js",
+    "school-teacher.css": "/_assets/school-teacher-5LFL2GBQ.css",
+    "school-teacher.js": "/_assets/school-teacher-UBUX4V6U.js",
+    "session-watchdog.js": "/_assets/session-watchdog-BKUEKGDI.js",
+    "staff-forest.css": "/_assets/staff-forest-SFBTK7XO.css",
+    "student-courses.js": "/_assets/shared-NL3HTU43.js",
+    "student-forest.css": "/_assets/student-forest-RVQOWVNM.css",
+    "student-shell.css": "/_assets/student-shell-OK3LGJPW.css",
+    "student-shell.js": "/_assets/student-shell-NTR26LVO.js",
+    "student-surfaces.css": "/_assets/student-surfaces-VMNWXW2U.css",
+    "styles.css": "/_assets/styles-T4TKJNSY.css",
+    "supabase-browser.bundle.mjs": "/_assets/shared-ZSQNV5D5.js",
+    "supabase-browser.mjs": "/_assets/shared-ZSQNV5D5.js",
+    "supplementary-resources.css": "/_assets/supplementary-resources-CE5S7CLA.css",
+    "teacher-dependencies.bundle.mjs": "/_assets/teacher-dependencies.bundle-7RLZUHR6.js",
+    "teacher-dependencies.mjs": "/_assets/teacher-dependencies.bundle-7RLZUHR6.js",
+    "teacher-startup.bundle.mjs": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+    "teacher-startup.mjs": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+    "teacher-task-review.mjs": "/_assets/shared-2WKSYBBJ.js",
+    "teacher-today.css": "/_assets/teacher-today-N7NG7USZ.css",
+    "teacher-workflows.css": "/_assets/teacher-workflows-TV6TZFOC.css",
+    "teacher-workspace-preview.css": "/_assets/teacher-workspace-preview-UM4QN4LL.css",
+    "teacher-workspace-preview.mjs": "/_assets/teacher-workspace-preview-IHPELTTH.js",
+    "teacher.css": "/_assets/teacher-5XPMUPWN.css",
+    "teacher.js": "/_assets/teacher-X7Q2S6A6.js",
+    "tokens.css": "/_assets/tokens-CRMQSGAY.css",
+    "ux.css": "/_assets/ux-FFXEA6D5.css",
+    "ux.js": "/_assets/ux-O7YNXZDL.js",
+    "writing-assignments.css": "/_assets/writing-assignments-SVUAVM2Z.css",
+    "writing-assignments.mjs": "/_assets/shared-UAXM22WY.js",
+    "written-work.css": "/_assets/written-work-7XVQLYUX.css"
+  },
+  "graph": {
+    "_assets/account-access-RJJTYYWB.js": {
+      "inputs": [
+        "web/account-access.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/admin-CEBGG3GL.js": {
+      "inputs": [
+        "web/admin.js",
+        "web/school-analytics-view.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-EJQDSPG6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-GNWZN3PG.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-MKLPP4Z6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-FGGAZXF2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/admin-security-IYK2ZCVW.js": {
+      "inputs": [
+        "web/admin-security.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/app-S7PM3APL.js": {
+      "inputs": [
+        "web/app.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-YSRRNOOY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-226WBVLT.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-SBQDBI7G.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-X7USMAEH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JB4IWHJH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/assessment-AOHQCLDT.js": {
+      "inputs": [
+        "web/assessment.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-curriculum-BJUPCHCX.js": {
+      "inputs": [
+        "web/content-curriculum.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-AOHFE3PZ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-curriculum-map-NNA7DBGH.js": {
+      "inputs": [
+        "web/content-curriculum-map.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-evidence-page-K3BLYXFS.js": {
+      "inputs": [
+        "web/content-evidence-page.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-guides-FXLMWTW5.js": {
+      "inputs": [
+        "web/content-guides.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-home-SF54K4GL.js": {
+      "inputs": [
+        "web/content-home.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-HB2V2XUR.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AOHFE3PZ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-materials-VXB77KBN.js": {
+      "inputs": [
+        "web/content-materials.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-W2EAZEXU.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-misconceptions-5UL6RTDX.js": {
+      "inputs": [
+        "web/content-misconceptions.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-NZIEC7AA.js": {
+      "inputs": [
+        "web/arrangement-editor.mjs",
+        "web/content.js",
+        "web/typed-fields-editor.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-HB2V2XUR.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-CGSWWRPL.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AOHFE3PZ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-review-MFHCV5G7.js": {
+      "inputs": [
+        "web/content-review.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-AOHFE3PZ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-AVLIDLNM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/content-review-workflow-UGX6MXQJ.js": {
+      "inputs": [
+        "web/content-review-workflow.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/course-page-LU5753G5.js": {
+      "inputs": [
+        "web/course-page.js",
+        "web/learning-player.mjs",
+        "web/student-course-presentation.mjs",
+        "web/unit-guides.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-CXD25HK7.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-SSDV4YZQ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-W5S6JDMC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-CGSWWRPL.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-X7USMAEH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JB4IWHJH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/diagnostic-SI6TUQUE.js": {
+      "inputs": [
+        "web/diagnostic.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-2S3Z3G4T.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/home-class-ZX2C54GL.js": {
+      "inputs": [
+        "web/home-class.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-X7USMAEH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/join-KXPNRKDF.js": {
+      "inputs": [
+        "web/join.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-X7USMAEH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/mastery-FHXBL3RV.js": {
+      "inputs": [
+        "web/mastery.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/materials-page-J34CIFS2.js": {
+      "inputs": [
+        "web/materials-page.js",
+        "web/resource-file-input.mjs",
+        "web/supplementary-resources.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-FNEOZ7TV.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-HMMDDP6B.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-W2EAZEXU.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/physics-7-DA47ODEP.js": {
+      "inputs": [
+        "web/physics-7.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-2S3Z3G4T.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/practice-QG2763HN.js": {
+      "inputs": [
+        "web/practice.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-2S3Z3G4T.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-SBQDBI7G.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JB4IWHJH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/privacy-J6EPIVST.js": {
+      "inputs": [
+        "web/privacy.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-FGGAZXF2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/progress-Q2U3LPZN.js": {
+      "inputs": [
+        "web/progress.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-2S3Z3G4T.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/role-layout-Y7ZG3NIU.js": {
+      "inputs": [
+        "web/role-layout.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-J5OAIOL3.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/role-router-3RD4Z2XV.js": {
+      "inputs": [],
+      "imports": [
+        {
+          "path": "_assets/shared-YSRRNOOY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/school-admin-VYHUXXGP.js": {
+      "inputs": [
+        "web/school-admin.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-EJQDSPG6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-GNWZN3PG.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-MKLPP4Z6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/school-teacher-UBUX4V6U.js": {
+      "inputs": [
+        "web/school-teacher.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-GNWZN3PG.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/session-watchdog-BKUEKGDI.js": {
+      "inputs": [
+        "web/session-watchdog.js"
+      ],
+      "imports": []
+    },
+    "_assets/shared-226WBVLT.js": {
+      "inputs": [
+        "web/student-signout.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-2C5QJHFW.js": {
+      "inputs": [
+        "web/student-visuals.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-2S3Z3G4T.js": {
+      "inputs": [
+        "web/recommendation-telemetry.js"
+      ],
+      "imports": []
+    },
+    "_assets/shared-2WKSYBBJ.js": {
+      "inputs": [
+        "web/teacher-task-review.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-OZKO6444.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-7MKESS6R.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-4XAZLRCM.js": {
+      "inputs": [
+        "web/course-gate.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-X7USMAEH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-7MKESS6R.js": {
+      "inputs": [
+        "web/teacher-task-text.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-ANVDJKJC.js": {
+      "inputs": [
+        "web/learning-navigation.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-AOHFE3PZ.js": {
+      "inputs": [
+        "web/content-list-navigation.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-AVLIDLNM.js": {
+      "inputs": [
+        "web/content-workspace.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-CFKK5H7G.js": {
+      "inputs": [],
+      "imports": [
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-CGSWWRPL.js": {
+      "inputs": [
+        "web/arrangement-contract.mjs",
+        "web/arrangement-ui.mjs",
+        "web/assessed-audio.mjs",
+        "web/learning-audio.mjs",
+        "web/learning-stimulus.mjs",
+        "web/learning-task-set.mjs",
+        "web/typed-fields-contract.mjs",
+        "web/typed-fields-ui.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-CXD25HK7.js": {
+      "inputs": [
+        "web/resource-navigation.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-EJQDSPG6.js": {
+      "inputs": [
+        "web/school-membership-status.js"
+      ],
+      "imports": []
+    },
+    "_assets/shared-F6UBGUSM.js": {
+      "inputs": [
+        "web/account-signout.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-FGGAZXF2.js": {
+      "inputs": [
+        "web/task-privacy-view.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-FNEOZ7TV.js": {
+      "inputs": [
+        "web/resource-assignments.mjs",
+        "web/resource-learner-view.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-HMMDDP6B.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-GNWZN3PG.js": {
+      "inputs": [
+        "web/class-history.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-HB2V2XUR.js": {
+      "inputs": [
+        "web/content-review-resume.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-HMMDDP6B.js": {
+      "inputs": [
+        "web/student-work-hub.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-J5OAIOL3.js": {
+      "inputs": [
+        "web/navigation-focus.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-JB4IWHJH.js": {
+      "inputs": [
+        "web/remediation-request.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-NLFBVCCY.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-JQVIHIUS.js": {
+      "inputs": [
+        "web/assessment-reporting.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-LELF3NI6.js": {
+      "inputs": [
+        "node_modules/@supabase/auth-js/dist/module/AuthClient.js",
+        "node_modules/@supabase/auth-js/dist/module/GoTrueAdminApi.js",
+        "node_modules/@supabase/auth-js/dist/module/GoTrueClient.js",
+        "node_modules/@supabase/auth-js/dist/module/index.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/base64url.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/constants.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/errors.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/fetch.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/helpers.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/local-storage.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/locks.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/polyfills.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/types.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/version.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/web3/ethereum.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/webauthn.errors.js",
+        "node_modules/@supabase/auth-js/dist/module/lib/webauthn.js",
+        "node_modules/@supabase/functions-js/dist/module/FunctionsClient.js",
+        "node_modules/@supabase/functions-js/dist/module/helper.js",
+        "node_modules/@supabase/functions-js/dist/module/index.js",
+        "node_modules/@supabase/functions-js/dist/module/types.js",
+        "node_modules/@supabase/phoenix/priv/static/phoenix.mjs",
+        "node_modules/@supabase/postgrest-js/dist/index.mjs",
+        "node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js",
+        "node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js",
+        "node_modules/@supabase/realtime-js/dist/module/RealtimePostgresFilterBuilder.js",
+        "node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/constants.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/normalizeChannelError.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/serializer.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/transformers.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/version.js",
+        "node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js",
+        "node_modules/@supabase/realtime-js/dist/module/phoenix/channelAdapter.js",
+        "node_modules/@supabase/realtime-js/dist/module/phoenix/presenceAdapter.js",
+        "node_modules/@supabase/realtime-js/dist/module/phoenix/socketAdapter.js",
+        "node_modules/@supabase/storage-js/dist/index.mjs",
+        "node_modules/@supabase/supabase-js/dist/index.mjs",
+        "node_modules/@supabase/supabase-js/dist/tracingRegistry.mjs",
+        "node_modules/iceberg-js/dist/index.mjs",
+        "node_modules/tslib/tslib.es6.mjs",
+        "web/supabase-browser.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-MKLPP4Z6.js": {
+      "inputs": [
+        "web/analytics-provenance.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-NL3HTU43.js": {
+      "inputs": [
+        "web/student-courses.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-CXD25HK7.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YZBGSJO3.js",
+          "kind": "dynamic-import"
+        }
+      ]
+    },
+    "_assets/shared-NLFBVCCY.js": {
+      "inputs": [
+        "web/answer-response-recovery.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-OXSWS2H5.js": {
+      "inputs": [
+        "web/config.js"
+      ],
+      "imports": []
+    },
+    "_assets/shared-OZKO6444.js": {
+      "inputs": [
+        "web/teacher-task-download.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-SBQDBI7G.js": {
+      "inputs": [
+        "web/remediation.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-JB4IWHJH.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-SSDV4YZQ.js": {
+      "inputs": [
+        "web/learning-extensions.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-UAXM22WY.js": {
+      "inputs": [],
+      "imports": [
+        {
+          "path": "_assets/shared-XSF7THW5.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-7MKESS6R.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-HMMDDP6B.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-UM52EFKO.js": {
+      "inputs": [
+        "web/archive-browser.mjs",
+        "web/teacher-dependencies.mjs",
+        "web/teacher-review.mjs",
+        "web/teacher-skill-evidence.mjs",
+        "web/teacher-today.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-UMZ3QPX4.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-W5S6JDMC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-MKLPP4Z6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UAXM22WY.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_assets/shared-2WKSYBBJ.js",
+          "kind": "dynamic-import"
+        }
+      ]
+    },
+    "_assets/shared-UMZ3QPX4.js": {
+      "inputs": [
+        "web/teacher-home-request.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-UVHAC5IJ.js": {
+      "inputs": [
+        "web/account-roles.js"
+      ],
+      "imports": []
+    },
+    "_assets/shared-W2EAZEXU.js": {
+      "inputs": [
+        "web/content-material-mfa.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-W5S6JDMC.js": {
+      "inputs": [
+        "web/teacher-feedback.mjs",
+        "web/written-work.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-X7USMAEH.js": {
+      "inputs": [
+        "web/learner-access.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-XSF7THW5.js": {
+      "inputs": [
+        "web/teacher-task-draft-workspace.mjs",
+        "web/teacher-task-editor.mjs",
+        "web/teacher-task-form.mjs",
+        "web/teacher-task-send.mjs",
+        "web/teacher-task-source-client.mjs",
+        "web/writing-assignments.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-7MKESS6R.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-HMMDDP6B.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-YHH575T2.js": {
+      "inputs": [
+        "web/subject-visuals.mjs"
+      ],
+      "imports": []
+    },
+    "_assets/shared-YSRRNOOY.js": {
+      "inputs": [
+        "web/role-router.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-YZBGSJO3.js": {
+      "inputs": [
+        "web/multi-subject-home.js",
+        "web/student-home-model.mjs",
+        "web/student-teacher-task-client.mjs",
+        "web/student-teacher-tasks.mjs",
+        "web/student-work-list.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-OZKO6444.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-XSF7THW5.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-7MKESS6R.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-FNEOZ7TV.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-HMMDDP6B.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-SSDV4YZQ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/shared-ZSQNV5D5.js": {
+      "inputs": [],
+      "imports": [
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/student-shell-NTR26LVO.js": {
+      "inputs": [
+        "web/student-mobile-navigation.mjs",
+        "web/student-shell.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-J5OAIOL3.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-2C5QJHFW.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-226WBVLT.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ZSQNV5D5.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_assets/shared-CFKK5H7G.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_assets/shared-NL3HTU43.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_assets/shared-4XAZLRCM.js",
+          "kind": "dynamic-import"
+        }
+      ]
+    },
+    "_assets/teacher-dependencies.bundle-7RLZUHR6.js": {
+      "inputs": [],
+      "imports": [
+        {
+          "path": "_assets/shared-UM52EFKO.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UMZ3QPX4.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-W5S6JDMC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-MKLPP4Z6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/teacher-startup.bundle-NKCMYRSD.js": {
+      "inputs": [
+        "web/teacher-home-startup.mjs",
+        "web/teacher-startup.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-UMZ3QPX4.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/teacher-workspace-preview-IHPELTTH.js": {
+      "inputs": [
+        "web/teacher-workspace-preview.mjs"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-J5OAIOL3.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/teacher-X7Q2S6A6.js": {
+      "inputs": [
+        "web/teacher-class-handoff.mjs",
+        "web/teacher.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-UM52EFKO.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UMZ3QPX4.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-W5S6JDMC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-YHH575T2.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-MKLPP4Z6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-JQVIHIUS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ANVDJKJC.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-UVHAC5IJ.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-LELF3NI6.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_assets/ux-O7YNXZDL.js": {
+      "inputs": [
+        "web/ux.js"
+      ],
+      "imports": [
+        {
+          "path": "_assets/shared-F6UBGUSM.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-OXSWS2H5.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_assets/shared-ZSQNV5D5.js",
+          "kind": "dynamic-import"
+        }
+      ]
+    }
+  }
+}

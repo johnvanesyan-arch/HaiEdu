@@ -380,6 +380,17 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     color: var(--amp-color-text-muted);
   }
 
+  /* 16.5B review, Phase 3 (S1): two-row menus put the icon beside the label (set by
+     student-mobile-navigation.mjs only when every word fits), about 109 px instead of 157 px. */
+  .amp-mobile-nav[data-layout="fixed"][data-inline="true"] .amp-mobile-link {
+    min-height: 48px;
+    grid-template-columns: auto minmax(0, auto);
+    justify-content: center;
+    gap: .45em;
+    padding: .25rem .4rem;
+    font-size: .75rem;
+    text-align: left;
+  }
   body.amp-student-shell-active .amp-mobile-nav[data-layout="flow"] {
     position: relative;
     inset: auto;

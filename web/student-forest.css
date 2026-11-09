@@ -400,3 +400,18 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-writing-card .stud
 body:is([data-haiedu-student],[data-forest-surface]) .student-writing-card :is(h3, p) { margin: 0; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-writing-card .student-course-body p { color: var(--student-muted); font-size: .875rem; }
 body:is([data-haiedu-student],[data-forest-surface]) .student-writing-card .button-link { width: 100%; }
+
+/* 16.5B review, Phase 3 — navigation shell.
+   S3: with the sidebar showing, the header does not repeat «Դուրս գալ» and «Իմ հաշիվը»
+   (both stay in the sidebar; the header copies remain in the page for the player and tests). */
+@media (min-width:1101px) {
+  body:is([data-haiedu-student],[data-forest-surface]):not(.amp-focused-task):not([data-student-player=active]):not([data-student-utility]) main.shell > .topbar > .row > :is(#signOutBtn, .student-account-link) { display: none; }
+}
+/* S4: tablets keep the header actions on the title row. */
+@media (min-width:761px) and (max-width:1100px) {
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar { flex-wrap: nowrap; align-items: flex-start; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > div:first-child { flex: 1 1 auto; }
+  body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar > .row { width: auto; flex: 0 0 auto; flex-wrap: nowrap; margin: 0; }
+}
+/* S5: sidebar labels fit on one line. */
+body:is([data-haiedu-student],[data-forest-surface]) .amp-side-nav .amp-nav-link { font-size: .9375rem; padding-inline: .625rem; gap: .625rem; }
