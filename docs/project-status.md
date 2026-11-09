@@ -1,5 +1,13 @@
 # Project status register
 
+**2026-11-09 — Student navigation shell clean-up is live; production QA 13/13.**
+- [PR447](https://github.com/johnvanesyan-arch/HaiEdu/pull/447), released at `51a2e0a`, is Phase 3 of the 7 November student design review (S1–S5, fresh audit), approved by John.
+- **Phone menu:** when it needs two rows, each link puts its icon beside the full label (12 px text): 157 → 109 px. It stays fixed at 390 × 844, 390 × 667, 360 × 640 and 320 × 568; before, 667 px phones exceeded BF-10's 20% limit and the menu moved into the page flow. BF-10's fallbacks are unchanged.
+- **Header:** signed-in pages drop «Ձեր ուսուցումը՝ քայլ առ քայլ։»; with the sidebar showing, the header does not repeat «Դուրս գալ» and «Իմ հաշիվը»; tablet actions sit on the title row (Home header 184 → 90 px). Sidebar labels fit one line.
+- **Production QA:** 13/13 on `51a2e0a`. Mobile passed for both schools, student and teacher, at 390 and 430 px on the live menu. Chapter V, first in the queue, stopped in the release wait during the deploy switch-over before any check ran, and passed 191/191 on re-run.
+
+**Limits.** Owner usability acceptance is not given. [Record](student-shell-cleanup-20261109.md).
+
 **2026-11-09 — Student My work clean-up is live; production QA 13/13.**
 - [PR445](https://github.com/johnvanesyan-arch/HaiEdu/pull/445), released at `7697175`, is Phase 2d of the 7 November student design review, approved by John. The original My work findings were not retained; the scope comes from a fresh audit of the page.
 - **Gap:** the empty status line under «Ուսուցչի առաջադրանքները» no longer leaves about 56 px of space; its live region is kept.

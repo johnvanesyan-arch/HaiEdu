@@ -1,5 +1,15 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student navigation shell clean-up is live.**
+- **What changed:**
+  - the phone menu is 109 px instead of 157 px, with the icon beside each full label, and stays at the bottom down to 320 × 568;
+  - signed-in pages drop the generic tagline;
+  - desktop headers no longer repeat sign-out and account;
+  - tablet header actions sit on the title row;
+  - sidebar labels fit one line.
+- **Production QA:** 13/13 on `51a2e0a`, including Mobile on the live menu.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-shell-cleanup-20261109.md).
+
 **2026-11-09 — Student My work clean-up is live.**
 - **What changed:**
   - no empty gap under the task list heading;
