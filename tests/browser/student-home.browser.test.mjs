@@ -232,12 +232,13 @@ test('Home supports reduced motion, keyboard skip and larger text',async t=>{
   assert.equal(metrics.transition,'0s');assert.deepEqual(errors,[]);
 });
 
+// My work uses small illustration tiles since Phase 2d (as Home); Courses keeps the larger artwork.
 for(const view of ['courses','work'])test(`all eight subject illustrations and unknown fallback render in ${view}`,async t=>{
  const {page,errors}=await fixture(t,{view,allSubjects:true,width:360});
- const art=await page.locator('.student-card-art svg').evaluateAll(nodes=>nodes.map(n=>({key:n.dataset.subjectArt,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height,hidden:n.getAttribute('aria-hidden'),paths:n.innerHTML})));
+ const art=await page.locator(view==='work'?'.student-course-mark svg':'.student-card-art svg').evaluateAll(nodes=>nodes.map(n=>({key:n.dataset.subjectArt,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height,hidden:n.getAttribute('aria-hidden'),paths:n.innerHTML})));
  assert.equal(art.length,9);assert.deepEqual(art.map(a=>a.key).sort(),['english','physics','mathematics','armenian','chemistry','geography','biology','history','generic'].sort());
  // Phones show the artwork beside the course text (7 November review C2), so it is smaller but still legible.
- assert.equal(new Set(art.map(a=>a.paths)).size,9);assert.ok(art.every(a=>a.width>=88&&a.height>=50&&a.hidden==='true'),JSON.stringify(art));
+ assert.equal(new Set(art.map(a=>a.paths)).size,9);assert.ok(art.every(a=>(view==='work'?a.width>=60&&a.height>=40:a.width>=88&&a.height>=50)&&a.hidden==='true'),JSON.stringify(art));
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);
 });
 for(const width of [320,768,1280])test(`public landing uses Forest at ${width}px with unchanged access routes`,async t=>{
@@ -462,5 +463,39 @@ test('Courses and My work do not apply the remembered unit; signing out forgets 
   assert.deepEqual(await dashboardReads(page),[]);
   await page.evaluate(()=>window.__client.auth.signOut());
   await page.waitForFunction(()=>localStorage.getItem('haiedu.lastLearningSelection')===null);
+  assert.deepEqual(errors,[]);
+});
+
+// 16.5B review, Phase 2d: My work is shorter on phones and keeps every production hook.
+test('My work on a phone: one-row states with counts, filter beside refresh, no gap under the heading',async t=>{
+  const {page,errors}=await fixture(t,{view:'work',width:390,workItems:true,combinedWork:true});
+  const filters=page.locator('.student-work-filter [data-work-filter]');await expect(filters.first().locator('[data-work-count]')).toHaveText(' · 4');
+  await expect(filters).toHaveText(['Կատարելու · 4','Վերադարձված · 2','Ներկայացված · 2']);
+  const boxes=await filters.evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().toJSON()));
+  assert.equal(new Set(boxes.map(b=>Math.round(b.top))).size,1,'three states share one row');
+  const [label,count]=await Promise.all([filters.nth(1).locator('span').first().boundingBox(),filters.nth(1).locator('[data-work-count]').boundingBox()]);
+  assert.ok(count.y>=label.y+label.height-1,'count sits under its label');
+  const [course,refresh]=await Promise.all([page.locator('.student-work-course').boundingBox(),page.locator('.student-work-refresh').boundingBox()]);
+  assert.ok(Math.abs((course.y+course.height)-(refresh.y+refresh.height))<4&&refresh.x>course.x+course.width-1,JSON.stringify({course,refresh}));
+  const [heading,item]=await Promise.all([page.locator('#studentWorkListTitle').boundingBox(),page.locator('.student-work-item').first().boundingBox()]);
+  assert.ok(item.y-(heading.y+heading.height)<=16,`gap ${item.y-(heading.y+heading.height)}`);
+  assert.equal(await page.locator('[data-work-message]').getAttribute('role'),'status');
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  assert.deepEqual(errors,[]);
+});
+test('My work course cards are compact and keep the writing hooks used by production acceptance',async t=>{
+  const {page,errors}=await fixture(t,{view:'work',width:390,selected:true});
+  const card=page.locator('#mySubjects .amp-subject-card').filter({has:page.locator(`a[href*="enrollment=${id(6)}"]`)});
+  await expect(card).toHaveCount(1);
+  assert.equal(await page.locator('#mySubjects .student-card-art').count(),0);
+  {const h=(await card.boundingBox()).height;assert.ok(h<=275,'compact card '+h);}
+  const primary=card.locator(':scope > a.button-link');await expect(primary).toHaveText('Բացել գրավոր աշխատանքները');
+  assert.match(await primary.getAttribute('href'),/tab=writing/);assert.doesNotMatch(await primary.getAttribute('href'),/action=/);
+  await card.locator('.student-unit-links summary').click();
+  const unit=card.locator(`.student-unit-links a[href*="enrollment=${id(6)}"][href*="release=${id(7)}"][href*="unit=${id(8)}"][href*="tab=writing"]`);
+  await expect(unit).toBeVisible();
+  const [head,link]=await Promise.all([card.locator('.student-writing-head').boundingBox(),primary.boundingBox()]);
+  assert.ok(link.width>=head.width-1,'writing link spans the card');
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   assert.deepEqual(errors,[]);
 });

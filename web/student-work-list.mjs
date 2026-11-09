@@ -4,7 +4,7 @@
 // the writing open→navigate request, the material download/link dialog).
 // Presentation only: no scoring, submission or authorization logic here.
 import {escapeHtml as esc} from './learning-navigation.mjs';
-import {workBucket,workFilters,initialWorkFilter} from './student-work-hub.mjs';
+import {workBucket,workFilters,initialWorkFilter,writeWorkCount} from './student-work-hub.mjs';
 import {mountStudentTeacherTasks} from './student-teacher-tasks.mjs';
 import {createStudentWritingOpener} from './writing-assignments.mjs';
 import {createStudentMaterialOpener} from './resource-assignments.mjs';
@@ -64,7 +64,7 @@ export function mountStudentWorkList({root,client,actorId,onFallback,onClean=()=
   const sources=Object.values(current?.sources??{}),exact=sources.length===3&&sources.every(s=>s.status==='ok'),more=sources.some(s=>s.status==='ok'&&s.complete===false);
   for(const [key]of workFilters){
    const n=(current?.items??[]).filter(i=>(!course||describeWorkItem(i).course.key===course)&&describeWorkItem(i).bucket===key).length;
-   $(`[data-work-count="${key}"]`).textContent=exact?` · ${n}${more?'+':''}`:'';
+   writeWorkCount($(`[data-work-count="${key}"]`),exact?`${n}${more?'+':''}`:'');
   }
  }
  function draw(){
