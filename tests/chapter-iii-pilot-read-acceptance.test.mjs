@@ -117,3 +117,28 @@ test('activated workflow stays main-only, guarded and covers its runner and fron
   assert.ok(workflow.indexOf('test -f docs/evidence/chapter-iii-pilot-activation') < workflow.indexOf('actions/setup-node'));
   assert.match(workflow, /group: sprint-14-isolation-qa/);
 });
+
+// 9 November 2026: the designated School A learner completed the Chapter III diagnostic by hand.
+// A completed baseline is accepted only when it is consistent: the diagnostic is in history and
+// practice is unlocked. Learning records are never reset to satisfy the check.
+test('a completed Chapter III diagnostic is accepted when its history and unlocked practice agree', async () => {
+  const completed = d => {
+    d.baseline = { id: id(820), curriculumReleaseId: chapterIII.curriculumReleaseId, correct: 12, answered: 16, completedAt: '2026-11-09T15:11:10.343Z' };
+    d.history = [{ id: id(820), mode: 'diagnostic', status: 'completed', curriculumReleaseId: chapterIII.curriculumReleaseId, correct: 12, answered: 16, completedAt: '2026-11-09T15:11:10.343Z' },
+      { id: id(821), mode: 'practice', status: 'completed', curriculumReleaseId: chapterIII.curriculumReleaseId, correct: 6, answered: 8, completedAt: '2026-11-09T15:16:16.313Z' }];
+    d.practiceAccess = { unlocked: true, reason: null };
+  };
+  const input = inputs(), m = mock(input); completed(m.dashboards.A[2]);
+  const r = await runReadChecks({ ...input, ...m }); await r.verifyPreserved();
+  assert.equal(r.chapterIIIPracticeUnlocked.A, true); assert.equal(r.chapterIIIPracticeUnlocked.B, false);
+  assert.ok(m.checks.some(x => x.label === 'A: completed Chapter III baseline retains its history and practice gate' && x.passed));
+  assert.ok(m.checks.some(x => x.label === 'B: incomplete Chapter III baseline retains its history and practice gate' && x.passed));
+  // Inconsistent completed states still fail closed.
+  for (const breakIt of [d => { d.practiceAccess = { unlocked: false, reason: 'chapter_diagnostic_required' }; },
+    d => { d.history = d.history.slice(1); },
+    d => { d.baseline.answered = 15; },
+    d => { d.baseline.curriculumReleaseId = chapterII.curriculumReleaseId; }]) {
+    const input2 = inputs(), m2 = mock(input2); completed(m2.dashboards.A[2]); breakIt(m2.dashboards.A[2]);
+    await assert.rejects(runReadChecks({ ...input2, ...m2 }));
+  }
+});

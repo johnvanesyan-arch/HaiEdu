@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { roles, sides, runIsolation } from './sprint-14-isolation.mjs';
-import { chapterII, chapterIUnitId, chapterIIContract, validateActivation as validateChapterIIActivation, clientHeaders, anonymousDashboardDenied, allowedBrowserRequest, containsProtectedContent, browserErrorDiagnostic, blockedRequestDiagnostic, incompleteBaselinePreserved } from './chapter-ii-pilot-read-acceptance.mjs';
+import { chapterII, chapterIUnitId, chapterIIContract, chapterIIBaselinePreserved, validateActivation as validateChapterIIActivation, clientHeaders, anonymousDashboardDenied, allowedBrowserRequest, containsProtectedContent, browserErrorDiagnostic, blockedRequestDiagnostic, incompleteBaselinePreserved } from './chapter-ii-pilot-read-acceptance.mjs';
 import { waitForRelease } from './wait-for-production-release.mjs';
 
 // Deliberately bounded production acceptance, not a reusable release mechanism.
@@ -59,7 +59,7 @@ function preservedEvidence(data) {
 }
 
 export async function runReadChecks({ fixture, activation, request, check }) {
-  const contexts = {}, snapshots = {}, chapterIIIActiveSessions = {};
+  const contexts = {}, snapshots = {}, chapterIIIActiveSessions = {}, chapterIIIPracticeUnlocked = {};
   const hasForeignIdentity = (value, side) => {
     const other = fixture[side === 'A' ? 'B' : 'A'], text = JSON.stringify(value);
     return ['schoolId', 'classId', 'assignmentId', 'studentId', 'teacherId', 'adminId'].some(k => text.includes(other[k]));
@@ -85,8 +85,13 @@ export async function runReadChecks({ fixture, activation, request, check }) {
       if (index === 1) check(`${side}: preserved Chapter II retains its v1 scoring contract`, chapterIIContract(d, context));
       if (index === 2) {
         check(`${side}: Chapter III 16 delivered, 10 scored, four required skills and 10/2/4 groups`, chapterIIIContract(d, context));
-        check(`${side}: incomplete Chapter III baseline retains the practice gate and any existing diagnostic`, incompleteBaselinePreserved(d));
+        // The designated QA learner may have completed the diagnostic by hand (9 November 2026).
+        // Either state is valid if it is internally consistent: an incomplete baseline keeps the
+        // practice gate; a completed one keeps its diagnostic in history and unlocks practice.
+        const state = d.baseline === null ? 'incomplete' : 'completed';
+        check(`${side}: ${state} Chapter III baseline retains its history and practice gate`, chapterIIBaselinePreserved(d, context));
         chapterIIIActiveSessions[side] = d.activeSession;
+        chapterIIIPracticeUnlocked[side] = d.practiceAccess?.unlocked === true;
       }
       snapshots[side].push(digest(preservedEvidence(d)));
     }
@@ -120,7 +125,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
   const anonymous = await request(null, '/functions/v1/get-student-dashboard', selection(contexts.A[2]));
   check('anonymous: learner dashboard requires authentication', anonymousDashboardDenied(anonymous), anonymous.status);
   return {
-    contexts, chapterIIIActiveSessions,
+    contexts, chapterIIIActiveSessions, chapterIIIPracticeUnlocked,
     async verifyPreserved() {
       for (const side of sides) for (const [index, context] of contexts[side].entries()) {
         const current = await dashboard(side, context);
@@ -130,7 +135,16 @@ export async function runReadChecks({ fixture, activation, request, check }) {
   };
 }
 
-export async function verifyChapterIIIVisibleState({ page, expect, activeSession, context }) {
+const modeLabels = { diagnostic: 'Ախտորոշիչ', practice: 'Վարժանք', mastery_check: 'Յուրացման ստուգում', chapter_review: 'Գլխի կրկնություն' };
+async function verifyChapterIIIActionLink({ page, expect, link, context, action }) {
+  await expect(link).toHaveCount(1);
+  const destination = new URL(await link.getAttribute('href'), page.url());
+  for (const [key, value] of Object.entries({ enrollment: context.enrollmentId, release: context.curriculumReleaseId, unit: context.unitId, action, skill: null })) {
+    expect(destination.searchParams.get(key)).toBe(value);
+  }
+}
+
+export async function verifyChapterIIIVisibleState({ page, expect, activeSession, context, practiceUnlocked = false }) {
   const cards = page.locator('.course-mode-card');
   if (activeSession) {
     // The course intentionally hides launch cards while a session is active.
@@ -139,13 +153,8 @@ export async function verifyChapterIIIVisibleState({ page, expect, activeSession
     const resume = page.locator('.course-active-session');
     await expect(resume).toContainText(`Պատասխանված է ${activeSession.answered}/${activeSession.planned} հարցի`);
     const link = resume.locator('a.course-resume');
-    await expect(link).toHaveCount(1);
-    await expect(link).toContainText('Շարունակել · Ախտորոշիչ');
-    const destination = new URL(await link.getAttribute('href'), page.url());
-    for (const [key, value] of Object.entries({ enrollment: context.enrollmentId, release: context.curriculumReleaseId, unit: context.unitId, action: 'diagnostic' })) {
-      expect(destination.searchParams.get(key)).toBe(value);
-    }
-    expect(destination.searchParams.has('skill')).toBe(false);
+    await expect(link).toContainText(`Շարունակել · ${modeLabels[activeSession.mode]}`);
+    await verifyChapterIIIActionLink({ page, expect, link, context, action: activeSession.mode });
   } else {
     await expect(page.locator('.course-active-session')).toHaveCount(0);
     await expect(cards).toHaveCount(4);
@@ -153,12 +162,19 @@ export async function verifyChapterIIIVisibleState({ page, expect, activeSession
     await expect(cards.nth(2)).toContainText('գնահատվող 10 հարցից առնվազն 8-ին');
     for (const [label, count] of [['Պարտադիր վերջնարդյունքներ', 10], ['Օժանդակ հմտություններ', 2], ['Լրացուցիչ վերջնարդյունքներ', 4]]) await expect(cards.nth(2)).toContainText(`${label}՝ ${count} հարց`);
     await expect(cards.nth(2)).toContainText('Բոլոր հարցերին պատասխանելը պարտադիր է');
-    await expect(cards.nth(1)).toContainText('Նախ ավարտեք այս գլխի ախտորոշիչը');
-    await expect(cards.nth(1).locator('a')).toHaveCount(0);
+    if (practiceUnlocked) {
+      // Completed baseline: the diagnostic is done and practice opens for this exact unit.
+      await expect(cards.nth(0)).toContainText('Ախտորոշիչն ավարտված է։');
+      await expect(cards.nth(0).locator('a')).toHaveCount(0);
+      await verifyChapterIIIActionLink({ page, expect, link: cards.nth(1).locator('a'), context, action: 'practice' });
+    } else {
+      await expect(cards.nth(1)).toContainText('Նախ ավարտեք այս գլխի ախտորոշիչը');
+      await expect(cards.nth(1).locator('a')).toHaveCount(0);
+    }
   }
 }
 
-export async function browserChecks({ contexts, chapterIIIActiveSessions, sessions, url, check, diagnostics }) {
+export async function browserChecks({ contexts, chapterIIIActiveSessions, chapterIIIPracticeUnlocked = {}, sessions, url, check, diagnostics }) {
   const { chromium, expect: baseExpect } = await import('@playwright/test');
   const expect = baseExpect.configure({ timeout: 30000 });
   const browser = await chromium.launch({ headless: true });
@@ -211,8 +227,8 @@ export async function browserChecks({ contexts, chapterIIIActiveSessions, sessio
           await expect(page.locator(`.course-chapters a[aria-current="page"][href*="unit=${target.unitId}"]`)).toHaveCount(1);
           check(`${side}: browser selected chapter matches navigation`, new URL(page.url()).searchParams.get('release') === target.curriculumReleaseId && new URL(page.url()).searchParams.get('unit') === target.unitId);
           if (target.unitId === chapterIII.unitId) {
-            await verifyChapterIIIVisibleState({ page, expect, activeSession: chapterIIIActiveSessions[side], context: target });
-            check(`${side}: Chapter III shows the preserved diagnostic or configured cards with the baseline gate`, true);
+            await verifyChapterIIIVisibleState({ page, expect, activeSession: chapterIIIActiveSessions[side], practiceUnlocked: chapterIIIPracticeUnlocked[side], context: target });
+            check(`${side}: Chapter III shows its preserved state: an active session, the baseline gate, or a completed diagnostic with the practice link`, true);
           }
           if (index > 0) check(`${side}: selected chapter has no mobile horizontal overflow`, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
         }
@@ -261,7 +277,7 @@ async function main() {
       check(`${actor}: authenticated expected designated QA identity`, r.status === 200 && Boolean(r.data?.access_token) && r.data?.user?.id === fixture[side][`${role}Id`], r.status);
     }
     const acceptance = await runReadChecks({ fixture, activation, request, check });
-    await browserChecks({ contexts: acceptance.contexts, chapterIIIActiveSessions: acceptance.chapterIIIActiveSessions, sessions, url, check, diagnostics: report.browserDiagnostics });
+    await browserChecks({ contexts: acceptance.contexts, chapterIIIActiveSessions: acceptance.chapterIIIActiveSessions, chapterIIIPracticeUnlocked: acceptance.chapterIIIPracticeUnlocked, sessions, url, check, diagnostics: report.browserDiagnostics });
     await acceptance.verifyPreserved();
     // A redeploy during acceptance must not inherit evidence for a different build.
     await waitForRelease({ expectedCommit: report.revision, timeoutMs: 15000 });

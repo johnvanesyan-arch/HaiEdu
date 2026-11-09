@@ -108,7 +108,8 @@ export function incompleteBaselinePreserved(data) {
       Number.isInteger(active.answered) && active.answered >= 0 && active.answered < active.planned));
 }
 
-function chapterIIBaselinePreserved(data, context) {
+// Also used by Chapter III: a designated QA learner may complete the diagnostic by hand.
+export function chapterIIBaselinePreserved(data, context) {
   const { baseline, activeSession: active, history, practiceAccess } = data;
   if (baseline === null) return incompleteBaselinePreserved(data);
   if (!uuid(baseline?.id) || baseline.curriculumReleaseId !== context.curriculumReleaseId ||
