@@ -614,3 +614,28 @@ test('Progress folds the explanations and shows the baseline in its banner',asyn
   assert.ok(table.y-(hero.y+hero.height)<=320,`skills start ${table.y-(hero.y+hero.height)} px under the banner`);
   assert.deepEqual(errors,[]);
 });
+
+// 16.5B review, Phase 5 (D1, D3): one size per heading level, four corner sizes, three weights.
+const studentScale=()=>(()=>{const vis=e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden'};const all=s=>[...document.querySelectorAll(s)].filter(vis);
+const sizes=s=>[...new Set(all(s).map(e=>getComputedStyle(e).fontSize))];
+const radii=[...new Set([...document.querySelectorAll('body *')].filter(vis).map(e=>getComputedStyle(e).borderTopLeftRadius).filter(r=>r!=='0px'))];
+const weights=[...new Set([...document.querySelectorAll('body *')].filter(e=>vis(e)&&[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())).map(e=>getComputedStyle(e).fontWeight))];
+return {h1:sizes('main.shell > .topbar h1'),h2:sizes(':is(#multiSubjectHome,#courseContent,#learningPlayer) h2:not(.course-history-section > h2):not(#studentPathTitle,#studentFeedbackTitle)'),
+ card:sizes(':is(#multiSubjectHome,#courseContent,#learningPlayer) h3, #studentPathTitle, #studentFeedbackTitle'),radii,weights};})();
+const allowedRadii=['8px','12px','16px','999px'];
+test('course tabs and the player use one size per heading level, four corner sizes and three weights',async t=>{
+  for(const [width,title,section] of [[390,'20px','20px'],[1280,'28px','22px']]){
+    for(const [tab,opts] of [['course',{}],['assessment',{reportingHistory:historyEntries()}],['progress',{manySkills:true,reportingHistory:historyEntries()}],['guides',{}],['writing',{}]]){
+      const {page,errors}=await fixture(t,{width,height:900,tab,active:false,contextIndex:1,...opts});await page.waitForTimeout(400);
+      const s=await page.evaluate(studentScale),label=width+' '+tab;
+      // Course unit titles keep their smaller phone size (Phase 2c).
+      assert.deepEqual(s.h1,[title],label);assert.deepEqual(s.h2,[section],label);assert.ok(s.card.every(size=>size==='18px'),label+' '+s.card);
+      assert.deepEqual(s.radii.filter(r=>!allowedRadii.includes(r)),[],label);assert.deepEqual(s.weights.filter(w=>!['400','600','700'].includes(w)),[],label);
+      assert.deepEqual(errors,[]);
+    }
+    const {page,errors}=await fixture(t,{width,height:900,active:false,player:true,contextIndex:1});await page.locator('#learningPlayer form').waitFor();
+    const s=await page.evaluate(studentScale);
+    assert.deepEqual(s.radii.filter(r=>!allowedRadii.includes(r)),[],width+' player');assert.deepEqual(s.weights.filter(w=>!['400','600','700'].includes(w)),[],width+' player');
+    assert.deepEqual(errors,[]);
+  }
+});
