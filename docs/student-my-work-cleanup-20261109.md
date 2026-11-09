@@ -52,4 +52,9 @@ The detailed My work findings from the 7 November review were not retained in th
   - **Compact cards:** My work cards have no large artwork and are at most 275 px tall on a phone. The writing link spans the card, opens `tab=writing` without `action`, and the unit list opens to the exact unit's writing link.
 - **Updated by design:** the subject-illustration test now expects the small illustration tiles (at least 60 × 40 px) on My work and keeps the 88 × 50 px floor on Courses.
 - **Unchanged tests pass**, including the exact count texts in `student-work` and `student-teacher-tasks`.
-- **Owner usability acceptance:** not given. **Live production check:** after merge.
+- **Owner usability acceptance:** not given.
+
+## Production verification (9 November 2026, designated QA fixtures)
+
+- **Release:** PR445 merged at `7697175`, after the branch was brought up to date with the docs-only PR444 and every required check passed again.
+- **`7697175`: 13/13 suites on the first attempt.** This includes Resource, whose B12.3 usability reads open My work, find the course card by its enrollment link, open the unit list, follow the unit's writing link and return to My work.

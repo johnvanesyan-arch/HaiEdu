@@ -1,5 +1,14 @@
 # Project status register
 
+**2026-11-09 — Student My work clean-up is live; production QA 13/13.**
+- [PR445](https://github.com/johnvanesyan-arch/HaiEdu/pull/445), released at `7697175`, is Phase 2d of the 7 November student design review, approved by John. The original My work findings were not retained; the scope comes from a fresh audit of the page.
+- **Gap:** the empty status line under «Ուսուցչի առաջադրանքները» no longer leaves about 56 px of space; its live region is kept.
+- **Phone toolbar** (271 → about 150 px): the three states share one row with the count under each label, and the course filter and «Թարմացնել» share the next row.
+- **Writing-by-course cards** (about 310 → 230 px each on a phone): a small illustration tile, with the writing link and unit list spanning the card. Courses keeps the larger artwork.
+- **Production QA:** 13/13 on `7697175`, first attempt, including the Resource suite's walk through the My work course card hooks.
+
+**Limits.** Owner usability acceptance is not given. [Record](student-my-work-cleanup-20261109.md).
+
 **2026-11-09 — Student Home reopens on the last unit; production QA 13/13.**
 - [PR443](https://github.com/johnvanesyan-arch/HaiEdu/pull/443), released at `c59398d`, is Phase 2b of the 7 November student design review (B7), approved by John.
 - **Change:** Home opened with no unit in the link and several units reopens on the last unit this account opened on a course page or chose on Home. Before, it showed «Ո՞ր բաժնից շարունակենք» and two dropdowns on every fresh visit.
