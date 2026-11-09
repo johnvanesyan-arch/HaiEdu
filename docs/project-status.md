@@ -5,7 +5,7 @@
 - **Progress:** skill bars take the colour of the server's readiness status instead of one green for all. Phone rows put status and evidence on one line under the name (Progress 4,135 → 3,066 px at 390 px). Explanations fold into one disclosure, and the baseline sits in the banner.
 - **Results:** groups with nothing assessed and a lone pass-determining line that repeats the score are omitted. Skill names show without internal codes unless two names match. The per-card fold-out of eight internal IDs is removed from student pages; the data is still stored.
 - **Rules kept:** no outcome is inferred. A failed Mastery check still shows no reason, because the saved result carries none.
-- **Production QA:** 13/13 on `f7ba460`. Sprint 14 authenticated action QA, first in the queue, stopped in the release wait during the deploy switch-over before any check ran, and passed on re-run.
+- **Production QA:** 13/13 on `f7ba460`. Sprint 14 authenticated action QA, first in the queue, stopped in the release wait during the deploy switch-over before any check ran, and passed 206/206 on re-run.
 
 **Process note.** A run of this session partly built Phase 4 before its conversation record was lost in a container restart. The files were set aside, the audit was repeated on clean main and approved by John, and the draft was reviewed and corrected before use (see the record).
 
