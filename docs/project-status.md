@@ -1,5 +1,14 @@
 # Project status register
 
+**2026-11-09 — Student Home reopens on the last unit; production QA 13/13.**
+- [PR443](https://github.com/johnvanesyan-arch/HaiEdu/pull/443), released at `c59398d`, is Phase 2b of the 7 November student design review (B7), approved by John.
+- **Change:** Home opened with no unit in the link and several units reopens on the last unit this account opened on a course page or chose on Home. Before, it showed «Ո՞ր բաժնից շարունակենք» and two dropdowns on every fresh visit.
+- **Storage:** one record in this browser (account ID plus enrollment, release and unit IDs), used only when the account matches and the unit is still one of its units, and cleared on sign-out.
+- **Rules kept:** no extra requests; Home never starts an attempt (16.5B.1) and never chooses a unit the student has not opened (subject-neutral core).
+- **Production QA:** 13/13 on `c59398d`. English Unit 2, first in the queue, stopped in the release wait during the deploy switch-over before any check ran, and passed 142/142 on re-run.
+
+**Limits.** Owner usability acceptance is not given. [Record](student-home-remembered-unit-20261109.md).
+
 **2026-11-09 — Student course page clean-up is live; production QA 13/13.**
 - [PR441](https://github.com/johnvanesyan-arch/HaiEdu/pull/441), released at `cdfb321`, is Phase 2c of the 7 November student design review (D1, D2, reduced D3), approved by John.
 - **Title:** `#courseTitle` is the unit title; the subtitle reads course · grade · class · year, without school or release.

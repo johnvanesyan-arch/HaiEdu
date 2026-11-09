@@ -1,5 +1,10 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-09 — Student Home reopens on the last unit.**
+- **What changed:** a student with several units who opens Home fresh lands on the unit they last opened, instead of choosing in two dropdowns every time. It is remembered in this browser for that account only and cleared on sign-out. Home still never starts an attempt.
+- **Production QA:** 13/13 on `c59398d`.
+- **Not yet given:** owner usability acceptance. See the [record](docs/student-home-remembered-unit-20261109.md).
+
 **2026-11-09 — Student course page clean-up is live.**
 - **What changed:**
   - the page title is the unit, with course · grade · class · year on one line below;
