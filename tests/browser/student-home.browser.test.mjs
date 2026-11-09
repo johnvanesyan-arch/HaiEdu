@@ -545,3 +545,22 @@ test('tablet header keeps sign-out and account on the title row',async t=>{
   await expect(page.locator('main.shell > .topbar #signOutBtn')).toBeVisible();
   assert.deepEqual(errors,[]);
 });
+
+// 16.5B review, Phase 5 (D1, D3): one size per heading level, four corner sizes, three weights.
+const studentScale=()=>(()=>{const vis=e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden'};const all=s=>[...document.querySelectorAll(s)].filter(vis);
+const sizes=s=>[...new Set(all(s).map(e=>getComputedStyle(e).fontSize))];
+const radii=[...new Set([...document.querySelectorAll('body *')].filter(vis).map(e=>getComputedStyle(e).borderTopLeftRadius).filter(r=>r!=='0px'))];
+const weights=[...new Set([...document.querySelectorAll('body *')].filter(e=>vis(e)&&[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())).map(e=>getComputedStyle(e).fontWeight))];
+return {h1:sizes('main.shell > .topbar h1'),h2:sizes(':is(#multiSubjectHome,#courseContent,#learningPlayer) h2:not(.course-history-section > h2):not(#studentPathTitle,#studentFeedbackTitle)'),
+ card:sizes(':is(#multiSubjectHome,#courseContent,#learningPlayer) h3, #studentPathTitle, #studentFeedbackTitle'),radii,weights};})();
+const allowedRadii=['8px','12px','16px','999px'];
+test('student Home, Courses and My work use one size per heading level, four corner sizes and three weights',async t=>{
+  for(const [width,title,section] of [[390,'24px','20px'],[1280,'28px','22px']])for(const opts of [{selected:true,workItems:true,combinedWork:true},{view:'courses'},{view:'work',workItems:true,combinedWork:true}]){
+    const {page,errors}=await fixture(t,{width,...opts});
+    const s=await page.evaluate(studentScale),label=width+' '+JSON.stringify(opts);
+    assert.deepEqual(s.h1,[title],label);assert.deepEqual(s.h2,[section],label);assert.ok(s.card.every(size=>size==='18px'),label+' '+s.card);
+    assert.deepEqual(s.radii.filter(r=>!allowedRadii.includes(r)),[],label);
+    assert.deepEqual(s.weights.filter(w=>!['400','600','700'].includes(w)),[],label);
+    assert.deepEqual(errors,[]);
+  }
+});

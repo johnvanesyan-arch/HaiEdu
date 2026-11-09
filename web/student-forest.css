@@ -453,3 +453,41 @@ body:is([data-haiedu-student],[data-forest-surface]) .student-evidence-notes { m
 }
 /* R6: a skill code shown only to tell apart two skills with the same name. */
 body:is([data-haiedu-student],[data-forest-surface]) .student-skill-code { color: var(--student-muted); font-size: .8125rem; font-weight: 400; }
+/* 16.5B review, Phase 5 — one type scale and one shape scale for student pages (D1, D3).
+   Student pages only: shared stylesheets and teacher/staff pages are unchanged. */
+body:is([data-haiedu-student],[data-forest-surface]) {
+  --student-text-title: 1.75rem;
+  --student-text-section: 1.375rem;
+  --student-text-card: 1.125rem;
+  --student-radius-sm: .5rem;
+  --student-radius-md: .75rem;
+  --student-radius-lg: 1rem;
+  --student-radius-pill: 999px;
+}
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface]) { --student-text-title: 1.5rem; --student-text-section: 1.25rem; }
+}
+/* D1: page title, section and card headings each have one size. Kept exceptions: the learning
+   player's compact title (Phase 1), long unit titles on phones (Phase 2c) and the phone
+   completed-work heading (below). */
+body:is([data-haiedu-student],[data-forest-surface]):not([data-student-utility]) main.shell > .topbar h1 { font-size: var(--student-text-title); }
+@media (max-width: 640px) {
+  body:is([data-haiedu-student],[data-forest-surface])[data-student-page="course"]:not([data-student-utility]) main.shell > .topbar h1 { font-size: 1.25rem; }
+}
+body:is([data-haiedu-student],[data-forest-surface]) :is(#multiSubjectHome, #courseContent, #learningPlayer) h2 { font-size: var(--student-text-section); }
+/* Kept exception (31 October, components.css): on phones the unframed completed-work heading
+   stays at 16 px so «աշխատանքներ» does not split at 200% text; that rule is more specific. */
+body:is([data-haiedu-student],[data-forest-surface]) :is(#multiSubjectHome, #courseContent, #learningPlayer) h3,
+body:is([data-haiedu-student],[data-forest-surface]) #multiSubjectHome :is(#studentPathTitle, #studentFeedbackTitle) { font-size: var(--student-text-card); }
+/* D3: corners are small (8 px: skip link), control (12 px), card (16 px) or pill. */
+body:is([data-haiedu-student],[data-forest-surface]) :where(button, a.button-link, .amp-brand-link) { border-radius: var(--student-radius-md); }
+body:is([data-haiedu-student],[data-forest-surface]) button:not(.ghost):not(.secondary):not(.danger-btn),
+body:is([data-haiedu-student],[data-forest-surface]) .button-link:not(.ghost):not(.secondary),
+body:is([data-haiedu-student],[data-forest-surface]) span.student-feature-icon { border-radius: var(--student-radius-md); }
+body:is([data-haiedu-student],[data-forest-surface]) .course-tabs .course-tabs-primary a,
+body:is([data-haiedu-student],[data-forest-surface]) .student-work-toolbar .student-work-filter button { border-radius: var(--student-radius-md); }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.course-tabs .course-tabs-primary, .student-work-filter, main.shell > .topbar, .student-course-hero, .student-next) { border-radius: var(--student-radius-lg); }
+body:is([data-haiedu-student],[data-forest-surface]) :is(.student-evidence-badge, .status-badge) { border-radius: var(--student-radius-pill); }
+/* D3: two weights fewer — answer options use the regular 600 step, phone menu labels 700. */
+body:is([data-haiedu-student],[data-forest-surface]) .option { font-weight: 600; }
+body:is([data-haiedu-student],[data-forest-surface]) .amp-mobile-link { font-weight: 700; }
