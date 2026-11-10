@@ -7,7 +7,7 @@
     "P1:C3",
     "P4:T1"
   ],
-  "status": "prepared_not_released_signed_in_observation_pending",
+  "status": "bounded_signed_in_preview_passed_not_released",
   "baseCommit": "99bfdbcb321b94b8a38783a7b830f0f3ce9b66e3",
   "liveStage": "Report-only first stage remains live; this candidate is not merged.",
   "proposedChange": "Replace Content-Security-Policy-Report-Only with Content-Security-Policy, keeping the exact reviewed policy sources and all other headers/cache rules.",
@@ -77,11 +77,21 @@
   ],
   "realPreview": {
     "permission": "Owner explicitly approved a small designated-account preview check; production QA workflows remain forbidden.",
-    "signIns": 0,
-    "supabaseApiCalls": 0,
-    "status": "Waiting on the three passwords through private environment settings. Fixture IDs/setup recovered from the current committed designated-programme manifest.",
+    "signIns": 3,
+    "supabaseApiCalls": 32,
+    "status": "41 approved bounded real-account checks passed; all three local-scope logouts accepted; no policy, page, console, transport or HTTP errors.",
     "accountLookup": "At owner request, one bounded read-only lookup confirmed the three designated account email addresses. Addresses were supplied privately; no passwords, hashes or tokens were read or changed.",
-    "transport": "Direct Chromium rejected the managed proxy certificate. A verified Node HTTPS transport successfully delivered a public static file to Chromium with browser certificate bypass disabled. Real preview checks will record this transport accurately."
+    "transport": "Real unmodified response bodies and security headers are fetched with Node verified HTTPS and rendered in Chromium. Browser certificate bypass is disabled. Reviewed same-origin static redirects are followed in Node. This verifies application rendering, requests and browser policy enforcement; it does not verify native browser TLS/redirect handling.",
+    "receipt": "browser-security-enforcement-preview-20261110.json",
+    "receiptSha256": "8a3c4779d625f8691b2cce5f1b43fee85cc6ed31aa9bd9df8f761f4a52ed0110",
+    "counts": {
+      "apiRequests": 32,
+      "apiResponseBytes": 113378,
+      "staticRequests": 207,
+      "staticResponseBytes": 3898743
+    },
+    "protectedMedia": "Not exercised: chosen student context empty; teacher context list read without selecting a file. Generated/local media coverage is separate.",
+    "cleanup": "Temporary private files deleted; all three newly created Auth sessions locally revoked and browser sessions cleared."
   },
   "productionQa": {
     "status": "not run (paused by owner)",
@@ -89,15 +99,16 @@
     "workflowFilesChanged": false
   },
   "gates": {
-    "requiredPRCI": "pending exact submitted head",
-    "hostedPreview": "pending",
-    "realSignedInObservation": "pending private passwords",
-    "sourceAndWarningReview": "pending actual observations; optional preview toolbar and future BF15 sources require review",
-    "productionRelease": "not authorized yet; present the tested result for approval",
+    "requiredPRCI": "All five pass for functional b88a3a0. Final documentation-only head must pass all five before release; tracked on PR464.",
+    "hostedPreview": "passed exact functional candidate",
+    "realSignedInObservation": "passed bounded School A student/teacher/school-admin read-only walks",
+    "sourceAndWarningReview": "Clean bounded observations: no sources broadened; optional preview toolbar suppressed, future BF15 sources still require review.",
+    "productionRelease": "Not authorized; owner must review the tested candidate and its explicit limits before merge/live release.",
     "BF13Complete": false,
     "ownerUsability": "open",
     "B.12.3/B.12": "open",
-    "BF02": "deferred"
+    "BF02": "deferred",
+    "protectedMediaAcceptance": "Real protected PDF/audio remains unexercised; controlled samples only."
   },
   "logDigests": {
     "bf13-enforce-baseline.log": "sha256:a0fbbc396c4e82eca90f4b086a3cfbbacd385b96d02234f00d3da4fe446b1a88",
@@ -105,5 +116,31 @@
     "bf13-enforce-security-focused.log": "sha256:d65cc483f9bf8fc111424b0b0680e183368595ea79ce444c2e03d2c5ef4331c5",
     "bf13-enforce-unit-full.log": "sha256:5197a8ebecd30591feda6f87778c48c31e9cb5d15650403b9deea44a82910a05",
     "bf13-enforce-browser-full.log": "sha256:e661f34a326494236dbf78186b1b452e8ba673a480c621d634faacc1033f7b71"
+  },
+  "functionalCommit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+  "functionalCI": {
+    "runId": 42881081676,
+    "allFiveRequiredJobs": "passed",
+    "unitIntegration": 1794,
+    "nativeChromium": 630,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "hostedStatic": {
+    "status": "passed",
+    "commit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+    "pages": 29,
+    "assets": 124,
+    "manifestHashesFiveSecurityHeadersCacheAndMime": "matched",
+    "receiptSha256": "327052e8e9a64ab15a631ef727a500ac30a473fb2d1e121113bce9b52623c0bf"
+  },
+  "hostedUnsignedBrowser": {
+    "status": "passed",
+    "checks": 17,
+    "supabaseApiCalls": 0,
+    "signIns": 0,
+    "generatedSampleMediaOnly": true,
+    "receiptSha256": "cbfc64721c6d604447477ef31da008e8c7fa970107bb58d58a0ac917b0da6716"
   }
 }
