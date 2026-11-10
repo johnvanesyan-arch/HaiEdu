@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import {captureFocusHandoff} from './keyboard-focus.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -11,14 +12,6 @@ let current = null;
 let answerSubmission = null;
 let startedAt = null;
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function setStateBadge(text, tone = "neutral") {
   const badge = $("masteryStateBadge");

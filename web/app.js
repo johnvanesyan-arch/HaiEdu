@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import {setRemediationQuestion} from "./remediation.js";
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
@@ -667,14 +668,6 @@ function renderStack(spec) {
   return outer;
 }
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 $("startDiagnosticBtn").addEventListener("click", () => startSession("diagnostic"));
 $("startPracticeBtn").addEventListener("click", () => startSession("practice", dashboardData?.recommendation?.skill?.id ?? null));

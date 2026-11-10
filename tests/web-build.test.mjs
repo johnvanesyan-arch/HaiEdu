@@ -9,6 +9,9 @@ import { checkWebArchive } from '../scripts/check-web-archive.mjs';
 import { verifyBuiltRelease } from '../scripts/verify-built-release.mjs';
 import { expectedBrowserDigest } from '../scripts/expected-browser-digest.mjs';
 import { serveWeb } from './fixtures/built-web-server.mjs';
+const securityHeaders = Object.fromEntries(JSON.parse(await readFile(new URL('../vercel.json', import.meta.url))).headers
+  .filter(rule => rule.source === '/(.*)').flatMap(rule => rule.headers)
+  .filter(header => header.key.toLowerCase() !== 'cache-control').map(header => [header.key.toLowerCase(), header.value]));
 
 async function fixture(t) {
   const root = await mkdtemp(path.join(tmpdir(), 'haiedu-build-'));
@@ -75,13 +78,32 @@ test('production preflight verifies executed HTML and chunks even when compatibi
   const root = await fixture(t), manifest = await buildWebAssets({ root, update: true }), commit = 'a'.repeat(40);
   const output = path.join(root, 'dist-web');
   await writeFile(path.join(output, 'release.json'), JSON.stringify({ schemaVersion: 1, commit }));
-  const server = await serveWeb(output); t.after(server.close);
+  const server = await serveWeb(output, {extraHeaders:securityHeaders}); t.after(server.close);
   const args = { expectedCommit: commit, baseUrl: server.origin, manifestPath: path.join(root, 'web-build/current.json') };
   assert.equal((await verifyBuiltRelease(args)).buildId, manifest.buildId);
   const compiled = manifest.entries['app.js'].slice(1);
   await writeFile(path.join(output, compiled), 'throw Error("wrong build");');
   assert.equal(await readFile(path.join(output, 'app.js'), 'utf8'), await readFile(path.join(root, 'web/app.js'), 'utf8'));
   await assert.rejects(verifyBuiltRelease(args), /Executed browser artifact differs/);
+});
+
+test('production preflight rejects missing security headers and a single stale immutable-asset policy', async t => {
+  const root = await fixture(t), manifest = await buildWebAssets({root, update:true}), commit = 'b'.repeat(40);
+  const output = path.join(root, 'dist-web'), current = {...securityHeaders};
+  await writeFile(path.join(output, 'release.json'), JSON.stringify({schemaVersion:1, commit}));
+  const asset = manifest.entries['app.js']; let badAsset = false;
+  const server = await serveWeb(output, {extraHeaders:pathname => {
+    const headers = {...current}; if (badAsset && pathname === asset) delete headers['x-content-type-options']; return headers;
+  }}); t.after(server.close);
+  const args = {expectedCommit:commit, baseUrl:server.origin, manifestPath:path.join(root, 'web-build/current.json')};
+  assert.equal((await verifyBuiltRelease(args)).buildId, manifest.buildId);
+  for (const name of Object.keys(securityHeaders)) {
+    const value = current[name]; delete current[name];
+    await assert.rejects(verifyBuiltRelease(args), error => error.message.includes('Browser security header differs: /release.json') && error.message.includes(name));
+    current[name] = value;
+  }
+  badAsset = true;
+  await assert.rejects(verifyBuiltRelease(args), error => error.message.includes('Browser security header differs: '+asset));
 });
 
 test('supplemental production parity uses compiled HTML, retains stable-file checks and fails closed', async t => {

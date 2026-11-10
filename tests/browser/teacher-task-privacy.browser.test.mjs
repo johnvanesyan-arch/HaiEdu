@@ -11,9 +11,10 @@ async function heldReady(slot){const deadline=Date.now()+10000;while(!slot.relea
 // MFA/router initialization is deliberately outside this isolated component.
 async function adminModule(){
  const source=await readFile('web/admin.js','utf8'),ast=ts.createSourceFile('admin.js',source,ts.ScriptTarget.Latest,true);
- const names=['esc','fmtDate','displayUser','statusLabel','setMessage','friendlyError','invoke','cacheUsers','renderDeletionRequests','loadDeletions','executeDeletion'];
+ const names=['fmtDate','displayUser','statusLabel','setMessage','friendlyError','invoke','cacheUsers','renderDeletionRequests','loadDeletions','executeDeletion'];
  const functions=names.map(name=>{const n=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name);assert.ok(n,name);return n.getText(ast);}).join('\n');
  return `import{erasurePresentation}from'/task-privacy-view.mjs';
+ import{escapeHtml as esc}from'/text-safety.mjs';
  const supabase=window.__client,$=id=>document.getElementById(id),accountCache=new Map(),pendingDeletionIds=new Set();let actor=null;
  const approveDeletion=()=>{throw Error('Not in this execution fixture');},rejectDeletion=approveDeletion;
  ${functions}

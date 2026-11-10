@@ -1,3 +1,4 @@
+import {escapeHtml as esc} from './text-safety.mjs';
 import * as reviewNavigation from './content-list-navigation.mjs';
 import { $, contentSupabase, loadContentDashboard } from "./content-workspace.js";
 let data = null;
@@ -8,9 +9,6 @@ let curriculumSessionVersion = 0;
 let curriculumUserId = null;
 let restoringNavigation = false;
 
-function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
 
 
 function optionHtml(value, label, selected = false) {

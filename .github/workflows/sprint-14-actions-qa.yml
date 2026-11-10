@@ -20,6 +20,7 @@ on:
       - web/account-signout.mjs
       - web/teacher-*.mjs
       - web/keyboard-focus.mjs
+      - web/text-safety.mjs
       - scripts/build-teacher-entry.mjs
       - web/teacher-dependencies.bundle.mjs
       - web/teacher-dependencies.mjs

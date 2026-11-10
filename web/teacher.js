@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import {classNavigationHandoff} from './teacher-class-handoff.mjs';
 import {createModalFocus} from './keyboard-focus.mjs';
 import { signOutAccount } from './account-signout.mjs';
@@ -206,14 +207,6 @@ function showTeacherClassAfterMutation(classId) {
   window.history.replaceState({}, "", `${url.pathname}${url.search}`);
 }
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function setMessage(id, text, bad = false) {
   const el = $(id);

@@ -1,3 +1,4 @@
+import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -87,9 +88,7 @@ export async function loadContentDashboard(session, { force = false } = {}) {
   return request;
 }
 
-export function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
+export {esc};
 
 export async function invokeContent(name, body = {}) {
   const version = contentSessionVersion;

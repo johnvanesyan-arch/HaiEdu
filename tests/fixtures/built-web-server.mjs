@@ -4,7 +4,7 @@ import { gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
-export async function serveWeb(initialRoot) {
+export async function serveWeb(initialRoot, {extraHeaders = {}} = {}) {
   let root = path.resolve(initialRoot);
   const requests = [];
   const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' };
@@ -17,7 +17,8 @@ export async function serveWeb(initialRoot) {
     try {
       const bytes = await readFile(filename), etag = '"' + createHash('sha256').update(bytes).digest('hex') + '"';
       const headers = { 'Content-Type': types[path.extname(name)] ?? 'application/octet-stream', ETag: etag,
-        'Cache-Control': name.startsWith('_assets/') ? 'public, max-age=31536000, immutable' : /^(release|asset-manifest)\.json$/.test(name) ? 'no-store' : 'public, max-age=0, must-revalidate', Vary: 'Accept-Encoding' };
+        'Cache-Control': name.startsWith('_assets/') ? 'public, max-age=31536000, immutable' : /^(release|asset-manifest)\.json$/.test(name) ? 'no-store' : 'public, max-age=0, must-revalidate', Vary: 'Accept-Encoding',
+        ...(typeof extraHeaders === 'function' ? extraHeaders(url.pathname) : extraHeaders) };
       if (request.headers['if-none-match'] === etag) { requests.push({ path: url.pathname, status: 304, bytes: 0 }); response.writeHead(304, headers).end(); return; }
       const gzip = /\bgzip\b/.test(request.headers['accept-encoding'] ?? '') && /\.(?:m?js|html|css|json|svg)$/.test(name);
       const body = gzip ? gzipSync(bytes) : bytes;

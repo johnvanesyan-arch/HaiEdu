@@ -1,13 +1,12 @@
+import {isSafeHttpsUrl as taskTextHttps} from './text-safety.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 
 // A bounded, versioned text grammar; raw HTML and images are always literal text.
 // An absent format remains literal, including definitions frozen before this version.
 export const TASK_TEXT_FORMAT='task-text-v1';
 export const escapeTaskText=text=>text.replace(/[\\#*\[\]()\-.]/g,'\\$&');
-export function taskTextHttps(value){
- if(typeof value!=='string'||value.length>2048||/[\s\u0000-\u001f\u007f]/.test(value))return false;
- try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&Boolean(u.hostname)&&u.hostname!=='localhost'&&!u.hostname.endsWith('.localhost');}catch{return false;}
-}
+export {taskTextHttps};
+
 function inline(text){
  // No recursive parsing: link labels, escaped symbols and bold text are literal.
  const tokens=/\\([\\#*\[\]()\-.])|(?<!!)\[((?:\\[\\#*\[\]()\-.]|[^\]\\\n]){1,300})\]\(([^\s()]{1,2048})\)|\*\*([^*\n]{1,1000})\*\*/g;

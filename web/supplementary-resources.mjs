@@ -1,3 +1,4 @@
+import {isSafeHttpsUrl} from './text-safety.mjs';
 import {studentMaterialCard,previewExplanation} from './resource-learner-view.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {studentIcon} from './student-visuals.mjs';
@@ -195,7 +196,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  async function delivery(id){clearDelivery();const data=await invoke('open',{id});
   if(data instanceof Blob){const url=URL.createObjectURL(data);urls.add(url);const a=document.createElement('a');a.href=url;a.download=`haiedu-material-${id}.pdf`;a.click();setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);message('PDF-ը պատրաստ է ներբեռնման։');}
-  else if(data.url){const u=new URL(data.url);if(u.protocol!=='https:')throw Error('resource_unavailable');const dialog=document.createElement('dialog');dialog.className='resource-dialog';dialog.innerHTML=`<h2>Արտաքին նյութ</h2><p>Կբացվի նոր ներդիրում՝ <strong>${esc(u.hostname)}</strong></p><a class="button-link" href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">Բացել արտաքին կայքը</a><button type="button" class="ghost">Փակել</button>`;dialog.querySelector('button').onclick=()=>{dialog.close();dialog.remove();};root.append(dialog);dialog.showModal();}
+  else if(data.url){if(!isSafeHttpsUrl(data.url))throw Error('resource_unavailable');const u=new URL(data.url);const dialog=document.createElement('dialog');dialog.className='resource-dialog';dialog.innerHTML=`<h2>Արտաքին նյութ</h2><p>Կբացվի նոր ներդիրում՝ <strong>${esc(u.hostname)}</strong></p><a class="button-link" href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">Բացել արտաքին կայքը</a><button type="button" class="ghost">Փակել</button>`;dialog.querySelector('button').onclick=()=>{dialog.close();dialog.remove();};root.append(dialog);dialog.showModal();}
  }
  async function run(fn,kind='write'){
   if(busy||assignmentView?.isBusy())return;busy=true;busyKind=kind;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;if(kind==='write')lockWrites();

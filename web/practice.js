@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import {setRemediationQuestion} from "./remediation.js";
 import {captureFocusHandoff} from './keyboard-focus.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
@@ -87,14 +88,6 @@ const schedulerLabels = {
   spaced_review: ["Ամրապնդում", "Ավելի վաղ տեսած գաղափարը վերադառնում է ժամանակային ընդմիջումից հետո։"],
 };
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function dispatchStatus(message, error = false) {
   window.dispatchEvent(new CustomEvent("amp-status", { detail: { message, error } }));

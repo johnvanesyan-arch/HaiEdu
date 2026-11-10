@@ -14,6 +14,7 @@ on:
       - web/supabase-browser.bundle.mjs
       - web/answer-response-recovery.mjs
       - web/keyboard-focus.mjs
+      - web/text-safety.mjs
       - web/writing-assignments.css
       - web/navigation-focus.mjs
       - web/writing-assignments.mjs

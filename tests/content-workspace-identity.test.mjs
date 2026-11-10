@@ -1,6 +1,6 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import vm from 'node:vm';
 import { deferred, moduleSource, node } from './fixtures/content-session-harness.mjs';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
@@ -18,7 +18,7 @@ function harness({ initialSession = first, sessionRead } = {}) {
   const authEvent = (event, currentSession) => {
     for (const listener of authListeners) listener(event, currentSession);
   };
-  const api = vm.runInNewContext(`(() => {
+  const api = runContentUiSource(`(() => {
     ${moduleSource('web/content-workspace.js')}
     return { invokeContent, loadContentDashboard, readContentDashboardCache, mountContentWorkspace };
   })()`, {
