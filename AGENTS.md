@@ -65,3 +65,38 @@ Production QA scripts are part of the product. A stale script produces false fai
 - Automatic production QA is paused (see the 2026-11-10 pause rule above). After a release that affects suites, tell John which suites are affected and recommend a targeted manual run of only those; the weekly full run covers the rest.
 - When a suite fails because its script is out of date, report it to John as "QA script out of date", not as a product defect, and fix the script before closing the change.
 - New or changed production QA locators should use stable hooks: a `data-testid` attribute added to the page, or the element's accessible role and name. Do not add new locators that depend on CSS classes, layout or position. Migrate existing locators to stable hooks when a change touches them.
+
+## Owner rules for agent sessions — 2026-11-10
+
+These rules record instructions John gave to agent sessions up to 10 November 2026. They apply to every agent: Codex, Claude Code and any other session. Open work at the time of writing is listed in the [agent handover note](docs/agent-handover-20261110.md).
+
+**Access and production limits**
+- John does not type passwords, even when an agent asks. Never send him a password or ask him to enter one.
+- Production is read-only unless John approves a specific change. The standing exception is test actions with the designated QA fixture accounts inside a production QA workflow.
+- Schema changes, migrations, Edge Function deploys and SQL writes on production need John's explicit approval for that specific change. Read-only SQL lookups are allowed.
+- Promoting a Vercel deployment, assigning domains or changing Vercel, Supabase or GitHub settings are production changes and need John's explicit approval.
+- Do not sign in as the designated QA students outside a QA workflow, and do not use their accounts by hand.
+- Do not print personal data. Mask email addresses (for example `j***@g***.com`) in messages, logs, PRs and records.
+- Do not work around network or proxy restrictions. Report the blocker instead.
+
+**One merge at a time**
+Several agents work on this repository. Before every merge:
+1. Ask John to confirm that no other agent is merging or releasing.
+2. Check that no workflow is running or queued on `main`, and do not merge while a production QA run is in progress or failing.
+3. Bring the branch up to date with `main` and wait for the required CI checks to pass on that exact commit.
+4. Merge only with John's explicit approval for that PR. Documentation-only PRs that record an already approved release may be merged under his standing approval; policy changes (such as this file) need explicit approval.
+
+**Before opening a PR that changes browser code**
+- Rebuild what the change affects and commit the output: `npm run build:web-assets`; `npm run build:teacher` when a module bundled into teacher pages changes (for example `web/learning-navigation.mjs` or `web/assessment-reporting.mjs`).
+- Run `npm test`, the relevant native browser tests (`node --test tests/browser/<file>.browser.test.mjs`), `npm run check:teacher-bundle`, `npm run check:web-assets` and `node scripts/check-browser-qa-triggers.mjs`.
+- Add a regression that fails on the previous source for each fixed defect or new behaviour.
+
+**After a merge (while production QA is paused)**
+1. Confirm CI passed on the merged commit.
+2. Confirm the production domains serve the new build (Vercel aliases for `haiedu.am` and `www.haiedu.am`). Domain assignment has taken up to about 15 minutes. If it has not switched after that, tell John; do not promote without his approval.
+3. Report production QA as "production QA not run (paused by owner)" and list the affected suites, as the pause and QA-currency rules above require.
+
+**Design changes to user-facing pages**
+- Audit the current rendered pages first (synthetic fixtures, phone and desktop widths, 200% text), then propose numbered items to John. Build only what he approves.
+- Each delivery gets a dated record in `docs/` with the scope, before and after, production QA audit, verification and release evidence, and the line "Owner usability acceptance: not given" until John gives it.
+- After the release, update `docs/project-status.md` (newest first) and align README, roadmap and backlog as the documentation policy requires, then add a dated callout to the Notion Sprint Roadmap above the newest one.
