@@ -52,6 +52,11 @@ function clearDetail() {
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
   disposeWriting(); disposeWriting=()=>{}; closeDrawer({restoreFocus:false});
+  $("matrixSkillNameList")?.replaceChildren();
+  if ($("matrixSkillNames")) {
+    $("matrixSkillNames").open = false;
+    $("matrixSkillNames").classList.add("hidden");
+  }
   for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard","teacherWorkflowEntries"]) $(id)?.classList.add("hidden");
   for(const id of ["teacherResourcesLink","teacherAssignResourceLink","teacherAssignWritingLink"]) $(id)?.removeAttribute("href");
 }
@@ -811,7 +816,7 @@ function updateInstitutionalStudentEmailCount() {
   const counter = $("institutionalStudentEmailCount");
   if (!counter) return emails;
   counter.textContent = `${emails.length} / ${MAX_STUDENT_INVITE_BATCH}`;
-  counter.style.color = emails.length > MAX_STUDENT_INVITE_BATCH ? "#8a3342" : "#607087";
+  counter.classList.toggle("is-over-limit", emails.length > MAX_STUDENT_INVITE_BATCH);
   return emails;
 }
 
@@ -1073,7 +1078,14 @@ function renderMatrix(klass) {
   const students = allStudents.filter(matchesMatrixFilter);
   renderMatrixSummary(klass);
 
-  const header = skills.map((s) => `<th title="${escapeHtml(s.nameHy)}">${escapeHtml(shortSkillCode(s.code, klass.selectedUnit?.unitCode))}</th>`).join("");
+  $("matrixSkillNameList").innerHTML = skills.map((skill) => `
+    <div><dt>${escapeHtml(shortSkillCode(skill.code, klass.selectedUnit?.unitCode))}</dt><dd>${escapeHtml(skill.nameHy)}</dd></div>`).join("");
+  $("matrixSkillNames").classList.toggle("hidden", skills.length === 0);
+
+  const header = skills.map((skill) => {
+    const code = shortSkillCode(skill.code, klass.selectedUnit?.unitCode);
+    return `<th scope="col" title="${escapeHtml(skill.nameHy)}" aria-label="${escapeHtml(`${code} — ${skill.nameHy}`)}">${escapeHtml(code)}</th>`;
+  }).join("");
   const rows = students.map((student) => `
     <tr>
       <th class="student-matrix-name"><button class="link-button" data-student="${student.id}">${escapeHtml(student.displayName)}</button></th>

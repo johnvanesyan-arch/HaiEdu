@@ -1,12 +1,12 @@
 import {readFile} from 'node:fs/promises';
-export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false}={}){
+export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false,institutionalTeacher=true}={}){
  const context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(installTeacherPerformanceFixture,{archives,initialFailure,analytics,studentDetails});
+ await page.addInitScript(installTeacherPerformanceFixture,{archives,initialFailure,analytics,studentDetails,institutionalTeacher});
  await context.route('**/*',async route=>{const u=new URL(route.request().url());if(u.origin!=='https://teacher.test')return route.abort();const name=u.pathname==='/teacher'?'/teacher.html':u.pathname;try{const body=await readFile(new URL('../../web'+name,import.meta.url));return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}});
  await page.goto(startUrl);await page.locator(initialFailure?'#teacherDashboardRetry':'#dashboardPanel:not(.hidden)').waitFor();return {page,errors};
 }
 
-export const installTeacherPerformanceFixture = ({archives,initialFailure,analytics,studentDetails})=>{
+export const installTeacherPerformanceFixture = ({archives,initialFailure,analytics,studentDetails,institutionalTeacher=true})=>{
   const unit=n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitCode:'SYN-'+n,unitTitleHy:'Բաժին '+n,unitSequence:n,releaseNumber:1});
   const rows=[{id:'a',name:'Ա Դասարան',isActive:true},{id:'b',name:'Բ Դասարան',isActive:true},...Array.from({length:archives},(_,i)=>({id:'history-'+i,name:'Արխիվ '+String(i).padStart(3,'0'),isActive:false}))].map(c=>({...c,assignmentId:'assignment-'+c.id,schoolId:'school-a',academicYear:'2026–2027',subjectName:'Առարկա',schoolName:'Դպրոց',gradeNumber:7,studentCount:null,analyticsAvailable:false}));
   const state=window.__teacherFixture={analytics,studentDetails,calls:[],holds:[],denied:[],queueStates:[],queueRows:[],fail:initialFailure?['directory:false']:[],resolvers:{},listeners:[],actor:'teacher-a',release(key){this.holds=this.holds.filter(k=>k!==key);for(const fn of this.resolvers[key]??[])fn();delete this.resolvers[key];}};
@@ -18,10 +18,10 @@ export const installTeacherPerformanceFixture = ({archives,initialFailure,analyt
     if(state.fail.includes(key))return {error:new Error('Synthetic read unavailable')};
     if(fn==='get-teacher-workspace')return {data:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:2,coverage:'active_writable_school_contexts'}};
     if(fn==='get-teacher-dashboard'){
-      const result={teacher:{id:actor,displayName:'Ուսուցիչ'},institutionalTeacher:true,institutionalOptions:[],totals:{students:null,studentsNeedingSupport:null}};
+      const result={teacher:{id:actor,displayName:'Ուսուցիչ'},institutionalTeacher,institutionalOptions:[],totals:{students:null,studentsNeedingSupport:null},...(!institutionalTeacher?{skills:state.analytics?.skills??[]}: {})};
       if(state.badDashboard)return {data:null};
       if(body.readMode==='directory'){const all=rows.filter(c=>c.isActive===!body.archive&&(!body.search||c.name.includes(body.search))),offset=body.offset??0;return {data:{...result,classes:all.slice(offset,offset+24),directory:{archive:!!body.archive,offset,matching:all.length,hasMore:offset+24<all.length,activeCount:2,archiveCount:archives}}};}
-      const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],...state.analytics,analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
+      const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],...state.analytics,...(!institutionalTeacher?{skills:undefined}: {}),analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
     }
     if(fn==='get-teacher-student')return {data:state.studentDetails};
     if(fn==='manage-writing-assignments'&&body.action==='catalog')return {data:{version:'writing-assignments-v1',tasks:[],hasMore:false,nextOffset:50}};

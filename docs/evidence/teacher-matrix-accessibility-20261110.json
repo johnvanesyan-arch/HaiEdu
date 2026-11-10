@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "haiedu-bf12-candidate-verification-v1",
+  "date": "2026-11-10",
+  "timezone": "Asia/Yerevan",
+  "workItem": "BF-12",
+  "findingIds": [
+    "P4:W2",
+    "P4:W4"
+  ],
+  "status": "implementation_candidate_not_released",
+  "baselineCommit": "00b93e9d04460bf4bea8125c867727a91d4d0ef1",
+  "requirementsSource": "https://app.notion.com/p/40d355a472bf8155a838c145acd61419",
+  "scope": "Subject-neutral teacher browser presentation; school and retained personal-teacher render paths.",
+  "baselineNative": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "reproduction": [
+    "Full skill names were available only in hover titles.",
+    "Normal invite-counter contrast was4.422017634356677:1."
+  ],
+  "contrast": {
+    "backgroundRGB": [
+      238,
+      241,
+      235
+    ],
+    "before": {
+      "foregroundRGB": [
+        96,
+        112,
+        135
+      ],
+      "ratio": 4.422017634356677
+    },
+    "normal": {
+      "token": "--forest-muted",
+      "foregroundRGB": [
+        88,
+        105,
+        95
+      ],
+      "ratio": 5.114723449559341
+    },
+    "overLimit": {
+      "token": "--forest-error",
+      "foregroundRGB": [
+        158,
+        54,
+        54
+      ],
+      "ratio": 6.068752774242567
+    },
+    "requiredMinimum": 4.5,
+    "testedInputCounts": [
+      0,
+      20,
+      21,
+      1,
+      0
+    ],
+    "viewport": 375,
+    "textScalePercent": 200
+  },
+  "localFullVerificationBeforeFinalSpacing": {
+    "unitIntegration": {
+      "tests": 1789,
+      "pass": 1789,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "nativeChromium": {
+      "tests": 575,
+      "pass": 575,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "scopeLimit": "These complete local runs precede final legend spacing and personal-teacher fixture-shape refinement. Final focused tests cover both refinements; required PR CI must verify the exact submitted head."
+  },
+  "finalFocusedNative": {
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "countingNote": "The focused 9 are included in the full 575; these are overlapping executions, not 584 distinct journeys.",
+  "nativeCoverage": [
+    "Touch disclosure at375px/200% text and complete skill names with no split ordinary words.",
+    "School and retained personal-teacher keyboard Enter/Space, Tab/Shift+Tab, including dashboard-level skill metadata fallback.",
+    "Empty/full/over-limit/recovered counter states retain contrast and the error cue.",
+    "Legend/filter interaction preserves cells, classifications, status colors, support totals and request counts.",
+    "New unit replaces governed names/codes and escapes HTML-like labels.",
+    "Empty replacement clears old names; sign-out and an old pending unit response cannot restore them."
+  ],
+  "visualRefinement": {
+    "viewport": 375,
+    "textScalePercent": 200,
+    "initialNewSummarySplitWords": [
+      "\u0540\u0574\u057f\u0578\u0582\u0569\u0575\u0578\u0582\u0576\u0576\u0565\u0580\u056b"
+    ],
+    "finalSummaryAndNamesSplitWords": [],
+    "finalPreviewPageErrors": 0
+  },
+  "verificationSetup": "A zero-alpha transparent-background blend in the initial contrast helper was corrected before the measured baseline; that setup error is excluded from application-defect counts.",
+  "browserBuild": {
+    "id": "811c0911eba5d92d1725c6d2ab840165ed6ce1d9120b5f3fca31d24de410c1f4",
+    "pages": 29,
+    "immutableAssets": 123,
+    "retainedReleases": 31,
+    "retainedImmutableFiles": 330,
+    "allBaseReleasesAndAssetsRetained": true
+  },
+  "unreleasedDraftBuildCleanup": "Only this worktree\u2019s untracked pre-spacing draft release/assets were removed before the final build; no base tracked asset was removed.",
+  "staticChecks": {
+    "typecheck": "pass",
+    "coreParity": "pass",
+    "browserSDKParity": "pass",
+    "teacherBundleParity": "pass",
+    "buildAndArchive": "pass",
+    "favicon": "pass",
+    "font": "pass",
+    "browserQADependencyCoverage": "pass",
+    "teacherJavaScriptSyntax": "pass",
+    "whitespace": "pass",
+    "publicEmailIdentifiers": "pass after staged-file scan"
+  },
+  "releaseGates": {
+    "requiredPRCI": "tracked separately on the pull request",
+    "merge": "not performed",
+    "productionVerification": "not performed",
+    "ownerUsabilityAcceptance": "not given",
+    "B.12.3/B.12": "open",
+    "BF-02": "owner deferred"
+  },
+  "limits": [
+    "All browser identities and service responses are synthetic; real source HTML/controller/styles and Chromium events are used.",
+    "No production credentials or production acceptance workflow used for this candidate.",
+    "No backend, schema, Auth settings, scoring, classification thresholds, support counts or curriculum releases changed.",
+    "Not physical-device, assistive-technology certification or owner usability acceptance.",
+    "Independent content/security gates and paused subject work retain their scope."
+  ]
+}

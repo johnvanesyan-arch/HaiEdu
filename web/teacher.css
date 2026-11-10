@@ -131,3 +131,13 @@
 .roster-row>div { grid-template-columns:minmax(0,1fr); flex-basis:9.375rem; min-width:min(100%,9.375rem); }
 .roster-row>div:first-child { flex-basis:12.5rem; }
 .roster-row>.intervention-cell { flex-basis:16.25rem; min-width:min(100%,16.25rem); }
+/* Skill names stay available without hover, outside the matrix scroll region. */
+.matrix-skill-names{min-width:0;margin-block:.75rem;padding:.5rem 0;border-top:1px solid var(--forest-divider);color:var(--forest-ink)}
+.matrix-skill-names>summary{cursor:pointer;min-height:2.75rem;padding-block:.5rem;color:var(--forest-accent);font-weight:700;line-height:1.5;overflow-wrap:anywhere}
+.matrix-skill-names>summary:focus-visible{outline:3px solid var(--amp-color-focus);outline-offset:3px}
+.matrix-skill-names dl{display:grid;gap:.75rem;margin:.75rem 0 0}
+.matrix-skill-names dl>div{display:grid;grid-template-columns:minmax(0,5rem) minmax(0,1fr);gap:.25rem .75rem;min-width:0}
+.matrix-skill-names :is(dt,dd){min-width:0;margin:0;line-height:1.5;overflow-wrap:anywhere}
+.matrix-skill-names dt{font-weight:700}
+body[data-role-workspace] .institutional-email-count.is-over-limit{color:var(--forest-error)}
+@media(max-width:560px){.matrix-skill-names dl>div{grid-template-columns:minmax(0,1fr)}}
