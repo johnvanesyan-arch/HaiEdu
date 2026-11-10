@@ -1,3 +1,4 @@
+import {isSafeHttpsUrl} from './text-safety.mjs';
 import {studentAssignmentCard,previewExplanation} from './resource-learner-view.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {studentIcon} from './student-visuals.mjs';
@@ -41,7 +42,7 @@ function lifetime(root,client){
    const url=URL.createObjectURL(data);urls.add(url);const a=document.createElement('a');a.href=url;a.download='haiedu-assignment-'+assignment.id+'.pdf';a.click();
    setTimeout(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);message('PDF-ը պատրաստ է ներբեռնման։');return;
   }
-  const u=new URL(data.url);if(u.protocol!=='https:')throw Error('assignment_unavailable');
+  if(!isSafeHttpsUrl(data.url))throw Error('assignment_unavailable');const u=new URL(data.url);
   root.querySelectorAll('dialog').forEach(d=>d.remove());
   const dialog=document.createElement('dialog');dialog.className='assignment-dialog';
   dialog.innerHTML='<h3>Արտաքին նյութ</h3><p>Կբացվի նոր ներդիրում՝ <strong>'+esc(u.hostname)+'</strong></p><a class="button-link" target="_blank" rel="noopener noreferrer" href="'+esc(u.href)+'">Բացել նյութը</a><button type="button" data-assignment-dialog-close>Փակել</button>';

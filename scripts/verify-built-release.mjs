@@ -9,6 +9,12 @@ export async function verifyBuiltRelease({ expectedCommit = process.env.GITHUB_S
   const origin = new URL(baseUrl).origin;
   const manifestBytes = await readFile(manifestPath), manifest = JSON.parse(manifestBytes);
   if (manifest.schemaVersion !== 1 || !/^[a-f0-9]{64}$/.test(manifest.buildId)) throw Error('Invalid local browser build manifest');
+  const deployment = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const securityHeaders = new Map(deployment.headers.filter(rule => rule.source === '/(.*)').flatMap(rule => rule.headers)
+    .filter(header => header.key.toLowerCase() !== 'cache-control').map(header => [header.key.toLowerCase(), header.value]));
+  for (const name of ['x-content-type-options', 'referrer-policy', 'x-frame-options', 'permissions-policy', 'content-security-policy-report-only']) {
+    if (!securityHeaders.has(name)) throw Error(`Reviewed browser security header is missing: ${name}`);
+  }
   async function get(path) {
     const url = new URL(path, origin);
     url.searchParams.set('source_probe', expectedCommit);
@@ -19,6 +25,12 @@ export async function verifyBuiltRelease({ expectedCommit = process.env.GITHUB_S
       : /\.json$/.test(path) ? /\bno-store\b/.test(cache)
         : /\bmax-age=0\b/.test(cache) && /\bmust-revalidate\b/.test(cache);
     if (!validCache) throw Error(`Unexpected browser cache policy: ${path}`);
+    for (const [name, expected] of securityHeaders) {
+      const actual = response.headers.get(name);
+      if (actual?.trim().replace(/[ \t]+/g, ' ') !== expected.trim().replace(/[ \t]+/g, ' ')) {
+        throw Error(`Browser security header differs: ${path} (${name})`);
+      }
+    }
     return Buffer.from(await response.arrayBuffer());
   }
   async function identity() {

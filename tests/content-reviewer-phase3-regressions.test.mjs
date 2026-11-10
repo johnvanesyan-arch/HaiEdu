@@ -1,7 +1,7 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import vm from "node:vm";
 
 function nodeStub() {
   const classes = new Set();
@@ -34,7 +34,7 @@ async function editorHarness(mode = "item") {
     clearContentDashboardCache() {},
     loadContentDashboard(session, options) { reads.push({ session, options }); return response.promise; },
   };
-  const api = await vm.runInNewContext(`(async () => { ${source}
+  const api = await runContentUiSource(`(async () => { ${source}
     selectItem = async (id) => {
       trackSelection(id);
       selectedId = id;
@@ -134,7 +134,7 @@ test("a clean bank refresh still announces and applies its dashboard", async () 
 async function curriculumHarness() {
   const nodes = new Map(["gradeFilter", "subjectFilter", "programFilter", "unitFilter"].map(id => [id, nodeStub()]));
   const source = readFileSync("web/content-curriculum.js", "utf8").replace(/^import .*;\n/gm, "");
-  const api = await vm.runInNewContext(`(async () => { ${source}
+  const api = await runContentUiSource(`(async () => { ${source}
     return {
       rebuildSelectors,
       setCatalogue(catalog) { data = { catalog }; },

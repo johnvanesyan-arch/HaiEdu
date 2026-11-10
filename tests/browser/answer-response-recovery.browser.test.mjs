@@ -39,13 +39,14 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
     const module=`import {FunctionsClient} from '/sdk.mjs';
       import {createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from '/answer-response-recovery.mjs';
       import {captureFocusHandoff} from '/keyboard-focus.mjs';
+      import {escapeHtml} from '/text-safety.mjs';
       const supabase={functions:new FunctionsClient(location.origin+'/functions/v1'),auth:{getUser:async()=>({data:{user:{id:"fixture"}}}),getSession:async()=>({data:{session:{user:{id:${JSON.stringify(actor)}}}}})}};
       window.__haieduSupabaseClient=supabase;
       const $=id=>document.getElementById(id),answerForm=$('answerForm'),submitBtn=$('submitBtn'),nextBtn=$('nextBtn'),feedback=$('feedback'),answerArea=$('answerArea');
       let currentSession={id:${JSON.stringify(id(401))}},current={sessionItemId:${JSON.stringify(id(601))},item:{id:${JSON.stringify(id(501))},type:'numeric'},session:{position:1,total:2,mode:${JSON.stringify(mode)}}};
       let answerSubmission=null,questionStartedAt=performance.now(),startedAt=questionStartedAt;
       function updateMastery(){} function setRemediationQuestion(){} async function recordRecommendationTelemetry(){} async function status(){throw Error('Unexpected final-status read');} function renderFinalResult(){} function showGate(){throw Error('Unexpected gate');}
-      ${[render,'collectResponse',...(file==='practice.js'?['escapeHtml','lockAnswerControls','handleDiagnosticGateError']:[]),handler].map(name=>fn(source,name)).join('\n')}
+      ${[render,'collectResponse',...(file==='practice.js'?['lockAnswerControls','handleDiagnosticGateError']:[]),handler].map(name=>fn(source,name)).join('\n')}
       ${render}(current.item);
       answerForm.addEventListener('submit',${handler});
       await import('/ux.js');`;
@@ -61,7 +62,7 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
           const result=await(path.endsWith('submit-mastery-answer')?mastery:answer).call(body);
           res.writeHead(result.status,{'Content-Type':'application/json'});res.end(JSON.stringify(result.body));return;
         }
-        const scripts=['/answer-response-recovery.mjs','/ux.js','/account-signout.mjs','/keyboard-focus.mjs'];
+        const scripts=['/answer-response-recovery.mjs','/ux.js','/account-signout.mjs','/keyboard-focus.mjs','/text-safety.mjs'];
         const text=path==='/sdk.mjs'?sdk:path==='/fixture.mjs'?module
           :path==='/config.js'?'export const SUPABASE_URL=location.origin,SUPABASE_PUBLISHABLE_KEY="fixture";'
           :scripts.includes(path)?await readFile('web'+path,'utf8'):html;

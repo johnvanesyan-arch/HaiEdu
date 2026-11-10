@@ -60,7 +60,7 @@ export function studentHomeHref(view = 'home', context = null) {
   if (view !== 'home' && ['courses', 'work'].includes(view)) params.set('view', view);
   return './index.html' + (params.size ? '?' + params : '');
 }
-export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
+export {escapeHtml} from './text-safety.mjs';
 export function resolveNavigationContext(contexts, selection, extensionKey) {
   if (selection) return contexts.find(c => sameContext(c, selection)) ?? null;
   const matches = extensionKey ? contexts.filter(c => c.extensionKey === extensionKey) : [];

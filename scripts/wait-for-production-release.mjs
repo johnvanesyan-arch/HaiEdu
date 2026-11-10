@@ -61,6 +61,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     const { verifyBuiltRelease } = await import('./verify-built-release.mjs');
     const built = await verifyBuiltRelease({ expectedCommit: process.env.GITHUB_SHA });
     console.log(`Executed browser build matches ${built.buildId}: ${built.pages} pages and ${built.assets} assets.`);
+    console.log('Browser security headers match the reviewed configuration on the manifest, pages and assets.');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

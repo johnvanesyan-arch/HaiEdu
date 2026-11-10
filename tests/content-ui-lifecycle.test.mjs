@@ -1,6 +1,6 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
-import vm from "node:vm";
 import { deferred, moduleSource, node } from "./fixtures/content-session-harness.mjs";
 
 async function reviewHarness({ initialSession = { user: { id: "fixture-user" } }, deferInitial = false, heading = false, itemId = "fixture-item" } = {}) {
@@ -15,7 +15,7 @@ async function reviewHarness({ initialSession = { user: { id: "fixture-user" } }
     },
     functions: { invoke(name) { requests.push(name); return new Promise(() => {}); } },
   };
-  const loading = vm.runInNewContext(`(async () => { ${moduleSource("web/content-review-workflow.js")} })()`, {
+  const loading = runContentUiSource(`(async () => { ${moduleSource("web/content-review-workflow.js")} })()`, {
     window: { __haieduSupabaseClient: client },
     document: { body: { dataset: itemId ? { contentItemId: itemId } : {} }, getElementById: (id) => id === "detailPanel" ? panel : null, querySelector: () => null },
     MutationObserver: class { constructor(callback) { this.callback = callback; observers.push(this); } observe() {} },
@@ -123,7 +123,7 @@ async function editorHarness() {
     ".remove-misconception-btn": [removeMisconception],
   };
   const client = { auth: { getSession: async () => ({ data: { session: null } }), onAuthStateChange() {} } };
-  const api = await vm.runInNewContext(`(async () => { ${moduleSource("web/content.js")}; return { wireEditorRows }; })()`, {
+  const api = await runContentUiSource(`(async () => { ${moduleSource("web/content.js")}; return { wireEditorRows }; })()`, {
     document: {
       body: { dataset: { contentMode: "item" } }, getElementById: get,
       querySelectorAll: (selector) => selector === ".option-key" && optionRow.removed ? [secondKey] : selectors[selector] ?? [],

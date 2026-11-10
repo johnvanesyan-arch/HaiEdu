@@ -1,7 +1,7 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import vm from "node:vm";
 
 function deferred() {
   let resolve, reject;
@@ -34,7 +34,7 @@ async function harness() {
   const supabase = { auth: { getSession: async () => ({ data: { session: null } }), onAuthStateChange() {} },
     functions: { invoke(_name, { body }) { const pending = deferred(); requests.push({ body, ...pending }); return pending.promise; } } };
   const source = readFileSync("web/content-guides.js", "utf8").replace(/^import .*;\n/gm, "");
-  const api = await vm.runInNewContext(`(async () => { ${source}
+  const api = await runContentUiSource(`(async () => { ${source}
     return { renderEditor, wireGuideTabs, activateGuideTab, renderVariantDetails, markGuideDirty, previewGuide,
       prepare(guide, id = "template:guide-alpha") {
         selectedId = id; editorDirty = false;

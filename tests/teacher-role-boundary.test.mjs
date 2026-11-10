@@ -1,3 +1,4 @@
+import {escapeHtml} from '../web/text-safety.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -102,7 +103,7 @@ async function openTeacherPage(profile, profileError = null) {
     // This import-stripping VM checks routing, not DOM focus. Native Chromium
     // keyboard-focus cases exercise the actual drawer controller separately.
     createModalFocus:()=>({open(){},close(){}}),
-    todayRequest:()=>({recent:[]}),roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
+    todayRequest:()=>({recent:[]}),escapeHtml,roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, workspaceCalls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };

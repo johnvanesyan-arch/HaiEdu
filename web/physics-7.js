@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -42,14 +43,6 @@ const stateTones = {
   verified: "success",
 };
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function setMessage(message, isError = false) {
   const el = $("subjectMessage");

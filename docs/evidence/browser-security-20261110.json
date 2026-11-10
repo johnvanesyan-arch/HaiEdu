@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "haiedu-bf13-stage1-candidate-v1",
+  "date": "2026-11-10",
+  "timezone": "Asia/Yerevan",
+  "workItem": "BF-13",
+  "findingIds": [
+    "P1:C3",
+    "P4:T1"
+  ],
+  "status": "stage1_candidate_not_released",
+  "baseCommit": "167767eec45cd739454ee7b87d5db405728bde85",
+  "baselineFrontendCommit": "8ddc735eabf12f0409744d4adc7f6274d851e4ce",
+  "requirements": "https://app.notion.com/p/40d355a472bf8155a838c145acd61419",
+  "scope": "Subject-neutral browser headers and rendering; existing server/auth/content/tenant gates unchanged.",
+  "headers": [
+    {
+      "key": "X-Content-Type-Options",
+      "value": "nosniff"
+    },
+    {
+      "key": "Referrer-Policy",
+      "value": "strict-origin-when-cross-origin"
+    },
+    {
+      "key": "X-Frame-Options",
+      "value": "SAMEORIGIN"
+    },
+    {
+      "key": "Permissions-Policy",
+      "value": "camera=(), geolocation=(), microphone=(self), payment=(), usb=()"
+    },
+    {
+      "key": "Content-Security-Policy-Report-Only",
+      "value": "default-src 'none'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self' https://xzyjvwiiibuarpotppid.supabase.co; media-src 'self' blob:; frame-src 'self'; worker-src 'none'; manifest-src 'self'"
+    }
+  ],
+  "cspStage": "report-only; script-src self is not yet enforced",
+  "originInventory": {
+    "applicationScripts": "All 29 HTML pages use external local modules; no inline application scripts.",
+    "styles": "One static style block, 16 static style attributes and runtime style updates require the staged unsafe-inline style allowance.",
+    "api": "Self plus the exact configured HTTPS Supabase origin; no wildcard service origins or unsafe-eval.",
+    "images": "Self/data plus HTTPS, preserving the governed learning-image contract and MFA QR data images.",
+    "media": "Self/blob for protected fetched audio and native downloads.",
+    "framing": "SAMEORIGIN is enforced by X-Frame-Options; report-only CSP does not confer enforcement.",
+    "permissions": "Same-origin microphone retained; unused camera/location/payment/USB denied.",
+    "computedConsumers": "Registered compatibility routes are same-origin. Browser resource assignments audited in the execution workspace. Future BF15 CAPTCHA/provider origins need coordinated policy review."
+  },
+  "escapingAudit": [
+    {
+      "file": "admin.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "app.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content-curriculum.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content-guides.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content-pilot-analytics.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content-review-workflow.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content-workspace.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "content.js",
+      "previousName": "esc",
+      "previousApostropheEntity": "&#39;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "diagnostic.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "mastery.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "physics-7.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "practice.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "progress.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    },
+    {
+      "file": "teacher.js",
+      "previousName": "escapeHtml",
+      "previousApostropheEntity": "&#039;",
+      "behavior": "Nullish empty, String conversion and five HTML metacharacters; decoded DOM unchanged; compact apostrophe spelling normalizes to&#039;."
+    }
+  ],
+  "directEscapingImportConsumers": [
+    "admin.js",
+    "analytics-provenance.mjs",
+    "app.js",
+    "arrangement-editor.mjs",
+    "arrangement-ui.mjs",
+    "assessment-reporting.mjs",
+    "class-history.mjs",
+    "content-curriculum-map.js",
+    "content-curriculum.js",
+    "content-evidence-page.js",
+    "content-guides.js",
+    "content-home.js",
+    "content-materials.js",
+    "content-misconceptions.js",
+    "content-pilot-analytics.js",
+    "content-review-workflow.js",
+    "content-review.js",
+    "content-workspace.js",
+    "content.js",
+    "course-page.js",
+    "diagnostic.js",
+    "learning-player.mjs",
+    "mastery.js",
+    "multi-subject-home.js",
+    "physics-7.js",
+    "practice.js",
+    "progress.js",
+    "resource-assignments.mjs",
+    "resource-learner-view.mjs",
+    "school-analytics-view.mjs",
+    "student-course-presentation.mjs",
+    "student-courses.js",
+    "student-teacher-tasks.mjs",
+    "student-work-list.mjs",
+    "supplementary-resources.mjs",
+    "teacher-feedback.mjs",
+    "teacher-review.mjs",
+    "teacher-skill-evidence.mjs",
+    "teacher-task-draft-workspace.mjs",
+    "teacher-task-editor.mjs",
+    "teacher-task-review.mjs",
+    "teacher-task-send.mjs",
+    "teacher-task-text.mjs",
+    "teacher-today.mjs",
+    "teacher.js",
+    "typed-fields-editor.mjs",
+    "typed-fields-ui.mjs",
+    "unit-guides.mjs",
+    "writing-assignments.mjs",
+    "written-work.mjs"
+  ],
+  "compatibility": "Seven compact apostrophe encodings normalize from &#39; to &#039; with identical decoded DOM text. learning-navigation.escapeHtml and content-workspace.esc exports remain available.",
+  "urlBoundaries": [
+    "Student current/source/historical links",
+    "Teacher submission and source links",
+    "Resource/material external-link dialogs",
+    "Same-origin master-admin attention links"
+  ],
+  "urlContract": "Absolute HTTPS, bounded length, no credentials/whitespace/control characters/localhost, matching the existing task-text/server contract. HTML escaping remains a separate operation.",
+  "injectionEvidence": "No demonstrated production XSS. Deliberately invalid synthetic response URLs exercise client resilience; server validation is unchanged.",
+  "baselineNative": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "baselineObservations": [
+    "A text/plain classic script executes without nosniff.",
+    "No report-only script violation event is observed without a CSP header."
+  ],
+  "policyRefinement": "A dedicated governed HTTPS image test first retained an img-src report under self/data only. Adding the supported HTTPS image source makes it pass; script/API restrictions stay scoped.",
+  "fullLocalUnitIntegration": {
+    "tests": 1794,
+    "pass": 1794,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "fullLocalNativeChromium": {
+    "tests": 627,
+    "pass": 627,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "focused": {
+    "newSecurityNativeCasesIncludedIn627": 52,
+    "sharedTextUnitCasesIncludedIn1794": 4,
+    "contentUnitAfterFixtureCorrection": 83,
+    "contentBrowserAfterFixtureCorrection": 15,
+    "privacyAndGuideBrowserAfterFixtureCorrection": 9,
+    "releasePreflightAndSafety": 31
+  },
+  "nativeScope": [
+    "All29 canonical compiled signed-out pages with candidate HTTP headers",
+    "Canonical compiled synthetic student Home, school teacher and master-admin rendering",
+    "Actual source task controllers in isolated student/review fixtures; these modules are inlined in canonical bundles",
+    "Inert text/invalid links and retained HTTPS links/history/feedback",
+    "MIME rejection, same/foreign framing, origin-only referrer, microphone policy",
+    "Native blob download/audio decoding and governed HTTPS images",
+    "Compiled login/retry/reset with synthetic Auth and actual bundled SDK transport intercepted before any remote request",
+    "Expected benign inline probe runs and reports; user-controlled text markers never execute"
+  ],
+  "retainedInitialIntegrationRuns": {
+    "unit": {
+      "tests": 1793,
+      "pass": 1765,
+      "fail": 28,
+      "cancelled": 0,
+      "skipped": 0,
+      "cause": "Outdated import-stripping VM fixtures omitted the shared esc binding."
+    },
+    "native": {
+      "tests": 627,
+      "pass": 606,
+      "fail": 20,
+      "cancelled": 1,
+      "skipped": 0,
+      "cause": "Outdated content/remediation module maps and admin privacy AST helper extraction."
+    },
+    "correction": "Use the actual shared helper/import in fixtures, remove only the obsolete AST extraction and preserve existing authorization/observer/request/cleanup assertions.",
+    "otherSetup": "An initial expanded harness assumed separate canonical task entry files, and two new Auth tests used ambiguous button selectors. Corrected before final verification; original logs retained."
+  },
+  "browserBuild": {
+    "id": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+    "pages": 29,
+    "immutableAssets": 124,
+    "retainedReleases": 32,
+    "retainedImmutableFiles": 371,
+    "all31BaseReleasesAnd330FilesRetained": true
+  },
+  "productionQaMaintenance": {
+    "preflight": "All existing built-release preflights now compare reviewed security headers on release/manifest/pages/assets, without extra requests; source/cache/digest/timeouts retained.",
+    "negativeControls": "Missing each declared header and a single immutable asset with a missing header fail closed.",
+    "workflowPathListsUpdated": 7,
+    "fixtureWorkflowSerializationPreserved": 20,
+    "ownerPausedWorkflowConditionsUnchanged": 16,
+    "dispatches": 0
+  },
+  "staticChecks": "Typecheck, five-module core parity, teacher bundles, pinned SDK, build/archive, favicon/font and QA dependency checks pass; staged public-email and whitespace scans pass.",
+  "releaseGates": {
+    "requiredPRCI": "pending; exact submitted-head results recorded on PR",
+    "previewVerification": "pending hosted preview readback",
+    "merge": "not performed",
+    "productionQA": "not run (paused by owner)",
+    "cspEnforcement": "pending deployed report-only observation/review",
+    "ownerUsability": "open",
+    "B.12.3/B.12": "open",
+    "BF02": "deferred"
+  },
+  "limits": [
+    "Synthetic identities/services; no production credentials or signed-in production acceptance.",
+    "Browser Permissions Policy test establishes capability allowance, not physical microphone/assistive-technology acceptance.",
+    "No backend/schema/Auth settings/scoring/curriculum release changes.",
+    "Independent content/security gates and paused subject work retain their scope."
+  ],
+  "retainedLogDigests": {
+    "bf13-baseline.log": "sha256:447876a7d07d484cbce40ceeb9a30126c6b0b40ace2b3d8d2a496fcb3f246f3e",
+    "bf13-unit-full.log": "sha256:440f61d344e966b8221198665e65fab677bfda172e14a08c27b4106a7d5e8641",
+    "bf13-browser-full.log": "sha256:2001a07c89abc4a1841b591e8c81ba62d67b0592707eb64342b92e91bfa8875c",
+    "bf13-unit-final.log": "sha256:90cefe4528a65a118cb569bae24da04856736d0a19c625717dd658ee65a7c9f9",
+    "bf13-browser-final.log": "sha256:4feac5f33573115aa0527441205dc89d25e5d1eba1d95f3756948650e10810c2",
+    "bf13-governed-image-policy-initial.log": "sha256:e1c321cb6123d477b348a9686010e4a0ee7f550fe31bff40472417ff4276cbc0"
+  }
+}

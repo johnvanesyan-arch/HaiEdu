@@ -1,3 +1,4 @@
+import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import {rememberReviewItem} from './content-review-resume.mjs';
 import * as reviewNavigation from './content-list-navigation.mjs';
@@ -64,9 +65,6 @@ function openBankItem(row) {
   location.assign(reviewNavigation.itemHref(row.dataset.id,'bank',context));
 }
 
-function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
 
 function setMessage(text, bad = false) {
   const target = $("consoleMessage");

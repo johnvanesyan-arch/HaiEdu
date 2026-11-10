@@ -1,3 +1,4 @@
+import {escapeHtml} from '../web/text-safety.mjs';
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
@@ -120,7 +121,7 @@ function createFixture({ file, handler }) {
     feedback: elements.feedback,
     $: (id) => elements[id],
     Event,
-    captureFocusHandoff,
+    captureFocusHandoff, escapeHtml,
     AbortController,
     setTimeout:(fn,ms)=>{const timer=setTimeout(fn,ms);timer.unref();return timer;},
     clearTimeout,
@@ -137,7 +138,6 @@ function createFixture({ file, handler }) {
     ...(file === "practice.js" ? [
       functionSource(source, "lockAnswerControls"),
       functionSource(source, "handleDiagnosticGateError"),
-      functionSource(source, "escapeHtml"),
     ] : []),
     functionSource(source, handler),
     uxSync,

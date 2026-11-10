@@ -1,3 +1,4 @@
+import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -70,9 +71,6 @@ const errorLabels = {
   unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
 };
 
-function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
 
 function messageFor(error) {
   const code = String(error?.code || error?.message || error || "");

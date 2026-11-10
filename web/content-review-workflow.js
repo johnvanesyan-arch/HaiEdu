@@ -1,3 +1,4 @@
+import {escapeHtml as esc} from './text-safety.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -31,9 +32,6 @@ function reviewHistoryErrorHy(...values) {
   return values.find(Boolean) ? String(values.find(Boolean)) : "Չհաջողվեց բեռնել հարցի ստուգման պատմությունը։";
 }
 
-function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
 
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });

@@ -1,11 +1,15 @@
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import {escapeHtml} from '../../web/text-safety.mjs';
+// These VM fixtures strip ESM imports. Supply the actual pure UI dependency;
+// native browser cases load that same module directly. No auth boundary is stubbed here.
+export function runContentUiSource(source,bindings,options){return vm.runInNewContext(source,Object.assign(bindings,{esc:escapeHtml}),options);}
 export function deferred(){let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return{promise,resolve,reject};}
 export function node(){const classes=new Set();return{value:'',textContent:'',innerHTML:'',dataset:{},listeners:new Map(),classList:{add:(...x)=>x.forEach(v=>classes.add(v)),remove:(...x)=>x.forEach(v=>classes.delete(v)),contains:v=>classes.has(v),toggle:(v,b)=>b?classes.add(v):classes.delete(v)},addEventListener(t,f){this.listeners.set(t,f);},focus(){},querySelectorAll(){return [];},setAttribute(){},getAttribute(){return null;},scrollTo(){}};}
-export function moduleSource(path){return readFileSync(path,'utf8').replace(/^import .*;\n/gm,'').replace(/^export /gm,'');}
+export function moduleSource(path){return readFileSync(path,'utf8').replace(/^import .*;\n/gm,'').replace(/^export \{[^}]*\};\n/gm,'').replace(/^export /gm,'');}
 export async function itemHarness(){const nodes=new Map(),calls=[],loads=[],events=[];let authListener;const get=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};
  const auth={getSession:async()=>({data:{session:null}}),onAuthStateChange:f=>{authListener=f;},signOut:async()=>{authListener('SIGNED_OUT',null);}};
- const api=await vm.runInNewContext(`(async()=>{${moduleSource('web/content.js')}
+ const api=await runContentUiSource(`(async()=>{${moduleSource('web/content.js')}
   collectOptions=()=>[{key:'A',contentHy:'A'},{key:'B',contentHy:'B'}];collectMisconceptions=()=>[];collectAnswerKey=()=>({answer:'A'});
   renderRows=()=>{};renderStats=()=>{};populateSkillFilter=()=>{};renderLoadingDetail=()=>{};renderDetail=()=>{};
   return{saveRevision,runQaCurrent,approveCurrent,action,showForSession,refresh,selectItem,prepare({dirty=true,userId='QA-user'}={}){activeSession={user:{id:userId}};selectedId='QA-item';dashboard={items:[{id:'QA-item',code:'QA-P3',type:'single_choice',latestQa:{passed:true},reviewStatus:'needs_review'}]};selectedDetail={editing:{contentEditable:true},misconceptions:[],item:{id:'QA-item'}};editorDirty=dirty;},snapshot:()=>({activeSession,selectedId,selectedDetail,dashboard,editorDirty,workflowBusy})};})()`,{
@@ -16,13 +20,13 @@ export async function itemHarness(){const nodes=new Map(),calls=[],loads=[],even
 export async function guideHarness({deferTimers=false}={}){const nodes=new Map(),calls=[],timers=[];let authListener;const get=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};
  const auth={getSession:async()=>({data:{session:null}}),onAuthStateChange:f=>{authListener=f;}};
  const source=moduleSource('web/content-guides.js');
- const api=await vm.runInNewContext(`(async()=>{${source};renderStats=()=>{};populateFilters=()=>{};renderRows=()=>{};renderEditor=()=>{};
+ const api=await runContentUiSource(`(async()=>{${source};renderStats=()=>{};populateFilters=()=>{};renderRows=()=>{};renderEditor=()=>{};
  contentFromEditor=()=>({});referencesFromEditor=()=>({});
  return{selectGuide,refreshCatalog,showForSession,runWorkflow,returnToGuideList,markGuideDirty,prepare({dirty=false,scope='skill'}={}){selectedId=scope+':QA-guide';catalog=[{guideScope:scope,guideSourceId:'QA-guide'}];detail={guide:{guideScope:scope,guideSourceId:'QA-guide'}};editorDirty=dirty;},snapshot:()=>({catalog,selectedId,detail,editorDirty})};})()`,{document:{getElementById:get,querySelectorAll:()=>[],querySelector:()=>null},window:{__haieduSupabaseClient:{auth,functions:{invoke(name,{body}){const r=deferred();calls.push({name,body,...r});return r.promise;}}},location:{href:'https://isolated.invalid/content-guides?id=skill%3AQA-guide',search:'?id=skill%3AQA-guide'},history:{replaceState(){},pushState(){}},addEventListener(){},scrollTo(){}},URL,URLSearchParams,setTimeout:deferTimers?fn=>timers.push(fn):setTimeout,confirm:()=>true});
  api.prepare();return{api,get,calls,timers,logout:()=>api.showForSession(null),authEvent:(event,session)=>authListener(event,session)};
 }
 export function cacheHarness({sessionRead}={}){let now=1000;const authListeners=[],requests=[],storage=new Map(),nodes=new Map();const get=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};
  const source=moduleSource('web/content-workspace.js');
- const api=vm.runInNewContext(`(()=>{${source};return{invokeContent,loadContentDashboard,readContentDashboardCache,clearContentDashboardCache,mountContentWorkspace};})()`,{window:{__haieduSupabaseClient:{functions:{invoke(name,{body}){const r=deferred();requests.push({name,body,...r});return r.promise;}},auth:{onAuthStateChange:f=>{authListeners.push(f);},getSession:()=>sessionRead??Promise.resolve({data:{session:{user:{id:'QA-user'}}}}),signOut:async()=>{authListeners.forEach(f=>f('SIGNED_OUT',null));}}}},document:{getElementById:get},sessionStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},Date:{now:()=>now},Response,location:{replace(){}}});
+ const api=runContentUiSource(`(()=>{${source};return{invokeContent,loadContentDashboard,readContentDashboardCache,clearContentDashboardCache,mountContentWorkspace};})()`,{window:{__haieduSupabaseClient:{functions:{invoke(name,{body}){const r=deferred();requests.push({name,body,...r});return r.promise;}},auth:{onAuthStateChange:f=>{authListeners.push(f);},getSession:()=>sessionRead??Promise.resolve({data:{session:{user:{id:'QA-user'}}}}),signOut:async()=>{authListeners.forEach(f=>f('SIGNED_OUT',null));}}}},document:{getElementById:get},sessionStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},Date:{now:()=>now},Response,location:{replace(){}}});
  return{api,requests,storage,get,advance:n=>{now+=n;},logout:()=>authListeners.forEach(f=>f('SIGNED_OUT',null))};
 }

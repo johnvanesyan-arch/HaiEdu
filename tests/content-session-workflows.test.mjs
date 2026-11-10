@@ -1,6 +1,6 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import vm from 'node:vm';
 import { itemHarness, guideHarness, cacheHarness, deferred, moduleSource, node } from './fixtures/content-session-harness.mjs';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
@@ -56,7 +56,7 @@ function bootstrap(path) {
     functions: { invoke(name) { reads.push(name); return Promise.resolve({ data: { guides: [], actor: {} }, error: null }); } },
   };
   const location = { search: '', href: 'https://isolated.invalid/content-guides' };
-  const loading = vm.runInNewContext(`(async () => { ${moduleSource(path)} })()`, {
+  const loading = runContentUiSource(`(async () => { ${moduleSource(path)} })()`, {
     document: { body: { dataset: { contentMode: 'bank' } }, getElementById: get, querySelectorAll: () => [], querySelector: () => null },
     window: { __haieduSupabaseClient: client, location, history: { replaceState() {}, pushState() {} }, addEventListener() {}, dispatchEvent() {}, scrollTo() {} },
     location, URL, URLSearchParams, setTimeout, confirm: () => true,

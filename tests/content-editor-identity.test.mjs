@@ -1,6 +1,6 @@
+import {runContentUiSource} from './fixtures/content-session-harness.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
-import vm from "node:vm";
 import { deferred, itemHarness, moduleSource, node } from "./fixtures/content-session-harness.mjs";
 
 const flush = () => new Promise((resolve) => setImmediate(resolve));
@@ -72,7 +72,7 @@ async function curriculumHarness() {
   let listener, session = null;
   const loads = [], timers = [], nodes = new Map();
   const get = (id) => { if (!nodes.has(id)) nodes.set(id, node()); return nodes.get(id); };
-  const api = await vm.runInNewContext(`(async () => {
+  const api = await runContentUiSource(`(async () => {
     ${moduleSource("web/content-curriculum.js")}
     applyScope = () => {}; rebuildSelectors = () => {};
     return { refreshData, snapshot: () => data };
@@ -120,7 +120,7 @@ test("curriculum identity event wins over an older initial session read", async 
   const initialRead = deferred(), timers = [], reads = [], nodes = new Map();
   let listener, firstRead = true;
   const get = (id) => { if (!nodes.has(id)) nodes.set(id, node()); return nodes.get(id); };
-  const loading = vm.runInNewContext(`(async () => { ${moduleSource("web/content-curriculum.js")} })()`, {
+  const loading = runContentUiSource(`(async () => { ${moduleSource("web/content-curriculum.js")} })()`, {
     $: get, document: { body: { dataset: { contentMode: "bank" } } }, window: { addEventListener() {} },
     contentSupabase: { auth: {
       getSession() { if (firstRead) { firstRead = false; return initialRead.promise; } return Promise.resolve({ data: { session: userB } }); },
@@ -154,8 +154,8 @@ test("shared workspace identity updates before the item controller loads the new
     URLSearchParams, location: { search: "?id=fixture-item" }, Response, CustomEvent: class {},
   };
   // Reproduce module dependency evaluation: workspace runs before its importer.
-  const workspace = vm.runInNewContext(`(() => { ${moduleSource("web/content-workspace.js")}; return { clearContentDashboardCache, loadContentDashboard }; })()`, shared);
-  const loading = vm.runInNewContext(`(async () => { ${moduleSource("web/content.js")}; return { snapshot: () => ({activeSession, dashboard}) }; })()`, { ...shared, ...workspace });
+  const workspace = runContentUiSource(`(() => { ${moduleSource("web/content-workspace.js")}; return { clearContentDashboardCache, loadContentDashboard }; })()`, shared);
+  const loading = runContentUiSource(`(async () => { ${moduleSource("web/content.js")}; return { snapshot: () => ({activeSession, dashboard}) }; })()`, { ...shared, ...workspace });
   await flush();
   assert.equal(clientsCreated, 1, "The two modules must reuse the same global Supabase client");
   assert.equal(listeners.length, 2);

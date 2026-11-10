@@ -1,3 +1,4 @@
+import {escapeHtml as esc,isSafeInternalHref} from './text-safety.mjs';
 import {classHistoryMarkup} from './class-history.mjs';
 import {erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount } from './account-signout.mjs';
@@ -27,9 +28,6 @@ let selectedSchoolId = null;
 let accountCache = new Map();
 const pendingDeletionIds=new Set();
 
-function esc(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
-}
 
 function fmtDate(value) {
   if (!value) return "—";
@@ -164,7 +162,7 @@ function renderOverview(data) {
   ];
   $("stats").innerHTML = cards.map(([label, value]) => `<article class="card admin-stat"><span class="stat-label">${esc(label)}</span><strong>${esc(value)}</strong></article>`).join("");
   const attention = data.attention || [];
-  $("attentionList").innerHTML = attention.length ? attention.map((item) => `<article class="admin-list-item ${esc(item.severity || "")}"><div><strong>${esc(item.label)}</strong><p class="subtle small">${esc(item.detail || "")}</p></div>${item.href ? `<a class="text-link" href="${esc(item.href)}">Բացել</a>` : ""}</article>`).join("") : '<div class="admin-empty">Այս պահին անհետաձգելի խնդիր չկա։</div>';
+  $("attentionList").innerHTML = attention.length ? attention.map((item) => `<article class="admin-list-item ${esc(item.severity || "")}"><div><strong>${esc(item.label)}</strong><p class="subtle small">${esc(item.detail || "")}</p></div>${isSafeInternalHref(item.href,location.href) ? `<a class="text-link" href="${esc(item.href)}">Բացել</a>` : ""}</article>`).join("") : '<div class="admin-empty">Այս պահին անհետաձգելի խնդիր չկա։</div>';
   const recent = data.recentAudit || [];
   $("recentActivity").innerHTML = recent.length ? recent.map((event) => `<article class="admin-activity-item"><div><strong>${esc(event.action)}</strong><p class="subtle small">${esc(event.actorDisplayName || event.actorRole || "Համակարգ")} · ${esc(event.targetDisplayName || event.targetType || "—")}</p></div><time class="admin-activity-time">${esc(fmtDate(event.createdAt))}</time></article>`).join("") : '<div class="admin-empty">Աուդիտի նոր գրառում չկա։</div>';
 }

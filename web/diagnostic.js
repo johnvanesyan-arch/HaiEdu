@@ -1,3 +1,4 @@
+import {escapeHtml} from './text-safety.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import {captureFocusHandoff} from './keyboard-focus.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -27,14 +28,6 @@ const bandTones = {
   not_assessed: "neutral",
 };
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 
 function routeForActive(active) {
   if (active?.mode === "practice") return "./practice.html";
