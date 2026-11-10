@@ -1,4 +1,5 @@
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
+import {captureFocusHandoff} from './keyboard-focus.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
@@ -127,33 +128,40 @@ async function openQuestionPanel() {
 
 async function loadItem() {
   if (!currentSession?.id) return;
-  $("prompt").textContent = "Հարցը բեռնվում է…";
-  $("answerArea").innerHTML = "";
-  $("feedback").className = "feedback hidden";
-  $("feedback").innerHTML = "";
-  $("nextBtn").classList.add("hidden");
-  $("submitBtn").disabled = true;
+  const focusSessionId = currentSession.id, next = $("nextBtn");
+  const focusHandoff = captureFocusHandoff(next.parentElement, {from: document.activeElement === next ? next : null});
+  try {
+    $("prompt").textContent = "Հարցը բեռնվում է…";
+    $("answerArea").innerHTML = "";
+    $("feedback").className = "feedback hidden";
+    $("feedback").innerHTML = "";
+    $("nextBtn").classList.add("hidden");
+    $("submitBtn").disabled = true;
 
-  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
-  if (error) {
-    $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
-    $("feedback").className = "feedback bad";
-    $("feedback").textContent = error.message;
-    $("nextBtn").textContent = "Կրկին փորձել";
-    $("nextBtn").classList.remove("hidden");
-    return;
-  }
+    const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
+    if (error) {
+      $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
+      $("feedback").className = "feedback bad";
+      $("feedback").textContent = error.message;
+      $("nextBtn").textContent = "Կրկին փորձել";
+      $("nextBtn").classList.remove("hidden");
+      if (currentSession?.id === focusSessionId) focusHandoff.move($("nextBtn"));
+      return;
+    }
 
-  if (data?.complete) {
-    await showFreshResults();
-    return;
-  }
+    if (data?.complete) {
+      await showFreshResults();
+      if (currentSession?.id === focusSessionId) focusHandoff.move($("resultTitle"));
+      return;
+    }
 
-  clearAnswerRecovery($("answerForm"));
-  current = data;
-  currentSession = { ...currentSession, ...data.session };
-  startedAt = performance.now();
-  renderQuestion(data);
+    clearAnswerRecovery($("answerForm"));
+    current = data;
+    currentSession = { ...currentSession, ...data.session };
+    startedAt = performance.now();
+    renderQuestion(data);
+    if (currentSession?.id === focusSessionId) focusHandoff.move($("prompt"));
+  } finally { focusHandoff.cancel(); }
 }
 
 function renderQuestion(data) {
@@ -227,6 +235,7 @@ async function submit(event) {
   }
 
   const form = $("answerForm");
+  const focusHandoff = captureFocusHandoff(form);
   const submission = { item: current, sessionId: currentSession.id };
   const isCurrentSubmission = () => answerSubmission === submission
     && current === submission.item && currentSession?.id === submission.sessionId;
@@ -250,6 +259,7 @@ async function submit(event) {
 
     if (error) {
       if (!showAnswerRecovery(form,$("feedback"),request,{error})) submission.item.answerRequest = null;
+      focusHandoff.move($("submitBtn"));
       return;
     }
 
@@ -264,7 +274,9 @@ async function submit(event) {
     $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Այս փուլում ճիշտ/սխալ արդյունքը չի բացահայտվում։</div>";
     $("nextBtn").textContent = data.session?.status === "completed" ? "Տեսնել արդյունքները" : "Հաջորդ հարց";
     $("nextBtn").classList.remove("hidden");
+    focusHandoff.move($("nextBtn"));
   } finally {
+    focusHandoff.cancel();
     if (answerSubmission === submission) {
       answerSubmission = null;
       delete form.dataset.answerSubmitting;

@@ -1,4 +1,5 @@
 import {classNavigationHandoff} from './teacher-class-handoff.mjs';
+import {createModalFocus} from './keyboard-focus.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,assessmentScopeMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
@@ -6,6 +7,12 @@ import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,c
 window.__haieduTeacherHomeStartup ||= Object.freeze({claim:()=>null,cancel:()=>{}});
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
+const drawerFocus = createModalFocus({
+  container: $("studentDrawer"),
+  dialog: $("studentDrawer").querySelector('[role="dialog"]'),
+  initialFocus: $("closeDrawerBtn"),
+  fallbackFocus: () => $("teacherPageTitle"),
+});
 
 let dashboard = null;
 let disposeToday=()=>{};
@@ -44,7 +51,7 @@ function clearDetail() {
   disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
   institutionalUnitLoadVersion++; invitationRequestVersion++;
-  disposeWriting(); disposeWriting=()=>{}; closeDrawer();
+  disposeWriting(); disposeWriting=()=>{}; closeDrawer({restoreFocus:false});
   for(const id of ["rosterAnalyticsCard","matrixAnalyticsCard","teacherWrittenWorkCard","teacherWorkflowEntries"]) $(id)?.classList.add("hidden");
   for(const id of ["teacherResourcesLink","teacherAssignResourceLink","teacherAssignWritingLink"]) $(id)?.removeAttribute("href");
 }
@@ -537,7 +544,7 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
   $("teacherWorkflowEntries")?.classList.add("hidden");
   for(const id of ["teacherResourcesLink","teacherAssignResourceLink","teacherAssignWritingLink"]) $(id)?.removeAttribute("href");
   institutionalUnitLoadVersion++;
-  closeDrawer();
+  closeDrawer({restoreFocus:false});
   selectedAssignmentId=selection?.assignmentId??assignmentId??(selectedClassId===id?selectedAssignmentId:null);
   selectedClassId = id;
   rosterQuery = "";
@@ -1087,7 +1094,7 @@ function renderMatrix(klass) {
     $("matrixWrap").innerHTML = `<table class="skill-matrix"><thead><tr><th>Աշակերտ</th>${header}</tr></thead><tbody>${rows}</tbody></table>`;
   }
 
-  $("matrixWrap").querySelectorAll("[data-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.student, el.dataset.skill)));
+  $("matrixWrap").querySelectorAll("[data-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.student, el.dataset.skill, el)));
 }
 
 function renderRoster(klass) {
@@ -1118,7 +1125,7 @@ function renderRoster(klass) {
     roster.appendChild(card);
   }
 
-  roster.querySelectorAll("[data-open-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.openStudent)));
+  roster.querySelectorAll("[data-open-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.openStudent, null, el)));
   roster.querySelectorAll("[data-remove-student]").forEach((el) => el.addEventListener("click", () => removeStudent(el.dataset.removeStudent, el.dataset.studentName)));
 
   if (!students.length) {
@@ -1129,16 +1136,16 @@ function renderRoster(klass) {
 }
 
 let drawerLoadVersion=0;
-async function openStudent(studentId, skillId = null) {
+async function openStudent(studentId, skillId = null, opener = document.activeElement) {
   const request=++drawerLoadVersion;
   const dashboardVersion=dashboardLoadVersion;
   if (!studentId) return;
   const drawer = $("studentDrawer");
   drawer.classList.remove("hidden");
   drawer.setAttribute("aria-hidden", "false");
-  $("closeDrawerBtn").focus();
   $("studentDrawerName").textContent = "Բեռնվում է…";
   $("studentDrawerContent").innerHTML = '<p class="subtle">Տվյալները բեռնվում են…</p>';
+  drawerFocus.open(opener);
 
   const klass = selectedClass();
   const institutionalContext = dashboard?.institutionalTeacher ? {
@@ -1225,12 +1232,13 @@ async function openStudent(studentId, skillId = null) {
   }
 }
 
-function closeDrawer() {
+function closeDrawer({restoreFocus = true} = {}) {
   ++drawerLoadVersion;
   $("studentDrawerName").textContent = "";
   $("studentDrawerContent").replaceChildren();
   $("studentDrawer").classList.add("hidden");
   $("studentDrawer").setAttribute("aria-hidden", "true");
+  drawerFocus.close({restoreFocus});
 }
 
 async function saveProfile() {
@@ -1443,7 +1451,11 @@ $("teacherUnitFilter").addEventListener("change", changeInstitutionalUnit);
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
-  if (!$("studentDrawer").classList.contains("hidden")) closeDrawer();
+  if (!$("studentDrawer").classList.contains("hidden")) {
+    event.preventDefault();
+    closeDrawer();
+    return;
+  }
   closeClassRenameEditors();
 });
 document.addEventListener("click", (event) => {

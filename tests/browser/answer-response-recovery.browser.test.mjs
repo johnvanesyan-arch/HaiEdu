@@ -38,6 +38,7 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
     const source=await readFile('web/'+file,'utf8'),calls=[];
     const module=`import {FunctionsClient} from '/sdk.mjs';
       import {createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from '/answer-response-recovery.mjs';
+      import {captureFocusHandoff} from '/keyboard-focus.mjs';
       const supabase={functions:new FunctionsClient(location.origin+'/functions/v1'),auth:{getUser:async()=>({data:{user:{id:"fixture"}}}),getSession:async()=>({data:{session:{user:{id:${JSON.stringify(actor)}}}}})}};
       window.__haieduSupabaseClient=supabase;
       const $=id=>document.getElementById(id),answerForm=$('answerForm'),submitBtn=$('submitBtn'),nextBtn=$('nextBtn'),feedback=$('feedback'),answerArea=$('answerArea');
@@ -60,7 +61,7 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
           const result=await(path.endsWith('submit-mastery-answer')?mastery:answer).call(body);
           res.writeHead(result.status,{'Content-Type':'application/json'});res.end(JSON.stringify(result.body));return;
         }
-        const scripts=['/answer-response-recovery.mjs','/ux.js','/account-signout.mjs'];
+        const scripts=['/answer-response-recovery.mjs','/ux.js','/account-signout.mjs','/keyboard-focus.mjs'];
         const text=path==='/sdk.mjs'?sdk:path==='/fixture.mjs'?module
           :path==='/config.js'?'export const SUPABASE_URL=location.origin,SUPABASE_PUBLISHABLE_KEY="fixture";'
           :scripts.includes(path)?await readFile('web'+path,'utf8'):html;

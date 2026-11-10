@@ -86,7 +86,7 @@ async function openTeacherPage(profile, profileError = null) {
   const redirects = [];
   const elements = new Map();
   const getElement = (id) => {
-    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, replaceChildren(){},setAttribute(){},removeAttribute(){}, classList: {
+    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, querySelector(){return {};},replaceChildren(){},setAttribute(){},removeAttribute(){}, classList: {
       values: new Set(), add(value) { this.values.add(value); }, remove(value) { this.values.delete(value); },
     } });
     return elements.get(id);
@@ -99,6 +99,9 @@ async function openTeacherPage(profile, profileError = null) {
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
   source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
   const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
+    // This import-stripping VM checks routing, not DOM focus. Native Chromium
+    // keyboard-focus cases exercise the actual drawer controller separately.
+    createModalFocus:()=>({open(){},close(){}}),
     todayRequest:()=>({recent:[]}),roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);

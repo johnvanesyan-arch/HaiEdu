@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "haiedu-bf11-candidate-verification-v1",
+  "date": "2026-11-10",
+  "timezone": "Asia/Yerevan",
+  "status": "implementation_candidate_not_released",
+  "baselineCommit": "75ceb79322e26706fdc485c55b34750cb5504434",
+  "findingIds": [
+    "P2:X1",
+    "P4:W1"
+  ],
+  "workItem": "BF-11",
+  "evidenceScope": "isolated Chromium with synthetic service identities and responses; no production acceptance",
+  "reproduction": {
+    "originalApplication": {
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "observedFailures": [
+      "drawer background remained interactive",
+      "accepted shared-player answer did not focus Next"
+    ]
+  },
+  "unitIntegrationInitialRun": {
+    "tests": 1789,
+    "pass": 1783,
+    "fail": 6,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "unitFixtureCorrection": {
+    "cause": "Import-stripping teacher-role VM omitted the new UI-only focus dependency and its dialog selector.",
+    "authorizationAssertionsChanged": false,
+    "correctedFileRun": {
+      "tests": 31,
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "nativeBrowserFullRun": {
+    "tests": 565,
+    "pass": 565,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "additionalPointerRegression": {
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "staticChecks": {
+    "typecheck": "pass",
+    "coreParity": "pass",
+    "teacherBundleParity": "pass",
+    "pinnedBrowserSDKParity": "pass",
+    "hashedBuildAndArchive": "pass",
+    "favicon": "pass",
+    "font": "pass",
+    "browserQAPathCoverage": "pass",
+    "browserSyntax": "pass",
+    "diffWhitespace": "pass",
+    "publicEmailIdentifiers": "pass"
+  },
+  "browserBuild": {
+    "id": "863e37a5527e99b027c2436b1fe8a4becd603c98935264e8e6de2bd12b22effc",
+    "pages": 29,
+    "immutableAssets": 123,
+    "retainedReleases": 30,
+    "retainedImmutableFiles": 328
+  },
+  "explicitWorkflowPathListsUpdated": 6,
+  "designatedFixtureWorkflowsSerialized": 20,
+  "releaseGates": {
+    "requiredPRChecks": "separate GitHub result",
+    "merge": "not performed",
+    "productionVerification": "not performed",
+    "ownerUsabilityAcceptance": "not given"
+  },
+  "limits": [
+    "No production QA workflow dispatched.",
+    "No Vercel settings or production deployment changed.",
+    "No backend, database, account or learner data changed.",
+    "Not physical-device or assistive-technology certification."
+  ],
+  "nativeKeyboardFinalRun": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  }
+}

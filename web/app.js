@@ -1,6 +1,7 @@
 import {setRemediationQuestion} from "./remediation.js";
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
+import {captureFocusHandoff} from './keyboard-focus.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { routeSession, roleRoutingReady } from "./role-router.js";
@@ -319,26 +320,32 @@ function clearQuestion() {
 
 async function loadSessionItem() {
   if (!currentSession?.id) return;
-  setRemediationQuestion(null);
-  nextBtn.disabled = true;
-  nextBtn.dataset.action = "next";
-  submitBtn.disabled = true;
-  feedback.className = "feedback hidden";
-  feedback.innerHTML = "";
-  $("prompt").textContent = "Հարցը բեռնվում է…";
-  answerArea.innerHTML = "";
-  stimulusEl.innerHTML = "";
-  stimulusEl.classList.add("hidden");
+  const focusSessionId = currentSession.id;
+  const focusHandoff = captureFocusHandoff(nextBtn.parentElement, {from: document.activeElement === nextBtn ? nextBtn : null});
+  try {
+    setRemediationQuestion(null);
+    nextBtn.disabled = true;
+    nextBtn.dataset.action = "next";
+    submitBtn.disabled = true;
+    feedback.className = "feedback hidden";
+    feedback.innerHTML = "";
+    $("prompt").textContent = "Հարցը բեռնվում է…";
+    answerArea.innerHTML = "";
+    stimulusEl.innerHTML = "";
+    stimulusEl.classList.add("hidden");
 
-  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
-  if (error) {
-    $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
-    feedback.className = "feedback bad";
-    feedback.textContent = error.message;
-    return;
-  }
+    const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", { body: { sessionId: currentSession.id } });
+    if (error) {
+      $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
+      feedback.className = "feedback bad";
+      feedback.textContent = error.message;
+      if (currentSession?.id === focusSessionId) focusHandoff.move($("prompt"));
+      return;
+    }
 
-  renderSessionItem(data);
+    renderSessionItem(data);
+    if (currentSession?.id === focusSessionId) focusHandoff.move($("prompt"));
+  } finally { focusHandoff.cancel(); }
 }
 
 function renderSessionItem(data) {
@@ -453,6 +460,7 @@ async function submitAnswer(event) {
   const submission = { item: current, sessionId: currentSession.id };
   const isCurrentSubmission = () => answerSubmission === submission
     && current === submission.item && currentSession?.id === submission.sessionId;
+  const focusHandoff = captureFocusHandoff(answerForm);
   answerSubmission = submission;
   answerForm.dataset.answerSubmitting = "true";
   submitBtn.disabled = true;
@@ -473,6 +481,7 @@ async function submitAnswer(event) {
 
     if (error) {
       if (!showAnswerRecovery(answerForm,feedback,request,{error})) submission.item.answerRequest = null;
+      focusHandoff.move(submitBtn);
       return;
     }
 
@@ -486,6 +495,7 @@ async function submitAnswer(event) {
     if (current.session.mode === "diagnostic") {
       feedback.className = "feedback neutral";
       feedback.innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Ճիշտ/սխալ արդյունքը կերևա ախտորոշիչի ավարտից հետո։</div>";
+      focusHandoff.move(nextBtn);
       return;
     }
 
@@ -494,7 +504,9 @@ async function submitAnswer(event) {
     feedback.className = `feedback ${correct ? "good" : "bad"}`;
     feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Սեսիան սահմանափակ է և անվերջ չի շարունակվի։"}</div>`;
     updateMastery(data.mastery, data.recommendation);
+    focusHandoff.move(nextBtn);
   } finally {
+    focusHandoff.cancel();
     if (answerSubmission === submission) {
       answerSubmission = null;
       delete answerForm.dataset.answerSubmitting;

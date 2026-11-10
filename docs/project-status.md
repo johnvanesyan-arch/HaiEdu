@@ -1,5 +1,7 @@
 # Project status register
 
+**2026-11-10 — BF-11 keyboard-focus implementation candidate; not released.** Learning views hand focus from an accepted answer to Next, then to the next prompt or completion. The teacher drawer contains Tab/Shift+Tab, inerts only its background and restores its opener; account/navigation changes close without stale restoration. Initial loads and later user focus choices are preserved. Shared and legacy learning consumers are covered. Required PR checks, merge, production acceptance and owner usability remain separate gates; B.12.3/B.12 stay open and subjects remain paused. [Scope and verification](qa/keyboard-focus-20261110.md).
+
 **2026-11-09 — Student type and shape scale is live; Chapter III QA accepts a completed baseline; the 7 November student design review is complete.**
 - **Phase 5** ([PR451](https://github.com/johnvanesyan-arch/HaiEdu/pull/451), released at `bd65885`) covers D1 and D3, approved by John; D2 is deferred and D4 was not taken up. Student pages now have one size per heading level (title 24/28 px, section 20/22, card 18), corners of 8/12/16 px or a pill, and weights 400/600/700. Contrast was and remains at zero failures. Change is limited to `student-forest.css`; teacher and staff pages are unchanged.
 - **CI:** `role-layout-browser` failed once (the resource library at 360 px with 200% text) and passed on re-run. The page measures identically on main and the branch, so this is recorded as a probable timing flake.
