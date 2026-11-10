@@ -332,8 +332,11 @@ function configureMessages() {
   });
   const prompt = document.getElementById("prompt");
   if (prompt) {
-    prompt.setAttribute("aria-live", "polite");
-    prompt.setAttribute("aria-atomic", "true");
+    // Explicit next-question focus announces the prompt once. Feedback keeps
+    // its existing status region; the prompt must not also be a live region.
+    prompt.tabIndex = -1;
+    prompt.removeAttribute("aria-live");
+    prompt.removeAttribute("aria-atomic");
   }
 }
 
@@ -371,12 +374,7 @@ function configureDrawer() {
   panel.setAttribute("aria-modal", "true");
   panel.setAttribute("aria-labelledby", "studentDrawerName");
   panel.tabIndex = -1;
-  if (!drawer.dataset.uxEscBound) {
-    drawer.dataset.uxEscBound = "true";
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !drawer.classList.contains("hidden")) document.getElementById("closeDrawerBtn")?.click();
-    });
-  }
+  // The teacher controller owns closing, focus containment and restoration.
 }
 
 function configurePage() {

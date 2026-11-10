@@ -4,6 +4,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
+import {captureFocusHandoff} from '../web/keyboard-focus.mjs';
 
 // Bounded local regressions for the real page submit handlers, ownership state,
 // and shared UX synchronizer. Deferred fake network responses exercise input
@@ -119,6 +120,7 @@ function createFixture({ file, handler }) {
     feedback: elements.feedback,
     $: (id) => elements[id],
     Event,
+    captureFocusHandoff,
     AbortController,
     setTimeout:(fn,ms)=>{const timer=setTimeout(fn,ms);timer.unref();return timer;},
     clearTimeout,

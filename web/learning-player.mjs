@@ -6,6 +6,7 @@ import {typedFieldsMarkup,collectTypedResponse} from './typed-fields-ui.mjs';
 import {arrangementMarkup,collectArrangementResponse,bindArrangement} from './arrangement-ui.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery} from './answer-response-recovery.mjs';
 import {focusHint,hintConflictMessage,hintRefreshLabel,invokeForHint} from './remediation-request.mjs';
+import {captureFocusHandoff} from './keyboard-focus.mjs';
 const draftable=type=>['typed_fields','matching','ordering'].includes(type);
 const collectResponse=(root,item)=>item.type==='typed_fields'?collectTypedResponse(root,item.responseDefinition):collectArrangementResponse(root,item.type,item.responseDefinition);
 // Server-owned counts, option presentation, scoring, help and original bound policy.
@@ -29,13 +30,13 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
   };
   const fail = error => { if(valid()) { const p=document.createElement('p');p.textContent=error.message;root.appendChild(p); } };
-  async function serve(refreshed) {
+  async function serve(refreshed, focusHandoff) {
     clearTimeout(saveTimer);
     disposeStimulus?.();disposeStimulus=null;
     const request=++serial;
     const data=refreshed??await invoke('get-session-item',{sessionId:session.id});
     if(!valid() || request!==serial)return;
-    if(data.complete){ current=null;root.innerHTML=`<h2>Աշխատանքն ավարտված է</h2>${assessmentResultMarkup(data.assessmentResult,{hideUnassessed:true}) || `<p>${data.summary.correct}/${data.summary.answered} · ${data.summary.percent}%</p>`}<button type="button">Թարմացնել արդյունքները</button>`;root.querySelector('button').onclick=onComplete;return; }
+    if(data.complete){ current=null;root.innerHTML=`<h2>Աշխատանքն ավարտված է</h2>${assessmentResultMarkup(data.assessmentResult,{hideUnassessed:true}) || `<p>${data.summary.correct}/${data.summary.answered} · ${data.summary.percent}%</p>`}<button type="button">Թարմացնել արդյունքները</button>`;root.querySelector('button').onclick=onComplete;focusHandoff?.move(root.querySelector('h2'));return; }
     current=data;started=performance.now();
     data.hintLevel=Number(data.remediation?.hintLevelUsed??0);
     const type=data.item.type;
@@ -54,6 +55,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     root.querySelector('form').addEventListener('submit',event=>{event.preventDefault();void answer();});
     if(draftable(type))root.querySelector('form').addEventListener('input',()=>{clearTimeout(saveTimer);root.querySelector('[data-draft-status]').textContent='Կան չպահպանված փոփոխություններ։';saveTimer=setTimeout(()=>{saveDraft(data).catch(fail);},600);});
     root.querySelector('[data-help]')?.addEventListener('click',()=>void help());
+    focusHandoff?.move(root.querySelector('h2'));
   }
   function saveDraft(item) {
     clearTimeout(saveTimer);
@@ -73,7 +75,8 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     const value=root.querySelector('input[name="answer"]:checked')?.value;
     const typed=draftable(current.item.type);
     if(!typed&&!value)return;
-    busy=true;const item=current;const form=root.querySelector('form');form.dataset.answerSubmitting='true';root.querySelector('button[type="submit"]').disabled=true;root.querySelector('fieldset').disabled=true;
+    const form=root.querySelector('form'),focusHandoff=captureFocusHandoff(form);
+    busy=true;const item=current;form.dataset.answerSubmitting='true';root.querySelector('button[type="submit"]').disabled=true;root.querySelector('fieldset').disabled=true;
     try {
       if(typed&&!item.answerRequest)await saveDraft(item);
       if(!valid()||current!==item)return;
@@ -87,6 +90,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
         const locked=showAnswerRecovery(form,root.querySelector('[data-feedback]'),request,{error});
         if(!locked)item.answerRequest=null;
         if(root.querySelector('[data-help]'))root.querySelector('[data-help]').disabled=locked||(!item.refreshHint&&item.hintLevel>=3);
+        focusHandoff.move(root.querySelector('button[type="submit"]'));
         return;
       }
       clearAnswerRecovery(form);item.answerRequest=null;
@@ -104,9 +108,14 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
       // Outcome colour only; the wording and grading data are unchanged.
       feedback.dataset.outcome=data.revealCorrect===false?'accepted':typed?(data.grading.correctComponents>=data.grading.requiredComponents?'correct':data.grading.correctComponents>0?'partial':'incorrect'):data.grading?.correct?'correct':'incorrect';
       feedback.textContent=data.revealCorrect===false?'Պատասխանն ընդունված է։ Արդյունքները կտեսնեք ավարտից հետո։':typed?`${item.item.type==='matching'?'Ճիշտ համապատասխանեցումներ':item.item.type==='ordering'?'Ճիշտ հերթականություն':'Ճիշտ լրացված դաշտեր'}՝ ${data.grading.correctComponents}/${data.grading.requiredComponents}։ Միավոր՝ ${Number(data.grading.score.toFixed(2))}/1։`:data.grading?.correct?'Ճիշտ պատասխան։':'Պատասխանը սխալ է։';
-      const next=document.createElement('button');next.type='button';next.textContent='Հաջորդը';next.onclick=()=>{ if(busy)return;busy=true;serve().catch(fail).finally(()=>{busy=false;}); };root.querySelector('[data-next]').appendChild(next);
+      const next=document.createElement('button');next.type='button';next.textContent='Հաջորդը';next.onclick=()=>{
+        if(busy)return;
+        const nextFocus=captureFocusHandoff(root);busy=true;
+        serve(undefined,nextFocus).catch(error=>{fail(error);nextFocus.move(next);}).finally(()=>{nextFocus.cancel();busy=false;});
+      };root.querySelector('[data-next]').appendChild(next);
+      focusHandoff.move(next);
     }catch(error){fail(error);if(valid()&&current===item){root.querySelector('button[type="submit"]').disabled=!item.audioReady;root.querySelector('fieldset').disabled=false;}}
-    finally{delete form.dataset.answerSubmitting;busy=false;}
+    finally{focusHandoff.cancel();delete form.dataset.answerSubmitting;busy=false;}
   }
   function displayHelp({titleHy,strategyHy,contentHy,noteHy}) {
     const panel=root.querySelector('[data-help-content]');

@@ -12,6 +12,7 @@ on:
       - web/supabase-browser.mjs
       - web/supabase-browser.bundle.mjs
       - web/answer-response-recovery.mjs
+      - web/keyboard-focus.mjs
       - scripts/qa-programme-fixtures.mjs
       - scripts/qa-request-diagnostics.mjs
       - scripts/sprint-14-isolation.mjs

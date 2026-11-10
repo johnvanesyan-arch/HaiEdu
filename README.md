@@ -1,5 +1,7 @@
 # Armenian Curriculum Mastery Platform
 
+**2026-11-10 — BF-11 keyboard-focus implementation candidate; not released.** Learning views hand focus from an accepted answer to Next, then to the next prompt or completion. The teacher drawer contains Tab/Shift+Tab, inerts only its background and restores its opener; account/navigation changes close without stale restoration. Initial loads and later user focus choices are preserved. Shared and legacy learning consumers are covered. Required PR checks, merge, production acceptance and owner usability remain separate gates; B.12.3/B.12 stay open and subjects remain paused. [Scope and verification](docs/qa/keyboard-focus-20261110.md).
+
 **2026-11-09 — Student type and shape scale is live; the 7 November student design review is complete.**
 - **What changed:** one size per heading level on student pages, four corner sizes and three font weights. Teacher and staff pages are unchanged.
 - **Production QA:** Phase 5 at `bd65885` 12/13. Chapter III failed only because the School A QA learner completed its diagnostic by hand. After the QA-only Chapter III fix ([PR452](https://github.com/johnvanesyan-arch/HaiEdu/pull/452)), all 10 triggered suites passed at `77b8b08`, including Chapter III 123/123.

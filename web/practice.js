@@ -1,4 +1,5 @@
 import {setRemediationQuestion} from "./remediation.js";
+import {captureFocusHandoff} from './keyboard-focus.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -338,35 +339,42 @@ async function startOrResumePractice() {
 
 async function loadSessionItem() {
   if (!currentSession?.id) return;
-  setRemediationQuestion(null);
-  const nextBtn = $("nextBtn");
-  const submitBtn = $("submitBtn");
-  nextBtn.disabled = true;
-  submitBtn.disabled = true;
-  $("feedback").className = "feedback hidden";
-  $("feedback").innerHTML = "";
-  $("prompt").textContent = "Հարցը բեռնվում է…";
-  $("answerArea").innerHTML = "";
-  $("stimulus").innerHTML = "";
-  $("stimulus").classList.add("hidden");
-  $("nextExplanation").textContent = "Հաջորդ հարցը կընտրվի ձեր պատասխանի հիման վրա։";
+  const focusSessionId = currentSession.id;
+  const nextAction = $("nextBtn");
+  const focusHandoff = captureFocusHandoff(nextAction.parentElement, {from: document.activeElement === nextAction ? nextAction : null});
+  try {
+    setRemediationQuestion(null);
+    const nextBtn = $("nextBtn");
+    const submitBtn = $("submitBtn");
+    nextBtn.disabled = true;
+    submitBtn.disabled = true;
+    $("feedback").className = "feedback hidden";
+    $("feedback").innerHTML = "";
+    $("prompt").textContent = "Հարցը բեռնվում է…";
+    $("answerArea").innerHTML = "";
+    $("stimulus").innerHTML = "";
+    $("stimulus").classList.add("hidden");
+    $("nextExplanation").textContent = "Հաջորդ հարցը կընտրվի ձեր պատասխանի հիման վրա։";
 
-  const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", {
-    body: { sessionId: currentSession.id },
-  });
+    const { data, error } = await invokeLearnerFunction(supabase,"get-session-item", {
+      body: { sessionId: currentSession.id },
+    });
 
-  if (await handleDiagnosticGateError(error, data)) return;
-  if (error) {
-    $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
-    $("feedback").className = "feedback bad";
-    $("feedback").textContent = error.message;
-    nextBtn.disabled = false;
-    nextBtn.textContent = "Կրկին փորձել";
-    nextBtn.dataset.action = "retry";
-    return;
-  }
+    if (await handleDiagnosticGateError(error, data)) return;
+    if (error) {
+      $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
+      $("feedback").className = "feedback bad";
+      $("feedback").textContent = error.message;
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Կրկին փորձել";
+      nextBtn.dataset.action = "retry";
+      if (currentSession?.id === focusSessionId) focusHandoff.move(nextBtn);
+      return;
+    }
 
-  renderSessionItem(data);
+    renderSessionItem(data);
+    if (currentSession?.id === focusSessionId) focusHandoff.move(data?.complete ? $("completionTitle") : $("prompt"));
+  } finally { focusHandoff.cancel(); }
 }
 
 function renderSessionItem(data) {
@@ -502,6 +510,7 @@ async function submitAnswer(event) {
   }
 
   const form = $("answerForm");
+  const focusHandoff = captureFocusHandoff(form);
   const submission = { item: current, sessionId: currentSession.id };
   const isCurrentSubmission = () => answerSubmission === submission
     && current === submission.item && currentSession?.id === submission.sessionId;
@@ -527,6 +536,7 @@ async function submitAnswer(event) {
     if (!isCurrentSubmission()) return;
     if (error) {
       if (!showAnswerRecovery(form,$("feedback"),request,{error})) submission.item.answerRequest = null;
+      focusHandoff.move($("submitBtn"));
       return;
     }
 
@@ -562,6 +572,7 @@ async function submitAnswer(event) {
     }
 
     updateMastery(data.mastery, data.recommendation);
+    focusHandoff.move(nextBtn);
     if (data.recommendation?.instanceId) {
       void recordRecommendationTelemetry(
         supabase,
@@ -571,6 +582,7 @@ async function submitAnswer(event) {
       );
     }
   } finally {
+    focusHandoff.cancel();
     if (answerSubmission === submission) {
       answerSubmission = null;
       delete form.dataset.answerSubmitting;
