@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "haiedu-bf13-stage1-candidate-v1",
+  "schemaVersion": "haiedu-bf13-stage1-released-v1",
   "date": "2026-11-10",
   "timezone": "Asia/Yerevan",
   "workItem": "BF-13",
@@ -7,7 +7,7 @@
     "P1:C3",
     "P4:T1"
   ],
-  "status": "stage1_candidate_not_released",
+  "status": "stage1_live_static_verified_csp_enforcement_open",
   "baseCommit": "167767eec45cd739454ee7b87d5db405728bde85",
   "baselineFrontendCommit": "8ddc735eabf12f0409744d4adc7f6274d851e4ce",
   "requirements": "https://app.notion.com/p/40d355a472bf8155a838c145acd61419",
@@ -43,7 +43,8 @@
     "media": "Self/blob for protected fetched audio and native downloads.",
     "framing": "SAMEORIGIN is enforced by X-Frame-Options; report-only CSP does not confer enforcement.",
     "permissions": "Same-origin microphone retained; unused camera/location/payment/USB denied.",
-    "computedConsumers": "Registered compatibility routes are same-origin. Browser resource assignments audited in the execution workspace. Future BF15 CAPTCHA/provider origins need coordinated policy review."
+    "computedConsumers": "Registered compatibility routes are same-origin. Browser resource assignments audited in the execution workspace. Future BF15 CAPTCHA/provider origins need coordinated policy review.",
+    "previewToolbar": "Vercel injects https://vercel.live/_next-live/feedback/feedback.js into ordinary preview HTML. Request-only x-vercel-skip-toolbar:1 suppresses it for exact static verification. No scripts were executed; account for this preview-only integration before enforcement without broadening production sources by assumption."
   },
   "escapingAudit": [
     {
@@ -270,18 +271,23 @@
     "workflowPathListsUpdated": 7,
     "fixtureWorkflowSerializationPreserved": 20,
     "ownerPausedWorkflowConditionsUnchanged": 16,
-    "dispatches": 0
+    "dispatches": 0,
+    "functionalMergeAutomaticRuns": "All 13 triggered production acceptance workflows skipped under the owner pause; no dispatch or signed-in acceptance.",
+    "productionQa": "not run (paused by owner)"
   },
   "staticChecks": "Typecheck, five-module core parity, teacher bundles, pinned SDK, build/archive, favicon/font and QA dependency checks pass; staged public-email and whitespace scans pass.",
   "releaseGates": {
-    "requiredPRCI": "pending; exact submitted-head results recorded on PR",
-    "previewVerification": "pending hosted preview readback",
-    "merge": "not performed",
+    "requiredFunctionalPRCI": "all 5 passed, run 42835368838",
+    "requiredFunctionalMainCI": "all 5 passed, run 42843770813",
+    "previewStatic": "passed 29 pages / 124 assets, exact hashes/headers/cache/MIME",
+    "productionStatic": "passed 29 pages / 124 assets, exact source/manifest/hashes/headers/cache/MIME",
+    "mergeRelease": "functionalPR461 merged and canonical static files verified",
     "productionQA": "not run (paused by owner)",
-    "cspEnforcement": "pending deployed report-only observation/review",
+    "cspEnforcement": "open: needs deployed report-only observations and policy review",
     "ownerUsability": "open",
     "B.12.3/B.12": "open",
-    "BF02": "deferred"
+    "BF02": "deferred",
+    "documentationClosure": "Documentation-only; its exact-head required checks and final canonical source are recorded on the closure PR and source-verified Notion checkpoint."
   },
   "limits": [
     "Synthetic identities/services; no production credentials or signed-in production acceptance.",
@@ -296,5 +302,108 @@
     "bf13-unit-final.log": "sha256:90cefe4528a65a118cb569bae24da04856736d0a19c625717dd658ee65a7c9f9",
     "bf13-browser-final.log": "sha256:4feac5f33573115aa0527441205dc89d25e5d1eba1d95f3756948650e10810c2",
     "bf13-governed-image-policy-initial.log": "sha256:e1c321cb6123d477b348a9686010e4a0ee7f550fe31bff40472417ff4276cbc0"
-  }
+  },
+  "release": {
+    "functionalPR": 461,
+    "candidateCommit": "d13b0d89b614a62a2b89a9458a30fcef870331e0",
+    "mergeCommit": "3fdeef2b021941df78acd56dc986c0adc4ec7099",
+    "deploymentId": "dpl_4E4reFur7tXPgd4HzWuXXQXs2Nfn",
+    "ownerApproval": "Explicit merge/release approval in the conversation, 10 November 2026.",
+    "candidateTreeEqualsFunctionalMerge": true,
+    "prCI": {
+      "runId": 42835368838,
+      "allFiveRequiredJobs": "passed",
+      "unit": 1794,
+      "native": 627
+    },
+    "mainCI": {
+      "status": "passed",
+      "runId": 42843770813,
+      "commit": "3fdeef2b021941df78acd56dc986c0adc4ec7099",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42843770813",
+      "unit": {
+        "tests": 1794,
+        "pass": 1794,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "native": {
+        "tests": 627,
+        "pass": 627,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "jobs": [
+        {
+          "id": 129925624017,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 129925624466,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 129925624508,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 129925624601,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 129930930913,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    }
+  },
+  "hostedPreviewStatic": {
+    "status": "passed",
+    "commit": "d13b0d89b614a62a2b89a9458a30fcef870331e0",
+    "buildId": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+    "pages": 29,
+    "assets": 124,
+    "logicalVerificationGets": 156,
+    "uniqueVerifiedStaticFiles": 155,
+    "supabaseRequests": 0,
+    "applicationSignInRequests": 0,
+    "productionQaDispatches": 0,
+    "completedAt": "2026-11-10T15:10:36.924Z",
+    "httpGets": 187,
+    "allDigestsHeadersCacheMime": "matched",
+    "requestHeader": {
+      "x-vercel-skip-toolbar": "1"
+    },
+    "privateAccess": "Owner-authorized existing expiring link reused within 23h bound; URL/token/cookies omitted; local temporary access files deleted.",
+    "initialAttempts": "Two bootstrap hash differences from Vercel preview-toolbar injection are retained; request-only toolbar suppression then permits exact bytes with the unmodified verifier.",
+    "receiptSha256": "b391a69b77daf4c583047d40d76c5cfaef1c6a015086e5db1844cba296e25035"
+  },
+  "productionStatic": {
+    "status": "passed",
+    "commit": "3fdeef2b021941df78acd56dc986c0adc4ec7099",
+    "buildId": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+    "pages": 29,
+    "assets": 124,
+    "logicalVerificationGets": 156,
+    "uniqueVerifiedStaticFiles": 155,
+    "supabaseRequests": 0,
+    "applicationSignInRequests": 0,
+    "productionQaDispatches": 0,
+    "completedAt": "2026-11-10T15:32:08.629Z",
+    "httpGets": 257,
+    "releaseWaitGets": 72,
+    "allDigestsHeadersCacheMime": "matched",
+    "platformHstsPresent": true,
+    "enforcedCspAbsent": true,
+    "requestScope": "Public GET only; exact www.haiedu.am origin and reviewed static path allowlist; no page JavaScript execution.",
+    "receiptSha256": "1951c9a107fbe4499944555d748a091cf2cd78b4d9eb7690601e4d10135abcef"
+  },
+  "observationPlan": "No central collector was installed. Future authorized browser observations must record violations and legitimate sources, coordinate BF15 CAPTCHA and optional preview toolbar, then prepare a reviewed enforced policy with regressions and release approval. Static readback does not execute or observe application/Auth flows."
 }
