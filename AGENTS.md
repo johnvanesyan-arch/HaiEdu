@@ -55,3 +55,13 @@ John authorizes an expedited bank-approval workflow for the MVP. For each explic
 ## Owner-approved production QA pause — 2026-11-10
 
 To keep the Supabase Free organization under its egress quota, John has switched production browser QA to manual-only. The 16 production acceptance workflows still trigger on `main`, but their jobs skip unless the repository variable `PRODUCTION_QA_AUTORUN` is `true`; a manual `workflow_dispatch` run always executes. Do not dispatch production QA unless John asks for it. The required CI workflow (`ci.yml`) is unchanged and still gates every merge. Report each release accurately as "production QA not run (paused by owner)", never as passed. John restores automatic runs by setting `PRODUCTION_QA_AUTORUN` to `true`; no code change is needed.
+
+## Owner rule: keep production QA current — 2026-11-10
+
+Production QA scripts are part of the product. A stale script produces false failures and hides real ones.
+
+- Any change that alters something a production QA suite relies on must update that suite's script and its tests in the same PR. This includes design-only changes: renamed or removed CSS classes or ids, moved or renamed buttons, links, tabs and headings, changed default views or tab placement, new navigation elements, changed wording the script matches, and changes to the state a designated fixture account is expected to be in.
+- Before merging, run `node scripts/check-browser-qa-triggers.mjs` and use its dependency map to state in the PR description `Affected production QA:` followed by the affected suites, or `none`.
+- Automatic production QA is paused (see the 2026-11-10 pause rule above). After a release that affects suites, tell John which suites are affected and recommend a targeted manual run of only those; the weekly full run covers the rest.
+- When a suite fails because its script is out of date, report it to John as "QA script out of date", not as a product defect, and fix the script before closing the change.
+- New or changed production QA locators should use stable hooks: a `data-testid` attribute added to the page, or the element's accessible role and name. Do not add new locators that depend on CSS classes, layout or position. Migrate existing locators to stable hooks when a change touches them.
