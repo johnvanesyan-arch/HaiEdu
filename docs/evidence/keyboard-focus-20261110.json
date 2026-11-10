@@ -1,15 +1,15 @@
 {
-  "schemaVersion": "haiedu-bf11-candidate-verification-v1",
+  "schemaVersion": "haiedu-bf11-delivery-verification-v2",
   "date": "2026-11-10",
   "timezone": "Asia/Yerevan",
-  "status": "implementation_candidate_not_released",
+  "status": "merged_live_technically_verified_owner_usability_open",
   "baselineCommit": "75ceb79322e26706fdc485c55b34750cb5504434",
   "findingIds": [
     "P2:X1",
     "P4:W1"
   ],
   "workItem": "BF-11",
-  "evidenceScope": "isolated Chromium with synthetic service identities and responses; no production acceptance",
+  "evidenceScope": "Isolated native Chromium keyboard journeys with synthetic services; fresh canonical build verification and guarded production compatibility acceptance recorded separately.",
   "reproduction": {
     "originalApplication": {
       "tests": 2,
@@ -78,15 +78,19 @@
   "explicitWorkflowPathListsUpdated": 6,
   "designatedFixtureWorkflowsSerialized": 20,
   "releaseGates": {
-    "requiredPRChecks": "separate GitHub result",
-    "merge": "not performed",
-    "productionVerification": "not performed",
-    "ownerUsabilityAcceptance": "not given"
+    "requiredPRChecks": "all five pass",
+    "merge": "owner approved; PR454 merged",
+    "productionVerification": "Exact canonical build passes; all13 fresh guarded production compatibility suites pass on the functional merge.",
+    "ownerUsabilityAcceptance": "not given",
+    "B.12.3/B.12": "open",
+    "BF-02": "owner deferred",
+    "BF-37": "retained transport investigation; cause unconfirmed"
   },
   "limits": [
-    "No production QA workflow dispatched.",
-    "No Vercel settings or production deployment changed.",
-    "No backend, database, account or learner data changed.",
+    "New keyboard journeys use isolated synthetic services, not a fresh manual signed-in keyboard-only grading session.",
+    "No Vercel production settings or manual promotion changed; Git integration deployed the approved main commit.",
+    "No backend code, schema, authentication settings, scoring or curriculum releases changed.",
+    "Existing production QA may create run-owned fixture records under designated-identity guards and cleanup.",
     "Not physical-device or assistive-technology certification."
   ],
   "nativeKeyboardFinalRun": {
@@ -95,5 +99,532 @@
     "fail": 0,
     "cancelled": 0,
     "skipped": 0
+  },
+  "candidateHead": "423f0dd9d142264e57cf35dd6d2b43f9b4dd63d0",
+  "functionalMerge": "25377cf09e795ed65cc0305fcc167476fa510d77",
+  "pullRequest": "https://github.com/johnvanesyan-arch/HaiEdu/pull/454",
+  "approvedCandidateTreeEqualsMergedTree": true,
+  "requiredCI": [
+    {
+      "scope": "candidate",
+      "runId": 42762898750,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42762898750",
+      "allFiveJobs": "success",
+      "unitIntegration": {
+        "tests": 1789,
+        "pass": 1789,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "nativeChromium": {
+        "tests": 566,
+        "pass": 566,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "scope": "functionalMain",
+      "runId": 42764335673,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335673",
+      "allFiveJobs": "success",
+      "unitIntegration": {
+        "tests": 1789,
+        "pass": 1789,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "nativeChromium": {
+        "tests": 566,
+        "pass": 566,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    }
+  ],
+  "canonicalVerification": {
+    "origin": "https://www.haiedu.am",
+    "commit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+    "buildId": "863e37a5527e99b027c2436b1fe8a4becd603c98935264e8e6de2bd12b22effc",
+    "pages": 29,
+    "assets": 123,
+    "manifestExactMatch": true,
+    "allSHA256DigestsMatch": true,
+    "cachePoliciesMatch": true,
+    "releaseIdentityBeforeAndAfter": true,
+    "deploymentId": "dpl_GnE3AWcSNzKP6rBDm3Xc23poP7z9",
+    "automaticDomainAssignment": true,
+    "manualPromotion": false,
+    "productionVercelSettingsChanged": false
+  },
+  "productionAcceptance": {
+    "status": "passed",
+    "expectedSuites": 13,
+    "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+    "runs": [
+      {
+        "runId": 42764335549,
+        "workflow": "Chapter II pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335549/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 91,
+          "total": 91
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13738739673,
+          "name": "chapter-ii-pilot-read-acceptance",
+          "digest": "sha256:0ddb02ff6f868dff09bb0c173b22087eb3adc95e6593406775d141738356b2bd",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13738739673",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335564,
+        "workflow": "Chapter III pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335564/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 123,
+          "total": 123
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13740385482,
+          "name": "chapter-iii-pilot-read-acceptance",
+          "digest": "sha256:047d12ff2d2732e6f0f600cd25c513e3559c041aa2b88380e8cf7f22d09e8846",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13740385482",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335751,
+        "workflow": "Chapter IV pilot read acceptance",
+        "attempt": 2,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335751/attempts/2",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 155,
+          "total": 155
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13743325046,
+          "name": "chapter-iv-pilot-read-acceptance",
+          "digest": "sha256:0ff9a3e6a75499476f31a30ce48cc9d4e772bc6a4207cb2c227a8ec9be75e0b9",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13743325046",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335586,
+        "workflow": "Chapter V pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335586/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 191,
+          "total": 191
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13739013712,
+          "name": "chapter-v-pilot-read-acceptance",
+          "digest": "sha256:156336bc1e769576160a23a993ba52cefe5aa6229f4291a9cea21dded7022e44",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13739013712",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764336210,
+        "workflow": "Chapter VI pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764336210/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 324,
+          "total": 324
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13742088853,
+          "name": "chapter-vi-pilot-read-acceptance",
+          "digest": "sha256:add0b1a397d68deae7b5082f0e429538223e9b88e5bae56b0a1c79e161819ab2",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13742088853",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764336022,
+        "workflow": "English Unit 1 pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764336022/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 130,
+          "total": 130
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13741643211,
+          "name": "english-unit1-pilot-read-acceptance",
+          "digest": "sha256:2f8937d8318a1532eed8444e1280bf891ac86a4214158d0c5e5e29f2635ee893",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13741643211",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335798,
+        "workflow": "English Unit 2 pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335798/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 142,
+          "total": 142
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13740693112,
+          "name": "english-unit2-pilot-read-acceptance",
+          "digest": "sha256:916232d90107ce5d25dfc1282672fa7c142eeccd3a9a227ff0702320527b2aa0",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13740693112",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335913,
+        "workflow": "English Unit 3 pilot read acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335913/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 154,
+          "total": 154
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13741936855,
+          "name": "english-unit3-pilot-read-acceptance",
+          "digest": "sha256:743b784f32b9c7d6b3a410a2f1e74867ed51c66f280785b5df4f02587f5a2561",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13741936855",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335686,
+        "workflow": "Sprint 14 authenticated action QA",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335686/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 206,
+          "total": 206
+        },
+        "isolationAssertions": {
+          "passed": 108,
+          "total": 108
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13740151984,
+          "name": "sprint-14-actions-evidence",
+          "digest": "sha256:3299502bfa867cb962bf18ea81c85cd5253a5462df51ebb15600ff43c7f8f416",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13740151984",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335606,
+        "workflow": "Sprint 14D authenticated analytics QA",
+        "attempt": 2,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335606/attempts/2",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 10,
+          "total": 10
+        },
+        "isolationAssertions": {
+          "passed": 0,
+          "total": 0
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13741944504,
+          "name": "sprint-14d-analytics-evidence",
+          "digest": "sha256:3a35a0555dad157dbc0bec27a18c3dfa7bd24f8c7f48a3f00f0325f669742eb2",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13741944504",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335745,
+        "workflow": "Teacher feedback production acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335745/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 87,
+          "total": 87
+        },
+        "isolationAssertions": {
+          "passed": 108,
+          "total": 108
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13739834448,
+          "name": "teacher-feedback-production",
+          "digest": "sha256:3ee98fdb53d598815ccca8f49dda32ff4993ca1144cecae04598aa8b24019b58",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13739834448",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335838,
+        "workflow": "Mobile browser QA",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335838/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 110,
+          "total": 110
+        },
+        "isolationAssertions": {
+          "passed": 108,
+          "total": 108
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13740834838,
+          "name": "mobile-read-acceptance",
+          "digest": "sha256:f4b434e6accd338cb1b73e40cf8ccbf7d50be1f88277507a1a8951e15799988b",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13740834838",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      },
+      {
+        "runId": 42764335756,
+        "workflow": "Resource assignment production acceptance",
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335756/attempts/1",
+        "sourceCommit": "25377cf09e795ed65cc0305fcc167476fa510d77",
+        "conclusion": "success",
+        "mainAssertions": {
+          "passed": 329,
+          "total": 329
+        },
+        "isolationAssertions": {
+          "passed": 108,
+          "total": 108
+        },
+        "mainReportStatus": "passed",
+        "artifact": {
+          "id": 13740968948,
+          "name": "resource-assignments-acceptance",
+          "digest": "sha256:c8f5e2c0fa869a5ce44686500bf586239337cc989491804e16b282db740c2797",
+          "url": "https://api.github.com/repos/johnvanesyan-arch/HaiEdu/actions/artifacts/13740968948",
+          "archiveDigestVerified": true
+        },
+        "verification": "GitHub workflow metadata and decoded job logs; SHA256-verified main JSON receipt with matching source/status/counts."
+      }
+    ],
+    "retainedFailedAttempts": [
+      {
+        "runId": 42764335606,
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335606/attempts/1",
+        "workflow": "Sprint 14D authenticated analytics QA",
+        "conclusion": "failure",
+        "failurePhase": "pre-authentication exact-built-source verification",
+        "observedAtUTC": "2026-11-10T05:54:43Z",
+        "observedFailure": "Executed browser artifact differs: assessment.html",
+        "signedInAcceptanceStarted": false,
+        "fixtureWritesStarted": false,
+        "acceptanceArtifacts": 0,
+        "laterCanonicalFullBuildVerification": "pass",
+        "unchangedSuiteRetry": "attempt2 passed10/10 with existing guards, deadlines and assertions",
+        "causeLimit": "Observed at deployment switch; exact propagation mechanism unconfirmed."
+      },
+      {
+        "runId": 42764335751,
+        "attempt": 1,
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/42764335751/attempts/1",
+        "workflow": "Chapter IV pilot read acceptance",
+        "conclusion": "failure",
+        "mainAssertions": {
+          "passed": 105,
+          "total": 106
+        },
+        "isolationAssertions": {
+          "passed": 54,
+          "total": 54
+        },
+        "observedAtUTC": "2026-11-10T06:25:32Z",
+        "observedFailure": "anonymous: learner dashboard requires authentication; HTTP0",
+        "causeLimit": "No HTTP response recorded; exact transport cause unconfirmed. This is not an observed authorization grant.",
+        "fixtureWritesStarted": false,
+        "artifact": {
+          "id": 13740428174,
+          "digest": "sha256:ab90773fbe675dcefb7c3d7b9694b174eecad5e84276763c35e75f5cefff6e78",
+          "archiveDigestVerified": true
+        },
+        "unchangedSuiteRetry": "attempt2 passed155/155 with existing guards, deadlines and assertions"
+      }
+    ],
+    "successfulSuites": 13,
+    "mainAssertions": 2052,
+    "isolationAssertions": 864,
+    "isolationRepresentation": "756 individually enumerated checks plus108 in Mobile before/after summaries of54 each; both mobile aggregate checks are in its110 main assertions.",
+    "mobileReceiptVerifiedAfterWorkspaceRecovery": {
+      "main": 110,
+      "isolation": [
+        {
+          "phase": "before",
+          "passed": true,
+          "checks": 54
+        },
+        {
+          "phase": "after",
+          "passed": true,
+          "checks": 54
+        }
+      ],
+      "closedSessions": 4,
+      "archiveDigestVerified": true
+    },
+    "resourceCleanup": {
+      "ownedResourcesWithdrawn": {
+        "passed": 2,
+        "total": 2
+      },
+      "assignmentsCancelled": {
+        "passed": 4,
+        "total": 4
+      },
+      "writingDeliveryCancelled": {
+        "passed": 2,
+        "total": 2
+      },
+      "customTasksCancelled": {
+        "passed": 2,
+        "total": 2
+      },
+      "mainSessionsClosedHTTP204": {
+        "passed": 6,
+        "total": 6
+      }
+    },
+    "mobileCleanup": {
+      "ownedSessionsClosedHTTP204": {
+        "passed": 4,
+        "total": 4
+      }
+    }
+  },
+  "countingNote": "Local565, dedicated23 and CI566 browser counts overlap; separate pipeline executions are not distinct learner journeys.",
+  "recoveryCompute": {
+    "reason": "Execution workspace unavailable during production verification; it later recovered.",
+    "vcpusPerSession": 1,
+    "persistent": false,
+    "timeoutMsPerSession": 120000,
+    "ports": [],
+    "productionCredentialsProvided": false,
+    "networkScope": "Only the signed artifact file-service hosts",
+    "sessions": [
+      {
+        "name": "bf11-qa-artifact-20261110-0628",
+        "sessionId": "sbx_CU6kv3UwbK0tZxkFt31TG2BiuOMg",
+        "stopped": true,
+        "purpose": "Inspect ChapterIV failed artifact before retry"
+      },
+      {
+        "name": "bf11-final-receipts-20261110",
+        "sessionId": "sbx_5UKP4pWRSu73RGzfc2wwRiGXaVfh",
+        "stopped": true,
+        "purpose": "Read successful artifacts; tool truncated the returned output"
+      },
+      {
+        "name": "bf11-receipts-compact-20261110",
+        "sessionId": "sbx_FXJOHG5cGdNYkssKuYXDQZagbQ1D",
+        "stopped": true,
+        "purpose": "Verify12 receipts; generic resource cleanup assumption rejected Mobile session cleanup"
+      },
+      {
+        "name": "bf11-mobile-receipt-20261110",
+        "sessionId": "sbx_u8UEw8bmBXJh6PeSCiLjaE2Pq62e",
+        "stopped": true,
+        "purpose": "Verify Mobile with its session cleanup schema"
+      }
+    ],
+    "boundary": "Artifact reader corrections did not rerun any production suite."
+  },
+  "documentationClosure": {
+    "scope": "Seven Markdown/JSON documentation files only",
+    "runtimeEvidenceSource": "25377cf09e795ed65cc0305fcc167476fa510d77",
+    "reuseCondition": "Git comparison must confirm runtime, browser build/archive, backend, scripts, dependencies, workflows and production configuration remain identical."
   }
 }
