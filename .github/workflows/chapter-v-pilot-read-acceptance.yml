@@ -149,6 +149,9 @@ concurrency:
 
 jobs:
   authenticated-read-acceptance:
+    # Production QA autorun switch: automatic runs skip unless the repository
+    # variable PRODUCTION_QA_AUTORUN is 'true'. Manual runs always execute.
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.PRODUCTION_QA_AUTORUN == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
