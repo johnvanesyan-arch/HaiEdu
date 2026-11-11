@@ -53,6 +53,6 @@ test('production write runner remains manual, main-only, serialized and resumabl
  assert.match(workflow,/test "\$GITHUB_REF" = refs\/heads\/main/);
  assert.match(workflow,/group: sprint-14-isolation-qa\n  cancel-in-progress: false/);
  assert.match(workflow,/node scripts\/wait-for-production-release.mjs/);
- assert.match(workflow,/actions\/download-artifact@v4/);assert.match(workflow,/if: always\(\)/);
+ assert.match(workflow,/uses: actions\/download-artifact@[0-9a-f]{40}\b/);assert.match(workflow,/if: always\(\)/);
  assert.doesNotMatch(workflow,/SERVICE_ROLE|SUPABASE_ACCESS_TOKEN/);
 });
