@@ -1,0 +1,488 @@
+{
+  "schemaVersion": "bf13-hosted-designated-account-blocking-v1",
+  "status": "passed",
+  "startedAt": "2026-11-10T19:55:21.634Z",
+  "completedAt": "2026-11-10T19:55:58.092Z",
+  "commit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+  "buildId": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+  "roles": [
+    {
+      "role": "student",
+      "status": "passed",
+      "checks": [
+        {
+          "name": "private link targets the reviewed preview",
+          "passed": true
+        },
+        {
+          "name": "preview source is the reviewed commit",
+          "passed": true
+        },
+        {
+          "name": "real blocking header matches the reviewed policy",
+          "passed": true
+        },
+        {
+          "name": "compiled login is the reviewed browser build",
+          "passed": true
+        },
+        {
+          "name": "ordinary password sign-in succeeds with the designated identity",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "browser session belongs to the designated account",
+          "passed": true
+        },
+        {
+          "name": "role home renders its authorized panel",
+          "passed": true
+        },
+        {
+          "name": "signed-in material library renders",
+          "passed": true
+        },
+        {
+          "name": "material context read succeeds",
+          "passed": true
+        },
+        {
+          "name": "no ordinary page triggers a browser policy violation",
+          "passed": true
+        },
+        {
+          "name": "no application JavaScript error occurred",
+          "passed": true
+        },
+        {
+          "name": "all allowed application and Auth reads succeeded",
+          "passed": true
+        }
+      ],
+      "policyEvents": [],
+      "pageErrors": [],
+      "consoleErrors": 0,
+      "loginAttempts": 1,
+      "loginSucceeded": true,
+      "identityMatches": true,
+      "ordinarySession": true,
+      "readOnlyApplicationFlows": true,
+      "localLogout": {
+        "attempted": true,
+        "apiAccepted": true,
+        "localSessionCleared": true
+      },
+      "protectedPdf": "no_pdf_button_in_selected_fixture",
+      "realAudio": "not_exercised"
+    },
+    {
+      "role": "teacher",
+      "status": "passed",
+      "checks": [
+        {
+          "name": "private link targets the reviewed preview",
+          "passed": true
+        },
+        {
+          "name": "preview source is the reviewed commit",
+          "passed": true
+        },
+        {
+          "name": "real blocking header matches the reviewed policy",
+          "passed": true
+        },
+        {
+          "name": "compiled login is the reviewed browser build",
+          "passed": true
+        },
+        {
+          "name": "ordinary password sign-in succeeds with the designated identity",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "browser session belongs to the designated account",
+          "passed": true
+        },
+        {
+          "name": "role home renders its authorized panel",
+          "passed": true
+        },
+        {
+          "name": "signed-in material library renders",
+          "passed": true
+        },
+        {
+          "name": "material context read succeeds",
+          "passed": true
+        },
+        {
+          "name": "no ordinary page triggers a browser policy violation",
+          "passed": true
+        },
+        {
+          "name": "no application JavaScript error occurred",
+          "passed": true
+        },
+        {
+          "name": "all allowed application and Auth reads succeeded",
+          "passed": true
+        }
+      ],
+      "policyEvents": [],
+      "pageErrors": [],
+      "consoleErrors": 0,
+      "loginAttempts": 1,
+      "loginSucceeded": true,
+      "identityMatches": true,
+      "ordinarySession": true,
+      "readOnlyApplicationFlows": true,
+      "localLogout": {
+        "attempted": true,
+        "apiAccepted": true,
+        "localSessionCleared": true
+      },
+      "protectedPdf": "no_pdf_button_in_selected_fixture",
+      "realAudio": "not_exercised"
+    },
+    {
+      "role": "school_admin",
+      "status": "passed",
+      "checks": [
+        {
+          "name": "private link targets the reviewed preview",
+          "passed": true
+        },
+        {
+          "name": "preview source is the reviewed commit",
+          "passed": true
+        },
+        {
+          "name": "real blocking header matches the reviewed policy",
+          "passed": true
+        },
+        {
+          "name": "compiled login is the reviewed browser build",
+          "passed": true
+        },
+        {
+          "name": "ordinary password sign-in succeeds with the designated identity",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "browser session belongs to the designated account",
+          "passed": true
+        },
+        {
+          "name": "school administrator remains scoped to School A",
+          "passed": true
+        },
+        {
+          "name": "role home renders its authorized panel",
+          "passed": true
+        },
+        {
+          "name": "no ordinary page triggers a browser policy violation",
+          "passed": true
+        },
+        {
+          "name": "no application JavaScript error occurred",
+          "passed": true
+        },
+        {
+          "name": "all allowed application and Auth reads succeeded",
+          "passed": true
+        }
+      ],
+      "policyEvents": [],
+      "pageErrors": [],
+      "consoleErrors": 0,
+      "loginAttempts": 1,
+      "loginSucceeded": true,
+      "identityMatches": true,
+      "ordinarySession": true,
+      "readOnlyApplicationFlows": true,
+      "localLogout": {
+        "attempted": true,
+        "apiAccepted": true,
+        "localSessionCleared": true
+      },
+      "protectedPdf": "not_exercised",
+      "realAudio": "not_exercised"
+    }
+  ],
+  "budgets": {
+    "apiRequests": 75,
+    "apiResponseBytes": 3145728,
+    "staticRequests": 250,
+    "staticResponseBytes": 20971520,
+    "roles": 3,
+    "loginAttemptsPerRole": 1
+  },
+  "counts": {
+    "apiRequests": 32,
+    "apiResponseBytes": 113378,
+    "staticRequests": 207,
+    "staticResponseBytes": 3898743
+  },
+  "httpAudit": [
+    {
+      "role": "student",
+      "label": "auth/password-login",
+      "method": "POST",
+      "status": 200,
+      "bytes": 2265
+    },
+    {
+      "role": "student",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1180
+    },
+    {
+      "role": "student",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46
+    },
+    {
+      "role": "student",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 78
+    },
+    {
+      "role": "student",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1180
+    },
+    {
+      "role": "student",
+      "label": "function/get-student-dashboard",
+      "method": "POST",
+      "status": 200,
+      "bytes": 8489
+    },
+    {
+      "role": "student",
+      "label": "function/get-student-work/inbox",
+      "method": "POST",
+      "status": 200,
+      "bytes": 1374
+    },
+    {
+      "role": "student",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1180
+    },
+    {
+      "role": "student",
+      "label": "function/manage-supplementary-resources/contexts",
+      "method": "POST",
+      "status": 200,
+      "bytes": 8506
+    },
+    {
+      "role": "student",
+      "label": "function/manage-supplementary-resources/list",
+      "method": "POST",
+      "status": 200,
+      "bytes": 32
+    },
+    {
+      "role": "student",
+      "label": "function/get-student-classes",
+      "method": "POST",
+      "status": 200,
+      "bytes": 9264
+    },
+    {
+      "role": "student",
+      "label": "auth/local-logout",
+      "method": "POST",
+      "status": 204,
+      "bytes": 0
+    },
+    {
+      "role": "teacher",
+      "label": "auth/password-login",
+      "method": "POST",
+      "status": 200,
+      "bytes": 1964
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46
+    },
+    {
+      "role": "teacher",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "function/get-teacher-dashboard",
+      "method": "POST",
+      "status": 200,
+      "bytes": 3736
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-supplementary-resources/contexts",
+      "method": "POST",
+      "status": 200,
+      "bytes": 6982
+    },
+    {
+      "role": "teacher",
+      "label": "auth/local-logout",
+      "method": "POST",
+      "status": 204,
+      "bytes": 0
+    },
+    {
+      "role": "school_admin",
+      "label": "auth/password-login",
+      "method": "POST",
+      "status": 200,
+      "bytes": 1990
+    },
+    {
+      "role": "school_admin",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1034
+    },
+    {
+      "role": "school_admin",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 51
+    },
+    {
+      "role": "school_admin",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 51
+    },
+    {
+      "role": "school_admin",
+      "label": "rest/schools",
+      "method": "GET",
+      "status": 200,
+      "bytes": 105
+    },
+    {
+      "role": "school_admin",
+      "label": "function/manage-school-academic-year/list",
+      "method": "POST",
+      "status": 200,
+      "bytes": 143
+    },
+    {
+      "role": "school_admin",
+      "label": "function/get-school-subject-options",
+      "method": "POST",
+      "status": 200,
+      "bytes": 192
+    },
+    {
+      "role": "school_admin",
+      "label": "function/get-school-teachers",
+      "method": "POST",
+      "status": 200,
+      "bytes": 10293
+    },
+    {
+      "role": "school_admin",
+      "label": "function/get-school-performance-analytics",
+      "method": "POST",
+      "status": 200,
+      "bytes": 50085
+    },
+    {
+      "role": "school_admin",
+      "label": "function/manage-staff-invitation/list",
+      "method": "POST",
+      "status": 200,
+      "bytes": 18
+    },
+    {
+      "role": "school_admin",
+      "label": "auth/local-logout",
+      "method": "POST",
+      "status": 204,
+      "bytes": 0
+    }
+  ],
+  "refused": [],
+  "transportErrors": [],
+  "productionWorkflowDispatches": 0,
+  "applicationDomainWrites": 0,
+  "passwordChanges": 0,
+  "recoveryEmailsSent": 0,
+  "accountCreation": 0,
+  "impersonation": 0,
+  "transport": "Real unmodified response bodies and security headers are fetched with Node verified HTTPS and rendered in Chromium. Browser certificate bypass is disabled. Reviewed same-origin static redirects are followed in Node. This verifies application rendering, requests and browser policy enforcement; it does not verify native browser TLS/redirect handling.",
+  "scope": "Three approved designated School A ordinary password sessions; read-only role home and student/teacher material library. No learning attempt, submission, invitation or production QA workflow. No claim for real protected media unless separately observed. Logout uses local scope and does not sign out the owner on other devices.",
+  "privateData": "No password, token, cookie, private link, account email, learner UUID, response body or learner file is written to this receipt."
+}

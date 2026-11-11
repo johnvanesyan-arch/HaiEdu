@@ -53,18 +53,19 @@ async function cleanApplication(page){
  assert.equal(await page.evaluate(()=>window.__unsafeText),0);
  assert.equal(await page.locator('[onerror],[onload]').count(),0);
  assert.deepEqual(page.__security.errors,[]);assert.deepEqual(page.__security.external,[]);
- assert.deepEqual(await page.evaluate(()=>window.__policyEvents),[],'Legitimate application behavior has no observed report-only violation');
+ assert.deepEqual(await page.evaluate(()=>window.__policyEvents),[],'Legitimate application behavior has no CSP violation');
 }
 
 const pages=Object.keys(JSON.parse(await readFile(new URL('../../web-build/current.json',import.meta.url))).pages);
-for(const file of pages)test(`security headers and report-only CSP preserve compiled signed-out ${file}`,async t=>{
+for(const file of pages)test(`security headers and enforced CSP preserve compiled signed-out ${file}`,async t=>{
  const page=await pageFor(t);await page.addInitScript(installSignedOutClient);
  const response=await page.goto(server.origin+'/'+file);await page.waitForLoadState('networkidle');
  assert.equal(await page.locator('meta[name="haiedu-build"]').getAttribute('content'),manifest.buildId);
  assert.equal(response.headers()['x-content-type-options'],'nosniff');
  assert.equal(response.headers()['referrer-policy'],'strict-origin-when-cross-origin');
  assert.equal(response.headers()['x-frame-options'],'SAMEORIGIN');
- assert.match(response.headers()['content-security-policy-report-only'],/default-src 'none'/);
+ assert.match(response.headers()['content-security-policy'],/default-src 'none'/);
+ assert.equal(response.headers()['content-security-policy-report-only'],undefined);
  await cleanApplication(page);
 });
 
@@ -125,19 +126,61 @@ test('browser refuses a script response with the wrong MIME type',async t=>{
  assert.equal(response.headers()['x-content-type-options'],'nosniff');
 });
 
-test('report-only CSP observes an inline-script violation without claiming enforcement',async t=>{
- const page=await pageFor(t),response=await page.goto(server.origin+'/__security/policy.html');
- await page.waitForFunction(()=>window.__policyReady===true);
- await expect.poll(()=>page.evaluate(()=>window.__violations.some(v=>v.directive==='script-src-elem'&&v.disposition==='report')),{timeout:1500}).toBe(true);
- assert.equal(await page.evaluate(()=>window.__inlinePolicyProbe),true,'The benign probe demonstrates that report-only is monitoring, not enforcement');
+test('report-only control reports but permits inline scripts, handlers and string evaluation',async t=>{
+ const reportOnly=await serveSecurityWeb({root:outdir,cspMode:'report-only'});t.after(()=>reportOnly.close());
+ const page=await pageFor(t,{allowedOrigins:[reportOnly.origin]}),response=await page.goto(reportOnly.origin+'/__security/enforcement.html');
+ await page.waitForFunction(()=>window.__enforcementReady===true);
+ await expect.poll(()=>page.evaluate(()=>window.__policyEvents.some(v=>v.directive==='script-src-elem'&&v.disposition==='report')),{timeout:1500}).toBe(true);
+ assert.deepEqual(await page.evaluate(()=>window.__enforcementResults),{inline:true,attribute:true,eval:true,dynamicFunction:true,evalError:null,functionError:null},'The benign control demonstrates that warning mode permits this code');
  assert.match(response.headers()['content-security-policy-report-only'],/script-src 'self'/);
+ assert.equal(response.headers()['content-security-policy'],undefined);
+});
+
+test('configured CSP blocks inline scripts, attribute handlers and string evaluation',async t=>{
+ const page=await pageFor(t),response=await page.goto(server.origin+'/__security/enforcement.html');
+ await page.waitForFunction(()=>window.__enforcementReady===true);
+ const result=await page.evaluate(()=>window.__enforcementResults);
+ assert.deepEqual(result,{inline:false,attribute:false,eval:false,dynamicFunction:false,evalError:'EvalError',functionError:'EvalError'});
+ await expect.poll(()=>page.evaluate(()=>['script-src-elem','script-src-attr','script-src'].every(d=>window.__policyEvents.some(v=>v.directive===d&&v.disposition==='enforce')))).toBe(true);
+ assert.match(response.headers()['content-security-policy'],/script-src 'self'/);
+ assert.equal(response.headers()['content-security-policy-report-only'],undefined);
+});
+
+test('configured CSP blocks foreign scripts and connections before their servers receive a request',async t=>{
+ const foreign=await serveSecurityWeb({root:outdir,extraHeaders:{'access-control-allow-origin':server.origin},routes:{
+  '/__security/foreign-script.js':['text/javascript','window.__foreignScriptProbe=true;'],
+  '/__security/foreign-api.json':['application/json','{"fixture":true}'],
+ }});t.after(()=>foreign.close());
+ const page=await pageFor(t,{allowedOrigins:[server.origin,foreign.origin]});await page.goto(server.origin+'/__security/empty.html');
+ const result=await page.evaluate(async origin=>{
+  const script=document.createElement('script');script.src=origin+'/__security/foreign-script.js';
+  const loaded=new Promise(resolve=>{script.onload=()=>resolve(true);script.onerror=()=>resolve(false);});document.head.append(script);
+  const fetched=fetch(origin+'/__security/foreign-api.json').then(r=>r.ok,()=>false);
+  const [scriptAllowed,connectionAllowed]=await Promise.all([loaded,fetched]);
+  return{scriptAllowed,connectionAllowed,scriptExecuted:window.__foreignScriptProbe===true};
+ },foreign.origin);
+ assert.deepEqual(result,{scriptAllowed:false,connectionAllowed:false,scriptExecuted:false});
+ assert.equal(foreign.requests.filter(r=>/foreign-(script|api)/.test(r.path)).length,0);
+ await expect.poll(()=>page.evaluate(()=>['script-src-elem','connect-src'].every(d=>window.__policyEvents.some(v=>v.directive===d&&v.disposition==='enforce')))).toBe(true);
+});
+
+test('configured CSP blocks a foreign frame even without the separate framing header',async t=>{
+ const target=await serveSecurityWeb({root:outdir,extraHeaders:{'x-frame-options':null}});t.after(()=>target.close());
+ const foreign=await serveSecurityWeb({root:outdir,extraHeaders:{'content-security-policy':"default-src 'none'; frame-src "+target.origin},routes:{
+  '/__security/host.html':['text/html',`<!doctype html><meta charset="utf-8"><iframe src="${target.origin}/__security/frame-target.html"></iframe>`],
+ }});t.after(()=>foreign.close());
+ const page=await pageFor(t,{allowedOrigins:[target.origin,foreign.origin]});
+ await page.addInitScript(()=>window.addEventListener('message',e=>{if(e.data==='bf13-frame-loaded')window.__frameLoaded=true;}));
+ await page.goto(foreign.origin+'/__security/host.html');await page.waitForLoadState('networkidle');
+ assert.ok(target.requests.some(r=>r.path==='/__security/frame-target.html'));
+ assert.equal(await page.evaluate(()=>window.__frameLoaded===true),false);
 });
 
 test('framing allows a same-origin host and refuses a foreign-origin host',async t=>{
  const same=await pageFor(t);await same.addInitScript(()=>window.addEventListener('message',e=>{if(e.data==='bf13-frame-loaded')window.__frameLoaded=true;}));
  await same.goto(server.origin+'/__security/frame-host.html');
  await expect.poll(()=>same.evaluate(()=>window.__frameLoaded===true)).toBe(true);
- const foreign=await serveSecurityWeb({root:outdir,routes:{'/__security/host.html':['text/html',`<!doctype html><meta charset="utf-8"><iframe src="${server.origin}/__security/frame-target.html"></iframe>`]}});t.after(()=>foreign.close());
+ const foreign=await serveSecurityWeb({root:outdir,extraHeaders:{'content-security-policy':"default-src 'none'; frame-src "+server.origin},routes:{'/__security/host.html':['text/html',`<!doctype html><meta charset="utf-8"><iframe src="${server.origin}/__security/frame-target.html"></iframe>`]}});t.after(()=>foreign.close());
  const page=await pageFor(t,{allowedOrigins:[server.origin,foreign.origin]});
  await page.addInitScript(()=>window.addEventListener('message',e=>{if(e.data==='bf13-frame-loaded')window.__frameLoaded=true;}));
  const before=server.requests.filter(r=>r.path==='/__security/frame-target.html').length;

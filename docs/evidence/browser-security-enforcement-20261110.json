@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "haiedu-bf13-blocking-candidate-v1",
+  "openedDate": "2026-11-10",
+  "timezone": "Asia/Yerevan",
+  "workItem": "BF-13",
+  "findingIds": [
+    "P1:C3",
+    "P4:T1"
+  ],
+  "status": "owner_approved_live_enforcement_release_verification_pending",
+  "baseCommit": "99bfdbcb321b94b8a38783a7b830f0f3ce9b66e3",
+  "liveStage": "Report-only first stage remains live; this candidate is not merged.",
+  "proposedChange": "Replace Content-Security-Policy-Report-Only with Content-Security-Policy, keeping the exact reviewed policy sources and all other headers/cache rules.",
+  "policy": "default-src 'none'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self' https://xzyjvwiiibuarpotppid.supabase.co; media-src 'self' blob:; frame-src 'self'; worker-src 'none'; manifest-src 'self'",
+  "sharedCore": "Subject-neutral policy on all 29 pages and immutable assets. No browser application modules, backend, schema, role checks, scoring, content releases or dependencies change.",
+  "baseline": {
+    "tests": 3,
+    "pass": 0,
+    "fail": 3,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "focusedNative": {
+    "tests": 55,
+    "pass": 55,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "fullLocalUnitIntegration": {
+    "tests": 1794,
+    "pass": 1794,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "fullLocalNativeChromium": {
+    "tests": 630,
+    "pass": 630,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "buildPreflightTests": {
+    "tests": 8,
+    "pass": 8
+  },
+  "newBrowserCasesIncludedIn630": 3,
+  "securityCasesIncludedIn630": 55,
+  "newCases": [
+    "Normal self-served page script proves inline scripts, attribute handlers, eval and Function cannot execute.",
+    "Foreign scripts and API connections are blocked before the local foreign server receives a request.",
+    "CSP alone refuses a foreign frame when the separate X-Frame-Options header is absent."
+  ],
+  "reportOnlyPositiveControl": "A separate fixture runs the same ordinary page code in warning mode and observes execution plus report-only events; no production policy is demoted.",
+  "testSetupCorrection": {
+    "initialRun": {
+      "tests": 55,
+      "pass": 54,
+      "fail": 1
+    },
+    "cause": "The initial eval probe ran through DevTools, which can bypass the document evaluation restriction. The probe now runs as an ordinary self-served module. The original run is retained.",
+    "originalLog": "bf13-enforce-security-initial.log"
+  },
+  "compatibility": "All29 compiled signed-out pages; compiled synthetic student/teacher/master-admin views; HTTPS images, blob download/audio, referrers, framing and same-origin recovery remain covered. The actual SDK transport test is intercepted with a synthetic 400 response; it is not a real sign-in.",
+  "productionPreflight": "Now requires the enforced CSP header on every already-requested file. Exact source identity, manifest bytes, SHA-256/cache checking, six-request batching and 20s limits are preserved; no extra HTTP requests.",
+  "browserBuild": {
+    "id": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+    "pages": 29,
+    "assets": 124,
+    "archiveChanged": false
+  },
+  "staticChecks": [
+    "Typecheck passes",
+    "QA dependency map and 20 fixture-serialization guards pass",
+    "All 16 production-QA pause conditions are unchanged"
+  ],
+  "realPreview": {
+    "permission": "Owner explicitly approved a small designated-account preview check; production QA workflows remain forbidden.",
+    "signIns": 3,
+    "supabaseApiCalls": 32,
+    "status": "41 approved bounded real-account checks passed; all three local-scope logouts accepted; no policy, page, console, transport or HTTP errors.",
+    "accountLookup": "At owner request, one bounded read-only lookup confirmed the three designated account email addresses. Addresses were supplied privately; no passwords, hashes or tokens were read or changed.",
+    "transport": "Real unmodified response bodies and security headers are fetched with Node verified HTTPS and rendered in Chromium. Browser certificate bypass is disabled. Reviewed same-origin static redirects are followed in Node. This verifies application rendering, requests and browser policy enforcement; it does not verify native browser TLS/redirect handling.",
+    "receipt": "browser-security-enforcement-preview-20261110.json",
+    "receiptSha256": "8a3c4779d625f8691b2cce5f1b43fee85cc6ed31aa9bd9df8f761f4a52ed0110",
+    "counts": {
+      "apiRequests": 32,
+      "apiResponseBytes": 113378,
+      "staticRequests": 207,
+      "staticResponseBytes": 3898743
+    },
+    "protectedMedia": "A real teacher-owned protected PDF now passes18 checks on the exact22078b7a preview; actual protected audio remains unexercised because the approved roles lack staff preview access and learner loads alter playback state.",
+    "cleanup": "Temporary private files deleted; all three newly created Auth sessions locally revoked and browser sessions cleared."
+  },
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "workflowDispatches": 0,
+    "workflowFilesChanged": false
+  },
+  "gates": {
+    "requiredPRCI": "All five pass at22078b7a; rerun required on the updated head integrating current main and PDF/authorization evidence.",
+    "hostedPreview": "passed exact functional candidate",
+    "realSignedInObservation": "passed bounded School A student/teacher/school-admin read-only walks",
+    "sourceAndWarningReview": "Clean bounded observations: no sources broadened; optional preview toolbar suppressed, future BF15 sources still require review.",
+    "productionRelease": "Owner explicitly approved; awaiting updated exact-head CI, merge, merged-main CI and canonical source/header verification.",
+    "BF13Complete": false,
+    "ownerUsability": "open",
+    "B.12.3/B.12": "open",
+    "BF02": "deferred",
+    "protectedMediaAcceptance": "Real protected PDF passed18 checks; real protected audio not exercised. Owner approved live release after the audio/wider-scope limitation was disclosed."
+  },
+  "logDigests": {
+    "bf13-enforce-baseline.log": "sha256:a0fbbc396c4e82eca90f4b086a3cfbbacd385b96d02234f00d3da4fe446b1a88",
+    "bf13-enforce-security-initial.log": "sha256:798db13b6905082c9bc6724f9dabe8529e37a650ede448f29d8197a3cc32abc5",
+    "bf13-enforce-security-focused.log": "sha256:d65cc483f9bf8fc111424b0b0680e183368595ea79ce444c2e03d2c5ef4331c5",
+    "bf13-enforce-unit-full.log": "sha256:5197a8ebecd30591feda6f87778c48c31e9cb5d15650403b9deea44a82910a05",
+    "bf13-enforce-browser-full.log": "sha256:e661f34a326494236dbf78186b1b452e8ba673a480c621d634faacc1033f7b71"
+  },
+  "functionalCommit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+  "functionalCI": {
+    "runId": 42881081676,
+    "allFiveRequiredJobs": "passed",
+    "unitIntegration": 1794,
+    "nativeChromium": 630,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "hostedStatic": {
+    "status": "passed",
+    "commit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+    "pages": 29,
+    "assets": 124,
+    "manifestHashesFiveSecurityHeadersCacheAndMime": "matched",
+    "receiptSha256": "327052e8e9a64ab15a631ef727a500ac30a473fb2d1e121113bce9b52623c0bf"
+  },
+  "hostedUnsignedBrowser": {
+    "status": "passed",
+    "checks": 17,
+    "supabaseApiCalls": 0,
+    "signIns": 0,
+    "generatedSampleMediaOnly": true,
+    "receiptSha256": "cbfc64721c6d604447477ef31da008e8c7fa970107bb58d58a0ac917b0da6716"
+  },
+  "latestDate": "2026-11-11",
+  "releaseAuthorization": {
+    "ownerApproved": true,
+    "date": "2026-11-11",
+    "scope": "Enable browser blocking on the live site after disclosed bounded preview/protected-audio limits. No production QA workflow dispatch.",
+    "noOtherAgentMergingOrReleasing": "Owner explicitly confirmed in the same release turn.",
+    "currentMainIntegrated": "b2df20416f44b4db6c39732f450f60b8cb8f2102"
+  },
+  "realProtectedPdf": {
+    "status": "passed",
+    "receipt": "browser-security-protected-pdf-20261111.json",
+    "receiptSha256": "35ba21e19d55938e434e333b892e3bbc944216bc4485f0c0135df5eea283558b",
+    "checks": 18,
+    "commit": "22078b7ab79ffa1eb0c862721bce915f00bdd9a4",
+    "fileBytes": 4798188,
+    "savedHashAndSizeMatched": true,
+    "policyWarnings": 0,
+    "apiRequests": 13,
+    "apiResponseBytes": 4816508,
+    "localSessionRevokedAndCleared": true,
+    "filesDeleted": true,
+    "domainWrites": 0
+  },
+  "affectedProductionQaPreflightConsumers": [
+    "Mobile",
+    "Teacher feedback",
+    "Resource assignments",
+    "English Unit1 pilot reads",
+    "English Unit2 pilot reads",
+    "English Unit3 pilot reads",
+    "English Unit1 learner acceptance",
+    "English Unit2 learner acceptance",
+    "ChapterII pilot reads",
+    "ChapterIII pilot reads",
+    "ChapterIV pilot reads",
+    "ChapterV pilot reads",
+    "ChapterVI pilot reads",
+    "Sprint14 actions",
+    "Sprint14D analytics",
+    "Live answer recovery"
+  ]
+}

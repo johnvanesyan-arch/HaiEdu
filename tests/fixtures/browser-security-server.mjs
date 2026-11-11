@@ -23,6 +23,18 @@ export function headersForPath(config,pathname){
 }
 
 const probes={
+ '/__security/enforcement.html':['text/html','<!doctype html><meta charset="utf-8"><title>Enforcement fixture</title><script type="module" src="/__security/enforcement.mjs"></script>'],
+ '/__security/enforcement.mjs':['text/javascript',`
+  // Run as ordinary page code. DevTools Runtime.evaluate may permit evaluation
+  // that the document policy would refuse for application scripts.
+  const inline=document.createElement('script');inline.textContent='window.__inlinePolicyProbe=true';document.head.append(inline);
+  const button=document.createElement('button');button.setAttribute('onclick','window.__attributeProbe=true');document.body.append(button);button.click();
+  let evalError=null,functionError=null;
+  try{window.eval('window.__evalProbe=true');}catch(e){evalError=e.name;}
+  try{new Function('window.__functionProbe=true')();}catch(e){functionError=e.name;}
+  window.__enforcementResults={inline:window.__inlinePolicyProbe===true,attribute:window.__attributeProbe===true,eval:window.__evalProbe===true,dynamicFunction:window.__functionProbe===true,evalError,functionError};
+  window.__enforcementReady=true;
+ `],
  '/__security/policy.html':['text/html','<!doctype html><meta charset="utf-8"><title>Policy fixture</title><main id="fixture"></main><script type="module" src="/__security/policy.mjs"></script>'],
  '/__security/policy.mjs':['text/javascript',`
   window.__violations=[];
@@ -39,12 +51,22 @@ const probes={
  '/__security/frame-target.mjs':['text/javascript','parent.postMessage("bf13-frame-loaded","*");'],
 };
 
-export async function serveSecurityWeb({root=rootPath,routes={},extraHeaders={}}={}){
+export async function serveSecurityWeb({root=rootPath,routes={},extraHeaders={},cspMode=null}={}){
+ if(cspMode!==null&&!['report-only','enforce'].includes(cspMode))throw Error('Unknown fixture CSP mode');
  const config=JSON.parse(await readFile(configPath,'utf8'));
  const requests=[];
  const server=createServer(async(request,response)=>{
   const url=new URL(request.url,'http://fixture.invalid');
-  const headers={...headersForPath(config,url.pathname),...extraHeaders};
+  const configured=headersForPath(config,url.pathname);
+  if(cspMode){
+   const policy=configured['content-security-policy']??configured['content-security-policy-report-only'];
+   if(!policy)throw Error('Fixture requires a reviewed CSP policy');
+   delete configured['content-security-policy'];delete configured['content-security-policy-report-only'];
+   configured[cspMode==='enforce'?'content-security-policy':'content-security-policy-report-only']=policy;
+  }
+  const headers={...configured,...extraHeaders};
+  // A null header is an explicit negative-control fixture, never a deployment change.
+  for(const [name,value] of Object.entries(headers))if(value===null)delete headers[name];
   requests.push({path:url.pathname,method:request.method,referrer:request.headers.referer??null});
   const route=routes[url.pathname]??probes[url.pathname];
   if(route){response.writeHead(200,{'Content-Type':route[0],...headers}).end(route[1]);return;}

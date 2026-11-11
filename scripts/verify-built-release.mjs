@@ -12,7 +12,7 @@ export async function verifyBuiltRelease({ expectedCommit = process.env.GITHUB_S
   const deployment = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
   const securityHeaders = new Map(deployment.headers.filter(rule => rule.source === '/(.*)').flatMap(rule => rule.headers)
     .filter(header => header.key.toLowerCase() !== 'cache-control').map(header => [header.key.toLowerCase(), header.value]));
-  for (const name of ['x-content-type-options', 'referrer-policy', 'x-frame-options', 'permissions-policy', 'content-security-policy-report-only']) {
+  for (const name of ['x-content-type-options', 'referrer-policy', 'x-frame-options', 'permissions-policy', 'content-security-policy']) {
     if (!securityHeaders.has(name)) throw Error(`Reviewed browser security header is missing: ${name}`);
   }
   async function get(path) {

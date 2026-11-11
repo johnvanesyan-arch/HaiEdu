@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "bf13-hosted-protected-pdf-blocking-v1",
+  "status": "passed",
+  "startedAt": "2026-11-11T05:07:11.471Z",
+  "completedAt": "2026-11-11T05:07:34.730Z",
+  "commit": "22078b7ab79ffa1eb0c862721bce915f00bdd9a4",
+  "buildId": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+  "roles": [
+    {
+      "role": "teacher",
+      "status": "passed",
+      "checks": [
+        {
+          "name": "private link targets the reviewed preview",
+          "passed": true
+        },
+        {
+          "name": "preview source is the reviewed commit",
+          "passed": true
+        },
+        {
+          "name": "real blocking header matches the reviewed policy",
+          "passed": true
+        },
+        {
+          "name": "compiled login is the reviewed browser build",
+          "passed": true
+        },
+        {
+          "name": "ordinary password sign-in succeeds with the designated identity",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "server returns the expected active role",
+          "passed": true
+        },
+        {
+          "name": "browser session belongs to the designated account",
+          "passed": true
+        },
+        {
+          "name": "role home renders its authorized panel",
+          "passed": true
+        },
+        {
+          "name": "signed-in material library renders",
+          "passed": true
+        },
+        {
+          "name": "material context read succeeds",
+          "passed": true
+        },
+        {
+          "name": "actual protected PDF downloads through the ordinary teacher UI",
+          "passed": true
+        },
+        {
+          "name": "downloaded PDF byte length matches the saved file",
+          "passed": true
+        },
+        {
+          "name": "downloaded PDF SHA-256 matches the saved file",
+          "passed": true
+        },
+        {
+          "name": "downloaded file has a PDF signature",
+          "passed": true
+        },
+        {
+          "name": "no ordinary page triggers a browser policy violation",
+          "passed": true
+        },
+        {
+          "name": "no application JavaScript error occurred",
+          "passed": true
+        },
+        {
+          "name": "all allowed application and Auth reads succeeded",
+          "passed": true
+        }
+      ],
+      "policyEvents": [],
+      "pageErrors": [],
+      "consoleErrors": 0,
+      "loginAttempts": 1,
+      "loginSucceeded": true,
+      "identityMatches": true,
+      "ordinarySession": true,
+      "readOnlyApplicationFlows": true,
+      "localLogout": {
+        "attempted": true,
+        "apiAccepted": true,
+        "localSessionCleared": true
+      },
+      "protectedPdf": "passed_real_private_file_download_byte_length_sha256_and_signature",
+      "realAudio": "not_exercised",
+      "protectedPdfBytes": 4798188
+    }
+  ],
+  "budgets": {
+    "apiRequests": 75,
+    "apiResponseBytes": 8388608,
+    "staticRequests": 250,
+    "staticResponseBytes": 20971520,
+    "roles": 1,
+    "loginAttemptsPerRole": 1
+  },
+  "counts": {
+    "apiRequests": 13,
+    "apiResponseBytes": 4816508,
+    "staticRequests": 74,
+    "staticResponseBytes": 1502151
+  },
+  "httpAudit": [
+    {
+      "role": "teacher",
+      "label": "auth/password-login",
+      "method": "POST",
+      "status": 200,
+      "bytes": 1964
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46
+    },
+    {
+      "role": "teacher",
+      "label": "rest/profiles",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "function/get-teacher-dashboard",
+      "method": "POST",
+      "status": 200,
+      "bytes": 3736
+    },
+    {
+      "role": "teacher",
+      "label": "auth/current-user",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1016
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-supplementary-resources/contexts",
+      "method": "POST",
+      "status": 200,
+      "bytes": 6982
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-supplementary-resources/list",
+      "method": "POST",
+      "status": 200,
+      "bytes": 685
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-resource-assignments/catalog",
+      "method": "POST",
+      "status": 200,
+      "bytes": 48
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-supplementary-resources/get",
+      "method": "POST",
+      "status": 200,
+      "bytes": 1765
+    },
+    {
+      "role": "teacher",
+      "label": "function/manage-supplementary-resources/open",
+      "method": "POST",
+      "status": 200,
+      "bytes": 4798188
+    },
+    {
+      "role": "teacher",
+      "label": "auth/local-logout",
+      "method": "POST",
+      "status": 204,
+      "bytes": 0
+    }
+  ],
+  "refused": [],
+  "transportErrors": [],
+  "productionWorkflowDispatches": 0,
+  "applicationDomainWrites": 0,
+  "passwordChanges": 0,
+  "recoveryEmailsSent": 0,
+  "accountCreation": 0,
+  "impersonation": 0,
+  "transport": "Real unmodified response bodies and security headers are fetched with Node verified HTTPS and rendered in Chromium. Browser certificate bypass is disabled. Reviewed same-origin static redirects are followed in Node. This verifies application rendering, requests and browser policy enforcement; it does not verify native browser TLS/redirect handling.",
+  "scope": "One approved ordinary teacher session on the enforcing preview. Existing teacher-owned published protected PDF downloaded through its real library UI and verified against saved byte length/SHA-256/signature; private downloaded bytes deleted. No learner attempt, submission, invitation, resource creation/modification or production QA workflow. Local-scope logout only. Protected audio remains unexercised because the approved roles cannot preview it without changing learner playback state.",
+  "privateData": "No password, token, cookie, private link, account email, learner UUID, response body or learner file is written to this receipt."
+}
