@@ -51,8 +51,21 @@ test('PDF upload and authorized download work in native browser; later file repl
 test('late private responses cannot restore prior account content; search focus, responsive layout and reduced motion',async t=>{
  const f=await fixture();t.after(()=>f.db.close());let m=(await call(f.db,'create',{definition:{...definition,title:'<img src=x onerror="window.XSS=true">',estimatedMinutes:15}})).material;await call(f.db,'qa',key(m));await call(f.db,'publish',key(m));
  const student=await surface(t,f,10),p=student.page;await p.waitForSelector('.resource-card');assert.equal(await p.evaluate(()=>window.XSS),undefined);
- for(const width of [360,768,1280]){await p.setViewportSize({width,height:950});assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),String(width));}
- for(const width of [360,640,768,1280]){await p.setViewportSize({width,height:950});await p.evaluate(()=>document.documentElement.style.fontSize='200%');assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'200% text at '+width);await p.evaluate(()=>document.documentElement.style.fontSize='');}
+ // Measure the rendered layout after viewport/font mutations have painted.
+ // Keep the original width limits and one assertion per size; do not retry them.
+ const settleLayout=()=>p.evaluate(async()=>{
+  await document.fonts.ready;
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+ });
+ for(const width of [360,768,1280]){
+  await p.setViewportSize({width,height:950});await settleLayout();
+  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),String(width));
+ }
+ for(const width of [360,640,768,1280]){
+  await p.setViewportSize({width,height:950});await p.evaluate(()=>document.documentElement.style.fontSize='200%');await settleLayout();
+  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'200% text at '+width);
+  await p.evaluate(()=>document.documentElement.style.fontSize='');
+ }
  await p.emulateMedia({reducedMotion:'reduce'});assert.equal(await p.locator('.resource-card').evaluate(e=>getComputedStyle(e).transitionDuration),'0s');
  await p.setViewportSize({width:1280,height:950});if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/supplementary-student-desktop.png',fullPage:true});}
  const held=student.hold('get'); // Student list is the pending private response here.

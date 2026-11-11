@@ -32,3 +32,8 @@ Teacher and staff pages were outside the 7 November review. BF-12 drew on separa
 - **Slow domain assignment.** On 9 November Vercel took over 15 minutes to assign the domains to `bd65885`, which was then promoted by hand with John's approval; `77b8b08` took about 7 minutes. «Auto-assign Custom Production Domains» is enabled. The cause is not confirmed.
 - **No weekly full production QA run while paused.** The only scheduled workflow is Mobile (Mondays 04:00 UTC), and it skips while `PRODUCTION_QA_AUTORUN` is unset. The 2026-11-10 QA-currency rule first said a weekly full run covered unaffected suites; on 11 November John had it corrected: unaffected suites are not run while paused, and he decides when to run a full round.
 - **Supabase egress.** The organization used 6.65 of 5 GB in the cycle ending 13 November; restriction follows from 7 December if it is over quota again. Production QA runs were most of the traffic.
+
+
+## Follow-up —11November2026
+
+BF-13 browser enforcement is now live through owner-approved PR464. The current status register and [dated release record](qa/browser-security-enforcement-release-20261111.md) supersede the browser-security delivery state in this historical handover. The first629/630 main browser failure and unchanged successful rerun remain recorded; this closing change synchronizes the isolated enlarged-text layout test with browser rendering. Protected audio and wider owner/independent acceptance limits remain open; production QA stays paused.

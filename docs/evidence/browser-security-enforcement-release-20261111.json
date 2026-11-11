@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "haiedu-bf13-enforcement-release-v1",
+  "date": "2026-11-11",
+  "timezone": "Asia/Yerevan",
+  "workItem": "BF-13",
+  "status": "live_enforcement_verified_with_explicit_acceptance_limits",
+  "functionalPR": 464,
+  "releaseCommit": "0bca046a076a6f7613b8871b7a666c1283904556",
+  "ownerApproval": {
+    "liveEnforcement": true,
+    "date": "2026-11-11",
+    "noOtherAgentMergingOrReleasingConfirmed": true,
+    "scope": "Enable the reviewed browser rules on the live site after bounded-preview/protected-audio limits were disclosed. No production QA dispatch or broader acceptance granted."
+  },
+  "change": "Content-Security-Policy now enforces the exact previously reviewed values. Shared preflight requires that header. Application modules, assets/build manifest, backend, roles, scoring, curriculum/content and dependencies are unchanged.",
+  "releasePRCI": {
+    "schemaVersion": "bf13-release-pr-ci-v1",
+    "head": "e9e52dc9233ac19b21ed7c3afc1a43feacb992b8",
+    "base": "b2df20416f44b4db6c39732f450f60b8cb8f2102",
+    "runId": 42964151513,
+    "status": "completed",
+    "conclusion": "success",
+    "requiredJobs": [
+      {
+        "id": 130337348963,
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "id": 130337349327,
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "id": 130337349350,
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "id": 130337349421,
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "id": 130340699989,
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ],
+    "unit": {
+      "tests": 1794,
+      "pass": 1794,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "native": {
+      "tests": 630,
+      "pass": 630,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "ownerReleaseApproved": true,
+    "noOtherAgentConfirmedByOwner": true,
+    "mainRunningWorkflows": 0,
+    "mainQueuedWorkflows": 0
+  },
+  "mergedMainCI": {
+    "id": 42965476918,
+    "head_sha": "0bca046a076a6f7613b8871b7a666c1283904556",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 2,
+    "created_at": "2026-11-11T05:23:43Z",
+    "run_started_at": "2026-11-11T05:44:23Z",
+    "updated_at": "2026-11-11T05:55:19Z",
+    "requiredJobs": [
+      {
+        "id": 130348684930,
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "id": 130348685277,
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "id": 130348685862,
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "id": 130348734720,
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "id": 130352356387,
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ],
+    "native": {
+      "tests": 630,
+      "pass": 630,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "unit": {
+      "tests": 1794,
+      "pass": 1794,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "retainedAttempt1": "bf13-release-main-attempt1-failure.json",
+    "retry": "One explicitly reported unchanged-source retry requested through the CI failed-jobs rerun tool. No production QA dispatch."
+  },
+  "retainedFirstMainFailure": {
+    "commit": "0bca046a076a6f7613b8871b7a666c1283904556",
+    "runId": 42965476918,
+    "attempt": 1,
+    "jobId": 130341573142,
+    "counts": {
+      "tests": 630,
+      "pass": 629,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failedTest": "late private responses cannot restore prior account content; search focus, responsive layout and reduced motion",
+    "assertion": "200% text at 360",
+    "sourceTreeMatchesPassingPRHead": true,
+    "liveDomainsStillAt": "b2df20416f44b4db6c39732f450f60b8cb8f2102",
+    "diagnostics": {
+      "unchangedFocusedInitial": "failed same200%/360px assertion",
+      "unchangedCompleteResourceFile": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "failureOnlyInstrumentation": "Original browser predicate byte-identical; first3 runs pass, fourth retains failure. Immediate following measurement360/360px, fonts loaded, no overflowing element; post-two-frame measurement360/360px.",
+      "rootCause": "Transient measurement demonstrated; exact event-loop cause remains unproven. No source/threshold/assertion change or product-defect closure claimed."
+    },
+    "localLogDigests": {
+      "bf13-release-resource-exact-assertion-1.log": "716e82aa664f96b907b8e1d5bc128a2ef454273af3a3dd582e4503173daf4eb3",
+      "bf13-release-resource-focus-initial.log": "5e3701a65aeca31abe54f351b986581c069d037ccbb3c3aaef99400a3cf874b4",
+      "bf13-release-resource-diagnostic-5.log": "c7989604187aff5b871ce6c5c67051dec61d253f06d4e676fdf1ef577e226ec7",
+      "bf13-release-resource-layout-diagnostic.log": "3cbffd1be342839da84d5de6421a1e7e3c82d9dfbe504d3bcdb626b4f6c74ad8",
+      "bf13-release-resource-diagnostic-3.log": "3c47f983341a7e29bf4e7d696fee6ea11712d10fb89b34e726e08dfafa451255",
+      "bf13-release-resource-diagnostic-1.log": "000641475e2a299682a0669f15f87c75ed4298efa10ede5923d09f637d843c51",
+      "bf13-release-resource-exact-assertion-4.log": "1958700b296d2da1158b4ab4a21091b1ffc80e1bff7ddd5c510947df4b173699",
+      "bf13-release-resource-diagnostic-2.log": "60538e3943ae29e92c63420d0acb9a39093f5e47538be4f9e5140a945bed7726",
+      "bf13-release-resource-diagnostic-4.log": "db267c1a13205762f2a715c67d259819efc808a8f1da250c7ed796730ef31758",
+      "bf13-release-resource-exact-assertion-2.log": "a5b178d20627df85b8059e71ab38ff014343e84cd2d6b33f71e3697e283fbdb3",
+      "bf13-release-resource-file-unchanged.log": "10243598c1c86f5676d101b9c1e25e695798c1e1a8688c97d377c1f37c3d68c5",
+      "bf13-release-resource-exact-assertion-3.log": "6ad95d2b88574b989318e7cdb28e5a4c32344838bd79c517f55ae2568f8c7304"
+    }
+  },
+  "canonical": {
+    "domains": [
+      "haiedu.am",
+      "www.haiedu.am"
+    ],
+    "commit": "0bca046a076a6f7613b8871b7a666c1283904556",
+    "enforcedHeaderPresent": true,
+    "reportOnlyHeaderAbsent": true,
+    "static": {
+      "status": "passed",
+      "pages": 29,
+      "assets": 124,
+      "uniqueVerifiedStaticFiles": 155,
+      "httpGets": 187,
+      "manifestAllHashesFiveHeadersCacheMime": "matched",
+      "hsts": "present",
+      "receiptSha256": "d11b0ddff16bcd1384da56df67ae73fbfb7f3493a222488067d159f62b61be78"
+    },
+    "unsignedBrowser": {
+      "status": "passed",
+      "checks": 17,
+      "httpGets": 28,
+      "supabaseApiCalls": 0,
+      "signIns": 0,
+      "receiptSha256": "925f586d27248110146d5cae3993b6a98004197c0cf59575219cd90f088aa8e1"
+    }
+  },
+  "preview": {
+    "ordinaryThreeRoleChecks": 41,
+    "accountObservationCommit": "b88a3a01fd476a8cdd0cbaf1aab4a2cf47360aba",
+    "realProtectedPdfChecks": 18,
+    "protectedPdfCommit": "22078b7ab79ffa1eb0c862721bce915f00bdd9a4",
+    "realProtectedPdfBytes": 4798188,
+    "savedSizeHashAndSignatureMatched": true,
+    "previewSignIns": 4,
+    "previewSupabaseApiRequests": 45,
+    "newPreviewSessionsLocallyRevokedAndCleared": 4,
+    "privateCredentialAccessAndDownloadedFilesRemoved": true,
+    "applicationDomainWrites": 0
+  },
+  "layoutTestRepair": {
+    "file": "tests/browser/supplementary-resources.browser.test.mjs",
+    "change": "Await document.fonts.ready and two native animation frames after viewport/text changes before the existing geometric assertions. No condition polling or assertion retry.",
+    "preserved": [
+      "360/768/1280px normal text",
+      "360/640/768/1280px at200% text",
+      "the original scrollWidth<=innerWidth+1 predicate",
+      "all original assertions, privacy and reduced-motion checks"
+    ],
+    "localFocusedRuns": {
+      "pass": 10,
+      "fail": 0
+    },
+    "completeResourceFile": {
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "exactIntermediateCause": "An unchanged assertion failed and the immediately following measurement showed360/360px, loaded fonts and no overflowing element. The precise browser event ordering was not captured; the repair synchronizes measurement with rendering.",
+    "closingRevisionCI": "Required PR and merged-main results are tracked on the closing PR."
+  },
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "manualDispatches": 0,
+    "functionalMergeTriggeredRuns": 13,
+    "allTriggeredAcceptanceRuns": "skipped",
+    "sharedPreflightConsumers": 16,
+    "workflowFilesChanged": false
+  },
+  "limits": {
+    "realProtectedAudio": "Unexercised. Approved roles lack staff audio-preview permission; learner loads create/update playback state. Earlier controlled WAV/blob tests are separate coverage. Owner approved release after disclosure.",
+    "browserTransport": "Chromium uses real unmodified HTTP response bodies and security headers fetched by Node verified HTTPS with the inherited proxy/CA. Browser certificate bypass is disabled. Reviewed same-origin static redirects are followed in Node before fulfillment; this does not test native browser TLS/redirect handling. Encoding/length headers are adjusted for decoded transfer bodies; cookies remain private.",
+    "widerAcceptance": "No fresh signed-in production, Master Admin/MFA, other-tenant, recovery-email, learner submission or owner mobile-usability acceptance.",
+    "centralCspCollector": "Not installed. Bounded test observations do not imply ongoing monitoring.",
+    "ownerUsabilityAcceptance": "not given",
+    "independentGates": "B.12.3/B.12, content/SME/security/URL/Master gates remain open; BF-02 deferred and subject expansion paused."
+  },
+  "deploymentControl": "Existing separately recorded Production/Blocking attestation is reused. Fresh observation: both aliases remained onb2df2041 while merged-main attempt1 failed and switched to0bca046a after attempt2 passed. No gate settings were changed."
+}
