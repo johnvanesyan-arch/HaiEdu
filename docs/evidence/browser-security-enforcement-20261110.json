@@ -7,7 +7,7 @@
     "P1:C3",
     "P4:T1"
   ],
-  "status": "bounded_signed_in_preview_passed_not_released",
+  "status": "owner_approved_live_enforcement_release_verification_pending",
   "baseCommit": "99bfdbcb321b94b8a38783a7b830f0f3ce9b66e3",
   "liveStage": "Report-only first stage remains live; this candidate is not merged.",
   "proposedChange": "Replace Content-Security-Policy-Report-Only with Content-Security-Policy, keeping the exact reviewed policy sources and all other headers/cache rules.",
@@ -90,7 +90,7 @@
       "staticRequests": 207,
       "staticResponseBytes": 3898743
     },
-    "protectedMedia": "Not exercised: chosen student context empty; teacher context list read without selecting a file. Generated/local media coverage is separate.",
+    "protectedMedia": "A real teacher-owned protected PDF now passes18 checks on the exact22078b7a preview; actual protected audio remains unexercised because the approved roles lack staff preview access and learner loads alter playback state.",
     "cleanup": "Temporary private files deleted; all three newly created Auth sessions locally revoked and browser sessions cleared."
   },
   "productionQa": {
@@ -99,16 +99,16 @@
     "workflowFilesChanged": false
   },
   "gates": {
-    "requiredPRCI": "All five pass for functional b88a3a0. Final documentation-only head must pass all five before release; tracked on PR464.",
+    "requiredPRCI": "All five pass at22078b7a; rerun required on the updated head integrating current main and PDF/authorization evidence.",
     "hostedPreview": "passed exact functional candidate",
     "realSignedInObservation": "passed bounded School A student/teacher/school-admin read-only walks",
     "sourceAndWarningReview": "Clean bounded observations: no sources broadened; optional preview toolbar suppressed, future BF15 sources still require review.",
-    "productionRelease": "Not authorized; owner must review the tested candidate and its explicit limits before merge/live release.",
+    "productionRelease": "Owner explicitly approved; awaiting updated exact-head CI, merge, merged-main CI and canonical source/header verification.",
     "BF13Complete": false,
     "ownerUsability": "open",
     "B.12.3/B.12": "open",
     "BF02": "deferred",
-    "protectedMediaAcceptance": "Real protected PDF/audio remains unexercised; controlled samples only."
+    "protectedMediaAcceptance": "Real protected PDF passed18 checks; real protected audio not exercised. Owner approved live release after the audio/wider-scope limitation was disclosed."
   },
   "logDigests": {
     "bf13-enforce-baseline.log": "sha256:a0fbbc396c4e82eca90f4b086a3cfbbacd385b96d02234f00d3da4fe446b1a88",
@@ -142,5 +142,28 @@
     "signIns": 0,
     "generatedSampleMediaOnly": true,
     "receiptSha256": "cbfc64721c6d604447477ef31da008e8c7fa970107bb58d58a0ac917b0da6716"
+  },
+  "latestDate": "2026-11-11",
+  "releaseAuthorization": {
+    "ownerApproved": true,
+    "date": "2026-11-11",
+    "scope": "Enable browser blocking on the live site after disclosed bounded preview/protected-audio limits. No production QA workflow dispatch.",
+    "noOtherAgentMergingOrReleasing": "Owner explicitly confirmed in the same release turn.",
+    "currentMainIntegrated": "b2df20416f44b4db6c39732f450f60b8cb8f2102"
+  },
+  "realProtectedPdf": {
+    "status": "passed",
+    "receipt": "browser-security-protected-pdf-20261111.json",
+    "receiptSha256": "35ba21e19d55938e434e333b892e3bbc944216bc4485f0c0135df5eea283558b",
+    "checks": 18,
+    "commit": "22078b7ab79ffa1eb0c862721bce915f00bdd9a4",
+    "fileBytes": 4798188,
+    "savedHashAndSizeMatched": true,
+    "policyWarnings": 0,
+    "apiRequests": 13,
+    "apiResponseBytes": 4816508,
+    "localSessionRevokedAndCleared": true,
+    "filesDeleted": true,
+    "domainWrites": 0
   }
 }

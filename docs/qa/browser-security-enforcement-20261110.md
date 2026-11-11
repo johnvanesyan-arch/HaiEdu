@@ -1,6 +1,6 @@
 # BF-13 — preparing browser blocking
 
-Opened 10 November 2026 · Asia/Yerevan. **Approved bounded preview checks passed; not released.** The live site still uses the warning-only rules delivered in PR461/PR462. BF-13 stays open.
+Opened 10 November 2026 · Asia/Yerevan. **Owner approved live release on11November2026; release verification pending.** The live site still uses the warning-only rules delivered in PR461/PR462. BF-13 stays open.
 
 ## What is prepared
 
@@ -38,11 +38,21 @@ The cloud browser rejects the managed proxy certificate directly. For these chec
 
 The reviewed origins/rules remained sufficient for the bounded account walks: no legitimate observed request was blocked, and no source, inline-execution allowance or policy value was broadened. The optional Vercel feedback toolbar was suppressed only for preview-origin requests. It is not a required HaiEdu application source; future BF-15 services still need review. There is no centralized warning collector. Observing zero warnings in this bounded session is not a claim about every future production journey.
 
-The current evidence update changes documentation only; the functional candidate, application modules, build manifest, policy and browser assets are unchanged. Its submitted head must still pass all five required CI jobs; exact-head results are tracked on PR464. Owner approval is still required before any merge/live blocking release. Preserve the unexercised protected-file and wider acceptance limits in that review.
+The current evidence update changes documentation only; the functional candidate, application modules, build manifest, policy and browser assets are unchanged. Its submitted head must still pass all five required CI jobs; exact-head results are tracked on PR464. John explicitly approved live blocking on11November2026 after the scope/limits were explained, and confirmed no other agent is merging or releasing. Current main owner rules from PR463 are integrated; the updated exact head and merged main must pass all five jobs, followed by canonical deployment verification. Protected-audio and wider acceptance limits remain explicit; this approval is not personal usability or independent security/content acceptance.
 
 Vercel's optional preview feedback toolbar uses an outside source. Review its expected blocking separately from HaiEdu's required sources, and account for future BF-15 services before they are introduced. No extra source is allowed merely to silence a warning. There is no central warning collector.
 
-Before release: retain the reviewed clean bounded account observations, pass all five required checks on the final head, review unexercised protected-media/wider acceptance limits with the owner, then obtain owner release approval. **No production release or completion of BF-13 is claimed here.**
+Before release: retain the reviewed clean bounded account observations, pass all five required checks on the final head, retain the disclosed protected-audio/wider acceptance limits and owner approval, then verify the merged commit and canonical deployment. **No production release or completion of BF-13 is claimed here.**
+
+## Actual protected PDF follow-up —11November2026
+
+The existing designated teacher signed in normally to the exact enforcing preview at `22078b7ab79ffa1eb0c862721bce915f00bdd9a4`. A read-only metadata lookup identified one existing teacher-owned published PDF; its release/unit/assignment was selected in the real teacher material-library UI. The existing saved-PDF preview control downloaded the actual private file through the normal authenticated handler. All **18 checks pass**, including the download, saved **4,798,188-byte** length, SHA-256 match and PDF signature, with zero policy, application, console, HTTP or transport errors. No file was created, uploaded, altered or published by this check.
+
+The walk made13 API requests /4,816,508 response bytes, including one ordinary login and one accepted local-scope logout, plus74 static GETs /1,502,151 bytes. Private downloaded bytes and credential/access files were deleted. The initial harness refused a stale static-proof reference before browser sign-in; using the exact reviewed preview proof corrected that setup guard. The initial failure remains archived outside public data. [Sanitized protected-PDF receipt](../evidence/browser-security-protected-pdf-20261111.json).
+
+Protected audio is a separate remaining limit. The existing audio-preview service requires content-admin/Master Admin authority; the approved test roles do not have it. A learner audio load creates or updates playback/delivery state, so it was not used as a read-only substitute. The earlier controlled WAV/blob decoding and security tests still pass; this is not a fresh real protected-audio acceptance. John approved the release after that limitation had been disclosed. No role, account or playback state was changed to obtain access.
+
+The protected-PDF evidence and the earlier account walks cover unchanged functional code. Integration of the latest main changes only the already-approved agent rules/handover plus this documentation; policy values and browser assets remain identical. Final updated-head CI and merged/canonical release results are recorded on PR464 and in the subsequent dated release evidence.
 
 **Affected production QA:** Mobile; teacher feedback; resource assignments; English Units 1–3 pilot reads; Chapters II–VI pilot reads; Sprint 14 actions; Sprint 14D analytics. The existing production release preflight changes in this same candidate. No production locators or fixture expectations change. All 16 owner pause conditions and 20 fixture-serialization guards remain intact.
 
