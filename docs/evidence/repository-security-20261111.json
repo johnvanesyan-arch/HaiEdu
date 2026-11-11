@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "task": "BF-14",
+  "date": "2026-11-11",
+  "timeZone": "Asia/Yerevan",
+  "status": "Prepared for review; not merged; security-feature settings remain unverified",
+  "repository": "johnvanesyan-arch/HaiEdu",
+  "baselineMain": "0c9577f79d4ec8901954042452035b2f639b3df2",
+  "scope": {
+    "classification": "Repository development/release infrastructure; shared across all subjects and roles",
+    "workflowFiles": 22,
+    "fullShaActionReferences": 78,
+    "checkoutsWithPersistCredentialsFalse": 26,
+    "ciPermissions": {
+      "contents": "read"
+    },
+    "crossRunArtifactReaders": {
+      "workflows": [
+        "english-unit1-learner-acceptance.yml",
+        "english-unit2-learner-acceptance.yml",
+        "live-answer-recovery-acceptance.yml"
+      ],
+      "permissions": {
+        "contents": "read",
+        "actions": "read"
+      }
+    }
+  },
+  "pins": [
+    {
+      "action": "actions/checkout",
+      "previousRef": "v4",
+      "sha": "11d5960a326750d5838078e36cf38b85af677262",
+      "version": "v4.4.0",
+      "commitVerifiedByGitHub": true,
+      "verificationReason": "valid",
+      "runtime": "node20",
+      "tagReadUrl": "https://api.github.com/repos/actions/checkout/git/refs/tags/v4",
+      "commitReadUrl": "https://api.github.com/repos/actions/checkout/git/commits/11d5960a326750d5838078e36cf38b85af677262",
+      "actionManifestUrl": "https://raw.githubusercontent.com/actions/checkout/11d5960a326750d5838078e36cf38b85af677262/action.yml"
+    },
+    {
+      "action": "actions/setup-node",
+      "previousRef": "v4",
+      "sha": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "version": "v4.4.0",
+      "commitVerifiedByGitHub": true,
+      "verificationReason": "valid",
+      "runtime": "node20",
+      "tagReadUrl": "https://api.github.com/repos/actions/setup-node/git/refs/tags/v4",
+      "commitReadUrl": "https://api.github.com/repos/actions/setup-node/git/commits/49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "actionManifestUrl": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/action.yml"
+    },
+    {
+      "action": "actions/setup-python",
+      "previousRef": "v5",
+      "sha": "a26af69be951a213d495a4c3e4e4022e16d87065",
+      "version": "v5.6.0",
+      "commitVerifiedByGitHub": true,
+      "verificationReason": "valid",
+      "runtime": "node20",
+      "tagReadUrl": "https://api.github.com/repos/actions/setup-python/git/refs/tags/v5",
+      "commitReadUrl": "https://api.github.com/repos/actions/setup-python/git/commits/a26af69be951a213d495a4c3e4e4022e16d87065",
+      "actionManifestUrl": "https://raw.githubusercontent.com/actions/setup-python/a26af69be951a213d495a4c3e4e4022e16d87065/action.yml"
+    },
+    {
+      "action": "actions/upload-artifact",
+      "previousRef": "v4",
+      "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "version": "v4.6.2",
+      "commitVerifiedByGitHub": true,
+      "verificationReason": "valid",
+      "runtime": "node20",
+      "tagReadUrl": "https://api.github.com/repos/actions/upload-artifact/git/refs/tags/v4",
+      "commitReadUrl": "https://api.github.com/repos/actions/upload-artifact/git/commits/ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "actionManifestUrl": "https://raw.githubusercontent.com/actions/upload-artifact/ea165f8d65b6e75b540449e92b4886f43607fa02/action.yml"
+    },
+    {
+      "action": "actions/download-artifact",
+      "previousRef": "v4",
+      "sha": "d3f86a106a0bac45b974a628896c90dbdf5c8093",
+      "version": "v4.3.0",
+      "commitVerifiedByGitHub": true,
+      "verificationReason": "valid",
+      "runtime": "node20",
+      "tagReadUrl": "https://api.github.com/repos/actions/download-artifact/git/refs/tags/v4",
+      "commitReadUrl": "https://api.github.com/repos/actions/download-artifact/git/commits/d3f86a106a0bac45b974a628896c90dbdf5c8093",
+      "actionManifestUrl": "https://raw.githubusercontent.com/actions/download-artifact/d3f86a106a0bac45b974a628896c90dbdf5c8093/action.yml"
+    }
+  ],
+  "dependencyUpdates": {
+    "file": ".github/dependabot.yml",
+    "ecosystems": [
+      "npm",
+      "github-actions"
+    ],
+    "schedule": {
+      "interval": "weekly",
+      "day": "monday",
+      "time": "06:00",
+      "timezone": "Asia/Yerevan"
+    },
+    "versionPrLimitPerEcosystem": 2,
+    "minorPatchGrouping": true,
+    "automaticMergeConfigured": false,
+    "actualDependencyVersionsChanged": false,
+    "activation": "Only after the configuration is merged to the default branch; update proposals require review and CI. Security-update PR behavior also depends on repository settings."
+  },
+  "structuralVerification": {
+    "parser": "PyYAML BaseLoader",
+    "all22ParsedWorkflowsEqualBaselineAfterRemovingOnlyReviewedDifferences": true,
+    "reviewedDifferences": [
+      "Floating Actions references replaced by their currently resolved full commit SHA and version comment",
+      "persist-credentials:false on checkout",
+      "Explicit contents:read on ci.yml"
+    ],
+    "allFiveCiJobNamesAndAggregateNeedsPreserved": true,
+    "productionQaPauseGuardsPreserved": 16,
+    "sharedFixtureConcurrencyGroupsPreserved": 20,
+    "productionQaDispatches": 0,
+    "productionQaStatus": "Production QA not run (paused by owner)",
+    "runtimeBuildBackendDependenciesAndDeploymentConfigurationUnchanged": true
+  },
+  "localVerification": {
+    "unitIntegration": {
+      "status": "passed after correcting two outdated existing guard assertions",
+      "attempt1": {
+        "status": "failed",
+        "total": 1794,
+        "passed": 1792,
+        "failed": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "logSha256": "a199966da70ebba56f2307e3cbc3dd9d317c26b89214c37b9b64e632823f9051",
+        "failures": [
+          {
+            "file": "tests/english-unit1-learner-guards.test.mjs",
+            "reason": "Old assertion requires actions/download-artifact@v4"
+          },
+          {
+            "file": "tests/english-unit2-learner-guards.test.mjs",
+            "reason": "Old assertion requires actions/download-artifact@v4"
+          }
+        ]
+      },
+      "focusedRepair": {
+        "total": 11,
+        "passed": 11,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "repair": "Two existing assertions require full 40-character Action commits; all manual/main-only/concurrency/resume/secret guards retained",
+      "attempt2": {
+        "status": "passed",
+        "total": 1794,
+        "passed": 1794,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "logSha256": "f7767f08c4c7424b3610957cd7bcae12cd91267e742d216cc9f0dd372216cf57"
+      }
+    },
+    "actionlint": {
+      "version": "1.7.12",
+      "archiveSha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+      "baselineRawExitCode": 1,
+      "baselineDiagnostics": 20,
+      "baselineDiagnostic": "unexpected key \"queue\" for \"concurrency\" section",
+      "reviewedLimitation": "GitHub documents and accepts queue:max; this actionlint version does not recognize it. The exact existing diagnostic is filtered locally; queue settings are unchanged. All other actionlint checks pass, with external shellcheck/pyflakes disabled.",
+      "filteredExitCode": 0
+    },
+    "dependabotSchema": {
+      "status": "passed",
+      "url": "https://json.schemastore.org/dependabot-2.0.json",
+      "sha256": "f310bfb4960eea6a5fb7d75de54ab49ba36f947757c8f4d5de88d3ea8ac51d3f"
+    },
+    "sourceChecks": {
+      "status": "passed",
+      "checks": [
+        {
+          "check": "qa-triggers",
+          "exitCode": 0
+        },
+        {
+          "check": "core-parity",
+          "exitCode": 0
+        },
+        {
+          "check": "browser-sdk",
+          "exitCode": 0
+        },
+        {
+          "check": "teacher-bundle",
+          "exitCode": 0
+        },
+        {
+          "check": "web-assets",
+          "exitCode": 0
+        },
+        {
+          "check": "typecheck",
+          "exitCode": 0
+        },
+        {
+          "check": "email-scan",
+          "exitCode": 0
+        }
+      ]
+    }
+  },
+  "settingsReadback": {
+    "repositoryVisibility": "public",
+    "mainRuleset": {
+      "id": 26520838,
+      "enforcement": "active",
+      "mainOnly": true,
+      "requiredAggregate": "Platform release checks",
+      "strict": true,
+      "bypassActors": [],
+      "currentUserBypass": "never",
+      "requiredApprovals": 0,
+      "codeOwnerReviewRequired": false
+    },
+    "deleteBranchOnMerge": false,
+    "securityAndAnalysisField": "not returned by connected GitHub tool; not evidence that any feature is disabled",
+    "githubCliAuthenticated": false,
+    "secretScanning": "unverified",
+    "pushProtection": "unverified",
+    "dependabotAlerts": "unverified",
+    "dependabotSecurityUpdates": "unverified",
+    "dependencyGraph": "unverified",
+    "codeScanningSetup": "unverified",
+    "settingsChanged": false
+  },
+  "remainingGates": [
+    "All five required CI jobs must pass on the exact PR head",
+    "Owner approval for this PR and fresh confirmation that no other agent is merging/releasing",
+    "Inspect actual GitHub security-feature settings through an administrative interface, obtain specific setting-change approval where needed, and read back any changes",
+    "BF-01 independent reviewer remains unavailable; no approval enforcement is silently enabled",
+    "Branch-deletion policy remains a separate owner decision; no branches deleted"
+  ],
+  "applicationAcceptance": "Owner usability acceptance: not given.",
+  "references": {
+    "taskPlan": "https://app.notion.com/p/40d355a472bf8155a838c145acd61419",
+    "secureUse": "https://docs.github.com/en/actions/reference/security/secure-use",
+    "tokenPermissions": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication",
+    "concurrency": "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency",
+    "dependabot": "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference"
+  }
+}
