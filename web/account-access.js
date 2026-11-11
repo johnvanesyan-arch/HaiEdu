@@ -2,6 +2,9 @@ import { showSignOutNotice } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { roleDestination, studentDestination } from "./account-roles.js";
+import { newPasswordProblem, authErrorMessage } from "./auth-feedback.mjs";
+import { AUTH_CHALLENGE } from "./auth-challenge-config.mjs";
+import { createAuthChallenge } from "./auth-challenge.mjs";
 
 showSignOutNotice();
 
@@ -16,8 +19,18 @@ const registerView = searchParams.get("view") === "register";
 const studentInvitationFromUrl = searchParams.get("student_invitation");
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
+const authChallenge = createAuthChallenge(AUTH_CHALLENGE, { document, window });
+window.addEventListener("pagehide", () => authChallenge.destroy(), { once: true });
 const redirect = `${location.origin}/account-access`;
 const studentInvitationKey = "haiedu:student-invitation";
+// Keep a pending school token out of the address before loading any challenge.
+// Preserve the Auth fragment until the SDK has established its session.
+if (studentInvitationFromUrl) {
+  sessionStorage.setItem(studentInvitationKey, studentInvitationFromUrl);
+  const clean = new URL(location.href);
+  clean.searchParams.delete("student_invitation");
+  history.replaceState(null, "", `${clean.pathname}${clean.search}${clean.hash}`);
+}
 if (linkError) {
   sessionStorage.removeItem(studentInvitationKey);
   messageForLinkError();
@@ -34,6 +47,8 @@ function messageForLinkError() {
 function show(panel) {
   for (const id of ["loginPanel", "registerPanel", "studentInvitePanel", "resetPanel", "passwordPanel"])
     $(id).classList.toggle("hidden", id !== panel);
+  const form = ({ loginPanel: $("loginForm"), registerPanel: $("registerForm"), resetPanel: $("resetForm") })[panel];
+  authChallenge.mount(form, form?.querySelector(".auth-actions") || null);
 }
 function message(id, text, error = false) {
   $(id).textContent = text;
@@ -86,28 +101,43 @@ async function prepareStudentInvitation() {
 
 $("loginForm").addEventListener("submit", async (event) => {
   event.preventDefault();
-  const button = event.currentTarget.querySelector("button"); button.disabled = true;
-  const { error } = await supabase.auth.signInWithPassword({
-    email: $("loginEmail").value.trim(), password: $("loginPassword").value,
-  });
-  button.disabled = false;
-  if (error) return message("loginMessage", "Մուտքը չհաջողվեց։ Ստուգեք հասցեն և գաղտնաբառը։", true);
-  await routeByRole();
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  button.disabled = true;
+  let challenge;
+  try {
+    challenge = authChallenge.take();
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $("loginEmail").value.trim(), password: $("loginPassword").value,
+      ...(challenge.token ? { options: { captchaToken: challenge.token } } : {}),
+    });
+    if (error) throw error;
+    await routeByRole();
+  } catch (error) {
+    message("loginMessage", authErrorMessage(error, "login"), true);
+  } finally { challenge?.finish(); button.disabled = false; }
 });
 $("registerForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const password = $("registerPassword").value;
-  if (password.length < 12 || password !== $("registerConfirm").value)
-    return message("registerMessage", "Գաղտնաբառերը պետք է համընկնեն և պարունակեն առնվազն 12 նիշ։", true);
-  const button = event.currentTarget.querySelector('button[type="submit"]'); button.disabled = true;
-  const { data, error } = await supabase.auth.signUp({
-    email: $("registerEmail").value.trim(), password,
-    options: { emailRedirectTo: redirect },
-  });
-  button.disabled = false;
-  if (error) return message("registerMessage", "Հաշիվը չստեղծվեց։ Ստուգեք հասցեն և փորձեք կրկին։", true);
-  if (!data.session) return message("registerMessage", "Եթե հաստատման նամակ է պահանջվում, բացեք այն, ապա մուտք գործեք։");
-  await routeByRole("registerMessage");
+  const problem = newPasswordProblem(password, $("registerConfirm").value);
+  if (problem) return message("registerMessage", problem, true);
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  button.disabled = true;
+  let challenge;
+  try {
+    challenge = authChallenge.take();
+    const { data, error } = await supabase.auth.signUp({
+      email: $("registerEmail").value.trim(), password,
+      options: { emailRedirectTo: redirect, ...(challenge.token ? { captchaToken: challenge.token } : {}) },
+    });
+    if (error) throw error;
+    if (!data.session) return message("registerMessage", "Եթե այս հասցեով հաստատման նամակ եք ստացել, բացեք այն, ապա մուտք գործեք։");
+    await routeByRole("registerMessage");
+  } catch (error) {
+    message("registerMessage", authErrorMessage(error, "register"), true);
+  } finally { challenge?.finish(); button.disabled = false; }
 });
 $("registerBackBtn").addEventListener("click", () => {
   searchParams.delete("view");
@@ -124,33 +154,31 @@ $("studentInviteForm").addEventListener("submit", async (event) => {
   const requiresPassword = !$("studentPasswordFields").classList.contains("hidden");
   if (requiresPassword) {
     const password = $("studentPassword").value;
-    if (password.length < 12 || password !== $("studentPasswordConfirm").value) {
-      return message("studentInviteMessage", "Գաղտնաբառերը պետք է համընկնեն և պարունակեն առնվազն 12 նիշ։", true);
-    }
+    const problem = newPasswordProblem(password, $("studentPasswordConfirm").value);
+    if (problem) return message("studentInviteMessage", problem, true);
   }
   const button = event.currentTarget.querySelector('button[type="submit"]');
+  if (button.disabled) return;
   button.disabled = true;
   message("studentInviteMessage", "Հրավերը հաստատվում է…");
-  if (requiresPassword) {
-    const { error: passwordError } = await supabase.auth.updateUser({ password: $("studentPassword").value });
-    if (passwordError) {
-      button.disabled = false;
-      return message("studentInviteMessage", "Գաղտնաբառը չպահպանվեց։ Փորձեք կրկին։", true);
+  let stage = "password";
+  try {
+    if (requiresPassword) {
+      const { error: passwordError } = await supabase.auth.updateUser({ password: $("studentPassword").value });
+      if (passwordError) throw passwordError;
     }
-  }
-  const { data, error } = await supabase.functions.invoke("complete-student-invitation", {
-    body: {
-      token: enrollmentToken,
-      displayName,
-      acceptanceVersion: "student-school-access-v1",
-    },
-  });
-  if (error || data?.completed !== true) {
-    button.disabled = false;
-    return message("studentInviteMessage", "Հրավերը չի գործում, ժամկետանց է կամ արդեն օգտագործվել է։ Խնդրեք դպրոցին ուղարկել նոր հրավեր։", true);
-  }
-  sessionStorage.removeItem(studentInvitationKey);
-  await routeByRole("studentInviteMessage");
+    stage = "invitation";
+    const { data, error } = await supabase.functions.invoke("complete-student-invitation", {
+      body: { token: enrollmentToken, displayName, acceptanceVersion: "student-school-access-v1" },
+    });
+    if (error || data?.completed !== true) {
+      return message("studentInviteMessage", "Հրավերը չի գործում, ժամկետանց է կամ արդեն օգտագործվել է։ Խնդրեք դպրոցին ուղարկել նոր հրավեր։", true);
+    }
+    sessionStorage.removeItem(studentInvitationKey);
+    await routeByRole("studentInviteMessage");
+  } catch (error) {
+    message("studentInviteMessage", authErrorMessage(error, stage), true);
+  } finally { button.disabled = false; }
 });
 $("showResetBtn").addEventListener("click", () => {
   $("resetEmail").value = $("loginEmail").value;
@@ -163,34 +191,45 @@ $("backBtn").addEventListener("click", () => {
 });
 $("resetForm").addEventListener("submit", async (event) => {
   event.preventDefault();
-  const button = event.currentTarget.querySelector("button"); button.disabled = true;
-  const { error } = await supabase.auth.resetPasswordForEmail($("resetEmail").value.trim(), { redirectTo: redirect });
-  button.disabled = false;
-  if (error) return message("resetMessage", "Հղումը չուղարկվեց։ Խնդրում ենք փորձել ավելի ուշ։", true);
-  message("resetMessage", "Եթե այս էլ. հասցեով հաշիվ կա, ստուգեք փոստը՝ վերականգնման հղման համար։");
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  button.disabled = true;
+  let challenge;
+  try {
+    challenge = authChallenge.take();
+    const { error } = await supabase.auth.resetPasswordForEmail($("resetEmail").value.trim(), {
+      redirectTo: redirect, ...(challenge.token ? { captchaToken: challenge.token } : {}),
+    });
+    if (error) throw error;
+    message("resetMessage", "Եթե այս էլ. հասցեով հաշիվ կա, ստուգեք փոստը՝ վերականգնման հղման համար։");
+  } catch (error) {
+    message("resetMessage", authErrorMessage(error, "reset"), true);
+  } finally { challenge?.finish(); button.disabled = false; }
 });
 $("passwordForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const password = $("newPassword").value;
-  if (password.length < 12 || password !== $("confirmPassword").value)
-    return message("passwordMessage", "Գաղտնաբառերը պետք է համընկնեն և պարունակեն առնվազն 12 նիշ։", true);
-  const button = event.currentTarget.querySelector("button"); button.disabled = true;
-  const { error } = await supabase.auth.updateUser({ password });
-  if (error) {
-    button.disabled = false;
-    return message("passwordMessage", "Գաղտնաբառը չպահպանվեց։ Փորձեք նորից։", true);
-  }
-  const { error: activationError } = await supabase.functions.invoke("accept-staff-account", { body: {} });
-  if (activationError) {
-    const { data: auth } = await supabase.auth.getUser();
-    const { data: profile } = await supabase.from("profiles").select("role")
-      .eq("id", auth.user?.id ?? "00000000-0000-0000-0000-000000000000").maybeSingle();
-    if (flowHint === "invite" || (flowHint !== "recovery" && profile?.role === "student")) {
-      button.disabled = false;
-      return message("passwordMessage", "Գաղտնաբառը պահվեց, բայց հրավերը չի ակտիվացել։ Կապվեք հրավիրող ադմինիստրատորի հետ։", true);
+  const problem = newPasswordProblem(password, $("confirmPassword").value);
+  if (problem) return message("passwordMessage", problem, true);
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  button.disabled = true;
+  try {
+    const { error } = await supabase.auth.updateUser({ password });
+    if (error) throw error;
+    const { error: activationError } = await supabase.functions.invoke("accept-staff-account", { body: {} });
+    if (activationError) {
+      const { data: auth } = await supabase.auth.getUser();
+      const { data: profile } = await supabase.from("profiles").select("role")
+        .eq("id", auth.user?.id ?? "00000000-0000-0000-0000-000000000000").maybeSingle();
+      if (flowHint === "invite" || (flowHint !== "recovery" && profile?.role === "student")) {
+        return message("passwordMessage", "Գաղտնաբառը պահվեց, բայց հրավերը չի ակտիվացել։ Կապվեք հրավիրող ադմինիստրատորի հետ։", true);
+      }
     }
-  }
-  await routeByRole("passwordMessage");
+    await routeByRole("passwordMessage");
+  } catch (error) {
+    message("passwordMessage", authErrorMessage(error, "password"), true);
+  } finally { button.disabled = false; }
 });
 
 supabase.auth.onAuthStateChange((event, session) => {
@@ -209,3 +248,4 @@ else if (initial.session && (flowHint === "invite" || flowHint === "recovery")) 
 else if (resetView && !flowHint) show("resetPanel");
 else if (initial.session) await routeByRole();
 else if (registerView && !flowHint) show("registerPanel");
+else show("loginPanel");

@@ -27,14 +27,13 @@ type InviteResult = {
 
 async function provisionOneStudent(args: {
   admin: any;
-  delivery: any;
   actor: string;
   schoolId: unknown;
   classId: unknown;
   assignmentId: unknown;
   email: string;
 }): Promise<InviteResult> {
-  const { admin, delivery, actor, schoolId, classId, assignmentId, email } = args;
+  const { admin, actor, schoolId, classId, assignmentId, email } = args;
   const plaintext = hex(crypto.getRandomValues(new Uint8Array(32)));
   const digest = hex(new Uint8Array(await crypto.subtle.digest(
     "SHA-256", new TextEncoder().encode(plaintext),
@@ -83,7 +82,8 @@ async function provisionOneStudent(args: {
 
   const invitationId = String(issued);
   if (accountState === "existing") {
-    const { error: deliveryError } = await delivery.auth.signInWithOtp({
+    // This server-owned request follows verified actor and scope authorization.
+    const { error: deliveryError } = await admin.auth.signInWithOtp({
       email,
       options: { shouldCreateUser: false, emailRedirectTo: redirect.toString() },
     });
@@ -110,15 +110,11 @@ Deno.serve(async (req) => {
     if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
     const url = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-    const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
     const header = req.headers.get("Authorization");
-    if (!url || !serviceKey || !anonKey) return json({ error: "server_not_configured" }, 500);
+    if (!url || !serviceKey) return json({ error: "server_not_configured" }, 500);
     if (!header) return json({ error: "unauthorized" }, 401);
 
     const admin = createClient(url, serviceKey, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-    const delivery = createClient(url, anonKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
     const token = header.replace(/^Bearer\s+/i, "");
@@ -200,7 +196,7 @@ Deno.serve(async (req) => {
         continue;
       }
       const result = await provisionOneStudent({
-        admin, delivery, actor, schoolId, classId, assignmentId, email,
+        admin, actor, schoolId, classId, assignmentId, email,
       });
       results.push(result);
       if (result.error === "email_rate_limited") quotaExhausted = true;

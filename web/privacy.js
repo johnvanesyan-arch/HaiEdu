@@ -2,9 +2,14 @@ import {taskPrivacyRows,erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { authErrorMessage } from "./auth-feedback.mjs";
+import { AUTH_CHALLENGE } from "./auth-challenge-config.mjs";
+import { createAuthChallenge } from "./auth-challenge.mjs";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
+const passwordChallenge = createAuthChallenge(AUTH_CHALLENGE, { document, window });
+window.addEventListener("pagehide", () => passwordChallenge.destroy(), { once: true });
 let state = null;
 let accountEpoch = 0;
 let accountRequest = 0;
@@ -12,6 +17,7 @@ let accountActor;
 const accountHomes = {student:"./index.html",teacher:"./teacher.html?view=home",school_admin:"./school-admin.html",admin:"./admin.html",content_admin:"./content.html"};
 
 function clearAccount(signedOut = false) {
+  passwordChallenge.destroy();
   clearSessionReadFailure();
   state = null;
   for (const id of ['displayNameInput', 'newEmailInput']) $(id).value = '';
@@ -253,7 +259,7 @@ $("changeEmailForm").addEventListener("submit", async (event) => {
     $("newEmailInput").value = "";
     setMessage("emailChangeMessage", "Ստուգեք նոր և ներկայիս էլ. հասցեների փոստարկղերը և հաստատեք փոփոխությունը։ Մինչ այդ մուտք գործեք ներկայիս հասցեով։");
   } catch (err) {
-    setMessage("emailChangeMessage", err.message || "Չհաջողվեց ուղարկել հաստատման նամակը։", true);
+    setMessage("emailChangeMessage", authErrorMessage(err, "email"), true);
   } finally {
     if (epoch === accountEpoch) button.disabled = false;
   }
@@ -262,19 +268,25 @@ $("changeEmailForm").addEventListener("submit", async (event) => {
 $("changePasswordBtn").addEventListener("click", async () => {
   const epoch = accountEpoch;
   const button = $("changePasswordBtn");
+  if (button.disabled) return;
   button.disabled = true;
   setMessage("passwordChangeMessage", "Հղումն ուղարկվում է…");
+  let challenge;
   try {
+    passwordChallenge.mount(button.parentElement, $("passwordChangeMessage"));
+    challenge = passwordChallenge.take();
     const { data, error: userError } = await withinAccount(() => supabase.auth.getUser());
     if (userError || !data.user?.email) throw userError || new Error("Մուտքի էլ. հասցեն չի գտնվել։");
     const { error } = await withinAccount(() => supabase.auth.resetPasswordForEmail(data.user.email, {
       redirectTo: `${location.origin}/account-access`,
+      ...(challenge.token ? { captchaToken: challenge.token } : {}),
     }));
     if (error) throw error;
     setMessage("passwordChangeMessage", "Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։");
   } catch (err) {
-    setMessage("passwordChangeMessage", err.message || "Հղումը չուղարկվեց։ Փորձեք կրկին։", true);
+    setMessage("passwordChangeMessage", authErrorMessage(err, "reset"), true);
   } finally {
+    challenge?.finish();
     if (epoch === accountEpoch) button.disabled = false;
   }
 });

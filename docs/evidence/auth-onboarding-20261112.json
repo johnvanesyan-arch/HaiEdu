@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "baselineSource": "9c326d1c5c1a8f53f268f1946f35e488d5baeff5",
+  "stage": "prepared candidate; exact-head CI and release pending",
+  "ownerApprovedPolicy": {
+    "minimumActualCharacters": 6,
+    "allowLongerPasswords": true,
+    "twelveCharacterCap": false,
+    "providerPolicyException": "Owner approved the application character rule with a separately retained provider limitation; identical provider Unicode enforcement is not claimed"
+  },
+  "ownerUsabilityAcceptance": "not given",
+  "captchaPreparation": {
+    "provider": "turnstile",
+    "enabled": false,
+    "publicSiteKeyConfigured": false,
+    "realKeyVerification": "pending separate provider configuration and rollout decision",
+    "reviewedScriptOrigin": "https://challenges.cloudflare.com",
+    "reviewedFrameOrigin": "https://challenges.cloudflare.com"
+  },
+  "deployedFunctionChanges": false,
+  "edgeDeploymentRequiredAfterSpecificApproval": [
+    "provision-student-account"
+  ],
+  "sharedAuthHelperChanged": false,
+  "localVerification": {
+    "authFeedbackUnit": {
+      "tests": 6,
+      "passed": 6
+    },
+    "initialNative": {
+      "tests": 38,
+      "passed": 38
+    },
+    "expandedNative": {
+      "tests": 41,
+      "passed": 41
+    },
+    "broaderNativeBeforeFinalInvitationUrlRefinement": {
+      "tests": 672,
+      "passed": 672,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "initialFullUnit": {
+      "tests": 1803,
+      "passed": 1802,
+      "failed": 1,
+      "reason": "Four new shared dependency paths omitted in two paused acceptance trigger lists; repaired"
+    },
+    "currentSourceTargetedNative": {
+      "tests": 135,
+      "passed": 135,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "scope": "Final account-entry, shared-account and browser-security source; synthetic Auth and intercepted provider loading"
+    },
+    "currentSourceReflowNative": {
+      "tests": 1,
+      "passed": 1,
+      "observations": 20,
+      "scope": "Five account views at phone/desktop widths and normal/doubled computed text, including the compact synthetic challenge"
+    },
+    "currentSourceVisualObservations": {
+      "observations": 20,
+      "horizontalOverflow": 0,
+      "unexpectedExternalRequests": 0,
+      "scope": "Working candidate source, synthetic Auth, inactive challenge; phone/desktop and normal/doubled computed text"
+    },
+    "finalFullUnit": {
+      "tests": 1803,
+      "passed": 1803,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "reportedVersionAuthFixture": {
+      "status": "passed",
+      "authVersion": "v2.197.0",
+      "checks": 22,
+      "capturedLocalEmails": 10,
+      "trustedDeliveryRetainsEmailQuota": true,
+      "containersRemoved": 3,
+      "networkRemoved": true,
+      "scope": "Disposable Auth/PostgreSQL/local SMTP on a private bridge with loopback-only HTTP ports; synthetic configuration and recipients; no real-key challenge verification or live SMTP qualification"
+    },
+    "priorSourceRegressions": {
+      "minimumLength": "expected failure on9c source",
+      "requestLimitMessage": "expected failure on9c source"
+    },
+    "finalSourceChecks": {
+      "core-parity": 0,
+      "browser-sdk": 0,
+      "teacher-bundle": 0,
+      "web-assets": 0,
+      "qa-triggers": 0,
+      "public-emails": 0,
+      "typecheck": 0,
+      "web-syntax": 0
+    }
+  },
+  "browserBuildId": "aa58bbac5bffa4e201b208434e4e0b602c1d628a77637b7d21ca081c17c36ae9",
+  "workflowChangeScope": "Four shared Auth dependency paths added to two existing paused workflow trigger lists; permissions, exact-main guards and serialization preserved",
+  "liveRateValuesChanged": false,
+  "capacityPlanPrepared": true,
+  "productionQa": "not run (paused by owner)",
+  "productionSignIns": 0,
+  "productionEmailsSent": 0,
+  "productionDatabaseWrites": 0,
+  "productionSettingsChanges": 0,
+  "schemaChanges": 0,
+  "edgeDeployments": 0,
+  "billingChanges": 0,
+  "release": "not merged"
+}
