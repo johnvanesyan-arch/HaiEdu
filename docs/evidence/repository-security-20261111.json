@@ -3,7 +3,7 @@
   "task": "BF-14",
   "date": "2026-11-11",
   "timeZone": "Asia/Yerevan",
-  "status": "Prepared for review; not merged; security-feature settings remain unverified",
+  "status": "Owner settings enabled; workflow/CI runtime candidate prepared; revised exact-head full CI required before merge",
   "repository": "johnvanesyan-arch/HaiEdu",
   "baselineMain": "0c9577f79d4ec8901954042452035b2f639b3df2",
   "scope": {
@@ -228,20 +228,21 @@
     "deleteBranchOnMerge": false,
     "securityAndAnalysisField": "not returned by connected GitHub tool; not evidence that any feature is disabled",
     "githubCliAuthenticated": false,
-    "secretScanning": "unverified",
-    "pushProtection": "unverified",
-    "dependabotAlerts": "unverified",
-    "dependabotSecurityUpdates": "unverified",
-    "dependencyGraph": "unverified",
-    "codeScanningSetup": "unverified",
-    "settingsChanged": false
+    "secretScanning": "owner-confirmed enabled through Secret Protection",
+    "pushProtection": "owner-confirmed enabled",
+    "dependabotAlerts": "on in supplied screenshot",
+    "dependabotSecurityUpdates": "on in supplied screenshot",
+    "dependencyGraph": "on in supplied screenshot",
+    "codeScanningSetup": "owner-confirmed default setup; first scan independently succeeds for JavaScript/TypeScript, Actions and Python",
+    "settingsChanged": true,
+    "settingsOperator": "owner",
+    "agentSettingsChanged": false
   },
   "remainingGates": [
-    "All five required CI jobs must pass on the exact PR head",
-    "Owner approval for this PR and fresh confirmation that no other agent is merging/releasing",
-    "Inspect actual GitHub security-feature settings through an administrative interface, obtain specific setting-change approval where needed, and read back any changes",
-    "BF-01 independent reviewer remains unavailable; no approval enforcement is silently enabled",
-    "Branch-deletion policy remains a separate owner decision; no branches deleted"
+    "All five required CI jobs must pass on the revised exact PR head, including1796 expected unit/integration and630 native cases",
+    "Specific owner PR466 merge approval and fresh no-other-agent merging/releasing confirmation",
+    "After merge, verify main CI and canonical source; align merged delivery records",
+    "BF-01 independent-review and branch-deletion decisions remain separate; no branch pruning or approval-enforcement change"
   ],
   "applicationAcceptance": "Owner usability acceptance: not given.",
   "references": {
@@ -278,5 +279,260 @@
       "conclusion": "skipped"
     }
   },
-  "pullRequest": 466
+  "pullRequest": 466,
+  "browserCiRuntime": {
+    "image": "mcr.microsoft.com/playwright:v1.63.0-resolute@sha256:b022639ae9197f864040f92eef7b57c6d4b47db2190f77c909d8a5d902dd4b7e",
+    "registryProof": {
+      "repository": "mcr.microsoft.com/playwright",
+      "tag": "v1.63.0-resolute",
+      "digest": "sha256:b022639ae9197f864040f92eef7b57c6d4b47db2190f77c909d8a5d902dd4b7e",
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "platforms": [
+        {
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "digest": "sha256:0183e97423af6fe1809eefe1cc7ca5698924850297d45d312c98393f3a0edd81"
+        },
+        {
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          },
+          "digest": "sha256:9d44021e1317964de2524b61f09fdd6308f7e4415cf281f98c63d54a892f3269"
+        }
+      ],
+      "config": null,
+      "amd64Manifest": "sha256:0183e97423af6fe1809eefe1cc7ca5698924850297d45d312c98393f3a0edd81",
+      "amd64Config": "sha256:529116d1efdd458c07ad249df122db0c6ca44af39182dfa44be71c9a4439caef",
+      "architecture": "amd64",
+      "os": "linux",
+      "browserPath": "/ms-playwright",
+      "ubuntuRelease": "26.04 (resolute)",
+      "created": "2026-09-04T23:47:34.845072127Z",
+      "configDigestsVerified": true,
+      "layerCount": 8
+    },
+    "officialDocs": "https://github.com/microsoft/playwright/blob/v1.63.0/docs/src/docker.md",
+    "officialBuildRecipe": "https://github.com/microsoft/playwright/blob/v1.63.0/utils/docker/Dockerfile.resolute",
+    "nodeVersionForTests": 22,
+    "driverVersion": "1.63.0",
+    "options": "--init --shm-size=1gb",
+    "scope": "Only the required isolated CI browser job, on PRs and main; production QA runtime unchanged by owner direction",
+    "oldInstallerRemoved": true,
+    "requiredBrowserCommand": "node --test tests/browser/*.test.mjs",
+    "nativeCasesExpected": 630,
+    "allFiveCiJobsAndNeedsPreserved": true,
+    "networkPolicyOrDnsChanges": false,
+    "assertionsOrTimeoutRelaxed": false,
+    "newContractRegression": "tests/browser-ci-runtime.test.mjs",
+    "focusedVerification": {
+      "focused": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "oldSourceRegression": "fails as expected: no immutable browser image in original CI",
+      "focusedLogSha256": "f0af597266fbf44374da048e759f0eda1c391f9504286872bf3399a635084b81"
+    },
+    "fullHostedVerification": "pending on revised commit",
+    "timeZoneForTests": "UTC"
+  },
+  "retainedHostedFailures": {
+    "initialCandidate": {
+      "runId": 43038458520,
+      "head": "e39b176e18a942a5360f058c73ba3b0ca79e6ce3",
+      "attempt": 1,
+      "result": "failure",
+      "browserJobId": 130583511441,
+      "browserStep": "Install Chromium",
+      "browserTestsExecuted": false,
+      "exitCode": 100,
+      "runnerImage": "ubuntu-26.04",
+      "observedError": "Temporary failure resolving 'security.ubuntu.com'",
+      "interpretation": "Required browser setup failed while downloading Ubuntu dependencies, before browser tests. This does not establish a product assertion failure.",
+      "aggregateResult": "failure",
+      "permalink": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43038458520/job/130583511441"
+    },
+    "revisedAttempt1": {
+      "runId": 43040332107,
+      "head": "518393011142c213941c6e90b024f8880fa6714f",
+      "attempt": 1,
+      "result": "failure",
+      "browserJobId": 130590091812,
+      "browserTestsExecuted": false,
+      "browserStep": "Install Chromium",
+      "observedError": "Temporary failure resolving 'security.ubuntu.com'",
+      "unitIntegration": {
+        "tests": 1795,
+        "pass": 1795,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "otherSuccessfulJobs": [
+        "phase3-postgres-17",
+        "institutional-concurrency"
+      ],
+      "aggregateResult": "failure",
+      "retryDecision": "One unchanged-source retry of failed CI jobs on a fresh machine; production QA not dispatched",
+      "permalink": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43040332107/attempts/1"
+    },
+    "revisedAttempt2": {
+      "repository": "johnvanesyan-arch/HaiEdu",
+      "pr": 466,
+      "head": "518393011142c213941c6e90b024f8880fa6714f",
+      "tree": "53d5d34de49166cdc72efb16216222807069de04",
+      "runId": 43040332107,
+      "attempt": 2,
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 130598988199,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 130598990467,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 130598990682,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 130599080396,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 130607084156,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "unitMetrics": {
+        "tests": 1795,
+        "pass": 1795,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserTestsExecutedInCi": false,
+      "browserFailure": "Installation process exited100 after Temporary failure resolving security.ubuntu.com",
+      "browserJobId": 130598988199,
+      "aggregateJobId": 130607084156,
+      "localNative": {
+        "source": "518393011142c213941c6e90b024f8880fa6714f",
+        "status": "passed",
+        "environment": "Local workspace Node24.22.1, installed Playwright Chromium; synthetic local services, not signed-in production acceptance",
+        "tests": 630,
+        "passed": 630,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "logSha256": "c0656509a2a12d573e789f49231abbd0eada41b7a9770dfbd1afc97dd1863612",
+        "replacesHostedCiGate": false
+      },
+      "lastKnownSuccessfulMainNative": {
+        "jobId": 130368788631,
+        "runId": 42974015040,
+        "source": "0c9577f79d4ec8901954042452035b2f639b3df2",
+        "image": "ubuntu-26.04",
+        "runnerImageRevision": "20261101.186",
+        "observation": "Same Ubuntu image successfully reached its package archives earlier on 11 November; no runner or network policy change was made."
+      },
+      "mergePermitted": false,
+      "productionWorkflowDispatches": 0,
+      "productionSignIns": 0,
+      "githubAdministrativeSettingChanges": 0,
+      "ownerReportsDisabled": [
+        "Dependabot alerts",
+        "Dependabot security updates",
+        "secret scanning",
+        "push protection",
+        "CodeQL/code scanning"
+      ],
+      "settingsSource": "Owner's text report; no administrative API readback"
+    }
+  },
+  "completedSettings": {
+    "date": "2026-11-11",
+    "timeZone": "Asia/Yerevan",
+    "repository": "johnvanesyan-arch/HaiEdu",
+    "ownerConfirmation": "all done, following screenshot-specific enablement instructions",
+    "screenshotObservedEnabled": [
+      "Dependency graph",
+      "Dependabot alerts",
+      "Dependabot security updates",
+      "Copilot Autofix"
+    ],
+    "ownerConfirmedEnabled": [
+      "Private vulnerability reporting",
+      "Malware alerts",
+      "Grouped security updates",
+      "CodeQL default setup for JavaScript/TypeScript and Python",
+      "Secret Protection and push protection"
+    ],
+    "administrativeApiReadback": false,
+    "agentOperatedSettings": false,
+    "codeql": {
+      "runId": 43054358412,
+      "name": "CodeQL Setup",
+      "path": "dynamic/github-code-scanning/codeql",
+      "event": "dynamic",
+      "source": "0c9577f79d4ec8901954042452035b2f639b3df2",
+      "branch": "main",
+      "conclusion": "success",
+      "analysisJobs": [
+        {
+          "id": 130639730310,
+          "name": "Analyze (javascript-typescript)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130639730542,
+          "name": "Analyze (actions)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130639730596,
+          "name": "Analyze (python)",
+          "conclusion": "success"
+        }
+      ],
+      "helperJobs": [
+        {
+          "id": 130641430409,
+          "name": "Adjust Configuration",
+          "conclusion": "skipped"
+        }
+      ],
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43054358412",
+      "findingCount": "not retrieved; successful analysis is not a claim of zero findings"
+    },
+    "dependencyGraph": {
+      "runId": 43047578103,
+      "conclusion": "success",
+      "source": "0c9577f79d4ec8901954042452035b2f639b3df2"
+    },
+    "pr466": {
+      "head": "518393011142c213941c6e90b024f8880fa6714f",
+      "state": "open, unmerged",
+      "requiredCiRun": 43040332107,
+      "requiredCiAttempt": 2,
+      "requiredCiConclusion": "failure during Chromium dependency installation; no hosted browser cases executed"
+    },
+    "productionQaDispatched": false
+  }
 }
