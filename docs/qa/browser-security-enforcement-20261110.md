@@ -54,7 +54,7 @@ Protected audio is a separate remaining limit. The existing audio-preview servic
 
 The protected-PDF evidence and the earlier account walks cover unchanged functional code. Integration of the latest main changes only the already-approved agent rules/handover plus this documentation; policy values and browser assets remain identical. Final updated-head CI and merged/canonical release results are recorded on PR464 and in the subsequent dated release evidence.
 
-**Affected production QA:** Mobile; teacher feedback; resource assignments; English Units 1–3 pilot reads; Chapters II–VI pilot reads; Sprint 14 actions; Sprint 14D analytics. The existing production release preflight changes in this same candidate. No production locators or fixture expectations change. All 16 owner pause conditions and 20 fixture-serialization guards remain intact.
+**Affected production QA:** All16 workflows that call the shared release preflight: Mobile; teacher feedback; resource assignments; English Units1–3 pilot reads; English Units1–2 learner acceptance; ChaptersII–VI pilot reads; Sprint14 actions; Sprint14D analytics; live answer recovery. The existing production release preflight changes in this same candidate. No production locators or fixture expectations change. All 16 owner pause conditions and 20 fixture-serialization guards remain intact.
 
 **Production QA not run (paused by owner).** No workflow was dispatched. Owner usability, B.12.3/B.12 and independent gates remain open; BF-02 remains deferred and subject work stays paused.
 

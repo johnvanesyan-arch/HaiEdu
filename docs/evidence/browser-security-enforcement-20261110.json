@@ -165,5 +165,23 @@
     "localSessionRevokedAndCleared": true,
     "filesDeleted": true,
     "domainWrites": 0
-  }
+  },
+  "affectedProductionQaPreflightConsumers": [
+    "Mobile",
+    "Teacher feedback",
+    "Resource assignments",
+    "English Unit1 pilot reads",
+    "English Unit2 pilot reads",
+    "English Unit3 pilot reads",
+    "English Unit1 learner acceptance",
+    "English Unit2 learner acceptance",
+    "ChapterII pilot reads",
+    "ChapterIII pilot reads",
+    "ChapterIV pilot reads",
+    "ChapterV pilot reads",
+    "ChapterVI pilot reads",
+    "Sprint14 actions",
+    "Sprint14D analytics",
+    "Live answer recovery"
+  ]
 }
