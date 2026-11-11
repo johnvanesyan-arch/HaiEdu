@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "task": "BF-14",
+  "date": "2026-11-11",
+  "timeZone": "Asia/Yerevan",
+  "status": "Owner-approved functional release merged and verified live; documentation-only record alignment",
+  "recordRoadmapVersion": "4.171",
+  "functionalRelease": {
+    "pr": 466,
+    "source": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+    "approvedHead": "28f73964db707e749381d337f75542aae2fb27ff",
+    "tree": "2b4ef15dab2ba1428125ec2ea5300bb3ade6671f",
+    "mergeMethod": "squash",
+    "ownerApproved": true,
+    "noOtherReleaseConfirmed": true,
+    "mainQueueClearBeforeMerge": true
+  },
+  "prCi": {
+    "repository": "johnvanesyan-arch/HaiEdu",
+    "pr": 466,
+    "head": "28f73964db707e749381d337f75542aae2fb27ff",
+    "tree": "2b4ef15dab2ba1428125ec2ea5300bb3ade6671f",
+    "base": "0c9577f79d4ec8901954042452035b2f639b3df2",
+    "runId": 43071703134,
+    "attempt": 1,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 130701036146,
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 130701036472,
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 130701036663,
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 130701036745,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 130705332330,
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "unitIntegration": {
+      "tests": 1796,
+      "pass": 1796,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "nativeBrowser": {
+      "tests": 630,
+      "pass": 630,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "image": "mcr.microsoft.com/playwright:v1.63.0-resolute@sha256:b022639ae9197f864040f92eef7b57c6d4b47db2190f77c909d8a5d902dd4b7e",
+    "imageObservedInHostedLog": true,
+    "codeql": {
+      "run": 43071697089,
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 130701023487,
+          "name": "Analyze (python)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130701023869,
+          "name": "Analyze (actions)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130701023986,
+          "name": "Analyze (javascript-typescript)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "priorFailuresRetained": true,
+    "productionQaDispatched": false,
+    "productionSignIns": 0
+  },
+  "mergedCi": {
+    "repository": "johnvanesyan-arch/HaiEdu",
+    "source": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+    "approvedHead": "28f73964db707e749381d337f75542aae2fb27ff",
+    "approvedTree": "2b4ef15dab2ba1428125ec2ea5300bb3ade6671f",
+    "mergedTreeEqualsApproved": true,
+    "runId": 43074972754,
+    "attempt": 1,
+    "conclusion": "success",
+    "unit": {
+      "tests": 1796,
+      "pass": 1796,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "native": {
+      "tests": 630,
+      "pass": 630,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "jobs": [
+      {
+        "id": 130712303187,
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "id": 130712303572,
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "id": 130712303646,
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "id": 130712304034,
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "id": 130716749552,
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ],
+    "image": "mcr.microsoft.com/playwright:v1.63.0-resolute@sha256:b022639ae9197f864040f92eef7b57c6d4b47db2190f77c909d8a5d902dd4b7e",
+    "ownerMergeApproval": true,
+    "noOtherReleaseConfirmedBeforeMerge": true,
+    "mainQueueWasClearBeforeMerge": true
+  },
+  "canonicalVerification": {
+    "expectedCommit": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+    "observedAt": "2026-11-11T18:19:22.742Z",
+    "status": "passed",
+    "domains": [
+      {
+        "origin": "https://haiedu.am",
+        "commitBefore": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+        "commitAfter": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+        "matchesExpected": true,
+        "manifestSha256": "4b4fda01fd1307d29f31424de7f0acab35db324e03c1f66412dae03bea43b428",
+        "securityHeadersMatch": true,
+        "enforcingBrowserPolicy": true,
+        "noStoreMetadata": true,
+        "httpsProtectionHeader": true
+      },
+      {
+        "origin": "https://www.haiedu.am",
+        "commitBefore": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+        "commitAfter": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+        "matchesExpected": true,
+        "manifestSha256": "4b4fda01fd1307d29f31424de7f0acab35db324e03c1f66412dae03bea43b428",
+        "securityHeadersMatch": true,
+        "enforcingBrowserPolicy": true,
+        "noStoreMetadata": true,
+        "httpsProtectionHeader": true
+      }
+    ],
+    "buildId": "b61ab8c323b12fd50507502d2137d5f9fa4a0b749a867e8c96f142eab10ecaf8",
+    "manifestPages": 29,
+    "manifestAssets": 124,
+    "requests": [
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      }
+    ],
+    "scope": "Public release identity and byte-exact manifest/security-header verification only; no page scripts, sign-ins, backend calls or production QA workflow"
+  },
+  "hosting": {
+    "deploymentId": "dpl_3yVGz7CuApXUPqCFR4eXsC789vmp",
+    "target": "production",
+    "state": "READY",
+    "source": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+    "aliases": [
+      {
+        "host": "haiedu.am",
+        "deploymentId": "dpl_3yVGz7CuApXUPqCFR4eXsC789vmp",
+        "redirect": "www.haiedu.am"
+      },
+      {
+        "host": "www.haiedu.am",
+        "deploymentId": "dpl_3yVGz7CuApXUPqCFR4eXsC789vmp",
+        "redirect": null
+      }
+    ],
+    "automaticDomainAssignment": true,
+    "agentPromoted": false,
+    "agentChangedHostingSettings": false
+  },
+  "browserEnvironment": {
+    "repository": "mcr.microsoft.com/playwright",
+    "tag": "v1.63.0-resolute",
+    "digest": "sha256:b022639ae9197f864040f92eef7b57c6d4b47db2190f77c909d8a5d902dd4b7e",
+    "mediaType": "application/vnd.oci.image.index.v1+json",
+    "platforms": [
+      {
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "digest": "sha256:0183e97423af6fe1809eefe1cc7ca5698924850297d45d312c98393f3a0edd81"
+      },
+      {
+        "platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "digest": "sha256:9d44021e1317964de2524b61f09fdd6308f7e4415cf281f98c63d54a892f3269"
+      }
+    ],
+    "config": null,
+    "amd64Manifest": "sha256:0183e97423af6fe1809eefe1cc7ca5698924850297d45d312c98393f3a0edd81",
+    "amd64Config": "sha256:529116d1efdd458c07ad249df122db0c6ca44af39182dfa44be71c9a4439caef",
+    "architecture": "amd64",
+    "os": "linux",
+    "browserPath": "/ms-playwright",
+    "ubuntuRelease": "26.04 (resolute)",
+    "created": "2026-09-04T23:47:34.845072127Z",
+    "configDigestsVerified": true,
+    "layerCount": 8
+  },
+  "settings": {
+    "date": "2026-11-11",
+    "timeZone": "Asia/Yerevan",
+    "repository": "johnvanesyan-arch/HaiEdu",
+    "ownerConfirmation": "all done, following screenshot-specific enablement instructions",
+    "screenshotObservedEnabled": [
+      "Dependency graph",
+      "Dependabot alerts",
+      "Dependabot security updates",
+      "Copilot Autofix"
+    ],
+    "ownerConfirmedEnabled": [
+      "Private vulnerability reporting",
+      "Malware alerts",
+      "Grouped security updates",
+      "CodeQL default setup for JavaScript/TypeScript and Python",
+      "Secret Protection and push protection"
+    ],
+    "administrativeApiReadback": false,
+    "agentOperatedSettings": false,
+    "codeql": {
+      "runId": 43054358412,
+      "name": "CodeQL Setup",
+      "path": "dynamic/github-code-scanning/codeql",
+      "event": "dynamic",
+      "source": "0c9577f79d4ec8901954042452035b2f639b3df2",
+      "branch": "main",
+      "conclusion": "success",
+      "analysisJobs": [
+        {
+          "id": 130639730310,
+          "name": "Analyze (javascript-typescript)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130639730542,
+          "name": "Analyze (actions)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130639730596,
+          "name": "Analyze (python)",
+          "conclusion": "success"
+        }
+      ],
+      "helperJobs": [
+        {
+          "id": 130641430409,
+          "name": "Adjust Configuration",
+          "conclusion": "skipped"
+        }
+      ],
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43054358412",
+      "findingCount": "not retrieved; successful analysis is not a claim of zero findings"
+    },
+    "dependencyGraph": {
+      "runId": 43047578103,
+      "conclusion": "success",
+      "source": "0c9577f79d4ec8901954042452035b2f639b3df2"
+    }
+  },
+  "codeqlAndDependencyUpdates": {
+    "codeql": {
+      "runId": 43074972674,
+      "source": "1df8f590f1dbfb99eeff96460c00e00486dab349",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 130712312340,
+          "name": "Analyze (javascript-typescript)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130712312668,
+          "name": "Analyze (actions)",
+          "conclusion": "success"
+        },
+        {
+          "id": 130712312732,
+          "name": "Analyze (python)",
+          "conclusion": "success"
+        }
+      ],
+      "findingCount": "not retrieved; successful analysis is not a zero-findings claim"
+    },
+    "updaterRuns": [
+      {
+        "id": 43074982527,
+        "ecosystem": "npm",
+        "conclusion": "success"
+      },
+      {
+        "id": 43074982605,
+        "ecosystem": "github-actions",
+        "conclusion": "success"
+      }
+    ],
+    "proposals": [
+      {
+        "number": 470,
+        "title": "deps: bump typescript from 5.9.3 to 7.0.2",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/pull/470"
+      },
+      {
+        "number": 469,
+        "title": "deps: bump actions/setup-python from 5.6.0 to 7.1.0",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/pull/469"
+      },
+      {
+        "number": 468,
+        "title": "deps: bump actions/download-artifact from 4.3.0 to 8.0.2",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/pull/468"
+      },
+      {
+        "number": 467,
+        "title": "deps: bump the development-minor-and-patch group with 4 updates",
+        "url": "https://github.com/johnvanesyan-arch/HaiEdu/pull/467"
+      }
+    ]
+  },
+  "retainedFailures": [
+    {
+      "type": "local root tests",
+      "passed": 1792,
+      "total": 1794,
+      "failed": 2,
+      "cause": "Two existing guard assertions required the old movable artifact version tag; corrected to full commit references",
+      "subsequentLocalPass": 1794
+    },
+    {
+      "runId": 43038458520,
+      "source": "e39b176e18a942a5360f058c73ba3b0ca79e6ce3",
+      "conclusion": "failure",
+      "phase": "Chromium dependency installation; no native cases executed"
+    },
+    {
+      "runId": 43040332107,
+      "attempt": 1,
+      "source": "518393011142c213941c6e90b024f8880fa6714f",
+      "conclusion": "failure",
+      "phase": "Chromium dependency installation; no native cases executed"
+    },
+    {
+      "runId": 43040332107,
+      "attempt": 2,
+      "source": "518393011142c213941c6e90b024f8880fa6714f",
+      "conclusion": "failure",
+      "phase": "Same Ubuntu DNS/dependency-install failure on one unchanged-source retry; no native cases executed"
+    }
+  ],
+  "scope": {
+    "applicationAssetsBackendDependencyVersionsAndDeploymentConfigUnchanged": true,
+    "publicVerification": "Release identity bracketed around byte-exact manifest reads for both domains; reviewed security headers and cache policy checked. No page scripts or backend calls.",
+    "pageAndAssetCounts": "29 pages/124 assets describe the unchanged manifest; not a fresh download of every file in this delivery",
+    "productionQa": "not run (paused by owner)",
+    "productionAcceptanceRunsObservedSkipped": 16,
+    "manualProductionWorkflowDispatches": 0,
+    "productionSignIns": 0,
+    "productionLearningOrContentWrites": 0,
+    "ownerUsabilityAcceptance": "not given",
+    "independentReviewAndBranchDeletionDecisions": "separate and unchanged"
+  },
+  "documentationClosure": "Only records/status wording changes; source/runtime/build/workflows/configuration stay identical to the verified functional release"
+}
