@@ -1,0 +1,380 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "prepared frontend candidate; not merged or server-enforced",
+  "baselineSource": "04e84efe4f78768805f982d71660bfd7dbd511f5",
+  "scope": "Shared subject-neutral account entry and recovery; public key only; no server, schema, Edge, content or billing changes",
+  "build": {
+    "id": "470d8aa7b00f04e2f08f0649878d6640ad18262e1322456c1a1d318bbd6e400a",
+    "pages": 29,
+    "currentImmutableAssets": 126,
+    "publishedArchivesPreserved": true,
+    "teacherBundleInputsChanged": false,
+    "firstPreviewArchiveRetained": "40e72da3e927bba054f24abbbc338ce86e622986fba5f6403470e70dbe8d96aa"
+  },
+  "localVerification": {
+    "codeIntegration": {
+      "tests": 1803,
+      "pass": 1803,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 321577.191194,
+      "logSha256": "8fe64dae3c6d739c8748f3a76d3cb9cc661ee2c51f5b749f2c1b9ba76f09a50e"
+    },
+    "nativeAuthAccount": {
+      "tests": 86,
+      "pass": 86,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 98817.585275,
+      "logSha256": "07f6244eec6d2891ef877e7c6d5ee833f88d587c88b40b071e3656f4cc6625b2"
+    },
+    "nativeCompiledSecurity": {
+      "tests": 90,
+      "pass": 90,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 58880.42171,
+      "logSha256": "531989265f0866142cfc22de2d2057ddb8326f369b965a9079ca405efe192394"
+    }
+  },
+  "sourceCheckExitCodes": {
+    "teacher-bundle": 0,
+    "web-assets": 0,
+    "qa-triggers": 0,
+    "public-emails": 0,
+    "web-syntax": 0,
+    "typecheck": 0
+  },
+  "nativeFixtureScope": "Actual controllers and compiled pages in native Chromium; synthetic Auth replies and provider callbacks. Native persisted-page events are dispatched; actual back-forward-cache eligibility is not qualified.",
+  "priorSourceRegressions": {
+    "enabledConfiguration": {
+      "tests": 1,
+      "expectedFailures": 1
+    },
+    "authLinkAndAccountCleanup": {
+      "tests": 7,
+      "expectedFailures": 7
+    },
+    "repeatedPersistedLifecycle": {
+      "tests": 2,
+      "expectedFailures": 2
+    },
+    "earlierAttempts": "Retained privately, including provider-browser certificate failures; not counted as passing",
+    "horizontalDisplay": {
+      "source": "b0ee7f35f547059d8c74921096abdbaaaa85a61c",
+      "tests": 1,
+      "expectedFailures": 1,
+      "failure": "Previous square display fails horizontal-bar geometry requirement"
+    }
+  },
+  "provider": {
+    "siteverifyDummyKeyChecks": [
+      {
+        "kind": "pass",
+        "status": 200,
+        "success": true,
+        "codes": [],
+        "expectedSuccess": true,
+        "expectedError": null,
+        "passed": true
+      },
+      {
+        "kind": "fail",
+        "status": 200,
+        "success": false,
+        "codes": [
+          "invalid-input-response"
+        ],
+        "expectedSuccess": false,
+        "expectedError": "invalid-input-response",
+        "passed": true
+      },
+      {
+        "kind": "spent",
+        "status": 200,
+        "success": false,
+        "codes": [
+          "timeout-or-duplicate"
+        ],
+        "expectedSuccess": false,
+        "expectedError": "timeout-or-duplicate",
+        "passed": true
+      }
+    ],
+    "actualOwnerKeyVerified": false,
+    "externalBrowser": "Certificate error; no TLS verification bypass. Owner normal-browser observation pending.",
+    "ownerFirstPreview": {
+      "status": "completed, owner-assisted",
+      "source": "b0ee7f35f547059d8c74921096abdbaaaa85a61c",
+      "evidence": "Owner reports success and supplies screenshot of real Cloudflare Success state after allowed-host correction",
+      "serverVerification": "Not activated or qualified"
+    },
+    "actualOwnerKeyVerifiedScope": "Real server key pair not verified; real browser-widget completion is recorded separately",
+    "revisedHorizontalBarPreview": "Pending owner observation"
+  },
+  "pilot": {
+    "ownerChoice": "Existing Gmail sender, limited first pilot",
+    "emailBudget": "Proposed only; no live save/readback",
+    "localEmailBudget": {
+      "proposedPerHour": 200,
+      "accepted": 200,
+      "nextStatus": 429,
+      "capturedOnlyLocally": 200
+    },
+    "localPacedPasswordSignIns": {
+      "requests": 100,
+      "accepted": 100,
+      "nonSuccessStatuses": [],
+      "seconds": 158.514,
+      "configuredRefillPerFiveMinutes": 150,
+      "scope": "Password sign-in only; initial invitation-link verification and signup still require separate pacing"
+    },
+    "localInstantPasswordSignIns": {
+      "requests": 100,
+      "accepted": 30,
+      "rateLimited": 70,
+      "seconds": 1.258,
+      "configuredRefillPerFiveMinutes": 150,
+      "documentedBurstCapacity": 30
+    },
+    "fixtureScope": "Disposable reported-version Auth/PostgreSQL/local SMTP. CAPTCHA disabled solely to isolate rate behavior. No real mail, live password-login, or real-key enforcement qualification.",
+    "firstTimeSignupAndLinkVerificationQualified": false,
+    "liveGmailThroughputQualified": false,
+    "cleanup": {
+      "containersRemoved": true,
+      "networkRemoved": true
+    }
+  },
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "ownerDisposition": "Explicitly disregarded production QA for this work; remains excluded and unqualified",
+    "directPasswordScripts": 17,
+    "workflowsUsingThem": 18,
+    "resumptionGate": "Compatible sign-in design review before any later dispatch or automatic resumption; no privileged bypass",
+    "workflowDispatches": 0,
+    "requiredIsolatedCi": "All five exact-head jobs still required before merge"
+  },
+  "releaseGates": [
+    "All five exact-head required CI jobs",
+    "Final horizontal-bar preview review; original real widget already completed with owner-assisted evidence",
+    "Specific PR merge approval and fresh no-other-agent release confirmation",
+    "All five main checks and both canonical frontend source/build readbacks",
+    "Only then owner-assisted Supabase provider-secret entry, activation and real-key server check",
+    "Separate owner-assisted pilot email save/readback"
+  ],
+  "productionSettingsChanged": false,
+  "billingChanged": false,
+  "paidStolenPasswordProtection": "Undecided; no upgrade authorized",
+  "ownerUsabilityAcceptance": "not given",
+  "earlierPrCi": {
+    "run": 43189143961,
+    "head": "b0ee7f35f547059d8c74921096abdbaaaa85a61c",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 131083731239,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131083731485,
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131083731679,
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131083732043,
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131088208007,
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "unit": {
+      "tests": 1803,
+      "passed": 1803,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "nativeBrowser": {
+      "tests": 679,
+      "passed": 679,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "scope": "Required isolated PR CI; no production QA workflow or real-key server qualification"
+  },
+  "displayRevision": {
+    "ownerChoice": "Always show a thin horizontal bar",
+    "approved": true,
+    "providerSize": "normal",
+    "appearance": "always",
+    "previousPixels": {
+      "width": 150,
+      "height": 140
+    },
+    "currentPixels": {
+      "width": 300,
+      "height": 65
+    },
+    "controls": "Complete provider bar; no scaling/cropping/hidden mode",
+    "beforeVisualAudit": {
+      "scope": "Native Chromium with intercepted synthetic provider, not real Cloudflare visuals",
+      "receipt": [
+        {
+          "width": 320,
+          "textScale": 1,
+          "viewport": 320,
+          "documentWidth": 320,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 222.765625
+        },
+        {
+          "width": 320,
+          "textScale": 2,
+          "viewport": 320,
+          "documentWidth": 320,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 385.1875
+        },
+        {
+          "width": 375,
+          "textScale": 1,
+          "viewport": 375,
+          "documentWidth": 375,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 200.375
+        },
+        {
+          "width": 375,
+          "textScale": 2,
+          "viewport": 375,
+          "documentWidth": 375,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 385.1875
+        },
+        {
+          "width": 1280,
+          "textScale": 1,
+          "viewport": 1280,
+          "documentWidth": 1280,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 200.375
+        },
+        {
+          "width": 1280,
+          "textScale": 2,
+          "viewport": 1280,
+          "documentWidth": 1280,
+          "widgetWidth": 150,
+          "widgetHeight": 140,
+          "blockHeight": 295.59375
+        }
+      ]
+    },
+    "afterVisualAudit": {
+      "scope": "Native Chromium with intercepted synthetic provider, not real Cloudflare visuals",
+      "receipt": [
+        {
+          "width": 320,
+          "textScale": 1,
+          "viewport": 320,
+          "documentWidth": 320,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 147.765625
+        },
+        {
+          "width": 320,
+          "textScale": 2,
+          "viewport": 320,
+          "documentWidth": 320,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 310.1875
+        },
+        {
+          "width": 375,
+          "textScale": 1,
+          "viewport": 375,
+          "documentWidth": 375,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 125.375
+        },
+        {
+          "width": 375,
+          "textScale": 2,
+          "viewport": 375,
+          "documentWidth": 375,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 310.1875
+        },
+        {
+          "width": 1280,
+          "textScale": 1,
+          "viewport": 1280,
+          "documentWidth": 1280,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 125.375
+        },
+        {
+          "width": 1280,
+          "textScale": 2,
+          "viewport": 1280,
+          "documentWidth": 1280,
+          "widgetWidth": 300,
+          "widgetHeight": 65,
+          "blockHeight": 220.59375
+        }
+      ]
+    },
+    "roleCoverage": [
+      "student",
+      "teacher",
+      "school_admin",
+      "content_admin",
+      "admin"
+    ],
+    "nativeLayoutCoverage": "Entry and shared-account recovery at320/375/1280px, normal/doubled text; complete provider bar stays inside its card",
+    "firstLayoutAttempt": "Failed narrow shared-account intrinsic width; corrected full-width container and rerun pass. Failure retained privately."
+  },
+  "reusedUnchangedSourceChecks": {
+    "source": "b0ee7f35f547059d8c74921096abdbaaaa85a61c",
+    "checks": {
+      "core-parity": 0,
+      "browser-sdk": 0
+    },
+    "scope": "Core mirrors, pinned SDK sources and dependencies unchanged by the display revision. Required exact-head CI runs these again."
+  }
+}

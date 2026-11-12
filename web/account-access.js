@@ -9,7 +9,7 @@ import { createAuthChallenge } from "./auth-challenge.mjs";
 showSignOutNotice();
 
 const hashParams = new URLSearchParams(location.hash.slice(1));
-const searchParams = new URLSearchParams(location.search);
+let searchParams = new URLSearchParams(location.search);
 const flowHint = hashParams.get("type") || searchParams.get("type");
 const linkError = hashParams.get("error_code") || searchParams.get("error_code") ||
   (hashParams.get("error") === "access_denied" || searchParams.get("error") === "access_denied"
@@ -20,13 +20,21 @@ const studentInvitationFromUrl = searchParams.get("student_invitation");
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const authChallenge = createAuthChallenge(AUTH_CHALLENGE, { document, window });
-window.addEventListener("pagehide", () => authChallenge.destroy(), { once: true });
+let initialAuthReady = false;
+window.addEventListener("pagehide", () => authChallenge.destroy());
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted || !initialAuthReady) return;
+  const panel = ["loginPanel", "registerPanel", "studentInvitePanel", "resetPanel", "passwordPanel"]
+    .find(id => !$(id).classList.contains("hidden"));
+  if (panel) show(panel);
+});
 const redirect = `${location.origin}/account-access`;
 const studentInvitationKey = "haiedu:student-invitation";
 // Keep a pending school token out of the address before loading any challenge.
 // Preserve the Auth fragment until the SDK has established its session.
 if (studentInvitationFromUrl) {
   sessionStorage.setItem(studentInvitationKey, studentInvitationFromUrl);
+  searchParams.delete("student_invitation");
   const clean = new URL(location.href);
   clean.searchParams.delete("student_invitation");
   history.replaceState(null, "", `${clean.pathname}${clean.search}${clean.hash}`);
@@ -48,7 +56,10 @@ function show(panel) {
   for (const id of ["loginPanel", "registerPanel", "studentInvitePanel", "resetPanel", "passwordPanel"])
     $(id).classList.toggle("hidden", id !== panel);
   const form = ({ loginPanel: $("loginForm"), registerPanel: $("registerForm"), resetPanel: $("resetForm") })[panel];
-  authChallenge.mount(form, form?.querySelector(".auth-actions") || null);
+  if (form && initialAuthReady) {
+    authChallenge.mount(form, form.querySelector(".auth-actions"));
+    searchParams = new URLSearchParams(location.search);
+  } else authChallenge.destroy();
 }
 function message(id, text, error = false) {
   $(id).textContent = text;
@@ -140,6 +151,7 @@ $("registerForm").addEventListener("submit", async (event) => {
   } finally { challenge?.finish(); button.disabled = false; }
 });
 $("registerBackBtn").addEventListener("click", () => {
+  if (!initialAuthReady) return message("registerMessage", "Մուտքը ստուգվում է…");
   searchParams.delete("view");
   history.replaceState(null, "", `${location.pathname}${searchParams.size ? `?${searchParams}` : ""}`);
   show("loginPanel");
@@ -181,11 +193,13 @@ $("studentInviteForm").addEventListener("submit", async (event) => {
   } finally { button.disabled = false; }
 });
 $("showResetBtn").addEventListener("click", () => {
+  if (!initialAuthReady) return message("loginMessage", "Մուտքը ստուգվում է…");
   $("resetEmail").value = $("loginEmail").value;
   history.replaceState(null, "", `${location.pathname}?view=reset`);
   show("resetPanel");
 });
 $("backBtn").addEventListener("click", () => {
+  if (!initialAuthReady) return message("resetMessage", "Մուտքը ստուգվում է…");
   history.replaceState(null, "", location.pathname);
   show("loginPanel");
 });
@@ -242,6 +256,7 @@ supabase.auth.onAuthStateChange((event, session) => {
   }
 });
 const { data: initial } = await supabase.auth.getSession();
+initialAuthReady = true;
 if (linkError) show("loginPanel");
 else if (initial.session && (studentInvitationFromUrl || sessionStorage.getItem(studentInvitationKey))) await prepareStudentInvitation();
 else if (initial.session && (flowHint === "invite" || flowHint === "recovery")) show("passwordPanel");
