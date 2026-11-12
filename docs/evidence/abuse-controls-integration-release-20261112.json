@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "PR477 merged and frontend verified; backend installation and activation remain open; documentation closure prepared",
+  "functionalPR": 477,
+  "functionalSource": "dd1c70e545c1d14fb09e7a9459b5bad4bbf9f017",
+  "functionalRoadmap": "4.178",
+  "closingRecordRoadmap": "4.179",
+  "approvedHead": "3e4617d874df57c1117268e709efbacf1b77eb38",
+  "tree": "4cee6562e4211f8ecc16bbed3a2aa1699153010a",
+  "approvedAndMergedTreesIdentical": true,
+  "prCi": {
+    "run": 43279336805,
+    "attempt": 1,
+    "allFivePassed": true
+  },
+  "mainCi": {
+    "run": 43283083097,
+    "attempt": 1,
+    "jobs": [
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "codeTests": {
+    "passed": 1839,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "nativeBrowserTests": {
+    "passed": 696,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "postgres17": {
+    "version": "17.6",
+    "coreCounterChecks": 14,
+    "newSessionChecks": 9,
+    "scope": "isolated synthetic Auth catalogue, not real-provider/classroom qualification"
+  },
+  "canonicalStatic": {
+    "observedAt": "2026-11-12T18:54:55.125Z",
+    "domains": [
+      {
+        "baseUrl": "https://haiedu.am",
+        "commit": "dd1c70e545c1d14fb09e7a9459b5bad4bbf9f017",
+        "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+        "pages": 29,
+        "assets": 127
+      },
+      {
+        "baseUrl": "https://www.haiedu.am",
+        "commit": "dd1c70e545c1d14fb09e7a9459b5bad4bbf9f017",
+        "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+        "pages": 29,
+        "assets": 127
+      },
+      {
+        "baseUrl": "https://armenian-mastery-platform.vercel.app",
+        "commit": "dd1c70e545c1d14fb09e7a9459b5bad4bbf9f017",
+        "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+        "pages": 29,
+        "assets": 127
+      }
+    ],
+    "requestCountIncludingRedirects": 723,
+    "manifestByteExact": true,
+    "allCurrentPagesAndAssetsHashExact": true,
+    "mimeCacheAndSecurityHeaders": true,
+    "enforcingCsp": true,
+    "scope": "Public static files, hashes, MIME, cache and security headers only; no script execution, sign-in, Supabase request or production QA workflow",
+    "priorSourceObservedBeforeCutover": true,
+    "propagationCauseIndependentlyEstablished": false
+  },
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "triggeredRunsSkipped": 16,
+    "manuallyDispatched": 0,
+    "affectedSuites": [
+      ".github/workflows/chapter-ii-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+      ".github/workflows/mobile-browser-qa.yml",
+      ".github/workflows/resource-assignments-acceptance.yml",
+      ".github/workflows/sprint-14-actions-qa.yml",
+      ".github/workflows/sprint-14d-analytics-qa.yml",
+      ".github/workflows/sprint-15a3-authenticated-qa.yml",
+      ".github/workflows/teacher-feedback-acceptance.yml",
+      ".github/workflows/teacher-loading-rollout-acceptance.yml",
+      ".github/workflows/teacher-performance.yml"
+    ]
+  },
+  "productionBackend": {
+    "sourceConsumers": 65,
+    "bundlesDeployed": 0,
+    "migrationApplied": false,
+    "counterInstalled": false,
+    "sessionRpcInstalled": false,
+    "enforcement": "off",
+    "recurringCleanupInstalled": false,
+    "productionWrites": 0
+  },
+  "owner": {
+    "mergeApproval": "specific PR477 yes with no-other-merger/releaser confirmation",
+    "waitCopy": "both messages approved",
+    "usabilityAcceptance": "not given",
+    "paidStolenPasswordProtection": "declined"
+  },
+  "remaining": [
+    "Specific production migration and all-65-function deployment approval; fresh source/schema/settings preflight and readback with mode off",
+    "Representative account/classroom qualification and bounded recurring maintenance/monitoring",
+    "Explicit policy-value and activation approval",
+    "Owner classroom/email observation and usability acceptance"
+  ],
+  "documentationClosure": {
+    "runtimeBuildArchiveBackendScriptsTestsDependenciesWorkflowsHostingUnchanged": true,
+    "affectedProductionQa": "none for this documentation-only change"
+  }
+}
