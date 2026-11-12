@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { routeGovernedLearning, verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
 import { legacyAnswerReceipt, finishLegacyAnswer } from "../_shared/answer-response-recovery.mjs";
 import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
@@ -49,6 +50,9 @@ Deno.serve(async (req) => {
   const { data: userData, error: userError } = await admin.auth.getUser(token);
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "submit-answer");
+    if (rateDenied) return rateDenied;
+
   const studentId = userData.user.id;
 
   const governed = await routeGovernedLearning({ admin, studentId: studentId, token, request: req, operation: "answer" });

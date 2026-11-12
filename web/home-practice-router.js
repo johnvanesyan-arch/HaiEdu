@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -37,7 +38,7 @@ function rememberPracticeBootstrap(data) {
 
 async function loadDashboard() {
   if (loading) return loading;
-  loading = supabase.functions.invoke("get-student-dashboard", { body: {} })
+  loading = invokeRateAware(supabase,"get-student-dashboard", { body: {} })
     .then(({ data, error }) => {
       if (!error) setDashboard(data);
       return { data, error };

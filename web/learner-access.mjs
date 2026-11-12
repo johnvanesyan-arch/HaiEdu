@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 // Shared-core access reads: one client/session generation, pending work only.
 // No completed-result cache and no persisted tokens, roles or permissions.
 const stores=new WeakMap();
@@ -31,7 +32,7 @@ export function learnerAccess(client,events=globalThis.window){
     observe(data?.session??null);
     if(epoch!==generation)return stale();
     if(!session)return {data:{contexts:[],classes:[],accessStatus:'signed_out'},error:null};
-    const result=await client.functions.invoke('get-student-classes',{body:{}});
+    const result=await invokeRateAware(client,'get-student-classes',{body:{}});
     return epoch===generation?result:stale();
    }catch(error){return epoch===generation?{data:null,error}:stale();}
   })().finally(()=>{if(pending===request)pending=null;});

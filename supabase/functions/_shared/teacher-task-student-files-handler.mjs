@@ -8,7 +8,7 @@ const readback=readbackTaskFile;
 export function createTeacherTaskStudentFilesHandler(options){return async request=>{
  if(request.method==='OPTIONS')return new Response('ok',{headers:taskStudentCors});if(request.method!=='POST')return taskStudentReply({error:'method_not_allowed'},405);
  try{
-  const access=await taskStudentAccess(request,options),multipart=request.headers.get('content-type')?.startsWith('multipart/form-data;');const bytes=await taskBounded(request,multipart?RESPONSE_FILE_LIMIT+65536:16384);let body,file;
+  const access=await taskStudentAccess(request,{rateBudgetRoute:'manage-teacher-task-student-files',...options}),multipart=request.headers.get('content-type')?.startsWith('multipart/form-data;');const bytes=await taskBounded(request,multipart?RESPONSE_FILE_LIMIT+65536:16384);let body,file;
   try{if(multipart){const form=await new Response(bytes,{headers:{'Content-Type':request.headers.get('content-type')}}).formData();if([...form.keys()].sort().join(',')!=='file,request')fail('task_work_invalid');body=JSON.parse(form.get('request'));file=form.get('file');}else body=JSON.parse(new TextDecoder().decode(bytes));}catch{fail('task_work_invalid');}
   const keys={upload:['id','requestId','format'],open:['id','fileId'],source:['id']};if(!taskShape(body,['action','context','payload'])||!Object.hasOwn(keys,body.action)||!validStudentContext(body.context)||!taskShape(body.payload,keys[body.action])||!uuid(body.payload.id)||Boolean(multipart)!==(body.action==='upload'))fail('task_work_invalid');const {action,context,payload}=body;
   if(action==='upload'){

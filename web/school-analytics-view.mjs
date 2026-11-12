@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { escapeHtml as esc } from './learning-navigation.mjs';
 import { renderEvidenceGroups } from './analytics-provenance.mjs';
 import {analyticsClassOptions,analyticsClassOptionsMarkup} from './class-history.mjs';
@@ -10,9 +11,9 @@ export function mountSchoolAnalytics(root,supabase,schoolId) {
     const request=++version;root.querySelector('[data-metrics]').replaceChildren();root.querySelector('[data-evidence]').replaceChildren();message.textContent='Տվյալները բեռնվում են…';
     const body={schoolId};for(const [key] of fields)if(form.elements[key].value)body[key]=form.elements[key].value;
     try {
-      const {data,error}=await supabase.functions.invoke('get-school-performance-analytics',{body});
+      const {data,error}=await invokeRateAware(supabase,'get-school-performance-analytics',{body});
       if(!live||request!==version)return;
-      if(error||!data?.analytics)throw new Error('Ընտրված տվյալներն այս պահին հասանելի չեն։');
+      if(error||!data?.analytics)throw (rateLimitMessage(error) ? error : (new Error('Ընտրված տվյալներն այս պահին հասանելի չեն։')));
       classOptions=data.options.classes ?? [];
       for(const [key,list] of [['academicYearId','academicYears'],['subjectProgramId','programmes'],['classId','classes'],['curriculumReleaseId','releases'],['unitId','units']]) {
         const select=form.elements[key];const selected=data.scope[key] ?? '';
@@ -26,7 +27,7 @@ export function mountSchoolAnalytics(root,supabase,schoolId) {
       const a=data.analytics;
       root.querySelector('[data-metrics]').innerHTML=`<p>${a.enrollment.students} ընդգրկված աշակերտ · ${a.participation.students} մասնակցած · ${a.evidence.completedSessions} ավարտված աշխատանք · ${a.chapterReview.completedSessions} կրկնություն</p>`;
       renderEvidenceGroups(root.querySelector('[data-evidence]'),data);message.textContent='';
-    }catch(error){if(live&&request===version)message.textContent=error.message;}
+    }catch(error){if(live&&request===version)message.textContent=(rateLimitMessage(error) ?? (error.message));}
   }
   form.addEventListener('submit',event=>{event.preventDefault();load();});
   form.addEventListener('change',event=>{

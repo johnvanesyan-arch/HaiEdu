@@ -1,3 +1,4 @@
+import { enforceRateBudget, readRateBudgetJson } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -130,8 +131,11 @@ Deno.serve(async (req) => {
       return json({ error: "student_invitation_unavailable" }, 403);
     }
 
+
+    const rateDenied = await enforceRateBudget(req, admin, actor, token, "provision-student-account");
+    if (rateDenied) return rateDenied;
     let body: Record<string, unknown>;
-    try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
+    try { body = await readRateBudgetJson(req); } catch { return json({ error: "invalid_json" }, 400); }
     const schoolId = body.schoolId;
     const classId = body.classId;
     const assignmentId = body.assignmentId;

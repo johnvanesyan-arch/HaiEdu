@@ -1,3 +1,4 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';import {mkdir,readFile} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
 import {docxBytes,pdf} from '../fixtures/teacher-task-student-api.mjs';
 import {reviewSurface,textDefinition,id,context} from '../fixtures/teacher-task-review-browser.mjs';
@@ -41,4 +42,10 @@ test('teacher document download stays pinned to the submitted version during a p
 test('student task and teacher review render the same frozen formatted instructions safely',async t=>{
  const definition={...textDefinition,instructions:'# Read carefully\n\n[Guide](https://example.org/guide)',instructionsFormat:'task-text-v1',source:{kind:'text',format:'task-text-v1',text:'## Explain\n\n- First reason\n- Second reason\n\n<img src=x onerror="window.__unsafe=true">'}};
  const f=await reviewSurface(browser,t,{definition}),p=f.teacher;await open(p);await p.locator('summary').filter({hasText:'Առաջադրանքը'}).click();const teacher=p.locator('.tr-columns>section').first().locator('.task-text');await expect(teacher.locator('h5')).toHaveText('Read carefully');await expect(teacher.locator('h6')).toHaveText('Explain');await expect(teacher.locator('li')).toHaveCount(2);const s=await f.student();await s.locator('[data-task-open]').click();await expect(s.locator('[data-task-body] .task-text h5')).toHaveText('Read carefully');await expect(s.locator('[data-task-body] .task-text h6')).toHaveText('Explain');await expect(s.locator('[data-task-body] .task-text li')).toHaveCount(2);await expect(s.locator('[data-task-body] .task-text a')).toHaveAttribute('href','https://example.org/guide');assert.deepEqual(await teacher.evaluateAll(els=>els.map(e=>e.innerHTML)),await s.locator('[data-task-body] .task-text').evaluateAll(els=>els.map(e=>e.innerHTML)));assert.equal(await s.evaluate(()=>window.__unsafe),undefined);assert.equal(await p.evaluate(()=>window.__unsafe),undefined);await expect(s.locator('.task-text img')).toHaveCount(0);assert.deepEqual(f.errors,[]);
+});
+
+test('BF16 confirmed refusal: private review stays editable without an uncertain publication',async t=>{
+ const f=await reviewSurface(browser,t),p=f.teacher;await open(p);await p.locator('[data-tr-feedback]').fill('Retained private feedback');
+ await refuseAction(p,'manage-teacher-task-review','save');await p.locator('[data-tr-save]').click();await expect(p.locator('[data-tr-status]')).toHaveText(rateWaitMessage);
+ await expect(p.locator('[data-tr-feedback]')).toHaveValue('Retained private feedback');await expect(p.locator('[data-tr-feedback]')).toBeEnabled();assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(f.errors,[]);
 });

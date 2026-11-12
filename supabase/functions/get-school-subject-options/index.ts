@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type" };
@@ -20,6 +21,9 @@ Deno.serve(async (req) => {
     const actor = userData.user.id;
     if (!(await hasActiveLiveSession(admin, token, actor)))
       return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, actor, token, "get-school-subject-options");
+    if (rateDenied) return rateDenied;
+
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     if (typeof body.schoolId !== 'string' || !uuid.test(body.schoolId))

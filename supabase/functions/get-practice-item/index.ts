@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -36,6 +37,9 @@ Deno.serve(async (req) => {
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) {
     return json({ error: "account_or_session_inactive" }, 403);
   }
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "get-practice-item");
+    if (rateDenied) return rateDenied;
+
 
   return json({
     error: "legacy_practice_delivery_retired",

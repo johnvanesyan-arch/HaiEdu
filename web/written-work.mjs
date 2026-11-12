@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage,isRateBudgetRefusal} from './rate-budget-feedback.mjs';
 import {feedbackApi,teacherFeedbackMarkup,mountTeacherFeedback} from './teacher-feedback.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 export const writtenWordCount=text=>String(text).trim().split(/\p{White_Space}+/u).filter(Boolean).length;
@@ -16,8 +17,8 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
  const unload=e=>{if(current()&&(dirty()||saving||busy)){e.preventDefault();e.returnValue='';}};
  window.addEventListener('beforeunload',unload);
  async function api(action,payload={}) {
-  const {data,error}=await supabase.functions.invoke('manage-written-work',{body:{action,context,payload}});
-  if(error||data?.error){let code=data?.error;if(!code&&error?.context?.json){try{code=(await error.context.json()).error;}catch{}}
+  const {data,error}=await invokeRateAware(supabase,'manage-written-work',{body:{action,context,payload}});
+  if(error||data?.error){if(rateLimitMessage(error))throw error;let code=data?.error;if(!code&&error?.context?.json){try{code=(await error.context.json()).error;}catch{}}
    const problem=new Error(errors[code]??'Չհաջողվեց պահպանել կամ բեռնել տվյալները։ Փորձեք նորից։');problem.code=code;throw problem;}
   if(data?.version!=='written-work-v1')throw new Error('Չհաջողվեց բեռնել գրավոր աշխատանքները։');
   return data;
@@ -32,9 +33,9 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
     const filter=value=>{state=value;offset=0;onStateChange(state);void list();};if($('[data-writing-filter]'))$('[data-writing-filter]').onchange=e=>filter(e.target.value);root.querySelectorAll('[data-writing-state]').forEach(b=>b.onclick=()=>filter(b.dataset.writingState));$('[data-writing-prev]').onclick=()=>{offset=Math.max(0,offset-50);list();};$('[data-writing-next]').onclick=()=>{offset+=50;list();};$('[data-writing-refresh]').onclick=list;
    }else{shell(`<p>Ուսուցիչը կստուգի ներկայացված աշխատանքը և կուղարկի մեկնաբանություն։</p><div class="written-list">${data.tasks.map(t=>`<article><div><strong lang="${esc(t.locale)}">${esc(t.title)}</strong><p>${labels[t.state]}${!t.available?' · Նախորդ տարբերակ':''}</p>${t.baselineRequired&&!t.baselineCompleted?'<p>Կատարելուց առաջ ավարտեք գլխի ախտորոշիչը։</p>':''}</div><button type="button" data-writing-open="${esc(t.id)}">${t.state==='changes_requested'?'Տեսնել մեկնաբանությունն ու վերանայել':t.state==='reviewed'?'Տեսնել արդյունքը':t.state==='submitted'?'Տեսնել ներկայացված աշխատանքը':'Բացել աշխատանքը'}</button></article>`).join('')||'<p>Այս գլխի համար գրավոր առաջադրանք դեռ չի հրապարակվել։</p>'}</div>`);}
    root.querySelectorAll('[data-writing-open]').forEach(b=>b.onclick=()=>open(b.dataset.writingOpen));
-  }catch(e){if(current()&&request===sequence){shell('<button type="button" data-writing-retry>Փորձել նորից</button>');message(e.message,true);$('[data-writing-retry]').onclick=list;}}
+  }catch(e){if(current()&&request===sequence){shell('<button type="button" data-writing-retry>Փորձել նորից</button>');message((rateLimitMessage(e) ?? (e.message)),true);$('[data-writing-retry]').onclick=list;}}
  }
- async function open(id){const request=++sequence;feedbackInitial=null;shell('<p>Բեռնվում է…</p>');try{const data=teacher?await feedbackApi(supabase,context,'open',{workId:id}):await api('open',{taskId:id});if(!current()||request!==sequence)return;feedbackInitial=teacher?data:null;model=teacher?data.writtenWork:data;savedText=model.draftText??'';conflict=false;render();}catch(e){if(current()&&request===sequence){shell('<button type="button" data-writing-back>Վերադառնալ ցանկին</button>');message(e.message,true);$('[data-writing-back]').onclick=onBack??list;}}}
+ async function open(id){const request=++sequence;feedbackInitial=null;shell('<p>Բեռնվում է…</p>');try{const data=teacher?await feedbackApi(supabase,context,'open',{workId:id}):await api('open',{taskId:id});if(!current()||request!==sequence)return;feedbackInitial=teacher?data:null;model=teacher?data.writtenWork:data;savedText=model.draftText??'';conflict=false;render();}catch(e){if(current()&&request===sequence){shell('<button type="button" data-writing-back>Վերադառնալ ցանկին</button>');message((rateLimitMessage(e) ?? (e.message)),true);$('[data-writing-back]').onclick=onBack??list;}}}
 
  function render(){
   const d=model.task.definition,work=model.work,last=model.submissions.at(-1),lastReview=last?.reviews.at(-1);
@@ -85,7 +86,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
   if(saving){if(!(await saving))return false;return flush(duringSubmit);}
   const input=$('[data-writing-text]'),text=input.value;if(text===savedText)return true;
   message('Սևագիրը պահպանվում է…');const taskId=model.task.id,request=sequence;
-  saving=(async()=>{try{const data=await api('save',{taskId,text,expectedRevision:model.work?.revision??0});if(!current()||request!==sequence)return false;model=data;savedText=text;message(input.value===text?'Սևագիրը պահպանված է։':'Նոր փոփոխությունները դեռ պահպանվում են…');return true;}catch(e){if(current()&&request===sequence){conflict=e.code==='written_conflict';message(e.message,true);controls();}return false;}})();
+  saving=(async()=>{try{const data=await api('save',{taskId,text,expectedRevision:model.work?.revision??0});if(!current()||request!==sequence)return false;model=data;savedText=text;message(input.value===text?'Սևագիրը պահպանված է։':'Նոր փոփոխությունները դեռ պահպանվում են…');return true;}catch(e){if(current()&&request===sequence){conflict=e.code==='written_conflict';message((rateLimitMessage(e) ?? (e.message)),true);controls();}return false;}})();
   const success=await saving;saving=null;if(success&&current()&&input.value!==savedText)return flush(duringSubmit);return success;
  }
  async function recoverSubmission(){
@@ -104,7 +105,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
    pendingSubmission=null;
    if(unchanged){model=data;conflict=false;message('Ներկայացումը դեռ չի հաստատվել։ Ձեր սևագիրը պահպանված է։ Կարող եք կրկին սեղմել «Ներկայացնել ուսուցչին»։',true);}
    else{conflict=true;message('Աշխատանքի պահպանված տարբերակը փոխվել է։ Այս պատուհանի տեքստը մնացել է տեսանելի․ պատճենեք այն, ապա բեռնեք վերջին պահպանված տարբերակը։',true);}
-  }catch{if(current()&&request===sequence&&pending===pendingSubmission){message('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։',true);}}
+  }catch(rateError){if(current()&&request===sequence&&pending===pendingSubmission){message((rateLimitMessage(rateError) ?? ('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։')),true);}}
   finally{busy=false;controls();if(current()&&request===sequence){const next=pendingSubmission?$('[data-writing-recover]'):conflict?$('[data-writing-reload]'):$('[data-writing-message]');if(next){if(next.matches('[data-writing-message]'))next.tabIndex=-1;next.focus();}}}
  }
  async function submit(){
@@ -118,7 +119,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
    const data=await api('submit',{taskId:pendingSubmission.taskId,text,expectedRevision:pendingSubmission.expectedRevision});
    if(!current()||request!==sequence)return;
    pendingSubmission=null;model=data;savedText=text;render();message('Աշխատանքը ներկայացված է ուսուցչին։');
-  }catch(e){if(current()&&request===sequence){if(pendingSubmission){busy=false;await recoverSubmission();}else{message(e.message,true);controls();}}}
+  }catch(e){if(current()&&request===sequence){if(isRateBudgetRefusal(e)){pendingSubmission=null;message(rateLimitMessage(e),true);controls();return;}if(pendingSubmission){busy=false;await recoverSubmission();}else{message((rateLimitMessage(e) ?? (e.message)),true);controls();}}}
   finally{busy=false;controls();}
  }
  const navigate=async e=>{const link=e.target.closest?.('a[href]');if(!current()||teacher||!link||(!dirty()&&!saving)||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||link.target==='_blank')return;e.preventDefault();e.stopImmediatePropagation();if(await flush())location.assign(link.href);};

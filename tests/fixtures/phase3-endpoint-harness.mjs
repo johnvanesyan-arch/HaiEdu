@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../../supabase/functions/_shared/rate-budget.mjs';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
@@ -73,11 +75,11 @@ export async function endpoint(db, name = 'manage-remediation-guides', bindings 
   };
   let source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import[\s\S]*?;\n/gm, '');
   source = ts.transpile(source, { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None });
-  vm.runInNewContext(source, {
+  vm.runInNewContext(source, Object.assign({...rateBudgetBindings,
     ...validation, legacyAnswerReceipt, finishLegacyAnswer, verifiedSessionClaim, ...bindings, createClient: () => admin, hasActiveLiveSession: async () => active,
     Deno: { env: { get: n => n === 'SUPABASE_URL' ? 'http://isolated.invalid' : 'fixture-only' }, serve: fn => { handler = fn; } },
     Response, Request, atob, URL, console: { error: (...args) => logs.push(args) },
-  });
+  },rateFeedbackBindings));
   return {
     token, logs, revoke() { active = false; },
     async call(body, { actor = ids.actor, aal = 'aal1', anonymous = false } = {}) {

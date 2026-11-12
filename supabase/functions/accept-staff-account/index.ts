@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -22,6 +23,9 @@ Deno.serve(async (req) => {
     const recipient = userData.user.id;
     if (!(await hasActiveLiveSession(admin, token, recipient)))
       return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, recipient, token, "accept-staff-account");
+    if (rateDenied) return rateDenied;
+
     const { data, error } = await admin.rpc('service_accept_staff_invite_14b', {
       p_recipient: recipient,
     });

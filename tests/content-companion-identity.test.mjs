@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -21,7 +22,7 @@ async function harness(path) {
     return ${evidence
       ? '{loadEvidence, snapshot:()=>({dashboard,currentAnalytics})}'
       : '{renderRows, snapshot:()=>({dashboard})}'};
-  })()`, {
+  })()`, Object.assign({
     $: get,
     esc: value => String(value ?? ''),
     curriculumContext: () => 'isolated curriculum',
@@ -38,7 +39,7 @@ async function harness(path) {
     location: { search: '', href: 'https://isolated.invalid/content-review' },
     history: { replaceState() {} },
     URL, URLSearchParams,
-  });
+  },rateFeedbackBindings));
   return { api, get, calls, render: (...args) => render(...args), auth: (event, user) => listener(event, user) };
 }
 

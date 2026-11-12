@@ -1,5 +1,7 @@
 # BF-16 — isolated actor-rate counter
 
+**Subsequent integration candidate:** [all 65 endpoint integration, approved wait copy and candidate migration](abuse-controls-integration-20261112.md) are now prepared. This file preserves its earlier checkpoint; statements that no handler or registered migration exists below are historical. No production installation or activation is claimed.
+
 12 November 2026 (Asia/Yerevan). The owner authorized the first implementation stage: build and test the shared counter in isolation. The counter is implemented as a reviewable [SQL component](../../supabase/proposals/bf16_actor_rate_limiter_core.sql), with embedded-SQL tests and independent-connection PostgreSQL 17.6 tests. It is not a registered production migration. No current Edge handler, browser, scheduled cleanup or live service calls it, and no production setting or data was changed. This is an implemented isolated foundation, not completed platform-wide BF-16 enforcement.
 
 Owner usability acceptance: not given. No interface or Armenian copy is changed in this stage. The owner's decision to decline paid stolen-password protection is preserved; no purchase or activation is pending.

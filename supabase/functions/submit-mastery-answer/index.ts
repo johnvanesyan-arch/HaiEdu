@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { routeGovernedLearning, verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
 import { legacyAnswerReceipt, finishLegacyAnswer } from "../_shared/answer-response-recovery.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -99,6 +100,9 @@ Deno.serve(async (req) => {
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "submit-mastery-answer");
+    if (rateDenied) return rateDenied;
+
     const governed = await routeGovernedLearning({ admin, studentId: userData.user.id, token, request: req, operation: "mastery" });
     if (governed) return json(governed.body, governed.status);
     // Registered legacy-physics7-u01-v1 adapter; governed requests never enter it.

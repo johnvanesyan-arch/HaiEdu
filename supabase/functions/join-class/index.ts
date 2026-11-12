@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { getStudentCourseEntitlements } from "../_shared/course-access.ts";
@@ -54,6 +55,9 @@ Deno.serve(async (req) => {
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "join-class");
+    if (rateDenied) return rateDenied;
+
     const studentId = userData.user.id;
 
     const { data: profile } = await admin.from("profiles")

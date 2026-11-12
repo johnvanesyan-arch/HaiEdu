@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -317,9 +318,9 @@ async function loadSubject() {
   $("subjectContent").classList.add("hidden");
 
   const [{ data: dash, error: dashError }, { data: status, error: statusError }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
-    supabase.functions.invoke("get-student-dashboard", { body: {} }),
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
-    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+    invokeRateAware(supabase,"get-student-dashboard", { body: {} }),
+    invokeRateAware(supabase,"get-mastery-check-status", { body: {} }),
+    invokeRateAware(supabase,"get-chapter-mastery-lifecycle", { body: {} }),
   ]);
 
   if (dashError) {
@@ -329,8 +330,8 @@ async function loadSubject() {
   }
   dashboard = dash;
   masteryStatus = statusError || !status ? null : { ...status, ...(lifecycle ?? {}) };
-  if (statusError) setMessage("Յուրացման ստուգման կարգավիճակը ժամանակավորապես չբեռնվեց։", true);
-  else if (lifecycleError) setMessage("Յուրացման փորձերի վիճակը ժամանակավորապես չբեռնվեց։", true);
+  if (statusError) setMessage((rateLimitMessage(statusError) ?? ("Յուրացման ստուգման կարգավիճակը ժամանակավորապես չբեռնվեց։")), true);
+  else if (lifecycleError) setMessage((rateLimitMessage(lifecycleError) ?? ("Յուրացման փորձերի վիճակը ժամանակավորապես չբեռնվեց։")), true);
 
   renderSummary();
   renderActiveSession();

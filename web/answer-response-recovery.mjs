@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 // A timeout is an unknown write outcome, never permission to change the answer.
 export const learnerRequestTimeoutMs = 15000;
 const uncertainMessage = 'Պատասխանի գրանցումը դեռ հաստատված չէ։ Կրկին փորձեք՝ նույն պատասխանի արդյունքը ստանալու համար։';
@@ -15,7 +16,7 @@ export function studentErrorMessage(code, status, unknown=false) {
   if(isNumericFormatRejection({code,status})) return 'Ստուգեք թվի գրությունը։ Հարցը դեռ չի գնահատվել։';
   if(conflictCodes.has(code)) return 'Այս հարցի պատասխանը կարող է արդեն գրանցված լինել։ Թարմացրեք էջը՝ ընթացիկ վիճակը տեսնելու համար։';
   if(status===401||status===403) return 'Այս գործողությունն այլևս հասանելի չէ։ Ստուգեք մուտքն ու դասընթացի հասանելիությունը։';
-  if(status===429) return 'Հարցումները չափազանց հաճախ են։ Մի փոքր սպասեք և կրկին փորձեք։';
+  if(status===429) return rateLimitMessage({status,code:'rate_limit_exceeded'});
   return 'Գործողությունը չհաջողվեց։ Ձեր պատասխանը պահպանեք և կրկին փորձեք։';
 }
 
@@ -26,8 +27,8 @@ async function failure(result,write=false) {
   const status=Number(context?.status??original?.status??0);
   if(!code&&typeof context?.clone==='function') code=await context.clone().json().then(x=>x.error).catch(()=>null);
   const unknown=!status||status>=500||status===408;
-  const error=Object.assign(new Error(unknown&&!write?'Հարցման պատասխանը դեռ հասանելի չէ։ Կրկին փորձեք։':studentErrorMessage(code,status,unknown)),{
-    code,status,context,unknown,retryable:!conflictCodes.has(code)&&status!==401&&status!==403,
+  const error=Object.assign(new Error(rateLimitMessage(original) ?? (unknown&&!write?'Հարցման պատասխանը դեռ հասանելի չէ։ Կրկին փորձեք։':studentErrorMessage(code,status,unknown))),{
+    code,status,context,unknown,retryAfterSeconds:original?.retryAfterSeconds,retryable:!conflictCodes.has(code)&&status!==401&&status!==403,
   });
   return {...result,error};
 }
@@ -51,7 +52,7 @@ export async function invokeLearnerFunction(supabase,name,options={}) {
       if(beforeRequest&&!(await beforeRequest()))return {stale:true};
       if(controller.signal.aborted)return {stale:true};
       let result;
-      try {result=await supabase.functions.invoke(name,{...sdkOptions,signal:controller.signal});}
+      try {result=await invokeRateAware(supabase,name,{...sdkOptions,signal:controller.signal});}
       catch(error){result={data:null,error};}
       if(afterRequest&&!(await afterRequest()))return {stale:true};
       return result.error||result.data?.error?failure(result,write):result;

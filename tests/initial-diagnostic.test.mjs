@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -61,10 +62,10 @@ function diagnosticUi(dashboard, startResponse={}) {
   let source=readFileSync(new URL('../web/diagnostic.js',import.meta.url),'utf8')
     .replace(/^import .*;\n/gm,'').replace('const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);','').replace(/prepare\(\);\s*$/,'');
   const calls=[];
-  const context=vm.createContext({document:{getElementById:node},window:{location:{replace(){},assign(){}}},
+  const context=vm.createContext(Object.assign({document:{getElementById:node},window:{location:{replace(){},assign(){}}},
     invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,
     supabase:{auth:{getSession:async()=>({data:{session:{}}})},functions:{invoke:async name=>{calls.push(name);return {data:name==='get-student-dashboard'?dashboard:startResponse};}}},
-    recordRecommendationTelemetry:async()=>{},performance:{now:()=>0}});
+    recordRecommendationTelemetry:async()=>{},performance:{now:()=>0}},rateFeedbackBindings));
   vm.runInContext(source,context);
   return {context,node,calls};
 }

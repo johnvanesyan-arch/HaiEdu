@@ -1,3 +1,4 @@
+import { enforceRateBudget, readRateBudgetJson } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -37,8 +38,11 @@ Deno.serve(async (req) => {
       return json({ error: "account_or_session_inactive" }, 403);
     if (actorProfile.role === "admin" && jwtPayload(token).aal !== "aal2")
       return json({ error: "mfa_required" }, 403);
+
+    const rateDenied = await enforceRateBudget(req, admin, actor, token, "manage-staff-invitation");
+    if (rateDenied) return rateDenied;
     let body: Record<string, unknown>;
-    try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
+    try { body = await readRateBudgetJson(req); } catch { return json({ error: "invalid_json" }, 400); }
     if (body.action === "list") {
       const { data, error } = await admin.rpc("service_list_staff_invites_14b", { p_actor: actor });
       if (error) throw error;

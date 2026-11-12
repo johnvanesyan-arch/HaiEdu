@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import {captureFocusHandoff} from './keyboard-focus.mjs';
@@ -136,7 +137,7 @@ async function prepare() {
   } catch (err) {
     setStateBadge("Սխալ", "danger");
     $("stateTitle").textContent = "Չհաջողվեց ստուգել պատրաստվածությունը";
-    $("stateText").textContent = err?.message ?? String(err);
+    $("stateText").textContent = (rateLimitMessage(err) ?? (err?.message ?? String(err)));
   }
 }
 
@@ -146,7 +147,7 @@ async function startCheck() {
   const { data, error } = await invokeLearnerFunction(supabase,"start-learning-session", { body: { mode: "mastery_check" } });
   $("startBtn").disabled = false;
   if (error) {
-    $("stateText").textContent = error.message;
+    $("stateText").textContent = (rateLimitMessage(error) ?? (error.message));
     return;
   }
   if (data.unitComplete) return prepare();
@@ -183,7 +184,7 @@ async function loadItem() {
     if (error) {
       $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
       $("feedback").className = "feedback bad";
-      $("feedback").textContent = error.message;
+      $("feedback").textContent = (rateLimitMessage(error) ?? (error.message));
       $("nextBtn").textContent = "Կրկին փորձել";
       $("nextBtn").classList.remove("hidden");
       if (currentSession?.id === focusSessionId) focusHandoff.move($("nextBtn"));

@@ -38,5 +38,5 @@ test("school teachers use the institutional class creator instead of the legacy 
   assert.match(code, /"createClassCard"[\s\S]*classList\.toggle\("hidden", institutional\)/);
   assert.match(code, /renderInstitutionalClassCreator\(data, institutional\)/);
   assert.match(code, /institutionalCreateForm"\)\.addEventListener\("submit", createInstitutionalClass\)/);
-  assert.match(code, /functions\.invoke\("manage-institutional-teacher-class",[\s\S]*action: "create",[\s\S]*membershipId: option\.teacherMembershipId,[\s\S]*academicYearId: option\.academicYearId,[\s\S]*subjectProgramId: option\.subjectProgramId/);
+  assert.match(code, /invokeRateAware\(supabase,"manage-institutional-teacher-class",[\s\S]*action: "create",[\s\S]*membershipId: option\.teacherMembershipId,[\s\S]*academicYearId: option\.academicYearId,[\s\S]*subjectProgramId: option\.subjectProgramId/);
 });

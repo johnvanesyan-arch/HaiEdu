@@ -1,9 +1,10 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...cors,'Content-Type':'application/json','Cache-Control':'no-store'}});
 const uuid=v=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 const actions=new Set(['list','get','revise','qa','approve','retire']);
 function claims(token){try{const p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(atob(p+'='.repeat((4-p.length%4)%4)));}catch{return{};}}
-export function createUnitMaterialsHandler({createAdmin,hasActiveLiveSession,env}){
+export function createUnitMaterialsHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-unit-materials"}){
  return async req=>{
   if(req.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(req.method!=='POST')return json({error:'method_not_allowed'},405);
@@ -21,6 +22,8 @@ export function createUnitMaterialsHandler({createAdmin,hasActiveLiveSession,env
    // Claims are read only AFTER server verification; request bodies cannot assert identity or MFA.
    const {session_id,aal}=claims(token);
    if(!uuid(session_id)||!['aal1','aal2'].includes(aal)||!(await hasActiveLiveSession(admin,token,data.user.id)))return json({error:'account_or_session_inactive'},403);
+   const rateDenied=await rateBudget(req,admin,data.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const result=await admin.rpc('service_unit_materials',{p_actor_id:data.user.id,p_auth_session_id:session_id,p_aal:aal,p_action:body.action,p_payload:payload});
    if(result.error){const code=['material_forbidden','material_mfa_required','material_conflict','material_unavailable','material_scope_invalid','material_request_invalid','material_read_only','material_qa_required'].find(c=>String(result.error.message).includes(c));return json({error:code??'material_service_unavailable'},code==='material_conflict'?409:code?.endsWith('_invalid')||code==='material_qa_required'?400:code?403:503);}
    if(!(await hasActiveLiveSession(admin,token,data.user.id)))return json({error:'account_or_session_inactive'},403);

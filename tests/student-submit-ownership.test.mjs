@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import {escapeHtml} from '../web/text-safety.mjs';
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -26,7 +27,7 @@ function functionSource(source, name) {
 const uxSource = read("ux.js");
 const uxSync = functionSource(uxSource, "syncAnswerSubmit");
 const refreshBinding = uxSource.match(/^document\.addEventListener\("haiedu-answer-controls-refresh", syncAnswerSubmit\);$/m)?.[0];
-const recoverySource=read('answer-response-recovery.mjs').replace(/^export /gm,'');
+const recoverySource=read('answer-response-recovery.mjs').replace(/^import .*;\n/gm,'').replace(/^export /gm,'');
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 assert.ok(refreshBinding, "Shared UX must bind the stale-owner release signal");
 const consumers = [
@@ -90,7 +91,7 @@ function createFixture({ file, handler }) {
     listeners.get(event.type)?.(event);
     return true;
   };
-  const context = vm.createContext({
+  const context = vm.createContext(Object.assign({
     currentSession: { id: "fixture-session" },
     current: {
       item: { id: "fixture-item", type: "single_choice" },
@@ -130,7 +131,7 @@ function createFixture({ file, handler }) {
     showGate: (...args) => gates.push(args),
     status: () => { throw new Error("Unexpected post-answer status read"); },
     renderFinalResult: (result) => finalResults.push(result),
-  });
+  },rateFeedbackBindings));
   vm.runInContext([
     recoverySource,
     ownershipState,

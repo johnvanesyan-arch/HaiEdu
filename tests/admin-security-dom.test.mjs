@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -51,11 +52,11 @@ function harness({ factors = [], level = 'aal1', confirms = true, profile = { ro
     },
     from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: profile }) }) }) }),
   };
-  const context = vm.createContext({
+  const context = vm.createContext(Object.assign({
     document: { getElementById: get, createElement: tag => new Element(tag) },
     window: { __haieduSupabaseClient: client, location: { assign: url => calls.redirects.push(url) } },
     confirm: () => { calls.confirms++; return confirms; },
-  });
+  },rateFeedbackBindings));
   const functions = source.replace(/^import .*;\n/gm, '').split('$("challengeForm").addEventListener')[0];
   vm.runInContext(functions + '\nglobalThis.api = { loadSecurityState, renderFactors, verifyChallenge, removeFactor, enter };', context);
   return { get, calls, api: context.api };

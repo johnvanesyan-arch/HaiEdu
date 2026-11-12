@@ -1,5 +1,7 @@
 # BF-16 — abuse controls that preserve classroom access
 
+**Subsequent integration candidate:** [all 65 endpoint integration, approved wait copy and candidate migration](abuse-controls-integration-20261112.md) are now prepared. This file preserves its earlier checkpoint; statements that no handler or registered migration exists below are historical. No production installation or activation is claimed.
+
 **Subsequent first-stage implementation:** the [isolated counter and verification](abuse-controls-core-20261112.md) are now prepared. This audit preserves the earlier proposal checkpoint; its implementation-not-started wording below is historical. Live integration/activation remains open.
 
 12 November 2026 (Asia/Yerevan). Audit and implementation proposal, based on merged source `fffe31abb188ff88e6746b2b8216c1472abf1737`. This is the first BF-16 deliverable: review existing protections and propose suitable limits. The limiter is not implemented, merged, deployed or enabled by this record. Production configuration is unchanged. Owner usability acceptance: not given.

@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -36,10 +37,10 @@ function mount() {
     button.disabled = true;
     message.textContent = "Միանում ենք…";
     message.style.color = "#64748b";
-    const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode } });
+    const { data, error } = await invokeRateAware(supabase,"join-class", { body: { joinCode } });
     button.disabled = false;
     if (error) {
-      message.textContent = "Չհաջողվեց միանալ։ Ստուգեք կոդը։";
+      message.textContent = (rateLimitMessage(error) ?? ("Չհաջողվեց միանալ։ Ստուգեք կոդը։"));
       message.style.color = "#8a3342";
       return;
     }

@@ -1,7 +1,8 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
-import {chromium} from '@playwright/test';
+import {chromium,expect} from '@playwright/test';
 import {fixture,id,context} from '../fixtures/written-work-api.mjs';
 let browser;before(async()=>{browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});});after(async()=>browser?.close());
 const origin='https://written-work.test';
@@ -242,4 +243,11 @@ test('learner logout waits for actual-SQL draft save before ending the session',
  held.resolve();await s.waitForURL('**/index.html');
  const rows=(await f.db.query("select draft_text from written_work where draft_text<>''")).rows;assert.equal(rows.length,1);assert.equal(rows[0].draft_text,text);
  assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,0);assert.deepEqual(learner.errors,[]);
+});
+
+test('BF16 confirmed refusal: written submission retains text without a status-recovery read',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const {page:p,errors}=await pageFixture(t,f);await p.locator('[data-writing-open]').click();await p.locator('[data-writing-text]').fill('A retained explanation for my teacher.');
+ await refuseAction(p,'manage-written-work','submit');const before=await p.evaluate(()=>window.__writingCalls.filter(c=>c.body?.action==='open').length);
+ await p.locator('[data-writing-submit]').click();await expect(p.locator('[data-writing-message]')).toHaveText(rateWaitMessage);await expect(p.locator('[data-writing-text]')).toHaveValue('A retained explanation for my teacher.');await expect(p.locator('[data-writing-text]')).toBeEnabled();
+ assert.equal(await p.evaluate(()=>window.__writingCalls.filter(c=>c.body?.action==='open').length),before);assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(errors,[]);
 });

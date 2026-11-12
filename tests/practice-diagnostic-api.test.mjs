@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -19,8 +21,8 @@ function handler(name,mode='practice',historyError=false){
  }};
  const source=readFileSync(new URL(`../supabase/functions/${name}/index.ts`,import.meta.url),'utf8').replace(/^import\s[\s\S]*?from\s+['"][^'"]+['"];?\s*/gm,'');
  const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
- vm.runInNewContext(js,{Deno:{env:{get:()=> 'test'},serve:fn=>serve=fn},createClient:()=>admin,
-  routeGovernedLearning,hasActiveLiveSession:async()=>true,hasPhysics7Access:async()=>true,getPracticeDiagnosticBlock,Response,console});
+ vm.runInNewContext(js,Object.assign({...rateBudgetBindings,Deno:{env:{get:()=> 'test'},serve:fn=>serve=fn},createClient:()=>admin,
+  routeGovernedLearning,hasActiveLiveSession:async()=>true,hasPhysics7Access:async()=>true,getPracticeDiagnosticBlock,Response,console},rateFeedbackBindings));
  return {serve,tables};
 }
 for(const name of ['start-learning-session','get-session-item','submit-answer','get-remediation-help']){

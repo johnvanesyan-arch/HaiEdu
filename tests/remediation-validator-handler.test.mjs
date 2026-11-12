@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -27,9 +29,9 @@ function harness(overrides = {}) {
     async rpc(name, args) { rpcCalls.push({ name, args }); return { data: { authoringVersion: 3 } }; },
   };
   let handler;
-  vm.runInNewContext(compiled, { ...validation, createClient: () => admin, hasActiveLiveSession: async () => true,
+  vm.runInNewContext(compiled, Object.assign({...rateBudgetBindings, ...validation, createClient: () => admin, hasActiveLiveSession: async () => true,
     Deno: { env: { get: () => "fixture-only" }, serve: (fn) => { handler = fn; } },
-    Response, atob, console: { error() {} } });
+    Response, atob, console: { error() {} } },rateFeedbackBindings));
   const payload = Buffer.from(JSON.stringify({ aal: "aal2" })).toString("base64url");
   return { rpcCalls, async call(action) {
     const response = await handler(new Request("https://fixture.test", { method: "POST",

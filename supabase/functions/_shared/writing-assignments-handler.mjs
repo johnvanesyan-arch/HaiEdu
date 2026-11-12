@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization,x-client-info,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const reply=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'Content-Type':'application/json'}});
@@ -11,7 +12,7 @@ async function bodyJSON(request){
  const bytes=new Uint8Array(size);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}
  try{return JSON.parse(new TextDecoder().decode(bytes));}catch{fail('assignment_request_invalid');}
 }
-export function createWritingAssignmentsHandler({createAdmin,hasActiveLiveSession,env}){
+export function createWritingAssignmentsHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-writing-assignments"}){
  return async request=>{
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(request.method!=='POST')return reply({error:'method_not_allowed'},405);
@@ -22,6 +23,8 @@ export function createWritingAssignmentsHandler({createAdmin,hasActiveLiveSessio
    if(error||!auth?.user)return reply({error:'unauthorized'},401);
    let claims;try{claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));}catch{fail('assignment_forbidden');}
    if(!UUID.test(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');
+   const rateDenied=await rateBudget(request,admin,auth.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const live=async()=>{if(!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');};
    const body=await bodyJSON(request),keys={catalog:['offset'],preview:['taskId','offset','search'],assign:['taskId','fingerprint','requestId','rosterFingerprint','mode','enrollmentIds','instructions'],list:['offset','state'],inbox:['offset','state'],get:['id'],cancel:['id','revision','reason'],open:['id']};
    if(!shape(body,['action','context','payload'])||!Object.hasOwn(keys,body.action)||!shape(body.context??{},['assignmentId','enrollmentId','curriculumReleaseId','unitId'])||!shape(body.payload??{},keys[body.action]))fail('assignment_request_invalid');

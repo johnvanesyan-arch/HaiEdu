@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
     paths:
+      - web/rate-budget-feedback.mjs
+      - supabase/functions/_shared/rate-budget.mjs
+      - supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql
       - .github/workflows/teacher-loading-rollout-acceptance.yml
 permissions:
   contents: read

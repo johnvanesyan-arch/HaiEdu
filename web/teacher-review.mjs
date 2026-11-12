@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {mountWrittenWork} from './written-work.mjs';
 import {rememberTeacherClass} from './teacher-home-request.mjs';
@@ -5,7 +6,7 @@ const states=new Set(['submitted','changes_requested','reviewed','all']);
 
 // Discovery only. The existing class and writing services authorize every exact
 // assignment/release/unit; a menu choice never confers permission.
-export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,initialClass=null,readDashboard=body=>supabase.functions.invoke("get-teacher-dashboard",{body}),isCurrent=()=>true,onRoute=()=>{},assignmentMode=false}){
+export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,initialClass=null,readDashboard=body=>invokeRateAware(supabase,"get-teacher-dashboard",{body}),isCurrent=()=>true,onRoute=()=>{},assignmentMode=false}){
  let alive=true,ticket=0,directoryTicket=0,writing=()=>{},rows=[],directory=null,chosen=null,context=null;
  const q=new URLSearchParams(location.search);
  let taskKind=q.get('taskKind')==='custom'?'custom':'course';
@@ -41,20 +42,20 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
   try{
    const response=initial&&initialDirectory?.directory?.archive===archive?{data:initialDirectory}:await readDashboard({readMode:'directory',archive,offset});
    if(!active()||request!==directoryTicket)return;
-   const {data,error}=response;if(error||!data?.directory||!Array.isArray(data.classes))throw Error('directory_unavailable');
+   const {data,error}=response;if(error||!data?.directory||!Array.isArray(data.classes))throw (rateLimitMessage(error) ? error : (Error('directory_unavailable')));
    rows=more?[...new Map([...rows,...data.classes].map(c=>[JSON.stringify([c.id,c.assignmentId]),c])).values()]:data.classes;directory={...data.directory,nextOffset:offset+data.classes.length};options();message(rows.length?'':'Այս ցանկում հասանելի դասարան չկա։');
    if(initial&&q.get('class'))await loadClass({id:q.get('class'),assignmentId:q.get('assignment')},q.get('release')&&q.get('unit')?{assignmentId:q.get('assignment'),curriculumReleaseId:q.get('release'),unitId:q.get('unit')}:null,true);
-  }catch{if(active()&&request===directoryTicket){message('Դասարանների ցանկը չբեռնվեց։ Փորձեք կրկին։');$('[data-review-retry]').classList.remove('hidden');}}
+  }catch(rateError){if(active()&&request===directoryTicket){message((rateLimitMessage(rateError) ?? ('Դասարանների ցանկը չբեռնվեց։ Փորձեք կրկին։')));$('[data-review-retry]').classList.remove('hidden');}}
   finally{if(active()&&request===directoryTicket)$('[data-review-more]').disabled=false;}
  }
  async function openQueue(klass,unit){
   context={assignmentId:klass.assignmentId,curriculumReleaseId:unit.curriculumReleaseId,unitId:unit.unitId};
   $('[data-review-context]').textContent=[klass.name,klass.subjectName,unit.unitTitleHy,klass.schoolName,klass.academicYear].filter(Boolean).join(' · ');
   const request=ticket,scope=context;
-  if(assignmentMode){try{const {mountTeacherAssignmentWorkspace}=await import('./writing-assignments.mjs');if(!active()||request!==ticket||context!==scope)return;const instance=mountTeacherAssignmentWorkspace({root:$('[data-review-writing]'),client:supabase,actorId,context:{...klass,...unit,...scope,classId:klass.id},isCurrent:()=>active()&&request===ticket&&context===scope});writing=()=>instance.dispose();writing.canLeave=instance.canLeave;writing.hasUnsaved=instance.hasUnsaved;}catch{if(active()&&request===ticket&&context===scope){message('Հանձնարարելու գործիքը չբեռնվեց։ Փորձեք կրկին։');$('[data-review-retry]').classList.remove('hidden');}}return;}
+  if(assignmentMode){try{const {mountTeacherAssignmentWorkspace}=await import('./writing-assignments.mjs');if(!active()||request!==ticket||context!==scope)return;const instance=mountTeacherAssignmentWorkspace({root:$('[data-review-writing]'),client:supabase,actorId,context:{...klass,...unit,...scope,classId:klass.id},isCurrent:()=>active()&&request===ticket&&context===scope});writing=()=>instance.dispose();writing.canLeave=instance.canLeave;writing.hasUnsaved=instance.hasUnsaved;}catch(rateError){if(active()&&request===ticket&&context===scope){message((rateLimitMessage(rateError) ?? ('Հանձնարարելու գործիքը չբեռնվեց։ Փորձեք կրկին։')));$('[data-review-retry]').classList.remove('hidden');}}return;}
 
   $('[data-review-kind]').hidden=false;for(const b of $('[data-review-kind]').querySelectorAll('button'))b.setAttribute('aria-pressed',String(b.hasAttribute(taskKind==='custom'?'data-review-custom':'data-review-course')));
-  if(taskKind==='custom'){try{const {mountTeacherTaskReview}=await import('./teacher-task-review.mjs');if(!active()||request!==ticket||context!==scope)return;const instance=mountTeacherTaskReview({root:$('[data-review-writing]'),client:supabase,actorId,context:scope,isCurrent:()=>active()&&request===ticket&&context===scope,initialSubmissionId:new URLSearchParams(location.search).get('taskSubmission'),onSelect:id=>{const u=new URL(location.href);if(id)u.searchParams.set('taskSubmission',id);else u.searchParams.delete('taskSubmission');history.replaceState({},'',u);onRoute();}});writing=()=>instance.dispose();writing.canLeave=instance.canLeave;writing.hasUnsaved=instance.hasUnsaved;}catch{if(active()&&request===ticket){message('Ստուգման գործիքը չբեռնվեց։ Փորձեք կրկին։');$('[data-review-retry]').classList.remove('hidden');}}return;}
+  if(taskKind==='custom'){try{const {mountTeacherTaskReview}=await import('./teacher-task-review.mjs');if(!active()||request!==ticket||context!==scope)return;const instance=mountTeacherTaskReview({root:$('[data-review-writing]'),client:supabase,actorId,context:scope,isCurrent:()=>active()&&request===ticket&&context===scope,initialSubmissionId:new URLSearchParams(location.search).get('taskSubmission'),onSelect:id=>{const u=new URL(location.href);if(id)u.searchParams.set('taskSubmission',id);else u.searchParams.delete('taskSubmission');history.replaceState({},'',u);onRoute();}});writing=()=>instance.dispose();writing.canLeave=instance.canLeave;writing.hasUnsaved=instance.hasUnsaved;}catch(rateError){if(active()&&request===ticket){message((rateLimitMessage(rateError) ?? ('Ստուգման գործիքը չբեռնվեց։ Փորձեք կրկին։')));$('[data-review-retry]').classList.remove('hidden');}}return;}
   writing=mountWrittenWork({root:$('[data-review-writing]'),supabase,actorId,teacher:true,context:scope,initialState:state,stateButtons:true,
    isCurrent:()=>active()&&request===ticket&&context===scope,
    onStateChange:value=>{state=value;route();}});
@@ -70,14 +71,14 @@ export function mountTeacherReview({root,supabase,actorId,initialDirectory=null,
    const {data,error}=handoff?{data:handoff}:await readDashboard({readMode:'class',classId:klass.id,...(klass.assignmentId?{assignmentId:klass.assignmentId}:{}),...(selection?{selection}:{})});
    if(!active()||request!==ticket)return;
    const detail=data?.classes?.find(c=>c.id===klass.id&&(!klass.assignmentId||c.assignmentId===klass.assignmentId));
-   if(error||!detail)throw Error('class_unavailable');
+   if(error||!detail)throw (rateLimitMessage(error) ? error : (Error('class_unavailable')));
    chosen=detail;if(!rows.some(c=>c.id===detail.id&&c.assignmentId===detail.assignmentId))rows.push(detail);options();
    if(!data.institutionalTeacher||!detail.selectedUnit){unit.innerHTML='<option value="">Հասանելի բաժին չկա</option>';message('Այս դասարանի համար գրավոր աշխատանքների ստուգումը հասանելի չէ։');route(true);return;}
    unit.innerHTML=(detail.unitOptions??[]).map((u,i)=>`<option value="${i}">${esc(`${u.unitSequence}. ${u.unitTitleHy} · Թողարկում ${u.releaseNumber}`)}</option>`).join('');
    const index=detail.unitOptions.findIndex(u=>u.unitId===detail.selectedUnit.unitId&&u.curriculumReleaseId===detail.selectedUnit.curriculumReleaseId);
    if(index<0)throw Error('unit_unavailable');unit.value=String(index);unit.disabled=detail.unitOptions.length<2;
    rememberTeacherClass(actorId,detail.id);message(detail.isActive?'':'Արխիվացված համատեքստում աշխատանքները հասանելի են միայն դիտման համար։');openQueue(detail,detail.selectedUnit);route(true);
-  }catch{if(active()&&request===ticket){clearWork();unit.innerHTML='<option value="">Բաժինները հասանելի չեն</option>';message('Դասարանը կամ ընտրված բաժինը չբեռնվեց։ Փորձեք կրկին կամ ընտրեք այլ դասարան։');$('[data-review-retry]').classList.remove('hidden');}}
+  }catch(rateError){if(active()&&request===ticket){clearWork();unit.innerHTML='<option value="">Բաժինները հասանելի չեն</option>';message((rateLimitMessage(rateError) ?? ('Դասարանը կամ ընտրված բաժինը չբեռնվեց։ Փորձեք կրկին կամ ընտրեք այլ դասարան։')));$('[data-review-retry]').classList.remove('hidden');}}
  }
  const change=e=>{
   if(e.target.matches('[data-review-class]')){

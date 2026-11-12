@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -69,11 +71,11 @@ test('enrolment lookup failure fails closed', async () => {
 async function endpoint(name, db) {
   let handler;
   const source = (await read(`supabase/functions/${name}/index.ts`)).replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(`${accessSource}\n${authSource}\n${stripTypeScriptTypes(source)}`, {
+  vm.runInNewContext(`${accessSource}\n${authSource}\n${stripTypeScriptTypes(source)}`, Object.assign({...rateBudgetBindings,
     routeGovernedLearning, createClient: () => db, resolveActiveCurriculumRelease: async () => 'release',
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, atob, console,
-  });
+  },rateFeedbackBindings));
   const token = `x.${Buffer.from(JSON.stringify({ session_id: 'session' })).toString('base64url')}.x`;
   return handler(new Request('https://example.test', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: '{}' }));
 }
@@ -102,7 +104,7 @@ function dom() {
 test('assessment outage preserves completed diagnostic and shows unknown mastery history; recovery renders readiness', async () => {
   const document = dom();
   const source = (await read('web/assessment.js')).replace(/^import .*;\n/gm, '').replace(/initialize\(\);\s*$/, '');
-  const context = vm.createContext({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' });
+  const context = vm.createContext(Object.assign({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' },rateFeedbackBindings));
   vm.runInContext(source, context);
   vm.runInContext('renderDiagnostic({latestDiagnostic: {correct:16, answered:20, percent:80}}, null); renderMastery(null);', context);
   assert.match(document.getElementById('diagnosticSummary').textContent, /16\/20 \(80%\)/);
@@ -116,14 +118,14 @@ test('assessment outage preserves completed diagnostic and shows unknown mastery
 test('progress outage does not assert mastery is locked', async () => {
   const document = dom();
   const source = (await read('web/progress.js')).replace(/^import .*;\n/gm, '').split('$("refreshProgressBtn")')[0];
-  const context = vm.createContext({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' });
+  const context = vm.createContext(Object.assign({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' },rateFeedbackBindings));
   vm.runInContext(source + '; renderSummary();', context);
   assert.equal(document.getElementById('masterySummary').textContent, 'Կարգավիճակը հասանելի չէ');
 });
 test('course outage shows unknown status even when all practice skills are complete', async () => {
   const document = dom();
   const source = (await read('web/physics-7.js')).replace(/^import .*;\n/gm, '');
-  const context = vm.createContext({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' });
+  const context = vm.createContext(Object.assign({ document, window: {}, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' },rateFeedbackBindings));
   vm.runInContext(source.slice(0, source.indexOf('function renderActiveSession()')) + '; dashboard = {progress:{completedSkills:10,totalSkills:10,percent:100}}; renderSummary();', context);
   assert.equal(document.getElementById('subjectAssessment').textContent, 'Կարգավիճակը հասանելի չէ');
   assert.equal(document.getElementById('chapterStateBadge').textContent, 'Կարգավիճակը հասանելի չէ');

@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {mountStudentTeacherTasks} from './student-teacher-tasks.mjs';
 import {mountStudentWritingAssignments} from './writing-assignments.mjs';
 import { createClient } from './supabase-browser.bundle.mjs';
@@ -121,7 +122,7 @@ async function loadFeedback() {
     const { data: auth } = await supabase.auth.getSession();
     if (ticket !== feedbackTicket || !auth.session) return;
     const account = auth.session.user.id;
-    const { data, error } = await supabase.functions.invoke('get-student-work', { body: { action: 'inbox', payload: { state: 'current' } } });
+    const { data, error } = await invokeRateAware(supabase,'get-student-work', { body: { action: 'inbox', payload: { state: 'current' } } });
     if (ticket !== feedbackTicket || !target.isConnected || (actorId && actorId !== account)) return;
     if (error || data?.version !== 'student-work-v1' || !Array.isArray(data.items)) return;
     const returned = data.items.filter(({ source, row }) => (source === 'task' && row.state === 'returned') || (source === 'writing' && row.workState === 'changes_requested'));
@@ -146,11 +147,11 @@ async function loadSelected() {
     if (!auth.session) throw Error('signed_out');
     const account = auth.session.user.id;
     if (!actorId) actorId = account;
-    const { data, error } = await supabase.functions.invoke('get-student-dashboard', { body: {
+    const { data, error } = await invokeRateAware(supabase,'get-student-dashboard', { body: {
       enrollmentId: context.enrollmentId, curriculumReleaseId: context.curriculumReleaseId, unitId: context.unitId,
     } });
     if (!current() || (actorId && actorId !== account)) return;
-    if (error || !data?.dashboardVersion || (data.context && !sameContext(data.context, context))) throw Error('unavailable');
+    if (error || !data?.dashboardVersion || (data.context && !sameContext(data.context, context))) throw (rateLimitMessage(error) ? error : (Error('unavailable')));
     const summary = homeLearningSummary(context, data);
     if (path) path.innerHTML = pathMarkup(data);
     markSelectedCourse(context, data);

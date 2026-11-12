@@ -15,6 +15,7 @@ async function adminModule(){
  const functions=names.map(name=>{const n=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name);assert.ok(n,name);return n.getText(ast);}).join('\n');
  return `import{erasurePresentation}from'/task-privacy-view.mjs';
  import{escapeHtml as esc}from'/text-safety.mjs';
+ import{invokeRateAware,rateLimitMessage}from'/rate-budget-feedback.mjs';
  const supabase=window.__client,$=id=>document.getElementById(id),accountCache=new Map(),pendingDeletionIds=new Set();let actor=null;
  const approveDeletion=()=>{throw Error('Not in this execution fixture');},rejectDeletion=approveDeletion;
  ${functions}

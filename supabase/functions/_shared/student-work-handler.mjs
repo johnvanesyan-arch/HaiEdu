@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 // One read-only "My work" list for the signed-in student.
 // Each source keeps its own authorization in SQL: this handler calls the same
 // three service functions the per-source endpoints call, as the same actor and
@@ -54,7 +55,7 @@ export function mergeStudentWork(results){
  items.sort((a,b)=>dateOf(b.row)-dateOf(a.row)||studentWorkSources.findIndex(s=>s.key===a.source)-studentWorkSources.findIndex(s=>s.key===b.source)||a.order-b.order);
  return items.map(({source,row})=>({source,row}));
 }
-export function createStudentWorkHandler({createAdmin,hasActiveLiveSession,env}){
+export function createStudentWorkHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="get-student-work"}){
  return async request=>{
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(request.method!=='POST')return reply({error:'method_not_allowed'},405);
@@ -67,6 +68,8 @@ export function createStudentWorkHandler({createAdmin,hasActiveLiveSession,env})
    const actor=auth.user.id,session=claims?.session_id;
    const live=async()=>{if(!UUID.test(session??'')||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,actor))fail('student_work_forbidden');};
    await live();
+   const rateDenied=await rateBudget(request,admin,actor,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const body=await bodyJSON(request);
    if(!shape(body,['action','payload'])||body.action!=='inbox'||!shape(body.payload??{},['state']))fail('student_work_invalid');
    const state=body.payload?.state??'current';if(!['current','history'].includes(state))fail('student_work_invalid');

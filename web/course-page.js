@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
 import {resourceHref} from './resource-navigation.mjs';
 import {courseHero,modeIcon,readinessBadge,readinessSummary,skillEvidence} from './student-course-presentation.mjs';
@@ -76,9 +77,9 @@ async function load() {
     publishLearnerAccess(navigation);
     rememberLearningSelection(accountId, context);
     collectionNavigation(tab, context);
-    const { data, error } = await supabase.functions.invoke('get-student-dashboard',{body:selection});
+    const { data, error } = await invokeRateAware(supabase,'get-student-dashboard',{body:selection});
     if (!valid()) return;
-    if (error || !data?.dashboardVersion) throw new Error('Չհաջողվեց բեռնել տվյալները։ Փորձեք նորից։');
+    if (error || !data?.dashboardVersion) throw (rateLimitMessage(error) ? error : (new Error('Չհաջողվեց բեռնել տվյալները։ Փորձեք նորից։')));
     // 16.5B review D1: the unit is the page title; course, class and year form one short line.
     document.getElementById('courseTitle').textContent = context.unitTitleHy;
     document.getElementById('courseSubtitle').textContent = `${courseLabel(context)} · ${context.className} · ${context.academicYearLabel}`;

@@ -72,6 +72,7 @@ test("reviewer validation identifies all failing questions and safely renders th
       if (path === "/content-guides.html") return route.fulfill({ contentType: "text/html", body: html });
       if (path === "/account-signout.mjs") return route.fulfill({ contentType: "text/javascript", body: await readFile(new URL("../../web/account-signout.mjs", import.meta.url), "utf8") });
       if (path === "/text-safety.mjs") return route.fulfill({ contentType: "text/javascript", body: await readFile(new URL("../../web/text-safety.mjs", import.meta.url), "utf8") });
+      if (path === "/rate-budget-feedback.mjs") return route.fulfill({ contentType: "text/javascript", body: await readFile(new URL("../../web/rate-budget-feedback.mjs", import.meta.url), "utf8") });
       if (path === "/content-guides.js") return route.fulfill({ contentType: "text/javascript", body: script + "\nwindow.__renderValidation = renderValidation;" });
       if (path === "/config.js") return route.fulfill({ contentType: "text/javascript", body: 'export const SUPABASE_URL="fixture", SUPABASE_PUBLISHABLE_KEY="fixture";' });
       if (new URL(route.request().url()).pathname === "/supabase-browser.bundle.mjs") return route.fulfill({ contentType: "text/javascript", body: "export function createClient() {}" });

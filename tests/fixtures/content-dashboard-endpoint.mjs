@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../../supabase/functions/_shared/rate-budget.mjs';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
@@ -48,11 +50,11 @@ export function dashboardFixture({ count = 382, failedTable, rejectTable, role =
   };
   let handler;
   const source = readFileSync('supabase/functions/get-content-quality-dashboard/index.ts', 'utf8').replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(ts.transpile(source, { target: ts.ScriptTarget.ES2022 }), {
+  vm.runInNewContext(ts.transpile(source, { target: ts.ScriptTarget.ES2022 }), Object.assign({...rateBudgetBindings,
     createClient: () => admin, hasActiveLiveSession: async () => active,
     Deno: { env: { get: () => 'fixture-only' }, serve: fn => { handler = fn; } },
     Request, Response, console: { error() {} },
-  });
+  },rateFeedbackBindings));
   return { rows, requests, async call({ anonymous = false } = {}) {
     const response = await handler(new Request('https://fixture.invalid', {
       method: 'POST', headers: anonymous ? {} : { Authorization: 'Bearer fixture-only' },

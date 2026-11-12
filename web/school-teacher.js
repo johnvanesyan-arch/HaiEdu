@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {appendClassHistory} from './class-history.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -117,7 +118,7 @@ if (profile?.account_status !== "active" || profile?.role !== "school_admin") {
   if (!schoolId || !membershipId) {
     showDenied("Ուսուցիչ ընտրված չէ։ Վերադարձեք ուսուցիչների ցանկին։");
   } else {
-    const { data, error } = await supabase.functions.invoke("get-school-admin-overview", { body: {} });
+    const { data, error } = await invokeRateAware(supabase,"get-school-admin-overview", { body: {} });
     const school = data?.schools?.find((item) => item.id === schoolId);
     const teacher = school?.teachers?.find((item) => item.membershipId === membershipId);
     if (error || !school || !teacher) {

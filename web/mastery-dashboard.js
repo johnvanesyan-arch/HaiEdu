@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -27,11 +28,11 @@ function ensureCard() {
 }
 
 async function startRequiredRemediation(skillId) {
-  const { data, error } = await supabase.functions.invoke("start-learning-session", {
+  const { data, error } = await invokeRateAware(supabase,"start-learning-session", {
     body: { mode: "practice", targetSkillId: skillId },
   });
   if (error) {
-    alert(`Չհաջողվեց սկսել remediation վարժանքը․ ${error.message}`);
+    alert((rateLimitMessage(error) ?? (`Չհաջողվեց սկսել remediation վարժանքը․ ${error.message}`)));
     return;
   }
   if (!data?.session) {
@@ -128,14 +129,14 @@ async function refresh() {
   if (!panel || panel.classList.contains("hidden")) return;
   busy = true;
   ensureCard();
-  const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
+  const { data, error } = await invokeRateAware(supabase,"get-mastery-check-status", { body: {} });
   busy = false;
   if (error || !data) {
     lastStatus = null;
     const title = $("masteryCheckTitle");
     const text = $("masteryCheckText");
     if (title) title.textContent = "Mastery check-ի վիճակը չբեռնվեց";
-    if (text) text.textContent = "Յուրացման ստուգման կարգավիճակը ժամանակավորապես հասանելի չէ։";
+    if (text) text.textContent = (rateLimitMessage(error) ?? ("Յուրացման ստուգման կարգավիճակը ժամանակավորապես հասանելի չէ։"));
     const btn = $("masteryCheckBtn");
     if (btn) {
       btn.disabled = false;

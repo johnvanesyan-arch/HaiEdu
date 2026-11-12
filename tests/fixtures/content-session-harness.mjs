@@ -1,9 +1,10 @@
+import * as rateFeedbackBindings from '../../web/rate-budget-feedback.mjs';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {escapeHtml} from '../../web/text-safety.mjs';
 // These VM fixtures strip ESM imports. Supply the actual pure UI dependency;
 // native browser cases load that same module directly. No auth boundary is stubbed here.
-export function runContentUiSource(source,bindings,options){return vm.runInNewContext(source,Object.assign(bindings,{esc:escapeHtml}),options);}
+export function runContentUiSource(source,bindings,options){return vm.runInNewContext(source,Object.assign(Object.assign(bindings,{esc:escapeHtml}),rateFeedbackBindings),options);}
 export function deferred(){let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return{promise,resolve,reject};}
 export function node(){const classes=new Set();return{value:'',textContent:'',innerHTML:'',dataset:{},listeners:new Map(),classList:{add:(...x)=>x.forEach(v=>classes.add(v)),remove:(...x)=>x.forEach(v=>classes.delete(v)),contains:v=>classes.has(v),toggle:(v,b)=>b?classes.add(v):classes.delete(v)},addEventListener(t,f){this.listeners.set(t,f);},focus(){},querySelectorAll(){return [];},setAttribute(){},getAttribute(){return null;},scrollTo(){}};}
 export function moduleSource(path){return readFileSync(path,'utf8').replace(/^import .*;\n/gm,'').replace(/^export \{[^}]*\};\n/gm,'').replace(/^export /gm,'');}

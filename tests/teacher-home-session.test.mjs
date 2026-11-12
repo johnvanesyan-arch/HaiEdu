@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -14,7 +15,7 @@ async function check({error=null,throws=false,sessionThrows=false,nextSession,an
   signOut:async opts=>{calls.signOut.push({...opts});if(signOutThrows)throw Error('offline');signedOut=true;return{error:signOutError};},
  }};
  const source=read('web/ux.js').replace(/^import .*;\n/gm,'').split('\nfunction showTerminalAuthMessage()')[0];
- const ctx=vm.createContext({showSignOutNotice(){},window:{__haieduSupabaseClient:client},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL});
+ const ctx=vm.createContext(Object.assign({showSignOutNotice(){},window:{__haieduSupabaseClient:client},location:{pathname:'/teacher',replace:u=>calls.redirects.push(u),reload:()=>calls.redirects.push('reload')},createClient:()=>client,SUPABASE_URL:'https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public',localStorage:{removeItem:k=>calls.removed.push(k)},sessionStorage:{setItem:(k,v)=>calls.stored.push([k,v])},URL},rateFeedbackBindings));
  vm.runInContext(source,ctx);ctx.report=(...args)=>calls.messages.push(args);vm.runInContext('announce = report;',ctx);
  calls.result=await vm.runInContext('handleTerminalAuthFailure()',ctx);return calls;
 }
@@ -27,7 +28,7 @@ test('teacher header returns directly to its home view',()=>{
 test('staff branding targets the correct workspace home',()=>{
  const source=read('web/navigation-focus.mjs').replace(/^export /gm,'')+'\n'+read('web/role-layout.js').replace(/^import \{ installNavigationFocus \} from '\.\/navigation-focus\.mjs';\n/m,'').split('\nfunction syncTeacherSections()')[0];
  for(const [page,expected] of Object.entries({teacher:'./teacher.html?view=home',school:'./school-admin.html',schoolTeacher:'./school-admin.html',platform:'./admin.html',platformSchools:'./admin.html',platformSecurity:'./admin.html',content:'./content.html'})){
-  const ctx=vm.createContext({document:{body:{dataset:{roleWorkspace:page}},getElementById:()=>null,addEventListener(){}}});vm.runInContext(source,ctx);
+  const ctx=vm.createContext(Object.assign({document:{body:{dataset:{roleWorkspace:page}},getElementById:()=>null,addEventListener(){}}},rateFeedbackBindings));vm.runInContext(source,ctx);
   assert.equal(vm.runInContext('currentConfig().links[0][1]',ctx),expected);
  }
  assert.match(read('web/role-layout.js'),/brand\.href = config\.links\[0\]\[1\]/);

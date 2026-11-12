@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "Integration candidate; not merged, deployed or enabled",
+  "baseSource": "4c7ec3ccdc7aeac8cbb87091a935f18ee99df844",
+  "roadmap": "4.178",
+  "scope": {
+    "edgeEntrypoints": 65,
+    "browserEdgeConsumerModules": 41,
+    "serverMode": "off by default",
+    "subjectNeutral": true,
+    "candidateMigration": "supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql",
+    "migrationGeneratedBy": "Supabase CLI 3.1.0, official checksum verified; local-only command in network-disabled disposable container",
+    "rollback": "supabase/proposals/bf16_actor_rate_budgets_rollback.sql"
+  },
+  "ownerDecisions": {
+    "integration": "Proceed",
+    "waitCopy": "Both messages approved explicitly",
+    "finishedInterfaceUsability": "not given",
+    "paidStolenPasswordProtection": "declined",
+    "productionQA": "paused; no dispatch"
+  },
+  "verification": {
+    "codeTests": {
+      "passed": 1839,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "nativeBrowser": {
+      "fullRun": "696 cases: 690 passed, five failed and one cancelled before two fixture imports were corrected",
+      "focusedNewRoleCases": 10,
+      "focusedDefiniteRefusalWorkflows": 7,
+      "repairedFixtureAndProviderAuthRegressions": 88,
+      "fullRunCases": 696,
+      "initialBroadPassed": 690,
+      "initialBroadFailed": 5,
+      "initialBroadCancelled": 1,
+      "repairedFixtureCasesPassed": 9,
+      "currentCaseCoverage": "696 distinct cases covered by broad run and corrected-fixture reruns; full exact-head CI required",
+      "finished": true
+    },
+    "postgres17SessionChecks": {
+      "passed": 9,
+      "logicalPeople": 120,
+      "maximumConnections": 24,
+      "scope": "synthetic Auth catalogue, not hosted Auth/network/classroom capacity"
+    },
+    "previousSourceNegativeControl": {
+      "expectedFailures": 2,
+      "cases": [
+        "student class-code refusal feedback",
+        "teacher draft refusal feedback"
+      ]
+    },
+    "hostedSignedInChecks": false,
+    "productionQA": "not run (paused by owner)",
+    "exactHeadCi": "Required before merge; result is recorded on this PR and in source-pinned delivery receipts"
+  },
+  "browserBuild": {
+    "id": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+    "pages": 29,
+    "currentImmutableAssets": 127,
+    "retainsPublishedArchive": true
+  },
+  "deployedSourceAudit": {
+    "readbacks": 65,
+    "fileOccurrences": 272,
+    "byteExactToBase": 264,
+    "trailingNewlineOnly": 7,
+    "olderHelperOccurrences": 1,
+    "olderHelperUsedExportUnchanged": true,
+    "gatewaySettings": "preserve each manifest baseline",
+    "manifest": "docs/evidence/abuse-controls-edge-manifest-20261112.json",
+    "redeployed": false,
+    "manualComputedFetchReview": "Teacher startup raw-fetch prefetch discards non-success and falls back once to the rate-aware SDK controller; no write retry"
+  },
+  "productionCatalogue": {
+    "requiredAuthColumnsPresent": true,
+    "counterTablesInstalled": false,
+    "sessionBoundRpcInstalled": false,
+    "cronExtensionInstalled": false,
+    "cleanupScheduleInstalled": false
+  },
+  "productionWrites": 0,
+  "activationOpen": [
+    "specific PR merge approval and no-other-merger check",
+    "five exact-head and post-merge CI jobs plus canonical build readback",
+    "specific migration/all-65-bundle deployment approval and exact readback",
+    "representative hosted/account-flow qualification and bounded recurring maintenance/monitoring",
+    "policy-value and enforcement activation approval",
+    "owner classroom/usability observation"
+  ],
+  "affectedProductionQa": [
+    ".github/workflows/chapter-ii-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+    ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+    ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+    ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+    ".github/workflows/mobile-browser-qa.yml",
+    ".github/workflows/resource-assignments-acceptance.yml",
+    ".github/workflows/sprint-14-actions-qa.yml",
+    ".github/workflows/sprint-14d-analytics-qa.yml",
+    ".github/workflows/sprint-15a3-authenticated-qa.yml",
+    ".github/workflows/teacher-feedback-acceptance.yml",
+    ".github/workflows/teacher-loading-rollout-acceptance.yml",
+    ".github/workflows/teacher-performance.yml"
+  ]
+}

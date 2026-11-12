@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { verifyReadIdentity } from "../_shared/teacher-read-identity.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -35,6 +36,9 @@ Deno.serve(async (req) => {
     if (!(await hasActiveLiveSession(admin, token, teacherId))) {
       return json({ error: "account_or_session_inactive" }, 403);
     }
+    const rateDenied = await enforceRateBudget(req, admin, teacherId, token, "get-teacher-academic-context");
+    if (rateDenied) return rateDenied;
+
     const { data: profile, error: profileError } = await admin.from("profiles")
       .select("role, account_status").eq("id", teacherId).maybeSingle();
     if (profileError || !profile || profile.role !== "teacher" || profile.account_status !== "active") {

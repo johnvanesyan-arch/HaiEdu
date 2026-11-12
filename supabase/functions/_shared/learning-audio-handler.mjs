@@ -1,8 +1,9 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'};
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'Content-Type':'application/json','Cache-Control':'no-store'}});
 const uuid=value=>typeof value==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
 function authSession(token){try{const part=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(atob(part+'='.repeat((4-part.length%4)%4))).session_id;}catch{return null;}}
-export function createLearningAudioHandler({createAdmin,hasActiveLiveSession,env}){
+export function createLearningAudioHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="get-learning-audio"}){
  return async request=>{
   let markFailed;
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
@@ -25,6 +26,8 @@ export function createLearningAudioHandler({createAdmin,hasActiveLiveSession,env
    const {data,error}=await admin.auth.getUser(token);
    if(error||!data?.user)return json({error:'unauthorized'},401);
    if(!uuid(authId)||!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);
+   const rateDenied=await rateBudget(request,admin,data.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const args={p_actor_id:data.user.id,p_auth_session_id:authId,p_action:body.action,p_session_id:body.sessionId??null,p_session_item_id:body.sessionItemId??null,p_item_id:body.itemId??null};
    const call=async action=>{
     const params=assessed?{p_actor_id:args.p_actor_id,p_auth_session_id:args.p_auth_session_id,p_action:action,p_session_id:args.p_session_id,p_session_item_id:args.p_session_item_id,p_payload:events?{clientId:body.clientId,playId:body.playId,positionMs:body.positionMs}:{}}:{...args,p_action:action};

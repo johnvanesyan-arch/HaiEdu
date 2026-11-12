@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 // Assessed playback uses one server ledger per session/recording. Controls enforce
 // the normal learner flow, not DRM or proof of attention. No transcript is sent.
 export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>true,onReady=()=>{},onEndUnscored=()=>{}}) {
@@ -80,7 +81,7 @@ export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>t
  end.onclick=async()=>{
   if(!valid()||busy||running)return;busy=true;render();
   try{await serial(()=>call('cancel'));if(valid()){release();onEndUnscored();}}
-  catch{if(valid())status.textContent='Չհաջողվեց ավարտել աշխատանքը։ Կրկին փորձեք։';}finally{if(valid()){busy=false;render();}}
+  catch(rateError){if(valid())status.textContent=(rateLimitMessage(rateError) ?? ('Չհաջողվեց ավարտել աշխատանքը։ Կրկին փորձեք։'));}finally{if(valid()){busy=false;render();}}
  };
  audio.addEventListener('timeupdate',()=>{if(!valid()||audio.seeking)return;lastTime=audio.currentTime;progress.value=position();});
  audio.addEventListener('seeking',()=>{if(Math.abs(audio.currentTime-lastTime)>.05)audio.currentTime=lastTime;});

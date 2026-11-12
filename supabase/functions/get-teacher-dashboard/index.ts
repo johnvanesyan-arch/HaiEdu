@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import {verifyTeacherReadIdentity} from '../_shared/teacher-read-identity.mjs';
 import {isTeacherWorkspaceRequest} from '../_shared/teacher-workspace-request.mjs';
 import {readBatchedTeacherDashboard,TeacherDashboardReadError} from '../_shared/teacher-dashboard-batch.ts';
@@ -49,6 +50,9 @@ Deno.serve(async (req) => {
     const userData={user:identity};
     const authDuration=Date.now()-authStarted;
     if(!userData?.user)return json({error:'unauthorized'},401);
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "get-teacher-dashboard");
+    if (rateDenied) return rateDenied;
+
     if(!requestBody||typeof requestBody!=='object'||Array.isArray(requestBody))return json({error:'invalid_dashboard_request'},400);
     const readMode=requestBody.readMode ?? "full";
     if(requestBody.workspace!==undefined&&(readMode!=='directory'||requestBody.archive===true||(requestBody.offset!==undefined&&requestBody.offset!==0)||(typeof requestBody.search==='string'&&requestBody.search.trim()!=='')||!isTeacherWorkspaceRequest(requestBody.workspace)))return json({error:'invalid_dashboard_request'},400);

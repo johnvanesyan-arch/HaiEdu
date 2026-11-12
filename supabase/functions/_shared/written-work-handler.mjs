@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const cors = { 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods':'POST, OPTIONS' };
 const json = (data,status=200) => new Response(JSON.stringify(data),{status,headers:{...cors,'Content-Type':'application/json','Cache-Control':'no-store'}});
 const uuid = v => typeof v==='string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
@@ -5,7 +6,7 @@ const actions = new Set(['tasks','open','save','submit','queue','inspect','revie
 function sessionId(token) {
   try { const p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(atob(p+'='.repeat((4-p.length%4)%4))).session_id; } catch { return null; }
 }
-export function createWrittenWorkHandler({createAdmin,hasActiveLiveSession,env}) {
+export function createWrittenWorkHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-written-work"}) {
   return async req => {
     if(req.method==='OPTIONS')return new Response('ok',{headers:cors});
     if(req.method!=='POST')return json({error:'method_not_allowed'},405);
@@ -27,6 +28,8 @@ export function createWrittenWorkHandler({createAdmin,hasActiveLiveSession,env})
       if(error||!data?.user)return json({error:'unauthorized'},401);
       const authId=sessionId(token);
       if(!uuid(authId)||!(await hasActiveLiveSession(admin,token,data.user.id)))return json({error:'account_or_session_inactive'},403);
+   const rateDenied=await rateBudget(req,admin,data.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
       const result=await admin.rpc('service_written_work',{p_actor_id:data.user.id,p_auth_session_id:authId,p_action:body.action,p_context:context,p_payload:payload});
       if(result.error){
         const message=String(result.error.message??'').replace('learning_context_unavailable','written_context_unavailable');

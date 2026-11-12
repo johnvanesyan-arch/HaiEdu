@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -21,7 +23,7 @@ async function call({ role = 'teacher', active = true, body = payload, resolver 
       }) }) }) };
     },
   };
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     createClient: () => client,
     verifyReadIdentity: async () => ({id}),
     hasActiveLiveSession: async () => active,
@@ -31,7 +33,7 @@ async function call({ role = 'teacher', active = true, body = payload, resolver 
     },
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, console,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
   }));

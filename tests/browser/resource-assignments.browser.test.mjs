@@ -1,5 +1,6 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';
-import {readFile,mkdir} from 'node:fs/promises';import {chromium} from '@playwright/test';
+import {readFile,mkdir} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
 import {fixture,id,context,token} from '../fixtures/supplementary-resources-api.mjs';
 import {published,call,prepared,materialCall,addLearner} from '../fixtures/resource-assignments-db.mjs';
 import {installStudentHomeFixture} from '../fixtures/student-home-fixture.mjs';
@@ -278,4 +279,10 @@ test('cancellation shows the required reason and disables all receipt navigation
  assert.equal(await p.locator('[data-assignment-close]').isEnabled(),true);assert.equal(await p.locator('[data-assignment-history-list]').isEnabled(),true);
  assert.match(await p.locator('[data-assignment-next]').innerText(),/այլևս չի ցուցադրվում/);
  assert.equal(await p.evaluate(()=>window.__assignmentCalls.filter(c=>c.body.action==='cancel').length),1);assert.deepEqual(ui.errors,[]);
+});
+
+test('BF16 confirmed refusal: material assignment retains instructions and recipients',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());await published(f.db);const {page:p,errors}=await surface(t,f);await compose(p);await p.locator('[data-assignment-instructions]').fill('My retained instructions');
+ await refuseAction(p,'manage-resource-assignments','assign');await p.locator('[data-assignment-send]').click();await expect(p.locator('[data-assignment-message]')).toHaveText(rateWaitMessage);await expect(p.locator('[data-assignment-instructions]')).toHaveValue('My retained instructions');await expect(p.locator('[data-assignment-instructions]')).toBeEnabled();
+ assert.equal((await f.db.query('select count(*)::int n from resource_assignments')).rows[0].n,0);assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(errors,[]);
 });

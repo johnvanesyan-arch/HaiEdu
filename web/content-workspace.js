@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -94,23 +95,23 @@ export async function invokeContent(name, body = {}) {
   const version = contentSessionVersion;
   let result;
   try {
-    result = await contentSupabase.functions.invoke(name, { body });
+    result = await invokeRateAware(contentSupabase,name, { body });
   } catch (error) {
     if (version !== contentSessionVersion) throw new Error("content_session_ended");
     throw error;
   }
   const { data, error } = result;
   if (version !== contentSessionVersion) throw new Error("content_session_ended");
-  if (error) {
+  if (error) {if(rateLimitMessage(error))throw error;
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
     if (version !== contentSessionVersion) throw new Error("content_session_ended");
-    if (name === "get-content-quality-dashboard" && (!payload?.error || payload.error === "content_quality_dashboard_failed" || payload.error.endsWith("_query_failed"))) {
+    if (name === "get-content-quality-dashboard" && (!payload?.error || payload.error === "content_quality_dashboard_failed" || payload.error.endsWith("_query_failed"))) {if(rateLimitMessage(payload?.error))throw payload?.error;
       throw new Error("Չհաջողվեց թարմացնել հարցերի և QA-ի տվյալները։ Սեղմեք «Թարմացնել»․ կրկին QA գործարկելու կարիք չկա, եթե հարցը չեք փոխել։");
     }
     throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
   }
-  if (data?.error) throw new Error(data.detail || data.error);
+  if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(data.detail || data.error)));
   return data;
 }
 
@@ -180,9 +181,9 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
         if (current !== version) return;
         if (authMessage) authMessage.textContent = "";
         gate?.classList.remove("hidden");
-      } catch {
+      } catch(rateError) {
         if (current !== version) return;
-        if (authMessage) authMessage.textContent = "Այս բաժինը հասանելի չէ այս հաշվին կամ տվյալները ժամանակավորապես չեն բեռնվում։";
+        if (authMessage) authMessage.textContent = (rateLimitMessage(rateError) ?? ("Այս բաժինը հասանելի չէ այս հաշվին կամ տվյալները ժամանակավորապես չեն բեռնվում։"));
         authPanel?.classList.remove("hidden");
       }
     })().finally(() => {

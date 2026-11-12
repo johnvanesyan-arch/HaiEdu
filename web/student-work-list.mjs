@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 // My work as one list: teacher tasks, writing assignments and material assignments
 // from the read-only get-student-work endpoint, newest first, with exact counts.
 // Opening an item reuses each source's own flow (the teacher-task workspace,
@@ -56,8 +57,8 @@ export function mountStudentWorkList({root,client,actorId,onFallback,onClean=()=
   return openers[kind];
  }
  async function request(state){
-  const {data,error}=await client.functions.invoke('get-student-work',{body:{action:'inbox',payload:{state}}});
-  if(error||!data||data.error||data.version!=='student-work-v1'){let code=data?.error,status=Number(error?.context?.status??0);try{code||=(await error?.context?.json())?.error;}catch{}throw Object.assign(Error(code||'service_unavailable'),{status});}
+  const {data,error}=await invokeRateAware(client,'get-student-work',{body:{action:'inbox',payload:{state}}});
+  if(error||!data||data.error||data.version!=='student-work-v1'){if(rateLimitMessage(error))throw error;let code=data?.error,status=Number(error?.context?.status??0);try{code||=(await error?.context?.json())?.error;}catch{}throw Object.assign(Error(code||'service_unavailable'),{status});}
   return data;
  }
  function counts(){
@@ -88,11 +89,11 @@ export function mountStudentWorkList({root,client,actorId,onFallback,onClean=()=
    if($('[data-work-history]').open)void loadHistory();
   }catch(e){
    if(!alive||ticket!==generation)return;
-   if(e.message==='student_work_forbidden'||e.status===401||e.status===403){message('Մուտք գործեք ձեր հաշիվ՝ աշխատանքները տեսնելու համար։',true);return;}
+   if(e.message==='student_work_forbidden'||e.status===401||e.status===403){message((rateLimitMessage(e) ?? ('Մուտք գործեք ձեր հաշիվ՝ աշխատանքները տեսնելու համար։')),true);return;}
    // The combined list is an enhancement: without it, show the three source sections.
    // Never while a teacher task is open: falling back would discard its unsaved work.
    if(!current&&!taskView){dispose();onFallback();return;}
-   message('Չհաջողվեց թարմացնել։ Ցուցադրվում է վերջին բեռնված ցուցակը։',true);
+   message((rateLimitMessage(e) ?? ('Չհաջողվեց թարմացնել։ Ցուցադրվում է վերջին բեռնված ցուցակը։')),true);
   }finally{if(alive&&ticket===generation){busy=false;root.removeAttribute('aria-busy');}}
  }
  async function loadHistory(){
@@ -111,7 +112,7 @@ export function mountStudentWorkList({root,client,actorId,onFallback,onClean=()=
   const kind=item.source==='writing'?'writing':'material',o=opener(kind);busy=true;
   const button=root.querySelector(`[data-work-open="${key}"]`);if(button)button.disabled=true;
   try{await o.ready;await o.open(item.row,text=>message(text));}
-  catch(e){if(alive&&!/stale/.test(e.message))message(o.message(e),true);}
+  catch(e){if(alive&&!/stale/.test(e.message))message((rateLimitMessage(e) ?? (o.message(e))),true);}
   finally{busy=false;if(button?.isConnected)button.disabled=false;}
  }
  const click=e=>{

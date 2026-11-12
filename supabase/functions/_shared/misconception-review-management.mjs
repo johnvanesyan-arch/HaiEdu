@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const headers = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const actions = new Set(['list', 'detail', 'save_draft', 'request_changes', 'approve']);
@@ -9,7 +10,7 @@ function claims(token) {
   try { const part = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'); return JSON.parse(atob(part.padEnd(Math.ceil(part.length / 4) * 4, '='))); }
   catch { return {}; }
 }
-export function createMisconceptionReviewHandler({ createAdmin, hasActiveLiveSession, env }) {
+export function createMisconceptionReviewHandler({ createAdmin, hasActiveLiveSession, env ,rateBudget=enforceRateBudget,rateBudgetRoute="manage-misconception-reviews"}) {
   return async (req) => {
     if (req.method === 'OPTIONS') return json({});
     if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
@@ -22,6 +23,8 @@ export function createMisconceptionReviewHandler({ createAdmin, hasActiveLiveSes
       if (authError || !user?.user?.id) return json({ error: 'unauthorized' }, 401);
       const actorId = user.user.id;
       if (!(await hasActiveLiveSession(admin, token, actorId))) return json({ error: 'account_or_session_inactive' }, 403);
+   const rateDenied=await rateBudget(req,admin,actorId,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
       const { data: profile, error: profileError } = await admin.from('profiles').select('role, account_status').eq('id', actorId).maybeSingle();
       if (profileError) return json({ error: 'review_service_unavailable' }, 503);
       if (profile?.account_status !== 'active' || !['admin','content_admin'].includes(profile.role)) return json({ error: 'content_authoring_role_required' }, 403);

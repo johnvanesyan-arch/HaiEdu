@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { showSignOutNotice } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -68,7 +69,7 @@ function message(id, text, error = false) {
 async function routeByRole(messageId = "loginMessage") {
   const { data: auth, error: authError } = await supabase.auth.getUser();
   const id = auth.user?.id;
-  if (authError || !id) { show("loginPanel"); return message("loginMessage", "Չհաջողվեց հաստատել մուտքը։ Փորձեք կրկին։", true); }
+  if (authError || !id) { show("loginPanel"); return message("loginMessage", (rateLimitMessage(authError) ?? ("Չհաջողվեց հաստատել մուտքը։ Փորձեք կրկին։")), true); }
   const { data: profile, error: profileError } = await supabase.from("profiles")
     .select("role,account_status").eq("id", id).maybeSingle();
   if (profileError || !profile || !roleDestination(profile.role)) {
@@ -125,7 +126,7 @@ $("loginForm").addEventListener("submit", async (event) => {
     if (error) throw error;
     await routeByRole();
   } catch (error) {
-    message("loginMessage", authErrorMessage(error, "login"), true);
+    message("loginMessage", (rateLimitMessage(error) ?? (authErrorMessage(error, "login"))), true);
   } finally { challenge?.finish(); button.disabled = false; }
 });
 $("registerForm").addEventListener("submit", async (event) => {
@@ -147,7 +148,7 @@ $("registerForm").addEventListener("submit", async (event) => {
     if (!data.session) return message("registerMessage", "Եթե այս հասցեով հաստատման նամակ եք ստացել, բացեք այն, ապա մուտք գործեք։");
     await routeByRole("registerMessage");
   } catch (error) {
-    message("registerMessage", authErrorMessage(error, "register"), true);
+    message("registerMessage", (rateLimitMessage(error) ?? (authErrorMessage(error, "register"))), true);
   } finally { challenge?.finish(); button.disabled = false; }
 });
 $("registerBackBtn").addEventListener("click", () => {
@@ -180,16 +181,16 @@ $("studentInviteForm").addEventListener("submit", async (event) => {
       if (passwordError) throw passwordError;
     }
     stage = "invitation";
-    const { data, error } = await supabase.functions.invoke("complete-student-invitation", {
+    const { data, error } = await invokeRateAware(supabase,"complete-student-invitation", {
       body: { token: enrollmentToken, displayName, acceptanceVersion: "student-school-access-v1" },
     });
     if (error || data?.completed !== true) {
-      return message("studentInviteMessage", "Հրավերը չի գործում, ժամկետանց է կամ արդեն օգտագործվել է։ Խնդրեք դպրոցին ուղարկել նոր հրավեր։", true);
+      return message("studentInviteMessage", (rateLimitMessage(error) ?? ("Հրավերը չի գործում, ժամկետանց է կամ արդեն օգտագործվել է։ Խնդրեք դպրոցին ուղարկել նոր հրավեր։")), true);
     }
     sessionStorage.removeItem(studentInvitationKey);
     await routeByRole("studentInviteMessage");
   } catch (error) {
-    message("studentInviteMessage", authErrorMessage(error, stage), true);
+    message("studentInviteMessage", (rateLimitMessage(error) ?? (authErrorMessage(error, stage))), true);
   } finally { button.disabled = false; }
 });
 $("showResetBtn").addEventListener("click", () => {
@@ -217,7 +218,7 @@ $("resetForm").addEventListener("submit", async (event) => {
     if (error) throw error;
     message("resetMessage", "Եթե այս էլ. հասցեով հաշիվ կա, ստուգեք փոստը՝ վերականգնման հղման համար։");
   } catch (error) {
-    message("resetMessage", authErrorMessage(error, "reset"), true);
+    message("resetMessage", (rateLimitMessage(error) ?? (authErrorMessage(error, "reset"))), true);
   } finally { challenge?.finish(); button.disabled = false; }
 });
 $("passwordForm").addEventListener("submit", async (event) => {
@@ -231,18 +232,18 @@ $("passwordForm").addEventListener("submit", async (event) => {
   try {
     const { error } = await supabase.auth.updateUser({ password });
     if (error) throw error;
-    const { error: activationError } = await supabase.functions.invoke("accept-staff-account", { body: {} });
+    const { error: activationError } = await invokeRateAware(supabase,"accept-staff-account", { body: {} });
     if (activationError) {
       const { data: auth } = await supabase.auth.getUser();
       const { data: profile } = await supabase.from("profiles").select("role")
         .eq("id", auth.user?.id ?? "00000000-0000-0000-0000-000000000000").maybeSingle();
       if (flowHint === "invite" || (flowHint !== "recovery" && profile?.role === "student")) {
-        return message("passwordMessage", "Գաղտնաբառը պահվեց, բայց հրավերը չի ակտիվացել։ Կապվեք հրավիրող ադմինիստրատորի հետ։", true);
+        return message("passwordMessage", (rateLimitMessage(activationError) ?? ("Գաղտնաբառը պահվեց, բայց հրավերը չի ակտիվացել։ Կապվեք հրավիրող ադմինիստրատորի հետ։")), true);
       }
     }
     await routeByRole("passwordMessage");
   } catch (error) {
-    message("passwordMessage", authErrorMessage(error, "password"), true);
+    message("passwordMessage", (rateLimitMessage(error) ?? (authErrorMessage(error, "password"))), true);
   } finally { button.disabled = false; }
 });
 

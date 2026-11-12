@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -195,7 +196,7 @@ function fixture({ page = "school", hash = "", authorized = true, terminal = nul
   window.scrollTo = () => {};
   window.setTimeout = callback => timers.push(callback);
   window.requestIdleCallback = callback => timers.push(callback);
-  const context = vm.createContext({ document, window, location, URL, URLSearchParams, MutationObserver });
+  const context = vm.createContext(Object.assign({ document, window, location, URL, URLSearchParams, MutationObserver },rateFeedbackBindings));
 
   function flush(maxDeliveries = 64) {
     let deliveries = 0;

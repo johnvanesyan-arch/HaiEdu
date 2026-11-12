@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { $, esc, contentSupabase as supabase, invokeContent, clearContentDashboardCache } from './content-workspace.js';
 
@@ -45,7 +46,7 @@ function message(text = '', bad = false) { $('mcMessage').textContent = text; $(
 function dirty() { return Boolean(detail && $('mcTitle') && ($('mcTitle').value !== detail.definition.title_hy || $('mcDescription').value !== (detail.definition.description_hy || ''))); }
 function discardOkay() { return !dirty() || window.confirm('Չպահպանված փոփոխությունները կկորչեն։ Շարունակե՞լ։'); }
 function current(a, d = detailEpoch) { return a === authEpoch && d === detailEpoch && Boolean(userId); }
-function reviewError(error) { return errors[error.message] || 'Գործողությունը չհաջողվեց։ Ստուգեք կապը և կրկին փորձեք։'; }
+function reviewError(error) {if(rateLimitMessage(error))return rateLimitMessage(error); return errors[error.message] || 'Գործողությունը չհաջողվեց։ Ստուգեք կապը և կրկին փորձեք։'; }
 function controls() {
   const editable = detail?.definition.status === 'draft' && !stale;
   for (const el of document.querySelectorAll('#mcFilters input,#mcFilters select,#mcFilters button,#mcList button,#mcPrev,#mcNext')) el.disabled = busy;
@@ -78,7 +79,7 @@ async function list(prefetched = null) {
     $('mcResultCount').textContent = total ? `${offset+1}–${Math.min(offset+50,total)} / ${total}` : 'Այս զտիչներով սահմանում չի գտնվել։';
     $('mcList').innerHTML = result.definitions.map(d=>`<button type="button" class="mc-row" data-mc-id="${esc(d.id)}" aria-pressed="${d.id===selectedId}"><strong>${esc(d.title_hy)}</strong><small>${esc(d.skill_code)} · ${esc(d.subject_name_hy)} · ${esc(d.grade_label_hy)}</small><small>${esc(d.last_action==='request_changes' && d.status==='draft' ? actionLabel.request_changes : statusLabel[d.status])} · Կապված պատասխաններ՝ ${Number(d.mapping_count)}</small></button>`).join('');
     controls();
-  } catch(error) { if(a===authEpoch && epoch===listEpoch) { $('mcResultCount').textContent='Ցանկը չի բեռնվել։'; message(reviewError(error),true); } }
+  } catch(error) { if(a===authEpoch && epoch===listEpoch) { $('mcResultCount').textContent='Ցանկը չի բեռնվել։'; message((rateLimitMessage(error) ?? (reviewError(error))),true); } }
 }
 function renderDetail(result) {
   detail = result; stale = false;
@@ -104,7 +105,7 @@ async function openDetail(id) {
   $('mcDetail').innerHTML='<p>Սահմանումը բեռնվում է…</p>';message();
   for(const row of document.querySelectorAll('[data-mc-id]')) row.setAttribute('aria-pressed',String(row.dataset.mcId===id));
   try { const result=await invokeContent(endpoint,{action:'detail',id}); if(current(a,d)) renderDetail(result); }
-  catch(error){if(current(a,d)){$('mcDetail').innerHTML='<p>Սահմանումը չի բեռնվել։</p><button type="button" id="mcReloadDetail" class="ghost">Կրկին փորձել</button>';message(reviewError(error),true);}}
+  catch(error){if(current(a,d)){$('mcDetail').innerHTML='<p>Սահմանումը չի բեռնվել։</p><button type="button" id="mcReloadDetail" class="ghost">Կրկին փորձել</button>';message((rateLimitMessage(error) ?? (reviewError(error))),true);}}
 }
 async function mutate(action) {
   if(busy || !detail || stale || detail.definition.status!=='draft')return;
@@ -122,7 +123,7 @@ async function mutate(action) {
     const result=await invokeContent(endpoint,{action,id,expectedToken:detail.expectedToken,titleHy:$('mcTitle').value,descriptionHy:$('mcDescription').value,reason});
     if(!current(a,d))return;
     clearContentDashboardCache(userId);renderDetail(result);message(actionLabel[action]);await list();
-  }catch(error){if(current(a,d)){if(['stale_misconception_review','active_definition_read_only'].includes(error.message))stale=true;message(reviewError(error),true);}}
+  }catch(error){if(current(a,d)){if(['stale_misconception_review','active_definition_read_only'].includes(error.message))stale=true;message((rateLimitMessage(error) ?? (reviewError(error))),true);}}
   finally{if(a===authEpoch){busy=false;controls();}}
 }
 async function closeMfa(){
@@ -159,10 +160,10 @@ async function showMfa(a){
         const {error:verifyError}=await supabase.auth.mfa.challengeAndVerify({factorId,code:$('mcMfaCode').value.trim()});if(verifyError)throw verifyError;
         forgetFactor(factorId);
         if(a!==authEpoch || epoch!==mfaEpoch)return;enrollment=null;await closeMfa();message('Մուտքը հաստատված է։ Այժմ կարող եք հաստատել ընտրված սահմանումը։');
-      }catch{if(a===authEpoch && epoch===mfaEpoch)$('mcMfaMessage').textContent='Կոդը չընդունվեց։ Ստուգեք այն և կրկին փորձեք։';}
+      }catch(rateError){if(a===authEpoch && epoch===mfaEpoch)$('mcMfaMessage').textContent=(rateLimitMessage(rateError) ?? ('Կոդը չընդունվեց։ Ստուգեք այն և կրկին փորձեք։'));}
       finally{if(a===authEpoch && epoch===mfaEpoch){mfaBusy=false;form.querySelector('button').disabled=false;}}
     });$('mcMfaBody').append(form);$('mcMfaCode').focus();
-  }catch{if(a===authEpoch && epoch===mfaEpoch)$('mcMfaMessage').textContent='Չհաջողվեց կարգավորել հաստատումը։ Փակեք պատուհանը և կրկին փորձեք։';}
+  }catch(rateError){if(a===authEpoch && epoch===mfaEpoch)$('mcMfaMessage').textContent=(rateLimitMessage(rateError) ?? ('Չհաջողվեց կարգավորել հաստատումը։ Փակեք պատուհանը և կրկին փորձեք։'));}
 }
 function reset(){
   ++authEpoch;++listEpoch;++detailEpoch;userId=null;detail=null;selectedId=null;busy=false;stale=false;offset=0;total=0;
@@ -178,7 +179,7 @@ async function showSession(session,{force=false}={}){
     if(a!==authEpoch || !userId)return;
     if(!probe?.actor)throw new Error('unauthorized');
     $('authPanel').classList.add('hidden');$('console').classList.remove('hidden');$('signOutBtn').classList.remove('hidden');$('authMessage').textContent='';await list(probe);
-  }catch{if(a===authEpoch){$('authMessage').textContent='Այս բաժինը հասանելի չէ այս հաշվին կամ տվյալները չեն բեռնվում։';userId=null;}}
+  }catch(rateError){if(a===authEpoch){$('authMessage').textContent=(rateLimitMessage(rateError) ?? ('Այս բաժինը հասանելի չէ այս հաշվին կամ տվյալները չեն բեռնվում։'));userId=null;}}
 }
 $('mcFilters').addEventListener('submit',event=>{event.preventDefault();if(!busy){offset=0;void list();}});
 $('mcClear').addEventListener('click',()=>{if(busy)return;for(const id of ids)$(id).value='';$('mcSearch').value='';$('mcStatus').value='draft';offset=0;void list();});

@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -70,12 +72,12 @@ async function invokePrivacy(role) {
 
   const source = readFileSync("supabase/functions/get-my-privacy/index.ts", "utf8")
     .replace(/^import .*;\n/gm, "");
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     createClient: () => client,
     Deno: { env: { get: () => "configured" }, serve: (fn) => { handler = fn; } },
     Response,
     console,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request("https://test.invalid", {
     method: "POST",
     headers: { Authorization: "Bearer test" },

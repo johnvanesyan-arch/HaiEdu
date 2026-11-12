@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -84,13 +85,13 @@ function helpFixture() {
     calls.push(call);
     return call.promise;
   } } };
-  const context = vm.createContext({
+  const context = vm.createContext(Object.assign({
     document: { getElementById: id => nodes.get(id) || null, createElement: () => new Element(), head: new Element() },
     window: {}, createClient: () => supabase,
     SUPABASE_URL: "https://example.invalid", SUPABASE_PUBLISHABLE_KEY: "fixture",
     MutationObserver, HTMLInputElement: Element,
     focusHint, hintConflictMessage, hintRefreshLabel, invokeForHint,
-  });
+  },rateFeedbackBindings));
   vm.runInContext(`${remediationSource}\n;globalThis.testController = { requestHelp, syncHelpVisibility, setRemediationQuestion };`, context, { timeout: 1000 });
   function flush() {
     let deliveries = 0;

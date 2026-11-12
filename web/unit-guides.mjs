@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 
 // teaching-guide-v1 is an explicit content capability, available in any programme.
@@ -10,15 +11,15 @@ export function mountUnitGuides({root,supabase,context,isCurrent=()=>true}){
   if(disposed||!isCurrent()||busy||document.visibilityState==='hidden')return;
   busy=true;const n=++request;refresh.disabled=true;body.textContent='Ուղեցույցները բեռնվում են…';
   try{
-   const {data,error}=await supabase.functions.invoke('get-unit-guides',{body:context});
+   const {data,error}=await invokeRateAware(supabase,'get-unit-guides',{body:context});
    if(!valid(n))return;
-   if(error||data?.guidesVersion!=='unit-guides-v1'||!Array.isArray(data.guides))throw Error('unavailable');
+   if(error||data?.guidesVersion!=='unit-guides-v1'||!Array.isArray(data.guides))throw (rateLimitMessage(error) ? error : (Error('unavailable')));
    if(data.availability==='diagnostic_required'){body.textContent='Ուղեցույցները կբացվեն այս գլխի ախտորոշիչն ավարտելուց հետո։';return;}
    if(data.availability==='assessment_active'){body.textContent='Ուղեցույցները հասանելի չեն ընթացիկ ստուգման ժամանակ։ Նախ ավարտեք ստուգումը։';return;}
    if(data.availability!=='available'||data.guides.some(g=>g.schemaVersion!=='teaching-guide-v1'))throw Error('unsupported');
    if(!data.guides.length){body.textContent='Այս գլխի համար հրապարակված ուղեցույց դեռ չկա։';return;}
    body.innerHTML='<ol class="unit-guide-list">'+data.guides.map(g=>`<li><details class="unit-guide" data-guide-id="${esc(g.id)}"><summary><span lang="${esc(g.locale)}">${esc(g.title)}</span></summary><div class="unit-guide-content"><p lang="${esc(g.locale)}">${esc(g.text)}</p><h3>Օրինակ</h3><p lang="${esc(g.locale)}">${esc(g.workedExample)}</p></div></details></li>`).join('')+'</ol>';
-  }catch{if(valid(n))body.textContent='Չհաջողվեց բեռնել ուղեցույցները։ Սեղմեք «Թարմացնել»՝ կրկին փորձելու համար։';}
+  }catch(rateError){if(valid(n))body.textContent=(rateLimitMessage(rateError) ?? ('Չհաջողվեց բեռնել ուղեցույցները։ Սեղմեք «Թարմացնել»՝ կրկին փորձելու համար։'));}
   finally{if(valid(n)){busy=false;refresh.disabled=false;}}
  }
  function hide(){++request;busy=false;body.replaceChildren();refresh.disabled=false;}

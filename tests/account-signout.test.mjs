@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createClient} from '@supabase/supabase-js';
@@ -39,7 +40,7 @@ test('all three legacy learner startup checks retain sessions on transient ident
   const fn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='initialize').getText(ast);
   let signouts=0,retries=0,reads=0;
   const client={auth:{getSession:async()=>({data:{session:{user:{id:'synthetic'},access_token:'synthetic'}}}),getUser:async()=>({data:{user:null},error:{code:'unexpected_failure',status:503}})}};
-  const ctx=vm.createContext({supabase:client,isChapterReview:false,readPracticeBootstrap:()=>null,isTerminalAuthError,signOutAccount:()=>signouts++,showSessionReadFailure:()=>retries++,retryInitialize(){},loadProgress:()=>reads++,loadSubject:()=>reads++,window:{location:{replace(){throw Error('Unexpected redirect');}}}});
+  const ctx=vm.createContext(Object.assign({supabase:client,isChapterReview:false,readPracticeBootstrap:()=>null,isTerminalAuthError,signOutAccount:()=>signouts++,showSessionReadFailure:()=>retries++,retryInitialize(){},loadProgress:()=>reads++,loadSubject:()=>reads++,window:{location:{replace(){throw Error('Unexpected redirect');}}}},rateFeedbackBindings));
   await vm.runInContext(fn+';initialize()',ctx);assert.equal(signouts,0,name);assert.equal(reads,0,name);assert.equal(retries,1,name);
  }
 });
