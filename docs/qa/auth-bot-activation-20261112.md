@@ -1,5 +1,7 @@
 # BF-15 — Turnstile activation candidate and limited Gmail pilot
 
+**Subsequent verified release:** Owner-approved PR474 is merged and live, with server verification recorded separately. See the [release record](auth-bot-activation-release-20261112.md). The earlier candidate and pending-step descriptions below remain historical.
+
 12 November 2026 (Asia/Yerevan), based on verified main `04e84efe4f78768805f982d71660bfd7dbd511f5`. This follow-up is a prepared frontend candidate, not a merged release or confirmed server-settings change. The owner chose free Turnstile, supplied its public site key, requested exact steps in existing dashboard tabs, and selected the existing Gmail sender for a limited first pilot.
 
 Owner usability acceptance: not given.

@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "Functional frontend and free server verification live and verified; documentation closure prepared",
+  "pr": 474,
+  "functionalSource": "b3cc1dce2bbca8a31803b59c2866c1688e608d7a",
+  "approvedHead": "18c0cf36ede512f806c32c400869ca580183f95a",
+  "tree": "7b4cc65dbf27f774d251b2f6d6bb43408f7b1111",
+  "approvedAndMergedTreesIdentical": true,
+  "prCi": {
+    "run": 43194654488,
+    "head": "18c0cf36ede512f806c32c400869ca580183f95a",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 131102374017,
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131102374284,
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131102374520,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131102374639,
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131106555619,
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "unit": {
+      "tests": 1803,
+      "pass": 1803,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "nativeBrowser": {
+      "tests": 679,
+      "pass": 679,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "scope": "Required isolated GitHub CI on the approved functional head"
+  },
+  "mainCi": {
+    "run": 43198563333,
+    "attempt": 1,
+    "requiredJobs": {
+      "test": "success",
+      "role-layout-browser": "success",
+      "phase3-postgres-17": "success",
+      "institutional-concurrency": "success",
+      "Platform release checks": "success"
+    },
+    "unit": {
+      "tests": 1803,
+      "pass": 1803,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "nativeBrowser": {
+      "tests": 679,
+      "pass": 679,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "build": {
+    "id": "470d8aa7b00f04e2f08f0649878d6640ad18262e1322456c1a1d318bbd6e400a",
+    "pagesPerDomain": 29,
+    "currentImmutableAssetsPerDomain": 126,
+    "publishedArchivesRetained": true
+  },
+  "hosted": {
+    "observedAt": "2026-11-12T10:26:10.137Z",
+    "domains": [
+      {
+        "baseUrl": "https://haiedu.am",
+        "commit": "b3cc1dce2bbca8a31803b59c2866c1688e608d7a",
+        "buildId": "470d8aa7b00f04e2f08f0649878d6640ad18262e1322456c1a1d318bbd6e400a",
+        "pages": 29,
+        "assets": 126
+      },
+      {
+        "baseUrl": "https://www.haiedu.am",
+        "commit": "b3cc1dce2bbca8a31803b59c2866c1688e608d7a",
+        "buildId": "470d8aa7b00f04e2f08f0649878d6640ad18262e1322456c1a1d318bbd6e400a",
+        "pages": 29,
+        "assets": 126
+      },
+      {
+        "baseUrl": "https://armenian-mastery-platform.vercel.app",
+        "commit": "b3cc1dce2bbca8a31803b59c2866c1688e608d7a",
+        "buildId": "470d8aa7b00f04e2f08f0649878d6640ad18262e1322456c1a1d318bbd6e400a",
+        "pages": 29,
+        "assets": 126
+      }
+    ],
+    "staticRequests": 719,
+    "metadataRequests": 12,
+    "checks": "Exact source, manifest, page/asset hashes, MIME, cache and security headers; enforcing browser policy",
+    "scope": "Static reads only; no script execution, sign-in or backend request by these checks",
+    "manualPromotionOrAliasChange": false
+  },
+  "invitationService": {
+    "version": 5,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "entrypointMatches": true,
+    "unchangedSharedHelperMatches": true,
+    "redeployed": false,
+    "freshProductionDeliveryExercised": false
+  },
+  "serverCaptcha": {
+    "ownerSaved": "Turnstile enabled and matching Secret Key saved directly in Supabase",
+    "administrativeApiReadback": false,
+    "privateKeyReceivedByAgent": false,
+    "negativeChecks": [
+      {
+        "kind": "missing-token",
+        "status": 400,
+        "code": "captcha_failed",
+        "sessionReturned": false
+      },
+      {
+        "kind": "invalid-token",
+        "status": 400,
+        "code": "captcha_failed",
+        "sessionReturned": false
+      },
+      {
+        "kind": "recovery-missing-token",
+        "status": 400,
+        "code": "captcha_failed",
+        "sessionReturned": false
+      }
+    ],
+    "positiveCheck": {
+      "ownerReported": "Expected conditional recovery confirmation after real fresh Cloudflare Success",
+      "independentGatewayStatus": 200,
+      "liveSiteSdkRequest": true,
+      "privilegedAuthorization": false,
+      "identityMatchesBefore": 0,
+      "identityMatchesAfter": 0,
+      "realRecipient": false
+    },
+    "scope": "Bounded non-account recovery and negative authentication requests; no account sign-in/signup, real email delivery or production QA workflow"
+  },
+  "pilot": {
+    "ownerChoice": "Existing Gmail sender for limited first pilot",
+    "selectedProjectEmailBudget": "Owner confirms saved; detailed live setting retained privately",
+    "realGmailThroughputQualified": false,
+    "simultaneousFirstTimeClassroomSetupQualified": false,
+    "pacing": "Complete invitation/setup before lessons and stagger classroom sign-ins",
+    "billingChange": false
+  },
+  "retainedAttempts": [
+    "Earlier source-regression, narrow-layout and external-provider-browser failures remain retained",
+    "Initial direct checker used numeric status instead of error_code; harness corrected, original record retained",
+    "Earlier real-token rejections retained; final check passes after matching-key save and fresh page, exact original configuration cause unconfirmed"
+  ],
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "triggered": 13,
+    "skipped": 13,
+    "manualDispatches": 0,
+    "automation": "Owner-excluded; compatible login setup required before resumption"
+  },
+  "ownerUsability": {
+    "horizontalBar": "accepted",
+    "widerAccountFlows": "not given"
+  },
+  "remaining": [
+    "Optional paid stolen-password decision",
+    "Real-email/classroom rollout qualification",
+    "Broader account-flow usability",
+    "BF16 shared application limiter and existing independent/content gates remain separate"
+  ]
+}
