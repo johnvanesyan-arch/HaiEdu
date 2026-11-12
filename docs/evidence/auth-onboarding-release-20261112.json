@@ -1,0 +1,2869 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "stage": "functional release verified on both canonical domains; documentation closure pending",
+  "functionalPr": 472,
+  "functionalSource": "4f3ff0d19596f2de2304d03d88f321f2c83ddba2",
+  "approvedHead": "11a6335490cec01d79a9ff8c13ac626905f10a7b",
+  "reviewedAndMergedTree": "0587fb5a8f57ae7fb4e5e63710a1a0a9bfb815a4",
+  "reviewedTreePreserved": true,
+  "passwordPolicy": {
+    "minimumActualCharacters": 6,
+    "longerPasswordsAllowed": true,
+    "applicationTwelveCharacterCap": false,
+    "providerException": "Owner-approved application character rule with provider limitation retained privately; identical provider Unicode enforcement is not claimed"
+  },
+  "requiredCi": {
+    "pullRequest": {
+      "run": 43099044502,
+      "attempt": 1,
+      "allFiveJobs": "passed",
+      "unitIntegration": {
+        "tests": 1803,
+        "passed": 1803,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "nativeChromium": {
+        "tests": 674,
+        "passed": 674,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    "mergedSource": {
+      "run": 43158316460,
+      "attempt": 1,
+      "allFiveJobs": "passed",
+      "unitIntegration": {
+        "tests": 1803,
+        "passed": 1803,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "nativeChromium": {
+        "tests": 674,
+        "passed": 674,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    }
+  },
+  "edgeDeployment": {
+    "function": "provision-student-account",
+    "previousVersion": 4,
+    "version": 5,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "entrypointByteExact": true,
+    "sharedAuthHelperByteExact": true,
+    "sharedAuthHelperChanged": false,
+    "otherFunctionsDeployed": false,
+    "files": [
+      {
+        "name": "provision-student-account/index.ts",
+        "sha256": "d83fd9759e65d92ff1085fede2adbe860ba9f66931fa65c36c0ad275893d3d9f",
+        "bytes": 9023
+      },
+      {
+        "name": "_shared/auth.ts",
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "bytes": 1061
+      }
+    ]
+  },
+  "canonicalStaticVerification": {
+    "status": "passed",
+    "source": "4f3ff0d19596f2de2304d03d88f321f2c83ddba2",
+    "deployment": "dpl_EiexUvyWvRWAJyZmnAueGonw1ob7",
+    "domains": [
+      {
+        "baseUrl": "https://haiedu.am",
+        "commit": "4f3ff0d19596f2de2304d03d88f321f2c83ddba2",
+        "buildId": "aa58bbac5bffa4e201b208434e4e0b602c1d628a77637b7d21ca081c17c36ae9",
+        "pages": 29,
+        "assets": 126
+      },
+      {
+        "baseUrl": "https://www.haiedu.am",
+        "commit": "4f3ff0d19596f2de2304d03d88f321f2c83ddba2",
+        "buildId": "aa58bbac5bffa4e201b208434e4e0b602c1d628a77637b7d21ca081c17c36ae9",
+        "pages": 29,
+        "assets": 126
+      }
+    ],
+    "metadataReads": [
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      }
+    ],
+    "staticReads": [
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/admin.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/account-access.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/assessment.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/admin-security.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-bank.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin-security.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/account-access.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/assessment.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-curriculum.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-curriculum.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/account-access",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-bank.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin-security",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/assessment",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-bank",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-curriculum",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-misconceptions.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-review.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-materials.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-item.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-guides.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content-evidence.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-materials.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-guides.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-review.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-misconceptions.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-evidence.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-item.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-misconceptions",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-review",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-materials",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-guides",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-evidence",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-item",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/mastery.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/course.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/index.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/content.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/join.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/mastery.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/index.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/diagnostic.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/course.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/join.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/diagnostic.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/mastery",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/course",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/join",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/diagnostic",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/progress.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/resource-library.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/materials.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/privacy.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/physics-7.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/progress.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/practice.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/resource-library.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/materials.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/privacy.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/practice.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/physics-7.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/progress",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/resource-library",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/privacy",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/materials",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/practice",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/physics-7",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/school-admin.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/account-access-7LIPLNSA.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/teacher-workspace-preview.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/school-teacher.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/teacher.html",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/teacher-workflows.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-admin.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workspace-preview.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-teacher.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workflows.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/account-access-7LIPLNSA.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-admin",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workspace-preview",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-teacher",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workflows",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/account-access-DA37SHWC.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/admin-security-IYK2ZCVW.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/admin-VCSQCAVE.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/admin-TKVZGCBY.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/admin-security-2XZTY6FT.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/app-RLXNAI33.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/account-access-DA37SHWC.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-VCSQCAVE.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-security-2XZTY6FT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-security-IYK2ZCVW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-TKVZGCBY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/app-RLXNAI33.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/base-QRMLSLIF.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/assessment-task-DSMRRM4M.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/components-FKVPVA6X.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/assessment-AOHQCLDT.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/assessment-I2UB7WND.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/auth-challenge-SYBJ3KS6.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/base-QRMLSLIF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/auth-challenge-SYBJ3KS6.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-task-DSMRRM4M.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/components-FKVPVA6X.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-I2UB7WND.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-AOHQCLDT.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-6UCIOIY4.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-curriculum-HRZO6OWH.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-curriculum-7QVRS2Q7.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-guides-LD4PO6CO.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-curriculum-map-6XGRQC2V.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-evidence-page-NO2KWK65.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-6UCIOIY4.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-7QVRS2Q7.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-HRZO6OWH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-map-6XGRQC2V.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-evidence-page-NO2KWK65.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-guides-LD4PO6CO.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-guides-NVGEZVLP.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-materials-5BJ3KXGT.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-home-COYXO22S.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-misconceptions-CM5WYBFY.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-misconceptions-O4JIJMUF.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-materials-IP3IMNMS.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-guides-NVGEZVLP.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-misconceptions-CM5WYBFY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-home-COYXO22S.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-materials-5BJ3KXGT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-misconceptions-O4JIJMUF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-materials-IP3IMNMS.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-O32X3QQY.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-review-workflow-GJF7BMJQ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-pilot-analytics-7PY5537L.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-review-TGG3CYGJ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/course-page-PY62GVB6.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/content-workspace-OEM5JCGT.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-O32X3QQY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-pilot-analytics-7PY5537L.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-review-workflow-GJF7BMJQ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-review-TGG3CYGJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-workspace-OEM5JCGT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/course-page-PY62GVB6.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/diagnostic-T23CBRWG.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/home-class-ZX2C54GL.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/join-KXPNRKDF.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/home-VCXJ3AB6.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/course-workspace-3LKFRZV6.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/forest-tokens-PHQMDKG3.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/diagnostic-T23CBRWG.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/home-VCXJ3AB6.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/home-class-ZX2C54GL.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/forest-tokens-PHQMDKG3.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/join-KXPNRKDF.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/course-workspace-3LKFRZV6.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/materials-page-7GQNLAWU.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/multi-subject-2LCRVJW7.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/mastery-L7A7CYAR.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/physics-7-4DI2QB6A.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/noto-sans-armenian-variable-TTSIYCDV.ttf",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/materials-page-7GQNLAWU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/multi-subject-2LCRVJW7.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/physics-7-4DI2QB6A.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/mastery-L7A7CYAR.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/noto-sans-armenian-variable-TTSIYCDV.ttf",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/practice-XM6IC4J6.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/physics-7-T34MKSRT.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/progress-ATV5XFWF.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/privacy-UGV7BAJT.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/practice-PJR2ABOU.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/privacy-CDDTBYU4.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/practice-XM6IC4J6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/physics-7-T34MKSRT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/progress-ATV5XFWF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/privacy-UGV7BAJT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/practice-PJR2ABOU.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/privacy-CDDTBYU4.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/resource-assignments-P2CQULLK.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/role-layout-Y7ZG3NIU.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/role-layout-KJKKZJRJ.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/progress-ZTCVHYEO.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/responsive-qa-QX32ARRV.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/remediation-ZO3BPHJR.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-layout-Y7ZG3NIU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/resource-assignments-P2CQULLK.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-layout-KJKKZJRJ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/remediation-ZO3BPHJR.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/responsive-qa-QX32ARRV.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/progress-ZTCVHYEO.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/session-watchdog-BKUEKGDI.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/school-admin-36TCIKXJ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/role-router-3RD4Z2XV.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/school-teacher-V6ICLPNF.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/school-admin-DL2AXRAC.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/school-teacher-5LFL2GBQ.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-admin-36TCIKXJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-router-3RD4Z2XV.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-teacher-V6ICLPNF.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-teacher-5LFL2GBQ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-admin-DL2AXRAC.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/session-watchdog-BKUEKGDI.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-2C5QJHFW.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-2S3Z3G4T.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-4ZNA7UTM.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-5H7T6EYT.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-226WBVLT.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-3ST3WQ4V.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-2S3Z3G4T.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-2C5QJHFW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-4ZNA7UTM.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-3ST3WQ4V.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-5H7T6EYT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-226WBVLT.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-6OFAYA74.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-E2RYMBV6.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-7RVQCZXK.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-CXD25HK7.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-CFKK5H7G.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-AOHFE3PZ.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-E2RYMBV6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-6OFAYA74.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-7RVQCZXK.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-CXD25HK7.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-CFKK5H7G.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-AOHFE3PZ.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-EJQDSPG6.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-F5SEXZNJ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-FGGAZXF2.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-GGZEDX2N.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-HB2V2XUR.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-F6UBGUSM.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-EJQDSPG6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-GGZEDX2N.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-FGGAZXF2.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-F5SEXZNJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-HB2V2XUR.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-F6UBGUSM.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-HMMDDP6B.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-JB4IWHJH.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-IVLSUYVL.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-J5OAIOL3.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-LELF3NI6.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-L4QVY2LH.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-HMMDDP6B.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-IVLSUYVL.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-JB4IWHJH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-L4QVY2LH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-J5OAIOL3.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LELF3NI6.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-LN2Z3T5F.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-LW4QUHYJ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-LU2M5S7W.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-ND7GJ5AG.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-OXSWS2H5.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-NLFBVCCY.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LU2M5S7W.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ND7GJ5AG.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LW4QUHYJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-OXSWS2H5.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LN2Z3T5F.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-NLFBVCCY.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-OZKO6444.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-SBQDBI7G.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-SSDV4YZQ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-Q6S2FGUP.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-P5SYSTF4.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-SBQDBI7G.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-SSDV4YZQ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-Q6S2FGUP.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-TKJE6WRJ.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-P5SYSTF4.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-TKJE6WRJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-OZKO6444.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-UVHAC5IJ.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-UXUHTCWN.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-W2EAZEXU.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-UMZ3QPX4.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-YHH575T2.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-X7USMAEH.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UVHAC5IJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UXUHTCWN.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-YHH575T2.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UMZ3QPX4.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-W2EAZEXU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-X7USMAEH.js",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/student-forest-6Y5DLWUS.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-ZSQNV5D5.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/staff-forest-SFBTK7XO.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/student-shell-OK3LGJPW.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-ZBU5LVV3.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/shared-YSRRNOOY.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-forest-6Y5DLWUS.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/staff-forest-SFBTK7XO.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ZSQNV5D5.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-YSRRNOOY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ZBU5LVV3.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-shell-OK3LGJPW.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/styles-T4TKJNSY.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/student-shell-T3DTBPQN.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-dependencies.bundle-RPGWI7CE.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/student-surfaces-VMNWXW2U.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-FZSWO227.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/supplementary-resources-CE5S7CLA.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/styles-T4TKJNSY.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-shell-T3DTBPQN.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-surfaces-VMNWXW2U.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/supplementary-resources-CE5S7CLA.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-dependencies.bundle-RPGWI7CE.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-FZSWO227.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-today-N7NG7USZ.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-UM4QN4LL.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-MKQNFG7L.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-workflows-TV6TZFOC.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-IHPELTTH.js",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-today-N7NG7USZ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workflows-TV6TZFOC.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-MKQNFG7L.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-IHPELTTH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-UM4QN4LL.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/ux-FFXEA6D5.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/tokens-CRMQSGAY.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/ux-4ZR7CTZW.js",
+        "status": 308
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/_assets/written-work-7XVQLYUX.css",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/ux-FFXEA6D5.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/ux-4ZR7CTZW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/written-work-7XVQLYUX.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/tokens-CRMQSGAY.css",
+        "status": 200
+      },
+      {
+        "host": "haiedu.am",
+        "path": "/release.json",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/asset-manifest.json",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-curriculum.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/account-access.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/assessment.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin-security.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-bank.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/account-access",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin-security",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/admin",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-curriculum",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-bank",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/assessment",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-guides.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-review.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-item.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-materials.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-misconceptions.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-evidence.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-guides",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-review",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-materials",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-misconceptions",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-item",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content-evidence",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/diagnostic.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/index.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/mastery.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/join.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/course.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/content",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/diagnostic",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/mastery",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/join",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/course",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/physics-7.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/materials.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/privacy.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/practice.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/progress.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/resource-library.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/physics-7",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/privacy",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/materials",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/practice",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/progress",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/resource-library",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-admin.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-teacher.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workspace-preview.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workflows.html",
+        "status": 308
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-admin",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/school-teacher",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workspace-preview",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/teacher-workflows",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/account-access-7LIPLNSA.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-security-2XZTY6FT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/account-access-DA37SHWC.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-TKVZGCBY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/app-RLXNAI33.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-VCSQCAVE.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/admin-security-IYK2ZCVW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/auth-challenge-SYBJ3KS6.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/components-FKVPVA6X.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/base-QRMLSLIF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-AOHQCLDT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-I2UB7WND.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/assessment-task-DSMRRM4M.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-map-6XGRQC2V.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-guides-LD4PO6CO.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-evidence-page-NO2KWK65.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-6UCIOIY4.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-HRZO6OWH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-curriculum-7QVRS2Q7.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-materials-IP3IMNMS.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-misconceptions-CM5WYBFY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-materials-5BJ3KXGT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-misconceptions-O4JIJMUF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-guides-NVGEZVLP.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-home-COYXO22S.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-O32X3QQY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-pilot-analytics-7PY5537L.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-review-workflow-GJF7BMJQ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-workspace-OEM5JCGT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/course-page-PY62GVB6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/content-review-TGG3CYGJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/diagnostic-T23CBRWG.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/course-workspace-3LKFRZV6.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/home-VCXJ3AB6.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/home-class-ZX2C54GL.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/join-KXPNRKDF.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/forest-tokens-PHQMDKG3.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/multi-subject-2LCRVJW7.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/noto-sans-armenian-variable-TTSIYCDV.ttf",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/physics-7-4DI2QB6A.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/mastery-L7A7CYAR.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/materials-page-7GQNLAWU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/physics-7-T34MKSRT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/privacy-UGV7BAJT.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/practice-PJR2ABOU.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/privacy-CDDTBYU4.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/practice-XM6IC4J6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/progress-ATV5XFWF.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/resource-assignments-P2CQULLK.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/progress-ZTCVHYEO.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/remediation-ZO3BPHJR.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/responsive-qa-QX32ARRV.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-layout-Y7ZG3NIU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-layout-KJKKZJRJ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-admin-36TCIKXJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/session-watchdog-BKUEKGDI.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-teacher-5LFL2GBQ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-teacher-V6ICLPNF.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/school-admin-DL2AXRAC.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/role-router-3RD4Z2XV.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-5H7T6EYT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-226WBVLT.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-4ZNA7UTM.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-2C5QJHFW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-3ST3WQ4V.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-2S3Z3G4T.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-CFKK5H7G.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-7RVQCZXK.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-6OFAYA74.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-AOHFE3PZ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-E2RYMBV6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-CXD25HK7.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-EJQDSPG6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-F6UBGUSM.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-FGGAZXF2.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-HB2V2XUR.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-GGZEDX2N.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-F5SEXZNJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-HMMDDP6B.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-J5OAIOL3.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-JB4IWHJH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-IVLSUYVL.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-L4QVY2LH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LELF3NI6.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LN2Z3T5F.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LU2M5S7W.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ND7GJ5AG.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-OXSWS2H5.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-NLFBVCCY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-LW4QUHYJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-OZKO6444.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-Q6S2FGUP.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-P5SYSTF4.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-SBQDBI7G.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-TKJE6WRJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-SSDV4YZQ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UXUHTCWN.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-W2EAZEXU.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-YHH575T2.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UVHAC5IJ.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-X7USMAEH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-UMZ3QPX4.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-YSRRNOOY.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ZBU5LVV3.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/shared-ZSQNV5D5.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/staff-forest-SFBTK7XO.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-shell-OK3LGJPW.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-forest-6Y5DLWUS.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-dependencies.bundle-RPGWI7CE.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/supplementary-resources-CE5S7CLA.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/styles-T4TKJNSY.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-surfaces-VMNWXW2U.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-FZSWO227.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/student-shell-T3DTBPQN.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-MKQNFG7L.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-IHPELTTH.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-today-N7NG7USZ.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workspace-preview-UM4QN4LL.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/teacher-workflows-TV6TZFOC.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/written-work-7XVQLYUX.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/tokens-CRMQSGAY.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/ux-FFXEA6D5.css",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/_assets/ux-4ZR7CTZW.js",
+        "status": 200
+      },
+      {
+        "host": "www.haiedu.am",
+        "path": "/release.json",
+        "status": 200
+      }
+    ],
+    "metadataRequestCount": 9,
+    "staticRequestCount": 532,
+    "observedAt": "2026-11-12T05:10:07.734Z",
+    "hashesMatch": true,
+    "mimeCacheAndSecurityHeadersMatch": true,
+    "enforcingBrowserPolicy": true,
+    "pageScriptsExecuted": false,
+    "signIns": 0,
+    "supabaseRequests": 0
+  },
+  "browserBuildId": "aa58bbac5bffa4e201b208434e4e0b602c1d628a77637b7d21ca081c17c36ae9",
+  "captcha": {
+    "provider": "turnstile",
+    "enabled": false,
+    "publicSiteKeyConfigured": false,
+    "realKeyVerification": "pending separately approved provider setup/activation"
+  },
+  "capacityPlan": "Prepared privately; no new live limits selected",
+  "liveAuthSettingsChanged": false,
+  "schemaChanges": 0,
+  "billingChanges": 0,
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "triggeredRuns": 13,
+    "skippedRuns": 13,
+    "manualDispatches": 0,
+    "affectedSuites": [
+      "mobile browser",
+      "teacher feedback",
+      "resource assignments",
+      "Sprint 14 institutional actions",
+      "Sprint 14d analytics",
+      "Chapter II pilot read",
+      "Chapter III pilot read",
+      "Chapter IV pilot read",
+      "Chapter V pilot read",
+      "Chapter VI pilot read",
+      "English Unit 1 pilot read",
+      "English Unit 2 pilot read",
+      "English Unit 3 pilot read"
+    ]
+  },
+  "productionSignIns": 0,
+  "productionEmailsSent": 0,
+  "productionDatabaseWrites": 0,
+  "manualHostingPromotions": 0,
+  "domainAssignments": 0,
+  "ownerUsabilityAcceptance": "not given",
+  "remainingGates": [
+    "Real-key provider setup and verification",
+    "Separate CAPTCHA activation decision and trusted automation compatibility review",
+    "Classroom capacity inputs and explicit decision before any live limit changes",
+    "Separate optional paid-plan decision for known-leaked-password rejection"
+  ],
+  "additionalSecurityAnalyses": {
+    "run": 43158315976,
+    "actions": "passed",
+    "python": "passed",
+    "javascriptTypescript": "passed",
+    "zeroFindingsClaim": false
+  }
+}

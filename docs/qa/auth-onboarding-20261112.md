@@ -1,5 +1,7 @@
 # BF-15 — account policy and bot-protection preparation
 
+**Subsequent release:** Owner-approved PR472 is merged, live and source verified. See the [12 November release record](auth-onboarding-release-20261112.md). The preparation and earlier-run evidence below remains historical.
+
 Prepared 12 November 2026 (Asia/Yerevan), against merged baseline `9c326d1c5c1a8f53f268f1946f35e488d5baeff5`. This is a functional candidate, not a merged release or a live-settings change.
 
 The owner approved a minimum of six actual characters, longer passwords allowed, and the remaining account-feedback, classroom-capacity and bot-protection preparation. The managed provider's character-counting limitation has a separately recorded owner disposition; identical Unicode enforcement by the provider is not claimed. Detailed configuration findings and that disposition remain in the private audit.
