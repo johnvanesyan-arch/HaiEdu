@@ -75,7 +75,8 @@ export function createAuthChallenge(config, { document: doc, window: win } = {})
       if (!current()) return;
       widget = provider.render(widgetRoot, {
         sitekey: config.siteKey,
-        size: "compact",
+        size: "normal",
+        appearance: "always",
         theme: "auto",
         "response-field": false,
         retry: "never",

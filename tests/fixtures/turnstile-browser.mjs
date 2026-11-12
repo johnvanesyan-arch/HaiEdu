@@ -9,7 +9,8 @@ export function installSyntheticTurnstile() {
       const id = String(++sequence);
       const frame = document.createElement('iframe');
       frame.title = 'Synthetic security check';
-      frame.width = '150'; frame.height = '140';
+      frame.width = options.size === 'compact' ? '150' : '300';
+      frame.height = options.size === 'compact' ? '140' : '65';
       target.append(frame);
       widgets.set(id, { target, options });
       window.__syntheticTurnstile.renders.push(id);

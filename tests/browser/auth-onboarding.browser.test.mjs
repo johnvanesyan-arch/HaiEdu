@@ -57,7 +57,9 @@ async function fixture(t, { view = 'login', code = 'weak_password', thrown = fal
         render(target, options) {
           const id = String(c.renders.length + 1);
           const frame = document.createElement('iframe');
-          frame.title = 'Synthetic security check'; frame.width = '150'; frame.height = '140';
+          frame.title = 'Synthetic security check';
+          frame.width = options.size === 'compact' ? '150' : '300';
+          frame.height = options.size === 'compact' ? '140' : '65';
           target.append(frame); c.renders.push({ id, options, target, pageUrl: location.href }); return id;
         },
         remove(id) { c.removed.push(id); c.renders.find(x => x.id === id)?.target.replaceChildren(); },
@@ -355,9 +357,15 @@ test('an old account recovery reply cannot replace new-account feedback or reset
   await p.evaluate(() => window.__authFixture.release());
   await expect(p.locator('#passwordChangeMessage')).toContainText('սահմանաչափ');
 });
-test('password hints and compact challenges reflow on phones and desktops at doubled text', async t => {
-  for (const view of ['login', 'register', 'reset', 'recovery', 'invitation']) for (const width of [375, 1280]) {
-    const p = await fixture(t, { view, challenge: true }); await p.setViewportSize({ width, height: 900 });
+test('password hints and visible horizontal challenges reflow on phones and desktops at doubled text', async t => {
+  const cases = [
+    ...['login', 'register', 'reset', 'recovery', 'invitation'].map(view => ({ view })),
+    ...['student', 'teacher', 'school_admin', 'content_admin', 'admin'].map(role => ({ view: 'privacy', role })),
+  ];
+  for (const context of cases) for (const width of [320, 375, 1280]) {
+    const { view, role } = context;
+    const p = await fixture(t, { ...context, challenge: true }); await p.setViewportSize({ width, height: 900 });
+    if (view === 'privacy') await p.locator('#changePasswordBtn').click();
     for (const scale of [1, 2]) {
       if (scale === 2) await p.evaluate(() => {
         const original = [...document.querySelectorAll('body, body *')].filter(n => n instanceof HTMLElement)
@@ -369,7 +377,17 @@ test('password hints and compact challenges reflow on phones and desktops at dou
       });
       await p.evaluate(() => document.fonts.ready);
       const geometry = await p.evaluate(() => ({ width: innerWidth, scroll: document.documentElement.scrollWidth }));
-      assert.ok(geometry.scroll <= geometry.width + 1, `${view} at ${width}/${scale}: ${JSON.stringify(geometry)}`);
+      const label = `${view}/${role || 'entry'} at ${width}/${scale}`;
+      assert.ok(geometry.scroll <= geometry.width + 1, `${label}: ${JSON.stringify(geometry)}`);
+      for (const frame of await p.locator('[data-auth-challenge] iframe').all()) {
+        const rect = await frame.boundingBox();
+        const card = await frame.evaluate(n => {
+          const box = n.closest('.auth-card, .privacy-security-form').getBoundingClientRect();
+          return { left: box.left, right: box.right };
+        });
+        assert.ok(rect.height <= 70 && rect.width > rect.height * 3, `${label}: widget stays a thin bar`);
+        assert.ok(rect.x >= card.left && rect.x + rect.width <= card.right, `${label}: complete provider bar stays inside its card`);
+      }
     }
   }
 });
