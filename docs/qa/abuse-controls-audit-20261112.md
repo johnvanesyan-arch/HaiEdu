@@ -1,5 +1,7 @@
 # BF-16 — abuse controls that preserve classroom access
 
+**Subsequent first-stage implementation:** the [isolated counter and verification](abuse-controls-core-20261112.md) are now prepared. This audit preserves the earlier proposal checkpoint; its implementation-not-started wording below is historical. Live integration/activation remains open.
+
 12 November 2026 (Asia/Yerevan). Audit and implementation proposal, based on merged source `fffe31abb188ff88e6746b2b8216c1472abf1737`. This is the first BF-16 deliverable: review existing protections and propose suitable limits. The limiter is not implemented, merged, deployed or enabled by this record. Production configuration is unchanged. Owner usability acceptance: not given.
 
 John requested BF-16 after the verified BF-15 free bot-protection release. He also explicitly declined paid stolen-password protection again. That paid feature is an owner-declined option, not a pending purchase or an outstanding BF-15 decision. Real-email delivery, representative classroom qualification and broader account-flow usability remain separate open work.

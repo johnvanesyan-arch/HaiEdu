@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "Isolated counter implemented and locally verified; exact-head CI required before merge",
+  "baseSource": "fffe31abb188ff88e6746b2b8216c1472abf1737",
+  "auditParent": "b2173cb29ad799a31c1122bcfc644634c228e12f",
+  "scope": "Shared subject-neutral isolated SQL foundation; no live consumer integration",
+  "core": "supabase/proposals/bf16_actor_rate_limiter_core.sql",
+  "registeredMigration": false,
+  "productionApplied": false,
+  "currentEdgeConsumers": 0,
+  "focusedEmbeddedSql": {
+    "tests": 13,
+    "pass": 13,
+    "fail": 0,
+    "attempt": 1
+  },
+  "realPostgres": {
+    "version": "17.6",
+    "checks": 14,
+    "pass": 14,
+    "fail": 0,
+    "attempt": 1,
+    "logicalActors": 120,
+    "maximumWorkerConnections": 24,
+    "codeRaceAllowed": 10,
+    "emailBatchSize": 20,
+    "allowedEmailBatches": 5,
+    "realRecipientsOrMail": 0
+  },
+  "negativeControl": {
+    "scope": "Private deliberately defective in-memory SQL clone",
+    "missingActorLockAccepted": 40,
+    "expectedMaximum": 10,
+    "defectDetected": true,
+    "defectiveSqlCommitted": false
+  },
+  "fullRepositoryTests": {
+    "attempt": 1,
+    "tests": 1816,
+    "pass": 1816,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "exactHeadCi": "Required before merge; see PR476 checks",
+  "productionQa": "not run (paused by owner)",
+  "affectedProductionQa": [],
+  "production": {
+    "requests": 0,
+    "writes": 0,
+    "migrations": 0,
+    "edgeDeploys": 0,
+    "signIns": 0,
+    "emails": 0,
+    "workflowDispatches": 0
+  },
+  "paidStolenPasswordProtection": "owner declined; no purchase/activation pending",
+  "ownerUsability": "not given; no UI changed",
+  "remaining": [
+    "All 65 route/action consumers and deployed readback",
+    "Reviewed migration and deployment",
+    "HTTP/browser wait-retry integration",
+    "Real-provider shared-IP Auth and representative staging classroom qualification",
+    "Operational storage/WAL and cleanup qualification"
+  ],
+  "files": {
+    "supabase/proposals/bf16_actor_rate_limiter_core.sql": "b56f95a134848159a3678b4f08a7d515f3ccace22d2d4fd74582cb620302c6f5",
+    "tests/actor-rate-limiter.test.mjs": "71eade1d73a928e3b2bb1b14e173081aa44dffc4495a91aab4318ee9c10516ee",
+    "tests/actor-rate-limiter-concurrency.py": "bf7b1157f68e7f34deba0db3e5fa456354fab1ba62d1ecd60a138ad9fab2a8be",
+    "tests/fixtures/actor-rate-limiter.mjs": "c8655ce1cff20629fa6f664127a2d453c2986ca09417c5e20e38b7896482c50a",
+    "tests/fixtures/actor-rate-limiter.sql": "5a69b4e4a5446e4d409baece9c4b89810f319a983c39e63b0e45c2bd5f56720d",
+    "tests/fixtures/actor_rate_postgres.py": "6eaa03eb6f8c52d41fcddc8b8b7f56fc6810aef76f24d1a9b65cca4e4174cb1b"
+  },
+  "verificationLimits": [
+    "No production installation, consumer integration or Auth-provider/classroom throughput proof",
+    "A registered migration, target-schema rehearsal and relevant Supabase advisor checks remain future delivery work"
+  ]
+}
