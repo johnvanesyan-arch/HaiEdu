@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "prepared frontend candidate; not merged or server-enforced",
+  "baselineSource": "04e84efe4f78768805f982d71660bfd7dbd511f5",
+  "scope": "Shared subject-neutral account entry and recovery; public key only; no server, schema, Edge, content or billing changes",
+  "build": {
+    "id": "40e72da3e927bba054f24abbbc338ce86e622986fba5f6403470e70dbe8d96aa",
+    "pages": 29,
+    "currentImmutableAssets": 126,
+    "publishedArchivesPreserved": true,
+    "teacherBundleInputsChanged": false
+  },
+  "localVerification": {
+    "codeIntegration": {
+      "tests": 1803,
+      "pass": 1803,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 313559.949955,
+      "logSha256": "ccb76ded701da8390a1218c66d177669907440dfea01e776c862fc8ccb2de42f"
+    },
+    "nativeAuthAccount": {
+      "tests": 86,
+      "pass": 86,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 44852.543081,
+      "logSha256": "264df990b59b668a112fd13eb7d98d2ff28bbf9f5d44e2b4395058d5e2469ad9"
+    },
+    "nativeCompiledSecurity": {
+      "tests": 90,
+      "pass": 90,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 53658.874011,
+      "logSha256": "6c5bf7db4ef74704eaaccb575e0d7e83a4251d0da0128f2ceba86e000dc367c4"
+    }
+  },
+  "sourceCheckExitCodes": {
+    "core-parity": 0,
+    "browser-sdk": 0,
+    "teacher-bundle": 0,
+    "web-assets": 0,
+    "qa-triggers": 0,
+    "typecheck": 0,
+    "syntax": 0,
+    "privacy-syntax": 0
+  },
+  "nativeFixtureScope": "Actual controllers and compiled pages in native Chromium; synthetic Auth replies and provider callbacks. Native persisted-page events are dispatched; actual back-forward-cache eligibility is not qualified.",
+  "priorSourceRegressions": {
+    "enabledConfiguration": {
+      "tests": 1,
+      "expectedFailures": 1
+    },
+    "authLinkAndAccountCleanup": {
+      "tests": 7,
+      "expectedFailures": 7
+    },
+    "repeatedPersistedLifecycle": {
+      "tests": 2,
+      "expectedFailures": 2
+    },
+    "earlierAttempts": "Retained privately, including provider-browser certificate failures; not counted as passing"
+  },
+  "provider": {
+    "siteverifyDummyKeyChecks": [
+      {
+        "kind": "pass",
+        "status": 200,
+        "success": true,
+        "codes": [],
+        "expectedSuccess": true,
+        "expectedError": null,
+        "passed": true
+      },
+      {
+        "kind": "fail",
+        "status": 200,
+        "success": false,
+        "codes": [
+          "invalid-input-response"
+        ],
+        "expectedSuccess": false,
+        "expectedError": "invalid-input-response",
+        "passed": true
+      },
+      {
+        "kind": "spent",
+        "status": 200,
+        "success": false,
+        "codes": [
+          "timeout-or-duplicate"
+        ],
+        "expectedSuccess": false,
+        "expectedError": "timeout-or-duplicate",
+        "passed": true
+      }
+    ],
+    "actualOwnerKeyVerified": false,
+    "externalBrowser": "Certificate error; no TLS verification bypass. Owner normal-browser observation pending."
+  },
+  "pilot": {
+    "ownerChoice": "Existing Gmail sender, limited first pilot",
+    "emailBudget": "Proposed only; no live save/readback",
+    "localEmailBudget": {
+      "proposedPerHour": 200,
+      "accepted": 200,
+      "nextStatus": 429,
+      "capturedOnlyLocally": 200
+    },
+    "localPacedPasswordSignIns": {
+      "requests": 100,
+      "accepted": 100,
+      "nonSuccessStatuses": [],
+      "seconds": 158.514,
+      "configuredRefillPerFiveMinutes": 150,
+      "scope": "Password sign-in only; initial invitation-link verification and signup still require separate pacing"
+    },
+    "localInstantPasswordSignIns": {
+      "requests": 100,
+      "accepted": 30,
+      "rateLimited": 70,
+      "seconds": 1.258,
+      "configuredRefillPerFiveMinutes": 150,
+      "documentedBurstCapacity": 30
+    },
+    "fixtureScope": "Disposable reported-version Auth/PostgreSQL/local SMTP. CAPTCHA disabled solely to isolate rate behavior. No real mail, live password-login, or real-key enforcement qualification.",
+    "firstTimeSignupAndLinkVerificationQualified": false,
+    "liveGmailThroughputQualified": false,
+    "cleanup": {
+      "containersRemoved": true,
+      "networkRemoved": true
+    }
+  },
+  "productionQa": {
+    "status": "not run (paused by owner)",
+    "ownerDisposition": "Explicitly disregarded production QA for this work; remains excluded and unqualified",
+    "directPasswordScripts": 17,
+    "workflowsUsingThem": 18,
+    "resumptionGate": "Compatible sign-in design review before any later dispatch or automatic resumption; no privileged bypass",
+    "workflowDispatches": 0,
+    "requiredIsolatedCi": "All five exact-head jobs still required before merge"
+  },
+  "releaseGates": [
+    "All five exact-head required CI jobs",
+    "Owner normal-browser real-widget observation",
+    "Specific PR merge approval and fresh no-other-agent release confirmation",
+    "All five main checks and both canonical frontend source/build readbacks",
+    "Only then owner-assisted Supabase provider-secret entry, activation and real-key server check",
+    "Separate owner-assisted pilot email save/readback"
+  ],
+  "productionSettingsChanged": false,
+  "billingChanged": false,
+  "paidStolenPasswordProtection": "Undecided; no upgrade authorized",
+  "ownerUsabilityAcceptance": "not given"
+}

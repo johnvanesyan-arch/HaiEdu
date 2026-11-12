@@ -9,6 +9,7 @@ import { serveWeb, installSignedOutClient } from '../fixtures/built-web-server.m
 import { installStudentHomeFixture } from '../fixtures/student-home-fixture.mjs';
 import { installTeacherPerformanceFixture } from '../fixtures/teacher-performance-browser.mjs';
 import { mobileNavigationLayout } from '../../scripts/mobile-navigation-layout.mjs';
+import { installSyntheticTurnstile } from '../fixtures/turnstile-browser.mjs';
 
 let browser, server, manifest;
 before(async () => {
@@ -21,6 +22,7 @@ after(async () => { await browser?.close(); await server?.close(); });
 async function pageFor(t, install = installSignedOutClient, argument, contextOptions = {}) {
   const context = await browser.newContext(contextOptions); t.after(() => context.close());
   const page = await context.newPage(); page.setDefaultTimeout(8000);
+  await page.addInitScript(installSyntheticTurnstile);
   const errors = [], external = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('request', request => { if (new URL(request.url()).origin !== server.origin) external.push(request.url()); });

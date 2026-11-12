@@ -12,11 +12,11 @@ before(async () => { browser = await chromium.launch({ headless: true }); });
 after(async () => { await browser?.close(); });
 
 async function fixture(t, { view = 'login', code = 'weak_password', thrown = false, held = false,
-  challenge = false, role = 'student', badConfig = false, providerLoad = 'ready' } = {}) {
+  challenge = false, role = 'student', badConfig = false, providerLoad = 'ready', configMode = 'fixture', heldSession = false } = {}) {
   const context = await browser.newContext({ viewport: { width: 375, height: 900 }, reducedMotion: 'reduce' });
   t.after(() => context.close());
   const unexpected = [];
-  await context.addInitScript(({ view, code, thrown, held, challenge, role, providerLoad }) => {
+  await context.addInitScript(({ view, code, thrown, held, challenge, role, providerLoad, heldSession }) => {
     const actor = '00000000-0000-4000-8000-000000000001';
     const initial = ['recovery', 'invitation', 'privacy'].includes(view);
     const listeners = [];
@@ -36,7 +36,10 @@ async function fixture(t, { view = 'login', code = 'weak_password', thrown = fal
       return { data: { role: state.role, account_status: 'active', display_name: 'Synthetic learner' }, error: null };
     } };
     window.__haieduSupabaseClient = { auth: {
-      getSession: async () => ({ data: { session: state.session }, error: null }),
+      getSession: async () => {
+        if (heldSession) await new Promise(resolve => { state.releaseInitial = resolve; });
+        return { data: { session: state.session }, error: null };
+      },
       getUser: async () => ({ data: { user: state.session ? { id: state.session.user.id, email: 'synthetic@example.invalid' } : null }, error: null }),
       onAuthStateChange(cb) { listeners.push(cb); return { data: { subscription: { unsubscribe() {} } } }; },
       signInWithPassword: args => reply('login', args),
@@ -61,7 +64,7 @@ async function fixture(t, { view = 'login', code = 'weak_password', thrown = fal
       };
     };
     if (challenge && providerLoad === 'ready') window.__installSyntheticChallenge();
-  }, { view, code, thrown, held, challenge, role, providerLoad });
+  }, { view, code, thrown, held, challenge, role, providerLoad, heldSession });
   let providerRequests = 0, releaseProvider;
   const csp = JSON.parse(await readFile(new URL('../../vercel.json', import.meta.url))).headers
     .find(h => h.source === '/(.*)').headers.find(h => h.key === 'Content-Security-Policy').value;
@@ -77,8 +80,8 @@ async function fixture(t, { view = 'login', code = 'weak_password', thrown = fal
     let name = url.pathname.slice(1);
     if (name === 'account-access') name += '.html';
     if (name === 'config.js') return route.fulfill({ contentType: 'text/javascript', body: 'export const SUPABASE_URL="https://synthetic.invalid";export const SUPABASE_PUBLISHABLE_KEY="synthetic-key";' });
-    if (name === 'auth-challenge-config.mjs') return route.fulfill({ contentType: 'text/javascript', body: `export const AUTH_CHALLENGE={enabled:${challenge},provider:"turnstile",siteKey:${JSON.stringify(badConfig ? '' : 'synthetic-key')}};` });
-    if (['index.html', 'teacher.html', 'school-admin', 'content.html', 'admin.html'].includes(name)) return route.fulfill({ contentType: 'text/html', body: '<p>Authorized destination</p>' });
+    if (name === 'auth-challenge-config.mjs' && configMode !== 'actual') return route.fulfill({ contentType: 'text/javascript', body: `export const AUTH_CHALLENGE={enabled:${challenge},provider:"turnstile",siteKey:${JSON.stringify(badConfig ? '' : 'synthetic-key')}};` });
+    if (['index.html', 'join.html', 'teacher.html', 'school-admin', 'content.html', 'admin.html'].includes(name)) return route.fulfill({ contentType: 'text/html', body: '<p>Authorized destination</p>' });
     try {
       const path = resolve(root, name);
       if (!path.startsWith(resolve(root) + '/')) throw Error('Unexpected local path');
@@ -90,8 +93,8 @@ async function fixture(t, { view = 'login', code = 'weak_password', thrown = fal
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
-  const query = ({ login: '', register: '?view=register', reset: '?view=reset', recovery: '?type=recovery', invitation: '?type=invite&student_invitation=synthetic-invitation', 'pending-invitation': '?student_invitation=synthetic-private-invitation' })[view] || '';
-  await page.goto(origin + (view === 'privacy' ? '/privacy.html' : '/account-access') + query, { waitUntil: providerLoad === 'hold' ? 'domcontentloaded' : 'networkidle' });
+  const query = ({ login: '', register: '?view=register', reset: '?view=reset', recovery: '?type=recovery', invitation: '?type=invite&student_invitation=synthetic-invitation', 'pending-invitation': '?student_invitation=synthetic-private-invitation&view=register', 'pending-auth': '?code=synthetic-auth-code&student_invitation=synthetic-private-invitation#access_token=synthetic-access&refresh_token=synthetic-refresh&type=recovery', 'join-login': '?next=join&code=%20abcd1234%20' })[view] || '';
+  await page.goto(origin + (view === 'privacy' ? '/privacy.html' : '/account-access') + query, { waitUntil: heldSession ? 'commit' : providerLoad === 'hold' ? 'domcontentloaded' : 'networkidle' });
   page.__providerFixture = { requests: () => providerRequests, release: () => releaseProvider?.() };
   if (view === 'privacy') await expect(page.locator('#content')).toBeVisible();
   t.after(() => { assert.deepEqual(unexpected, [], 'all services are synthetic and requests stay intercepted'); assert.deepEqual(errors, []); });
@@ -107,6 +110,80 @@ async function fill(page, view, password = 'abcdef', confirmation = password) {
 }
 const form = view => ({ login: '#loginForm', register: '#registerForm', reset: '#resetForm', recovery: '#passwordForm', invitation: '#studentInviteForm' })[view];
 const message = view => ({ login: '#loginMessage', register: '#registerMessage', reset: '#resetMessage', recovery: '#passwordMessage', invitation: '#studentInviteMessage' })[view];
+
+test('live public configuration requires a challenge before credential submission', async t => {
+  const p = await fixture(t, { challenge: true, configMode: 'actual' });
+  await expect(p.locator('[data-auth-challenge]')).toBeVisible();
+  await fill(p, 'login');
+  await p.locator('#loginForm button[type=submit]').click();
+  assert.equal(await p.evaluate(() => window.__authFixture.calls.length), 0);
+  await expect(p.locator('#loginMessage')).toContainText('անվտանգության ստուգումը');
+  await p.evaluate(() => window.__challengeFixture.renders[0].options.callback('synthetic-live-config-token'));
+  await p.locator('#loginForm button[type=submit]').click();
+  await expect.poll(() => p.evaluate(() => window.__authFixture.calls.length)).toBe(1);
+  assert.equal(await p.evaluate(() => window.__authFixture.calls[0].args.options.captchaToken), 'synthetic-live-config-token');
+  assert.match(await p.evaluate(() => window.__challengeFixture.renders[0].options.sitekey), /^0x/);
+});
+
+test('initial Auth link processing finishes before a challenge can observe its credentials', async t => {
+  const p = await fixture(t, { view: 'pending-auth', challenge: true, heldSession: true });
+  await expect.poll(() => p.evaluate(() => typeof window.__authFixture?.releaseInitial)).toBe('function');
+  await p.locator('#showResetBtn').click();
+  await expect(p.locator('#loginPanel')).toBeVisible();
+  assert.equal(await p.evaluate(() => window.__challengeFixture.renders.length), 0);
+  assert.ok(new URL(p.url()).hash.includes('synthetic-access'), 'SDK link data remains until its initial read completes');
+  await fill(p, 'login'); await p.locator('#loginForm button[type=submit]').click();
+  assert.equal(await p.evaluate(() => window.__authFixture.calls.length), 0);
+  await p.evaluate(() => window.__authFixture.releaseInitial());
+  await expect.poll(() => p.evaluate(() => window.__challengeFixture.renders.length)).toBe(1);
+  assert.equal(new URL(p.url()).hash, '');
+  assert.equal(new URL(p.url()).searchParams.has('code'), false);
+  assert.equal(await p.evaluate(() => /synthetic-access|synthetic-refresh|synthetic-auth-code|synthetic-private-invitation/.test(window.__challengeFixture.renders[0].pageUrl)), false);
+});
+
+test('challenge startup preserves the valid class-join return route', async t => {
+  const p = await fixture(t, { view: 'join-login', challenge: true, code: null, configMode: 'actual' });
+  await expect(p.locator('[data-auth-challenge]')).toBeVisible();
+  assert.equal(new URL(p.url()).searchParams.get('code'), ' abcd1234 ');
+  await fill(p, 'login');
+  await p.evaluate(() => {
+    window.__authFixture.session = { user: { id: '00000000-0000-4000-8000-000000000001' } };
+    window.__challengeFixture.renders[0].options.callback('synthetic-join-token');
+  });
+  await p.locator('#loginForm button[type=submit]').click();
+  await p.waitForURL('**/join.html?code=ABCD1234');
+});
+
+test('persisted page lifecycle restores one account-entry challenge without multiplying submissions', async t => {
+  const p = await fixture(t, { challenge: true }); await fill(p, 'login');
+  for (let i = 0; i < 2; i++) {
+    await p.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
+    await expect(p.locator('[data-auth-challenge]')).toHaveCount(0);
+    await p.evaluate(() => window.__challengeFixture.renders.at(-1).options.callback('late-cached-token'));
+    await p.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+    await expect(p.locator('[data-auth-challenge]')).toHaveCount(1);
+    await expect(p.locator('#loginEmail')).toHaveValue('synthetic@example.invalid');
+    await p.locator('#loginForm button[type=submit]').click();
+    assert.equal(await p.evaluate(() => window.__authFixture.calls.length), 0);
+  }
+  await p.evaluate(() => window.__challengeFixture.renders.at(-1).options.callback('fresh-restored-token'));
+  await p.locator('#loginForm button[type=submit]').click();
+  await expect.poll(() => p.evaluate(() => window.__authFixture.calls.length)).toBe(1);
+});
+
+test('shared-account challenges are cleared on every persisted pagehide cycle', async t => {
+  for (const role of ['student', 'teacher', 'admin']) {
+    const p = await fixture(t, { view: 'privacy', role, challenge: true });
+    for (let i = 0; i < 2; i++) {
+      await p.locator('#changePasswordBtn').click();
+      await expect(p.locator('[data-auth-challenge]')).toHaveCount(1);
+      await p.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
+      await expect(p.locator('[data-auth-challenge]')).toHaveCount(0);
+      await p.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+    }
+    assert.equal(await p.evaluate(() => window.__authFixture.calls.length), 0);
+  }
+});
 
 test('new password controls advertise six characters without a twelve-character cap', async t => {
   for (const view of ['register', 'recovery', 'invitation']) {
@@ -204,6 +281,10 @@ test('a pending invitation is kept out of the URL before a provider can observe 
   assert.equal(new URL(p.url()).searchParams.has('student_invitation'), false);
   assert.equal(await p.evaluate(() => sessionStorage.getItem('haiedu:student-invitation')), 'synthetic-private-invitation');
   assert.equal(await p.evaluate(() => window.__challengeFixture.renders[0].pageUrl.includes('synthetic-private-invitation')), false);
+  await p.locator('#registerBackBtn').click();
+  await expect.poll(() => p.evaluate(() => window.__challengeFixture.renders.length)).toBe(2);
+  assert.equal(new URL(p.url()).searchParams.has('student_invitation'), false);
+  assert.equal(await p.evaluate(() => window.__challengeFixture.renders.some(r => r.pageUrl.includes('synthetic-private-invitation'))), false);
 });
 test('enabled challenge with missing public configuration fails closed', async t => {
   const p = await fixture(t, { challenge: true, badConfig: true }); await fill(p, 'login');
@@ -234,8 +315,10 @@ test('a late provider load creates only the current panel widget', async t => {
 });
 for (const role of ['student', 'teacher', 'school_admin', 'content_admin', 'admin']) test(`shared account (${role}): recovery uses the challenge and retains localized quota errors`, async t => {
   const p = await fixture(t, { view: 'privacy', role, challenge: true, code: 'over_email_send_rate_limit' });
+  await p.evaluate(() => history.replaceState(null, '', location.pathname + '?code=synthetic-callback-code#access_token=synthetic-access&refresh_token=synthetic-refresh'));
   await p.locator('#changePasswordBtn').click();
   await expect.poll(() => p.evaluate(() => window.__challengeFixture.renders.length)).toBe(1);
+  assert.equal(await p.evaluate(() => /synthetic-callback-code|synthetic-access|synthetic-refresh/.test(window.__challengeFixture.renders[0].pageUrl)), false);
   assert.equal(await p.evaluate(() => window.__authFixture.calls.filter(x => x.method === 'reset').length), 0);
   await p.evaluate(() => window.__challengeFixture.renders.at(-1).options.callback('account-token'));
   await p.locator('#changePasswordBtn').click();

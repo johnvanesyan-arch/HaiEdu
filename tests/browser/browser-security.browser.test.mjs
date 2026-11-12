@@ -10,6 +10,7 @@ import {installSignedOutClient} from '../fixtures/built-web-server.mjs';
 import {installStudentHomeFixture} from '../fixtures/student-home-fixture.mjs';
 import {installTeacherPerformanceFixture} from '../fixtures/teacher-performance-browser.mjs';
 import {installAdminTextFixture,installTaskTextFixture,installAuthFlowFixture} from '../fixtures/browser-text-safety.mjs';
+import {installSyntheticTurnstile} from '../fixtures/turnstile-browser.mjs';
 
 let browser,server,scratch,outdir,manifest;
 before(async()=>{
@@ -38,6 +39,7 @@ after(async()=>{await browser?.close();await server?.close();if(scratch)await rm
 async function pageFor(t,{allowedOrigins=[server.origin]}={}){
  const context=await browser.newContext({serviceWorkers:'block'});t.after(()=>context.close());
  const page=await context.newPage();page.setDefaultTimeout(5000);
+ await page.addInitScript(installSyntheticTurnstile);
  const errors=[],external=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{

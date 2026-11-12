@@ -9,7 +9,7 @@ import { createAuthChallenge } from "./auth-challenge.mjs";
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const passwordChallenge = createAuthChallenge(AUTH_CHALLENGE, { document, window });
-window.addEventListener("pagehide", () => passwordChallenge.destroy(), { once: true });
+window.addEventListener("pagehide", () => passwordChallenge.destroy());
 let state = null;
 let accountEpoch = 0;
 let accountRequest = 0;

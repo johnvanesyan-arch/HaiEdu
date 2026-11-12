@@ -3,6 +3,18 @@ const loads = new WeakMap();
 const unavailable = () => Object.assign(new Error("captcha_unavailable"), { code: "captcha_unavailable" });
 const required = () => Object.assign(new Error("captcha_required"), { code: "captcha_required" });
 
+function hideAuthLinkValues(win) {
+  if (!win?.location?.href || !win.history?.replaceState) return;
+  const clean = new URL(win.location.href);
+  const keepJoinCode = clean.searchParams.get("next") === "join" &&
+    /^[A-Za-z0-9]{8}$/.test((clean.searchParams.get("code") || "").trim());
+  for (const key of ["student_invitation", "access_token", "refresh_token", "provider_token", "provider_refresh_token", "token_hash", "code"]) {
+    if (key !== "code" || !keepJoinCode) clean.searchParams.delete(key);
+  }
+  clean.hash = "";
+  if (clean.href !== win.location.href) win.history.replaceState(null, "", `${clean.pathname}${clean.search}`);
+}
+
 function providerFor(win, doc) {
   if (win.turnstile?.render && win.turnstile?.remove) return Promise.resolve(win.turnstile);
   if (loads.has(win)) return loads.get(win);
@@ -110,6 +122,7 @@ export function createAuthChallenge(config, { document: doc, window: win } = {})
   return {
     mount(target, before = null) {
       if (!target) { destroy(); return; }
+      hideAuthLinkValues(win);
       if (container === target && root?.isConnected) return;
       destroy();
       container = target;
