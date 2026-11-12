@@ -1,0 +1,1020 @@
+{
+  "date": "2026-11-12",
+  "timeZone": "Asia/Yerevan",
+  "status": "Audit and design proposal prepared; implementation not started",
+  "reviewedSource": "fffe31abb188ff88e6746b2b8216c1472abf1737",
+  "ownerDecisions": {
+    "bf16": "Proceed with review/proposal",
+    "bf15PaidStolenPasswordProtection": "Declined; no upgrade or activation authorized"
+  },
+  "sourceAudit": {
+    "entrypoints": 65,
+    "deployedNameInventoryMatches": true,
+    "sharedApplicationLimiterFound": false,
+    "limitation": "Source/dependency and bounded metadata/catalogue review; absence of every external/infrastructure control is not established",
+    "sharedAuthHelperConsumers": 62,
+    "verifiedClaimsReadHelperConsumers": 5,
+    "classificationCounts": {
+      "read": 26,
+      "learning": 4,
+      "code-redemption": 3,
+      "invitation-management/mail": 4,
+      "management": 28
+    },
+    "entries": [
+      {
+        "name": "accept-staff-account",
+        "group": "management",
+        "entrypoint": "supabase/functions/accept-staff-account/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/account-access.js"
+        ]
+      },
+      {
+        "name": "bootstrap-school",
+        "group": "management",
+        "entrypoint": "supabase/functions/bootstrap-school/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": []
+      },
+      {
+        "name": "complete-student-invitation",
+        "group": "code-redemption",
+        "entrypoint": "supabase/functions/complete-student-invitation/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/account-access.js"
+        ]
+      },
+      {
+        "name": "get-admin-dashboard",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-admin-dashboard/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/admin.js"
+        ]
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-chapter-mastery-lifecycle/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/home-dashboard.js",
+          "web/mastery.js",
+          "web/physics-7.js",
+          "web/practice.js"
+        ]
+      },
+      {
+        "name": "get-content-quality-dashboard",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-content-quality-dashboard/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-15a3-authenticated-qa.mjs",
+          "web/content-pilot-analytics.js",
+          "web/content-workspace.js"
+        ]
+      },
+      {
+        "name": "get-content-review-history",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-content-review-history/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-15a3-authenticated-qa.mjs",
+          "web/content-review-workflow.js"
+        ]
+      },
+      {
+        "name": "get-learning-audio",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-learning-audio/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/learning-audio-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "web/assessed-audio.mjs",
+          "web/content.js",
+          "web/learning-audio.mjs",
+          "web/learning-player.mjs"
+        ]
+      },
+      {
+        "name": "get-learning-context",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-learning-context/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/learning-context-handler.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": []
+      },
+      {
+        "name": "get-learning-task-set",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-learning-task-set/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/learning-task-set-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "web/content.js",
+          "web/learning-task-set.mjs"
+        ]
+      },
+      {
+        "name": "get-mastery-check-status",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-mastery-check-status/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/assessment.js",
+          "web/home-dashboard.js",
+          "web/learning-player.mjs",
+          "web/mastery-dashboard.js",
+          "web/mastery.js",
+          "web/physics-7.js",
+          "web/practice.js",
+          "web/progress.js"
+        ]
+      },
+      {
+        "name": "get-my-privacy",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-my-privacy/index.ts",
+        "sharedFiles": [],
+        "clientStringReferences": [
+          "scripts/b123-usability-reads.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "web/privacy.js"
+        ]
+      },
+      {
+        "name": "get-pilot-item-analytics",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-pilot-item-analytics/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-15a3-authenticated-qa.mjs",
+          "web/content-evidence-page.js",
+          "web/content-pilot-analytics.js"
+        ]
+      },
+      {
+        "name": "get-practice-item",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-practice-item/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": []
+      },
+      {
+        "name": "get-remediation-help",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-remediation-help/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/learning-player.mjs",
+          "web/remediation.js"
+        ]
+      },
+      {
+        "name": "get-school-admin-overview",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-school-admin-overview/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-isolation.mjs",
+          "web/school-teacher.js"
+        ]
+      },
+      {
+        "name": "get-school-performance-analytics",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-school-performance-analytics/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/analytics-evidence.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/school-performance-analytics.ts"
+        ],
+        "clientStringReferences": [
+          "web/school-admin.js",
+          "web/school-analytics-view.mjs"
+        ]
+      },
+      {
+        "name": "get-school-subject-options",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-school-subject-options/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "get-school-teachers",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-school-teachers/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-actions.mjs",
+          "scripts/sprint-14-isolation.mjs",
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "get-session-item",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-session-item/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-integrity.ts",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/app.js",
+          "web/diagnostic.js",
+          "web/learning-player.mjs",
+          "web/mastery.js",
+          "web/practice.js",
+          "web/remediation.js"
+        ]
+      },
+      {
+        "name": "get-student-classes",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-student-classes/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs",
+          "supabase/functions/_shared/teacher-read-identity.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "scripts/sprint-14-isolation.mjs",
+          "web/learner-access.mjs"
+        ]
+      },
+      {
+        "name": "get-student-dashboard",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-student-dashboard/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/learning-model.ts",
+          "supabase/functions/_shared/recommendation-telemetry.ts",
+          "supabase/functions/_shared/student-dashboard-handler.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "web/app.js",
+          "web/assessment.js",
+          "web/course-page.js",
+          "web/diagnostic.js",
+          "web/home-assessment-router.js",
+          "web/home-practice-router.js",
+          "web/multi-subject-home.js",
+          "web/physics-7.js",
+          "web/practice.js",
+          "web/progress.js"
+        ]
+      },
+      {
+        "name": "get-student-onboarding-options",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-student-onboarding-options/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": []
+      },
+      {
+        "name": "get-student-work",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-student-work/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/student-work-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/student-work-qa-read.mjs",
+          "web/multi-subject-home.js",
+          "web/student-work-list.mjs"
+        ]
+      },
+      {
+        "name": "get-teacher-academic-context",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-teacher-academic-context/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/academic-context.ts",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-read-identity.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "scripts/sprint-14-isolation.mjs"
+        ]
+      },
+      {
+        "name": "get-teacher-dashboard",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-teacher-dashboard/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/academic-context.ts",
+          "supabase/functions/_shared/analytics-evidence.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/initial-diagnostic.ts",
+          "supabase/functions/_shared/institutional-teacher-analytics.ts",
+          "supabase/functions/_shared/institutional-teacher-dashboard.ts",
+          "supabase/functions/_shared/teacher-dashboard-batch.ts",
+          "supabase/functions/_shared/teacher-read-identity.mjs",
+          "supabase/functions/_shared/teacher-workspace-request.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/mobile-qa-policy.mjs",
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "scripts/sprint-14-isolation.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "web/teacher-review.mjs",
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "get-teacher-student",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-teacher-student/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/academic-context.ts",
+          "supabase/functions/_shared/analytics-evidence.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/initial-diagnostic.ts",
+          "supabase/functions/_shared/institutional-teacher-analytics.ts",
+          "supabase/functions/_shared/teacher-read-identity.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/mobile-qa-policy.mjs",
+          "scripts/sprint-14-isolation.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "get-teacher-workspace",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-teacher-workspace/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/teacher-read-identity.mjs",
+          "supabase/functions/_shared/teacher-workspace-handler.mjs",
+          "supabase/functions/_shared/teacher-workspace-request.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/mobile-qa-policy.mjs",
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "scripts/teacher-today-acceptance.mjs",
+          "web/teacher-today.mjs",
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "get-unit-guides",
+        "group": "read",
+        "entrypoint": "supabase/functions/get-unit-guides/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/unit-guides-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "web/unit-guides.mjs"
+        ]
+      },
+      {
+        "name": "join-class",
+        "group": "code-redemption",
+        "entrypoint": "supabase/functions/join-class/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts"
+        ],
+        "clientStringReferences": [
+          "web/class-join.js",
+          "web/join.js"
+        ]
+      },
+      {
+        "name": "manage-admin-account",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-admin-account/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-privacy.mjs"
+        ],
+        "clientStringReferences": [
+          "web/admin.js"
+        ]
+      },
+      {
+        "name": "manage-content-quality",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-content-quality/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/arrangement-responses.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/typed-fields.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/content/validate-english-7-unit-01-publisher-audio-registration.mjs",
+          "scripts/content/validate-english-7-unit-01-reading-registration.mjs",
+          "scripts/sprint-15a3-authenticated-qa.mjs",
+          "web/content.js"
+        ]
+      },
+      {
+        "name": "manage-institutional-invitation",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-institutional-invitation/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-actions.mjs"
+        ]
+      },
+      {
+        "name": "manage-institutional-membership",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-institutional-membership/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-actions.mjs"
+        ]
+      },
+      {
+        "name": "manage-institutional-teacher-class",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-institutional-teacher-class/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-action-guards.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "manage-misconception-reviews",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-misconception-reviews/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/misconception-review-management.mjs"
+        ],
+        "clientStringReferences": [
+          "web/content-misconceptions.js"
+        ]
+      },
+      {
+        "name": "manage-my-privacy",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-my-privacy/index.ts",
+        "sharedFiles": [],
+        "clientStringReferences": [
+          "web/privacy.js"
+        ]
+      },
+      {
+        "name": "manage-remediation-guides",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-remediation-guides/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/remediation-authoring-validation.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-15a3-authenticated-qa.mjs",
+          "web/content-guides.js"
+        ]
+      },
+      {
+        "name": "manage-resource-assignments",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-resource-assignments/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/resource-assignments-handler.mjs",
+          "supabase/functions/_shared/supplementary-resources-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "web/resource-assignments.mjs",
+          "web/supplementary-resources.mjs"
+        ]
+      },
+      {
+        "name": "manage-school-academic-year",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-school-academic-year/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-action-guards.mjs",
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "manage-school-teacher",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-school-teacher/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-action-guards.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "manage-staff-invitation",
+        "group": "invitation-management/mail",
+        "entrypoint": "supabase/functions/manage-staff-invitation/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-action-guards.mjs",
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "manage-student-invitation",
+        "group": "invitation-management/mail",
+        "entrypoint": "supabase/functions/manage-student-invitation/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-action-guards.mjs",
+          "scripts/sprint-14-actions.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "manage-supplementary-resources",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-supplementary-resources/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/supplementary-resources-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "web/supplementary-resources.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-class",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-class/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "manage-teacher-feedback",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-feedback/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-feedback-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "web/teacher-feedback.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-profile",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-profile/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "manage-teacher-subject",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-subject/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-actions.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-delivery",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-delivery/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-delivery-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/teacher-custom-task-acceptance.mjs",
+          "web/teacher-task-send.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-drafts",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-drafts/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-drafts-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/teacher-custom-task-acceptance.mjs",
+          "web/teacher-task-draft-workspace.mjs",
+          "web/teacher-task-editor.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-review-files",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-review-files/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-documents.mjs",
+          "supabase/functions/_shared/teacher-task-response.mjs",
+          "supabase/functions/_shared/teacher-task-review-handler.mjs",
+          "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "web/teacher-task-review.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-review",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-review/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-documents.mjs",
+          "supabase/functions/_shared/teacher-task-response.mjs",
+          "supabase/functions/_shared/teacher-task-review-handler.mjs",
+          "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/teacher-custom-task-acceptance.mjs",
+          "web/teacher-task-review.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-sources",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-sources/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-sources-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/teacher-custom-task-acceptance.mjs",
+          "web/teacher-task-source-client.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-student-files",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-student-files/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-documents.mjs",
+          "supabase/functions/_shared/teacher-task-response.mjs",
+          "supabase/functions/_shared/teacher-task-sources-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-files-handler.mjs",
+          "supabase/functions/_shared/teacher-task-student-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "web/student-teacher-task-client.mjs"
+        ]
+      },
+      {
+        "name": "manage-teacher-task-student-work",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-teacher-task-student-work/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/teacher-task-definition.mjs",
+          "supabase/functions/_shared/teacher-task-response.mjs",
+          "supabase/functions/_shared/teacher-task-student-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/teacher-custom-task-acceptance.mjs",
+          "web/student-teacher-task-client.mjs"
+        ]
+      },
+      {
+        "name": "manage-unit-materials",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-unit-materials/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/unit-materials-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "web/content-materials.js"
+        ]
+      },
+      {
+        "name": "manage-writing-assignments",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-writing-assignments/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/writing-assignments-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/resource-assignments-acceptance.mjs",
+          "scripts/writing-assignment-delivery-acceptance.mjs",
+          "web/writing-assignments.mjs"
+        ]
+      },
+      {
+        "name": "manage-written-work",
+        "group": "management",
+        "entrypoint": "supabase/functions/manage-written-work/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/written-work-handler.mjs"
+        ],
+        "clientStringReferences": [
+          "scripts/b123-usability-reads.mjs",
+          "scripts/teacher-feedback-acceptance.mjs",
+          "scripts/teacher-performance-acceptance.mjs",
+          "scripts/writing-assignment-delivery-acceptance.mjs",
+          "web/written-work.mjs"
+        ]
+      },
+      {
+        "name": "provision-staff-account",
+        "group": "invitation-management/mail",
+        "entrypoint": "supabase/functions/provision-staff-account/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/school-admin.js"
+        ]
+      },
+      {
+        "name": "provision-student-account",
+        "group": "invitation-management/mail",
+        "entrypoint": "supabase/functions/provision-student-account/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "web/teacher.js"
+        ]
+      },
+      {
+        "name": "record-recommendation-event",
+        "group": "learning",
+        "entrypoint": "supabase/functions/record-recommendation-event/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/recommendation-telemetry.js"
+        ]
+      },
+      {
+        "name": "redeem-institutional-invitation",
+        "group": "code-redemption",
+        "entrypoint": "supabase/functions/redeem-institutional-invitation/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/auth.ts"
+        ],
+        "clientStringReferences": [
+          "scripts/sprint-14-actions.mjs"
+        ]
+      },
+      {
+        "name": "start-learning-session",
+        "group": "learning",
+        "entrypoint": "supabase/functions/start-learning-session/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-integrity.ts",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/initial-diagnostic.ts",
+          "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "supabase/functions/_shared/recommendation-telemetry.ts",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/app.js",
+          "web/diagnostic.js",
+          "web/home-dashboard.js",
+          "web/learning-player.mjs",
+          "web/mastery-dashboard.js",
+          "web/mastery.js",
+          "web/practice.js"
+        ]
+      },
+      {
+        "name": "submit-answer",
+        "group": "learning",
+        "entrypoint": "supabase/functions/submit-answer/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/answer-response-recovery.mjs",
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/curriculum-release.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/grading.ts",
+          "supabase/functions/_shared/learning-model.ts",
+          "supabase/functions/_shared/practice-diagnostic-gate.ts",
+          "supabase/functions/_shared/recommendation-telemetry.ts",
+          "supabase/functions/_shared/recommendation.ts",
+          "supabase/functions/_shared/student-learning-context.mjs",
+          "supabase/functions/_shared/types.ts"
+        ],
+        "clientStringReferences": [
+          "web/answer-response-recovery.mjs",
+          "web/app.js",
+          "web/diagnostic.js",
+          "web/learning-player.mjs",
+          "web/practice.js"
+        ]
+      },
+      {
+        "name": "submit-mastery-answer",
+        "group": "learning",
+        "entrypoint": "supabase/functions/submit-mastery-answer/index.ts",
+        "sharedFiles": [
+          "supabase/functions/_shared/answer-response-recovery.mjs",
+          "supabase/functions/_shared/assessed-audio-policy.mjs",
+          "supabase/functions/_shared/assessment-policy.mjs",
+          "supabase/functions/_shared/auth.ts",
+          "supabase/functions/_shared/course-access.ts",
+          "supabase/functions/_shared/governed-learning-runtime.mjs",
+          "supabase/functions/_shared/student-learning-context.mjs"
+        ],
+        "clientStringReferences": [
+          "web/answer-response-recovery.mjs",
+          "web/learning-player.mjs",
+          "web/mastery.js"
+        ]
+      }
+    ]
+  },
+  "deployedReadback": {
+    "codeRedemptionEntrypoints": 3,
+    "entrypointsByteExact": 3,
+    "dependencyFileOccurrences": 7,
+    "allFileOccurrencesByteExact": 6,
+    "extraFinalNewlineOnly": 1,
+    "behaviorDifferenceEstablished": false,
+    "threeRedemptionRpcsBrowserExecutable": false,
+    "redeployed": false
+  },
+  "privateEvidence": "Raw service readback, precise current settings and catalogue details retained privately",
+  "proposedImplementation": "Shared atomic PostgreSQL actor/action budgets; explicit route/action registry; recipient-weighted email budget; safe 429/wait feedback",
+  "policyValues": "Candidate isolated-test inputs only; no live policy change",
+  "verification": {
+    "staticInventory": "complete",
+    "deployedNameRead": "complete",
+    "boundedCatalogueRead": "complete",
+    "codeRedemptionSourceReadback": "complete",
+    "limiterImplementation": "not started",
+    "isolatedConcurrencyAndClassroomQualification": "not run",
+    "nativeLimiterFeedbackTests": "not run",
+    "productionQa": "not run (paused by owner)",
+    "productionLoadTests": 0,
+    "accountSignIns": 0,
+    "emailsSent": 0,
+    "productionWrites": 0,
+    "manualWorkflowDispatches": 0
+  },
+  "boundaries": {
+    "providerAuthIpLimits": "Existing provider controls; unchanged and separately qualified",
+    "directDataApiStorage": "Separate existing security surfaces; not claimed covered by Edge budgets",
+    "paidFeatures": "Owner declined; no billing change",
+    "widerBf15EmailClassroomAndUsability": "Still open"
+  }
+}

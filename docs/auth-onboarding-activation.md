@@ -33,7 +33,7 @@ The owner chose the existing Gmail sender for a limited first pilot of 100 or mo
 
 An isolated instance of the reported Auth version accepted 200 invitations, rejected the 201st at the test cap, and captured all mail locally. A separate 100-password-sign-in test succeeded when paced over about 159 seconds from one simulated school address. An instant 100-request burst was throttled. CAPTCHA was disabled in this fixture to isolate rate behavior. Initial signup and email-link verification use separate limits and were not qualified for 100 simultaneous learners. Invite students and finish first-time setup before class, then stagger classroom sign-ins. No additional live limiter change is implemented here. The exact current-settings snapshot and detailed capacity receipt remain private; BF-16's shared application limiter is outside this release.
 
-Supabase's known-leaked-password rejection is a separate paid-plan feature. It checks proposed passwords against known breached-password lists. Length rules and CAPTCHA do not replace that check. No subscription upgrade, billing change or claim of enabled leaked-password protection is part of this implementation.
+John explicitly declined paid stolen-password protection on 12 November 2026. Keep it off; no purchase, upgrade or activation is authorized. This is a recorded owner decision rather than a pending BF-15 choice. Supabase's known-leaked-password rejection is a separate paid-plan feature. It checks proposed passwords against known breached-password lists. Length rules and CAPTCHA do not replace that check. No subscription upgrade, billing change or claim of enabled leaked-password protection is part of this implementation.
 
 ## Verification boundaries
 
