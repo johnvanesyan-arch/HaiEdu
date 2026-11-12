@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import {rememberReviewItem} from './content-review-resume.mjs';
@@ -183,8 +184,8 @@ function contentErrorHy(...values) {
 }
 
 async function invoke(name, body = {}) {
-  const { data, error, response } = await supabase.functions.invoke(name, { body });
-  if (error) {
+  const { data, error, response } = await invokeRateAware(supabase,name, { body });
+  if (error) {if(rateLimitMessage(error))throw error;
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
     if (payload?.requiresQaRerun) {
@@ -199,7 +200,7 @@ async function invoke(name, body = {}) {
     }
     throw new Error(contentErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
-  if (data?.error) throw new Error(contentErrorHy(data.detail, data.error));
+  if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(contentErrorHy(data.detail, data.error))));
   return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
 }
 
@@ -909,7 +910,7 @@ async function saveRevision() {
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
     invalidField = err.fieldId ?? null;
-    setMessage(err.message, true);
+    setMessage((rateLimitMessage(err) ?? (err.message)), true);
   } finally {
     if (check === sessionCheck) { setWorkflowBusy(false); if (invalidField) revealEditorField(invalidField); }
   }
@@ -951,7 +952,7 @@ async function runQaCurrent() {
     );
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
-    setMessage(err.message, true);
+    setMessage((rateLimitMessage(err) ?? (err.message)), true);
   } finally {
     if (check === sessionCheck) setWorkflowBusy(false);
   }
@@ -989,7 +990,7 @@ async function approveCurrent() {
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
     if (err.requiresQaRerun) { qaRerunRequired=true; activateItemTab("review"); }
-    setMessage(err.message, true);
+    setMessage((rateLimitMessage(err) ?? (err.message)), true);
   } finally {
     if (check === sessionCheck) setWorkflowBusy(false);
   }
@@ -1023,7 +1024,7 @@ async function action(name, extra = {}) {
     setMessage("Պատրաստ է։");
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
-    setMessage(err.message, true);
+    setMessage((rateLimitMessage(err) ?? (err.message)), true);
   } finally {
     if (check === sessionCheck) setWorkflowBusy(false);
   }
@@ -1072,7 +1073,7 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
     return true;
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return false;
-    setMessage(err.message, true);
+    setMessage((rateLimitMessage(err) ?? (err.message)), true);
     return false;
   }
 }

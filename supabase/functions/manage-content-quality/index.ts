@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import {validateArrangementKey} from '../_shared/arrangement-responses.mjs';
 import { validateTypedKey } from '../_shared/typed-fields.mjs';
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -466,6 +467,9 @@ Deno.serve(async (req) => {
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, userData.user.id, token, "manage-content-quality");
+    if (rateDenied) return rateDenied;
+
     const actorId = userData.user.id;
 
     const { data: profile } = await admin.from("profiles").select("role").eq("id", actorId).maybeSingle();

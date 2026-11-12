@@ -1,3 +1,4 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';import {mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';import {todayFixture,id} from '../fixtures/teacher-today-browser.mjs';import{context}from'../fixtures/written-work-api.mjs';
 let browser;before(async()=>browser=await chromium.launch({headless:true}));after(async()=>browser?.close());
@@ -59,4 +60,10 @@ test('review points to the first missing score while revision instructions can b
  assert.equal(received.work.state,'changes_requested');assert.equal(received.submissions.at(-1).reviews.at(-1).scores,null);
  assert.equal(received.submissions.at(-1).reviews.at(-1).feedback,'Explain why you chose this example.');
  assert.equal((await db.query('select count(*) n from written_reviews')).rows[0].n,1);assert.deepEqual(errors,[]);
+});
+
+test('BF16 confirmed refusal: teacher feedback publication keeps its private text editable',async t=>{
+ const {page:p,db,errors}=await todayFixture(browser,t);await openFirst(p);await p.locator('[data-writing-feedback]').fill('Retained private feedback');await fillScores(p);
+ await refuseAction(p,'manage-teacher-feedback','publish');await p.locator('[data-writing-grade]').click();await expect(p.locator('[data-feedback-status]')).toHaveText(rateWaitMessage);await expect(p.locator('[data-writing-feedback]')).toHaveValue('Retained private feedback');await expect(p.locator('[data-writing-feedback]')).toBeEnabled();
+ assert.equal((await db.query('select count(*)::int n from written_reviews')).rows[0].n,0);assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(errors,[]);
 });

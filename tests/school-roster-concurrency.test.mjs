@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -7,12 +8,12 @@ function harness(){
   const pending=[],rows=[],messages=[];
   const elements={rosterSchool:{value:'A'},teacherRoster:{replaceChildren:()=>{rows.length=0;}},refreshTeachersBtn:{disabled:false}};
   const state={teachers:new Map()};
-  const context=vm.createContext({$:id=>elements[id],dashboardState:state,message:(_id,text)=>messages.push(text),
+  const context=vm.createContext(Object.assign({$:id=>elements[id],dashboardState:state,message:(_id,text)=>messages.push(text),
     setButtonBusy:(button,busy)=>{button.disabled=busy;},renderOverview:()=>{},
     appendRosterGroup:(_list,_heading,teachers)=>rows.push(...teachers.map(t=>t.person_id)),
     appendRosterHistory:(_list,teachers)=>rows.push(...teachers.map(t=>t.person_id)),
     supabase:{functions:{invoke:()=>new Promise(resolve=>pending.push(resolve))}},
-  });
+  },rateFeedbackBindings));
   vm.runInContext('let teacherRosterLoadVersion=0;\n'+source.slice(source.indexOf('async function loadTeacherRoster()'),source.indexOf('async function loadTeacherSubjects(')),context);
   const resolve=(i,id)=>pending[i]({data:{teachers:[{person_id:id,membership_status:'active'}]}});
   return{context,rows,elements,state,resolve};

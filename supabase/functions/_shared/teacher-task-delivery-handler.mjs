@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 import {validateTeacherTaskDefinition} from './teacher-task-definition.mjs';
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization,x-client-info,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
@@ -12,7 +13,7 @@ async function bodyJSON(request){
  const bytes=new Uint8Array(size);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}
  try{return JSON.parse(new TextDecoder().decode(bytes));}catch{fail('assignment_request_invalid');}
 }
-export function createTeacherTaskDeliveryHandler({createAdmin,hasActiveLiveSession,env}){
+export function createTeacherTaskDeliveryHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-teacher-task-delivery"}){
  return async request=>{
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(request.method!=='POST')return reply({error:'method_not_allowed'},405);
@@ -23,6 +24,8 @@ export function createTeacherTaskDeliveryHandler({createAdmin,hasActiveLiveSessi
    if(error||!auth?.user)return reply({error:'unauthorized'},401);
    let claims;try{claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));}catch{fail('assignment_forbidden');}
    if(!UUID.test(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');
+   const rateDenied=await rateBudget(request,admin,auth.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const live=async()=>{if(!await hasActiveLiveSession(admin,token,auth.user.id))fail('assignment_forbidden');};
    const body=await bodyJSON(request),keys={preview:['id','offset','search'],assign:['id','expectedRevision','definition','requestId','rosterFingerprint','mode','enrollmentIds'],get:['id'],list:['offset']};
    if(!shape(body,['action','context','payload'])||!Object.hasOwn(keys,body.action)||!shape(body.context,['assignmentId','curriculumReleaseId','unitId'])||Object.keys(body.context).length!==3||!shape(body.payload??{},keys[body.action]))fail('assignment_request_invalid');

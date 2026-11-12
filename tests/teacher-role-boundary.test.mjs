@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import {escapeHtml} from '../web/text-safety.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -25,7 +27,7 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
     },
   };
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     AcademicContextDenied, createClient: () => client, hasActiveLiveSession: async () => active,
     loadInitialDiagnostics,
     resolveActiveCurriculumRelease: async () => 'release-test',
@@ -38,7 +40,7 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
     verifyTeacherReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
     Deno: { env: { get: () => 'test' }, serve: (fn) => { handler = fn; } },
     Response, console, crypto,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: authenticated ? { Authorization: 'Bearer test' } : {}, body: '{}',
   }));
@@ -99,11 +101,11 @@ async function openTeacherPage(profile, profileError = null) {
   };
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
   source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
-  const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
+  const context = vm.createContext(Object.assign({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
     // This import-stripping VM checks routing, not DOM focus. Native Chromium
     // keyboard-focus cases exercise the actual drawer controller separately.
     createModalFocus:()=>({open(){},close(){}}),
-    todayRequest:()=>({recent:[]}),escapeHtml,roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout });
+    todayRequest:()=>({recent:[]}),escapeHtml,roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout },rateFeedbackBindings));
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, workspaceCalls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };

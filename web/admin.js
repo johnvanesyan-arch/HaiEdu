@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc,isSafeInternalHref} from './text-safety.mjs';
 import {classHistoryMarkup} from './class-history.mjs';
 import {erasurePresentation} from './task-privacy-view.mjs';
@@ -63,7 +64,7 @@ function setMessage(text, bad = false) {
   target.style.color = bad ? "#8a3342" : "#356246";
 }
 
-function friendlyError(error) {
+function friendlyError(error) {if(rateLimitMessage(error))return rateLimitMessage(error);
   const value = String(error?.message || error || "");
   const labels = {
     mfa_required: "Այս գործողության համար անհրաժեշտ է MFA-ով հաստատված master admin սեսիա։",
@@ -92,15 +93,15 @@ function friendlyError(error) {
 }
 
 async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) {
+  const { data, error } = await invokeRateAware(supabase,name, { body });
+  if (error) {if(rateLimitMessage(error))throw error;
     const response = error.context;
     const payload = response instanceof Response ? await response.json().catch(() => null) : null;
     const failure = new Error(payload?.error || data?.error || error.message);
     failure.detail = payload?.detail || data?.detail || "";
     throw failure;
   }
-  if (data?.error) {
+  if (data?.error) {if(rateLimitMessage(data?.error))throw data?.error;
     const failure = new Error(data.error);
     failure.detail = data.detail || "";
     throw failure;
@@ -178,7 +179,7 @@ function renderSchools(data) {
     <button type="button" class="ghost" data-open-school="${esc(school.id)}">Բացել դպրոցը</button>
   </article>`).join("") : '<div class="admin-empty">Այս չափանիշներով դպրոց չի գտնվել։</div>';
   $("schoolDirectory").querySelectorAll("[data-open-school]").forEach((button) => button.addEventListener("click", () => loadSchoolDetail(button.dataset.openSchool)));
-  renderPager("schoolPager", data.page || 1, data.total || 0, (next) => { schoolPage = next; loadSchools(); });
+  renderPager("schoolPager", data.page || 1, data.total || 0, (next) => { schoolPage = next; readView(loadSchools); });
 }
 
 function renderSchoolDetail(data) {
@@ -229,7 +230,7 @@ function renderAccounts(data, archived = false) {
   bindAccountActions(target);
   target.querySelectorAll("[data-set-role]").forEach((button) => button.addEventListener("click", () => handleUserAction("set_role", button.dataset.setRole)));
   renderPager(archived ? "archivePager" : "accountPager", data.page || 1, data.total || 0, (next) => {
-    if (archived) { archivePage = next; loadArchive(); } else { accountPage = next; loadAccounts(); }
+    if (archived) { archivePage = next; readView(loadArchive); } else { accountPage = next; readView(loadAccounts); }
   });
 }
 
@@ -279,6 +280,8 @@ async function loadOverview() {
   renderOverview(await invoke("get-admin-dashboard", { view: "overview" }));
 }
 
+function readView(action) { void action().catch(error => setMessage(rateLimitMessage(error) ?? friendlyError(error), true)); }
+
 async function loadSchools() {
   setMessage("Դպրոցների ցանկը բեռնվում է…");
   renderSchools(await invoke("get-admin-dashboard", { view: "schools", page: schoolPage, pageSize, search: $("schoolSearch").value.trim() }));
@@ -297,7 +300,7 @@ async function loadSchoolDetail(schoolId) {
     const root=document.createElement("section");root.className="card";$("schoolDetail").appendChild(root);
     disposeSchoolAnalytics=mountSchoolAnalytics(root,supabase,schoolId);
     setMessage("");
-  } catch (error) { if(version===schoolDetailVersion)setMessage(friendlyError(error), true); }
+  } catch (error) { if(version===schoolDetailVersion)setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); }
 }
 
 async function loadClassStudents(schoolId, classId, page = 1) {
@@ -345,7 +348,7 @@ async function loadCurrentView() {
       $("mfaPanel").classList.remove("hidden");
       return;
     }
-    setMessage(friendlyError(error), true);
+    setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true);
   }
 }
 
@@ -372,13 +375,13 @@ async function handleUserAction(action, userId) {
     await loadCurrentView();
     if (selectedSchoolId && currentView === "schools") await loadSchoolDetail(selectedSchoolId);
     setMessage("Փոփոխությունը պահպանված է։");
-  } catch (error) { setMessage(friendlyError(error), true); }
+  } catch (error) { setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); }
 }
 
 async function approveDeletion(requestId) {
   if (!confirm("Հաստատե՞լ ջնջման հարցումը։ Այս քայլը դեռ չի ջնջում տվյալները։")) return;
   try { await invoke("manage-admin-account", { action:"approve_deletion", requestId }); await loadDeletions(); setMessage("Հարցումը հաստատված է։"); }
-  catch (error) { setMessage(friendlyError(error), true); }
+  catch (error) { setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); }
 }
 
 async function executeDeletion(requestId,started=false) {
@@ -401,7 +404,7 @@ async function executeDeletion(requestId,started=false) {
     const readback=await loadDeletions(current).catch(()=>null);
     if(await current()){
       const completed=readback?.deletionRequests?.some(r=>r.id===requestId&&r.status==='completed');
-      setMessage(completed?"Հաշիվը վերջնականապես ջնջվել է։":friendlyError(error),!completed);
+      setMessage((rateLimitMessage(error) ?? (completed?"Հաշիվը վերջնականապես ջնջվել է։":friendlyError(error))),!completed);
     }
   }}
   finally{pendingDeletionIds.delete(requestId);if(await current())document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=false;});}
@@ -410,7 +413,7 @@ async function executeDeletion(requestId,started=false) {
 async function rejectDeletion(requestId) {
   const resolutionCode = prompt("Մերժման կոդ՝ not_verified, legal_hold կամ duplicate_request", "not_verified") || "not_verified";
   try { await invoke("manage-admin-account", { action:"reject_deletion", requestId, resolutionCode }); await loadDeletions(); setMessage("Հարցումը մերժվել է։"); }
-  catch (error) { setMessage(friendlyError(error), true); }
+  catch (error) { setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); }
 }
 
 let adminEntryPromise = null;
@@ -445,9 +448,9 @@ async function enterConsole(session) {
 
 $("signOutBtn").addEventListener("click", () => signOutAccount(supabase, { scope: "global", redirect: "./account-access.html" }));
 document.querySelectorAll("[data-refresh-view]").forEach((button) => button.addEventListener("click", loadCurrentView));
-$("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefault(); schoolPage = 1; selectedSchoolId = null; ++schoolDetailVersion; disposeSchoolAnalytics(); $("schoolDetail").classList.add("hidden"); loadSchools(); });
-$("accountFilterForm").addEventListener("submit", (event) => { event.preventDefault(); accountPage = 1; loadAccounts(); });
-$("archiveFilterForm").addEventListener("submit", (event) => { event.preventDefault(); archivePage = 1; loadArchive(); });
+$("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefault(); schoolPage = 1; selectedSchoolId = null; ++schoolDetailVersion; disposeSchoolAnalytics(); $("schoolDetail").classList.add("hidden"); readView(loadSchools); });
+$("accountFilterForm").addEventListener("submit", (event) => { event.preventDefault(); accountPage = 1; readView(loadAccounts); });
+$("archiveFilterForm").addEventListener("submit", (event) => { event.preventDefault(); archivePage = 1; readView(loadArchive); });
 window.addEventListener("hashchange", loadCurrentView);
 function bootstrapAdminConsole(session, { force = false } = {}) {
   const userId = session?.user?.id ?? null;

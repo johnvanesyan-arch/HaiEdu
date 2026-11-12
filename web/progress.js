@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import { signOutAccount, isTerminalAuthError, showSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -245,8 +246,8 @@ async function loadProgress() {
   $("progressContent").classList.add("hidden");
 
   const [{ data: dash, error: dashError }, { data: status, error: statusError }] = await Promise.all([
-    supabase.functions.invoke("get-student-dashboard", { body: {} }),
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    invokeRateAware(supabase,"get-student-dashboard", { body: {} }),
+    invokeRateAware(supabase,"get-mastery-check-status", { body: {} }),
   ]);
   loading = false;
 

@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -323,6 +324,9 @@ Deno.serve(async (req) => {
     if (userError || !userData.user) return json({ error:"unauthorized" }, 401);
     const actorId = userData.user.id;
     if (!(await hasActiveLiveSession(admin, token, actorId))) return json({ error:"account_or_session_inactive" }, 403);
+    const rateDenied = await enforceRateBudget(req, admin, actorId, token, "get-admin-dashboard");
+    if (rateDenied) return rateDenied;
+
     const { data:actor, error:actorError } = await admin.from("profiles").select("role,display_name,account_status").eq("id", actorId).maybeSingle();
     if (actorError || !actor || String(actor.role) !== "admin" || actor.account_status !== "active") return json({ error:"admin_required" }, 403);
     if (jwtPayload(token).aal !== "aal2") return json({ error:"mfa_required" }, 403);

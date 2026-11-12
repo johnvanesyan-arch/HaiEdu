@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import {classNavigationHandoff} from './teacher-class-handoff.mjs';
 import {createModalFocus} from './keyboard-focus.mjs';
@@ -35,7 +36,7 @@ function readOnce(fn,body) {
   const generation=teacherAuthGeneration;
   const key=JSON.stringify([actorId,generation,dashboardLoadVersion,fn,body]);
   if(pendingReads.has(key))return pendingReads.get(key);
-  const pending=supabase.functions.invoke(fn,{body})
+  const pending=invokeRateAware(supabase,fn,{body})
     .then(result=>generation===teacherAuthGeneration?result:{error:new Error('stale_session')})
     .catch(()=>({error:new Error("dashboard_read_failed")}))
     .finally(()=>{if(pendingReads.get(key)===pending)pendingReads.delete(key);});
@@ -71,7 +72,7 @@ async function loadDirectory(archive=false,{more=false,search=""}={}) {
   message.textContent="Դասարանները բեռնվում են…";
   const {data,error}=await dashboardRead({readMode:"directory",archive,offset,search});
   if(request!==directoryRequestVersion || version!==dashboardLoadVersion || !dashboard)return;
-  if(error||!data?.directory) {message.textContent="Դասարանները չբեռնվեցին։ Փորձեք կրկին։";return;}
+  if(error||!data?.directory) {message.textContent=(rateLimitMessage(error) ?? ("Դասարանները չբեռնվեցին։ Փորձեք կրկին։"));return;}
   const prior=more ? previous?.items??[] : [];
   directoryPages[key]={...data.directory,items:[...prior,...data.classes],nextOffset:offset+data.classes.length};
   dashboard.classes=[...dashboard.classes.filter(c=>c.isActive===archive),...directoryPages[key].items];
@@ -215,7 +216,7 @@ function setMessage(id, text, bad = false) {
   el.style.color = bad ? "#8a3342" : "#356246";
 }
 
-function friendlyError(error, fallback) {
+function friendlyError(error, fallback) {if(rateLimitMessage(error))return rateLimitMessage(error);
   const message = String(error?.message ?? "");
   if (message.includes("teacher_role_required")) return "Այս հաշիվը ուսուցչի դեր չունի։";
   if (message.includes("display_name_too_short")) return "Անունը պետք է պարունակի առնվազն 2 նիշ։";
@@ -347,11 +348,11 @@ async function readTeacherDashboard(sessionOverride = null) {
       }
       return;
     }
-  } catch {
+  } catch(rateError) {
     if (version !== dashboardLoadVersion) return;
     $("teacherLoading")?.classList.add("hidden");
     $("authPanel").classList.remove("hidden");
-    setMessage("authMessage", "Չհաջողվեց ստուգել հաշվի դերը։ Փորձեք կրկին։", true);
+    setMessage("authMessage", (rateLimitMessage(rateError) ?? ("Չհաջողվեց ստուգել հաշվի դերը։ Փորձեք կրկին։")), true);
     $("teacherDashboardRetry")?.classList.remove("hidden");
     return;
   }
@@ -372,7 +373,7 @@ async function readTeacherDashboard(sessionOverride = null) {
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     $("teacherDashboardRetry")?.classList.remove("hidden");
-    return setMessage("authMessage", friendlyError(error, "Չհաջողվեց բեռնել ուսուցչի աշխատասեղանը։"), true);
+    return setMessage("authMessage", (rateLimitMessage(error) ?? (friendlyError(error, "Չհաջողվեց բեռնել ուսուցչի աշխատասեղանը։"))), true);
   }
 
   const {workspace,workspaceError,...data}=loaded;
@@ -512,12 +513,12 @@ async function renameSelectedClass(event, institutional) {
   button.disabled = true;
   setMessage(messageId, "Անունը պահպանվում է…");
   const functionName = institutional ? "manage-institutional-teacher-class" : "manage-teacher-class";
-  const { data, error } = await supabase.functions.invoke(functionName, {
+  const { data, error } = await invokeRateAware(supabase,functionName, {
     body: { action: "rename", classId: klass.id, name },
   });
   button.disabled = false;
   if (error) {
-    return setMessage(messageId, friendlyError(error, "Դասարանի անունը չհաջողվեց փոխել։"), true);
+    return setMessage(messageId, (rateLimitMessage(error) ?? (friendlyError(error, "Դասարանի անունը չհաջողվեց փոխել։"))), true);
   }
   const savedName = data?.class?.name ?? data?.name;
   if (typeof savedName !== "string" || !savedName.trim()) {
@@ -577,7 +578,7 @@ async function selectClass(id, { pushNavigation = false, navigate = true, detail
     if(request!==institutionalUnitLoadVersion || version!==dashboardLoadVersion || selectedClassId!==id || !dashboard)return;
     const detail=data?.classes?.find(c=>c.id===id && (!selectedAssignment || c.assignmentId===selectedAssignment));
     if(error || !detail) {
-      $("classLoadingMessage").textContent="Դասարանի տվյալները հասանելի չեն։ Թարմացրեք կամ փորձեք կրկին։";
+      $("classLoadingMessage").textContent=(rateLimitMessage(error) ?? ("Դասարանի տվյալները հասանելի չեն։ Թարմացրեք կամ փորձեք կրկին։"));
       $("teacherClassRetry").classList.remove("hidden");
       return;
     }
@@ -854,7 +855,7 @@ async function submitInstitutionalStudentInvitation(event) {
   }
   button.disabled = true;
   setMessage("institutionalStudentInviteMessage", `${emails.length} հրավեր է ուղարկվում…`);
-  const { data, error } = await supabase.functions.invoke("provision-student-account", {
+  const { data, error } = await invokeRateAware(supabase,"provision-student-account", {
     body: {
       schoolId: klass.schoolId, classId: klass.id,
       assignmentId: klass.assignmentId, emails,
@@ -863,7 +864,7 @@ async function submitInstitutionalStudentInvitation(event) {
   button.disabled = false;
   if (error) {
     return setMessage("institutionalStudentInviteMessage",
-      "Հրավերները չուղարկվեցին։ Ստուգեք հասցեները և դասարանի ձեր գործող նշանակումը։", true);
+      (rateLimitMessage(error) ?? ("Հրավերները չուղարկվեցին։ Ստուգեք հասցեները և դասարանի ձեր գործող նշանակումը։")), true);
   }
   const results = Array.isArray(data?.results) ? data.results : [];
   renderInstitutionalStudentInviteResults(results);
@@ -896,7 +897,7 @@ async function revokeInstitutionalStudentInvitation(button) {
   if (!klass || !invitationId || !klass.isActive) return;
   if (!window.confirm("Չեղարկե՞լ այս աշակերտի սպասվող հրավերը։")) return;
   button.disabled = true;
-  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+  const { data, error } = await invokeRateAware(supabase,"manage-student-invitation", {
     body: {
       action: "revoke", invitationId, schoolId: klass.schoolId,
       classId: klass.id, assignmentId: klass.assignmentId,
@@ -904,7 +905,7 @@ async function revokeInstitutionalStudentInvitation(button) {
   });
   if (error || data?.revoked !== true) {
     button.disabled = false;
-    return setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկելը չհաջողվեց։", true);
+    return setMessage("institutionalStudentInviteMessage", (rateLimitMessage(error) ?? ("Հրավերը չեղարկելը չհաջողվեց։")), true);
   }
   setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկված է։");
   await loadInstitutionalStudentInvitations(klass);
@@ -952,7 +953,7 @@ async function generateInstitutionalJoinCode() {
   const button = $("institutionalGenerateJoinCodeBtn");
   button.disabled = true;
   setMessage("institutionalJoinCodeMessage", "Մեկանգամյա կոդը ստեղծվում է…");
-  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+  const { data, error } = await invokeRateAware(supabase,"manage-student-invitation", {
     body: {
       action: "create_code", schoolId: klass.schoolId, classId: klass.id,
       assignmentId: klass.assignmentId,
@@ -961,7 +962,7 @@ async function generateInstitutionalJoinCode() {
   button.disabled = false;
   if (error || typeof data?.joinCode !== "string") {
     return setMessage("institutionalJoinCodeMessage",
-      "Կոդը չստեղծվեց։ Ստուգեք դասարանի ձեր գործող նշանակումը։", true);
+      (rateLimitMessage(error) ?? ("Կոդը չստեղծվեց։ Ստուգեք դասարանի ձեր գործող նշանակումը։")), true);
   }
   latestInstitutionalJoinCode = data.joinCode;
   $("institutionalJoinCodeValue").textContent = latestInstitutionalJoinCode;
@@ -988,7 +989,7 @@ async function revokeInstitutionalJoinCode(button) {
   if (!klass || !codeId || !klass.isActive) return;
   if (!window.confirm("Չեղարկե՞լ այս չօգտագործված կոդը։")) return;
   button.disabled = true;
-  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+  const { data, error } = await invokeRateAware(supabase,"manage-student-invitation", {
     body: {
       action: "revoke_code", codeId, schoolId: klass.schoolId,
       classId: klass.id, assignmentId: klass.assignmentId,
@@ -996,7 +997,7 @@ async function revokeInstitutionalJoinCode(button) {
   });
   if (error || data?.revoked !== true) {
     button.disabled = false;
-    return setMessage("institutionalJoinCodeMessage", "Կոդը չեղարկելը չհաջողվեց։", true);
+    return setMessage("institutionalJoinCodeMessage", (rateLimitMessage(error) ?? ("Կոդը չեղարկելը չհաջողվեց։")), true);
   }
   setMessage("institutionalJoinCodeMessage", "Կոդը չեղարկված է։");
   await loadInstitutionalStudentInvitations(klass);
@@ -1158,7 +1159,7 @@ async function openStudent(studentId, skillId = null, opener = document.activeEl
     curriculumReleaseId: klass?.selectedUnit?.curriculumReleaseId,
     unitId: klass?.selectedUnit?.unitId,
   } : {};
-  const { data, error } = await supabase.functions.invoke("get-teacher-student", {
+  const { data, error } = await invokeRateAware(supabase,"get-teacher-student", {
     body: { studentId, classId: selectedClassId, ...institutionalContext },
   });
   if (request!==drawerLoadVersion || dashboardVersion!==dashboardLoadVersion || $("studentDrawer").classList.contains("hidden"))return;
@@ -1251,9 +1252,9 @@ async function saveProfile() {
   if (displayName.length < 2) return setMessage("profileMessage", "Մուտքագրեք ձեր անունն ու ազգանունը։", true);
   $("saveProfileBtn").disabled = true;
   setMessage("profileMessage", "Պահպանում ենք…");
-  const { data, error } = await supabase.functions.invoke("manage-teacher-profile", { body: { displayName } });
+  const { data, error } = await invokeRateAware(supabase,"manage-teacher-profile", { body: { displayName } });
   $("saveProfileBtn").disabled = false;
-  if (error) return setMessage("profileMessage", friendlyError(error, "Չհաջողվեց պահպանել անունը։"), true);
+  if (error) return setMessage("profileMessage", (rateLimitMessage(error) ?? (friendlyError(error, "Չհաջողվեց պահպանել անունը։"))), true);
   const savedName = data?.profile?.displayName || displayName;
   $("teacherName").textContent = savedName;
   $("teacherDisplayNameInput").value = savedName;
@@ -1266,11 +1267,11 @@ async function createClass() {
   if (!name) return setMessage("classMessage", "Մուտքագրեք դասարանի անունը։", true);
   $("createClassBtn").disabled = true;
   setMessage("classMessage", "Դասարանը ստեղծվում է…");
-  const { data, error } = await supabase.functions.invoke("manage-teacher-class", {
+  const { data, error } = await invokeRateAware(supabase,"manage-teacher-class", {
     body: { action: "create", name, academicYear: $("academicYearInput").value.trim() },
   });
   $("createClassBtn").disabled = false;
-  if (error) return setMessage("classMessage", friendlyError(error, "Չհաջողվեց ստեղծել դասարանը։"), true);
+  if (error) return setMessage("classMessage", (rateLimitMessage(error) ?? (friendlyError(error, "Չհաջողվեց ստեղծել դասարանը։"))), true);
   selectedClassId = data.class.id;
   $("classNameInput").value = "";
   setMessage("classMessage", `Դասարանը ստեղծվեց։ Միանալու կոդ՝ ${data.class.join_code}`);
@@ -1295,7 +1296,7 @@ async function createInstitutionalClass(event) {
   const button = $("institutionalCreateBtn");
   button.disabled = true;
   setMessage("institutionalCreateMessage", "Դպրոցի դասարանը ստեղծվում է…");
-  const { data, error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+  const { data, error } = await invokeRateAware(supabase,"manage-institutional-teacher-class", {
     body: {
       action: "create",
       membershipId: option.teacherMembershipId,
@@ -1307,7 +1308,7 @@ async function createInstitutionalClass(event) {
   button.disabled = false;
   if (error || !data?.classId) {
     return setMessage("institutionalCreateMessage",
-      friendlyError(error, "Չհաջողվեց ստեղծել դպրոցի դասարանը։"), true);
+      (rateLimitMessage(error) ?? (friendlyError(error, "Չհաջողվեց ստեղծել դպրոցի դասարանը։"))), true);
   }
 
   selectedClassId = data.classId;
@@ -1330,7 +1331,7 @@ async function copyText(value, successMessage, statusElementId = "copyCodeStatus
     await navigator.clipboard.writeText(value);
     setMessage(statusElementId, successMessage);
     return true;
-  } catch {
+  } catch(rateError) {
     const textarea = document.createElement("textarea");
     textarea.value = value;
     textarea.setAttribute("readonly", "");
@@ -1341,7 +1342,7 @@ async function copyText(value, successMessage, statusElementId = "copyCodeStatus
     const copied = document.execCommand("copy");
     textarea.remove();
     setMessage(statusElementId,
-      copied ? successMessage : "Չհաջողվեց պատճենել։ Ընտրեք արժեքը ձեռքով։", !copied);
+      (rateLimitMessage(rateError) ?? (copied ? successMessage : "Չհաջողվեց պատճենել։ Ընտրեք արժեքը ձեռքով։")), !copied);
     return copied;
   }
 }
@@ -1365,9 +1366,9 @@ async function rotateCode() {
   if (!klass?.isActive) return;
   if (!window.confirm("Ստեղծե՞լ նոր միանալու կոդ։ Նախորդ կոդը այլևս չի աշխատի։")) return;
   $("rotateCodeBtn").disabled = true;
-  const { data, error } = await supabase.functions.invoke("manage-teacher-class", { body: { action: "rotate_join_code", classId: selectedClassId } });
+  const { data, error } = await invokeRateAware(supabase,"manage-teacher-class", { body: { action: "rotate_join_code", classId: selectedClassId } });
   $("rotateCodeBtn").disabled = false;
-  if (error) return setMessage("copyCodeStatus", "Չհաջողվեց ստեղծել նոր կոդ։", true);
+  if (error) return setMessage("copyCodeStatus", (rateLimitMessage(error) ?? ("Չհաջողվեց ստեղծել նոր կոդ։")), true);
   if (klass) klass.joinCode = data.class.join_code;
   $("joinCode").textContent = data.class.join_code;
   if ($("openJoinBtn")) $("openJoinBtn").href = buildInviteUrl(data.class.join_code);
@@ -1380,9 +1381,9 @@ async function toggleClassStatus() {
   const action = klass.isActive ? "archive" : "activate";
   if (klass.isActive && !window.confirm("Արխիվացնե՞լ դասարանը։ Արխիվացված դասարանի կոդով նոր աշակերտներ չեն կարող միանալ։")) return;
   $("toggleClassBtn").disabled = true;
-  const { error } = await supabase.functions.invoke("manage-teacher-class", { body: { action, classId: klass.id } });
+  const { error } = await invokeRateAware(supabase,"manage-teacher-class", { body: { action, classId: klass.id } });
   $("toggleClassBtn").disabled = false;
-  if (error) return setMessage("copyCodeStatus", "Դասարանի կարգավիճակը չհաջողվեց փոխել։", true);
+  if (error) return setMessage("copyCodeStatus", (rateLimitMessage(error) ?? ("Դասարանի կարգավիճակը չհաջողվեց փոխել։")), true);
   await loadDashboard();
 }
 
@@ -1393,12 +1394,12 @@ async function toggleInstitutionalClassStatus() {
   if (klass.isActive && !window.confirm("Արխիվացնե՞լ դպրոցի այս դասարանը։ Աշակերտների և դասարանի պատմությունը կպահպանվի։")) return;
   $("institutionalClassToggle").disabled = true;
   setMessage("institutionalClassMessage", action === "archive" ? "Արխիվացվում է…" : "Վերակտիվացվում է…");
-  const { data, error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+  const { data, error } = await invokeRateAware(supabase,"manage-institutional-teacher-class", {
     body: { action, classId: klass.id },
   });
   $("institutionalClassToggle").disabled = false;
   if (error || data?.updated !== true) {
-    return setMessage("institutionalClassMessage", "Դասարանի կարգավիճակը չփոխվեց։ Ստուգեք թույլտվությունները և ուսումնական տարին։", true);
+    return setMessage("institutionalClassMessage", (rateLimitMessage(error) ?? ("Դասարանի կարգավիճակը չփոխվեց։ Ստուգեք թույլտվությունները և ուսումնական տարին։")), true);
   }
   setMessage("institutionalClassMessage", action === "archive" ? "Դասարանն արխիվացված է։" : "Դասարանը վերակտիվացված է։");
   // Archived classes have no active evidence context. Update the URL before reload.
@@ -1411,10 +1412,10 @@ async function removeStudent(studentId, studentName) {
   if (!studentId || !selectedClassId) return;
   const name = studentName || "այս աշակերտին";
   if (!window.confirm(`Հեռացնե՞լ ${name}-ին այս դասարանից։ Ուսանողի հաշիվը և ուսումնական տվյալները չեն ջնջվի։`)) return;
-  const { error } = await supabase.functions.invoke("manage-teacher-class", {
+  const { error } = await invokeRateAware(supabase,"manage-teacher-class", {
     body: { action: "remove_student", classId: selectedClassId, studentId },
   });
-  if (error) return alert("Չհաջողվեց հեռացնել աշակերտին դասարանից։");
+  if (error) return alert((rateLimitMessage(error) ?? ("Չհաջողվեց հեռացնել աշակերտին դասարանից։")));
   await loadDashboard();
 }
 

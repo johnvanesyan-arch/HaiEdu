@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { aggregateSchoolPerformanceAnalytics } from "../_shared/school-performance-analytics.ts";
@@ -81,6 +82,9 @@ Deno.serve(async (req) => {
     if (!(await hasActiveLiveSession(admin, token, actorId))) {
       return json({ error: "account_or_session_inactive" }, 403);
     }
+    const rateDenied = await enforceRateBudget(req, admin, actorId, token, "get-school-performance-analytics");
+    if (rateDenied) return rateDenied;
+
 
     const { data: actor, error: actorError } = await admin.from("profiles")
       .select("role,account_status").eq("id", actorId).maybeSingle();

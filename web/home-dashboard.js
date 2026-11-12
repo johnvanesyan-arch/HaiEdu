@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -163,14 +164,14 @@ function renderAssessment(data) {
 }
 
 async function startRequiredRemediation(skillId) {
-  const { data, error } = await supabase.functions.invoke("start-learning-session", {
+  const { data, error } = await invokeRateAware(supabase,"start-learning-session", {
     body: { mode: "practice", targetSkillId: skillId },
   });
   if (error || !data?.session) {
     const message = error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել վարժանքը։";
     const messageEl = $("modeMessage");
     if (messageEl) {
-      messageEl.textContent = message;
+      messageEl.textContent = (rateLimitMessage(error) ?? (message));
       messageEl.style.color = "#8a3342";
     }
     return;
@@ -191,12 +192,12 @@ async function refreshAssessment() {
   if (!content || content.classList.contains("hidden")) return;
   busy = true;
   const [{ data: statusData, error: statusError }, { data: lifecycleData, error: lifecycleError }] = await Promise.all([
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
-    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+    invokeRateAware(supabase,"get-mastery-check-status", { body: {} }),
+    invokeRateAware(supabase,"get-chapter-mastery-lifecycle", { body: {} }),
   ]);
   busy = false;
   if (statusError || lifecycleError) {
-    setAssessment("Չհաջողվեց բեռնել", "Յուրացման ստուգման վիճակը հիմա հասանելի չէ։", "danger", "./assessment.html", "Բացել");
+    setAssessment("Չհաջողվեց բեռնել", (rateLimitMessage(statusError) ?? ("Յուրացման ստուգման վիճակը հիմա հասանելի չէ։")), "danger", "./assessment.html", "Բացել");
     handleRequestedResume();
     return;
   }

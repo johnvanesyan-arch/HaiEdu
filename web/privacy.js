@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {taskPrivacyRows,erasurePresentation} from './task-privacy-view.mjs';
 import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -59,9 +60,9 @@ async function withinAccount(action) {
 }
 
 async function invoke(name, body = {}) {
-  const { data, error } = await withinAccount(() => supabase.functions.invoke(name, { body }));
-  if (error) throw new Error(data?.detail || data?.error || error.message);
-  if (data?.error) throw new Error(data.detail || data.error);
+  const { data, error } = await withinAccount(() => invokeRateAware(supabase,name, { body }));
+  if (error) throw (rateLimitMessage(error) ? error : (new Error(data?.detail || data?.error || error.message)));
+  if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(data.detail || data.error)));
   return data;
 }
 
@@ -236,7 +237,7 @@ $("saveNameBtn").addEventListener("click", async () => {
     const result = await invoke("manage-my-privacy", { action: "update_display_name", displayName: $("displayNameInput").value });
     setMessage("nameMessage", "Անունը պահպանվեց։");
     if (state) state.account.displayName = result.profile.display_name;
-  } catch (err) { setMessage("nameMessage", err.message, true); }
+  } catch (err) { setMessage("nameMessage", (rateLimitMessage(err) ?? (err.message)), true); }
 });
 
 $("changeEmailForm").addEventListener("submit", async (event) => {
@@ -259,7 +260,7 @@ $("changeEmailForm").addEventListener("submit", async (event) => {
     $("newEmailInput").value = "";
     setMessage("emailChangeMessage", "Ստուգեք նոր և ներկայիս էլ. հասցեների փոստարկղերը և հաստատեք փոփոխությունը։ Մինչ այդ մուտք գործեք ներկայիս հասցեով։");
   } catch (err) {
-    setMessage("emailChangeMessage", authErrorMessage(err, "email"), true);
+    setMessage("emailChangeMessage", (rateLimitMessage(err) ?? (authErrorMessage(err, "email"))), true);
   } finally {
     if (epoch === accountEpoch) button.disabled = false;
   }
@@ -284,7 +285,7 @@ $("changePasswordBtn").addEventListener("click", async () => {
     if (error) throw error;
     setMessage("passwordChangeMessage", "Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։");
   } catch (err) {
-    setMessage("passwordChangeMessage", authErrorMessage(err, "reset"), true);
+    setMessage("passwordChangeMessage", (rateLimitMessage(err) ?? (authErrorMessage(err, "reset"))), true);
   } finally {
     challenge?.finish();
     if (epoch === accountEpoch) button.disabled = false;
@@ -301,7 +302,7 @@ $("savePrivacyBtn").addEventListener("click", async () => {
     });
     if (state) state.preferences = { ...state.preferences, product_analytics_opt_in: preferences.productAnalytics, research_use_opt_in: preferences.researchUse };
     setMessage("privacyMessage", "Ընտրությունները պահպանվեցին։");
-  } catch (err) { setMessage("privacyMessage", err.message, true); }
+  } catch (err) { setMessage("privacyMessage", (rateLimitMessage(err) ?? (err.message)), true); }
 });
 
 $("requestDeletionBtn").addEventListener("click", async () => {
@@ -311,7 +312,7 @@ $("requestDeletionBtn").addEventListener("click", async () => {
     await invoke("manage-my-privacy", { action: "request_deletion" });
     setMessage("deletionMessage", "Ջնջման հարցումն ուղարկվեց։");
     await refresh();
-  } catch (err) { setMessage("deletionMessage", err.message, true); }
+  } catch (err) { setMessage("deletionMessage", (rateLimitMessage(err) ?? (err.message)), true); }
 });
 
 $("cancelDeletionBtn").addEventListener("click", async () => {
@@ -321,7 +322,7 @@ $("cancelDeletionBtn").addEventListener("click", async () => {
     await invoke("manage-my-privacy", { action: "cancel_deletion" });
     setMessage("deletionMessage", "Ջնջման հարցումը չեղարկվեց։");
     await refresh();
-  } catch (err) { setMessage("deletionMessage", err.message, true); }
+  } catch (err) { setMessage("deletionMessage", (rateLimitMessage(err) ?? (err.message)), true); }
 });
 
 $("signOutBtn").addEventListener("click", async () => {

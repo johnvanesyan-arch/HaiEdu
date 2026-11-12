@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -17,7 +18,7 @@ async function harness() {
   const source = readFileSync("web/content-evidence-page.js", "utf8").replace(/^import .*;\n/gm, "");
   const api = await vm.runInNewContext(`(async () => { ${source}
     return { loadEvidence, analytics: () => currentAnalytics };
-  })()`, {
+  })()`, Object.assign({
     $: id => nodes[id], esc: value => String(value),
     mountContentWorkspace: async () => {},
     contentSupabase: { auth: { onAuthStateChange(callback) { authListener = callback; } } },
@@ -26,7 +27,7 @@ async function harness() {
       reads.push({ name, body, ...request });
       return request.promise;
     },
-  });
+  },rateFeedbackBindings));
   return { api, nodes, reads, logout() { authListener("SIGNED_OUT", null); }, select(value) { nodes.evidenceUnit.value = value; return api.loadEvidence(); } };
 }
 

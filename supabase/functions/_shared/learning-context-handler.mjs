@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 import { resolveAuthorizedStudentLearningContext, StudentLearningContextDenied } from './student-learning-context.mjs';
 import { readAssessmentPolicy, AssessmentPolicyInvalid } from './assessment-policy.mjs';
 
@@ -6,7 +7,7 @@ const modes = new Set(['diagnostic', 'practice', 'mastery_check', 'chapter_revie
 const uuid = value => typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 
-export function createLearningContextHandler({ createAdmin, hasActiveLiveSession, env }) {
+export function createLearningContextHandler({ createAdmin, hasActiveLiveSession, env ,rateBudget=enforceRateBudget,rateBudgetRoute="get-learning-context"}) {
   return async req => {
     if (req.method === 'OPTIONS') return new Response('ok', { headers: cors });
     if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
@@ -18,6 +19,8 @@ export function createLearningContextHandler({ createAdmin, hasActiveLiveSession
       const { data, error } = await admin.auth.getUser(token);
       if (error || !data?.user) return json({ error: 'unauthorized' }, 401);
       if (!(await hasActiveLiveSession(admin, token, data.user.id))) return json({ error: 'account_or_session_inactive' }, 403);
+   const rateDenied=await rateBudget(req,admin,data.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
       const { data: profile, error: profileError } = await admin.from('profiles').select('role,account_status').eq('id', data.user.id).maybeSingle();
       if (profileError || profile?.role !== 'student' || profile.account_status !== 'active') return json({ error: 'student_role_required' }, 403);
       let body;

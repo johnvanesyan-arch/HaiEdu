@@ -1,3 +1,4 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
 import {studentTaskFixture,textDefinition,docxBytes,pdf,id,context,token} from '../fixtures/teacher-task-student-api.mjs';
@@ -119,4 +120,10 @@ test('My work list opens a teacher task in place and never loses unsaved text wh
  await expect(item.locator('.student-work-chip')).toHaveText('Սևագիր');
  assert.equal((await f.db.query('select count(*)::int n from teacher_task_submissions')).rows[0].n,0,'Nothing was submitted');
  assert.deepEqual(f.errors,[]);
+});
+
+test('BF16 confirmed refusal: student custom response remains editable and unsubmitted',async t=>{
+ const f=await surface(t),p=f.page;await p.locator('[data-task-open]').click();await p.locator('[data-task-text]').fill('My retained explanation');
+ await refuseAction(p,'manage-teacher-task-student-work','submit');await p.locator('[data-task-submit]').click();await expect(p.locator('[data-task-status]')).toHaveText(rateWaitMessage);
+ await expect(p.locator('[data-task-text]')).toHaveValue('My retained explanation');await expect(p.locator('[data-task-text]')).toBeEnabled();assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(f.errors,[]);
 });

@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../../supabase/functions/_shared/rate-budget.mjs';
 import { verifyReadIdentity } from '../../supabase/functions/_shared/teacher-read-identity.mjs';
 // Disposable SQL only. Auth.getUser is an explicit credential double; the real
 // Auth-session gate, Edge handler bodies, routers and governed transactions run.
@@ -41,7 +43,7 @@ export async function postgresClient() {
 
 export function compile(source, bindings, names) {
   const code=ts.transpile(source.replace(/^import[\s\S]*?;\n/gm,'').replace(/^export /gm,''),{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None});
-  return vm.runInNewContext(code+'\n({'+names.join(',')+'})',{Response,Request,atob,URL,console,...bindings});
+  return vm.runInNewContext(code+'\n({'+names.join(',')+'})',Object.assign({...rateBudgetBindings,Response,Request,atob,URL,console,...bindings},rateFeedbackBindings));
 }
 
 export function sqlAdmin(db) {

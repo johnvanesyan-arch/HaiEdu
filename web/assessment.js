@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
@@ -126,8 +127,8 @@ async function initialize() {
   if (!sessionData.session) return window.location.replace("./index.html");
 
   const [{ data: dashboard, error: dashError }, { data: mastery, error: masteryError }] = await Promise.all([
-    supabase.functions.invoke("get-student-dashboard", { body: {} }),
-    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    invokeRateAware(supabase,"get-student-dashboard", { body: {} }),
+    invokeRateAware(supabase,"get-mastery-check-status", { body: {} }),
   ]);
 
   if (dashError) {

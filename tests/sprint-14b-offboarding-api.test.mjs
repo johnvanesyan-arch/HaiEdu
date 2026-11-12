@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -15,7 +17,7 @@ async function invoke(endpoint,body,opts={}){
  from(table){let key,mutation;const q={select(){return q;},eq(k,v){if(k==='id')key=v;return q;},update(value){mutation=value;return q;},insert(value){calls.push({type:'audit',value});return Promise.resolve({error:null});},async maybeSingle(){if(mutation){calls.push({type:'profile',mutation});return {data:opts.dbError?null:{id:key,...mutation},error:opts.dbError?{message:opts.dbError}:null};}return {data:key===actor?actorProfile:targetProfile};},async single(){return q.maybeSingle();},then(resolve){return Promise.resolve({count:2,error:null}).then(resolve);}};return q;},
  async rpc(name,params){calls.push({type:'rpc',name,params});return {data:name.includes('blockers')?[]:opts.rpcData??{revision,ended:true},error:opts.rpcError?{message:opts.rpcError}:null};}};
  const source=readFileSync(`supabase/functions/${endpoint}/index.ts`,'utf8').replace(/^import .*;\n/gm,'');
- vm.runInNewContext(stripTypeScriptTypes(source),{createClient:()=>client,hasActiveLiveSession:async()=>opts.live!==false,Deno:{env:{get:()=> 'configured'},serve:fn=>{handler=fn;}},Response,atob,console:{error(){}}});
+ vm.runInNewContext(stripTypeScriptTypes(source),Object.assign({...rateBudgetBindings,createClient:()=>client,hasActiveLiveSession:async()=>opts.live!==false,Deno:{env:{get:()=> 'configured'},serve:fn=>{handler=fn;}},Response,atob,console:{error(){}}},rateFeedbackBindings));
  const token=`x.${Buffer.from(JSON.stringify({aal:opts.aal??'aal2'})).toString('base64url')}.x`;
  const response=await handler(new Request('https://test.invalid',{method:'POST',headers:opts.header===false?{}:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)}));
  return {status:response.status,data:await response.json(),calls};
@@ -56,7 +58,7 @@ async function ui({confirm=true,changed=false,error=null}={}){
  const source=readFileSync('web/school-admin.js','utf8').split('async function offboardTeacher')[1].split('\nfunction teacherCard')[0];
  const calls=[],busy=[],messages=[];let current=school,refresh=0,confirmations=0;
  const ctx={supabase:{functions:{invoke:async(_name,{body})=>{calls.push(body);if(body.action==='preview_offboard'){if(changed)current='other';return {data:{offboarding:{revision,activeAssignments:2,activeSubjectGrants:1,unusedInvitations:3,unusedJoinCodes:4}}};}return error?{error:{context:new Response(JSON.stringify({error}))}}:{data:{offboarding:{ended:true}}};}}},setButtonBusy:(_b,v)=>busy.push(v),$ :()=>({value:current}),window:{confirm:()=>{confirmations++;return confirm;}},message:(...args)=>messages.push(args),loadTeacherRoster:async()=>{refresh++;}};
- vm.runInNewContext('async function offboardTeacher'+source+';this.run=offboardTeacher;',ctx);await ctx.run({membership_id:target,display_name:'Test Teacher'},school,{});
+ vm.runInNewContext('async function offboardTeacher'+source+';this.run=offboardTeacher;',Object.assign(ctx,rateFeedbackBindings));await ctx.run({membership_id:target,display_name:'Test Teacher'},school,{});
  return {calls,busy,messages,refresh,confirmations};
 }
 test('dashboard cancellation or context change cannot offboard',async()=>{

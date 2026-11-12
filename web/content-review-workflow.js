@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './text-safety.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -34,13 +35,13 @@ function reviewHistoryErrorHy(...values) {
 
 
 async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) {
+  const { data, error } = await invokeRateAware(supabase,name, { body });
+  if (error) {if(rateLimitMessage(error))throw error;
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
     throw new Error(reviewHistoryErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
-  if (data?.error) throw new Error(reviewHistoryErrorHy(data.detail, data.error));
+  if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(reviewHistoryErrorHy(data.detail, data.error))));
   return data;
 }
 

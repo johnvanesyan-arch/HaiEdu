@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {appendClassHistory,analyticsClassOptions,analyticsClassLabel} from './class-history.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { renderEvidenceGroups } from "./analytics-provenance.mjs";
@@ -138,7 +139,7 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
 
   let data, error;
   try {
-    ({ data, error } = await supabase.functions.invoke("get-school-performance-analytics", {
+    ({ data, error } = await invokeRateAware(supabase,"get-school-performance-analytics", {
       body: {
         schoolId,
         academicYearId: requestedYearId || undefined,
@@ -156,9 +157,9 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   if (error || !data?.analytics || !data?.options) {
     const code = await functionErrorCode(error);
     if (version !== analyticsLoadVersion || $("overviewSchool").value !== schoolId) return;
-    message("analyticsMessage", code === "analytics_scope_unavailable"
+    message("analyticsMessage", (rateLimitMessage(error) ?? (code === "analytics_scope_unavailable"
       ? "Ընտրված վերլուծական համատեքստը հասանելի չէ։"
-      : "Վերլուծական տվյալները չբեռնվեցին։ Փորձեք ավելի ուշ։", true);
+      : "Վերլուծական տվյալները չբեռնվեցին։ Փորձեք ավելի ուշ։")), true);
     return;
   }
 
@@ -184,7 +185,7 @@ async function invite(kind, values, messageId, form) {
 
   let error = null;
   try {
-    ({ error } = await supabase.functions.invoke("provision-staff-account", {
+    ({ error } = await invokeRateAware(supabase,"provision-staff-account", {
       body: { kind, ...values },
     }));
   } catch (requestError) {
@@ -195,15 +196,15 @@ async function invite(kind, values, messageId, form) {
 
   if (error) {
     if (await functionErrorCode(error) === "mfa_required") {
-      message(messageId, "Master admin գործողությունների համար անհրաժեշտ է հաստատել MFA-ն։", true);
+      message(messageId, (rateLimitMessage(error) ?? ("Master admin գործողությունների համար անհրաժեշտ է հաստատել MFA-ն։")), true);
       window.setTimeout(() => location.assign("./admin-security.html"), 700);
       return;
     }
     if (await emailLimitExceeded(error))
       return message(messageId,
-        "Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
+        (rateLimitMessage(error) ?? ("Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։")), true);
     return message(messageId,
-      "Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։", true);
+      (rateLimitMessage(error) ?? ("Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։")), true);
   }
 
   form.reset();
@@ -221,7 +222,7 @@ async function loadPendingInvites() {
   let data;
   let error = null;
   try {
-    ({ data, error } = await supabase.functions.invoke("manage-staff-invitation", {
+    ({ data, error } = await invokeRateAware(supabase,"manage-staff-invitation", {
       body: { action: "list" },
     }));
   } catch (requestError) {
@@ -231,7 +232,7 @@ async function loadPendingInvites() {
   }
 
   if (error || !Array.isArray(data?.invitations)) {
-    message("pendingMessage", "Հրավերների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
+    message("pendingMessage", (rateLimitMessage(error) ?? ("Հրավերների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։")), true);
     return;
   }
 
@@ -282,7 +283,7 @@ async function loadPendingInvites() {
         setButtonBusy(resendButton, true, "Ուղարկվում է…");
         let result, resendError;
         try {
-          ({ data: result, error: resendError } = await supabase.functions.invoke("manage-staff-invitation", {
+          ({ data: result, error: resendError } = await invokeRateAware(supabase,"manage-staff-invitation", {
             body: { action: "resend", invitationId: invite.invitation_id },
           }));
         } catch (requestError) {
@@ -291,8 +292,8 @@ async function loadPendingInvites() {
         if (resendError || result?.resendRequested !== true) {
           setButtonBusy(resendButton, false, "Ուղարկվում է…");
           if (await emailLimitExceeded(resendError))
-            return message("pendingMessage", "Վերաուղարկումը սահմանափակվել է․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
-          return message("pendingMessage", "Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։", true);
+            return message("pendingMessage", (rateLimitMessage(resendError) ?? ("Վերաուղարկումը սահմանափակվել է․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։")), true);
+          return message("pendingMessage", (rateLimitMessage(resendError) ?? ("Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։")), true);
         }
         await loadPendingInvites();
         message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Բացեք միայն ամենավերջին նամակի հղումը. նախորդ հղումներն այլևս չեն գործում։ Ստուգեք նաև Spam բաժինը։");
@@ -307,7 +308,7 @@ async function loadPendingInvites() {
     button.addEventListener("click", async () => {
       if (!window.confirm("Չեղարկե՞լ այս հրավերը։")) return;
       setButtonBusy(button, true, "Չեղարկվում է…");
-      const { data: result, error: revokeError } = await supabase.functions.invoke("manage-staff-invitation", {
+      const { data: result, error: revokeError } = await invokeRateAware(supabase,"manage-staff-invitation", {
         body: { action: "revoke", invitationId: invite.invitation_id },
       });
       if (revokeError || result?.revoked !== true) {
@@ -339,11 +340,11 @@ async function offboardTeacher(teacher, schoolId, button) {
   setButtonBusy(button, true, "Ստուգվում է…");
   try {
     const body = { schoolId, membershipId: teacher.membership_id, reason: "administrative" };
-    const preview = await supabase.functions.invoke("manage-school-teacher", {
+    const preview = await invokeRateAware(supabase,"manage-school-teacher", {
       body: { ...body, action: "preview_offboard" },
     });
     const impact = preview.data?.offboarding;
-    if (preview.error || !impact?.revision) throw new Error("preview_failed");
+    if (preview.error || !impact?.revision) throw (rateLimitMessage(preview.error) ? preview.error : (new Error("preview_failed")));
     if ($("rosterSchool").value !== schoolId) return;
     const confirmed = window.confirm(
       `Դադարեցնե՞լ ${teacher.display_name || "այս ուսուցչի"} աշխատանքը այս դպրոցում։\n\n`
@@ -353,10 +354,10 @@ async function offboardTeacher(teacher, schoolId, button) {
     );
     if (!confirmed || $("rosterSchool").value !== schoolId) return;
     setButtonBusy(button, true, "Դադարեցվում է…");
-    const result = await supabase.functions.invoke("manage-school-teacher", {
+    const result = await invokeRateAware(supabase,"manage-school-teacher", {
       body: { ...body, action: "offboard", revision: impact.revision },
     });
-    if (result.error || result.data?.offboarding?.ended !== true) {
+    if (result.error || result.data?.offboarding?.ended !== true) {if(rateLimitMessage(result.error))throw result.error;
       let code = result.data?.error;
       try { code = (await result.error?.context?.clone().json())?.error ?? code; } catch { /* Fall back to general message. */ }
       if (code === "teacher_offboarding_preview_changed") {
@@ -367,9 +368,9 @@ async function offboardTeacher(teacher, schoolId, button) {
     if ($("rosterSchool").value !== schoolId) return;
     await loadTeacherRoster();
     message("rosterMessage", "Անդամակցությունն այս դպրոցում ավարտված է։ Դասարաններն ու ուսուցման պատմությունը պահպանված են։");
-  } catch {
+  } catch(rateError) {
     if ($("rosterSchool").value === schoolId)
-      message("rosterMessage", "Գործողությունը չհաջողվեց հաստատել։ Թարմացրեք ցանկը և ստուգեք ուսուցչի վիճակը։", true);
+      message("rosterMessage", (rateLimitMessage(rateError) ?? ("Գործողությունը չհաջողվեց հաստատել։ Թարմացրեք ցանկը և ստուգեք ուսուցչի վիճակը։")), true);
   } finally {
     setButtonBusy(button, false, "");
   }
@@ -428,14 +429,14 @@ function teacherCard(teacher, schoolId) {
           "Արխիվացնե՞լ այս ուսուցչին։ Այս դպրոցի մուտքը կդադարեցվի, իսկ հաշիվը, առարկաները, դասարաններն ու պատմությունը կպահպանվեն։",
         )) return;
         setButtonBusy(archiveButton, true, archived ? "Վերականգնվում է…" : "Արխիվացվում է…");
-        const { data, error } = await supabase.functions.invoke("manage-school-teacher", {
+        const { data, error } = await invokeRateAware(supabase,"manage-school-teacher", {
           body: { action: archived ? "restore" : "archive", schoolId, membershipId: teacher.membership_id },
         });
         if (error || data?.updated !== true) {
           setButtonBusy(archiveButton, false, "");
-          return message("rosterMessage", archived
+          return message("rosterMessage", (rateLimitMessage(error) ?? (archived
             ? "Ուսուցիչը չվերականգնվեց։ Ստուգեք հաշվի վիճակը կամ փորձեք ավելի ուշ։"
-            : "Ուսուցիչը չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։", true);
+            : "Ուսուցիչը չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։")), true);
         }
         await loadTeacherRoster();
         message("rosterMessage", archived
@@ -524,7 +525,7 @@ async function loadTeacherRoster() {
   setButtonBusy(refresh, true, "Թարմացվում է…");
   let data, error;
   try {
-    ({ data, error } = await supabase.functions.invoke("get-school-teachers", {
+    ({ data, error } = await invokeRateAware(supabase,"get-school-teachers", {
       body: { schoolId },
     }));
   } catch (requestError) {
@@ -535,7 +536,7 @@ async function loadTeacherRoster() {
   if (version !== teacherRosterLoadVersion) return;
   if ($("rosterSchool").value !== schoolId) return;
   if (error || !Array.isArray(data?.teachers)) {
-    message("rosterMessage", "Ուսուցիչների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
+    message("rosterMessage", (rateLimitMessage(error) ?? ("Ուսուցիչների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։")), true);
     return;
   }
   dashboardState.teachers.set(schoolId, data.teachers);
@@ -558,7 +559,7 @@ async function loadTeacherSubjects(schoolId) {
   loadingOption.selected = true;
   subjectSelect.add(loadingOption);
 
-  const { data: options, error } = await supabase.functions.invoke("get-school-subject-options", {
+  const { data: options, error } = await invokeRateAware(supabase,"get-school-subject-options", {
     body: { schoolId },
   });
   const subjects = options?.subjects;
@@ -584,11 +585,11 @@ async function loadYears() {
   const list = $("yearList");
   list.replaceChildren();
   if (!schoolId) return;
-  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+  const { data, error } = await invokeRateAware(supabase,"manage-school-academic-year", {
     body: { action: "list", schoolId },
   });
   if (error || !Array.isArray(data?.years)) {
-    message("yearMessage", "Ուսումնական տարիների ցանկը հասանելի չէ։", true);
+    message("yearMessage", (rateLimitMessage(error) ?? ("Ուսումնական տարիների ցանկը հասանելի չէ։")), true);
     return;
   }
   dashboardState.years.set(schoolId, data.years);
@@ -633,14 +634,14 @@ async function loadYears() {
           "Արխիվացնե՞լ ուսումնական տարին։ Այդ տարվա դասարանները կդառնան անհասանելի, բայց բոլոր տվյալները կպահպանվեն։",
         )) return;
         setButtonBusy(button, true, archived ? "Վերականգնվում է…" : "Արխիվացվում է…");
-        const { data: result, error: updateError } = await supabase.functions.invoke("manage-school-academic-year", {
+        const { data: result, error: updateError } = await invokeRateAware(supabase,"manage-school-academic-year", {
           body: { action: archived ? "restore" : "archive", schoolId, yearId: year.id },
         });
         if (updateError || result?.updated !== true) {
           setButtonBusy(button, false, "");
-          return message("yearMessage", archived
+          return message("yearMessage", (rateLimitMessage(updateError) ?? (archived
             ? "Տարին չվերականգնվեց։ Համոզվեք, որ այն ընթացիկ է և չի համընկնում մեկ այլ ակտիվ տարվա հետ։"
-            : "Տարին չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։", true);
+            : "Տարին չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։")), true);
         }
         await loadYears();
         if ($("rosterSchool").value === schoolId) await loadTeacherRoster();
@@ -698,7 +699,7 @@ $("yearForm").addEventListener("submit", async (event) => {
   const button = event.currentTarget.querySelector("button[type=submit]");
   setButtonBusy(button, true, "Բացվում է…");
   message("yearMessage", "");
-  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+  const { data, error } = await invokeRateAware(supabase,"manage-school-academic-year", {
     body: {
       action: "create", schoolId: $("yearSchool").value,
       label: $("yearLabel").value.trim(), startsOn: $("yearStart").value, endsOn: $("yearEnd").value,
@@ -706,9 +707,9 @@ $("yearForm").addEventListener("submit", async (event) => {
   });
   setButtonBusy(button, false, "Բացվում է…");
   if (error || !data?.yearId) {
-    message("yearMessage", data?.error === "school_year_overlap"
+    message("yearMessage", (rateLimitMessage(error) ?? (data?.error === "school_year_overlap"
       ? "Այս դպրոցի համար այդ ժամանակահատվածում արդեն ակտիվ տարի կա։"
-      : "Ուսումնական տարին չբացվեց։ Ստուգեք ամսաթվերը և թույլտվությունը։", true);
+      : "Ուսումնական տարին չբացվեց։ Ստուգեք ամսաթվերը և թույլտվությունը։")), true);
     return;
   }
   message("yearMessage", "Ուսումնական տարին բացվեց։ Ուսուցիչները կարող են ստեղծել համապատասխան դասարաններ։");

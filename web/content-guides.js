@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
@@ -86,8 +87,8 @@ function setMessage(text, bad = false) {
 }
 
 async function invoke(body) {
-  const { data, error } = await supabase.functions.invoke("manage-remediation-guides", { body });
-  if (error) {
+  const { data, error } = await invokeRateAware(supabase,"manage-remediation-guides", { body });
+  if (error) {if(rateLimitMessage(error))throw error;
     const context = error.context;
     let payload = null;
     try { payload = context ? await context.json() : null; } catch { payload = null; }
@@ -96,7 +97,7 @@ async function invoke(body) {
     thrown.validation = payload?.validation;
     throw thrown;
   }
-  if (data?.error) {
+  if (data?.error) {if(rateLimitMessage(data?.error))throw data?.error;
     const thrown = new Error(data.detail || data.error);
     thrown.code = data.error;
     thrown.validation = data.validation;
@@ -942,7 +943,7 @@ async function previewGuide() {
     setMessage(response.validation.errors.length ? "Ստուգումը սխալներ է գտել։" : "Նախադիտումը պատրաստ է։", Boolean(response.validation.errors.length));
   } catch (error) {
     if (token !== previewToken || selectedId !== guideId || $("previewVariant")?.value !== variantId) return;
-    setMessage(messageFor(error), true);
+    setMessage((rateLimitMessage(error) ?? (messageFor(error))), true);
   }
 }
 
@@ -1084,7 +1085,7 @@ async function configureMfa() {
     const completed = await ensureAal2();
     if (completed) setMessage("Բազմագործոն մուտքը հաստատված է այս սեսիայի համար։");
   } catch (error) {
-    setMessage(messageFor(error), true);
+    setMessage((rateLimitMessage(error) ?? (messageFor(error))), true);
   }
 }
 
@@ -1126,7 +1127,7 @@ async function runWorkflow(action) {
   } catch (error) {
     if (check !== sessionCheck) return;
     if (error.validation && $("validationPanel")) renderValidation(error.validation);
-    setMessage(messageFor(error), true);
+    setMessage((rateLimitMessage(error) ?? (messageFor(error))), true);
   } finally {
     const remaining = workflowsInFlight.get(check) - 1;
     if (remaining) workflowsInFlight.set(check, remaining); else workflowsInFlight.delete(check);
@@ -1211,7 +1212,7 @@ async function showForSession(session) {
   } catch (error) {
     if (check !== sessionCheck) return;
     $("guideConsole").classList.add("hidden");
-    $("authMessage").textContent = messageFor(error);
+    $("authMessage").textContent = (rateLimitMessage(error) ?? (messageFor(error)));
     $("authPanel").classList.remove("hidden");
   } finally {
     if (check === sessionCheck) guideSessionLoading = false;

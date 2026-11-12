@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {isSafeHttpsUrl} from './text-safety.mjs';
 import {studentMaterialCard,previewExplanation} from './resource-learner-view.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
@@ -9,7 +10,7 @@ const labels={draft:'Սևագիր',published:'Հրապարակված',superseded
 const purposes={practice:'Վարժանք',reading:'Ընթերցանություն'};
 const errors={resource_forbidden:'Այս դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։',resource_unavailable:'Նյութը հեռացվել կամ փոխարինվել է։ Թարմացրեք ցանկը։',resource_conflict:'Նյութը փոխվել է։ Թարմացրեք ցանկը և բացեք վերջին տարբերակը։',resource_definition_invalid:'Ստուգեք դաշտերն ու աղբյուրի հաստատումները։',resource_file_invalid:'Ընտրեք PDF ֆայլ՝ առավելագույնը 5 ՄԲ։ Ֆայլը պետք է ամբողջական լինի։',resource_too_large:'Ֆայլը գերազանցում է 5 ՄԲ սահմանը։',resource_url_invalid:'Մուտքագրեք արտաքին կայքի HTTPS հղում։',resource_qa_required:'Նախ պահպանեք փոփոխությունները և անցկացրեք QA ստուգումը։',resource_mfa_required:'Հրապարակման համար հաստատեք բազմագործոն մուտքը։',resource_reason_required:'Նշեք փոփոխության պատճառը։'};
 Object.assign(errors,{resource_file_required:'Նախ կցեք PDF ֆայլը։',resource_storage_unavailable:'Ֆայլը վերբեռնել չհաջողվեց։ Սևագիրը պահպանված է․ կրկին փորձեք կցել ֆայլը։',resource_create_uncertain:'Սևագրի ստեղծման հաստատումը չստացվեց։ Թարմացրեք ցանկը և ստուգեք սևագրերը՝ կրկնօրինակ չստեղծելու համար։',resource_upload_uncertain:'Կցման հաստատումը չստացվեց։ Կրկին փորձելուց առաջ կստուգենք պահպանված ֆայլը։',resource_file_conflict:'Պահպանված PDF-ը տարբերվում է ընտրված ֆայլից։ Թարմացրեք ցանկը և ստուգեք նյութը։'});
-const errorText=e=>errors[e.message]||'Գործողությունը չհաջողվեց։ Փորձեք նորից։';
+const errorText=e=>rateLimitMessage(e)||errors[e.message]||'Գործողությունը չհաջողվեց։ Փորձեք նորից։';
 export const resourceContext=c=>Object.fromEntries(['enrollmentId','assignmentId','curriculumReleaseId','unitId'].filter(k=>c?.[k]).map(k=>[k,c[k]]));
 const contextLabel=c=>[c.subjectNameHy,c.gradeLabelHy,c.unitTitleHy,c.className,c.schoolName,c.academicYearLabel].filter(Boolean).join(' · ');
 export function filterResources(rows,{query='',purpose='',topic='',provider='',format=''}={}){return rows.filter(m=>{const d=m.definition;return(!purpose||d.purpose===purpose)&&(!topic||d.topic===topic)&&(!provider||m.provider===provider)&&(!format||d.format===format)&&[d.title,d.goal,d.description,d.topic].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());});}
@@ -31,9 +32,9 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  async function invoke(action,payload={},context=resourceContext(selected),file){
   const e=epoch,q=request;let body={action,context,payload};
   if(file){const f=new FormData();f.append('request',JSON.stringify(body));f.append('file',file);body=f;}
-  const {data,error}=await client.functions.invoke('manage-supplementary-resources',{body});
+  const {data,error}=await invokeRateAware(client,'manage-supplementary-resources',{body});
   if(!valid(e,q))throw Error('resource_stale');
-  if(error){let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code||error.message);}
+  if(error){if(rateLimitMessage(error))throw error;let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code||error.message);}
   return data;
  }
  const key=()=>({id:current.id,fingerprint:current.fingerprint});
@@ -59,10 +60,10 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  }
  async function loadList(){if(!selected)return;const e=epoch,q=++request;clearDelivery();clearAssignments();rows=[];clearEditor();drawCards();message('Նյութերը բեռնվում են…');$('[data-resource-list]').setAttribute('aria-busy','true');
   try{let offset=0,all=[];do{const r=await invoke('list',{offset});if(!valid(e,q))return;all.push(...r.materials);if(!r.hasMore)break;offset+=r.materials.length;if(!r.materials.length)throw Error('invalid_page');}while(offset<100000);
-   if(role==='teacher'){let page=0;do{const {data,error}=await client.functions.invoke('manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset:page}}});if(!valid(e,q))return;if(error)throw Error('resource_unavailable');all.push(...data.materials);if(!data.hasMore)break;page=data.nextOffset;}while(page<100000);}
+   if(role==='teacher'){let page=0;do{const {data,error}=await invokeRateAware(client,'manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset:page}}});if(!valid(e,q))return;if(error)throw (rateLimitMessage(error) ? error : (Error('resource_unavailable')));all.push(...data.materials);if(!data.hasMore)break;page=data.nextOffset;}while(page<100000);}
    rows=all;
    const topic=$('[data-filter="topic"]'),previous=topic.value;topic.innerHTML='<option value="">Բոլոր թեմաները</option>'+[...new Set(rows.map(m=>m.definition.topic).filter(Boolean))].sort().map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');topic.value=previous;drawCards();message(rows.length?'Նյութերը թարմացված են։':'');
-  }catch(e2){if(valid(e,q)){message(errorText(e2),true);$('[data-resource-list]').innerHTML='<div class="resource-empty"><h2>Նյութերը հասանելի չեն</h2><p>Փորձեք թարմացնել ցանկը։</p></div>';}}
+  }catch(e2){if(valid(e,q)){message((rateLimitMessage(e2) ?? (errorText(e2))),true);$('[data-resource-list]').innerHTML='<div class="resource-empty"><h2>Նյութերը հասանելի չեն</h2><p>Փորձեք թարմացնել ցանկը։</p></div>';}}
   finally{if(valid(e,q))$('[data-resource-list]').setAttribute('aria-busy','false');}
  }
  function selectContext(index){selected=contexts[Number(index)]??null;if(index==='')selected=null;request++;operation++;busy=false;clearDelivery();clearAssignments();clearEditor();rows=[];resetFilters();$('[data-resource-context]').value=selected?String(contexts.indexOf(selected)):'';
@@ -148,7 +149,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    const payload={definition};if(current)Object.assign(payload,key(),{reason});
    composeMessage('Պահպանվում է նյութը…');
    try{remember((await invoke(current?'revise':'create',payload)).material);drawEditor(current,[],[],true);}
-   catch(error){if(error.message!=='resource_stale'&&!['resource_definition_invalid','resource_request_invalid','resource_url_invalid','resource_reason_required','resource_conflict','resource_forbidden'].includes(error.message)){uncertainCreate=true;$('[data-resource-recover]').hidden=false;throw Error('resource_create_uncertain');}throw error;}
+   catch(error){if(error.message!=='resource_stale'&&!['resource_definition_invalid','resource_request_invalid','resource_url_invalid','resource_reason_required','resource_conflict','resource_forbidden'].includes(error.message)){if(rateLimitMessage(error))throw error;uncertainCreate=true;$('[data-resource-recover]').hidden=false;throw Error('resource_create_uncertain');}throw error;}
   }
   if(!valid(e,q))return;
   if(definition.format==='pdf'&&(!current.fileBytes||uploadUncertain)){
@@ -180,8 +181,8 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
    // Platform editorial get is deliberately forbidden to teachers. Revalidate through
    // their existing read-only, QA-filtered catalogue; never acquire editor rights.
    for(let offset=0;offset<100000;){
-    const {data,error}=await client.functions.invoke('manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset}}});
-    if(!valid(e,q))return;if(error||data?.error)throw Error(data?.error==='assignment_forbidden'?'resource_forbidden':'resource_unavailable');
+    const {data,error}=await invokeRateAware(client,'manage-resource-assignments',{body:{action:'catalog',context:resourceContext(selected),payload:{offset}}});
+    if(!valid(e,q))return;if(error||data?.error)throw (rateLimitMessage(error) ? error : (Error(data?.error==='assignment_forbidden'?'resource_forbidden':'resource_unavailable')));
     material=data.materials.find(m=>m.id===id);if(material||!data.hasMore)break;
     if(!Number.isSafeInteger(data.nextOffset)||data.nextOffset<=offset)throw Error('resource_unavailable');offset=data.nextOffset;
    }
@@ -201,7 +202,7 @@ export function mountResourceLibrary({root,client,staff=false,onRole=()=>{}}){
  async function run(fn,kind='write'){
   if(busy||assignmentView?.isBusy())return;busy=true;busyKind=kind;root.setAttribute('aria-busy','true');const e=epoch,q=request,op=++operation;if(kind==='write')lockWrites();
   try{await fn();}catch(error){if(valid(e,q)&&error.message!=='resource_stale'){
-   composeMessage(errorText(error),true);
+   composeMessage((rateLimitMessage(error) ?? (errorText(error))),true);
    if(error.message==='resource_forbidden'){rows=[];clearEditor();clearDelivery();$('[data-resource-list]').innerHTML='<p>Դասընթացի հասանելիությունն ավարտվել է։ Թարմացրեք էջը։</p>';}
   }}finally{if(op===operation){busy=false;unlockWrites();root.removeAttribute('aria-busy');}}
  }

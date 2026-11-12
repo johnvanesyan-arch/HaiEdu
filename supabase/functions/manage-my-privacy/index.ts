@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
 const corsHeaders = {
@@ -39,6 +40,9 @@ Deno.serve(async (req) => {
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
 
     const userId = userData.user.id;
+    const rateDenied = await enforceRateBudget(req, admin, userId, token, "manage-my-privacy");
+    if (rateDenied) return rateDenied;
+
     const { data: profile } = await admin.from("profiles").select("role, account_status").eq("id", userId).maybeSingle();
     if (!profile) return json({ error: "profile_not_found" }, 404);
     if (["suspended", "archived"].includes(profile.account_status)) return json({ error: "account_suspended" }, 403);

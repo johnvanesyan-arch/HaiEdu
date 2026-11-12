@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {subjectArtwork} from './subject-visuals.mjs';
 import {mountWrittenWork} from './written-work.mjs';
@@ -55,14 +56,14 @@ export function mountTeacherToday({root,supabase,actorId,isCurrent=()=>true,init
   if(!keepReview)$('[data-today-summary]').textContent='Հերթը բեռնվում է…';
   try{
    const body=todayRequest(actorId);if(cursor)body.cursor=cursor;
-   const response=initial&&initialResponse?await initialResponse:await supabase.functions.invoke('get-teacher-workspace',{body});
+   const response=initial&&initialResponse?await initialResponse:await invokeRateAware(supabase,'get-teacher-workspace',{body});
    if(!active()||request!==ticket)return;
    let {data:next,error}=response;
-   if(error||next?.error){let code=next?.error;if(!code&&error?.context?.json){try{code=(await error.context.json()).error;}catch{}}const e=Error(code||'workspace_unavailable');e.denied=['workspace_context_unavailable','account_or_session_inactive','unauthorized'].includes(code);throw e;}
+   if(error||next?.error){if(rateLimitMessage(error))throw error;let code=next?.error;if(!code&&error?.context?.json){try{code=(await error.context.json()).error;}catch{}}const e=Error(code||'workspace_unavailable');e.denied=['workspace_context_unavailable','account_or_session_inactive','unauthorized'].includes(code);throw e;}
    if(next?.version!=='teacher-workspace-v1')throw Error('workspace_unavailable');
    data=next;draw();
    if(initial&&next.selectedWork)openWork(next.selectedWork);
-  }catch(e){if(active()&&request===ticket)unknown(e.denied?'Այս հերթը կամ աշխատանքն այլևս հասանելի չէ։ Վերադառնալու համար բացեք բոլոր ակտիվ դասարանները։':'Հերթը չբեռնվեց։ Փորձեք «Թարմացնել հերթը»։',Boolean(e.denied));}
+  }catch(e){if(active()&&request===ticket)unknown((rateLimitMessage(e) ?? (e.denied?'Այս հերթը կամ աշխատանքն այլևս հասանելի չէ։ Վերադառնալու համար բացեք բոլոր ակտիվ դասարանները։':'Հերթը չբեռնվեց։ Փորձեք «Թարմացնել հերթը»։')),Boolean(e.denied));}
   finally{if(active()&&request===ticket){loading=false;$('[data-today-refresh]').disabled=false;}}
  }
  const click=e=>{

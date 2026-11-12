@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import { $, esc, contentSupabase, invokeContent, mountContentWorkspace } from "./content-workspace.js";
 
 let dashboard = null;
@@ -16,7 +17,7 @@ const EVIDENCE_ERROR_HY = {
   unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
 };
 
-function evidenceErrorHy(error) {
+function evidenceErrorHy(error) {if(rateLimitMessage(error))return rateLimitMessage(error);
   const raw = String(error?.message || error || "");
   for (const [code, label] of Object.entries(EVIDENCE_ERROR_HY)) {
     if (raw.includes(code)) return label;
@@ -94,7 +95,7 @@ async function loadEvidence() {
     renderAnalytics();
   } catch (error) {
     if (requestId !== evidenceRequestId || $("evidenceUnit").value !== unitCode) return;
-    $("evidenceMessage").textContent = evidenceErrorHy(error);
+    $("evidenceMessage").textContent = (rateLimitMessage(error) ?? (evidenceErrorHy(error)));
     currentAnalytics = null;
     renderAnalytics();
   }

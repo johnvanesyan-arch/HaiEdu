@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import {setRemediationQuestion} from "./remediation.js";
 import {learnerAccess,publishLearnerAccess} from './learner-access.mjs';
@@ -339,7 +340,7 @@ async function loadSessionItem() {
     if (error) {
       $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
       feedback.className = "feedback bad";
-      feedback.textContent = error.message;
+      feedback.textContent = (rateLimitMessage(error) ?? (error.message));
       if (currentSession?.id === focusSessionId) focusHandoff.move($("prompt"));
       return;
     }

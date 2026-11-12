@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export const MAX_RESOURCE_BYTES=5*1024*1024;
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization,x-client-info,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
@@ -24,7 +25,7 @@ async function bounded(request,max){
  const result=new Uint8Array(size);let offset=0;for(const c of chunks){result.set(c,offset);offset+=c.length;}return result;
 }
 const shape=(o,allowed)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).every(k=>allowed.includes(k));
-export function createSupplementaryResourcesHandler({createAdmin,hasActiveLiveSession,env}){
+export function createSupplementaryResourcesHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-supplementary-resources"}){
  return async request=>{
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(request.method!=='POST')return reply({error:'method_not_allowed'},405);
@@ -36,6 +37,8 @@ export function createSupplementaryResourcesHandler({createAdmin,hasActiveLiveSe
    if(authError||!auth?.user)return reply({error:'unauthorized'},401);
    let claims;try{claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));}catch{fail('resource_forbidden');}
    if(!UUID.test(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,auth.user.id))fail('resource_forbidden');
+   const rateDenied=await rateBudget(request,admin,auth.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const live=async()=>{if(!await hasActiveLiveSession(admin,token,auth.user.id))fail('resource_forbidden');};
    const multipart=request.headers.get('content-type')?.startsWith('multipart/form-data;');
    const raw=await bounded(request,multipart?MAX_RESOURCE_BYTES+32768:24000);let body,file;

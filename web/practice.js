@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import {setRemediationQuestion} from "./remediation.js";
 import {captureFocusHandoff} from './keyboard-focus.mjs';
@@ -357,7 +358,7 @@ async function loadSessionItem() {
     if (error) {
       $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
       $("feedback").className = "feedback bad";
-      $("feedback").textContent = error.message;
+      $("feedback").textContent = (rateLimitMessage(error) ?? (error.message));
       nextBtn.disabled = false;
       nextBtn.textContent = "Կրկին փորձել";
       nextBtn.dataset.action = "retry";

@@ -1,3 +1,4 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 import {TASK_FILE_LIMIT} from './teacher-task-definition.mjs';
 const uuid=v=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 const shape=(o,keys)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).every(k=>keys.includes(k));
@@ -7,12 +8,14 @@ const fail=code=>{throw Error(code);};
 export function validTeacherTaskPdf(bytes){if(!(bytes instanceof Uint8Array)||bytes.length<10||bytes.length>TASK_FILE_LIMIT)return false;const decode=v=>new TextDecoder('latin1').decode(v);return /^%PDF-(1\.[0-7]|2\.0)[\s\r\n]/.test(decode(bytes.slice(0,16)))&&/%%EOF\s*$/.test(decode(bytes.slice(-1024)));}
 async function bounded(request,max){if(Number(request.headers.get('content-length'))>max)fail('task_source_too_large');const reader=request.body?.getReader();if(!reader)fail('task_source_invalid');let length=0,chunks=[];try{while(true){const r=await reader.read();if(r.done)break;length+=r.value.length;if(length>max){await reader.cancel();fail('task_source_too_large');}chunks.push(r.value);}}finally{reader.releaseLock();}const result=new Uint8Array(length);let offset=0;for(const c of chunks){result.set(c,offset);offset+=c.length;}return result;}
 const hash=async bytes=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');
-export function createTeacherTaskSourcesHandler({createAdmin,hasActiveLiveSession,env}){return async request=>{
+export function createTeacherTaskSourcesHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="manage-teacher-task-sources"}){return async request=>{
  if(request.method==='OPTIONS')return new Response('ok',{headers:cors});if(request.method!=='POST')return json({error:'method_not_allowed'},405);
  try{
   if(!env.url||!env.key)fail('task_source_storage_unavailable');const token=request.headers.get('authorization')?.match(/^Bearer\s+(.+)$/i)?.[1];if(!token)return json({error:'unauthorized'},401);
   const admin=createAdmin(env.url,env.key),user=await admin.auth.getUser(token);if(user.error||!user.data?.user)return json({error:'unauthorized'},401);let claims;try{const p=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');claims=JSON.parse(atob(p.padEnd(Math.ceil(p.length/4)*4,'=')));}catch{fail('task_source_forbidden');}
   const actor=user.data.user.id,live=async()=>{if(!uuid(claims.session_id)||!['aal1','aal2'].includes(claims.aal)||!await hasActiveLiveSession(admin,token,actor))fail('task_source_forbidden');};await live();
+   const rateDenied=await rateBudget(request,admin,actor,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
   const multipart=request.headers.get('content-type')?.startsWith('multipart/form-data;'),raw=await bounded(request,multipart?TASK_FILE_LIMIT+65536:16384);let body,file;
   try{if(multipart){const form=await new Response(raw,{headers:{'Content-Type':request.headers.get('content-type')}}).formData();if([...form.keys()].sort().join(',')!=='file,request')fail('task_source_invalid');body=JSON.parse(form.get('request'));file=form.get('file');}else body=JSON.parse(new TextDecoder().decode(raw));}catch{fail('task_source_invalid');}
   if(!shape(body,['action','context','payload'])||!shape(body.context,['assignmentId','curriculumReleaseId','unitId'])||Object.keys(body.context).length!==3||Object.values(body.context).some(v=>!uuid(v)))fail('task_source_invalid');

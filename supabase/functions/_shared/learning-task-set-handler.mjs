@@ -1,8 +1,9 @@
+import {enforceRateBudget} from './rate-budget.mjs';
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'};
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'Content-Type':'application/json','Cache-Control':'private, no-store'}});
 const uuid=value=>typeof value==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
 function authSession(token){try{const part=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(atob(part+'='.repeat((4-part.length%4)%4))).session_id;}catch{return null;}}
-export function createLearningTaskSetHandler({createAdmin,hasActiveLiveSession,env}){
+export function createLearningTaskSetHandler({createAdmin,hasActiveLiveSession,env,rateBudget=enforceRateBudget,rateBudgetRoute="get-learning-task-set"}){
  return async request=>{
   if(request.method==='OPTIONS')return new Response('ok',{headers:cors});
   if(request.method!=='POST')return json({error:'method_not_allowed'},405);
@@ -15,6 +16,8 @@ export function createLearningTaskSetHandler({createAdmin,hasActiveLiveSession,e
    const token=header.replace(/^Bearer\s+/i,''),admin=createAdmin(env.url,env.key),authId=authSession(token),{data,error}=await admin.auth.getUser(token);
    if(error||!data?.user)return json({error:'unauthorized'},401);
    if(!uuid(authId)||!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);
+   const rateDenied=await rateBudget(request,admin,data.user.id,token,rateBudgetRoute);if(rateDenied)return rateDenied;
+
    const result=await admin.rpc('service_learning_task_set',{p_actor:data.user.id,p_auth:authId,p_action:body.action,p_item:body.itemId});
    if(result.error||!result.data)throw new Error(result.error?.message??'task_set_unavailable');
    if(!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);

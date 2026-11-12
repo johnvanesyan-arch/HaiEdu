@@ -62,7 +62,7 @@ for(const [file,handler,mode] of [['app.js','submitAnswer','practice'],['practic
           const result=await(path.endsWith('submit-mastery-answer')?mastery:answer).call(body);
           res.writeHead(result.status,{'Content-Type':'application/json'});res.end(JSON.stringify(result.body));return;
         }
-        const scripts=['/answer-response-recovery.mjs','/ux.js','/account-signout.mjs','/keyboard-focus.mjs','/text-safety.mjs'];
+        const scripts=['/rate-budget-feedback.mjs','/answer-response-recovery.mjs','/ux.js','/account-signout.mjs','/keyboard-focus.mjs','/text-safety.mjs'];
         const text=path==='/sdk.mjs'?sdk:path==='/fixture.mjs'?module
           :path==='/config.js'?'export const SUPABASE_URL=location.origin,SUPABASE_PUBLISHABLE_KEY="fixture";'
           :scripts.includes(path)?await readFile('web'+path,'utf8'):html;

@@ -2,7 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { createMisconceptionReviewHandler } from "../_shared/misconception-review-management.mjs";
 
-Deno.serve(createMisconceptionReviewHandler({
+Deno.serve(createMisconceptionReviewHandler({rateBudgetRoute:"manage-misconception-reviews",
   createAdmin: (url: string, key: string) => createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   }),

@@ -1,3 +1,4 @@
+import {refuseAction,rateWaitMessage} from '../fixtures/rate-refusal-browser.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';import {chromium,expect} from '@playwright/test';
 import {fixture,id,context,token} from '../fixtures/writing-assignments-api.mjs';
@@ -35,4 +36,10 @@ test('changed roster preserves selected intent and account changes discard late 
 });
 for(const width of [390,768,1280])test('writing assignment preview and recipients reflow at '+width+'px and computed 200% text',async t=>{
  const f=await fixture();t.after(()=>f.db.close());const ui=await surface(t,f,{width,large:true}),p=ui.page;await p.locator('[data-wa-task]').first().click();await p.locator('.wa-rubric summary').click();await p.evaluate(()=>document.fonts.ready);assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).fontSize),'32px');for(const phase of ['preview','recipients']){if(phase==='recipients')await p.locator('[data-wa-recipients]').click();assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await p.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+`/writing-assignment-${phase}-${width}-200.png`,fullPage:true});}}assert.deepEqual(ui.errors,[]);
+});
+
+test('BF16 confirmed refusal: published assignment keeps recipients selected and can be edited',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const {page:p,errors}=await surface(t,f);await choose(p);await p.locator('[name=writingAudience][value=selected]').check();await p.locator('[data-wa-recipient="'+id(371)+'"]').check();
+ await refuseAction(p,'manage-writing-assignments','assign');await p.locator('[data-wa-send]').click();await expect(p.locator('[data-wa-message]')).toHaveText(rateWaitMessage);await expect(p.locator('[name=writingAudience][value=selected]')).toBeEnabled();await expect(p.locator('[data-wa-recipient="'+id(371)+'"]')).toBeChecked();
+ assert.equal((await f.db.query('select count(*)::int n from writing_assignments')).rows[0].n,0);assert.equal(await p.evaluate(()=>window.__rateRefusals.length),1);assert.deepEqual(errors,[]);
 });

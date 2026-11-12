@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage,isRateBudgetRefusal} from './rate-budget-feedback.mjs';
 import {isSafeHttpsUrl} from './text-safety.mjs';
 import {studentAssignmentCard,previewExplanation} from './resource-learner-view.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
@@ -14,7 +15,7 @@ const errors={
  assignment_storage_unavailable:'Ֆայլը հիմա հասանելի չէ։ Փորձեք նորից։',
  assignment_file_invalid:'Ֆայլը ստուգել չհաջողվեց։ Դիմեք ուսուցչին։',
 };
-const errorText=e=>errors[e.message]||'Կապը խափանվել է։ Փորձեք նորից։';
+const errorText=e=>rateLimitMessage(e)||errors[e.message]||'Կապը խափանվել է։ Փորձեք նորից։';
 const scopeText=c=>[c.subjectNameHy??c.subjectName,c.gradeLabelHy,c.unitTitleHy??c.unitTitle,c.className,c.schoolName,c.academicYearLabel].filter(Boolean).join(' · ');
 const exactContext=c=>Object.fromEntries(['assignmentId','enrollmentId','curriculumReleaseId','unitId'].filter(k=>c?.[k]).map(k=>[k,c[k]]));
 function lifetime(root,client){
@@ -31,9 +32,9 @@ function lifetime(root,client){
  const initialEvents=events;
  const ready=client.auth.getSession().then(r=>{if(disposed||invalidated)return false;if(initialEvents===events)actor=r.data.session?.user?.id??null;return Boolean(actor);});
  async function invoke(action,payload={},context={}){
-  const e=epoch;if(!valid(e))throw Error('assignment_stale');const {data,error}=await client.functions.invoke('manage-resource-assignments',{body:{action,context:exactContext(context),payload}});
+  const e=epoch;if(!valid(e))throw Error('assignment_stale');const {data,error}=await invokeRateAware(client,'manage-resource-assignments',{body:{action,context:exactContext(context),payload}});
   if(!valid(e))throw Error('assignment_stale');
-  if(error){let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code||error.message);}
+  if(error){if(rateLimitMessage(error))throw error;let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code||error.message);}
   return data;
  }
  async function open(assignment,message){
@@ -74,7 +75,7 @@ export function mountStudentResourceAssignments({root,client,hubRefresh=false,on
    rows=more?[...rows,...data.assignments]:data.assignments;offset=data.nextOffset;
    $('[data-assignment-list]').innerHTML=rows.map(a=>assignmentCard(a,false,state!=='history')).join('')||'<div class="assignment-empty"><p>'+(state==='history'?'Չեղարկված առաջադրանք չկա։':'Ուսուցիչը դեռ առաջադրանք չի ուղարկել։ Երբ ուղարկի, այն կհայտնվի այստեղ։')+'</p></div>';
    $('[data-assignment-more]').hidden=!data.hasMore;message('');onRender({hasMore:data.hasMore,partial:state==='history'});
-  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);if(!more)$('[data-assignment-list]').innerHTML='<button type="button" class="ghost" data-assignment-refresh>Փորձել նորից</button>';onRender({partial:true});}}
+  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message((rateLimitMessage(e) ?? (errorText(e))),true);if(!more)$('[data-assignment-list]').innerHTML='<button type="button" class="ghost" data-assignment-refresh>Փորձել նորից</button>';onRender({partial:true});}}
   finally{if(life.current()&&token===generation){busy=false;root.removeAttribute('aria-busy');}}
  }
  const click=e=>{
@@ -134,7 +135,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
    const first=!preview||reset||changed;preview=data;offset=data.nextOffset;
    if(first)drawCompose($('[data-assignment-instructions]')?.value??'');else{drawRoster(data.roster,more);summary();}
    message(previewNotice||(changed?'Աշակերտների ցանկը փոխվել է։ Ստուգեք ստացողներին։':''));lockControls();
-  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);if(!preview)$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-preview-retry>Փորձել նորից</button>';}}
+  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message((rateLimitMessage(e) ?? (errorText(e))),true);if(!preview)$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-preview-retry>Փորձել նորից</button>';}}
  }
  function drawReceipt(data){
   title('Ուղարկման հաստատում');
@@ -145,7 +146,7 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
  async function inspect(id){
   const token=++generation;busy=true;message('Հաստատումը բեռնվում է…');lockControls();
   try{const data=await life.invoke('get',{id},ctx);if(life.current()&&token===generation){drawReceipt(data);message('');}}
-  catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale')message(errorText(e),true);}
+  catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale')message((rateLimitMessage(e) ?? (errorText(e))),true);}
   finally{if(life.current()&&token===generation){busy=false;lockControls();}}
  }
  async function send(){
@@ -157,9 +158,9 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
    if(!life.current())return;drawReceipt(data);message('Պահպանված է։ Առաջադրանքը հասանելի է ստացողների «Իմ աշխատանքները» բաժնում։');
   }catch(e){
    if(e.message==='assignment_stale'||!life.current())return;
-   if(['assignment_preview_stale','assignment_recipients_invalid'].includes(e.message)){pending=null;preview=null;selected.clear();previewNotice=errorText(e);message(previewNotice,true);}
-   else if(errors[e.message]){pending=null;message(errorText(e),true);}
-   else message('Ուղարկման հաստատումը չի ստացվել։ Կրկնեք նույն ուղարկումը՝ կրկնօրինակ չստեղծելու համար։',true);
+   if(['assignment_preview_stale','assignment_recipients_invalid'].includes(e.message)){pending=null;preview=null;selected.clear();previewNotice=errorText(e);message((rateLimitMessage(e) ?? (previewNotice)),true);}
+   else if(errors[e.message]||isRateBudgetRefusal(e)){pending=null;message((rateLimitMessage(e) ?? (errorText(e))),true);}
+   else message((rateLimitMessage(e) ?? ('Ուղարկման հաստատումը չի ստացվել։ Կրկնեք նույն ուղարկումը՝ կրկնօրինակ չստեղծելու համար։')),true);
   }finally{
    if(life.current()){busy=false;lockControls();if(!preview&&!pending)void loadPreview(false,true);}
   }
@@ -173,14 +174,14 @@ export function mountTeacherResourceAssignments({root,client,context,materialId=
    const data=await life.invoke('list',{offset:listOffset,state:listState},ctx);if(!life.current()||token!==generation)return;
    listRows=more?[...listRows,...data.assignments]:data.assignments;listOffset=data.nextOffset;
    $('[data-assignment-body]').innerHTML=(materialId?'<button type="button" class="ghost" data-assignment-compose-again>Ընտրել ստացողներին նոր առաջադրանքի համար</button>':'')+'<div class="assignment-list-controls"><label class="assignment-choice"><input type="checkbox" data-assignment-canceled'+(listState==='history'?' checked':'')+'>Միայն չեղարկված առաջադրանքները</label></div><div class="assignment-list">'+(listRows.map(a=>assignmentCard(a,true)).join('')||'<p>Այս բաժնում ուղարկված առաջադրանք չկա։</p>')+'</div>'+(data.hasMore?'<button type="button" class="ghost" data-assignment-list-more>Բեռնել ավելին</button>':'');message('');
-  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message(errorText(e),true);$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-history-list>Փորձել նորից</button>';}}
+  }catch(e){if(life.current()&&token===generation&&e.message!=='assignment_stale'){message((rateLimitMessage(e) ?? (errorText(e))),true);$('[data-assignment-body]').innerHTML='<button type="button" data-assignment-history-list>Փորձել նորից</button>';}}
   finally{if(life.current()&&token===generation){busy=false;lockControls();}}
  }
  async function cancel(){
   if(locked()||!currentReceipt)return;const reason=$('[data-assignment-cancel-reason]')?.value.trim();if(!reason){message(errors.assignment_reason_required,true);$('[data-assignment-cancel-reason]')?.focus();return;}
   busy=true;lockControls();message('Չեղարկման հաստատումը բեռնվում է…');
   try{const data=await life.invoke('cancel',{id:currentReceipt.id,revision:currentReceipt.revision,reason},ctx);if(life.current()){drawReceipt(data);message('Առաջադրանքը չեղարկված է։ Հրապարակված նյութի հասանելիությունը չի փոխվել։');}}
-  catch(e){if(life.current()&&e.message!=='assignment_stale')message(errorText(e),true);}
+  catch(e){if(life.current()&&e.message!=='assignment_stale')message((rateLimitMessage(e) ?? (errorText(e))),true);}
   finally{busy=false;if(life.current())lockControls();}
  }
  const click=e=>{

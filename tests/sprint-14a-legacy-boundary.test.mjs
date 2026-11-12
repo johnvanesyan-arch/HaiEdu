@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -27,7 +29,7 @@ async function invoke(name, body, tables) {
     },
   };
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     createClient: () => client, hasActiveLiveSession: async () => true,
     getStudentCourseEntitlements: async () => { throw new Error('unexpected entitlement read'); },
     // Role-boundary fixture explicitly stubs signature verification; real crypto is tested separately.
@@ -35,7 +37,7 @@ async function invoke(name, body, tables) {
     verifyTeacherReadIdentity: async (admin,token) => (await admin.auth.getUser(token)).data?.user ?? null,
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, console, crypto, TextEncoder,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
   }));

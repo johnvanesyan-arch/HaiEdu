@@ -18,7 +18,7 @@ function reviewError(e){
 export function createTeacherTaskReviewHandler(options,{files=false}={}){return async request=>{
  if(request.method==='OPTIONS')return new Response('ok',{headers:taskStudentCors});if(request.method!=='POST')return taskStudentReply({error:'method_not_allowed'},405);
  try{
-  const access=await taskStudentAccess(request,options,'service_teacher_task_review');let body;
+  const access=await taskStudentAccess(request,{rateBudgetRoute:files?'manage-teacher-task-review-files':'manage-teacher-task-review',...options},'service_teacher_task_review');let body;
   try{body=JSON.parse(new TextDecoder().decode(await taskBounded(request,65536)));}catch(e){if(e.message==='task_file_too_large')throw e;fail('task_review_invalid');}
   const keys=files?{file:['submissionId'],source:['submissionId']}:{queue:['offset','state'],deliveries:['offset'],open:['submissionId'],save:['submissionId','expectedRevision','review'],publish:['submissionId','expectedRevision','review','requestId'],cancel:['deliveryId','requestId','reason']};
   if(!taskShape(body,['action','context','payload'])||!Object.hasOwn(keys,body.action)||!contextOK(body.context)||!taskShape(body.payload??{},keys[body.action]))fail('task_review_invalid');

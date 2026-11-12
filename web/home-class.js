@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {learnerAccess} from './learner-access.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -83,7 +84,7 @@ async function refreshClasses() {
     const title = document.getElementById("homeClassTitle");
     const text = document.getElementById("homeClassText");
     if (title) title.textContent = "Ուսուցչի դասարան";
-    if (text) text.textContent = "Դասարանի կարգավիճակը հիմա հասանելի չէ։ Կարող եք միանալ կոդով։";
+    if (text) text.textContent = (rateLimitMessage(error) ?? ("Դասարանի կարգավիճակը հիմա հասանելի չէ։ Կարող եք միանալ կոդով։"));
     return;
   }
 

@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test,{before,after,beforeEach,afterEach} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -84,7 +85,7 @@ test('API helper scopes completion exactly and fails closed on unavailable histo
 test('direct practice and review links stop before resuming saved practice when diagnostic is incomplete',async()=>{
  const source=read('web/practice.js');const fn=source.slice(source.indexOf('async function startOrResumePractice()'),source.indexOf('async function loadSessionItem()'));
  for(const mode of ['practice','chapter_review']){
-  const gates=[];const ctx=vm.createContext({starting:false,dashboard:{activeSession:{id:'saved',mode}},showGate:(...args)=>gates.push(args)});
+  const gates=[];const ctx=vm.createContext(Object.assign({starting:false,dashboard:{activeSession:{id:'saved',mode}},showGate:(...args)=>gates.push(args)},rateFeedbackBindings));
   vm.runInContext(fn,ctx);await vm.runInContext('startOrResumePractice()',ctx);
   assert.equal(gates[0][2][0].href,'./diagnostic.html');assert.equal(ctx.starting,false);
  }

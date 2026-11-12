@@ -1,3 +1,4 @@
+import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -27,6 +28,9 @@ Deno.serve(async (req) => {
     if (!(await hasActiveLiveSession(admin, bearer, recipient))) {
       return json({ error: "account_or_session_inactive" }, 403);
     }
+    const rateDenied = await enforceRateBudget(req, admin, recipient, bearer, "complete-student-invitation");
+    if (rateDenied) return rateDenied;
+
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const token = typeof body.token === "string" ? body.token.toLowerCase() : "";

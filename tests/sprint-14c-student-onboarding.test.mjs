@@ -1,3 +1,5 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
+import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -59,12 +61,12 @@ async function invokeProvision({
   const delivery = { auth: { signInWithOtp: payload => deliver(payload, 'anon') } };
   const source = readFileSync('supabase/functions/provision-student-account/index.ts', 'utf8')
     .replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     createClient: (_url, key) => key === 'anon' ? delivery : service,
     hasActiveLiveSession: async () => true,
     Deno: { env: { get: (name) => name === 'SUPABASE_ANON_KEY' ? 'anon' : 'service' }, serve: fn => { handler = fn; } },
     Response, Request, URL, console, crypto, TextEncoder, Date, Uint8Array,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' },
     body: JSON.stringify({ schoolId: school, classId, assignmentId: assignment,
@@ -201,11 +203,11 @@ async function invokeCompletion(body) {
   };
   const source = readFileSync('supabase/functions/complete-student-invitation/index.ts', 'utf8')
     .replace(/^import .*;\n/gm, '');
-  vm.runInNewContext(stripTypeScriptTypes(source), {
+  vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
     createClient: () => client, hasActiveLiveSession: async () => true,
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, Request, console, crypto, TextEncoder, Uint8Array,
-  });
+  },rateFeedbackBindings));
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
   }));

@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths:
+      - supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql
+      - web/rate-budget-feedback.mjs
       - web/auth-challenge-config.mjs
       - web/auth-challenge.css
       - web/auth-challenge.mjs

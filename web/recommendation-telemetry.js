@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 export async function recordRecommendationTelemetry(
   supabase,
   recommendation,
@@ -8,7 +9,7 @@ export async function recordRecommendationTelemetry(
   if (!recommendationInstanceId) return { recorded: false, skipped: true };
 
   try {
-    const { data, error } = await supabase.functions.invoke("record-recommendation-event", {
+    const { data, error } = await invokeRateAware(supabase,"record-recommendation-event", {
       body: { recommendationInstanceId, eventType, surface },
     });
     if (error) {

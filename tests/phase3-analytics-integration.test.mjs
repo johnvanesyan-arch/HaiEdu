@@ -1,3 +1,4 @@
+import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -112,10 +113,10 @@ test('actual Evidence page consumes real handler/SQL flags, links and empty-prog
   const db=await fixture(t), api=await endpoint(db,'get-pilot-item-analytics');
   const nodes=Object.fromEntries(['evidenceUnit','evidenceMessage','evidenceMetrics','evidenceFlagList','refreshEvidenceBtn'].map(id=>[id,{value:'',textContent:'',innerHTML:'',addEventListener(){}}]));
   const source=readFileSync('web/content-evidence-page.js','utf8').replace(/^import .*;\n/gm,'');
-  const code=await vm.runInNewContext(`(async()=>{${source};return {loadEvidence,render};})()`,{
+  const code=await vm.runInNewContext(`(async()=>{${source};return {loadEvidence,render};})()`,Object.assign({
     $:id=>nodes[id],esc:v=>String(v),mountContentWorkspace:async()=>{},contentSupabase:{auth:{onAuthStateChange(){}}},
     invokeContent:async(name,body)=>{assert.equal(name,'get-pilot-item-analytics');const r=await api.call(body);if(r.status!==200)throw Error(r.body.error);return r.body;},
-  });
+  },rateFeedbackBindings));
   await code.render({catalog:{programs:['A','B','C','D'].map(x=>({id:`QA-PROGRAM-${x}`,gradeLabelHy:'Փորձնական դասարան',subjectNameHy:`QA ${x}`})),units:['A','B','C','D'].map(x=>({code:`QA-${x}-U01`,programId:`QA-PROGRAM-${x}`,titleHy:`QA ${x}`}))}});
   for (const x of ['A','B','C','D']) assert.ok(nodes.evidenceUnit.innerHTML.includes(`QA-${x}-U01`));
   nodes.evidenceUnit.value='QA-A-U01'; await code.loadEvidence();

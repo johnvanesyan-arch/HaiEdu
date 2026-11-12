@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage,isRateBudgetRefusal} from './rate-budget-feedback.mjs';
 import {mountTeacherTaskSend} from './teacher-task-send.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
 import {mountTeacherTaskEditor} from './teacher-task-editor.mjs';
@@ -15,14 +16,14 @@ export function mountTeacherTaskDraftWorkspace({root,client,context,actorId,onCl
   if(busy||!current())return;const version=++epoch;busy=true;retry=()=>read(action,payload,done);lock();message(action==='copy'?'Պատճենը պահպանվում է…':'Սևագրերը բեռնվում են…');
   try{
    const session=await client.auth.getSession();if(!current()||epoch!==version)return;if(session.data?.session?.user?.id!==actorId)throw Error('unauthorized');
-   const {data,error}=await client.functions.invoke('manage-teacher-task-drafts',{body:{action,context:ctx,payload}});
+   const {data,error}=await invokeRateAware(client,'manage-teacher-task-drafts',{body:{action,context:ctx,payload}});
    const after=await client.auth.getSession();if(after.data?.session?.user?.id!==actorId)throw Error('unauthorized');
    if(!current()||epoch!==version)return;
-   if(error||data?.error){let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code??'unavailable');}
+   if(error||data?.error){if(rateLimitMessage(error))throw error;let code=data?.error;try{code||=(await error.context?.json())?.error;}catch{}throw Error(code??'unavailable');}
    if(data?.version!=='teacher-task-drafts-v1')throw Error('unavailable');
    retry=null;pendingCopy=null;message('');done(data);
-  }catch(e){if(current()&&epoch===version){const forbidden=['unauthorized','assignment_forbidden'].includes(e.message),known=['task_draft_invalid','task_draft_conflict','task_draft_unavailable'].includes(e.message);if(forbidden||known){pendingCopy=null;retry=null;}
-   message(forbidden?'Այս դասարանի հասանելիությունը պետք է նորից ստուգել։ Վերադառնալով՝ ընտրեք հասանելի դասարան։':e.message==='task_draft_conflict'?'Սևագիրը փոխվել է այլ պատուհանում։ Թարմացրեք ցանկը և կրկին ընտրեք պատճենը։':pendingCopy?'Պատճենի հաստատումը չի ստացվել։ Կրկնեք նույն գործողությունը։':'Սևագիրը չբեռնվեց։ Ձեր պահպանված տարբերակը չի փոխվել։ Փորձեք կրկին։',true);
+  }catch(e){if(current()&&epoch===version){const forbidden=['unauthorized','assignment_forbidden'].includes(e.message),known=['task_draft_invalid','task_draft_conflict','task_draft_unavailable'].includes(e.message);if(forbidden||known||isRateBudgetRefusal(e)){pendingCopy=null;retry=null;}
+   message((rateLimitMessage(e) ?? (forbidden?'Այս դասարանի հասանելիությունը պետք է նորից ստուգել։ Վերադառնալով՝ ընտրեք հասանելի դասարան։':e.message==='task_draft_conflict'?'Սևագիրը փոխվել է այլ պատուհանում։ Թարմացրեք ցանկը և կրկին ընտրեք պատճենը։':pendingCopy?'Պատճենի հաստատումը չի ստացվել։ Կրկնեք նույն գործողությունը։':'Սևագիրը չբեռնվեց։ Ձեր պահպանված տարբերակը չի փոխվել։ Փորձեք կրկին։')),true);
    if(forbidden)$('[data-drafts-list]').replaceChildren();else if(retry&&!$('[data-drafts-retry]'))$('[data-drafts-list]').insertAdjacentHTML('beforeend','<button type="button" data-drafts-retry>Փորձել կրկին</button>');}}
   finally{if(current()&&epoch===version){busy=false;lock();}}
  }

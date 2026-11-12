@@ -1,3 +1,4 @@
+import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml} from './text-safety.mjs';
 import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswerRecovery,numericAnswerInput} from './answer-response-recovery.mjs';
 import {captureFocusHandoff} from './keyboard-focus.mjs';
@@ -77,7 +78,7 @@ async function prepare() {
     $("startBtn").classList.remove("hidden");
   } catch (err) {
     $("stateTitle").textContent = "Չհաջողվեց պատրաստել ախտորոշիչը";
-    $("stateText").textContent = err?.message ?? String(err);
+    $("stateText").textContent = (rateLimitMessage(err) ?? (err?.message ?? String(err)));
   }
 }
 
@@ -104,7 +105,7 @@ async function startDiagnostic() {
   $("startBtn").disabled = false;
   if (data?.diagnosticCompleted) return showFreshResults();
   if (error || !data?.session) {
-    $("stateText").textContent = error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել ախտորոշիչը։";
+    $("stateText").textContent = (rateLimitMessage(error) ?? (error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել ախտորոշիչը։"));
     return;
   }
 
@@ -135,7 +136,7 @@ async function loadItem() {
     if (error) {
       $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
       $("feedback").className = "feedback bad";
-      $("feedback").textContent = error.message;
+      $("feedback").textContent = (rateLimitMessage(error) ?? (error.message));
       $("nextBtn").textContent = "Կրկին փորձել";
       $("nextBtn").classList.remove("hidden");
       if (currentSession?.id === focusSessionId) focusHandoff.move($("nextBtn"));

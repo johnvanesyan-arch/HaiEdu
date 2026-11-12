@@ -1,3 +1,4 @@
+import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {learnerAccess} from './learner-access.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -56,12 +57,12 @@ joinBtn.addEventListener("click", async () => {
 
   const {data:auth,error:authError}=await supabase.auth.getSession();
   if(!valid())return;
-  if(authError||!auth?.session||!access.matchesSession(auth.session))return setMessage('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։',true);
-  const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
+  if(authError||!auth?.session||!access.matchesSession(auth.session))return setMessage((rateLimitMessage(authError) ?? ('Մուտքը ստուգել չհաջողվեց։ Թարմացրեք էջը։')),true);
+  const { data, error } = await invokeRateAware(supabase,"join-class", { body: { joinCode: code } });
   if(!valid())return;
   if (error || !data?.joined || !data?.class?.id) {
     joinBtn.disabled = false;
-    return setMessage("Չհաջողվեց հաստատել դասարանին միացումը։ Ստուգեք կոդը և փորձեք կրկին։", true);
+    return setMessage((rateLimitMessage(error) ?? ("Չհաջողվեց հաստատել դասարանին միացումը։ Ստուգեք կոդը և փորձեք կրկին։")), true);
   }
 
   // Double-check through the read endpoint used by the course gate. A learner
@@ -87,6 +88,6 @@ joinBtn.addEventListener("click", async () => {
     : `Միացաք ${data.class.name} դասարանին։ Բացվում է ${courseName}։`);
 
   redirectTimer=setTimeout(()=>{if(valid())window.location.replace("./index.html?joined=1");},500);
-  }catch{if(valid())setMessage("Չհաջողվեց հաստատել դասարանին միացումը։ Ստուգեք դասարանների ցանկը՝ նորից փորձելուց առաջ։",true);}
+  }catch(rateError){if(valid())setMessage((rateLimitMessage(rateError) ?? ("Չհաջողվեց հաստատել դասարանին միացումը։ Ստուգեք դասարանների ցանկը՝ նորից փորձելուց առաջ։")),true);}
   finally{if(valid()&&!redirectTimer){joining=false;joinBtn.disabled=!actorId;}}
 });
