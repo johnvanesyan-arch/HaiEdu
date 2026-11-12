@@ -13,7 +13,7 @@ const assignment = '523e4567-e89b-42d3-a456-426614174000';
 
 async function invokeProvision({
   existing = recipient, allowed = true, deliveryError = null, inviteError = null,
-  profileRole = 'teacher', emails = null,
+  profileRole = 'teacher', emails = null, captchaEnabled = false,
 } = {}) {
   let handler;
   const calls = [];
@@ -49,11 +49,14 @@ async function invokeProvision({
       throw new Error(`unexpected rpc ${method}`);
     },
   };
-  const delivery = { auth: { signInWithOtp: async (payload) => {
-    calls.push({ method: 'signInWithOtp', payload });
+  const deliver = async (payload, clientRole) => {
+    calls.push({ method: 'signInWithOtp', payload, clientRole });
+    if (captchaEnabled && clientRole !== 'service_role') return { error: { code: 'captcha_failed', status: 400 } };
     return { error: typeof deliveryError === 'function'
       ? deliveryError(payload.email) : deliveryError };
-  } } };
+  };
+  service.auth.signInWithOtp = payload => deliver(payload, 'service_role');
+  const delivery = { auth: { signInWithOtp: payload => deliver(payload, 'anon') } };
   const source = readFileSync('supabase/functions/provision-student-account/index.ts', 'utf8')
     .replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), {
@@ -98,6 +101,21 @@ test('new student receives an Auth invite and remains a student until private ac
   assert.match(new URL(authInvite.options.redirectTo).searchParams.get('student_invitation'), /^[0-9a-f]{64}$/);
   const issue = result.calls.find((call) => call.method === 'service_issue_institutional_invitation_14b');
   assert.equal(issue.parameters.p_role, 'student');
+});
+
+test('authorized server delivery remains compatible with CAPTCHA without exposing server credentials', async () => {
+  const result = await invokeProvision({ captchaEnabled: true });
+  assert.equal(result.status, 201);
+  const send = result.calls.find(call => call.method === 'signInWithOtp');
+  assert.equal(send.clientRole, 'service_role');
+  assert.equal(send.payload.options.shouldCreateUser, false);
+  assert.ok(result.calls.findIndex(call => call.method === 'service_authorize_student_invite_14c') <
+    result.calls.findIndex(call => call.method === 'signInWithOtp'));
+  assert.equal(result.body.token, undefined);
+  assert.equal(result.body.serviceKey, undefined);
+  const denied = await invokeProvision({ captchaEnabled: true, allowed: false });
+  assert.equal(denied.status, 403);
+  assert.equal(denied.calls.some(call => call.method === 'signInWithOtp'), false);
 });
 
 test('cross-school or unassigned class denial happens before account or email mutation', async () => {

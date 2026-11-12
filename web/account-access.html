@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./account-access.css" />
+  <link rel="stylesheet" href="./auth-challenge.css" />
   <link rel="stylesheet" href="./student-forest.css" data-student-forest />
 </head>
 <body data-haiedu-student data-student-utility="access">
@@ -38,8 +39,9 @@
       <p class="subtle">Գրանցվելուց հետո ձեր հաշիվը սկզբում դատարկ կլինի։ Դասերն ու վարժանքները կհայտնվեն ուսուցչի հղումով կամ կոդով միանալուց հետո։ Դպրոցի աշխատակիցներն օգտագործում են իրենց ստացած հրավերը։</p>
       <form id="registerForm">
         <label>Էլ. հասցե<input id="registerEmail" type="email" autocomplete="email" required /></label>
-        <label>Գաղտնաբառ<input id="registerPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
-        <label>Կրկնել գաղտնաբառը<input id="registerConfirm" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <label>Գաղտնաբառ<input id="registerPassword" type="password" autocomplete="new-password" minlength="6" aria-describedby="registerPasswordHint" required /></label>
+        <p id="registerPasswordHint" class="subtle small">Օգտագործեք առնվազն 6 նիշ։</p>
+        <label>Կրկնել գաղտնաբառը<input id="registerConfirm" type="password" autocomplete="new-password" minlength="6" aria-describedby="registerPasswordHint" required /></label>
         <div class="auth-actions">
           <button type="submit">Ստեղծել հաշիվ</button>
           <button id="registerBackBtn" type="button" class="ghost">Արդեն հաշիվ ունե՞ք։ Մուտք գործել</button>
@@ -53,8 +55,9 @@
       <form id="studentInviteForm">
         <label>Անուն և ազգանուն<input id="studentDisplayName" type="text" autocomplete="name" minlength="2" maxlength="80" required /></label>
         <div id="studentPasswordFields">
-          <label>Նոր գաղտնաբառ<input id="studentPassword" type="password" autocomplete="new-password" minlength="12" /></label>
-          <label>Կրկնել գաղտնաբառը<input id="studentPasswordConfirm" type="password" autocomplete="new-password" minlength="12" /></label>
+          <label>Նոր գաղտնաբառ<input id="studentPassword" type="password" autocomplete="new-password" minlength="6" aria-describedby="studentPasswordHint" /></label>
+          <p id="studentPasswordHint" class="subtle small">Օգտագործեք առնվազն 6 նիշ։</p>
+          <label>Կրկնել գաղտնաբառը<input id="studentPasswordConfirm" type="password" autocomplete="new-password" minlength="6" aria-describedby="studentPasswordHint" /></label>
         </div>
         <label class="student-consent">
           <input id="studentConsent" type="checkbox" required />
@@ -80,8 +83,9 @@
       <h2>Սահմանել գաղտնաբառ</h2>
       <p class="subtle">Մուտքագրեք ձեր սեփական նոր գաղտնաբառը։ Դպրոցի աշխատակիցները այն չեն տեսնի։</p>
       <form id="passwordForm">
-        <label>Նոր գաղտնաբառ<input id="newPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
-        <label>Կրկնել գաղտնաբառը<input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <label>Նոր գաղտնաբառ<input id="newPassword" type="password" autocomplete="new-password" minlength="6" aria-describedby="newPasswordHint" required /></label>
+        <p id="newPasswordHint" class="subtle small">Օգտագործեք առնվազն 6 նիշ։</p>
+        <label>Կրկնել գաղտնաբառը<input id="confirmPassword" type="password" autocomplete="new-password" minlength="6" aria-describedby="newPasswordHint" required /></label>
         <button type="submit">Պահպանել և շարունակել</button>
       </form>
       <p id="passwordMessage" class="message" role="status" aria-live="polite"></p>
