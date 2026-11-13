@@ -12,28 +12,33 @@
 - Interactive page: `docs/design/teacher-workspace-prototype-20261113.html`. It is self-contained and published privately for owner review at https://claude.ai/artifact/7Pw7LFMeAm2X57QHfmbAkB. The link opens only for people John shares it with.
 - It uses HaiEdu's forest colours, the Noto Sans Armenian font and existing product wording, with synthetic example data. It is not connected to any service.
 - The example teacher has four classes across two grades and three subjects (7Ա Physics, 7Բ Physics, 7Ա English, 8Բ Maths), each with its own students, units and skills.
-- Controls: screen (Home / Classes / Class / Review queue / Account), width (phone 390 / desktop), data state (filled / empty / loading / load error) and design notes. The yellow notes link each element to the item below and to its data source.
+- Controls:
+  - screen: every teacher screen, chosen from a list;
+  - width: phone 390 or desktop;
+  - data state: filled, empty, loading, load error or signed out;
+  - design notes, on or off.
+
+  Every screen works in every state at both widths. The yellow notes link each element to the item below and to its data source.
 
 ## 1. Goal and scope
 
 Teachers should see what needs them, act on it, and find each class's students, without scrolling past repeated furniture.
 
-**In scope:**
-- teacher Home (B1);
-- the class list and the class page (B2, B3);
-- the writing review queue (B4);
-- the teacher-facing parts of the page header (A2) and account entry (B5);
-- the phone menu (A1), drawn for the teacher so it can be judged.
+**In scope (since version 4, 13 November 2026):** every teacher screen:
+- Home (B1, B7);
+- the class list, create class, and the class page with its Students, Skills, «Հանձնարարություններ» and Invitations tabs (B2, B3);
+- the student drawer;
+- the review queue for course writing and the teacher's own tasks (B4);
+- the assign flow (B8);
+- the material library and add-material form;
+- «Իմ առաջադրանքները» and the task editor;
+- archive, account (B5) and the guide (D);
+- the phone «Ավելին» menu (A1);
+- load-error (B6) and signed-out states.
 
-**Out of scope:**
-- the review form's content, rubric and actions;
-- the student drawer's content;
-- the skill-matrix data and BF-12 legend;
-- invitations and join codes;
-- task authoring, the library and material assignment;
-- other roles' pages.
+**Out of scope:** other roles' pages, and the student-side screens these actions lead to.
 
-All of these keep their current behaviour and are only moved or linked.
+The form fields, rubric, matrix data, invitations, join codes and upload rules shown are today's. All of these keep their current behaviour and are only moved or linked.
 
 ## 2. Principles
 
@@ -115,6 +120,35 @@ Each principle is drawn from the review findings.
 - **Other sections:** login details, privacy and data, and the deletion request keep the existing account-page content and actions.
 - **Scope:** the account page is shared by every role, so this falls under the platform-wide change rule (A2).
 
+### 4.6 Assign flow (B8)
+
+**Proposal:** one «Հանձնարարել» entry replaces the separate «Հանձնարարել գրավոր» page and the «Հանձնարարել նյութ» card. The three services behind it (writing assignments, own-task delivery, resource assignments) stay separate.
+
+**Steps:**
+1. **Ինչ եք հանձնարարում:** class, unit, and type («Դասընթացի գրավոր», «Իմ առաջադրանքը», «Նյութ (PDF կամ հղում)»). Skipped when started from a class page or the student drawer.
+2. **Choice:** the existing course catalog for the unit, the teacher's own tasks, or published materials, with «+ Ստեղծել նոր առաջադրանք» or «+ Ավելացնել նյութ».
+3. **Recipients:** the whole class or selected students, with search and «Ընտրել աջակցության կարիք ունեցողներին». An optional instruction for own tasks and materials.
+4. **Confirm:** a summary, «Նախադիտում․ ինչ կտեսնի աշակերտը» and «Հաստատել և ուղարկել», using the existing wording.
+5. **Done:** «Ուղարկումը հաստատված է» with «Դիտել ուղարկումը» (the class «Հանձնարարություններ» tab) and «Հանձնարարել այլ աշխատանք».
+
+**Entry points:** the menu; the class page; the student drawer (that student preselected); a library material, own task or the editor's «Պահպանել և շարունակել» (each starts at step 3).
+
+**Class «Հանձնարարություններ» tab:** everything sent to the class in one list, with submissions, a review link and cancel. It needs a combined read of three existing lists; this is checked in the B4 investigation.
+
+### 4.7 Library, own tasks and editor
+
+- **Material library:** inside the teacher layout (H-17), filtered by course and unit. Each material shows its status and actions: «Հանձնարարել», «Աշակերտի տեսքի նախադիտում», «Խմբագրել». The add-material form keeps today's fields, rights checks and three buttons.
+- **«Իմ առաջադրանքները»:** gets its own menu item (today it is reached through «Հանձնարարել գրավոր» → «Ստեղծել իմ առաջադրանքը / սևագրերը»). The editor keeps today's fields, review settings and buttons.
+
+### 4.8 Archive, create class, guide, phone menu, signed out
+
+- **Archive:** one title, grouped by school year, with search. «Վերակտիվացնել» asks for confirmation on the page itself.
+- **Create class:** one title, with only the authorised school/year/subject options. After creation the teacher lands on the new class's invitation screen.
+- **Guide:** inside the teacher layout, sections collapsed. Today's anchors are kept, so contextual «Ինչպե՞ս» links still work.
+- **Phone «Ավելին»:** a full-label menu screen for everything not in the bottom bar.
+- **Signed out:** the only state with a sign-in button. After signing in the teacher returns to the same page.
+- **Confirmations:** archive, cancel and reactivate are confirmed on the page, not with the browser's own pop-up (item D, platform-wide).
+
 ### 4.4 Review queue (B4)
 
 | Order | Content | Data source |
@@ -161,7 +195,9 @@ Each principle is drawn from the review findings.
 4. **Pilot notice.** Sidebar label only (drawn), or keep the visible notice on Home.
 5. **B4 first step.** Approve the 0.5-day investigation before choosing the full or the smaller version.
 6. **Display name rule (B5).** Required 2–100 characters (today's teacher Profile rule), or optional up to 80 (today's account-page rule).
-7. **Validation.** Can one or two teachers try the prototype for 20–30 minutes? Suggested tasks:
+7. **One assign entry (B8).** Replace «Հանձնարարել գրավոր» and «Հանձնարարել նյութ» with one «Հանձնարարել» flow, and give «Իմ առաջադրանքները» its own menu item.
+8. **Review button wording.** One set of labels for course writing and own-task review. Today course writing says «Ուղարկել գնահատականն ու մեկնաբանությունը» / «Վերադարձնել վերանայման», and own tasks say «Հրապարակել ստուգումը» / «Վերադարձնել շտկման». The prototype uses «Ուղարկել ստուգումը» / «Վերադարձնել վերանայման» as a placeholder. Armenian review needed.
+9. **Validation.** Can one or two teachers try the prototype for 20–30 minutes? Suggested tasks:
    - find who needs help in 7Ա;
    - check the oldest pending writing and move to the next;
    - find the join code;
@@ -194,6 +230,8 @@ All Armenian wording in the prototype reuses existing product text, except these
 - «Ստուգում» (short phone label), «Ավելին»;
 - «Հանձնարարել նյութ» as a button;
 - «Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից»;
-- «Դասընթացի» / «Իմ կազմած» (type filter).
+- «Դասընթացի» / «Իմ կազմած» (type filter);
+- assign flow and other new labels: «Հանձնարարել» as a menu item, «Ինչ եք հանձնարարում», «Ընտրել աջակցության կարիք ունեցողներին», «Հանձնարարել այս աշակերտին», «Հանձնարարություններ» (tab), «Ուղարկել ստուգումը», «Մուտք գործեք՝ շարունակելու համար», «Ավելին» screen descriptions;
+- guide texts, which are shortened examples.
 
 These need Armenian review before they ship. The rubric criteria and student texts in the prototype are synthetic examples, not product content.

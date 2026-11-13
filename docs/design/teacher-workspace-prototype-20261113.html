@@ -220,16 +220,43 @@ h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
 .newdata { display: none; font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--note-ink); background: var(--note); border: 1px dashed var(--note-line); border-radius: var(--r-pill); padding: 1px 8px; width: fit-content; }
 .notes-on .newdata { display: inline-block; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.proto-select { background: var(--proto); color: var(--proto-ink); border: 1px solid #4b5f53; border-radius: var(--r-s); min-height: 32px; padding: 4px 8px; font: inherit; }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+.stepper { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.stepper li { padding: 6px 12px; border-radius: var(--r-pill); background: var(--quiet); color: var(--muted); font-size: var(--t-small); font-weight: 600; }
+.stepper li.done { background: var(--selected); color: var(--accent); }
+.stepper li[aria-current="step"] { background: var(--accent); color: #fff; }
+.choice-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.choice { display: grid; gap: 4px; text-align: left; padding: 14px 16px; border: 1px solid var(--control); border-radius: var(--r-m); background: var(--surface); color: var(--ink); cursor: pointer; min-height: 44px; font: inherit; }
+.choice small { color: var(--muted); font-size: var(--t-small); }
+.choice[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); background: var(--selected); }
+.form-grid { display: grid; gap: 14px; }
+.radio-row { border: 0; padding: 0; margin: 0; display: grid; gap: 2px; }
+label.radio { display: flex; gap: 10px; align-items: center; min-height: 44px; font-weight: 400; }
+label.radio input, .check-list input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.check-list label { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; min-height: 44px; padding: 4px; border-bottom: 1px solid var(--divider); }
+.inline-confirm { border: 1px solid var(--error); background: var(--error-bg); border-radius: var(--r-m); padding: 12px 14px; display: grid; gap: 8px; }
+.summary { display: grid; gap: 8px; margin: 0; }
+.summary div { display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr); gap: 8px; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; font-weight: 600; }
+details > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+details.card { padding-block: 4px; }
+fieldset legend { font-weight: 600; font-size: var(--t-small); }
 </style>
 
 <header class="proto-bar" aria-label="Prototype controls">
   <div class="proto-title">HaiEdu · Teacher workspace prototype<small>Phase 2 · synthetic example data · not the live product</small></div>
-  <div class="proto-group"><span>Screen</span><div class="seg" id="ctlScreen">
-    <button type="button" data-v="home">Home</button><button type="button" data-v="classes">Classes</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button><button type="button" data-v="account">Account</button></div></div>
+  <label class="proto-group" for="ctlScreen"><span>Screen</span><select id="ctlScreen" class="proto-select">
+    <optgroup label="Main"><option value="home">Home</option><option value="classes">Classes</option><option value="class">Class page</option><option value="create">Create class</option><option value="review">Review queue</option></optgroup>
+    <optgroup label="Assign and content"><option value="assign">Assign flow</option><option value="library">Material library</option><option value="material">Add material</option><option value="tasks">My tasks</option><option value="editor">Task editor</option></optgroup>
+    <optgroup label="Other"><option value="archive">Archive</option><option value="account">Account</option><option value="guide">Guide</option><option value="more">Phone «Ավելին» menu</option></optgroup>
+  </select></label>
   <div class="proto-group device-group"><span>Width</span><div class="seg" id="ctlDevice">
     <button type="button" data-v="phone">Phone 390</button><button type="button" data-v="desktop">Desktop</button></div></div>
   <div class="proto-group"><span>Data</span><div class="seg" id="ctlState">
-    <button type="button" data-v="full">Filled</button><button type="button" data-v="empty">Empty</button><button type="button" data-v="loading">Loading</button><button type="button" data-v="error">Load error</button></div></div>
+    <button type="button" data-v="full">Filled</button><button type="button" data-v="empty">Empty</button><button type="button" data-v="loading">Loading</button><button type="button" data-v="error">Load error</button><button type="button" data-v="signedout">Signed out</button></div></div>
   <label class="proto-toggle" for="ctlNotes"><input type="checkbox" id="ctlNotes" checked> Design notes</label>
 </header>
 
@@ -249,24 +276,27 @@ const ICON = {
 };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ---------- synthetic data (examples only: classes, students, skills and texts are invented) ---------- */
+/* ---------- synthetic data (examples only: classes, students, tasks, materials and texts are invented) ---------- */
 const PROGRAMMES = {
-  physics7: { subject: 'Ֆիզիկա', grade: 7, units: [
+  physics7: { subject: 'Ֆիզիկա', grade: 7, code: 'Ֆ7', units: [
     { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Բնության ուսումնասիրության ֆիզիկական մեթոդները', skills: ['Չափումների կատարում', 'Միավորների համակարգ', 'Չափման ճշտություն', 'Դիտում և փորձ', 'Արդյունքների ներկայացում'] },
-    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', skills: ['Նյութի կառուցվածքի մոդելներ', 'Մոլեկուլների շարժում', 'Դիֆուզիա', 'Ագրեգատային վիճակներ', 'Խտություն'] }], code: 'Ֆ7' },
-  english7: { subject: 'Անգլերեն', grade: 7, units: [
+    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', skills: ['Նյութի կառուցվածքի մոդելներ', 'Մոլեկուլների շարժում', 'Դիֆուզիա', 'Ագրեգատային վիճակներ', 'Խտություն'] }] },
+  english7: { subject: 'Անգլերեն', grade: 7, code: 'Ա7', units: [
     { id: 'u2', short: 'Unit 2', title: 'Unit 2. Իմ ընտանիքը', skills: ['Բառապաշար. ընտանիք', 'Ներկա պարզ ժամանակ', 'Ընթերցանություն', 'Լսողություն', 'Կարճ նամակ'] },
-    { id: 'u3', short: 'Unit 3', title: 'Unit 3. Ես աշխարհում', skills: ['Բառապաշար. հագուստ', 'Բնավորության ածականներ', 'Համեմատական աստիճան', 'Ընթերցանություն', 'Նկարագրություն'] }], code: 'Ա7' },
-  math8: { subject: 'Մաթեմատիկա', grade: 8, units: [
+    { id: 'u3', short: 'Unit 3', title: 'Unit 3. Ես աշխարհում', skills: ['Բառապաշար. հագուստ', 'Բնավորության ածականներ', 'Համեմատական աստիճան', 'Ընթերցանություն', 'Նկարագրություն'] }] },
+  math8: { subject: 'Մաթեմատիկա', grade: 8, code: 'Մ8', units: [
     { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Ռացիոնալ թվեր', skills: ['Ռացիոնալ թվերի համեմատում', 'Գործողություններ կոտորակներով', 'Աստիճան', 'Թվային առանցք', 'Տոկոսներ'] },
-    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Գծային հավասարումներ', skills: ['Հավասարման լուծում', 'Հավասարման կազմում', 'Անհայտի արտահայտում', 'Արդյունքի ստուգում', 'Խնդիրներ հավասարումներով'] }], code: 'Մ8' }
+    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Գծային հավասարումներ', skills: ['Հավասարման լուծում', 'Հավասարման կազմում', 'Անհայտի արտահայտում', 'Արդյունքի ստուգում', 'Խնդիրներ հավասարումներով'] }] }
 };
-// support: how many students need support in each unit (keeps the numbers realistic and different per unit)
 const CLASSES = [
   { id: 'c1', name: '7Ա', prog: 'physics7', size: 28, current: 'u2', pending: 3, invites: 4, support: { u1: 3, u2: 6 } },
   { id: 'c2', name: '7Բ', prog: 'physics7', size: 26, current: 'u2', pending: 0, invites: 0, support: { u1: 2, u2: 0 } },
   { id: 'c3', name: '7Ա', prog: 'english7', size: 24, current: 'u3', pending: 2, invites: 1, support: { u2: 1, u3: 2 } },
   { id: 'c4', name: '8Բ', prog: 'math8', size: 25, current: 'u1', pending: 0, invites: 0, support: { u1: 3, u2: 4 } }];
+const ARCHIVE = [
+  { id: 'a1', name: '6Ա', subject: 'Ֆիզիկա', grade: 6, year: '2025–2026', students: 27 },
+  { id: 'a2', name: '6Բ', subject: 'Ֆիզիկա', grade: 6, year: '2025–2026', students: 25 },
+  { id: 'a3', name: '7Գ', subject: 'Ֆիզիկա', grade: 7, year: '2024–2025', students: 22 }];
 const SCHOOL = 'Փորձնական դպրոց Ա', YEAR = '2026–2027';
 const FIRST = ['Անի','Դավիթ','Մարիամ','Արամ','Լիլիթ','Նարեկ','Սոնա','Տիգրան','Էլեն','Գոռ','Մանե','Հայկ','Նարե','Արման','Ալինա','Էրիկ','Լուսինե','Վահե','Մելինե','Սամվել','Աստղիկ','Կարեն','Մարի','Ռուբեն','Իննա','Արտյոմ','Սյուզի','Գևորգ','Նանե','Արեն','Տաթև','Միքայել'];
 const LAST = ['Պետրոսյան','Հակոբյան','Սարգսյան','Գրիգորյան','Կարապետյան','Ավետիսյան','Մարտիրոսյան','Վարդանյան','Մկրտչյան','Հովհաննիսյան','Ղազարյան','Աբրահամյան','Մանուկյան','Ստեփանյան','Զաքարյան','Բաղդասարյան','Սիմոնյան'];
@@ -280,8 +310,8 @@ const skillsOf = (c, uid) => unitOf(c, uid).skills.map((name, j) => ({ code: `${
 const rosterCache = {};
 function roster(c, uid) {
   const key = c.id + uid; if (rosterCache[key]) return rosterCache[key];
-  const ci = CLASSES.indexOf(c), ui = prog(c).units.findIndex(u => u.id === uid), skills = skillsOf(c, uid);
-  const supportIdx = Array.from({ length: c.size }, (_, i) => i).sort((a, b) => ((a * 7 + ci * 5 + ui * 3) % c.size) - ((b * 7 + ci * 5 + ui * 3) % c.size)).slice(0, c.support[uid]);
+  const ci = Math.max(0, CLASSES.indexOf(c)), ui = prog(c).units.findIndex(u => u.id === uid), skills = skillsOf(c, uid);
+  const supportIdx = Array.from({ length: c.size }, (_, i) => i).sort((a, b) => ((a * 7 + ci * 5 + ui * 3) % c.size) - ((b * 7 + ci * 5 + ui * 3) % c.size)).slice(0, c.support[uid] || 0);
   const list = Array.from({ length: c.size }, (_, i) => {
     let bands = skills.map((_, j) => BANDS[(i * 3 + j * 2 + ci + ui * 2) % 4]);
     if (supportIdx.includes(i)) bands = bands.map((b, j) => j < 3 ? 'needs' : b);
@@ -294,55 +324,77 @@ function roster(c, uid) {
   return (rosterCache[key] = list);
 }
 const supportCount = (c, uid) => roster(c, uid).filter(s => s.support).length;
+// Course writing catalog (published tasks), own tasks and library materials, per subject programme.
+const CATALOG = {
+  physics7: [{ id: 'w1', title: 'Բացատրեք դիֆուզիան առօրյա օրինակով', unit: 'u2', words: '80–100 բառ', rubric: 4 }, { id: 'w2', title: 'Նկարագրեք նյութի երեք ագրեգատային վիճակները', unit: 'u2', words: '100–150 բառ', rubric: 4 }, { id: 'w3', title: 'Ինչպես ենք չափում երկարությունը', unit: 'u1', words: '60–80 բառ', rubric: 3 }],
+  english7: [{ id: 'w4', title: 'Describe your favourite outfit', unit: 'u3', words: '60–80 words', rubric: 4 }, { id: 'w5', title: 'Write a short letter to a friend', unit: 'u2', words: '80–100 words', rubric: 4 }],
+  math8: [{ id: 'w6', title: 'Բացատրեք, թե ինչպես եք լուծել հավասարումը', unit: 'u2', words: '60–100 բառ', rubric: 3 }]
+};
+const OWN = [
+  { id: 't1', title: 'Փորձի նկարագրություն․ ջրի եռման կետը', state: 'Հանձնարարված', provide: 'PDF', respond: 'Ֆայլ (PDF կամ Word)', review: 'Չափանիշներով և միավորներով', updated: '10.11.2026', prog: 'physics7' },
+  { id: 't2', title: 'Լուծեք խնդիրը և բացատրեք քայլերը', state: 'Հանձնարարված', provide: 'Տեքստ', respond: 'Տեքստ', review: 'Միայն մեկնաբանություն', updated: '04.11.2026', prog: 'math8' },
+  { id: 't3', title: 'Խտության աղյուսակ (սևագիր)', state: 'Սևագիր', provide: 'Հղում', respond: 'Տեքստ', review: 'Միայն մեկնաբանություն', updated: '12.11.2026', prog: 'physics7' }];
+const MATERIALS = [
+  { id: 'm1', title: 'Մոլեկուլների շարժում․ ընթերցանություն', format: 'PDF', status: 'Հրապարակված', date: '02.11.2026', source: 'Ուսուցչի նյութ', prog: 'physics7', unit: 'u2' },
+  { id: 'm2', title: 'Դիֆուզիայի անիմացիա', format: 'Հղում', status: 'Հրապարակված', date: '05.11.2026', source: 'Արտաքին HTTPS հղում', prog: 'physics7', unit: 'u2' },
+  { id: 'm3', title: 'Խտության լրացուցիչ խնդիրներ', format: 'PDF', status: 'Սևագիր', date: '12.11.2026', source: 'Ուսուցչի նյութ', prog: 'physics7', unit: 'u2' },
+  { id: 'm4', title: 'Clothes vocabulary cards', format: 'PDF', status: 'Հրապարակված', date: '08.11.2026', source: 'Ուսուցչի նյութ', prog: 'english7', unit: 'u3' }];
+const SENT = {
+  c1: [{ id: 'd1', kind: 'course', title: 'Բացատրեք դիֆուզիան առօրյա օրինակով', date: '06.11.2026', to: 28, submitted: 17, pending: 3 },
+       { id: 'd2', kind: 'custom', title: 'Փորձի նկարագրություն․ ջրի եռման կետը', date: '08.11.2026', to: 12, submitted: 5, pending: 1 },
+       { id: 'd3', kind: 'material', title: 'Մոլեկուլների շարժում․ ընթերցանություն', date: '03.11.2026', to: 28, submitted: null, pending: 0 }],
+  c3: [{ id: 'd4', kind: 'course', title: 'Describe your favourite outfit', date: '10.11.2026', to: 24, submitted: 9, pending: 2 }] };
 const QUEUE = [
   { id: 'q1', who: 'Մարիամ Սարգսյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'submitted', date: '09.11.2026', wait: 4,
     text: 'Երբ մայրիկս խոհանոցում սուրճ է եփում, հոտը մի քանի րոպեում հասնում է իմ սենյակ։ Դա դիֆուզիա է․ սուրճի մոլեկուլները անընդհատ շարժվում են և խառնվում օդի մոլեկուլների հետ։\n\nՏաք սենյակում հոտն ավելի արագ է տարածվում, որովհետև մոլեկուլներն ավելի արագ են շարժվում։ Եթե դուռը փակ է, հոտը դանդաղ է հասնում։' },
   { id: 'q2', who: 'Դավիթ Հակոբյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'submitted', date: '10.11.2026', wait: 3, text: 'Թեյի մեջ շաքարը լուծվում է, նույնիսկ եթե չխառնենք, բայց ավելի դանդաղ։' },
-  { id: 'q3', who: 'Լիլիթ Կարապետյան', what: 'Իմ առաջադրանքը․ փորձի նկարագրություն', classId: 'c1', unit: 'Բաժին 2', kind: 'custom', state: 'submitted', date: '11.11.2026', wait: 2, text: 'Փորձի նկարագրությունը կցված PDF ֆայլում է։' },
+  { id: 'q3', who: 'Լիլիթ Կարապետյան', what: 'Փորձի նկարագրություն․ ջրի եռման կետը', classId: 'c1', unit: 'Բաժին 2', kind: 'custom', state: 'submitted', date: '11.11.2026', wait: 2, file: 'eracman-ket.pdf · 240 ԿԲ', text: '' },
   { id: 'q4', who: 'Նարե Մանուկյան', what: 'Describe your favourite outfit', classId: 'c3', unit: 'Unit 3', kind: 'course', state: 'submitted', date: '12.11.2026', wait: 1, text: 'My favourite outfit is a blue hoodie and white trainers. I wear it at the weekend because it is comfortable.' },
   { id: 'q5', who: 'Արման Ստեփանյան', what: 'Describe your favourite outfit', classId: 'c3', unit: 'Unit 3', kind: 'course', state: 'submitted', date: '13.11.2026', wait: 0, text: 'I like jeans and a black jacket.' },
-  { id: 'q6', who: 'Սոնա Մարտիրոսյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'changes_requested', date: '06.11.2026', wait: 7, text: '—' },
-  { id: 'q7', who: 'Հայկ Ավետիսյան', what: 'Լուծեք խնդիրը և բացատրեք քայլերը', classId: 'c4', unit: 'Բաժին 1', kind: 'custom', state: 'changes_requested', date: '05.11.2026', wait: 8, text: '—' },
-  { id: 'q8', who: 'Էլեն Մկրտչյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c2', unit: 'Բաժին 2', kind: 'course', state: 'reviewed', date: '03.11.2026', wait: 10, text: '—' }];
+  { id: 'q6', who: 'Սոնա Մարտիրոսյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'changes_requested', date: '06.11.2026', wait: 7, text: 'Դիֆուզիան այն է, երբ նյութերը խառնվում են։' },
+  { id: 'q7', who: 'Հայկ Ավետիսյան', what: 'Լուծեք խնդիրը և բացատրեք քայլերը', classId: 'c4', unit: 'Բաժին 1', kind: 'custom', state: 'changes_requested', date: '05.11.2026', wait: 8, text: '3x + 5 = 20, ուրեմն x = 5։' },
+  { id: 'q8', who: 'Էլեն Մկրտչյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c2', unit: 'Բաժին 2', kind: 'course', state: 'reviewed', date: '03.11.2026', wait: 10, text: 'Օդում օծանելիքի հոտը տարածվում է ամբողջ սենյակում։' }];
 const RUBRIC = ['Ֆիզիկական երևույթի ճիշտ բացատրություն', 'Առօրյա օրինակի համապատասխանություն', 'Պատճառի և հետևանքի կապ', 'Լեզվի հստակություն'];
+const KIND = { course: 'Դասընթացի գրավոր', custom: 'Իմ առաջադրանքը', material: 'Նյութ (PDF կամ հղում)' };
 
 /* ---------- state ---------- */
 const S = { screen: 'home', classId: 'c1', unitId: null, device: 'desktop', data: 'full', notes: true, classTab: 'students', rosterFilter: 'all', rosterQuery: '',
-  rqState: 'submitted', rqKind: 'all', rqClass: 'all', open: null, menu: false, drawer: null };
+  rqState: 'submitted', rqKind: 'all', rqClass: 'all', open: null, menu: false, drawer: null, confirm: null, archiveQuery: '', created: null,
+  assign: null, libClass: 'c1', editor: null };
 const app = document.getElementById('app'), stage = document.getElementById('stage');
 const narrow = () => window.matchMedia('(max-width: 759px)').matches;
 try { const saved = JSON.parse(localStorage.getItem('haiedu-proto') || '{}'); if (saved.device) S.device = saved.device; if (typeof saved.notes === 'boolean') S.notes = saved.notes; } catch (e) {}
-
 const note = (id, text) => `<p class="note"><b>${id}</b> · ${text}</p>`;
 const newData = text => `<span class="newdata">${text}</span>`;
 const pendingTotal = () => CLASSES.reduce((n, c) => n + c.pending, 0);
 const ago = d => d === 0 ? 'այսօր' : d === 1 ? 'երեկ' : d + ' օր առաջ';
-const attention = c => c.pending + supportCount(c, c.current);
+const attention = c => c.pending + (c.size ? supportCount(c, c.current) : 0);
 const curUnit = () => S.unitId || cls(S.classId).current;
+const skel = (h, w = '100%') => `<div class="skel" style="height:${h}px;width:${w}" aria-hidden="true"></div>`;
+const loadingBlock = rows => `<div role="status" class="section"><span class="sr">Բեռնվում է…</span>${rows}</div>`;
+const head = (title, lede = '', action = '', crumbs = '') => `${crumbs}<div class="page-head"><div><h1>${title}</h1>${lede ? `<p class="lede">${lede}</p>` : ''}</div>${action}</div>`;
+const crumbs = (...parts) => `<nav class="crumbs" aria-label="Ճանապարհ">${parts.map((p, i) => i < parts.length - 1 ? `<a href="#${p[1]}" ${p[1].startsWith('class-') ? `data-class-open="${p[1].slice(6)}"` : `data-go="${p[1]}"`}>${esc(p[0])}</a><span aria-hidden="true">/</span>` : `<span>${esc(p[0])}</span>`).join('')}</nav>`;
+const classOptions = (sel, id) => `<select id="${id}">${CLASSES.map(c => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(label(c))} · ${gradeLabel(prog(c).grade)}</option>`).join('')}</select>`;
+const unitOptions = (c, sel, id) => `<select id="${id}">${prog(c).units.map(u => `<option value="${u.id}"${u.id === sel ? ' selected' : ''}>${esc(u.title)}${u.id === c.current ? ' (ընթացիկ)' : ''}</option>`).join('')}</select>`;
 
 /* ---------- shell ---------- */
+const NAV = [['home', 'Գլխավոր', ['home']], ['classes', 'Դասարաններ', ['classes', 'class', 'create']], ['review', 'Գրավորի ստուգում', ['review']], ['assign', 'Հանձնարարել', ['assign']],
+  ['library', 'Նյութերի գրադարան', ['library', 'material']], ['tasks', 'Իմ առաջադրանքները', ['tasks', 'editor']], ['archive', 'Արխիվացված դասարաններ', ['archive']]];
 function shell(inner) {
   const pend = S.data === 'full' ? pendingTotal() : 0;
-  const inClasses = S.screen === 'classes' || S.screen === 'class';
-  const cur = k => ((k === 'classes' ? inClasses : S.screen === k) ? ' aria-current="page"' : '');
+  const cur = list => list.includes(S.screen) ? ' aria-current="page"' : '';
+  const moreCur = ['assign', 'library', 'material', 'tasks', 'editor', 'archive', 'account', 'guide', 'more'].includes(S.screen) ? ' aria-current="page"' : '';
   return `<div class="shell">
   <aside class="side" aria-label="Ուսուցչի մենյու">
     <a class="brand" href="#home" data-go="home" aria-label="HaiEdu · Գլխավոր">${LOGO}</a>
     <div class="side-label">Աշխատասեղան · Ուսուցիչ</div>
-    <nav>
-      <a href="#home" data-go="home"${cur('home')}>Գլխավոր</a>
-      <a href="#classes" data-go="classes"${cur('classes')}>Դասարաններ</a>
-      <a href="#review" data-go="review"${cur('review')}>Գրավորի ստուգում ${pend ? `<span class="nav-badge" aria-label="${pend} սպասող">${pend}</span>` : ''}</a>
-      <a href="#home" data-proto-off>Հանձնարարել գրավոր</a>
-      <a href="#home" data-proto-off>Նյութերի գրադարան</a>
-      <a href="#home" data-proto-off>Արխիվացված դասարաններ</a>
-    </nav>
+    <nav>${NAV.map(([k, l, on]) => `<a href="#${k}" data-go="${k}"${cur(on)}>${l}${k === 'review' && pend ? ` <span class="nav-badge" aria-label="${pend} սպասող">${pend}</span>` : ''}</a>`).join('')}</nav>
     <div class="side-foot">
       <span class="pilot">Փորձնական տարբերակ</span>
-      ${note('A2', 'The pilot notice lives here once, instead of a yellow box on every page.')}
-      <a class="link" href="#account" data-go="account"${S.screen === 'account' ? ' aria-current="page"' : ''}>Իմ հաշիվը</a>
-      ${note('B5', 'One account entry (name, email, password), as students have. «Իմ պրոֆիլը» leaves the main menu.')}
+      <a class="link" href="#guide" data-go="guide"${cur(['guide'])}>Ուղեցույց</a>
+      <a class="link" href="#account" data-go="account"${cur(['account'])}>Իմ հաշիվը</a>
       <button type="button" class="btn secondary" data-proto-off style="color:var(--error);border-color:var(--error)">Դուրս գալ</button>
+      ${note('A2 · B5 · D', 'Pilot label once; the guide and one account entry live in the sidebar footer.')}
     </div>
   </aside>
   <div style="min-width:0;display:flex;flex-direction:column">
@@ -352,38 +404,42 @@ function shell(inner) {
     </header>
     <main class="main" id="main">${inner}</main>
     <nav class="bottom-nav" aria-label="Ուսուցչի մենյու">
-      <a href="#home" data-go="home"${cur('home')}>${ICON.home}<span>Գլխավոր</span></a>
-      <a href="#classes" data-go="classes"${cur('classes')}>${ICON.classes}<span>Դասարաններ</span></a>
-      <a href="#review" data-go="review"${cur('review')}>${ICON.review}<span>Ստուգում</span>${pend ? `<span class="nav-badge">${pend}</span>` : ''}</a>
-      <a href="#home" data-proto-off>${ICON.more}<span>Ավելին</span></a>
+      <a href="#home" data-go="home"${cur(['home'])}>${ICON.home}<span>Գլխավոր</span></a>
+      <a href="#classes" data-go="classes"${cur(['classes', 'class', 'create'])}>${ICON.classes}<span>Դասարաններ</span></a>
+      <a href="#review" data-go="review"${cur(['review'])}>${ICON.review}<span>Ստուգում</span>${pend ? `<span class="nav-badge">${pend}</span>` : ''}</a>
+      <a href="#more" data-go="more"${moreCur}>${ICON.more}<span>Ավելին</span></a>
     </nav>
   </div></div>`;
 }
-const skel = (h, w = '100%') => `<div class="skel" style="height:${h}px;width:${w}" aria-hidden="true"></div>`;
-const loadingBlock = rows => `<div role="status" class="section"><span class="sr">Բեռնվում է…</span>${rows}</div>`;
 
-/* ---------- class card (shared by Home and the class list) ---------- */
+/* ---------- phone «Ավելին» ---------- */
+function more() {
+  const items = [['assign', 'Հանձնարարել', 'Դասընթացի գրավոր, ձեր առաջադրանքը կամ նյութ'], ['library', 'Նյութերի գրադարան', 'PDF-եր և հղումներ աշակերտների համար'], ['tasks', 'Իմ առաջադրանքները', 'Ձեր կազմած առաջադրանքներն ու սևագրերը'],
+    ['archive', 'Արխիվացված դասարաններ', 'Նախորդ տարիների դասարանները'], ['guide', 'Ուղեցույց', 'Ինչպես կատարել հիմնական գործողությունները'], ['account', 'Իմ հաշիվը', 'Անուն, մուտքի տվյալներ, գաղտնիություն']];
+  return head('Ավելին') + `<ul class="queue card" style="padding:6px">${items.map(([k, l, d]) => `<li><button type="button" data-go="${k}"><span class="who">${l}</span><span class="tile-meta">›</span><span class="where">${d}</span></button></li>`).join('')}</ul>
+    <p class="pill calm">Փորձնական տարբերակ</p><button type="button" class="btn secondary" data-proto-off style="color:var(--error);border-color:var(--error)">Դուրս գալ</button>
+    ${note('A1', 'Phone menu: the four most used destinations stay in the bottom bar; everything else is one tap away here, with full labels and no sideways scrolling.')}`;
+}
+
+/* ---------- class card ---------- */
 function classCard(c) {
-  const sup = supportCount(c, c.current), u = unitOf(c, c.current);
-  const pills = [];
+  const sup = c.size ? supportCount(c, c.current) : 0, u = unitOf(c, c.current), pills = [];
   if (sup) pills.push(`<a class="pill pill-link error" href="#class-${c.id}" data-class-open="${c.id}" data-filter="support">${sup} աշակերտի աջակցություն է պետք</a>`);
   if (c.pending) pills.push(`<a class="pill pill-link attention" href="#review" data-review-class="${c.id}">${c.pending} գրավոր սպասում է ստուգման</a>`);
+  if (!c.size) pills.push('<span class="pill calm">Աշակերտներ դեռ չկան</span>');
   if (!pills.length) pills.push('<span class="pill calm">Հիմա ուշադրության կարիք չկա</span>');
   return `<article class="card class-card" aria-labelledby="cc-${c.id}">
     <h3 id="cc-${c.id}"><a class="card-title" href="#class-${c.id}" data-class-open="${c.id}">${esc(label(c))}</a></h3>
     <span class="meta">${gradeLabel(prog(c).grade)} · ${esc(SCHOOL)} · ${YEAR}</span>
     <span class="meta">Ընթացիկ բաժին՝ ${esc(u.short)}</span>
-    <div class="pill-row">${pills.join('')}</div>
-  </article>`;
+    <div class="pill-row">${pills.join('')}</div></article>`;
 }
 
 /* ---------- Home ---------- */
 function home() {
-  const head = `<div class="page-head"><div><h1>Գլխավոր</h1><p class="lede">Բարի գալուստ, Անի</p></div>
-    ${S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-proto-off>+ Նոր դասարան</button>'}</div>
-    ${note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle. On phones the title sits about 70 px from the top instead of 280 px.')}`;
-  if (S.data === 'loading') return head + loadingBlock(`${skel(160)}${skel(28, '40%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
-  if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="startT">
+  const h = head('Գլխավոր', 'Բարի գալուստ, Անի', S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-go="create">+ Նոր դասարան</button>') + note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle.');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(160)}${skel(28, '40%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
+  if (S.data === 'empty') return h + `<section class="card section" aria-labelledby="startT">
       <h2 id="startT">Սկսեք ձեր առաջին դասարանից</h2>
       <ol class="steps">
         <li><div><strong>Դպրոցի ուսումնական տարին բաց է</strong><small>${esc(SCHOOL)} · ${YEAR}։ Եթե տարին դեռ բաց չէ, դպրոցի ադմինիստրատորը նախ պետք է բացի այն։</small><span class="pill good" style="margin-top:6px">Բաց է</span></div></li>
@@ -391,186 +447,320 @@ function home() {
         <li><div><strong>Հրավիրեք աշակերտներին</strong><small>Ուղարկեք հրավեր էլ. փոստով կամ տվեք մեկանգամյա միանալու կոդ։</small></div></li>
         <li><div><strong>Տեսեք՝ ում օգնել</strong><small>Բացեք աշակերտի քարտը՝ արդյունքն ու հաջորդ քայլը տեսնելու համար։</small></div></li>
       </ol>
-      <div><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>
-      ${note('B7', 'First-time school teacher: one guided card for the school path (H-14). Step 1 shows whether the school year is open, using the existing school notice. The review queue blocks stay hidden until a class exists, so there is no «0 … սպասում է ստուգման». Personal-account teachers keep today\u2019s 4-step guide.')}
+      <div><button type="button" class="btn" data-go="create">+ Նոր դասարան</button></div>
+      ${note('B7', 'First-time school teacher (H-14): one guided card; review blocks stay hidden until a class exists. Personal-account teachers keep today’s 4-step guide.')}
     </section>`;
-  const p = pendingTotal(), withPending = CLASSES.filter(c => c.pending).length;
-  const sorted = [...CLASSES].sort((a, b) => attention(b) - attention(a));
-  return head + `<section class="section" aria-labelledby="todayT">
-    <h2 id="todayT">Այսօր</h2>
+  const p = pendingTotal(), sorted = [...CLASSES].sort((a, b) => attention(b) - attention(a));
+  return h + `<section class="section" aria-labelledby="todayT"><h2 id="todayT">Այսօր</h2>
     <article class="card tile primary" aria-labelledby="qT">
       <span class="tile-label" id="qT">Ստուգման հերթ</span>
       <div class="tile-figure"><strong>${p}</strong><span>գրավոր սպասում է ստուգման</span></div>
-      <p class="tile-meta">Ամենավաղը ներկայացվել է 4 օր առաջ · ${withPending} դասարանից</p>
-      <div class="tile-actions"><button type="button" class="btn" data-go="review" data-open-first>Շարունակել ստուգումը</button>
-        <button type="button" class="btn quiet" data-go="review">Ամբողջ հերթը</button></div>
+      <p class="tile-meta">Ամենավաղը ներկայացվել է 4 օր առաջ · ${CLASSES.filter(c => c.pending).length} դասարանից</p>
+      <div class="tile-actions"><button type="button" class="btn" data-go="review" data-open-first>Շարունակել ստուգումը</button><button type="button" class="btn quiet" data-go="review">Ամբողջ հերթը</button></div>
       ${note('B1', 'Existing data: the combined Today read already returns the count, the oldest item and per-class counts.')}
-    </article>
-  </section>
+    </article></section>
   <section class="section" aria-labelledby="clsT">
     <div class="section-head"><h2 id="clsT">Իմ դասարանները</h2><a class="link" href="#classes" data-go="classes">Բոլոր դասարանները</a></div>
     <div class="class-grid">${sorted.map(classCard).join('')}</div>
-    ${note('B1 · option B', 'Each class shows its own support count, for that class’s subject and current unit, and links to that class’s roster with the «Աջակցության կարիք» filter. Classes that need attention come first. There is no single cross-class «Տեսնել աշակերտներին» button: with several grades and subjects it could not say which class to open.')}
+    ${note('B1 · option B', 'Each class shows its own support count for its subject and current unit and links to that class’s filtered roster. Classes needing attention come first.')}
     ${newData('Support counts need new data')}
-    ${note('B1', 'Pending-writing pills use existing per-class counts. Support counts and the current-unit line are not in the Home or class-list reads today: they need a small per-class server summary, or they are left out. Student counts appear only on the class page. Decision needed.')}
   </section>`;
 }
 
-/* ---------- Class list ---------- */
+/* ---------- Classes ---------- */
 function classList() {
-  const head = `<div class="page-head"><div><h1>Իմ դասարանները</h1><p class="lede">${CLASSES.length} ակտիվ դասարան · ${YEAR}</p></div>
-    <div class="actions"><button type="button" class="btn secondary" data-proto-off>+ Նոր դասարան</button></div></div>`;
-  if (S.data === 'loading') return head + loadingBlock(`${skel(28, '30%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
-  if (S.data === 'empty') return head + `<div class="card empty"><h2>Ակտիվ դասարան դեռ չկա</h2><p class="lede">Ստեղծեք դասարան և տվեք աշակերտներին միանալու կոդը։</p><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>`;
+  const h = head('Իմ դասարանները', `${CLASSES.length} ակտիվ դասարան · ${YEAR}`, '<div class="actions"><button type="button" class="btn secondary" data-go="create">+ Նոր դասարան</button></div>');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(28, '30%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
+  if (S.data === 'empty') return h + `<div class="card empty"><h2>Ակտիվ դասարան դեռ չկա</h2><p class="lede">Ստեղծեք դասարան և տվեք աշակերտներին միանալու կոդը։</p><button type="button" class="btn" data-go="create">+ Նոր դասարան</button></div>`;
   const grades = [...new Set(CLASSES.map(c => prog(c).grade))].sort((a, b) => a - b);
-  return head + note('B2', 'The menu item «Դասարաններ» opens this list, not a class. Classes are grouped by grade when a teacher teaches more than one grade; inside a grade, classes needing attention come first.')
-    + grades.map(g => `<section class="section" aria-labelledby="g${g}"><h2 id="g${g}">${gradeLabel(g)}</h2>
-      <div class="class-grid">${CLASSES.filter(c => prog(c).grade === g).sort((a, b) => attention(b) - attention(a)).map(classCard).join('')}</div></section>`).join('')
-    + `<p><a class="link" href="#home" data-proto-off>Արխիվացված դասարաններ</a></p>`;
+  return h + note('B2', '«Դասարաններ» opens this list, grouped by grade when a teacher teaches several grades; inside a grade, classes needing attention come first.')
+    + grades.map(g => `<section class="section" aria-labelledby="g${g}"><h2 id="g${g}">${gradeLabel(g)}</h2><div class="class-grid">${CLASSES.filter(c => prog(c).grade === g).sort((a, b) => attention(b) - attention(a)).map(classCard).join('')}</div></section>`).join('')
+    + `<p><a class="link" href="#archive" data-go="archive">Արխիվացված դասարաններ</a></p>`;
 }
 
-/* ---------- Class ---------- */
-function classPage() {
-  const c = cls(S.classId), uid = curUnit(), u = unitOf(c, uid), list0 = roster(c, uid), skills = skillsOf(c, uid);
-  const crumbs = `<nav class="crumbs" aria-label="Ճանապարհ"><a href="#classes" data-go="classes">Դասարաններ</a><span aria-hidden="true">/</span><span>${esc(label(c))}</span></nav>`;
-  const head = `${crumbs}<div class="page-head"><div><h1>${esc(label(c))}</h1><p class="lede">${gradeLabel(prog(c).grade)} · ${esc(SCHOOL)} · ${YEAR}</p></div>
-    <div class="class-head-tools"><label class="field" for="unitSel">Բաժին<select id="unitSel">${prog(c).units.map(x => `<option value="${x.id}"${x.id === uid ? ' selected' : ''}>${esc(x.title)}${x.id === c.current ? ' (ընթացիկ)' : ''}</option>`).join('')}</select></label></div></div>
-    ${note('B2', 'The class name is the page title (today: «Դասարանի աշխատատարածք»). Support status belongs to the selected unit: change the unit and the figures change. Home counts the current unit, so a Home link lands on the same number.')}
-    <div class="actions">
-      <button type="button" class="btn" data-proto-off>Հանձնարարել գրավոր</button>
-      <button type="button" class="btn secondary" data-proto-off>Հանձնարարել նյութ</button>
-      <button type="button" class="btn secondary" data-proto-off>Նյութերի գրադարան</button>
-      <div class="more"><button type="button" class="btn secondary" id="moreBtn" aria-haspopup="true" aria-expanded="${S.menu}" aria-controls="moreMenu">Ավելին</button>
-        ${S.menu ? `<div class="more-menu" id="moreMenu" role="menu"><button role="menuitem" type="button" data-proto-off>Հրավիրել աշակերտներ</button><button role="menuitem" type="button" data-proto-off>Փոխել անունը</button><button role="menuitem" type="button" class="danger" data-proto-off>Արխիվացնել դասարանը</button></div>` : ''}</div>
-    </div>
-    ${note('B2', 'One action row replaces the four large workflow cards that today come before any student data. Rename and archive move under «Ավելին».')}`;
-  if (S.data === 'loading') return head + loadingBlock(`<div class="stats">${skel(68)}${skel(68)}${skel(68)}${skel(68)}</div>${skel(44, '60%')}${skel(48)}${skel(48)}${skel(48)}${skel(48)}`);
-  if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="invT">
-      <h2 id="invT">Հրավիրել աշակերտներ</h2>
-      <p class="lede">Դասարանում դեռ աշակերտ չկա։ Ուղարկեք հրավեր էլ. փոստով կամ տվեք միանալու կոդը։</p>
-      <label class="field" for="inv">Աշակերտների էլ. հասցեներ<textarea id="inv" rows="4" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
-      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div>
-      ${note('B2 · H-18', 'While the class is empty, the invitation form is the only content: no empty roster, no five «0» skill figures, no second «Աշակերտ դեռ չկա». Once students join, it moves to the «Հրավերներ» tab.')}
+/* ---------- Create class ---------- */
+function createClass() {
+  return head('Նոր դասարան', 'Ստեղծեք դասարան ձեր թույլատրված դպրոցի, տարվա և առարկայի շրջանակում։', '', crumbs(['Դասարաններ', 'classes'], ['Նոր դասարան']))
+    + `<section class="card section form-grid" aria-labelledby="newT">
+      <h2 id="newT">Ստեղծել դպրոցի դասարան</h2>
+      <label class="field" for="newOpt">Դպրոց · տարի · առարկա · դասարան<select id="newOpt"><option>${esc(SCHOOL)} · ${YEAR} · Ֆիզիկա · 7-րդ դասարան</option><option>${esc(SCHOOL)} · ${YEAR} · Անգլերեն · 7-րդ դասարան</option><option>${esc(SCHOOL)} · ${YEAR} · Մաթեմատիկա · 8-րդ դասարան</option></select></label>
+      <label class="field" for="newName">Դասարանի անուն<input id="newName" placeholder="Օր.՝ 7Ա" value="7Գ"></label>
+      <div class="actions"><button type="button" class="btn" data-create>Ստեղծել դասարան</button><button type="button" class="btn secondary" data-go="classes">Չեղարկել</button></div>
+      <p class="tile-meta">Ստեղծելուց հետո կբացվի դասարանի էջը՝ աշակերտներին հրավիրելու համար։</p>
+      ${note('C3 · B2', 'One page title (C3). The only choices are the ones the school has authorised for this teacher. After creating, the teacher lands on the new class’s invitation screen instead of a generic list.')}
     </section>`;
-  const inactive = list0.filter(s => s.daysAgo >= 7).length, support = list0.filter(s => s.support).length;
-  const stat = (key, n, text, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key}"><strong>${n}</strong><span>${text}</span></button>`;
-  const tabs = [['students', 'Աշակերտներ'], ['skills', 'Հմտություններ'], ['invites', `Հրավերներ · ${c.invites}`]];
+}
+
+/* ---------- Class page ---------- */
+function classPage() {
+  const c = cls(S.classId), uid = curUnit(), u = unitOf(c, uid);
+  const h = crumbs(['Դասարաններ', 'classes'], [label(c)]) + `<div class="page-head"><div><h1>${esc(label(c))}</h1><p class="lede">${gradeLabel(prog(c).grade)} · ${esc(SCHOOL)} · ${YEAR}</p></div>
+    <div class="class-head-tools"><label class="field" for="unitSel">Բաժին${unitOptions(c, uid, 'unitSel')}</label></div></div>
+    ${note('B2', 'The class name is the page title. Support status belongs to the selected unit; Home counts the current unit, so a Home link lands on the same number.')}
+    <div class="actions">
+      <button type="button" class="btn" data-assign-from="${c.id}">Հանձնարարել</button>
+      <button type="button" class="btn secondary" data-lib-from="${c.id}">Նյութերի գրադարան</button>
+      <div class="more"><button type="button" class="btn secondary" id="moreBtn" aria-haspopup="true" aria-expanded="${S.menu}" aria-controls="moreMenu">Ավելին</button>
+        ${S.menu ? `<div class="more-menu" id="moreMenu" role="menu"><button role="menuitem" type="button" data-tab="invites">Հրավիրել աշակերտներ</button><button role="menuitem" type="button" data-proto-off>Փոխել անունը</button><button role="menuitem" type="button" class="danger" data-confirm="archive-${c.id}">Արխիվացնել դասարանը</button></div>` : ''}</div>
+    </div>
+    ${S.confirm === 'archive-' + c.id ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="arT"><strong id="arT">Արխիվացնե՞լ ${esc(label(c))} դասարանը</strong><p class="tile-meta" style="color:var(--ink)">Աշակերտների և դասարանի պատմությունը կպահպանվի։ Արխիվացված դասարանի կոդով նոր աշակերտներ չեն կարող միանալ։</p><div class="actions"><button type="button" class="btn" style="background:var(--error);border-color:var(--error)" data-proto-off>Արխիվացնել</button><button type="button" class="btn secondary" data-confirm-cancel>Չեղարկել</button></div>${note('D', 'In-page confirmation instead of the browser’s own pop-up: the same wording, the page’s buttons and language, and it works where pop-ups are blocked.')}</div>` : ''}
+    ${note('B8', 'One «Հանձնարարել» action opens the assign flow with this class and unit already chosen. Course writing, own tasks and materials are a choice inside that flow instead of three separate buttons and pages.')}`;
+  if (S.data === 'loading') return h + loadingBlock(`<div class="stats">${skel(68)}${skel(68)}${skel(68)}${skel(68)}</div>${skel(44, '60%')}${skel(48)}${skel(48)}${skel(48)}`);
+  const tabs = [['students', 'Աշակերտներ'], ['skills', 'Հմտություններ'], ['assignments', 'Հանձնարարություններ'], ['invites', `Հրավերներ · ${c.invites}`]];
+  if (S.data === 'empty' || !c.size) return h + `<section class="card section" aria-labelledby="invT">
+      <h2 id="invT">Հրավիրել աշակերտներ</h2><p class="lede">Դասարանում դեռ աշակերտ չկա։ Ուղարկեք հրավեր էլ. փոստով կամ տվեք մեկանգամյա միանալու կոդը։</p>
+      <label class="field" for="inv">Աշակերտների էլ. հասցեներ<textarea id="inv" rows="4" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ստեղծել մեկանգամյա կոդ</button></div>
+      ${note('B2 · H-18', 'While the class is empty, the invitation form is the only content: no empty roster, no five «0» figures, no second «Աշակերտ դեռ չկա».')}
+    </section>`;
+  const list0 = roster(c, uid), inactive = list0.filter(s => s.daysAgo >= 7).length, support = list0.filter(s => s.support).length;
+  const stat = (key, n, text, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key && S.classTab === 'students'}"><strong>${n}</strong><span>${text}</span></button>`;
   let body = '';
   if (S.classTab === 'students') {
     const list = list0.filter(s => (S.rosterFilter === 'support' ? s.support : S.rosterFilter === 'inactive' ? s.daysAgo >= 7 : true) && s.name.includes(S.rosterQuery));
     const status = s => s.support ? '<span class="pill error">Աջակցություն է պետք</span>' : s.daysAgo >= 7 ? '<span class="pill attention">Ոչ ակտիվ</span>' : '';
-    body = `<div class="toolbar">
-        <div class="chips" role="group" aria-label="Ֆիլտր">
-          ${[['all', `Բոլորը · ${list0.length}`], ['support', `Աջակցության կարիք · ${support}`], ['inactive', `Ոչ ակտիվ · ${inactive}`]].map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}
-        </div>
-        <label class="field" for="rq">Փնտրել աշակերտ<input id="rq" type="search" value="${esc(S.rosterQuery)}" placeholder="Անուն…"></label>
-      </div>
+    body = `<div class="toolbar"><div class="chips" role="group" aria-label="Ֆիլտր">${[['all', `Բոլորը · ${list0.length}`], ['support', `Աջակցության կարիք · ${support}`], ['inactive', `Ոչ ակտիվ · ${inactive}`]].map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}</div>
+        <label class="field" for="rq">Փնտրել աշակերտ<input id="rq" type="search" value="${esc(S.rosterQuery)}" placeholder="Անուն…"></label></div>
       <p class="tile-meta">Աջակցության կարիքը՝ ըստ «${esc(u.short)}»-ի հմտությունների</p>
-      ${note('B3', 'One row per student (about 52 px instead of 213 px on desktop; 64 px instead of 486 px on phones). Students needing support come first. All values come from the existing class read; «Ոչ ակտիվ» is 7+ days since last activity, worked out in the browser.')}
-      <div class="roster-wrap card" style="padding:0;overflow-x:auto"><table class="roster">
-        <caption class="sr">Աշակերտներ, ${list.length}</caption>
+      ${note('B3', 'One row per student (about 52 px instead of 213 px on desktop; 64 px instead of 486 px on phones), support needs first. Values come from the existing class read.')}
+      <div class="roster-wrap card" style="padding:0;overflow-x:auto"><table class="roster"><caption class="sr">Աշակերտներ, ${list.length}</caption>
         <thead><tr><th scope="col">Աշակերտ</th><th scope="col">Վերջին ակտիվություն</th><th scope="col">Վերջին պատասխանների ճշգրտություն</th><th scope="col">Ուշադրության հմտություններ</th><th scope="col"><span class="sr">Գործողություն</span></th></tr></thead>
-        <tbody>${list.map(s => `<tr><td><span class="name">${esc(s.name)}</span> ${status(s)}</td><td>${ago(s.daysAgo)}</td><td class="num">${s.acc == null ? '—' : s.acc + '%'}</td>
-          <td><div class="skill-tags">${s.weak.length ? s.weak.map(k => `<span class="skill-tag">${esc(k.name)}</span>`).join('') : '<span class="tile-meta">—</span>'}</div></td>
-          <td><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button></td></tr>`).join('')}</tbody></table></div>
+        <tbody>${list.map(s => `<tr><td><span class="name">${esc(s.name)}</span> ${status(s)}</td><td>${ago(s.daysAgo)}</td><td class="num">${s.acc == null ? '—' : s.acc + '%'}</td><td><div class="skill-tags">${s.weak.length ? s.weak.map(k => `<span class="skill-tag">${esc(k.name)}</span>`).join('') : '<span class="tile-meta">—</span>'}</div></td><td><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button></td></tr>`).join('')}</tbody></table></div>
       <ul class="roster-list card" style="padding:0 12px">${list.map(s => `<li><button type="button" data-student="${s.id}"><span class="row1"><strong>${esc(s.name)}</strong>${status(s)}</span><span class="row2">${ago(s.daysAgo)} · ${s.acc == null ? 'ճշգրտություն՝ —' : 'ճշգրտություն՝ ' + s.acc + '%'}${s.weak.length ? ' · ' + esc(s.weak.map(k => k.name).join(', ')) : ''}</span></button></li>`).join('')}</ul>
       ${list.length ? '' : '<p class="lede">Այս ֆիլտրով աշակերտ չկա։</p>'}`;
   } else if (S.classTab === 'skills') {
     const bc = { secure: 'b-secure', developing: 'b-developing', needs: 'b-needs', none: 'b-none' };
     const val = (b, i) => b === 'none' ? '—' : (b === 'secure' ? 85 + i % 10 : b === 'developing' ? 55 + i % 15 : 25 + i % 15) + '%';
     body = `<div class="legend"><span><i class="b-secure"></i>Կայուն</span><span><i class="b-developing"></i>Զարգացող</span><span><i class="b-needs"></i>Աջակցություն է պետք</span><span><i class="b-none"></i>Տվյալ դեռ չկա</span></div>
-      <div class="matrix-wrap"><table class="matrix"><caption class="sr">Հմտությունների վիճակ ըստ աշակերտի, ${esc(u.short)}</caption>
-        <thead><tr><th scope="col">Աշակերտ</th>${skills.map(k => `<th scope="col" title="${esc(k.name)}">${esc(k.code)}</th>`).join('')}</tr></thead>
+      <div class="matrix-wrap"><table class="matrix"><caption class="sr">Հմտությունների վիճակ ըստ աշակերտի, ${esc(u.short)}</caption><thead><tr><th scope="col">Աշակերտ</th>${skillsOf(c, uid).map(k => `<th scope="col" title="${esc(k.name)}">${esc(k.code)}</th>`).join('')}</tr></thead>
         <tbody>${list0.map((s, i) => `<tr><th scope="row">${esc(s.name)}</th>${s.bands.map((b, j) => `<td><span class="band ${bc[b]}">${val(b, i + j)}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>
-      ${note('B2', 'The matrix keeps its existing data, colours and BF-12 skill-name legend (not redrawn here). It moves to its own tab, so the class page no longer needs 8,000+ px of scrolling.')}`;
+      ${note('B2', 'The existing matrix, colours and BF-12 skill-name legend, moved to their own tab.')}`;
+  } else if (S.classTab === 'assignments') {
+    const rows = SENT[c.id] || [];
+    body = rows.length ? `<ul class="queue card" style="padding:6px">${rows.map(r => `<li style="padding:10px 8px;display:grid;gap:6px">
+        <div class="section-head"><strong>${esc(r.title)}</strong><span class="pill calm">${KIND[r.kind]}</span></div>
+        <span class="tile-meta">Ուղարկվել է ${r.date} · ստացողներ՝ ${r.to}${r.submitted == null ? '' : ` · ներկայացրել են՝ ${r.submitted}/${r.to}`}</span>
+        <div class="actions">${r.pending ? `<button type="button" class="btn secondary" data-review-class="${c.id}">${r.pending} սպասում է ստուգման</button>` : ''}<button type="button" class="btn quiet" data-proto-off>Ստացողներ և պատմություն</button><button type="button" class="btn quiet" style="color:var(--error)" data-confirm="cancel-${r.id}">Չեղարկել</button></div>
+        ${S.confirm === 'cancel-' + r.id ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="cx-${r.id}"><strong id="cx-${r.id}">Չեղարկե՞լ «${esc(r.title)}»-ը</strong><label class="field" for="why-${r.id}">Չեղարկման պատճառ<input id="why-${r.id}"></label><div class="actions"><button type="button" class="btn" style="background:var(--error);border-color:var(--error)" data-proto-off>Չեղարկել առաջադրանքը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div></div>` : ''}
+      </li>`).join('')}</ul>` : `<div class="card empty"><h2>Այս դասարանին դեռ ոչինչ չեք հանձնարարել</h2><button type="button" class="btn" data-assign-from="${c.id}">Հանձնարարել</button></div>`;
+    body += note('B8', 'New tab: everything sent to this class in one list (course writing, own tasks, materials), with submissions, the review link and cancel. Today these live in three places («Ուղարկվածները», «Ուղարկված առաջադրանքները» and the own-task deliveries). Needs a combined read of three existing lists; check during the B4 investigation.');
   } else {
     body = `<div class="card section"><h2>Հրավիրել աշակերտներ</h2>
       <label class="field" for="inv2">Աշակերտների էլ. հասցեներ<textarea id="inv2" rows="3" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
-      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div></div>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ստեղծել մեկանգամյա կոդ</button></div></div>
       <div class="card section"><h2>Չընդունված հրավերներ · ${c.invites}</h2>
-      ${c.invites ? `<ul class="queue">${['a***@example.com', 'g***@example.com', 'm***@example.com', 't***@example.com'].slice(0, c.invites).map(e => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${e}</span><span class="tile-meta">Ուղարկվել է 3 օր առաջ</span></li>`).join('')}</ul>` : '<p class="lede">Չընդունված հրավեր չկա։</p>'}</div>
-      ${note('B2', 'The same invitation form and list as today. Only its position changes.')}`;
+      ${c.invites ? `<ul class="queue">${['a***@example.com', 'g***@example.com', 'm***@example.com', 't***@example.com'].slice(0, c.invites).map(e => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center"><span>${e}</span><span class="tile-meta">Ուղարկվել է 3 օր առաջ</span><button type="button" class="btn quiet" data-proto-off>Չեղարկել</button></li>`).join('')}</ul>` : '<p class="lede">Չընդունված հրավեր չկա։</p>'}</div>
+      ${note('B2', 'The same invitation form, join code and pending list as today; only its position changes.')}`;
   }
-  return head + `<div class="stats" role="group" aria-label="Դասարանի ամփոփում">
-      ${stat('all', list0.length, 'Աշակերտ', false)}${stat('support', support, 'Աջակցության կարիք', true)}${stat('inactive', inactive, 'Ոչ ակտիվ 7+ օր', true)}
-      <button type="button" class="stat warn" data-review-class="${c.id}"><strong>${c.pending}</strong><span>Ստուգման սպասող գրավոր</span></button>
-    </div>
-    ${note('B2', 'The summary figures also act as filters. Each figure comes from data the class page already loads.')}
+  return h + `<div class="stats" role="group" aria-label="Դասարանի ամփոփում">${stat('all', list0.length, 'Աշակերտ', false)}${stat('support', support, 'Աջակցության կարիք', true)}${stat('inactive', inactive, 'Ոչ ակտիվ 7+ օր', true)}
+      <button type="button" class="stat warn" data-review-class="${c.id}"><strong>${c.pending}</strong><span>Ստուգման սպասող գրավոր</span></button></div>
     <div class="tabs" role="tablist" aria-label="Դասարանի բաժիններ">${tabs.map(([k, l]) => `<button type="button" role="tab" id="tab-${k}" aria-selected="${S.classTab === k}" aria-controls="panel" data-tab="${k}">${l}</button>`).join('')}</div>
     <section id="panel" role="tabpanel" aria-labelledby="tab-${S.classTab}" class="section">${body}</section>`;
 }
 
-/* ---------- Review queue ---------- */
+/* ---------- Review ---------- */
 function review() {
-  const head = `<div class="page-head"><div><h1>Գրավորի ստուգում</h1><p class="lede">Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից</p></div></div>
-    ${note('B4', 'Opens straight on the pending list across classes, the same list Home uses. Today this view first asks for list, class and unit before showing anything.')}`;
+  const h = head('Գրավորի ստուգում', 'Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից') + note('B4', 'Opens straight on the pending list across classes, including the teacher’s own tasks.');
   const states = [['submitted', 'Սպասում են ստուգման'], ['changes_requested', 'Վերադարձված են'], ['reviewed', 'Ստուգված են']];
   const inScope = q => (S.rqKind === 'all' || q.kind === S.rqKind) && (S.rqClass === 'all' || q.classId === S.rqClass);
-  const count = st => S.data === 'full' ? QUEUE.filter(q => q.state === st && inScope(q)).length : 0;
-  const sel = S.rqClass === 'all' ? null : cls(S.rqClass);
+  const count = st => S.data === 'full' ? QUEUE.filter(q => q.state === st && inScope(q)).length : 0, sel = S.rqClass === 'all' ? null : cls(S.rqClass);
   const filters = `<div class="chips" role="group" aria-label="Աշխատանքների կարգավիճակ">${states.map(([k, l]) => `<button type="button" class="chip" data-rq-state="${k}" aria-pressed="${S.rqState === k}">${l} · ${count(k)}</button>`).join('')}</div>
-    <div class="filters">
-      <label class="field" for="rqClass">Դասարան<select id="rqClass"><option value="all">Բոլոր դասարանները</option>${CLASSES.map(c => `<option value="${c.id}"${S.rqClass === c.id ? ' selected' : ''}>${esc(label(c))} · ${gradeLabel(prog(c).grade)}</option>`).join('')}</select></label>
+    <div class="filters"><label class="field" for="rqClass">Դասարան<select id="rqClass"><option value="all">Բոլոր դասարանները</option>${CLASSES.map(c => `<option value="${c.id}"${S.rqClass === c.id ? ' selected' : ''}>${esc(label(c))} · ${gradeLabel(prog(c).grade)}</option>`).join('')}</select></label>
       <label class="field" for="rqUnit">Բաժին<select id="rqUnit"${sel ? '' : ' disabled'}><option>${sel ? 'Բոլոր բաժինները' : 'Նախ ընտրեք դասարանը'}</option>${sel ? prog(sel).units.map(x => `<option>${esc(x.title)}</option>`).join('') : ''}</select></label>
-      <div class="field"><span id="kindL">Տեսակ</span><div class="seg-p" role="group" aria-labelledby="kindL">${[['all', 'Բոլորը'], ['course', 'Դասընթացի'], ['custom', 'Իմ կազմած']].map(([k, l]) => `<button type="button" data-rq-kind="${k}" aria-pressed="${S.rqKind === k}">${l}</button>`).join('')}</div></div>
-    </div>
-    ${note('B4', 'Status chips follow the content reviewer’s queue and the existing wording. Class, unit and type are optional filters; units belong to a class’s subject, so the unit filter opens after a class is chosen. Course writing across classes is already available. Returned/checked items across classes and custom tasks need the 0.5-day investigation first.')}`;
-  if (S.data === 'loading') return head + filters + loadingBlock(`${skel(64)}${skel(64)}${skel(64)}${skel(64)}`);
+      <div class="field"><span id="kindL">Տեսակ</span><div class="seg-p" role="group" aria-labelledby="kindL">${[['all', 'Բոլորը'], ['course', 'Դասընթացի'], ['custom', 'Իմ կազմած']].map(([k, l]) => `<button type="button" data-rq-kind="${k}" aria-pressed="${S.rqKind === k}">${l}</button>`).join('')}</div></div></div>
+    ${note('B4', 'Status chips follow the content reviewer’s queue. Class, unit and type are optional filters. Course writing across classes exists; returned/checked items across classes and own tasks need the 0.5-day investigation.')}`;
+  if (S.data === 'loading') return h + filters + loadingBlock(`${skel(64)}${skel(64)}${skel(64)}`);
   const items = S.data === 'full' ? QUEUE.filter(q => q.state === S.rqState && inScope(q)) : [];
   const where = q => `${esc(label(cls(q.classId)))} · ${esc(q.unit)} · ${q.kind === 'custom' ? 'Իմ կազմած' : 'Դասընթացի'} · ${q.date}`;
-  const list = items.length ? `<ul class="queue card" style="padding:6px">${items.map(q => `<li><button type="button" data-open="${q.id}" aria-current="${S.open === q.id}">
-      <span class="who">${esc(q.who)}</span>${q.wait >= 3 && q.state === 'submitted' ? `<span class="pill attention">${q.wait} օր</span>` : `<span class="tile-meta">${q.date}</span>`}
-      <span class="what">${esc(q.what)}</span><span class="where">${where(q)}</span></button></li>`).join('')}</ul>`
+  const list = items.length ? `<ul class="queue card" style="padding:6px">${items.map(q => `<li><button type="button" data-open="${q.id}" aria-current="${S.open === q.id}"><span class="who">${esc(q.who)}</span>${q.wait >= 3 && q.state === 'submitted' ? `<span class="pill attention">${q.wait} օր</span>` : `<span class="tile-meta">${q.date}</span>`}<span class="what">${esc(q.what)}</span><span class="where">${where(q)}</span></button></li>`).join('')}</ul>`
     : `<div class="card empty"><h2>Այս ֆիլտրով աշխատանք չկա</h2><p class="lede">Նոր ներկայացումները կհայտնվեն այստեղ։ Փոխեք կարգավիճակը կամ դասարանը՝ մյուս աշխատանքները տեսնելու համար։</p></div>`;
   const q = QUEUE.find(x => x.id === S.open), idx = items.findIndex(x => x.id === S.open);
-  const panel = q ? `<article class="card section" aria-labelledby="revT">
+  let panel = '';
+  if (q) {
+    const custom = q.kind === 'custom', ownTask = OWN.find(t => t.title === q.what);
+    const scoring = custom && ownTask?.review === 'Միայն մեկնաբանություն' ? `<p class="tile-meta">Ստուգման կարգ՝ միայն մեկնաբանություն</p>` : `<h3>Գնահատման չափանիշները</h3><div class="rubric">${(custom ? ['Փորձի նպատակը և ընթացքը', 'Չափումների ճշտություն', 'Եզրակացություն'] : RUBRIC).map((r, i) => `<label class="field" for="rb${i}">${esc(r)}<select id="rb${i}"><option>Ընտրեք միավորը</option><option>0</option><option>1</option><option>2</option><option>3</option></select></label>`).join('')}</div>`;
+    panel = `<article class="card section" aria-labelledby="revT">
       <div class="section-head"><button type="button" class="btn quiet" data-close>← Վերադառնալ ցանկին</button><span class="tile-meta">${idx + 1} / ${items.length}</span></div>
       <div><h2 id="revT">${esc(q.who)}</h2><p class="lede">${esc(q.what)} · ${where(q)}</p></div>
       <h3>Ներկայացված տարբերակ 1</h3>
-      <div class="submission" lang="${cls(q.classId).prog === 'english7' ? 'en' : 'hy'}">${esc(q.text)}</div>
-      <h3>Գնահատման չափանիշները</h3>
-      <div class="rubric">${RUBRIC.map((r, i) => `<label class="field" for="rb${i}">${esc(r)}<select id="rb${i}"><option>Ընտրեք միավորը</option><option>0</option><option>1</option><option>2</option><option>3</option></select></label>`).join('')}</div>
+      ${q.file ? `<div class="submission"><strong>${esc(q.file)}</strong>\n<button type="button" class="btn secondary" data-proto-off>Ներբեռնել աշակերտի ֆայլը</button></div>` : `<div class="submission" lang="${cls(q.classId).prog === 'english7' ? 'en' : 'hy'}">${esc(q.text)}</div>`}
+      ${scoring}
       <label class="field" for="fb">Մեկնաբանություն աշակերտին<textarea id="fb" rows="4"></textarea></label>
-      <div class="review-actions"><button type="button" class="btn" data-proto-off>Ուղարկել գնահատականն ու մեկնաբանությունը</button><button type="button" class="btn secondary" data-proto-off>Վերադարձնել վերանայման</button><button type="button" class="btn secondary" data-proto-off>Պահպանել սևագիրը</button></div>
+      <div class="review-actions"><button type="button" class="btn" data-proto-off>Ուղարկել ստուգումը</button><button type="button" class="btn secondary" data-proto-off>Վերադարձնել վերանայման</button><button type="button" class="btn secondary" data-proto-off>Պահպանել սևագիրը</button></div>
+      <details><summary>Նախորդ ներկայացումները և պատմությունը</summary><p class="tile-meta">Նախորդ տարբերակներ չկան։</p></details>
       ${idx < items.length - 1 ? `<div><button type="button" class="btn quiet" data-open="${items[idx + 1].id}">Հաջորդ աշխատանքը →</button></div>` : ''}
-      ${note('B4', 'The review form, rubric and actions are the existing ones (rubric criteria here are examples). On desktop the list stays visible beside the open work; on phones the work opens full screen with «Վերադառնալ ցանկին».')}
-    </article>` : '';
-  if (q && app.clientWidth < 1000) return head + panel;
-  return head + filters + `<div class="review-layout${q ? ' has-open' : ''}">${list}${panel}</div>`;
+      ${note('B4 · wording', custom ? 'Own-task review uses the same layout as course writing. Today its buttons read «Հրապարակել ստուգումը» and «Վերադարձնել շտկման», while course writing says «Ուղարկել գնահատականն ու մեկնաբանությունը» and «Վերադարձնել վերանայման». One wording for both is proposed; which words is your decision (Armenian review).' : 'The existing review form, rubric and actions (rubric criteria here are examples). The button wording is shared with own-task review; see the note there.')}
+    </article>`;
+  }
+  if (q && app.clientWidth < 1000) return h + panel;
+  return h + filters + `<div class="review-layout${q ? ' has-open' : ''}">${list}${panel}</div>`;
 }
 
-/* ---------- load error (B6) ---------- */
-function errorView() {
-  const titles = { home: 'Գլխավոր', classes: 'Իմ դասարանները', class: label(cls(S.classId)), review: 'Գրավորի ստուգում', account: 'Իմ հաշիվը' };
-  return `<div class="page-head"><div><h1>${esc(titles[S.screen] || 'Գլխավոր')}</h1></div></div>
-    <section class="card section" role="alert" aria-labelledby="errT">
-      <h2 id="errT">Չհաջողվեց բեռնել տվյալները</h2>
-      <p class="lede">Ստուգեք ինտերնետ կապը և փորձեք կրկին։ Եթե խնդիրը մնում է, փորձեք մի քանի րոպեից։</p>
-      <div class="actions"><button type="button" class="btn" data-retry>Փորձել կրկին</button></div>
-      ${note('B6', 'Load failure for a signed-in teacher (H-13): the teacher menu stays, the retry is the main action, and there is no sign-in prompt. Sign-in appears only when the session is actually missing. Today this state replaces the whole page with the sign-in card and a filled «Մուտք գործել» button.')}
-    </section>`;
+/* ---------- Assign flow (B8) ---------- */
+function startAssign(classId) { const c = cls(classId) || CLASSES[0]; S.assign = { step: classId ? 2 : 1, type: classId ? 'course' : null, classId: c.id, unit: c.current, item: null, who: 'all', picked: [], fromClass: !!classId }; }
+function assign() {
+  if (!S.assign) startAssign(null);
+  const A = S.assign, c = cls(A.classId), steps = ['Ինչ եք հանձնարարում', 'Ընտրություն', 'Ստացողներ', 'Հաստատում'];
+  const h = head('Հանձնարարել', `${esc(label(c))} · ${esc(unitOf(c, A.unit).short)}`, '', A.fromClass ? crumbs(['Դասարաններ', 'classes'], [label(c), 'class-' + c.id], ['Հանձնարարել']) : '')
+    + `<ol class="stepper" aria-label="Քայլեր">${steps.map((s, i) => `<li${i + 1 === A.step ? ' aria-current="step"' : i + 1 < A.step ? ' class="done"' : ''}>${i + 1}. ${s}</li>`).join('')}</ol>`;
+  if (A.step === 5) return h + `<section class="card section" role="status" aria-labelledby="okT"><h2 id="okT">Ուղարկումը հաստատված է</h2>
+      <p class="lede">«${esc(itemTitle(A))}» ուղարկվեց ${A.who === 'all' ? `ամբողջ դասարանին՝ ${c.size} աշակերտ` : `${A.picked.length} աշակերտի`}։ Աշակերտները այն կտեսնեն «Իմ աշխատանքները» բաժնում։</p>
+      <div class="actions"><button type="button" class="btn" data-class-open="${c.id}" data-tab-open="assignments">Դիտել ուղարկումը</button><button type="button" class="btn secondary" data-assign-restart>Հանձնարարել այլ աշխատանք</button></div></section>`;
+  let body = '';
+  if (A.step === 1) {
+    body = `<section class="card section" aria-labelledby="s1T"><h2 id="s1T">Ինչ եք հանձնարարում</h2>
+      <div class="filters"><label class="field" for="asClass">Դասարան${classOptions(A.classId, 'asClass')}</label><label class="field" for="asUnit">Բաժին${unitOptions(c, A.unit, 'asUnit')}</label></div>
+      <div class="choice-grid" role="group" aria-label="Տեսակ">${[['course', 'Դասընթացի գրավոր', 'Ծրագրի հրապարակված գրավոր առաջադրանք՝ գնահատման չափանիշներով'], ['custom', 'Իմ առաջադրանքը', 'Ձեր կազմած առաջադրանքը կամ նոր առաջադրանք'], ['material', 'Նյութ (PDF կամ հղում)', 'Գրադարանի նյութ՝ կարդալու կամ դիտելու համար']].map(([k, l, d]) => `<button type="button" class="choice" data-as-type="${k}" aria-pressed="${A.type === k}"><strong>${l}</strong><small>${d}</small></button>`).join('')}</div>
+      <div class="actions"><button type="button" class="btn" data-as-next${A.type ? '' : ' disabled'}>Շարունակել</button></div>
+      ${note('B8', 'One entry for everything a teacher sends to a class. Started from a class page, this step is skipped because the class and unit are already known. The three services behind it stay separate.')}</section>`;
+  } else if (A.step === 2) {
+    const t = A.type || 'course';
+    const typeSwitch = `<div class="seg-p" role="group" aria-label="Տեսակ">${Object.entries(KIND).map(([k, l]) => `<button type="button" data-as-type="${k}" aria-pressed="${t === k}">${l}</button>`).join('')}</div>`;
+    let list = '';
+    if (t === 'course') list = (CATALOG[c.prog] || []).filter(w => w.unit === A.unit).map(w => `<li><button type="button" data-as-item="${w.id}" aria-current="${A.item === w.id}"><span class="who">${esc(w.title)}</span><span class="tile-meta">${esc(w.words)}</span><span class="where">${w.rubric} չափանիշ · Դիտել առաջադրանքը</span></button></li>`).join('');
+    if (t === 'custom') list = OWN.filter(o => o.prog === c.prog).map(o => `<li><button type="button" data-as-item="${o.id}" aria-current="${A.item === o.id}"><span class="who">${esc(o.title)}</span><span class="pill ${o.state === 'Սևագիր' ? 'attention' : 'calm'}">${o.state}</span><span class="where">Տրամադրում՝ ${esc(o.provide)} · պատասխան՝ ${esc(o.respond)} · ${esc(o.review)}</span></button></li>`).join('');
+    if (t === 'material') list = MATERIALS.filter(m => m.prog === c.prog && m.unit === A.unit && m.status === 'Հրապարակված').map(m => `<li><button type="button" data-as-item="${m.id}" aria-current="${A.item === m.id}"><span class="who">${esc(m.title)}</span><span class="pill calm">${m.format}</span><span class="where">${esc(m.source)} · հրապարակվել է ${m.date}</span></button></li>`).join('');
+    const extra = t === 'custom' ? '<button type="button" class="btn secondary" data-go="editor" data-new-task>+ Ստեղծել նոր առաջադրանք</button>' : t === 'material' ? '<button type="button" class="btn secondary" data-go="material">+ Ավելացնել նյութ</button>' : '';
+    body = `<section class="card section" aria-labelledby="s2T"><div class="section-head"><h2 id="s2T">Ընտրեք ${t === 'course' ? 'գրավոր առաջադրանքը' : t === 'custom' ? 'ձեր առաջադրանքը' : 'նյութը'}</h2>${A.fromClass ? '' : '<button type="button" class="btn quiet" data-as-step="1">Փոխել դասարանը</button>'}</div>
+      ${typeSwitch}
+      ${list ? `<ul class="queue">${list}</ul>` : `<p class="lede">${t === 'course' ? 'Այս բաժնի համար հրապարակված գրավոր առաջադրանք չկա։' : t === 'custom' ? 'Այս առարկայի համար դեռ առաջադրանք չեք կազմել։' : 'Այս բաժնում հրապարակված նյութ չկա։'}</p>`}
+      <div class="actions">${extra}<button type="button" class="btn" data-as-next${A.item ? '' : ' disabled'}>Շարունակել</button></div>
+      ${note('B8', t === 'course' ? 'Existing course catalog for the class’s unit.' : t === 'custom' ? 'Existing own-task list («Իմ սևագրերը»). Drafts can be finished in the editor first.' : 'Only published materials can be sent; «+ Ավելացնել նյութ» opens the library form and returns here.')}</section>`;
+  } else if (A.step === 3) {
+    const list = roster(c, c.current);
+    body = `<section class="card section" aria-labelledby="s3T"><h2 id="s3T">Ո՞ւմ եք հանձնարարում</h2>
+      <p class="lede">«${esc(itemTitle(A))}»</p>
+      <fieldset class="radio-row"><legend class="sr">Ստացողները</legend>
+        <label class="radio"><input type="radio" name="who" value="all"${A.who === 'all' ? ' checked' : ''}> Ամբողջ դասարանին՝ ${c.size} աշակերտ</label>
+        <label class="radio"><input type="radio" name="who" value="some"${A.who === 'some' ? ' checked' : ''}> Ընտրված աշակերտներին</label></fieldset>
+      ${A.who === 'some' ? `<label class="field" for="asFind">Գտնել աշակերտ<input id="asFind" type="search" placeholder="Անուն…"></label>
+        <div class="chips"><button type="button" class="chip" data-as-pick-support>Ընտրել աջակցության կարիք ունեցողներին · ${list.filter(s => s.support).length}</button></div>
+        <div class="check-list card" style="padding:4px 8px;max-height:320px;overflow:auto">${list.map(s => `<label><input type="checkbox" data-as-pick="${s.id}"${A.picked.includes(s.id) ? ' checked' : ''}> ${esc(s.name)}${s.support ? ' <span class="pill error">Աջակցություն է պետք</span>' : ''}</label>`).join('')}</div>
+        <p class="tile-meta">Ընտրված աշակերտները · ${A.picked.length} ստացող</p>` : ''}
+      ${A.type !== 'course' ? `<label class="field" for="asNote">Հրահանգ աշակերտներին (ըստ ցանկության)<textarea id="asNote" rows="3"></textarea></label>` : ''}
+      <div class="actions"><button type="button" class="btn secondary" data-as-step="2">Վերադառնալ ընտրությանը</button><button type="button" class="btn" data-as-next${A.who === 'some' && !A.picked.length ? ' disabled' : ''}>Շարունակել</button></div>
+      ${note('B8 · B3', 'The same recipient step for all three types. «Ընտրել աջակցության կարիք ունեցողներին» uses the class read the roster already has, so support work can be sent in one step.')}</section>`;
+  } else {
+    body = `<section class="card section" aria-labelledby="s4T"><h2 id="s4T">Ստուգեք և ուղարկեք</h2>
+      <dl class="summary"><div><dt>Ինչ</dt><dd>${KIND[A.type]} · «${esc(itemTitle(A))}»</dd></div><div><dt>Դասարան</dt><dd>${esc(label(c))} · ${esc(unitOf(c, A.unit).short)}</dd></div><div><dt>Ստացողներ</dt><dd>${A.who === 'all' ? `Ամբողջ դասարանը՝ ${c.size} աշակերտ` : `${A.picked.length} ընտրված աշակերտ`}</dd></div></dl>
+      <details open><summary>Նախադիտում․ ինչ կտեսնի աշակերտը</summary><div class="submission" style="margin-top:8px"><strong>${esc(itemTitle(A))}</strong>\nԱշխատանքը կհայտնվի «Իմ աշխատանքները» բաժնում։</div></details>
+      <p class="tile-meta">Ստացողների ցանկը պահպանվում է ուղարկման պահին։ Ավելի ուշ միացած աշակերտի համար ուղարկեք նոր առաջադրանք։</p>
+      <div class="actions"><button type="button" class="btn secondary" data-as-step="3">Վերադառնալ</button><button type="button" class="btn" data-as-send>Հաստատել և ուղարկել</button></div>
+      ${note('B8', 'Existing preview and confirmation wording; one confirmation step for all three types.')}</section>`;
+  }
+  return h + body;
+}
+function itemTitle(A) { return (CATALOG[cls(A.classId).prog] || []).concat(OWN, MATERIALS).find(x => x.id === A.item)?.title || '—'; }
+
+/* ---------- Library ---------- */
+function library() {
+  const c = cls(S.libClass), list = MATERIALS.filter(m => m.prog === c.prog);
+  const h = head('Նյութերի գրադարան', 'Լրացուցիչ նյութեր՝ դասարանի ինքնուրույն աշխատանքի համար', '<button type="button" class="btn" data-go="material">+ Ավելացնել նյութ</button>')
+    + `<div class="filters"><label class="field" for="libClass">Դասընթաց և բաժին${classOptions(S.libClass, 'libClass')}</label></div>`
+    + note('H-17 · A2', 'The library opens inside the teacher layout (today it is a separate page whose only way back is «Ուսուցչի էջ»).');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(64)}${skel(64)}${skel(64)}`);
+  if (S.data === 'empty' || !list.length) return h + `<div class="card empty"><h2>Այստեղ դեռ նյութեր չկան</h2><p class="lede">Կիսվեք օգտակար նյութերով՝ PDF կամ արտաքին HTTPS հղում։</p><button type="button" class="btn" data-go="material">+ Ավելացնել նյութ</button></div>`;
+  return h + `<ul class="queue card" style="padding:6px">${list.map(m => `<li style="padding:10px 8px;display:grid;gap:6px">
+      <div class="section-head"><strong>${esc(m.title)}</strong><span class="pill ${m.status === 'Սևագիր' ? 'attention' : 'good'}">${m.status}</span></div>
+      <span class="tile-meta">${m.format} · ${esc(m.source)} · ${m.date}</span>
+      <div class="actions">${m.status === 'Հրապարակված' ? `<button type="button" class="btn secondary" data-assign-material="${m.id}">Հանձնարարել</button><button type="button" class="btn quiet" data-proto-off>Աշակերտի տեսքի նախադիտում</button>` : '<button type="button" class="btn secondary" data-go="material">Շարունակել խմբագրումը</button>'}<button type="button" class="btn quiet" data-proto-off>Խմբագրել</button></div></li>`).join('')}</ul>
+    ${note('C4 · C6', 'The material list and actions are today’s. «Հանձնարարել» opens the shared assign flow at the recipient step.')}`;
+}
+function materialForm() {
+  return head('Նոր նյութ', 'Հրապարակեք նյութը գրադարանում։ Աշակերտներին առաջադրանք ուղարկելը առանձին քայլ է։', '', crumbs(['Նյութերի գրադարան', 'library'], ['Նոր նյութ']))
+    + `<section class="card section form-grid" aria-labelledby="mfT"><h2 id="mfT" class="sr">Նյութի տվյալներ</h2>
+      <label class="field" for="mfCtx">Դասընթաց և բաժին${classOptions(S.libClass, 'mfCtx')}</label>
+      <fieldset class="radio-row"><legend class="field" style="padding:0">Ձևաչափ</legend><label class="radio"><input type="radio" name="fmt" checked> PDF ֆայլ (մինչև 5 ՄԲ)</label><label class="radio"><input type="radio" name="fmt"> Արտաքին HTTPS հղում</label></fieldset>
+      <div class="actions"><button type="button" class="btn secondary" data-proto-off>Կցել PDF</button><span class="tile-meta">PDF դեռ կցված չէ։</span></div>
+      <label class="field" for="mfTitle">Վերնագիր<input id="mfTitle"></label>
+      <label class="field" for="mfSrc">Աղբյուր<input id="mfSrc"></label>
+      <label class="field" for="mfDesc">Կարճ նկարագրություն (ըստ ցանկության)<textarea id="mfDesc" rows="2"></textarea></label>
+      <details><summary>Լրացուցիչ տվյալներ (ըստ ցանկության)</summary><div class="filters" style="margin-top:8px"><label class="field" for="mfLang">Լեզու<select id="mfLang"><option>Հայերեն</option><option>Անգլերեն</option></select></label><label class="field" for="mfMin">Մոտավոր տևողություն՝ րոպե<input id="mfMin" inputmode="numeric"></label></div></details>
+      <label class="radio"><input type="checkbox"> Ունեմ նյութը տրամադրելու իրավունք։</label>
+      <label class="radio"><input type="checkbox"> Նյութը չի բացահայտում պաշտպանված գնահատման հարցեր, պատասխաններ կամ լսողական/ընթերցանության աղբյուրներ։</label>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Հրապարակել գրադարանում</button><button type="button" class="btn secondary" data-proto-off>Հրապարակել և ընտրել ստացողներին</button><button type="button" class="btn secondary" data-proto-off>Պահպանել սևագիրը</button></div>
+      ${note('H-17', 'Today’s fields, checks and buttons, inside the teacher layout. «Հրապարակել և ընտրել ստացողներին» continues in the shared assign flow at the recipient step.')}</section>`;
 }
 
-/* ---------- account (B5, H-17) ---------- */
+/* ---------- Own tasks ---------- */
+function tasks() {
+  const h = head('Իմ առաջադրանքները', 'Ձեր կազմած առաջադրանքները։ Սևագրերը տեսնում եք միայն դուք։', '<button type="button" class="btn" data-go="editor" data-new-task>+ Ստեղծել նոր առաջադրանք</button>');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(64)}${skel(64)}`);
+  if (S.data === 'empty') return h + `<div class="card empty"><h2>Դեռ առաջադրանք չեք կազմել</h2><p class="lede">Կազմեք առաջադրանք՝ տեքստով, PDF-ով կամ հղումով, և ընտրեք, թե ինչպես ստուգել։</p><button type="button" class="btn" data-go="editor" data-new-task>+ Ստեղծել նոր առաջադրանք</button></div>`;
+  return h + `<ul class="queue card" style="padding:6px">${OWN.map(o => `<li style="padding:10px 8px;display:grid;gap:6px">
+      <div class="section-head"><strong>${esc(o.title)}</strong><span class="pill ${o.state === 'Սևագիր' ? 'attention' : 'calm'}">${o.state}</span></div>
+      <span class="tile-meta">${esc(PROGRAMMES[o.prog].subject)} · տրամադրում՝ ${esc(o.provide)} · պատասխան՝ ${esc(o.respond)} · ${esc(o.review)} · փոփոխվել է ${o.updated}</span>
+      <div class="actions"><button type="button" class="btn secondary" data-go="editor" data-edit-task="${o.id}">${o.state === 'Սևագիր' ? 'Շարունակել խմբագրումը' : 'Դիտել'}</button>${o.state === 'Սևագիր' ? '' : `<button type="button" class="btn secondary" data-assign-task="${o.id}">Հանձնարարել</button>`}<button type="button" class="btn quiet" data-proto-off>Ստեղծել պատճեն</button></div></li>`).join('')}</ul>
+    ${note('B8', 'Today this list is reached through «Հանձնարարել գրավոր» → «Ստեղծել իմ առաջադրանքը / սևագրերը». Here it has its own menu entry; sending continues in the shared assign flow.')}`;
+}
+function editor() {
+  const o = OWN.find(x => x.id === S.editor) || { title: '', provide: 'PDF', respond: 'Ֆայլ (PDF կամ Word)', review: 'Չափանիշներով և միավորներով' };
+  return head(S.editor ? 'Խմբագրել առաջադրանքը' : 'Նոր առաջադրանք', 'Սևագիրը տեսնում եք միայն դուք։ Պահպանումը դեռ չի ուղարկում առաջադրանքն աշակերտներին։', '', crumbs(['Իմ առաջադրանքները', 'tasks'], [S.editor ? o.title : 'Նոր առաջադրանք']))
+    + `<section class="card section form-grid" aria-labelledby="edT"><h2 id="edT" class="sr">Առաջադրանքի տվյալներ</h2>
+      <label class="field" for="edTitle">Վերնագիր<input id="edTitle" value="${esc(o.title)}"></label>
+      <label class="field" for="edInstr">Աշակերտի հրահանգները<textarea id="edInstr" rows="4"></textarea></label>
+      <div class="actions" role="group" aria-label="Ձևավորում"><button type="button" class="btn secondary" data-proto-off>Վերնագիր</button><button type="button" class="btn secondary" data-proto-off>Ցանկ</button><button type="button" class="btn secondary" data-proto-off>Համարներով</button><button type="button" class="btn secondary" data-proto-off>Հղում</button></div>
+      <label class="field" for="edProv">Ինչպե՞ս եք տրամադրում առաջադրանքը<select id="edProv"><option>Կցել PDF</option><option>Հղում</option><option>Միայն տեքստ</option></select></label>
+      <label class="field" for="edResp">Ինչպես պետք է աշակերտը ներկայացնի աշխատանքը<select id="edResp"><option>Վերբեռնել փաստաթուղթ (PDF կամ Word)</option><option>Գրել տեքստ</option></select></label>
+      <details open><summary>Ստուգման կարգ</summary><div class="form-grid" style="margin-top:8px">
+        <label class="field" for="edMode">Ստուգման եղանակը<select id="edMode"><option>Չափանիշներով և միավորներով</option><option>Միայն մեկնաբանություն</option></select></label>
+        <fieldset class="card" style="padding:12px"><legend>Չափանիշ 1</legend><div class="filters"><label class="field" for="c1n">Անվանումը<input id="c1n" value="Հստակ բացատրություն"></label><label class="field" for="c1p">Միավորի սահմանը<input id="c1p" value="4" inputmode="numeric"></label></div></fieldset>
+        <div><button type="button" class="btn secondary" data-proto-off>Ավելացնել չափանիշ</button></div></div></details>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Պահպանել սևագիրը</button><button type="button" class="btn secondary" data-proto-off>Աշակերտի տեսքը</button><button type="button" class="btn secondary" data-editor-continue>Պահպանել և շարունակել</button></div>
+      ${note('B8', 'The existing editor fields and buttons. «Պահպանել և շարունակել» moves into the shared assign flow at the recipient step.')}</section>`;
+}
+
+/* ---------- Archive ---------- */
+function archive() {
+  const h = head('Արխիվացված դասարաններ', 'Արխիվացված դասարանները չեն խառնվում ընթացիկ աշխատանքին։ Դրանց պատմությունն ու վերլուծությունը պահպանվում են։');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(44, '50%')}${skel(56)}${skel(56)}`);
+  if (S.data === 'empty') return h + `<div class="card empty"><h2>Արխիվացված դասարան չկա</h2><p class="lede">Ավարտված դասարաններն այստեղ կհայտնվեն արխիվացնելուց հետո։</p></div>`;
+  const list = ARCHIVE.filter(a => (a.name + a.subject).includes(S.archiveQuery)), years = [...new Set(list.map(a => a.year))];
+  return h + `<label class="field" for="arQ" style="max-width:420px">Որոնել արխիվում<input id="arQ" type="search" value="${esc(S.archiveQuery)}" placeholder="Դասարան կամ առարկա…"></label>
+    ${years.map(y => `<details class="card" open><summary>${y} · ${list.filter(a => a.year === y).length} դասարան</summary><ul class="queue">${list.filter(a => a.year === y).map(a => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">
+      <span><strong>${esc(a.name)} · ${esc(a.subject)}</strong> <span class="tile-meta">${gradeLabel(a.grade)} · ${a.students} աշակերտ</span></span>
+      <span class="actions"><button type="button" class="btn secondary" data-proto-off>Բացել պատմությունը</button><button type="button" class="btn quiet" data-confirm="react-${a.id}">Վերակտիվացնել</button></span>
+      ${S.confirm === 'react-' + a.id ? `<div class="inline-confirm" style="flex-basis:100%" role="alertdialog" aria-labelledby="ra-${a.id}"><strong id="ra-${a.id}">Վերակտիվացնե՞լ ${esc(a.name)}-ը</strong><p class="tile-meta" style="color:var(--ink)">Դասարանը կվերադառնա ակտիվ դասարանների ցանկ։</p><div class="actions"><button type="button" class="btn" data-proto-off>Վերակտիվացնել</button><button type="button" class="btn secondary" data-confirm-cancel>Չեղարկել</button></div></div>` : ''}</li>`).join('')}</ul></details>`).join('') || '<p class="lede">Այս որոնմամբ դասարան չկա։</p>'}
+    ${note('C3 · D', 'One page title (C3); classes grouped by school year, search kept; reactivation confirmed in the page instead of a browser pop-up.')}`;
+}
+
+/* ---------- Account ---------- */
 function account() {
-  const head = `<div class="page-head"><div><h1>Իմ հաշիվը</h1><p class="lede">Անուն, մուտքի տվյալներ և գաղտնիություն</p></div></div>
-    ${note('B5 · H-17', 'The account page opens inside the teacher layout (today it is a separate page with only a back button) and is the single place for the display name. «Իմ պրոֆիլը» leaves the teacher menu.')}`;
-  if (S.data === 'loading') return head + loadingBlock(`${skel(150)}${skel(110)}${skel(110)}`);
-  return head + `<section class="card section" aria-labelledby="nameT">
-      <h2 id="nameT">Ցուցադրվող անուն</h2>
-      <p class="lede">Այս անունը տեսնում են ձեր աշակերտները և դպրոցի ադմինիստրատորը։</p>
+  const h = head('Իմ հաշիվը', 'Անուն, մուտքի տվյալներ և գաղտնիություն') + note('B5 · H-17', 'Opens inside the teacher layout and is the single place for the display name; «Իմ պրոֆիլը» leaves the menu.');
+  if (S.data === 'loading') return h + loadingBlock(`${skel(150)}${skel(110)}${skel(110)}`);
+  return h + `<section class="card section" aria-labelledby="nameT"><h2 id="nameT">Ցուցադրվող անուն</h2><p class="lede">Այս անունը տեսնում են ձեր աշակերտները և դպրոցի ադմինիստրատորը։</p>
       <label class="field" for="dispName">Անուն և ազգանուն<input id="dispName" maxlength="100" autocomplete="name" value="Անի Մելքոնյան"></label>
-      <div class="actions"><button type="button" class="btn" data-proto-off>Պահպանել անունը</button></div>
-      ${newData('Owner decision')}
-      ${note('B5', 'One field, one rule. Today Profile requires 2\u2013100 characters and the account page allows 0\u201380 and can clear the name (H-15). Which rule wins is your decision; the account page is shared by every role.')}
-    </section>
-    <section class="card section" aria-labelledby="loginT"><h2 id="loginT">Մուտքի տվյալներ և գաղտնաբառ</h2>
-      <p class="lede">Էլ. հասցեի կամ գաղտնաբառի փոփոխությունը կատարվում է հաստատման նամակով։</p>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Պահպանել անունը</button></div>${newData('Owner decision')}
+      ${note('B5', 'One field, one rule. Today Profile requires 2–100 characters and the account page allows 0–80 and can clear the name (H-15). Which rule wins is your decision; the account page is shared by every role.')}</section>
+    <section class="card section" aria-labelledby="loginT"><h2 id="loginT">Մուտքի տվյալներ և գաղտնաբառ</h2><p class="lede">Էլ. հասցեի կամ գաղտնաբառի փոփոխությունը կատարվում է հաստատման նամակով։</p>
       <div class="actions"><button type="button" class="btn secondary" data-proto-off>Փոխել էլ. հասցեն</button><button type="button" class="btn secondary" data-proto-off>Փոխել գաղտնաբառը</button></div></section>
-    <section class="card section" aria-labelledby="privT"><h2 id="privT">Գաղտնիություն և տվյալներ</h2>
-      <p class="lede">Ինչ տվյալներ ենք պահում ձեր մասին, գաղտնիության ընտրությունները և հաշվի ջնջման հարցումը։</p>
-      <div class="actions"><button type="button" class="btn secondary" data-proto-off>Բացել գաղտնիության կարգավորումները</button></div>
-      ${note('H-17', 'These sections keep the existing account-page content and actions unchanged; only the layout around them changes.')}</section>`;
+    <section class="card section" aria-labelledby="privT"><h2 id="privT">Գաղտնիություն և տվյալներ</h2><p class="lede">Ինչ տվյալներ ենք պահում ձեր մասին, գաղտնիության ընտրությունները և հաշվի ջնջման հարցումը։</p>
+      <div class="actions"><button type="button" class="btn secondary" data-proto-off>Բացել գաղտնիության կարգավորումները</button></div>${note('H-17', 'These sections keep the existing account-page content and actions.')}</section>`;
+}
+
+/* ---------- Guide ---------- */
+function guide() {
+  const sec = [['Հրապարակել գրադարանում', 'Ընտրեք դասընթացն ու բաժինը «Նյութերի գրադարան»-ում, ընտրեք «Ավելացնել նյութ», կցեք PDF կամ տվեք HTTPS հղում և հրապարակեք։ Նյութը կտեսնեն դասարանի իրավասու աշակերտները։'],
+    ['Հանձնարարել նյութ, դասընթացի գրավոր կամ ձեր առաջադրանքը', 'Ընտրեք «Հանձնարարել», ապա տեսակը, առաջադրանքը և ստացողներին։ Նախադիտեք, թե ինչ կտեսնի աշակերտը, և հաստատեք ուղարկումը։'],
+    ['Ստեղծել ձեր առաջադրանքը', '«Իմ առաջադրանքները» բաժնում ստեղծեք նոր առաջադրանք, ընտրեք՝ ինչպես եք տրամադրում այն և ինչպես պետք է աշակերտը պատասխանի, ապա՝ ստուգման կարգը։'],
+    ['Ստուգել և մեկնաբանել', '«Գրավորի ստուգում»-ում բացեք սպասող աշխատանքը, լրացրեք չափանիշները և մեկնաբանությունը, ապա ուղարկեք կամ վերադարձրեք վերանայման։'],
+    ['Եթե գործողությունը չհաջողվեց', 'Ձեր չուղարկված տվյալները մնում են էջում։ Ստուգեք կապը և ընտրեք «Փորձել կրկին»։ Եթե խնդիրը մնում է, թարմացրեք էջը։']];
+  return head('Ուղեցույց', 'Հիմնական գործողությունները քայլ առ քայլ') + sec.map(([t, d], i) => `<details class="card"${i === 0 ? ' open' : ''}><summary>${t}</summary><p>${d}</p></details>`).join('')
+    + note('D · H-11', 'The guide inside the teacher layout, using the page type scale; sections collapse so phones do not scroll 13,000 px. Today’s anchors (#library, #assign, #review…) are kept so «Ինչպե՞ս» links keep working. Text here is shortened; the real content stays.');
+}
+
+/* ---------- load error / signed out ---------- */
+function errorView() {
+  const titles = { home: 'Գլխավոր', classes: 'Իմ դասարանները', class: label(cls(S.classId)), review: 'Գրավորի ստուգում', account: 'Իմ հաշիվը', assign: 'Հանձնարարել', library: 'Նյութերի գրադարան', tasks: 'Իմ առաջադրանքները', archive: 'Արխիվացված դասարաններ' };
+  return head(esc(titles[S.screen] || 'Գլխավոր')) + `<section class="card section" role="alert" aria-labelledby="errT"><h2 id="errT">Չհաջողվեց բեռնել տվյալները</h2>
+      <p class="lede">Ստուգեք ինտերնետ կապը և փորձեք կրկին։ Եթե խնդիրը մնում է, փորձեք մի քանի րոպեից։</p><div class="actions"><button type="button" class="btn" data-retry>Փորձել կրկին</button></div>
+      ${note('B6', 'Load failure for a signed-in teacher (H-13): the menu stays, retry is the main action, no sign-in prompt. Sign-in appears only when the session is actually missing (Data → Signed out).')}</section>`;
+}
+function signedOut() {
+  return `<div class="shell"><div style="min-width:0"><header class="topbar" style="display:flex"><span class="brand">${LOGO}</span></header><main class="main" style="max-width:560px;margin:0 auto">
+    <section class="card section" aria-labelledby="soT"><h1 id="soT" style="font-size:var(--t-h2)">Մուտք գործեք՝ շարունակելու համար</h1><p class="lede">Ձեր մուտքի ժամկետն ավարտվել է կամ դուք դուրս եք եկել հաշվից։ Մուտք գործելուց հետո կվերադառնաք այս էջ։</p>
+      <div class="actions"><button type="button" class="btn" data-retry>Մուտք գործել</button></div>
+      ${note('B6', 'The only state with a sign-in button: the session is really missing. After signing in, the teacher returns to the page they were on.')}</section></main></div></div>`;
 }
 
 /* ---------- drawer ---------- */
@@ -582,68 +772,96 @@ function drawer() {
     <p class="lede">${esc(label(c))} · ${esc(unitOf(c, uid).short)} · Վերջին ակտիվություն՝ ${ago(s.daysAgo)} · Վերջին պատասխանների ճշգրտություն՝ ${s.acc == null ? '—' : s.acc + '%'}</p>
     <h3>Հմտությունների տվյալներ</h3>
     <ul class="queue">${skillsOf(c, uid).map((k, j) => `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span><strong>${esc(k.code)}</strong> ${esc(k.name)}</span><span class="pill ${s.bands[j] === 'needs' ? 'error' : s.bands[j] === 'secure' ? 'good' : 'calm'}">${bl[s.bands[j]]}</span></li>`).join('')}</ul>
-    ${note('B3', 'The existing student drawer is kept as it is. Only how it opens changes: from a roster row.')}
+    <details><summary>Յուրացման ստուգում և կրկնություն</summary><p class="tile-meta">Վերջին յուրացման ստուգում՝ 05.11.2026 · գլխի կրկնություն՝ 1 անգամ</p></details>
+    <details><summary>Աշխատանքներ</summary><p class="tile-meta">2 գրավոր · 1 ստուգված, 1 սպասում է ստուգման</p></details>
+    <div class="actions"><button type="button" class="btn secondary" data-assign-from="${c.id}" data-pick="${s.id}">Հանձնարարել այս աշակերտին</button></div>
+    ${note('B3 · B8', 'The existing drawer content (skills, mastery and review history, work). New: «Հանձնարարել այս աշակերտին» opens the assign flow with this student preselected.')}
   </aside></div>`;
 }
 
 /* ---------- render and routing ---------- */
+const SCREENS = { home, classes: classList, class: classPage, create: createClass, review, assign, library, material: materialForm, tasks, editor, archive, account, guide, more };
 function render() {
   stage.dataset.device = narrow() ? 'phone' : S.device;
   app.classList.toggle('notes-on', S.notes);
-  const view = S.data === 'error' ? errorView() : S.screen === 'class' ? classPage() : S.screen === 'classes' ? classList() : S.screen === 'review' ? review() : S.screen === 'account' ? account() : home();
-  app.innerHTML = shell(view) + (S.drawer ? drawer() : '');
+  if (S.data === 'signedout') app.innerHTML = signedOut();
+  else app.innerHTML = shell(S.data === 'error' ? errorView() : (SCREENS[S.screen] || home)()) + (S.drawer ? drawer() : '');
   app.classList.toggle('drawer-open', !!S.drawer);
-  const shown = { screen: S.screen, device: S.device, data: S.data };
-  for (const [id, key] of [['ctlScreen', 'screen'], ['ctlDevice', 'device'], ['ctlState', 'data']])
-    for (const b of document.querySelectorAll('#' + id + ' button')) b.setAttribute('aria-pressed', String(b.dataset.v === shown[key]));
+  const sel = document.getElementById('ctlScreen'); if (sel && sel.value !== S.screen) sel.value = S.screen;
+  for (const [id, key] of [['ctlDevice', 'device'], ['ctlState', 'data']]) for (const b of document.querySelectorAll('#' + id + ' button')) b.setAttribute('aria-pressed', String(b.dataset.v === S[key]));
   document.getElementById('ctlNotes').checked = S.notes;
   try { localStorage.setItem('haiedu-proto', JSON.stringify({ device: S.device, notes: S.notes })); } catch (e) {}
 }
-// review() chooses split or full-screen by the frame width, which is known only after layout.
 function rerenderAfterLayout() { render(); requestAnimationFrame(() => { if (S.screen === 'review' && S.open) render(); }); }
 const hashFor = () => S.screen === 'class' ? 'class-' + S.classId : S.screen;
 function toTop() { document.getElementById('frame').scrollTop = 0; if (narrow() || app.getBoundingClientRect().top < 0) app.scrollIntoView({ block: 'start' }); }
 function go(screen, extra = {}) {
-  Object.assign(S, { screen, open: null, menu: false, drawer: null }, extra);
+  Object.assign(S, { screen, open: null, menu: false, drawer: null, confirm: null }, extra);
   if (location.hash !== '#' + hashFor()) history.replaceState(null, '', '#' + hashFor());
   rerenderAfterLayout(); toTop();
 }
-const openClass = (id, filter = 'all') => go('class', { classId: id, unitId: null, classTab: 'students', rosterFilter: filter, rosterQuery: '' });
+const openClass = (id, filter = 'all', tab = 'students') => go('class', { classId: id, unitId: null, classTab: tab, rosterFilter: filter, rosterQuery: '' });
 
+document.getElementById('ctlScreen').addEventListener('change', e => { const v = e.target.value; if (v === 'assign') S.assign = null; if (v === 'editor') S.editor = null; go(v); });
 document.querySelector('.proto-bar').addEventListener('click', e => {
   const b = e.target.closest('button[data-v]'); if (!b) return;
   const g = b.parentElement.id;
-  if (g === 'ctlScreen') { if (b.dataset.v === 'class') openClass(S.classId); else go(b.dataset.v); }
   if (g === 'ctlDevice') { S.device = b.dataset.v; rerenderAfterLayout(); }
   if (g === 'ctlState') { S.data = b.dataset.v; S.open = null; S.drawer = null; rerenderAfterLayout(); }
 });
 document.getElementById('ctlNotes').addEventListener('change', e => { S.notes = e.target.checked; render(); });
 app.addEventListener('click', e => {
-  const t = e.target.closest('[data-retry],[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],[data-class-open],[data-review-class],#moreBtn');
-  if (!t) { if (S.menu) { S.menu = false; render(); } return; }
-  if (t.matches('[data-close-drawer]') && (e.target === t || t.tagName === 'BUTTON')) { S.drawer = null; render(); return; }
-  if (t.matches('.drawer-bg')) return;
-  e.preventDefault();
-  if (t.dataset.classOpen) { openClass(t.dataset.classOpen, t.dataset.filter || 'all'); return; }
-  if (t.dataset.reviewClass) { go('review', { rqClass: t.dataset.reviewClass, rqState: 'submitted', rqKind: 'all' }); return; }
-  if (t.dataset.go) { const first = t.hasAttribute('data-open-first'); go(t.dataset.go, first ? { rqState: 'submitted', rqKind: 'all', rqClass: 'all' } : {}); if (first) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
+  const t = e.target.closest('button,a,[data-close-drawer]');
+  if (!t || t.disabled) { if (S.menu) { S.menu = false; render(); } return; }
+  if (t.matches('.drawer-bg') && e.target !== t) return;
+  const d = t.dataset;
+  if (t.matches('[data-close-drawer]')) { S.drawer = null; render(); return; }
+  if (t.tagName === 'A' || t.tagName === 'BUTTON') e.preventDefault();
+  if ('retry' in d) { S.data = 'full'; rerenderAfterLayout(); return; }
+  if ('create' in d) { const name = (document.getElementById('newName')?.value || '7Գ').trim() || '7Գ'; const id = 'c' + (CLASSES.length + 1); CLASSES.push({ id, name, prog: 'physics7', size: 0, current: 'u2', pending: 0, invites: 0, support: { u1: 0, u2: 0 } }); openClass(id); return; }
+  if (d.classOpen) { openClass(d.classOpen, d.filter || 'all', d.tabOpen || 'students'); return; }
+  if (d.reviewClass) { go('review', { rqClass: d.reviewClass, rqState: 'submitted', rqKind: 'all' }); return; }
+  if (d.assignFrom) { startAssign(d.assignFrom); if (d.pick) Object.assign(S.assign, { who: 'some', picked: [d.pick], step: 2 }); go('assign'); return; }
+  if (d.assignMaterial) { const m = MATERIALS.find(x => x.id === d.assignMaterial); const c = CLASSES.find(x => x.prog === m.prog); startAssign(c.id); Object.assign(S.assign, { type: 'material', item: m.id, unit: m.unit, step: 3 }); go('assign'); return; }
+  if (d.assignTask) { const o = OWN.find(x => x.id === d.assignTask); const c = CLASSES.find(x => x.prog === o.prog); startAssign(c.id); Object.assign(S.assign, { type: 'custom', item: o.id, step: 3 }); go('assign'); return; }
+  if ('editorContinue' in d) { const o = OWN.find(x => x.id === S.editor) || OWN[2]; const c = CLASSES.find(x => x.prog === o.prog); startAssign(c.id); Object.assign(S.assign, { type: 'custom', item: o.id, step: 3 }); go('assign'); return; }
+  if (d.libFrom) { go('library', { libClass: d.libFrom }); return; }
+  if (d.go) { const extra = {}; if ('openFirst' in d) Object.assign(extra, { rqState: 'submitted', rqKind: 'all', rqClass: 'all' }); if ('newTask' in d) extra.editor = null; if (d.editTask) extra.editor = d.editTask; if (d.go === 'assign' && !('keep' in d)) S.assign = null;
+    go(d.go, extra); if ('openFirst' in d) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
   if (t.id === 'moreBtn') { S.menu = !S.menu; render(); return; }
-  if (t.hasAttribute('data-retry')) { S.data = 'full'; rerenderAfterLayout(); return; }
-  if (t.hasAttribute('data-proto-off')) { flash(); return; }
-  if (t.dataset.tab) { S.classTab = t.dataset.tab; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
-  if (t.dataset.filter) { S.rosterFilter = t.dataset.filter; S.classTab = 'students'; render(); return; }
-  if (t.dataset.rqState) { S.rqState = t.dataset.rqState; S.open = null; render(); return; }
-  if (t.dataset.rqKind) { S.rqKind = t.dataset.rqKind; S.open = null; render(); return; }
-  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); if (app.clientWidth < 1000) toTop(); return; }
-  if (t.hasAttribute('data-close')) { S.open = null; render(); return; }
-  if (t.dataset.student) { S.drawer = t.dataset.student; render(); toTop(); app.querySelector('.drawer button')?.focus({ preventScroll: true }); return; }
+  if (d.confirm) { S.confirm = d.confirm; S.menu = false; render(); return; }
+  if ('confirmCancel' in d) { S.confirm = null; render(); return; }
+  if ('protoOff' in d) { flash(); return; }
+  if (d.tab) { S.classTab = d.tab; S.menu = false; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
+  if (d.filter) { S.rosterFilter = d.filter; S.classTab = 'students'; render(); return; }
+  if (d.rqState) { S.rqState = d.rqState; S.open = null; render(); return; }
+  if (d.rqKind) { S.rqKind = d.rqKind; S.open = null; render(); return; }
+  if (d.open) { S.open = d.open; rerenderAfterLayout(); if (app.clientWidth < 1000) toTop(); return; }
+  if ('close' in d) { S.open = null; render(); return; }
+  if (d.student) { S.drawer = d.student; render(); toTop(); app.querySelector('.drawer button')?.focus({ preventScroll: true }); return; }
+  const A = S.assign;
+  if (A && d.asType) { A.type = d.asType; A.item = null; render(); return; }
+  if (A && d.asItem) { A.item = d.asItem; render(); return; }
+  if (A && 'asNext' in d) { A.step = Math.min(4, A.step + 1); if (A.step === 2 && !A.type) A.type = 'course'; render(); toTop(); return; }
+  if (A && d.asStep) { A.step = Number(d.asStep); render(); toTop(); return; }
+  if (A && 'asSend' in d) { A.step = 5; render(); toTop(); return; }
+  if (A && 'asPickSupport' in d) { A.picked = roster(cls(A.classId), cls(A.classId).current).filter(s => s.support).map(s => s.id); render(); return; }
+  if ('assignRestart' in d) { startAssign(S.assign?.classId); S.assign.step = 2; S.assign.type = 'course'; render(); return; }
 });
-app.addEventListener('input', e => { if (e.target.id === 'rq') { S.rosterQuery = e.target.value; const pos = e.target.selectionStart; render(); const i = document.getElementById('rq'); i.focus(); i.setSelectionRange(pos, pos); } });
+app.addEventListener('input', e => {
+  if (e.target.id === 'rq' || e.target.id === 'arQ') { S[e.target.id === 'rq' ? 'rosterQuery' : 'archiveQuery'] = e.target.value; const id = e.target.id, pos = e.target.selectionStart; render(); const i = document.getElementById(id); i.focus(); i.setSelectionRange(pos, pos); }
+});
 app.addEventListener('change', e => {
-  if (e.target.id === 'rqClass') { S.rqClass = e.target.value; S.open = null; render(); }
-  if (e.target.id === 'unitSel') { S.unitId = e.target.value; S.drawer = null; render(); document.getElementById('unitSel')?.focus(); }
+  const id = e.target.id, A = S.assign;
+  if (id === 'rqClass') { S.rqClass = e.target.value; S.open = null; render(); }
+  if (id === 'unitSel') { S.unitId = e.target.value; S.drawer = null; render(); document.getElementById('unitSel')?.focus(); }
+  if (id === 'libClass') { S.libClass = e.target.value; render(); }
+  if (A && id === 'asClass') { A.classId = e.target.value; A.unit = cls(A.classId).current; A.item = null; render(); }
+  if (A && id === 'asUnit') { A.unit = e.target.value; A.item = null; render(); }
+  if (A && e.target.name === 'who') { A.who = e.target.value; render(); }
+  if (A && e.target.dataset.asPick) { const sid = e.target.dataset.asPick; A.picked = e.target.checked ? [...new Set([...A.picked, sid])] : A.picked.filter(x => x !== sid); render(); }
 });
-app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.drawer) { S.drawer = null; render(); } else if (S.menu) { S.menu = false; render(); } } });
+app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.drawer) { S.drawer = null; render(); } else if (S.menu || S.confirm) { S.menu = false; S.confirm = null; render(); } } });
 let flashTimer;
 function flash() {
   let tip = document.getElementById('protoTip');
@@ -653,8 +871,8 @@ function flash() {
 }
 function fromHash() {
   const h = location.hash.slice(1);
-  if (['home', 'classes', 'review', 'account'].includes(h)) Object.assign(S, { screen: h, open: null, drawer: null });
-  else if (h === 'class' || /^class-c\d$/.test(h)) { const id = h.slice(6) || S.classId; if (cls(id)) Object.assign(S, { screen: 'class', classId: id, unitId: null, open: null, drawer: null }); }
+  if (SCREENS[h] && h !== 'class') Object.assign(S, { screen: h, open: null, drawer: null });
+  else if (h === 'class' || /^class-c\d+$/.test(h)) { const id = h.slice(6) || S.classId; if (cls(id)) Object.assign(S, { screen: 'class', classId: id, unitId: null, open: null, drawer: null }); }
 }
 window.addEventListener('hashchange', () => { fromHash(); rerenderAfterLayout(); });
 window.matchMedia('(max-width: 759px)').addEventListener('change', rerenderAfterLayout);
