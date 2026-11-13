@@ -16,9 +16,11 @@
   - screen: every teacher screen, chosen from a list;
   - width: phone 390 or desktop;
   - data state: filled, empty, loading, load error or signed out;
+  - teacher type: school or personal account;
+  - action result: OK, network failure, rate limit, account changed, version conflict or upload error, which drives the error states inside each flow;
   - design notes, on or off.
 
-  Every screen works in every state at both widths. The yellow notes link each element to the item below and to its data source.
+  Every screen works in every data state, for both teacher types, at both widths. The yellow notes link each element to the item below and to its data source.
 
 ## 1. Goal and scope
 
@@ -35,6 +37,19 @@ Teachers should see what needs them, act on it, and find each class's students, 
 - archive, account (B5) and the guide (D);
 - the phone «Ավելին» menu (A1);
 - load-error (B6) and signed-out states.
+
+**Added in version 5 (13 November 2026), items 1–11 from the coverage check:**
+1. Sign-in, forgotten password and setting a password from the teacher's invitation email. These pages are shared by all roles; nothing is changed beyond the shared layout decision.
+2. The personal-account teacher path: the 4-step guide, create class with a year, and the reusable join code with a new-code confirmation.
+3. The full account page: data summary, email and password changes, privacy choices and the deletion request.
+4. Student drawer: per-skill evidence separated by purpose, review history and work history. A matrix cell opens the drawer on that skill.
+5. Class panels: rename, invitation results per address, the one-time code with cancel, pending-invitation cancel, and «analytics unavailable».
+6. Sent items: recipients and history, the cancelled list with reason, and resending after a failure.
+7. Library: search, status and extra filters, student preview, editing as a new version with the previous version kept, «Հեռացնել հասանելիությունից».
+8. Tasks: course-task preview, own-task student preview, copy, PDF upload states, the version-conflict recovery and change history.
+9. Review: the scope explanation, pagination, read-only returned work, and a grade change with a reason.
+10. Errors inside each flow: network failure with a safe retry, the BF-16 rate-limit wait, account changed, version conflict, upload error, and the unsaved-changes guard (including back/forward).
+11. Downloads and copy actions.
 
 **Out of scope:** other roles' pages, and the student-side screens these actions lead to.
 
@@ -232,6 +247,16 @@ All Armenian wording in the prototype reuses existing product text, except these
 - «Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից»;
 - «Դասընթացի» / «Իմ կազմած» (type filter);
 - assign flow and other new labels: «Հանձնարարել» as a menu item, «Ինչ եք հանձնարարում», «Ընտրել աջակցության կարիք ունեցողներին», «Հանձնարարել այս աշակերտին», «Հանձնարարություններ» (tab), «Ուղարկել ստուգումը», «Մուտք գործեք՝ շարունակելու համար», «Ավելին» screen descriptions;
-- guide texts, which are shortened examples.
+- guide texts, which are shortened examples;
+- version 5 additions:
+  - unsaved-changes dialog: «Մնալ էջում», «Դուրս գալ առանց պահպանելու», «Եթե հիմա դուրս գաք…»;
+  - error states: the explanatory sentences, «Կրկնել նույն գործողությունը», «Ֆայլը չկցվեց», «Պահպանված տարբերակը փոխվել է»;
+  - the forgotten-password confirmation;
+  - recipient statuses: «Ներկայացրել է», «Դեռ չի բացել», «Բացել է»;
+  - the deletion-request confirmation text;
+  - «Ցուցանիշը հաշվարկված է»;
+  - «Փոխել գնահատումը», «Չեղարկել փոփոխությունը».
+
+  Everything else in the prototype reuses existing product wording.
 
 These need Armenian review before they ship. The rubric criteria and student texts in the prototype are synthetic examples, not product content.
