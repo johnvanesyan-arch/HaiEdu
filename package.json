@@ -21,10 +21,10 @@
     "build:web": "node scripts/build-web-assets.mjs"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "0.5.8",
-    "@playwright/test": "^1.63.0",
-    "@supabase/functions-js": "2.118.0",
-    "@supabase/supabase-js": "2.118.0",
+    "@electric-sql/pglite": "0.5.15",
+    "@playwright/test": "^1.65.0",
+    "@supabase/functions-js": "2.119.0",
+    "@supabase/supabase-js": "2.119.0",
     "esbuild": "0.28.2",
     "typescript": "^5.9.2"
   }
