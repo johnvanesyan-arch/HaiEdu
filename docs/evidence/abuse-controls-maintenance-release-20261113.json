@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T13:45:47.942562+00:00",
+  "scope": "Approved PR480 release and private recurring counter maintenance; application limits remain off",
+  "pr": 480,
+  "approvedHead": "904b040c0dcde9783412d3cbfbbb16b34836da79",
+  "mergedSource": "00c27f6ebc5beae00997dfb49d4fc1f4672b2ed9",
+  "tree": "2d8bedbff02deecd26ccfd76b539f2bb9554136f",
+  "approvedTreePreserved": true,
+  "ownerApproval": {
+    "pr480Merge": true,
+    "specificProductionMaintenanceInstallation": true,
+    "noOtherAgentMergingOrReleasingConfirmedBeforeMerge": true,
+    "applicationActivation": false
+  },
+  "ci": {
+    "prRun": 43430868181,
+    "mergedRun": 43433194509,
+    "allFiveJobsPassOnBothCommits": true,
+    "codeTests": 1839,
+    "browserTests": 696,
+    "failures": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "realSchedulerChecks": 10,
+    "schedulerChecksScope": "Isolated PostgreSQL17.6/real pg_cron; hosted separate-project tests retained in the qualification record"
+  },
+  "productionMaintenance": {
+    "sourceFile": "supabase/migrations/20261113112707_bf16_counter_maintenance.sql",
+    "sourceSha256": "080252d84f6085d456827f86c31273f807ffb41f3afa37db32f69a046c9b96d0",
+    "appliedLedgerVersion": "20261113133313",
+    "appliedLedgerName": "bf16_counter_maintenance",
+    "ledgerTimestampDiffersFromSourceFilename": true,
+    "cronVersion": "1.6.4",
+    "jobName": "haiedu-bf16-counter-maintenance",
+    "schedule": "*/15 * * * *",
+    "counterBatchMaximum": 500,
+    "counterEligibility": "Expired and fully refilled; skip locked rows; preserve outstanding debt",
+    "historyBatchMaximum": 500,
+    "historyEligibility": "Only this job; completed history older than seven days",
+    "statementTimeoutSeconds": 5,
+    "lockTimeoutSeconds": 1,
+    "functionBodyAndJobCommandMatchReviewedSourceExactly": true,
+    "securityInvoker": true,
+    "searchPath": "pg_catalog",
+    "privateViewOwnerAndDatabasePredicatesVerified": true,
+    "anonymousAuthenticatedAndServiceApiRolesCanExecuteOrReadMonitor": false,
+    "firstObservedScheduledSuccessAt": "2026-11-13T13:45:00.632331+00:00",
+    "health": {
+      "schedule": "*/15 * * * *",
+      "job_active": true,
+      "job_present": true,
+      "counter_rows": 0,
+      "last_success_at": "2026-11-13T13:45:00.632331+00:00",
+      "failures_last_day": 0,
+      "maintenance_status": "ok",
+      "counter_storage_bytes": 24576,
+      "eligible_expired_rows": 0,
+      "oldest_eligible_expiry": null
+    },
+    "preservation": {
+      "all217PriorLedgerEntriesPreserved": true,
+      "ledgerEntriesAfter": 218,
+      "existingPublicPrivateTableSecurityCatalogueEntries": 148,
+      "catalogueOwnerAclRlsUnchanged": true,
+      "policyRows": 4,
+      "policyValuesUnchanged": true,
+      "counterRows": 0,
+      "scope": "Catalogue/privilege and policy verification; no new hash of every business row"
+    },
+    "liveExecutionBoundary": "Actual automatic scheduled run with an empty production counter table. Deletion with seeded expired rows, debt/lock and Auth preservation were exercised only in separate synthetic test fixtures."
+  },
+  "frontend": {
+    "commit": "00c27f6ebc5beae00997dfb49d4fc1f4672b2ed9",
+    "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+    "manifestPages": 29,
+    "manifestAssets": 127,
+    "domains": [
+      "https://haiedu.am",
+      "https://www.haiedu.am",
+      "https://armenian-mastery-platform.vercel.app"
+    ],
+    "freshChecks": 12,
+    "freshScope": "Release identity, exact manifest, account-access HTML and one built JavaScript asset with reviewed hashes, cache rules and security headers on each domain",
+    "unchangedFullBuildProofReused": true,
+    "automaticDomainSwitch": true,
+    "manualHostingPromotionOrSettingChange": false
+  },
+  "securityAdvisors": {
+    "unchanged": true,
+    "notices": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+      }
+    ]
+  },
+  "applicationLimits": {
+    "mode": "off",
+    "evidence": "Owner-confirmed setting; Function Secrets cannot be independently read through this connection; no setting changed"
+  },
+  "productionWrites": "Only the explicitly approved maintenance migration and its recurring cleanup work",
+  "affectedProductionQa": "none for this maintenance/test/documentation release; previous limiter integration retains its 16 routed suites",
+  "productionQa": "not run (paused by owner)",
+  "productionAuthSignIns": 0,
+  "productionEmailsSent": 0,
+  "productionEdgeDeployments": 0,
+  "paidStolenPasswordProtection": "declined",
+  "ownerUsabilityAcceptance": "not given",
+  "openGates": [
+    "Policy-value acceptance and separate explicit application activation approval",
+    "First owner-scheduled real classroom pilot",
+    "Real100-person/school-network and Gmail capacity",
+    "Owner usability acceptance"
+  ]
+}
