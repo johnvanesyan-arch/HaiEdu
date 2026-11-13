@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-13",
+  "timeZone": "Asia/Yerevan",
+  "status": "Database and all65 server bundles installed and source-verified; new limits off; installation documentation candidate",
+  "reviewedSource": "8a55009d0e2ac26c5762f657fe263eeeb7ab3a11",
+  "currentMergedRoadmap": "4.179",
+  "candidateDocumentationRoadmap": "4.180",
+  "migration": {
+    "name": "bf16_actor_rate_budgets",
+    "appliedLedgerVersion": "20261113084322",
+    "repositoryVersion": "20261112172643",
+    "sha256": "79d89140ac601ba9a5d0c4384545177f9ea3e7f428e9b1f21b2a0f589f816ec4",
+    "previousLedgerEntriesPreserved": 216,
+    "totalLedgerEntries": 217
+  },
+  "database": {
+    "newPrivateTables": 2,
+    "functionBodiesSourceExact": 6,
+    "oldTableCatalogueOwnerPrivilegesSecurityPreserved": 173,
+    "browserRolesCannotExecuteCapabilities": true,
+    "directPrivateTableReadsDenied": true,
+    "counterRows": 0,
+    "transactionScopedSmoke": "passed; rolled back; no valid actor/session",
+    "securityAdvisors": "unchanged"
+  },
+  "serverFunctions": {
+    "active": 65,
+    "deployed": 65,
+    "fullReadbacks": 65,
+    "intendedLocalFileOccurrences": 338,
+    "emittedLocalFileOccurrencesByteExact": 337,
+    "omittedTypeOnlyFiles": [
+      {
+        "function": "submit-answer",
+        "path": "_shared/types.ts",
+        "explicitTypeImportReviewed": true
+      }
+    ],
+    "uniformNewHelperSha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+    "verifyJwtTrue": 63,
+    "preservedCustomVerificationExceptions": [
+      "get-teacher-student",
+      "manage-supplementary-resources"
+    ],
+    "manifest": "docs/evidence/abuse-controls-server-bundles-20261113.json",
+    "priorCompleteBaselineReadbacksReused": 65,
+    "priorFileOccurrences": 272,
+    "freshBaselineVersionArtifactGatewayMatches": 65,
+    "versionOnlyChangeAfterOwnerSettingSave": {
+      "observedFunctions": 65,
+      "sourceArtifactsAndGatewaySettingsUnchanged": true,
+      "independentCauseEstablished": false
+    }
+  },
+  "offSetting": {
+    "name": "HAIEDU_RATE_BUDGETS_MODE",
+    "value": "off",
+    "ownerConfirmed": true,
+    "independentlyReadThroughConnector": false
+  },
+  "unsignedSmoke": {
+    "functions": 65,
+    "requests": 130,
+    "options200": 65,
+    "noAuthorizationPost401": 65,
+    "failures": 0,
+    "scope": "Unsigned OPTIONS and no-Authorization empty POST requests only. No API key, valid token, account, sign-in, email or production QA workflow. This is not signed-in role/classroom acceptance.",
+    "earlierPilotRequests": 2
+  },
+  "sourceEquivalentIsolatedEvidence": {
+    "codeTests": 1839,
+    "nativeBrowserCases": 696,
+    "postgres17CoreChecks": 14,
+    "postgres17SessionChecks": 9,
+    "realProviderClassroomQualification": false
+  },
+  "automaticApprovalReview": {
+    "initialRejectedTargets": [
+      "manage-teacher-task-review-files",
+      "manage-teacher-task-sources",
+      "manage-teacher-task-student-files"
+    ],
+    "rejectionsPreserved": true,
+    "rejectedTargetsUnchangedBeforeApproval": true,
+    "ownerThenApprovedFrozenRemainingTargets": 14,
+    "necessaryStateCheckedRetriesApproved": true,
+    "allApprovedUpdatesReadBackSuccessfully": true,
+    "bypassUsed": false
+  },
+  "productionQA": {
+    "status": "not run (paused by owner)",
+    "dispatches": 0,
+    "affectedBackendSuites": [
+      ".github/workflows/chapter-ii-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+      ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+      ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+      ".github/workflows/mobile-browser-qa.yml",
+      ".github/workflows/resource-assignments-acceptance.yml",
+      ".github/workflows/sprint-14-actions-qa.yml",
+      ".github/workflows/sprint-14d-analytics-qa.yml",
+      ".github/workflows/sprint-15a3-authenticated-qa.yml",
+      ".github/workflows/teacher-feedback-acceptance.yml",
+      ".github/workflows/teacher-loading-rollout-acceptance.yml",
+      ".github/workflows/teacher-performance.yml"
+    ],
+    "affectedDocumentationSuites": "none"
+  },
+  "validAccountSignIns": 0,
+  "emails": 0,
+  "recurringCleanupInstalled": false,
+  "monitoringInstalled": false,
+  "enforcementActivationAuthorized": false,
+  "paidStolenPasswordProtection": "declined",
+  "ownerUsabilityAcceptance": "not given",
+  "documentationScope": "documentation/evidence only; runtime/build/archive/backend/migration/test/script/dependency/workflow/hosting unchanged",
+  "remaining": [
+    "Five exact-head documentation checks and fresh merge coordination",
+    "Separately approved representative account/classroom qualification",
+    "Bounded recurring cleanup and monitoring before activation",
+    "Explicit candidate-value and activation approval",
+    "First real pilot observation"
+  ]
+}

@@ -1,0 +1,1943 @@
+{
+  "date": "2026-11-13",
+  "timeZone": "Asia/Yerevan",
+  "reviewedSource": "8a55009d0e2ac26c5762f657fe263eeeb7ab3a11",
+  "scope": "All65 application Edge bundles installed with owner-confirmed HAIEDU_RATE_BUDGETS_MODE=off; activation not authorized",
+  "routes": [
+    {
+      "slug": "accept-staff-account",
+      "version": 3,
+      "artifact": "bedcb890221261d2a2357649a3d1bac735ff984522a5ba4204bfd01816175a19",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "accept-staff-account/index.ts",
+          "sha256": "eee7ff71ba7aa8b2a2159369cfd3a6cd91420ea718e75577f7a5465ddeeca41d"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "bootstrap-school",
+      "version": 4,
+      "artifact": "8733a33a128cfc811f4ca2f7fc2a29e1ba39bb6633fb1981b7cdaf8c63319eba",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "bootstrap-school/index.ts",
+          "sha256": "66dafd2070d54d7047939f1c205dc7571d7bab18262fb93b7140c08ffd1b54ee"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "complete-student-invitation",
+      "version": 3,
+      "artifact": "d6ed4fd4d3a5cce0069e7cc3d248d0a268fbd66f2530ded42011432a77f1b32c",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "complete-student-invitation/index.ts",
+          "sha256": "878819951ea0d527a3af9f3fa78d4a6083f2f2dbf2e752f390e45fff112db081"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-admin-dashboard",
+      "version": 5,
+      "artifact": "39e6b70c4311d3b594413a96dfc326c576feb6e63fddb00eb018c27f2e3003a9",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-admin-dashboard/index.ts",
+          "sha256": "0571372789d99817f4bdba67c0fbf0d4d852df26b92eb9e96c53539aafba4178"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-chapter-mastery-lifecycle",
+      "version": 11,
+      "artifact": "a9afb3aea9930766985ce8630421e9b8dc4b49173bc61a65780674a14a9535b5",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-chapter-mastery-lifecycle/index.ts",
+          "sha256": "aa738f71808ae79651ed3fabfc6f249d7531dbc27b04094600a2383961cddbe6"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-content-quality-dashboard",
+      "version": 9,
+      "artifact": "46fb2c0264f2c1242652b1529b2d9d12d9ae55ba04ea9011babd7f28b6b71edd",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-content-quality-dashboard/index.ts",
+          "sha256": "b127b64125b5a5d554d2a757070a6e05be847d765820893851dca03a8015c000"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-content-review-history",
+      "version": 3,
+      "artifact": "00912b30f8bbea4417ef9f646769abbfb5f5217aff30544916f61f28190372df",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-content-review-history/index.ts",
+          "sha256": "59565e009f287eb064ef9c5733b3f8855aec29c471646309b05e5c0d8ea26238"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-learning-audio",
+      "version": 4,
+      "artifact": "0f3dc8e77ea7cf5dc21c47ced0ceb137aa1ae1c8027d2a19970986a2a5e46cb1",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-learning-audio/index.ts",
+          "sha256": "5573950429ac34611e265a6f0fcaf47b33a14400797e3cabed63f3b82773e274"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/learning-audio-handler.mjs",
+          "sha256": "577768ae29b8dbc359720088ba58edd52476b1e457a839b0d5d5a1ffe330525d"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-learning-context",
+      "version": 7,
+      "artifact": "365f40aac7dae7b27860f801753a652cb1cc5afdb08267595d6f515aa7745d25",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-learning-context/index.ts",
+          "sha256": "2e3280fefd8ae4c5aa6e0d30bbf6d5eaae992e266b02c34b63a8aa8716bb3a39"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/learning-context-handler.mjs",
+          "sha256": "bf9525f5f1026fae57c824b4ff5d5b94a82898414894453128ba3b84dbc0e6bf"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-learning-task-set",
+      "version": 3,
+      "artifact": "e19db0e95b7c24fbaef0c9082a5bf07a54afb8541c3435d3a64bd72c57d25886",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-learning-task-set/index.ts",
+          "sha256": "d8c2ecfeb2d8b4bfa396f2ae35c4630542116cbb2d2b728a02171ac0a8038e4b"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/learning-task-set-handler.mjs",
+          "sha256": "a14e241b8674eca2d9aee428d65a8336b6b130d16e1981c23af4f37743666c41"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-mastery-check-status",
+      "version": 19,
+      "artifact": "c70747fd2a522c386dd8355612488c03e19e4d55c34eb927ff23d96b2b1e00bf",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-mastery-check-status/index.ts",
+          "sha256": "c7c595eb6850533f0b517415e4df5db4c6ffa9e63b6a6f6dd2ef127be5fcd0e1"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-my-privacy",
+      "version": 13,
+      "artifact": "80defc67730b18eabe7d1ab3874e08a845f4f57b0d69c2f6fdd5deb8b355ce6d",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-my-privacy/index.ts",
+          "sha256": "b0d756b3a001a8b9d2ff91e65c730b05f7302392c77ccefea171bd581089f527"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-pilot-item-analytics",
+      "version": 4,
+      "artifact": "823b18de372b7fcf2296c2c3871904d9ff1cc9bea8e145f21280fa9738d4f771",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-pilot-item-analytics/index.ts",
+          "sha256": "f162eaf3ea3043c0d30a3d98026e233310d9af9fca69a61047b7c6bd70bcb590"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-practice-item",
+      "version": 9,
+      "artifact": "d0c6622698aa7f585d6d66b3f36354550654fe10843630f1ae29b4e3c6bd5d9e",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-practice-item/index.ts",
+          "sha256": "6cf9528cb07a260a9d716ec44794c414b16eecdaf42388d5aac7a0f84fe6257b"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-remediation-help",
+      "version": 20,
+      "artifact": "075df68263d1ffdce899640a29cfc888026b777b3ef738a94d0bac9930fab88d",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-remediation-help/index.ts",
+          "sha256": "59bdde983856f355d36a4ae85119d1ffba3514849decaaad9b3645f316c44061"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/practice-diagnostic-gate.ts",
+          "sha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-school-admin-overview",
+      "version": 4,
+      "artifact": "8dc71f786c2db77c0e42b44272fb89ae2485a81cba125c3739e4aeba5f04b9d3",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-school-admin-overview/index.ts",
+          "sha256": "da7a500f575233b0d1fc32ed6b3f9d7db53da1cd45e0095f264fdd6d606d2c5e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-school-performance-analytics",
+      "version": 7,
+      "artifact": "df263365f3867ed2a6c8ce06aaad1c26e42e0c0259375ded264f0cce1c033019",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-school-performance-analytics/index.ts",
+          "sha256": "9d4d5f16af376beea1569c658624b8dae693b9d2ac2dd6088aec23a3bc6b7d1f"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/school-performance-analytics.ts",
+          "sha256": "8fbf2ee1a72474a1a2504fd47ace507453e1f985d37a41d657cd90e5bf36f1b3"
+        },
+        {
+          "path": "_shared/analytics-evidence.mjs",
+          "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-school-subject-options",
+      "version": 3,
+      "artifact": "2a3dfc614508916d023fdc55fbcc3c8a5b8b52bbc3e88a25fc810c6699128cf8",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-school-subject-options/index.ts",
+          "sha256": "cb7459a3d9f5d95c735f1d569e5dc3767199eb3fd88763a70c45ea9d963d3d1b"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-school-teachers",
+      "version": 3,
+      "artifact": "9fd24a023e1656790be6f93ff21fda7feddd2df4b1f40785dc9adc2bea6c9e8f",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-school-teachers/index.ts",
+          "sha256": "db84844bb2b8d5d4dd4f4eddcb02bd6413d44c30fa8f28dfb14d274d018bf498"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-session-item",
+      "version": 24,
+      "artifact": "4bb88414c01751c98f060f69f1b20b000c039cd1bfa9601b837ad9411a4b3ae6",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-session-item/index.ts",
+          "sha256": "ac1080fe018ca19ecacf58c8ee1766c57f21894e2e08d38208ae46e3682f8218"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/practice-diagnostic-gate.ts",
+          "sha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/assessment-integrity.ts",
+          "sha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-student-classes",
+      "version": 17,
+      "artifact": "5fc3ce933f51863af9d7fe2c062653005ac4de22a77f39be7c11f2adbdc9f385",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-student-classes/index.ts",
+          "sha256": "6066f9eb356fde0b627266741bf652951cd2674edb7ac91f9d4075ab79efd357"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-read-identity.mjs",
+          "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-student-dashboard",
+      "version": 30,
+      "artifact": "a958d5fa51ab0000d2d5bc77c15f85bd79a9db3391ca4c1fda9a1942c8a359c2",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-student-dashboard/index.ts",
+          "sha256": "cbfc3b86bf51606f781f1ce1af820ad309bd3757a66745b9fe6c94762c616b97"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/learning-model.ts",
+          "sha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c"
+        },
+        {
+          "path": "_shared/recommendation-telemetry.ts",
+          "sha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+        },
+        {
+          "path": "_shared/student-dashboard-handler.mjs",
+          "sha256": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-student-onboarding-options",
+      "version": 3,
+      "artifact": "348c5411ec24a6530c3e0e4bd51aea32b5c44868b7ab79b8a2b21deac5c0ac41",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-student-onboarding-options/index.ts",
+          "sha256": "985f1ad2ca99902cadb8efcaebabb6665bf897c8b6cdf67a1795ca08a464db85"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-student-work",
+      "version": 3,
+      "artifact": "742fb4ae00e47c36a34c2b19545818de3084e70a0f22cbeb64fbd45112d205aa",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-student-work/index.ts",
+          "sha256": "f19dff067ea52ad91b470c93ece2e4910f791dc4fea9f225ea4bbbebba55c17a"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/student-work-handler.mjs",
+          "sha256": "f7af94060b41a0b6c60756dbb2997441750b08af7b9230ddb460a5fec19aca6e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-teacher-academic-context",
+      "version": 6,
+      "artifact": "6e08af4390d0cc96d04994d95a5f3602a7d78d38b70720f22c36fe6ddf6811e9",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-teacher-academic-context/index.ts",
+          "sha256": "cba9f1e0fe4a08f980a87b934b29ba4c411d56f137dab7bb89942f7b09baa422"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-read-identity.mjs",
+          "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/academic-context.ts",
+          "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-teacher-dashboard",
+      "version": 30,
+      "artifact": "6f7229328b714b0be413a421754657c0a183ce61bed60c4c1a559c209063a1f9",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-teacher-dashboard/index.ts",
+          "sha256": "c29558de79496c71dafb285f5183b852bbb95450552f37bd71b7f1b8289a1320"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-read-identity.mjs",
+          "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63"
+        },
+        {
+          "path": "_shared/teacher-workspace-request.mjs",
+          "sha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb"
+        },
+        {
+          "path": "_shared/teacher-dashboard-batch.ts",
+          "sha256": "aaf6f53400b96ce01a205c2b2911b744a5e6aa1fb43ff7d6de721b7101372ea8"
+        },
+        {
+          "path": "_shared/institutional-teacher-dashboard.ts",
+          "sha256": "f9d5721b1ea2ffffe0b061ee93d037f70b6132cc110ef773b2b5a85e9b8fac0a"
+        },
+        {
+          "path": "_shared/academic-context.ts",
+          "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff"
+        },
+        {
+          "path": "_shared/institutional-teacher-analytics.ts",
+          "sha256": "eb80f55197dfd825a8bfddb5d1a578b332664aceda672f8985ff050424e178cb"
+        },
+        {
+          "path": "_shared/initial-diagnostic.ts",
+          "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07"
+        },
+        {
+          "path": "_shared/analytics-evidence.mjs",
+          "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-teacher-student",
+      "version": 22,
+      "artifact": "46cd392df2d6ef326a1e1661c81e9a7b806746f41608981f663dd3f5e684a5e6",
+      "verify_jwt": false,
+      "files": [
+        {
+          "path": "get-teacher-student/index.ts",
+          "sha256": "d584cde00154ee67e0b3d050f487cf7de4346ba2611b4245e1c71ab97d979506"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-read-identity.mjs",
+          "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63"
+        },
+        {
+          "path": "_shared/initial-diagnostic.ts",
+          "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/academic-context.ts",
+          "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff"
+        },
+        {
+          "path": "_shared/institutional-teacher-analytics.ts",
+          "sha256": "eb80f55197dfd825a8bfddb5d1a578b332664aceda672f8985ff050424e178cb"
+        },
+        {
+          "path": "_shared/analytics-evidence.mjs",
+          "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-teacher-workspace",
+      "version": 7,
+      "artifact": "14a8655586916ea9ffd56da12eb94a94c27131005ec38713f5e6cd567d938750",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-teacher-workspace/index.ts",
+          "sha256": "e024284aedd9e2ea7e390046a82d3dd00a5e466768378b83deb6ceee90b76c59"
+        },
+        {
+          "path": "_shared/teacher-workspace-handler.mjs",
+          "sha256": "0b80abfee0e01cd97f38f66901ccd44efa50f8514a3f7f40e89007eaa7577b19"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-read-identity.mjs",
+          "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63"
+        },
+        {
+          "path": "_shared/teacher-workspace-request.mjs",
+          "sha256": "6ecfc92b5d5b7d6ac3e6f3b870a8d2a203a852d49342ae56e02cca3555e2f5cb"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "get-unit-guides",
+      "version": 3,
+      "artifact": "318d3dd8df9fac01ea6396311b15f0dcedb9dc829d67d3d654522866c367d21d",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "get-unit-guides/index.ts",
+          "sha256": "195a59869209a0a33fcb6770c2b60b77764f1b410dc53b3194f9a04908c3cbdf"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/unit-guides-handler.mjs",
+          "sha256": "2667156fa957aa5a46bc95d7e877e62c2a33143a849a5a5cada604d634400d14"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "join-class",
+      "version": 8,
+      "artifact": "dcfca0e34214b85ac3a8326f248428fd53dfd60dcb3f433ac7c56caf6ebd1b56",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "join-class/index.ts",
+          "sha256": "69da35d517a69ec2856d4bf7639d61305ab5670293935e752b506a2b0d282e05"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-admin-account",
+      "version": 9,
+      "artifact": "0f46cb6ff7678de14ca39135c4d8803008181cd307d1a3b9b6c47f0a7e536637",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-admin-account/index.ts",
+          "sha256": "e64b2a5a396626d1b5653052ddad36eb38c8af924854aeefb4ceb23daa66582c"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-privacy.mjs",
+          "sha256": "65c1fdf7decf4622a4fd000c05ed9463195950068a041e55dddf9d84c538883b"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-content-quality",
+      "version": 17,
+      "artifact": "84df32309d4adf4ae05bc8069b30ed36625c10600bb27ec81a998a4cec9219ad",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-content-quality/index.ts",
+          "sha256": "ae907ce33a6c79744877470168ffa52ef3ee383120d6fd3f327f1bdef80bf444"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/arrangement-responses.mjs",
+          "sha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66"
+        },
+        {
+          "path": "_shared/typed-fields.mjs",
+          "sha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-institutional-invitation",
+      "version": 4,
+      "artifact": "2602c0c121fb227996b063b67c04621ca57f36ff016b453b56c3e52ccaf80374",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-institutional-invitation/index.ts",
+          "sha256": "dbb5c4f4de4d32b26ae700e31ea8efbf24300330f8e2771e2b5caf4b90e581c7"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-institutional-membership",
+      "version": 4,
+      "artifact": "5f0f5fbeba98227d350bea0afadc39b6a548ec6f78e4f472466b0b9568756f2e",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-institutional-membership/index.ts",
+          "sha256": "f98fe59bef0194a9f689ec25d2959895852518cd96d195af3990020f536eb27e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-institutional-teacher-class",
+      "version": 4,
+      "artifact": "0f8200ff9e279c88194ca14086f15cc5d05d046c7ecf0428a4e685a6f15db829",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-institutional-teacher-class/index.ts",
+          "sha256": "c99c9380577806dc40708a8ecccca96ee5e457b2b0e8ce83d8d75800837053aa"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-misconception-reviews",
+      "version": 3,
+      "artifact": "656dc07fce3d4fc1cd48c1f9b26b079fc15746e44195c5ede4df9f3a58e8deed",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-misconception-reviews/index.ts",
+          "sha256": "86b83ae7a8b6951890f2591df63d9471f984b8f6bbf4193766da59e9b2f216ca"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/misconception-review-management.mjs",
+          "sha256": "57a57fe9c39cc05268fc902396a0fb8c85ae9abbf404e1f4b4cf05c0ba36a238"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-my-privacy",
+      "version": 6,
+      "artifact": "000295be28ef4c3febb627c5af7a7ef4e32d270a4c9bf202138db262c2d14cf3",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-my-privacy/index.ts",
+          "sha256": "5856ce056116be216562e5a0ee4fcf1a6a4ccc784fdaaa6869648c4dfc97b264"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-remediation-guides",
+      "version": 13,
+      "artifact": "bc87a5bab769b0ef7d4b93d2e3ff5b4060bae592dce1b31207ee851e75a5f24b",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-remediation-guides/index.ts",
+          "sha256": "62e5ac870cfb5a3a1e2c2155f7191b555db514344f533fe90b05ebb055094498"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/remediation-authoring-validation.mjs",
+          "sha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-resource-assignments",
+      "version": 3,
+      "artifact": "641b47b21e16db068b330d6920bd8caa7e40070f04d234094fa2a5444f934df1",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-resource-assignments/index.ts",
+          "sha256": "b026bfc83ad02c2e409cfa78dba071aabc66b55ffee9323d1a6261cc80981e78"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/resource-assignments-handler.mjs",
+          "sha256": "6ff52cd19a093e1a9cf836929cfada2a533d9c656bbbf79dd0803498cd290bda"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/supplementary-resources-handler.mjs",
+          "sha256": "077809469fb481c385ffcb9fc071341ff616a44ab4281191de5f5c5f2de94368"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-school-academic-year",
+      "version": 4,
+      "artifact": "96690cece0b4cd81251b18a74dfb680648aad47cdb0a07eb45dee513533bced0",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-school-academic-year/index.ts",
+          "sha256": "d0270cb9eb6d3c9c6925404e4211fc02d21afcf320f2c51b57f264bd7a0ebecd"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-school-teacher",
+      "version": 4,
+      "artifact": "6b3b134d13ca4873890dfd74504cec0947e203f19c9e873b65ad557c4f5a19b7",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-school-teacher/index.ts",
+          "sha256": "3c54bfa8a1f5f895405d84e93db8313192cbab8c793266691a745d572b0ab398"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-staff-invitation",
+      "version": 6,
+      "artifact": "1b27a3b74e2715adb7f6b1f980372bf1279fe92a192ef48d9dc755f7e458db86",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-staff-invitation/index.ts",
+          "sha256": "26ed0e7d7c08fa7a3db2f5ce57110a063304c4d0cf0456aba9709b17f6e248b6"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-student-invitation",
+      "version": 4,
+      "artifact": "b8bd967b6f3a4fa9813943e65132a9c970821043867a948aa482183779f73f43",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-student-invitation/index.ts",
+          "sha256": "76986b99091c0cef1b7184e8bc1c6c5d5f912b80025bb5acf689078538da2a34"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-supplementary-resources",
+      "version": 3,
+      "artifact": "a774c6b57b345f289c29228f4b89053bf49b841cd9ded11cc8dcba1ac993675d",
+      "verify_jwt": false,
+      "files": [
+        {
+          "path": "manage-supplementary-resources/index.ts",
+          "sha256": "99558032bb67861b3fd62f67faa679e3570bf19792523247decff511ba0e9798"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/supplementary-resources-handler.mjs",
+          "sha256": "077809469fb481c385ffcb9fc071341ff616a44ab4281191de5f5c5f2de94368"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-class",
+      "version": 8,
+      "artifact": "91b0e0ce20ecc85a291f600fad86b01621219a317513ce8ce6fb730a3d404080",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-class/index.ts",
+          "sha256": "63540b64fa1060ae82df0b7b61ee28b84c31356b1956647f7953d50745129b85"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-feedback",
+      "version": 3,
+      "artifact": "3fcdd17a0d9e56b1806c423c15e8556181680317fc6e1e34db7a5479a18790f5",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-feedback/index.ts",
+          "sha256": "a72687172713e8fd68afe89a6bf41617ea7829c2d421cc41dd5aa9b6f2ec14b0"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-feedback-handler.mjs",
+          "sha256": "3a6ee6e0d358af7b0d4a1673dce73cd7b0e0632320fced7e713d54a987d8993e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-profile",
+      "version": 4,
+      "artifact": "bae2530bc8c5e73f42dfd8a338eb345bd279625b1264d3c254ed66cf1fc7cd7d",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-profile/index.ts",
+          "sha256": "6750f4d7ba06bced23342c70f6c53240a067c2937c41ccc714911e294e7ae841"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-subject",
+      "version": 3,
+      "artifact": "8f7787ccd79f9612241006506ede750eba9c44c30bc5f4e7b858d2b628c10be7",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-subject/index.ts",
+          "sha256": "be7bb21e436595343ee4d911fbfa9b7fbe27f3c3484d8167563aa9eb6147c36d"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-delivery",
+      "version": 3,
+      "artifact": "5007b81fc564b8bd1ae74675e82fec2581c2f5796330a1902fc6cdb2cca3a58b",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-delivery/index.ts",
+          "sha256": "3d8ec5fefc9301a3fcb29293af6a2cacb9415af588515a5de2b250723daa03fa"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-delivery-handler.mjs",
+          "sha256": "e03054956f7442dcfbe5921b97cabf6778414fb2aceda0094330da7211cdfcfc"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-drafts",
+      "version": 3,
+      "artifact": "4c9a724cbfbc74907699195c75df5a0d865a1658fca84fc23568b48126e47f70",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-drafts/index.ts",
+          "sha256": "882b175e5704819233830b2d5ae9cc161140eddd5d14571a3bcabb0dd096f4b2"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-drafts-handler.mjs",
+          "sha256": "b76f05e4d3640e5b2ecc46697a77fbc8962f7ad19ca3e87cc0adc60cd4ccb959"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-review",
+      "version": 3,
+      "artifact": "f2f9a2849905ecf0215b1e02d4e98bb0c535ad652fe6222cdbca49e7e2217523",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-review/index.ts",
+          "sha256": "627174b0874b1762a76031c151b594d029662d824c699b488da4f00b5050c114"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-review-handler.mjs",
+          "sha256": "1e934d95476cc9739364962f3fcf633242404e2792ebaa51d8ea085d46bcfa43"
+        },
+        {
+          "path": "_shared/teacher-task-response.mjs",
+          "sha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        },
+        {
+          "path": "_shared/teacher-task-student-handler.mjs",
+          "sha256": "9aa8beb40192ca4f27a10575b9d37abd2f2f6404b32cf8814c71d7495e9ce19e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-student-files-handler.mjs",
+          "sha256": "e6d207c3c0c3e74fc97fc5c6a8ef18d91fa9bf429bc25f8c9c8b468497d2cb52"
+        },
+        {
+          "path": "_shared/teacher-task-documents.mjs",
+          "sha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2"
+        },
+        {
+          "path": "_shared/teacher-task-sources-handler.mjs",
+          "sha256": "5215588942dfc3257fef200698cc774a401d41decb7f93bba8fb9562f3342f86"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-review-files",
+      "version": 3,
+      "artifact": "042e3a4ce7104e8a9d1bd93c752edf319a0e1672288f1484babc48bde7bd29ab",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-review-files/index.ts",
+          "sha256": "408dd9030bf795f5b6fb3e9e01b0af8f70f600c29aba6facc7e2ce3db97d96a3"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-review-handler.mjs",
+          "sha256": "1e934d95476cc9739364962f3fcf633242404e2792ebaa51d8ea085d46bcfa43"
+        },
+        {
+          "path": "_shared/teacher-task-response.mjs",
+          "sha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        },
+        {
+          "path": "_shared/teacher-task-student-handler.mjs",
+          "sha256": "9aa8beb40192ca4f27a10575b9d37abd2f2f6404b32cf8814c71d7495e9ce19e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-student-files-handler.mjs",
+          "sha256": "e6d207c3c0c3e74fc97fc5c6a8ef18d91fa9bf429bc25f8c9c8b468497d2cb52"
+        },
+        {
+          "path": "_shared/teacher-task-documents.mjs",
+          "sha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2"
+        },
+        {
+          "path": "_shared/teacher-task-sources-handler.mjs",
+          "sha256": "5215588942dfc3257fef200698cc774a401d41decb7f93bba8fb9562f3342f86"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-sources",
+      "version": 3,
+      "artifact": "d1aba208a8c6526a54f6e7ee9e6687f235b3c6f643386cf173970b1ec1b50964",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-sources/index.ts",
+          "sha256": "6ccd34a2b73e5e1d755e9f12682a1314798505f4256ac0f450cb85e76162a516"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-sources-handler.mjs",
+          "sha256": "5215588942dfc3257fef200698cc774a401d41decb7f93bba8fb9562f3342f86"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-student-files",
+      "version": 3,
+      "artifact": "d565e5ead1d0e62ae92f3fe8b95a2a0233dd8a364127a166bf85c4478f191fcb",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-student-files/index.ts",
+          "sha256": "8f924148faf980fbe17509e3cb378a5955d3709c74dc49f6315c39dd4968ed8d"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-student-files-handler.mjs",
+          "sha256": "e6d207c3c0c3e74fc97fc5c6a8ef18d91fa9bf429bc25f8c9c8b468497d2cb52"
+        },
+        {
+          "path": "_shared/teacher-task-response.mjs",
+          "sha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        },
+        {
+          "path": "_shared/teacher-task-documents.mjs",
+          "sha256": "634a56eb3af2132f84e34f39151729148f75b4191756ffc17e6c5cd5451bb4e2"
+        },
+        {
+          "path": "_shared/teacher-task-sources-handler.mjs",
+          "sha256": "5215588942dfc3257fef200698cc774a401d41decb7f93bba8fb9562f3342f86"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-student-handler.mjs",
+          "sha256": "9aa8beb40192ca4f27a10575b9d37abd2f2f6404b32cf8814c71d7495e9ce19e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-teacher-task-student-work",
+      "version": 3,
+      "artifact": "387a295f104954ee490da296c36256629869308b94fc04be90bcada7d1a51ce1",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-teacher-task-student-work/index.ts",
+          "sha256": "5eae4804276b19fc67769d1d2e09c269d57a89aa7508bd27d457377504e375b2"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/teacher-task-student-handler.mjs",
+          "sha256": "9aa8beb40192ca4f27a10575b9d37abd2f2f6404b32cf8814c71d7495e9ce19e"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/teacher-task-response.mjs",
+          "sha256": "e349acb28b25967c7687dfda297b3923d11b0c49f60b89e76165fc9a57e2acb4"
+        },
+        {
+          "path": "_shared/teacher-task-definition.mjs",
+          "sha256": "996017cdb4f8285b9994c456f40bb16bc1c31ea4da4ce1182735ec8bff5908d2"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-unit-materials",
+      "version": 3,
+      "artifact": "c256ad4e554f6a247a79977fa0cbd15225789f7f6e5be7f6629326c20becb7c1",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-unit-materials/index.ts",
+          "sha256": "34022dcbda3a295967e85ace5c8a478161be7f0059e2d874f023a3b8dd0bf1c6"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/unit-materials-handler.mjs",
+          "sha256": "8d2dcacb397a7a4a23fee2a4b7dbcba49a62b9708cf4c96d9e20c1fe0f86d247"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-writing-assignments",
+      "version": 3,
+      "artifact": "ebcd64c42b0e8d19d7268e08708465a1a3fc21d60f918db90e6f428fbefce958",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-writing-assignments/index.ts",
+          "sha256": "d89487015da13fb1abb6a4e27748cdf47fdbf265259091dede5010120049190d"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/writing-assignments-handler.mjs",
+          "sha256": "a3230c0a9e926e7fb4c1c05fa7fd88078da3fdca8157cf768730b7c3fce1ebad"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "manage-written-work",
+      "version": 3,
+      "artifact": "18ef1b3ff8bd442da35fef1fe5c570d2647d5e720d7f66bdec58524f0a6abec2",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "manage-written-work/index.ts",
+          "sha256": "41f5077ea0ac7be78476c7e21c593a5637fec213efbbca2309e4530c62cac77e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/written-work-handler.mjs",
+          "sha256": "51997fb367edc5f7b4d5b3a6c4ad2ab693a9659ff79d4941be7ba2131a213985"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "provision-staff-account",
+      "version": 7,
+      "artifact": "f83bb16ac8e0c1227407e6216f03d8bc3beb49502a4a6c29b4c02263016d60a5",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "provision-staff-account/index.ts",
+          "sha256": "13df1c77eebf33fc95141b30bf38b495c2cf1aa11fd3f6c34fbfe06680962280"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "provision-student-account",
+      "version": 7,
+      "artifact": "772efcbafe9d52fcca544e5d000b3f3041ca7ad46fbda18c04d0a0aba8ba865a",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "provision-student-account/index.ts",
+          "sha256": "442a0a1ee01cffbf4f58d775f451a8cac98bcbe6c9d38a01ec00378aba26fbc9"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "record-recommendation-event",
+      "version": 11,
+      "artifact": "8b0385d577de21e6c79a87575f3123ab1cdaa4d532723618230d9327ce089296",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "record-recommendation-event/index.ts",
+          "sha256": "0c5a67abab8048a223ac78dfb8456b7e993d5988e5728625061501c43fe2e902"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "redeem-institutional-invitation",
+      "version": 3,
+      "artifact": "d85886b24301e51c0f3156589db324eada856296750ed306b43073371948cd6c",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "redeem-institutional-invitation/index.ts",
+          "sha256": "b1cfa3eb3fc29baf5849e54664e6bea51717209875ff046225d889b15a392b9c"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "start-learning-session",
+      "version": 31,
+      "artifact": "fb1b63889e20f1eb18b0c26d97878989ac729b80e5238e9fd4caaa0e3c1a1db2",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "start-learning-session/index.ts",
+          "sha256": "9222ba1af5a54e1d45bd913e00ec0fa6b991232805b15a504f190bc1c48a0124"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/practice-diagnostic-gate.ts",
+          "sha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929"
+        },
+        {
+          "path": "_shared/initial-diagnostic.ts",
+          "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/recommendation-telemetry.ts",
+          "sha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/assessment-integrity.ts",
+          "sha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    },
+    {
+      "slug": "submit-answer",
+      "version": 27,
+      "artifact": "2a2694c844f20118c7ecca87b131aed3591abf18196061d56cf0c4c43abdf1e5",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "submit-answer/index.ts",
+          "sha256": "f478914516d3bb6937c62b1e254e166a7da42ebf84adabf0c8f8acad56a4a543"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/answer-response-recovery.mjs",
+          "sha256": "c5487d27c6b20c3762334f02b035ed54bf125f0ebd8174bd28b2b362f1db841e"
+        },
+        {
+          "path": "_shared/practice-diagnostic-gate.ts",
+          "sha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        },
+        {
+          "path": "_shared/curriculum-release.ts",
+          "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        },
+        {
+          "path": "_shared/learning-model.ts",
+          "sha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c"
+        },
+        {
+          "path": "_shared/recommendation-telemetry.ts",
+          "sha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+        },
+        {
+          "path": "_shared/grading.ts",
+          "sha256": "61471c82f277906f0334730dc1a8c5fd84633371c050a1a7fb8ceb0bb21891b4"
+        },
+        {
+          "path": "_shared/recommendation.ts",
+          "sha256": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9"
+        }
+      ],
+      "omittedTypeOnlyFiles": [
+        "_shared/types.ts"
+      ]
+    },
+    {
+      "slug": "submit-mastery-answer",
+      "version": 16,
+      "artifact": "ec89fb35ea871f12c36e9ce7c2e1ad761b3e35f4d4c59e7111ea525e44233d59",
+      "verify_jwt": true,
+      "files": [
+        {
+          "path": "submit-mastery-answer/index.ts",
+          "sha256": "1fe82bbb85e25f5e563b56888577d9ebb16fc4c1400ed79c01517060dd498e7c"
+        },
+        {
+          "path": "_shared/rate-budget.mjs",
+          "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e"
+        },
+        {
+          "path": "_shared/governed-learning-runtime.mjs",
+          "sha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7"
+        },
+        {
+          "path": "_shared/student-learning-context.mjs",
+          "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+        },
+        {
+          "path": "_shared/assessment-policy.mjs",
+          "sha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518"
+        },
+        {
+          "path": "_shared/assessed-audio-policy.mjs",
+          "sha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        },
+        {
+          "path": "_shared/answer-response-recovery.mjs",
+          "sha256": "c5487d27c6b20c3762334f02b035ed54bf125f0ebd8174bd28b2b362f1db841e"
+        },
+        {
+          "path": "_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "_shared/course-access.ts",
+          "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      ],
+      "omittedTypeOnlyFiles": []
+    }
+  ]
+}
