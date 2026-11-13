@@ -1,5 +1,7 @@
 # BF-16 — application integration candidate
 
+**Subsequent merge and frontend release:** Owner-approved PR477 is merged at `dd1c70e545c1d14fb09e7a9459b5bad4bbf9f017`. [Final CI, canonical static verification and remaining production gates](abuse-controls-integration-release-20261112.md) supersede the preparation/merge-pending statements below. This checkpoint preserves earlier local outcomes. Server installation and activation remain open.
+
 12 November 2026 (Asia/Yerevan). Prepared from merged source `4c7ec3ccdc7aeac8cbb87091a935f18ee99df844` after the owner authorized the next integration phase. All 65 Edge entrypoints now have admission controls in the candidate source. Enforcement defaults to off. This record does not authorize or claim a merge, production migration, Edge deployment, settings change or activation.
 
 Owner usability acceptance: not given. John explicitly approved both Armenian waiting messages below; that copy approval is distinct from acceptance of the finished interface. Paid stolen-password protection remains owner-declined, with no purchase or activation pending.
