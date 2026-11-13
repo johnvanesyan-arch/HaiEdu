@@ -12,7 +12,7 @@
 - Interactive page: `docs/design/teacher-workspace-prototype-20261113.html`. It is self-contained and published privately for owner review at https://claude.ai/artifact/7Pw7LFMeAm2X57QHfmbAkB. The link opens only for people John shares it with.
 - It uses HaiEdu's forest colours, the Noto Sans Armenian font and existing product wording, with synthetic example data. It is not connected to any service.
 - The example teacher has four classes across two grades and three subjects (7Ա Physics, 7Բ Physics, 7Ա English, 8Բ Maths), each with its own students, units and skills.
-- Controls: screen (Home / Classes / Class / Review queue), width (phone 390 / desktop), data state (filled / empty / loading) and design notes. The yellow notes link each element to the item below and to its data source.
+- Controls: screen (Home / Classes / Class / Review queue / Account), width (phone 390 / desktop), data state (filled / empty / loading / load error) and design notes. The yellow notes link each element to the item below and to its data source.
 
 ## 1. Goal and scope
 
@@ -67,9 +67,15 @@ Each principle is drawn from the review findings.
 | 3 | **Իմ դասարանները**: one card per class, attention first. Each card shows name · subject, grade · school · year, «Ընթացիկ բաժին՝ …», and up to two links: «N աշակերտի աջակցություն է պետք» (opens *that* class's roster with the «Աջակցության կարիք» filter, for the same unit) and «N գրավոր սպասում է ստուգման» (opens the review queue filtered to that class). Otherwise «Հիմա ուշադրության կարիք չկա». Then «Բոլոր դասարանները». | Pending counts: existing Today class cards. **Support counts and the current unit: not available on Home today.** They need a small per-class (class + subject programme + unit) server summary, or they are left out. Student counts appear only on the class page. |
 
 **States:**
-- **Empty (no classes):** the existing 4-step guide with «+ Նոր դասարան». It is not shown once classes exist.
+- **Empty (no classes), school teacher (B7):** one guided card for the school path:
+  1. whether the school year is open (from the existing school notice);
+  2. create a class;
+  3. invite students;
+  4. see who needs help.
+
+  The review blocks are hidden until a class exists. Personal-account teachers keep the existing 4-step guide. Neither is shown once classes exist.
 - **Loading:** skeleton blocks in the same layout.
-- **Error:** the existing unknown/denied/retry states, kept unchanged.
+- **Load error (B6), on every screen:** the teacher menu stays, «Չհաջողվեց բեռնել տվյալները» is shown with «Փորձել կրկին» as the main action, and there is no sign-in prompt unless the session is actually missing. Access-denied and signed-out states keep their current behaviour.
 
 **Removed from Home:** the role pill, the repeated subtitle, the pilot box, the «Իմ պրոֆիլը» and «Թարմացնել տվյալները» buttons, the two path cards that duplicate the menu, and the stat cards showing «—».
 
@@ -101,6 +107,13 @@ Each principle is drawn from the review findings.
 - **Unavailable analytics:** the existing message inside the Students tab.
 
 **Size target:** 30 students take about 52 px per row on desktop (today 213 px) and about 64 px on a phone (today 486 px).
+
+### 4.5 Account (B5, H-17)
+
+«Իմ հաշիվը» opens inside the teacher layout.
+- **Display name:** one field with one rule. **Owner decision:** required 2–100 characters, or optional up to 80.
+- **Other sections:** login details, privacy and data, and the deletion request keep the existing account-page content and actions.
+- **Scope:** the account page is shared by every role, so this falls under the platform-wide change rule (A2).
 
 ### 4.4 Review queue (B4)
 
@@ -147,7 +160,8 @@ Each principle is drawn from the review findings.
 3. **Phone menu items.** Գլխավոր, Դասարաններ, Ստուգում, Ավելին as drawn, or another set.
 4. **Pilot notice.** Sidebar label only (drawn), or keep the visible notice on Home.
 5. **B4 first step.** Approve the 0.5-day investigation before choosing the full or the smaller version.
-6. **Validation.** Can one or two teachers try the prototype for 20–30 minutes? Suggested tasks:
+6. **Display name rule (B5).** Required 2–100 characters (today's teacher Profile rule), or optional up to 80 (today's account-page rule).
+7. **Validation.** Can one or two teachers try the prototype for 20–30 minutes? Suggested tasks:
    - find who needs help in 7Ա;
    - check the oldest pending writing and move to the next;
    - find the join code;

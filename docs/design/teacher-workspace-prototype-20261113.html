@@ -225,11 +225,11 @@ h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
 <header class="proto-bar" aria-label="Prototype controls">
   <div class="proto-title">HaiEdu · Teacher workspace prototype<small>Phase 2 · synthetic example data · not the live product</small></div>
   <div class="proto-group"><span>Screen</span><div class="seg" id="ctlScreen">
-    <button type="button" data-v="home">Home</button><button type="button" data-v="classes">Classes</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button></div></div>
+    <button type="button" data-v="home">Home</button><button type="button" data-v="classes">Classes</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button><button type="button" data-v="account">Account</button></div></div>
   <div class="proto-group device-group"><span>Width</span><div class="seg" id="ctlDevice">
     <button type="button" data-v="phone">Phone 390</button><button type="button" data-v="desktop">Desktop</button></div></div>
   <div class="proto-group"><span>Data</span><div class="seg" id="ctlState">
-    <button type="button" data-v="full">Filled</button><button type="button" data-v="empty">Empty</button><button type="button" data-v="loading">Loading</button></div></div>
+    <button type="button" data-v="full">Filled</button><button type="button" data-v="empty">Empty</button><button type="button" data-v="loading">Loading</button><button type="button" data-v="error">Load error</button></div></div>
   <label class="proto-toggle" for="ctlNotes"><input type="checkbox" id="ctlNotes" checked> Design notes</label>
 </header>
 
@@ -340,7 +340,7 @@ function shell(inner) {
     <div class="side-foot">
       <span class="pilot">Փորձնական տարբերակ</span>
       ${note('A2', 'The pilot notice lives here once, instead of a yellow box on every page.')}
-      <a class="link" href="#home" data-proto-off>Իմ հաշիվը</a>
+      <a class="link" href="#account" data-go="account"${S.screen === 'account' ? ' aria-current="page"' : ''}>Իմ հաշիվը</a>
       ${note('B5', 'One account entry (name, email, password), as students have. «Իմ պրոֆիլը» leaves the main menu.')}
       <button type="button" class="btn secondary" data-proto-off style="color:var(--error);border-color:var(--error)">Դուրս գալ</button>
     </div>
@@ -348,7 +348,7 @@ function shell(inner) {
   <div style="min-width:0;display:flex;flex-direction:column">
     <header class="topbar">
       <a class="brand" href="#home" data-go="home" aria-label="HaiEdu · Գլխավոր">${LOGO}<span class="role-tag">Ուսուցիչ</span></a>
-      <button type="button" class="icon-btn" aria-label="Իմ հաշիվը" data-proto-off>${ICON.account}</button>
+      <button type="button" class="icon-btn" aria-label="Իմ հաշիվը" data-go="account">${ICON.account}</button>
     </header>
     <main class="main" id="main">${inner}</main>
     <nav class="bottom-nav" aria-label="Ուսուցչի մենյու">
@@ -386,13 +386,13 @@ function home() {
   if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="startT">
       <h2 id="startT">Սկսեք ձեր առաջին դասարանից</h2>
       <ol class="steps">
-        <li><div><strong>Լրացրեք ձեր անունը</strong><small>Ձեր անունը՝ դասարանի և գրավորների էջերում։</small></div></li>
-        <li><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա» կամ «7Ա Ֆիզիկա», ապա ընտրեք ուսումնական տարին։</small></div></li>
-        <li><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
+        <li><div><strong>Դպրոցի ուսումնական տարին բաց է</strong><small>${esc(SCHOOL)} · ${YEAR}։ Եթե տարին դեռ բաց չէ, դպրոցի ադմինիստրատորը նախ պետք է բացի այն։</small><span class="pill good" style="margin-top:6px">Բաց է</span></div></li>
+        <li><div><strong>Ստեղծեք դասարան</strong><small>Ընտրեք դպրոցը, տարին և ձեզ թույլատրված առարկան, ապա տվեք դասարանի անունը՝ օրինակ «7Ա»։</small></div></li>
+        <li><div><strong>Հրավիրեք աշակերտներին</strong><small>Ուղարկեք հրավեր էլ. փոստով կամ տվեք մեկանգամյա միանալու կոդ։</small></div></li>
         <li><div><strong>Տեսեք՝ ում օգնել</strong><small>Բացեք աշակերտի քարտը՝ արդյունքն ու հաջորդ քայլը տեսնելու համար։</small></div></li>
       </ol>
       <div><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>
-      ${note('B1', 'The 4-step guide (existing wording) appears only while the teacher has no classes. Today it shows on every Home.')}
+      ${note('B7', 'First-time school teacher: one guided card for the school path (H-14). Step 1 shows whether the school year is open, using the existing school notice. The review queue blocks stay hidden until a class exists, so there is no «0 … սպասում է ստուգման». Personal-account teachers keep today\u2019s 4-step guide.')}
     </section>`;
   const p = pendingTotal(), withPending = CLASSES.filter(c => c.pending).length;
   const sorted = [...CLASSES].sort((a, b) => attention(b) - attention(a));
@@ -450,7 +450,7 @@ function classPage() {
       <p class="lede">Դասարանում դեռ աշակերտ չկա։ Ուղարկեք հրավեր էլ. փոստով կամ տվեք միանալու կոդը։</p>
       <label class="field" for="inv">Աշակերտների էլ. հասցեներ<textarea id="inv" rows="4" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
       <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div>
-      ${note('B2', 'While the class is empty, the invitation form is the main content. Once students join, it moves to the «Հրավերներ» tab.')}
+      ${note('B2 · H-18', 'While the class is empty, the invitation form is the only content: no empty roster, no five «0» skill figures, no second «Աշակերտ դեռ չկա». Once students join, it moves to the «Հրավերներ» tab.')}
     </section>`;
   const inactive = list0.filter(s => s.daysAgo >= 7).length, support = list0.filter(s => s.support).length;
   const stat = (key, n, text, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key}"><strong>${n}</strong><span>${text}</span></button>`;
@@ -539,6 +539,40 @@ function review() {
   return head + filters + `<div class="review-layout${q ? ' has-open' : ''}">${list}${panel}</div>`;
 }
 
+/* ---------- load error (B6) ---------- */
+function errorView() {
+  const titles = { home: 'Գլխավոր', classes: 'Իմ դասարանները', class: label(cls(S.classId)), review: 'Գրավորի ստուգում', account: 'Իմ հաշիվը' };
+  return `<div class="page-head"><div><h1>${esc(titles[S.screen] || 'Գլխավոր')}</h1></div></div>
+    <section class="card section" role="alert" aria-labelledby="errT">
+      <h2 id="errT">Չհաջողվեց բեռնել տվյալները</h2>
+      <p class="lede">Ստուգեք ինտերնետ կապը և փորձեք կրկին։ Եթե խնդիրը մնում է, փորձեք մի քանի րոպեից։</p>
+      <div class="actions"><button type="button" class="btn" data-retry>Փորձել կրկին</button></div>
+      ${note('B6', 'Load failure for a signed-in teacher (H-13): the teacher menu stays, the retry is the main action, and there is no sign-in prompt. Sign-in appears only when the session is actually missing. Today this state replaces the whole page with the sign-in card and a filled «Մուտք գործել» button.')}
+    </section>`;
+}
+
+/* ---------- account (B5, H-17) ---------- */
+function account() {
+  const head = `<div class="page-head"><div><h1>Իմ հաշիվը</h1><p class="lede">Անուն, մուտքի տվյալներ և գաղտնիություն</p></div></div>
+    ${note('B5 · H-17', 'The account page opens inside the teacher layout (today it is a separate page with only a back button) and is the single place for the display name. «Իմ պրոֆիլը» leaves the teacher menu.')}`;
+  if (S.data === 'loading') return head + loadingBlock(`${skel(150)}${skel(110)}${skel(110)}`);
+  return head + `<section class="card section" aria-labelledby="nameT">
+      <h2 id="nameT">Ցուցադրվող անուն</h2>
+      <p class="lede">Այս անունը տեսնում են ձեր աշակերտները և դպրոցի ադմինիստրատորը։</p>
+      <label class="field" for="dispName">Անուն և ազգանուն<input id="dispName" maxlength="100" autocomplete="name" value="Անի Մելքոնյան"></label>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Պահպանել անունը</button></div>
+      ${newData('Owner decision')}
+      ${note('B5', 'One field, one rule. Today Profile requires 2\u2013100 characters and the account page allows 0\u201380 and can clear the name (H-15). Which rule wins is your decision; the account page is shared by every role.')}
+    </section>
+    <section class="card section" aria-labelledby="loginT"><h2 id="loginT">Մուտքի տվյալներ և գաղտնաբառ</h2>
+      <p class="lede">Էլ. հասցեի կամ գաղտնաբառի փոփոխությունը կատարվում է հաստատման նամակով։</p>
+      <div class="actions"><button type="button" class="btn secondary" data-proto-off>Փոխել էլ. հասցեն</button><button type="button" class="btn secondary" data-proto-off>Փոխել գաղտնաբառը</button></div></section>
+    <section class="card section" aria-labelledby="privT"><h2 id="privT">Գաղտնիություն և տվյալներ</h2>
+      <p class="lede">Ինչ տվյալներ ենք պահում ձեր մասին, գաղտնիության ընտրությունները և հաշվի ջնջման հարցումը։</p>
+      <div class="actions"><button type="button" class="btn secondary" data-proto-off>Բացել գաղտնիության կարգավորումները</button></div>
+      ${note('H-17', 'These sections keep the existing account-page content and actions unchanged; only the layout around them changes.')}</section>`;
+}
+
 /* ---------- drawer ---------- */
 function drawer() {
   const c = cls(S.classId), uid = curUnit(), s = roster(c, uid).find(x => x.id === S.drawer); if (!s) return '';
@@ -556,7 +590,7 @@ function drawer() {
 function render() {
   stage.dataset.device = narrow() ? 'phone' : S.device;
   app.classList.toggle('notes-on', S.notes);
-  const view = S.screen === 'class' ? classPage() : S.screen === 'classes' ? classList() : S.screen === 'review' ? review() : home();
+  const view = S.data === 'error' ? errorView() : S.screen === 'class' ? classPage() : S.screen === 'classes' ? classList() : S.screen === 'review' ? review() : S.screen === 'account' ? account() : home();
   app.innerHTML = shell(view) + (S.drawer ? drawer() : '');
   app.classList.toggle('drawer-open', !!S.drawer);
   const shown = { screen: S.screen, device: S.device, data: S.data };
@@ -585,7 +619,7 @@ document.querySelector('.proto-bar').addEventListener('click', e => {
 });
 document.getElementById('ctlNotes').addEventListener('change', e => { S.notes = e.target.checked; render(); });
 app.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],[data-class-open],[data-review-class],#moreBtn');
+  const t = e.target.closest('[data-retry],[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],[data-class-open],[data-review-class],#moreBtn');
   if (!t) { if (S.menu) { S.menu = false; render(); } return; }
   if (t.matches('[data-close-drawer]') && (e.target === t || t.tagName === 'BUTTON')) { S.drawer = null; render(); return; }
   if (t.matches('.drawer-bg')) return;
@@ -594,6 +628,7 @@ app.addEventListener('click', e => {
   if (t.dataset.reviewClass) { go('review', { rqClass: t.dataset.reviewClass, rqState: 'submitted', rqKind: 'all' }); return; }
   if (t.dataset.go) { const first = t.hasAttribute('data-open-first'); go(t.dataset.go, first ? { rqState: 'submitted', rqKind: 'all', rqClass: 'all' } : {}); if (first) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
   if (t.id === 'moreBtn') { S.menu = !S.menu; render(); return; }
+  if (t.hasAttribute('data-retry')) { S.data = 'full'; rerenderAfterLayout(); return; }
   if (t.hasAttribute('data-proto-off')) { flash(); return; }
   if (t.dataset.tab) { S.classTab = t.dataset.tab; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
   if (t.dataset.filter) { S.rosterFilter = t.dataset.filter; S.classTab = 'students'; render(); return; }
@@ -618,7 +653,7 @@ function flash() {
 }
 function fromHash() {
   const h = location.hash.slice(1);
-  if (['home', 'classes', 'review'].includes(h)) Object.assign(S, { screen: h, open: null, drawer: null });
+  if (['home', 'classes', 'review', 'account'].includes(h)) Object.assign(S, { screen: h, open: null, drawer: null });
   else if (h === 'class' || /^class-c\d$/.test(h)) { const id = h.slice(6) || S.classId; if (cls(id)) Object.assign(S, { screen: 'class', classId: id, unitId: null, open: null, drawer: null }); }
 }
 window.addEventListener('hashchange', () => { fromHash(); rerenderAfterLayout(); });
