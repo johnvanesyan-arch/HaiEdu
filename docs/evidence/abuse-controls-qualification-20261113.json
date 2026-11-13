@@ -1,0 +1,348 @@
+{
+  "date": "2026-11-13",
+  "source": "f023330bfd6040d28ccefaab846940b1fb8c8e1f",
+  "candidateRoadmap": "4.181",
+  "status": "Controlled separate-project qualification passed; maintenance code candidate; production limits off",
+  "testProject": {
+    "id": "pgtfeiwznqdeahrkoioy",
+    "name": "haiedu-bf16-test",
+    "organizationApprovedByOwner": true,
+    "quotedMonthlyCost": 0,
+    "region": "eu-central-1",
+    "postgres": "17.11",
+    "pgCron": "1.6.4",
+    "productionDataCopied": false
+  },
+  "auth": {
+    "actualHostedSessions": 14,
+    "students": 12,
+    "teachers": 2,
+    "realEmailsSent": 0,
+    "designatedProductionFixturesUsed": false
+  },
+  "hostedLearning": {
+    "status": "passed",
+    "simultaneousStudents": 12,
+    "completedScopes": 15,
+    "syntheticSubjects": 2,
+    "submittedAnswers": 47,
+    "requests": 152,
+    "allRequests200": true,
+    "clientP95Milliseconds": 2761,
+    "routes": {
+      "get-student-classes": 13,
+      "start-learning-session": 15,
+      "get-session-item": 62,
+      "submit-answer": 47,
+      "get-student-dashboard": 15
+    },
+    "scope": "Fresh real hosted Auth sessions, SDK, reviewed Edge business bodies with a test-project-only enforce adapter, and real SQL/synthetic two-subject classroom data. Not production QA or proof of100-person simultaneous Auth/classroom capacity."
+  },
+  "hostedAbuse": {
+    "status": "passed",
+    "checks": [
+      "forty real hosted concurrent code attempts admit ten and refuse thirty",
+      "hosted refusals have positive matching Retry-After/body waits and no-store",
+      "a different signed-in student retains its own allowance",
+      "the other student can still load actual classroom navigation",
+      "teacher batch 1 reserves twenty synthetic recipient attempts",
+      "teacher batch 2 reserves twenty synthetic recipient attempts",
+      "teacher batch 3 reserves twenty synthetic recipient attempts",
+      "teacher batch 4 reserves twenty synthetic recipient attempts",
+      "teacher batch 5 reserves twenty synthetic recipient attempts",
+      "the next teacher recipient attempt is refused without sending mail",
+      "exhausted email allowance does not block the teacher ordinary allowance",
+      "the same student is admitted after the real server-directed wait"
+    ],
+    "probeRequests": 49,
+    "concurrentCodeAttempts": 40,
+    "codeAttemptsAdmitted": 10,
+    "codeAttemptsRefused": 30,
+    "emailRecipientAttemptsAdmitted": 100,
+    "actualServerWaitAndRetry": true,
+    "realEmailsSent": 0,
+    "businessWorkFromProbe": false,
+    "scope": "Real hosted Auth/session-bound counter checks in the separate free test project. Test-only probe imports the reviewed helper byte for byte and never performs protected business/email work."
+  },
+  "freshBrowser": {
+    "status": "passed",
+    "cases": [
+      {
+        "width": 375,
+        "textScalePercent": 100,
+        "realHostedWaitDisplayed": true,
+        "enteredCodeRetained": true,
+        "buttonEditable": true,
+        "noAutomaticRetry": true,
+        "reflows": true,
+        "uncaughtErrors": 0
+      },
+      {
+        "width": 375,
+        "textScalePercent": 200,
+        "realHostedWaitDisplayed": true,
+        "enteredCodeRetained": true,
+        "buttonEditable": true,
+        "noAutomaticRetry": true,
+        "reflows": true,
+        "uncaughtErrors": 0
+      },
+      {
+        "width": 1280,
+        "textScalePercent": 100,
+        "realHostedWaitDisplayed": true,
+        "enteredCodeRetained": true,
+        "buttonEditable": true,
+        "noAutomaticRetry": true,
+        "reflows": true,
+        "uncaughtErrors": 0
+      },
+      {
+        "width": 1280,
+        "textScalePercent": 200,
+        "realHostedWaitDisplayed": true,
+        "enteredCodeRetained": true,
+        "buttonEditable": true,
+        "noAutomaticRetry": true,
+        "reflows": true,
+        "uncaughtErrors": 0
+      }
+    ],
+    "unexpectedExternalRequests": 0,
+    "scope": "Reviewed raw join DOM/JS and real browser SDK/Auth/429 response. Test-only adapter maps join invocation to the non-business hosted admission probe; this is feedback integration, not successful real class joining or production QA.",
+    "failedSetupAttemptsRetained": true,
+    "certificateVerificationDisabled": false,
+    "newRootCertificatesInstalled": false
+  },
+  "deploymentReadback": {
+    "testProject": "pgtfeiwznqdeahrkoioy",
+    "source": "f023330bfd6040d28ccefaab846940b1fb8c8e1f",
+    "scope": "Nine reviewed business bodies with an explicit project-locked test-mode entrypoint adapter; one non-business test admission probe. Shared helper/dependency source unchanged. Production deployments untouched.",
+    "receipts": [
+      {
+        "name": "get-student-classes",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "7c2831e32df8c503f08f74e2eda82b195b7d97b783e6b53d0897e880a7742746",
+        "emittedFilesMatched": 9,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "get-student-dashboard",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "6130a6d1a02f90513ab5bf96b3dc328ec51964f6328c8b9df7a8dd165468329f",
+        "emittedFilesMatched": 12,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "start-learning-session",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "fd871e7fadfd243fb92e533bcf61e4f16186f70c5b331022eae2ed192bbf838d",
+        "emittedFilesMatched": 13,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "get-session-item",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "18233edb287a6df628840caa62488fb3a95fdeb4f11dedcd87de1005fd56b8d8",
+        "emittedFilesMatched": 11,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "submit-answer",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "cbcd1675f36c0bbeacaf8f8ecae8497fef8a3ba84f2e12cd60b2f2adca1d40b8",
+        "emittedFilesMatched": 15,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": [
+          "_shared/types.ts"
+        ]
+      },
+      {
+        "name": "submit-mastery-answer",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "655af7480e4a8a9180b242a543ebbe8f8e4d67d558fdd46a73d1dffc59219f88",
+        "emittedFilesMatched": 9,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "get-remediation-help",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "bc8eb11f6179ee6ae01fb933ed3393b310cc113da9a38cbd33d3d9e8c530924e",
+        "emittedFilesMatched": 9,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "get-mastery-check-status",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "c44561ab1b78126f5adb5adf297f9ea99cedd872456e14b19dac8faa33b56393",
+        "emittedFilesMatched": 9,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "33ec49332bd0a1f0cd33995ad3a4c9d7cd11ad22862b1992057b84e4676c8612",
+        "emittedFilesMatched": 9,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      },
+      {
+        "name": "bf16-admission-probe",
+        "version": 1,
+        "status": "ACTIVE",
+        "verifyJwt": true,
+        "artifactSha256": "1198337db5812429263f2d01c34c296e9e8aa58673e81c6e0d48789d65da1b18",
+        "emittedFilesMatched": 3,
+        "allEmittedSourceStringsExact": true,
+        "explicitTypeOnlyOmissions": []
+      }
+    ]
+  },
+  "maintenance": {
+    "migration": "supabase/migrations/20261113112707_bf16_counter_maintenance.sql",
+    "migrationSha256": "080252d84f6085d456827f86c31273f807ffb41f3afa37db32f69a046c9b96d0",
+    "schedule": "*/15 * * * *",
+    "maximumCounterRowsPerRun": 500,
+    "minimumIdleRetentionSeconds": 86400,
+    "maximumOwnHistoryRowsPerRun": 500,
+    "ownHistoryRetentionDays": 7,
+    "statementTimeoutSeconds": 5,
+    "lockTimeoutSeconds": 1,
+    "local": {
+      "status": "passed",
+      "postgres": "17.6",
+      "pgCron": "1.6.7 source / extension1.6",
+      "checks": 10,
+      "passed": [
+        "real pg_cron installs the exact named 15-minute job without enabling app enforcement",
+        "browser and service API roles cannot run housekeeping or read its private monitor",
+        "another owner may use the same job name without confusing the owner-specific health lookup",
+        "500-row batches skip active locks, preserve unrefilled/unexpired counters and never touch Auth or other-job history",
+        "a duplicate maintenance invocation skips immediately instead of queuing",
+        "a failed history-cleanup transaction rolls back its counter deletion",
+        "real background scheduler executes the reviewed bounded cleanup command and records success",
+        "actual scheduled failures are visible and the pause command preserves other jobs and all counters",
+        "the real scheduled command enforces its one-second lock timeout and preserves blocked counters",
+        "duplicate installation refuses to overwrite the existing named job"
+      ],
+      "scope": "isolated owned PostgreSQL and real scheduler; synthetic Auth catalogue; no hosted request/account/classroom acceptance"
+    },
+    "hosted": {
+      "testProject": "pgtfeiwznqdeahrkoioy",
+      "before": [
+        {
+          "health": {
+            "schedule": "*/15 * * * *",
+            "job_active": true,
+            "job_present": true,
+            "counter_rows": 31,
+            "last_success_at": "2026-11-13T12:00:00.085787+00:00",
+            "failures_last_day": 0,
+            "maintenance_status": "ok",
+            "counter_storage_bytes": 81920,
+            "eligible_expired_rows": 0,
+            "oldest_eligible_expiry": null
+          }
+        }
+      ],
+      "observed": [
+        {
+          "hosted_scheduler_check": {
+            "all_auth_users": 14,
+            "learning_attempts": 47,
+            "recent_successful_runs": 4,
+            "expired_seed_rows_remaining": 0
+          }
+        }
+      ],
+      "restored": [
+        {
+          "health": {
+            "schedule": "*/15 * * * *",
+            "job_active": true,
+            "job_present": true,
+            "counter_rows": 31,
+            "last_success_at": "2026-11-13T12:13:37.268374+00:00",
+            "failures_last_day": 0,
+            "maintenance_status": "ok",
+            "counter_storage_bytes": 81920,
+            "eligible_expired_rows": 0,
+            "oldest_eligible_expiry": null
+          }
+        }
+      ],
+      "scope": "Only the separate test project. Three seeded expired/refilled rows removed by actual scheduled executions, then original15-minute schedule restored.14 Auth users and47 learning attempts preserved."
+    },
+    "productionApplied": false,
+    "jobScope": "Name/owner collision guard across databases; cleanup/health/pause select current invoker and database",
+    "negativeControl": "Previous candidate fails the new different-owner/same-name test with CardinalityViolation; final10-check run passes",
+    "hostedApplicationMethod": "Initial staging candidate plus owner-filter fixture follow-up; resulting function/view state read back against the final candidate; final full migration tested from scratch on PostgreSQL17.6.",
+    "sourceReadback": {
+      "bodyExact": true,
+      "commandExact": true,
+      "securityInvoker": true,
+      "searchPath": "pg_catalog",
+      "anonymousAuthenticatedServiceExecutionDenied": true,
+      "anonymousServiceHealthReadDenied": true
+    }
+  },
+  "monitoring": {
+    "privateHealthView": "private.actor_rate_maintenance_health",
+    "databaseQuery": "supabase/proposals/bf16_counter_maintenance_observe.sql",
+    "logQuery": "supabase/proposals/bf16_counter_http_health.clickhouse.sql",
+    "boundedAggregateLogQueryVerified": true,
+    "perRefusalAuditWritesAdded": false,
+    "pushAlertsConfigured": false
+  },
+  "production": {
+    "id": "xzyjvwiiibuarpotppid",
+    "mode": "off — owner-confirmed; connection cannot read Function Secrets",
+    "counterRowsObserved": 0,
+    "policyRowsObserved": 4,
+    "cronInstalled": false,
+    "maintenanceInstalled": false,
+    "writesThisStage": false,
+    "activationAuthorized": false
+  },
+  "productionQA": "not run (paused by owner)",
+  "affectedProductionQA": "none for maintenance/test/docs change; prior integration16 suites remain recorded/paused",
+  "paidStolenPasswordProtection": "declined",
+  "ownerUsabilityAcceptance": "not given",
+  "unqualified": [
+    "100-person simultaneous Auth/classroom capacity",
+    "physical school network",
+    "real Gmail delivery",
+    "owner usability and real-classroom pilot"
+  ],
+  "releaseGates": {
+    "exactHeadCi": "pending",
+    "prMerge": "requires explicit PR approval and fresh coordination",
+    "productionMaintenanceInstallation": "requires explicit approval for this migration",
+    "applicationActivation": "separate explicit approval after policy review"
+  }
+}

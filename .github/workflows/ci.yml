@@ -144,6 +144,9 @@ jobs:
         run: python tests/actor-rate-limiter-concurrency.py
       - name: Verify session-bound admission and classroom isolation on PostgreSQL 17
         run: python tests/session-rate-budget-concurrency.py
+      - name: Verify bounded rate-counter housekeeping and real scheduler isolation
+        timeout-minutes: 5
+        run: python tests/actor-rate-maintenance-concurrency.py
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races
