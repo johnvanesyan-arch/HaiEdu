@@ -1,5 +1,7 @@
 # BF-16 — controlled hosted qualification and maintenance candidate
 
+**Release follow-up, 13 November 2026:** PR480 is merged and the approved production cleanup is installed with actual scheduled success verified. The application limits remain off. [Verified release](abuse-controls-maintenance-release-20261113.md). This note preserves the original qualification scope and pre-release findings.
+
 13 November2026 (Asia/Yerevan). Prepared from merged source `f023330bfd6040d28ccefaab846940b1fb8c8e1f` after the owner authorized the controlled check and housekeeping preparation. **The live limits remain off.** The new maintenance migration is a reviewable candidate, not installed on production. The owner approved the existing HaiEdu organization for a separate test project only if free; Supabase quoted **$0/month**, and `haiedu-bf16-test` (`pgtfeiwznqdeahrkoioy`) was created in `eu-central-1`. No plan upgrade or paid stolen-password protection was purchased.
 
 Owner usability acceptance: not given. Production QA not run (paused by owner). No designated production fixture account was used, no production acceptance workflow was dispatched, and no real email was sent.
