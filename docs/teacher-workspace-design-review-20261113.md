@@ -91,6 +91,14 @@ No critical issue was found: nothing I exercised blocks a task.
 | H-10 | Generic class title («Դասարանի աշխատատարածք») instead of the class name | Match the real world | Mild |
 | H-11 | Guide page uses a third visual style | Consistency | Mild |
 | H-12 | A few text links about 26 px tall; matrix cells 43 px wide | Accessibility (tap size) | Mild |
+| H-13 | Load failure for a signed-in teacher shows the sign-in card with a filled «Մուտք գործել» button; the retry is secondary and the teacher menu is gone (Appendix B) | Help users recover from errors | Serious |
+| H-14 | A new school teacher with no classes sees three empty review blocks and «Ակտիվ դասարան դեռ չկա։ Բացեք «Իմ դասարանները»…», which points to an equally empty list. The 4-step guide appears only for personal-account teachers. | Recognition; minimalist design | Serious |
+| H-15 | Display name editable in two places with different rules: Profile requires 2–100 characters (`manage-teacher-profile`); the account page allows 0–80 and can clear it (`manage-my-privacy`, audited) | Consistency and standards | Serious |
+| H-16 | Material-assignment card (`.assignment-teacher-panel`) and the course-writing review card on the class page (`.written-work` outside `#teacherReviewRoot`) have 0 px inner padding: the C1 defect in two more places | Aesthetic; consistency | Mild (visible defect) |
+| H-17 | Material library and the account page open outside the teacher layout (no teacher menu); the way back is a single button | Consistency; user control | Mild |
+| H-18 | An empty class shows an empty roster, five «0» skill figures with a legend and filters, and a second «Աշակերտ դեռ չկա» message | Minimalist design | Mild |
+| H-19 | Library «Գործողությունների ուղեցույց» link is 22 px tall | Accessibility (tap size) | Mild |
+| H-20 | `teacher-workspace-preview.html` (an earlier fictional-data preview) is still published but no page links to it | Maintenance | Mild |
 
 Checked and found fine: no page overflow and no script errors in 78 teacher renders; no contrast failures on solid backgrounds.
 
@@ -135,8 +143,21 @@ Teacher only, and small enough to ship first.
 - **C1** Assign writing picker padding (`teacher.css:83` → include `#teacherAssignWritingRoot`), with a regression test. Estimate: 1 hour. *Implemented.*
 - **C2** Writing mode buttons hidden until usable, with a visible selected state (they already had `aria-pressed`). Estimate: 2 hours. *Implemented.*
 - **C3** Duplicate H2/H3 removed (Profile, Create, Archive); 44 px tap areas for small links; matrix cells 44 px. Estimate: 2–3 hours. *Implemented.*
+- **C4** Material-assignment card padding in the library (`.assignment-teacher-panel`). Teacher-facing, but `resource-library.html` is a shared staff page, so check other staff roles. Estimate: 1 hour. *Proposed after the second pass.*
+- **C5** Course-writing review card padding when opened from the class page (`.written-work` outside `#teacherReviewRoot`). Estimate: 1 hour. *Proposed after the second pass.*
+- **C6** 44 px tap area for the library guide link. Estimate: 30 minutes. *Proposed after the second pass.*
 
-**D. Later:** the guide inside the teacher layout (H-11).
+**B additions after the second pass (teacher only):**
+- **B6** Load-failure state: keep the teacher menu; show «Չհաջողվեց բեռնել…» with «Փորձել կրկին» as the main action; show sign-in only when the session is actually missing. Estimate: 0.5 day.
+- **B7** First-time school teacher: a teacher with no classes sees one guided card for the school path. It explains that the school administrator first opens the year, then offers «+ Նոր դասարան», then invitations. The empty review blocks are hidden until a class exists. Estimate: 0.5–1 day.
+- **B5 (strengthened by H-15):** one place and one rule for the display name. Which rule wins (required 2–100, or optional ≤ 80) is an owner decision. The account page is shared by every role.
+
+**A addition:** the library and the account page join the staff layout (H-17), as part of A1/A2.
+
+**D. Later:**
+- the guide inside the teacher layout (H-11);
+- retire or keep `teacher-workspace-preview.html` (H-20). Removing a published page is a production change and needs your approval.
+- in-page confirmations instead of the browser's own pop-up. They're used on every role's pages (teacher, school admin, master admin, content, account), so this is platform-wide.
 
 ## 5. Phase plan
 
@@ -262,3 +283,36 @@ Order on the page:
 - On a phone the page is 13,217 px long (66,599 px at 200%), and its 8-link table of contents is 506 px tall.
 - I did not check the guide's text against the current interface.
 
+
+## Appendix B — Second pass: the remaining teacher pages (13 November 2026)
+
+**Method.** I ran the existing native tests for:
+- the material library and material assignment;
+- writing assignment (recipients, preview);
+- custom-task authoring, preview and review;
+- course-writing review on the class page;
+- the teacher account and privacy page;
+- skill evidence and practice history.
+
+A preload script made each of their screenshots also record the same layout metrics as Appendix A: 80 tests passed, 59 measured screenshots. I also rendered:
+- a school teacher with no classes;
+- a personal-account teacher;
+- a dashboard load failure;
+- a non-teacher account;
+- the class page's join-code, rename and archive panels.
+
+All of this used synthetic data in isolation, not production.
+
+Some flows run inside the tests' harness page, which loads the teacher styles without the full teacher layout. Findings that depend on that harness are excluded; for example, the custom-review picker padding is correct inside the real review view.
+
+**Measured:**
+- No sideways page scrolling and no contrast failures on solid backgrounds in any flow.
+- Repeated-defect checks found the two cards in H-16.
+- Radio buttons in the writing-recipient list are 13 × 13 px, but the whole label is clickable.
+
+**Functional:**
+- **Display name (H-15):** the two screens call different endpoints that both write `profiles.display_name`.
+- **Confirmations:** archive, cancel invitation, cancel join code, new join code and leaving with unsaved work use the browser's own `window.confirm` pop-up. Playwright dismisses these automatically, so the archive panel was seen without being confirmed.
+- **Non-teacher account:** teacher.html sends it to the student Home, as intended. The student page then had no synthetic data, so its error is a fixture artefact.
+
+**Not audited:** the shared sign-in page (`account-access`), which is the same for every role, and real devices or screen readers.
