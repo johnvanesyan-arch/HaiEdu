@@ -61,7 +61,7 @@ The rebuilt browser manifest (`web-build/current.json`) also matches the path tr
 - `npm run build:web-assets`: 29 pages, 127 assets.
 - `npm run check:web-assets` passes; `npm run check:teacher-bundle` passes (bundles unchanged).
 - `node scripts/check-browser-qa-triggers.mjs` passes.
-- Full native browser suite: see the PR description.
+- Full native browser suite (`node --test tests/browser/*.test.mjs`): 700 passed, 0 failed, skipped or cancelled.
 
 Exact-head CI is required before merge.
 

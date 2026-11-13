@@ -69,7 +69,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .side { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border-right: 1px solid var(--divider); padding: 22px 14px; position: sticky; top: 0; height: 100vh; max-height: 900px; }
   .side .brand { padding: 0 10px 14px; border-bottom: 1px solid var(--divider); margin-bottom: 10px; }
   .side .brand svg { height: 34px; }
-  .side-label { font-size: var(--t-tiny); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 4px 10px; font-weight: 600; }
+  .side-label { font-size: var(--t-small); color: var(--muted); padding: 4px 10px; font-weight: 600; }
   .side nav { display: grid; gap: 2px; }
   .side nav a { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border-radius: var(--r-s); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .9375rem; }
   .side nav a:hover { background: var(--quiet); }
@@ -81,7 +81,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* page header (proposal A2) */
 .page-head { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; justify-content: space-between; }
-.page-head > div { min-width: 0; display: grid; gap: 4px; }
+.page-head > * { min-width: 0; max-width: 100%; }
+.page-head > div { display: grid; gap: 4px; }
 .crumbs { font-size: var(--t-small); color: var(--muted); display: flex; gap: 6px; flex-wrap: wrap; }
 .crumbs a { color: var(--accent); }
 h1 { font-size: var(--t-h1-phone); line-height: 1.3; font-weight: 700; }
@@ -127,7 +128,9 @@ h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
 .steps small { display: block; color: var(--muted); }
 
 /* class */
-.class-head-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.class-head-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; flex: 0 1 360px; }
+.class-head-tools .field { flex: 1 1 100%; }
+.field select { width: 100%; }
 .field { display: grid; gap: 4px; font-size: var(--t-small); font-weight: 600; min-width: 0; }
 .field select, .field input, .field textarea { min-height: 44px; border: 1px solid var(--control); border-radius: var(--r-s); padding: 8px 10px; background: var(--surface); color: var(--ink); max-width: 100%; font-weight: 400; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -251,11 +254,14 @@ const LAST = ['Պետրոսյան','Հակոբյան','Սարգսյան','Գրի
 const BANDS = ['secure','developing','needs','none'];
 const students = FIRST.map((f, i) => {
   const daysAgo = [0,1,1,2,3,9,0,4,12,1,2,0,8,3,1,5,0,2,15,1,3,0,6,2,1,10,4,0][i];
-  const bands = SKILLS.map((_, j) => BANDS[(i * 3 + j * 2 + (i % 4 === 0 ? 2 : 0)) % 4]);
+  const SUPPORT = [1, 5, 9, 13, 19, 24];
+  let bands = SKILLS.map((_, j) => BANDS[(i * 3 + j * 2 + (i % 4 === 0 ? 2 : 0)) % 4]);
+  if (SUPPORT.includes(i)) bands = bands.map((b, j) => j < 3 ? 'needs' : b);
+  else { let seen = 0; bands = bands.map(b => b === 'needs' && ++seen > 1 ? 'developing' : b); }
   const needs = bands.filter(b => b === 'needs').length;
   const acc = bands.includes('none') && i % 7 === 3 ? null : 38 + ((i * 17) % 55);
   return {id: 's' + i, name: f + ' ' + LAST[i % LAST.length], daysAgo, bands, needs, acc,
-    weak: SKILLS.filter((_, j) => bands[j] === 'needs').slice(0, 2), support: needs >= 2};
+    weak: SKILLS.filter((_, j) => bands[j] === 'needs').slice(0, 2), support: needs >= 3};
 }).sort((a, b) => (b.support - a.support) || (b.needs - a.needs) || a.name.localeCompare(b.name, 'hy'));
 const CLASSES = [
   {id:'c1', name:'7Ա', subject:'Ֆիզիկա', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:3, unit:'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', students:28, invites:4},
@@ -360,7 +366,7 @@ function home() {
       <article class="card tile" aria-labelledby="sT">
         <span class="tile-label" id="sT">Աջակցության կարիք</span>
         <div class="tile-figure"><strong>${students.filter(s => s.support).length}</strong><span>աշակերտ 1 դասարանում</span></div>
-        <p class="tile-meta">Երկու և ավելի հմտությունում՝ «Աջակցություն է պետք»</p>
+        <p class="tile-meta">Երեք և ավելի հմտությունում՝ «Աջակցություն է պետք»</p>
         <div class="tile-actions"><button type="button" class="btn secondary" data-go="class" data-filter="support">Տեսնել աշակերտներին</button></div>
         ${newData('Needs new data')}
         ${note('B1', 'Not in today’s Home read: class analytics load per class. Needs a small server summary, or this card is dropped. Decision needed.')}
@@ -538,7 +544,7 @@ app.addEventListener('click', e => {
   if (t.dataset.filter) { S.rosterFilter = t.dataset.filter; S.classTab = 'students'; render(); return; }
   if (t.dataset.rqState) { S.rqState = t.dataset.rqState; S.open = null; render(); return; }
   if (t.dataset.rqKind) { S.rqKind = t.dataset.rqKind; S.open = null; render(); return; }
-  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); document.getElementById('revT')?.focus?.(); return; }
+  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); document.getElementById('frame').scrollTop = 0; if (app.clientWidth < 1000) app.scrollIntoView({block: 'start'}); return; }
   if (t.hasAttribute('data-close')) { S.open = null; render(); return; }
   if (t.dataset.student) { S.drawer = t.dataset.student; render(); document.getElementById('frame').scrollTop = 0; app.scrollIntoView({block: 'start'}); app.querySelector('.drawer button')?.focus({preventScroll: true}); return; }
 });

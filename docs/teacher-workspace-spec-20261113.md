@@ -7,7 +7,7 @@
 - [C1–C3 record](teacher-workspace-polish-20261113.md): the fixes already prepared.
 
 **Prototype:**
-- Interactive page: `docs/design/teacher-workspace-prototype-20261113.html`. It is self-contained and published privately as a claude.ai artifact for review.
+- Interactive page: `docs/design/teacher-workspace-prototype-20261113.html`. It is self-contained and published privately for owner review at https://claude.ai/artifact/7Pw7LFMeAm2X57QHfmbAkB. The link opens only for people John shares it with.
 - It uses HaiEdu's forest colours, the Noto Sans Armenian font and existing product wording, with synthetic example data. It is not connected to any service.
 - Controls: screen (Home / Class / Review queue), width (phone 390 / desktop), data state (filled / empty / loading) and design notes. The yellow notes link each element to the item below and to its data source.
 
