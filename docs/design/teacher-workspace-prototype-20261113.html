@@ -114,8 +114,12 @@ h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
 .tile-meta { color: var(--muted); font-size: var(--t-small); margin: 0; }
 .tile-actions { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 4px; }
 .class-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
-.class-card { display: grid; gap: 6px; text-decoration: none; color: var(--ink); cursor: pointer; text-align: left; font: inherit; width: 100%; }
-.class-card:hover { border-color: var(--control); background: var(--quiet); }
+.class-card { display: grid; gap: 4px; align-content: start; color: var(--ink); }
+.card-title { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.card-title:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pill-link { min-height: 44px; padding: 8px 14px; text-decoration: none; }
+.pill-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .class-card .meta { color: var(--muted); font-size: var(--t-small); }
 .pill { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--r-pill); padding: 2px 10px; font-size: var(--t-small); font-weight: 600; width: fit-content; max-width: 100%; }
 .pill.attention { background: var(--attention-bg); color: var(--attention); }
@@ -221,7 +225,7 @@ h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
 <header class="proto-bar" aria-label="Prototype controls">
   <div class="proto-title">HaiEdu · Teacher workspace prototype<small>Phase 2 · synthetic example data · not the live product</small></div>
   <div class="proto-group"><span>Screen</span><div class="seg" id="ctlScreen">
-    <button type="button" data-v="home">Home</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button></div></div>
+    <button type="button" data-v="home">Home</button><button type="button" data-v="classes">Classes</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button></div></div>
   <div class="proto-group device-group"><span>Width</span><div class="seg" id="ctlDevice">
     <button type="button" data-v="phone">Phone 390</button><button type="button" data-v="desktop">Desktop</button></div></div>
   <div class="proto-group"><span>Data</span><div class="seg" id="ctlState">
@@ -245,64 +249,89 @@ const ICON = {
 };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ---------- synthetic data (examples only) ---------- */
-const SKILLS = [
-  {code:'F7-2-01', name:'Նյութի կառուցվածքի մոդելներ'}, {code:'F7-2-02', name:'Մոլեկուլների շարժում'},
-  {code:'F7-2-03', name:'Դիֆուզիա'}, {code:'F7-2-04', name:'Ագրեգատային վիճակներ'}, {code:'F7-2-05', name:'Խտություն'}];
-const FIRST = ['Անի','Դավիթ','Մարիամ','Արամ','Լիլիթ','Նարեկ','Սոնա','Տիգրան','Էլեն','Գոռ','Մանե','Հայկ','Նարե','Արման','Ալինա','Էրիկ','Լուսինե','Վահե','Մելինե','Սամվել','Աստղիկ','Կարեն','Մարի','Ռուբեն','Իննա','Արտյոմ','Սյուզի','Գևորգ'];
-const LAST = ['Պետրոսյան','Հակոբյան','Սարգսյան','Գրիգորյան','Կարապետյան','Ավետիսյան','Մարտիրոսյան','Վարդանյան','Մկրտչյան','Հովհաննիսյան','Ղազարյան','Աբրահամյան','Մանուկյան','Ստեփանյան'];
-const BANDS = ['secure','developing','needs','none'];
-const students = FIRST.map((f, i) => {
-  const daysAgo = [0,1,1,2,3,9,0,4,12,1,2,0,8,3,1,5,0,2,15,1,3,0,6,2,1,10,4,0][i];
-  const SUPPORT = [1, 5, 9, 13, 19, 24];
-  let bands = SKILLS.map((_, j) => BANDS[(i * 3 + j * 2 + (i % 4 === 0 ? 2 : 0)) % 4]);
-  if (SUPPORT.includes(i)) bands = bands.map((b, j) => j < 3 ? 'needs' : b);
-  else { let seen = 0; bands = bands.map(b => b === 'needs' && ++seen > 1 ? 'developing' : b); }
-  const needs = bands.filter(b => b === 'needs').length;
-  const acc = bands.includes('none') && i % 7 === 3 ? null : 38 + ((i * 17) % 55);
-  return {id: 's' + i, name: f + ' ' + LAST[i % LAST.length], daysAgo, bands, needs, acc,
-    weak: SKILLS.filter((_, j) => bands[j] === 'needs').slice(0, 2), support: needs >= 3};
-}).sort((a, b) => (b.support - a.support) || (b.needs - a.needs) || a.name.localeCompare(b.name, 'hy'));
+/* ---------- synthetic data (examples only: classes, students, skills and texts are invented) ---------- */
+const PROGRAMMES = {
+  physics7: { subject: 'Ֆիզիկա', grade: 7, units: [
+    { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Բնության ուսումնասիրության ֆիզիկական մեթոդները', skills: ['Չափումների կատարում', 'Միավորների համակարգ', 'Չափման ճշտություն', 'Դիտում և փորձ', 'Արդյունքների ներկայացում'] },
+    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', skills: ['Նյութի կառուցվածքի մոդելներ', 'Մոլեկուլների շարժում', 'Դիֆուզիա', 'Ագրեգատային վիճակներ', 'Խտություն'] }], code: 'Ֆ7' },
+  english7: { subject: 'Անգլերեն', grade: 7, units: [
+    { id: 'u2', short: 'Unit 2', title: 'Unit 2. Իմ ընտանիքը', skills: ['Բառապաշար. ընտանիք', 'Ներկա պարզ ժամանակ', 'Ընթերցանություն', 'Լսողություն', 'Կարճ նամակ'] },
+    { id: 'u3', short: 'Unit 3', title: 'Unit 3. Ես աշխարհում', skills: ['Բառապաշար. հագուստ', 'Բնավորության ածականներ', 'Համեմատական աստիճան', 'Ընթերցանություն', 'Նկարագրություն'] }], code: 'Ա7' },
+  math8: { subject: 'Մաթեմատիկա', grade: 8, units: [
+    { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Ռացիոնալ թվեր', skills: ['Ռացիոնալ թվերի համեմատում', 'Գործողություններ կոտորակներով', 'Աստիճան', 'Թվային առանցք', 'Տոկոսներ'] },
+    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Գծային հավասարումներ', skills: ['Հավասարման լուծում', 'Հավասարման կազմում', 'Անհայտի արտահայտում', 'Արդյունքի ստուգում', 'Խնդիրներ հավասարումներով'] }], code: 'Մ8' }
+};
+// support: how many students need support in each unit (keeps the numbers realistic and different per unit)
 const CLASSES = [
-  {id:'c1', name:'7Ա', subject:'Ֆիզիկա', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:3, unit:'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', students:28, invites:4},
-  {id:'c2', name:'7Բ', subject:'Ֆիզիկա', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:0, unit:'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', students:26, invites:0},
-  {id:'c3', name:'7Ա', subject:'Անգլերեն', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:2, unit:'Unit 3. Ես աշխարհում', students:24, invites:1}];
+  { id: 'c1', name: '7Ա', prog: 'physics7', size: 28, current: 'u2', pending: 3, invites: 4, support: { u1: 3, u2: 6 } },
+  { id: 'c2', name: '7Բ', prog: 'physics7', size: 26, current: 'u2', pending: 0, invites: 0, support: { u1: 2, u2: 0 } },
+  { id: 'c3', name: '7Ա', prog: 'english7', size: 24, current: 'u3', pending: 2, invites: 1, support: { u2: 1, u3: 2 } },
+  { id: 'c4', name: '8Բ', prog: 'math8', size: 25, current: 'u1', pending: 0, invites: 0, support: { u1: 3, u2: 4 } }];
+const SCHOOL = 'Փորձնական դպրոց Ա', YEAR = '2026–2027';
+const FIRST = ['Անի','Դավիթ','Մարիամ','Արամ','Լիլիթ','Նարեկ','Սոնա','Տիգրան','Էլեն','Գոռ','Մանե','Հայկ','Նարե','Արման','Ալինա','Էրիկ','Լուսինե','Վահե','Մելինե','Սամվել','Աստղիկ','Կարեն','Մարի','Ռուբեն','Իննա','Արտյոմ','Սյուզի','Գևորգ','Նանե','Արեն','Տաթև','Միքայել'];
+const LAST = ['Պետրոսյան','Հակոբյան','Սարգսյան','Գրիգորյան','Կարապետյան','Ավետիսյան','Մարտիրոսյան','Վարդանյան','Մկրտչյան','Հովհաննիսյան','Ղազարյան','Աբրահամյան','Մանուկյան','Ստեփանյան','Զաքարյան','Բաղդասարյան','Սիմոնյան'];
+const BANDS = ['secure', 'developing', 'needs', 'none'];
+const cls = id => CLASSES.find(c => c.id === id);
+const prog = c => PROGRAMMES[c.prog];
+const unitOf = (c, uid) => prog(c).units.find(u => u.id === uid);
+const label = c => `${c.name} · ${prog(c).subject}`;
+const gradeLabel = g => `${g}-րդ դասարան`;
+const skillsOf = (c, uid) => unitOf(c, uid).skills.map((name, j) => ({ code: `${prog(c).code}-${uid.slice(1)}-0${j + 1}`, name }));
+const rosterCache = {};
+function roster(c, uid) {
+  const key = c.id + uid; if (rosterCache[key]) return rosterCache[key];
+  const ci = CLASSES.indexOf(c), ui = prog(c).units.findIndex(u => u.id === uid), skills = skillsOf(c, uid);
+  const supportIdx = Array.from({ length: c.size }, (_, i) => i).sort((a, b) => ((a * 7 + ci * 5 + ui * 3) % c.size) - ((b * 7 + ci * 5 + ui * 3) % c.size)).slice(0, c.support[uid]);
+  const list = Array.from({ length: c.size }, (_, i) => {
+    let bands = skills.map((_, j) => BANDS[(i * 3 + j * 2 + ci + ui * 2) % 4]);
+    if (supportIdx.includes(i)) bands = bands.map((b, j) => j < 3 ? 'needs' : b);
+    else { let seen = 0; bands = bands.map(b => b === 'needs' && ++seen > 1 ? 'developing' : b); }
+    const needs = bands.filter(b => b === 'needs').length;
+    const daysAgo = [0,1,1,2,3,9,0,4,12,1,2,0,8,3,1,5,0,2,15,1,3,0,6,2,1,10,4,0][(i + ci * 3) % 28];
+    return { id: `${c.id}-s${i}`, name: FIRST[(i + ci * 5) % FIRST.length] + ' ' + LAST[(i + ci * 2) % LAST.length], daysAgo, bands, needs,
+      acc: i % 9 === 4 ? null : 38 + ((i * 17 + ci * 11 + ui * 5) % 55), weak: skills.filter((_, j) => bands[j] === 'needs').slice(0, 2), support: needs >= 3 };
+  }).sort((a, b) => (b.support - a.support) || (b.needs - a.needs) || a.name.localeCompare(b.name, 'hy'));
+  return (rosterCache[key] = list);
+}
+const supportCount = (c, uid) => roster(c, uid).filter(s => s.support).length;
 const QUEUE = [
-  {id:'q1', who:'Մարիամ Սարգսյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'submitted', date:'09.11.2026', wait:4,
-   text:'Երբ մայրիկս խոհանոցում սուրճ է եփում, հոտը մի քանի րոպեում հասնում է իմ սենյակ։ Դա դիֆուզիա է․ սուրճի մոլեկուլները անընդհատ շարժվում են և խառնվում օդի մոլեկուլների հետ։\n\nՏաք սենյակում հոտն ավելի արագ է տարածվում, որովհետև մոլեկուլներն ավելի արագ են շարժվում։ Եթե դուռը փակ է, հոտը դանդաղ է հասնում։'},
-  {id:'q2', who:'Դավիթ Հակոբյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'submitted', date:'10.11.2026', wait:3, text:'Թեյի մեջ շաքարը լուծվում է, նույնիսկ եթե չխառնենք, բայց ավելի դանդաղ։'},
-  {id:'q3', who:'Լիլիթ Կարապետյան', what:'Իմ առաջադրանքը․ փորձի նկարագրություն', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'custom', state:'submitted', date:'11.11.2026', wait:2, text:'Փորձի նկարագրությունը կցված PDF ֆայլում է։'},
-  {id:'q4', who:'Նարե Մանուկյան', what:'Describe your favourite outfit', cls:'7Ա · Անգլերեն', unit:'Unit 3', kind:'course', state:'submitted', date:'12.11.2026', wait:1, text:'My favourite outfit is a blue hoodie and white trainers. I wear it at the weekend because it is comfortable.'},
-  {id:'q5', who:'Արման Ստեփանյան', what:'Describe your favourite outfit', cls:'7Ա · Անգլերեն', unit:'Unit 3', kind:'course', state:'submitted', date:'13.11.2026', wait:0, text:'I like jeans and a black jacket.'},
-  {id:'q6', who:'Սոնա Մարտիրոսյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'changes_requested', date:'06.11.2026', wait:7, text:'—'},
-  {id:'q7', who:'Հայկ Ավետիսյան', what:'Իմ առաջադրանքը․ փորձի նկարագրություն', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'custom', state:'changes_requested', date:'05.11.2026', wait:8, text:'—'},
-  {id:'q8', who:'Էլեն Մկրտչյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'reviewed', date:'03.11.2026', wait:10, text:'—'}];
+  { id: 'q1', who: 'Մարիամ Սարգսյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'submitted', date: '09.11.2026', wait: 4,
+    text: 'Երբ մայրիկս խոհանոցում սուրճ է եփում, հոտը մի քանի րոպեում հասնում է իմ սենյակ։ Դա դիֆուզիա է․ սուրճի մոլեկուլները անընդհատ շարժվում են և խառնվում օդի մոլեկուլների հետ։\n\nՏաք սենյակում հոտն ավելի արագ է տարածվում, որովհետև մոլեկուլներն ավելի արագ են շարժվում։ Եթե դուռը փակ է, հոտը դանդաղ է հասնում։' },
+  { id: 'q2', who: 'Դավիթ Հակոբյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'submitted', date: '10.11.2026', wait: 3, text: 'Թեյի մեջ շաքարը լուծվում է, նույնիսկ եթե չխառնենք, բայց ավելի դանդաղ։' },
+  { id: 'q3', who: 'Լիլիթ Կարապետյան', what: 'Իմ առաջադրանքը․ փորձի նկարագրություն', classId: 'c1', unit: 'Բաժին 2', kind: 'custom', state: 'submitted', date: '11.11.2026', wait: 2, text: 'Փորձի նկարագրությունը կցված PDF ֆայլում է։' },
+  { id: 'q4', who: 'Նարե Մանուկյան', what: 'Describe your favourite outfit', classId: 'c3', unit: 'Unit 3', kind: 'course', state: 'submitted', date: '12.11.2026', wait: 1, text: 'My favourite outfit is a blue hoodie and white trainers. I wear it at the weekend because it is comfortable.' },
+  { id: 'q5', who: 'Արման Ստեփանյան', what: 'Describe your favourite outfit', classId: 'c3', unit: 'Unit 3', kind: 'course', state: 'submitted', date: '13.11.2026', wait: 0, text: 'I like jeans and a black jacket.' },
+  { id: 'q6', who: 'Սոնա Մարտիրոսյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c1', unit: 'Բաժին 2', kind: 'course', state: 'changes_requested', date: '06.11.2026', wait: 7, text: '—' },
+  { id: 'q7', who: 'Հայկ Ավետիսյան', what: 'Լուծեք խնդիրը և բացատրեք քայլերը', classId: 'c4', unit: 'Բաժին 1', kind: 'custom', state: 'changes_requested', date: '05.11.2026', wait: 8, text: '—' },
+  { id: 'q8', who: 'Էլեն Մկրտչյան', what: 'Բացատրեք դիֆուզիան առօրյա օրինակով', classId: 'c2', unit: 'Բաժին 2', kind: 'course', state: 'reviewed', date: '03.11.2026', wait: 10, text: '—' }];
 const RUBRIC = ['Ֆիզիկական երևույթի ճիշտ բացատրություն', 'Առօրյա օրինակի համապատասխանություն', 'Պատճառի և հետևանքի կապ', 'Լեզվի հստակություն'];
 
 /* ---------- state ---------- */
-const S = { screen: 'home', device: 'desktop', data: 'full', notes: true, classTab: 'students', rosterFilter: 'all', rosterQuery: '',
+const S = { screen: 'home', classId: 'c1', unitId: null, device: 'desktop', data: 'full', notes: true, classTab: 'students', rosterFilter: 'all', rosterQuery: '',
   rqState: 'submitted', rqKind: 'all', rqClass: 'all', open: null, menu: false, drawer: null };
 const app = document.getElementById('app'), stage = document.getElementById('stage');
 const narrow = () => window.matchMedia('(max-width: 759px)').matches;
 try { const saved = JSON.parse(localStorage.getItem('haiedu-proto') || '{}'); if (saved.device) S.device = saved.device; if (typeof saved.notes === 'boolean') S.notes = saved.notes; } catch (e) {}
 
 const note = (id, text) => `<p class="note"><b>${id}</b> · ${text}</p>`;
-const newData = label => `<span class="newdata">${label}</span>`;
+const newData = text => `<span class="newdata">${text}</span>`;
 const pendingTotal = () => CLASSES.reduce((n, c) => n + c.pending, 0);
 const ago = d => d === 0 ? 'այսօր' : d === 1 ? 'երեկ' : d + ' օր առաջ';
+const attention = c => c.pending + supportCount(c, c.current);
+const curUnit = () => S.unitId || cls(S.classId).current;
 
 /* ---------- shell ---------- */
 function shell(inner) {
-  const nav = [['home','Գլխավոր','home'],['class','Դասարաններ','classes'],['review','Գրավորի ստուգում','review']];
   const pend = S.data === 'full' ? pendingTotal() : 0;
-  const cur = k => (S.screen === k ? ' aria-current="page"' : '');
+  const inClasses = S.screen === 'classes' || S.screen === 'class';
+  const cur = k => ((k === 'classes' ? inClasses : S.screen === k) ? ' aria-current="page"' : '');
   return `<div class="shell">
   <aside class="side" aria-label="Ուսուցչի մենյու">
     <a class="brand" href="#home" data-go="home" aria-label="HaiEdu · Գլխավոր">${LOGO}</a>
     <div class="side-label">Աշխատասեղան · Ուսուցիչ</div>
     <nav>
       <a href="#home" data-go="home"${cur('home')}>Գլխավոր</a>
-      <a href="#class" data-go="class"${cur('class')}>Դասարաններ</a>
+      <a href="#classes" data-go="classes"${cur('classes')}>Դասարաններ</a>
       <a href="#review" data-go="review"${cur('review')}>Գրավորի ստուգում ${pend ? `<span class="nav-badge" aria-label="${pend} սպասող">${pend}</span>` : ''}</a>
       <a href="#home" data-proto-off>Հանձնարարել գրավոր</a>
       <a href="#home" data-proto-off>Նյութերի գրադարան</a>
@@ -324,22 +353,36 @@ function shell(inner) {
     <main class="main" id="main">${inner}</main>
     <nav class="bottom-nav" aria-label="Ուսուցչի մենյու">
       <a href="#home" data-go="home"${cur('home')}>${ICON.home}<span>Գլխավոր</span></a>
-      <a href="#class" data-go="class"${cur('class')}>${ICON.classes}<span>Դասարաններ</span></a>
+      <a href="#classes" data-go="classes"${cur('classes')}>${ICON.classes}<span>Դասարաններ</span></a>
       <a href="#review" data-go="review"${cur('review')}>${ICON.review}<span>Ստուգում</span>${pend ? `<span class="nav-badge">${pend}</span>` : ''}</a>
       <a href="#home" data-proto-off>${ICON.more}<span>Ավելին</span></a>
     </nav>
   </div></div>`;
 }
-
 const skel = (h, w = '100%') => `<div class="skel" style="height:${h}px;width:${w}" aria-hidden="true"></div>`;
 const loadingBlock = rows => `<div role="status" class="section"><span class="sr">Բեռնվում է…</span>${rows}</div>`;
+
+/* ---------- class card (shared by Home and the class list) ---------- */
+function classCard(c) {
+  const sup = supportCount(c, c.current), u = unitOf(c, c.current);
+  const pills = [];
+  if (sup) pills.push(`<a class="pill pill-link error" href="#class-${c.id}" data-class-open="${c.id}" data-filter="support">${sup} աշակերտի աջակցություն է պետք</a>`);
+  if (c.pending) pills.push(`<a class="pill pill-link attention" href="#review" data-review-class="${c.id}">${c.pending} գրավոր սպասում է ստուգման</a>`);
+  if (!pills.length) pills.push('<span class="pill calm">Հիմա ուշադրության կարիք չկա</span>');
+  return `<article class="card class-card" aria-labelledby="cc-${c.id}">
+    <h3 id="cc-${c.id}"><a class="card-title" href="#class-${c.id}" data-class-open="${c.id}">${esc(label(c))}</a></h3>
+    <span class="meta">${gradeLabel(prog(c).grade)} · ${esc(SCHOOL)} · ${YEAR}</span>
+    <span class="meta">Ընթացիկ բաժին՝ ${esc(u.short)}</span>
+    <div class="pill-row">${pills.join('')}</div>
+  </article>`;
+}
 
 /* ---------- Home ---------- */
 function home() {
   const head = `<div class="page-head"><div><h1>Գլխավոր</h1><p class="lede">Բարի գալուստ, Անի</p></div>
     ${S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-proto-off>+ Նոր դասարան</button>'}</div>
     ${note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle. On phones the title sits about 70 px from the top instead of 280 px.')}`;
-  if (S.data === 'loading') return head + loadingBlock(`<div class="today">${skel(170)}${skel(170)}</div>${skel(28,'40%')}<div class="class-grid">${skel(120)}${skel(120)}${skel(120)}</div>`);
+  if (S.data === 'loading') return head + loadingBlock(`${skel(160)}${skel(28, '40%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
   if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="startT">
       <h2 id="startT">Սկսեք ձեր առաջին դասարանից</h2>
       <ol class="steps">
@@ -351,47 +394,48 @@ function home() {
       <div><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>
       ${note('B1', 'The 4-step guide (existing wording) appears only while the teacher has no classes. Today it shows on every Home.')}
     </section>`;
-  const p = pendingTotal();
+  const p = pendingTotal(), withPending = CLASSES.filter(c => c.pending).length;
+  const sorted = [...CLASSES].sort((a, b) => attention(b) - attention(a));
   return head + `<section class="section" aria-labelledby="todayT">
     <h2 id="todayT">Այսօր</h2>
-    <div class="today">
-      <article class="card tile primary" aria-labelledby="qT">
-        <span class="tile-label" id="qT">Ստուգման հերթ</span>
-        <div class="tile-figure"><strong>${p}</strong><span>գրավոր սպասում է ստուգման</span></div>
-        <p class="tile-meta">Ամենավաղը ներկայացվել է 4 օր առաջ · ${CLASSES.filter(c => c.pending).length} դասարանից</p>
-        <div class="tile-actions"><button type="button" class="btn" data-go="review" data-open-first>Շարունակել ստուգումը</button>
-          <button type="button" class="btn quiet" data-go="review">Ամբողջ հերթը</button></div>
-        ${note('B1', 'Existing data: the combined Today read already returns the count, the oldest item and per-class counts.')}
-      </article>
-      <article class="card tile" aria-labelledby="sT">
-        <span class="tile-label" id="sT">Աջակցության կարիք</span>
-        <div class="tile-figure"><strong>${students.filter(s => s.support).length}</strong><span>աշակերտ 1 դասարանում</span></div>
-        <p class="tile-meta">Երեք և ավելի հմտությունում՝ «Աջակցություն է պետք»</p>
-        <div class="tile-actions"><button type="button" class="btn secondary" data-go="class" data-filter="support">Տեսնել աշակերտներին</button></div>
-        ${newData('Needs new data')}
-        ${note('B1', 'Not in today’s Home read: class analytics load per class. Needs a small server summary, or this card is dropped. Decision needed.')}
-      </article>
-    </div>
+    <article class="card tile primary" aria-labelledby="qT">
+      <span class="tile-label" id="qT">Ստուգման հերթ</span>
+      <div class="tile-figure"><strong>${p}</strong><span>գրավոր սպասում է ստուգման</span></div>
+      <p class="tile-meta">Ամենավաղը ներկայացվել է 4 օր առաջ · ${withPending} դասարանից</p>
+      <div class="tile-actions"><button type="button" class="btn" data-go="review" data-open-first>Շարունակել ստուգումը</button>
+        <button type="button" class="btn quiet" data-go="review">Ամբողջ հերթը</button></div>
+      ${note('B1', 'Existing data: the combined Today read already returns the count, the oldest item and per-class counts.')}
+    </article>
   </section>
   <section class="section" aria-labelledby="clsT">
-    <div class="section-head"><h2 id="clsT">Իմ դասարանները</h2><a class="link" href="#class" data-go="class">Բոլոր դասարանները</a></div>
-    <div class="class-grid">${CLASSES.map(c => `
-      <button type="button" class="card class-card" data-go="class" data-class="${c.id}">
-        <h3>${esc(c.name)} · ${esc(c.subject)}</h3>
-        <span class="meta">${esc(c.grade)} · ${esc(c.school)} · ${esc(c.year)}</span>
-        ${c.pending ? `<span class="pill attention">${c.pending} գրավոր սպասում է ստուգման</span>` : `<span class="pill calm">Ստուգման սպասող չկա</span>`}
-      </button>`).join('')}</div>
-    ${note('B1', 'Class cards use existing per-class pending counts. Student counts are not in the Home read, so they appear only on the class page.')}
+    <div class="section-head"><h2 id="clsT">Իմ դասարանները</h2><a class="link" href="#classes" data-go="classes">Բոլոր դասարանները</a></div>
+    <div class="class-grid">${sorted.map(classCard).join('')}</div>
+    ${note('B1 · option B', 'Each class shows its own support count, for that class’s subject and current unit, and links to that class’s roster with the «Աջակցության կարիք» filter. Classes that need attention come first. There is no single cross-class «Տեսնել աշակերտներին» button: with several grades and subjects it could not say which class to open.')}
+    ${newData('Support counts need new data')}
+    ${note('B1', 'Pending-writing pills use existing per-class counts. Support counts and the current-unit line are not in the Home or class-list reads today: they need a small per-class server summary, or they are left out. Student counts appear only on the class page. Decision needed.')}
   </section>`;
+}
+
+/* ---------- Class list ---------- */
+function classList() {
+  const head = `<div class="page-head"><div><h1>Իմ դասարանները</h1><p class="lede">${CLASSES.length} ակտիվ դասարան · ${YEAR}</p></div>
+    <div class="actions"><button type="button" class="btn secondary" data-proto-off>+ Նոր դասարան</button></div></div>`;
+  if (S.data === 'loading') return head + loadingBlock(`${skel(28, '30%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
+  if (S.data === 'empty') return head + `<div class="card empty"><h2>Ակտիվ դասարան դեռ չկա</h2><p class="lede">Ստեղծեք դասարան և տվեք աշակերտներին միանալու կոդը։</p><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>`;
+  const grades = [...new Set(CLASSES.map(c => prog(c).grade))].sort((a, b) => a - b);
+  return head + note('B2', 'The menu item «Դասարաններ» opens this list, not a class. Classes are grouped by grade when a teacher teaches more than one grade; inside a grade, classes needing attention come first.')
+    + grades.map(g => `<section class="section" aria-labelledby="g${g}"><h2 id="g${g}">${gradeLabel(g)}</h2>
+      <div class="class-grid">${CLASSES.filter(c => prog(c).grade === g).sort((a, b) => attention(b) - attention(a)).map(classCard).join('')}</div></section>`).join('')
+    + `<p><a class="link" href="#home" data-proto-off>Արխիվացված դասարաններ</a></p>`;
 }
 
 /* ---------- Class ---------- */
 function classPage() {
-  const c = CLASSES[0];
-  const crumbs = `<nav class="crumbs" aria-label="Ճանապարհ"><a href="#class" data-proto-off>Դասարաններ</a><span aria-hidden="true">/</span><span>${esc(c.name)} · ${esc(c.subject)}</span></nav>`;
-  const head = `${crumbs}<div class="page-head"><div><h1>${esc(c.name)} · ${esc(c.subject)}</h1><p class="lede">${esc(c.school)} · ${esc(c.year)}</p></div>
-    <div class="class-head-tools"><label class="field" for="unitSel">Բաժին<select id="unitSel"><option>Բաժին 1. Ֆիզիկական մեթոդները</option><option selected>${esc(c.unit)}</option></select></label></div></div>
-    ${note('B2', 'The class name is the page title (today: «Դասարանի աշխատատարածք»). The unit choice stays in the header because the student data and the matrix depend on it.')}
+  const c = cls(S.classId), uid = curUnit(), u = unitOf(c, uid), list0 = roster(c, uid), skills = skillsOf(c, uid);
+  const crumbs = `<nav class="crumbs" aria-label="Ճանապարհ"><a href="#classes" data-go="classes">Դասարաններ</a><span aria-hidden="true">/</span><span>${esc(label(c))}</span></nav>`;
+  const head = `${crumbs}<div class="page-head"><div><h1>${esc(label(c))}</h1><p class="lede">${gradeLabel(prog(c).grade)} · ${esc(SCHOOL)} · ${YEAR}</p></div>
+    <div class="class-head-tools"><label class="field" for="unitSel">Բաժին<select id="unitSel">${prog(c).units.map(x => `<option value="${x.id}"${x.id === uid ? ' selected' : ''}>${esc(x.title)}${x.id === c.current ? ' (ընթացիկ)' : ''}</option>`).join('')}</select></label></div></div>
+    ${note('B2', 'The class name is the page title (today: «Դասարանի աշխատատարածք»). Support status belongs to the selected unit: change the unit and the figures change. Home counts the current unit, so a Home link lands on the same number.')}
     <div class="actions">
       <button type="button" class="btn" data-proto-off>Հանձնարարել գրավոր</button>
       <button type="button" class="btn secondary" data-proto-off>Հանձնարարել նյութ</button>
@@ -400,7 +444,7 @@ function classPage() {
         ${S.menu ? `<div class="more-menu" id="moreMenu" role="menu"><button role="menuitem" type="button" data-proto-off>Հրավիրել աշակերտներ</button><button role="menuitem" type="button" data-proto-off>Փոխել անունը</button><button role="menuitem" type="button" class="danger" data-proto-off>Արխիվացնել դասարանը</button></div>` : ''}</div>
     </div>
     ${note('B2', 'One action row replaces the four large workflow cards that today come before any student data. Rename and archive move under «Ավելին».')}`;
-  if (S.data === 'loading') return head + loadingBlock(`<div class="stats">${skel(68)}${skel(68)}${skel(68)}${skel(68)}</div>${skel(44,'60%')}${skel(48)}${skel(48)}${skel(48)}${skel(48)}`);
+  if (S.data === 'loading') return head + loadingBlock(`<div class="stats">${skel(68)}${skel(68)}${skel(68)}${skel(68)}</div>${skel(44, '60%')}${skel(48)}${skel(48)}${skel(48)}${skel(48)}`);
   if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="invT">
       <h2 id="invT">Հրավիրել աշակերտներ</h2>
       <p class="lede">Դասարանում դեռ աշակերտ չկա։ Ուղարկեք հրավեր էլ. փոստով կամ տվեք միանալու կոդը։</p>
@@ -408,51 +452,51 @@ function classPage() {
       <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div>
       ${note('B2', 'While the class is empty, the invitation form is the main content. Once students join, it moves to the «Հրավերներ» tab.')}
     </section>`;
-  const inactive = students.filter(s => s.daysAgo >= 7).length, support = students.filter(s => s.support).length;
-  const stat = (key, n, label, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key}"><strong>${n}</strong><span>${label}</span></button>`;
-  const tabs = [['students','Աշակերտներ'],['skills','Հմտություններ'],['invites',`Հրավերներ · ${c.invites}`]];
+  const inactive = list0.filter(s => s.daysAgo >= 7).length, support = list0.filter(s => s.support).length;
+  const stat = (key, n, text, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key}"><strong>${n}</strong><span>${text}</span></button>`;
+  const tabs = [['students', 'Աշակերտներ'], ['skills', 'Հմտություններ'], ['invites', `Հրավերներ · ${c.invites}`]];
   let body = '';
   if (S.classTab === 'students') {
-    const list = students.filter(s => (S.rosterFilter === 'support' ? s.support : S.rosterFilter === 'inactive' ? s.daysAgo >= 7 : true) && s.name.includes(S.rosterQuery));
-    const bandLabel = {secure:'Կայուն', developing:'Զարգացող', needs:'Աջակցություն է պետք', none:'Տվյալ դեռ չկա'};
+    const list = list0.filter(s => (S.rosterFilter === 'support' ? s.support : S.rosterFilter === 'inactive' ? s.daysAgo >= 7 : true) && s.name.includes(S.rosterQuery));
     const status = s => s.support ? '<span class="pill error">Աջակցություն է պետք</span>' : s.daysAgo >= 7 ? '<span class="pill attention">Ոչ ակտիվ</span>' : '';
     body = `<div class="toolbar">
         <div class="chips" role="group" aria-label="Ֆիլտր">
-          ${[['all',`Բոլորը · ${students.length}`],['support',`Աջակցության կարիք · ${support}`],['inactive',`Ոչ ակտիվ · ${inactive}`]].map(([k,l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}
+          ${[['all', `Բոլորը · ${list0.length}`], ['support', `Աջակցության կարիք · ${support}`], ['inactive', `Ոչ ակտիվ · ${inactive}`]].map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}
         </div>
         <label class="field" for="rq">Փնտրել աշակերտ<input id="rq" type="search" value="${esc(S.rosterQuery)}" placeholder="Անուն…"></label>
       </div>
+      <p class="tile-meta">Աջակցության կարիքը՝ ըստ «${esc(u.short)}»-ի հմտությունների</p>
       ${note('B3', 'One row per student (about 52 px instead of 213 px on desktop; 64 px instead of 486 px on phones). Students needing support come first. All values come from the existing class read; «Ոչ ակտիվ» is 7+ days since last activity, worked out in the browser.')}
       <div class="roster-wrap card" style="padding:0;overflow-x:auto"><table class="roster">
         <caption class="sr">Աշակերտներ, ${list.length}</caption>
         <thead><tr><th scope="col">Աշակերտ</th><th scope="col">Վերջին ակտիվություն</th><th scope="col">Վերջին պատասխանների ճշգրտություն</th><th scope="col">Ուշադրության հմտություններ</th><th scope="col"><span class="sr">Գործողություն</span></th></tr></thead>
         <tbody>${list.map(s => `<tr><td><span class="name">${esc(s.name)}</span> ${status(s)}</td><td>${ago(s.daysAgo)}</td><td class="num">${s.acc == null ? '—' : s.acc + '%'}</td>
-          <td><div class="skill-tags">${s.weak.length ? s.weak.map(k => `<span class="skill-tag" title="${esc(k.name)}">${esc(k.name)}</span>`).join('') : '<span class="tile-meta">—</span>'}</div></td>
+          <td><div class="skill-tags">${s.weak.length ? s.weak.map(k => `<span class="skill-tag">${esc(k.name)}</span>`).join('') : '<span class="tile-meta">—</span>'}</div></td>
           <td><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button></td></tr>`).join('')}</tbody></table></div>
       <ul class="roster-list card" style="padding:0 12px">${list.map(s => `<li><button type="button" data-student="${s.id}"><span class="row1"><strong>${esc(s.name)}</strong>${status(s)}</span><span class="row2">${ago(s.daysAgo)} · ${s.acc == null ? 'ճշգրտություն՝ —' : 'ճշգրտություն՝ ' + s.acc + '%'}${s.weak.length ? ' · ' + esc(s.weak.map(k => k.name).join(', ')) : ''}</span></button></li>`).join('')}</ul>
       ${list.length ? '' : '<p class="lede">Այս ֆիլտրով աշակերտ չկա։</p>'}`;
   } else if (S.classTab === 'skills') {
-    const cls = {secure:'b-secure', developing:'b-developing', needs:'b-needs', none:'b-none'};
+    const bc = { secure: 'b-secure', developing: 'b-developing', needs: 'b-needs', none: 'b-none' };
     const val = (b, i) => b === 'none' ? '—' : (b === 'secure' ? 85 + i % 10 : b === 'developing' ? 55 + i % 15 : 25 + i % 15) + '%';
     body = `<div class="legend"><span><i class="b-secure"></i>Կայուն</span><span><i class="b-developing"></i>Զարգացող</span><span><i class="b-needs"></i>Աջակցություն է պետք</span><span><i class="b-none"></i>Տվյալ դեռ չկա</span></div>
-      <div class="matrix-wrap"><table class="matrix"><caption class="sr">Հմտությունների վիճակ ըստ աշակերտի</caption>
-        <thead><tr><th scope="col">Աշակերտ</th>${SKILLS.map(k => `<th scope="col" title="${esc(k.name)}">${esc(k.code)}</th>`).join('')}</tr></thead>
-        <tbody>${students.map((s, i) => `<tr><th scope="row">${esc(s.name)}</th>${s.bands.map((b, j) => `<td><span class="band ${cls[b]}">${val(b, i + j)}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      <div class="matrix-wrap"><table class="matrix"><caption class="sr">Հմտությունների վիճակ ըստ աշակերտի, ${esc(u.short)}</caption>
+        <thead><tr><th scope="col">Աշակերտ</th>${skills.map(k => `<th scope="col" title="${esc(k.name)}">${esc(k.code)}</th>`).join('')}</tr></thead>
+        <tbody>${list0.map((s, i) => `<tr><th scope="row">${esc(s.name)}</th>${s.bands.map((b, j) => `<td><span class="band ${bc[b]}">${val(b, i + j)}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>
       ${note('B2', 'The matrix keeps its existing data, colours and BF-12 skill-name legend (not redrawn here). It moves to its own tab, so the class page no longer needs 8,000+ px of scrolling.')}`;
   } else {
     body = `<div class="card section"><h2>Հրավիրել աշակերտներ</h2>
       <label class="field" for="inv2">Աշակերտների էլ. հասցեներ<textarea id="inv2" rows="3" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
       <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div></div>
       <div class="card section"><h2>Չընդունված հրավերներ · ${c.invites}</h2>
-      <ul class="queue">${['a***@example.com','g***@example.com','m***@example.com','t***@example.com'].map(e => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${e}</span><span class="tile-meta">Ուղարկվել է 3 օր առաջ</span></li>`).join('')}</ul></div>
+      ${c.invites ? `<ul class="queue">${['a***@example.com', 'g***@example.com', 'm***@example.com', 't***@example.com'].slice(0, c.invites).map(e => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${e}</span><span class="tile-meta">Ուղարկվել է 3 օր առաջ</span></li>`).join('')}</ul>` : '<p class="lede">Չընդունված հրավեր չկա։</p>'}</div>
       ${note('B2', 'The same invitation form and list as today. Only its position changes.')}`;
   }
   return head + `<div class="stats" role="group" aria-label="Դասարանի ամփոփում">
-      ${stat('all', c.students, 'Աշակերտ', false)}${stat('support', support, 'Աջակցության կարիք', true)}${stat('inactive', inactive, 'Ոչ ակտիվ 7+ օր', true)}
-      <button type="button" class="stat warn" data-go="review"><strong>${c.pending}</strong><span>Ստուգման սպասող գրավոր</span></button>
+      ${stat('all', list0.length, 'Աշակերտ', false)}${stat('support', support, 'Աջակցության կարիք', true)}${stat('inactive', inactive, 'Ոչ ակտիվ 7+ օր', true)}
+      <button type="button" class="stat warn" data-review-class="${c.id}"><strong>${c.pending}</strong><span>Ստուգման սպասող գրավոր</span></button>
     </div>
     ${note('B2', 'The summary figures also act as filters. Each figure comes from data the class page already loads.')}
-    <div class="tabs" role="tablist" aria-label="Դասարանի բաժիններ">${tabs.map(([k,l]) => `<button type="button" role="tab" id="tab-${k}" aria-selected="${S.classTab === k}" aria-controls="panel" data-tab="${k}">${l}</button>`).join('')}</div>
+    <div class="tabs" role="tablist" aria-label="Դասարանի բաժիններ">${tabs.map(([k, l]) => `<button type="button" role="tab" id="tab-${k}" aria-selected="${S.classTab === k}" aria-controls="panel" data-tab="${k}">${l}</button>`).join('')}</div>
     <section id="panel" role="tabpanel" aria-labelledby="tab-${S.classTab}" class="section">${body}</section>`;
 }
 
@@ -460,28 +504,30 @@ function classPage() {
 function review() {
   const head = `<div class="page-head"><div><h1>Գրավորի ստուգում</h1><p class="lede">Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից</p></div></div>
     ${note('B4', 'Opens straight on the pending list across classes, the same list Home uses. Today this view first asks for list, class and unit before showing anything.')}`;
-  const states = [['submitted','Սպասում են ստուգման'],['changes_requested','Վերադարձված են'],['reviewed','Ստուգված են']];
-  const count = st => S.data === 'full' ? QUEUE.filter(q => q.state === st).length : 0;
-  const filters = `<div class="chips" role="group" aria-label="Աշխատանքների կարգավիճակ">${states.map(([k,l]) => `<button type="button" class="chip" data-rq-state="${k}" aria-pressed="${S.rqState === k}">${l} · ${count(k)}</button>`).join('')}</div>
+  const states = [['submitted', 'Սպասում են ստուգման'], ['changes_requested', 'Վերադարձված են'], ['reviewed', 'Ստուգված են']];
+  const inScope = q => (S.rqKind === 'all' || q.kind === S.rqKind) && (S.rqClass === 'all' || q.classId === S.rqClass);
+  const count = st => S.data === 'full' ? QUEUE.filter(q => q.state === st && inScope(q)).length : 0;
+  const sel = S.rqClass === 'all' ? null : cls(S.rqClass);
+  const filters = `<div class="chips" role="group" aria-label="Աշխատանքների կարգավիճակ">${states.map(([k, l]) => `<button type="button" class="chip" data-rq-state="${k}" aria-pressed="${S.rqState === k}">${l} · ${count(k)}</button>`).join('')}</div>
     <div class="filters">
-      <label class="field" for="rqClass">Դասարան<select id="rqClass"><option value="all">Բոլոր դասարանները</option>${CLASSES.map(c => `<option value="${c.id}"${S.rqClass === c.id ? ' selected' : ''}>${esc(c.name)} · ${esc(c.subject)}</option>`).join('')}</select></label>
-      <label class="field" for="rqUnit">Բաժին<select id="rqUnit"><option>Բոլոր բաժինները</option><option>Բաժին 2</option><option>Unit 3</option></select></label>
-      <div class="field"><span id="kindL">Տեսակ</span><div class="seg-p" role="group" aria-labelledby="kindL">${[['all','Բոլորը'],['course','Դասընթացի'],['custom','Իմ կազմած']].map(([k,l]) => `<button type="button" data-rq-kind="${k}" aria-pressed="${S.rqKind === k}">${l}</button>`).join('')}</div></div>
+      <label class="field" for="rqClass">Դասարան<select id="rqClass"><option value="all">Բոլոր դասարանները</option>${CLASSES.map(c => `<option value="${c.id}"${S.rqClass === c.id ? ' selected' : ''}>${esc(label(c))} · ${gradeLabel(prog(c).grade)}</option>`).join('')}</select></label>
+      <label class="field" for="rqUnit">Բաժին<select id="rqUnit"${sel ? '' : ' disabled'}><option>${sel ? 'Բոլոր բաժինները' : 'Նախ ընտրեք դասարանը'}</option>${sel ? prog(sel).units.map(x => `<option>${esc(x.title)}</option>`).join('') : ''}</select></label>
+      <div class="field"><span id="kindL">Տեսակ</span><div class="seg-p" role="group" aria-labelledby="kindL">${[['all', 'Բոլորը'], ['course', 'Դասընթացի'], ['custom', 'Իմ կազմած']].map(([k, l]) => `<button type="button" data-rq-kind="${k}" aria-pressed="${S.rqKind === k}">${l}</button>`).join('')}</div></div>
     </div>
-    ${note('B4', 'Status chips follow the content reviewer’s queue and the existing wording. Class, unit and type become optional filters. Course writing across classes is already available. Returned/checked items across classes and custom tasks need the 0.5-day investigation first.')}`;
+    ${note('B4', 'Status chips follow the content reviewer’s queue and the existing wording. Class, unit and type are optional filters; units belong to a class’s subject, so the unit filter opens after a class is chosen. Course writing across classes is already available. Returned/checked items across classes and custom tasks need the 0.5-day investigation first.')}`;
   if (S.data === 'loading') return head + filters + loadingBlock(`${skel(64)}${skel(64)}${skel(64)}${skel(64)}`);
-  const items = S.data === 'full' ? QUEUE.filter(q => q.state === S.rqState && (S.rqKind === 'all' || q.kind === S.rqKind) && (S.rqClass === 'all' || q.cls.startsWith(CLASSES.find(c => c.id === S.rqClass).name + ' · ' + CLASSES.find(c => c.id === S.rqClass).subject))) : [];
+  const items = S.data === 'full' ? QUEUE.filter(q => q.state === S.rqState && inScope(q)) : [];
+  const where = q => `${esc(label(cls(q.classId)))} · ${esc(q.unit)} · ${q.kind === 'custom' ? 'Իմ կազմած' : 'Դասընթացի'} · ${q.date}`;
   const list = items.length ? `<ul class="queue card" style="padding:6px">${items.map(q => `<li><button type="button" data-open="${q.id}" aria-current="${S.open === q.id}">
       <span class="who">${esc(q.who)}</span>${q.wait >= 3 && q.state === 'submitted' ? `<span class="pill attention">${q.wait} օր</span>` : `<span class="tile-meta">${q.date}</span>`}
-      <span class="what">${esc(q.what)}</span><span class="where">${esc(q.cls)} · ${esc(q.unit)} · ${q.kind === 'custom' ? 'Իմ կազմած' : 'Դասընթացի'} · ${q.date}</span></button></li>`).join('')}</ul>`
-    : `<div class="card empty"><h2>Ստուգման սպասող աշխատանք չկա</h2><p class="lede">Նոր ներկայացումները կհայտնվեն այստեղ։ Ստուգվածները տեսնելու համար ընտրեք «Ստուգված են»։</p></div>`;
-  const q = QUEUE.find(x => x.id === S.open);
-  const idx = items.findIndex(x => x.id === S.open);
+      <span class="what">${esc(q.what)}</span><span class="where">${where(q)}</span></button></li>`).join('')}</ul>`
+    : `<div class="card empty"><h2>Այս ֆիլտրով աշխատանք չկա</h2><p class="lede">Նոր ներկայացումները կհայտնվեն այստեղ։ Փոխեք կարգավիճակը կամ դասարանը՝ մյուս աշխատանքները տեսնելու համար։</p></div>`;
+  const q = QUEUE.find(x => x.id === S.open), idx = items.findIndex(x => x.id === S.open);
   const panel = q ? `<article class="card section" aria-labelledby="revT">
       <div class="section-head"><button type="button" class="btn quiet" data-close>← Վերադառնալ ցանկին</button><span class="tile-meta">${idx + 1} / ${items.length}</span></div>
-      <div><h2 id="revT">${esc(q.who)}</h2><p class="lede">${esc(q.what)} · ${esc(q.cls)} · ${esc(q.unit)} · Ներկայացվել է ${q.date}</p></div>
+      <div><h2 id="revT">${esc(q.who)}</h2><p class="lede">${esc(q.what)} · ${where(q)}</p></div>
       <h3>Ներկայացված տարբերակ 1</h3>
-      <div class="submission" lang="${q.cls.includes('Անգլերեն') ? 'en' : 'hy'}">${esc(q.text)}</div>
+      <div class="submission" lang="${cls(q.classId).prog === 'english7' ? 'en' : 'hy'}">${esc(q.text)}</div>
       <h3>Գնահատման չափանիշները</h3>
       <div class="rubric">${RUBRIC.map((r, i) => `<label class="field" for="rb${i}">${esc(r)}<select id="rb${i}"><option>Ընտրեք միավորը</option><option>0</option><option>1</option><option>2</option><option>3</option></select></label>`).join('')}</div>
       <label class="field" for="fb">Մեկնաբանություն աշակերտին<textarea id="fb" rows="4"></textarea></label>
@@ -495,70 +541,86 @@ function review() {
 
 /* ---------- drawer ---------- */
 function drawer() {
-  const s = students.find(x => x.id === S.drawer); if (!s) return '';
-  const bandLabel = {secure:'Կայուն', developing:'Զարգացող', needs:'Աջակցություն է պետք', none:'Տվյալ դեռ չկա'};
+  const c = cls(S.classId), uid = curUnit(), s = roster(c, uid).find(x => x.id === S.drawer); if (!s) return '';
+  const bl = { secure: 'Կայուն', developing: 'Զարգացող', needs: 'Աջակցություն է պետք', none: 'Տվյալ դեռ չկա' };
   return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
     <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
-    <p class="lede">Վերջին ակտիվություն՝ ${ago(s.daysAgo)} · Վերջին պատասխանների ճշգրտություն՝ ${s.acc == null ? '—' : s.acc + '%'}</p>
+    <p class="lede">${esc(label(c))} · ${esc(unitOf(c, uid).short)} · Վերջին ակտիվություն՝ ${ago(s.daysAgo)} · Վերջին պատասխանների ճշգրտություն՝ ${s.acc == null ? '—' : s.acc + '%'}</p>
     <h3>Հմտությունների տվյալներ</h3>
-    <ul class="queue">${SKILLS.map((k, j) => `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span><strong>${esc(k.code)}</strong> ${esc(k.name)}</span><span class="pill ${s.bands[j] === 'needs' ? 'error' : s.bands[j] === 'secure' ? 'good' : 'calm'}">${bandLabel[s.bands[j]]}</span></li>`).join('')}</ul>
+    <ul class="queue">${skillsOf(c, uid).map((k, j) => `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span><strong>${esc(k.code)}</strong> ${esc(k.name)}</span><span class="pill ${s.bands[j] === 'needs' ? 'error' : s.bands[j] === 'secure' ? 'good' : 'calm'}">${bl[s.bands[j]]}</span></li>`).join('')}</ul>
     ${note('B3', 'The existing student drawer is kept as it is. Only how it opens changes: from a roster row.')}
   </aside></div>`;
 }
 
-/* ---------- render ---------- */
+/* ---------- render and routing ---------- */
 function render() {
   stage.dataset.device = narrow() ? 'phone' : S.device;
   app.classList.toggle('notes-on', S.notes);
-  const view = S.screen === 'class' ? classPage() : S.screen === 'review' ? review() : home();
+  const view = S.screen === 'class' ? classPage() : S.screen === 'classes' ? classList() : S.screen === 'review' ? review() : home();
   app.innerHTML = shell(view) + (S.drawer ? drawer() : '');
   app.classList.toggle('drawer-open', !!S.drawer);
-  for (const [id, key] of [['ctlScreen','screen'],['ctlDevice','device'],['ctlState','data']])
-    for (const b of document.querySelectorAll('#' + id + ' button')) b.setAttribute('aria-pressed', String(b.dataset.v === S[key]));
+  const shown = { screen: S.screen, device: S.device, data: S.data };
+  for (const [id, key] of [['ctlScreen', 'screen'], ['ctlDevice', 'device'], ['ctlState', 'data']])
+    for (const b of document.querySelectorAll('#' + id + ' button')) b.setAttribute('aria-pressed', String(b.dataset.v === shown[key]));
   document.getElementById('ctlNotes').checked = S.notes;
-  document.title = 'HaiEdu Teacher Prototype';
-  try { localStorage.setItem('haiedu-proto', JSON.stringify({device: S.device, notes: S.notes})); } catch (e) {}
+  try { localStorage.setItem('haiedu-proto', JSON.stringify({ device: S.device, notes: S.notes })); } catch (e) {}
 }
-// review() decides between split and full-screen by the frame width, which is only known after layout.
+// review() chooses split or full-screen by the frame width, which is known only after layout.
 function rerenderAfterLayout() { render(); requestAnimationFrame(() => { if (S.screen === 'review' && S.open) render(); }); }
-function go(screen, extra = {}) { Object.assign(S, {screen, open: null, menu: false, drawer: null}, extra); if (location.hash !== '#' + screen) history.replaceState(null, '', '#' + screen); rerenderAfterLayout(); document.getElementById('frame').scrollTop = 0; }
+const hashFor = () => S.screen === 'class' ? 'class-' + S.classId : S.screen;
+function toTop() { document.getElementById('frame').scrollTop = 0; if (narrow() || app.getBoundingClientRect().top < 0) app.scrollIntoView({ block: 'start' }); }
+function go(screen, extra = {}) {
+  Object.assign(S, { screen, open: null, menu: false, drawer: null }, extra);
+  if (location.hash !== '#' + hashFor()) history.replaceState(null, '', '#' + hashFor());
+  rerenderAfterLayout(); toTop();
+}
+const openClass = (id, filter = 'all') => go('class', { classId: id, unitId: null, classTab: 'students', rosterFilter: filter, rosterQuery: '' });
 
 document.querySelector('.proto-bar').addEventListener('click', e => {
   const b = e.target.closest('button[data-v]'); if (!b) return;
   const g = b.parentElement.id;
-  if (g === 'ctlScreen') go(b.dataset.v);
+  if (g === 'ctlScreen') { if (b.dataset.v === 'class') openClass(S.classId); else go(b.dataset.v); }
   if (g === 'ctlDevice') { S.device = b.dataset.v; rerenderAfterLayout(); }
   if (g === 'ctlState') { S.data = b.dataset.v; S.open = null; S.drawer = null; rerenderAfterLayout(); }
 });
 document.getElementById('ctlNotes').addEventListener('change', e => { S.notes = e.target.checked; render(); });
 app.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],#moreBtn');
+  const t = e.target.closest('[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],[data-class-open],[data-review-class],#moreBtn');
   if (!t) { if (S.menu) { S.menu = false; render(); } return; }
   if (t.matches('[data-close-drawer]') && (e.target === t || t.tagName === 'BUTTON')) { S.drawer = null; render(); return; }
-  if (t.closest('.drawer') && !t.matches('button')) return;
+  if (t.matches('.drawer-bg')) return;
   e.preventDefault();
-  if (t.dataset.go) { const extra = {}; if (t.dataset.filter) Object.assign(extra, {rosterFilter: t.dataset.filter, classTab: 'students'}); if (t.hasAttribute('data-open-first')) Object.assign(extra, {rqState: 'submitted', rqKind: 'all', rqClass: 'all'}); go(t.dataset.go, extra); if (t.hasAttribute('data-open-first')) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
+  if (t.dataset.classOpen) { openClass(t.dataset.classOpen, t.dataset.filter || 'all'); return; }
+  if (t.dataset.reviewClass) { go('review', { rqClass: t.dataset.reviewClass, rqState: 'submitted', rqKind: 'all' }); return; }
+  if (t.dataset.go) { const first = t.hasAttribute('data-open-first'); go(t.dataset.go, first ? { rqState: 'submitted', rqKind: 'all', rqClass: 'all' } : {}); if (first) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
   if (t.id === 'moreBtn') { S.menu = !S.menu; render(); return; }
-  if (t.hasAttribute('data-proto-off')) { flash(t); return; }
+  if (t.hasAttribute('data-proto-off')) { flash(); return; }
   if (t.dataset.tab) { S.classTab = t.dataset.tab; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
   if (t.dataset.filter) { S.rosterFilter = t.dataset.filter; S.classTab = 'students'; render(); return; }
   if (t.dataset.rqState) { S.rqState = t.dataset.rqState; S.open = null; render(); return; }
   if (t.dataset.rqKind) { S.rqKind = t.dataset.rqKind; S.open = null; render(); return; }
-  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); document.getElementById('frame').scrollTop = 0; if (app.clientWidth < 1000) app.scrollIntoView({block: 'start'}); return; }
+  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); if (app.clientWidth < 1000) toTop(); return; }
   if (t.hasAttribute('data-close')) { S.open = null; render(); return; }
-  if (t.dataset.student) { S.drawer = t.dataset.student; render(); document.getElementById('frame').scrollTop = 0; app.scrollIntoView({block: 'start'}); app.querySelector('.drawer button')?.focus({preventScroll: true}); return; }
+  if (t.dataset.student) { S.drawer = t.dataset.student; render(); toTop(); app.querySelector('.drawer button')?.focus({ preventScroll: true }); return; }
 });
 app.addEventListener('input', e => { if (e.target.id === 'rq') { S.rosterQuery = e.target.value; const pos = e.target.selectionStart; render(); const i = document.getElementById('rq'); i.focus(); i.setSelectionRange(pos, pos); } });
-app.addEventListener('change', e => { if (e.target.id === 'rqClass') { S.rqClass = e.target.value; S.open = null; render(); } });
+app.addEventListener('change', e => {
+  if (e.target.id === 'rqClass') { S.rqClass = e.target.value; S.open = null; render(); }
+  if (e.target.id === 'unitSel') { S.unitId = e.target.value; S.drawer = null; render(); document.getElementById('unitSel')?.focus(); }
+});
 app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.drawer) { S.drawer = null; render(); } else if (S.menu) { S.menu = false; render(); } } });
 let flashTimer;
-function flash(el) {
+function flash() {
   let tip = document.getElementById('protoTip');
   if (!tip) { tip = document.createElement('div'); tip.id = 'protoTip'; tip.setAttribute('role', 'status'); tip.style.cssText = 'position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1d2a24;color:#f1f5ef;padding:8px 14px;border-radius:8px;font-size:.8125rem;z-index:40;max-width:calc(100% - 32px)'; document.body.appendChild(tip); }
   tip.textContent = 'Not part of this prototype: this control keeps today’s behaviour.'; tip.hidden = false;
   clearTimeout(flashTimer); flashTimer = setTimeout(() => { tip.hidden = true; }, 2200);
 }
-const fromHash = () => { const h = location.hash.slice(1); if (['home','class','review'].includes(h)) { S.screen = h; S.open = null; S.drawer = null; } };
+function fromHash() {
+  const h = location.hash.slice(1);
+  if (['home', 'classes', 'review'].includes(h)) Object.assign(S, { screen: h, open: null, drawer: null });
+  else if (h === 'class' || /^class-c\d$/.test(h)) { const id = h.slice(6) || S.classId; if (cls(id)) Object.assign(S, { screen: 'class', classId: id, unitId: null, open: null, drawer: null }); }
+}
 window.addEventListener('hashchange', () => { fromHash(); rerenderAfterLayout(); });
 window.matchMedia('(max-width: 759px)').addEventListener('change', rerenderAfterLayout);
 fromHash(); rerenderAfterLayout();

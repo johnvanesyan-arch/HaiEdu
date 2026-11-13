@@ -1,6 +1,8 @@
 # Teacher workspace design specification (Phase 2) — 13 November 2026
 
-**Status:** proposal for owner review. No product code. John approved this phase on 13 November 2026: a design specification and a realistic prototype of teacher Home, the class page and the review queue, before any product code. Owner usability acceptance: not given.
+**Status:** proposal for owner review. No product code.
+
+**Decision log:** 13 November 2026, John chose option B for students needing support. Each class card shows its own support count for that class's subject and current unit, linking to that class's filtered roster. There is no single cross-class «Տեսնել աշակերտներին» button: a teacher with several grades, classes and subjects could not tell which class it opens, and support status differs by subject and unit. John approved this phase on 13 November 2026: a design specification and a realistic prototype of teacher Home, the class page and the review queue, before any product code. Owner usability acceptance: not given.
 
 **Inputs:**
 - [Cross-role design review](teacher-workspace-design-review-20261113.md): audit, severity-rated findings, proposals A1–A3, B1–B5, C1–C3.
@@ -9,7 +11,8 @@
 **Prototype:**
 - Interactive page: `docs/design/teacher-workspace-prototype-20261113.html`. It is self-contained and published privately for owner review at https://claude.ai/artifact/7Pw7LFMeAm2X57QHfmbAkB. The link opens only for people John shares it with.
 - It uses HaiEdu's forest colours, the Noto Sans Armenian font and existing product wording, with synthetic example data. It is not connected to any service.
-- Controls: screen (Home / Class / Review queue), width (phone 390 / desktop), data state (filled / empty / loading) and design notes. The yellow notes link each element to the item below and to its data source.
+- The example teacher has four classes across two grades and three subjects (7Ա Physics, 7Բ Physics, 7Ա English, 8Բ Maths), each with its own students, units and skills.
+- Controls: screen (Home / Classes / Class / Review queue), width (phone 390 / desktop), data state (filled / empty / loading) and design notes. The yellow notes link each element to the item below and to its data source.
 
 ## 1. Goal and scope
 
@@ -17,7 +20,7 @@ Teachers should see what needs them, act on it, and find each class's students, 
 
 **In scope:**
 - teacher Home (B1);
-- the class page (B2, B3);
+- the class list and the class page (B2, B3);
 - the writing review queue (B4);
 - the teacher-facing parts of the page header (A2) and account entry (B5);
 - the phone menu (A1), drawn for the teacher so it can be judged.
@@ -61,8 +64,7 @@ Each principle is drawn from the review findings.
 |---|---|---|
 | 1 | H1 «Գլխավոր», «Բարի գալուստ, ‹name›», secondary «+ Նոր դասարան» | Existing teacher profile |
 | 2 | **Ստուգման հերթ** card: pending count, the oldest submission's age, the number of classes; primary «Շարունակել ստուգումը» (opens the first item in the review queue), «Ամբողջ հերթը» | Existing combined Today read (count, entries, per-class counts) |
-| 3 | **Աջակցության կարիք** card: students with ≥ 2 skills in «Աջակցություն է պետք», with a link to the filtered class roster | **Not available on Home today.** Class analytics load per class (BF-07). Needs a server summary, or the card is dropped. |
-| 4 | **Իմ դասարանները**: class cards (name · subject, grade · school · year, pending writing pill) and «Բոլոր դասարանները» | Existing Today class cards |
+| 3 | **Իմ դասարանները**: one card per class, attention first. Each card shows name · subject, grade · school · year, «Ընթացիկ բաժին՝ …», and up to two links: «N աշակերտի աջակցություն է պետք» (opens *that* class's roster with the «Աջակցության կարիք» filter, for the same unit) and «N գրավոր սպասում է ստուգման» (opens the review queue filtered to that class). Otherwise «Հիմա ուշադրության կարիք չկա». Then «Բոլոր դասարանները». | Pending counts: existing Today class cards. **Support counts and the current unit: not available on Home today.** They need a small per-class (class + subject programme + unit) server summary, or they are left out. Student counts appear only on the class page. |
 
 **States:**
 - **Empty (no classes):** the existing 4-step guide with «+ Նոր դասարան». It is not shown once classes exist.
@@ -73,13 +75,21 @@ Each principle is drawn from the review findings.
 
 **Kept:** the queue refresh (inside the queue card) and «Ի՞նչ է ներառված այս հերթում» (on the review page).
 
-### 4.2 Class page (B2, B3)
+### 4.2 Class list (B2)
+
+«Դասարաններ» in the menu opens the list of active classes, never a single class.
+- **Grouping:** when the teacher has more than one grade, classes are grouped under grade headings («7-րդ դասարան», «8-րդ դասարան»). Within a grade, classes needing attention come first.
+- **Cards:** the same cards as on Home.
+- **Actions:** «+ Նոր դասարան»; «Արխիվացված դասարաններ» at the end.
+- **Data:** the existing paginated class directory (24 per page) and search are kept. Grouping applies within each loaded page.
+
+### 4.3 Class page (B2, B3)
 
 | Order | Content | Data source |
 |---|---|---|
 | 1 | Breadcrumb «Դասարաններ / 7Ա · Ֆիզիկա»; H1 = class name · subject; school · year; «Բաժին» select | Existing class read |
 | 2 | Action row: «Հանձնարարել գրավոր» (primary), «Հանձնարարել նյութ», «Նյութերի գրադարան», «Ավելին» (Հրավիրել աշակերտներ, Փոխել անունը, Արխիվացնել դասարանը) | Existing actions; the destinations are unchanged |
-| 3 | Summary figures, which also act as filters: students, needing support, inactive 7+ days, pending writing | Students and support come from the class read; «inactive» is worked out in the browser from `latestActivityAt`; pending comes from the Today card |
+| 3 | Summary figures, which also act as filters: students, needing support (for the selected unit; the line «Աջակցության կարիքը՝ ըստ «Բաժին N»-ի հմտությունների» says which), inactive 7+ days, pending writing | Students and support come from the class read; «inactive» is worked out in the browser from `latestActivityAt`; pending comes from the Today card |
 | 4 | Tabs: «Աշակերտներ» (default), «Հմտություններ», «Հրավերներ · n» | Same reads as today |
 | 5a | **Students:** filter chips, search, and a table (Աշակերտ, Վերջին ակտիվություն, Վերջին պատասխանների ճշգրտություն, Ուշադրության հմտություններ, «Դիտել») sorted with support needs first. On phones each student is a two-line list item. | `students[]`: `displayName`, `latestActivityAt`, `recentAccuracy`, `weakSkills` |
 | 5b | **Skills:** the existing matrix, legend and evidence links | Unchanged |
@@ -92,13 +102,13 @@ Each principle is drawn from the review findings.
 
 **Size target:** 30 students take about 52 px per row on desktop (today 213 px) and about 64 px on a phone (today 486 px).
 
-### 4.3 Review queue (B4)
+### 4.4 Review queue (B4)
 
 | Order | Content | Data source |
 |---|---|---|
 | 1 | H1 «Գրավորի ստուգում», «Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից» | — |
 | 2 | Status chips (existing wording): «Սպասում են ստուգման», «Վերադարձված են», «Ստուգված են», each with a count | Pending course writing across classes exists. **Returned and checked items across classes: investigate.** |
-| 3 | Optional filters: Դասարան (all), Բաժին (all), Տեսակ (Բոլորը / Դասընթացի / Իմ կազմած) | **Custom tasks across classes: investigate.** Today they need a class/unit context. |
+| 3 | Optional filters: Դասարան (all; each option shows the grade), Բաժին (enabled after a class is chosen, because units belong to a class's subject), Տեսակ (Բոլորը / Դասընթացի / Իմ կազմած) | **Custom tasks across classes: investigate.** Today they need a class/unit context. |
 | 4 | List rows: student, task, class · unit · type · date, an age pill after 3 days | Existing queue entry fields |
 | 5 | Open item: the existing review form (submission, rubric, comment, «Ուղարկել գնահատականն ու մեկնաբանությունը», «Վերադարձնել վերանայման», «Պահպանել սևագիրը», «Հաջորդ աշխատանքը»). Desktop: shown beside the list. Phone: full screen with «Վերադառնալ ցանկին». | Existing review module |
 
@@ -113,7 +123,7 @@ Each principle is drawn from the review findings.
 - They also use `#classList .teacher-class-button`, `#rosterAnalyticsCard`, `#teacherWorkflowEntries`, `data-today*` and `#teacherPageTitle`.
 
 **Each build slice:**
-1. Adds `data-testid` hooks to the new elements: `teacher-home-queue`, `teacher-home-support`, `teacher-class-card`, `class-actions`, `class-summary`, `class-tab-students|skills|invites`, `roster-row`, `review-status-chip`, `review-filter-class|unit|kind`, `review-queue-row`, `review-open-item`.
+1. Adds `data-testid` hooks to the new elements: `teacher-home-queue`, `teacher-class-card`, `class-card-support`, `class-card-pending`, `class-grade-group`, `class-actions`, `class-summary`, `class-tab-students|skills|invites`, `roster-row`, `review-status-chip`, `review-filter-class|unit|kind`, `review-queue-row`, `review-open-item`.
 2. Moves the touched production QA locators to those hooks or to role + name, in the same PR.
 3. Keeps hrefs and view parameters stable, so menu clicks in scripts keep working.
 
@@ -132,7 +142,7 @@ Each principle is drawn from the review findings.
 
 ## 6. Decisions needed from John
 
-1. **The «Աջակցության կարիք» card on Home.** Approve a small server summary (schema/Edge approval later), or drop the card.
+1. **Support counts on Home and class-list cards (option B).** Approve a small per-class server summary (class + subject programme + current unit; schema/Edge approval later), or leave support counts to the class page only.
 2. **A1/A2 scope.** Apply the phone menu and page header to all staff roles (recommended), or treat teacher pages as an exception.
 3. **Phone menu items.** Գլխավոր, Դասարաններ, Ստուգում, Ավելին as drawn, or another set.
 4. **Pilot notice.** Sidebar label only (drawn), or keep the visible notice on Home.
@@ -165,7 +175,7 @@ Each slice is one PR with:
 
 All Armenian wording in the prototype reuses existing product text, except these new labels:
 - «Այսօր», «Ամբողջ հերթը», «Ամենավաղը ներկայացվել է …»;
-- «Աջակցության կարիք» as a card title;
+- «N աշակերտի աջակցություն է պետք», «Ընթացիկ բաժին՝ …», «Հիմա ուշադրության կարիք չկա», «Աջակցության կարիքը՝ ըստ … հմտությունների»;
 - «Ոչ ակտիվ», «Ոչ ակտիվ 7+ օր»;
 - «Ստուգում» (short phone label), «Ավելին»;
 - «Հանձնարարել նյութ» as a button;
