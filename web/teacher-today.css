@@ -4,6 +4,7 @@
 #teacherToday .today-overview { background:var(--forest-hero); }
 .today-actions,.today-heading { display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; }
 .today-heading { justify-content:space-between; margin-bottom:1rem; }
+.today-heading>a { display:inline-flex; align-items:center; min-height:44px; }
 .today-actions>* { min-width:0; max-width:100%; }
 .today-actions a:not(.button-link) { display:inline-flex; align-items:center; min-height:2.75rem; }
 .today-summary { font-size:1.125rem; font-weight:700; }

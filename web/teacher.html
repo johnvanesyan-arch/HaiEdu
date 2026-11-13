@@ -108,14 +108,11 @@
       <section class="teacher-view hidden" data-teacher-view="assign-writing" aria-label="Հանձնարարել գրավոր աշխատանք"><div id="teacherAssignWritingRoot"></div></section>
       <section id="teacherReviewView" class="teacher-view hidden" data-teacher-view="review" aria-label="Գրավորի ստուգում"><div id="teacherReviewRoot"></div></section>
 
-      <section id="teacherProfileView" class="teacher-view hidden" data-teacher-view="profile" aria-labelledby="teacherProfileViewTitle">
-        <div class="teacher-view-heading">
-          <div><span class="mode-kicker">ՊՐՈՖԻԼ ԵՎ ՄՈՒՏՔ</span><h2 id="teacherProfileViewTitle">Իմ պրոֆիլը</h2><p class="subtle">Կառավարեք ձեր ցուցադրվող անունը և մուտքի տվյալները մեկ տեղում։</p></div>
-        </div>
+      <section id="teacherProfileView" class="teacher-view hidden" data-teacher-view="profile" aria-labelledby="teacherPageTitle">
       <section id="profileCard" class="card teacher-profile-card" aria-labelledby="teacherProfileTitle">
         <div class="teacher-card-copy">
           <span class="mode-kicker">ԻՄ ՊՐՈՖԻԼԸ</span>
-          <h3 id="teacherProfileTitle">Ուսուցչի անուն</h3>
+          <h2 id="teacherProfileTitle">Ուսուցչի անուն</h2>
           <p class="subtle">Այս անունը երևում է ձեր ուսուցչական աշխատասեղանում։</p>
         </div>
         <div class="teacher-profile-form">
@@ -129,22 +126,21 @@
         <section class="card teacher-account-card" aria-labelledby="teacherAccountTitle">
           <div>
             <span class="mode-kicker">ՀԱՇԻՎ</span>
-            <h3 id="teacherAccountTitle">Մուտքի տվյալներ և գաղտնաբառ</h3>
+            <h2 id="teacherAccountTitle">Մուտքի տվյալներ և գաղտնաբառ</h2>
             <p class="subtle">Էլ. հասցեի կամ գաղտնաբառի փոփոխությունը կատարվում է պաշտպանված հաշվի բաժնում։</p>
           </div>
           <a class="button-link" href="./privacy.html">Բացել հաշվի կարգավորումները</a>
         </section>
       </section>
 
-      <section id="teacherCreateView" class="teacher-view hidden" data-teacher-view="create" aria-labelledby="teacherCreateViewTitle">
+      <section id="teacherCreateView" class="teacher-view hidden" data-teacher-view="create" aria-labelledby="teacherPageTitle">
         <div class="teacher-view-heading">
-          <div><span class="mode-kicker">ԴԱՍԱՐԱՆՆԵՐ</span><h2 id="teacherCreateViewTitle">Նոր դասարան</h2><p class="subtle">Ստեղծեք դասարան միայն ձեր հաստատված դպրոցի, ուսումնական տարվա և առարկայի շրջանակում։</p></div>
           <a class="ghost button-link" href="?view=classes">Վերադառնալ դասարաններին</a>
         </div>
       <section id="createClassCard" class="card teacher-create-card">
         <div class="teacher-card-copy">
           <span class="mode-kicker">ՆՈՐ ԴԱՍԱՐԱՆ</span>
-          <h3>Ստեղծել դասարան</h3>
+          <h2>Ստեղծել դասարան</h2>
           <p class="subtle">Դասարանը ստեղծելուց հետո համակարգը կստեղծի 8-նիշ միանալու կոդ։</p>
         </div>
         <div class="teacher-create-form">
@@ -158,7 +154,7 @@
       <section id="institutionalCreateCard" class="card teacher-create-card hidden" aria-labelledby="institutionalCreateTitle">
         <div class="teacher-card-copy">
           <span class="mode-kicker">ԴՊՐՈՑԻ ՆՈՐ ԴԱՍԱՐԱՆ</span>
-          <h3 id="institutionalCreateTitle">Ստեղծել դպրոցի դասարան</h3>
+          <h2 id="institutionalCreateTitle">Ստեղծել դպրոցի դասարան</h2>
           <p class="subtle">Ընտրեք ձեր դպրոցը, ընթացիկ տարին և ձեզ թույլատրված առարկայի դասարանը։</p>
         </div>
         <form id="institutionalCreateForm" class="teacher-create-form">
@@ -187,13 +183,13 @@
         </section>
       </section>
 
-      <section id="teacherArchiveView" class="teacher-view hidden" data-teacher-view="archive" aria-labelledby="teacherArchiveViewTitle">
+      <section id="teacherArchiveView" class="teacher-view hidden" data-teacher-view="archive" aria-labelledby="teacherPageTitle">
         <div class="teacher-view-heading">
-          <div><span class="mode-kicker">ԱՐԽԻՎ</span><h2 id="teacherArchiveViewTitle">Արխիվացված դասարաններ</h2><p class="subtle">Արխիվացված դասարանները չեն խառնվում ընթացիկ աշխատանքին։ Դրանց պատմությունն ու վերլուծությունը պահպանվում են, իսկ դասարանը կարող եք վերակտիվացնել։</p></div>
+          <p class="subtle">Արխիվացված դասարանները չեն խառնվում ընթացիկ աշխատանքին։ Դրանց պատմությունն ու վերլուծությունը պահպանվում են, իսկ դասարանը կարող եք վերակտիվացնել։</p>
           <a class="ghost button-link" href="?view=classes">Բացել ակտիվ դասարանները</a>
         </div>
         <section class="card teacher-collection-card">
-          <div class="teacher-collection-heading"><h3>Արխիվացված դասարաններ</h3><span id="archivedClassCount" class="teacher-archive-count">0</span></div>
+          <div class="teacher-collection-heading"><h2>Դասարանների ցանկ</h2><span id="archivedClassCount" class="teacher-archive-count">0</span></div>
           <label id="serverArchiveSearch" class="hidden">Որոնել ամբողջ արխիվում<input id="archiveServerQuery" maxlength="120" type="search" /></label><p id="archiveLoadMessage" role="status"></p><button id="archiveRetry" type="button" class="ghost small-button">Թարմացնել ցանկը</button>
           <div id="archivedClassList" class="teacher-archive-browser"></div><button id="archiveLoadMore" class="ghost hidden" type="button">Բեռնել հաջորդ դասարանները</button>
         </section>

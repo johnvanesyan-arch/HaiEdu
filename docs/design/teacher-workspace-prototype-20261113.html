@@ -1,0 +1,560 @@
+<title>HaiEdu Teacher Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap">
+<style>
+/* Layout concept: the real HaiEdu staff shell (sidebar on desktop, compact header + bottom menu on phones),
+   drawn inside a device frame so one page shows both widths. Single light theme on purpose: the product has no dark mode.
+   Colours are HaiEdu's forest tokens (web/forest-tokens.css); type follows the student scale proposed for staff pages. */
+:root {
+  color-scheme: light;
+  --canvas: #f5f6ef; --surface: #fff; --ink: #23392f; --muted: #58695f; --accent: #285b45; --hover: #214c3a;
+  --selected: #e3eee5; --quiet: #eef1eb; --divider: #dce4da; --control: #6f8476; --focus: #7a4718;
+  --success: #167263; --success-bg: #e7f5ee; --attention: #975b15; --attention-bg: #fff2de;
+  --error: #9e3636; --error-bg: #fcecec; --feedback: #7453a5; --feedback-bg: #f0ebfa;
+  --proto: #1d2a24; --proto-ink: #f1f5ef; --proto-muted: #b9c7bd; --note: #fff7c7; --note-ink: #4d3f00; --note-line: #d9c25a;
+  --font: "Noto Sans Armenian", "Noto Sans", Arial, sans-serif;
+  --t-h1: 1.75rem; --t-h1-phone: 1.5rem; --t-h2: 1.375rem; --t-h2-phone: 1.25rem; --t-h3: 1.125rem; --t-body: 1rem; --t-small: .875rem; --t-tiny: .75rem;
+  --r-s: 8px; --r-m: 12px; --r-l: 16px; --r-pill: 999px;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--proto); }
+body { margin: 0; font: 1rem/1.6 var(--font); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button, input, select, textarea { font: inherit; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- prototype chrome (not part of the product) ---------- */
+.proto-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--proto); color: var(--proto-ink);
+  padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; border-bottom: 1px solid #33443b; font-size: .8125rem; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--proto); }
+.proto-title { font-weight: 700; letter-spacing: .02em; margin-right: auto; display: grid; line-height: 1.3; }
+.proto-title small { font-weight: 400; color: var(--proto-muted); }
+.proto-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.proto-group > span { color: var(--proto-muted); text-transform: uppercase; letter-spacing: .06em; font-size: .6875rem; }
+.seg { display: inline-flex; border: 1px solid #4b5f53; border-radius: var(--r-s); overflow: hidden; }
+.seg button { background: transparent; color: var(--proto-ink); border: 0; padding: 6px 10px; min-height: 32px; cursor: pointer; }
+.seg button + button { border-left: 1px solid #4b5f53; }
+.seg button[aria-pressed="true"] { background: var(--proto-ink); color: var(--proto); font-weight: 600; }
+.proto-toggle { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.proto-toggle input { accent-color: #c8e6cf; width: 16px; height: 16px; }
+.stage { padding-block: 20px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; justify-content: center; }
+.frame { background: var(--canvas); width: 100%; max-width: 1280px; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 40px rgb(0 0 0 / .35); }
+.stage[data-device="phone"] .frame { max-width: 390px; height: 844px; overflow: auto; border-radius: 28px; border: 10px solid #0f1813; position: relative; }
+.stage[data-device="phone"] .frame::-webkit-scrollbar { width: 0; }
+@media (max-width: 759px) { .proto-bar { position: static; } .stage { padding: 0; } .frame, .stage[data-device="phone"] .frame { max-width: none; height: auto; border: 0; border-radius: 0; box-shadow: none; overflow: visible; } .device-group { display: none; } }
+
+/* ---------- product ---------- */
+.app { container-type: inline-size; container-name: app; min-height: 100%; background: var(--canvas); position: relative; }
+.shell { display: grid; grid-template-columns: 1fr; min-height: 100%; }
+.side { display: none; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--divider); position: sticky; top: 0; z-index: 5; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand svg { height: 28px; width: auto; display: block; }
+.role-tag { font-size: var(--t-tiny); color: var(--muted); border-left: 1px solid var(--divider); padding-left: 10px; }
+.icon-btn { min-width: 44px; min-height: 44px; border-radius: var(--r-pill); border: 1px solid var(--divider); background: var(--surface); color: var(--accent); display: inline-grid; place-items: center; cursor: pointer; }
+.main { padding: 16px 16px 96px; display: grid; gap: 20px; align-content: start; min-width: 0; }
+.bottom-nav { position: sticky; bottom: 0; z-index: 5; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-top: 1px solid var(--divider); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.bottom-nav a { display: grid; justify-items: center; gap: 2px; padding: 8px 4px; min-height: 56px; text-decoration: none; color: var(--muted); font-size: var(--t-tiny); font-weight: 600; position: relative; }
+.bottom-nav a[aria-current="page"] { color: var(--accent); background: var(--selected); }
+.bottom-nav svg { width: 22px; height: 22px; }
+.nav-badge { background: var(--attention); color: #fff; border-radius: var(--r-pill); font-size: .6875rem; min-width: 20px; padding: 0 6px; line-height: 18px; font-weight: 700; display: inline-block; text-align: center; }
+.bottom-nav .nav-badge { position: absolute; top: 4px; left: calc(50% + 6px); }
+@container app (min-width: 900px) {
+  .shell { grid-template-columns: 232px minmax(0, 1fr); }
+  .topbar, .bottom-nav { display: none; }
+  .side { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border-right: 1px solid var(--divider); padding: 22px 14px; position: sticky; top: 0; height: 100vh; max-height: 900px; }
+  .side .brand { padding: 0 10px 14px; border-bottom: 1px solid var(--divider); margin-bottom: 10px; }
+  .side .brand svg { height: 34px; }
+  .side-label { font-size: var(--t-tiny); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 4px 10px; font-weight: 600; }
+  .side nav { display: grid; gap: 2px; }
+  .side nav a { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border-radius: var(--r-s); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .9375rem; }
+  .side nav a:hover { background: var(--quiet); }
+  .side nav a[aria-current="page"] { background: var(--selected); color: var(--accent); }
+  .side-foot { margin-top: auto; display: grid; gap: 8px; border-top: 1px solid var(--divider); padding-top: 14px; }
+  .side-foot .pilot { font-size: var(--t-tiny); color: var(--attention); background: var(--attention-bg); border-radius: var(--r-s); padding: 6px 10px; }
+  .main { padding: 28px 36px 48px; gap: 24px; }
+}
+
+/* page header (proposal A2) */
+.page-head { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; justify-content: space-between; }
+.page-head > div { min-width: 0; display: grid; gap: 4px; }
+.crumbs { font-size: var(--t-small); color: var(--muted); display: flex; gap: 6px; flex-wrap: wrap; }
+.crumbs a { color: var(--accent); }
+h1 { font-size: var(--t-h1-phone); line-height: 1.3; font-weight: 700; }
+h2 { font-size: var(--t-h2-phone); line-height: 1.4; font-weight: 700; }
+h3 { font-size: var(--t-h3); line-height: 1.45; font-weight: 600; }
+@container app (min-width: 900px) { h1 { font-size: var(--t-h1); } h2 { font-size: var(--t-h2); } }
+.lede { color: var(--muted); margin: 0; }
+.section { display: grid; gap: 12px; min-width: 0; }
+.section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: var(--r-s); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; cursor: pointer; text-align: center; max-width: 100%; }
+.btn:hover { background: var(--hover); }
+.btn.secondary { background: var(--surface); color: var(--accent); border-color: var(--control); }
+.btn.secondary:hover { background: var(--selected); }
+.btn.quiet { background: transparent; border-color: transparent; color: var(--accent); padding-inline: 8px; text-decoration: underline; text-underline-offset: 3px; }
+.link { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
+.card { background: var(--surface); border: 1px solid var(--divider); border-radius: var(--r-l); padding: 16px; min-width: 0; }
+@container app (min-width: 900px) { .card { padding: 20px 22px; } }
+
+/* home */
+.today { display: grid; gap: 12px; }
+@container app (min-width: 700px) { .today { grid-template-columns: 1.4fr 1fr; } }
+.tile { display: grid; gap: 8px; align-content: start; }
+.tile.primary { background: var(--selected); border-color: #c9dccd; }
+.tile-label { font-size: var(--t-small); color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.tile-figure { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.tile-figure strong { font-size: 2.25rem; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--accent); }
+.tile-figure span { font-weight: 600; }
+.tile-meta { color: var(--muted); font-size: var(--t-small); margin: 0; }
+.tile-actions { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 4px; }
+.class-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.class-card { display: grid; gap: 6px; text-decoration: none; color: var(--ink); cursor: pointer; text-align: left; font: inherit; width: 100%; }
+.class-card:hover { border-color: var(--control); background: var(--quiet); }
+.class-card .meta { color: var(--muted); font-size: var(--t-small); }
+.pill { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--r-pill); padding: 2px 10px; font-size: var(--t-small); font-weight: 600; width: fit-content; max-width: 100%; }
+.pill.attention { background: var(--attention-bg); color: var(--attention); }
+.pill.calm { background: var(--quiet); color: var(--muted); }
+.pill.good { background: var(--success-bg); color: var(--success); }
+.pill.error { background: var(--error-bg); color: var(--error); }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
+.steps li::before { counter-increment: s; content: counter(s); width: 32px; height: 32px; border-radius: var(--r-pill); background: var(--selected); color: var(--accent); font-weight: 700; display: grid; place-items: center; }
+.steps small { display: block; color: var(--muted); }
+
+/* class */
+.class-head-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.field { display: grid; gap: 4px; font-size: var(--t-small); font-weight: 600; min-width: 0; }
+.field select, .field input, .field textarea { min-height: 44px; border: 1px solid var(--control); border-radius: var(--r-s); padding: 8px 10px; background: var(--surface); color: var(--ink); max-width: 100%; font-weight: 400; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.more { position: relative; }
+.more-menu { position: absolute; right: 0; top: calc(100% + 6px); background: var(--surface); border: 1px solid var(--divider); border-radius: var(--r-m); box-shadow: 0 10px 30px rgb(35 57 47 / .15); display: grid; min-width: 220px; padding: 6px; z-index: 6; }
+.more-menu button { text-align: left; background: transparent; border: 0; padding: 10px 12px; min-height: 44px; border-radius: var(--r-s); color: var(--ink); cursor: pointer; }
+.more-menu button:hover { background: var(--quiet); }
+.more-menu .danger { color: var(--error); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@container app (min-width: 700px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stat { display: grid; gap: 2px; padding: 12px 14px; border-radius: var(--r-m); background: var(--surface); border: 1px solid var(--divider); text-align: left; cursor: pointer; color: var(--ink); min-height: 44px; }
+.stat strong { font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.stat span { font-size: var(--t-small); color: var(--muted); }
+.stat.warn strong { color: var(--attention); }
+.stat[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--selected); }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--divider); overflow-x: auto; }
+.tabs button { background: transparent; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; min-height: 44px; color: var(--muted); font-weight: 600; cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; justify-content: space-between; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--control); background: var(--surface); color: var(--accent); border-radius: var(--r-pill); padding: 6px 14px; min-height: 44px; font-weight: 600; cursor: pointer; font-size: .9375rem; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.roster { width: 100%; border-collapse: collapse; }
+.roster th { text-align: left; font-size: var(--t-small); color: var(--muted); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--divider); }
+.roster td { padding: 10px; border-bottom: 1px solid var(--divider); vertical-align: middle; font-size: .9375rem; }
+.roster tr:hover td { background: var(--quiet); }
+.roster .name { font-weight: 600; }
+.roster .num { font-variant-numeric: tabular-nums; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.skill-tag { font-size: var(--t-tiny); background: var(--quiet); border-radius: var(--r-s); padding: 2px 8px; }
+.roster-list { display: none; list-style: none; margin: 0; padding: 0; }
+.roster-list li { border-bottom: 1px solid var(--divider); }
+.roster-list button { width: 100%; text-align: left; background: transparent; border: 0; padding: 12px 4px; display: grid; gap: 4px; color: var(--ink); cursor: pointer; min-height: 56px; }
+.roster-list .row1 { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.roster-list .row2 { color: var(--muted); font-size: var(--t-small); }
+@container app (max-width: 699px) { .roster-wrap { display: none; } .roster-list { display: block; } }
+.matrix-wrap { overflow-x: auto; border: 1px solid var(--divider); border-radius: var(--r-m); background: var(--surface); }
+.matrix { border-collapse: collapse; min-width: 640px; width: 100%; font-size: var(--t-small); }
+.matrix th, .matrix td { padding: 8px; border-bottom: 1px solid var(--divider); text-align: center; }
+.matrix th:first-child, .matrix td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); font-weight: 600; }
+.band { display: inline-grid; place-items: center; min-width: 44px; min-height: 36px; border-radius: var(--r-s); font-weight: 600; font-variant-numeric: tabular-nums; }
+.b-secure { background: #e9f8ef; color: #1f6b3b; } .b-developing { background: #fff7db; color: #855f00; } .b-needs { background: #fdebec; color: #983a45; } .b-none { background: var(--quiet); color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--t-small); color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+
+/* review */
+.review-layout { display: grid; gap: 16px; }
+@container app (min-width: 1000px) { .review-layout.has-open { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; } }
+.filters { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+.seg-p { display: inline-flex; border: 1px solid var(--control); border-radius: var(--r-s); overflow: hidden; flex-wrap: wrap; }
+.seg-p button { background: var(--surface); border: 0; padding: 8px 12px; min-height: 44px; color: var(--accent); font-weight: 600; cursor: pointer; }
+.seg-p button + button { border-left: 1px solid var(--control); }
+.seg-p button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.queue { list-style: none; margin: 0; padding: 0; display: grid; }
+.queue li + li { border-top: 1px solid var(--divider); }
+.queue button { width: 100%; background: transparent; border: 0; text-align: left; padding: 12px 8px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; color: var(--ink); cursor: pointer; border-radius: var(--r-s); min-height: 56px; }
+.queue button:hover { background: var(--quiet); }
+.queue button[aria-current="true"] { background: var(--selected); box-shadow: inset 4px 0 var(--accent); }
+.queue .who { font-weight: 600; }
+.queue .what { grid-column: 1 / -1; font-size: .9375rem; }
+.queue .where { grid-column: 1 / -1; color: var(--muted); font-size: var(--t-small); }
+.submission { background: var(--quiet); border-left: 4px solid var(--accent); border-radius: var(--r-s); padding: 12px 14px; white-space: pre-line; }
+.rubric { display: grid; gap: 10px; }
+.rubric .field select { width: 100%; }
+.review-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.empty { display: grid; gap: 8px; justify-items: start; }
+
+/* states */
+.skel { background: linear-gradient(90deg, var(--quiet) 0, #f7f8f4 50%, var(--quiet) 100%); background-size: 200% 100%; animation: sh 1.4s infinite linear; border-radius: var(--r-m); }
+@keyframes sh { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .skel { animation: none; } }
+
+/* drawer */
+.drawer-bg { position: absolute; inset: 0; background: rgb(20 30 25 / .35); z-index: 15; display: flex; justify-content: flex-end; }
+.drawer { background: var(--surface); width: min(100%, 520px); height: 100%; overflow: auto; padding: 20px; display: grid; gap: 14px; align-content: start; }
+.app.drawer-open { min-height: 844px; }
+
+/* annotations */
+.note { display: none; background: var(--note); color: var(--note-ink); border: 1px dashed var(--note-line); border-radius: var(--r-s); padding: 6px 10px; font-size: .8125rem; line-height: 1.45; }
+.notes-on .note { display: block; }
+.note b { font-weight: 700; }
+.newdata { display: none; font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--note-ink); background: var(--note); border: 1px dashed var(--note-line); border-radius: var(--r-pill); padding: 1px 8px; width: fit-content; }
+.notes-on .newdata { display: inline-block; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<header class="proto-bar" aria-label="Prototype controls">
+  <div class="proto-title">HaiEdu · Teacher workspace prototype<small>Phase 2 · synthetic example data · not the live product</small></div>
+  <div class="proto-group"><span>Screen</span><div class="seg" id="ctlScreen">
+    <button type="button" data-v="home">Home</button><button type="button" data-v="class">Class</button><button type="button" data-v="review">Review queue</button></div></div>
+  <div class="proto-group device-group"><span>Width</span><div class="seg" id="ctlDevice">
+    <button type="button" data-v="phone">Phone 390</button><button type="button" data-v="desktop">Desktop</button></div></div>
+  <div class="proto-group"><span>Data</span><div class="seg" id="ctlState">
+    <button type="button" data-v="full">Filled</button><button type="button" data-v="empty">Empty</button><button type="button" data-v="loading">Loading</button></div></div>
+  <label class="proto-toggle" for="ctlNotes"><input type="checkbox" id="ctlNotes" checked> Design notes</label>
+</header>
+
+<main class="stage" id="stage" data-device="desktop">
+  <div class="frame" id="frame"><div class="app notes-on" id="app" lang="hy"></div></div>
+</main>
+
+<script>
+(() => {
+const LOGO = '<svg viewBox="0 0 739 250" aria-hidden="true"> <path fill="#F28A1F" d="M 50 150 A 50 50 0 0 1 150 150 L 150 186.5 A 13.5 13.5 0 0 1 123 186.5 L 123 150 A 23 23 0 0 0 77 150 Z"/> <path fill="#1E3A8A" d="M 50 186.5 L 50 79.46 L 77 79.46 L 77 186.5 A 13.5 13.5 0 0 1 50 186.5 Z"/> <path fill="#D8262C" d="M 50 80 A 43.5 43.5 0 0 1 131.17 58.25 A 13.5 13.5 0 0 1 107.79 71.75 A 16.5 16.5 0 0 0 77 80 Z"/> <path fill="#1E3A8A" d="M 170 150 A 50 50 0 1 1 270 150 A 50 50 0 1 1 170 150 Z M 197 150 A 23 23 0 1 0 243 150 A 23 23 0 1 0 197 150 Z"/> <path fill="#1E3A8A" d="M 270 113.5 L 270 186.5 A 13.5 13.5 0 0 1 243 186.5 L 243 113.5 A 13.5 13.5 0 0 1 270 113.5 Z"/> <path fill="#1E3A8A" d="M 321 113.5 L 321 186.5 A 13.5 13.5 0 0 1 294 186.5 L 294 113.5 A 13.5 13.5 0 0 1 321 113.5 Z"/> <circle fill="#1E3A8A" cx="307.5" cy="64.58" r="14.58"/> <path fill="#1E3A8A" d="M 442.09 159.5 A 50 50 0 1 0 413.34 195.68 A 13.5 13.5 0 0 0 402.35 171.01 A 23 23 0 1 1 413.95 159.5 Z"/> <path fill="#1E3A8A" d="M 356.5 132.5 L 429.5 132.5 L 429.5 159.5 L 356.5 159.5 Z"/> <path fill="#1E3A8A" d="M 463 150 A 50 50 0 1 1 563 150 A 50 50 0 1 1 463 150 Z M 490 150 A 23 23 0 1 0 536 150 A 23 23 0 1 0 490 150 Z"/> <path fill="#1E3A8A" d="M 563 63.5 L 563 186.5 A 13.5 13.5 0 0 1 536 186.5 L 536 63.5 A 13.5 13.5 0 0 1 563 63.5 Z"/> <path fill="#1E3A8A" d="M 616 113.5 L 616 150 A 23 23 0 0 0 662 150 L 689 150 A 50 50 0 0 1 589 150 L 589 113.5 A 13.5 13.5 0 0 1 616 113.5 Z"/> <path fill="#1E3A8A" d="M 689 113.5 L 689 186.5 A 13.5 13.5 0 0 1 662 186.5 L 662 113.5 A 13.5 13.5 0 0 1 689 113.5 Z"/> </svg>';
+const ICON = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+  classes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c2.8 0 5 2.2 5 5"/></svg>',
+  review: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h10l4 4v14H5z"/><path d="M9 12l2 2 4-4"/></svg>',
+  more: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>',
+  account: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="22" height="22"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>'
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- synthetic data (examples only) ---------- */
+const SKILLS = [
+  {code:'F7-2-01', name:'Նյութի կառուցվածքի մոդելներ'}, {code:'F7-2-02', name:'Մոլեկուլների շարժում'},
+  {code:'F7-2-03', name:'Դիֆուզիա'}, {code:'F7-2-04', name:'Ագրեգատային վիճակներ'}, {code:'F7-2-05', name:'Խտություն'}];
+const FIRST = ['Անի','Դավիթ','Մարիամ','Արամ','Լիլիթ','Նարեկ','Սոնա','Տիգրան','Էլեն','Գոռ','Մանե','Հայկ','Նարե','Արման','Ալինա','Էրիկ','Լուսինե','Վահե','Մելինե','Սամվել','Աստղիկ','Կարեն','Մարի','Ռուբեն','Իննա','Արտյոմ','Սյուզի','Գևորգ'];
+const LAST = ['Պետրոսյան','Հակոբյան','Սարգսյան','Գրիգորյան','Կարապետյան','Ավետիսյան','Մարտիրոսյան','Վարդանյան','Մկրտչյան','Հովհաննիսյան','Ղազարյան','Աբրահամյան','Մանուկյան','Ստեփանյան'];
+const BANDS = ['secure','developing','needs','none'];
+const students = FIRST.map((f, i) => {
+  const daysAgo = [0,1,1,2,3,9,0,4,12,1,2,0,8,3,1,5,0,2,15,1,3,0,6,2,1,10,4,0][i];
+  const bands = SKILLS.map((_, j) => BANDS[(i * 3 + j * 2 + (i % 4 === 0 ? 2 : 0)) % 4]);
+  const needs = bands.filter(b => b === 'needs').length;
+  const acc = bands.includes('none') && i % 7 === 3 ? null : 38 + ((i * 17) % 55);
+  return {id: 's' + i, name: f + ' ' + LAST[i % LAST.length], daysAgo, bands, needs, acc,
+    weak: SKILLS.filter((_, j) => bands[j] === 'needs').slice(0, 2), support: needs >= 2};
+}).sort((a, b) => (b.support - a.support) || (b.needs - a.needs) || a.name.localeCompare(b.name, 'hy'));
+const CLASSES = [
+  {id:'c1', name:'7Ա', subject:'Ֆիզիկա', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:3, unit:'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', students:28, invites:4},
+  {id:'c2', name:'7Բ', subject:'Ֆիզիկա', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:0, unit:'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', students:26, invites:0},
+  {id:'c3', name:'7Ա', subject:'Անգլերեն', grade:'7-րդ դասարան', school:'Փորձնական դպրոց Ա', year:'2026–2027', pending:2, unit:'Unit 3. Ես աշխարհում', students:24, invites:1}];
+const QUEUE = [
+  {id:'q1', who:'Մարիամ Սարգսյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'submitted', date:'09.11.2026', wait:4,
+   text:'Երբ մայրիկս խոհանոցում սուրճ է եփում, հոտը մի քանի րոպեում հասնում է իմ սենյակ։ Դա դիֆուզիա է․ սուրճի մոլեկուլները անընդհատ շարժվում են և խառնվում օդի մոլեկուլների հետ։\n\nՏաք սենյակում հոտն ավելի արագ է տարածվում, որովհետև մոլեկուլներն ավելի արագ են շարժվում։ Եթե դուռը փակ է, հոտը դանդաղ է հասնում։'},
+  {id:'q2', who:'Դավիթ Հակոբյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'submitted', date:'10.11.2026', wait:3, text:'Թեյի մեջ շաքարը լուծվում է, նույնիսկ եթե չխառնենք, բայց ավելի դանդաղ։'},
+  {id:'q3', who:'Լիլիթ Կարապետյան', what:'Իմ առաջադրանքը․ փորձի նկարագրություն', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'custom', state:'submitted', date:'11.11.2026', wait:2, text:'Փորձի նկարագրությունը կցված PDF ֆայլում է։'},
+  {id:'q4', who:'Նարե Մանուկյան', what:'Describe your favourite outfit', cls:'7Ա · Անգլերեն', unit:'Unit 3', kind:'course', state:'submitted', date:'12.11.2026', wait:1, text:'My favourite outfit is a blue hoodie and white trainers. I wear it at the weekend because it is comfortable.'},
+  {id:'q5', who:'Արման Ստեփանյան', what:'Describe your favourite outfit', cls:'7Ա · Անգլերեն', unit:'Unit 3', kind:'course', state:'submitted', date:'13.11.2026', wait:0, text:'I like jeans and a black jacket.'},
+  {id:'q6', who:'Սոնա Մարտիրոսյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'changes_requested', date:'06.11.2026', wait:7, text:'—'},
+  {id:'q7', who:'Հայկ Ավետիսյան', what:'Իմ առաջադրանքը․ փորձի նկարագրություն', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'custom', state:'changes_requested', date:'05.11.2026', wait:8, text:'—'},
+  {id:'q8', who:'Էլեն Մկրտչյան', what:'Բացատրեք դիֆուզիան առօրյա օրինակով', cls:'7Ա · Ֆիզիկա', unit:'Բաժին 2', kind:'course', state:'reviewed', date:'03.11.2026', wait:10, text:'—'}];
+const RUBRIC = ['Ֆիզիկական երևույթի ճիշտ բացատրություն', 'Առօրյա օրինակի համապատասխանություն', 'Պատճառի և հետևանքի կապ', 'Լեզվի հստակություն'];
+
+/* ---------- state ---------- */
+const S = { screen: 'home', device: 'desktop', data: 'full', notes: true, classTab: 'students', rosterFilter: 'all', rosterQuery: '',
+  rqState: 'submitted', rqKind: 'all', rqClass: 'all', open: null, menu: false, drawer: null };
+const app = document.getElementById('app'), stage = document.getElementById('stage');
+const narrow = () => window.matchMedia('(max-width: 759px)').matches;
+try { const saved = JSON.parse(localStorage.getItem('haiedu-proto') || '{}'); if (saved.device) S.device = saved.device; if (typeof saved.notes === 'boolean') S.notes = saved.notes; } catch (e) {}
+
+const note = (id, text) => `<p class="note"><b>${id}</b> · ${text}</p>`;
+const newData = label => `<span class="newdata">${label}</span>`;
+const pendingTotal = () => CLASSES.reduce((n, c) => n + c.pending, 0);
+const ago = d => d === 0 ? 'այսօր' : d === 1 ? 'երեկ' : d + ' օր առաջ';
+
+/* ---------- shell ---------- */
+function shell(inner) {
+  const nav = [['home','Գլխավոր','home'],['class','Դասարաններ','classes'],['review','Գրավորի ստուգում','review']];
+  const pend = S.data === 'full' ? pendingTotal() : 0;
+  const cur = k => (S.screen === k ? ' aria-current="page"' : '');
+  return `<div class="shell">
+  <aside class="side" aria-label="Ուսուցչի մենյու">
+    <a class="brand" href="#home" data-go="home" aria-label="HaiEdu · Գլխավոր">${LOGO}</a>
+    <div class="side-label">Աշխատասեղան · Ուսուցիչ</div>
+    <nav>
+      <a href="#home" data-go="home"${cur('home')}>Գլխավոր</a>
+      <a href="#class" data-go="class"${cur('class')}>Դասարաններ</a>
+      <a href="#review" data-go="review"${cur('review')}>Գրավորի ստուգում ${pend ? `<span class="nav-badge" aria-label="${pend} սպասող">${pend}</span>` : ''}</a>
+      <a href="#home" data-proto-off>Հանձնարարել գրավոր</a>
+      <a href="#home" data-proto-off>Նյութերի գրադարան</a>
+      <a href="#home" data-proto-off>Արխիվացված դասարաններ</a>
+    </nav>
+    <div class="side-foot">
+      <span class="pilot">Փորձնական տարբերակ</span>
+      ${note('A2', 'The pilot notice lives here once, instead of a yellow box on every page.')}
+      <a class="link" href="#home" data-proto-off>Իմ հաշիվը</a>
+      ${note('B5', 'One account entry (name, email, password), as students have. «Իմ պրոֆիլը» leaves the main menu.')}
+      <button type="button" class="btn secondary" data-proto-off style="color:var(--error);border-color:var(--error)">Դուրս գալ</button>
+    </div>
+  </aside>
+  <div style="min-width:0;display:flex;flex-direction:column">
+    <header class="topbar">
+      <a class="brand" href="#home" data-go="home" aria-label="HaiEdu · Գլխավոր">${LOGO}<span class="role-tag">Ուսուցիչ</span></a>
+      <button type="button" class="icon-btn" aria-label="Իմ հաշիվը" data-proto-off>${ICON.account}</button>
+    </header>
+    <main class="main" id="main">${inner}</main>
+    <nav class="bottom-nav" aria-label="Ուսուցչի մենյու">
+      <a href="#home" data-go="home"${cur('home')}>${ICON.home}<span>Գլխավոր</span></a>
+      <a href="#class" data-go="class"${cur('class')}>${ICON.classes}<span>Դասարաններ</span></a>
+      <a href="#review" data-go="review"${cur('review')}>${ICON.review}<span>Ստուգում</span>${pend ? `<span class="nav-badge">${pend}</span>` : ''}</a>
+      <a href="#home" data-proto-off>${ICON.more}<span>Ավելին</span></a>
+    </nav>
+  </div></div>`;
+}
+
+const skel = (h, w = '100%') => `<div class="skel" style="height:${h}px;width:${w}" aria-hidden="true"></div>`;
+const loadingBlock = rows => `<div role="status" class="section"><span class="sr">Բեռնվում է…</span>${rows}</div>`;
+
+/* ---------- Home ---------- */
+function home() {
+  const head = `<div class="page-head"><div><h1>Գլխավոր</h1><p class="lede">Բարի գալուստ, Անի</p></div>
+    ${S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-proto-off>+ Նոր դասարան</button>'}</div>
+    ${note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle. On phones the title sits about 70 px from the top instead of 280 px.')}`;
+  if (S.data === 'loading') return head + loadingBlock(`<div class="today">${skel(170)}${skel(170)}</div>${skel(28,'40%')}<div class="class-grid">${skel(120)}${skel(120)}${skel(120)}</div>`);
+  if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="startT">
+      <h2 id="startT">Սկսեք ձեր առաջին դասարանից</h2>
+      <ol class="steps">
+        <li><div><strong>Լրացրեք ձեր անունը</strong><small>Ձեր անունը՝ դասարանի և գրավորների էջերում։</small></div></li>
+        <li><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա» կամ «7Ա Ֆիզիկա», ապա ընտրեք ուսումնական տարին։</small></div></li>
+        <li><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
+        <li><div><strong>Տեսեք՝ ում օգնել</strong><small>Բացեք աշակերտի քարտը՝ արդյունքն ու հաջորդ քայլը տեսնելու համար։</small></div></li>
+      </ol>
+      <div><button type="button" class="btn" data-proto-off>+ Նոր դասարան</button></div>
+      ${note('B1', 'The 4-step guide (existing wording) appears only while the teacher has no classes. Today it shows on every Home.')}
+    </section>`;
+  const p = pendingTotal();
+  return head + `<section class="section" aria-labelledby="todayT">
+    <h2 id="todayT">Այսօր</h2>
+    <div class="today">
+      <article class="card tile primary" aria-labelledby="qT">
+        <span class="tile-label" id="qT">Ստուգման հերթ</span>
+        <div class="tile-figure"><strong>${p}</strong><span>գրավոր սպասում է ստուգման</span></div>
+        <p class="tile-meta">Ամենավաղը ներկայացվել է 4 օր առաջ · ${CLASSES.filter(c => c.pending).length} դասարանից</p>
+        <div class="tile-actions"><button type="button" class="btn" data-go="review" data-open-first>Շարունակել ստուգումը</button>
+          <button type="button" class="btn quiet" data-go="review">Ամբողջ հերթը</button></div>
+        ${note('B1', 'Existing data: the combined Today read already returns the count, the oldest item and per-class counts.')}
+      </article>
+      <article class="card tile" aria-labelledby="sT">
+        <span class="tile-label" id="sT">Աջակցության կարիք</span>
+        <div class="tile-figure"><strong>${students.filter(s => s.support).length}</strong><span>աշակերտ 1 դասարանում</span></div>
+        <p class="tile-meta">Երկու և ավելի հմտությունում՝ «Աջակցություն է պետք»</p>
+        <div class="tile-actions"><button type="button" class="btn secondary" data-go="class" data-filter="support">Տեսնել աշակերտներին</button></div>
+        ${newData('Needs new data')}
+        ${note('B1', 'Not in today’s Home read: class analytics load per class. Needs a small server summary, or this card is dropped. Decision needed.')}
+      </article>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="clsT">
+    <div class="section-head"><h2 id="clsT">Իմ դասարանները</h2><a class="link" href="#class" data-go="class">Բոլոր դասարանները</a></div>
+    <div class="class-grid">${CLASSES.map(c => `
+      <button type="button" class="card class-card" data-go="class" data-class="${c.id}">
+        <h3>${esc(c.name)} · ${esc(c.subject)}</h3>
+        <span class="meta">${esc(c.grade)} · ${esc(c.school)} · ${esc(c.year)}</span>
+        ${c.pending ? `<span class="pill attention">${c.pending} գրավոր սպասում է ստուգման</span>` : `<span class="pill calm">Ստուգման սպասող չկա</span>`}
+      </button>`).join('')}</div>
+    ${note('B1', 'Class cards use existing per-class pending counts. Student counts are not in the Home read, so they appear only on the class page.')}
+  </section>`;
+}
+
+/* ---------- Class ---------- */
+function classPage() {
+  const c = CLASSES[0];
+  const crumbs = `<nav class="crumbs" aria-label="Ճանապարհ"><a href="#class" data-proto-off>Դասարաններ</a><span aria-hidden="true">/</span><span>${esc(c.name)} · ${esc(c.subject)}</span></nav>`;
+  const head = `${crumbs}<div class="page-head"><div><h1>${esc(c.name)} · ${esc(c.subject)}</h1><p class="lede">${esc(c.school)} · ${esc(c.year)}</p></div>
+    <div class="class-head-tools"><label class="field" for="unitSel">Բաժին<select id="unitSel"><option>Բաժին 1. Ֆիզիկական մեթոդները</option><option selected>${esc(c.unit)}</option></select></label></div></div>
+    ${note('B2', 'The class name is the page title (today: «Դասարանի աշխատատարածք»). The unit choice stays in the header because the student data and the matrix depend on it.')}
+    <div class="actions">
+      <button type="button" class="btn" data-proto-off>Հանձնարարել գրավոր</button>
+      <button type="button" class="btn secondary" data-proto-off>Հանձնարարել նյութ</button>
+      <button type="button" class="btn secondary" data-proto-off>Նյութերի գրադարան</button>
+      <div class="more"><button type="button" class="btn secondary" id="moreBtn" aria-haspopup="true" aria-expanded="${S.menu}" aria-controls="moreMenu">Ավելին</button>
+        ${S.menu ? `<div class="more-menu" id="moreMenu" role="menu"><button role="menuitem" type="button" data-proto-off>Հրավիրել աշակերտներ</button><button role="menuitem" type="button" data-proto-off>Փոխել անունը</button><button role="menuitem" type="button" class="danger" data-proto-off>Արխիվացնել դասարանը</button></div>` : ''}</div>
+    </div>
+    ${note('B2', 'One action row replaces the four large workflow cards that today come before any student data. Rename and archive move under «Ավելին».')}`;
+  if (S.data === 'loading') return head + loadingBlock(`<div class="stats">${skel(68)}${skel(68)}${skel(68)}${skel(68)}</div>${skel(44,'60%')}${skel(48)}${skel(48)}${skel(48)}${skel(48)}`);
+  if (S.data === 'empty') return head + `<section class="card section" aria-labelledby="invT">
+      <h2 id="invT">Հրավիրել աշակերտներ</h2>
+      <p class="lede">Դասարանում դեռ աշակերտ չկա։ Ուղարկեք հրավեր էլ. փոստով կամ տվեք միանալու կոդը։</p>
+      <label class="field" for="inv">Աշակերտների էլ. հասցեներ<textarea id="inv" rows="4" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div>
+      ${note('B2', 'While the class is empty, the invitation form is the main content. Once students join, it moves to the «Հրավերներ» tab.')}
+    </section>`;
+  const inactive = students.filter(s => s.daysAgo >= 7).length, support = students.filter(s => s.support).length;
+  const stat = (key, n, label, warn) => `<button type="button" class="stat${warn ? ' warn' : ''}" data-filter="${key}" aria-pressed="${S.rosterFilter === key}"><strong>${n}</strong><span>${label}</span></button>`;
+  const tabs = [['students','Աշակերտներ'],['skills','Հմտություններ'],['invites',`Հրավերներ · ${c.invites}`]];
+  let body = '';
+  if (S.classTab === 'students') {
+    const list = students.filter(s => (S.rosterFilter === 'support' ? s.support : S.rosterFilter === 'inactive' ? s.daysAgo >= 7 : true) && s.name.includes(S.rosterQuery));
+    const bandLabel = {secure:'Կայուն', developing:'Զարգացող', needs:'Աջակցություն է պետք', none:'Տվյալ դեռ չկա'};
+    const status = s => s.support ? '<span class="pill error">Աջակցություն է պետք</span>' : s.daysAgo >= 7 ? '<span class="pill attention">Ոչ ակտիվ</span>' : '';
+    body = `<div class="toolbar">
+        <div class="chips" role="group" aria-label="Ֆիլտր">
+          ${[['all',`Բոլորը · ${students.length}`],['support',`Աջակցության կարիք · ${support}`],['inactive',`Ոչ ակտիվ · ${inactive}`]].map(([k,l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}
+        </div>
+        <label class="field" for="rq">Փնտրել աշակերտ<input id="rq" type="search" value="${esc(S.rosterQuery)}" placeholder="Անուն…"></label>
+      </div>
+      ${note('B3', 'One row per student (about 52 px instead of 213 px on desktop; 64 px instead of 486 px on phones). Students needing support come first. All values come from the existing class read; «Ոչ ակտիվ» is 7+ days since last activity, worked out in the browser.')}
+      <div class="roster-wrap card" style="padding:0;overflow-x:auto"><table class="roster">
+        <caption class="sr">Աշակերտներ, ${list.length}</caption>
+        <thead><tr><th scope="col">Աշակերտ</th><th scope="col">Վերջին ակտիվություն</th><th scope="col">Վերջին պատասխանների ճշգրտություն</th><th scope="col">Ուշադրության հմտություններ</th><th scope="col"><span class="sr">Գործողություն</span></th></tr></thead>
+        <tbody>${list.map(s => `<tr><td><span class="name">${esc(s.name)}</span> ${status(s)}</td><td>${ago(s.daysAgo)}</td><td class="num">${s.acc == null ? '—' : s.acc + '%'}</td>
+          <td><div class="skill-tags">${s.weak.length ? s.weak.map(k => `<span class="skill-tag" title="${esc(k.name)}">${esc(k.name)}</span>`).join('') : '<span class="tile-meta">—</span>'}</div></td>
+          <td><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button></td></tr>`).join('')}</tbody></table></div>
+      <ul class="roster-list card" style="padding:0 12px">${list.map(s => `<li><button type="button" data-student="${s.id}"><span class="row1"><strong>${esc(s.name)}</strong>${status(s)}</span><span class="row2">${ago(s.daysAgo)} · ${s.acc == null ? 'ճշգրտություն՝ —' : 'ճշգրտություն՝ ' + s.acc + '%'}${s.weak.length ? ' · ' + esc(s.weak.map(k => k.name).join(', ')) : ''}</span></button></li>`).join('')}</ul>
+      ${list.length ? '' : '<p class="lede">Այս ֆիլտրով աշակերտ չկա։</p>'}`;
+  } else if (S.classTab === 'skills') {
+    const cls = {secure:'b-secure', developing:'b-developing', needs:'b-needs', none:'b-none'};
+    const val = (b, i) => b === 'none' ? '—' : (b === 'secure' ? 85 + i % 10 : b === 'developing' ? 55 + i % 15 : 25 + i % 15) + '%';
+    body = `<div class="legend"><span><i class="b-secure"></i>Կայուն</span><span><i class="b-developing"></i>Զարգացող</span><span><i class="b-needs"></i>Աջակցություն է պետք</span><span><i class="b-none"></i>Տվյալ դեռ չկա</span></div>
+      <div class="matrix-wrap"><table class="matrix"><caption class="sr">Հմտությունների վիճակ ըստ աշակերտի</caption>
+        <thead><tr><th scope="col">Աշակերտ</th>${SKILLS.map(k => `<th scope="col" title="${esc(k.name)}">${esc(k.code)}</th>`).join('')}</tr></thead>
+        <tbody>${students.map((s, i) => `<tr><th scope="row">${esc(s.name)}</th>${s.bands.map((b, j) => `<td><span class="band ${cls[b]}">${val(b, i + j)}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      ${note('B2', 'The matrix keeps its existing data, colours and BF-12 skill-name legend (not redrawn here). It moves to its own tab, so the class page no longer needs 8,000+ px of scrolling.')}`;
+  } else {
+    body = `<div class="card section"><h2>Հրավիրել աշակերտներ</h2>
+      <label class="field" for="inv2">Աշակերտների էլ. հասցեներ<textarea id="inv2" rows="3" placeholder="student1@example.com&#10;student2@example.com"></textarea></label>
+      <div class="actions"><button type="button" class="btn" data-proto-off>Ուղարկել հրավերները</button><button type="button" class="btn secondary" data-proto-off>Ցույց տալ միանալու կոդը</button></div></div>
+      <div class="card section"><h2>Չընդունված հրավերներ · ${c.invites}</h2>
+      <ul class="queue">${['a***@example.com','g***@example.com','m***@example.com','t***@example.com'].map(e => `<li style="padding:10px 4px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${e}</span><span class="tile-meta">Ուղարկվել է 3 օր առաջ</span></li>`).join('')}</ul></div>
+      ${note('B2', 'The same invitation form and list as today. Only its position changes.')}`;
+  }
+  return head + `<div class="stats" role="group" aria-label="Դասարանի ամփոփում">
+      ${stat('all', c.students, 'Աշակերտ', false)}${stat('support', support, 'Աջակցության կարիք', true)}${stat('inactive', inactive, 'Ոչ ակտիվ 7+ օր', true)}
+      <button type="button" class="stat warn" data-go="review"><strong>${c.pending}</strong><span>Ստուգման սպասող գրավոր</span></button>
+    </div>
+    ${note('B2', 'The summary figures also act as filters. Each figure comes from data the class page already loads.')}
+    <div class="tabs" role="tablist" aria-label="Դասարանի բաժիններ">${tabs.map(([k,l]) => `<button type="button" role="tab" id="tab-${k}" aria-selected="${S.classTab === k}" aria-controls="panel" data-tab="${k}">${l}</button>`).join('')}</div>
+    <section id="panel" role="tabpanel" aria-labelledby="tab-${S.classTab}" class="section">${body}</section>`;
+}
+
+/* ---------- Review queue ---------- */
+function review() {
+  const head = `<div class="page-head"><div><h1>Գրավորի ստուգում</h1><p class="lede">Ներկայացված աշխատանքներ բոլոր ակտիվ դասարաններից</p></div></div>
+    ${note('B4', 'Opens straight on the pending list across classes, the same list Home uses. Today this view first asks for list, class and unit before showing anything.')}`;
+  const states = [['submitted','Սպասում են ստուգման'],['changes_requested','Վերադարձված են'],['reviewed','Ստուգված են']];
+  const count = st => S.data === 'full' ? QUEUE.filter(q => q.state === st).length : 0;
+  const filters = `<div class="chips" role="group" aria-label="Աշխատանքների կարգավիճակ">${states.map(([k,l]) => `<button type="button" class="chip" data-rq-state="${k}" aria-pressed="${S.rqState === k}">${l} · ${count(k)}</button>`).join('')}</div>
+    <div class="filters">
+      <label class="field" for="rqClass">Դասարան<select id="rqClass"><option value="all">Բոլոր դասարանները</option>${CLASSES.map(c => `<option value="${c.id}"${S.rqClass === c.id ? ' selected' : ''}>${esc(c.name)} · ${esc(c.subject)}</option>`).join('')}</select></label>
+      <label class="field" for="rqUnit">Բաժին<select id="rqUnit"><option>Բոլոր բաժինները</option><option>Բաժին 2</option><option>Unit 3</option></select></label>
+      <div class="field"><span id="kindL">Տեսակ</span><div class="seg-p" role="group" aria-labelledby="kindL">${[['all','Բոլորը'],['course','Դասընթացի'],['custom','Իմ կազմած']].map(([k,l]) => `<button type="button" data-rq-kind="${k}" aria-pressed="${S.rqKind === k}">${l}</button>`).join('')}</div></div>
+    </div>
+    ${note('B4', 'Status chips follow the content reviewer’s queue and the existing wording. Class, unit and type become optional filters. Course writing across classes is already available. Returned/checked items across classes and custom tasks need the 0.5-day investigation first.')}`;
+  if (S.data === 'loading') return head + filters + loadingBlock(`${skel(64)}${skel(64)}${skel(64)}${skel(64)}`);
+  const items = S.data === 'full' ? QUEUE.filter(q => q.state === S.rqState && (S.rqKind === 'all' || q.kind === S.rqKind) && (S.rqClass === 'all' || q.cls.startsWith(CLASSES.find(c => c.id === S.rqClass).name + ' · ' + CLASSES.find(c => c.id === S.rqClass).subject))) : [];
+  const list = items.length ? `<ul class="queue card" style="padding:6px">${items.map(q => `<li><button type="button" data-open="${q.id}" aria-current="${S.open === q.id}">
+      <span class="who">${esc(q.who)}</span>${q.wait >= 3 && q.state === 'submitted' ? `<span class="pill attention">${q.wait} օր</span>` : `<span class="tile-meta">${q.date}</span>`}
+      <span class="what">${esc(q.what)}</span><span class="where">${esc(q.cls)} · ${esc(q.unit)} · ${q.kind === 'custom' ? 'Իմ կազմած' : 'Դասընթացի'} · ${q.date}</span></button></li>`).join('')}</ul>`
+    : `<div class="card empty"><h2>Ստուգման սպասող աշխատանք չկա</h2><p class="lede">Նոր ներկայացումները կհայտնվեն այստեղ։ Ստուգվածները տեսնելու համար ընտրեք «Ստուգված են»։</p></div>`;
+  const q = QUEUE.find(x => x.id === S.open);
+  const idx = items.findIndex(x => x.id === S.open);
+  const panel = q ? `<article class="card section" aria-labelledby="revT">
+      <div class="section-head"><button type="button" class="btn quiet" data-close>← Վերադառնալ ցանկին</button><span class="tile-meta">${idx + 1} / ${items.length}</span></div>
+      <div><h2 id="revT">${esc(q.who)}</h2><p class="lede">${esc(q.what)} · ${esc(q.cls)} · ${esc(q.unit)} · Ներկայացվել է ${q.date}</p></div>
+      <h3>Ներկայացված տարբերակ 1</h3>
+      <div class="submission" lang="${q.cls.includes('Անգլերեն') ? 'en' : 'hy'}">${esc(q.text)}</div>
+      <h3>Գնահատման չափանիշները</h3>
+      <div class="rubric">${RUBRIC.map((r, i) => `<label class="field" for="rb${i}">${esc(r)}<select id="rb${i}"><option>Ընտրեք միավորը</option><option>0</option><option>1</option><option>2</option><option>3</option></select></label>`).join('')}</div>
+      <label class="field" for="fb">Մեկնաբանություն աշակերտին<textarea id="fb" rows="4"></textarea></label>
+      <div class="review-actions"><button type="button" class="btn" data-proto-off>Ուղարկել գնահատականն ու մեկնաբանությունը</button><button type="button" class="btn secondary" data-proto-off>Վերադարձնել վերանայման</button><button type="button" class="btn secondary" data-proto-off>Պահպանել սևագիրը</button></div>
+      ${idx < items.length - 1 ? `<div><button type="button" class="btn quiet" data-open="${items[idx + 1].id}">Հաջորդ աշխատանքը →</button></div>` : ''}
+      ${note('B4', 'The review form, rubric and actions are the existing ones (rubric criteria here are examples). On desktop the list stays visible beside the open work; on phones the work opens full screen with «Վերադառնալ ցանկին».')}
+    </article>` : '';
+  if (q && app.clientWidth < 1000) return head + panel;
+  return head + filters + `<div class="review-layout${q ? ' has-open' : ''}">${list}${panel}</div>`;
+}
+
+/* ---------- drawer ---------- */
+function drawer() {
+  const s = students.find(x => x.id === S.drawer); if (!s) return '';
+  const bandLabel = {secure:'Կայուն', developing:'Զարգացող', needs:'Աջակցություն է պետք', none:'Տվյալ դեռ չկա'};
+  return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
+    <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
+    <p class="lede">Վերջին ակտիվություն՝ ${ago(s.daysAgo)} · Վերջին պատասխանների ճշգրտություն՝ ${s.acc == null ? '—' : s.acc + '%'}</p>
+    <h3>Հմտությունների տվյալներ</h3>
+    <ul class="queue">${SKILLS.map((k, j) => `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span><strong>${esc(k.code)}</strong> ${esc(k.name)}</span><span class="pill ${s.bands[j] === 'needs' ? 'error' : s.bands[j] === 'secure' ? 'good' : 'calm'}">${bandLabel[s.bands[j]]}</span></li>`).join('')}</ul>
+    ${note('B3', 'The existing student drawer is kept as it is. Only how it opens changes: from a roster row.')}
+  </aside></div>`;
+}
+
+/* ---------- render ---------- */
+function render() {
+  stage.dataset.device = narrow() ? 'phone' : S.device;
+  app.classList.toggle('notes-on', S.notes);
+  const view = S.screen === 'class' ? classPage() : S.screen === 'review' ? review() : home();
+  app.innerHTML = shell(view) + (S.drawer ? drawer() : '');
+  app.classList.toggle('drawer-open', !!S.drawer);
+  for (const [id, key] of [['ctlScreen','screen'],['ctlDevice','device'],['ctlState','data']])
+    for (const b of document.querySelectorAll('#' + id + ' button')) b.setAttribute('aria-pressed', String(b.dataset.v === S[key]));
+  document.getElementById('ctlNotes').checked = S.notes;
+  document.title = 'HaiEdu Teacher Prototype';
+  try { localStorage.setItem('haiedu-proto', JSON.stringify({device: S.device, notes: S.notes})); } catch (e) {}
+}
+// review() decides between split and full-screen by the frame width, which is only known after layout.
+function rerenderAfterLayout() { render(); requestAnimationFrame(() => { if (S.screen === 'review' && S.open) render(); }); }
+function go(screen, extra = {}) { Object.assign(S, {screen, open: null, menu: false, drawer: null}, extra); if (location.hash !== '#' + screen) history.replaceState(null, '', '#' + screen); rerenderAfterLayout(); document.getElementById('frame').scrollTop = 0; }
+
+document.querySelector('.proto-bar').addEventListener('click', e => {
+  const b = e.target.closest('button[data-v]'); if (!b) return;
+  const g = b.parentElement.id;
+  if (g === 'ctlScreen') go(b.dataset.v);
+  if (g === 'ctlDevice') { S.device = b.dataset.v; rerenderAfterLayout(); }
+  if (g === 'ctlState') { S.data = b.dataset.v; S.open = null; S.drawer = null; rerenderAfterLayout(); }
+});
+document.getElementById('ctlNotes').addEventListener('change', e => { S.notes = e.target.checked; render(); });
+app.addEventListener('click', e => {
+  const t = e.target.closest('[data-go],[data-proto-off],[data-tab],[data-filter],[data-rq-state],[data-rq-kind],[data-open],[data-close],[data-student],[data-close-drawer],#moreBtn');
+  if (!t) { if (S.menu) { S.menu = false; render(); } return; }
+  if (t.matches('[data-close-drawer]') && (e.target === t || t.tagName === 'BUTTON')) { S.drawer = null; render(); return; }
+  if (t.closest('.drawer') && !t.matches('button')) return;
+  e.preventDefault();
+  if (t.dataset.go) { const extra = {}; if (t.dataset.filter) Object.assign(extra, {rosterFilter: t.dataset.filter, classTab: 'students'}); if (t.hasAttribute('data-open-first')) Object.assign(extra, {rqState: 'submitted', rqKind: 'all', rqClass: 'all'}); go(t.dataset.go, extra); if (t.hasAttribute('data-open-first')) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
+  if (t.id === 'moreBtn') { S.menu = !S.menu; render(); return; }
+  if (t.hasAttribute('data-proto-off')) { flash(t); return; }
+  if (t.dataset.tab) { S.classTab = t.dataset.tab; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
+  if (t.dataset.filter) { S.rosterFilter = t.dataset.filter; S.classTab = 'students'; render(); return; }
+  if (t.dataset.rqState) { S.rqState = t.dataset.rqState; S.open = null; render(); return; }
+  if (t.dataset.rqKind) { S.rqKind = t.dataset.rqKind; S.open = null; render(); return; }
+  if (t.dataset.open) { S.open = t.dataset.open; rerenderAfterLayout(); document.getElementById('revT')?.focus?.(); return; }
+  if (t.hasAttribute('data-close')) { S.open = null; render(); return; }
+  if (t.dataset.student) { S.drawer = t.dataset.student; render(); document.getElementById('frame').scrollTop = 0; app.scrollIntoView({block: 'start'}); app.querySelector('.drawer button')?.focus({preventScroll: true}); return; }
+});
+app.addEventListener('input', e => { if (e.target.id === 'rq') { S.rosterQuery = e.target.value; const pos = e.target.selectionStart; render(); const i = document.getElementById('rq'); i.focus(); i.setSelectionRange(pos, pos); } });
+app.addEventListener('change', e => { if (e.target.id === 'rqClass') { S.rqClass = e.target.value; S.open = null; render(); } });
+app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.drawer) { S.drawer = null; render(); } else if (S.menu) { S.menu = false; render(); } } });
+let flashTimer;
+function flash(el) {
+  let tip = document.getElementById('protoTip');
+  if (!tip) { tip = document.createElement('div'); tip.id = 'protoTip'; tip.setAttribute('role', 'status'); tip.style.cssText = 'position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1d2a24;color:#f1f5ef;padding:8px 14px;border-radius:8px;font-size:.8125rem;z-index:40;max-width:calc(100% - 32px)'; document.body.appendChild(tip); }
+  tip.textContent = 'Not part of this prototype: this control keeps today’s behaviour.'; tip.hidden = false;
+  clearTimeout(flashTimer); flashTimer = setTimeout(() => { tip.hidden = true; }, 2200);
+}
+const fromHash = () => { const h = location.hash.slice(1); if (['home','class','review'].includes(h)) { S.screen = h; S.open = null; S.drawer = null; } };
+window.addEventListener('hashchange', () => { fromHash(); rerenderAfterLayout(); });
+window.matchMedia('(max-width: 759px)').addEventListener('change', rerenderAfterLayout);
+fromHash(); rerenderAfterLayout();
+})();
+</script>

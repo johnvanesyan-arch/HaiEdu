@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+  "buildId": "90508dcf33ff9aafe3bb4e48765cb759270bf5a41972208659d0c92235f2af1c",
   "inputs": {
     "node_modules/@supabase/auth-js/dist/module/AuthAdminApi.js": "f18bf53f4c43d232f849f9000c1f61bdd43eee7bceb42f829339c5053b6eee41",
     "node_modules/@supabase/auth-js/dist/module/AuthClient.js": "684b46b2be095e71fe7546e72f6791753f1cae9ebdaacd167b4905a5b7a87903",
@@ -212,15 +212,15 @@
     "web/teacher-task-send.mjs": "fb7b126b79414ef96f69b0ad795d1a7941023d1cc5a132e18715faeed361673c",
     "web/teacher-task-source-client.mjs": "8ffab13b17b826d93e4364f0f2c04bc930d49e3461e3464dfabb565f1dcd834f",
     "web/teacher-task-text.mjs": "0b50c4c2e5e65742a9a06e9999d1d57ce47510030b8d484de2e6be2205514cd8",
-    "web/teacher-today.css": "f8fcc9810c424c8dff24e1d5f561e15bdc5813f55c2443e6254d1deb21b4d3e8",
+    "web/teacher-today.css": "c95b231b5ebd144e056d2af74fa3b665b464d5cbafaf232af05a91c1009435f1",
     "web/teacher-today.mjs": "ad83bcb6d2305a43aa4796f4924290d649ffe57a82abf3377a66cfe76229b39e",
     "web/teacher-workflows.css": "948caf56450baf4f4e4d0e67e2d42b877a4c4fd2704d4472a22719411a51f589",
     "web/teacher-workflows.html": "c3df3f2d8d55a2b8508a858a6a5b1ec02900e57f6ed89c37dd80adb0496d790b",
     "web/teacher-workspace-preview.css": "8a200fa3040a652211cfc9fcde3a27cff335714f799483884ff23f479e212a6e",
     "web/teacher-workspace-preview.html": "62ec90c79db758706aba8c04d05978433415585ce9a77e14d29d9178e509fcd1",
     "web/teacher-workspace-preview.mjs": "1b1da61f90cd05192f2e90c8f98ac09bdda6c02184ddf0759ae5948d3100f9b3",
-    "web/teacher.css": "77608c2308f171b6d1e8afbe6404558b409ad816ed6e9f999fabb1ffd7c8cb2c",
-    "web/teacher.html": "a64443d7658ef7c02747610667ccea276664b2fa345c785d73ba4684322c964f",
+    "web/teacher.css": "b53e5bf4598b0723689cb959484618f4a81a13a46ed92ade8125a9840d9d9e6b",
+    "web/teacher.html": "6421ecac7e530d64eb04f2da30343ac56b63fede50b980fa8bbd63c18657a8d8",
     "web/teacher.js": "53012bd75a00ab91475b008c0bfd1e8967909a47524207e19c8efcdafda4b4f6",
     "web/text-safety.mjs": "39b0cdf241b7b69d186374d2e415e5b7e735f7b8b569fd890ca4b0c8573b12da",
     "web/tokens.css": "cfdfb9ba2914a7b6ac0f4d811485e526fc064488c44536cbbbb2fcc92432b53d",
@@ -700,17 +700,17 @@
       "sha256": "fba12a949049ded62edad1e6df2b3f6c0bda33b413fc6a697656743f8e23e85c",
       "bytes": 1041
     },
-    "_assets/teacher-FZSWO227.css": {
-      "sha256": "3fdd8de8a099c66d0fdd436468957816eaab260080bc99f318368440dd7c1382",
-      "bytes": 25476
+    "_assets/teacher-MTJOQ4BQ.css": {
+      "sha256": "82b710c062d752d87e28c5cd97382522d255a52c0c4803fb6abb330397782d86",
+      "bytes": 26251
     },
     "_assets/teacher-startup.bundle-NKCMYRSD.js": {
       "sha256": "897715ec80c7e2077674189c6ccf89775066e77c2650b7c473f897a734c95f52",
       "bytes": 2638
     },
-    "_assets/teacher-today-N7NG7USZ.css": {
-      "sha256": "cb63472d61b5d0a3342af01f88234cb90366e50d3774f64120decf14c2a3e943",
-      "bytes": 3889
+    "_assets/teacher-today-CTB7EUPO.css": {
+      "sha256": "2090372abbce3435c9c07c5568f692815f82e51e9f526fc175a0b4cf11b6d122",
+      "bytes": 3961
     },
     "_assets/teacher-workflows-TV6TZFOC.css": {
       "sha256": "488ac8f8f3aba80f109faeed2a6960a18a9712e9aa5c6787d55946693aa1696d",
@@ -747,7 +747,7 @@
   },
   "pages": {
     "account-access.html": {
-      "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+      "sha256": "6c05abefe436ed6ed4580736ce135cbcb2519c42678aabe802178b1ea533b620",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -759,7 +759,7 @@
       ]
     },
     "admin-security.html": {
-      "sha256": "52b14b5cb73f69340eb06561348811f77b62570d0e43178e0bac060c842219ba",
+      "sha256": "37416058e30d947bfadb95886fd9d6fd2d8c57329e8edd2464c1d500a37231cf",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -773,7 +773,7 @@
       ]
     },
     "admin.html": {
-      "sha256": "4c615d597ae053131906f5f3620d16e4ae424ce5dfb97c7b5ac06d7a23522ae8",
+      "sha256": "4bd33eb2b024bf54450b7e1401e22eb7fdc628f4c66c54fa3585090cd58677b3",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -786,7 +786,7 @@
       ]
     },
     "assessment.html": {
-      "sha256": "14b9465a0b1282f8a9b0bad4a85de801133d7631f344c6bb8430db0a18deb675",
+      "sha256": "3ea0ed09de2d931a6d24a559f66d3929bf46717faa5331d2d2a3c916d01695f0",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -805,7 +805,7 @@
       ]
     },
     "content-bank.html": {
-      "sha256": "e2e92f31b5a3f303bddb7731b035c877fc83e86515f9c6769063404b5f4af026",
+      "sha256": "f06eefa303bbb99cdcc97897180d3882367dd4e5a8063734a0a0acc173d026b5",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -821,7 +821,7 @@
       ]
     },
     "content-curriculum.html": {
-      "sha256": "c40fea0a41b91aedef9eab3f484d3efcfbe1167849d8e0e05f6a6fa7949b8cf3",
+      "sha256": "ef59fc5ad6ce0cbce07b99de80950d2410e387da018560ad68fc93be35620967",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -835,7 +835,7 @@
       ]
     },
     "content-evidence.html": {
-      "sha256": "938e7ec6037483b88f9b52760b73b2a9f0b33e9f37d34df18d3ab23ab5ca67e0",
+      "sha256": "0d7d08197cfbbd8cffc25860ebf2e7144a2b8f806690dbf4ade12157db0870f9",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -849,7 +849,7 @@
       ]
     },
     "content-guides.html": {
-      "sha256": "ec82c975a005ffe3d492db324493e7e699177e19bc3b317a7b5639306faaace7",
+      "sha256": "4f40c98f2bcd7dc377173c271b2da8bd926af3fb401f3a0d6ea7df109b0be3d3",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -862,7 +862,7 @@
       ]
     },
     "content-item.html": {
-      "sha256": "2d2552bd9d783950b5a8dd5eb884b7a9aea74ef7a567288974c002352a19a409",
+      "sha256": "ed3d01a4cafd46e7c76315278077e3013dd4fb70c333347cc0d57a3b1c908c1c",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -877,7 +877,7 @@
       ]
     },
     "content-materials.html": {
-      "sha256": "17061c1ebd4c3ea2cfcfc14bf7769f637eabd8af5aca453926403ae7b9f880b8",
+      "sha256": "f78b29ff95d1cadaffc3c8192beae390923ee06225a18bc0f8bc60d3de6e5b6a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -892,7 +892,7 @@
       ]
     },
     "content-misconceptions.html": {
-      "sha256": "f3ec159984fecf6d6bf1e7825cefcfa8d78c55c1564ce4d23eb3be5bf5e2cf29",
+      "sha256": "a5f61e29c538a59e45c7a5ce147f68c4fdc797ba901f0afacb85db4717ca0b42",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -905,7 +905,7 @@
       ]
     },
     "content-review.html": {
-      "sha256": "cbd548d28480fb0f533ea2aaa3f09a42fe0d85da269a942e1e34062e94379cae",
+      "sha256": "2c4d2588b3d80c531e51e9d47714119289082e42c796c70cadff100fa3e64cb9",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -919,7 +919,7 @@
       ]
     },
     "content.html": {
-      "sha256": "2d3840408a8ecc7dd4a0abc63a8d56a8caf4ee3c718946bf7a5f462c588775e5",
+      "sha256": "6fea634f9014db600ad2bc467ecaa8d8569c77f14ea659dc1363c46f01b7a8fa",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -933,7 +933,7 @@
       ]
     },
     "course.html": {
-      "sha256": "4c444bbb4891b0d122e8c3fd8e1e5c4cf553c769378e86be0eb32546827f3293",
+      "sha256": "70ec40564a9f7173ec9559ade0f07e7d1931bbf6d97758df6f4d0da02f69f744",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -953,7 +953,7 @@
       ]
     },
     "diagnostic.html": {
-      "sha256": "10e57c48135d5b492d3245bae1b155d21ec3751f5422e4454c1a67fd237300f3",
+      "sha256": "ac30cd4e1fad1378371a03366fcebf1ccdcf9f332c60efe299f5847ede17b7b1",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -973,7 +973,7 @@
       ]
     },
     "index.html": {
-      "sha256": "d2aede71cad68d72f0cd562161e7b1903a9cf584560071f44b73e43bc7f2d40c",
+      "sha256": "ce6a73363fdcc65f299fde46b008bfe2386eb287fe1612582596575c31fcdabe",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -997,7 +997,7 @@
       ]
     },
     "join.html": {
-      "sha256": "ae148aa3490afc408166d493bda4bb220ae9dee9c182dc74c372608e58a292eb",
+      "sha256": "c1a8e6009d4b5b67f3ab1861b465aa2994fc98571a0b55dee9f4d1b2a1a91a1e",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1013,7 +1013,7 @@
       ]
     },
     "mastery.html": {
-      "sha256": "1915def84f8e4f27688284b2c889b8c898c139f922ac8f4b4836154949ee93fc",
+      "sha256": "ccde61a8ddb64998200ccf5e6d64641895bea1a33c4b9fbefd9b02596068085a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1033,7 +1033,7 @@
       ]
     },
     "materials.html": {
-      "sha256": "60b82f3432c20d0b9fb9486b9b53a6edba3b5865ecc6ed754901ea08205909d6",
+      "sha256": "1e199f569218ba0b6a1582a44b36a0f90754e3a58bbf175299ee34360d00750a",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1051,7 +1051,7 @@
       ]
     },
     "physics-7.html": {
-      "sha256": "a2b78cf610e4962297904b61034e93846c2228c2fc647dc800bcd499c53c39f9",
+      "sha256": "fb2734734198ae801dabbe64e16cd4c42761b09ae84e4f1cf128f3acf77e71e6",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1070,7 +1070,7 @@
       ]
     },
     "practice.html": {
-      "sha256": "351c903753affcdda54ccc335bf0ba1e2a95c2420a18a61c42117fa48a7c29ee",
+      "sha256": "bb4449b3c9a59260821ce8c047bd652b8e7590dd2018a267cf8c62d65e0c4fac",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1090,7 +1090,7 @@
       ]
     },
     "privacy.html": {
-      "sha256": "f2fd54cf8bac11a21f55a23dc787191d98d57cd84acab338f6a470e641abd43b",
+      "sha256": "01a7444e84b138d66c3f2d9469e8a28ebd9dae6f4f85dbe35ea7a752446aca2a",
       "assets": [
         "/_assets/auth-challenge-GUDH7RCV.css",
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
@@ -1105,7 +1105,7 @@
       ]
     },
     "progress.html": {
-      "sha256": "8b9713f0853956dfcdb3a6530e3afbad3181eb5e203ab3cd3a526473e09445a3",
+      "sha256": "131777c13674226de030b7bb2ab9079df3f69f263e369f90131e6be39deb3db2",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1123,7 +1123,7 @@
       ]
     },
     "resource-library.html": {
-      "sha256": "1c260055f7daee2eb8e894541d261647e21f2242006b53ecb1ef05fd820e5ce9",
+      "sha256": "6e7c61d37648eedb9a731c803ea9ddc7cbf5ce5c00a1b0b94ce38a7d2222fd0b",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1142,7 +1142,7 @@
       ]
     },
     "school-admin.html": {
-      "sha256": "3f2be2b3cc015a7507aef97e6b4a56f14c8fd9c80358a18a613c6bcdd801e56f",
+      "sha256": "82026383137a3d6dc7059bcefd81725c875a07b1e68409d00f448bb6a48c733d",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1154,7 +1154,7 @@
       ]
     },
     "school-teacher.html": {
-      "sha256": "e813030e4d7dc844e9ed46b334724d271976cc7ed1149556bc43d5519e91c7a0",
+      "sha256": "f973ca8bf1df841cc413a61c2f4d349c4dd33dc3f8d43eee2d485f3db0463283",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1167,7 +1167,7 @@
       ]
     },
     "teacher-workflows.html": {
-      "sha256": "ec6f76a6d6973f8b837fbc493a71ee4532d9f888011896478134dc1b73cd4b9c",
+      "sha256": "9daedc8f35592c5a1440f593b599a305511427cc7cc11c6f120bd1a052188386",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/tokens-CRMQSGAY.css",
@@ -1177,7 +1177,7 @@
       ]
     },
     "teacher-workspace-preview.html": {
-      "sha256": "86ef96cc8f792c90760d4504e24d52209f65525cac696364c1e3386cb5f273d7",
+      "sha256": "8bba1ccaa512e84c63d1ba24210c90b490e567c93dc5d605fc04137a71152073",
       "assets": [
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
         "/_assets/styles-T4TKJNSY.css",
@@ -1188,7 +1188,7 @@
       ]
     },
     "teacher.html": {
-      "sha256": "919ce0c6a53def24d951b3f72ae67554ab59fe6308fd87d85603e43d6b9d61eb",
+      "sha256": "1cc9672aaccc1470c9fedc1f1a57c0c98bf7d8240d7d9a70a8bb0f80503209de",
       "assets": [
         "/_assets/teacher-startup.bundle-NKCMYRSD.js",
         "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
@@ -1199,12 +1199,12 @@
         "/_assets/styles-T4TKJNSY.css",
         "/_assets/ux-FFXEA6D5.css",
         "/_assets/components-FKVPVA6X.css",
-        "/_assets/teacher-FZSWO227.css",
+        "/_assets/teacher-MTJOQ4BQ.css",
         "/_assets/responsive-qa-QX32ARRV.css",
         "/_assets/role-layout-KJKKZJRJ.css",
         "/_assets/written-work-7XVQLYUX.css",
         "/_assets/writing-assignments-SVUAVM2Z.css",
-        "/_assets/teacher-today-N7NG7USZ.css",
+        "/_assets/teacher-today-CTB7EUPO.css",
         "/_assets/ux-4ZR7CTZW.js",
         "/_assets/role-layout-Y7ZG3NIU.js"
       ]
@@ -1290,11 +1290,11 @@
     "teacher-startup.bundle.mjs": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
     "teacher-startup.mjs": "/_assets/teacher-startup.bundle-NKCMYRSD.js",
     "teacher-task-review.mjs": "/_assets/shared-VQZDF2L2.js",
-    "teacher-today.css": "/_assets/teacher-today-N7NG7USZ.css",
+    "teacher-today.css": "/_assets/teacher-today-CTB7EUPO.css",
     "teacher-workflows.css": "/_assets/teacher-workflows-TV6TZFOC.css",
     "teacher-workspace-preview.css": "/_assets/teacher-workspace-preview-UM4QN4LL.css",
     "teacher-workspace-preview.mjs": "/_assets/teacher-workspace-preview-IHPELTTH.js",
-    "teacher.css": "/_assets/teacher-FZSWO227.css",
+    "teacher.css": "/_assets/teacher-MTJOQ4BQ.css",
     "teacher.js": "/_assets/teacher-BMEWKLGW.js",
     "tokens.css": "/_assets/tokens-CRMQSGAY.css",
     "ux.css": "/_assets/ux-FFXEA6D5.css",
