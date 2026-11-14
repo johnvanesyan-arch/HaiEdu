@@ -1,6 +1,11 @@
 # BF-20 — Reproducible fresh application database
 
-**Candidate, not a production migration.** The owner authorized reconstruction and isolated testing after the read-only audit. The full application structure now rebuilds from empty state and matches the captured catalogue. All 18 real-component integration checks, eight comparison controls and 1,847 existing code tests pass locally. Exact-head CI and PR-specific approval remain pending.
+**Fresh-structure delivery merged and verified on 15 November 2026 (Asia/Yerevan).** Owner-approved [PR486](https://github.com/johnvanesyan-arch/HaiEdu/pull/486) is merged at `c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571`, with approved tree `5a9d561cc5228c7c10cbc4709668c9660b309850` preserved. This package reconstructs empty local application structure; full BF-20 and production automation remain open.
+
+All five required [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43640042665) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43641415961) pass on attempt 1: 1,847 code tests, 696 browser cases, 18 actual provider/rebuild/access/concurrency checks and eight comparison controls. There are zero failures, skipped tests or cancellations in these suites. The original local fixture failures remain recorded below; no CI retry was needed.
+
+The three public domains serve the merged release. Twelve fresh static source/manifest/representative HTML/JavaScript hash, MIME, cache and enforcing-security-header checks pass. Existing full-build verification is reused because all browser/build inputs, settings and packages are unchanged. Only public files were fetched; no page scripts, sign-in or Supabase request was used for release verification. The normal Git integration performed the website update; no manual promotion or hosting setting change was made.
+
 
 ## Problem and resulting behavior
 
@@ -42,6 +47,6 @@ Affected production QA: **none**. No browser, shared Edge or live API implementa
 
 ## Remaining BF-20 gates
 
-This delivers the current-structure reconstruction slice. Full historical **data-effect** reconciliation, a reviewed bridge for future updates after the fresh baseline, exact-head release checks/merge approval and the separately deferred BF-02 database-plus-Storage recovery remain open. Automatic backend deployment stays disabled. A prepared schema is not a populated school, a recovery of learner work or a grant of curriculum/owner acceptance.
+This delivers the current-structure reconstruction slice. Full historical **data-effect** reconciliation, a reviewed bridge for future updates after the fresh baseline and the separately deferred BF-02 database-plus-Storage recovery remain open. Automatic backend deployment stays disabled. A prepared schema is not a populated school, a recovery of learner work or a grant of curriculum/owner acceptance.
 
 The [controlled backend deployment plan](../backend-deployment-plan.md) retains source/target preflight, serialization, explicit approval, complete shared-Edge consumer coverage, per-function gateway flags and deployed readback for any later authorized release.
