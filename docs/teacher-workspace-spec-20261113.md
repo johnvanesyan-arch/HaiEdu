@@ -7,7 +7,10 @@
 **Decisions, 14 November 2026 (John):**
 - **Devices:** teachers use both phones and computers. Phone and desktop layouts have equal priority; the build order does not change.
 - **Current priority:** the teacher's own account (today's «Իմ պրոֆիլը» view and the shared «Իմ հաշիվը» page). All roles are to be aligned to one source of truth later; this work is the teacher-first step.
-- **Display name:** no role may save an empty name. This is platform-wide: the shared account endpoint applies it to every role, including students. The length limits and whitespace handling (recommended: 2–80 characters, repeated spaces collapsed) are not yet confirmed.
+- **Display name:** no role may save an empty name. This is platform-wide: the shared account endpoint applies it to every role, including students. John confirmed the limits: 2–80 characters, leading and trailing spaces removed and repeated spaces collapsed, the rule students already meet when accepting an invitation.
+- **Accounts without a name:** existing accounts are not required to add one; the main content reviewer account may stay unnamed. A planned feature for inviting subject-matter reviewers must require a name at acceptance (not built; recorded as a requirement).
+- **Teacher-first exception on the shared account page:** approved. Teachers get the new account layout and order first; other roles' page designs follow later. Other roles see only the shared name rule until then.
+- **Prototype:** go-ahead to update the prototype's account screen before any product code.
 - **Read-only check behind the decision** (aggregate counts, no names read, 14 November): 12 profiles. All 3 teachers and the 1 master admin have a name. 5 accounts have none: 2 students, 2 school administrators, 1 content reviewer. No name has 1 character, more than 80 characters, or extra spaces. The rule only blocks saving an empty name; it does not fill in existing empty names.
 
 **Inputs:**
@@ -134,12 +137,18 @@ Each principle is drawn from the review findings.
 
 **Size target:** 30 students take about 52 px per row on desktop (today 213 px) and about 64 px on a phone (today 486 px).
 
-### 4.5 Account (B5, H-17)
+### 4.5 Account (B5, H-17; T1–T7, revised 14 November 2026)
 
-«Իմ հաշիվը» opens inside the teacher layout.
-- **Display name:** one field with one rule. **Owner decision:** required 2–100 characters, or optional up to 80.
-- **Other sections:** login details, privacy and data, and the deletion request keep the existing account-page content and actions.
-- **Scope:** the account page is shared by every role, so this falls under the platform-wide change rule (A2).
+Audit and proposals: [design review, Appendix C](teacher-workspace-design-review-20261113.md#appendix-c--teacher-account-audit-14-november-2026).
+
+- **Entry (T1):** one «Իմ հաշիվը» in the sidebar footer, the phone header button and «Ավելին». «Իմ պրոֆիլը» leaves the menu and Home; `?view=profile` opens the account.
+- **Layout (T2):** inside the teacher layout, one H1. The content is one shared account module; other roles keep today's page until their own slice (teacher-first exception approved 14 November).
+- **Order (T3):** 1. Հաշիվ: email, role and status as text, then the display name field. 2. Մուտքի տվյալներ: email change and password link, stacked. 3. Գաղտնիություն: the two choices, then «Ինչ տվյալներ ենք պահում ուսուցչի մասին» folded, with today's labels and counts. 4. Ջնջման հարցում. Section links on desktop only.
+- **Display name (T5, decided):** required for every role, 2–80 characters, leading and trailing spaces removed and repeated spaces collapsed. Errors: «Մուտքագրեք ձեր անունն ու ազգանունը։» (existing) and «Անունը պետք է ունենա առնվազն 2 նիշ։» (new). One server rule for both endpoints; the deployment needs separate approval.
+- **Deletion (T4):** teacher wording first; request and cancel confirmed on the page with today's wording; today's request states.
+- **Unsaved changes (T6):** name, new email and privacy choices ask before leaving by any route.
+- **Wording (T7):** who sees the name, and «մուտքի համակարգում» instead of the vendor name. Whether students see a teacher's name must be verified before the build.
+- **Scope:** the name rule changes the shared server function, so it applies to every role, including the student account page's «Ընտրովի» field.
 
 ### 4.6 Assign flow (B8)
 
@@ -215,7 +224,7 @@ Each principle is drawn from the review findings.
 3. **Phone menu items.** Գլխավոր, Դասարաններ, Ստուգում, Ավելին as drawn, or another set.
 4. **Pilot notice.** Sidebar label only (drawn), or keep the visible notice on Home.
 5. **B4 first step.** Approve the 0.5-day investigation before choosing the full or the smaller version.
-6. **Display name rule (B5).** Required 2–100 characters (today's teacher Profile rule), or optional up to 80 (today's account-page rule).
+6. **Display name rule (B5).** *Decided 14 November:* required for every role, 2–80 characters, spaces collapsed.
 7. **One assign entry (B8).** Replace «Հանձնարարել գրավոր» and «Հանձնարարել նյութ» with one «Հանձնարարել» flow, and give «Իմ առաջադրանքները» its own menu item.
 8. **Review button wording.** One set of labels for course writing and own-task review. Today course writing says «Ուղարկել գնահատականն ու մեկնաբանությունը» / «Վերադարձնել վերանայման», and own tasks say «Հրապարակել ստուգումը» / «Վերադարձնել շտկման». The prototype uses «Ուղարկել ստուգումը» / «Վերադարձնել վերանայման» as a placeholder. Armenian review needed.
 9. **Validation.** Can one or two teachers try the prototype for 20–30 minutes? Suggested tasks:
@@ -254,6 +263,7 @@ All Armenian wording in the prototype reuses existing product text, except these
 - «Դասընթացի» / «Իմ կազմած» (type filter);
 - assign flow and other new labels: «Հանձնարարել» as a menu item, «Ինչ եք հանձնարարում», «Ընտրել աջակցության կարիք ունեցողներին», «Հանձնարարել այս աշակերտին», «Հանձնարարություններ» (tab), «Ուղարկել ստուգումը», «Մուտք գործեք՝ շարունակելու համար», «Ավելին» screen descriptions;
 - guide texts, which are shortened examples;
+- version 6 (account): «Անունը պետք է ունենա առնվազն 2 նիշ։», «2–80 նիշ։», the sentence on who sees the name, the teacher deletion sentence and «մուտքի համակարգում»;
 - version 5 additions:
   - unsaved-changes dialog: «Մնալ էջում», «Դուրս գալ առանց պահպանելու», «Եթե հիմա դուրս գաք…»;
   - error states: the explanatory sentences, «Կրկնել նույն գործողությունը», «Ֆայլը չկցվեց», «Պահպանված տարբերակը փոխվել է»;

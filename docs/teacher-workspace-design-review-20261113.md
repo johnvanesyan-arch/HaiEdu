@@ -316,3 +316,45 @@ Some flows run inside the tests' harness page, which loads the teacher styles wi
 - **Non-teacher account:** teacher.html sends it to the student Home, as intended. The student page then had no synthetic data, so its error is a fixture artefact.
 
 **Not audited:** the shared sign-in page (`account-access`), which is the same for every role, and real devices or screen readers.
+
+## Appendix C — Teacher account audit (14 November 2026)
+
+**Scope.** John set the teacher's own account as the current priority: the «Իմ պրոֆիլը» view in `teacher.html` and the shared account page `privacy.html`, as a teacher. Other roles' account pages follow later.
+
+**Method.** The real pages ran in local headless Chromium with synthetic data. Widths: 390 and 1280 px, each at 100% and 200% text. Accounts: school and personal teachers, active and deletion-pending. One read-only aggregate count on production (no names read). Not a signed-in production check and not a real-device check. No script errors and no sideways scrolling in any render.
+
+**Facts from the code.**
+1. The display name is saved in two places with different rules. `manage-teacher-profile`: required, 2–100 characters, repeated spaces collapsed, not audited. `manage-my-privacy`: optional, up to 80, can be cleared, audited. Only the first checks for an active live session.
+2. School administrators see the teacher's name, and the teacher's email when the name is empty (`get-school-admin-overview`). The platform administrator can search by name. The profile view says the name appears only in the teacher's workspace. Whether any student page shows a teacher's name was not verified.
+3. The deletion section opens with the student rule; the teacher rule is a second sentence.
+4. Unsaved changes are protected only on sign-out, not when leaving through «← Գլխավոր».
+5. Creating a staff account does not appear to set a name, as far as the code shows; this was not confirmed against the staff invitation flow.
+
+**Measured.**
+
+| | Profile view | Account page as a teacher |
+|---|---|---|
+| Teacher menu | Yes | No (only «← Գլխավոր» and «Դուրս գալ») |
+| Phone, 100% text | 1,356 px; H1 at 279 px; name field at about 735 px | 3,864 px; H1 at 45 px; data list about 1,000 px, placed before login details |
+| Phone, 200% text | 3,032 px | 10,749 px |
+| Desktop | 900 px | 2,675 px; name card stretched to 955 px; empty space in the password column |
+| Text sizes | 7 | 7–8, including 12.16, 13.33, 16.8 and 18.4 px |
+
+Other findings: reaching the login settings takes three steps (menu → Profile → «Բացել հաշվի կարգավորումները»); the read-only email looks like an editable field; the text mentions «Supabase Auth».
+
+**Production data (aggregate, 14 November).** 12 profiles: all 3 teachers and the master admin have a name; 2 students, 2 school administrators and 1 content reviewer have none. No name has 1 character, more than 80 characters or extra spaces.
+
+**Proposals T1–T7 and decisions.**
+- T1 One «Իմ հաշիվը» entry; «Իմ պրոֆիլը» leaves the menu and Home, and its address opens the account.
+- T2 The account inside the teacher layout, built as one shared account module that other roles adopt later. *Teacher-first exception approved by John, 14 November.*
+- T3 Order: name and email → login details → privacy, with the data list folded → deletion.
+- T4 Deletion text for teachers, with confirmation on the page.
+- T5 One display-name rule enforced by one server function. *Decided by John, 14 November: no role may save an empty name; 2–80 characters, spaces collapsed. Existing accounts are not forced to add a name; the main content reviewer may stay unnamed; the planned subject-matter reviewer invitation must require one.*
+- T6 Unsaved-changes guard on any navigation away.
+- T7 Correct wording on who sees the name; no vendor name. Armenian review needed.
+
+**Prototype (version 6, 14 November).** The account screen implements T1–T7 with synthetic data. Measured with design notes off: phone page 2,309 px (3,864 today), name field at 416 px from the top of the page, desktop 1,833 px (2,675 today). Prototype checks: 340 renders (17 screens × 5 data states × 2 teacher types × 2 widths) with one H1, no sideways scrolling and no script errors; 30 account interaction checks; 10 click paths at both widths.
+
+**Found while checking: phone menu at 200% text (A1).** The proposed four-item bottom menu did not fit at 200% text. The prototype now wraps it to two rows, but it then takes 24–28% of the height on phones 667 px tall or shorter (BF-10 allows 20% for students), and at 360 px and narrower it still overflows by up to 23 px. The A1 build must reuse BF-10's fallbacks. The `teacher.html` header link (logo and role) is 28 px tall in the account render.
+
+Owner usability acceptance: not given.
