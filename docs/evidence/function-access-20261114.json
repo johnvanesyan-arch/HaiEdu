@@ -1,0 +1,1553 @@
+{
+  "schemaVersion": 1,
+  "scope": "BF-18 owner-accepted hosted test-project closure",
+  "date": "2026-11-14",
+  "reviewedCommit": "375e16bbfb9c4e06830afa76cbef56f7325d654e",
+  "status": "closed_on_owner_accepted_test_project_extrapolation",
+  "ownerDecision": "Let's do the test in haiedu-bf16-test, and call it a day. We can extrapolate the results over the actual project",
+  "closureBasis": "Owner-approved extrapolation from exact-source hosted test-project checks plus production inventory/readback audit; not a production signed-in run.",
+  "productionSignedInCheckPerformed": false,
+  "productionSignedInCheckRequiredForThisClosure": false,
+  "productionAudit": {
+    "observedAt": "2026-11-14T15:20:37.335Z",
+    "counts": {
+      "activeFunctions": 65,
+      "gatewayJwtEnabled": 63,
+      "handlerVerificationExceptions": 2,
+      "freshFocusedBundleFiles": 13,
+      "unchangedBundlesReusingPriorReadback": 64,
+      "unchangedBundleFileOccurrencesComparedToCurrentSource": 334,
+      "databaseRoutineBodiesExact": 7,
+      "isolatedChecksPassed": 60,
+      "liveInvalidCredentialChecksPassed": 6
+    },
+    "inventory": [
+      {
+        "slug": "accept-staff-account",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "bedcb890221261d2a2357649a3d1bac735ff984522a5ba4204bfd01816175a19",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "bootstrap-school",
+        "status": "ACTIVE",
+        "version": 5,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "ebf01b0f570cffdf77c26e52be66fa8ba181d41e6dbb9bb8f178284e030a3ab4",
+        "sameArtifactAndVersionAsBF16": false,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "complete-student-invitation",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "d6ed4fd4d3a5cce0069e7cc3d248d0a268fbd66f2530ded42011432a77f1b32c",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-admin-dashboard",
+        "status": "ACTIVE",
+        "version": 5,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "39e6b70c4311d3b594413a96dfc326c576feb6e63fddb00eb018c27f2e3003a9",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-chapter-mastery-lifecycle",
+        "status": "ACTIVE",
+        "version": 11,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "a9afb3aea9930766985ce8630421e9b8dc4b49173bc61a65780674a14a9535b5",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-content-quality-dashboard",
+        "status": "ACTIVE",
+        "version": 9,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "46fb2c0264f2c1242652b1529b2d9d12d9ae55ba04ea9011babd7f28b6b71edd",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-content-review-history",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "00912b30f8bbea4417ef9f646769abbfb5f5217aff30544916f61f28190372df",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-learning-audio",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "0f3dc8e77ea7cf5dc21c47ced0ceb137aa1ae1c8027d2a19970986a2a5e46cb1",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-learning-context",
+        "status": "ACTIVE",
+        "version": 7,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "365f40aac7dae7b27860f801753a652cb1cc5afdb08267595d6f515aa7745d25",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-learning-task-set",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "e19db0e95b7c24fbaef0c9082a5bf07a54afb8541c3435d3a64bd72c57d25886",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-mastery-check-status",
+        "status": "ACTIVE",
+        "version": 19,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "c70747fd2a522c386dd8355612488c03e19e4d55c34eb927ff23d96b2b1e00bf",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-my-privacy",
+        "status": "ACTIVE",
+        "version": 13,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "80defc67730b18eabe7d1ab3874e08a845f4f57b0d69c2f6fdd5deb8b355ce6d",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-pilot-item-analytics",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "823b18de372b7fcf2296c2c3871904d9ff1cc9bea8e145f21280fa9738d4f771",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-practice-item",
+        "status": "ACTIVE",
+        "version": 9,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "d0c6622698aa7f585d6d66b3f36354550654fe10843630f1ae29b4e3c6bd5d9e",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-remediation-help",
+        "status": "ACTIVE",
+        "version": 20,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "075df68263d1ffdce899640a29cfc888026b777b3ef738a94d0bac9930fab88d",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-school-admin-overview",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "8dc71f786c2db77c0e42b44272fb89ae2485a81cba125c3739e4aeba5f04b9d3",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-school-performance-analytics",
+        "status": "ACTIVE",
+        "version": 7,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "df263365f3867ed2a6c8ce06aaad1c26e42e0c0259375ded264f0cce1c033019",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-school-subject-options",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "2a3dfc614508916d023fdc55fbcc3c8a5b8b52bbc3e88a25fc810c6699128cf8",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-school-teachers",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "9fd24a023e1656790be6f93ff21fda7feddd2df4b1f40785dc9adc2bea6c9e8f",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-session-item",
+        "status": "ACTIVE",
+        "version": 24,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "4bb88414c01751c98f060f69f1b20b000c039cd1bfa9601b837ad9411a4b3ae6",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-student-classes",
+        "status": "ACTIVE",
+        "version": 17,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "5fc3ce933f51863af9d7fe2c062653005ac4de22a77f39be7c11f2adbdc9f385",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-student-dashboard",
+        "status": "ACTIVE",
+        "version": 30,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "a958d5fa51ab0000d2d5bc77c15f85bd79a9db3391ca4c1fda9a1942c8a359c2",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-student-onboarding-options",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "348c5411ec24a6530c3e0e4bd51aea32b5c44868b7ab79b8a2b21deac5c0ac41",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-student-work",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "742fb4ae00e47c36a34c2b19545818de3084e70a0f22cbeb64fbd45112d205aa",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-teacher-academic-context",
+        "status": "ACTIVE",
+        "version": 6,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "6e08af4390d0cc96d04994d95a5f3602a7d78d38b70720f22c36fe6ddf6811e9",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-teacher-dashboard",
+        "status": "ACTIVE",
+        "version": 30,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "6f7229328b714b0be413a421754657c0a183ce61bed60c4c1a559c209063a1f9",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-teacher-student",
+        "status": "ACTIVE",
+        "version": 22,
+        "verify_jwt": false,
+        "import_map": false,
+        "ezbr_sha256": "46cd392df2d6ef326a1e1661c81e9a7b806746f41608981f663dd3f5e684a5e6",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-teacher-workspace",
+        "status": "ACTIVE",
+        "version": 7,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "14a8655586916ea9ffd56da12eb94a94c27131005ec38713f5e6cd567d938750",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "get-unit-guides",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "318d3dd8df9fac01ea6396311b15f0dcedb9dc829d67d3d654522866c367d21d",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "join-class",
+        "status": "ACTIVE",
+        "version": 8,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "dcfca0e34214b85ac3a8326f248428fd53dfd60dcb3f433ac7c56caf6ebd1b56",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-admin-account",
+        "status": "ACTIVE",
+        "version": 9,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "0f46cb6ff7678de14ca39135c4d8803008181cd307d1a3b9b6c47f0a7e536637",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-content-quality",
+        "status": "ACTIVE",
+        "version": 17,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "84df32309d4adf4ae05bc8069b30ed36625c10600bb27ec81a998a4cec9219ad",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-institutional-invitation",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "2602c0c121fb227996b063b67c04621ca57f36ff016b453b56c3e52ccaf80374",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-institutional-membership",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "5f0f5fbeba98227d350bea0afadc39b6a548ec6f78e4f472466b0b9568756f2e",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-institutional-teacher-class",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "0f8200ff9e279c88194ca14086f15cc5d05d046c7ecf0428a4e685a6f15db829",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-misconception-reviews",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "656dc07fce3d4fc1cd48c1f9b26b079fc15746e44195c5ede4df9f3a58e8deed",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-my-privacy",
+        "status": "ACTIVE",
+        "version": 6,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "000295be28ef4c3febb627c5af7a7ef4e32d270a4c9bf202138db262c2d14cf3",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-remediation-guides",
+        "status": "ACTIVE",
+        "version": 13,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "bc87a5bab769b0ef7d4b93d2e3ff5b4060bae592dce1b31207ee851e75a5f24b",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-resource-assignments",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "641b47b21e16db068b330d6920bd8caa7e40070f04d234094fa2a5444f934df1",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-school-academic-year",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "96690cece0b4cd81251b18a74dfb680648aad47cdb0a07eb45dee513533bced0",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-school-teacher",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "6b3b134d13ca4873890dfd74504cec0947e203f19c9e873b65ad557c4f5a19b7",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-staff-invitation",
+        "status": "ACTIVE",
+        "version": 6,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "1b27a3b74e2715adb7f6b1f980372bf1279fe92a192ef48d9dc755f7e458db86",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-student-invitation",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "b8bd967b6f3a4fa9813943e65132a9c970821043867a948aa482183779f73f43",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-supplementary-resources",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": false,
+        "import_map": false,
+        "ezbr_sha256": "a774c6b57b345f289c29228f4b89053bf49b841cd9ded11cc8dcba1ac993675d",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-class",
+        "status": "ACTIVE",
+        "version": 8,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "91b0e0ce20ecc85a291f600fad86b01621219a317513ce8ce6fb730a3d404080",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-feedback",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "3fcdd17a0d9e56b1806c423c15e8556181680317fc6e1e34db7a5479a18790f5",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-profile",
+        "status": "ACTIVE",
+        "version": 4,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "bae2530bc8c5e73f42dfd8a338eb345bd279625b1264d3c254ed66cf1fc7cd7d",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-subject",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "8f7787ccd79f9612241006506ede750eba9c44c30bc5f4e7b858d2b628c10be7",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-delivery",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "5007b81fc564b8bd1ae74675e82fec2581c2f5796330a1902fc6cdb2cca3a58b",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-drafts",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "4c9a724cbfbc74907699195c75df5a0d865a1658fca84fc23568b48126e47f70",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-review",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "f2f9a2849905ecf0215b1e02d4e98bb0c535ad652fe6222cdbca49e7e2217523",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-review-files",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "042e3a4ce7104e8a9d1bd93c752edf319a0e1672288f1484babc48bde7bd29ab",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-sources",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "d1aba208a8c6526a54f6e7ee9e6687f235b3c6f643386cf173970b1ec1b50964",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-student-files",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "d565e5ead1d0e62ae92f3fe8b95a2a0233dd8a364127a166bf85c4478f191fcb",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-teacher-task-student-work",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "387a295f104954ee490da296c36256629869308b94fc04be90bcada7d1a51ce1",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-unit-materials",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "c256ad4e554f6a247a79977fa0cbd15225789f7f6e5be7f6629326c20becb7c1",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-writing-assignments",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "ebcd64c42b0e8d19d7268e08708465a1a3fc21d60f918db90e6f428fbefce958",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "manage-written-work",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "18ef1b3ff8bd442da35fef1fe5c570d2647d5e720d7f66bdec58524f0a6abec2",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "provision-staff-account",
+        "status": "ACTIVE",
+        "version": 7,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "f83bb16ac8e0c1227407e6216f03d8bc3beb49502a4a6c29b4c02263016d60a5",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "provision-student-account",
+        "status": "ACTIVE",
+        "version": 7,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "772efcbafe9d52fcca544e5d000b3f3041ca7ad46fbda18c04d0a0aba8ba865a",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "record-recommendation-event",
+        "status": "ACTIVE",
+        "version": 11,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "8b0385d577de21e6c79a87575f3123ab1cdaa4d532723618230d9327ce089296",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "redeem-institutional-invitation",
+        "status": "ACTIVE",
+        "version": 3,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "d85886b24301e51c0f3156589db324eada856296750ed306b43073371948cd6c",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "start-learning-session",
+        "status": "ACTIVE",
+        "version": 31,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "fb1b63889e20f1eb18b0c26d97878989ac729b80e5238e9fd4caaa0e3c1a1db2",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "submit-answer",
+        "status": "ACTIVE",
+        "version": 27,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "2a2694c844f20118c7ecca87b131aed3591abf18196061d56cf0c4c43abdf1e5",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      },
+      {
+        "slug": "submit-mastery-answer",
+        "status": "ACTIVE",
+        "version": 16,
+        "verify_jwt": true,
+        "import_map": false,
+        "ezbr_sha256": "ec89fb35ea871f12c36e9ce7c2e1ad761b3e35f4d4c59e7111ea525e44233d59",
+        "sameArtifactAndVersionAsBF16": true,
+        "sameGatewayFlagAsBF16": true
+      }
+    ],
+    "focusedBundles": [
+      {
+        "slug": "manage-supplementary-resources",
+        "version": 3,
+        "verify_jwt": false,
+        "files": [
+          {
+            "path": "manage-supplementary-resources/index.ts",
+            "sha256": "99558032bb67861b3fd62f67faa679e3570bf19792523247decff511ba0e9798",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/auth.ts",
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/supplementary-resources-handler.mjs",
+            "sha256": "077809469fb481c385ffcb9fc071341ff616a44ab4281191de5f5c5f2de94368",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/rate-budget.mjs",
+            "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+            "exactSource": true
+          }
+        ]
+      },
+      {
+        "slug": "get-teacher-student",
+        "version": 22,
+        "verify_jwt": false,
+        "files": [
+          {
+            "path": "get-teacher-student/index.ts",
+            "sha256": "d584cde00154ee67e0b3d050f487cf7de4346ba2611b4245e1c71ab97d979506",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/rate-budget.mjs",
+            "sha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/teacher-read-identity.mjs",
+            "sha256": "b575f3c0d46ce76f2bef6bc6662fdfe3b323d7df23e6d632c049ec784572cd63",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/initial-diagnostic.ts",
+            "sha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/auth.ts",
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/curriculum-release.ts",
+            "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/academic-context.ts",
+            "sha256": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/institutional-teacher-analytics.ts",
+            "sha256": "eb80f55197dfd825a8bfddb5d1a578b332664aceda672f8985ff050424e178cb",
+            "exactSource": true
+          },
+          {
+            "path": "_shared/analytics-evidence.mjs",
+            "sha256": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+            "exactSource": true
+          }
+        ]
+      }
+    ],
+    "database": [
+      {
+        "name": "private.lock_student_learning_context",
+        "bodySha256": "aecfe287a07e0cd3d312757e01d99bc1b948b52a40ab64fab3f5c4d1b81a6115",
+        "bodyExactSources": [
+          "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        ],
+        "securityDefiner": false,
+        "settings": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      {
+        "name": "private.lock_written_teacher_context",
+        "bodySha256": "b8a1df0af15637124bbe72a3f1744e799326c387a65400719edab83f0a7d63ea",
+        "bodyExactSources": [
+          "supabase/migrations/20261020112724_sprint_16_1b_written_work.sql"
+        ],
+        "securityDefiner": false,
+        "settings": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      {
+        "name": "private.service_supplementary_resources",
+        "bodySha256": "d1cef5665c09b7effe8fcc744a1cb01fedbd6ee7253091125d5a8f24779d8f67",
+        "bodyExactSources": [
+          "supabase/migrations/20261101200512_sprint_16_5b_resource_context_sequence.sql"
+        ],
+        "securityDefiner": true,
+        "settings": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      {
+        "name": "private.supplementary_context",
+        "bodySha256": "2997ccb22424e0417b92c254b538fd1cb817c57b8ee88412ecdae8c7f9898551",
+        "bodyExactSources": [
+          "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql"
+        ],
+        "securityDefiner": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      {
+        "name": "private.supplementary_session",
+        "bodySha256": "62ce90e8edb05bdac2d6bc593e6b428b20fe4a24fd4b2f4ed2a5bc6c40f5f17e",
+        "bodyExactSources": [
+          "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql"
+        ],
+        "securityDefiner": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      {
+        "name": "public.service_supplementary_resources",
+        "bodySha256": "9706a1188c4c33ed915417d72db0c457b96ab852bf185abc4d009cabe901b407",
+        "bodyExactSources": [
+          "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql"
+        ],
+        "securityDefiner": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      {
+        "name": "public.service_validate_active_session",
+        "bodySha256": "243e37c085412ead80253edf33d43ff7f8c752d81b3e1965f305201acaf31157",
+        "bodyExactSources": [
+          "supabase/migrations/0012_live_session_gate.sql"
+        ],
+        "securityDefiner": true,
+        "settings": [
+          "search_path=public, auth"
+        ],
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      }
+    ],
+    "unsignedChecks": {
+      "observedAt": "2026-11-14T15:23:20.410Z",
+      "scope": "Six invalid-credential POSTs; no API key, valid session, sign-in, fixture account, or valid action payload",
+      "limitations": "Unsigned expired synthetic token is not a real expired signed production session",
+      "results": [
+        {
+          "slug": "manage-supplementary-resources",
+          "label": "missing",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        },
+        {
+          "slug": "manage-supplementary-resources",
+          "label": "malformed",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        },
+        {
+          "slug": "manage-supplementary-resources",
+          "label": "unsigned-expired-synthetic",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        },
+        {
+          "slug": "get-teacher-student",
+          "label": "missing",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        },
+        {
+          "slug": "get-teacher-student",
+          "label": "malformed",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        },
+        {
+          "slug": "get-teacher-student",
+          "label": "unsigned-expired-synthetic",
+          "status": 401,
+          "code": "unauthorized",
+          "passed": true
+        }
+      ]
+    },
+    "isolatedEvidence": {
+      "runner": "Node test runner, synthetic signature/Auth fixtures and PGlite SQL; no production credentials",
+      "logSha256": "af719907e6f63feb67780f6f14712bb45a7b00b60426be89fa8e757dbdf07e72",
+      "testFiles": [
+        "tests/supplementary-resources.test.mjs",
+        "tests/supplementary-resources-handler.test.mjs",
+        "tests/teacher-read-identity.test.mjs",
+        "tests/read-identity-endpoints.test.mjs",
+        "tests/teacher-role-boundary.test.mjs",
+        "tests/sprint-14a-legacy-boundary.test.mjs",
+        "tests/sprint-14c-institutional-teacher-analytics.test.mjs"
+      ]
+    },
+    "baselineEvidence": [
+      "docs/evidence/abuse-controls-server-bundles-20261113.json",
+      "docs/qa/school-bootstrap-mfa-20261114.md"
+    ]
+  },
+  "hostedRun": {
+    "schemaVersion": 1,
+    "scope": "bf18-hosted-isolated-owner-accepted-access",
+    "runId": "3f04905d-bd2a-49e1-96d5-40f19c388f0e",
+    "reviewedCommit": "375e16bbfb9c4e06830afa76cbef56f7325d654e",
+    "status": "passed",
+    "checks": [
+      {
+        "label": "A_teacher: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: exact authorized material context",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: own student permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: exact authorized material context",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: exact authorized material context",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: own student permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: exact authorized material context",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A: other school student blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "A: substituted student blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student cannot use teacher API",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other school student blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "B: substituted student blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student cannot use teacher API",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "A: draft blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "A: synthetic PDF upload",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A: exact file QA",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A: synthetic publication",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A: permitted PDF bytes and private headers",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A: foreign selected-context PDF blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "A: withdrawn PDF blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "B: draft blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "B: synthetic PDF upload",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B: exact file QA",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B: synthetic publication",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B: permitted PDF bytes and private headers",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B: foreign selected-context PDF blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "B: withdrawn PDF blocked",
+        "passed": true,
+        "httpStatus": 404
+      },
+      {
+        "label": "A_teacher: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: refreshed session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: genuine expired material token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "A_teacher: refreshed teacher session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: genuine expired teacher token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "A_student: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: refreshed session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: genuine expired material token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "B_teacher: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: refreshed session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: genuine expired material token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "B_teacher: refreshed teacher session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: genuine expired teacher token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "B_student: verified designated identity",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: refreshed session still permitted",
+        "passed": true,
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: genuine expired material token blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "A_teacher: close only run session",
+        "passed": true,
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: signed-out material session blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "A_teacher: signed-out teacher session blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "A_student: close only run session",
+        "passed": true,
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: signed-out material session blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "B_teacher: close only run session",
+        "passed": true,
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: signed-out material session blocked",
+        "passed": true,
+        "httpStatus": 401
+      },
+      {
+        "label": "B_teacher: signed-out teacher session blocked",
+        "passed": true,
+        "httpStatus": 403
+      },
+      {
+        "label": "B_student: close only run session",
+        "passed": true,
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: signed-out material session blocked",
+        "passed": true,
+        "httpStatus": 401
+      }
+    ],
+    "createdResources": 2,
+    "cleanup": {
+      "withdrawn": 2,
+      "unresolved": 0,
+      "sessionsClosed": 4,
+      "sessionFailures": 0
+    },
+    "fullBf18Closure": true,
+    "requestCount": 60,
+    "finishedAt": "2026-11-14T16:22:31.374Z",
+    "targetProject": "pgtfeiwznqdeahrkoioy",
+    "ownerAcceptedExtrapolation": true,
+    "productionSignedInTest": false,
+    "finalSourceReadbackPending": false,
+    "closureBasis": "Owner-approved extrapolation from exact-source hosted test-project checks plus production inventory/readback audit; not a production signed-in run."
+  },
+  "finalSourceReadback": {
+    "observedAt": "2026-11-14T16:23:09.463Z",
+    "testFunctions": [
+      {
+        "slug": "manage-supplementary-resources",
+        "version": 1,
+        "verify_jwt": false,
+        "artifact": "a774c6b57b345f289c29228f4b89053bf49b841cd9ded11cc8dcba1ac993675d",
+        "fileCount": 4,
+        "exactProductionSource": true
+      },
+      {
+        "slug": "get-teacher-student",
+        "version": 1,
+        "verify_jwt": false,
+        "artifact": "46cd392df2d6ef326a1e1661c81e9a7b806746f41608981f663dd3f5e684a5e6",
+        "fileCount": 9,
+        "exactProductionSource": true
+      }
+    ],
+    "liveFunctionsUnchanged": true,
+    "main": "375e16bbfb9c4e06830afa76cbef56f7325d654e"
+  },
+  "testDatabaseReadback": [
+    {
+      "name": "private.lock_student_learning_context",
+      "bodySha256": "aecfe287a07e0cd3d312757e01d99bc1b948b52a40ab64fab3f5c4d1b81a6115",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": true,
+        "authenticatedExecute": true,
+        "serviceRoleExecute": true
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "grantsMatchProduction": false
+    },
+    {
+      "name": "private.lock_written_teacher_context",
+      "bodySha256": "b8a1df0af15637124bbe72a3f1744e799326c387a65400719edab83f0a7d63ea",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "grantsMatchProduction": true
+    },
+    {
+      "name": "private.service_supplementary_resources",
+      "bodySha256": "d1cef5665c09b7effe8fcc744a1cb01fedbd6ee7253091125d5a8f24779d8f67",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "grantsMatchProduction": true
+    },
+    {
+      "name": "private.supplementary_context",
+      "bodySha256": "2997ccb22424e0417b92c254b538fd1cb817c57b8ee88412ecdae8c7f9898551",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "grantsMatchProduction": true
+    },
+    {
+      "name": "private.supplementary_session",
+      "bodySha256": "62ce90e8edb05bdac2d6bc593e6b428b20fe4a24fd4b2f4ed2a5bc6c40f5f17e",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": false
+      },
+      "grantsMatchProduction": true
+    },
+    {
+      "name": "public.service_supplementary_resources",
+      "bodySha256": "9706a1188c4c33ed915417d72db0c457b96ab852bf185abc4d009cabe901b407",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "grantsMatchProduction": true
+    },
+    {
+      "name": "public.service_validate_active_session",
+      "bodySha256": "243e37c085412ead80253edf33d43ff7f8c752d81b3e1965f305201acaf31157",
+      "exactProductionBody": true,
+      "testGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "productionGrants": {
+        "anonExecute": false,
+        "authenticatedExecute": false,
+        "serviceRoleExecute": true
+      },
+      "grantsMatchProduction": true
+    }
+  ],
+  "normalAuthRefresh": {
+    "project": "pgtfeiwznqdeahrkoioy",
+    "observedAt": "2026-11-14T16:14:24.623Z",
+    "checks": [
+      {
+        "actor": "A_teacher",
+        "passed": true,
+        "method": "ordinary refresh of retained synthetic Auth session",
+        "sameActor": true,
+        "sameSession": true,
+        "priorSignedTokenExpired": true,
+        "priorExpiredAt": "2026-11-13T12:54:50.000Z",
+        "newAlgorithm": "ES256"
+      },
+      {
+        "actor": "A_student",
+        "passed": true,
+        "method": "ordinary refresh of retained synthetic Auth session",
+        "sameActor": true,
+        "sameSession": true,
+        "priorSignedTokenExpired": true,
+        "priorExpiredAt": "2026-11-13T12:54:52.000Z",
+        "newAlgorithm": "ES256"
+      },
+      {
+        "actor": "B_teacher",
+        "passed": true,
+        "method": "ordinary refresh of retained synthetic Auth session",
+        "sameActor": true,
+        "sameSession": true,
+        "priorSignedTokenExpired": true,
+        "priorExpiredAt": "2026-11-13T12:54:51.000Z",
+        "newAlgorithm": "ES256"
+      },
+      {
+        "actor": "B_student",
+        "passed": true,
+        "method": "ordinary refresh of retained synthetic Auth session",
+        "sameActor": true,
+        "sameSession": true,
+        "priorSignedTokenExpired": true,
+        "priorExpiredAt": "2026-11-13T12:54:50.000Z",
+        "newAlgorithm": "ES256"
+      }
+    ]
+  },
+  "testSetup": {
+    "project": "haiedu-bf16-test",
+    "newRoutines": 9,
+    "newRlsTables": 2,
+    "newPrivateStorageBucket": 1,
+    "nullableProfileColumnAdded": "display_name",
+    "profileValuesChanged": false,
+    "existingSharedHelperPermissionsChanged": false,
+    "setupSha256": "bdf2f30a2179748d6fb0612e93a27c6f9dfb9b4b104dc871808746b18f62f590",
+    "localReplay": {
+      "passed": true,
+      "kind": "Local PGlite replay only",
+      "existingProfileValuesPreserved": true,
+      "routines": [
+        {
+          "schema": "private",
+          "name": "supplementary_context",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "lock_written_teacher_context",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "supplementary_fingerprint",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "supplementary_guard",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "supplementary_session",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "supplementary_public",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "supplementary_definition",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "private",
+          "name": "service_supplementary_resources",
+          "anon": false,
+          "browser": false
+        },
+        {
+          "schema": "public",
+          "name": "service_supplementary_resources",
+          "anon": false,
+          "browser": false
+        }
+      ],
+      "tables": [
+        {
+          "name": "supplementary_resource_events",
+          "rls": true,
+          "anon": false,
+          "browser": false
+        },
+        {
+          "name": "supplementary_resource_versions",
+          "rls": true,
+          "anon": false,
+          "browser": false
+        }
+      ]
+    }
+  },
+  "preservationAndCleanup": {
+    "observedAt": "2026-11-14T16:23:44.027Z",
+    "auth_users": 14,
+    "auth_sessions": 10,
+    "preserved_answer_count": 47,
+    "synthetic_resources": 2,
+    "withdrawn_resources": 2,
+    "published_resources": 0,
+    "retained_private_pdf_objects": 2,
+    "retained_private_pdf_bytes": "284",
+    "fixture_restored": true,
+    "anonymous_private_schema_usage": false,
+    "browser_private_schema_usage": false
+  },
+  "cleanupBoundary": "Both run materials withdrawn and four selected synthetic sessions signed out. One temporary enrollment change restored. Immutable material history and two private PDF objects totaling 284 bytes retained; no storage deletion is claimed.",
+  "runnerChecks": {
+    "passed": 24,
+    "failed": 0,
+    "kind": "Local simulated-network and isolated-clock guard checks; separate from the 56 hosted checks."
+  },
+  "runnerFileHashes": {
+    "access-check.mjs": "ebbe5a1c826ac50154c610d2e6f4a2733b26deb34f26cb2cbb3b766f822d31d2",
+    "access-check.test.mjs": "ade016cbe7825723d560f58412c1c475597d00613afa8d401c40971af487b6ea",
+    "run-hosted.mjs": "2c50b58b6d2da3c2270c6e6593c395fcf6d0bec08e4020cc87ac32e7e971c0c9",
+    "runner-tests.log": "ccde036a3aa4b4320a7ddd61a79ab409c721d0a33435a953ded5ef3f31561cc7"
+  },
+  "permissionDifference": "The pre-existing test private.lock_student_learning_context helper has broader EXECUTE grants than production. Anonymous/browser roles have no USAGE on private in the test project. Six other audited routine grants match; all seven bodies match. No full database or permission-parity claim.",
+  "automaticReview": [
+    {
+      "action": "Broad test setup with an unrelated existing-profile update",
+      "outcome": "Rejected before execution; replaced by accepted narrowly scoped setup with no existing-profile value update."
+    },
+    {
+      "action": "Change shared pre-existing test-helper EXECUTE permissions",
+      "outcome": "Rejected before execution as outside bounded fixture testing; omitted. Only the authorized temporary enrollment change was applied and later restored."
+    }
+  ],
+  "boundaries": {
+    "productionMutations": false,
+    "productionDeployments": false,
+    "productionSettingsChanged": false,
+    "productionQaRun": false,
+    "productionQaReason": "paused by owner",
+    "affectedProductionQa": "none",
+    "bf16Limits": "remain off",
+    "paidStolenPasswordProtection": "declined",
+    "newProjectOrPaidPlan": false
+  },
+  "limits": [
+    "Focused endpoint acceptance of two existing handler-authenticated gateway exceptions, not a signed-in test of all 65 endpoints.",
+    "Exact Edge source and seven relevant SQL bodies are established; the test project is not a full production database/configuration clone.",
+    "Real-browser usability, production token/provider settings and classroom throughput are not exercised by this server-only run.",
+    "Future gateway-flag changes still require separate compatibility checks and production-change approval."
+  ]
+}
