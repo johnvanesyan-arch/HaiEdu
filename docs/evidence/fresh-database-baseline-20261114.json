@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-11-14",
-  "status": "locally qualified candidate; exact-head CI and PR approval pending",
+  "status": "PR486 merged; merged-source CI and public static release verified",
   "reviewedBaseCommit": "70a466cd1bcb19e4558a741331d23d5f3e87916a",
   "scope": "Fresh application structure only; no production migration, historical replay, populated school or data/Storage recovery",
   "localIntegration": {
@@ -142,11 +142,236 @@
     "Local Storage setup corrected to run actual provider role/grant installation; its development postgres membership is revoked before the Data API starts."
   ],
   "remainingGates": [
-    "Exact-head required CI and PR-specific merge approval/coordination",
     "Full historical data-effect reconciliation",
     "Reviewed forward-update bridge after the fresh baseline",
     "Separately deferred BF-02 database-plus-Storage recovery before production automation"
   ],
   "billing": "No paid resources created or enabled",
-  "ownerUsabilityAcceptance": "not given; no user-facing page change"
+  "ownerUsabilityAcceptance": "not given; no user-facing page change",
+  "release": {
+    "pr": 486,
+    "approvedHead": "ff943a292ddf6d5de8d04b5cf0a9cdaac81fd53f",
+    "mergedCommit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+    "approvedTree": "5a9d561cc5228c7c10cbc4709668c9660b309850",
+    "approvedTreePreserved": true,
+    "prCi": {
+      "runId": 43640042665,
+      "attempt": 1,
+      "requiredJobsPassed": 5,
+      "codeTests": 1847,
+      "browserTests": 696,
+      "freshBaselineIntegrationChecks": 18,
+      "comparisonControls": 8
+    },
+    "mainCi": {
+      "commit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+      "runId": 43641415961,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "requiredJobsPassed": 5,
+      "codeTests": 1847,
+      "browserTests": 696,
+      "integrationChecks": 18,
+      "comparisonControls": 8,
+      "jobs": [
+        {
+          "id": 132589600628,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 132589600851,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 132589600870,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 132589600882,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 132592354597,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "failures": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "publicStaticVerification": {
+      "observedAt": "2026-11-14T21:21:23.009Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. Existing full-build proof is reused because app/build source is unchanged. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "16ddb36d630801bf20ac269a9d9a78638bde9fc7ce01fdf32b27fad54dce80ce",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "16ddb36d630801bf20ac269a9d9a78638bde9fc7ce01fdf32b27fad54dce80ce",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "16ddb36d630801bf20ac269a9d9a78638bde9fc7ce01fdf32b27fad54dce80ce",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "productionDatabaseChanged": false,
+    "manualPromotion": false,
+    "productionQa": "not run (paused by owner)",
+    "affectedProductionQa": [],
+    "verifiedOn": "2026-11-15 Asia/Yerevan",
+    "preservation": {
+      "base": "70a466cd1bcb19e4558a741331d23d5f3e87916a",
+      "mergedCommit": "c7e7d63899d1a2b2d77bd58d88b7bb856a3fd571",
+      "unchangedPaths": [
+        "web",
+        "web-build",
+        "supabase/migrations",
+        "supabase/operations",
+        "supabase/functions",
+        "vercel.json",
+        "package.json",
+        "package-lock.json"
+      ],
+      "changes": [],
+      "baselineSchemaSha256": "ebb4b64573def624858ddc2b132e6d8623f31248669fe1958e722afb2c4df38e"
+    },
+    "documentationPrivacy": {
+      "legacyRoadmapLearnerNamesMasked": 1,
+      "legacyInvitationEnrollmentSessionIdentifiersMasked": 5,
+      "technicalOutcomeAndDatePreserved": true,
+      "scope": "Current roadmap document; no history rewrite"
+    }
+  }
 }

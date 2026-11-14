@@ -1,8 +1,8 @@
-# Fresh database baseline — BF-20 candidate
+# Fresh database baseline — BF-20
 
 This package reconstructs HaiEdu's **current application structure** on an empty local Supabase installation. It is separate from `supabase/migrations/`, whose applied files and production history remain unchanged.
 
-Status: candidate; release approval remains separate. Do not use this package on a hosted project. It is not a backup, a data restore, a production upgrade, or proof that BF-20 is closed. Current verification is recorded in [the delivery report](../../docs/qa/fresh-database-baseline-20261114.md).
+Status: merged and locally/CI qualified through PR486; production installation is not part of this package. Do not use this package on a hosted project. It is not a backup, a data restore, a production upgrade, or proof that BF-20 is closed. Current verification is recorded in [the delivery report](../../docs/qa/fresh-database-baseline-20261114.md).
 
 ## Scope
 
