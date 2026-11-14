@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "task": "BF-17",
+  "date": "2026-11-14",
+  "timeZone": "Asia/Yerevan",
+  "scope": "Owner-approved non-creation check of deployed school-bootstrap assurance guard and malformed-input validation",
+  "reviewedFrontendCommit": "704dff2aa166d638755e73b8ca7f5fd20b175721",
+  "roadmapRecord": "4.185",
+  "runtime": {
+    "version": 5,
+    "status": "ACTIVE",
+    "gatewayJwtVerification": true,
+    "deployedFilesMatched": 3,
+    "entrypointSha256": "5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28",
+    "sharedAuthAndAdmissionHelpersChanged": false
+  },
+  "evidenceMethod": "Owner-operated normal browser. Before result visible in supplied Console screenshot; after result pasted by owner. Not an agent-controlled live browser run.",
+  "before": {
+    "observedAt": "2026-11-14T09:09:20.059Z",
+    "assurance": "aal1",
+    "status": 403,
+    "code": "mfa_required",
+    "passed": true
+  },
+  "after": {
+    "observedAt": "2026-11-14T09:18:57.923Z",
+    "assurance": "aal2",
+    "status": 400,
+    "code": "invalid_json",
+    "passed": true
+  },
+  "sameApprovedAccountAndSignInSession": true,
+  "matchingApprovedRunAndProbeHash": true,
+  "sourceProofFreshForEachPhase": true,
+  "fixedRequestBody": "{",
+  "validSchoolCreationRequestSent": false,
+  "successfulSchoolCreation": "not exercised; not waived",
+  "applicationAccountsSchoolsMembershipsInvitationsCreated": 0,
+  "tokenOrRawAccountIdentityPublished": false,
+  "normalSignInEffects": "Owner normal Auth sign-in and existing extra verification only",
+  "cleanup": "No application records require removal. Redacted per-run browser sessionStorage marker remains until tab closure; no Auth storage removal or global logout.",
+  "originalDisposableFixturePlan": "Not used: permanent Master Admin and last-school-admin protections prevent a routine create/delete plan; no protection bypassed.",
+  "preparationVerification": {
+    "isolatedVmAndControllerTests": 31,
+    "nativeChromiumSnippetTests": 1,
+    "failuresSkipsCancellations": 0,
+    "nativeBoundary": "Actual standalone helper and both callback phases under production CSP, with synthetic session and every HTTP request intercepted; no real-provider acceptance claim."
+  },
+  "tinyfishAutomationRuns": 0,
+  "productionQa": "not run (paused by owner)",
+  "affectedProductionQa": "none",
+  "bf16Limits": "off",
+  "paidStolenPasswordProtection": "declined",
+  "widerSecAalReview": "open",
+  "ownerUsabilityAcceptance": "not given",
+  "changesInThisRecord": "Documentation and redacted evidence only; no runtime, browser/build, database, workflow, dependency or hosting change."
+}

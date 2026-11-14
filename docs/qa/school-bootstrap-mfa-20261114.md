@@ -1,18 +1,37 @@
 # BF-17 — school-creation MFA release
 
-14 November 2026 (Asia/Yerevan). The audit at merged source `bde9020ac1ae793dcadabe3dadbd97d3333994c5` found that the direct `bootstrap-school` endpoint omitted the explicit extra assurance check used by other sensitive administrator endpoints. Owner-approved PR482 adds that check and is now merged, deployed and source verified. The release checkpoint below distinguishes deployed-file verification from the separately authorized privileged live acceptance that remains open. Existing SEC-AAL scope remains independent; AUTH-REVIEW-01 only cleared access for an earlier walkthrough.
+14 November 2026 (Asia/Yerevan). The audit at merged source `bde9020ac1ae793dcadabe3dadbd97d3333994c5` found that the direct `bootstrap-school` endpoint omitted the explicit extra assurance check used by other sensitive administrator endpoints. Owner-approved PR482 adds that check and is now merged, deployed and source verified. The release checkpoint below preserves the original deployment evidence. A later owner-approved, owner-operated guard-only check now passes; successful live school creation and wider privileged acceptance remain open. Existing SEC-AAL scope remains independent; AUTH-REVIEW-01 only cleared access for an earlier walkthrough.
 
 Owner usability acceptance: not given. Production QA not run (paused by owner).
 
-## Verified release checkpoint
+## Owner-run live guard-only check — 14 November 2026
+
+The owner approved a narrower, non-creation check using the existing protected Master Admin and normal extra sign-in verification in the same browser session. At reviewed frontend release `704dff2aa166d638755e73b8ca7f5fd20b175721`, the actual deployed function remained ACTIVE version 5 with gateway JWT verification enabled and all three package files matching reviewed source. Fresh read-only source proof preceded each phase; the browser helper also verified the frontend release and the token's own Auth user before calling the function.
+
+| Phase | UTC observation | Actual response | Result |
+| --- | --- | --- | --- |
+| Before extra verification, AAL1 | 09:09:20 | 403 `mfa_required` | Pass: refused before parsing input |
+| After normal extra verification, AAL2 | 09:18:57 | 400 `invalid_json` | Pass: passed the assurance guard and reached input validation |
+
+Both requests used the fixed malformed JSON body `{`, without a school name or first-administrator payload. The supplied results match the approved run, pseudonymous account/session tags, reviewed commit, probe hash and runtime source hash. The before result is visible in the owner's Console screenshot; the after result was pasted by the owner. Record this as **owner-operated live evidence**, not independent agent-controlled browser observation or a whole production acceptance run. Later repeats were stopped locally as already started or stale; they do not replace the first passing before result.
+
+This check created no account, school, membership or invitation and did not invoke a valid school-creation request. Normal owner sign-in/MFA has its ordinary Auth session effects. Tokens and raw account IDs stayed in the owner's browser; private receipts, account/session tags and browser-access links are not published. No application records require cleanup. The helper leaves only a redacted per-run `sessionStorage` marker in that tab until it is closed; no Auth storage removal or global logout was performed.
+
+The original create-and-delete fixture plan was unsuitable: permanent Master Admin identity protection and the last-school-administrator/foreign-key guards do not provide ordinary disposable-record cleanup. Those protections were not bypassed. The owner approved only this existing-account guard check. **Successful live school creation was not tested or waived**, and the broader SEC-AAL and owner-usability gates remain open.
+
+The TinyFish browser route could not complete Cloudflare, while the owner confirmed that the normal browser could. No TinyFish automation run was started. The actual helper/controller preparation had 31 isolated VM/controller checks; a further native Chromium check executed both standalone Snippet phases with synthetic Auth/HTTP replies under the production CSP, with every request intercepted. These preparation checks are separate from the owner-run live evidence. No CAPTCHA, account, role, rate-policy, billing or hosting setting changed. Production QA not run (paused by owner); affected suites: none. BF-16 enforcement remains off; paid stolen-password protection remains declined.
+
+[Redacted check evidence](../evidence/school-bootstrap-mfa-guard-owner-check-20261114.json).
+
+## Original verified release checkpoint
 
 - [PR482](https://github.com/johnvanesyan-arch/HaiEdu/pull/482) merged at `b8dd46632c90a140b91f60f712831c4cb05b86cc` with the exact approved tree. The owner approved that merge and this single-function deployment and confirmed no other agent was merging or releasing.
 - All five required [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43563299945) and [merged checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43564500953) pass: 1,847 code tests and 696 native browser checks, zero failures/skips/cancellations. The isolated PostgreSQL/scheduler and institutional concurrency jobs also pass.
 - Only the reviewed `bootstrap-school` package was deployed. All three deployed files match source; both shared helpers are unchanged and gateway JWT verification remains enabled. Detailed deployment receipts and rollback source remain private.
 - All three public addresses serve the merged source. Twelve fresh static release/manifest/sample/header checks pass. The full unchanged 29-page/127-asset build proof is reused only because those bytes retain their source. No manual promotion or domain-setting change was made.
-- No production account was signed in, no school was created and no email was sent. Production QA not run (paused by owner); affected production QA: none.
+- At this original release checkpoint, no production account had been signed in, no school had been created and no email had been sent. The later owner-run sign-in/guard check is recorded separately above. Production QA not run (paused by owner); affected production QA: none.
 
-**Remaining:** separately authorized signed-in administrator refusal/recovery and successful school creation, wider SEC-AAL review and owner usability acceptance. Isolated handler tests and exact deployed-file readback do not certify these live journeys. BF-16 limits stay off; real-classroom qualification and activation are separate.
+**Current remaining gates:** successful school creation, wider SEC-AAL review and owner usability acceptance. The bounded owner-run refusal/recovery check above is complete. Isolated handler tests, package readback and malformed-input checks do not certify successful creation. BF-16 limits stay off; real-classroom qualification and activation are separate.
 
 ## Behavior and boundary
 
@@ -36,7 +55,7 @@ Only `bootstrap-school` needed an Edge deployment, with its two unchanged depend
 - The HTTP fixture loads the actual TypeScript handler and shared live-session helper, with isolated Auth/profile/RPC replies. Its assertions cover six invalid/missing assurance variants, denied roles/account states, failed session checks, Auth rejection, payload spoofing, fresh-token recovery, unchanged rate 429/503 responses, validation and method/preflight handling. These checks are not real-provider login, actual school creation or privileged live acceptance.
 - Browser-QA dependency coverage passes. Affected production QA: **none**; no direct caller is routed by this server-only change. The full required exact-head CI, including its browser suite and aggregate release gate, remains mandatory before merge.
 
-The broader SQL transaction/identity-history and existing administrator MFA/browser evidence is reused only where source is unchanged. No production QA workflow was dispatched, and no signed-in production or designated-fixture check was performed.
+The broader SQL transaction/identity-history and existing administrator MFA/browser evidence is reused only where source is unchanged. No production QA workflow was dispatched. At initial release, no signed-in production or designated-fixture check had been performed; the later owner-operated normal-account guard check is recorded above.
 
 ## Original release sequence (steps 1–3 completed)
 
@@ -47,6 +66,6 @@ The broader SQL transaction/identity-history and existing administrator MFA/brow
 
 BF-16's new request limits remain off; its activation and real-classroom qualification remain separate. No CAPTCHA, SMTP, rate-policy, account or curriculum setting is changed by BF-17.
 
-EAT: implementation, required checks, deployment and source readback are complete. Privileged live acceptance is approximately 20–40 active minutes once a route and specific authorization are available; wider review and owner acceptance are separate.
+EAT: implementation, required checks, deployment and source readback are complete. The owner-run guard-only check is complete. A successful-creation acceptance route and its cleanup scope still need separate review; wider security review and owner acceptance remain separate.
 
 [Technical and release evidence](../evidence/school-bootstrap-mfa-20261114.json).
