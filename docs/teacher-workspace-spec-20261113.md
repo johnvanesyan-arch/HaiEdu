@@ -11,6 +11,7 @@
 - **Accounts without a name:** existing accounts are not required to add one; the main content reviewer account may stay unnamed. A planned feature for inviting subject-matter reviewers must require a name at acceptance (not built; recorded as a requirement).
 - **Teacher-first exception on the shared account page:** approved. Teachers get the new account layout and order first; other roles' page designs follow later. Other roles see only the shared name rule until then.
 - **Prototype:** go-ahead to update the prototype's account screen before any product code.
+- **Rejected deletion request:** show the reason on the account page. The page already receives it, so no server change is needed. The wording is new and needs Armenian review; the legal-hold wording is still to be decided.
 - **Read-only check behind the decision** (aggregate counts, no names read, 14 November): 12 profiles. All 3 teachers and the 1 master admin have a name. 5 accounts have none: 2 students, 2 school administrators, 1 content reviewer. No name has 1 character, more than 80 characters, or extra spaces. The rule only blocks saving an empty name; it does not fill in existing empty names.
 
 **Inputs:**
@@ -145,7 +146,7 @@ Audit and proposals: [design review, Appendix C](teacher-workspace-design-review
 - **Layout (T2):** inside the teacher layout, one H1. The content is one shared account module; other roles keep today's page until their own slice (teacher-first exception approved 14 November).
 - **Order (T3):** 1. Հաշիվ: email, role and status as text, then the display name field. 2. Մուտքի տվյալներ: email change and password link, stacked. 3. Գաղտնիություն: the two choices, then «Ինչ տվյալներ ենք պահում ուսուցչի մասին» folded, with today's labels and counts. 4. Ջնջման հարցում. Section links on desktop only.
 - **Display name (T5, decided):** required for every role, 2–80 characters, leading and trailing spaces removed and repeated spaces collapsed. Errors: «Մուտքագրեք ձեր անունն ու ազգանունը։» (existing) and «Անունը պետք է ունենա առնվազն 2 նիշ։» (new). One server rule for both endpoints; the deployment needs separate approval.
-- **Deletion (T4):** teacher wording first; request and cancel confirmed on the page with today's wording; today's request states. A teacher's request cannot be approved while they own classes or work, so it stays pending until cancelled or rejected and the account stays active; the locked state applies to student accounts only. *Open proposal:* show the reason for a rejected request (new wording).
+- **Deletion (T4):** teacher wording first; request and cancel confirmed on the page with today's wording; today's request states. A teacher's request cannot be approved while they own classes or work, so it stays pending until cancelled or rejected and the account stays active; the locked state applies to student accounts only. A rejected request shows its reason (decided 14 November) for the four codes an administrator can record: classes and work not yet transferred, request not verified, duplicate request, legal hold. An unknown code shows no reason line.
 - **Unsaved changes (T6):** name, new email and privacy choices ask before leaving by any route. Each section is compared with its saved value, so saving one section does not hide another's unsaved change.
 - **Focus:** an on-page confirmation takes keyboard focus when it opens and returns it to its opener when closed.
 - **Wording (T7):** who sees the name, and «մուտքի համակարգում» instead of the vendor name. Whether students see a teacher's name must be verified before the build.
@@ -264,7 +265,7 @@ All Armenian wording in the prototype reuses existing product text, except these
 - «Դասընթացի» / «Իմ կազմած» (type filter);
 - assign flow and other new labels: «Հանձնարարել» as a menu item, «Ինչ եք հանձնարարում», «Ընտրել աջակցության կարիք ունեցողներին», «Հանձնարարել այս աշակերտին», «Հանձնարարություններ» (tab), «Ուղարկել ստուգումը», «Մուտք գործեք՝ շարունակելու համար», «Ավելին» screen descriptions;
 - guide texts, which are shortened examples;
-- version 6 (account): «Անունը պետք է ունենա առնվազն 2 նիշ։», «2–80 նիշ։», the sentence on who sees the name, «Մինչ այդ հաշիվը մնում է ակտիվ։» in the deletion section, the proposed rejection reason «Պատճառը՝ նախ պետք է փոխանցվեն ձեր դասարաններն ու գործերը։» and «մուտքի համակարգում»;
+- version 6 (account): «Անունը պետք է ունենա առնվազն 2 նիշ։», «2–80 նիշ։», the sentence on who sees the name, «Մինչ այդ հաշիվը մնում է ակտիվ։» in the deletion section, the four rejection reasons («Պատճառը՝ նախ պետք է փոխանցվեն ձեր դասարաններն ու գործերը։», «Պատճառը՝ հարցումը չհաջողվեց հաստատել։», «Պատճառը՝ նույն հարցումն արդեն ուղարկված է։», and the legal-hold placeholder «Պատճառը՝ տվյալները պետք է պահպանվեն օրենքի պահանջով։») and «մուտքի համակարգում»;
 - version 5 additions:
   - unsaved-changes dialog: «Մնալ էջում», «Դուրս գալ առանց պահպանելու», «Եթե հիմա դուրս գաք…»;
   - error states: the explanatory sentences, «Կրկնել նույն գործողությունը», «Ֆայլը չկցվեց», «Պահպանված տարբերակը փոխվել է»;

@@ -913,6 +913,9 @@ const PROTO_EMAIL = 'a***@example.com';
 const accDirty = () => (S.accNameDraft != null && S.accNameDraft !== teacherName()) || !!(S.newEmail || '').trim() || !!S.privA !== !!S.privSaved?.A || !!S.privR !== !!S.privSaved?.R;
 const accReset = () => Object.assign(S, { accNameDraft: null, accNameErr: null, accEmailErr: false, pwChallenge: false, newEmail: '', privA: !!S.privSaved?.A, privR: !!S.privSaved?.R });
 const DEL_STATE = { pending: 'Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։', cancelled: 'Վերջին ջնջման հարցումը չեղարկվել է։', rejected: 'Վերջին ջնջման հարցումը մերժվել է։' };
+// The four rejection codes an administrator can record today (manage-admin-account). An unknown code shows no reason line.
+const DEL_REASON = { staff_offboarding_required: 'Պատճառը՝ նախ պետք է փոխանցվեն ձեր դասարաններն ու գործերը։', not_verified: 'Պատճառը՝ հարցումը չհաջողվեց հաստատել։',
+  duplicate_request: 'Պատճառը՝ նույն հարցումն արդեն ուղարկված է։', legal_hold: 'Պատճառը՝ տվյալները պետք է պահպանվեն օրենքի պահանջով։' };
 function account() {
   const h = head('Իմ հաշիվը', 'Կառավարեք ձեր մուտքի տվյալները, գաղտնիության ընտրությունները և հաշվի տվյալները։')
     + `<nav class="chips acc-jump" aria-label="Հաշվի բաժիններ">${[['acc-main', 'Հաշիվ'], ['acc-login', 'Մուտքի տվյալներ'], ['acc-priv', 'Գաղտնիություն'], ['acc-del', 'Ջնջման հարցում']].map(([id, l]) => `<a class="chip" href="#${id}" data-jump="${id}">${l}</a>`).join('')}</nav>`
@@ -965,13 +968,14 @@ function account() {
     <section class="card section" id="acc-del" aria-labelledby="delT"><h2 id="delT">Ջնջման հարցում</h2>
       <p>Ուսուցչի հաշիվը ջնջելուց առաջ անհրաժեշտ է առանձին ստուգում և դասարանների ու գործերի փոխանցում։ Մինչ այդ հաշիվը մնում է ակտիվ։</p>
       <p class="hint" id="delState">${DEL_STATE[S.accDel] || 'Ակտիվ ջնջման հարցում չկա։'}</p>
-      ${S.accDel === 'rejected' ? `<p class="hint">Պատճառը՝ նախ պետք է փոխանցվեն ձեր դասարաններն ու գործերը։</p>${newData('New wording · decision')}` : ''}
+      ${S.accDel === 'rejected' && DEL_REASON[S.accDelReason] ? `<p class="hint" id="delReason">${DEL_REASON[S.accDelReason]}</p>${newData('New wording')}` : ''}
       <div class="actions">${pendingDel ? '<button type="button" class="btn secondary" data-confirm="cancel-delete">Չեղարկել հարցումը</button>' : '<button type="button" class="btn secondary danger-outline" data-confirm="delete-account">Ուղարկել ջնջման հարցում</button>'}</div>
       ${S.confirm === 'delete-account' ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="daT"><strong id="daT">Ուղարկե՞լ հաշվի ջնջման հարցում։</strong><p class="tile-meta" style="color:var(--ink)">Այն նախ կստուգվի ադմինի կողմից, և մինչև վերջնական ջնջումը դուք կարող եք չեղարկել հարցումը։</p><div class="actions"><button type="button" class="btn danger" data-acc-del="send">Ուղարկել հարցումը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div>${result('delete', '')}</div>` : ''}
       ${S.confirm === 'cancel-delete' ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="dcT"><strong id="dcT">Չեղարկե՞լ հաշվի ջնջման հարցումը։</strong><div class="actions"><button type="button" class="btn" data-acc-del="cancel">Չեղարկել հարցումը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div>${result('delete', '')}</div>` : ''}
       ${note('T4', 'Teacher wording first (today the page opens with the student rule); the first paragraph is today’s teacher sentence plus one new sentence, for Armenian review. Sending and cancelling are confirmed on the page with today’s wording instead of the browser pop-up. The status line uses today’s request states; the account stays «Ակտիվ» throughout.')}
-      ${note('T4 · how it works today', 'An administrator cannot approve a teacher’s request while the teacher still owns classes or work: it can only be cancelled or rejected, and the account is removed later through the staff offboarding steps. Today a rejection shows no reason, although the page already receives it. Showing the reason is a new proposal with new wording (your decision). The locked «Ջնջման հաստատման փուլում» state is reached only by student accounts today; the shared module keeps it for them.')}
-      <p class="note"><b>Prototype</b> · Show request state: ${[['none', 'No request'], ['pending', 'Sent'], ['cancelled', 'Cancelled'], ['rejected', 'Rejected']].map(([k, l]) => `<button type="button" data-del-state="${k}" aria-pressed="${(S.accDel || 'none') === k}">${l}</button>`).join(' ')}</p>
+      ${note('T4 · how it works today', 'An administrator cannot approve a teacher’s request while the teacher still owns classes or work: it can only be cancelled or rejected, and the account is removed later through the staff offboarding steps. Today a rejection shows no reason, although the page already receives it. Decided 14 November: show the reason. The four lines are new wording for Armenian review; the legal-hold line is a neutral placeholder and its wording is your decision. No server change is needed. The locked «Ջնջման հաստատման փուլում» state is reached only by student accounts today; the shared module keeps it for them.')}
+      <p class="note"><b>Prototype</b> · Show request state: ${[['none', 'No request'], ['pending', 'Sent'], ['cancelled', 'Cancelled']].map(([k, l]) => `<button type="button" data-del-state="${k}" aria-pressed="${(S.accDel || 'none') === k}">${l}</button>`).join(' ')}
+        · Rejected because: ${[['staff_offboarding_required', 'classes not transferred'], ['not_verified', 'not verified'], ['duplicate_request', 'duplicate'], ['legal_hold', 'legal hold'], ['other', 'unknown code']].map(([k, l]) => `<button type="button" data-del-state="rejected" data-del-reason="${k}" aria-pressed="${S.accDel === 'rejected' && S.accDelReason === k}">${l}</button>`).join(' ')}</p>
     </section></div>`;
 }
 
@@ -1151,7 +1155,7 @@ app.addEventListener('click', e => {
     if (v.length < 2) { S.accNameErr = v ? 'short' : 'empty'; render(); document.getElementById('dispName')?.focus(); return; }
     S.accNameErr = null; act('name', ['network', 'rate', 'account']); if (S.result.name === 'ok') { S.accName = v; S.accNameDraft = v; S.dirty = accDirty(); } render(); return; }
   if (d.accDel) { act('delete', ['network', 'rate', 'account']); if (S.result.delete === 'ok') { S.accDel = d.accDel === 'send' ? 'pending' : 'cancelled'; S.confirm = null; delete S.result.delete; flash(d.accDel === 'send' ? 'Ջնջման հարցումն ուղարկվեց։' : 'Ջնջման հարցումը չեղարկվեց։'); } render(); if (!S.confirm) app.querySelector('#acc-del .actions button')?.focus(); return; }
-  if (d.delState) { S.accDel = d.delState === 'none' ? null : d.delState; S.confirm = null; render(); return; }
+  if (d.delState) { S.accDel = d.delState === 'none' ? null : d.delState; S.accDelReason = d.delReason || null; S.confirm = null; render(); return; }
   if (d.acc) {
     if (d.acc === 'email') { const v = (S.newEmail || '').trim(); delete S.result.email; S.accEmailErr = !v || !v.includes('@') || v.toLowerCase() === PROTO_EMAIL; if (S.accEmailErr) { render(); document.getElementById('newEmail')?.focus(); return; } }
     if (d.acc === 'password') S.pwChallenge = true;
