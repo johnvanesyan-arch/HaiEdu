@@ -28,6 +28,7 @@ test("admin data endpoints require a live AAL2 session", async () => {
   for (const path of [
     "supabase/functions/get-admin-dashboard/index.ts",
     "supabase/functions/manage-admin-account/index.ts",
+    "supabase/functions/bootstrap-school/index.ts",
   ]) {
     const code = await read(path);
     const auth = code.indexOf("admin.auth.getUser(token)");
