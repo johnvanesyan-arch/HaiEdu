@@ -8,6 +8,14 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
   status, headers: { ...cors, "Content-Type": "application/json" },
 });
 
+function jwtPayload(token: string): Record<string, unknown> {
+  try {
+    const encoded = token.split(".")[1] || "";
+    const normalized = encoded.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(encoded.length / 4) * 4, "=");
+    return JSON.parse(atob(normalized));
+  } catch { return {}; }
+}
+
 Deno.serve(async (req) => {
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -31,6 +39,7 @@ Deno.serve(async (req) => {
       .select("role, account_status").eq("id", actor).maybeSingle();
     if (profileError || profile?.role !== "admin" || profile.account_status !== "active")
       return json({ error: "school_bootstrap_unavailable" }, 403);
+    if (jwtPayload(token).aal !== "aal2") return json({ error: "mfa_required" }, 403);
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const name = typeof body.name === "string" ? body.name.trim().replace(/\s+/g, " ") : "";

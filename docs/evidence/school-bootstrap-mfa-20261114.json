@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-14",
+  "timeZone": "Asia/Yerevan",
+  "task": "BF-17",
+  "scope": "Existing SEC-AAL scope: explicit MFA assurance for direct school bootstrap",
+  "sourceBase": "bde9020ac1ae793dcadabe3dadbd97d3333994c5",
+  "candidateRoadmap": "4.183",
+  "status": "Prepared candidate; merge and production deployment are not performed",
+  "implementation": {
+    "entrypoint": "supabase/functions/bootstrap-school/index.ts",
+    "sourceSha256": "5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28",
+    "requiredAssurance": "aal2",
+    "denial": {
+      "status": 403,
+      "code": "mfa_required"
+    },
+    "order": [
+      "Auth-verified token",
+      "live session",
+      "per-person admission",
+      "active platform-admin role",
+      "aal2",
+      "request body and recipient lookup",
+      "existing bootstrap RPC"
+    ],
+    "databaseAndSharedHelpersChanged": false
+  },
+  "consumers": {
+    "changedRuntimeEntrypoints": [
+      "bootstrap-school"
+    ],
+    "repositoryBrowserAndAcceptanceCallers": [],
+    "alternateSchoolCreationFlow": "Staff invitation issuance already requires the administrator assurance check; recipient acceptance retains its stored authorization and existing service-only SQL invariants",
+    "sharedCodeChanged": false,
+    "newUserFacingPagesOrCopy": false
+  },
+  "verification": {
+    "fullLocalCodeSuite": {
+      "tests": 1847,
+      "pass": 1847,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "focusedRelatedAdminAndInvitationTests": {
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "previousSourceNegativeControl": {
+      "tests": 22,
+      "pass": 18,
+      "expectedFailures": 4,
+      "failures": [
+        "AAL2 endpoint inventory omits bootstrap",
+        "AAL1 reaches school creation instead of MFA denial",
+        "request fields do not substitute for MFA but old source still creates",
+        "MFA-required then fresh-token recovery first incorrectly creates on old source"
+      ]
+    },
+    "httpSecurityCases": [
+      "AAL1/missing/unknown/malformed assurance denied before reading input or looking up an invitee",
+      "request body cannot upgrade assurance or actor authority",
+      "verified AAL2 admin proceeds with one bootstrap business call",
+      "fresh elevated token can retry a prior non-mutating MFA denial",
+      "non-admin/inactive accounts remain denied",
+      "revoked/missing/unreadable live sessions remain denied",
+      "Auth-rejected/missing identities remain denied",
+      "existing rate-budget429/503 behavior, request validation and CORS/method handling preserved"
+    ],
+    "testBoundary": "Actual TypeScript handler and shared live-session helper; Auth/profile/RPC replies are isolated stubs. This is not real-provider sign-in or actual school creation.",
+    "runtimeSourceAudit": "Read-only comparison retained privately; deployed original entrypoint/dependencies match the reviewed base. Deployment of the candidate is pending.",
+    "serviceBoundary": "Existing bootstrap/lookup RPC contract remains service-only; no browser direct-execution grant is added.",
+    "browserQaDependencyCheck": "passed; affected production QA: none",
+    "requiredPrCi": "All five exact-head jobs required before merge; result is recorded in PR metadata"
+  },
+  "productionQa": "not run (paused by owner)",
+  "affectedProductionQa": "none",
+  "productionWrites": false,
+  "productionSignInsOrSchoolsCreated": false,
+  "privilegedLiveAcceptance": "not run; separately authorized acceptance remains open",
+  "bf16": "New request limits remain off; classroom qualification and activation remain separate.",
+  "ownerUsabilityAcceptance": "not given",
+  "remainingGates": [
+    "Exact-head required CI",
+    "Explicit code PR approval and fresh merge coordination",
+    "Specific bootstrap-school deployment approval and deployed-file readback",
+    "Separately authorized privileged acceptance; broader SEC-AAL scope remains independent"
+  ]
+}
