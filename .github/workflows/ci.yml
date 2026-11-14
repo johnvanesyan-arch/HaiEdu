@@ -139,7 +139,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci
-      - run: python -m pip install 'psycopg[binary]==3.2.6'
+      - run: python -m pip install -r tests/requirements-fresh-baseline.txt
       - name: Verify isolated per-person rate-budget atomicity and actor isolation
         run: python tests/actor-rate-limiter-concurrency.py
       - name: Verify session-bound admission and classroom isolation on PostgreSQL 17
@@ -147,6 +147,11 @@ jobs:
       - name: Verify bounded rate-counter housekeeping and real scheduler isolation
         timeout-minutes: 5
         run: python tests/actor-rate-maintenance-concurrency.py
+      - name: Verify fresh-baseline comparison negative controls
+        run: python tests/fresh-baseline-unit.py
+      - name: Rebuild the complete application schema and verify local provider access
+        timeout-minutes: 8
+        run: python tests/fresh-baseline-integration.py --evidence-dir /tmp/haiedu-fresh-baseline-evidence
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-14",
+  "status": "locally qualified candidate; exact-head CI and PR approval pending",
+  "reviewedBaseCommit": "70a466cd1bcb19e4558a741331d23d5f3e87916a",
+  "scope": "Fresh application structure only; no production migration, historical replay, populated school or data/Storage recovery",
+  "localIntegration": {
+    "scope": "Fresh application schema on owned PostgreSQL17.6 + real GoTrue/PostgREST/Storage components; not the complete CLI bundle, hosted QA, classroom capacity or data/Storage recovery",
+    "checks": [
+      {
+        "name": "real provider services start with empty application schemas",
+        "passed": true
+      },
+      {
+        "name": "original first migration reproduces missing starting-table failure",
+        "passed": true
+      },
+      {
+        "name": "baseline refuses installation without explicit local mode",
+        "passed": true
+      },
+      {
+        "name": "complete schema and effective permissions match reviewed catalogue",
+        "passed": true
+      },
+      {
+        "name": "second installation is refused without changing the existing schema",
+        "passed": true
+      },
+      {
+        "name": "only four technical policies seeded; no users, files or scheduled activation",
+        "passed": true
+      },
+      {
+        "name": "real Auth creates profiles and ignores user-editable admin claims",
+        "passed": true
+      },
+      {
+        "name": "real sign-ins create valid provider sessions",
+        "passed": true
+      },
+      {
+        "name": "real Data API allows own profile and hides another account",
+        "passed": true
+      },
+      {
+        "name": "anonymous caller cannot read the synthetic profile",
+        "passed": true
+      },
+      {
+        "name": "browser role cannot invoke the privileged budget capability",
+        "passed": true
+      },
+      {
+        "name": "service role can invoke the same capability with a real session",
+        "passed": true
+      },
+      {
+        "name": "forty concurrent real-session SQL callers admit exactly ten code attempts",
+        "passed": true
+      },
+      {
+        "name": "concurrent refusals are atomic and another account remains independent",
+        "passed": true
+      },
+      {
+        "name": "expired real provider session is refused by the session-bound service",
+        "passed": true
+      },
+      {
+        "name": "real Storage writes and reads a private synthetic object for the service",
+        "passed": true
+      },
+      {
+        "name": "private Storage object is unavailable to the student and public caller",
+        "passed": true
+      },
+      {
+        "name": "provider behavior and concurrency checks preserve the application schema",
+        "passed": true
+      }
+    ],
+    "productionTouched": false,
+    "startedAt": "2026-11-14T20:40:25.112343+00:00",
+    "images": {
+      "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+      "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+      "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+      "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+      "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+    },
+    "catalogueSha256": "208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331",
+    "schemaSha256": "ebb4b64573def624858ddc2b132e6d8623f31248669fe1958e722afb2c4df38e",
+    "cleanup": "Owned component containers, PostgreSQL tmpfs, file tmpfs and network removed",
+    "passed": true,
+    "finishedAt": "2026-11-14T20:41:28.980386+00:00"
+  },
+  "catalogueComparison": {
+    "differences": [],
+    "counts": {
+      "enums": 5,
+      "schemas": 2,
+      "triggers": 150,
+      "functions": 346,
+      "relations": 179,
+      "defaultPrivileges": 6
+    },
+    "fingerprint": "208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331"
+  },
+  "comparisonControls": {
+    "passed": 8,
+    "failed": 0,
+    "scope": "Deparser normalization and substantive schema/access changes"
+  },
+  "existingCodeSuite": {
+    "command": "npm test",
+    "passed": 1847,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 347572.217163
+  },
+  "productionQaDependencyCheck": {
+    "command": "node scripts/check-browser-qa-triggers.mjs",
+    "passed": true,
+    "affectedSuites": []
+  },
+  "preservation": {
+    "historicalSourceMigrations": 208,
+    "archivedOperations": 1,
+    "productionLedgerRecords": 218,
+    "sourceFilesUnchanged": true,
+    "productionWrites": false,
+    "hostedProjectChanges": false,
+    "productionQa": "not run (paused by owner)"
+  },
+  "earlierAttempts": [
+    "Full Supabase CLI image extraction exceeded the workspace Docker storage capacity; download retries stopped. Real component integration used instead.",
+    "Local schema construction ordering corrected: standalone unique indexes precede foreign keys, constraint triggers use CREATE CONSTRAINT TRIGGER.",
+    "Local Auth account fixture corrected to request authenticated role explicitly.",
+    "Local Docker startup ownership/timeout handling hardened; generated credentials kept out of public failures.",
+    "Local Storage setup corrected to run actual provider role/grant installation; its development postgres membership is revoked before the Data API starts."
+  ],
+  "remainingGates": [
+    "Exact-head required CI and PR-specific merge approval/coordination",
+    "Full historical data-effect reconciliation",
+    "Reviewed forward-update bridge after the fresh baseline",
+    "Separately deferred BF-02 database-plus-Storage recovery before production automation"
+  ],
+  "billing": "No paid resources created or enabled",
+  "ownerUsabilityAcceptance": "not given; no user-facing page change"
+}

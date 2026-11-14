@@ -1,0 +1,3625 @@
+{
+  "schemaVersion": 1,
+  "kind": "fresh-only-schema",
+  "normalization": "PostgreSQL17 view AST; source offsets and unused right-UNION default constant-cast labels only",
+  "parser": "v7.23",
+  "sourceCommit": "70a466cd1bcb19e4558a741331d23d5f3e87916a",
+  "catalogueSha256": "208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331",
+  "schemaSha256": "ebb4b64573def624858ddc2b132e6d8623f31248669fe1958e722afb2c4df38e",
+  "objects": {
+    "enums": 5,
+    "schemas": 2,
+    "triggers": 150,
+    "functions": 346,
+    "relations": 179,
+    "defaultPrivileges": 6
+  },
+  "fingerprints": {
+    "enums": [
+      {
+        "key": "public.content_status",
+        "sha256": "677483b2814d040d725a8e67817d5a3535b372c14259f6e821c022f4e14837d3"
+      },
+      {
+        "key": "public.item_type",
+        "sha256": "392b130a60b8e2c0c4660921aef5bfa8294cd4e79dd98169bef03f02955e6ee0"
+      },
+      {
+        "key": "public.mastery_status",
+        "sha256": "2c50b09e044c525a22c2cae6f4cbbe15ffc69d9fcdcba4fab8e64b6504f1a5a0"
+      },
+      {
+        "key": "public.skill_layer",
+        "sha256": "7e5618063e9ee6c210b2204b3c57f45f669468330d044a4a79c23280fc03c4b0"
+      },
+      {
+        "key": "public.user_role",
+        "sha256": "09e0eb75224c628974a5848d4fb27f4f29db3165d2cdcdf76dcaa9476fbbd6af"
+      }
+    ],
+    "schemas": [
+      {
+        "key": "private",
+        "sha256": "8860e808a4644fb696822254f77d0a483be006e21c6231727a956a7abe5c33ef"
+      },
+      {
+        "key": "public",
+        "sha256": "65af758f98bad78d74217f32b9705f97bc1c4987509acbb61b717dfb3c335b33"
+      }
+    ],
+    "triggers": [
+      {
+        "key": "auth.users.on_auth_user_created",
+        "sha256": "88c66759c6c825445277433b111f16573218975ae96d9506a87324937231e6bb"
+      },
+      {
+        "key": "private.learning_answer_receipts.learning_answer_receipt_immutable",
+        "sha256": "e0950ef833b64bfc6c10ddff273493c30ec5ce21f915029b1269600c44e5ae85"
+      },
+      {
+        "key": "private.mastery_form_selection_bindings.mastery_form_selection_bindings_immutable",
+        "sha256": "a20031177769f05ea9ff09eebdd2f82fc014e67c2ca4725aa5a0fbceaa4b0e3f"
+      },
+      {
+        "key": "public.academic_mastery_policy_versions.academic_mastery_policy_versions_immutable",
+        "sha256": "5e59bcd914b28779fe0b3faa339012df5d84176b2744669438ee6e4b689a3439"
+      },
+      {
+        "key": "public.academic_years.audit_academic_year_14a",
+        "sha256": "8be60f80922c4252fabc47e5e7277012b72c86f8a50aa49deb20d91613210e71"
+      },
+      {
+        "key": "public.account_deletion_requests.teacher_task_execution_guard",
+        "sha256": "351e201cf94649dce2418cdb6a25893a594f16f065f0a3359bd19dc2e2f1039b"
+      },
+      {
+        "key": "public.assessment_blueprint_items.assessment_blueprint_items_immutable",
+        "sha256": "6b0e457d4c6221c50fbcabc0b23bcdcd3138f4a7ca42de276a5672f95e68dbe6"
+      },
+      {
+        "key": "public.assessment_blueprint_items.blueprint_member_snapshot_integrity",
+        "sha256": "2104b25ca7f35dc2846b1098d39edfc73a8b8734f219cfedc65da111effbcec8"
+      },
+      {
+        "key": "public.assessment_blueprints.blueprint_snapshot_integrity",
+        "sha256": "ae12ee011409ca3d0a9e751c0ddb2a6308a223154addaed2c09cb8ec1b5d41ae"
+      },
+      {
+        "key": "public.assessment_form_items.guard_registered_mastery_form_membership",
+        "sha256": "eb98464099cdfe586400ade802c4778ab8e2cb90e66070400032e3d1185f44a8"
+      },
+      {
+        "key": "public.assessment_form_items.trg_validate_assessment_form_item_membership",
+        "sha256": "747c5deafde596b640d2831f25b8fe0d33ce22f27901509c112c3b6fb76eecf4"
+      },
+      {
+        "key": "public.assessment_policy_bindings.assessment_policy_bindings_immutable",
+        "sha256": "2036bd0c031c363dcb2817be5c22620ba0c8b96e18e4e837030ef7ae10349b7b"
+      },
+      {
+        "key": "public.assessment_pool_items.guard_registered_mastery_pool_membership",
+        "sha256": "e2b31f4466efe268f0f02b7844129b5d7a5ced31656ac39126958d58d677a6e7"
+      },
+      {
+        "key": "public.assessment_pool_items.trg_validate_sprint_11d_candidate_activation",
+        "sha256": "3a876db8f8f85733699a9f4b8bea91db7e2b6960f8e52d416f0d3bda3bb933c2"
+      },
+      {
+        "key": "public.assessment_pools.guard_registered_mastery_pool_scope",
+        "sha256": "1bbebb58b3079dfff63d54a67dc1f1f8903cf55c17ca172bf2d6002937c3026a"
+      },
+      {
+        "key": "public.attempts.attempts_bind_provenance",
+        "sha256": "41864d1b2711ea73182de7eefbcd877d26103987c2a87635e020d12749351656"
+      },
+      {
+        "key": "public.attempts.attempts_practice_diagnostic_guard",
+        "sha256": "e870445e1e911b90748b8fcbd62a403bb7490d51383e2fe7c6f8db8059cf8131"
+      },
+      {
+        "key": "public.attempts.audio_attempt_guard",
+        "sha256": "2c70f0406064e13c5d0f695fc774ad5eea5d9214ae8353672bb3c7f8af8eb9cf"
+      },
+      {
+        "key": "public.attempts.task_set_attempt_guard",
+        "sha256": "13fbfff288a1ed0043573e5073835636526d0c5e83fc23d8ab228c596916e178"
+      },
+      {
+        "key": "public.calibration_analysis_scopes.calibration_analysis_scopes_immutable",
+        "sha256": "cb83af06047691f2abc3e12f197a34eb789e9c55331cd785d27f9e44db2c11ef"
+      },
+      {
+        "key": "public.calibration_change_decisions.calibration_change_decisions_immutable",
+        "sha256": "acd9dedfe78ec9f20d874a31c951972f79761f34a0c94d0d5def43d657589ee5"
+      },
+      {
+        "key": "public.calibration_change_decisions.calibration_change_decisions_validate",
+        "sha256": "01541bd5a43cf9c9183da3e4649f9920fe483b6b65de719310dec5831623f6df"
+      },
+      {
+        "key": "public.calibration_decision_protocols.calibration_decision_protocols_immutable",
+        "sha256": "e6ece5f1d54d9bbbd2af315540b6aece949d7919e7f7742082c8826dcad3ff6d"
+      },
+      {
+        "key": "public.calibration_evidence_contracts.calibration_evidence_contracts_immutable",
+        "sha256": "5a8551a7f2a12c65464dd77cd546ba21c23a7aa3ba7b69886cb86968a78a3a17"
+      },
+      {
+        "key": "public.calibration_metric_sets.calibration_metric_sets_immutable",
+        "sha256": "81bfca6b914601217e50de5ec4e6d65a712d84868bb600fcf210571f6ae2b990"
+      },
+      {
+        "key": "public.chapter_review_sessions.chapter_review_cycle_completion_trigger",
+        "sha256": "5ca7832a23e626281680d09fd2aef6eaeeae1e0bbf94a59ce75d8f9e3d102207"
+      },
+      {
+        "key": "public.class_memberships.guard_legacy_class_membership_14a",
+        "sha256": "7d5c1c8b417f985bf79cbc7ace45915e403bdd3ffa3c115fa4631449bf837cf4"
+      },
+      {
+        "key": "public.classes.guard_class_identity_14a",
+        "sha256": "a41218c600dd806aa021115e8ffed784b4a052603f7c8a223b8d1a069d4a5c14"
+      },
+      {
+        "key": "public.curriculum_authorities.trg_curriculum_authorities_updated_at",
+        "sha256": "118b2fb19341fa3cd99a1bb2dd1d8f361e3fd1cf3f580d602c90cceafc046a7f"
+      },
+      {
+        "key": "public.curriculum_release_item_families.curriculum_release_item_families_immutable",
+        "sha256": "fb963ec2f45c21bf226251613213fb21bbe8583461777c0119d7ba2a58a0a206"
+      },
+      {
+        "key": "public.curriculum_release_outcomes.curriculum_release_outcomes_immutable",
+        "sha256": "c8a4d6192581ff30b2dcd6b0bfaefb3a88f911eb22d88bd68f29c63968e1a43e"
+      },
+      {
+        "key": "public.curriculum_release_reconciliations.curriculum_release_reconciliations_immutable",
+        "sha256": "f3e8a3413c96d8e001149f1a6265200964bfec24596a9a8675eca11a152e0500"
+      },
+      {
+        "key": "public.curriculum_release_skills.curriculum_release_skills_immutable",
+        "sha256": "fda0795f297b2a4e29dc53ddb3dc287cb5e30cdf2bd011bca0e560cc3a53e28b"
+      },
+      {
+        "key": "public.curriculum_release_units.curriculum_release_units_immutable",
+        "sha256": "eeaa14c9f6f6d7662d79222b0f72be0ab8d2d712359e478ca70f197492e7d4db"
+      },
+      {
+        "key": "public.curriculum_release_units.curriculum_release_units_programme",
+        "sha256": "646ebe705d50da6f1c984c350ee32fe9ead5697397e568544cbc8633adb7ba76"
+      },
+      {
+        "key": "public.curriculum_releases.curriculum_releases_00_scope",
+        "sha256": "cb33dcfadd328f6451b4245367ed13702205b36f19342d27658be5dc419aea55"
+      },
+      {
+        "key": "public.curriculum_releases.curriculum_releases_activation_gate",
+        "sha256": "38b60443f4fbabbf2103d1e4e489498e89d3a24acad6f9ba638ecfc91f6577bc"
+      },
+      {
+        "key": "public.curriculum_releases.curriculum_releases_active_units",
+        "sha256": "defac0e75564e4c8951bba9585aa48cc2045e76351e249f1b10192367bd083aa"
+      },
+      {
+        "key": "public.curriculum_releases.release_snapshot_integrity",
+        "sha256": "3194494779454ffe16811b700ea914e37431203690395c3e3b3454f0f00fd45e"
+      },
+      {
+        "key": "public.curriculum_source_documents.trg_curriculum_source_documents_updated_at",
+        "sha256": "68c2e19d4770add27cf20f23c8beee1e7bbce72ff8bf2d0c5369507f0a890c62"
+      },
+      {
+        "key": "public.institutional_class_enrollments.audit_institutional_enrollment_14b",
+        "sha256": "000fc1a1d78ecb7c3bbc7b62da4878a5ee560902c93b1d022716d20ca57fb606"
+      },
+      {
+        "key": "public.institutional_class_enrollments.validate_institutional_enrollment_14b",
+        "sha256": "cd5782e23420395c52f4710bca644fe63d8e5297b2f020d86f683a2da01e0759"
+      },
+      {
+        "key": "public.institutional_invitations.audit_institutional_invitation_14b",
+        "sha256": "139aeda4ae968c00cb3a5c24b7d64ca39fa8401d1ee8ce3846a40fa43d10ea58"
+      },
+      {
+        "key": "public.institutional_memberships.audit_institutional_membership_14a",
+        "sha256": "a03cd8e670e9c7de96ee9c8a9cf4da5cc587304a6b7ab3f6b3d6ea748b622a55"
+      },
+      {
+        "key": "public.institutional_memberships.end_teacher_subjects_on_membership_14b",
+        "sha256": "ad609cc73ed04a19e7f9ea396f86c7c8203609a94edfd23dbc58c3a92e191b71"
+      },
+      {
+        "key": "public.institutional_memberships.protect_last_school_admin_membership_14b",
+        "sha256": "4df4b33fae2f882ebd734d065017aeb06ef4f6304331557b3648c2fa3b545d30"
+      },
+      {
+        "key": "public.item_answer_keys.published_answer_snapshot",
+        "sha256": "29dfcab6717b279583d18784f23ab9a7693920872c960616c6398922cd1473c8"
+      },
+      {
+        "key": "public.item_answer_keys.trg_answer_keys_mark_revision_required",
+        "sha256": "2207146bc9afa2c7a63bbd927941767428065ad2cc853031bb604abd852e09ba"
+      },
+      {
+        "key": "public.item_curriculum_scopes.trg_validate_item_curriculum_scope",
+        "sha256": "84b9e983897224016d376ce32dae5bec1894095102f0771278c990b19af20064"
+      },
+      {
+        "key": "public.item_misconception_mappings.enforce_published_mapping_mutation_policy",
+        "sha256": "6f0ff0afe937b44e061804dd05386789f54e9659c6c6c17a30489de664560871"
+      },
+      {
+        "key": "public.item_misconception_mappings.misconception_review_mapping_lock",
+        "sha256": "9bca4decf9e9fd7fa921b010d49ff3caec338b87b8d597f0ccb2f9d36dc43bd5"
+      },
+      {
+        "key": "public.item_options.published_option_snapshot",
+        "sha256": "0c5bf9ac0c7be5660d901b0b1abedde2a72bb79544fa661620140f6cc02fad76"
+      },
+      {
+        "key": "public.item_options.trg_item_options_mark_revision_required",
+        "sha256": "ef5108cc58df186dddbeaf757bff36ce545e92712580aa9e8ea4eaf097936601"
+      },
+      {
+        "key": "public.item_template_remediation_guides.item_template_remediation_guides_auto_version",
+        "sha256": "004d7e04a2467343060a3ddefa4255822140b90883c00727dad73e207db55a2f"
+      },
+      {
+        "key": "public.item_template_remediation_guides.item_template_remediation_guides_snapshot",
+        "sha256": "f042e989c3d333b917962dc4eb34ba37b4d82fa6c434571f9162f59f1ffd4869"
+      },
+      {
+        "key": "public.item_templates.lock_item_template_state_before_profile_change",
+        "sha256": "7139e0d2abae5db3c84e237dccae7262abb06ea2319bae933af9b6394567e379"
+      },
+      {
+        "key": "public.item_versions.item_version_snapshot_immutable",
+        "sha256": "8a90d64ea2ee925ff4f4ae66f35487a5fbaddcc6f7590a4e54343c9f61c528cc"
+      },
+      {
+        "key": "public.items.enforce_item_misconception_mapping_policy",
+        "sha256": "ee68ace6915aae3a13e785ae16d6000e6858ae903ffa663e5dfee1ca1ad51310"
+      },
+      {
+        "key": "public.items.enforce_prospective_item_evidence_purpose",
+        "sha256": "b8e32e2daa03b9259b1f22f1b31fc1cd191fff092de296dc1e5402c32db52908"
+      },
+      {
+        "key": "public.items.item_audio_reference",
+        "sha256": "2f041af8102db5e6be776737cc57454713ca3da3ecb37ccdc1dbfd803270dac8"
+      },
+      {
+        "key": "public.items.item_task_set_reference",
+        "sha256": "8ac65208d64395587ce314a705d96e32d0154c9524e43461eea61362bf68dacb"
+      },
+      {
+        "key": "public.items.lock_item_family_state_before_insert_delete",
+        "sha256": "2109e5a7340f58faf80baa5dfddc7e4db0ed143a7f649aa3278571476db19a95"
+      },
+      {
+        "key": "public.items.lock_item_family_state_before_profile_change",
+        "sha256": "be971fd8ba27f06cde975f26bb3690de7e4d4266dc9e258854a16a8fefa14fb9"
+      },
+      {
+        "key": "public.items.published_item_snapshot",
+        "sha256": "0c03d371ad46bd2a435c7f7a8fdec1456db4317d3de0756b0474c7481584b99e"
+      },
+      {
+        "key": "public.items.trg_items_mark_revision_required",
+        "sha256": "0f515da43378abea3ec40e79ce97e06edd8e74e586d1230ae6d70e9f1182b101"
+      },
+      {
+        "key": "public.items.trg_items_z_11d_review_hold",
+        "sha256": "1488ab1e31274af0f8fad7bbe42403d88ef3ff9a7c71aa54eba9f9c3329e5d46"
+      },
+      {
+        "key": "public.learning_audio_versions.learning_audio_version_immutable",
+        "sha256": "dad1f26a298ff2debcea2e566dbfacd5341cfd8a4ef071a0f99f08082bed0584"
+      },
+      {
+        "key": "public.learning_model_configurations.learning_model_configurations_immutable",
+        "sha256": "8a1359f0a7299899d1e1c3501c5b49578f619379fcfc4745e4e132124b56a2f5"
+      },
+      {
+        "key": "public.learning_session_items.learning_session_item_option_order_capture",
+        "sha256": "c75fdec2247114258b444286500e122cc82b4f6202ad957380510b186ee54e1a"
+      },
+      {
+        "key": "public.learning_session_items.learning_session_items_practice_diagnostic_guard",
+        "sha256": "227e540943320ab998960ae0232401691ab3e05ff7fce0d33e2a267bed588f02"
+      },
+      {
+        "key": "public.learning_session_items.source_family_assignment",
+        "sha256": "f07595c2309b55227c89fe4d97d50a2a51700e3f67d01988a8efcb53ce657747"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_00_governed_context",
+        "sha256": "c59bec763cc301cff01683f1c03eabcf1b4c8ceaa795e31c835742d79a9d3611"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_academic_context_14c",
+        "sha256": "735876cb4b853baaaafbd3bf62d0003f1166dd6b3dfe87a711d6801f0af22935"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_bind_provenance",
+        "sha256": "782080871743b04b7623d895bf6c567f0f6b042de59b1a6eed6a3aef49424881"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_identity_immutable",
+        "sha256": "830f8073ce61242c1a915f3c57c22713255df3397b137264137fe2699e825f59"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_initial_diagnostic_guard",
+        "sha256": "276020d78de92210e232ad7982a184dbd62b075d10286a4f241b03df02726287"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_practice_diagnostic_guard",
+        "sha256": "e65496b4ceb9455afc05b64ca15f7cc66d06f50b11ca12415b7b93ba89302bad"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_prospective_pilot_classification",
+        "sha256": "07927e9910f22d9762c98356db0b9417dc93a2369467e68b85ce69a5b19682cb"
+      },
+      {
+        "key": "public.learning_sessions.learning_sessions_stamp_model_configuration",
+        "sha256": "281cdf8003c6dcad78e9f46e7e7fc44a08c2e744dad8c953f94b8ba0b61f11de"
+      },
+      {
+        "key": "public.learning_task_set_versions.learning_task_set_version_immutable",
+        "sha256": "f75cc67332df89ad779b7d536b679638311efb29cf8709fcb6609b83eb7c1c90"
+      },
+      {
+        "key": "public.legacy_learning_blueprint_mappings.legacy_learning_mapping_immutable",
+        "sha256": "38069a7dd93f38f63f8b7d575409f5fb06cd33666a2b952b62c65a83987cb4c9"
+      },
+      {
+        "key": "public.mastery_check_attempts.mastery_attempt_identity_immutable",
+        "sha256": "e38f43e038e71125111728509fb0545801fcd723b368d9383b2c83f4d1f17e19"
+      },
+      {
+        "key": "public.mastery_check_attempts.mastery_attempt_integrity_guard",
+        "sha256": "a71b6af2a07b205727686c79d1e2f338250b1b92cc3941a5888be0cd0087e699"
+      },
+      {
+        "key": "public.misconception_review_events.misconception_history_immutable",
+        "sha256": "5a4035e2cf304dc00bb8e4916727fa1d17396918373257150d423cedf898a77c"
+      },
+      {
+        "key": "public.pilot_evidence_classifications.pilot_evidence_participant_guard",
+        "sha256": "6b3c1b1338ae4e6f31701368c03cd81a1a829033b9c641b1b0f523bc5db3e62b"
+      },
+      {
+        "key": "public.pilot_participant_events.pilot_participant_events_immutable",
+        "sha256": "22428fb1eac83c92baa54eaae567c6dba638f37d74e7fe564e203ad90c8585f5"
+      },
+      {
+        "key": "public.pilot_participants.pilot_participants_immutable",
+        "sha256": "c6e02862345435a5d1e8386a92cba36ff200945dab14544d63fd94f87d3ac1fd"
+      },
+      {
+        "key": "public.pilot_runs.pilot_runs_gate_state_guard",
+        "sha256": "7524e6985c9c043a69474ca0b4c6bc14de3b62dcf40851200d5a06a938a4dd1f"
+      },
+      {
+        "key": "public.profiles.enforce_profile_account_type_14c",
+        "sha256": "8bd41a194418e7f197cf996794fb2f27907c2a459cb0cb59e53cf94058100ce6"
+      },
+      {
+        "key": "public.profiles.guard_archived_staff_deletion",
+        "sha256": "d59e9b3f9dec192df79c36a8acd6c62ac4e578ae140ed453357112337aa98725"
+      },
+      {
+        "key": "public.profiles.profiles_security_audit_trigger",
+        "sha256": "8a26ab7ff06034889ac6db2f8590c44becb72232428ea1a1259e35b52d9e5915"
+      },
+      {
+        "key": "public.profiles.protect_last_school_admin_profile_14b",
+        "sha256": "67833d437a2ac304053c28b2763fe4f881f6a4c0e272801146ff693a3a8382db"
+      },
+      {
+        "key": "public.profiles.protect_master_admin_identity_14c",
+        "sha256": "822d04350b48dde54c781ffa5fbfeede1aeed0e0839b4d79e632357bcfab93fa"
+      },
+      {
+        "key": "public.recommendation_events.recommendation_events_immutable",
+        "sha256": "a7d167038b4a2cfc68bbaaf986c0bf22982542b256ec49b5f5e4a4f2b25bd7ed"
+      },
+      {
+        "key": "public.remediation_events.remediation_events_resolve_guide_snapshot",
+        "sha256": "339ff33d53ad0565c61dd8960cd2a81d78af05902d7a0749cf8705fe90f1e370"
+      },
+      {
+        "key": "public.remediation_events.trg_remediation_event_exposure",
+        "sha256": "95779731fc3571d23d764f5730b219ddba86d3328bdf0e216ba051da8a6ebaae"
+      },
+      {
+        "key": "public.remediation_guide_authoring_versions.remediation_guide_authoring_immutable",
+        "sha256": "00f69565f1bfe88f1a353fab4eba6176174c90ea7546dd1a95b099c6fbe4fdc0"
+      },
+      {
+        "key": "public.remediation_guide_versions.remediation_guide_versions_immutable",
+        "sha256": "7e0567d09bdfcb596fcb57587fa8e3cbe1b38a006e582e743e4812265e7e81b2"
+      },
+      {
+        "key": "public.resource_assignment_events.resource_assignment_event_guard",
+        "sha256": "92f664a42f6fdfe1d8edabf9015b83b3b3ad347241b191c02e1c94cb5901a592"
+      },
+      {
+        "key": "public.resource_assignment_recipients.resource_recipient_guard",
+        "sha256": "03ca9bec3bc27bc3bcbe9d73cad18709b3c9f7f52486862ad85d7f31bcc91cac"
+      },
+      {
+        "key": "public.resource_assignments.resource_assignment_guard",
+        "sha256": "0bf681467517f8e7323d69f002886985ac2ff3a6eb839d5e30c1bacc24a0e52e"
+      },
+      {
+        "key": "public.runtime_builds.runtime_builds_immutable",
+        "sha256": "92ad4ca905243806411c26bb11ed9727e2fbf6a0082cadceab1cd482ad686c4c"
+      },
+      {
+        "key": "public.schools.audit_school_bootstrap_14b",
+        "sha256": "530c7387f42e4c2d318767e55140deccad747f182d418cb08847af998f2eedb1"
+      },
+      {
+        "key": "public.skill_remediation_guides.skill_remediation_guides_auto_version",
+        "sha256": "807ce0ca81d7a1a4f663d490df8d52a8367f6869e3952aa7cd8017ab3ded640f"
+      },
+      {
+        "key": "public.skill_remediation_guides.skill_remediation_guides_snapshot",
+        "sha256": "f299a95bc7bad00687e2b79deaa16b2850688c3b830c0f4afd24b7319b1f3444"
+      },
+      {
+        "key": "public.staff_account_provisioning.audit_staff_provisioning_14b",
+        "sha256": "73ad2b684b295f2f5f924d0cdabd266e2040134ab6ad6e5386901296cafdc2f5"
+      },
+      {
+        "key": "public.student_account_acceptances.student_account_acceptances_immutable_14c",
+        "sha256": "ca60e575fa44c8a39f70f9d533e8114c7768396531d6727f00783155b86b670a"
+      },
+      {
+        "key": "public.student_item_exposure_events.exposure_events_bind_provenance",
+        "sha256": "bb49fb032d697199510eca112ef3f3e31259f4ca8511d5d801431b884b26a844"
+      },
+      {
+        "key": "public.student_item_exposure_events.guard_registered_mastery_form_exposure",
+        "sha256": "ff6c8b6a06116d01b9ee848e7e8d5cd0ef6879a94fea682f932c1d2ed855565f"
+      },
+      {
+        "key": "public.student_item_exposure_events.source_family_exposure",
+        "sha256": "da481db4ecfe29e521be0b1d2c17a528055dbdd4573b59a39796314383b2681c"
+      },
+      {
+        "key": "public.subject_program_source_bindings.trg_subject_program_source_bindings_updated_at",
+        "sha256": "34280fe438294703851d8e1a5c9834d15bae425e406789ca55d96d9035457deb"
+      },
+      {
+        "key": "public.supplementary_resource_versions.supplementary_guard",
+        "sha256": "d323da39a72074d7f0ab172d7918bdaf6b3d113c811cb6e3c0fca1f610f76ce5"
+      },
+      {
+        "key": "public.teacher_assignments.audit_teacher_assignment_14a",
+        "sha256": "d554f3d280be9b33a366ead77d5721f6c6abd1c3aab0d14a92dbaa033363dc91"
+      },
+      {
+        "key": "public.teacher_assignments.validate_teacher_assignment_14a",
+        "sha256": "86b18798109761b9983828586bec54b526a4dd90b3b9425182a021f8fd837819"
+      },
+      {
+        "key": "public.teacher_subject_authorizations.audit_teacher_subject_14b",
+        "sha256": "0458c89d19af6bde81e45d85f6eb92830ef6442d69e7a82b231f97f05f844a32"
+      },
+      {
+        "key": "public.teacher_task_deliveries.teacher_task_delivery_immutable",
+        "sha256": "f9f4dc0a1e563cfe5a3e326dcea42044e9ca8f3628afada553e323fa149a1369"
+      },
+      {
+        "key": "public.teacher_task_deliveries.teacher_task_privacy_delete",
+        "sha256": "05e64bd7d70427649a2b361c243db93a04427e8cbfa8a2b2a890516d0512cc5f"
+      },
+      {
+        "key": "public.teacher_task_delivery_cancellations.teacher_task_cancellation_immutable",
+        "sha256": "95407222acc4e3ac22e913428d71f67b13ce9093b531c8335243a6954b3b6876"
+      },
+      {
+        "key": "public.teacher_task_delivery_cancellations.teacher_task_privacy_delete",
+        "sha256": "9f46ccceef41326b8623ff6b096fb01319977f6a35ae1ebb66549768958d70b2"
+      },
+      {
+        "key": "public.teacher_task_delivery_events.teacher_task_delivery_event_immutable",
+        "sha256": "d5b1d342b467c15ad2f3bd2bcdd623e07b913db5838212b4a3bd9a75d82cac36"
+      },
+      {
+        "key": "public.teacher_task_delivery_events.teacher_task_privacy_delete",
+        "sha256": "f6b04b17d819b10d8b3e7805c1f293eed9d01d62e6151c804159a79c69d1da17"
+      },
+      {
+        "key": "public.teacher_task_delivery_recipients.teacher_task_delivery_recipient_immutable",
+        "sha256": "877c48d31b82dac1dabfbd27a6672528c2febea5bc68e45dd42bb264d6f75744"
+      },
+      {
+        "key": "public.teacher_task_delivery_recipients.teacher_task_privacy_delete",
+        "sha256": "81dba0cf2895d0e42306bacdc714d1de9b854f00ef894a174be8b3499562e1dd"
+      },
+      {
+        "key": "public.teacher_task_drafts.teacher_task_draft_source",
+        "sha256": "1ed4f05b55e0a670d64ebb6231b1f94781afd895339ed72745eaa73a7af87b16"
+      },
+      {
+        "key": "public.teacher_task_response_files.teacher_task_privacy_delete",
+        "sha256": "36382a1ce4c4454fa07225ce62cfe9c0d13036098d35c6fe5df64fa64c218ee9"
+      },
+      {
+        "key": "public.teacher_task_response_files.teacher_task_response_file_guard",
+        "sha256": "a2584bbeaeaaa8459679cee22e3bfc1b6496f50c8de5805e5e68393c99036758"
+      },
+      {
+        "key": "public.teacher_task_review_drafts.teacher_task_privacy_delete",
+        "sha256": "3d14bda6acc0767482dcc5ec90e58a472da65590b7f4bae7ce9690c5dab0f744"
+      },
+      {
+        "key": "public.teacher_task_review_drafts.teacher_task_review_draft_guard",
+        "sha256": "4807827699fef6bca8ac640545bd8c73f2964374944bb4d94e84066ce0bce39a"
+      },
+      {
+        "key": "public.teacher_task_reviews.teacher_task_privacy_delete",
+        "sha256": "9fa99507174578406d23b101b1a1c38c048ef51fc6a67cb0a1c820f5142a8f26"
+      },
+      {
+        "key": "public.teacher_task_reviews.teacher_task_review_immutable",
+        "sha256": "bcec515cc3e6ec750eee57679e1af283d1174924fc5e699cccac33d474841c3d"
+      },
+      {
+        "key": "public.teacher_task_source_files.teacher_task_privacy_delete",
+        "sha256": "b09cb67fcad9c4f4c78ebc1384dd942f2b05eb5b503f7890253f94dd9d8cbb0e"
+      },
+      {
+        "key": "public.teacher_task_source_files.teacher_task_source_immutable",
+        "sha256": "179da3b5c3f8ed4a897201a37f9e8f61a923a96b553f1ee981f6e570e1383c61"
+      },
+      {
+        "key": "public.teacher_task_student_work.teacher_task_privacy_delete",
+        "sha256": "d5896ba57752aa92f85a0fd79c9d93cd8f4c1ed87cb96f5645c586d019c95c3c"
+      },
+      {
+        "key": "public.teacher_task_student_work.teacher_task_work_guard",
+        "sha256": "3b59e8172e0d1b2e08ace7195da57013c07eea24a407186a308decf7a2c222a9"
+      },
+      {
+        "key": "public.teacher_task_submissions.teacher_task_privacy_delete",
+        "sha256": "adb6ab2644dd0d262ea4229b4649c79f978d6a3ec599af1b8cea247d9fc14991"
+      },
+      {
+        "key": "public.teacher_task_submissions.teacher_task_submission_immutable",
+        "sha256": "26fc7362a15c474acaa036f04bc96e6e87a4b30419dc30bc76f2c3c21b13bf7a"
+      },
+      {
+        "key": "public.teacher_task_versions.teacher_task_privacy_delete",
+        "sha256": "7f90a84d663e03e96c7bc7b5380c85febb6e71d992c0ddedd95da79d114f2370"
+      },
+      {
+        "key": "public.teacher_task_versions.teacher_task_version_immutable",
+        "sha256": "e6a8f807189d10dd025c0978d16076627a72a50be161960cb3e50930f864a004"
+      },
+      {
+        "key": "public.teacher_task_work_events.teacher_task_privacy_delete",
+        "sha256": "3edaadfbab291135f24f3dd028e4c0eec8553e956e63ad113ca8366faa67d54e"
+      },
+      {
+        "key": "public.teacher_task_work_events.teacher_task_work_event_immutable",
+        "sha256": "0f5e2369fa9b1bfc441e57cdce172bd844b130b93e1c8c2720532b7779cbdc16"
+      },
+      {
+        "key": "public.unit_material_events.unit_material_event_guard",
+        "sha256": "a7f6c151969ee19dd06441398a4319760f1487b16328e9f189a3668339ba0f68"
+      },
+      {
+        "key": "public.unit_material_versions.unit_material_guard",
+        "sha256": "2eb729cd50c92c9b56d074b46078dc702324a9315045539bedef19588aafe833"
+      },
+      {
+        "key": "public.units.units_release_programme",
+        "sha256": "ea1579a754d8e4cafa9cc1070306839eff338974d380d57255ccc30702c5221c"
+      },
+      {
+        "key": "public.writing_assignment_events.writing_assignment_event_guard",
+        "sha256": "149cc0700f46547a06a44128c3764acd4af55b356fd934306fae222465296de6"
+      },
+      {
+        "key": "public.writing_assignment_recipients.writing_recipient_guard",
+        "sha256": "c1c45a76a9b2b06e698b1b16b29a8e12bd4bec8a5705d700e68eaebe749c47c0"
+      },
+      {
+        "key": "public.writing_assignments.writing_assignment_guard",
+        "sha256": "c1873f203e0ec5c90a2e7b49a8c5e55644a8aad454b791f5a731eb075951104d"
+      },
+      {
+        "key": "public.written_reviews.written_reviews_immutable",
+        "sha256": "d73fcecd8f9f0982a686251d6e0069e846d0be6d11257cb85fc10390c54c6226"
+      },
+      {
+        "key": "public.written_submissions.written_submissions_immutable",
+        "sha256": "2deb2c42fa69bc0f441229b2f0ccf3f2af3f7beb46162bfb8065b744e973779d"
+      },
+      {
+        "key": "public.written_task_versions.written_task_validate",
+        "sha256": "10ec30ea0c5e263808f5120437050fc44f305587bf6fee734eb0b5a20568b8d0"
+      },
+      {
+        "key": "public.written_work.teacher_feedback_invalidate",
+        "sha256": "f653056770e8ab670dff7668acb261c585d7896c44534e09b616bfd5aac16911"
+      }
+    ],
+    "functions": [
+      {
+        "key": "private.active_school_admin_14b(p_actor uuid, p_school uuid)",
+        "sha256": "2cffa073973f4a585ed9473259690b8569acb7c38b5f7c2862c65314e99bfc6a"
+      },
+      {
+        "key": "private.advance_mastery_form_fence(p_kind text, p_entity uuid)",
+        "sha256": "eca16e688752750f48f4a5a11b41af77255bc03a71230c2bbb1cf9eb9e060811"
+      },
+      {
+        "key": "private.apply_configured_mastery_attempt(p_attempt_id uuid)",
+        "sha256": "25c94d99cb153de628cb1558d34bbee2e8b9731e5b0f107c3d846d049aa87815"
+      },
+      {
+        "key": "private.assert_item_version_snapshot(p_item uuid, p_version integer)",
+        "sha256": "2adf5aea01cf0fcd1aba51b9704a131c3aef7a2e538b53f01d7a8aa4452a60f4"
+      },
+      {
+        "key": "private.assert_school_admin_successor_14b(p_school uuid, p_excluded_membership uuid, p_excluded_person uuid)",
+        "sha256": "15170a87b24040126b95de34c1e9a1607a8ab2a79d9bf2e9a390cb6ca56d3f32"
+      },
+      {
+        "key": "private.assert_student_dashboard_session(p_student uuid, p_auth uuid)",
+        "sha256": "993d55b7cf898b8c6d933db1672a75f1d18b73434df784ea7b0d8ebcb31ee4eb"
+      },
+      {
+        "key": "private.assessed_audio_evidence(p_session uuid, p_audio uuid)",
+        "sha256": "e8739bff4124122fc673febc9c02c2c47fc584830f1f2cfc84f4d538f5b514fa"
+      },
+      {
+        "key": "private.assessed_audio_policy(p_session uuid)",
+        "sha256": "4c830e696c68f7edaf7914a96a63449db7b9691b5e4cd126b59cb28ebf843ed5"
+      },
+      {
+        "key": "private.assessed_audio_questions(p_session uuid, p_audio uuid)",
+        "sha256": "dff0777df594a3d798781561df82ac52a0b46f6f7bca036e767b2873a60d9a70"
+      },
+      {
+        "key": "private.assessed_audio_state(p_session uuid, p_audio uuid)",
+        "sha256": "cb17bba3cc921039d09a44e3dfd682f14ae7bd9951f34a5fa555607848daa826"
+      },
+      {
+        "key": "private.assessment_result_v2(p_policy jsonb, p_skills jsonb)",
+        "sha256": "97f3ad16aba152f0688a87b5879c3fa484b1fb93316e7171e754b91e7101ec91"
+      },
+      {
+        "key": "private.assessment_result_v3(p_policy jsonb, p_skills jsonb)",
+        "sha256": "89df4107492d5c934657e845ddda3e17e7556ca59f50508e18bca9727dc295e8"
+      },
+      {
+        "key": "private.assessment_skill_set_valid(p_value jsonb, p_scope jsonb)",
+        "sha256": "0718d609e33a0ddf975d9a768f3307c7f862d412305dcb6dde3cd54ba040ae47"
+      },
+      {
+        "key": "private.attach_governed_lifecycle(p_session uuid, p_details jsonb)",
+        "sha256": "ad16dc3f4dbba6bd731ac3d4ebd6bb2aac536b9801df5d7fd4e535d0fdfc896a"
+      },
+      {
+        "key": "private.audit_profile_security_change()",
+        "sha256": "ef9399b0b8826637499d10757d290b298ae035eea2f8af78cb15d3dfdb7a084f"
+      },
+      {
+        "key": "private.authorized_governed_result(p_student uuid, p_auth uuid, p_enrollment uuid, p_release uuid, p_unit uuid, p_result jsonb)",
+        "sha256": "14b76463bb7ab955771f2bb6920bba28b887554b29fb04dbe2acac7a02976cac"
+      },
+      {
+        "key": "private.authorized_legacy_answer_result(p_student_id uuid, p_auth_session_id uuid, p_result jsonb)",
+        "sha256": "8989a103f28619023d896d207cec97301199a17a69bfee532afe963e77915d5b"
+      },
+      {
+        "key": "private.bind_attempt_provenance()",
+        "sha256": "51a2fb3337f77ae9399af141c33bcb4e7dc1808c324d6872ba7fdd241117458a"
+      },
+      {
+        "key": "private.bind_exposure_provenance()",
+        "sha256": "3662961379d4bdf9e932c7001647ba5340ea9700f88f8ccfc550c3aca8c7c73b"
+      },
+      {
+        "key": "private.bind_learning_session_provenance()",
+        "sha256": "c9ef747fb946a87b446d44ab2936335463b2eba5572bb16964f54d1eeaeebbed"
+      },
+      {
+        "key": "private.bind_mastery_form_selection(p_binding_id uuid)",
+        "sha256": "ef2034f780956aec2d2cad8b92e4abb581b660108519924439e1e84aaebb0c89"
+      },
+      {
+        "key": "private.capture_learning_session_item_option_order()",
+        "sha256": "c757ebe40d2e9a5e4b990533f0b2c9b58d8c233a94e3a007754d440f61b297d3"
+      },
+      {
+        "key": "private.capture_published_item_snapshot()",
+        "sha256": "2e7834b2c5eba566561f589cd24974cda8996b36c5c12ed8f2ce0efb8a6747a4"
+      },
+      {
+        "key": "private.classify_prospective_pilot_session()",
+        "sha256": "7e1835e14de728d6146053f8b366ec0d1d3d5540c989ebf13157573ff4751608"
+      },
+      {
+        "key": "private.current_item_version_snapshot(p_item uuid)",
+        "sha256": "069a1a007fa245a78b2342aa5800a767a4a2513dd7e1ca5f89b256a46b348e5f"
+      },
+      {
+        "key": "private.current_school_admin_of_school_14b(p_school uuid)",
+        "sha256": "d2e89c2aad876c2aac166023a33d1845cdce11d1943aa1b386eea21b3f942998"
+      },
+      {
+        "key": "private.current_user_active()",
+        "sha256": "c540b84f35da9ca881e64c76ef1a39b641287ad7070c899cfa6ab3f02a70bcd2"
+      },
+      {
+        "key": "private.current_user_role()",
+        "sha256": "7f631241cd282e195fb30ffac062dab7bf10b364fed1b9dfa6db10f29a99978e"
+      },
+      {
+        "key": "private.enforce_blueprint_item_snapshots()",
+        "sha256": "fef7ac8a31ee6f8a3eec5e6d38aa012a329ba8195ce368251a84769a99c3d936"
+      },
+      {
+        "key": "private.enforce_curriculum_release_activation_gates()",
+        "sha256": "a7f62d785ec4520916d8754fbed810075397468620b7875a523f909cb3345c4d"
+      },
+      {
+        "key": "private.enforce_master_admin_identity_guard_14c()",
+        "sha256": "96db8d791f8b1320e0ba80417034db0686ddf0da34203d147206d5f77988fa00"
+      },
+      {
+        "key": "private.enforce_pilot_run_gate_state()",
+        "sha256": "64146346d2d462b4ce4c3d4e0dd7c3de692a19ff0b5655c3cc822b43f12a89b4"
+      },
+      {
+        "key": "private.enforce_profile_account_type_guard_14c()",
+        "sha256": "f8cb596e39df235d48807710e4339050b3e8869694b97f569fc96551a56c614d"
+      },
+      {
+        "key": "private.erase_student_data_legacy(p_student_id uuid)",
+        "sha256": "0c1b6c862a2f5193947a007fa542edf92ab6c48866af63134c9ed694c7cf2782"
+      },
+      {
+        "key": "private.generate_mcq_option_order(p_student_id uuid, p_item_id uuid)",
+        "sha256": "839cb37860573fa8a06dc061f16c7b8feccf1575468aa5267567095fe2a8e3f1"
+      },
+      {
+        "key": "private.governed_operation_before_recovery(p_student_id uuid, p_auth_session_id uuid, p_session_id uuid, p_action text, p_payload jsonb)",
+        "sha256": "26dfbebf47e15d7424103cff10c3be0f7700d0c7f2fd9eb41664b1acc2627a79"
+      },
+      {
+        "key": "private.governed_presentation_index(p_key text)",
+        "sha256": "794c4e8db98462d948c1a291cbf166c28a7f8bc04fde21192563e5b5b844a121"
+      },
+      {
+        "key": "private.governed_presentation_key(p_ordinal integer)",
+        "sha256": "92ca4ca16589c33ca4315c307f8d8592fa7858af4e5df2b016ac23c6ac02aa34"
+      },
+      {
+        "key": "private.governed_skill_ready(p_student uuid, p_release uuid, p_skill uuid, p_model uuid)",
+        "sha256": "4b8248441a5e7b188bb00c1e90bcb04fa6f514fcd4ccac897bd1563145131aab"
+      },
+      {
+        "key": "private.grade_arrangement_response(p_type text, p_definition jsonb, p_key jsonb, p_response jsonb)",
+        "sha256": "96cef533304ec949581f6987c33691e34ad385babed6ccf2bae3cbce2cc5bd8b"
+      },
+      {
+        "key": "private.grade_typed_fields(p_definition jsonb, p_key jsonb, p_response jsonb)",
+        "sha256": "ff5a8b9c6fcc999e7560a53438435580a8cf071932410bcaada6cc2317e951d9"
+      },
+      {
+        "key": "private.guard_archived_staff_deletion()",
+        "sha256": "b5fbc766d1d6cbadea7e5f85efcc325e4217349231c8d7075bb0b49cafc1fbad"
+      },
+      {
+        "key": "private.guard_audio_attempt()",
+        "sha256": "9e18848d65c98f53d9dbb30268f962e0e6f22f8ba98c3e0f2044a84898510dc5"
+      },
+      {
+        "key": "private.guard_audio_version()",
+        "sha256": "6723125950ebad3d5447150469506858bdf7ed73081ac2674122c346df9eceae"
+      },
+      {
+        "key": "private.guard_blueprint_item_immutability()",
+        "sha256": "ed0a7ba9760ee997e5df27a03265c7b0527b136d7d117271f955e68785f30e08"
+      },
+      {
+        "key": "private.guard_curriculum_release_scope()",
+        "sha256": "caa7cfa5098d75f735f5073c8106ead32a82d49320b84aaffa3386b931d7f6b6"
+      },
+      {
+        "key": "private.guard_governed_learning_session()",
+        "sha256": "5827fc9fcb68c9666984865a6707f38786ea26e13b6a5947b5d989a312843ad0"
+      },
+      {
+        "key": "private.guard_item_audio_reference()",
+        "sha256": "aa4fe762b5759745c4b959aee7443ca1f7c7a366f2bfc3a2217026f8ebbcf3e3"
+      },
+      {
+        "key": "private.guard_item_task_set_reference()",
+        "sha256": "8269ee936ed73a2377368a85698f5963a956b8392635261d8dc6837a5180e5fd"
+      },
+      {
+        "key": "private.guard_registered_mastery_form_exposure()",
+        "sha256": "4c11fc74f745301cb3f0fff1dbfccf4f3971026c5b4619ab9b4a6ec996c7b73b"
+      },
+      {
+        "key": "private.guard_registered_mastery_form_membership()",
+        "sha256": "3f363a5ca98bdd585deeaa5d14ba21f89245e1b59fb07bfa4a713c5afb73684c"
+      },
+      {
+        "key": "private.guard_registered_mastery_pool_membership()",
+        "sha256": "26b03f44a9535155f276381cfdef9bbd9b77a656c1b399e20dfc3f30a81a50a1"
+      },
+      {
+        "key": "private.guard_registered_mastery_pool_scope()",
+        "sha256": "1d3b5a1dbf4aa02030888ef9fb26c2482da485eb5bf1ae437c06bf2da6375e57"
+      },
+      {
+        "key": "private.guard_release_snapshot_immutability()",
+        "sha256": "670e20d602156f348e5b96ee5fed4f41f4dcfa401c7f789a25693ec6b38adb25"
+      },
+      {
+        "key": "private.guard_release_unit_programme()",
+        "sha256": "2cd20a93d6e5f83593290e3f6d65bbb0599e7986de41b6291e089dade15d83c7"
+      },
+      {
+        "key": "private.guard_school_admin_membership_14b()",
+        "sha256": "b5e3e66ce40e09146166a0026df5093c51831d700c3a8a35f4410595786cb1d2"
+      },
+      {
+        "key": "private.guard_school_admin_profile_14b()",
+        "sha256": "0a32c60b94162725b54a69e73c5b413d86f34797e9107baa5368854fac2668d2"
+      },
+      {
+        "key": "private.guard_source_family_assignment()",
+        "sha256": "197d78fbd7d6bdd60da200d023472fb0e36513f1e551c04e930cbca6f8e5c6c2"
+      },
+      {
+        "key": "private.guard_task_set_attempt()",
+        "sha256": "74e7a9c7f21c01dff4e974c0a124e1d393fe4aa88f0a699becf883709d08514b"
+      },
+      {
+        "key": "private.guard_task_set_version()",
+        "sha256": "06f320ed116c05d2e5cb925b8565b728b1ce4d831eb659a37f3e56b29905651a"
+      },
+      {
+        "key": "private.guard_unit_material()",
+        "sha256": "f4563ca715aff051cce4c23dbf823c2c28edae57ee23dd8ca979b3da8f330ab2"
+      },
+      {
+        "key": "private.guard_unit_material_event()",
+        "sha256": "c32ce7ad8e6a2288f2889b8bc04c0b9d91d14cc82536e1bdd5532d593a1eec62"
+      },
+      {
+        "key": "private.guard_unit_release_programme()",
+        "sha256": "0e113110eb706911c60300a5bb708af3208c9e20ebeb84f2469d4e75bf27ea41"
+      },
+      {
+        "key": "private.hold_unactivated_11d_after_approval()",
+        "sha256": "a05346c37702431ec2e767cd645bd91c9a89a0f253873566001b3d105d101b8c"
+      },
+      {
+        "key": "private.invalidate_teacher_feedback_drafts()",
+        "sha256": "86128348879f202af979246d631b1249ad30e55a31c1ceb375604afbede9f4d3"
+      },
+      {
+        "key": "private.is_class_member(class_uuid uuid)",
+        "sha256": "2661a6669befaf5d99b724c445b1d8888f6da2d5c8f0e689f147b8e8bcf65a73"
+      },
+      {
+        "key": "private.is_class_teacher(class_uuid uuid)",
+        "sha256": "a4e5d36ae8b9d28f37bbca5c8d7fc8f09906bc31f6dd9f49e5d5ae0274052520"
+      },
+      {
+        "key": "private.is_teacher_of_student(student_uuid uuid)",
+        "sha256": "732ca12eccbe17edc2cad5ceb633f9d014fbf5f4e582713cbea6701472c240c6"
+      },
+      {
+        "key": "private.item_is_protected(p_item_id uuid)",
+        "sha256": "920794eadc6f870357e2eb439a94b584deedd004ce9a8e93419267bf6542c54b"
+      },
+      {
+        "key": "private.item_snapshot_assessment_content(p_snapshot jsonb)",
+        "sha256": "5b3a6f43d6b446277d4bf851583d24e64fc471849feeaf2bd1dd75a21a8f14be"
+      },
+      {
+        "key": "private.item_source_family(p_item uuid)",
+        "sha256": "69b059ebb4a00974054b4e532b63219d809bc55cdca43f5332b5774d448f34dd"
+      },
+      {
+        "key": "private.keep_misconception_review_history()",
+        "sha256": "a7fe9d96577b51b18dd91005428e0ac5dbeff0ef0846c7f464a5f0fd1f08db13"
+      },
+      {
+        "key": "private.learner_governed_session(p_session jsonb)",
+        "sha256": "3026aba3dd8fbab11ef6947102bea8b9a21eb74008358bf9f248e61fe779da63"
+      },
+      {
+        "key": "private.learner_shared_stimulus(p_item uuid, p_session_item uuid, p_release uuid, p_unit uuid)",
+        "sha256": "2d63e4f6bf02ab57b7d47ff75dca2bf8c0dcc7639631fbc262eb3475799d6f85"
+      },
+      {
+        "key": "private.learner_task_set_context(p_item uuid)",
+        "sha256": "62559ca94b0666faf79504ba5e243e21a409d22d3a761dd7b2807d71cf813ec1"
+      },
+      {
+        "key": "private.lock_feedback_actor(p_actor uuid, p_auth uuid)",
+        "sha256": "5decfa6426d6a9871a4a8e7df2a0e32f0d6e9e7f231d055d5659eb3cfc805d1f"
+      },
+      {
+        "key": "private.lock_governed_learning_session(p_student uuid, p_auth uuid, p_session uuid)",
+        "sha256": "1d72d08a623d9d3cd0b6478efd27df7f4a5e0542b9bf238c58c3b2de3c0360d8"
+      },
+      {
+        "key": "private.lock_misconception_review_mapping()",
+        "sha256": "756579fcea7189662cc5181d368127214fe0fbf94f65e21bcea5d7ab14c4934c"
+      },
+      {
+        "key": "private.lock_student_learning_context(p_student uuid, p_auth_session uuid, p_enrollment uuid, p_release uuid, p_unit uuid)",
+        "sha256": "687300a24eca23f8fa063e4b42b04bfeef6777e77b8df792b52d468f13817ab2"
+      },
+      {
+        "key": "private.lock_teacher_offboarding_14b(p_membership uuid)",
+        "sha256": "323619d7242c13adb5796eb59237b3137b43e2418eaec274f68fa84a4b1b4cd1"
+      },
+      {
+        "key": "private.lock_written_teacher_context(p_actor uuid, p_auth uuid, p_assignment uuid, p_release uuid, p_unit uuid, p_write boolean)",
+        "sha256": "6175426ce1612b34afaef6426b261c132d73cc1fdd6846d7643be139838f50a0"
+      },
+      {
+        "key": "private.mark_item_revision_required()",
+        "sha256": "289250e1326079ec76ce2a4cb89c4cf3b05cad47ea22b3d29f562624edd54fce"
+      },
+      {
+        "key": "private.mark_parent_item_revision_required()",
+        "sha256": "22b3342c08cbe93029e5ddff37a40eb025417788797e6bd7c84f9736cf1b65b4"
+      },
+      {
+        "key": "private.mastery_form_item_seen(p_student uuid, p_item uuid)",
+        "sha256": "a390a705ff0a4e8156b15fe15ccc8010d410292a354c7d1b1bf0bb2abd50764d"
+      },
+      {
+        "key": "private.normalize_typed_text(p_text text, p_rules jsonb)",
+        "sha256": "f119d6ec2cf83e177bfffd86f5e2a0017245aced76c41a9d3819d09e014ec4cf"
+      },
+      {
+        "key": "private.order_task_set_items(p_items uuid[], p_seed text)",
+        "sha256": "80c8a4918f5543b088c29799cb68a94948cd63c5cb663373f8c3d18221b8de11"
+      },
+      {
+        "key": "private.pack_task_set_items(p_ranked uuid[], p_count integer)",
+        "sha256": "f0fc22a12fd7a20785868af87056934dffc1072ea822e876be4395c484626ea8"
+      },
+      {
+        "key": "private.pilot_participant_session_is_eligible(p_pilot_run_id uuid, p_student_id uuid, p_started_at timestamp with time zone)",
+        "sha256": "1f7b793797db75936fce1df2297085fe47c7bfd606a5692cf67bb5c4a4350525"
+      },
+      {
+        "key": "private.prepare_governed_lifecycle(p_student uuid, p_binding uuid)",
+        "sha256": "7809ac8477e925c39304e552ae75ee97b381dc969e2c2fd932fd93a3449c559d"
+      },
+      {
+        "key": "private.present_arrangement_definition(p_type text, p_definition jsonb, p_seed text)",
+        "sha256": "4eee30fc81956fae97801960733396979ed04d8f76788a7d5e923b882090b16b"
+      },
+      {
+        "key": "private.preserve_item_version_snapshot()",
+        "sha256": "f9bd41aaf1f7304bc69fecbaf08a76a2c0e60879e69ac0662077d169c477fcef"
+      },
+      {
+        "key": "private.protect_learning_answer_receipt()",
+        "sha256": "aaf2eecfabbc0b1ee1c82c411a7ce63c0b33f6495f5ee80ccf5760b37acab2fa"
+      },
+      {
+        "key": "private.purge_idle_actor_rate_buckets(p_limit integer)",
+        "sha256": "a8e3bfbf7fc222c075b7c986b1321e16aecd29e17dc9f170a280920c6eb3324a"
+      },
+      {
+        "key": "private.record_session_answer_before_recovery(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_skill_id uuid, p_response jsonb, p_normalized_response jsonb, p_score numeric, p_correct boolean, p_error_code text, p_hint_used boolean, p_response_time_ms integer, p_attempted_at timestamp with time zone)",
+        "sha256": "684e723637bcd7ff3c29e4ac0bcdae18f12307c2de511cc61e5a41b0ccdf90e5"
+      },
+      {
+        "key": "private.record_source_family_exposure()",
+        "sha256": "dfd4c787d4118c251dec29b1b0a29ee82288921e232949d9322211c1297e57e0"
+      },
+      {
+        "key": "private.reject_assessment_policy_binding_mutation()",
+        "sha256": "6a014d69c43f9c92a66c9f83a904e3c5fbdb37368e0899731a168064be37e5fd"
+      },
+      {
+        "key": "private.render_governed_hint(p_text text, p_keys jsonb, p_parameters jsonb)",
+        "sha256": "0a203bbd2a49deefbce2714941b0bd7a20b3d0ee7c2558a32d3be5d682ec35bb"
+      },
+      {
+        "key": "private.render_item_variant(p_template_code text, p_seed text)",
+        "sha256": "640b74b60f8075814ecff52e07057210967900fb7cea9eea5f5f54708ec3da85"
+      },
+      {
+        "key": "private.require_curriculum_governance_transaction()",
+        "sha256": "e3ec3a17b72d0b0a1ff727b2a5aa5935edd66172415961d2d7f24be5e7046fce"
+      },
+      {
+        "key": "private.reserve_actor_rate_budgets(p_actor uuid, p_costs jsonb)",
+        "sha256": "691be52d0a3c52f38b83e3e670c8f2cd8311c38aa552a04c53c8bba6dbf16c59"
+      },
+      {
+        "key": "private.reserve_session_rate_budgets(p_actor uuid, p_session uuid, p_costs jsonb)",
+        "sha256": "a9a9a4a202f5c4267ede9a3a573af38b823ba9bff424ebb40ddc9675dbf82e59"
+      },
+      {
+        "key": "private.resource_assignment_available(a public.resource_assignments, m public.supplementary_resource_versions)",
+        "sha256": "5a1d17b28f95c78f9322ae41ee45ff9e427b03411ab98cc47100e7c612331b95"
+      },
+      {
+        "key": "private.resource_assignment_event_guard()",
+        "sha256": "2fc861b44ec38484138a891ef3eed57851d2e1d3b096d8e59d5caef5a46089e4"
+      },
+      {
+        "key": "private.resource_assignment_guard()",
+        "sha256": "e9cff176fce9ebd7b5f36d5288c1c09d64335531678da7d23ba77541e68f572d"
+      },
+      {
+        "key": "private.resource_assignment_privacy_counts(p_user_id uuid)",
+        "sha256": "53aa61b44dddae0957ef8cff140211ea93f34f9c9db846223fe5603b652a9bf6"
+      },
+      {
+        "key": "private.resource_assignment_public(a public.resource_assignments, m public.supplementary_resource_versions)",
+        "sha256": "d61d68bf6bbb15e92b0420e19f6a970280caddeaafb0ed75efe509caaadfecbf"
+      },
+      {
+        "key": "private.resource_assignment_roster(p_assignment uuid, p_ctx jsonb)",
+        "sha256": "0c2082d2dfd911d6cb76b418866051e0f601bc91e05939422f1cb82341670ef2"
+      },
+      {
+        "key": "private.resource_recipient_guard()",
+        "sha256": "de2a7269a24433d3db31f65819b7031a310637fad4cc8214f4881dac86fa8fd1"
+      },
+      {
+        "key": "private.run_actor_rate_maintenance()",
+        "sha256": "2293f79b23af14d11bdf67b82be1d62998eb1e4a55c4c00fe8cd3d7dca5ec2fa"
+      },
+      {
+        "key": "private.scoped_chapter_baseline(p_student uuid, p_release uuid, p_unit uuid)",
+        "sha256": "56cc031513474384bf4b8d976e4d4cdee2f2b6177f2f5dc158c0ff651200b3c3"
+      },
+      {
+        "key": "private.seed_index(p_seed text, p_salt text, p_size integer)",
+        "sha256": "b154346af31229fcd2d0301f120aa868ebb194caea37004f463d4aa58ff3626f"
+      },
+      {
+        "key": "private.service_resource_assignments(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "62f3acdb8d93092d707440b5e2c77ff3fc13190da016bd67dbc495f0b046a18c"
+      },
+      {
+        "key": "private.service_supplementary_resources(p_actor_id uuid, p_auth_session_id uuid, p_aal text, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "a36484e1636a82e192a1a824d936cd09c930b7955b82e970b63be2882a7af9bf"
+      },
+      {
+        "key": "private.service_teacher_feedback(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "7ab93ab111889a207963a3eaba9c7c67e5b124a65efcf2cc205a3ad55fbe1b8b"
+      },
+      {
+        "key": "private.service_teacher_task_delivery(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "05f704da3304c367b4646e80f40e8114a90098d412ec5bbd859d11cd29d1256b"
+      },
+      {
+        "key": "private.service_teacher_task_drafts(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "09ebc5761bc842e6088389bad2f64ef9e451e90576cb396c0d837f55a0c26c86"
+      },
+      {
+        "key": "private.service_teacher_task_privacy(p_actor uuid, p_auth uuid, p_action text, p_payload jsonb)",
+        "sha256": "13e846b7e1fe8e77bd33e25e2900c47f4b8394ada59fb8870914dd93da749916"
+      },
+      {
+        "key": "private.service_teacher_task_retention(p_actor uuid, p_auth uuid, p_action text, p_payload jsonb)",
+        "sha256": "c890ac8da2181c364c20664fbe6507034d90a8fd41093272cdcf9aaf5ab54bcd"
+      },
+      {
+        "key": "private.service_teacher_task_review(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "523cff0e11b86a0721b8b91ccc1385cd0e11c9564f1631f59fe7ab4130143980"
+      },
+      {
+        "key": "private.service_teacher_task_sources(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "5e3481d326ab5508f396c81916e146b2eb51b9865bf7a09192a27b4ac1975891"
+      },
+      {
+        "key": "private.service_teacher_task_student_work(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "e4d7f340f14d4d334b482d8e8639b99c5253ab9bb125991f8047e101b92a24f6"
+      },
+      {
+        "key": "private.service_teacher_workspace(p_actor uuid, p_auth uuid, p_assignment uuid, p_cursor jsonb, p_work uuid, p_recent jsonb)",
+        "sha256": "cb22f08a40f3f260794069809866f8feeadb234223f50ebf54125b9682477329"
+      },
+      {
+        "key": "private.service_unit_materials(p_actor_id uuid, p_auth_session_id uuid, p_aal text, p_action text, p_payload jsonb)",
+        "sha256": "6322e8f11b0cf0ab2af48bb5c5ba1534f2921306cf0140bdb03a67567fa5a999"
+      },
+      {
+        "key": "private.service_writing_assignments(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "2493b16ebb5d3cf2f71b0d31ab5a6c90b41b33e68f5643bc90404dd1de36044d"
+      },
+      {
+        "key": "private.service_written_work(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "b8644b57d95f1d0244a50cd49b31d100def62d9fe2fe31f227b6d57a5ad98b63"
+      },
+      {
+        "key": "private.set_row_updated_at()",
+        "sha256": "889d7ef90c3e7d08dd559cc62683aadfddbac62e8c10f60ed4f2264a6db31cb0"
+      },
+      {
+        "key": "private.source_family_reserved(p_student uuid, p_family uuid, p_session uuid)",
+        "sha256": "f4bacccc629f40d97c2595d8ef09053cde558a1433974953196ecdc32c85ce11"
+      },
+      {
+        "key": "private.source_family_seen(p_student uuid, p_family uuid, p_session uuid)",
+        "sha256": "1c143cac141b305938ab889521233d759c515b0cc1b92cea3261927484524eea"
+      },
+      {
+        "key": "private.student_unit_guides(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid)",
+        "sha256": "369277c6b842c81bd16c392a37e31f212cbd7f3478d7e6dc2853c4146aa4903f"
+      },
+      {
+        "key": "private.supplementary_context(p_actor uuid, p_auth uuid, p_role text, p_context jsonb)",
+        "sha256": "b8ec7d479518a867553bf056ecef580a2f236c7101486f7a2f188de5a9a4df09"
+      },
+      {
+        "key": "private.supplementary_definition(p_d jsonb, p_teacher boolean)",
+        "sha256": "7f3b6ef1b064f0328bea3c59c7d9615b63ed0d85950e9516b25cc8cbbd656514"
+      },
+      {
+        "key": "private.supplementary_fingerprint(p_definition jsonb, p_path text, p_bytes integer, p_sha text)",
+        "sha256": "ab8d5249b8dffdf86c79620e962d88d25ba33fa56c76bed6118b25f209767b42"
+      },
+      {
+        "key": "private.supplementary_guard()",
+        "sha256": "2b9430765ee2c8966be39d0d91b771761d080ad55e6d15917cbc68fed820667f"
+      },
+      {
+        "key": "private.supplementary_public(p public.supplementary_resource_versions)",
+        "sha256": "bbab4fc68e3d5978a9fcd9e4a97fca9c960fd22b6431725d4fdb9fe571a12072"
+      },
+      {
+        "key": "private.supplementary_session(p_actor uuid, p_auth uuid)",
+        "sha256": "2dd1d922f4c83cb5b18f025a03cdb8224dd7142fe48c1abe6856cf57f47f0bc5"
+      },
+      {
+        "key": "private.sync_active_curriculum_release_units()",
+        "sha256": "79f66bd942d14d818902eb783c0f297eb17e0bc6eeba66ac9724ca65f478f8d2"
+      },
+      {
+        "key": "private.sync_remediation_event_exposure()",
+        "sha256": "92180506c474d86c2466f948647d287bb31305a6e983ffe480b7dfe965dd3f17"
+      },
+      {
+        "key": "private.task_set_item_block(p_item uuid)",
+        "sha256": "1b1bf4b3937f9cc307edf8c4b6f96c2dcc62864cb40ffb3c6187b43784534177"
+      },
+      {
+        "key": "private.task_set_stimulus(p_stimulus jsonb, p_item uuid, p_release uuid, p_unit uuid)",
+        "sha256": "28e31224e102f74176bbb1ee5fcbd3775366e06b1251ce8e9c476ab50a822f70"
+      },
+      {
+        "key": "private.teacher_feedback_privacy_counts(p_user uuid)",
+        "sha256": "8b7f24b28b19c18144391c5cd9d7be3ecdc664aa8518dd0dda1aa5b9b770fa44"
+      },
+      {
+        "key": "private.teacher_task_content_valid(p_actor uuid, p_id uuid, p_enrollment uuid, p_definition jsonb, p_content jsonb, p_complete boolean)",
+        "sha256": "b478a8521499e87f694cdffd91778d43980dee5acbb57bdf92dce734280f0290"
+      },
+      {
+        "key": "private.teacher_task_delivery_immutable()",
+        "sha256": "9ba27b98771787d2209c07cc2f8788eaf94b45859d38f4a66c031687aad650e9"
+      },
+      {
+        "key": "private.teacher_task_delivery_public(a public.teacher_task_deliveries)",
+        "sha256": "2a89f886eed72c603f3a4251d2da07b59b76135c76b4a0005cfef5f50ab49865"
+      },
+      {
+        "key": "private.teacher_task_draft_source_guard()",
+        "sha256": "5fc31e083179a5dea8b19eef8e5fd069181f6128cc9b62f81b28fb1e594c120a"
+      },
+      {
+        "key": "private.teacher_task_erasure_state(p_request uuid)",
+        "sha256": "d5e8b7720600def07f3eaa58ab8f566bb214a4c48a9b50573db97b63d22ec593"
+      },
+      {
+        "key": "private.teacher_task_execution_guard()",
+        "sha256": "58761816d5e8587f1586e92e429fa1f4a613da585fbcb22518d23be7f0e73031"
+      },
+      {
+        "key": "private.teacher_task_file_referenced(p_kind text, p_id uuid)",
+        "sha256": "085415876cede8461ac2d1cbdffc7d103cdc36acddfde4af2623fb65ad7611f5"
+      },
+      {
+        "key": "private.teacher_task_privacy_counts(p_user uuid)",
+        "sha256": "e02d3d6125ba51ba276389c2aeea883b2e7a1b4de2dd4cc8aaf381e9ea1e8241"
+      },
+      {
+        "key": "private.teacher_task_privacy_delete_allowed(p_table text, p_row jsonb)",
+        "sha256": "b302d69673c30e5e140091733f2294e1d787f042954b7b2b4ae3930ed01f4cdc"
+      },
+      {
+        "key": "private.teacher_task_privacy_delete_guard()",
+        "sha256": "74ba0a7e1bb07b5f3de0e137a29c531145486ed0a7e499723477e773b9aecaa6"
+      },
+      {
+        "key": "private.teacher_task_response_file_guard()",
+        "sha256": "2e29978a1da6a2ef7bff82e02c73cbed982464cd0a9dab70632299fd9c9c37e0"
+      },
+      {
+        "key": "private.teacher_task_retention_candidates(p_before timestamp with time zone)",
+        "sha256": "287bfe2ef3b1c066e28af8428e167533519132df9bf61b31a024682d7627651f"
+      },
+      {
+        "key": "private.teacher_task_review_draft_guard()",
+        "sha256": "3cb6193ce2749b3b84e7a71dac1156a0759fef5e18d11257587f2b33e043c6c7"
+      },
+      {
+        "key": "private.teacher_task_review_valid(p_definition jsonb, p_review jsonb, p_complete boolean)",
+        "sha256": "c0fadc9023be695bde4ab383bbb1754e253035c2c1dd2f9456c7fb2517174745"
+      },
+      {
+        "key": "private.teacher_task_reviews_public(p_submission uuid)",
+        "sha256": "3b525600c78ab233b59bb99c0b45546a451943e7fd12fd325a3183d2921534dc"
+      },
+      {
+        "key": "private.teacher_task_source_guard()",
+        "sha256": "956f243f4f035ccbaa45811e4278b7549f32bcdba3af54fc4c478283552ab539"
+      },
+      {
+        "key": "private.teacher_task_student_context(p_actor uuid, p_auth uuid, p_id uuid, p_context jsonb)",
+        "sha256": "5a784be72e159800ce9d494b686b5b0fbc76583317238bae46c365aafd575b8c"
+      },
+      {
+        "key": "private.teacher_task_student_context_base(p_actor uuid, p_auth uuid, p_id uuid, p_context jsonb)",
+        "sha256": "4d06f6bade5283a6cbdbc4111bd57d1f2d7b0538487a1a78a8c6b5acd56eaafe"
+      },
+      {
+        "key": "private.teacher_task_submission_reviews(p_id uuid)",
+        "sha256": "347409a3056d18beb2663ea1f0fe7f08464b620ecc6f80792438b97234e0ed04"
+      },
+      {
+        "key": "private.teacher_task_work_guard()",
+        "sha256": "d33fc0fdfbcd1e84738584047249eedc7b31e368fbd954bb3f3ed7ff97cb1a0d"
+      },
+      {
+        "key": "private.teacher_task_work_public(p_id uuid, p_enrollment uuid)",
+        "sha256": "7401f7e56030a8d2357898d00034f06dc522e862177b39d971aa6926f34535fc"
+      },
+      {
+        "key": "private.unit_material_fingerprint(m public.unit_material_versions)",
+        "sha256": "b172efaab2e17ea5236f2c60df78d9e6f48c804b862a8c1ff20d98aa6c308fbf"
+      },
+      {
+        "key": "private.unit_material_issues(m public.unit_material_versions)",
+        "sha256": "2bcd2bd229513601aacd95059f44fec3308aa713b39254ed14eac0261e5c73a0"
+      },
+      {
+        "key": "private.unit_material_privacy_counts(p_user_id uuid)",
+        "sha256": "cee359ea4ddc6be0f1c5d438a816df47e7de2cfb30615922e72429401e9459be"
+      },
+      {
+        "key": "private.validate_arrangement_definition(p_type text, p_definition jsonb)",
+        "sha256": "69bdccc2a11648c926ebacbc009907e5d1035e40bef6a1681c997ffbf88e119f"
+      },
+      {
+        "key": "private.validate_arrangement_key(p_type text, p_definition jsonb, p_key jsonb)",
+        "sha256": "d2d8ef587d7d8584692a37ed54bb3fdfc1aa959c794dbc6ec786d7428400c858"
+      },
+      {
+        "key": "private.validate_arrangement_response(p_type text, p_definition jsonb, p_response jsonb)",
+        "sha256": "4fa50bc17e94754600b5829e0dbd4ee5176bb9b322f47b77c4f12a4d0bd94074"
+      },
+      {
+        "key": "private.validate_assessed_audio_policy(p_policy jsonb)",
+        "sha256": "ace48fc5731faf3c6fab2dbe92b477d8fa644932c322d34e83750cb986bbdb11"
+      },
+      {
+        "key": "private.validate_assessment_form_item_membership()",
+        "sha256": "dbd6d7fa6223e79f7c48f5973331bc0675faa9c401fe4224b6c39b681d40e710"
+      },
+      {
+        "key": "private.validate_assessment_policy_v1(p_blueprint_id uuid)",
+        "sha256": "48355495657433932842854b891f486ee3cc0addc2cc021408df9ec8ccad729a"
+      },
+      {
+        "key": "private.validate_assessment_scope_v2(p_policy jsonb, p_scope jsonb)",
+        "sha256": "5e263aaa4383c6b672008d0aa51388602d51a504baf313fa9777b21bb22f91ed"
+      },
+      {
+        "key": "private.validate_assigned_source(p_assignment uuid, p_item uuid)",
+        "sha256": "e9e107d3e6169ce48b7f750a0d5337de07cb84d9dfa60b6144f85f8f55e2fccb"
+      },
+      {
+        "key": "private.validate_audio_reference(p_stimulus jsonb, p_item_id uuid, p_release_id uuid, p_unit_id uuid)",
+        "sha256": "4c0b95477cbdf7ac08e9c4e86720ca2711ea3b9693459585e591571a1fdb6b08"
+      },
+      {
+        "key": "private.validate_governed_learning_model(p_model uuid)",
+        "sha256": "317fb45418dec428f3182fa6b7f5e3de4b4dd002ba18c397b7628ca34defa7bd"
+      },
+      {
+        "key": "private.validate_mastery_form_selection(p_blueprint_id uuid, p_policy jsonb)",
+        "sha256": "22c721e43eb084ebc53f5abf61eb14bb98918c9d0bee9bad1b43625d5dd892f5"
+      },
+      {
+        "key": "private.validate_pilot_evidence_participant()",
+        "sha256": "56da4c2dba4985fe2025b39d70c92a8e37dc0ad236bb74dcd1af71cad8f99e67"
+      },
+      {
+        "key": "private.validate_rendered_item_variant(p_render jsonb)",
+        "sha256": "1414f86e09e500042bd1798f481f4a0e50467558363a76ff559d9973798752e4"
+      },
+      {
+        "key": "private.validate_sprint_11d_candidate_activation()",
+        "sha256": "a1d944de7a8ea97160cb7613492fb2ecf6d23a28de2e87875906280ab2346afa"
+      },
+      {
+        "key": "private.validate_task_set_blueprint(p_blueprint uuid)",
+        "sha256": "50c28163a9d50a4a4cdcabdcaa8d23b926ec21758b0faca725038d40cc462a0f"
+      },
+      {
+        "key": "private.validate_task_set_reference(p_stimulus jsonb, p_item uuid, p_release uuid, p_unit uuid)",
+        "sha256": "1b3e4779fec1c284aec8d33d5ec83816dc85875f30bf6d7955f204a792d3df9d"
+      },
+      {
+        "key": "private.validate_typed_definition(p_definition jsonb)",
+        "sha256": "8f676be4fcc65da7b2a68b243d7a9ccad96e8e279927eea255453e115b36a9b0"
+      },
+      {
+        "key": "private.validate_typed_key(p_definition jsonb, p_key jsonb)",
+        "sha256": "4609db3261efa32e3062f494e750d459a1d2e73e64794c4d0329bcf8d226501c"
+      },
+      {
+        "key": "private.validate_typed_response(p_definition jsonb, p_response jsonb)",
+        "sha256": "6e54eadc45a36f7ab9308a0f6f6735019b258d3c6c56b18b72227c52ad745357"
+      },
+      {
+        "key": "private.validate_written_task()",
+        "sha256": "1762b2c08f755e37b2f2fa089bf785515d0553bfa993c411ba3c0cbe7b252afb"
+      },
+      {
+        "key": "private.writing_assignment_available(a public.writing_assignments, m public.written_task_versions)",
+        "sha256": "093fccb1a161fdccaf05d888fcad2e2154aabafc9c3a44714adcd380f99a454f"
+      },
+      {
+        "key": "private.writing_assignment_event_guard()",
+        "sha256": "c5eb2f666c3f1580f289576613bdcde9479e53f6895a39ecf92bf37a2d16aa50"
+      },
+      {
+        "key": "private.writing_assignment_guard()",
+        "sha256": "4a602b1205525eb85c6ac0bc6156c84a743b57f66a2402e74a3a73fc140937ae"
+      },
+      {
+        "key": "private.writing_assignment_privacy_counts(p_user_id uuid)",
+        "sha256": "c3715fcff96c0d67409e3e57424eaf4d37c7183d180234a0e5ee00b7bcb80001"
+      },
+      {
+        "key": "private.writing_assignment_public(a public.writing_assignments, m public.written_task_versions)",
+        "sha256": "97a0e88926e86763c3193e656f894073da09d2c45747594c7fd5610e099611f5"
+      },
+      {
+        "key": "private.writing_recipient_guard()",
+        "sha256": "4f4e46c8a4be05267005c86321eb3467c7d9bf9250130c3305820c955f1e037b"
+      },
+      {
+        "key": "private.writing_task_fingerprint(m public.written_task_versions)",
+        "sha256": "2d6dcbd0a7d1e57a5e077e5aa7201bb2b4968e68eec9229edfa94bf6b3222e3b"
+      },
+      {
+        "key": "private.writing_task_public(m public.written_task_versions)",
+        "sha256": "750799e93c18f95af9b42871da729144e53e03a337a987c37f22150319574075"
+      },
+      {
+        "key": "private.written_evidence_immutable()",
+        "sha256": "f239672ea0dc5279a70ecdde53ae2633fe39e143afba84b439c68e2b46917104"
+      },
+      {
+        "key": "private.written_word_count(p_text text)",
+        "sha256": "f35a476c0156b7e07f611466f0c3ca31b19eda2cdd5d14dafe25042ec8aa4933"
+      },
+      {
+        "key": "public.approve_item_if_family_qa_current(p_item_id uuid, p_actor_id uuid, p_review_type text, p_notes text)",
+        "sha256": "5e23755b97992cf8ce6a6789cdc18cd7f44a8a3542360f02bf2de81f841731f9"
+      },
+      {
+        "key": "public.audit_academic_identity_14a()",
+        "sha256": "b9ee045dcebcb3d947f3e8d8f0bf8680f91d2d991e08c73337054e6d9d857a64"
+      },
+      {
+        "key": "public.complete_chapter_review_cycle_when_covered()",
+        "sha256": "6c4f02cbef3ff2f5e702ceb7091d5eafdced3dc3404bff2bba5c025b8beefb9c"
+      },
+      {
+        "key": "public.current_user_role()",
+        "sha256": "4f4811fb3230590fe5761b2d2051ecddec20eece8120e6fdf00393e1ef35bba7"
+      },
+      {
+        "key": "public.end_teacher_subjects_on_membership_14b()",
+        "sha256": "b04d554d02ea20ad1e7fe09b2a88e7bb096d30f9e0133eb6aca000b82dbcb991"
+      },
+      {
+        "key": "public.enforce_item_misconception_mapping_policy()",
+        "sha256": "486a72e31f95376fc4555bff6ee305d2dba396410abf91e328b041ce135cb54d"
+      },
+      {
+        "key": "public.enforce_prospective_item_evidence_purpose()",
+        "sha256": "e62374e62a7cff173cc707ca45de476821355ac702e3d09f8bdac045beac3ee7"
+      },
+      {
+        "key": "public.enforce_published_mapping_mutation_policy()",
+        "sha256": "2f8d429eff4a4ab9d1bbf7bbfe48efe2e1bb8589479d35ca3c5c8192777b0562"
+      },
+      {
+        "key": "public.erase_student_data(p_student_id uuid)",
+        "sha256": "5894aec3db2e3ae140939440be1d6a1d4617c85202d2410baae0c14dd1434e7e"
+      },
+      {
+        "key": "public.finalize_chapter_review_atomic(p_student_id uuid, p_session_id uuid)",
+        "sha256": "0be3db01f2eddc0de5880aa1f3e5e4508d4ab939931fb31eb1711194a52d6100"
+      },
+      {
+        "key": "public.finalize_mastery_check_atomic(p_student_id uuid, p_session_id uuid, p_passed boolean, p_score_percent numeric, p_result_metadata jsonb)",
+        "sha256": "067cc3acc3078ae3cb2eccc50a3a0ef7a1104928788cbf58c6275524a7a40b29"
+      },
+      {
+        "key": "public.guard_class_identity_14a()",
+        "sha256": "c7d4b485b921b6fd3a0a4f396928a63a0204cd422f5e0fe6647aea137b409e3d"
+      },
+      {
+        "key": "public.guard_initial_diagnostic()",
+        "sha256": "b64964aa0bf09a79992d691a67a3f4c3e0802203771922ce08eca88ac02baf36"
+      },
+      {
+        "key": "public.guard_legacy_class_membership_14a()",
+        "sha256": "ef0b9a66d6ab559d3a0b1e89de04fec98ace4b7651ce4e954fe3c415245f044a"
+      },
+      {
+        "key": "public.guard_practice_diagnostic_attempt()",
+        "sha256": "7717be72dc27e2cf3b94e9c70f5757832b7ee817a7e3ac88a1c098598532060b"
+      },
+      {
+        "key": "public.guard_practice_diagnostic_item()",
+        "sha256": "719a1c95d3647feba493e792e2355523d2518194cf38be322cbb809a1bf5624f"
+      },
+      {
+        "key": "public.guard_practice_diagnostic_session()",
+        "sha256": "f1c22b2e2eaf3630efea27135f71d52d03e923fb07c7ec12444de8a55b58c024"
+      },
+      {
+        "key": "public.handle_new_user()",
+        "sha256": "ff5820d4ed56a14884ed8f30f8b93311d74480f164091ce3b7e0c06138b7d1c9"
+      },
+      {
+        "key": "public.has_completed_chapter_diagnostic(p_student_id uuid, p_unit_code text)",
+        "sha256": "2c2e64dacee983d6d2a27c9fbb54ad21d2d5e955661d3e348b41b1f6b36b01bc"
+      },
+      {
+        "key": "public.is_class_member(class_uuid uuid)",
+        "sha256": "41cfdd23aa46f4bcec5a9963add6c27403bee3acd8b7e6dec95184a0eb87f039"
+      },
+      {
+        "key": "public.is_class_teacher(class_uuid uuid)",
+        "sha256": "5720904bd2aed9a230923c2755c5976fb9258f615855ccd6fbd45718069b0c98"
+      },
+      {
+        "key": "public.is_teacher_of_student(student_uuid uuid)",
+        "sha256": "01f689c43e9201418170a9016fa16458419e3322fb6f7698dfc72c8085f187de"
+      },
+      {
+        "key": "public.lock_item_family_state_mutation()",
+        "sha256": "b2a5a043eb8a4a8e26d573cc4bb33b3af341006a02e3c0b8c29d717306d13c87"
+      },
+      {
+        "key": "public.lock_item_template_state_mutation()",
+        "sha256": "366a585f62e9be0b8949887d6947df948a05cf2b66bb5af0c23b12e69b93fce2"
+      },
+      {
+        "key": "public.prevent_learning_session_identity_mutation()",
+        "sha256": "6037594d3071ff8c422d7fb8d55a7c63681e8684c1011189621316ee017ef7fd"
+      },
+      {
+        "key": "public.prevent_learning_session_model_rebinding()",
+        "sha256": "31bbf34fdd4fea03cf053bfb4be9be17fc23afbd1d82f8365593387c9336052e"
+      },
+      {
+        "key": "public.prevent_mastery_attempt_identity_mutation()",
+        "sha256": "5205b1763843efc09aac4afb3bc27389968c0591ca4edd22212517ff61b4f0ec"
+      },
+      {
+        "key": "public.record_graded_attempt(p_student_id uuid, p_item_id uuid, p_skill_id uuid, p_response jsonb, p_normalized_response jsonb, p_score numeric, p_correct boolean, p_error_code text, p_hint_used boolean, p_response_time_ms integer, p_alpha numeric, p_beta numeric, p_mastery_score numeric, p_evidence_count integer, p_status public.mastery_status, p_attempted_at timestamp with time zone)",
+        "sha256": "0df18e055b9561626e81bccb0439bcac8eb7a773a9b02529e39e8a10ad5ca71c"
+      },
+      {
+        "key": "public.record_remediation_help_atomic(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_skill_id uuid, p_item_id uuid, p_stage text, p_context text, p_hint_level integer, p_guide_scope text, p_guide_source_id uuid, p_guide_version integer, p_item_template_id uuid, p_error_code text, p_rendered_title_hy text, p_rendered_strategy_hy text, p_rendered_content_hy text, p_metadata jsonb)",
+        "sha256": "bd61e28ddbce8a3c519932599bce3e3c81b1d980707e6c59114c7617d402be3d"
+      },
+      {
+        "key": "public.record_session_graded_attempt(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_skill_id uuid, p_response jsonb, p_normalized_response jsonb, p_score numeric, p_correct boolean, p_error_code text, p_hint_used boolean, p_response_time_ms integer, p_alpha numeric, p_beta numeric, p_mastery_score numeric, p_evidence_count integer, p_status public.mastery_status, p_attempted_at timestamp with time zone)",
+        "sha256": "1a9d7682e0bcd93d086a2398b88b0a7060190360dde438b9215075c8f4448318"
+      },
+      {
+        "key": "public.reject_academic_mastery_policy_mutation()",
+        "sha256": "a74e35af14e4f75626d68dcc2e432736285a87e4dec315ac3268be770e2afc0f"
+      },
+      {
+        "key": "public.reject_calibration_analysis_scope_mutation()",
+        "sha256": "3523b6a1a421c2d1f2acea4b4580c595189cfdf9a5c30d8660e8ce1ae4c50c99"
+      },
+      {
+        "key": "public.reject_calibration_evidence_contract_mutation()",
+        "sha256": "77861fd6e0f09705583f5268832640ecc43a1a26cc4a123772ca83611fce1899"
+      },
+      {
+        "key": "public.reject_calibration_governance_mutation()",
+        "sha256": "3210f9e73865306dd3cbcaa4a60a7e3a479a8762d7415cbe805fb7271a694a54"
+      },
+      {
+        "key": "public.reject_calibration_metric_set_mutation()",
+        "sha256": "cc14df9e6f231b32639c763fe5263b5e387cba5347d5aaed7bc0d9be72bea078"
+      },
+      {
+        "key": "public.reject_learning_model_configuration_mutation()",
+        "sha256": "fe8ea00542ea5e5f5f59d85715e5ad3bd610a50dd210dac9727e9cee7c74c361"
+      },
+      {
+        "key": "public.reject_pilot_participant_history_mutation()",
+        "sha256": "ebd7932f23a99e26df59a7bf2811d2c7254c3ffcedec28a7cab64a66e985af98"
+      },
+      {
+        "key": "public.reject_recommendation_event_mutation()",
+        "sha256": "cc6aedb2f36387bbbda9f1f92f7f386a62bac824a3229d66a75da000af13a63e"
+      },
+      {
+        "key": "public.reject_remediation_guide_authoring_mutation()",
+        "sha256": "b98cf359ace2fc82fc7b5ae07fdf4b99bf0ff4ad2d911c795a8785a1c32f7965"
+      },
+      {
+        "key": "public.reject_remediation_guide_version_mutation()",
+        "sha256": "2b077e87538de9b1f4399e98c782aec174eb768171e069844084ce709f10fc26"
+      },
+      {
+        "key": "public.reject_runtime_build_mutation()",
+        "sha256": "971bacfaade07c16121bf165e8f958288b47d3f30aad68f7bca6784f540444b6"
+      },
+      {
+        "key": "public.reject_student_account_acceptance_mutation_14c()",
+        "sha256": "5e58676785afb16570461a8d54b16009a6f393d0c1e6c26541f91902a3eb6dab"
+      },
+      {
+        "key": "public.resolve_active_curriculum_release(p_unit_code text)",
+        "sha256": "be6f1bd4ae25451990cd6ef3f2e975d80adc6db0b41c930b3e22650ffaec14f9"
+      },
+      {
+        "key": "public.resolve_remediation_event_guide_snapshot()",
+        "sha256": "3847f121d6d1b1502aebf51d84a41c8a7dc3aec8af1c4c832b4f564759d29aa9"
+      },
+      {
+        "key": "public.service_accept_staff_invite_14b(p_recipient uuid)",
+        "sha256": "4dd36ebe5adb789c0f4c360aa5b709043674417fc976acdf5b7e11013e092679"
+      },
+      {
+        "key": "public.service_accept_staff_invite_14b(p_recipient uuid, p_request uuid)",
+        "sha256": "b9d56be5b8f696f90a013691f213876f45386e3e842967cb264657cd4766d526"
+      },
+      {
+        "key": "public.service_accept_student_invitation_14c(p_recipient uuid, p_token_digest text, p_display_name text, p_acceptance_version text)",
+        "sha256": "42e45efbc050a4418925acb4ad59f826f35da62ef11361816ac220748a34fd7c"
+      },
+      {
+        "key": "public.service_account_deletion_blockers(p_user_id uuid)",
+        "sha256": "5f36dedee1c3aebf7fce01d2fdf2de0ac35b794866de23020a0a71db18270315"
+      },
+      {
+        "key": "public.service_append_remediation_guide_authoring_version(p_guide_scope text, p_guide_source_id uuid, p_expected_authoring_version integer, p_lifecycle_status text, p_content_snapshot jsonb, p_reference_metadata jsonb, p_change_rationale text, p_actor_id uuid, p_actor_role text, p_actor_aal text)",
+        "sha256": "8e8aa154bf4cc5621c82e1b5250ace2420cff368efaa9040d8234938f08f9b04"
+      },
+      {
+        "key": "public.service_assessed_audio(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_session_id uuid, p_session_item_id uuid, p_payload jsonb)",
+        "sha256": "3a0736d3b5bf899c14cda34b779d28c4dcc4058377d0af9a546c16fd67ce36cc"
+      },
+      {
+        "key": "public.service_authorize_staff_invite_14b(p_actor uuid, p_kind text, p_school uuid, p_subject uuid)",
+        "sha256": "303e2da00c9e074559d85bd8e6778e57b68e9791f111c274a35c8e85b875df11"
+      },
+      {
+        "key": "public.service_authorize_student_invite_14c(p_actor uuid, p_school uuid, p_class uuid, p_assignment uuid)",
+        "sha256": "7f9968ba2972847e3caec1bca5e32789375acb4617b74ca14a1bb642456bea1e"
+      },
+      {
+        "key": "public.service_bind_assessment_policy(p_blueprint_id uuid)",
+        "sha256": "80b3f8796ec00f39d926e7c2811376bd2335ff906b23d4362c3b66c67b908a96"
+      },
+      {
+        "key": "public.service_bootstrap_school_14b(p_actor uuid, p_first_admin uuid, p_name text, p_code text)",
+        "sha256": "e8806a1ad9d4047f0a6f8bdb6189818523616db9250daf9f196ff6a24345d363"
+      },
+      {
+        "key": "public.service_claim_staff_invite_resend_14b(p_actor uuid, p_invitation uuid)",
+        "sha256": "b93c6223261e9c03c402cc2bd5846e3786d119df4f8209f18541d94d7b4cc6c3"
+      },
+      {
+        "key": "public.service_create_remediation_guide_draft(p_guide_scope text, p_skill_id uuid, p_item_template_id uuid, p_specialization_code text, p_content_snapshot jsonb, p_reference_metadata jsonb, p_change_rationale text, p_actor_id uuid, p_actor_role text, p_actor_aal text)",
+        "sha256": "181f09ecb007eac03a9d1f6164e9ead30b97aa11889e60aff6d504090e208521"
+      },
+      {
+        "key": "public.service_create_school_year_14b(p_actor uuid, p_school uuid, p_label text, p_starts date, p_ends date)",
+        "sha256": "7c7a3be4ffe8289c205b9ede67b621fed62c447f092365054ce3375af4492c76"
+      },
+      {
+        "key": "public.service_create_teacher_class_14b(p_actor uuid, p_membership uuid, p_year uuid, p_program uuid, p_name text)",
+        "sha256": "c817aa066d59da78188ad363a27858daccf11a956e302b7ae10b81d529b1194b"
+      },
+      {
+        "key": "public.service_end_institutional_enrollment_14b(p_actor uuid, p_enrollment uuid, p_reason text)",
+        "sha256": "758146eecc855e5037861ffd0d684f9483fc1e4d9ce859fa18f7a474fbb53d28"
+      },
+      {
+        "key": "public.service_end_institutional_membership_14b(p_actor uuid, p_membership uuid, p_reason text)",
+        "sha256": "575829f7859b3a5750bb9db1364b83f20bed2f945adefc2fa435eea0fb0a5bec"
+      },
+      {
+        "key": "public.service_ensure_session_item_option_order(p_session_item_id uuid)",
+        "sha256": "fa3ffb864f6af2274092f9bb9c087fa15be1d422219c656ea5f2634a89261ada"
+      },
+      {
+        "key": "public.service_finalize_item_exposure(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_attempt_id uuid, p_correct boolean, p_hint_used boolean, p_response_time_ms integer, p_answered_at timestamp with time zone)",
+        "sha256": "844243c3a7e76b73039d08127712b4b96448b5e204f9b57a770c6a423f4dc514"
+      },
+      {
+        "key": "public.service_get_misconception_review(p_id uuid)",
+        "sha256": "621c3c28e601ad63777a9ed73ced11715fb57c27f5f0329a2dc98b6cfe2615cf"
+      },
+      {
+        "key": "public.service_get_pilot_item_analytics(p_unit_code text)",
+        "sha256": "1282c93fa7aa90ff54853875642048f9779099a170bebb6fef42da6c6598657b"
+      },
+      {
+        "key": "public.service_governed_learning_operation(p_student_id uuid, p_auth_session_id uuid, p_session_id uuid, p_action text, p_payload jsonb)",
+        "sha256": "5e40b1bc1a407a1c7ce40eef9c52ff3dd03c4899774887a62981251cddfaf28e"
+      },
+      {
+        "key": "public.service_grant_teacher_subject_14b(p_actor uuid, p_teacher_membership uuid, p_subject uuid)",
+        "sha256": "9112804fc1e4f06606eda484d61e81234d006a68537aad296b4b0a1b25a99de6"
+      },
+      {
+        "key": "public.service_is_registered_legacy_learning_session(p_student_id uuid, p_session_id uuid)",
+        "sha256": "bf563ae9c5b7f410e62b68aad82a53e755f4b413bebd9f90cfee4663c5b39fbf"
+      },
+      {
+        "key": "public.service_issue_institutional_invitation_14b(p_actor uuid, p_recipient uuid, p_school uuid, p_role text, p_class uuid, p_assignment uuid, p_token_digest text, p_expires_at timestamp with time zone)",
+        "sha256": "09a259fdadceac6500c3ce5cd9eba719292885fc9bef80eccff7d5b5b9fee5f8"
+      },
+      {
+        "key": "public.service_issue_institutional_join_code_14c(p_actor uuid, p_school uuid, p_class uuid, p_assignment uuid, p_code_digest text, p_expires_at timestamp with time zone)",
+        "sha256": "d5f8713f1519254e63359a37e997db2199a4bfd8f55fc394214f6145bb0e0dc8"
+      },
+      {
+        "key": "public.service_launch_governed_learning(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_blueprint_id uuid, p_target_skill_id uuid, p_recommendation_instance_id uuid, p_read_only boolean)",
+        "sha256": "5c8de130371668439aa3e0691268d66a4102ce3425a4a0e5679b5f065a649b63"
+      },
+      {
+        "key": "public.service_learning_audio(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_session_id uuid, p_session_item_id uuid, p_item_id uuid)",
+        "sha256": "821fd08459653646d47162e7b11e852410d248905ffaa01dfdc40e0559e00b4b"
+      },
+      {
+        "key": "public.service_learning_task_set(p_actor uuid, p_auth uuid, p_action text, p_item uuid)",
+        "sha256": "7deeeb199eb122fc85a55384d3b911b0265e97c40b19e49747bc33fc13148ad6"
+      },
+      {
+        "key": "public.service_legacy_answer_response(p_student_id uuid, p_auth_session_id uuid, p_kind text, p_request jsonb, p_response jsonb, p_telemetry jsonb)",
+        "sha256": "ff31e811d4feeb65bb8e9596f8829be4ba552fdb19771e8af01653a09225bd46"
+      },
+      {
+        "key": "public.service_list_misconception_reviews(p_filters jsonb)",
+        "sha256": "56f276bd9e4ae670116485e44807a00009e8764d67fd79154789c26baffc0eec"
+      },
+      {
+        "key": "public.service_list_school_admin_subjects_14b(p_actor uuid, p_school uuid)",
+        "sha256": "9ba858f99f2f6b9012dac0c1dbf23dc5843377b15cda59e0c07bf2cb04f4c763"
+      },
+      {
+        "key": "public.service_list_school_teachers_14b(p_actor uuid, p_school uuid)",
+        "sha256": "d3cfa5344b4f58f2eca0549e05f596cd059e48953c0528e3d0fa5827ffacedc3"
+      },
+      {
+        "key": "public.service_list_staff_invites_14b(p_actor uuid)",
+        "sha256": "7dbfcd1cd03da31306f0e712213d263dc6865e009752bd957aa5594a34414245"
+      },
+      {
+        "key": "public.service_list_student_onboarding_classes_14c(p_actor uuid, p_school uuid)",
+        "sha256": "a224f69065da0ea351050063ea180f2dddfbc4dbb9dea24cd7a953a6b9fb665a"
+      },
+      {
+        "key": "public.service_lookup_invitee_by_email_14b(p_email text, p_role text)",
+        "sha256": "657ddee3a8fb486e48f5ee3b7ce49b79bfe3964c8892493ee87ba540b58d0ac2"
+      },
+      {
+        "key": "public.service_materialize_item_variant(p_template_code text, p_seed text)",
+        "sha256": "a7f1f97d5c2400debd97c0a5346b49d8cb4a2352b2d142f843ac442f864fd029"
+      },
+      {
+        "key": "public.service_offboard_school_teacher_14b(p_actor uuid, p_school uuid, p_membership uuid, p_action text, p_reason text, p_expected_revision text)",
+        "sha256": "5f043ae20df5b460548c7d33324bd1c17f60c9ac52b730c5b4975bd52250b0d0"
+      },
+      {
+        "key": "public.service_platform_role_change_allowed_14c(p_user uuid)",
+        "sha256": "6baaf3be5fadf34fddae06998c320db64b97e4e144910760e6a6c2a541ac9a99"
+      },
+      {
+        "key": "public.service_preview_item_variant(p_template_code text, p_seed text)",
+        "sha256": "98c1ab3bb13b7379b4f651bdf9079b78790799a07e6241cc520118e6dbc13a4c"
+      },
+      {
+        "key": "public.service_purge_idle_actor_rate_buckets(p_limit integer)",
+        "sha256": "20f5a326fdd0ac7d672ed63ea14f84b97f8cfd588d7c0d448ab1b27b632d6381"
+      },
+      {
+        "key": "public.service_record_answer_atomic(p_student_id uuid, p_item_id uuid, p_skill_id uuid, p_response jsonb, p_normalized_response jsonb, p_score numeric, p_correct boolean, p_error_code text, p_hint_used boolean, p_response_time_ms integer, p_attempted_at timestamp with time zone)",
+        "sha256": "d2f13532f734f59274bda0778d1d0342541085e8a988e8923395e1260e14d0e4"
+      },
+      {
+        "key": "public.service_record_governed_recommendation_event(p_student_id uuid, p_auth_session_id uuid, p_instance_id uuid, p_event_type text, p_surface text, p_started_session_id uuid)",
+        "sha256": "72d932ee2f38d86728b36a307704e94312d366569625b77a9ebe642626a89872"
+      },
+      {
+        "key": "public.service_record_item_exposure(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_served_at timestamp with time zone)",
+        "sha256": "c14d8ae41847894505e5c01f572f9bda3dfd032121eba5371a99b60472ce0986"
+      },
+      {
+        "key": "public.service_record_item_help(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_hint_level integer)",
+        "sha256": "936aedbe5e8571b1a93b2dc52faab3a1449a51efe176ed188caefed4f2edc0d1"
+      },
+      {
+        "key": "public.service_record_session_answer_atomic(p_student_id uuid, p_session_id uuid, p_session_item_id uuid, p_item_id uuid, p_skill_id uuid, p_response jsonb, p_normalized_response jsonb, p_score numeric, p_correct boolean, p_error_code text, p_hint_used boolean, p_response_time_ms integer, p_attempted_at timestamp with time zone)",
+        "sha256": "44e6fb69b6cfd205c18f6beb2e7eeffbabd578f76d955bffd84ed02291defcec"
+      },
+      {
+        "key": "public.service_redeem_institutional_invitation_14b(p_recipient uuid, p_token_digest text)",
+        "sha256": "e127264f99d336de95d4c58c5fd188a3e9910ea104f1a302b542f128fc0eaf2b"
+      },
+      {
+        "key": "public.service_redeem_institutional_join_code_14c(p_recipient uuid, p_code_digest text)",
+        "sha256": "c8f747a4f9ba1b2d9e7fbb71ec9aa5da8256e51dcdd6c13234c888074588fe9c"
+      },
+      {
+        "key": "public.service_register_staff_invite_14b(p_actor uuid, p_recipient uuid, p_email text, p_kind text, p_school uuid, p_subject uuid, p_school_name text, p_school_code text)",
+        "sha256": "df0949db9c784ee0887e90a8d634efe0a6242ec79985dd0ea960d6b17af2df15"
+      },
+      {
+        "key": "public.service_rename_teacher_class_14b(p_actor uuid, p_class uuid, p_name text)",
+        "sha256": "6a803f9e66d3512dda34d7c8931e1f46adb75e706ac763083d3f80e4d2ab0b00"
+      },
+      {
+        "key": "public.service_reserve_actor_rate_budgets(p_actor uuid, p_costs jsonb)",
+        "sha256": "9250fd7f90dd2e9e18a751d04ef8cf9ccf12df25b62a5a7ff21c084e50da869e"
+      },
+      {
+        "key": "public.service_reserve_session_rate_budgets(p_actor uuid, p_session uuid, p_costs jsonb)",
+        "sha256": "094c5dbeb608ad225ac01c71414fef97d763ac1622cd3dc99b8ad281de270c25"
+      },
+      {
+        "key": "public.service_resource_assignment_privacy_counts(p_user_id uuid)",
+        "sha256": "d91aa52f7f0a3b403d17495e8ca48583295d66c38a42ff2a54bd03b5dfb22a22"
+      },
+      {
+        "key": "public.service_resource_assignments(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "4bc4d3de31a21c8c88c39251fc6557fdd93473dd77f97c5a6cf72e6ed11f7278"
+      },
+      {
+        "key": "public.service_resume_governed_learning(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid, p_mode text)",
+        "sha256": "5213ccf44d6b074bb2eeee3e873209d305c70f49c3cfa7b544a5f7612b0ebb7e"
+      },
+      {
+        "key": "public.service_review_misconception(p_id uuid, p_action text, p_expected_token text, p_title_hy text, p_description_hy text, p_reason text, p_actor_id uuid, p_session_id uuid, p_actor_aal text)",
+        "sha256": "aa3c84e6780dbbf9825ea67b13c86f8af4000b6cd3fe75c9d9af437e38ccd95d"
+      },
+      {
+        "key": "public.service_revoke_institutional_invitation_14b(p_actor uuid, p_invitation uuid)",
+        "sha256": "8215c6c009e1bb7de33fe73eea5c4671b2fb610b91ffe8691920c81e18cc256b"
+      },
+      {
+        "key": "public.service_revoke_institutional_join_code_14c(p_actor uuid, p_code uuid)",
+        "sha256": "6b3a8eb9972e42e2fdca4e599525a01d4e7e8b7f7201be4a65514c006681410c"
+      },
+      {
+        "key": "public.service_revoke_staff_invite_14b(p_actor uuid, p_invitation uuid)",
+        "sha256": "8b3670a8ee8cfd5dcd8a60b07f3e36afd51b9120c8e1aa92b5c043b28132883b"
+      },
+      {
+        "key": "public.service_revoke_teacher_subject_14b(p_actor uuid, p_authorization uuid)",
+        "sha256": "42d2bca265c2aedde36792bcb0083d52211640260c2faab9360f646a9b683820"
+      },
+      {
+        "key": "public.service_save_item_content_revision(p_item_id uuid, p_actor_id uuid, p_payload jsonb)",
+        "sha256": "743e7369f0b277514876cd3610dcd80343d4fdbfe053459ffc013a0aa1b49252"
+      },
+      {
+        "key": "public.service_school_admin_suspension_blockers_14c(p_user uuid)",
+        "sha256": "a7006a7806ae642bc24c3f528188e4ee3c14ad42a47f0549319f5fd5fe9f4338"
+      },
+      {
+        "key": "public.service_set_school_teacher_archived_14b(p_actor uuid, p_school uuid, p_membership uuid, p_archived boolean)",
+        "sha256": "ae5903a5c38ff48c4af582d107f433f952810814438143b1e07e2f7668d16a73"
+      },
+      {
+        "key": "public.service_set_school_year_archived_14b(p_actor uuid, p_school uuid, p_year uuid, p_archived boolean)",
+        "sha256": "2411c2c7dec112a6a62cd6cd26cd1b60426aaf28a3b141e53bf0cbe59085c7ea"
+      },
+      {
+        "key": "public.service_set_teacher_class_active_14b(p_actor uuid, p_class uuid, p_active boolean)",
+        "sha256": "ab50726855267d4ee5b213e19e6d8ffb29c9f728d725a3fecaf9f4bc2ebfec34"
+      },
+      {
+        "key": "public.service_start_governed_session_atomic(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_policy_binding_id uuid, p_form_id uuid, p_target_skill_id uuid, p_item_ids uuid[])",
+        "sha256": "6b793dae7b944b42d91c02078d23c52a10f9f066248987b9a170285c352ea047"
+      },
+      {
+        "key": "public.service_student_learning_dashboard(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid)",
+        "sha256": "13a4271fe8022a87f27f4aeae7e589cf73ac401aa490b6efe9f7e97230f98217"
+      },
+      {
+        "key": "public.service_student_learning_navigation(p_student_id uuid, p_auth_session_id uuid)",
+        "sha256": "c783dd2a7f22225da0ae3374cb3860881b5a7590c70d326f14a398f4f447a7a7"
+      },
+      {
+        "key": "public.service_student_unit_guides(p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid)",
+        "sha256": "d9c158367310265ffcae0b457a7f5baee860aeed573da318257ad89474a68eec"
+      },
+      {
+        "key": "public.service_supplementary_resources(p_actor_id uuid, p_auth_session_id uuid, p_aal text, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "27a1e8e23e3ac528d8f16c1195c6d7c8160317f2c8c70863254b6c6e9d62cb2b"
+      },
+      {
+        "key": "public.service_teacher_class_directory(p_actor uuid, p_archive boolean, p_offset integer, p_search text)",
+        "sha256": "e870ef5dbe72786f5229148062fc8dfa00f233e585710ce813a70938a1efdfda"
+      },
+      {
+        "key": "public.service_teacher_dashboard_actor(p_actor uuid, p_session uuid)",
+        "sha256": "9b146c41d57eb8c4ca31a9711b0cb3db597b728257e4ae242c3297976755afc7"
+      },
+      {
+        "key": "public.service_teacher_dashboard_directory(p_actor uuid, p_session uuid, p_archive boolean, p_offset integer, p_search text)",
+        "sha256": "545d303f91aefa9b22f295204db2a3380b97dd01c1f6a2df37c0dd5937f99e8b"
+      },
+      {
+        "key": "public.service_teacher_dashboard_evidence(p_actor uuid, p_session uuid, p_assignment uuid, p_release uuid, p_unit uuid)",
+        "sha256": "89fc8f4a3b106fc74983e5a8d1023bffdfadc9be57b22d3edd27244b967d44fa"
+      },
+      {
+        "key": "public.service_teacher_dashboard_home(p_actor uuid, p_session uuid, p_workspace jsonb)",
+        "sha256": "f7f4a8a540536932d3d7f022086acb3a235e3b4c43e8343f35b543ab2510842b"
+      },
+      {
+        "key": "public.service_teacher_dashboard_initial(p_actor uuid, p_session uuid, p_class uuid, p_assignment uuid, p_release uuid, p_unit uuid)",
+        "sha256": "f903d66e489cba4a72348f7a9153f62c90fe171346f8c9032d4f613a036afd20"
+      },
+      {
+        "key": "public.service_teacher_dashboard_rows(p_actor uuid, p_session uuid, p_class uuid, p_assignment uuid)",
+        "sha256": "2c8ede8e72b40aaa67a3fa58245cc94a8be66b1d0e649282c7c8c1c5a9c3246e"
+      },
+      {
+        "key": "public.service_teacher_feedback(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "ec96dc4cf57d01e6e8744c49d7875f6ec147bf71db98c7a130f03bea9971fb86"
+      },
+      {
+        "key": "public.service_teacher_feedback_privacy_counts(p_user uuid)",
+        "sha256": "38a9673854cc3a188d194dcdf923836b26aea994210cfbacc9450ebcd461829c"
+      },
+      {
+        "key": "public.service_teacher_task_delivery(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "78a6f37840898e8dba73256c0a7568df471e6c86a8291e451a246bdfb00d167c"
+      },
+      {
+        "key": "public.service_teacher_task_drafts(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "45070ace19f7e3d2b9f165bfaf85bbca6da72d351dac16b996feee9db4d14314"
+      },
+      {
+        "key": "public.service_teacher_task_privacy(p_actor uuid, p_auth uuid, p_action text, p_payload jsonb)",
+        "sha256": "572d51d848923cab55a31b8c34be5772d8a3a80f59dfe71387ddc42230039640"
+      },
+      {
+        "key": "public.service_teacher_task_privacy_counts(p_user_id uuid)",
+        "sha256": "77ae20dc583bf944cd3887607ddb7d7132bdf883d96da77f43ba04f233988b53"
+      },
+      {
+        "key": "public.service_teacher_task_retention(p_actor uuid, p_auth uuid, p_action text, p_payload jsonb)",
+        "sha256": "34f5fa67c54b8c7d1341fea0d344958c0c50d46cec67651a555103f5415e641b"
+      },
+      {
+        "key": "public.service_teacher_task_review(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "c1974485f6f4a4fdb87aa1ef9d5883854419cbb7f7ea7147ffbd727bd2cc6689"
+      },
+      {
+        "key": "public.service_teacher_task_sources(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "b0f48423ae08f2119a67490f7cfabf68ac29ce18b0e28e56cfaa1431bf3be247"
+      },
+      {
+        "key": "public.service_teacher_task_student_work(p_actor uuid, p_auth uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "60da5cb5237b1f4d143a994852d9b6ea0eb30fe03daeed78080462c1a2693fea"
+      },
+      {
+        "key": "public.service_teacher_workspace(p_actor uuid, p_auth uuid, p_assignment uuid, p_cursor jsonb, p_work uuid, p_recent jsonb)",
+        "sha256": "e3cba7d10e4e67a213c334ad93976805a60f858d7e6760f8652918e65e752cba"
+      },
+      {
+        "key": "public.service_unit_material_privacy_counts(p_user_id uuid)",
+        "sha256": "9c02e5ad2cf6e9e55da71d285d6b25f75216df96aae3270c7fdab1acb276ab5c"
+      },
+      {
+        "key": "public.service_unit_materials(p_actor_id uuid, p_auth_session_id uuid, p_aal text, p_action text, p_payload jsonb)",
+        "sha256": "2e7574fefe96e3230d699376aa634644ea7daec371c0a9d7a23ae960d45fe61a"
+      },
+      {
+        "key": "public.service_validate_active_session(p_user_id uuid, p_session_id uuid)",
+        "sha256": "73aac4a8ad2871c43173726cc37350a646079ef4684b011ffbcf0695cbf2f941"
+      },
+      {
+        "key": "public.service_writing_assignment_privacy_counts(p_user_id uuid)",
+        "sha256": "3b024dd0f7941c86d74f3c06eb3bc101927217a49691627ea35e5d6140d70a61"
+      },
+      {
+        "key": "public.service_writing_assignments(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "9f801d354019505db81a800bf93d725154251d6f6a3e21c0018d03aff34d0134"
+      },
+      {
+        "key": "public.service_written_work(p_actor_id uuid, p_auth_session_id uuid, p_action text, p_context jsonb, p_payload jsonb)",
+        "sha256": "e71304cfe1051a3e520e82ed71c9e3b35768d2973e2dfea0e8df03ffd6ac1d0d"
+      },
+      {
+        "key": "public.snapshot_skill_remediation_guide()",
+        "sha256": "54daaf9b085703584d4b84e16b8a313ab12c686baeb3a2d7b3e2896b232674aa"
+      },
+      {
+        "key": "public.snapshot_template_remediation_guide()",
+        "sha256": "a7e0f1936890b028481d1e1f4e75af7b1cf7348ba25a779a1eefff4682cc30ac"
+      },
+      {
+        "key": "public.stamp_learning_session_academic_context_14c()",
+        "sha256": "4f8a500bcbccf02b1ef9888aa52ba566cc19650e6adab284f705a3e32e4ce164"
+      },
+      {
+        "key": "public.stamp_learning_session_model_configuration()",
+        "sha256": "beaeeba5c5fa192e88deca6068e28846452630a719ef80abd4d1e05daa013d7b"
+      },
+      {
+        "key": "public.start_chapter_review_atomic(p_student_id uuid, p_curriculum_release_id uuid, p_assessment_blueprint_id uuid, p_unit_code text, p_metadata jsonb, p_items jsonb)",
+        "sha256": "08f4dc5b714dfa0fe3602004dcf9feb4368efe8c976c4c55c7fc20a098617836"
+      },
+      {
+        "key": "public.start_chapter_review_atomic(p_student_id uuid, p_curriculum_release_id uuid, p_assessment_blueprint_id uuid, p_unit_code text, p_metadata jsonb, p_items jsonb, p_eligible_pool_size integer, p_expected_cycle_number integer, p_expected_session_number integer)",
+        "sha256": "54c27ef40105bd07a4655472636dd2cd92246f501f28633f501ad7f81388c230"
+      },
+      {
+        "key": "public.start_initial_diagnostic_atomic(p_student_id uuid, p_unit_code text, p_curriculum_release_id uuid, p_assessment_blueprint_id uuid, p_form_id uuid, p_items jsonb)",
+        "sha256": "ca0aac74ffbe5b604d6e23f28dd6b163e961e314138756524d6a29c47745a8ca"
+      },
+      {
+        "key": "public.start_mastery_check_atomic(p_student_id uuid, p_curriculum_release_id uuid, p_assessment_blueprint_id uuid, p_unit_code text, p_planned_item_count integer, p_metadata jsonb, p_items jsonb)",
+        "sha256": "32305c747293d61934c538e17c0581a893e623b4900108b690808c909a3db494"
+      },
+      {
+        "key": "public.validate_calibration_change_decision()",
+        "sha256": "91eae88da02e5c813d56a3a366415c7fae7880cac3dfc2dc131effe3f2713068"
+      },
+      {
+        "key": "public.validate_institutional_enrollment_14b()",
+        "sha256": "a235eb72f3a10df25abc2ee0f1d4fad85b11e30ab4d2220888b4637a70cf890e"
+      },
+      {
+        "key": "public.validate_item_curriculum_scope()",
+        "sha256": "ba550789664d3222f56bd84e2e52cb993e7b817c5f6d145745c53fcaef0d5ae2"
+      },
+      {
+        "key": "public.validate_mastery_attempt_integrity()",
+        "sha256": "a416fe59fa14960f6412426cd9819e6f475b5759a8f293f1a08a6d1e996d5caa"
+      },
+      {
+        "key": "public.validate_teacher_assignment_14a()",
+        "sha256": "4fb990061efabc885689b8fb2ee01a7b5b7ccde9de688b0902045a2134f1ff50"
+      },
+      {
+        "key": "public.version_skill_remediation_guide()",
+        "sha256": "9b381955d0ca7527b98fd67f856e0f3894945f19efa69828eb95106e49af0967"
+      },
+      {
+        "key": "public.version_template_remediation_guide()",
+        "sha256": "3eba2c1350de946d7ac15544ca9f018acdcbc812b23f242f8d62245f10509602"
+      }
+    ],
+    "relations": [
+      {
+        "key": "private.active_curriculum_release_units",
+        "sha256": "841bea68fac1138fd58a2239ddb8ac3d3daab251451e36f45cf8254cb28acb3f"
+      },
+      {
+        "key": "private.actor_rate_buckets",
+        "sha256": "a7f589fb2d58945f81c3edd3c7b5e636c9675959ab5165b6928f044ab55ba804"
+      },
+      {
+        "key": "private.actor_rate_maintenance_health",
+        "sha256": "b8e31b6ca6908517cc09bde44f795a186abab73887c7b4db8a19d778c0bf4f6b"
+      },
+      {
+        "key": "private.actor_rate_policies",
+        "sha256": "a745956157b8b23143850fb911dcdeae58b82efb75745be6db2210ea82ad35af"
+      },
+      {
+        "key": "private.assessment_presentation_configuration",
+        "sha256": "1357c477df2421588893b8acfd76f4abe81e147a6d7f345d4c8ddaa1b2cf3b38"
+      },
+      {
+        "key": "private.learning_answer_receipts",
+        "sha256": "bcc823b8a1df76e46989ae475ba028e97cc6d5dba1a44ea19cb0175123e18918"
+      },
+      {
+        "key": "private.learning_session_item_option_orders",
+        "sha256": "20c7a5ce08b911ed42860fb8a0bf64408d092a2339a6f116ea56ca6b68bb8ae5"
+      },
+      {
+        "key": "private.mastery_form_selection_bindings",
+        "sha256": "cdee4031acfa87f3c613b91a8a4efda0c9d3b355966f8b1d57a81b13ac566802"
+      },
+      {
+        "key": "private.mastery_form_serialization_fences",
+        "sha256": "7040d43ebd5512cb8f70df16833110ed9e1d404438138ec2a58c4f19ce99a12c"
+      },
+      {
+        "key": "private.teacher_feedback_drafts",
+        "sha256": "27ec11b4886be6357cf3349a6941b1ae2a382b3b7e62e7ed36e2ae79d16c2b2e"
+      },
+      {
+        "key": "private.teacher_feedback_receipts",
+        "sha256": "7cb92de14c2a64625f90cb90a6bc62e33298c7557bc5665fa5a1ec09e8b5bd26"
+      },
+      {
+        "key": "private.teacher_feedback_snippets",
+        "sha256": "56f645bff83f8a3f008ecde0806087ee7bf74cc03730546d4c86e9a573a686f0"
+      },
+      {
+        "key": "private.teacher_task_privacy_scopes",
+        "sha256": "0e8b77affd14da5160ba50ad13f14c1bff9ea76602d12adea97c64f031a90066"
+      },
+      {
+        "key": "public.academic_identity_events",
+        "sha256": "41262b05cba2193bc5cc5b59e4ca333957a0e58558ccf483832df47cdb7b4bf9"
+      },
+      {
+        "key": "public.academic_identity_events_id_seq",
+        "sha256": "b4e008ae0824c235594a553710569c119fd99fc9021f2301e2956a17bd4a1ff8"
+      },
+      {
+        "key": "public.academic_mastery_policy_activation",
+        "sha256": "96b312beb4d751cc1fa8788752a9d1e9383247b997c7f50b7a0caa1646e31d4d"
+      },
+      {
+        "key": "public.academic_mastery_policy_versions",
+        "sha256": "e29b01bb79a05583719689e8885ab3920611b9fd263abeeefdc278bbb08ebe7f"
+      },
+      {
+        "key": "public.academic_years",
+        "sha256": "3084ca298db0b930e20d620d08e46f0f9e1dcfdc78d31cdeddbcd71f3b93e882"
+      },
+      {
+        "key": "public.account_deletion_requests",
+        "sha256": "40e5deb6d9efcdf320257ba260ef4c87c0c19bfc3d846c8078656b12efa56060"
+      },
+      {
+        "key": "public.assessment_blueprint_items",
+        "sha256": "6a0e79caf2c0859bdbf253171019c186f732d93f461752179e8c29176bdbf168"
+      },
+      {
+        "key": "public.assessment_blueprints",
+        "sha256": "e40efc5f9fe095cce06b6086bc03ad15f9421da77a5f93bd598b76d33ad71f6f"
+      },
+      {
+        "key": "public.assessment_form_items",
+        "sha256": "13d3d571f3f0e0ce74a37c76631213f71940be2dcb9551c3004aef5512eaa3be"
+      },
+      {
+        "key": "public.assessment_forms",
+        "sha256": "22e5a99a1dcca5c1ca93e483e6d4a6747db9716f8cef5f91ce389a13af011e82"
+      },
+      {
+        "key": "public.assessment_item_purpose_eligibility_v",
+        "sha256": "230507b5eac66a64df2cd18c613de74c7c0e7c40ffc79579bb6abf6f02139adc"
+      },
+      {
+        "key": "public.assessment_policy_bindings",
+        "sha256": "56ccc727f986016517e08e5837766f1d373a279646e426a64f4cdc0a96e51c1c"
+      },
+      {
+        "key": "public.assessment_pool_curriculum_reconciliations",
+        "sha256": "2df89299e6ae8f747ec632d70ed5dcc75f71af6911880c96124a680ccfee708e"
+      },
+      {
+        "key": "public.assessment_pool_items",
+        "sha256": "d15ba6f797c66ec35aee3c29d7f4e70a4156417bff227d5ffa4ea2bc9b33f008"
+      },
+      {
+        "key": "public.assessment_pools",
+        "sha256": "e1265fcec647aeb2ea9da7ef0c5d9e25a79b7a57a3fdbe24a461e233c51ed299"
+      },
+      {
+        "key": "public.assignment_skills",
+        "sha256": "ff74ff7712520e6e6bdad5a5569ca08cd1b5180227b4e71da1a9e435d534f4f9"
+      },
+      {
+        "key": "public.assignments",
+        "sha256": "c903240a78e1cb983b378983ecf03651226fcce1b3e094519d23c7f3154a614b"
+      },
+      {
+        "key": "public.attempts",
+        "sha256": "a904d43436a5661c81118f77d7bf8b2a2f4189449decfa8f95aa733375ba7db0"
+      },
+      {
+        "key": "public.calibration_analysis_scopes",
+        "sha256": "dd1d09934e494002b5e9f7b231377c7e768a1d154155b01d40adca8f24da2809"
+      },
+      {
+        "key": "public.calibration_attempt_evidence_v",
+        "sha256": "66e3acf3c1257cf3fa45ebe3e36b213539924fa1fb17c2c928e933065242dd26"
+      },
+      {
+        "key": "public.calibration_change_decisions",
+        "sha256": "f5248e676a9d74d50bc201ff752f7708fc396612b6f5baaa0ec0e277b5879885"
+      },
+      {
+        "key": "public.calibration_decision_evidence_snapshot_v",
+        "sha256": "29ae42c1e6c2a9a523e46c4aadaeed875cbc0a65008829bf4639e522810d4a53"
+      },
+      {
+        "key": "public.calibration_decision_protocols",
+        "sha256": "b501589c380c7a00f130042cb0a418abead4550039e79f458a0d6826e24d6a52"
+      },
+      {
+        "key": "public.calibration_evidence_contracts",
+        "sha256": "5b063a98c406dcb9b9ba90a085cbefe30b44b247b54b8d77fda68ec3984648e1"
+      },
+      {
+        "key": "public.calibration_hint_evidence_v",
+        "sha256": "645c0c1b1d9097b6425adad10f5ba6fc365c22994278c14c80d072cbfc393f78"
+      },
+      {
+        "key": "public.calibration_hint_followup_v",
+        "sha256": "3f48f6f1ccab7d0e83e277a32e55c0792b9af655a0fa2b0e9772c25d5593162f"
+      },
+      {
+        "key": "public.calibration_item_analysis_v",
+        "sha256": "8a0089b43de258ae06d68c3b8108bb7b6eabdc5a748541b335334c519523a804"
+      },
+      {
+        "key": "public.calibration_mastery_replay_v",
+        "sha256": "1c2f64736d7d2ea5473977263ca8cd120a433b4c80708ca385e52b9336695727"
+      },
+      {
+        "key": "public.calibration_mastery_trajectory_v",
+        "sha256": "4e657b4dcea9d8e0f0169fb1e9bf1e895fbfa6f053912352b3fbff814688d7c5"
+      },
+      {
+        "key": "public.calibration_metric_observations_v",
+        "sha256": "fe42de7bc70684ed0adf7cfdbe002f610700611bf671719edc5f80889b7c28e4"
+      },
+      {
+        "key": "public.calibration_metric_sample_summary_v",
+        "sha256": "02cbef77fd2a807b6216b64d557c4666e6e3338a472cedeabdbb8a2441e01d6b"
+      },
+      {
+        "key": "public.calibration_metric_sets",
+        "sha256": "7ae3ab20fb595f73bcc7f354d0254e3f53de796b9a64da3cc86f93b5dd82a271"
+      },
+      {
+        "key": "public.calibration_practice_burden_v",
+        "sha256": "a3d3677ba00c1861f98e03d9958c80e7fd52880b233bd2db739cde36c77abfcc"
+      },
+      {
+        "key": "public.calibration_recent_recovery_events_v",
+        "sha256": "fdebad3acfe26c77885f3a26e78ad0b76b94b6e54915bb59c13dde8518b092e7"
+      },
+      {
+        "key": "public.calibration_recommendation_paths_v",
+        "sha256": "da5b6574af941a4f3e2b0c290e177ab6c99032d525170bf8c2488860fdf6a159"
+      },
+      {
+        "key": "public.calibration_repeat_influence_v",
+        "sha256": "d37e873f17134a896b3ef0d2b1468ca4b1ba19d576d2604131b7dbe47ae7f3dd"
+      },
+      {
+        "key": "public.calibration_session_eligibility_v",
+        "sha256": "b461c9d3de98067336f6b8a0d558210ca2281d448f8bf09515f4b588c9191fee"
+      },
+      {
+        "key": "public.chapter_mastery_history_provenance_v",
+        "sha256": "5e734a835f23a5132155ecacdf1164881dcb6e0085c3beaa3612490d3cc040fd"
+      },
+      {
+        "key": "public.chapter_mastery_states",
+        "sha256": "a956e34f035537c268b35c27c502cfb9889aee017d18b42d3c19c34915679032"
+      },
+      {
+        "key": "public.chapter_review_coverage_v",
+        "sha256": "f10100a186bc04ba8828912aed0ac297b4b7ad8a79275b9276680a55b7e44842"
+      },
+      {
+        "key": "public.chapter_review_cycles",
+        "sha256": "668a9bc86e2f3aecf222cb89a416badb844ed77595600327787cb9e7028245a3"
+      },
+      {
+        "key": "public.chapter_review_item_catalog_v",
+        "sha256": "61a2c9a035d5f6f7cc5cef50eed1077284da8b61d1ccf6d66c46ffe3ccd8474c"
+      },
+      {
+        "key": "public.chapter_review_item_evidence_v",
+        "sha256": "9fb42247e804e00fa95c1c1063eed8f1a70cebbba3e4b408152fbfcc1a9bdcf9"
+      },
+      {
+        "key": "public.chapter_review_item_exposures",
+        "sha256": "5ab12b80a9a77b79296939cf4ef456edd8240883eb10d085c8e28a29e41f86e8"
+      },
+      {
+        "key": "public.chapter_review_requirements",
+        "sha256": "3aa8319db9476777a1b306d69bba170121b1bc2f514f96834564310f7c298f89"
+      },
+      {
+        "key": "public.chapter_review_sessions",
+        "sha256": "1fccf830f6cbf76f53792b7a8f18ddd94dd283a08dc10709f90620858c0ce438"
+      },
+      {
+        "key": "public.chapter_review_skill_attention_inputs_v",
+        "sha256": "656237a2703f569bc91b7cbedae7de1cc664550afafd873305dacb98c64cb395"
+      },
+      {
+        "key": "public.chapter_review_summary_v",
+        "sha256": "20f996e086e3de22951ae5cce48a71498033ee3af97a4f62830b62ce4623341e"
+      },
+      {
+        "key": "public.class_memberships",
+        "sha256": "34ac6f2f271f51807a1f95077736c1205a32dd78430665b53580446b56430b4b"
+      },
+      {
+        "key": "public.classes",
+        "sha256": "ae0fcdb610b08b91dfcfa0bf5a2118c20a97ace574e8032cefdd50d5c3c6db77"
+      },
+      {
+        "key": "public.curriculum_authorities",
+        "sha256": "a46bf4977672e4467279f5c6fd062427a0ef3a13d41ddd6b592041dd9a9958ee"
+      },
+      {
+        "key": "public.curriculum_frameworks",
+        "sha256": "682215b0da55599c8bb03c7ee0d8341cfc87e14459aa3dfa6972a62f5e3faf5b"
+      },
+      {
+        "key": "public.curriculum_reconciliation_runs",
+        "sha256": "1981046886b88d4d775896426aaaca2cf82eb1599fb8cb0358c75b198596f0eb"
+      },
+      {
+        "key": "public.curriculum_release_gate_checks",
+        "sha256": "82e1f59a5ae28904e556a02336f01fa4529dcd32266798f32024e43a9ee4caf5"
+      },
+      {
+        "key": "public.curriculum_release_item_families",
+        "sha256": "b9c7098081c3c97fb1105fcc6e8e33e907056d2cdee3a6ccffcea8ff11e41fa5"
+      },
+      {
+        "key": "public.curriculum_release_outcomes",
+        "sha256": "1a4ca9176f738dc2b6a55c6bbb0c31006364b5326cf91e4263eefe9dd2edb069"
+      },
+      {
+        "key": "public.curriculum_release_reconciliations",
+        "sha256": "35f93a0010dbf1aec00ccc12b289e3e9e5a5c8282585324e790877b6dff50190"
+      },
+      {
+        "key": "public.curriculum_release_skills",
+        "sha256": "a513b77654aaa62324061bc42ddc5978f527610aff7f045db499adbdbd5fe2be"
+      },
+      {
+        "key": "public.curriculum_release_units",
+        "sha256": "228bedf97817b2248624b2b170721fcb0a6c8686b8560eccc39deac1d0175371"
+      },
+      {
+        "key": "public.curriculum_releases",
+        "sha256": "525c5dce76a45e9eda5134d028d36cc9164d9fc39510f54dd75f2076e86b1a06"
+      },
+      {
+        "key": "public.curriculum_source_documents",
+        "sha256": "77f5eebfbad10c181c8dd8919a18cd556e806b5f95bad1ff1afb083ac8f4b5b5"
+      },
+      {
+        "key": "public.grades",
+        "sha256": "45196318e13c6527865491c874f148108b61603d76de10c22b5cb3d370c90a7e"
+      },
+      {
+        "key": "public.institutional_class_enrollments",
+        "sha256": "9c673089bbab47e08d80abd964458f37d05c42bb5152db5b1e5957e732c12e29"
+      },
+      {
+        "key": "public.institutional_invitations",
+        "sha256": "4a994b5f21041c2cc31d933cb9e8c2905fab09a785acb6c58dbfb6630746a34b"
+      },
+      {
+        "key": "public.institutional_join_codes",
+        "sha256": "81832959239022f6086445324550a625d77f706b6ed0997ac55bc92b451a4c36"
+      },
+      {
+        "key": "public.institutional_memberships",
+        "sha256": "33762ef5a8bcd8b2e9c2e140e1e352b84b3c174cffc5f802d525727411909dff"
+      },
+      {
+        "key": "public.item_answer_keys",
+        "sha256": "239d376020823724f2a286dea8404d96ef27e690a0e85ddedef03f8905256d68"
+      },
+      {
+        "key": "public.item_curriculum_scopes",
+        "sha256": "e0378144a450e65b141816ae620cb6066cc1c5f329d9aaba5f10cf7dc1594826"
+      },
+      {
+        "key": "public.item_families",
+        "sha256": "21f53f021cb9bec1dd27b2e1706cbcc1835afd03784a8e8948b970e3cdf28c52"
+      },
+      {
+        "key": "public.item_family_curriculum_reconciliations",
+        "sha256": "5d8a388fb90f8a5a7e2fc203cb2859450c04274f2c60af043ab9201c729bce20"
+      },
+      {
+        "key": "public.item_misconception_mappings",
+        "sha256": "858970ddaf2799832ddcb5a5b7d4aaa12c112b587c373af0b8f3c68ff53e1da6"
+      },
+      {
+        "key": "public.item_options",
+        "sha256": "66fa788723571504cc0b8463407050b198dc7c4a4f18854ab7a174dcc125286f"
+      },
+      {
+        "key": "public.item_qa_runs",
+        "sha256": "418140e24706ba4b99c570e8617f5cc8821aca38b19035ea20b8e73c4f3a4049"
+      },
+      {
+        "key": "public.item_reviews",
+        "sha256": "ee948af6201dcb06f25ef3ed665be16825fb1a2b5a8bd429dfe8561ebed1244e"
+      },
+      {
+        "key": "public.item_template_remediation_guides",
+        "sha256": "cf0e28ea7c289c47a85ce6929ba8f7404f545a3faa8d7d9b6b0687d9b1f814cc"
+      },
+      {
+        "key": "public.item_templates",
+        "sha256": "89893edfee80a044ba1a3d37a94991bf6e7124be57b4de2c9bee054ef6ce1448"
+      },
+      {
+        "key": "public.item_versions",
+        "sha256": "4921ec28deae33fdf3968d9009b5ddd169e09941e850e97c26a34d3d2d935ef8"
+      },
+      {
+        "key": "public.items",
+        "sha256": "5693d82e77f6566033e65e8bd3e64f3c3142a4ab46e1341f6b0e6440b5bb857f"
+      },
+      {
+        "key": "public.learning_assessed_audio",
+        "sha256": "9a49d2fc81be7f84535c40397d848cf6ac2ee5c350e6de89aca70361f7655599"
+      },
+      {
+        "key": "public.learning_audio_deliveries",
+        "sha256": "e40fe3aaffc63badc00ef74e9bd333dfbfe134729f634917d657dc989e24281b"
+      },
+      {
+        "key": "public.learning_audio_versions",
+        "sha256": "61f8af31e3907aba959918374c6686c9c3197e79a9b1529de7259cd9714df468"
+      },
+      {
+        "key": "public.learning_evidence_stream_v",
+        "sha256": "dc9d9ee0bcdc4fc32b3fbab879ad9f5a76c2993c5d8b0091e57614f9f0b2d792"
+      },
+      {
+        "key": "public.learning_model_configurations",
+        "sha256": "6d25f5bce8e58fb2c7ab910c0ca4bc4250ceae1b5246ed3af1388714787406c9"
+      },
+      {
+        "key": "public.learning_model_runtime_bindings",
+        "sha256": "661ab5a83f1fb4715790f1f95e1840c041740ce35392b8ca008fe3788293e4c8"
+      },
+      {
+        "key": "public.learning_outcome_normative_mappings",
+        "sha256": "6d878a50904867c327520661990ef871679e3d4ce8f2f514edc8b4b483940d98"
+      },
+      {
+        "key": "public.learning_outcomes",
+        "sha256": "839641270db405cffbe947f3e770ff5766daae6a7d2fedebbe1345e794f78947"
+      },
+      {
+        "key": "public.learning_response_drafts",
+        "sha256": "abf4267dad0b01abf08c8a6687beead94e423c11ed190d53457d0cd4fef68045"
+      },
+      {
+        "key": "public.learning_session_items",
+        "sha256": "e6946401d2e8d2b6b6650c5305e9ade1107b9b39f2f4673903186e82201bd07c"
+      },
+      {
+        "key": "public.learning_sessions",
+        "sha256": "63b196e9e662e2e9bc3072ee6967254aa14392c6798bc7368c7876ce3e74a3a4"
+      },
+      {
+        "key": "public.learning_source_family_exposures",
+        "sha256": "695866079d83a26b59dc4d828d07e7b3c2a6cdbc331b4990edcf3be6b2796599"
+      },
+      {
+        "key": "public.learning_task_set_versions",
+        "sha256": "3962936f6971c55fe2c3f78b71eebe912a479808615f326c18ab2a146a9e9f0e"
+      },
+      {
+        "key": "public.legacy_learning_blueprint_mappings",
+        "sha256": "8d6381c07963ef6f2313ec54a7cd51c843f42ec67d76e853286d65408d9a0eec"
+      },
+      {
+        "key": "public.mastery_check_attempts",
+        "sha256": "24cbda05ce5202c24484ca33c1b2e8754890d4c3ae82a867f3c98611642faf95"
+      },
+      {
+        "key": "public.misconception_review_catalog_v",
+        "sha256": "9c19464b907cea6231a41473951fbad501c3a6a936c5aa388e1ef97c4fd1ea3e"
+      },
+      {
+        "key": "public.misconception_review_events",
+        "sha256": "b249e1e395162e7bce965f3de61bffa2935130ee12df78b551ada023a46aef62"
+      },
+      {
+        "key": "public.misconceptions",
+        "sha256": "f2dbc729dfc2e47488b451a7d11ad75fb8d5c92e0277445707384dcacbe64ea8"
+      },
+      {
+        "key": "public.pilot_entry_readiness_v",
+        "sha256": "d8db5bd481f02e4930bd37e0284d370324e5a1070a6642bb9767788584c1cfb7"
+      },
+      {
+        "key": "public.pilot_evidence_classifications",
+        "sha256": "b6b02f08f45e9d37d06884f73af209eb836ed3a9c52f0ac51f1cd6674bcddbe5"
+      },
+      {
+        "key": "public.pilot_evidence_detail_v",
+        "sha256": "3a7c7d98b023e3244c5dec6a1fed02bcef1502b107ebcb2995e308486e289f01"
+      },
+      {
+        "key": "public.pilot_evidence_summary_v",
+        "sha256": "d82151b29a01759e630f88aebb38a24e998cfa90edcfbe77e3df85e104bc56e2"
+      },
+      {
+        "key": "public.pilot_gate_checks",
+        "sha256": "f4dc86c184d949f069104f0fe0137d8132a0adf52f0fc4a6b192dd67d3ea6a7e"
+      },
+      {
+        "key": "public.pilot_participant_events",
+        "sha256": "e9e2077dcd14a0b05fa96727b50e3e62daba7bdb20e4c9bbf4e3a54ec356823e"
+      },
+      {
+        "key": "public.pilot_participant_status_v",
+        "sha256": "60400f0789b6d1b31772e4b680f19e128cd2d31bacba566c19d33a22dfbf8194"
+      },
+      {
+        "key": "public.pilot_participants",
+        "sha256": "ffe3f11c93899fd49b24e68c29bc20ee3c688d70080eb7eac4037dc8f4134121"
+      },
+      {
+        "key": "public.pilot_runs",
+        "sha256": "bb1588cc03330ef685c23533f3bb1fb57a37d8430c71b4e54c8b90db99c1a68a"
+      },
+      {
+        "key": "public.privacy_preferences",
+        "sha256": "15c73663021bdb2d402007a707ca587844431179dd05d71a7ba6158d8a9db14b"
+      },
+      {
+        "key": "public.profiles",
+        "sha256": "cc87b6786a9d49841b4fe08e3513b0448eaeef7b4211f5f149cd7af9385cf769"
+      },
+      {
+        "key": "public.recommendation_events",
+        "sha256": "9710a22915fe8a58c24fb5ae305be986efab75f3f8180ecf38f1598be5f57015"
+      },
+      {
+        "key": "public.remediation_events",
+        "sha256": "7bb7f42b689b37b5512ad9f1c8186a4bd3868a41910fcaaa58eef4dcb6858d56"
+      },
+      {
+        "key": "public.remediation_guide_authoring_catalog_v",
+        "sha256": "7aca26900667f3cfbfccfb098d7c5640d253f22390fe8fd890a4e60d8bdd170a"
+      },
+      {
+        "key": "public.remediation_guide_authoring_versions",
+        "sha256": "17fab6d49bdf0cb657d14632d41be95eab611f9c65c713e6d53faeb3ef10d977"
+      },
+      {
+        "key": "public.remediation_guide_versions",
+        "sha256": "a15e3660dd2172a05ec1434af713766eab12993b137b1ee6c18de5e2f9d6568d"
+      },
+      {
+        "key": "public.resource_assignment_events",
+        "sha256": "3c581b56fe2dfcdcae6fe604a927dcf52101063edadc947b3839676de477986f"
+      },
+      {
+        "key": "public.resource_assignment_recipients",
+        "sha256": "8ed4bece83546a15f992756f400c1536229a7691a6c8ed865c39d6f033db3034"
+      },
+      {
+        "key": "public.resource_assignments",
+        "sha256": "5611f0fa969f7e2d260b9747eafdff6e2912f8c33ba9a667faf219e8ff9ab639"
+      },
+      {
+        "key": "public.runtime_builds",
+        "sha256": "be098bbe8f8a7e324c09e9944be8e412fb632589982b29ffbffe4d70b78208e8"
+      },
+      {
+        "key": "public.schools",
+        "sha256": "ecdb7edc99b7bcfddeec88fcce42e77feed601f6d39ba78d42e7217ce5657776"
+      },
+      {
+        "key": "public.security_audit_log",
+        "sha256": "a1ad060de828f4ab02562e2efb43c6392f5579217b6ae010e4f6f0ce293f2a6a"
+      },
+      {
+        "key": "public.security_audit_log_id_seq",
+        "sha256": "b4c33556feb64f11cab7bf4da1a1e81e5e253442fcf17d22e21c7d4c24cbf5d9"
+      },
+      {
+        "key": "public.skill_curriculum_reconciliations",
+        "sha256": "7262de6ceaccdb801a1c562fc25a33fa2334234742298e0aa15c7ac5dffba00a"
+      },
+      {
+        "key": "public.skill_outcome_curriculum_mappings",
+        "sha256": "79190242283af3444c772853699fa3ff64da1f041d20fc30416cb9b50d6cc859"
+      },
+      {
+        "key": "public.skill_outcomes",
+        "sha256": "3ae2d033c1df1fa770280b79c03efa8ff00bacb78ed89545cbbccef0ef861082"
+      },
+      {
+        "key": "public.skill_prerequisites",
+        "sha256": "146083f742f0f0bec8c127578ad4a9a74634df150492d8d6fd999deb6aa5fae3"
+      },
+      {
+        "key": "public.skill_remediation_guides",
+        "sha256": "402f8be8af43557bdb221fbfb3dfaf27b4b0fe52811bc84c7763824d429c9727"
+      },
+      {
+        "key": "public.skills",
+        "sha256": "c13fa9facaa8d71bfaa20e21e9ef6be0ec92b691ff15412634609fb68af1a485"
+      },
+      {
+        "key": "public.staff_account_provisioning",
+        "sha256": "2cce1c8c53aa20421b65a6e538ae465f9c0bdc428df60257c5cb2b84c85b871c"
+      },
+      {
+        "key": "public.student_account_acceptances",
+        "sha256": "f27111d1a6b9fe83ff126c2759449ba100d69e9ba322745331b29c491da805bf"
+      },
+      {
+        "key": "public.student_item_exposure_events",
+        "sha256": "2b8b8cc69c49dca652a6aae312c0ff70f92147820c8cb5668c9a8d9845f7c28e"
+      },
+      {
+        "key": "public.student_skill_mastery",
+        "sha256": "b892056cd02eb033abd51349fe012ff07f38839c0f22851953fc0073c767e059"
+      },
+      {
+        "key": "public.student_skill_mastery_by_release",
+        "sha256": "7cffd6434527ae4d9aa4d6a7af0e262cd2898b149b996c4fe86072ce4007690a"
+      },
+      {
+        "key": "public.subject_program_source_bindings",
+        "sha256": "8b4573e5993845fdb17ddc8a478bac152e4d69380fcade61728caa7791def338"
+      },
+      {
+        "key": "public.subject_programs",
+        "sha256": "3956af7e12f1198b424f4c128c906ea97c9bf2a7a251ddeca4350c369eddf95d"
+      },
+      {
+        "key": "public.subjects",
+        "sha256": "58c97e31ce3d2249971766d7fda7638acef31346421fddef1209811f8f9980f1"
+      },
+      {
+        "key": "public.supplementary_resource_events",
+        "sha256": "52b9f0d0a595c945601ad39c7e073d269af84dd5825ed66cb9158ac6843f7e07"
+      },
+      {
+        "key": "public.supplementary_resource_versions",
+        "sha256": "30694f4fc864146c1ed54c7986c6da1ac596d5c9258a75acfc80daf7055781d8"
+      },
+      {
+        "key": "public.teacher_assignments",
+        "sha256": "a357beaf581a5cf530d06009c97662c00ca0fa8c8f384aa501ab714d2615b9af"
+      },
+      {
+        "key": "public.teacher_subject_authorizations",
+        "sha256": "4d04e8b0f0369b13011f50d99a6c2a81f79a47385eeb24c09825cbea0689458c"
+      },
+      {
+        "key": "public.teacher_task_cleanup_runs",
+        "sha256": "ecdf17beacc6ec7d0ed21fb3ee6ebb514dbaa929d54afcb657eea7afe589776a"
+      },
+      {
+        "key": "public.teacher_task_deliveries",
+        "sha256": "45826e029cf1fdc2334a47b6bd734cf1b8d3ec506e1e942ad93b67fd708ffb5b"
+      },
+      {
+        "key": "public.teacher_task_delivery_cancellations",
+        "sha256": "345fd541a0dcd08b418e4ae204a7c2420aac637ff73e3273e1e5bbf2651b63b2"
+      },
+      {
+        "key": "public.teacher_task_delivery_events",
+        "sha256": "af9e2a9638c9e7318558149ab2214ed71463a0e4de5c901dce5f4519ca5d7f7f"
+      },
+      {
+        "key": "public.teacher_task_delivery_recipients",
+        "sha256": "6fe6c27366df3bf593ffe0b3170b8424081118f8110efddcd21c7f42dc8271d1"
+      },
+      {
+        "key": "public.teacher_task_drafts",
+        "sha256": "20b9f2df4dbaf8f6b72918b72115ed366f52600e38dbb3b0d4d8f84bc9da0863"
+      },
+      {
+        "key": "public.teacher_task_erasure_jobs",
+        "sha256": "719b58afcd327645e699523725a82e8b567bd9f1bee6756cac62f42b350830e4"
+      },
+      {
+        "key": "public.teacher_task_response_files",
+        "sha256": "942eb70977aa133d663d27b23cb5a297efa219f9b92dfa39e778a9d51f71c11f"
+      },
+      {
+        "key": "public.teacher_task_review_drafts",
+        "sha256": "c90920f6f2bcf72b28211e7221d67ddc6d3e4c461d8ca947b645c22047417dd0"
+      },
+      {
+        "key": "public.teacher_task_reviews",
+        "sha256": "fdcc0e987a93e6aad2335811b26a3033687ca99dbf72c622a71ab4a79f65de88"
+      },
+      {
+        "key": "public.teacher_task_source_files",
+        "sha256": "74dcdc6f627cc092ae63df3b27d894e57ead4349a9fd8d3d8da94e9f72a6e84b"
+      },
+      {
+        "key": "public.teacher_task_storage_deletions",
+        "sha256": "6f54728fe438d0fc0c100f435082c0d1c7f63dc2ca2a969a0388e26bc5494d11"
+      },
+      {
+        "key": "public.teacher_task_student_work",
+        "sha256": "658d25c5bb6ebac93f914f5d277001bdffd25c1aa68591ce38e990990ba280c9"
+      },
+      {
+        "key": "public.teacher_task_submissions",
+        "sha256": "3c39bc2dc2882101cf37ccde9afe825fcd07d393af11d7a107922b670299df7c"
+      },
+      {
+        "key": "public.teacher_task_versions",
+        "sha256": "29fb8b97f6a107ba59f6f5a7a41d6cf130d170b7ec41832c8c978d22537378bf"
+      },
+      {
+        "key": "public.teacher_task_work_events",
+        "sha256": "0998c390ab27fe359d80e7746c6151c196c8f51ec9de43005d5d1e04d6f10d8a"
+      },
+      {
+        "key": "public.textbook_mappings",
+        "sha256": "b4adef92571816aa762c57516be81fe5380f97266c4f89c6af2d1d1454f125ea"
+      },
+      {
+        "key": "public.textbooks",
+        "sha256": "2a54f0dcc3cfbc7ea2dab8ad81428ef5b94dd6c2866431b98b6148ae43455e6b"
+      },
+      {
+        "key": "public.topics",
+        "sha256": "f3e113b09bc758608d6bb76be2c058d6981e7f6172684299796a38a7904ac653"
+      },
+      {
+        "key": "public.unit_material_events",
+        "sha256": "2ac34aa66d3d86459de06d7053ceea50077a7f2f43f7d66097f387744c83f26c"
+      },
+      {
+        "key": "public.unit_material_versions",
+        "sha256": "473e52226364bccb67a4680e7f105e9e7b5c999c25b73680d2daf6d8808af546"
+      },
+      {
+        "key": "public.units",
+        "sha256": "012aa11c0d5162ca8df7e21ecd24c047c88b93f3ebd8cf4fd8c4ec2a67bc83ec"
+      },
+      {
+        "key": "public.writing_assignment_events",
+        "sha256": "17c881eef2f59c9d858e76ba07a956ce433749d5595916b6dd5b3fdd05a9d8ff"
+      },
+      {
+        "key": "public.writing_assignment_recipients",
+        "sha256": "accde2e8a460c1336b36a77ffd35b9e763b47ac565b1c92378397a0aa8058b44"
+      },
+      {
+        "key": "public.writing_assignments",
+        "sha256": "854787b106d711a9a53ae4959c99ea83545d4f391dd4fb1154b8b8d083c4007a"
+      },
+      {
+        "key": "public.written_reviews",
+        "sha256": "5a7e6cef8bb39ef7ca50620a6f0f2d196224564bddf41b7e128c4f2faa52c9e4"
+      },
+      {
+        "key": "public.written_submissions",
+        "sha256": "344cb404bf12061ed92807023f6842f50309c82db352549f47559e4839a4d6ec"
+      },
+      {
+        "key": "public.written_task_versions",
+        "sha256": "40a6e7f255136c35f16dc6ec7b9c94a850a4cd4edbd544797e595f2b4fd5fe7c"
+      },
+      {
+        "key": "public.written_work",
+        "sha256": "9c83e609b22a36c1ce3972dc2d1115f661a0d98a38a0183724ffcd2217692c4d"
+      }
+    ],
+    "defaultPrivileges": [
+      {
+        "key": "postgres/public/S",
+        "sha256": "3472787f93eb64f1afa5325ac835dea6da0ebcd3f919dcb9b3e44ba1e0e54591"
+      },
+      {
+        "key": "postgres/public/f",
+        "sha256": "d3dc433e63e893b841f335ff8e4b7d7898bb64ee92f894323fbb2a8673a1678a"
+      },
+      {
+        "key": "postgres/public/r",
+        "sha256": "a1f66cc86bff20b8f84680f8cd56591006b5c4e04f3d44d1d54d489944f6275a"
+      },
+      {
+        "key": "supabase_admin/public/S",
+        "sha256": "22b0ebdbc96381c7a198f5e01459db972cf82d0d556f58f3b11b297d4217bf74"
+      },
+      {
+        "key": "supabase_admin/public/f",
+        "sha256": "2ef41d92f853deec8939408387e07cafc245b7981f8ce5b706be4fc5ca8db9bc"
+      },
+      {
+        "key": "supabase_admin/public/r",
+        "sha256": "d745c0f47ea74348b800846c280f92b0662d2aa7f4311c2dba5c8b32eeea06e0"
+      }
+    ]
+  },
+  "dataCopied": false,
+  "historicLedgerCopied": false,
+  "cronJobsInstalled": false,
+  "productionApplicable": false,
+  "sourceInputs": [
+    {
+      "path": "supabase/migrations/0002_public_read_policies.sql",
+      "sha256": "41d9580a07da2afbe9c5f50fb57240f00a397ac726557afbd65b5a6d742b7a27"
+    },
+    {
+      "path": "supabase/migrations/0003_security_hardening.sql",
+      "sha256": "40ba7d71b2ca9b18731eb4b77fb82508ebcabb8026f6e3af1600b8fdb9bf5971"
+    },
+    {
+      "path": "supabase/migrations/0004_add_item_code.sql",
+      "sha256": "851c64a707450126b0c66340efe80fc5d598fea66e0691ec86b4a2585c75f250"
+    },
+    {
+      "path": "supabase/migrations/0005_add_bounded_learning_sessions.sql",
+      "sha256": "2d0465736bfa7e708346476bf99edb4f13c27bb1b59bcb6e99d46dfa48e8b5b8"
+    },
+    {
+      "path": "supabase/migrations/0006_adaptive_practice_v2.sql",
+      "sha256": "25af3d8555c9ad3e9c5bb34b15d83d308808b9e96b4e8aa628370011a41b8d7c"
+    },
+    {
+      "path": "supabase/migrations/0007_mastery_checks.sql",
+      "sha256": "4d3ef1346913671b97a96c76331b82494bfe56104250d67f91c39bde9afad5b5"
+    },
+    {
+      "path": "supabase/migrations/0008_teacher_dashboard.sql",
+      "sha256": "91d1bf1e0b0c6e8b4b976cc238427796166ffe6712bd2a296d1f79d2025077e2"
+    },
+    {
+      "path": "supabase/migrations/0009_content_assessment_quality.sql",
+      "sha256": "b4ec43254ad968e557281a138c72b10b15abac096e05316f81ee52a3d4ebca22"
+    },
+    {
+      "path": "supabase/migrations/0010_content_quality_trigger_safety.sql",
+      "sha256": "bc57c0ee1fab38b5460c788e2be2b1a54752d038eb4a8b0e9b46699bd60ab511"
+    },
+    {
+      "path": "supabase/migrations/0011_security_privacy_administration.sql",
+      "sha256": "7d18e0a6271896365fc41a93e7be19b7bf9c54b96d0df39d82c781158e4428a8"
+    },
+    {
+      "path": "supabase/migrations/0012_live_session_gate.sql",
+      "sha256": "1336b108426496ab9d51f6aff97f1ba743e15581c53ec4ee9e56893c212a9a2c"
+    },
+    {
+      "path": "supabase/migrations/0013_sprint_11a_item_identity_exposure_pools.sql",
+      "sha256": "9302fae14073219b811ab687cb92b80d28829e4d61d4e22f22d3a369ab001673"
+    },
+    {
+      "path": "supabase/migrations/0014_sprint_11b_repetition_selection_policy.sql",
+      "sha256": "86f3a4d672d995465d19f172fdda48c9f0873597c1fb585beda629af0c611718"
+    },
+    {
+      "path": "supabase/migrations/0015_sprint_11c_deterministic_variants.sql",
+      "sha256": "df29cf7a9bd5497356c28047ba9b8ff6b297bfb329549872bd46809c43e2bf37"
+    },
+    {
+      "path": "supabase/migrations/0016_sprint_11c_preview_idempotency.sql",
+      "sha256": "b63b61851244bc445892f554633f255ac56ed5446a5ab858293c42895e6c0b75"
+    },
+    {
+      "path": "supabase/migrations/0017_sprint_11d_conceptual_bank_expansion.sql",
+      "sha256": "e3bb8b1bab0aa59bd96c1312423c9c26f1dee1c22ab9f5f3861c447072d99e12"
+    },
+    {
+      "path": "supabase/migrations/0018_sprint_11d_numeric_pool_rebuild.sql",
+      "sha256": "d4318bba6ae852d1e6af8922ceee38ce58c790ace57758fbca7eb8dc1e8f914b"
+    },
+    {
+      "path": "supabase/migrations/0019_sprint_11d_numeric_pool_rebuild_v2.sql",
+      "sha256": "bd2a7e0e163b6ff8d53eee886042422b413dcd38b22a30cb92eedcc0602714f4"
+    },
+    {
+      "path": "supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql",
+      "sha256": "481c30de22ac74e2d5aa77b43f8ebe485754827db61103b7e2768653f5512ffe"
+    },
+    {
+      "path": "supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql",
+      "sha256": "329d3317a811581b11cb08d6d577cb0ca64da526f64bd5ba9a6d064e719779a8"
+    },
+    {
+      "path": "supabase/migrations/0022_sprint_11d_family_audit_corrections.sql",
+      "sha256": "8ab2e0a1f851a67d54d1f341d6f6027a6e9ce92cd1553fcad8d44e7227b1a148"
+    },
+    {
+      "path": "supabase/migrations/0023_sprint_11d_authored_parallel_template_semantics.sql",
+      "sha256": "1b5ffa4b5be50806907ee1b1909c7f14d28a8a894743b85019c5758329b282ea"
+    },
+    {
+      "path": "supabase/migrations/0024_sprint_11d_partial_state_recovery.sql",
+      "sha256": "e530c70f1e0cedf8400704e532cf99c509043061e2898619d4f4af6e7399bf09"
+    },
+    {
+      "path": "supabase/migrations/0025_sprint_11d_fixed_audit_and_candidate_gate.sql",
+      "sha256": "aa21d8fdc08e5176eccab92c0fb6325f598ab9ed450b162da8f9c0bac6b27504"
+    },
+    {
+      "path": "supabase/migrations/0026_sprint_11d_complete_candidate_bank.sql",
+      "sha256": "78aa4559b6ce051b5dc55d5d5c038d488ec00ababf01ae6a12607b54c45493df"
+    },
+    {
+      "path": "supabase/migrations/0027_sprint_11d_stage_candidate_pools_forms.sql",
+      "sha256": "2606c7b8733b09340b4f84c710a3b53d510d6b7158cb132f58623f00f9d27247"
+    },
+    {
+      "path": "supabase/migrations/0028_sprint_11d_seed_index_search_path.sql",
+      "sha256": "c06085520d510ea2278606a613a638ba8ae77541be9132762e61a767f9fb33f8"
+    },
+    {
+      "path": "supabase/migrations/0029_content_editor_atomic_revision.sql",
+      "sha256": "abd35686c8b626e9de38e8d9a17e829768c1e65526ffe8d27afd7be10b0d8328"
+    },
+    {
+      "path": "supabase/migrations/0030_content_editor_11d_review_hold.sql",
+      "sha256": "ea2c1de72bc36ef241bf783db9c539a8e354ac8a488cc3962c083a19410bf6dd"
+    },
+    {
+      "path": "supabase/migrations/0031_content_curriculum_scopes.sql",
+      "sha256": "60b700e303fd095b16a6f789dfee344a3f89053b25a71a3047d4df0bf505ed34"
+    },
+    {
+      "path": "supabase/migrations/0032_sprint_11d_activate_reviewed_bank.sql",
+      "sha256": "c547702b4ad9f5edee878eb318fc35ff93b2476330655e2b8435c5fc2ffdfa38"
+    },
+    {
+      "path": "supabase/migrations/0033_sprint_11e_pilot_item_analytics.sql",
+      "sha256": "8df8ff932376509a339c0195398702d28f085c298ef7d2d17c94dccf8bafe54c"
+    },
+    {
+      "path": "supabase/migrations/0034_sprint_11i_standards_source_registry.sql",
+      "sha256": "57f183d3f22db753453b0f207375e7b8ddd706a797529341a536c90269f0779d"
+    },
+    {
+      "path": "supabase/migrations/0035_sprint_11i_registry_advisor_hardening.sql",
+      "sha256": "b1070febcb4fe93a345789e4e22d46cd86f9dd32cba0409bc1a3976528ee0825"
+    },
+    {
+      "path": "supabase/migrations/0036_sprint_11j_physics7_current_standard_reconciliation.sql",
+      "sha256": "87c773d20eadb2bcbbfee7f29a9ca2c00c46143bc40e07ee8772a1bc044ab691"
+    },
+    {
+      "path": "supabase/migrations/0037_sprint_11j_reconciliation_advisor_hardening.sql",
+      "sha256": "c26d3145fca277c0fd64920e4449013f4fe0e328462eb77e27bc2478f61f10d5"
+    },
+    {
+      "path": "supabase/migrations/0038_sprint_11j_preserve_official_outcome_wording.sql",
+      "sha256": "9df88b6aac7875a92cb319c33a60ee8b852f84358522143e883c439786912f7e"
+    },
+    {
+      "path": "supabase/migrations/0039_sprint_11k_curriculum_releases_and_evidence_provenance.sql",
+      "sha256": "f2d42947a61b5d1bbc0394695739f30e3b92839b7aa931c61b65b92fb65168cf"
+    },
+    {
+      "path": "supabase/migrations/0040_sprint_11k_advisor_hardening.sql",
+      "sha256": "1ec071ddd762e14e1d33698ee3a3df09886b44d52bb2897097354cfb72792ef8"
+    },
+    {
+      "path": "supabase/migrations/0041_sprint_11l_pilot_evidence_classification.sql",
+      "sha256": "386a624b9905dfbcf599b8b684a6b878c0b17e1b93db8a0575a433786a1882cf"
+    },
+    {
+      "path": "supabase/migrations/0042_sprint_12a_hinting_remediation_v2.sql",
+      "sha256": "5b3628aeee35fda32a8dc02aac2cc077cbfbde22400defcbb8a0fe1394e1c2e4"
+    },
+    {
+      "path": "supabase/migrations/0043_sprint_12a_hinting_v2_index_cleanup.sql",
+      "sha256": "4f7350a8755cd455b5e2ac3378bdafd52e84df9cb0e86312e2b26aa8d8aa38dc"
+    },
+    {
+      "path": "supabase/migrations/0044_sprint_12a_freeze_learning_model_baseline.sql",
+      "sha256": "0a2b7d5a41c98486da62298d5ed0dbc8e921acb13004feca931adee7739a4a9b"
+    },
+    {
+      "path": "supabase/migrations/0045_sprint_12a_learning_model_baseline_indexes.sql",
+      "sha256": "0f2ec5ab596afaf704fcb8beb46f97b798bf4e3ae190a44ca749a6c06ae3c86d"
+    },
+    {
+      "path": "supabase/migrations/0046_sprint_12a_calibration_evidence_contract.sql",
+      "sha256": "025d9d5314e89a38195e31b74caa6d38df79bc0a27b73281600012405b7eb2f6"
+    },
+    {
+      "path": "supabase/migrations/0047_sprint_12a_calibration_metric_set.sql",
+      "sha256": "a416ad1ae897a0aaeb30213e1c482443329dfabacaf2924d984e58e6f7969ddf"
+    },
+    {
+      "path": "supabase/migrations/0048_sprint_12a_session_model_provenance.sql",
+      "sha256": "f8b754e21b426665c590f5f920c329ffb147553788576ca80802db6855798c52"
+    },
+    {
+      "path": "supabase/migrations/0049_sprint_12a_remediation_guide_provenance.sql",
+      "sha256": "48436a249484ff889bfcd2ecfb81da96fa72793036b287d314d248aa6817639c"
+    },
+    {
+      "path": "supabase/migrations/0050_sprint_12a_recommendation_telemetry.sql",
+      "sha256": "6eabc456b348e87355bc15ee903745ec81f8aaaf4014e3a5c6cb8f3ae7fa8377"
+    },
+    {
+      "path": "supabase/migrations/0051_sprint_12a_audited_calibration_r2.sql",
+      "sha256": "0e6050cccfc10b915d27c8d9580a7b77be1cf3f184dcb1b9b16eeebb62173159"
+    },
+    {
+      "path": "supabase/migrations/0052_sprint_12a_closure_corrections.sql",
+      "sha256": "9626aea84ba1b65c20b1d8bc45a92f4d2126e475edc4071537bd3e3f136b9733"
+    },
+    {
+      "path": "supabase/migrations/0053_sprint_12a_runtime_build_activation.sql",
+      "sha256": "63e770c50c7e8d074bad2e2d5dee081fbcbc61ad65cb1c7dac883efd607ad3d3"
+    },
+    {
+      "path": "supabase/migrations/0054_sprint_12a_evidence_view_preservation.sql",
+      "sha256": "5adeff38aa251b1dae36aa40f7ee800a7c42519dec1ed925e60a6f9d30bbefda"
+    },
+    {
+      "path": "supabase/migrations/0055_sprint_12a4_calibration_analysis_views.sql",
+      "sha256": "2918c64e7b5dac7bd78a86520712e4fc6d5d15f6967767651482f1f6f9144c19"
+    },
+    {
+      "path": "supabase/migrations/0056_sprint_12a4_audit_corrections.sql",
+      "sha256": "2c63fe4d87c20ca7faf8ee3dca81aaa31510a13ff9e9cd2406b84bb17ad870af"
+    },
+    {
+      "path": "supabase/migrations/0057_sprint_12a4_scope_indexes.sql",
+      "sha256": "6c234bad05b05ec5087aefd4a0136e2ca7df4f9cf4124c109ea9b1c37f3fdf36"
+    },
+    {
+      "path": "supabase/migrations/0058_sprint_12a5_calibration_decision_protocol.sql",
+      "sha256": "7ea50a0b2f52291bcf5610031a62407945e541802dd35272dba13de0b219385a"
+    },
+    {
+      "path": "supabase/migrations/0059_sprint_12a5_protocol_indexes.sql",
+      "sha256": "42a258ed0c7525116d09c02e90ff66d50c9926bdb7a666bbabbc7c92b06dc625"
+    },
+    {
+      "path": "supabase/migrations/0060_sprint_11_5_single_adult_feasibility_pilot.sql",
+      "sha256": "8c9f578427714681c03a2b978996a2fdf91d096c8ec6a18fe6ccdae2fc83097d"
+    },
+    {
+      "path": "supabase/migrations/0061_sprint_12_5_mastery_lifecycle_foundation.sql",
+      "sha256": "e07e3986e8795a1e38fdf015759944b05051ea90f3950cd0a22b7979f375a350"
+    },
+    {
+      "path": "supabase/migrations/0062_sprint_12_5_runtime_build_activation.sql",
+      "sha256": "44342ac898c4a549dc4093dd2b9f17760d77591f3ae7694cdef130fb80a616aa"
+    },
+    {
+      "path": "supabase/migrations/0063_sprint_12_5_lifecycle_indexes.sql",
+      "sha256": "8ce2f5b8989df75b8219d0913a6817579bf37f6857824722034e640ff75f91d4"
+    },
+    {
+      "path": "supabase/migrations/0064_sprint_12_5_chapter_review_gate.sql",
+      "sha256": "b64da8c8f99d556f119a873e7ede5ccee83bc4d05f52ad31525dcc2b1e98da05"
+    },
+    {
+      "path": "supabase/migrations/0065_sprint_12_5_chapter_review_runtime.sql",
+      "sha256": "3f5448ad688f95b641f0c58002f511859b4cf5a5ed6629e6e63d7e402551ff37"
+    },
+    {
+      "path": "supabase/migrations/0066_sprint_12_5_chapter_review_blueprint.sql",
+      "sha256": "689b55838e25dee226362d7eced9a100e551ce2be8b9ed0fccc9bbb9d58f93df"
+    },
+    {
+      "path": "supabase/migrations/0067_sprint_12_5_review_runtime_correction.sql",
+      "sha256": "9fc8d6a7916acb6075a5fda6cd7dfc3912260dfc6b1f0cdb0340c15d0fa5b2a1"
+    },
+    {
+      "path": "supabase/migrations/0068_sprint_12_5_review_indexes.sql",
+      "sha256": "75572f1cea090860be9e8443141943f429962d3fed04ee3eea04066c085650fa"
+    },
+    {
+      "path": "supabase/migrations/0069_sprint_12_5_review_cycles.sql",
+      "sha256": "ccc97af637870b5a89b8b00a58913f8449d63c82a085dc56dd2156ccbe1c9710"
+    },
+    {
+      "path": "supabase/migrations/0070_sprint_12_5_review_cycle_runtime.sql",
+      "sha256": "9d5f79bb67181bb69d0769efa07500a1ab807e44219c0a3b6aa1d8f878e9b0f8"
+    },
+    {
+      "path": "supabase/migrations/0071_sprint_12_5_learner_lifecycle_runtime.sql",
+      "sha256": "14327d9b4bf62822734e5d557dae55282086e36fac37a7aa688db5798d9a6e84"
+    },
+    {
+      "path": "supabase/migrations/0072_sprint_12_5_review_analytics_and_evidence.sql",
+      "sha256": "f0e3baa93c6761d38bfa932ee97ab8c804ba296476b704763fb10035f0be59a4"
+    },
+    {
+      "path": "supabase/migrations/0073_sprint_12_5_analytics_recommendation_runtime.sql",
+      "sha256": "7d4ab11cf109d84e593d2fc30d92ecbaf01d5e09fa0b8b558e0cc79850e16b40"
+    },
+    {
+      "path": "supabase/migrations/0074_sprint_12_5_integrity_coverage_and_closure.sql",
+      "sha256": "e3e7f312bf43eb1396faaf7c76236445d4dfa27353d5f134fbfc06c92beaa740"
+    },
+    {
+      "path": "supabase/migrations/0075_sprint_12_5_integrity_coverage_runtime.sql",
+      "sha256": "9ceb4fa9d6c65e1b3d7a55faa42a821d871c24b7b346c3268c84c9bd24297a49"
+    },
+    {
+      "path": "supabase/migrations/0076_sprint_12_5_chapter_review_exposure_integration.sql",
+      "sha256": "988f1636b47d73d329f18a510fc1b69baca54f95e526162ef566f609c253bcf7"
+    },
+    {
+      "path": "supabase/migrations/0077_sprint_12_5_chapter_review_exposure_runtime.sql",
+      "sha256": "4599e3bbb080b1eb27164422970a1607136c16276e8719a33ad306ef01814df8"
+    },
+    {
+      "path": "supabase/migrations/0078_sprint_12_5_teacher_localization_runtime.sql",
+      "sha256": "e7c5c3574b150cbacd18ad7c62bb846a9e4a82a8529d440c48b0d071d9518e01"
+    },
+    {
+      "path": "supabase/migrations/0079_sprint_12_5_mastery_retry_eligibility_runtime.sql",
+      "sha256": "8c6eca9c9f990c4617995f9c2a312e1dd3957603c600bfd218b6c691b7ed62fc"
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_12_5_mastery_retry_start_gate_runtime.sql",
+      "sha256": "4bf0e80014e9bfc9714b215f0154b083291327969c735ecf8f8c6618259c0f11"
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_14a_academic_identity_foundation.sql",
+      "sha256": "ecbbdb2746ca558a56ce16f67c3bb58135659cd32648a90036870b9967e2c3b0"
+    },
+    {
+      "path": "supabase/migrations/0081_global_mcq_option_presentation_integrity.sql",
+      "sha256": "6ca1c194850aabb1157ca7e2de9ee473d27800e265679babaf7e053ec8e862f4"
+    },
+    {
+      "path": "supabase/migrations/0081_sprint_14a_academic_identity_fk_indexes.sql",
+      "sha256": "23766d6fd581e2ce0eed7186f22e3207234e0a419d68dac80e5dc59bd53c9496"
+    },
+    {
+      "path": "supabase/migrations/0082_global_mcq_option_presentation_activation.sql",
+      "sha256": "e4afbe9fff5e0394990d734901129127299dff0add0739eb9e3219cf86bc80af"
+    },
+    {
+      "path": "supabase/migrations/0082_sprint_14a_legacy_class_boundary.sql",
+      "sha256": "c52f1803eea3537fee2d5cb792c11638821dd94fcbb4f82337b9004029acdc4c"
+    },
+    {
+      "path": "supabase/migrations/0083_global_mcq_option_presentation_runtime.sql",
+      "sha256": "4c5169e24ba680fc11a2de4ca80b9c5da7ed32317ece0fc180d6cee4875636d7"
+    },
+    {
+      "path": "supabase/migrations/0083_sprint_14b_targeted_invitations.sql",
+      "sha256": "aaed0ad1e04b7e1297ee8f9bb7bcea32204165ca35719f74cd17992c0756e7fd"
+    },
+    {
+      "path": "supabase/migrations/0084_global_mcq_option_semantic_guard.sql",
+      "sha256": "e08a0c10de93295c66c4efc2a75c11dff7292d245875312dea6054c60da15499"
+    },
+    {
+      "path": "supabase/migrations/0084_sprint_14b_invitation_role_cast.sql",
+      "sha256": "b5653cfb75642a6b2a3885da7a1d776ad71701908992d4b7f9a6894ee27dca50"
+    },
+    {
+      "path": "supabase/migrations/0085_global_mcq_option_presentation_runtime_final.sql",
+      "sha256": "11e98d913e60564c8a0db16199d58cffdfa728cc98dcc0626d26962a5b2cf51c"
+    },
+    {
+      "path": "supabase/migrations/0085_sprint_14b_existing_account_email_lookup.sql",
+      "sha256": "c5c4472081cfc6aefd91a6e5849a8cbe3139746c6f9713d778259ddc8a05aa7b"
+    },
+    {
+      "path": "supabase/migrations/0086_sprint_14b_membership_termination.sql",
+      "sha256": "e1ed9e21b02d4a129da6fd0054f73324821bbc730cdf29b90b57e4e08eb6fd36"
+    },
+    {
+      "path": "supabase/migrations/0087_sprint_14b_teacher_assignment_termination_race.sql",
+      "sha256": "0c971ceb9e7636eea7ddf9211434aeff46c2bd7c74660701a054508c773d6b59"
+    },
+    {
+      "path": "supabase/migrations/0088_sprint_14b_school_admin_role.sql",
+      "sha256": "d80c6fed821950fd8334a29c20a287b6086f8846bea996bb2605bda0db20d283"
+    },
+    {
+      "path": "supabase/migrations/0089_sprint_14b_school_bootstrap.sql",
+      "sha256": "8e670c0f6e8f1b0b16c28e81830d3b319338b3d3407db8127453fa4530e1924f"
+    },
+    {
+      "path": "supabase/migrations/0090_sprint_14b_school_bootstrap_boundary.sql",
+      "sha256": "c0734db4ebc773a2984774ed68786425a3e9acf4c32ebab2e3258290030ecedb"
+    },
+    {
+      "path": "supabase/migrations/0091_sprint_14b_school_read_policy.sql",
+      "sha256": "8282dac6afa5f05dc66d55f86035274daf8fe2fb962e2243d7ad847ce7263ffa"
+    },
+    {
+      "path": "supabase/migrations/0092_sprint_14b_bootstrap_evidence_guard.sql",
+      "sha256": "371703fff3306c7eb704ef8c7c6e3373eafb50c00385267be16f20b6aa434bb5"
+    },
+    {
+      "path": "supabase/migrations/0093_sprint_14b_staff_provisioning.sql",
+      "sha256": "852a1ed3554ffa9068972c34277b31eb9ab55050880b9a420d7c114092c9e696"
+    },
+    {
+      "path": "supabase/migrations/0094_sprint_14b_teacher_subject_enforcement.sql",
+      "sha256": "73a5a1db553690bc70d1a995500c2d594790a11598e72794245e81f71b1d8555"
+    },
+    {
+      "path": "supabase/migrations/0095_sprint_14b_staff_invite_recipient_lookup.sql",
+      "sha256": "fde40cce119fcbc45bc0d69e122f66c49f0e0d17be2bffaff4dc85bfcb31ec57"
+    },
+    {
+      "path": "supabase/migrations/0096_sprint_14b_staff_invite_audit_actor.sql",
+      "sha256": "6f37638b7f09b53d0a77a659ef321ebdabb4f007325484450408bfa0d9b4444b"
+    },
+    {
+      "path": "supabase/migrations/0097_sprint_14b_assignment_guard_privilege.sql",
+      "sha256": "642a264c45eacf6cb7a7554bc64c526141d31925ba351a9b62a2b451beeef192"
+    },
+    {
+      "path": "supabase/migrations/0098_sprint_14b_school_subject_options.sql",
+      "sha256": "5c1dc459c339094f61f2d0faafc75fc9826c59e1419e512f5c14fbfdf4cf3f6e"
+    },
+    {
+      "path": "supabase/migrations/0099_sprint_14b_teacher_subject_fk_index.sql",
+      "sha256": "7f00f4f0aa86547e07e878af4a3d229f8ec32c6591f7203d3b260db6133308d4"
+    },
+    {
+      "path": "supabase/migrations/0100_sprint_14b_teacher_activation_history_guard.sql",
+      "sha256": "0ce331100471bcbbe43e1c2abe7b03378bc96a59eaad0f38c64e1f28245fd9ce"
+    },
+    {
+      "path": "supabase/migrations/0101_sprint_14b_staff_invitation_management.sql",
+      "sha256": "63ca1d73cdbc36ca7521aa3f3dd5d9fe21efe2cec064288d4dfaf9ee373135f0"
+    },
+    {
+      "path": "supabase/migrations/0102_sprint_14b_generated_school_codes.sql",
+      "sha256": "bb85303e22a4b63b62105589e3fa0503ed572cfdada08941d11aa0f53303f14a"
+    },
+    {
+      "path": "supabase/migrations/0103_sprint_14b_staff_invitation_resend.sql",
+      "sha256": "2aa6eaf06f610b34cbc02d5a3dd749c63d63e800d6366a2587c5ca34f7be1287"
+    },
+    {
+      "path": "supabase/migrations/0104_admin_account_archiving.sql",
+      "sha256": "18df9c808d28454cc99057abf3205b71ce889e2b607dc3413870676b4503d15c"
+    },
+    {
+      "path": "supabase/migrations/0105_sprint_14b_school_class_workspace.sql",
+      "sha256": "8aa28f09622c58e45eea922bfe4eafab023cc13aa957f1d393d5ca03a87e33a9"
+    },
+    {
+      "path": "supabase/migrations/0106_school_teacher_roster.sql",
+      "sha256": "fc618120812e242237420d975098069f7526477caa0ab716c1d215f4bf0c834f"
+    },
+    {
+      "path": "supabase/migrations/0107_school_admin_archiving.sql",
+      "sha256": "0b5c2a22ec9732e88dc54ac42c4b5c14cad1895d49cf19b31f7e18b2ff261141"
+    },
+    {
+      "path": "supabase/migrations/0108_sprint_14c_student_onboarding_context.sql",
+      "sha256": "a89db813a5df72060ba3bc652e98c8ad45fc75bf32ad01cec94685a70c044ed1"
+    },
+    {
+      "path": "supabase/migrations/0109_sprint_14c_context_fk_indexes.sql",
+      "sha256": "947f9b6bf82d03c980004ba70da18cb60cd7ceb119e1c1d63e601f9b95042b0f"
+    },
+    {
+      "path": "supabase/migrations/0110_sprint_14c_onboarding_grade_type.sql",
+      "sha256": "4244dc0df3dc5c4e61f697800b46dc5180534a36ce0d49f32f79c7bb6685c838"
+    },
+    {
+      "path": "supabase/migrations/20260925121942_protect_master_admin_identity.sql",
+      "sha256": "99a8bd4f8763d58f6c6b5da4c884375ae1586eea4c97cf5deb7c9949bfe4f03a"
+    },
+    {
+      "path": "supabase/migrations/20260925133000_lock_profile_account_types.sql",
+      "sha256": "e46f29b51b1fb6ab611a10307d3f4a31bb267c2bb5ec81af66ff457aaf3bb685"
+    },
+    {
+      "path": "supabase/migrations/20260925214539_sprint_14c_teacher_owned_student_invitations.sql",
+      "sha256": "af6bbed31c58a2245ef7d05984053052f7723c48831f6c5b27a687ec7066be5a"
+    },
+    {
+      "path": "supabase/migrations/20260926211500_restore_institutional_join_codes.sql",
+      "sha256": "e01d095027db3eca43560d6c0910a60035e3a986130ecfa648c6cdd40cbce43e"
+    },
+    {
+      "path": "supabase/migrations/20260926224000_teacher_class_rename.sql",
+      "sha256": "012d8359eea1b98add413fef12af05fd68841004d2f0efe74eb3bc02ae1fd644"
+    },
+    {
+      "path": "supabase/migrations/20260927183816_single_initial_diagnostic.sql",
+      "sha256": "915f558634caf6c19b494f8a5067c6adf9d8feed901191c47280dddcc5a3a061"
+    },
+    {
+      "path": "supabase/migrations/20260927185120_single_initial_diagnostic_runtime.sql",
+      "sha256": "9d13f5c0c53fbdb42f61790d6507222da2babf4485f8ed76c4003020b1aa5643"
+    },
+    {
+      "path": "supabase/migrations/20260927190434_chapter_diagnostic_practice_gate.sql",
+      "sha256": "02749a4a493838ebf366d8826f23266142cc0413405ad00f8893776e33b78d30"
+    },
+    {
+      "path": "supabase/migrations/20260927191054_chapter_diagnostic_practice_gate_runtime.sql",
+      "sha256": "270cba2ec411d44ea656112dad1eb611732d17bbf48d725c5c3bf490e9082881"
+    },
+    {
+      "path": "supabase/migrations/20260927193107_sprint_14b_teacher_offboarding_closure.sql",
+      "sha256": "968694799542e96f44f051e048cf7a6f20cab85635b945e36c99ac52afaee3e2"
+    },
+    {
+      "path": "supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql",
+      "sha256": "e5202a7ef875dc5d40f24aad2704532fbf95cd12087041fd1db086f270c9c9cb"
+    },
+    {
+      "path": "supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql",
+      "sha256": "c7df17dec409886de50ba1d742baaad0707bc13d442b148c9e61ca6da3be82f6"
+    },
+    {
+      "path": "supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql",
+      "sha256": "7bc2143b27be94c07b8ce934a304443e698e0da264d3722ffaf5a3095b3de68a"
+    },
+    {
+      "path": "supabase/migrations/20261001000000_sprint_15b_governed_guide_creation.sql",
+      "sha256": "7dd45d9e28ea47564ac6cf71a5a2084cbe62cc09f806cdf7b4ae5c976fb60207"
+    },
+    {
+      "path": "supabase/migrations/20261001001000_sprint_15b_multi_unit_release_governance.sql",
+      "sha256": "2bc8f7f91ed2afe1ac254992ceb965452db8ab6f032fc631db5d1c20089b33b8"
+    },
+    {
+      "path": "supabase/migrations/20261001002000_sprint_15b1_physics7_chapter_ii_foundation.sql",
+      "sha256": "d4923047b70badacad3cafbd45fa47245eb6dc5ce342de80301715304c8ace9f"
+    },
+    {
+      "path": "supabase/migrations/20261001003000_sprint_15b_release_reconciliation_index.sql",
+      "sha256": "e02eafea8854cbe7900388faf6cebe9734fd41fa211207f5b90602bc7085e667"
+    },
+    {
+      "path": "supabase/migrations/20261001004000_sprint_15b2_chapter_ii_first_item_family.sql",
+      "sha256": "f26d6a26504eb26dbca13ea5a08651b1d922ff0d6cf76a576c55e4c8ae7e8ada"
+    },
+    {
+      "path": "supabase/migrations/20261001005000_sprint_15b2_authored_catalogue_qa_fix.sql",
+      "sha256": "29a998ab3ee3a0e697e46f018bb6d46530dea90ee0fd07db85c8aee2a0ebd94d"
+    },
+    {
+      "path": "supabase/migrations/20261001070000_content_revision_preserve_draft_misconceptions.sql",
+      "sha256": "91d16971f1b9d2bbc60c26cbee69bea9b72548026d39e41cf68be6cbdcf47508"
+    },
+    {
+      "path": "supabase/migrations/20261001071000_sprint_15b3_mapping_integrity_gate.sql",
+      "sha256": "b5cf945dfb6a380f2ebb912f82293a16028b5947c97442bf1786bee2d1303f9d"
+    },
+    {
+      "path": "supabase/migrations/20261001072000_sprint_15b3_mapping_trigger_privileges.sql",
+      "sha256": "16b79c25c63ea366f1b1fc67b2bc208ab80c1d5fd136e23f16cb6cd7b6ea2d99"
+    },
+    {
+      "path": "supabase/migrations/20261001120500_sprint_15b3_activate_approved_misconceptions.sql",
+      "sha256": "ca779f3600ebfa3a47d4563107978effdb2a8ce1cc32ea6b9c587c4e4df11f30"
+    },
+    {
+      "path": "supabase/migrations/20261001140000_sprint_15b4_second_item_family.sql",
+      "sha256": "95d9086ed243b95ee4185606a07978ca8a729b811aeb4f8f1446a45a4d40c0a5"
+    },
+    {
+      "path": "supabase/migrations/20261001153000_sprint_15b5_third_item_family.sql",
+      "sha256": "c81711121c255c9f3cb0ffcf4c3a94e0c3f536d3f2da8856e36b0903ac087552"
+    },
+    {
+      "path": "supabase/migrations/20261001161000_sprint_15b_answer_position_integrity.sql",
+      "sha256": "455cc8acb01e7d917f08e60bce109b402a16803abfe4a3f9c7abe190dc78ef17"
+    },
+    {
+      "path": "supabase/migrations/20261001183000_sprint_15b6_fourth_item_family.sql",
+      "sha256": "ad9b6536163f9bb7f7eeb2babb4a8f7df69d56b336261ab13ad555fce6b059ae"
+    },
+    {
+      "path": "supabase/migrations/20261001190000_sprint_15b7_fifth_item_family.sql",
+      "sha256": "13693c47434480dbf3b1ae3465528f461abdf4826b28a4e01e11a29d8dce7a5e"
+    },
+    {
+      "path": "supabase/migrations/20261002070000_sprint_15b8_prospective_evidence_blueprint.sql",
+      "sha256": "9393da9e7206eb99ea65cef16a6bb1d20f58215c48e76e7290f3b9ebafea42b2"
+    },
+    {
+      "path": "supabase/migrations/20261002073000_sprint_15b8_unique_evidence_flag.sql",
+      "sha256": "8c58fc6503c122506785394c25182bfe3255f7942695216d9e26f67d24668b79"
+    },
+    {
+      "path": "supabase/migrations/20261002080000_sprint_15b8_atomic_family_approval.sql",
+      "sha256": "4b1dda4a167681eb3e65a653f1df7aa2fce89b969594ce1a230b9bd7ed89e241"
+    },
+    {
+      "path": "supabase/migrations/20261003224148_phase3_analytics_answered_help_scope.sql",
+      "sha256": "23064e59a69ac452076e3ae74204daa9f4897b14307653067df363408bbd7d29"
+    },
+    {
+      "path": "supabase/migrations/20261004094811_atomic_answer_mastery_evidence.sql",
+      "sha256": "d7da2710f43e46e5c3e28dd6d6fce82e66d4ba43dd9559d3e4fa405fb0b84498"
+    },
+    {
+      "path": "supabase/migrations/20261004100236_atomic_answer_runtime_provenance.sql",
+      "sha256": "06467a2ef83bb79a7c58f4457be242ada1df39c6bd1032badf33244096d403ad"
+    },
+    {
+      "path": "supabase/migrations/20261005083017_sprint_15b9_seventh_item_family.sql",
+      "sha256": "6585d10ee7f52e7391b4427df922dd5cb1ecaca3586b20b3711ef28c915f5aaf"
+    },
+    {
+      "path": "supabase/migrations/20261005090747_sprint_15b10_eighth_item_family.sql",
+      "sha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237"
+    },
+    {
+      "path": "supabase/migrations/20261005162651_misconception_review_workspace.sql",
+      "sha256": "947c3e2420e61a301d149fd6877c251adb582de887c5358a6b33bf10bf5a5e8d"
+    },
+    {
+      "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql",
+      "sha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137"
+    },
+    {
+      "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+      "sha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314"
+    },
+    {
+      "path": "supabase/migrations/20261006074342_sprint_15b12c_runtime_provenance.sql",
+      "sha256": "0fcf47dbf480be7c567fd2f8ba6e9605aa75014ef230d9745bc032e20a128534"
+    },
+    {
+      "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql",
+      "sha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf"
+    },
+    {
+      "path": "supabase/migrations/20261006091733_sprint_15b12d_runtime_provenance.sql",
+      "sha256": "39d5e509b1e4dfc28167c6520c831228b334fc62c00d7adf370d0bba61491fa9"
+    },
+    {
+      "path": "supabase/migrations/20261006092832_sprint_15b12d_dashboard_acceptance_provenance.sql",
+      "sha256": "e2e86bbfa46a6a9d57388a861ea0e399db58b1dc919938040fd9f2d8f4fcc67d"
+    },
+    {
+      "path": "supabase/migrations/20261006100728_sprint_15b12d_batched_context_provenance.sql",
+      "sha256": "d6ae470c9774f5443f7fe0cc4788647ae0eaa4f0709f4ec1b27a9bf7f91b1525"
+    },
+    {
+      "path": "supabase/migrations/20261006112455_sprint_15b12e_dashboard_uuid_provenance.sql",
+      "sha256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0"
+    },
+    {
+      "path": "supabase/migrations/20261006134149_sprint_15b13_s02_practice_expansion.sql",
+      "sha256": "fd5df47ee45a415665b68dde76829790b88679a1b36a2a7067f2b0a505d481d4"
+    },
+    {
+      "path": "supabase/migrations/20261006154828_sprint_15b13_s02_practice_completion.sql",
+      "sha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7"
+    },
+    {
+      "path": "supabase/migrations/20261006164457_sprint_15b13_s02_i10_diversity_revision.sql",
+      "sha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df"
+    },
+    {
+      "path": "supabase/migrations/20261006184457_sprint_15b13_s03_practice_expansion.sql",
+      "sha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a"
+    },
+    {
+      "path": "supabase/migrations/20261006200559_sprint_15b13_s04_practice_expansion.sql",
+      "sha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb"
+    },
+    {
+      "path": "supabase/migrations/20261007065442_sprint_15b13_s05_practice_expansion.sql",
+      "sha256": "a26099a632bd5c80fa0aeb01388f06dd63ea3a3a33106302a12027ff94d17f91"
+    },
+    {
+      "path": "supabase/migrations/20261007074640_sprint_15b13_s06_practice_expansion.sql",
+      "sha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310"
+    },
+    {
+      "path": "supabase/migrations/20261007132158_sprint_15b13_s07_practice_expansion.sql",
+      "sha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41"
+    },
+    {
+      "path": "supabase/migrations/20261007163943_sprint_15b13_s08_practice_expansion.sql",
+      "sha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094"
+    },
+    {
+      "path": "supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql",
+      "sha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb"
+    },
+    {
+      "path": "supabase/migrations/20261013065104_protect_direct_question_reads.sql",
+      "sha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a"
+    },
+    {
+      "path": "supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql",
+      "sha256": "fa56ebd36865c813499762a4c6d1ec51fca582c90ccc35a7c3942194b546154a"
+    },
+    {
+      "path": "supabase/migrations/20261013101825_governed_mastery_form_selection.sql",
+      "sha256": "d3638976d1ab90824cb1a68915048e2eafc196500cae870147d259335818e12a"
+    },
+    {
+      "path": "supabase/migrations/20261013160458_sprint_15c2_chapter_iii_draft_foundation.sql",
+      "sha256": "a47c4941b88969d7451b4e5918c2fc4bfba5bb21d260e8411b6b91901af7be3c"
+    },
+    {
+      "path": "supabase/migrations/20261015160934_sprint_15c15_assessment_policy_v2.sql",
+      "sha256": "ec8839020cd43b96ae222c4dd8324bfd743b47bd626c2faf0171a74df6b8bb49"
+    },
+    {
+      "path": "supabase/migrations/20261015163749_sprint_15c15_runtime_provenance.sql",
+      "sha256": "85f52628aef640b52789df5f6c4beb189935029b9081ede61f2f2503bb1d3b30"
+    },
+    {
+      "path": "supabase/migrations/20261020112724_sprint_16_1b_written_work.sql",
+      "sha256": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4"
+    },
+    {
+      "path": "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql",
+      "sha256": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15"
+    },
+    {
+      "path": "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql",
+      "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805"
+    },
+    {
+      "path": "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql",
+      "sha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053"
+    },
+    {
+      "path": "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql",
+      "sha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c"
+    },
+    {
+      "path": "supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql",
+      "sha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af"
+    },
+    {
+      "path": "supabase/migrations/20261022141634_sprint_16_1c_unit_material_review.sql",
+      "sha256": "b3de3ddf5eeb2a4e8bb336fc3fe6d2b30068688c23740a52aa80b9656d07be1e"
+    },
+    {
+      "path": "supabase/migrations/20261022165640_sprint_16_1c_unit_guide_delivery.sql",
+      "sha256": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3"
+    },
+    {
+      "path": "supabase/migrations/20261023064305_sprint_16_1c_audio_progress_jitter.sql",
+      "sha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e"
+    },
+    {
+      "path": "supabase/migrations/20261023070516_sprint_16_1c_audio_progress_provenance.sql",
+      "sha256": "aceccbd39018a6695e883ad2fda4b7423609c8d65be0b27e6db1ab3be149174c"
+    },
+    {
+      "path": "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql",
+      "sha256": "6ebd57050df0a20bd5d87d0b93f8bc8f05274ee3af5017c3a8c42891f0b5b2e0"
+    },
+    {
+      "path": "supabase/migrations/20261027175521_teacher_dashboard_directory.sql",
+      "sha256": "e9e723fd9a70a02896c43a6da4208ae4c5a17bc40354b36814e3c4b600ea7114"
+    },
+    {
+      "path": "supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql",
+      "sha256": "034b69e8f68e4e03517b71bdbe5ea8c3d3e58106141dd4635be98c7edff4a45a"
+    },
+    {
+      "path": "supabase/migrations/20261028180038_teacher_today_workspace.sql",
+      "sha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1"
+    },
+    {
+      "path": "supabase/migrations/20261028194137_teacher_feedback_workspace.sql",
+      "sha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb"
+    },
+    {
+      "path": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+      "sha256": "33acf07d73b9d07254e471fa8235402d07f8051fa51521e513d85ab011eed588"
+    },
+    {
+      "path": "supabase/migrations/20261028225658_teacher_evidence_projection.sql",
+      "sha256": "a151d083e11c699cab4737c7d5116817292f40967b7cf2058f16a3027e3cf9fa"
+    },
+    {
+      "path": "supabase/migrations/20261028234350_teacher_transaction_reads.sql",
+      "sha256": "f2da4dfa67724f32bf89ad9d4b7d866b8e134f29aea2d98cb64197ec9142d116"
+    },
+    {
+      "path": "supabase/migrations/20261030203359_teacher_writing_assignments.sql",
+      "sha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12"
+    },
+    {
+      "path": "supabase/migrations/20261030203404_teacher_task_drafts.sql",
+      "sha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf"
+    },
+    {
+      "path": "supabase/migrations/20261030203406_teacher_task_source_attachments.sql",
+      "sha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a"
+    },
+    {
+      "path": "supabase/migrations/20261030203407_teacher_task_delivery.sql",
+      "sha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5"
+    },
+    {
+      "path": "supabase/migrations/20261030203408_teacher_task_student_work.sql",
+      "sha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157"
+    },
+    {
+      "path": "supabase/migrations/20261030203409_teacher_task_review.sql",
+      "sha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee"
+    },
+    {
+      "path": "supabase/migrations/20261030214222_teacher_task_privacy.sql",
+      "sha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762"
+    },
+    {
+      "path": "supabase/migrations/20261101200512_sprint_16_5b_resource_context_sequence.sql",
+      "sha256": "54c09a4f150c491e16654d49c838045d9296923aea7460249e85e8a34ab7d828"
+    },
+    {
+      "path": "supabase/migrations/20261102182941_teacher_evidence_version_deduplication.sql",
+      "sha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71"
+    },
+    {
+      "path": "supabase/migrations/20261103061948_item_snapshot_integrity.sql",
+      "sha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084"
+    },
+    {
+      "path": "supabase/migrations/20261104111921_answer_response_recovery.sql",
+      "sha256": "2843e63b3b5e2181a53cf1eb8890f502d40d2dfe435e0b8b1fa8a38863a9d5c7"
+    },
+    {
+      "path": "supabase/migrations/20261106175539_hint_state_recovery.sql",
+      "sha256": "8d4c7aef35c9e2c90656b459ead78639c643abc2d109f780095e1a1a3550d307"
+    },
+    {
+      "path": "supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql",
+      "sha256": "79d89140ac601ba9a5d0c4384545177f9ea3e7f428e9b1f21b2a0f589f816ec4"
+    },
+    {
+      "path": "supabase/migrations/20261113112707_bf16_counter_maintenance.sql",
+      "sha256": "080252d84f6085d456827f86c31273f807ffb41f3afa37db32f69a046c9b96d0"
+    },
+    {
+      "path": "supabase/operations/20261015163749_sprint_15c15_runtime_provenance.sql",
+      "sha256": "4bb15e61138d0c1e03e88790d7ae3daa219368fb1d2fc86ed57f61a2bf88e268"
+    }
+  ]
+}
