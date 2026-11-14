@@ -4,6 +4,12 @@
 
 **Decision log:** 13 November 2026, John chose option B for students needing support. Each class card shows its own support count for that class's subject and current unit, linking to that class's filtered roster. There is no single cross-class «Տեսնել աշակերտներին» button: a teacher with several grades, classes and subjects could not tell which class it opens, and support status differs by subject and unit. John approved this phase on 13 November 2026: a design specification and a realistic prototype of teacher Home, the class page and the review queue, before any product code. Owner usability acceptance: not given.
 
+**Decisions, 14 November 2026 (John):**
+- **Devices:** teachers use both phones and computers. Phone and desktop layouts have equal priority; the build order does not change.
+- **Current priority:** the teacher's own account (today's «Իմ պրոֆիլը» view and the shared «Իմ հաշիվը» page). All roles are to be aligned to one source of truth later; this work is the teacher-first step.
+- **Display name:** no role may save an empty name. This is platform-wide: the shared account endpoint applies it to every role, including students. The length limits and whitespace handling (recommended: 2–80 characters, repeated spaces collapsed) are not yet confirmed.
+- **Read-only check behind the decision** (aggregate counts, no names read, 14 November): 12 profiles. All 3 teachers and the 1 master admin have a name. 5 accounts have none: 2 students, 2 school administrators, 1 content reviewer. No name has 1 character, more than 80 characters, or extra spaces. The rule only blocks saving an empty name; it does not fill in existing empty names.
+
 **Inputs:**
 - [Cross-role design review](teacher-workspace-design-review-20261113.md): audit, severity-rated findings, proposals A1–A3, B1–B5, C1–C3.
 - [C1–C3 record](teacher-workspace-polish-20261113.md): the fixes already prepared.
