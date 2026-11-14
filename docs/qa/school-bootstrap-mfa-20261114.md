@@ -1,8 +1,18 @@
-# BF-17 — school-creation MFA candidate
+# BF-17 — school-creation MFA release
 
-14 November 2026 (Asia/Yerevan), prepared from merged source `bde9020ac1ae793dcadabe3dadbd97d3333994c5`. The direct `bootstrap-school` endpoint verifies the token, live session and active platform-admin role, but the reviewed source omits the explicit extra assurance check used by other sensitive administrator endpoints. This candidate adds that check. **It is not merged or deployed.** Existing SEC-AAL review/release and separately authorized privileged acceptance remain open; AUTH-REVIEW-01 only cleared access for an earlier walkthrough.
+14 November 2026 (Asia/Yerevan). The audit at merged source `bde9020ac1ae793dcadabe3dadbd97d3333994c5` found that the direct `bootstrap-school` endpoint omitted the explicit extra assurance check used by other sensitive administrator endpoints. Owner-approved PR482 adds that check and is now merged, deployed and source verified. The release checkpoint below distinguishes deployed-file verification from the separately authorized privileged live acceptance that remains open. Existing SEC-AAL scope remains independent; AUTH-REVIEW-01 only cleared access for an earlier walkthrough.
 
 Owner usability acceptance: not given. Production QA not run (paused by owner).
+
+## Verified release checkpoint
+
+- [PR482](https://github.com/johnvanesyan-arch/HaiEdu/pull/482) merged at `b8dd46632c90a140b91f60f712831c4cb05b86cc` with the exact approved tree. The owner approved that merge and this single-function deployment and confirmed no other agent was merging or releasing.
+- All five required [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43563299945) and [merged checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43564500953) pass: 1,847 code tests and 696 native browser checks, zero failures/skips/cancellations. The isolated PostgreSQL/scheduler and institutional concurrency jobs also pass.
+- Only the reviewed `bootstrap-school` package was deployed. All three deployed files match source; both shared helpers are unchanged and gateway JWT verification remains enabled. Detailed deployment receipts and rollback source remain private.
+- All three public addresses serve the merged source. Twelve fresh static release/manifest/sample/header checks pass. The full unchanged 29-page/127-asset build proof is reused only because those bytes retain their source. No manual promotion or domain-setting change was made.
+- No production account was signed in, no school was created and no email was sent. Production QA not run (paused by owner); affected production QA: none.
+
+**Remaining:** separately authorized signed-in administrator refusal/recovery and successful school creation, wider SEC-AAL review and owner usability acceptance. Isolated handler tests and exact deployed-file readback do not certify these live journeys. BF-16 limits stay off; real-classroom qualification and activation are separate.
 
 ## Behavior and boundary
 
@@ -10,13 +20,13 @@ After Auth verifies the token and the existing session/admission/admin-role chec
 
 The token payload is decoded only after the existing verified-token/live-session checks. Its decoding and error pattern match the established administrator endpoints. The caller completes the existing extra sign-in verification, obtains its fresh token and may explicitly retry the non-mutating refusal. This does not add automatic write retries or change post-write acknowledgement semantics.
 
-Only [the bootstrap entrypoint](../../supabase/functions/bootstrap-school/index.ts) changes at runtime (candidate SHA-256 `5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28`). Shared Auth/rate helpers, database schemas/grants, learning/content rules and browser assets retain their existing source. The service bootstrap and lookup RPCs are not directly executable by browser roles. Source/boundary read-only audit receipts are retained privately; no account, school or production record was modified.
+Only [the bootstrap entrypoint](../../supabase/functions/bootstrap-school/index.ts) changes at runtime (reviewed SHA-256 `5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28`). Shared Auth/rate helpers, database schemas/grants, learning/content rules and browser assets retain their existing source. The service bootstrap and lookup RPCs are not directly executable by browser roles. Source/boundary read-only audit receipts are retained privately; no account, school or learner record was modified.
 
 ## Consumer audit
 
 The repository has no browser or production acceptance caller of the direct `bootstrap-school` endpoint. Its direct API clients receive the established MFA error code. The separate staff-provisioning path already checks the platform administrator's assurance before issuing the school-admin invitation. Its recipient acceptance uses the stored invitation authorization and existing service-only SQL/identity-history invariants; that delegated flow is preserved. This is shared institutional core behavior, with no subject, grade or school exception.
 
-Only `bootstrap-school` needs a candidate Edge deployment, with its two unchanged dependencies. No shared helper is edited, so there is no new stale shared-code consumer. Existing role, session, gateway and per-person admission boundaries remain in scope for deployment readback. A merged source change alone does not update the deployed function.
+Only `bootstrap-school` needed an Edge deployment, with its two unchanged dependencies; all three files are now read back against reviewed source. No shared helper is edited, so there is no new stale shared-code consumer. Existing role, session, gateway and per-person admission boundaries remain in scope for deployment readback. A merged source change alone does not update the deployed function.
 
 ## Verification
 
@@ -28,7 +38,7 @@ Only `bootstrap-school` needs a candidate Edge deployment, with its two unchange
 
 The broader SQL transaction/identity-history and existing administrator MFA/browser evidence is reused only where source is unchanged. No production QA workflow was dispatched, and no signed-in production or designated-fixture check was performed.
 
-## Release and remaining work
+## Original release sequence (steps 1–3 completed)
 
 1. Publish the candidate and pass all five required CI jobs on the exact, current-main-based head.
 2. Obtain explicit PR approval and fresh no-other-merger/releaser confirmation before merging. Obtain specific approval for deploying the single changed Edge function.
@@ -37,6 +47,6 @@ The broader SQL transaction/identity-history and existing administrator MFA/brow
 
 BF-16's new request limits remain off; its activation and real-classroom qualification remain separate. No CAPTCHA, SMTP, rate-policy, account or curriculum setting is changed by BF-17.
 
-EAT: candidate implementation/isolated checks are complete; review, release and readback require about 30–60 active minutes plus required CI and merge coordination. Privileged acceptance timing depends on a separately authorized route.
+EAT: implementation, required checks, deployment and source readback are complete. Privileged live acceptance is approximately 20–40 active minutes once a route and specific authorization are available; wider review and owner acceptance are separate.
 
-[Candidate technical evidence](../evidence/school-bootstrap-mfa-20261114.json).
+[Technical and release evidence](../evidence/school-bootstrap-mfa-20261114.json).
