@@ -6,7 +6,7 @@
   "scope": "Existing SEC-AAL scope: explicit MFA assurance for direct school bootstrap",
   "sourceBase": "bde9020ac1ae793dcadabe3dadbd97d3333994c5",
   "candidateRoadmap": "4.183",
-  "status": "Owner-approved PR482 merged; single-function deployment and source readback verified; privileged live acceptance remains open",
+  "status": "PR482 deployed/source verified; later owner-operated live AAL1 refusal and AAL2 malformed-input recovery passed; successful school creation and wider acceptance open",
   "implementation": {
     "entrypoint": "supabase/functions/bootstrap-school/index.ts",
     "sourceSha256": "5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28",
@@ -97,16 +97,16 @@
   "productionQa": "not run (paused by owner)",
   "affectedProductionQa": "none",
   "productionWrites": true,
-  "productionSignInsOrSchoolsCreated": false,
-  "privilegedLiveAcceptance": "not run; separately authorized acceptance remains open",
+  "productionSignInsOrSchoolsCreated": true,
+  "privilegedLiveAcceptance": "Owner-run normal-browser guard-only before/after check passed; successful school creation not run or waived; wider SEC-AAL open",
   "bf16": "New request limits remain off; classroom qualification and activation remain separate.",
   "ownerUsabilityAcceptance": "not given",
   "remainingGates": [
-    "Separately authorized privileged live acceptance",
+    "Successful school creation not exercised or waived",
     "Wider SEC-AAL review remains independent",
     "Owner usability acceptance: not given"
   ],
-  "currentRoadmap": "4.184",
+  "currentRoadmap": "4.185",
   "release": {
     "pr": 482,
     "mergedCommit": "b8dd46632c90a140b91f60f712831c4cb05b86cc",
@@ -120,5 +120,23 @@
     "unchangedFullBuildEvidenceReused": true,
     "manualPromotionOrDomainChange": false
   },
-  "productionChanges": "Only the specifically approved single-function deployment; no schema, account, school, learner, policy or settings writes"
+  "productionChanges": "Approved earlier single-function deployment, plus later specifically approved owner normal sign-in/MFA and two malformed-input guard requests; no school/application-account, schema, policy, hosting or billing change",
+  "productionSignIns": true,
+  "productionSchoolsCreated": 0,
+  "ownerRunGuardCheck": {
+    "evidence": "school-bootstrap-mfa-guard-owner-check-20261114.json",
+    "reviewedCommit": "704dff2aa166d638755e73b8ca7f5fd20b175721",
+    "before": {
+      "status": 403,
+      "code": "mfa_required",
+      "passed": true
+    },
+    "after": {
+      "status": 400,
+      "code": "invalid_json",
+      "passed": true
+    },
+    "successfulSchoolCreation": false,
+    "agentControlledLiveBrowser": false
+  }
 }
