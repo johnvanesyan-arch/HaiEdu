@@ -6,7 +6,7 @@
   "scope": "Existing SEC-AAL scope: explicit MFA assurance for direct school bootstrap",
   "sourceBase": "bde9020ac1ae793dcadabe3dadbd97d3333994c5",
   "candidateRoadmap": "4.183",
-  "status": "Prepared candidate; merge and production deployment are not performed",
+  "status": "Owner-approved PR482 merged; single-function deployment and source readback verified; privileged live acceptance remains open",
   "implementation": {
     "entrypoint": "supabase/functions/bootstrap-school/index.ts",
     "sourceSha256": "5a9aecf1d1cd030f9db375427fe903b7d34f12429352c41a202d5fa890572c28",
@@ -72,22 +72,53 @@
       "existing rate-budget429/503 behavior, request validation and CORS/method handling preserved"
     ],
     "testBoundary": "Actual TypeScript handler and shared live-session helper; Auth/profile/RPC replies are isolated stubs. This is not real-provider sign-in or actual school creation.",
-    "runtimeSourceAudit": "Read-only comparison retained privately; deployed original entrypoint/dependencies match the reviewed base. Deployment of the candidate is pending.",
+    "runtimeSourceAudit": "All three deployed files match the reviewed package; only the bootstrap entrypoint changed. Gateway JWT verification remains enabled. Detailed receipts and rollback source retained privately.",
     "serviceBoundary": "Existing bootstrap/lookup RPC contract remains service-only; no browser direct-execution grant is added.",
     "browserQaDependencyCheck": "passed; affected production QA: none",
-    "requiredPrCi": "All five exact-head jobs required before merge; result is recorded in PR metadata"
+    "requiredPrCi": {
+      "run": 43563299945,
+      "conclusion": "success",
+      "requiredJobs": 5,
+      "codeTests": 1847,
+      "browserTests": 696,
+      "failuresSkipsCancellations": 0
+    },
+    "mergedCi": {
+      "run": 43564500953,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43564500953",
+      "commit": "b8dd46632c90a140b91f60f712831c4cb05b86cc",
+      "conclusion": "success",
+      "requiredJobs": 5,
+      "codeTests": 1847,
+      "browserTests": 696,
+      "failuresSkipsCancellations": 0
+    }
   },
   "productionQa": "not run (paused by owner)",
   "affectedProductionQa": "none",
-  "productionWrites": false,
+  "productionWrites": true,
   "productionSignInsOrSchoolsCreated": false,
   "privilegedLiveAcceptance": "not run; separately authorized acceptance remains open",
   "bf16": "New request limits remain off; classroom qualification and activation remain separate.",
   "ownerUsabilityAcceptance": "not given",
   "remainingGates": [
-    "Exact-head required CI",
-    "Explicit code PR approval and fresh merge coordination",
-    "Specific bootstrap-school deployment approval and deployed-file readback",
-    "Separately authorized privileged acceptance; broader SEC-AAL scope remains independent"
-  ]
+    "Separately authorized privileged live acceptance",
+    "Wider SEC-AAL review remains independent",
+    "Owner usability acceptance: not given"
+  ],
+  "currentRoadmap": "4.184",
+  "release": {
+    "pr": 482,
+    "mergedCommit": "b8dd46632c90a140b91f60f712831c4cb05b86cc",
+    "approvedTreePreserved": true,
+    "specificDeploymentApproved": true,
+    "deployedFilesMatched": 3,
+    "unchangedSharedHelpers": 2,
+    "gatewayJwtVerification": true,
+    "publicDomainsVerified": 3,
+    "freshStaticChecks": 12,
+    "unchangedFullBuildEvidenceReused": true,
+    "manualPromotionOrDomainChange": false
+  },
+  "productionChanges": "Only the specifically approved single-function deployment; no schema, account, school, learner, policy or settings writes"
 }
