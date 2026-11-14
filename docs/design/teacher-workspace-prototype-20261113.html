@@ -242,6 +242,8 @@ label.radio input, .check-list input { width: 20px; height: 20px; accent-color: 
 .summary dt { color: var(--muted); }
 .summary dd { margin: 0; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
 details > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
 details > summary::before { content: '▸'; margin-right: 8px; color: var(--accent); }
 details[open] > summary::before { content: '▾'; }
 details.card { padding-block: 4px; }
@@ -268,6 +270,10 @@ fieldset legend { font-weight: 600; font-size: var(--t-small); }
 .chip { text-decoration: none; display: inline-flex; align-items: center; }
 .field input:not([type="checkbox"]):not([type="radio"]), .field textarea { width: 100%; }
 .acc { display: grid; gap: 20px; max-width: 760px; }
+.topbar .brand { min-height: 44px; }
+.note button { font: inherit; min-height: 32px; padding: 2px 10px; border: 1px solid var(--note-line); border-radius: var(--r-s); background: #fff; color: var(--note-ink); cursor: pointer; }
+.note button[aria-pressed="true"] { background: var(--note-ink); color: #fff; }
+.acc section:focus { outline: none; }
 @container app (max-width: 699px) { .acc-jump { display: none; } }
 .sub { border-top: 1px solid var(--divider); padding-top: 14px; display: grid; gap: 10px; }
 .hint { color: var(--muted); font-size: var(--t-small); font-weight: 400; margin: 0; }
@@ -416,6 +422,7 @@ const ago = d => d === 0 ? 'այսօր' : d === 1 ? 'երեկ' : d + ' օր առ
 const attention = c => c.pending + (c.size ? supportCount(c, c.current) : 0);
 const curUnit = () => S.unitId || cls(S.classId).current;
 const personal = () => S.teacher === 'personal';
+const teacherName = () => S.accName || 'Անի Մելքոնյան';
 const skel = (h, w = '100%') => `<div class="skel" style="height:${h}px;width:${w}" aria-hidden="true"></div>`;
 const loadingBlock = rows => `<div role="status" class="section"><span class="sr">Բեռնվում է…</span>${rows}</div>`;
 const head = (title, lede = '', action = '', crumbs = '') => `${crumbs}<div class="page-head"><div><h1>${title}</h1>${lede ? `<p class="lede">${lede}</p>` : ''}</div>${action}</div>`;
@@ -514,7 +521,7 @@ function classList() {
 
 /* ---------- Home ---------- */
 function home() {
-  const h = head('Գլխավոր', 'Բարի գալուստ, Անի', S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-go="create">+ Նոր դասարան</button>') + note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle.');
+  const h = head('Գլխավոր', 'Բարի գալուստ, ' + esc(teacherName().split(' ')[0]), S.data === 'empty' ? '' : '<button type="button" class="btn secondary" data-go="create">+ Նոր դասարան</button>') + note('A2', 'Compact page header: one H1 at the top, no role pill or repeated subtitle.');
   if (S.data === 'loading') return h + loadingBlock(`${skel(160)}${skel(28, '40%')}<div class="class-grid">${skel(150)}${skel(150)}${skel(150)}</div>`);
   if (S.data === 'empty') return h + (personal() ? `<section class="card section" aria-labelledby="startT">
       <h2 id="startT">4 քայլով պատրաստեք ձեր դասարանը</h2>
@@ -656,7 +663,7 @@ function classPage() {
         <span class="tile-meta">Ուղարկվել է ${r.date} · ստացողներ՝ ${r.to}${r.submitted == null ? '' : ` · ներկայացրել են՝ ${r.submitted}/${r.to}`}${r.cancelled ? ` · պատճառ՝ ${esc(r.reason)}` : ''}</span>
         ${r.cancelled ? '' : `<div class="actions">${r.pending ? `<button type="button" class="btn secondary" data-review-class="${c.id}">${r.pending} սպասում է ստուգման</button>` : ''}<button type="button" class="btn quiet" data-sent-open="${r.id}" aria-expanded="${S.sentOpen === r.id}">Ստացողներ և պատմություն</button>${r.failed ? '<button type="button" class="btn quiet" data-proto-off>Կրկնել նույն ուղարկումը</button>' : ''}<button type="button" class="btn quiet" style="color:var(--error)" data-confirm="cancel-${r.id}">Չեղարկել</button></div>`}
         ${S.sentOpen === r.id ? `<div class="card section" style="background:var(--quiet)"><h3>Ստացողների ցանկը</h3><ul class="queue">${recip(r)}</ul><p class="tile-meta">Ցույց է տրված 6-ը ${r.to}-ից · <button type="button" class="btn quiet" data-proto-off>Բեռնել ավելին</button></p>
-          <h3>Գործողությունների պատմություն</h3><ul class="queue"><li style="padding:6px 2px">Ուղարկվել է · ${r.date} · Անի Մելքոնյան</li><li style="padding:6px 2px">Առաջին ներկայացումը · ${r.date}</li></ul>
+          <h3>Գործողությունների պատմություն</h3><ul class="queue"><li style="padding:6px 2px">Ուղարկվել է · ${r.date} · ${esc(teacherName())}</li><li style="padding:6px 2px">Առաջին ներկայացումը · ${r.date}</li></ul>
           ${note('Item 6', 'Existing recipient list and action history, opened in place.')}</div>` : ''}
         ${S.confirm === 'cancel-' + r.id ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="cx-${r.id}"><strong id="cx-${r.id}">Չեղարկե՞լ «${esc(r.title)}»-ը</strong><label class="field" for="why-${r.id}">Չեղարկման պատճառ<input id="why-${r.id}"></label><div class="actions"><button type="button" class="btn" style="background:var(--error);border-color:var(--error)" data-cancel-sent="${r.id}">Չեղարկել առաջադրանքը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div>${result('cancel-' + r.id, '')}</div>` : ''}
       </li>`).join('')}</ul>` : `<div class="card empty"><h2>${S.showCancelled ? 'Չեղարկված առաջադրանք չկա։' : 'Այս դասարանին դեռ ոչինչ չեք հանձնարարել'}</h2>${S.showCancelled ? '' : `<button type="button" class="btn" data-assign-from="${c.id}">Հանձնարարել</button>`}</div>`)
@@ -844,7 +851,7 @@ function editor() {
         <label class="field" for="edMode">Ստուգման եղանակը<select id="edMode"><option>Չափանիշներով և միավորներով</option><option>Միայն մեկնաբանություն</option></select></label>
         <fieldset class="card" style="padding:12px"><legend>Չափանիշ 1</legend><div class="filters"><label class="field" for="c1n">Անվանումը<input id="c1n" value="Հստակ բացատրություն"></label><label class="field" for="c1p">Միավորի սահմանը<input id="c1p" value="4" inputmode="numeric"></label></div><button type="button" class="btn quiet" data-proto-off>Հեռացնել չափանիշը</button></fieldset>
         <div><button type="button" class="btn secondary" data-proto-off>Ավելացնել չափանիշ</button></div></div></details>
-      ${S.editor ? `<details><summary>Փոփոխությունների պատմությունը</summary><ul class="queue"><li style="padding:6px 2px">Պահպանվել է · ${o.updated} · Անի Մելքոնյան</li><li style="padding:6px 2px">Ստեղծվել է · 01.11.2026</li></ul></details>` : ''}
+      ${S.editor ? `<details><summary>Փոփոխությունների պատմությունը</summary><ul class="queue"><li style="padding:6px 2px">Պահպանվել է · ${o.updated} · ${esc(teacherName())}</li><li style="padding:6px 2px">Ստեղծվել է · 01.11.2026</li></ul></details>` : ''}
       ${S.dirty ? '<p class="tile-meta">Կան չպահպանված փոփոխություններ։</p>' : ''}
       <div class="actions"><button type="button" class="btn" data-save-draft>Պահպանել սևագիրը</button><button type="button" class="btn secondary" data-modal="task:${S.editor || 'new'}">Աշակերտի տեսքը</button><button type="button" class="btn secondary" data-editor-continue>Պահպանել և շարունակել</button></div>
       ${S.result.save !== 'conflict' ? result('save', 'Սևագիրը պահպանված է։ Աշակերտներին դեռ չի ուղարկվել։') : ''}
@@ -900,15 +907,19 @@ MATERIALS[0].version = 2;
 MATERIALS.push({ id: 'm5', title: 'Ագրեգատային վիճակներ․ հին տարբերակ', format: 'PDF', status: 'Հեռացված', date: '20.10.2026', source: 'Ուսուցչի նյութ', prog: 'physics7', unit: 'u2' });
 
 /* ---------- Account (B5 · T1–T7, revised 14 November 2026) ---------- */
-const ACC_NAME_DEFAULT = 'Անի Մելքոնյան';
 const normName = v => String(v || '').trim().replace(/\s+/g, ' ');
+const PROTO_EMAIL = 'a***@example.com';
+// Unsaved account changes are worked out by comparing values with what is saved, section by section (as today's account page does).
+const accDirty = () => (S.accNameDraft != null && S.accNameDraft !== teacherName()) || !!(S.newEmail || '').trim() || !!S.privA !== !!S.privSaved?.A || !!S.privR !== !!S.privSaved?.R;
+const accReset = () => Object.assign(S, { accNameDraft: null, accNameErr: null, accEmailErr: false, pwChallenge: false, newEmail: '', privA: !!S.privSaved?.A, privR: !!S.privSaved?.R });
+const DEL_STATE = { pending: 'Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։', cancelled: 'Վերջին ջնջման հարցումը չեղարկվել է։', rejected: 'Վերջին ջնջման հարցումը մերժվել է։' };
 function account() {
   const h = head('Իմ հաշիվը', 'Կառավարեք ձեր մուտքի տվյալները, գաղտնիության ընտրությունները և հաշվի տվյալները։')
     + `<nav class="chips acc-jump" aria-label="Հաշվի բաժիններ">${[['acc-main', 'Հաշիվ'], ['acc-login', 'Մուտքի տվյալներ'], ['acc-priv', 'Գաղտնիություն'], ['acc-del', 'Ջնջման հարցում']].map(([id, l]) => `<a class="chip" href="#${id}" data-jump="${id}">${l}</a>`).join('')}</nav>`
     + note('T1 · T2', 'One «Իմ հաշիվը» entry (sidebar footer, phone header button and «Ավելին»), opening inside the teacher layout. «Իմ պրոֆիլը» leaves the menu and Home; its old address opens this page. The content is one shared account module that other roles will use later.');
   if (S.data === 'loading') return h + loadingBlock(`${skel(220)}${skel(160)}${skel(160)}${skel(120)}`);
-  const name = S.accName ?? ACC_NAME_DEFAULT, draft = S.accNameDraft ?? name, empty = S.data === 'empty';
-  const seen = personal() ? 'Անունը տեսնում եք դուք և հարթակի ադմինիստրատորները։' : 'Անունը տեսնում եք դուք, ինչպես նաև դպրոցի և հարթակի ադմինիստրատորները։';
+  const name = teacherName(), draft = S.accNameDraft ?? name, empty = S.data === 'empty';
+  const seen = personal() ? 'Անունը տեսնում եք դուք և հարթակի ադմինը։' : 'Անունը տեսնում եք դուք, դպրոցի ադմինը և հարթակի ադմինը։';
   const err = S.accNameErr === 'empty' ? 'Մուտքագրեք ձեր անունն ու ազգանունը։' : S.accNameErr === 'short' ? 'Անունը պետք է ունենա առնվազն 2 նիշ։' : '';
   const n = k => empty ? 0 : k;
   const rows = [['Դպրոցի անդամակցության գրառումներ', personal() ? 0 : 1], ['Դասավանդման նշանակումներ', n(CLASSES.length)], ['Ուղարկված նյութային առաջադրանքներ', n(6)], ['Ուղարկված գրավոր առաջադրանքներ', n(9)],
@@ -918,7 +929,8 @@ function account() {
   const pendingDel = S.accDel === 'pending';
   return h + `<div class="acc">
     <section class="card section" id="acc-main" aria-labelledby="accT"><h2 id="accT">Հաշիվ</h2>
-      <dl class="summary"><div><dt>Էլ. հասցե</dt><dd>a***@example.com</dd></div><div><dt>Դեր</dt><dd>Ուսուցիչ</dd></div><div><dt>Կարգավիճակ</dt><dd>${pendingDel ? 'Ջնջման հարցումն ուղարկված է' : 'Ակտիվ'}</dd></div></dl>
+      <dl class="summary"><div><dt>Էլ. հասցե</dt><dd>${PROTO_EMAIL}</dd></div><div><dt>Դեր</dt><dd>Ուսուցիչ</dd></div><div><dt>Կարգավիճակ</dt><dd>Ակտիվ</dd></div></dl>
+      ${note('Prototype', 'The address is masked only in this prototype. The product shows the teacher their own full address.')}
       <div class="sub">
         <label class="field" for="dispName">Ցուցադրվող անունը<input id="dispName" maxlength="80" autocomplete="name" required aria-required="true" aria-describedby="dispHint${err ? ' dispErr' : ''}"${err ? ' aria-invalid="true"' : ''} value="${esc(draft)}"></label>
         <p class="hint" id="dispHint">2–80 նիշ։ ${seen}</p>
@@ -926,15 +938,17 @@ function account() {
         <div class="actions"><button type="button" class="btn" data-acc-name>Պահել անունը</button></div>${result('name', 'Անունը պահպանվեց։')}
       </div>
       ${note('T5 · decided', 'One field and one rule for every role (owner decision, 14 November): required, 2–80 characters, extra spaces removed. Try saving an empty name or one letter. The server applies the same rule. The email is shown as text, not as an input, and the name is not repeated above the field. On phones the section links are hidden: the four sections are short enough to scroll.')}
-      ${note('T7', 'New sentence on who sees the name: verified for school administrators and the platform administrator. Whether any student page shows the teacher’s name is not yet verified; checked before the build. Armenian review needed.')}
+      ${note('T7', 'New sentence on who sees the name: verified for school administrators and the platform administrator. Whether any student page shows the teacher’s name is not yet verified; checked before the build. The account page says «ադմին», so the new sentences do too (the teacher page itself uses both «ադմին» and «ադմինիստրատոր» today). Armenian review needed.')}
     </section>
     <section class="card section" id="acc-login" aria-labelledby="loginT"><h2 id="loginT">Մուտքի տվյալներ</h2>
       <div class="sub" style="border-top:0;padding-top:0"><h3>Փոխել մուտքի էլ. հասցեն</h3><p class="hint">Մուտքի հասցեն փոխվում է հաստատման նամակների միջոցով։ Մինչև հաստատումը օգտագործեք ձեր ներկայիս հասցեն։</p>
-        <label class="field" for="newEmail">Նոր էլ. հասցե<input id="newEmail" type="email" autocomplete="email" placeholder="name@example.com" value="${esc(S.newEmail || '')}"></label>
+        <label class="field" for="newEmail">Նոր էլ. հասցե<input id="newEmail" type="email" autocomplete="email" placeholder="name@example.com"${S.accEmailErr ? ' aria-invalid="true" aria-describedby="emailErr"' : ''} value="${esc(S.newEmail || '')}"></label>
+        ${S.accEmailErr ? '<p class="field-error" id="emailErr" role="alert">Մուտքագրեք նոր էլ. հասցե։</p>' : ''}
         <div class="actions"><button type="button" class="btn" data-acc="email">Ուղարկել հաստատման նամակ</button></div>${result('email', 'Ստուգեք նոր և ներկայիս էլ. հասցեների փոստարկղերը և հաստատեք փոփոխությունը։ Մինչ այդ մուտք գործեք ներկայիս հասցեով։')}</div>
       <div class="sub"><h3>Փոխել գաղտնաբառը</h3><p class="hint">Վերականգնման հղումը կուղարկվի ձեր ներկայիս էլ. հասցեին։ Հղումով սահմանեք նոր գաղտնաբառ։</p>
-        <div class="actions"><button type="button" class="btn" data-acc="password">Ուղարկել գաղտնաբառի փոփոխման հղումը</button></div>${result('password', 'Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։')}</div>
-      ${note('T3', 'Login details come second, right after the name: they are what a teacher most often needs here. Both forms are stacked, so no empty column. Today’s wording and confirmation emails.')}
+        <div class="actions"><button type="button" class="btn" data-acc="password">Ուղարկել գաղտնաբառի փոփոխման հղումը</button></div>
+        ${S.pwChallenge ? '<div class="turnstile" role="img" aria-label="Անվտանգության ստուգում">✓ Ստուգված է <span>Cloudflare Turnstile</span></div>' : ''}${result('password', 'Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։')}</div>
+      ${note('T3', 'Login details come second, right after the name: they are what a teacher most often needs here. Both forms are stacked, so no empty column. Today’s wording and confirmation emails. An empty or unchanged address gets today’s «Մուտքագրեք նոր էլ. հասցե։». Pressing the password button shows the bot-protection bar (BF-15), as today: the section grows by about 65 px.')}
     </section>
     <section class="card section" id="acc-priv" aria-labelledby="privT"><h2 id="privT">Գաղտնիություն</h2>
       <p class="hint">Այս երկու ընտրությունները լռելյայն անջատված են։ Միացնելը պահում է ձեր համաձայնությունը։ Այս ընտրությունները չեն գործարկում առանձին վերլուծական կամ հետազոտական համակարգ։</p>
@@ -946,15 +960,18 @@ function account() {
         <p class="hint">Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ այս պրոֆիլում չենք պահում։ Հաշվի էլ. հասցեն պահվում է մուտքի համակարգում։</p>
         <ul class="queue">${rows.map(([l, v]) => `<li class="inv-row"><span>${l}</span><strong class="num">${v}</strong></li>`).join('')}</ul>
       </details></div>
-      ${note('T3 · T7', 'The data list keeps today’s labels and counts but is folded under privacy (it took about 1,000 px on a phone). «Supabase Auth» becomes «մուտքի համակարգում» (Armenian review). Leaving with unchanged boxes ticked asks first (T6).')}
+      ${note('T3 · T7', 'The data list keeps today’s labels and counts but is folded under privacy (it took about 1,000 px on a phone). «Supabase Auth» becomes «մուտքի համակարգում» (Armenian review). Leaving with an unsaved choice asks first (T6); a box ticked and unticked again does not count as a change.')}
     </section>
     <section class="card section" id="acc-del" aria-labelledby="delT"><h2 id="delT">Ջնջման հարցում</h2>
-      <p>Ուսուցչի հաշիվը ջնջելուց առաջ ադմինը ստուգում է հարցումը, և ձեր դասարաններն ու գործերը փոխանցվում են։ Մինչ այդ հաշիվը մնում է ակտիվ։</p>
-      <p class="hint" role="status">${pendingDel ? 'Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։' : 'Ակտիվ ջնջման հարցում չկա։'}</p>
+      <p>Ուսուցչի հաշիվը ջնջելուց առաջ անհրաժեշտ է առանձին ստուգում և դասարանների ու գործերի փոխանցում։ Մինչ այդ հաշիվը մնում է ակտիվ։</p>
+      <p class="hint" id="delState">${DEL_STATE[S.accDel] || 'Ակտիվ ջնջման հարցում չկա։'}</p>
+      ${S.accDel === 'rejected' ? `<p class="hint">Պատճառը՝ նախ պետք է փոխանցվեն ձեր դասարաններն ու գործերը։</p>${newData('New wording · decision')}` : ''}
       <div class="actions">${pendingDel ? '<button type="button" class="btn secondary" data-confirm="cancel-delete">Չեղարկել հարցումը</button>' : '<button type="button" class="btn secondary danger-outline" data-confirm="delete-account">Ուղարկել ջնջման հարցում</button>'}</div>
       ${S.confirm === 'delete-account' ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="daT"><strong id="daT">Ուղարկե՞լ հաշվի ջնջման հարցում։</strong><p class="tile-meta" style="color:var(--ink)">Այն նախ կստուգվի ադմինի կողմից, և մինչև վերջնական ջնջումը դուք կարող եք չեղարկել հարցումը։</p><div class="actions"><button type="button" class="btn danger" data-acc-del="send">Ուղարկել հարցումը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div>${result('delete', '')}</div>` : ''}
       ${S.confirm === 'cancel-delete' ? `<div class="inline-confirm" role="alertdialog" aria-labelledby="dcT"><strong id="dcT">Չեղարկե՞լ հաշվի ջնջման հարցումը։</strong><div class="actions"><button type="button" class="btn" data-acc-del="cancel">Չեղարկել հարցումը</button><button type="button" class="btn secondary" data-confirm-cancel>Վերադառնալ</button></div>${result('delete', '')}</div>` : ''}
-      ${note('T4', 'Teacher wording first (today the page opens with the student rule); the first sentence is new wording based on today’s teacher sentence and needs Armenian review. Sending and cancelling are confirmed on the page with today’s wording instead of the browser pop-up; the status line uses today’s request states.')}
+      ${note('T4', 'Teacher wording first (today the page opens with the student rule); the first paragraph is today’s teacher sentence plus one new sentence, for Armenian review. Sending and cancelling are confirmed on the page with today’s wording instead of the browser pop-up. The status line uses today’s request states; the account stays «Ակտիվ» throughout.')}
+      ${note('T4 · how it works today', 'An administrator cannot approve a teacher’s request while the teacher still owns classes or work: it can only be cancelled or rejected, and the account is removed later through the staff offboarding steps. Today a rejection shows no reason, although the page already receives it. Showing the reason is a new proposal with new wording (your decision). The locked «Ջնջման հաստատման փուլում» state is reached only by student accounts today; the shared module keeps it for them.')}
+      <p class="note"><b>Prototype</b> · Show request state: ${[['none', 'No request'], ['pending', 'Sent'], ['cancelled', 'Cancelled'], ['rejected', 'Rejected']].map(([k, l]) => `<button type="button" data-del-state="${k}" aria-pressed="${(S.accDel || 'none') === k}">${l}</button>`).join(' ')}</p>
     </section></div>`;
 }
 
@@ -1046,12 +1063,13 @@ const hashFor = () => S.screen === 'class' ? 'class-' + S.classId : S.screen;
 function toTop() { document.getElementById('frame').scrollTop = 0; if (narrow() || app.getBoundingClientRect().top < 0) app.scrollIntoView({ block: 'start' }); }
 function go(screen, extra = {}, force = false) {
   if (S.dirty && !force && (screen !== S.screen || extra.classId)) { S.guard = { screen, extra }; render(); toTop(); return; }
-  Object.assign(S, { screen, open: null, menu: false, drawer: null, confirm: null, modal: null, panel: null, regrade: false, result: {}, dirty: false, guard: null,
-    accNameDraft: null, accNameErr: null, newEmail: '', privA: !!S.privSaved?.A, privR: !!S.privSaved?.R }, extra);
+  Object.assign(S, { screen, open: null, menu: false, drawer: null, confirm: null, modal: null, panel: null, regrade: false, result: {}, dirty: false, guard: null }, extra); accReset();
+  Object.assign(S, extra);
   if (location.hash !== '#' + hashFor()) history.replaceState(null, '', '#' + hashFor());
   rerenderAfterLayout(); toTop();
 }
 const openClass = (id, filter = 'all', tab = 'students') => go('class', { classId: id, unitId: null, classTab: tab, rosterFilter: filter, rosterQuery: '', inviteSent: false, code: null });
+function closeConfirm() { const was = S.confirm; S.confirm = null; S.menu = false; render(); (app.querySelector(`[data-confirm="${was}"]`) || document.getElementById('moreBtn'))?.focus(); }
 function flash(text) {
   let tip = document.getElementById('protoTip');
   if (!tip) { tip = document.createElement('div'); tip.id = 'protoTip'; tip.setAttribute('role', 'status'); tip.style.cssText = 'position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1d2a24;color:#f1f5ef;padding:8px 14px;border-radius:8px;font-size:.8125rem;z-index:40;max-width:calc(100% - 32px)'; document.body.appendChild(tip); }
@@ -1069,7 +1087,7 @@ document.querySelector('.proto-bar').addEventListener('click', e => {
   const b = e.target.closest('button[data-v]'); if (!b) return;
   const g = b.parentElement.id;
   if (g === 'ctlDevice') { S.device = b.dataset.v; rerenderAfterLayout(); }
-  if (g === 'ctlState') { S.data = b.dataset.v; S.open = null; S.drawer = null; S.dirty = false; S.guard = null; if (AUTH.includes(S.screen)) S.screen = 'home'; rerenderAfterLayout(); }
+  if (g === 'ctlState') { S.data = b.dataset.v; S.open = null; S.drawer = null; accReset(); S.dirty = false; S.guard = null; if (AUTH.includes(S.screen)) S.screen = 'home'; rerenderAfterLayout(); }
   if (g === 'ctlTeacher') { S.teacher = b.dataset.v; S.result = {}; render(); }
 });
 document.getElementById('ctlNotes').addEventListener('change', e => { S.notes = e.target.checked; render(); });
@@ -1082,7 +1100,7 @@ app.addEventListener('click', e => {
   if (t.matches('[data-close-drawer]')) { S.drawer = null; render(); return; }
   if (t.tagName === 'A' || t.tagName === 'BUTTON') e.preventDefault();
   if (d.guard) { const g = S.guard; S.guard = null; if (d.guard === 'leave' && g) { S.dirty = false; go(g.screen, g.extra, true); } else render(); return; }
-  if (d.jump) { document.getElementById(d.jump)?.scrollIntoView({ block: 'start' }); return; }
+  if (d.jump) { const sec = document.getElementById(d.jump); if (sec) { sec.tabIndex = -1; sec.scrollIntoView({ block: 'start' }); sec.focus({ preventScroll: true }); } return; }
   if ('retry' in d) { S.data = 'full'; rerenderAfterLayout(); return; }
   if (d.download) { flash('Download: in the product this downloads «' + d.download + '» with today’s file rules.'); return; }
   if (d.copy) { try { navigator.clipboard?.writeText(d.copy).catch(() => {}); } catch (err) {} flash('Պատճենված է՝ ' + d.copy); return; }
@@ -1103,8 +1121,8 @@ app.addEventListener('click', e => {
   if (d.go) { const extra = {}; if ('openFirst' in d) Object.assign(extra, { rqState: 'submitted', rqKind: 'all', rqClass: 'all', rqPage: 0 }); if ('newTask' in d) Object.assign(extra, { editor: null, upload: {} }); if (d.editTask) Object.assign(extra, { editor: d.editTask, upload: {} }); if ('libNew' in d) Object.assign(extra, { libEdit: null, upload: {} }); if (d.go === 'assign') S.assign = null;
     go(d.go, extra); if ('openFirst' in d && !S.guard) { S.open = QUEUE[0].id; rerenderAfterLayout(); } return; }
   if (t.id === 'moreBtn') { S.menu = !S.menu; render(); return; }
-  if (d.confirm) { S.confirm = d.confirm; S.menu = false; render(); return; }
-  if ('confirmCancel' in d) { S.confirm = null; render(); return; }
+  if (d.confirm) { S.confirm = d.confirm; S.menu = false; render(); const box = app.querySelector('.inline-confirm'); if (box) { box.tabIndex = -1; box.focus(); } return; }
+  if ('confirmCancel' in d) { closeConfirm(); return; }
   if ('protoOff' in d) { flash(); return; }
   if (d.resultRetry) { const k = d.resultRetry, r = S.result[k];
     if (r === 'account') { S.result = {}; flash('Էջը թարմացվեց։'); render(); return; }
@@ -1131,9 +1149,15 @@ app.addEventListener('click', e => {
   if (d.copyTask) { const o = OWN.find(x => x.id === d.copyTask); OWN.push({ ...o, id: 't' + (OWN.length + 1), title: o.title + ' (պատճեն)', state: 'Սևագիր', updated: '13.11.2026' }); flash('Ստեղծվեց առանձին սևագիր։'); render(); return; }
   if ('accName' in d) { const raw = document.getElementById('dispName')?.value ?? '', v = normName(raw); S.accNameDraft = raw; delete S.result.name;
     if (v.length < 2) { S.accNameErr = v ? 'short' : 'empty'; render(); document.getElementById('dispName')?.focus(); return; }
-    S.accNameErr = null; act('name', ['network', 'rate', 'account']); if (S.result.name === 'ok') { S.accName = v; S.accNameDraft = v; S.dirty = false; } render(); return; }
-  if (d.accDel) { act('delete', ['network', 'rate', 'account']); if (S.result.delete === 'ok') { S.accDel = d.accDel === 'send' ? 'pending' : null; S.confirm = null; delete S.result.delete; flash(d.accDel === 'send' ? 'Ջնջման հարցումն ուղարկվեց։' : 'Ջնջման հարցումը չեղարկվեց։'); } render(); return; }
-  if (d.acc) { act(d.acc, ['network', 'rate', 'account']); if (S.result[d.acc] === 'ok') { S.dirty = false; if (d.acc === 'email') S.newEmail = ''; if (d.acc === 'privacy') S.privSaved = { A: !!S.privA, R: !!S.privR }; } render(); return; }
+    S.accNameErr = null; act('name', ['network', 'rate', 'account']); if (S.result.name === 'ok') { S.accName = v; S.accNameDraft = v; S.dirty = accDirty(); } render(); return; }
+  if (d.accDel) { act('delete', ['network', 'rate', 'account']); if (S.result.delete === 'ok') { S.accDel = d.accDel === 'send' ? 'pending' : 'cancelled'; S.confirm = null; delete S.result.delete; flash(d.accDel === 'send' ? 'Ջնջման հարցումն ուղարկվեց։' : 'Ջնջման հարցումը չեղարկվեց։'); } render(); if (!S.confirm) app.querySelector('#acc-del .actions button')?.focus(); return; }
+  if (d.delState) { S.accDel = d.delState === 'none' ? null : d.delState; S.confirm = null; render(); return; }
+  if (d.acc) {
+    if (d.acc === 'email') { const v = (S.newEmail || '').trim(); delete S.result.email; S.accEmailErr = !v || !v.includes('@') || v.toLowerCase() === PROTO_EMAIL; if (S.accEmailErr) { render(); document.getElementById('newEmail')?.focus(); return; } }
+    if (d.acc === 'password') S.pwChallenge = true;
+    act(d.acc, ['network', 'rate', 'account']);
+    if (S.result[d.acc] === 'ok') { if (d.acc === 'email') S.newEmail = ''; if (d.acc === 'privacy') S.privSaved = { A: !!S.privA, R: !!S.privR }; S.dirty = accDirty(); }
+    render(); return; }
   if (d.drawerTab) { S.drawerTab = d.drawerTab; render(); return; }
   if (d.tab) { S.classTab = d.tab; S.menu = false; render(); document.getElementById('tab-' + S.classTab)?.focus(); return; }
   if (d.student) { S.drawer = d.student; S.drawerTab = 'skills'; S.evidence = d.skill != null ? Number(d.skill) : null; render(); toTop(); app.querySelector('.drawer button')?.focus({ preventScroll: true }); return; }
@@ -1154,12 +1178,15 @@ app.addEventListener('click', e => {
   if (A && 'asPickSupport' in d) { A.picked = roster(cls(A.classId), cls(A.classId).current).filter(s => s.support).map(s => s.id); render(); return; }
   if ('assignRestart' in d) { startAssign(S.assign?.classId); S.assign.step = 2; S.assign.type = 'course'; render(); return; }
 });
-const DIRTY = ['edTitle', 'edInstr', 'fb', 'mfTitle', 'mfSrc', 'mfDesc', 'dispName', 'chg', 'newEmail', 'privA', 'privR'];
+const DIRTY = ['edTitle', 'edInstr', 'fb', 'mfTitle', 'mfSrc', 'mfDesc', 'chg'];
+const ACC_FIELD = { dispName: 'name', newEmail: 'email', privA: 'privacy', privR: 'privacy' };
 app.addEventListener('input', e => {
   if (DIRTY.includes(e.target.id)) S.dirty = true;
-  if (e.target.id === 'dispName') S.accNameDraft = e.target.value;
-  if (e.target.id === 'privA' || e.target.id === 'privR') S[e.target.id] = e.target.checked;
-  if (e.target.id === 'newEmail') S.newEmail = e.target.value;
+  if (ACC_FIELD[e.target.id]) { const id = e.target.id, key = ACC_FIELD[id];
+    if (id === 'dispName') S.accNameDraft = e.target.value; else if (id === 'newEmail') S.newEmail = e.target.value; else S[id] = e.target.checked;
+    S.dirty = accDirty();
+    // A «saved» message must not stay next to a value that has changed since.
+    if (S.result[key] === 'ok') { delete S.result[key]; e.target.closest('.sub, section')?.querySelector('.inline-ok')?.remove(); } }
   if (['rq', 'arQ', 'libQ'].includes(e.target.id)) { S[{ rq: 'rosterQuery', arQ: 'archiveQuery', libQ: 'libQuery' }[e.target.id]] = e.target.value; const id = e.target.id, pos = e.target.selectionStart; render(); const i = document.getElementById(id); i.focus(); i.setSelectionRange(pos, pos); }
 });
 app.addEventListener('change', e => {
@@ -1172,7 +1199,7 @@ app.addEventListener('change', e => {
   if (A && e.target.name === 'who') { A.who = e.target.value; render(); }
   if (A && e.target.dataset.asPick) { const sid = e.target.dataset.asPick; A.picked = e.target.checked ? [...new Set([...A.picked, sid])] : A.picked.filter(x => x !== sid); render(); }
 });
-app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.guard) { S.guard = null; render(); } else if (S.modal) { S.modal = null; render(); } else if (S.drawer) { S.drawer = null; render(); } else if (S.menu || S.confirm) { S.menu = false; S.confirm = null; render(); } } });
+app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.guard) { S.guard = null; render(); } else if (S.modal) { S.modal = null; render(); } else if (S.drawer) { S.drawer = null; render(); } else if (S.confirm) closeConfirm(); else if (S.menu) { S.menu = false; render(); } } });
 function fromHash() {
   const h = location.hash.slice(1);
   if ((SCREENS[h] && h !== 'class') || AUTH.includes(h)) Object.assign(S, { screen: h, open: null, drawer: null });

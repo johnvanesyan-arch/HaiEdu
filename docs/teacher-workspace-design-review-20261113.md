@@ -353,8 +353,21 @@ Other findings: reaching the login settings takes three steps (menu → Profile 
 - T6 Unsaved-changes guard on any navigation away.
 - T7 Correct wording on who sees the name; no vendor name. Armenian review needed.
 
-**Prototype (version 6, 14 November).** The account screen implements T1–T7 with synthetic data. Measured with design notes off: phone page 2,309 px (3,864 today), name field at 416 px from the top of the page, desktop 1,833 px (2,675 today). Prototype checks: 340 renders (17 screens × 5 data states × 2 teacher types × 2 widths) with one H1, no sideways scrolling and no script errors; 30 account interaction checks; 10 click paths at both widths.
+**Prototype (version 6, 14 November).** The account screen implements T1–T7 with synthetic data. Measured with design notes off (version 7 figures): phone page 2,287 px (3,864 today), name field at 416 px from the top of the page, desktop 1,833 px (2,675 today). Prototype checks: 340 renders (17 screens × 5 data states × 2 teacher types × 2 widths) with one H1, no sideways scrolling and no script errors; 30 account interaction checks; 10 click paths at both widths.
 
 **Found while checking: phone menu at 200% text (A1).** The proposed four-item bottom menu did not fit at 200% text. The prototype now wraps it to two rows, but it then takes 24–28% of the height on phones 667 px tall or shorter (BF-10 allows 20% for students), and at 360 px and narrower it still overflows by up to 23 px. The A1 build must reuse BF-10's fallbacks. The `teacher.html` header link (logo and role) is 28 px tall in the account render.
+
+**Prototype version 7 (14 November, after a review of version 6).** The review found the account screen misrepresented some behaviour; version 7 corrects it. No T1–T7 design decision changed.
+- Unsaved changes are worked out per section by comparing values, as today's account page does. Saving the name no longer hides an unsaved privacy choice, and a box ticked and unticked again is not a change.
+- An empty, malformed or unchanged email shows today's «Մուտքագրեք նոր էլ. հասցե։» instead of a success message.
+- A "saved" message is removed when its value changes again.
+- The password section shows the bot-protection bar when the button is pressed, as today (about 65 px).
+- Opening an on-page confirmation moves keyboard focus into it; cancelling or Escape returns focus to the control that opened it. This applies to every confirmation in the prototype. Section links move focus to their section.
+- The new sentences say «ադմին», the word the account page uses. The teacher page itself uses both «ադմին» and «ադմինիստրատոր» today.
+- The phone header link is 44 px tall; the saved name appears in the Home greeting and history lines; a note states that the email is masked only in the prototype.
+
+**Deletion requests for teachers: how the code behaves today.** `manage-admin-account` refuses to approve a deletion request for any non-student account (`staff_offboarding_required`). A teacher's request can therefore only stay pending, be cancelled by the teacher, or be rejected; the account is removed later through the separate staff deletion step, which itself is refused while a request is open. The account stays «Ակտիվ» throughout. The locked «Ջնջման հաստատման փուլում» state is reached only by student accounts. The page already receives the rejection reason (`resolution_code`) but does not show it. Version 6 had shown an invented status label, and the version 6 review wrongly expected the locked state for teachers; both are corrected. *New proposal (not approved):* show the reason for a rejected request, which needs new wording.
+
+Version 7 checks: the same 340 renders; 65 account and focus checks; 10 click paths at both widths; no script errors. Chromium only: Safari, iPhone and screen readers were not checked.
 
 Owner usability acceptance: not given.
