@@ -1,5 +1,7 @@
 # Future updates after the fresh database baseline
 
+Historical review: owner-approved [PR490](https://github.com/johnvanesyan-arch/HaiEdu/pull/490) is merged and verified at `74128e40bc6f970398330a04f57ddab8c53870f2`; all five PR/main checks and three-domain static checks pass. The [dated review](../../docs/qa/historical-data-review-20261115.md) completes the pinned historical treatment and records nine setup requirements. Recovery and hosted adoption remain separate.
+
 Status: [PR488](https://github.com/johnvanesyan-arch/HaiEdu/pull/488) is merged and verified at `1d65c1f9c476c9c3f9b89511b1d045090219b6dc`; all required PR/main checks and three-domain public static checks pass. See the [verified delivery and remaining gates](../../docs/qa/fresh-database-forward-updates-20261115.md).
 
 This is the BF-20 **local qualification bridge**. It defines a separate, versioned
