@@ -76,6 +76,22 @@ The roster's «Վերջին պատասխանների ճշգրտություն» 
 
 A student's "last activity" on the class page is their last answer in the selected unit. A student working in another unit of the same class looks inactive there.
 
+### 3.6 Reasoning consulted before any analytics suggestion (15 November, at John's instruction)
+
+Sources: the Notion page «HaiEdu — Student Testing Analytics: Mechanism and Current Status» (snapshot of 3 November 2026) and the two repository records it cites, [teacher skill evidence, 31 October](teacher-skill-evidence-20261031.md) and [teacher analytics colours, 2 November](teacher-analytics-colours-20261102.md).
+
+What they establish:
+1. A skill's figure is a progress estimate, not a school grade and not proof that a chapter was passed. Fewer than three observations is "insufficient evidence"; the bands are provisional and not validated.
+2. Results from different kinds of work (and different policies or models) are kept as **separate estimates on the teacher side on purpose**. "A missing combined score is not treated as missing or weak evidence." Sparse, unavailable or absent evidence stays neutral.
+3. The student's own progress uses a learner-wide scope; the teacher's class estimates use a class scope. The two "retain their different scopes" by decision.
+4. A colour or count on the teacher page presents the server-reported classification; it is never a new scoring rule.
+5. The 31 October record states the rule for support: "Roster, support counts, attention chips and support filtering use the same existing per-contract classifications. Each learner/skill counts once; an existing red classification takes precedence over yellow."
+
+How this changes the findings above:
+- **A2 and A3 are documented decisions**, not faults. No change to them is suggested. The design has to show them honestly (separate results; an accuracy figure that is often blank).
+- **A1 is not a scoring question.** The documented rule already says support counts follow each separate classification, which is what the page's filter and summary cards do. The class header line still shows the server's older number, which that correction did not reach, so it disagrees with the documented rule. The suggested next step is produced by the server and is not covered by either record; whether it should follow the same rule is an analytics definition for John, and **no change to it is suggested here**.
+- No threshold, formula, combined score or scope change is suggested anywhere in this audit.
+
 ## 4. Can the new design be connected to the existing data?
 
 "Available" means an existing read already returns it. "In the browser" means the page can work it out from an existing read. "New server work" needs John's approval for a schema or Edge Function change.
@@ -113,6 +129,41 @@ A student's "last activity" on the class page is their last answer in the select
 
 **Summary.** Most of the design connects to existing data. Three elements shown in the prototype have no data behind them (current unit, each recipient's state, the student's writing history), four need new server reads (cross-class returned and reviewed lists, own tasks across classes, support counts on Home, submission counts for course writing), and one column would be mostly empty (recent accuracy).
 
+### 4.1 Where the prototype does not match how the product works today
+
+These are design errors in the prototype, found while checking it against the current functions. Correcting them adds nothing new.
+
+| Prototype | Product today |
+|---|---|
+| A student "needs support" when three or more skills are weak (a rule invented for the prototype's example data) | A student needs support when any skill has a "needs support" classification in any kind of work |
+| The skills table shows a percentage in every cell | A cell can be a classified result, «Առանձին արդյունքներ», «Դիտարկումները դեռ քիչ են», «Ցուցանիշը հասանելի չէ» or «Տվյալ դեռ չկա» |
+| Recent accuracy shown for nearly every student | Often blank (finding A3) |
+| The roster row has no "next suggestion" and no chapter-review summary | Today each row shows «Հաջորդ առաջարկություն» and the chapter-review summary |
+| Personal-account teachers have no way to remove a student | Today's roster has that action for them |
+| The student panel's history lists writing tasks | It lists learning sessions |
+| The student's stage in the unit (diagnostic done, practice, mastery check passed or failed, review required) is not visible on the class page | The student page is built around those stages, and today's teacher page shows them in the row and the panel |
+
+### 4.2 Additions the design would need — nothing here is built or proposed without John's decision
+
+**New functions on the teacher side (server work):**
+1. Support count per class for Home and the class list.
+2. A "current unit" for a class (needs a product rule first).
+3. Returned and reviewed work across classes.
+4. The teacher's own tasks in the cross-class queue and the Home count.
+5. Submission counts for sent course writing.
+6. Each recipient's state on a sent item.
+7. A student's writing and task history in the student panel.
+8. Everything sent to a class across all its units in one list.
+
+**New function on the student side:**
+9. Recording that a student opened a material or task (needed only for «Բացել է» / «Դեռ չի բացել»). This is also a privacy decision.
+
+**Design elements to add to the new teacher design (no new data):**
+10. The student's stage in the unit on the roster row or the student panel.
+11. The «Հաջորդ առաջարկություն» line and the chapter-review summary, kept somewhere in the new roster or panel.
+12. The remove-student action for personal-account teachers.
+13. The four non-numeric skill states in the skills table and its legend.
+
 ## 5. Corrections to earlier statements
 
 1. On 15 November I told John the teacher "sees who opened" an assigned material. That is wrong: opens are not recorded.
@@ -120,8 +171,8 @@ A student's "last activity" on the class page is their last answer in the select
 
 ## 6. Decisions for John
 
-1. **Finding A1.** Fix the support count so one rule is used everywhere. Recommended rule: a student needs support when any of a skill's separate results is "needs support" (the rule the page's filter already uses). The fix is in the teacher analytics server code and the class header; deploying it needs approval.
-2. **Finding A3.** Keep the accuracy column with blanks, remove it from the new roster, or change the rule.
+1. **Finding A1.** No analytics change is proposed (§3.6). For the design: every "needs support" figure in the new design uses the documented rule (each separate classification), worked out on the page as the filter does today. The existing header line is a leftover for John to schedule separately, if at all.
+2. **Finding A3.** Design choice only: keep the accuracy column and accept blanks, or leave it out of the new roster. The rule itself stays.
 3. **Elements with no data** (current unit, recipient states, writing history in the student panel, and submission counts for course writing): remove them from the design, or approve new server work for the ones worth having. Recording that a student opened something is a privacy decision as well as a technical one.
 4. **Row 6.** Whether to build a connected test for invitation → join → roster (about half a day to a day), or run the production action suite once.
 5. **Production check.** Whether to run the Teacher feedback, Resource assignments and writing delivery suites on production. They are paused.
