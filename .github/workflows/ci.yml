@@ -169,6 +169,13 @@ jobs:
       - name: Rehearse the committed forward-update plan in an owned local database
         timeout-minutes: 8
         run: python scripts/rehearse-fresh-updates.py --rehearse --evidence-dir /tmp/haiedu-forward-plan-evidence
+      - name: Install Chromium for owned local staging
+        run: npx playwright install --with-deps chromium
+      - name: Verify local staging sign-in, role services and forbidden access
+        timeout-minutes: 10
+        run: |
+          python tests/staging-transport-unit.py
+          python scripts/run-local-staging.py --evidence-dir /tmp/haiedu-local-staging-evidence
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races
