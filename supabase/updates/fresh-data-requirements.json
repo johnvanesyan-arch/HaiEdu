@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "fresh-feature-data-requirements",
+  "scope": "Prerequisites identified by the pinned historical review; documentation and owned-local qualification only, not an installer or production authorization.",
+  "automaticChanges": false,
+  "requirements": [
+    {
+      "id": "actor-rate-defaults",
+      "kind": "technical-seed",
+      "stateAfterBaseline": "four-reviewed-policy-rows",
+      "beforeUse": "Keep the existing technical seed unchanged. Counter data starts empty; HAIEDU_RATE_BUDGETS_MODE remains off until separate activation approval.",
+      "sourcePaths": ["supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql", "supabase/baseline/technical-seed.sql"]
+    },
+    {
+      "id": "mcq-option-order",
+      "kind": "release-activation",
+      "stateAfterBaseline": "configuration-row-absent-staged-order",
+      "beforeUse": "Before claiming shuffled MCQ delivery, qualify compatible SQL/Edge consumers and explicitly provision the target's mcq_option_order row with enabled=true and algorithm_version=mcq-option-order-v1. Missing/disabled configuration returns mcq-option-order-staged-v0; it is not shuffled delivery. Preserve existing session-item order records during recovery. No activation is performed by this package.",
+      "sourcePaths": ["supabase/migrations/0081_global_mcq_option_presentation_integrity.sql", "supabase/migrations/0082_global_mcq_option_presentation_activation.sql", "supabase/migrations/0084_global_mcq_option_semantic_guard.sql", "supabase/migrations/20261001161000_sprint_15b_answer_position_integrity.sql"]
+    },
+    {
+      "id": "supplementary-materials",
+      "kind": "empty-private-storage-bucket",
+      "stateAfterBaseline": "absent",
+      "configuration": {
+        "id": "supplementary-materials",
+        "name": "supplementary-materials",
+        "public": false,
+        "fileSizeLimit": 5242880,
+        "allowedMimeTypes": ["application/pdf"]
+      },
+      "beforeUse": "Explicitly provision and read back an empty private bucket through the Storage API in an approved target setup. Verify size/MIME restrictions and service-mediated delivery; bucket metadata is not file recovery.",
+      "sourcePaths": ["supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql", "supabase/functions/_shared/supplementary-resources-handler.mjs", "supabase/functions/_shared/resource-assignments-handler.mjs"]
+    },
+    {
+      "id": "teacher-task-files",
+      "kind": "empty-private-storage-bucket",
+      "stateAfterBaseline": "absent",
+      "configuration": {
+        "id": "teacher-task-files",
+        "name": "teacher-task-files",
+        "public": false,
+        "fileSizeLimit": 10485760,
+        "allowedMimeTypes": ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
+      },
+      "beforeUse": "Explicitly provision and read back an empty private bucket through the Storage API in an approved target setup. Verify all MIME restrictions as well as public=false and the size limit. Preserve proxy authorization; do not grant direct browser object access or restore file metadata without file bytes.",
+      "sourcePaths": ["supabase/migrations/20261030203406_teacher_task_source_attachments.sql", "supabase/functions/_shared/teacher-task-sources-handler.mjs", "supabase/functions/_shared/teacher-task-student-files-handler.mjs", "supabase/functions/_shared/teacher-task-privacy.mjs"]
+    },
+    {
+      "id": "governed-programmes-and-content",
+      "kind": "governed-provisioning-or-recovery",
+      "stateAfterBaseline": "empty",
+      "beforeUse": "Provision the intended subjects/grades/programmes, sources, learning configuration, policies, release snapshots, questions and approvals through their governed path. Do not replay historical content, invent approvals or nominate a default subject/grade. The initial recorded subjects/grades seed is programme scope, not a technical default.",
+      "sourcePaths": ["supabase/baseline/data-dispositions.md", "docs/subject-neutral-core.md"]
+    },
+    {
+      "id": "target-runtime-bindings",
+      "kind": "release-activation",
+      "stateAfterBaseline": "empty",
+      "beforeUse": "Bind only the target's actual compatible build, governed learning model, policy and release. Prior environment UUIDs, function versions, successful review flags and activation timestamps are history; they are not copied into a fresh target.",
+      "sourcePaths": ["supabase/migrations/0048_sprint_12a_session_model_provenance.sql", "supabase/operations/20261015163749_sprint_15c15_runtime_provenance.sql"]
+    },
+    {
+      "id": "accounts-schools-and-learning-history",
+      "kind": "governed-provisioning-or-recovery",
+      "stateAfterBaseline": "empty",
+      "beforeUse": "Create new accounts, the first privileged operator, schools and memberships through their explicit provisioning process. Restore existing accounts, consent, learner work and history only through separately qualified recovery. Historical backfills and cohort authorizations are never fresh seeds.",
+      "sourcePaths": ["supabase/baseline/data-dispositions.md", "supabase/migrations/0060_sprint_11_5_single_adult_feasibility_pilot.sql", "supabase/migrations/20260925121942_protect_master_admin_identity.sql"]
+    },
+    {
+      "id": "counter-maintenance",
+      "kind": "environment-operation",
+      "stateAfterBaseline": "function-and-health-view-present-job-absent",
+      "beforeUse": "Install and observe the reviewed bounded maintenance schedule in a separately approved target operation. Scheduling and rate-limit activation are separate; this package schedules nothing and keeps BF-16 off.",
+      "sourcePaths": ["supabase/migrations/20261113112707_bf16_counter_maintenance.sql", "docs/backend-deployment-plan.md"]
+    },
+    {
+      "id": "provider-settings-and-content-files",
+      "kind": "environment-operation-or-recovery",
+      "stateAfterBaseline": "not-copied",
+      "beforeUse": "Configure the target's Auth, secrets, SMTP, CAPTCHA, URLs and hosted services separately. Governed audio/material manifests can identify additional private buckets and files; do not invent fixed names or copy production credentials. Restore actual file bytes and verify access separately under BF-02.",
+      "sourcePaths": ["supabase/baseline/data-dispositions.md", "supabase/functions/_shared/learning-audio-handler.mjs", "docs/backend-deployment-plan.md"]
+    }
+  ]
+}

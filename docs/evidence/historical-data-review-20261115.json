@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "scope": "BF-20 pinned historical rebuild dispositions and owned local fresh-feature prerequisites",
+  "reviewedSourceCommit": "5eb162cc077f5d3104de685186909e16a023a6cb",
+  "reviewStatus": "complete-for-pinned-rebuild-dispositions",
+  "releaseStatus": "prepared-merge-approval-pending",
+  "coverage": {
+    "passed": true,
+    "sourceFiles": 209,
+    "recordedProductionEntries": 218,
+    "normalizedSourceRecordMatches": 186,
+    "reviewedRecordedVariants": 7,
+    "recordedOnlyOrAliasEntries": 25,
+    "unclassifiedSources": 0,
+    "unclassifiedRecordedEntries": 0,
+    "historicalReplayOperationsApproved": 0,
+    "featureRequirements": 9
+  },
+  "artifactSha256": {
+    ".github/workflows/ci.yml": "01fa7b9d720c2bfb2727ee053e4dfbbd21d4acd4950f3aff1b7ec10337f8aeee",
+    "scripts/historical_data_review.py": "b7f0346881dd0f654bcf27ed8177206f530868d57eb082f0e0b92bd2706f2b6a",
+    "scripts/check-historical-data-review.py": "8d49f1fbcb67ccba4c70fab76e5f267e489f25bcb633c51446c92df444430650",
+    "tests/historical-data-review-unit.py": "b74852201ecef1061e3a7e7073be15b979464a9f796b1559ca288fa1c15c7636",
+    "tests/fresh-data-requirements-integration.py": "697a48c2cc8c5db35d835cafa16a55c46c70cc966ba51bb7c218e7a439e3a89f",
+    "tests/fixtures/fresh_baseline_stack.py": "b02cd224297be89448f7a69cd8e4d51579467824c3c1b30cbb20069a6abfc7b8",
+    "supabase/updates/historical-data-review.json": "771d3d6a589978b4375890eff5186e2bcaa7fc837247124fc5dbd55748cfefd6",
+    "supabase/updates/fresh-data-requirements.json": "4419f41d0eea0ef74026188f7757ee45000f60ae8f0f4629b197a2ad4c6d2663"
+  },
+  "localQualification": {
+    "scope": "Owned local PostgreSQL17.6/Auth/Storage component checks of fresh data prerequisites; synthetic configuration and data only. No hosted activation, real classroom, Edge proxy, recovery or production QA claim.",
+    "productionTouched": false,
+    "checks": [
+      {
+        "name": "all historical sources and recorded operations have pinned dispositions",
+        "passed": true
+      },
+      {
+        "name": "fresh baseline has only four technical policies and no governed data or activation",
+        "passed": true
+      },
+      {
+        "name": "missing MCQ configuration produces staged canonical order in two synthetic subjects",
+        "passed": true
+      },
+      {
+        "name": "an explicitly disabled MCQ switch remains staged",
+        "passed": true
+      },
+      {
+        "name": "synthetic local activation selects the reviewed algorithm and preserves option identities",
+        "passed": true
+      },
+      {
+        "name": "fixed-order exceptions require a rationale and preserve their canonical order",
+        "passed": true
+      },
+      {
+        "name": "service callers cannot toggle the switch and browser roles cannot read it",
+        "passed": true
+      },
+      {
+        "name": "real local Auth supplies an ordinary authenticated caller for storage denials",
+        "passed": true
+      },
+      {
+        "name": "supplementary-materials: missing bucket prevents the expected upload",
+        "passed": true
+      },
+      {
+        "name": "supplementary-materials: provider and database readback match the empty private size/MIME contract",
+        "passed": true
+      },
+      {
+        "name": "supplementary-materials: service reads exact file bytes while public and browser callers are denied",
+        "passed": true
+      },
+      {
+        "name": "supplementary-materials: wrong MIME and oversized files are refused without storing objects",
+        "passed": true
+      },
+      {
+        "name": "teacher-task-files: missing bucket prevents the expected upload",
+        "passed": true
+      },
+      {
+        "name": "teacher-task-files: provider and database readback match the empty private size/MIME contract",
+        "passed": true
+      },
+      {
+        "name": "teacher-task-files: service reads exact file bytes while public and browser callers are denied",
+        "passed": true
+      },
+      {
+        "name": "teacher-task-files: wrong MIME and oversized files are refused without storing objects",
+        "passed": true
+      },
+      {
+        "name": "qualification preserves the application schema and leaves scheduling and rate counters inactive",
+        "passed": true
+      }
+    ],
+    "startedAt": "2026-11-15T10:35:10.440915+00:00",
+    "reviewCoverage": {
+      "passed": true,
+      "sourceFiles": 209,
+      "recordedProductionEntries": 218,
+      "normalizedSourceRecordMatches": 186,
+      "reviewedRecordedVariants": 7,
+      "recordedOnlyOrAliasEntries": 25,
+      "unclassifiedSources": 0,
+      "unclassifiedRecordedEntries": 0,
+      "historicalReplayOperationsApproved": 0,
+      "featureRequirements": 9
+    },
+    "storageReadback": {
+      "supplementary-materials": {
+        "public": false,
+        "fileSizeLimit": 5242880,
+        "allowedMimeTypes": [
+          "application/pdf"
+        ]
+      },
+      "teacher-task-files": {
+        "public": false,
+        "fileSizeLimit": 10485760,
+        "allowedMimeTypes": [
+          "application/pdf",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ]
+      }
+    },
+    "cleanup": "Owned local component stack, synthetic records and file bytes removed",
+    "passed": true,
+    "finishedAt": "2026-11-15T10:36:10.372202+00:00"
+  },
+  "controls": {
+    "historicalReview": {
+      "passed": true,
+      "tests": 9
+    },
+    "preservedBaseline": {
+      "passed": true,
+      "tests": 8
+    },
+    "preservedForwardPlan": {
+      "passed": true,
+      "tests": 15
+    },
+    "inventoryCoverage": {
+      "passed": true,
+      "files": 209
+    },
+    "emptyForwardPlanValidation": {
+      "passed": true,
+      "plannedUpdates": 0
+    }
+  },
+  "retainedDevelopmentRuns": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "completedChecks": 2,
+      "errorType": "CheckViolation",
+      "sqlState": "23514"
+    },
+    {
+      "attempt": 2,
+      "passed": false,
+      "completedChecks": 2,
+      "errorType": "NotNullViolation",
+      "sqlState": "23502"
+    },
+    {
+      "attempt": 3,
+      "passed": false,
+      "completedChecks": 9,
+      "errorType": "AssertionError"
+    },
+    {
+      "attempt": 4,
+      "passed": false,
+      "completedChecks": 9,
+      "errorType": "AssertionError",
+      "assertion": "Storage database configuration differs from requested contract"
+    },
+    {
+      "attempt": 5,
+      "passed": false,
+      "completedChecks": 11,
+      "errorType": "AssertionError",
+      "assertion": "Over-limit file was not refused"
+    }
+  ],
+  "developmentCorrections": [
+    "Synthetic authoring fixture now satisfies existing evidence constraints and required fields; no product rule was relaxed",
+    "Raw Storage API payload uses snake_case fields, verified by database and API readback",
+    "Standalone local Storage now explicitly sets FILE_SIZE_LIMIT=52428800 so the per-bucket limit comparison has a finite global ceiling"
+  ],
+  "requiredCi": {
+    "status": "pending-on-published-head",
+    "requiredChecks": [
+      "test",
+      "role-layout-browser",
+      "institutional-concurrency",
+      "phase3-postgres-17",
+      "Platform release checks"
+    ]
+  },
+  "preserved": [
+    "208 historical source migrations",
+    "archived recorded operation",
+    "baseline schema/technical seed/manifest/source crosswalk",
+    "empty forward-update plan",
+    "application browser and Edge source"
+  ],
+  "production": {
+    "touched": false,
+    "productionQa": "not run (paused by owner)",
+    "affectedSuites": [],
+    "bf16Mode": "off",
+    "paidStolenPasswordProtection": "declined",
+    "hostedTestProjectTouched": false
+  },
+  "limits": [
+    "No historical SQL replay, live query/write/sign-in/email, provider setting change or deployment",
+    "No claim of old execution outcomes, current production row completeness, full hosted/Edge acceptance or recoverability",
+    "CI checks hashes/coverage of the review; private recorded SQL bodies are not published or independently reviewed again by CI",
+    "BF-02 database-plus-Storage recovery and hosted adoption/automation remain separate"
+  ]
+}

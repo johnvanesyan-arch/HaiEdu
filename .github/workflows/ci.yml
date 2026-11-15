@@ -156,6 +156,13 @@ jobs:
         run: |
           python tests/fresh-update-unit.py
           python scripts/inventory-historical-data-effects.py --check
+      - name: Verify historical review coverage and stale-evidence refusals
+        run: |
+          python scripts/check-historical-data-review.py
+          python tests/historical-data-review-unit.py
+      - name: Qualify fresh presentation and private-storage requirements locally
+        timeout-minutes: 8
+        run: python tests/fresh-data-requirements-integration.py --evidence-dir /tmp/haiedu-fresh-data-requirements-evidence
       - name: Verify forward-update atomicity, preservation and local provider access
         timeout-minutes: 8
         run: python tests/fresh-update-integration.py --evidence-dir /tmp/haiedu-fresh-update-evidence

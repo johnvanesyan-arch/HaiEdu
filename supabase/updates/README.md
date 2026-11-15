@@ -52,6 +52,9 @@ Use the pinned Python requirements and Docker setup from
 ```sh
 python scripts/rehearse-fresh-updates.py
 python scripts/inventory-historical-data-effects.py --check
+python scripts/check-historical-data-review.py
+python tests/historical-data-review-unit.py
+python tests/fresh-data-requirements-integration.py --evidence-dir /tmp/haiedu-fresh-data-tests
 python tests/fresh-update-unit.py
 python tests/fresh-update-integration.py --evidence-dir /tmp/haiedu-update-tests
 python scripts/rehearse-fresh-updates.py --rehearse --evidence-dir /tmp/haiedu-update-plan
@@ -93,11 +96,22 @@ statements needing semantic review; those sets overlap. The crosswalk retains al
 218 production records. This narrows review; it does not prove the effects of
 dynamic SQL, triggers, procedural/function bodies or production-only operations.
 
+The subsequent [historical review](historical-data-review.json) completes fresh-rebuild
+dispositions for all 209 sources and 218 recorded entries. It follows procedural,
+helper/trigger, dynamic and data-dependent effects and reconciles 186 normalized
+matches, seven recorded variants and 25 recorded-only/alias entries. No historical
+replay is authorized. CI checks this record's coverage and fingerprints; it does
+not repeat the semantic review or retrieve private SQL. See the [method, findings
+and qualification boundary](../../docs/qa/historical-data-review-20261115.md).
+
 Only the four reviewed actor-rate policies remain automatic technical defaults.
-Schools, content, learning configuration, approvals, learner work, files and
-environment bindings keep their governed provisioning/recovery paths. See the
-[data dispositions](../baseline/data-dispositions.md). Full historical data-effect
-reconciliation and BF-02 recovery remain open before production automation.
+The [fresh-feature requirements](fresh-data-requirements.json) explicitly cover MCQ
+activation, two empty private buckets, governed programmes/policies, target runtime
+bindings, accounts/history, scheduling and provider/file setup. Schools, content,
+approvals and learner work keep their governed provisioning/recovery paths. See the
+[data dispositions](../baseline/data-dispositions.md). BF-02 recovery, hosted
+qualification/adoption and production automation remain separate work; a review of
+historical operations does not establish current production data completeness.
 
 The Supabase docs were consulted for migration-history and seed semantics. Their
 normal `db pull` workflow can write the remote ledger, so it is intentionally not
