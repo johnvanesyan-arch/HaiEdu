@@ -131,6 +131,9 @@ def component_stack(diagnostics):
                 'SERVER_PORT':'5000','AUTH_JWT_SECRET':secret,'AUTH_JWT_ALGORITHM':'HS256',
                 'DATABASE_URL':uri,'DATABASE_POOL_URL':uri,'DB_INSTALL_ROLES':'true',
                 'STORAGE_BACKEND':'file','FILE_STORAGE_BACKEND_PATH':'/var/lib/storage',
+                # Standalone Storage needs an explicit global limit; an unset
+                # value is NaN and defeats the per-bucket size comparison.
+                'FILE_SIZE_LIMIT':'52428800',
                 'TENANT_ID':'bf20-local','REGION':'local','GLOBAL_S3_BUCKET':'stub',
                 'ANON_KEY':token('anon'),'SERVICE_KEY':token('service_role'),
                 'ENABLE_IMAGE_TRANSFORMATION':'false','IMAGE_TRANSFORMATION_ENABLED':'false',
