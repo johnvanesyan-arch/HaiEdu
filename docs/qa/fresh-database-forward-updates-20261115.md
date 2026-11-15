@@ -1,8 +1,23 @@
 # BF-20 — Future updates after the fresh database baseline
 
-Prepared and locally qualified on 15 November 2026 (Asia/Yerevan), from merged
-source `c0e7901f666da5a489b5bb33eef4d40670ab1b5e`. Exact-head required CI, PR review
-and explicit merge approval remain pending. No hosted change is included.
+**Local bridge delivery merged and verified on 15 November 2026 (Asia/Yerevan).**
+Owner-approved [PR488](https://github.com/johnvanesyan-arch/HaiEdu/pull/488) merged at
+`1d65c1f9c476c9c3f9b89511b1d045090219b6dc`, preserving approved tree `6d2c934921d7267c34db37616942b1633392e68f`.
+All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43697886510)
+and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43698935120)
+pass on attempt 1: 1,847 code tests, 696 browser checks, 15 new plan controls,
+20 new integration checks, the existing eight baseline controls/18 baseline
+integration checks and the committed-plan rehearsal. These counted suites have
+zero failures, skipped tests or cancellations.
+
+The three public domains serve the merged source. Twelve fresh static identity,
+manifest, representative HTML/JavaScript hash, MIME, cache and enforcing-security-header
+checks pass. Existing full-build evidence is reused because all application/build
+inputs are unchanged. Only static files were fetched; no page scripts, sign-in or
+Supabase request was used. Normal Git integration updated the site; no manual
+promotion or hosting-setting change occurred. The [safe receipt](../evidence/fresh-database-forward-updates-20261115.json)
+records the local and merged release proof. This is a local update qualification,
+not hosted adoption, data/Storage recovery or full BF-20 closure.
 
 ## Problem and resulting behavior
 
