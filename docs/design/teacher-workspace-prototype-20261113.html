@@ -925,8 +925,8 @@ function account() {
     + note('T1 · T2', 'One «Իմ հաշիվը» entry (sidebar footer, phone header button and «Ավելին»), opening inside the teacher layout. «Իմ պրոֆիլը» leaves the menu and Home; its old address opens this page. The content is one shared account module that other roles will use later.');
   if (S.data === 'loading') return h + loadingBlock(`${skel(220)}${skel(160)}${skel(160)}${skel(120)}`);
   const name = teacherName(), draft = S.accNameDraft ?? name, empty = S.data === 'empty';
-  const seen = personal() ? 'Անունը տեսնում եք դուք և հարթակի ադմինը։' : 'Անունը տեսնում եք դուք, դպրոցի ադմինը և հարթակի ադմինը։';
-  const err = S.accNameErr === 'empty' ? 'Մուտքագրեք ձեր անունն ու ազգանունը։' : S.accNameErr === 'short' ? 'Անունը պետք է ունենա առնվազն 2 նիշ։' : '';
+  const seen = personal() ? 'Անունը տեսնում են ձեր աշակերտները՝ ձեր ուղարկած առաջադրանքներում և նյութերում, ինչպես նաև հարթակի ադմինը։' : 'Անունը տեսնում են ձեր աշակերտները՝ ձեր ուղարկած առաջադրանքներում և նյութերում, ինչպես նաև դպրոցի ադմինը և հարթակի ադմինը։';
+  const err = S.accNameErr === 'empty' ? 'Մուտքագրեք ձեր անունն ու ազգանունը։' : S.accNameErr === 'short' ? 'Անունը պետք է պարունակի առնվազն 2 նիշ։' : '';
   const n = k => empty ? 0 : k;
   const rows = [['Դպրոցի անդամակցության գրառումներ', personal() ? 0 : 1], ['Դասավանդման նշանակումներ', n(CLASSES.length)], ['Ուղարկված նյութային առաջադրանքներ', n(6)], ['Ուղարկված գրավոր առաջադրանքներ', n(9)],
     ['Գրավոր աշխատանքների գնահատումներ ու նշումներ', n(23)], ['Գնահատման անձնական սևագրեր', n(2)], ['Պատրաստի անձնական գրառումներ՝ ներառյալ արխիվը', n(5)], ['Գնահատման ուղարկման հաստատումներ', n(21)],
@@ -944,7 +944,7 @@ function account() {
         <div class="actions"><button type="button" class="btn" data-acc-name>Պահել անունը</button></div>${result('name', 'Անունը պահպանվեց։')}
       </div>
       ${note('T5 · decided', 'One field and one rule for every role (owner decision, 14 November): required, 2–80 characters, extra spaces removed. Try saving an empty name or one letter. The server applies the same rule. The email is shown as text, not as an input, and the name is not repeated above the field. On phones the section links are hidden: the four sections are short enough to scroll.')}
-      ${note('T7', 'New sentence on who sees the name: verified for school administrators and the platform administrator. Whether any student page shows the teacher’s name is not yet verified; checked before the build. The account page says «ադմին», so the new sentences do too (the teacher page itself uses both «ադմին» and «ադմինիստրատոր» today). Armenian review needed.')}
+      ${note('T7', 'New sentence on who sees the name: verified for school administrators and the platform administrator, and (checked before the build, 15 November) for students: they see the teacher’s name on writing, tasks and materials the teacher sends. The sentence was corrected to say so; this corrected sentence still needs your acceptance. The one-letter error now uses the product’s existing wording. The account page says «ադմին», so the new sentences do too (the teacher page itself uses both «ադմին» and «ադմինիստրատոր» today). Armenian review needed.')}
     </section>
     <section class="card section" id="acc-login" aria-labelledby="loginT"><h2 id="loginT">Մուտքի տվյալներ</h2>
       <div class="sub" style="border-top:0;padding-top:0"><h3>Փոխել մուտքի էլ. հասցեն</h3><p class="hint">Մուտքի հասցեն փոխվում է հաստատման նամակների միջոցով։ Մինչև հաստատումը օգտագործեք ձեր ներկայիս հասցեն։</p>

@@ -370,4 +370,6 @@ Other findings: reaching the login settings takes three steps (menu → Profile 
 
 Version 7 and 8 checks: the same 340 renders; 65 (version 7), 69 (version 8) and 71 (version 9) account and focus checks; 10 click paths at both widths; no script errors. Chromium only: Safari, iPhone and screen readers were not checked.
 
+**Built 15 November 2026 (not released):** T1–T7 and the two additions; see the [record](teacher-account-20261115.md). Checking before the build confirmed that students see the teacher's name on work and materials the teacher sends, so the who-sees-the-name sentence was corrected and awaits John's acceptance. Prototype version 10 carries the corrected sentence and the product's existing one-letter error wording.
+
 Owner usability acceptance: not given.

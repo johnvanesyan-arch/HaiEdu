@@ -16,7 +16,8 @@
 **Decisions, 15 November 2026 (John):**
 - **Wording:** John accepted the Armenian wording of the three fixed rejection reasons and, in a later message the same day, of the rest of the new account wording (the version 6 account items in §8: the 2-character error, «2–80 նիշ։», the sentence on who sees the name, the deletion sentence, «Այլ» and «մուտքի համակարգում»). This is the owner's acceptance of the account wording only. The other new wording in §8 (Home, class page, review, assign and the rest) is not covered.
 - **«Այլ» (Other) replaces «legal hold»:** the reason has no fixed sentence. It shows what the administrator wrote for that request, or no reason line when nothing was written.
-- **What «Այլ» needs (not built; each production step needs separate approval):**
+- **Build approval:** John approved T1–T7 with the two additions (rejection reasons; the master admin's rejection step) for the build.
+- **What «Այլ» needs (source built 15 November, not deployed; each production step needs separate approval):**
   1. a place to store the written reason: `account_deletion_requests` has only `resolution_code` today, so a new text column (migration);
   2. `manage-admin-account`: accept `other` instead of `legal_hold`, with an optional written reason of limited length;
   3. `get-my-privacy`: return the written reason to the account owner;
@@ -149,6 +150,8 @@ Each principle is drawn from the review findings.
 **Size target:** 30 students take about 52 px per row on desktop (today 213 px) and about 64 px on a phone (today 486 px).
 
 ### 4.5 Account (B5, H-17; T1–T7, revised 14 November 2026)
+
+**Built 15 November 2026 (not released):** [record](teacher-account-20261115.md), including the differences from the prototype (unsaved-changes question, today's page header, the corrected who-sees-the-name sentence).
 
 Audit and proposals: [design review, Appendix C](teacher-workspace-design-review-20261113.md#appendix-c--teacher-account-audit-14-november-2026).
 

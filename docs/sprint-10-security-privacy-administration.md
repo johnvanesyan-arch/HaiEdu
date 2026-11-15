@@ -34,7 +34,7 @@ The platform application profile intentionally does not collect or duplicate:
 - parent email;
 - government ID.
 
-The profile stores role, optional display name, account status, and timestamps. Authentication email remains in Supabase Auth. Learning records are limited to what the mastery system requires: class relationships, sessions, attempts, mastery state and remediation evidence.
+The profile stores role, display name, account status, and timestamps. (Since the 15 November 2026 source change, not yet deployed, a display name is required when one is saved: 2–80 characters. Existing unnamed accounts are not asked for one. See [the record](teacher-account-20261115.md).) Authentication email remains in Supabase Auth. Learning records are limited to what the mastery system requires: class relationships, sessions, attempts, mastery state and remediation evidence.
 
 ## Privacy preferences
 
@@ -50,7 +50,7 @@ These fields record preferences only. They do not themselves establish legal or 
 `/privacy.html` allows the authenticated user to:
 
 - inspect a high-level data inventory;
-- edit an optional display name;
+- edit their display name (required when saved, 2–80 characters, from the 15 November 2026 source change);
 - change analytics/research preferences;
 - submit an account deletion request;
 - cancel an open deletion request.
