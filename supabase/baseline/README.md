@@ -37,7 +37,7 @@ Use a disposable local Supabase stack with PostgreSQL 17, Auth and Storage initi
 
 The SQL requires an explicit transaction setting, `haiedu.fresh_baseline=local-empty-v1`, and rejects any existing application tables, views, sequences, enum/domain types or functions. This is an additional guard; it does not replace local target ownership verification. Installation is atomic.
 
-Do **not** run the historical migration directory after this baseline. Those scripts include already represented changes, superseded content drafts and environment-specific operations. Do not insert their versions into the fresh project's migration ledger, rename their files, or mark them applied as a shortcut. A reviewed future-update bridge remains a separate BF-20 task.
+Do **not** run the historical migration directory after this baseline. Those scripts include already represented changes, superseded content drafts and environment-specific operations. Do not insert their versions into the fresh project's migration ledger, rename their files, or mark them applied as a shortcut. The [future-update bridge](../updates/README.md) provides a separate local qualification path with explicit future entries and an actual baseline-origin receipt. Its current list is empty; hosted adoption and production automation remain separate gates.
 
 ## Reproducibility and maintenance
 

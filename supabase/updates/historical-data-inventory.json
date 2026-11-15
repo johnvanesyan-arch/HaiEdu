@@ -1,0 +1,4040 @@
+{
+  "formatVersion": 1,
+  "kind": "static-historical-effect-inventory",
+  "sourceSnapshot": "70a466cd1bcb19e4558a741331d23d5f3e87916a",
+  "historicalInputSha256": "67b0e08a924f2bd675bd27eb62fd43660465f89baf952c98265a5b938af16d8a",
+  "files": [
+    {
+      "path": "supabase/migrations/0002_public_read_policies.sql",
+      "sha256": "41d9580a07da2afbe9c5f50fb57240f00a397ac726557afbd65b5a6d742b7a27",
+      "statementKinds": {
+        "CreatePolicyStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0003_security_hardening.sql",
+      "sha256": "40ba7d71b2ca9b18731eb4b77fb82508ebcabb8026f6e3af1600b8fdb9bf5971",
+      "statementKinds": {
+        "CreateFunctionStmt": 4,
+        "CreatePolicyStmt": 2,
+        "CreateSchemaStmt": 1,
+        "GrantStmt": 11
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0004_add_item_code.sql",
+      "sha256": "851c64a707450126b0c66340efe80fc5d598fea66e0691ec86b4a2585c75f250",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0005_add_bounded_learning_sessions.sql",
+      "sha256": "2d0465736bfa7e708346476bf99edb4f13c27bb1b59bcb6e99d46dfa48e8b5b8",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 2,
+        "CreateStmt": 2,
+        "GrantStmt": 2,
+        "IndexStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0006_adaptive_practice_v2.sql",
+      "sha256": "25af3d8555c9ad3e9c5bb34b15d83d308808b9e96b4e8aa628370011a41b8d7c",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreatePolicyStmt": 2,
+        "CreateStmt": 2,
+        "DropStmt": 2,
+        "IndexStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3,
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0007_mastery_checks.sql",
+      "sha256": "4d3ef1346913671b97a96c76331b82494bfe56104250d67f91c39bde9afad5b5",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0008_teacher_dashboard.sql",
+      "sha256": "91d1bf1e0b0c6e8b4b976cc238427796166ffe6712bd2a296d1f79d2025077e2",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreatePolicyStmt": 7,
+        "DropStmt": 9,
+        "IndexStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 9
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0009_content_assessment_quality.sql",
+      "sha256": "b4ec43254ad968e557281a138c72b10b15abac096e05316f81ee52a3d4ebca22",
+      "statementKinds": {
+        "AlterTableStmt": 16,
+        "CreateFunctionStmt": 2,
+        "CreatePolicyStmt": 4,
+        "CreateStmt": 5,
+        "CreateTrigStmt": 3,
+        "DoStmt": 1,
+        "DropStmt": 7,
+        "IndexStmt": 6,
+        "InsertStmt": 4,
+        "UpdateStmt": 2
+      },
+      "explicitDataWrites": 6,
+      "dataWriteTargets": [
+        "public.item_misconception_mappings",
+        "public.item_qa_runs",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 16,
+        "DropStmt": 7
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0010_content_quality_trigger_safety.sql",
+      "sha256": "bc57c0ee1fab38b5460c788e2be2b1a54752d038eb4a8b0e9b46699bd60ab511",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0011_security_privacy_administration.sql",
+      "sha256": "7d18e0a6271896365fc41a93e7be19b7bf9c54b96d0df39d82c781158e4428a8",
+      "statementKinds": {
+        "AlterTableStmt": 6,
+        "CreateFunctionStmt": 3,
+        "CreatePolicyStmt": 13,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 1,
+        "DropStmt": 14,
+        "GrantStmt": 4,
+        "IndexStmt": 6,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.privacy_preferences"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 6,
+        "DropStmt": 14
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0012_live_session_gate.sql",
+      "sha256": "1336b108426496ab9d51f6aff97f1ba743e15581c53ec4ee9e56893c212a9a2c",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0013_sprint_11a_item_identity_exposure_pools.sql",
+      "sha256": "9302fae14073219b811ab687cb92b80d28829e4d61d4e22f22d3a369ab001673",
+      "statementKinds": {
+        "AlterTableStmt": 8,
+        "CreateFunctionStmt": 7,
+        "CreatePolicyStmt": 10,
+        "CreateStmt": 5,
+        "CreateTrigStmt": 1,
+        "DropStmt": 11,
+        "GrantStmt": 15,
+        "IndexStmt": 10,
+        "InsertStmt": 6,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 7,
+      "dataWriteTargets": [
+        "public.assessment_pool_items",
+        "public.assessment_pools",
+        "public.item_families",
+        "public.item_templates",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 8,
+        "DropStmt": 11
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0014_sprint_11b_repetition_selection_policy.sql",
+      "sha256": "86f3a4d672d995465d19f172fdda48c9f0873597c1fb585beda629af0c611718",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 2,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 1,
+        "DropStmt": 3,
+        "IndexStmt": 2,
+        "InsertStmt": 2
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.assessment_form_items",
+        "public.assessment_forms"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0015_sprint_11c_deterministic_variants.sql",
+      "sha256": "df29cf7a9bd5497356c28047ba9b8ff6b297bfb329549872bd46809c43e2bf37",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 5,
+        "GrantStmt": 4,
+        "IndexStmt": 1,
+        "InsertStmt": 11,
+        "SelectStmt": 20
+      },
+      "explicitDataWrites": 11,
+      "dataWriteTargets": [
+        "public.item_families",
+        "public.item_templates"
+      ],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 20
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0016_sprint_11c_preview_idempotency.sql",
+      "sha256": "b63b61851244bc445892f554633f255ac56ed5446a5ab858293c42895e6c0b75",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0017_sprint_11d_conceptual_bank_expansion.sql",
+      "sha256": "e3bb8b1bab0aa59bd96c1312423c9c26f1dee1c22ab9f5f3861c447072d99e12",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "DoStmt": 7,
+        "DropStmt": 1,
+        "InsertStmt": 2
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.item_families",
+        "public.item_templates"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 7
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0018_sprint_11d_numeric_pool_rebuild.sql",
+      "sha256": "d4318bba6ae852d1e6af8922ceee38ce58c790ace57758fbca7eb8dc1e8f914b",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0019_sprint_11d_numeric_pool_rebuild_v2.sql",
+      "sha256": "bd2a7e0e163b6ff8d53eee886042422b413dcd38b22a30cb92eedcc0602714f4",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql",
+      "sha256": "481c30de22ac74e2d5aa77b43f8ebe485754827db61103b7e2768653f5512ffe",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql",
+      "sha256": "329d3317a811581b11cb08d6d577cb0ca64da526f64bd5ba9a6d064e719779a8",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0022_sprint_11d_family_audit_corrections.sql",
+      "sha256": "8ab2e0a1f851a67d54d1f341d6f6027a6e9ce92cd1553fcad8d44e7227b1a148",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0023_sprint_11d_authored_parallel_template_semantics.sql",
+      "sha256": "1b5ffa4b5be50806907ee1b1909c7f14d28a8a894743b85019c5758329b282ea",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0024_sprint_11d_partial_state_recovery.sql",
+      "sha256": "e530c70f1e0cedf8400704e532cf99c509043061e2898619d4f4af6e7399bf09",
+      "statementKinds": {
+        "DeleteStmt": 1,
+        "DoStmt": 1,
+        "InsertStmt": 1,
+        "UpdateStmt": 6
+      },
+      "explicitDataWrites": 8,
+      "dataWriteTargets": [
+        "public.assessment_pool_items",
+        "public.item_answer_keys",
+        "public.item_options",
+        "public.item_reviews",
+        "public.item_templates",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0025_sprint_11d_fixed_audit_and_candidate_gate.sql",
+      "sha256": "aa21d8fdc08e5176eccab92c0fb6325f598ab9ed450b162da8f9c0bac6b27504",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "CreateTrigStmt": 1,
+        "DoStmt": 1,
+        "DropStmt": 1,
+        "InsertStmt": 5,
+        "UpdateStmt": 4
+      },
+      "explicitDataWrites": 9,
+      "dataWriteTargets": [
+        "public.item_misconception_mappings",
+        "public.item_qa_runs",
+        "public.item_reviews",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0026_sprint_11d_complete_candidate_bank.sql",
+      "sha256": "78aa4559b6ce051b5dc55d5d5c038d488ec00ababf01ae6a12607b54c45493df",
+      "statementKinds": {
+        "CreateStmt": 1,
+        "DoStmt": 3,
+        "InsertStmt": 7,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 10,
+      "dataWriteTargets": [
+        "<search_path>.tmp_11d_generation_plan",
+        "public.item_answer_keys",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_qa_runs",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0027_sprint_11d_stage_candidate_pools_forms.sql",
+      "sha256": "2606c7b8733b09340b4f84c710a3b53d510d6b7158cb132f58623f00f9d27247",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "DeleteStmt": 1,
+        "DoStmt": 1,
+        "InsertStmt": 3
+      },
+      "explicitDataWrites": 4,
+      "dataWriteTargets": [
+        "public.assessment_form_items",
+        "public.assessment_forms",
+        "public.assessment_pool_items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0028_sprint_11d_seed_index_search_path.sql",
+      "sha256": "c06085520d510ea2278606a613a638ba8ae77541be9132762e61a767f9fb33f8",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0029_content_editor_atomic_revision.sql",
+      "sha256": "abd35686c8b626e9de38e8d9a17e829768c1e65526ffe8d27afd7be10b0d8328",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0030_content_editor_11d_review_hold.sql",
+      "sha256": "ea2c1de72bc36ef241bf783db9c539a8e354ac8a488cc3962c083a19410bf6dd",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0031_content_curriculum_scopes.sql",
+      "sha256": "60b700e303fd095b16a6f789dfee344a3f89053b25a71a3047d4df0bf505ed34",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DoStmt": 1,
+        "DropStmt": 1,
+        "IndexStmt": 2,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.item_curriculum_scopes"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0032_sprint_11d_activate_reviewed_bank.sql",
+      "sha256": "c547702b4ad9f5edee878eb318fc35ff93b2476330655e2b8435c5fc2ffdfa38",
+      "statementKinds": {
+        "DoStmt": 2,
+        "UpdateStmt": 8
+      },
+      "explicitDataWrites": 8,
+      "dataWriteTargets": [
+        "public.assessment_forms",
+        "public.assessment_pool_items",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0033_sprint_11e_pilot_item_analytics.sql",
+      "sha256": "8df8ff932376509a339c0195398702d28f085c298ef7d2d17c94dccf8bafe54c",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0034_sprint_11i_standards_source_registry.sql",
+      "sha256": "57f183d3f22db753453b0f207375e7b8ddd706a797529341a536c90269f0779d",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CommentStmt": 3,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 6,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 3,
+        "DoStmt": 1,
+        "DropStmt": 9,
+        "GrantStmt": 9,
+        "IndexStmt": 6,
+        "InsertStmt": 6,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 7,
+      "dataWriteTargets": [
+        "public.curriculum_authorities",
+        "public.curriculum_frameworks",
+        "public.curriculum_source_documents",
+        "public.subject_program_source_bindings"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3,
+        "DropStmt": 9
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0035_sprint_11i_registry_advisor_hardening.sql",
+      "sha256": "b1070febcb4fe93a345789e4e22d46cd86f9dd32cba0409bc1a3976528ee0825",
+      "statementKinds": {
+        "CreatePolicyStmt": 9,
+        "DropStmt": 3,
+        "IndexStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0036_sprint_11j_physics7_current_standard_reconciliation.sql",
+      "sha256": "87c773d20eadb2bcbbfee7f29a9ca2c00c46143bc40e07ee8772a1bc044ab691",
+      "statementKinds": {
+        "AlterTableStmt": 7,
+        "CommentStmt": 6,
+        "CreatePolicyStmt": 4,
+        "CreateStmt": 6,
+        "DoStmt": 3,
+        "DropStmt": 4,
+        "GrantStmt": 18,
+        "IndexStmt": 14,
+        "InsertStmt": 8
+      },
+      "explicitDataWrites": 8,
+      "dataWriteTargets": [
+        "public.assessment_pool_curriculum_reconciliations",
+        "public.curriculum_reconciliation_runs",
+        "public.item_family_curriculum_reconciliations",
+        "public.learning_outcome_normative_mappings",
+        "public.learning_outcomes",
+        "public.skill_curriculum_reconciliations",
+        "public.skill_outcome_curriculum_mappings",
+        "public.skill_outcomes"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 7,
+        "DropStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0037_sprint_11j_reconciliation_advisor_hardening.sql",
+      "sha256": "c26d3145fca277c0fd64920e4449013f4fe0e328462eb77e27bc2478f61f10d5",
+      "statementKinds": {
+        "IndexStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0038_sprint_11j_preserve_official_outcome_wording.sql",
+      "sha256": "9df88b6aac7875a92cb319c33a60ee8b852f84358522143e883c439786912f7e",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "DoStmt": 1,
+        "UpdateStmt": 2
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_outcome_normative_mappings",
+        "public.learning_outcomes"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0039_sprint_11k_curriculum_releases_and_evidence_provenance.sql",
+      "sha256": "f2d42947a61b5d1bbc0394695739f30e3b92839b7aa931c61b65b92fb65168cf",
+      "statementKinds": {
+        "AlterTableStmt": 18,
+        "CommentStmt": 6,
+        "CreateFunctionStmt": 9,
+        "CreatePolicyStmt": 9,
+        "CreateStmt": 9,
+        "CreateTrigStmt": 9,
+        "DoStmt": 3,
+        "GrantStmt": 4,
+        "IndexStmt": 26,
+        "InsertStmt": 9,
+        "UpdateStmt": 8
+      },
+      "explicitDataWrites": 17,
+      "dataWriteTargets": [
+        "public.assessment_blueprint_items",
+        "public.assessment_blueprints",
+        "public.attempts",
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.curriculum_release_outcomes",
+        "public.curriculum_release_skills",
+        "public.curriculum_release_units",
+        "public.curriculum_releases",
+        "public.learning_sessions",
+        "public.student_item_exposure_events",
+        "public.student_skill_mastery_by_release"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 18
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0040_sprint_11k_advisor_hardening.sql",
+      "sha256": "1ec071ddd762e14e1d33698ee3a3df09886b44d52bb2897097354cfb72792ef8",
+      "statementKinds": {
+        "CreatePolicyStmt": 12,
+        "DoStmt": 1,
+        "DropStmt": 4,
+        "IndexStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0041_sprint_11l_pilot_evidence_classification.sql",
+      "sha256": "386a624b9905dfbcf599b8b684a6b878c0b17e1b93db8a0575a433786a1882cf",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CommentStmt": 5,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 4,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 1,
+        "DoStmt": 2,
+        "GrantStmt": 3,
+        "IndexStmt": 8,
+        "InsertStmt": 3,
+        "ViewStmt": 3
+      },
+      "explicitDataWrites": 3,
+      "dataWriteTargets": [
+        "public.pilot_evidence_classifications",
+        "public.pilot_gate_checks",
+        "public.pilot_runs"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0042_sprint_12a_hinting_remediation_v2.sql",
+      "sha256": "5b3628aeee35fda32a8dc02aac2cc077cbfbde22400defcbb8a0fe1394e1c2e4",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CommentStmt": 2,
+        "CreateStmt": 1,
+        "DoStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 5,
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.item_template_remediation_guides",
+        "public.remediation_events"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0043_sprint_12a_hinting_v2_index_cleanup.sql",
+      "sha256": "4f7350a8755cd455b5e2ac3378bdafd52e84df9cb0e86312e2b26aa8d8aa38dc",
+      "statementKinds": {
+        "DropStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0044_sprint_12a_freeze_learning_model_baseline.sql",
+      "sha256": "0a2b7d5a41c98486da62298d5ed0dbc8e921acb13004feca931adee7739a4a9b",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 2,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.learning_model_configurations"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0045_sprint_12a_learning_model_baseline_indexes.sql",
+      "sha256": "0f2ec5ab596afaf704fcb8beb46f97b798bf4e3ae190a44ca749a6c06ae3c86d",
+      "statementKinds": {
+        "IndexStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0046_sprint_12a_calibration_evidence_contract.sql",
+      "sha256": "025d9d5314e89a38195e31b74caa6d38df79bc0a27b73281600012405b7eb2f6",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 2,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.calibration_evidence_contracts"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0047_sprint_12a_calibration_metric_set.sql",
+      "sha256": "a416ad1ae897a0aaeb30213e1c482443329dfabacaf2924d984e58e6f7969ddf",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 2,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.calibration_metric_sets"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0048_sprint_12a_session_model_provenance.sql",
+      "sha256": "f8b754e21b426665c590f5f920c329ffb147553788576ca80802db6855798c52",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 2,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 2,
+        "DropStmt": 2,
+        "GrantStmt": 2,
+        "IndexStmt": 3,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0049_sprint_12a_remediation_guide_provenance.sql",
+      "sha256": "48436a249484ff889bfcd2ecfb81da96fa72793036b287d314d248aa6817639c",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 6,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 6,
+        "DropStmt": 6,
+        "GrantStmt": 2,
+        "IndexStmt": 2,
+        "InsertStmt": 2,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 3,
+      "dataWriteTargets": [
+        "public.remediation_events",
+        "public.remediation_guide_versions"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3,
+        "DropStmt": 6
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0050_sprint_12a_recommendation_telemetry.sql",
+      "sha256": "6eabc456b348e87355bc15ee903745ec81f8aaaf4014e3a5c6cb8f3ae7fa8377",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 6
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0051_sprint_12a_audited_calibration_r2.sql",
+      "sha256": "0e6050cccfc10b915d27c8d9580a7b77be1cf3f184dcb1b9b16eeebb62173159",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "IndexStmt": 2,
+        "InsertStmt": 2
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.calibration_evidence_contracts",
+        "public.calibration_metric_sets"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0052_sprint_12a_closure_corrections.sql",
+      "sha256": "9626aea84ba1b65c20b1d8bc45a92f4d2126e475edc4071537bd3e3f136b9733",
+      "statementKinds": {
+        "AlterTableStmt": 6,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 2,
+        "DropStmt": 3,
+        "GrantStmt": 8,
+        "IndexStmt": 1,
+        "InsertStmt": 1,
+        "UpdateStmt": 2,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 3,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.learning_sessions",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 6,
+        "DropStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0053_sprint_12a_runtime_build_activation.sql",
+      "sha256": "63e770c50c7e8d074bad2e2d5dee081fbcbc61ad65cb1c7dac883efd607ad3d3",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0054_sprint_12a_evidence_view_preservation.sql",
+      "sha256": "5adeff38aa251b1dae36aa40f7ee800a7c42519dec1ed925e60a6f9d30bbefda",
+      "statementKinds": {
+        "GrantStmt": 2,
+        "IndexStmt": 1,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0055_sprint_12a4_calibration_analysis_views.sql",
+      "sha256": "2918c64e7b5dac7bd78a86520712e4fc6d5d15f6967767651482f1f6f9144c19",
+      "statementKinds": {
+        "CommentStmt": 6,
+        "GrantStmt": 12,
+        "ViewStmt": 6
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0056_sprint_12a4_audit_corrections.sql",
+      "sha256": "2c63fe4d87c20ca7faf8ee3dca81aaa31510a13ff9e9cd2406b84bb17ad870af",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 3,
+        "CreateFunctionStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 7,
+        "GrantStmt": 8,
+        "InsertStmt": 1,
+        "ViewStmt": 13
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.calibration_analysis_scopes"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 7
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0057_sprint_12a4_scope_indexes.sql",
+      "sha256": "6c234bad05b05ec5087aefd4a0136e2ca7df4f9cf4124c109ea9b1c37f3fdf36",
+      "statementKinds": {
+        "IndexStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0058_sprint_12a5_calibration_decision_protocol.sql",
+      "sha256": "7ea50a0b2f52291bcf5610031a62407945e541802dd35272dba13de0b219385a",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 2,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 10,
+        "IndexStmt": 4,
+        "InsertStmt": 1,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.calibration_decision_protocols"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0059_sprint_12a5_protocol_indexes.sql",
+      "sha256": "42a258ed0c7525116d09c02e90ff66d50c9926bdb7a666bbabbc7c92b06dc625",
+      "statementKinds": {
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0060_sprint_11_5_single_adult_feasibility_pilot.sql",
+      "sha256": "8c9f578427714681c03a2b978996a2fdf91d096c8ec6a18fe6ccdae2fc83097d",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 4,
+        "DoStmt": 1,
+        "GrantStmt": 10,
+        "IndexStmt": 5,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0061_sprint_12_5_mastery_lifecycle_foundation.sql",
+      "sha256": "e07e3986e8795a1e38fdf015759944b05051ea90f3950cd0a22b7979f375a350",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "CommentStmt": 3,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 2,
+        "DropStmt": 1,
+        "GrantStmt": 10,
+        "IndexStmt": 5,
+        "InsertStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 4,
+      "dataWriteTargets": [
+        "public.academic_mastery_policy_versions",
+        "public.chapter_mastery_states",
+        "public.learning_sessions",
+        "public.mastery_check_attempts"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0062_sprint_12_5_runtime_build_activation.sql",
+      "sha256": "44342ac898c4a549dc4093dd2b9f17760d77591f3ae7694cdef130fb80a616aa",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0063_sprint_12_5_lifecycle_indexes.sql",
+      "sha256": "8ce2f5b8989df75b8219d0913a6817579bf37f6857824722034e640ff75f91d4",
+      "statementKinds": {
+        "IndexStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0064_sprint_12_5_chapter_review_gate.sql",
+      "sha256": "b64da8c8f99d556f119a873e7ede5ccee83bc4d05f52ad31525dcc2b1e98da05",
+      "statementKinds": {
+        "AlterTableStmt": 7,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 5,
+        "CreateStmt": 3,
+        "DropStmt": 1,
+        "GrantStmt": 10,
+        "IndexStmt": 5,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.academic_mastery_policy_activation"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 7,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0065_sprint_12_5_chapter_review_runtime.sql",
+      "sha256": "3f5448ad688f95b641f0c58002f511859b4cf5a5ed6629e6e63d7e402551ff37",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0066_sprint_12_5_chapter_review_blueprint.sql",
+      "sha256": "689b55838e25dee226362d7eced9a100e551ce2be8b9ed0fccc9bbb9d58f93df",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "InsertStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 4,
+      "dataWriteTargets": [
+        "public.assessment_blueprint_items",
+        "public.assessment_blueprints",
+        "public.assessment_pools"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0067_sprint_12_5_review_runtime_correction.sql",
+      "sha256": "9fc8d6a7916acb6075a5fda6cd7dfc3912260dfc6b1f0cdb0340c15d0fa5b2a1",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0068_sprint_12_5_review_indexes.sql",
+      "sha256": "75572f1cea090860be9e8443141943f429962d3fed04ee3eea04066c085650fa",
+      "statementKinds": {
+        "IndexStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0069_sprint_12_5_review_cycles.sql",
+      "sha256": "ccc97af637870b5a89b8b00a58913f8449d63c82a085dc56dd2156ccbe1c9710",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "CommentStmt": 2,
+        "CreateFunctionStmt": 2,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 10,
+        "IndexStmt": 9,
+        "ViewStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0070_sprint_12_5_review_cycle_runtime.sql",
+      "sha256": "9d5f79bb67181bb69d0769efa07500a1ab807e44219c0a3b6aa1d8f878e9b0f8",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0071_sprint_12_5_learner_lifecycle_runtime.sql",
+      "sha256": "14327d9b4bf62822734e5d557dae55282086e36fac37a7aa688db5798d9a6e84",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0072_sprint_12_5_review_analytics_and_evidence.sql",
+      "sha256": "f0e3baa93c6761d38bfa932ee97ab8c804ba296476b704763fb10035f0be59a4",
+      "statementKinds": {
+        "CommentStmt": 3,
+        "GrantStmt": 2,
+        "ViewStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0073_sprint_12_5_analytics_recommendation_runtime.sql",
+      "sha256": "7d4ab11cf109d84e593d2fc30d92ecbaf01d5e09fa0b8b558e0cc79850e16b40",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0074_sprint_12_5_integrity_coverage_and_closure.sql",
+      "sha256": "e3e7f312bf43eb1396faaf7c76236445d4dfa27353d5f134fbfc06c92beaa740",
+      "statementKinds": {
+        "CommentStmt": 3,
+        "CreateFunctionStmt": 2,
+        "CreateTrigStmt": 2,
+        "DropStmt": 2,
+        "GrantStmt": 2,
+        "IndexStmt": 1,
+        "ViewStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0075_sprint_12_5_integrity_coverage_runtime.sql",
+      "sha256": "9ceb4fa9d6c65e1b3d7a55faa42a821d871c24b7b346c3268c84c9bd24297a49",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0076_sprint_12_5_chapter_review_exposure_integration.sql",
+      "sha256": "988f1636b47d73d329f18a510fc1b69baca54f95e526162ef566f609c253bcf7",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0077_sprint_12_5_chapter_review_exposure_runtime.sql",
+      "sha256": "4599e3bbb080b1eb27164422970a1607136c16276e8719a33ad306ef01814df8",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0078_sprint_12_5_teacher_localization_runtime.sql",
+      "sha256": "e7c5c3574b150cbacd18ad7c62bb846a9e4a82a8529d440c48b0d071d9518e01",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0079_sprint_12_5_mastery_retry_eligibility_runtime.sql",
+      "sha256": "8c6eca9c9f990c4617995f9c2a312e1dd3957603c600bfd218b6c691b7ed62fc",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_12_5_mastery_retry_start_gate_runtime.sql",
+      "sha256": "4bf0e80014e9bfc9714b215f0154b083291327969c735ecf8f8c6618259c0f11",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0080_sprint_14a_academic_identity_foundation.sql",
+      "sha256": "ecbbdb2746ca558a56ce16f67c3bb58135659cd32648a90036870b9967e2c3b0",
+      "statementKinds": {
+        "AlterTableStmt": 8,
+        "CreateExtensionStmt": 1,
+        "CreateFunctionStmt": 2,
+        "CreateStmt": 4,
+        "CreateTrigStmt": 4,
+        "GrantStmt": 8,
+        "IndexStmt": 4,
+        "VariableSetStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 8,
+        "CreateExtensionStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0081_global_mcq_option_presentation_integrity.sql",
+      "sha256": "6ca1c194850aabb1157ca7e2de9ee473d27800e265679babaf7e053ec8e862f4",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 3,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 1,
+        "DropStmt": 3,
+        "GrantStmt": 9,
+        "IndexStmt": 1,
+        "InsertStmt": 2
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "private.assessment_presentation_configuration",
+        "private.learning_session_item_option_orders"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0081_sprint_14a_academic_identity_fk_indexes.sql",
+      "sha256": "23766d6fd581e2ce0eed7186f22e3207234e0a419d68dac80e5dc59bd53c9496",
+      "statementKinds": {
+        "IndexStmt": 8
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0082_global_mcq_option_presentation_activation.sql",
+      "sha256": "e4afbe9fff5e0394990d734901129127299dff0add0739eb9e3219cf86bc80af",
+      "statementKinds": {
+        "DoStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "private.assessment_presentation_configuration"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0082_sprint_14a_legacy_class_boundary.sql",
+      "sha256": "c52f1803eea3537fee2d5cb792c11638821dd94fcbb4f82337b9004029acdc4c",
+      "statementKinds": {
+        "CreateFunctionStmt": 2,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0083_global_mcq_option_presentation_runtime.sql",
+      "sha256": "4c5169e24ba680fc11a2de4ca80b9c5da7ed32317ece0fc180d6cee4875636d7",
+      "statementKinds": {
+        "IndexStmt": 2,
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0083_sprint_14b_targeted_invitations.sql",
+      "sha256": "aaed0ad1e04b7e1297ee8f9bb7bcea32204165ca35719f74cd17992c0756e7fd",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 3,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 8,
+        "IndexStmt": 10
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0084_global_mcq_option_semantic_guard.sql",
+      "sha256": "e08a0c10de93295c66c4efc2a75c11dff7292d245875312dea6054c60da15499",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0084_sprint_14b_invitation_role_cast.sql",
+      "sha256": "b5653cfb75642a6b2a3885da7a1d776ad71701908992d4b7f9a6894ee27dca50",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0085_global_mcq_option_presentation_runtime_final.sql",
+      "sha256": "11e98d913e60564c8a0db16199d58cffdfa728cc98dcc0626d26962a5b2cf51c",
+      "statementKinds": {
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_model_runtime_bindings",
+        "public.runtime_builds"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0085_sprint_14b_existing_account_email_lookup.sql",
+      "sha256": "c5c4472081cfc6aefd91a6e5849a8cbe3139746c6f9713d778259ddc8a05aa7b",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0086_sprint_14b_membership_termination.sql",
+      "sha256": "e1ed9e21b02d4a129da6fd0054f73324821bbc730cdf29b90b57e4e08eb6fd36",
+      "statementKinds": {
+        "AlterTableStmt": 5,
+        "CreateFunctionStmt": 3,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 3,
+        "IndexStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 5
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0087_sprint_14b_teacher_assignment_termination_race.sql",
+      "sha256": "0c971ceb9e7636eea7ddf9211434aeff46c2bd7c74660701a054508c773d6b59",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0088_sprint_14b_school_admin_role.sql",
+      "sha256": "d80c6fed821950fd8334a29c20a287b6086f8846bea996bb2605bda0db20d283",
+      "statementKinds": {
+        "AlterEnumStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0089_sprint_14b_school_bootstrap.sql",
+      "sha256": "8e670c0f6e8f1b0b16c28e81830d3b319338b3d3407db8127453fa4530e1924f",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 1,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 2,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0090_sprint_14b_school_bootstrap_boundary.sql",
+      "sha256": "c0734db4ebc773a2984774ed68786425a3e9acf4c32ebab2e3258290030ecedb",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0091_sprint_14b_school_read_policy.sql",
+      "sha256": "8282dac6afa5f05dc66d55f86035274daf8fe2fb962e2243d7ad847ce7263ffa",
+      "statementKinds": {
+        "AlterPolicyStmt": 1,
+        "DropStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0092_sprint_14b_bootstrap_evidence_guard.sql",
+      "sha256": "371703fff3306c7eb704ef8c7c6e3373eafb50c00385267be16f20b6aa434bb5",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0093_sprint_14b_staff_provisioning.sql",
+      "sha256": "852a1ed3554ffa9068972c34277b31eb9ab55050880b9a420d7c114092c9e696",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 7,
+        "IndexStmt": 9
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0094_sprint_14b_teacher_subject_enforcement.sql",
+      "sha256": "73a5a1db553690bc70d1a995500c2d594790a11598e72794245e81f71b1d8555",
+      "statementKinds": {
+        "CreateFunctionStmt": 4,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0095_sprint_14b_staff_invite_recipient_lookup.sql",
+      "sha256": "fde40cce119fcbc45bc0d69e122f66c49f0e0d17be2bffaff4dc85bfcb31ec57",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0096_sprint_14b_staff_invite_audit_actor.sql",
+      "sha256": "6f37638b7f09b53d0a77a659ef321ebdabb4f007325484450408bfa0d9b4444b",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0097_sprint_14b_assignment_guard_privilege.sql",
+      "sha256": "642a264c45eacf6cb7a7554bc64c526141d31925ba351a9b62a2b451beeef192",
+      "statementKinds": {
+        "AlterFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0098_sprint_14b_school_subject_options.sql",
+      "sha256": "5c1dc459c339094f61f2d0faafc75fc9826c59e1419e512f5c14fbfdf4cf3f6e",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0099_sprint_14b_teacher_subject_fk_index.sql",
+      "sha256": "7f00f4f0aa86547e07e878af4a3d229f8ec32c6591f7203d3b260db6133308d4",
+      "statementKinds": {
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0100_sprint_14b_teacher_activation_history_guard.sql",
+      "sha256": "0ce331100471bcbbe43e1c2abe7b03378bc96a59eaad0f38c64e1f28245fd9ce",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0101_sprint_14b_staff_invitation_management.sql",
+      "sha256": "63ca1d73cdbc36ca7521aa3f3dd5d9fe21efe2cec064288d4dfaf9ee373135f0",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 3,
+        "GrantStmt": 2,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0102_sprint_14b_generated_school_codes.sql",
+      "sha256": "bb85303e22a4b63b62105589e3fa0503ed572cfdada08941d11aa0f53303f14a",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0103_sprint_14b_staff_invitation_resend.sql",
+      "sha256": "2aa6eaf06f610b34cbc02d5a3dd749c63d63e800d6366a2587c5ca34f7be1287",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0104_admin_account_archiving.sql",
+      "sha256": "18df9c808d28454cc99057abf3205b71ce889e2b607dc3413870676b4503d15c",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 2,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0105_sprint_14b_school_class_workspace.sql",
+      "sha256": "8aa28f09622c58e45eea922bfe4eafab023cc13aa957f1d393d5ca03a87e33a9",
+      "statementKinds": {
+        "CreateFunctionStmt": 3,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0106_school_teacher_roster.sql",
+      "sha256": "fc618120812e242237420d975098069f7526477caa0ab716c1d215f4bf0c834f",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0107_school_admin_archiving.sql",
+      "sha256": "0b5c2a22ec9732e88dc54ac42c4b5c14cad1895d49cf19b31f7e18b2ff261141",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 4,
+        "GrantStmt": 6
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0108_sprint_14c_student_onboarding_context.sql",
+      "sha256": "a89db813a5df72060ba3bc652e98c8ad45fc75bf32ad01cec94685a70c044ed1",
+      "statementKinds": {
+        "AlterTableStmt": 7,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 8,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 3,
+        "DropStmt": 1,
+        "GrantStmt": 7,
+        "IndexStmt": 4,
+        "UpdateStmt": 4
+      },
+      "explicitDataWrites": 4,
+      "dataWriteTargets": [
+        "public.institutional_class_enrollments",
+        "public.institutional_invitations",
+        "public.learning_sessions"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 7,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0109_sprint_14c_context_fk_indexes.sql",
+      "sha256": "947f9b6bf82d03c980004ba70da18cb60cd7ceb119e1c1d63e601f9b95042b0f",
+      "statementKinds": {
+        "IndexStmt": 7
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/0110_sprint_14c_onboarding_grade_type.sql",
+      "sha256": "4244dc0df3dc5c4e61f697800b46dc5180534a36ce0d49f32f79c7bb6685c838",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260925121942_protect_master_admin_identity.sql",
+      "sha256": "99a8bd4f8763d58f6c6b5da4c884375ae1586eea4c97cf5deb7c9949bfe4f03a",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 3,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 5,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.profiles"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260925133000_lock_profile_account_types.sql",
+      "sha256": "e46f29b51b1fb6ab611a10307d3f4a31bb267c2bb5ec81af66ff457aaf3bb685",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260925214539_sprint_14c_teacher_owned_student_invitations.sql",
+      "sha256": "af6bbed31c58a2245ef7d05984053052f7723c48831f6c5b27a687ec7066be5a",
+      "statementKinds": {
+        "CreateFunctionStmt": 4,
+        "DropStmt": 1,
+        "GrantStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260926211500_restore_institutional_join_codes.sql",
+      "sha256": "e01d095027db3eca43560d6c0910a60035e3a986130ecfa648c6cdd40cbce43e",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 3,
+        "CreateStmt": 1,
+        "GrantStmt": 8,
+        "IndexStmt": 6
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260926224000_teacher_class_rename.sql",
+      "sha256": "012d8359eea1b98add413fef12af05fd68841004d2f0efe74eb3bc02ae1fd644",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260927183816_single_initial_diagnostic.sql",
+      "sha256": "915f558634caf6c19b494f8a5067c6adf9d8feed901191c47280dddcc5a3a061",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 2,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 4,
+        "IndexStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260927185120_single_initial_diagnostic_runtime.sql",
+      "sha256": "9d13f5c0c53fbdb42f61790d6507222da2babf4485f8ed76c4003020b1aa5643",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260927190434_chapter_diagnostic_practice_gate.sql",
+      "sha256": "02749a4a493838ebf366d8826f23266142cc0413405ad00f8893776e33b78d30",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 5,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 10
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260927191054_chapter_diagnostic_practice_gate_runtime.sql",
+      "sha256": "270cba2ec411d44ea656112dad1eb611732d17bbf48d725c5c3bf490e9082881",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260927193107_sprint_14b_teacher_offboarding_closure.sql",
+      "sha256": "968694799542e96f44f051e048cf7a6f20cab85635b945e36c99ac52afaee3e2",
+      "statementKinds": {
+        "CreateFunctionStmt": 11,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 6
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql",
+      "sha256": "e5202a7ef875dc5d40f24aad2704532fbf95cd12087041fd1db086f270c9c9cb",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 6,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 6,
+        "IndexStmt": 2,
+        "InsertStmt": 2,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql",
+      "sha256": "c7df17dec409886de50ba1d742baaad0707bc13d442b148c9e61ca6da3be82f6",
+      "statementKinds": {
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql",
+      "sha256": "7bc2143b27be94c07b8ce934a304443e698e0da264d3722ffaf5a3095b3de68a",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "NotifyStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001000000_sprint_15b_governed_guide_creation.sql",
+      "sha256": "7dd45d9e28ea47564ac6cf71a5a2084cbe62cc09f806cdf7b4ae5c976fb60207",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2,
+        "NotifyStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001001000_sprint_15b_multi_unit_release_governance.sql",
+      "sha256": "2bc8f7f91ed2afe1ac254992ceb965452db8ab6f032fc631db5d1c20089b33b8",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "CreatePolicyStmt": 4,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "DropStmt": 5,
+        "GrantStmt": 3,
+        "IndexStmt": 3,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.curriculum_release_reconciliations"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 5
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001002000_sprint_15b1_physics7_chapter_ii_foundation.sql",
+      "sha256": "d4923047b70badacad3cafbd45fa47245eb6dc5ce342de80301715304c8ace9f",
+      "statementKinds": {
+        "IndexStmt": 2,
+        "InsertStmt": 19
+      },
+      "explicitDataWrites": 19,
+      "dataWriteTargets": [
+        "public.curriculum_reconciliation_runs",
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.curriculum_release_outcomes",
+        "public.curriculum_release_reconciliations",
+        "public.curriculum_release_skills",
+        "public.curriculum_release_units",
+        "public.curriculum_releases",
+        "public.learning_outcome_normative_mappings",
+        "public.learning_outcomes",
+        "public.skill_curriculum_reconciliations",
+        "public.skill_outcome_curriculum_mappings",
+        "public.skill_outcomes",
+        "public.skill_prerequisites",
+        "public.skills",
+        "public.topics",
+        "public.units"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001003000_sprint_15b_release_reconciliation_index.sql",
+      "sha256": "e02eafea8854cbe7900388faf6cebe9734fd41fa211207f5b90602bc7085e667",
+      "statementKinds": {
+        "DropStmt": 1,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001004000_sprint_15b2_chapter_ii_first_item_family.sql",
+      "sha256": "f26d6a26504eb26dbca13ea5a08651b1d922ff0d6cf76a576c55e4c8ae7e8ada",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "DeleteStmt": 5,
+        "InsertStmt": 14,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 4
+      },
+      "explicitDataWrites": 23,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.curriculum_release_skills",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions",
+        "public.skill_curriculum_reconciliations",
+        "public.skill_outcome_curriculum_mappings",
+        "public.skill_outcomes",
+        "public.skill_prerequisites",
+        "public.skills"
+      ],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001005000_sprint_15b2_authored_catalogue_qa_fix.sql",
+      "sha256": "29a998ab3ee3a0e697e46f018bb6d46530dea90ee0fd07db85c8aee2a0ebd94d",
+      "statementKinds": {
+        "DoStmt": 1,
+        "InsertStmt": 1,
+        "UpdateStmt": 2
+      },
+      "explicitDataWrites": 3,
+      "dataWriteTargets": [
+        "public.item_templates",
+        "public.item_versions",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001070000_content_revision_preserve_draft_misconceptions.sql",
+      "sha256": "91d16971f1b9d2bbc60c26cbee69bea9b72548026d39e41cf68be6cbdcf47508",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001071000_sprint_15b3_mapping_integrity_gate.sql",
+      "sha256": "b5cf945dfb6a380f2ebb912f82293a16028b5947c97442bf1786bee2d1303f9d",
+      "statementKinds": {
+        "CreateFunctionStmt": 3,
+        "CreateTrigStmt": 2,
+        "DoStmt": 1,
+        "DropStmt": 2,
+        "GrantStmt": 4,
+        "InsertStmt": 2,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 5,
+      "dataWriteTargets": [
+        "public.item_misconception_mappings",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001072000_sprint_15b3_mapping_trigger_privileges.sql",
+      "sha256": "16b79c25c63ea366f1b1fc67b2bc208ab80c1d5fd136e23f16cb6cd7b6ea2d99",
+      "statementKinds": {
+        "DoStmt": 1,
+        "GrantStmt": 8
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001120500_sprint_15b3_activate_approved_misconceptions.sql",
+      "sha256": "ca779f3600ebfa3a47d4563107978effdb2a8ce1cc32ea6b9c587c4e4df11f30",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001140000_sprint_15b4_second_item_family.sql",
+      "sha256": "95d9086ed243b95ee4185606a07978ca8a729b811aeb4f8f1446a45a4d40c0a5",
+      "statementKinds": {
+        "DoStmt": 1,
+        "InsertStmt": 13,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 16,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001153000_sprint_15b5_third_item_family.sql",
+      "sha256": "c81711121c255c9f3cb0ffcf4c3a94e0c3f536d3f2da8856e36b0903ac087552",
+      "statementKinds": {
+        "DoStmt": 1,
+        "InsertStmt": 13,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 16,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001161000_sprint_15b_answer_position_integrity.sql",
+      "sha256": "455cc8acb01e7d917f08e60bce109b402a16803abfe4a3f9c7abe190dc78ef17",
+      "statementKinds": {
+        "CreateStmt": 1,
+        "DoStmt": 2,
+        "InsertStmt": 3,
+        "UpdateStmt": 6
+      },
+      "explicitDataWrites": 9,
+      "dataWriteTargets": [
+        "<search_path>.sprint_15b_answer_position_rebalance",
+        "public.item_answer_keys",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001183000_sprint_15b6_fourth_item_family.sql",
+      "sha256": "ad9b6536163f9bb7f7eeb2babb4a8f7df69d56b336261ab13ad555fce6b059ae",
+      "statementKinds": {
+        "DoStmt": 1,
+        "InsertStmt": 13,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 16,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261001190000_sprint_15b7_fifth_item_family.sql",
+      "sha256": "13693c47434480dbf3b1ae3465528f461abdf4826b28a4e01e11a29d8dce7a5e",
+      "statementKinds": {
+        "DoStmt": 1,
+        "InsertStmt": 13,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 16,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261002070000_sprint_15b8_prospective_evidence_blueprint.sql",
+      "sha256": "9393da9e7206eb99ea65cef16a6bb1d20f58215c48e76e7290f3b9ebafea42b2",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "CreateTrigStmt": 1,
+        "DoStmt": 2,
+        "DropStmt": 1,
+        "GrantStmt": 3,
+        "InsertStmt": 14,
+        "NotifyStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 3
+      },
+      "explicitDataWrites": 17,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261002073000_sprint_15b8_unique_evidence_flag.sql",
+      "sha256": "8c58fc6503c122506785394c25182bfe3255f7942695216d9e26f67d24668b79",
+      "statementKinds": {
+        "DoStmt": 1,
+        "NotifyStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.item_templates"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261002080000_sprint_15b8_atomic_family_approval.sql",
+      "sha256": "4b1dda4a167681eb3e65a653f1df7aa2fce89b969594ce1a230b9bd7ed89e241",
+      "statementKinds": {
+        "CreateFunctionStmt": 3,
+        "CreateTrigStmt": 3,
+        "DropStmt": 3,
+        "GrantStmt": 10
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261003224148_phase3_analytics_answered_help_scope.sql",
+      "sha256": "23064e59a69ac452076e3ae74204daa9f4897b14307653067df363408bbd7d29",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261004094811_atomic_answer_mastery_evidence.sql",
+      "sha256": "d7da2710f43e46e5c3e28dd6d6fce82e66d4ba43dd9559d3e4fa405fb0b84498",
+      "statementKinds": {
+        "CreateFunctionStmt": 5,
+        "GrantStmt": 9
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261004100236_atomic_answer_runtime_provenance.sql",
+      "sha256": "06467a2ef83bb79a7c58f4457be242ada1df39c6bd1032badf33244096d403ad",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261005083017_sprint_15b9_seventh_item_family.sql",
+      "sha256": "6585d10ee7f52e7391b4427df922dd5cb1ecaca3586b20b3711ef28c915f5aaf",
+      "statementKinds": {
+        "DoStmt": 2,
+        "InsertStmt": 13,
+        "SelectStmt": 3,
+        "UpdateStmt": 2
+      },
+      "explicitDataWrites": 15,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261005090747_sprint_15b10_eighth_item_family.sql",
+      "sha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237",
+      "statementKinds": {
+        "DoStmt": 2,
+        "InsertStmt": 13,
+        "SelectStmt": 3,
+        "UpdateStmt": 2
+      },
+      "explicitDataWrites": 15,
+      "dataWriteTargets": [
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261005162651_misconception_review_workspace.sql",
+      "sha256": "947c3e2420e61a301d149fd6877c251adb582de887c5358a6b33bf10bf5a5e8d",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 5,
+        "CreatePolicyStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 13,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql",
+      "sha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 10,
+        "CreatePolicyStmt": 1,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 2,
+        "DropStmt": 2,
+        "GrantStmt": 7,
+        "IndexStmt": 12
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2,
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+      "sha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 20,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 17,
+        "IndexStmt": 3,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "public.legacy_learning_blueprint_mappings"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006074342_sprint_15b12c_runtime_provenance.sql",
+      "sha256": "0fcf47dbf480be7c567fd2f8ba6e9605aa75014ef230d9745bc032e20a128534",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql",
+      "sha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf",
+      "statementKinds": {
+        "CreateFunctionStmt": 3,
+        "GrantStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006091733_sprint_15b12d_runtime_provenance.sql",
+      "sha256": "39d5e509b1e4dfc28167c6520c831228b334fc62c00d7adf370d0bba61491fa9",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006092832_sprint_15b12d_dashboard_acceptance_provenance.sql",
+      "sha256": "e2e86bbfa46a6a9d57388a861ea0e399db58b1dc919938040fd9f2d8f4fcc67d",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006100728_sprint_15b12d_batched_context_provenance.sql",
+      "sha256": "d6ae470c9774f5443f7fe0cc4788647ae0eaa4f0709f4ec1b27a9bf7f91b1525",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006112455_sprint_15b12e_dashboard_uuid_provenance.sql",
+      "sha256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006134149_sprint_15b13_s02_practice_expansion.sql",
+      "sha256": "fd5df47ee45a415665b68dde76829790b88679a1b36a2a7067f2b0a505d481d4",
+      "statementKinds": {
+        "DoStmt": 2,
+        "InsertStmt": 12,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 13,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006154828_sprint_15b13_s02_practice_completion.sql",
+      "sha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7",
+      "statementKinds": {
+        "DoStmt": 2,
+        "InsertStmt": 12,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 13,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006164457_sprint_15b13_s02_i10_diversity_revision.sql",
+      "sha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006184457_sprint_15b13_s03_practice_expansion.sql",
+      "sha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261006200559_sprint_15b13_s04_practice_expansion.sql",
+      "sha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261007065442_sprint_15b13_s05_practice_expansion.sql",
+      "sha256": "a26099a632bd5c80fa0aeb01388f06dd63ea3a3a33106302a12027ff94d17f91",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261007074640_sprint_15b13_s06_practice_expansion.sql",
+      "sha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261007132158_sprint_15b13_s07_practice_expansion.sql",
+      "sha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261007163943_sprint_15b13_s08_practice_expansion.sql",
+      "sha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1,
+        "VariableSetStmt": 2
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql",
+      "sha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb",
+      "statementKinds": {
+        "DoStmt": 3,
+        "InsertStmt": 13,
+        "LockStmt": 1,
+        "SelectStmt": 3,
+        "UpdateStmt": 1,
+        "VariableSetStmt": 2
+      },
+      "explicitDataWrites": 14,
+      "dataWriteTargets": [
+        "public.curriculum_release_item_families",
+        "public.item_answer_keys",
+        "public.item_curriculum_scopes",
+        "public.item_families",
+        "public.item_family_curriculum_reconciliations",
+        "public.item_misconception_mappings",
+        "public.item_options",
+        "public.item_template_remediation_guides",
+        "public.item_templates",
+        "public.item_versions",
+        "public.items",
+        "public.misconceptions",
+        "public.remediation_guide_authoring_versions"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 3,
+        "SelectStmt": 3
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261013065104_protect_direct_question_reads.sql",
+      "sha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a",
+      "statementKinds": {
+        "CreatePolicyStmt": 1,
+        "DropStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql",
+      "sha256": "fa56ebd36865c813499762a4c6d1ec51fca582c90ccc35a7c3942194b546154a",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 7,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 4,
+        "DoStmt": 1,
+        "DropStmt": 1,
+        "GrantStmt": 7,
+        "IndexStmt": 1,
+        "InsertStmt": 1,
+        "LockStmt": 2
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "private.active_curriculum_release_units"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1,
+        "DropStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261013101825_governed_mastery_form_selection.sql",
+      "sha256": "d3638976d1ab90824cb1a68915048e2eafc196500cae870147d259335818e12a",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 12,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 5,
+        "GrantStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261013160458_sprint_15c2_chapter_iii_draft_foundation.sql",
+      "sha256": "a47c4941b88969d7451b4e5918c2fc4bfba5bb21d260e8411b6b91901af7be3c",
+      "statementKinds": {
+        "DoStmt": 2,
+        "InsertStmt": 69,
+        "TransactionStmt": 2,
+        "VariableSetStmt": 2
+      },
+      "explicitDataWrites": 69,
+      "dataWriteTargets": [
+        "public.curriculum_reconciliation_runs",
+        "public.curriculum_release_gate_checks",
+        "public.curriculum_release_outcomes",
+        "public.curriculum_release_reconciliations",
+        "public.curriculum_release_skills",
+        "public.curriculum_release_units",
+        "public.curriculum_releases",
+        "public.learning_outcome_normative_mappings",
+        "public.learning_outcomes",
+        "public.skill_curriculum_reconciliations",
+        "public.skill_outcome_curriculum_mappings",
+        "public.skill_outcomes",
+        "public.skills",
+        "public.topics",
+        "public.units"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 2
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261015160934_sprint_15c15_assessment_policy_v2.sql",
+      "sha256": "ec8839020cd43b96ae222c4dd8324bfd743b47bd626c2faf0171a74df6b8bb49",
+      "statementKinds": {
+        "CreateFunctionStmt": 9,
+        "GrantStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261015163749_sprint_15c15_runtime_provenance.sql",
+      "sha256": "85f52628aef640b52789df5f6c4beb189935029b9081ede61f2f2503bb1d3b30",
+      "statementKinds": {
+        "SelectStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261020112724_sprint_16_1b_written_work.sql",
+      "sha256": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4",
+      "statementKinds": {
+        "AlterTableStmt": 5,
+        "CreateFunctionStmt": 6,
+        "CreateStmt": 4,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 7,
+        "IndexStmt": 17
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 5
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql",
+      "sha256": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+      "statementKinds": {
+        "AlterEnumStmt": 1,
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 15,
+        "CreateStmt": 1,
+        "GrantStmt": 4,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql",
+      "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
+      "statementKinds": {
+        "AlterEnumStmt": 2,
+        "CreateFunctionStmt": 8,
+        "GrantStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql",
+      "sha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 8,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 7,
+        "IndexStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql",
+      "sha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 26,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 5,
+        "GrantStmt": 24,
+        "IndexStmt": 7,
+        "InsertStmt": 1,
+        "UpdateStmt": 1
+      },
+      "explicitDataWrites": 2,
+      "dataWriteTargets": [
+        "public.learning_session_items",
+        "public.learning_source_family_exposures"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql",
+      "sha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 16,
+        "CreateStmt": 1,
+        "GrantStmt": 4,
+        "IndexStmt": 3
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261022141634_sprint_16_1c_unit_material_review.sql",
+      "sha256": "b3de3ddf5eeb2a4e8bb336fc3fe6d2b30068688c23740a52aa80b9656d07be1e",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 8,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 2,
+        "GrantStmt": 6,
+        "IndexStmt": 7
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261022165640_sprint_16_1c_unit_guide_delivery.sql",
+      "sha256": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3",
+      "statementKinds": {
+        "CreateFunctionStmt": 2,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261023064305_sprint_16_1c_audio_progress_jitter.sql",
+      "sha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261023070516_sprint_16_1c_audio_progress_provenance.sql",
+      "sha256": "aceccbd39018a6695e883ad2fda4b7423609c8d65be0b27e6db1ab3be149174c",
+      "statementKinds": {
+        "DoStmt": 1,
+        "SelectStmt": 1,
+        "TransactionStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261027121246_sprint_16_5b_supplementary_materials.sql",
+      "sha256": "6ebd57050df0a20bd5d87d0b93f8bc8f05274ee3af5017c3a8c42891f0b5b2e0",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 8,
+        "CreateStmt": 2,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 4,
+        "IndexStmt": 7,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "storage.buckets"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261027175521_teacher_dashboard_directory.sql",
+      "sha256": "e9e723fd9a70a02896c43a6da4208ae4c5a17bc40354b36814e3c4b600ea7114",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261027200600_sprint_16_5b_resource_assignments.sql",
+      "sha256": "034b69e8f68e4e03517b71bdbe5ea8c3d3e58106141dd4635be98c7edff4a45a",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 10,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 3,
+        "IndexStmt": 11
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261028180038_teacher_today_workspace.sql",
+      "sha256": "77f6c8b8b3374272fe56297ef995a4bbf38d4dde80dd4b1f5847d9e40b95a8d1",
+      "statementKinds": {
+        "CommentStmt": 1,
+        "CreateFunctionStmt": 3,
+        "GrantStmt": 6,
+        "IndexStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261028194137_teacher_feedback_workspace.sql",
+      "sha256": "e6b488367e4dc1ead62444bf2db802e05fd5c57cb6e4f2b0134c6347fa2082bb",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 6,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 7,
+        "IndexStmt": 5
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261028220526_teacher_dashboard_batched_reads.sql",
+      "sha256": "33acf07d73b9d07254e471fa8235402d07f8051fa51521e513d85ab011eed588",
+      "statementKinds": {
+        "CreateFunctionStmt": 4,
+        "GrantStmt": 8
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261028225658_teacher_evidence_projection.sql",
+      "sha256": "a151d083e11c699cab4737c7d5116817292f40967b7cf2058f16a3027e3cf9fa",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261028234350_teacher_transaction_reads.sql",
+      "sha256": "f2da4dfa67724f32bf89ad9d4b7d866b8e134f29aea2d98cb64197ec9142d116",
+      "statementKinds": {
+        "CreateFunctionStmt": 2,
+        "GrantStmt": 4
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203359_teacher_writing_assignments.sql",
+      "sha256": "02daa07cc0309d1cc07cc8ca1d9de24bf01c96230b5bb3c9288b9ce3bec46c12",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 12,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 3,
+        "IndexStmt": 11
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203404_teacher_task_drafts.sql",
+      "sha256": "955a99ccd5f26dd5394004fb37b7b839bbbe5bd25d42cf7303c385597e031caf",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 2,
+        "CreateStmt": 1,
+        "GrantStmt": 3,
+        "IndexStmt": 7
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203406_teacher_task_source_attachments.sql",
+      "sha256": "cb02500911a524f9cdd3cea7fbd1ada7db7b540eaba6706da37c0b3ed3ae2b7a",
+      "statementKinds": {
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 2,
+        "DoStmt": 1,
+        "GrantStmt": 3,
+        "IndexStmt": 1,
+        "InsertStmt": 1
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "storage.buckets"
+      ],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203407_teacher_task_delivery.sql",
+      "sha256": "4aaaa13560e7cb44c6a3ff1214e47e1d88c466488016d83fdb25bd983984d4a5",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "CreateFunctionStmt": 4,
+        "CreateStmt": 4,
+        "CreateTrigStmt": 4,
+        "GrantStmt": 3,
+        "IndexStmt": 9
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203408_teacher_task_student_work.sql",
+      "sha256": "9e23036074927ceadd6d68c92b8ee3870098eaef153964fc82b3f068523f7157",
+      "statementKinds": {
+        "AlterTableStmt": 4,
+        "CreateFunctionStmt": 8,
+        "CreateStmt": 4,
+        "CreateTrigStmt": 4,
+        "GrantStmt": 3,
+        "IndexStmt": 7
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 4
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030203409_teacher_task_review.sql",
+      "sha256": "19e620b13ac3f70a19e4cb44cbf271a94aac87089c706ed440f210917c7c07ee",
+      "statementKinds": {
+        "AlterTableStmt": 3,
+        "CreateFunctionStmt": 7,
+        "CreateStmt": 3,
+        "CreateTrigStmt": 3,
+        "GrantStmt": 4,
+        "IndexStmt": 3,
+        "RenameStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 3
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261030214222_teacher_task_privacy.sql",
+      "sha256": "b609e08a5872575864626f3309ee274e1866f4e80203e69cda7e2fee142da762",
+      "statementKinds": {
+        "AlterObjectSchemaStmt": 1,
+        "AlterTableStmt": 5,
+        "CreateFunctionStmt": 13,
+        "CreateStmt": 4,
+        "CreateTrigStmt": 12,
+        "DoStmt": 1,
+        "DropStmt": 11,
+        "GrantStmt": 7,
+        "IndexStmt": 11,
+        "RenameStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 5,
+        "DropStmt": 11
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261101200512_sprint_16_5b_resource_context_sequence.sql",
+      "sha256": "54c09a4f150c491e16654d49c838045d9296923aea7460249e85e8a34ab7d828",
+      "statementKinds": {
+        "CreateFunctionStmt": 1,
+        "GrantStmt": 2,
+        "TransactionStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261102182941_teacher_evidence_version_deduplication.sql",
+      "sha256": "ac0fec280ab1417cadf4efdd2b3a7ff1b32d5ae85771bb8bf7a87759870d6f71",
+      "statementKinds": {
+        "CreateFunctionStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261103061948_item_snapshot_integrity.sql",
+      "sha256": "8f5e82a05785028a47d82add5e84889cdaa8c24b34b7fe2195b0f315ae7f9084",
+      "statementKinds": {
+        "CreateFunctionStmt": 6,
+        "CreateTrigStmt": 7,
+        "DoStmt": 1,
+        "DropStmt": 7,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "DropStmt": 7
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261104111921_answer_response_recovery.sql",
+      "sha256": "2843e63b3b5e2181a53cf1eb8890f502d40d2dfe435e0b8b1fa8a38863a9d5c7",
+      "statementKinds": {
+        "AlterObjectSchemaStmt": 2,
+        "AlterTableStmt": 1,
+        "CreateFunctionStmt": 5,
+        "CreateStmt": 1,
+        "CreateTrigStmt": 1,
+        "GrantStmt": 11,
+        "IndexStmt": 5,
+        "RenameStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261106175539_hint_state_recovery.sql",
+      "sha256": "8d4c7aef35c9e2c90656b459ead78639c643abc2d109f780095e1a1a3550d307",
+      "statementKinds": {
+        "CreateFunctionStmt": 2,
+        "GrantStmt": 2
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql",
+      "sha256": "79d89140ac601ba9a5d0c4384545177f9ea3e7f428e9b1f21b2a0f589f816ec4",
+      "statementKinds": {
+        "AlterTableStmt": 2,
+        "CreateFunctionStmt": 6,
+        "CreateSchemaStmt": 1,
+        "CreateStmt": 2,
+        "GrantStmt": 6,
+        "IndexStmt": 1,
+        "InsertStmt": 1,
+        "TransactionStmt": 2
+      },
+      "explicitDataWrites": 1,
+      "dataWriteTargets": [
+        "private.actor_rate_policies"
+      ],
+      "executionRequiringSemanticReview": {},
+      "structuralOperationsRequiringDataReview": {
+        "AlterTableStmt": 2
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/migrations/20261113112707_bf16_counter_maintenance.sql",
+      "sha256": "080252d84f6085d456827f86c31273f807ffb41f3afa37db32f69a046c9b96d0",
+      "statementKinds": {
+        "CreateExtensionStmt": 1,
+        "CreateFunctionStmt": 1,
+        "DoStmt": 1,
+        "GrantStmt": 2,
+        "SelectStmt": 1,
+        "TransactionStmt": 2,
+        "ViewStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1,
+        "SelectStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {
+        "CreateExtensionStmt": 1
+      },
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    },
+    {
+      "path": "supabase/operations/20261015163749_sprint_15c15_runtime_provenance.sql",
+      "sha256": "4bb15e61138d0c1e03e88790d7ae3daa219368fb1d2fc86ed57f61a2bf88e268",
+      "statementKinds": {
+        "DoStmt": 1
+      },
+      "explicitDataWrites": 0,
+      "dataWriteTargets": [],
+      "executionRequiringSemanticReview": {
+        "DoStmt": 1
+      },
+      "structuralOperationsRequiringDataReview": {},
+      "replayDisposition": "never-replay-after-fresh-baseline"
+    }
+  ],
+  "summary": {
+    "sourceFiles": 209,
+    "sourceMigrations": 208,
+    "archivedOperations": 1,
+    "filesWithExplicitDataWrites": 79,
+    "filesWithExecutionRequiringSemanticReview": 66,
+    "recordedProductionEntries": 218
+  },
+  "boundary": "Static syntax inventory only. Function/procedure bodies, dynamic SQL, trigger side effects, data-dependent DDL and production-only operations need semantic/data-effect review. Absence of a detected write is not proof of no data effect. No historical SQL is executed, no data is copied and no seed/recovery completeness claim is made.",
+  "freshDefaults": "Only the four previously reviewed actor-rate policies in technical-seed.sql. Governed content/configuration and user data remain separate."
+}

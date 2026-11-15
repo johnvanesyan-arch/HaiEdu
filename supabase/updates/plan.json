@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "lineage": "haiedu-fresh-20261114-v1",
+  "scope": "owned-disposable-local",
+  "baselineFiles": {
+    "supabase/baseline/manifest.json": "a54b74a7470dcb65d7701b253866ed0d718adfde48cebd4de94e2318d9f45b37",
+    "supabase/baseline/schema.sql": "ebb4b64573def624858ddc2b132e6d8623f31248669fe1958e722afb2c4df38e",
+    "supabase/baseline/technical-seed.sql": "4a3e08273685ad7fbf878c5a4743845da5f7a70f362fc596ab20e22c75760dc6",
+    "supabase/baseline/source-history-crosswalk.json": "fe7c15d49dc00e100538154d2acd8f8ed6bffc42679dff7d7bb5b5cd9c0b8706"
+  },
+  "updates": []
+}
