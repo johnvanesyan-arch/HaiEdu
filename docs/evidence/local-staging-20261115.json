@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "b7673c5e93946bb5a70d49386b470f6a0ba1c0b0",
+  "workingTreeClean": false,
+  "fixtureVersion": "two-school-role-navigation-v1",
+  "startedAt": "2026-11-15T16:43:40.089905+00:00",
+  "finishedAt": "2026-11-15T16:44:58.616202+00:00",
+  "passed": true,
+  "productionTouched": false,
+  "hostedTestTouched": false,
+  "runnerSources": {
+    "scripts/run-local-staging.py": "d26c40e594c830f9e7de756b32607c8fda79b776953573591e41f667fbf3ae81",
+    "scripts/local-staging-journey.mjs": "e166b4355830b79f07fe21dc080374fc8c6a938844e23d9fa47baa12b5ddb368",
+    "scripts/staging-target.mjs": "700fcc2660174e2956aee880ce7e67fe287147f70b8df8477192207104912ba7",
+    "scripts/build-staging-functions.mjs": "944e69edbde274d59c1378774b981888bd94771583393296b994d8c96539daac",
+    "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+    "tests/fixtures/staging_stack.py": "5b18e7183bdec199c5e2dfc54a65fb7026c406d638dee38b4b9e4d5d747a7a40",
+    "tests/fixtures/staging-gateway.ts": "907c0ac26a0ab19efcbf36f5eba4fa84d4c4409cebe7463ce8a78258675a0534",
+    "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+    "tests/fixtures/fresh_baseline_stack.py": "65ef8825eb7b2a42932804fc86de145dcbc5c576e45b2cba25d44ed72bc24e30",
+    "tests/fixtures/bf16_maintenance_postgres.py": "f54956b3c74686bb124d11896a8626ed636a2be3036db71e539ec55669195ded"
+  },
+  "componentImages": {
+    "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+    "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+    "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+    "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+    "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+  },
+  "edgeImage": "public.ecr.aws/supabase/edge-runtime:v1.78.1@sha256:362e9177660ae4d3affb6978480cc6161a8ea0764f1c2c7f738348eda1c3fbf2",
+  "journey": {
+    "passed": true,
+    "buildId": "1c2b80239e554cd20702e8e5b43c82ca20863e87451dfc6dc5c47450f65a6063",
+    "checks": [
+      "owned target identity and separate browser build verified before sign-in",
+      "A student: real browser sign-in, role handoff and school-scoped service read",
+      "A student: wrong-role, missing/malformed and revoked-session access refused",
+      "A teacher: real browser sign-in, role handoff and school-scoped service read",
+      "A teacher: wrong-role, missing/malformed and revoked-session access refused",
+      "A school_admin: real browser sign-in, role handoff and school-scoped service read",
+      "A school_admin: wrong-role, missing/malformed and revoked-session access refused",
+      "B student: real browser sign-in, role handoff and school-scoped service read",
+      "B student: wrong-role, missing/malformed and revoked-session access refused",
+      "B teacher: real browser sign-in, role handoff and school-scoped service read",
+      "B teacher: wrong-role, missing/malformed and revoked-session access refused",
+      "B school_admin: real browser sign-in, role handoff and school-scoped service read",
+      "B school_admin: wrong-role, missing/malformed and revoked-session access refused"
+    ],
+    "accounts": 6,
+    "schools": 2,
+    "subjects": 2,
+    "browserNetworkRefusals": 0,
+    "boundary": "Real local sign-in form, role handoff, three Edge services and full baseline. Destination dashboards are replaced by a local handoff document; no dashboard rendering, governed assessment, hosted or production acceptance claim."
+  },
+  "allTestSessionsClosed": true,
+  "rateBudgetCountersCreated": 0,
+  "ownedCleanupVerified": true,
+  "sourceCommitMeaning": "Base commit of locally tested working tree; runner hashes identify new source. Exact PR-head CI is separate.",
+  "functionBundles": [
+    {
+      "name": "get-student-classes",
+      "sha256": "c5bdc8e7cf6a50942bdf370c0de27ebd0a576dbaa019b34010a39803824ade65",
+      "sdkVersion": "2.118.0",
+      "inputCount": 53,
+      "inputManifestSha256": "fb8e4b916ef56d18671da8bab6931334a525e6a7f1fbdd5be2dd546270069b1f"
+    },
+    {
+      "name": "get-teacher-dashboard",
+      "sha256": "85d3fdfad950518bc82e54ca09dd1706571e64274af668fc75f99cd738446905",
+      "sdkVersion": "2.118.0",
+      "inputCount": 56,
+      "inputManifestSha256": "f0ec092b80650ccb03cc4fca302626a8a14244530fe80565f425d831d21a393e"
+    },
+    {
+      "name": "get-school-admin-overview",
+      "sha256": "360f95109d41fee06d96c195a90077c2550ef874696178619300294945c9c34f",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "3c7aab8c65a191be05bda1b0da35b51aa7b165837c2d52cc5f330cd2c7f3281e"
+    }
+  ],
+  "localChecks": {
+    "codeTests": 1851,
+    "codeFailures": 0,
+    "targetAndServerGuards": 4,
+    "setupRedirectControl": 1,
+    "retainedBaselineControls": 8,
+    "retainedForwardUpdateControls": 15,
+    "teacherBundle": "passed",
+    "webAssetAndArchiveParity": "passed",
+    "typecheck": "passed",
+    "productionQaDependencyMap": "passed"
+  }
+}

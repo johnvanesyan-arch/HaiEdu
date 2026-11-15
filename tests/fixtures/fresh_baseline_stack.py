@@ -38,7 +38,10 @@ def request(base, method, path, body=None, token=None, content_type='application
     req = urllib.request.Request(base + path, data=data, headers=headers, method=method)
     # This exemption is only for verified loopback. No external proxy/network
     # policy is changed or bypassed.
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
     try:
         result = opener.open(req, timeout=15)
     except urllib.error.HTTPError as error:
@@ -65,7 +68,7 @@ def wait_for(check, timeout=45):
 
 
 @contextmanager
-def component_stack(diagnostics):
+def component_stack(diagnostics, *, staging_gateway=False):
     diagnostics.mkdir(parents=True, exist_ok=True)
     with cron_database() as db:
         docker = db['docker']
@@ -125,6 +128,11 @@ def component_stack(diagnostics):
                 'GOTRUE_SMTP_ADMIN_EMAIL':'fixture@example.invalid','GOTRUE_SMTP_SENDER_NAME':'Local fixture',
                 'GOTRUE_RATE_LIMIT_EMAIL_SENT':'100','GOTRUE_SECURITY_CAPTCHA_ENABLED':'false',
             }
+            if staging_gateway:
+                # The BF-21 gateway is on this owned local Docker network.
+                # Match the issuer checked by unchanged Edge identity helpers.
+                auth_options['API_EXTERNAL_URL'] = 'http://api:8080/auth/v1'
+                auth_options['GOTRUE_JWT_ISSUER'] = 'http://api:8080/auth/v1'
             _, auth = start('auth',auth_options,9999)
             wait_for(lambda: request(auth,'GET','/health')[0] == 200)
             _, storage = start('storage', {

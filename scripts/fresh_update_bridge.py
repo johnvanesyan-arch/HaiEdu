@@ -290,9 +290,9 @@ class _OwnedDatabase:
 
 
 @contextmanager
-def owned_database(plan, diagnostics):
+def owned_database(plan, diagnostics, *, staging_gateway=False):
     """Always owns a brand-new local stack, installs the baseline, and cleans up."""
-    with component_stack(Path(diagnostics)) as stack:
+    with component_stack(Path(diagnostics), staging_gateway=staging_gateway) as stack:
         database = _OwnedDatabase(stack, plan)
         with database.connect() as connection:
             require(connection.execute("SELECT current_setting('server_version_num'),current_user,current_database()").fetchone()
