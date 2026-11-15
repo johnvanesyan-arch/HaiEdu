@@ -96,7 +96,7 @@
     "failed": 0,
     "skipped": 0
   },
-  "requiredCi": "pending exact candidate head",
+  "requiredCi": "All five PR and merged-source checks pass on attempt 1",
   "publication": "Safe hashes/counts/assertion names only; no fixture credentials, identifiers, row contents or service logs",
   "committedPlanUpdates": 0,
   "historicalInventory": {
@@ -123,5 +123,215 @@
     "package.json",
     "package-lock.json"
   ],
-  "productionQa": "not run (paused by owner); affected suites: none"
+  "productionQa": "not run (paused by owner); affected suites: none",
+  "release": {
+    "pr": 488,
+    "approvedHead": "265c3a408f98b3c967328f94c87972e42ef02187",
+    "mergedCommit": "1d65c1f9c476c9c3f9b89511b1d045090219b6dc",
+    "approvedTree": "6d2c934921d7267c34db37616942b1633392e68f",
+    "mergedTreePreserved": true,
+    "prCiRun": 43697886510,
+    "mainCi": {
+      "head": "1d65c1f9c476c9c3f9b89511b1d045090219b6dc",
+      "runId": 43698935120,
+      "attempt": 1,
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132765522711,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 132765522842,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 132765522905,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 132765522921,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 132767313939,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "codeTests": 1847,
+      "browserTests": 696,
+      "codeTestProof": [
+        "2026-11-15T09:29:32.2032773Z # tests 1847",
+        "2026-11-15T09:29:32.2033249Z # pass 1847",
+        "2026-11-15T09:29:32.2033481Z # fail 0",
+        "2026-11-15T09:29:32.2033718Z # cancelled 0",
+        "2026-11-15T09:29:32.2033956Z # skipped 0",
+        "2026-11-15T09:29:32.2034166Z # todo 0",
+        "2026-11-15T09:29:32.2034416Z # duration_ms 413823.402527"
+      ],
+      "browserProof": [
+        "2026-11-15T09:29:23.9470692Z # tests 696",
+        "2026-11-15T09:29:23.9470934Z # pass 696",
+        "2026-11-15T09:29:23.9471041Z # fail 0",
+        "2026-11-15T09:29:23.9471157Z # cancelled 0",
+        "2026-11-15T09:29:23.9471288Z # skipped 0",
+        "2026-11-15T09:29:23.9471405Z # todo 0",
+        "2026-11-15T09:29:23.9471562Z # duration_ms 388006.55229"
+      ],
+      "postgresProof": [
+        "2026-11-15T09:23:09.9343351Z Ran 8 tests in 0.002s",
+        "2026-11-15T09:23:47.8155151Z {\"passed\": true, \"checks\": 18}",
+        "2026-11-15T09:23:49.3270491Z Ran 15 tests in 1.313s",
+        "2026-11-15T09:24:22.1175867Z {\"passed\": true, \"checks\": 20}",
+        "2026-11-15T09:24:32.1878534Z {\"scope\": \"owned-disposable-local\", \"productionTouched\": false, \"observedAt\": \"2026-11-15T09:24:22.318758+00:00\", \"lineage\": \"haiedu-fresh-20261114-v1\", \"plannedUpdates\": 0, \"baselineIdentity\": \"3739105a6bfa22ed0cddea667ee1b0df804273b4a5dc91fa5b1584d753992b44\", \"firstRun\": {\"applied\": [], \"alreadyApplied\": 0, \"catalogueSha256\": \"208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331\"}, \"repeatRun\": {\"applied\": [], \"alreadyApplied\": 0, \"catalogueSha256\": \"208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331\"}, \"cleanup\": \"Owned local component stack removed\", \"passed\": true}"
+      ]
+    },
+    "publicStatic": {
+      "observedAt": "2026-11-15T09:30:21.482Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. Existing full-build proof is reused because app/build source is unchanged. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "1d65c1f9c476c9c3f9b89511b1d045090219b6dc",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "f32d3839e5caee0af6022d7e1b64368cc617c64489a39ef0a73c5091af3be69f",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "1d65c1f9c476c9c3f9b89511b1d045090219b6dc",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "f32d3839e5caee0af6022d7e1b64368cc617c64489a39ef0a73c5091af3be69f",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "1d65c1f9c476c9c3f9b89511b1d045090219b6dc",
+          "buildId": "41b75062950fff7d8f85c8ec495215ed862e1075aed8b166d1d7c26eebcce377",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "f32d3839e5caee0af6022d7e1b64368cc617c64489a39ef0a73c5091af3be69f",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "319fbb6a57c08fc39bf37fdc9aba5659099f109a78ba67bf86e640ef0fdd1dad",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "e8296609ad941496bdd81cc3c027797fdd141e378c1d56e252786ffcdcb32ea9",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "verificationBoundary": "Fresh public static files/headers; unchanged full-build evidence reused. No sign-in, Supabase request, production QA, hosted database write or manual promotion."
+  }
 }

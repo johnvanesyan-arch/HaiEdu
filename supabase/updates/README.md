@@ -1,5 +1,7 @@
 # Future updates after the fresh database baseline
 
+Status: [PR488](https://github.com/johnvanesyan-arch/HaiEdu/pull/488) is merged and verified at `1d65c1f9c476c9c3f9b89511b1d045090219b6dc`; all required PR/main checks and three-domain public static checks pass. See the [verified delivery and remaining gates](../../docs/qa/fresh-database-forward-updates-20261115.md).
+
 This is the BF-20 **local qualification bridge**. It defines a separate, versioned
 update list for databases created from the reviewed fresh baseline. It does not
 adopt or modify an existing local/hosted database and is not a production deployer.
