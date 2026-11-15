@@ -40,5 +40,5 @@ export async function buildStagingFunctions(output) {
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   if(process.argv.length!==3)throw Error('Expected owned temporary output directory');
   await buildStagingFunctions(path.resolve(process.argv[2]));
-  console.log('Built 11 offline local function bundles from unchanged application source.');
+  console.log(`Built ${stagingFunctions.length} offline local function bundles from unchanged application source.`);
 }

@@ -7,6 +7,15 @@ if (!/^[a-f0-9]{24}$/.test(configuration.runId ?? '') || !/^[a-f0-9]{40}$/.test(
 const cors = {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, apikey, content-type, x-client-info, x-supabase-api-version',
   'Access-Control-Allow-Methods':'GET,POST,OPTIONS','Cache-Control':'no-store'};
 const result=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'Content-Type':'application/json'}});
+async function boundedBody(req:Request,limit:number) {
+  if(Number(req.headers.get('content-length'))>limit)return null;
+  const reader=req.clone().body?.getReader();if(!reader)return new Uint8Array();
+  const chunks:Uint8Array[]=[];let length=0;
+  try {while(true){const {done,value}=await reader.read();if(done)break;length+=value.length;
+    if(length>limit){void reader.cancel();return null;}chunks.push(value);}}
+  finally {reader.releaseLock();}
+  const bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}return bytes;
+}
 Deno.serve(async req=>{
   const url=new URL(req.url);
   if(req.method==='OPTIONS')return new Response('ok',{headers:cors});
@@ -16,6 +25,7 @@ Deno.serve(async req=>{
   if(/^\/auth\/v1\/(?:token|user|logout|settings|health|\.well-known\/jwks\.json)$/.test(url.pathname)) upstream='http://auth:9999'+url.pathname.slice('/auth/v1'.length)+url.search;
   else if(url.pathname==='/auth/v1/admin/users' && req.headers.get('apikey')===configuration.serviceKey && req.method==='GET') upstream='http://auth:9999/admin/users'+url.search;
   else if(url.pathname.startsWith('/rest/v1/')) upstream='http://rest:3000'+url.pathname.slice('/rest/v1'.length)+url.search;
+  else if(/^\/storage\/v1\/object\/(?:authenticated\/|public\/)?teacher-task-files\/[a-zA-Z0-9_/-]+\.(?:pdf|docx)$/.test(url.pathname)) upstream='http://storage:5000'+url.pathname.slice('/storage/v1'.length)+url.search;
   else if(url.pathname.startsWith('/functions/v1/')) {
     const name=url.pathname.slice('/functions/v1/'.length);
     if(routeNames.includes(name))service=name;
@@ -23,8 +33,9 @@ Deno.serve(async req=>{
   if((!upstream&&!service) || !['GET','POST'].includes(req.method))return result({error:'local_route_not_enabled'},404);
   try {
     const headers=new Headers(req.headers);headers.delete('host');headers.delete('content-length');
-    const body=req.method==='GET'?undefined:await req.clone().arrayBuffer();
-    if(body && body.byteLength>1048576)return result({error:'local_request_too_large'},413);
+    const limit=service?services[service].maxBodyBytes??1048576:upstream?.startsWith('http://storage:5000/')?10485760:1048576;
+    const body=req.method==='GET'?undefined:await boundedBody(req,limit);
+    if(body===null)return result({error:'local_request_too_large'},413);
     if(service && services[service].actions) {
       let action;try{action=JSON.parse(new TextDecoder().decode(body)).action;}catch{}
       if(!services[service].actions.includes(action))return result({error:'local_read_action_required'},400);
@@ -36,7 +47,7 @@ Deno.serve(async req=>{
       const worker=await EdgeRuntime.userWorkers.create({servicePath:'/service/'+service,
         memoryLimitMb:150,workerTimeoutMs:60000,noModuleCache:false,forceCreate:false,
         envVars:[['SUPABASE_URL','http://api:8080'],['SUPABASE_SERVICE_ROLE_KEY',configuration.serviceKey],
-          ['HAIEDU_RATE_BUDGETS_MODE','off'],['NO_PROXY','api,auth,rest'],['no_proxy','api,auth,rest']]});
+          ['HAIEDU_RATE_BUDGETS_MODE','off'],['NO_PROXY','api,auth,rest,storage'],['no_proxy','api,auth,rest,storage']]});
       // The pinned runtime attaches transport metadata to the original request.
       // Inspect a clone above; retain that original request and its unread body.
       response=await worker.fetch(req);
