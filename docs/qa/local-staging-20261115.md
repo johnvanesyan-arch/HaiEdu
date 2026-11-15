@@ -1,6 +1,6 @@
 # BF-21 stage 1 — owned local staging
 
-15 November 2026. Locally qualified candidate; not merged.
+**Merged and verified on 15 November 2026.** Owner-approved [PR492](https://github.com/johnvanesyan-arch/HaiEdu/pull/492) merged at `975230b7dd482e093b503511dff9411b3f256fd6`, preserving approved tree `c43b6bc4365c7a786f04f92a7e0554767e5af7c8`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43737395251) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43742311841) pass, including the new staging journey. This completes BF-21 stage 1, not the wider staging/migration initiative.
 
 This first stage provides a disposable place to test real sign-in and school-scoped service access. It rebuilds the complete reviewed application schema, creates six fictional accounts in two schools with two distinct subjects/grades, and runs three repository Edge services in the real Supabase Edge Runtime. It does not convert or reset `haiedu-bf16-test`.
 
@@ -42,8 +42,14 @@ The generated browser configuration points exclusively at the owned backend and 
 
 ## Verification and remaining work
 
-The [sanitized local receipt](../evidence/local-staging-20261115.json) records all six successful role journeys, 13 browser/service check groups, all test sessions closed, zero rate-budget counters, and verified owned cleanup. Four target/server refusal tests, one setup-redirect test, 1,851 code tests, eight baseline controls and fifteen forward-update controls pass. Teacher bundle, browser asset/archive parity, type checking and production QA dependency checks pass. The receipt identifies the base commit and exact new runner hashes; exact PR-head CI is still pending. The new journey is included in the existing required PostgreSQL CI job; the five-job release aggregate remains intact. Production QA not run (paused by owner). Affected production QA: none; application code, production runners and their pause guards are unchanged.
+The [sanitized local receipt](../evidence/local-staging-20261115.json) records all six successful role journeys, 13 browser/service check groups, all test sessions closed, zero rate-budget counters, and verified owned cleanup. Four target/server refusal tests, one setup-redirect test, 1,851 code tests, eight baseline controls and fifteen forward-update controls pass. Teacher bundle, browser asset/archive parity, type checking and production QA dependency checks pass. The receipt identifies the base commit and exact new runner hashes; exact PR-head and merged-source CI both pass with 1,851 code tests and 696 browser checks, with zero failures/skips/cancellations in those counted suites. The new six-account staging journey and all retained database qualifications pass in both runs. The new journey is included in the existing required PostgreSQL CI job; the five-job release aggregate remains intact. Production QA not run (paused by owner). Affected production QA: none; application code, production runners and their pause guards are unchanged.
 
 BF-21 remains open after stage 1. Later work includes broader fixtures and file/assessment journeys, separately approved hosted conversion, assertion-preserving migration of the 21 credential-bearing QA workflows, synthetic-report exclusion, and the existing deferred BF-02 recovery dependency. This stage does not establish classroom capacity, production acceptance, content/SME approval or owner usability acceptance.
 
 Owner usability acceptance: not given. BF-22 is on hold while this selected stage is completed. BF-16 live limits remain off; paid stolen-password protection remains declined.
+
+## Release verification
+
+The three public addresses serve `975230b7dd482e093b503511dff9411b3f256fd6`. Twelve fresh checks verify release identity, exact asset manifest, representative account-access HTML/JavaScript bytes, MIME, cache rules and enforcing security headers. Existing full-build proof is reused because application/build source is byte-identical to the earlier verified release. Only static files were fetched; no page scripts, sign-in, Supabase requests or production QA ran. Normal Git integration updated the site; no manual promotion or hosting-setting change occurred.
+
+The release receipt records the approved head/tree, exact PR/main checks and public static observations. The original local receipt and its working-tree source hashes remain preserved. No hosted test-project reset, backend deployment, production data change or paid action occurred. The separate documentation record and Notion summary preserve all later-stage and recovery boundaries.
