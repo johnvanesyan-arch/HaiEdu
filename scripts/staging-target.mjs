@@ -12,7 +12,7 @@ export function loopbackOrigin(value) {
 export function validateStagingTarget(target, owned) {
   if (!target || !owned || target.schemaVersion !== STAGING_VERSION || target.kind !== 'owned-local'
       || !/^[a-f0-9]{24}$/.test(target.runId ?? '') || !/^[a-f0-9]{40}$/.test(target.sourceCommit ?? '')
-      || target.fixtureVersion !== 'two-school-dashboards-v2'
+      || !['two-school-dashboards-v2','two-school-assessment-files-v3'].includes(target.fixtureVersion)
       || !/^[a-f0-9]{64}$/.test(target.buildId ?? '')) throw Error('staging_manifest_invalid');
   for (const key of ['backendOrigin', 'frontendOrigin']) loopbackOrigin(target[key]);
   if (target.backendOrigin === target.frontendOrigin) throw Error('staging_origins_must_differ');

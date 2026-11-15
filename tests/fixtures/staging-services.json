@@ -17,5 +17,24 @@
     "actions": [
       "list"
     ]
+  },
+  "start-learning-session": {},
+  "get-session-item": {},
+  "submit-answer": {},
+  "submit-mastery-answer": {},
+  "get-mastery-check-status": {},
+  "get-chapter-mastery-lifecycle": {},
+  "manage-teacher-task-drafts": {},
+  "manage-teacher-task-delivery": {},
+  "manage-teacher-task-student-work": {},
+  "manage-teacher-task-review": {},
+  "manage-teacher-task-sources": {
+    "maxBodyBytes": 10551296
+  },
+  "manage-teacher-task-student-files": {
+    "maxBodyBytes": 10551296
+  },
+  "manage-teacher-task-review-files": {
+    "maxBodyBytes": 10551296
   }
 }

@@ -176,6 +176,9 @@ jobs:
         run: |
           python tests/staging-transport-unit.py
           python scripts/run-local-staging.py --evidence-dir /tmp/haiedu-local-staging-evidence
+      - name: Verify local assessment completion and private file journeys
+        timeout-minutes: 12
+        run: python scripts/run-local-staging.py --journey assessment-files --evidence-dir /tmp/haiedu-assessment-files-evidence
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races

@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "scope": "BF-21 owned-local assessment/file qualification",
+  "assessmentFiles": {
+    "schemaVersion": 1,
+    "sourceCommit": "54aefa3db1cdf35a1e95dea85b8362caab04604d",
+    "fixtureVersion": "two-school-assessment-files-v3",
+    "journeyKind": "assessment-files",
+    "edgeImage": "public.ecr.aws/supabase/edge-runtime:v1.78.1@sha256:362e9177660ae4d3affb6978480cc6161a8ea0764f1c2c7f738348eda1c3fbf2",
+    "productionTouched": false,
+    "hostedTestTouched": false,
+    "startedAt": "2026-11-15T19:59:23.462828+00:00",
+    "passed": true,
+    "workingTreeClean": false,
+    "runnerSources": {
+      "scripts/run-local-staging.py": "6492f8484a53f0fbef8ee9a69fd8cca20626ef7b2f5e36028fc7d7ee63b88675",
+      "scripts/local-staging-journey.mjs": "609493e373152d9df2fede3bcee9dea059d5ab6e0beac815f06784e26e14345b",
+      "scripts/local-staging-assessment-files.mjs": "2abf8cd19e3fee73433c8a9df0bc4b5d0ab66ae15b1cd1c301b9f669531e4ad3",
+      "tests/fixtures/staging_assessments.py": "0f73bb1221dcb5b1ba179ac78936f947af0a593cbdd834efb61966635a9e72d6",
+      "tests/fixtures/synthetic-task-documents.mjs": "68917194e167cbc52a2fb1a7d106284c63a6711fe1399fefa089916b2bd6fe16",
+      "tests/fixtures/governed-runtime-model.json": "8c1c7a2845f284379caf43d4cb33f515b4629bc0d566c2fb0d45eaada9d5f7d7",
+      "scripts/staging-target.mjs": "c008f3cd22e08ddddaebce315ad9e249a56d9d8b9939d1dbda22eef7ef413d53",
+      "scripts/build-staging-functions.mjs": "3e59931b824148596e5d980c48e091fb9541ce53787bd7ce04c34f547e00bd73",
+      "scripts/local-staging-dashboard-checks.mjs": "a29c5557982e975b9613cf047b24ef83d6fd29809e5d92d32e79e580eb33fb4f",
+      "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+      "tests/fixtures/staging_stack.py": "99b9d6a93bc045f5bdadc5e7ace1aa8ceff0474beb7095056fcf5fdea02fffbe",
+      "tests/fixtures/staging_curriculum.py": "047b8000f7c6d145efe9b2333adaf001498c50aef1ba097b0aa4d9ed82f44265",
+      "tests/fixtures/staging-gateway.ts": "e95b88d849af7b2a10615a852304c2b5c1e1292ec656357206a728e0dd6da95f",
+      "tests/fixtures/staging-services.json": "acd4c038cc0d654c4a8aba0c3906716e784f84ed491719ed62849037267708d9",
+      "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+      "tests/fixtures/fresh_baseline_stack.py": "65ef8825eb7b2a42932804fc86de145dcbc5c576e45b2cba25d44ed72bc24e30",
+      "tests/fixtures/bf16_maintenance_postgres.py": "f54956b3c74686bb124d11896a8626ed636a2be3036db71e539ec55669195ded"
+    },
+    "componentImages": {
+      "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+      "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+      "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+      "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+      "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+    },
+    "journey": {
+      "passed": true,
+      "buildId": "c2aad2e7696f8a9830061efc3953625ee635053d7af22dc6e89c1aab4e2f6037",
+      "checks": [
+        "owned target identity and separate browser build verified before sign-in",
+        "A teacher: private source upload and authorized delivery; direct/public Storage access refused",
+        "A teacher: missing/malformed identity and revoked session refused for manage-teacher-task-sources",
+        "B teacher: private source upload and authorized delivery; direct/public Storage access refused",
+        "B teacher: missing/malformed identity and revoked session refused for manage-teacher-task-sources",
+        "A student: diagnostic prerequisite, foreign context and hidden answer keys enforced",
+        "A student: native diagnostic completion, reload/resume and idempotent answers",
+        "A student: native practice completion, reload/resume and idempotent answers",
+        "A student: actual PDF/DOCX upload, saved draft, reload, submission and exact private downloads",
+        "A student: invalid file and foreign source refused",
+        "A student: missing/malformed identity and revoked session refused for manage-teacher-task-student-files, get-session-item",
+        "B student: diagnostic prerequisite, foreign context and hidden answer keys enforced",
+        "B student: native diagnostic completion, reload/resume and idempotent answers",
+        "B student: native practice completion, reload/resume and idempotent answers",
+        "B student: actual PDF/DOCX upload, saved draft, reload, submission and exact private downloads",
+        "B student: invalid file and foreign source refused",
+        "B student: missing/malformed identity and revoked session refused for manage-teacher-task-student-files, get-session-item",
+        "A teacher: actual review page downloads, private feedback save and publication",
+        "A teacher: missing/malformed identity and revoked session refused for manage-teacher-task-review-files",
+        "B teacher: actual review page downloads, private feedback save and publication",
+        "B teacher: missing/malformed identity and revoked session refused for manage-teacher-task-review-files",
+        "A student: own published feedback visible; foreign history/work and teacher file access refused",
+        "B student: own published feedback visible; foreign history/work and teacher file access refused",
+        "A administrator: learner assessment and teacher-only file access refused",
+        "B administrator: learner assessment and teacher-only file access refused"
+      ],
+      "accounts": 6,
+      "schools": 2,
+      "subjects": 2,
+      "browserNetworkRefusals": 0,
+      "boundary": "Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim."
+    },
+    "tenantEvidenceBindingsVerified": true,
+    "privateFilesCreated": 6,
+    "taskSubmissionsCreated": 2,
+    "publishedTaskReviews": 2,
+    "allTestSessionsClosed": true,
+    "rateBudgetCountersCreated": 0,
+    "learningSessionsCreated": 4,
+    "assessmentAttemptsCreated": 8,
+    "ownedCleanupVerified": true,
+    "finishedAt": "2026-11-15T20:03:08.228053+00:00",
+    "sourceCommitMeaning": "Base commit of locally tested working tree; runner hashes identify new source. Exact PR-head CI is separate.",
+    "functionBundles": [
+      {
+        "name": "get-student-classes",
+        "sha256": "c5bdc8e7cf6a50942bdf370c0de27ebd0a576dbaa019b34010a39803824ade65",
+        "sdkVersion": "2.118.0",
+        "inputCount": 53,
+        "inputManifestSha256": "2950bbd2515b73d4131cc4762f3cbf446e8e17261a654cd4a6c31f79812f6fbe"
+      },
+      {
+        "name": "get-student-dashboard",
+        "sha256": "98d5683e446c9fcf438313ad5099b452944ef7971e33332f0f497ffdbab18e94",
+        "sdkVersion": "2.118.0",
+        "inputCount": 56,
+        "inputManifestSha256": "7d2fd355fee55542d4bed90c2446bb9a5aa5d49449a7845dc9069979afd7ded0"
+      },
+      {
+        "name": "get-student-work",
+        "sha256": "1172a7f5901b119c5886289e580d0d876bd3445fc89d7ca7755ea4c5fe1cfb32",
+        "sdkVersion": "2.57.4",
+        "inputCount": 61,
+        "inputManifestSha256": "26336886e74de5cc000458ab9ee49b16d25a76cbe03f6c72a3c8457ef414bb97"
+      },
+      {
+        "name": "get-teacher-dashboard",
+        "sha256": "85d3fdfad950518bc82e54ca09dd1706571e64274af668fc75f99cd738446905",
+        "sdkVersion": "2.118.0",
+        "inputCount": 56,
+        "inputManifestSha256": "07bfc71e8916beaa5ef2640ee283f40c6eab512f750f6477368bc3e2481eb2ee"
+      },
+      {
+        "name": "get-teacher-workspace",
+        "sha256": "756b9d6645f4f5a56722ab5773e9d9e28ec904d0aefa8aac228707bc17de7ad0",
+        "sdkVersion": "2.118.0",
+        "inputCount": 49,
+        "inputManifestSha256": "afb2f38ccda934e839a3e80682372758187fa7130284efda883db6fb4bd8dc7b"
+      },
+      {
+        "name": "get-school-admin-overview",
+        "sha256": "360f95109d41fee06d96c195a90077c2550ef874696178619300294945c9c34f",
+        "sdkVersion": "2.118.0",
+        "inputCount": 47,
+        "inputManifestSha256": "447bfabb7fa452da17df6e6b70df60afcb06be90b441aff1dcf0e1535c5fafa7"
+      },
+      {
+        "name": "get-school-performance-analytics",
+        "sha256": "e7d29504bfd00ec7fb46262c6205b32bc6c29f473d7703898c98a24da38561f3",
+        "sdkVersion": "2.118.0",
+        "inputCount": 49,
+        "inputManifestSha256": "d3bb10bb3db809a3e0039bfa0d20bf38789f92fa505ab11bb7d88df9a7faa4e5"
+      },
+      {
+        "name": "get-school-teachers",
+        "sha256": "2741c4b4b16b55cc329353983aedba7df8c80f016ad60dad50cd011cf70c0841",
+        "sdkVersion": "2.118.0",
+        "inputCount": 47,
+        "inputManifestSha256": "21f425ea695cd3ff42b19a3c51f8fa5cf6d08193a2dfac1280857cb5e0e238f7"
+      },
+      {
+        "name": "get-school-subject-options",
+        "sha256": "153cb2b92f0167c73dff7415cd28a3b84b0929565d2b6c4b7eccb0326904a02a",
+        "sdkVersion": "2.118.0",
+        "inputCount": 47,
+        "inputManifestSha256": "11fe3adbcdb680e10ea729d6b808e393ced522e4420db69ac08d644a21429174"
+      },
+      {
+        "name": "manage-school-academic-year",
+        "sha256": "903032c71473f54d3d9e5f898f03247f1e6ba298042f645fe8eb4f9a2f2943d2",
+        "sdkVersion": "2.118.0",
+        "inputCount": 47,
+        "inputManifestSha256": "622f57ac0c6410b1f2010fe7445e0fbe0e79b241107eb50b29bb239a61317d53"
+      },
+      {
+        "name": "manage-staff-invitation",
+        "sha256": "eca2e1cf4ec3fdd316e83d18a5ea984f68b51c5265983c05c9269bbef71159b0",
+        "sdkVersion": "2.118.0",
+        "inputCount": 47,
+        "inputManifestSha256": "07c00302e8d1279ce707e6438f451f1560b1a2f00433669468e5c6c4abcb970f"
+      },
+      {
+        "name": "start-learning-session",
+        "sha256": "58877b11b6fd305f566b40540d52b6a36349c8f0120aae2169e6718c5fbab7d7",
+        "sdkVersion": "2.118.0",
+        "inputCount": 57,
+        "inputManifestSha256": "5872c34019fbc6653d950dc39d085d1610664da2972460dcf37084ef412f53ed"
+      },
+      {
+        "name": "get-session-item",
+        "sha256": "96bf21bc4ee775879e9cc5c4d723c4b798342207a758f799ea97ceeb6045d0e9",
+        "sdkVersion": "2.118.0",
+        "inputCount": 55,
+        "inputManifestSha256": "bfe9c9928824661d811d14457c409e9382398af3a1577b9012fd929942ae19c6"
+      },
+      {
+        "name": "submit-answer",
+        "sha256": "b038b131f969035aaa2ba9dc4fa6d6e7d3bb4665e1828ab25811af91c0a84364",
+        "sdkVersion": "2.118.0",
+        "inputCount": 59,
+        "inputManifestSha256": "a8ac2883d0f35e71493c4ee762455f09d6048e36b35464da136ad5c864dcabc6"
+      },
+      {
+        "name": "submit-mastery-answer",
+        "sha256": "7a72db9bfdd82d639d78fe28672db1ccf2481ba1cbf9a4a2753408fe9957ef9e",
+        "sdkVersion": "2.118.0",
+        "inputCount": 53,
+        "inputManifestSha256": "1f52c1a120b0f63f31e037083ac26de08b47c622925e74a923f93dd863169eee"
+      },
+      {
+        "name": "get-mastery-check-status",
+        "sha256": "0665c6719d24ee7178d48b283aff27b9003c81b6f14ca566b4441c0ef33b6eaf",
+        "sdkVersion": "2.118.0",
+        "inputCount": 53,
+        "inputManifestSha256": "19afaccee6585fea8ff23cceccbb08771001491a23887614d0c6bad61d21845f"
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "sha256": "0f75fe6447632d0f4edf20681312b312b487647f9eb88cdf630d24f765af2c85",
+        "sdkVersion": "2.118.0",
+        "inputCount": 53,
+        "inputManifestSha256": "a2c8d2fe7e925e28ac0c3ddef47009c078c87f4c7a6f0ee3484cddea7c71dee0"
+      },
+      {
+        "name": "manage-teacher-task-drafts",
+        "sha256": "60ac3d9acbdf0d76520c9c0e5707ab13514829884519d543ac0a70a41ba56758",
+        "sdkVersion": "2.57.4",
+        "inputCount": 62,
+        "inputManifestSha256": "9c1c53b7f9520577511129e5ddfdd9e2686f08c71c180694ae00f357cc76ef37"
+      },
+      {
+        "name": "manage-teacher-task-delivery",
+        "sha256": "29f5545691f3a17a4287061bf2c52bfb7ffd79c11d8ae70bafb9df3d4914bfec",
+        "sdkVersion": "2.57.4",
+        "inputCount": 62,
+        "inputManifestSha256": "6fd5cb4ed75669491c9a899052d561d374588dd15a20b651edaef63776975e48"
+      },
+      {
+        "name": "manage-teacher-task-student-work",
+        "sha256": "bc0020ddcdba6fc0a3f97343a8a3531fb8d3afe7fa7839cf513a010fcc8bbb22",
+        "sdkVersion": "2.57.4",
+        "inputCount": 63,
+        "inputManifestSha256": "825012cc04c7e5ff4d5212810cd4c80229af5e4e48a5010ec7ad6d073d861610"
+      },
+      {
+        "name": "manage-teacher-task-review",
+        "sha256": "812d2d892425172495960bf4756e53091fe4e95293a9eb07ba38085bcfd53034",
+        "sdkVersion": "2.57.4",
+        "inputCount": 67,
+        "inputManifestSha256": "6f58fbb01f35d571b1c5a0be037342fd3cc9674854261cb1513a18d6361ece1f"
+      },
+      {
+        "name": "manage-teacher-task-sources",
+        "sha256": "4ddfed530b6039548adf79ed0bda64d6ac47852b023733dc6f02a383bb2eba94",
+        "sdkVersion": "2.57.4",
+        "inputCount": 62,
+        "inputManifestSha256": "b162073187b9acb02965c1135599ab1e684c86c53712228297be65a61f0b5334"
+      },
+      {
+        "name": "manage-teacher-task-student-files",
+        "sha256": "59541bdadd85096ffe42c12d8c2b8564a44d3d56ddbecde49126d0c62156db1d",
+        "sdkVersion": "2.57.4",
+        "inputCount": 66,
+        "inputManifestSha256": "f6567a6ac0c1a107f9a9ddaea9a90e5a9d65c1362e7565e1d99f1f873ceb2bd6"
+      },
+      {
+        "name": "manage-teacher-task-review-files",
+        "sha256": "a3f3086a9d7456103e66c1f18068be208c15d947ce323dd322ff6cdc6de87869",
+        "sdkVersion": "2.57.4",
+        "inputCount": 67,
+        "inputManifestSha256": "14deb79d58da21430186c0a65bf7d4548c579591cd7cce67b108e29e8f981a85"
+      }
+    ]
+  },
+  "dashboardRegression": {
+    "schemaVersion": 1,
+    "sourceCommit": "54aefa3db1cdf35a1e95dea85b8362caab04604d",
+    "fixtureVersion": "two-school-dashboards-v2",
+    "journeyKind": "dashboards",
+    "edgeImage": "public.ecr.aws/supabase/edge-runtime:v1.78.1@sha256:362e9177660ae4d3affb6978480cc6161a8ea0764f1c2c7f738348eda1c3fbf2",
+    "productionTouched": false,
+    "hostedTestTouched": false,
+    "startedAt": "2026-11-15T19:59:36.085092+00:00",
+    "passed": true,
+    "workingTreeClean": false,
+    "runnerSources": {
+      "scripts/run-local-staging.py": "6492f8484a53f0fbef8ee9a69fd8cca20626ef7b2f5e36028fc7d7ee63b88675",
+      "scripts/local-staging-journey.mjs": "609493e373152d9df2fede3bcee9dea059d5ab6e0beac815f06784e26e14345b",
+      "scripts/local-staging-assessment-files.mjs": "2abf8cd19e3fee73433c8a9df0bc4b5d0ab66ae15b1cd1c301b9f669531e4ad3",
+      "tests/fixtures/staging_assessments.py": "0f73bb1221dcb5b1ba179ac78936f947af0a593cbdd834efb61966635a9e72d6",
+      "tests/fixtures/synthetic-task-documents.mjs": "68917194e167cbc52a2fb1a7d106284c63a6711fe1399fefa089916b2bd6fe16",
+      "tests/fixtures/governed-runtime-model.json": "8c1c7a2845f284379caf43d4cb33f515b4629bc0d566c2fb0d45eaada9d5f7d7",
+      "scripts/staging-target.mjs": "c008f3cd22e08ddddaebce315ad9e249a56d9d8b9939d1dbda22eef7ef413d53",
+      "scripts/build-staging-functions.mjs": "3e59931b824148596e5d980c48e091fb9541ce53787bd7ce04c34f547e00bd73",
+      "scripts/local-staging-dashboard-checks.mjs": "a29c5557982e975b9613cf047b24ef83d6fd29809e5d92d32e79e580eb33fb4f",
+      "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+      "tests/fixtures/staging_stack.py": "99b9d6a93bc045f5bdadc5e7ace1aa8ceff0474beb7095056fcf5fdea02fffbe",
+      "tests/fixtures/staging_curriculum.py": "047b8000f7c6d145efe9b2333adaf001498c50aef1ba097b0aa4d9ed82f44265",
+      "tests/fixtures/staging-gateway.ts": "e95b88d849af7b2a10615a852304c2b5c1e1292ec656357206a728e0dd6da95f",
+      "tests/fixtures/staging-services.json": "acd4c038cc0d654c4a8aba0c3906716e784f84ed491719ed62849037267708d9",
+      "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+      "tests/fixtures/fresh_baseline_stack.py": "65ef8825eb7b2a42932804fc86de145dcbc5c576e45b2cba25d44ed72bc24e30",
+      "tests/fixtures/bf16_maintenance_postgres.py": "f54956b3c74686bb124d11896a8626ed636a2be3036db71e539ec55669195ded"
+    },
+    "componentImages": {
+      "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+      "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+      "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+      "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+      "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+    },
+    "journey": {
+      "passed": true,
+      "buildId": "20f6ae3fecd66c4df57f88adf4af812e2005a7856f937581b90b899bb96d55f3",
+      "checks": [
+        "owned target identity and separate browser build verified before sign-in",
+        "A student: actual dashboard, owned class data and navigation",
+        "A student: real browser sign-in, role handoff and school-scoped service read",
+        "A student: cross-tab sign-out keeps delayed real data hidden",
+        "A student: UI sign-out and private-page reopening hide prior data",
+        "A student: wrong-role, missing/malformed and revoked-session access refused",
+        "B student: actual dashboard, owned class data and navigation",
+        "B student: real browser sign-in, role handoff and school-scoped service read",
+        "B student: UI sign-out and private-page reopening hide prior data",
+        "B student: wrong-role, missing/malformed and revoked-session access refused",
+        "A teacher: actual dashboard, owned class data and navigation",
+        "A teacher: real browser sign-in, role handoff and school-scoped service read",
+        "A teacher: cross-tab sign-out keeps delayed real data hidden",
+        "A teacher: UI sign-out and private-page reopening hide prior data",
+        "A teacher: wrong-role, missing/malformed and revoked-session access refused",
+        "B teacher: actual dashboard, owned class data and navigation",
+        "B teacher: real browser sign-in, role handoff and school-scoped service read",
+        "B teacher: UI sign-out and private-page reopening hide prior data",
+        "B teacher: wrong-role, missing/malformed and revoked-session access refused",
+        "A school_admin: actual dashboard, owned class data and navigation",
+        "A school_admin: real browser sign-in, role handoff and school-scoped service read",
+        "A school_admin: cross-tab sign-out keeps delayed real data hidden",
+        "A school_admin: UI sign-out and private-page reopening hide prior data",
+        "A school_admin: wrong-role, missing/malformed and revoked-session access refused",
+        "B school_admin: actual dashboard, owned class data and navigation",
+        "B school_admin: real browser sign-in, role handoff and school-scoped service read",
+        "B school_admin: UI sign-out and private-page reopening hide prior data",
+        "B school_admin: wrong-role, missing/malformed and revoked-session access refused"
+      ],
+      "accounts": 6,
+      "schools": 2,
+      "subjects": 2,
+      "browserNetworkRefusals": 0,
+      "boundary": "Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim."
+    },
+    "allTestSessionsClosed": true,
+    "rateBudgetCountersCreated": 0,
+    "learningSessionsCreated": 0,
+    "assessmentAttemptsCreated": 0,
+    "ownedCleanupVerified": true,
+    "finishedAt": "2026-11-15T20:02:04.302686+00:00",
+    "sourceCommitMeaning": "Base commit of locally tested working tree; runner hashes identify new source. Exact PR-head CI is separate."
+  },
+  "validation": {
+    "codeTests": 1856,
+    "codeFailures": 0,
+    "codeSkipped": 0,
+    "targetAndGatewayTests": 9,
+    "setupRedirectTests": 1,
+    "typecheck": true,
+    "coreParity": true,
+    "teacherBundleParity": true,
+    "webAssetsAndArchive": true,
+    "productionQaDependencies": true,
+    "applicationSourcesChanged": false,
+    "productionQa": "not run (paused by owner)",
+    "affectedProductionQa": [],
+    "releaseStatus": "local qualification complete; exact-head CI and merge approval pending"
+  },
+  "localEvidenceReuse": {
+    "file": "tests/fixtures/staging_curriculum.py",
+    "testedSha256": "047b8000f7c6d145efe9b2333adaf001498c50aef1ba097b0aa4d9ed82f44265",
+    "finalSha256": "335c7011056427652e600deeb1973d1d94a78cf171b71dce4dde1b3c4a9d6131",
+    "reason": "After local qualification, only the synthetic release notes were made profile-specific. Dashboard metadata is unchanged; the new profile no longer incorrectly says assessments are unconfigured. No executable control, request, schema or assertion changed. Exact-head CI exercises the final fixture."
+  }
+}

@@ -1,8 +1,9 @@
-"""Fictional navigation-only curriculum for the owned BF-21 database.
+"""Fictional curriculum for the owned BF-21 database.
 
 These are synthetic gate records, not an approval of any real curriculum.
 Every existing constraint/trigger remains enabled. The fixture activates through
-the normal draft-to-pilot gate; no questions or learner evidence are seeded.
+the normal draft-to-pilot gate. The optional assessment profile adds fictional
+questions; neither profile seeds learner sessions or responses.
 """
 from datetime import datetime, timezone
 import hashlib
@@ -12,7 +13,7 @@ from psycopg import sql
 from psycopg.types.json import Jsonb
 
 
-def seed_navigation_curriculum(connection, school):
+def seed_navigation_curriculum(connection, school, *, assessment_files=False):
     label = school['label']
     prefix = 'bf21_' + label.lower()
     title = 'Synthetic unit ' + label
@@ -62,7 +63,8 @@ def seed_navigation_curriculum(connection, school):
            subject_program_id=school['programme'], release_number=1, version_label='fixture-v2',
            status='draft', provenance_quality='exact', source_snapshot=evidence,
            content_fingerprint=hashlib.sha256(prefix.encode()).hexdigest(),
-           notes='Synthetic dashboard navigation only; assessments are unconfigured.')
+           notes=('Synthetic local assessment/file qualification.' if assessment_files
+                  else 'Synthetic dashboard navigation only; assessments are unconfigured.'))
     insert('curriculum_release_units', curriculum_release_id=ids['release'], unit_id=ids['unit'],
            unit_code_snapshot=prefix.upper() + '_U1', title_hy_snapshot=title, sequence_order_snapshot=1)
     insert('curriculum_release_reconciliations', curriculum_release_id=ids['release'],
@@ -80,18 +82,22 @@ def seed_navigation_curriculum(connection, school):
            item_family_id=ids['family'], skill_id=ids['skill'], family_code_snapshot=prefix.upper() + '_F1',
            primary_learning_outcome_id=ids['outcome'], disposition_snapshot='synthetic',
            mapping_type_snapshot='synthetic', rationale_snapshot='Synthetic fixture')
-    # Navigation has no questions, scoring policy or learning-model binding.
-    # The UI must accurately show unavailable assessments, never start a session.
-    for purpose in ('practice', 'diagnostic', 'mastery_check'):
-        pool = str(uuid.uuid4())
-        insert('assessment_pools', id=pool, code=prefix + '_' + purpose,
-               unit_code=prefix.upper() + '_U1', purpose=purpose, name='Synthetic ' + purpose,
-               is_protected=purpose != 'practice', status='draft', metadata=evidence)
-        insert('assessment_blueprints', id=str(uuid.uuid4()), blueprint_key=prefix + '_' + purpose,
-               curriculum_release_id=ids['release'], unit_id=ids['unit'], assessment_pool_id=pool,
-               purpose=purpose, version_number=1, status='pilot', selection_policy_version='synthetic-unconfigured-v1',
-               configuration_snapshot=evidence, item_set_fingerprint=hashlib.sha256(purpose.encode()).hexdigest(),
-               published_at=now)
+    if assessment_files:
+        from staging_assessments import seed_assessments
+        seed_assessments(connection, school, ids, insert, now)
+    else:
+        # Navigation has no questions, scoring policy or learning-model binding.
+        # The UI must accurately show unavailable assessments, never start a session.
+        for purpose in ('practice', 'diagnostic', 'mastery_check'):
+            pool = str(uuid.uuid4())
+            insert('assessment_pools', id=pool, code=prefix + '_' + purpose,
+                   unit_code=prefix.upper() + '_U1', purpose=purpose, name='Synthetic ' + purpose,
+                   is_protected=purpose != 'practice', status='draft', metadata=evidence)
+            insert('assessment_blueprints', id=str(uuid.uuid4()), blueprint_key=prefix + '_' + purpose,
+                   curriculum_release_id=ids['release'], unit_id=ids['unit'], assessment_pool_id=pool,
+                   purpose=purpose, version_number=1, status='pilot', selection_policy_version='synthetic-unconfigured-v1',
+                   configuration_snapshot=evidence, item_set_fingerprint=hashlib.sha256(purpose.encode()).hexdigest(),
+                   published_at=now)
     for gate in ('official_programme_identified', 'normative_sources_registered', 'outcomes_reconciled',
                  'skills_mapped', 'assessment_scope_bound', 'content_qa_passed'):
         insert('curriculum_release_gate_checks', curriculum_release_id=ids['release'], gate_code=gate,
