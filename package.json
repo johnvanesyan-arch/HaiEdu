@@ -26,6 +26,7 @@
     "@supabase/functions-js": "2.118.0",
     "@supabase/supabase-js": "2.118.0",
     "esbuild": "0.28.2",
+    "supabase-staging-2-57-4": "npm:@supabase/supabase-js@2.57.4",
     "typescript": "^5.9.2"
   }
 }

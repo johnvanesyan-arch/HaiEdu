@@ -6,6 +6,7 @@ database, credentials or environment-selected URL is accepted by the CLI.
 from contextlib import contextmanager
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import secrets
@@ -13,14 +14,15 @@ import subprocess
 import uuid
 
 from fresh_baseline_stack import request, wait_for
+from staging_curriculum import seed_navigation_curriculum
 
 EDGE_IMAGE = 'public.ecr.aws/supabase/edge-runtime:v1.78.1@sha256:362e9177660ae4d3affb6978480cc6161a8ea0764f1c2c7f738348eda1c3fbf2'
-FUNCTIONS = ('get-student-classes', 'get-teacher-dashboard', 'get-school-admin-overview')
-FIXTURE_VERSION = 'two-school-role-navigation-v1'
+FUNCTIONS = tuple(json.loads((Path(__file__).parent / 'staging-services.json').read_text()))
+FIXTURE_VERSION = 'two-school-dashboards-v2'
 
 
 @contextmanager
-def service_runtime(database, bundle, run_id, source):
+def service_runtime(database, bundle, run_id, source, diagnostic_dir):
     stack = database.stack
     docker = stack['docker']
     # Ownership is rechecked before fixture work. Each runtime joins only the
@@ -30,37 +32,47 @@ def service_runtime(database, bundle, run_id, source):
     names = []
     label = 'haiedu.staging-run=' + run_id
     try:
-        for name in (*FUNCTIONS, 'gateway'):
-            container = stack['network'] + '-bf21-' + name
-            names.append(container)
-            args = ['run', '-d', '--name', container, '--network', stack['network'],
-                    '--network-alias', 'api' if name == 'gateway' else name,
-                    '--label', label, '--mount', f'type=bind,src={bundle / name},dst=/service,readonly',
-                    '--cap-drop=ALL', '--security-opt=no-new-privileges']
-            # Docker may inherit an external proxy. Exempt only the fixed
-            # service aliases on this already-proven owned local network.
-            # External destinations retain the environment's proxy policy.
-            local_aliases = ','.join(('api', 'auth', 'rest', *FUNCTIONS))
-            args += ['-e', 'NO_PROXY=' + local_aliases, '-e', 'no_proxy=' + local_aliases]
-            if name == 'gateway':
-                args += ['-p', '127.0.0.1::8080', '-e', 'BF21_GATEWAY=' + json.dumps({
+        container = stack['network'] + '-bf21-gateway'
+        names.append(container)
+        args = ['run', '-d', '--name', container, '--network', stack['network'],
+                '--network-alias', 'api', '--label', label,
+                '--mount', f'type=bind,src={bundle},dst=/service,readonly',
+                '--cap-drop=ALL', '--security-opt=no-new-privileges',
+                '-e', 'NO_PROXY=api,auth,rest', '-e', 'no_proxy=api,auth,rest',
+                '-p', '127.0.0.1::8080', '-e', 'BF21_GATEWAY=' + json.dumps({
                     'runId': run_id, 'sourceCommit': source,
                     'anonKey': stack['anonToken'], 'serviceKey': stack['serviceToken']})]
-            else:
-                args += ['-e', 'SUPABASE_URL=http://api:8080',
-                         '-e', 'SUPABASE_SERVICE_ROLE_KEY=' + stack['serviceToken'],
-                         '-e', 'HAIEDU_RATE_BUDGETS_MODE=off']
-            docker(*args, EDGE_IMAGE, 'start', '--main-service', '/service',
-                   '--port', '8080' if name == 'gateway' else '9000', timeout=120)
-            settings = json.loads(docker('inspect', container))[0]
-            assert set(settings['NetworkSettings']['Networks']) == {stack['network']}
-            assert settings['Config']['Labels']['haiedu.staging-run'] == run_id
-        address = docker('port', names[-1], '8080/tcp')
+        # A single pinned runtime creates separate workers for the fixed registry.
+        # Only its owned network aliases are exempted from an inherited proxy.
+        docker(*args, EDGE_IMAGE, 'start', '--main-service', '/service/gateway',
+               '--port', '8080', timeout=120)
+        settings = json.loads(docker('inspect', container))[0]
+        assert set(settings['NetworkSettings']['Networks']) == {stack['network']}
+        assert settings['Config']['Labels']['haiedu.staging-run'] == run_id
+        try:
+            address = docker('port', names[-1], '8080/tcp')
+        except RuntimeError:
+            diagnostic = docker('logs', '--tail', '25', names[-1], check=False)
+            for secret in (stack['anonToken'], stack['serviceToken']):
+                diagnostic = diagnostic.replace(secret, '[local-secret]')
+            raise RuntimeError('local_runtime_start_failed: ' + diagnostic) from None
         assert re.fullmatch(r'127\.0\.0\.1:[1-9][0-9]{0,4}', address)
         backend = 'http://' + address
         expected = {'kind': 'owned-local', 'runId': run_id, 'sourceCommit': source}
         wait_for(lambda: request(backend, 'GET', '/_local/identity') == (200, expected))
         yield backend
+    except Exception:
+        env = os.environ.copy()
+        for key in ('DOCKER_HOST', 'DOCKER_CONTEXT', 'DOCKER_TLS', 'DOCKER_TLS_VERIFY', 'DOCKER_CERT_PATH'):
+            env.pop(key, None)
+        logs = subprocess.run(['docker', '--host=unix:///var/run/docker.sock', 'logs', '--tail', '100', names[-1]],
+                              env=env, capture_output=True, text=True, timeout=10)
+        diagnostic = logs.stdout + logs.stderr
+        for secret in (stack['anonToken'], stack['serviceToken']):
+            diagnostic = diagnostic.replace(secret, '[local-secret]')
+        diagnostic_dir.mkdir(parents=True, exist_ok=True)
+        (diagnostic_dir / 'staging-runtime.log').write_text(diagnostic)
+        raise
     finally:
         for name in reversed(names):
             if docker('inspect', '--format', '{{.Name}}', name, check=False):
@@ -83,7 +95,7 @@ def seed_roles(database):
                 status, user = request(stack['auth'], 'POST', '/admin/users', {
                     'email': account['email'], 'password': account['password'],
                     'email_confirm': True, 'role': 'authenticated',
-                    'user_metadata': {'role': 'admin', 'display_name': 'Synthetic ' + role}}, stack['serviceToken'])
+                    'user_metadata': {'role': 'admin', 'display_name': 'Synthetic ' + school + ' ' + role}}, stack['serviceToken'])
                 assert status == 200, 'local_auth_creation_failed'
                 account['id'] = user['id']
                 assert connection.execute('SELECT role::text,account_status FROM profiles WHERE id=%s',
@@ -134,6 +146,8 @@ def seed_roles(database):
                                    [ids[k] for k in ('invitation', 'school', 'year', 'class', 'assignment', 'programme')] + [actors['student']['id'], hashlib.sha256(secrets.token_bytes(32)).hexdigest(), admin])
                 connection.execute("INSERT INTO institutional_class_enrollments(id,school_id,academic_year_id,class_id,student_membership_id,student_id,invitation_id,teacher_assignment_id,subject_program_id,created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                                    [ids[k] for k in ('enrollment', 'school', 'year', 'class', 'studentMember')] + [actors['student']['id']] + [ids[k] for k in ('invitation', 'assignment', 'programme')] + [admin])
-                schools.append({'label': label, **ids})
+                school = {'label': label, **ids}
+                seed_navigation_curriculum(connection, school)
+                schools.append(school)
             connection.execute("NOTIFY pgrst,'reload schema'")
     return {'accounts': accounts, 'schools': schools}
