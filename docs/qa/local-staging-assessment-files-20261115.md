@@ -1,6 +1,6 @@
 # BF-21 — assessments and private files in owned local staging
 
-The owner authorized the next BF-21 slice on 15 November 2026. This extends the [real-dashboard checks](local-staging-dashboards-20261115.md) with assessment completion and private teacher-task files. **Locally qualified; exact-head CI and merge approval pending.** No merge or hosted acceptance is claimed.
+The owner authorized the next BF-21 slice on 15 November 2026. This extends the [real-dashboard checks](local-staging-dashboards-20261115.md) with assessment completion and private teacher-task files. **Merged and verified on 16 November 2026 (Asia/Yerevan).** Owner-approved [PR496](https://github.com/johnvanesyan-arch/HaiEdu/pull/496) merged at `d9a8d34d8357340d30cc396a5bb5edb98135bc86`, preserving approved tree `2ec24f66d3e485c9303f64c43ad4e704db5d3daf`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43756084458) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43757231332) pass. This completes the bounded local assessment/file slice; wider BF-21 remains open. No hosted service acceptance is claimed.
 
 ## Scope and boundaries
 
@@ -45,3 +45,11 @@ Production QA not run (paused by owner). Affected production QA: none. No produc
 This slice is limited to selected-response Diagnostic/Practice completion and feedback-based teacher tasks using PDF sources and PDF/DOCX responses. It does not certify every response format, Mastery attempt/review lifecycle, assessed audio, writing/resource workflow, classroom capacity, file-format rendering or usability. The tiny synthetic files exercise validation, storage and exact-byte transfer; they are not a document-renderer test.
 
 Wider BF-21 remains open: additional workflows, separately approved hosted adoption, assertion-preserving migration of the 21 credential-bearing QA workflows and synthetic-report exclusion. No hosted database or `haiedu-bf16-test` is queried, reset or converted. BF-02 recovery remains deferred, BF-22 stays on hold, BF-16 live limits remain off and paid stolen-password protection remains declined.
+
+## Release verification
+
+Exact PR-head and merged-source CI both pass with 1,856 code tests and 696 browser checks, with zero failures/skips/cancellations in those counted suites. Both runs pass all 25 assessment/file and 28 retained dashboard check groups, two owned cleanups and the retained database qualifications. The approved head is `d4454ee11b5a6cc3a5de47cd83bd396ae76ccb8f`; the merge preserves its tree. Final fixture metadata is exercised by exact-head CI, including the previously identified descriptive release-note correction.
+
+The three public addresses serve `d9a8d34d8357340d30cc396a5bb5edb98135bc86`. Twelve fresh checks verify release identity, exact asset manifest, representative account-access HTML/JavaScript hashes, MIME, cache rules and enforcing security headers. Product, schema, browser and package source is unchanged; build identity and all 127 asset hashes remain identical. This is representative hosted static verification, not fresh hosted browser/service acceptance. Only static files were fetched; no page scripts, sign-in, Supabase requests or production QA ran. Normal Git integration updated the site; no manual promotion or hosting-setting change occurred.
+
+The release receipt records the approved head/tree, exact PR/main checks and public static observations while preserving the original local working-tree receipt. No hosted test-project reset, backend deployment, production data change or paid action occurred.
