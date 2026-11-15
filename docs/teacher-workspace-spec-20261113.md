@@ -14,13 +14,13 @@
 - **Rejected deletion request:** show the reason on the account page. The page already receives the reason code, so the three fixed reasons need no server change.
 
 **Decisions, 15 November 2026 (John):**
-- **Wording:** John accepted the Armenian wording of the three fixed rejection reasons. This is recorded for those three lines only; the other new account wording in §8 is not covered unless John says so.
+- **Wording:** John accepted the Armenian wording of the three fixed rejection reasons and, in a later message the same day, of the rest of the new account wording (the version 6 account items in §8: the 2-character error, «2–80 նիշ։», the sentence on who sees the name, the deletion sentence, «Այլ» and «մուտքի համակարգում»). This is the owner's acceptance of the account wording only. The other new wording in §8 (Home, class page, review, assign and the rest) is not covered.
 - **«Այլ» (Other) replaces «legal hold»:** the reason has no fixed sentence. It shows what the administrator wrote for that request, or no reason line when nothing was written.
 - **What «Այլ» needs (not built; each production step needs separate approval):**
   1. a place to store the written reason: `account_deletion_requests` has only `resolution_code` today, so a new text column (migration);
   2. `manage-admin-account`: accept `other` instead of `legal_hold`, with an optional written reason of limited length;
   3. `get-my-privacy`: return the written reason to the account owner;
-  4. the master admin's rejection step: today a browser prompt asks the administrator to type an English code and does not offer `staff_offboarding_required`, the reason a teacher most needs. It needs a choice of the four reasons and a text box for «Այլ». This is a master admin page change.
+  4. the master admin's rejection step: today a browser prompt asks the administrator to type an English code and does not offer `staff_offboarding_required`, the reason a teacher most needs. It needs a choice of the four reasons and a text box for «Այլ». This is a master admin page change. **John approved this as an exception on 15 November:** the master admin's rejection step is changed now, limited to that step; the rest of the master admin page waits for its own design work.
 - **Read-only check (15 November, aggregate):** production has no rejected request and no `legal_hold` record, so the rename changes no existing record.
 - **Read-only check behind the decision** (aggregate counts, no names read, 14 November): 12 profiles. All 3 teachers and the 1 master admin have a name. 5 accounts have none: 2 students, 2 school administrators, 1 content reviewer. No name has 1 character, more than 80 characters, or extra spaces. The rule only blocks saving an empty name; it does not fill in existing empty names.
 
