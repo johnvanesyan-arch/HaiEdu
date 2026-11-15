@@ -152,6 +152,16 @@ jobs:
       - name: Rebuild the complete application schema and verify local provider access
         timeout-minutes: 8
         run: python tests/fresh-baseline-integration.py --evidence-dir /tmp/haiedu-fresh-baseline-evidence
+      - name: Verify forward-update plan refusals and historical inventory
+        run: |
+          python tests/fresh-update-unit.py
+          python scripts/inventory-historical-data-effects.py --check
+      - name: Verify forward-update atomicity, preservation and local provider access
+        timeout-minutes: 8
+        run: python tests/fresh-update-integration.py --evidence-dir /tmp/haiedu-fresh-update-evidence
+      - name: Rehearse the committed forward-update plan in an owned local database
+        timeout-minutes: 8
+        run: python scripts/rehearse-fresh-updates.py --rehearse --evidence-dir /tmp/haiedu-forward-plan-evidence
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races

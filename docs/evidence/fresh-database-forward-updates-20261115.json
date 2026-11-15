@@ -1,0 +1,127 @@
+{
+  "scope": "Synthetic forward updates on an owned local real-component stack; no hosted adoption, data recovery or production acceptance",
+  "productionTouched": false,
+  "startedAt": "2026-11-15T09:01:42.293438+00:00",
+  "checks": [
+    {
+      "name": "fresh receipt records the baseline without inventing historical migration entries",
+      "passed": true
+    },
+    {
+      "name": "real Auth accounts, two-subject learning evidence and private Storage fixture exist",
+      "passed": true
+    },
+    {
+      "name": "own-account access and other-account/private-file denials hold before updates",
+      "passed": true
+    },
+    {
+      "name": "a competing update lock refuses a second runner without writes",
+      "passed": true
+    },
+    {
+      "name": "unexpected schema drift refuses the whole update before execution",
+      "passed": true
+    },
+    {
+      "name": "missing declared data prerequisite refuses the update without replaying history",
+      "passed": true
+    },
+    {
+      "name": "unexpected resulting structure rolls back SQL and the receipt",
+      "passed": true
+    },
+    {
+      "name": "attempted learning-evidence deletion is refused and restored by rollback",
+      "passed": true
+    },
+    {
+      "name": "attempted existing account-data rewrite is refused and rolled back",
+      "passed": true
+    },
+    {
+      "name": "SQL failure in a later update rolls back the complete pending batch",
+      "passed": true
+    },
+    {
+      "name": "first future update and its exact receipt commit together",
+      "passed": true
+    },
+    {
+      "name": "changed previously applied update is refused even with the same resulting structure",
+      "passed": true
+    },
+    {
+      "name": "appending an update resumes from the recorded prefix without repeating earlier work",
+      "passed": true
+    },
+    {
+      "name": "repeat execution is a verified no-op",
+      "passed": true
+    },
+    {
+      "name": "an older plan cannot omit an already-applied update",
+      "passed": true
+    },
+    {
+      "name": "receipt tampering is detected",
+      "passed": true
+    },
+    {
+      "name": "receipt-schema permission drift is detected",
+      "passed": true
+    },
+    {
+      "name": "learning evidence, real profile isolation and private file bytes/access survive both updates",
+      "passed": true
+    },
+    {
+      "name": "browser and service roles cannot read or edit update receipts",
+      "passed": true
+    },
+    {
+      "name": "owned containers, temporary database/files and network are removed",
+      "passed": true
+    }
+  ],
+  "firstCatalogueSha256": "2c098440b2cb6f4fdf62690ef9d01442798e1d7dcb4352923389780f99f2e21a",
+  "finalCatalogueSha256": "f56404b4b22ea504077ff35f67c88a7b87361923b35e688a2031afa0e209571d",
+  "baselineIdentity": "3739105a6bfa22ed0cddea667ee1b0df804273b4a5dc91fa5b1584d753992b44",
+  "historicLedgerUntouched": true,
+  "passed": true,
+  "finishedAt": "2026-11-15T09:03:01.200716+00:00",
+  "reviewedBaseCommit": "c0e7901f666da5a489b5bb33eef4d40670ab1b5e",
+  "planControls": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "requiredCi": "pending exact candidate head",
+  "publication": "Safe hashes/counts/assertion names only; no fixture credentials, identifiers, row contents or service logs",
+  "committedPlanUpdates": 0,
+  "historicalInventory": {
+    "sourceFiles": 209,
+    "sourceMigrations": 208,
+    "archivedOperations": 1,
+    "filesWithExplicitWrites": 79,
+    "filesWithExecutableReviewTargets": 66,
+    "setsOverlap": true,
+    "productionRecordsRetained": 218,
+    "fullDataEffectReconciliationComplete": false
+  },
+  "unchangedPaths": [
+    "supabase/migrations/",
+    "supabase/operations/",
+    "supabase/baseline/schema.sql",
+    "supabase/baseline/manifest.json",
+    "supabase/baseline/technical-seed.sql",
+    "supabase/baseline/source-history-crosswalk.json",
+    "supabase/functions/",
+    "web/",
+    "web-build/",
+    "vercel.json",
+    "package.json",
+    "package-lock.json"
+  ],
+  "productionQa": "not run (paused by owner); affected suites: none"
+}
