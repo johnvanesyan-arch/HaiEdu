@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import {STAGING_VERSION,validateStagingTarget,guardedStagingFetch,stagingUrl} from '../scripts/staging-target.mjs';
 
 const target = {schemaVersion:STAGING_VERSION,kind:'owned-local',runId:'a'.repeat(24),sourceCommit:'b'.repeat(40),
-  fixtureVersion:'two-school-role-navigation-v1',buildId:'c'.repeat(64),backendOrigin:'http://127.0.0.1:32110',frontendOrigin:'http://127.0.0.1:32111'};
+  fixtureVersion:'two-school-dashboards-v2',buildId:'c'.repeat(64),backendOrigin:'http://127.0.0.1:32110',frontendOrigin:'http://127.0.0.1:32111'};
 
 test('local staging requires the independently owned origins, source, fixture and build before fetch', () => {
   let calls = 0;

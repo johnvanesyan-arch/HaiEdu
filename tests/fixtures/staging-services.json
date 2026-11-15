@@ -1,0 +1,21 @@
+{
+  "get-student-classes": {},
+  "get-student-dashboard": {},
+  "get-student-work": {},
+  "get-teacher-dashboard": {},
+  "get-teacher-workspace": {},
+  "get-school-admin-overview": {},
+  "get-school-performance-analytics": {},
+  "get-school-teachers": {},
+  "get-school-subject-options": {},
+  "manage-school-academic-year": {
+    "actions": [
+      "list"
+    ]
+  },
+  "manage-staff-invitation": {
+    "actions": [
+      "list"
+    ]
+  }
+}

@@ -1,5 +1,7 @@
 # BF-21 stage 1 — owned local staging
 
+**Follow-up:** the [real-dashboard slice](local-staging-dashboards-20261115.md) extends this historical stage-1 scope; its qualification and release status are recorded separately.
+
 **Merged and verified on 15 November 2026.** Owner-approved [PR492](https://github.com/johnvanesyan-arch/HaiEdu/pull/492) merged at `975230b7dd482e093b503511dff9411b3f256fd6`, preserving approved tree `c43b6bc4365c7a786f04f92a7e0554767e5af7c8`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43737395251) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43742311841) pass, including the new staging journey. This completes BF-21 stage 1, not the wider staging/migration initiative.
 
 This first stage provides a disposable place to test real sign-in and school-scoped service access. It rebuilds the complete reviewed application schema, creates six fictional accounts in two schools with two distinct subjects/grades, and runs three repository Edge services in the real Supabase Edge Runtime. It does not convert or reset `haiedu-bf16-test`.

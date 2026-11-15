@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "c49c6f60367baad918ae38469778048e33baa7fc",
+  "fixtureVersion": "two-school-dashboards-v2",
+  "edgeImage": "public.ecr.aws/supabase/edge-runtime:v1.78.1@sha256:362e9177660ae4d3affb6978480cc6161a8ea0764f1c2c7f738348eda1c3fbf2",
+  "productionTouched": false,
+  "hostedTestTouched": false,
+  "startedAt": "2026-11-15T18:43:00.094519+00:00",
+  "passed": true,
+  "workingTreeClean": false,
+  "runnerSources": {
+    "scripts/run-local-staging.py": "391b27f8397ae6f72581e02886e935283f4b7aba393a18d6a413cf683f778e58",
+    "scripts/local-staging-journey.mjs": "b763b958d71c381955e008b2e2c387764609ba77268538f2a6b4a2d7a020f84a",
+    "scripts/staging-target.mjs": "ea4cc64d16a2fa43be4dd98e88c09c930697385cf1dcf2a4751b9d1512c01940",
+    "scripts/build-staging-functions.mjs": "6e9de5496194409881fbca53c6892670a41bf55de622b75415d6703ad822fb8b",
+    "scripts/local-staging-dashboard-checks.mjs": "a29c5557982e975b9613cf047b24ef83d6fd29809e5d92d32e79e580eb33fb4f",
+    "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+    "tests/fixtures/staging_stack.py": "2fc1e90f9ebe7ac8e098a52d77b38d56da1d7f6dbd0d7ae911cbda64c3317b71",
+    "tests/fixtures/staging_curriculum.py": "3066adea2b6f01a29c7755c88b1e38861398c3122525fe5e4b7944a7645678eb",
+    "tests/fixtures/staging-gateway.ts": "d2b952219f0793508f09e426e9c9ae0030378e274589819233b354a2ebce1924",
+    "tests/fixtures/staging-services.json": "5cc644e60ea192d0ae65860781e077382fd50dbf84397243177854d8b607bd87",
+    "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+    "tests/fixtures/fresh_baseline_stack.py": "65ef8825eb7b2a42932804fc86de145dcbc5c576e45b2cba25d44ed72bc24e30",
+    "tests/fixtures/bf16_maintenance_postgres.py": "f54956b3c74686bb124d11896a8626ed636a2be3036db71e539ec55669195ded"
+  },
+  "componentImages": {
+    "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+    "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+    "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+    "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+    "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+  },
+  "journey": {
+    "passed": true,
+    "buildId": "b193742f8e0795f9c3ca28ae0e5367a0488ad4a62584e22242f010f8b2835353",
+    "checks": [
+      "owned target identity and separate browser build verified before sign-in",
+      "A student: actual dashboard, owned class data and navigation",
+      "A student: real browser sign-in, role handoff and school-scoped service read",
+      "A student: cross-tab sign-out keeps delayed real data hidden",
+      "A student: UI sign-out and private-page reopening hide prior data",
+      "A student: wrong-role, missing/malformed and revoked-session access refused",
+      "B student: actual dashboard, owned class data and navigation",
+      "B student: real browser sign-in, role handoff and school-scoped service read",
+      "B student: UI sign-out and private-page reopening hide prior data",
+      "B student: wrong-role, missing/malformed and revoked-session access refused",
+      "A teacher: actual dashboard, owned class data and navigation",
+      "A teacher: real browser sign-in, role handoff and school-scoped service read",
+      "A teacher: cross-tab sign-out keeps delayed real data hidden",
+      "A teacher: UI sign-out and private-page reopening hide prior data",
+      "A teacher: wrong-role, missing/malformed and revoked-session access refused",
+      "B teacher: actual dashboard, owned class data and navigation",
+      "B teacher: real browser sign-in, role handoff and school-scoped service read",
+      "B teacher: UI sign-out and private-page reopening hide prior data",
+      "B teacher: wrong-role, missing/malformed and revoked-session access refused",
+      "A school_admin: actual dashboard, owned class data and navigation",
+      "A school_admin: real browser sign-in, role handoff and school-scoped service read",
+      "A school_admin: cross-tab sign-out keeps delayed real data hidden",
+      "A school_admin: UI sign-out and private-page reopening hide prior data",
+      "A school_admin: wrong-role, missing/malformed and revoked-session access refused",
+      "B school_admin: actual dashboard, owned class data and navigation",
+      "B school_admin: real browser sign-in, role handoff and school-scoped service read",
+      "B school_admin: UI sign-out and private-page reopening hide prior data",
+      "B school_admin: wrong-role, missing/malformed and revoked-session access refused"
+    ],
+    "accounts": 6,
+    "schools": 2,
+    "subjects": 2,
+    "browserNetworkRefusals": 0,
+    "boundary": "Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim."
+  },
+  "allTestSessionsClosed": true,
+  "rateBudgetCountersCreated": 0,
+  "learningSessionsCreated": 0,
+  "assessmentAttemptsCreated": 0,
+  "ownedCleanupVerified": true,
+  "finishedAt": "2026-11-15T18:45:11.368881+00:00",
+  "sourceCommitMeaning": "Base commit of locally tested working tree; runner hashes identify new source. Exact PR-head CI is separate.",
+  "functionBundles": [
+    {
+      "name": "get-student-classes",
+      "sha256": "c5bdc8e7cf6a50942bdf370c0de27ebd0a576dbaa019b34010a39803824ade65",
+      "sdkVersion": "2.118.0",
+      "inputCount": 53,
+      "inputManifestSha256": "2950bbd2515b73d4131cc4762f3cbf446e8e17261a654cd4a6c31f79812f6fbe"
+    },
+    {
+      "name": "get-student-dashboard",
+      "sha256": "98d5683e446c9fcf438313ad5099b452944ef7971e33332f0f497ffdbab18e94",
+      "sdkVersion": "2.118.0",
+      "inputCount": 56,
+      "inputManifestSha256": "7d2fd355fee55542d4bed90c2446bb9a5aa5d49449a7845dc9069979afd7ded0"
+    },
+    {
+      "name": "get-student-work",
+      "sha256": "1172a7f5901b119c5886289e580d0d876bd3445fc89d7ca7755ea4c5fe1cfb32",
+      "sdkVersion": "2.57.4",
+      "inputCount": 61,
+      "inputManifestSha256": "26336886e74de5cc000458ab9ee49b16d25a76cbe03f6c72a3c8457ef414bb97"
+    },
+    {
+      "name": "get-teacher-dashboard",
+      "sha256": "85d3fdfad950518bc82e54ca09dd1706571e64274af668fc75f99cd738446905",
+      "sdkVersion": "2.118.0",
+      "inputCount": 56,
+      "inputManifestSha256": "07bfc71e8916beaa5ef2640ee283f40c6eab512f750f6477368bc3e2481eb2ee"
+    },
+    {
+      "name": "get-teacher-workspace",
+      "sha256": "756b9d6645f4f5a56722ab5773e9d9e28ec904d0aefa8aac228707bc17de7ad0",
+      "sdkVersion": "2.118.0",
+      "inputCount": 49,
+      "inputManifestSha256": "afb2f38ccda934e839a3e80682372758187fa7130284efda883db6fb4bd8dc7b"
+    },
+    {
+      "name": "get-school-admin-overview",
+      "sha256": "360f95109d41fee06d96c195a90077c2550ef874696178619300294945c9c34f",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "447bfabb7fa452da17df6e6b70df60afcb06be90b441aff1dcf0e1535c5fafa7"
+    },
+    {
+      "name": "get-school-performance-analytics",
+      "sha256": "e7d29504bfd00ec7fb46262c6205b32bc6c29f473d7703898c98a24da38561f3",
+      "sdkVersion": "2.118.0",
+      "inputCount": 49,
+      "inputManifestSha256": "d3bb10bb3db809a3e0039bfa0d20bf38789f92fa505ab11bb7d88df9a7faa4e5"
+    },
+    {
+      "name": "get-school-teachers",
+      "sha256": "2741c4b4b16b55cc329353983aedba7df8c80f016ad60dad50cd011cf70c0841",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "21f425ea695cd3ff42b19a3c51f8fa5cf6d08193a2dfac1280857cb5e0e238f7"
+    },
+    {
+      "name": "get-school-subject-options",
+      "sha256": "153cb2b92f0167c73dff7415cd28a3b84b0929565d2b6c4b7eccb0326904a02a",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "11fe3adbcdb680e10ea729d6b808e393ced522e4420db69ac08d644a21429174"
+    },
+    {
+      "name": "manage-school-academic-year",
+      "sha256": "903032c71473f54d3d9e5f898f03247f1e6ba298042f645fe8eb4f9a2f2943d2",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "622f57ac0c6410b1f2010fe7445e0fbe0e79b241107eb50b29bb239a61317d53"
+    },
+    {
+      "name": "manage-staff-invitation",
+      "sha256": "eca2e1cf4ec3fdd316e83d18a5ea984f68b51c5265983c05c9269bbef71159b0",
+      "sdkVersion": "2.118.0",
+      "inputCount": 47,
+      "inputManifestSha256": "07c00302e8d1279ce707e6438f451f1560b1a2f00433669468e5c6c4abcb970f"
+    }
+  ],
+  "localChecks": {
+    "codeTests": 1853,
+    "codeFailures": 0,
+    "targetAndGatewayGuards": 6,
+    "setupRedirectControl": 1,
+    "browserServiceCheckGroups": 28,
+    "crossTabDelayedResponses": 3,
+    "teacherBundle": "passed",
+    "webAssetAndArchiveParity": "passed",
+    "typecheck": "passed",
+    "productionQaDependencyMap": "passed",
+    "coreParity": "passed",
+    "favicon": "passed",
+    "font": "passed",
+    "browserAssetsUnchanged": 127,
+    "renderedViewsReviewed": 9
+  },
+  "releaseStatus": "Local qualification passed; exact-head CI and owner merge approval pending."
+}

@@ -30,9 +30,9 @@ def main():
     proof['workingTreeClean'] = not subprocess.check_output(
         ['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=ROOT, text=True).strip()
     runner_files = ['scripts/run-local-staging.py', 'scripts/local-staging-journey.mjs',
-                    'scripts/staging-target.mjs', 'scripts/build-staging-functions.mjs',
-                    'scripts/fresh_update_bridge.py', 'tests/fixtures/staging_stack.py',
-                    'tests/fixtures/staging-gateway.ts', 'tests/fixtures/staging-egress.js',
+                    'scripts/staging-target.mjs', 'scripts/build-staging-functions.mjs', 'scripts/local-staging-dashboard-checks.mjs',
+                    'scripts/fresh_update_bridge.py', 'tests/fixtures/staging_stack.py', 'tests/fixtures/staging_curriculum.py',
+                    'tests/fixtures/staging-gateway.ts', 'tests/fixtures/staging-services.json', 'tests/fixtures/staging-egress.js',
                     'tests/fixtures/fresh_baseline_stack.py', 'tests/fixtures/bf16_maintenance_postgres.py']
     proof['runnerSources'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in runner_files}
     # Generated identities, service keys and data exist only in private temporary
@@ -47,20 +47,25 @@ def main():
                 proof['componentImages'] = {**database.stack['images'], 'database': database.stack['image']}
                 fixture = seed_roles(database)
                 print('PASS complete baseline and six fictional accounts in two schools', flush=True)
-                with service_runtime(database, bundle, run_id, source) as backend:
+                with service_runtime(database, bundle, run_id, source, output / 'private-diagnostics') as backend:
                     fixture.update({'runId': run_id, 'sourceCommit': source, 'fixtureVersion': FIXTURE_VERSION,
-                                    'backendOrigin': backend, 'anonKey': database.stack['anonToken']})
+                                    'backendOrigin': backend, 'anonKey': database.stack['anonToken'],
+                                    'screenshotDir': str(output / 'private-diagnostics' / 'screenshots')})
                     private_input = temporary / 'fixture.json'
                     private_input.write_text(json.dumps(fixture))
                     private_input.chmod(0o600)
                     result_file = temporary / 'journey-result.json'
-                    subprocess.run(['node', 'scripts/local-staging-journey.mjs', str(private_input), str(result_file)], cwd=ROOT, check=True, timeout=240)
+                    subprocess.run(['node', 'scripts/local-staging-journey.mjs', str(private_input), str(result_file)], cwd=ROOT, check=True, timeout=360)
                     proof['journey'] = json.loads(result_file.read_text())
                     with database.connect() as connection:
                         assert connection.execute('SELECT count(*) FROM auth.sessions').fetchone()[0] == 0
                         assert connection.execute('SELECT count(*) FROM private.actor_rate_buckets').fetchone()[0] == 0
+                        assert connection.execute('SELECT count(*) FROM public.learning_sessions').fetchone()[0] == 0
+                        assert connection.execute('SELECT count(*) FROM public.attempts').fetchone()[0] == 0
                     proof['allTestSessionsClosed'] = True
                     proof['rateBudgetCountersCreated'] = 0
+                    proof['learningSessionsCreated'] = 0
+                    proof['assessmentAttemptsCreated'] = 0
                 docker, network = database.stack['docker'], database.stack['network']
             assert not docker('network', 'inspect', '--format', '{{.Name}}', network, check=False)
             assert not docker('ps', '-aq', '--filter', 'label=haiedu.staging-run=' + run_id)
