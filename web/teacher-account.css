@@ -1,0 +1,50 @@
+/* Teacher account view (T1–T7). Teacher-only: this file is loaded by teacher.html and by no other role's page.
+   Type and shape follow the staff rules in the teacher workspace specification: H2 22/20, H3 18, body 16,
+   small 14; weights 400/600/700; radii 8/12/16; colours only from forest-tokens.css. */
+.teacher-account{display:grid;gap:20px;max-width:760px;min-width:0}
+.teacher-account-status{margin:0;color:var(--forest-muted)}
+.teacher-account-jump{display:flex;flex-wrap:wrap;gap:6px}
+.teacher-account-jump a{display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid var(--forest-control);border-radius:999px;background:var(--forest-surface);color:var(--forest-accent);font-size:.875rem;font-weight:600;text-decoration:none}
+.teacher-account-jump a:hover{background:var(--forest-selected)}
+.teacher-account-card-section{display:grid;gap:12px;min-width:0;margin:0;padding:20px 22px;border-radius:16px}
+.teacher-account-card-section:focus{outline:none}
+body[data-role-workspace] .teacher-account-card-section>h2{margin:0;font-size:1.375rem;line-height:1.4;font-weight:700}
+.teacher-account-card-section h3{margin:0;font-size:1.125rem;line-height:1.45;font-weight:600}
+.teacher-account-card-section p{margin:0;line-height:1.6;overflow-wrap:anywhere}
+.teacher-account-summary{display:grid;gap:8px;margin:0}
+.teacher-account-summary>div{display:grid;grid-template-columns:minmax(90px,140px) minmax(0,1fr);gap:8px}
+.teacher-account-summary dt{color:var(--forest-muted)}
+.teacher-account-summary dd{margin:0;min-width:0;font-weight:600;overflow-wrap:anywhere}
+.teacher-account-sub{display:grid;gap:10px;min-width:0;margin:0;padding:14px 0 0;border:0;border-top:1px solid var(--forest-divider)}
+.teacher-account-sub.teacher-account-first{padding-top:0;border-top:0}
+.teacher-account-field{display:grid;gap:4px;margin:0;font-size:.875rem;font-weight:600}
+.teacher-account-field input{width:100%;max-width:100%;min-height:44px;margin:0;padding:8px 10px;border:1px solid var(--forest-control);border-radius:8px;background:var(--forest-surface);color:var(--forest-ink);font:inherit;font-size:1rem;font-weight:400}
+.teacher-account-field input[aria-invalid="true"]{border-color:var(--forest-error);box-shadow:inset 0 0 0 1px var(--forest-error)}
+.teacher-account-hint{color:var(--forest-muted);font-size:.875rem}
+.teacher-account-error{color:var(--forest-error);font-size:.875rem;font-weight:600}
+.teacher-account-actions{display:flex;flex-wrap:wrap;gap:8px}
+.teacher-account-actions button{min-height:44px;margin:0;max-width:100%}
+.teacher-account-message{padding:10px 14px;border-radius:12px;background:var(--forest-success-bg);color:var(--forest-success);font-weight:600}
+.teacher-account-message[data-tone="error"]{background:var(--forest-error-bg);color:var(--forest-error)}
+.teacher-account-message[hidden],.teacher-account-error[hidden]{display:none}
+.teacher-account-check{display:flex;align-items:flex-start;gap:10px;min-height:44px;margin:0;padding:8px 0;font-weight:400;cursor:pointer}
+.teacher-account-check input{flex:none;width:20px;height:20px;margin:3px 0 0;accent-color:var(--forest-accent)}
+.teacher-account-check span{display:grid;gap:2px;min-width:0}
+.teacher-account-check strong{font-weight:600}
+.teacher-account-check small{color:var(--forest-muted);font-size:.875rem;line-height:1.5}
+.teacher-account details>summary{display:flex;align-items:center;min-height:44px;font-weight:600;cursor:pointer;list-style:none}
+.teacher-account details>summary::-webkit-details-marker{display:none}
+.teacher-account details>summary::before{content:"▸";margin-right:8px;color:var(--forest-accent)}
+.teacher-account details[open]>summary::before{content:"▾"}
+.teacher-account-inventory{display:grid;margin:0}
+.teacher-account-inventory>div{display:flex;justify-content:space-between;gap:12px;padding:6px 2px;border-bottom:1px solid var(--forest-divider)}
+.teacher-account-inventory dt{min-width:0;overflow-wrap:anywhere}
+.teacher-account-inventory dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.teacher-account [data-testid="account-deletion-body"]{display:grid;gap:12px;min-width:0}
+.teacher-account-confirm{display:grid;gap:8px;padding:12px 14px;border:1px solid var(--forest-error);border-radius:12px;background:var(--forest-error-bg)}
+.teacher-account-confirm:focus-visible{outline:3px solid var(--forest-focus);outline-offset:2px}
+body[data-role-workspace] .teacher-account .teacher-account-danger{color:var(--forest-error);border-color:var(--forest-error)}
+/* The account entry in the sidebar footer shows where the teacher is, like a menu item. */
+body[data-role-workspace] .hm-role-foot a[data-role-account][aria-current="page"]{color:var(--forest-accent);background:var(--forest-selected);border-radius:8px}
+/* Phones: the four sections are short enough to scroll, so the section links are left out. */
+@media(max-width:760px){.teacher-account-jump{display:none}.teacher-account-card-section{padding:16px}body[data-role-workspace] .teacher-account-card-section>h2{font-size:1.25rem}}

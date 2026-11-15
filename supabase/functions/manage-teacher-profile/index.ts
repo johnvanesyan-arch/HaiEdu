@@ -1,6 +1,7 @@
 import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { displayNameError, normalizeDisplayName } from "../_shared/display-name.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -55,9 +56,9 @@ Deno.serve(async (req) => {
       return json({ error: "invalid_json" }, 400);
     }
 
-    const displayName = String(body.displayName ?? "").trim().replace(/\s+/g, " ");
-    if (displayName.length < 2) return json({ error: "display_name_too_short" }, 400);
-    if (displayName.length > 100) return json({ error: "display_name_too_long" }, 400);
+    const displayName = normalizeDisplayName(body.displayName);
+    const nameError = displayNameError(displayName);
+    if (nameError) return json({ error: nameError }, 400);
 
     const { data: updated, error: updateError } = await admin
       .from("profiles")

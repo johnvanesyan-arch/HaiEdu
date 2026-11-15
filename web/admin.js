@@ -28,6 +28,11 @@ let archivePage = 1;
 let selectedSchoolId = null;
 let accountCache = new Map();
 const pendingDeletionIds=new Set();
+// Rejecting a deletion request: the administrator chooses one of four reasons on the page. The account owner
+// sees fixed wording for the first three and, for «Այլ», what the administrator writes here (or no reason line).
+const REJECTION_REASONS=[["not_verified","Հարցումը չհաջողվեց հաստատել"],["staff_offboarding_required","Նախ պետք է փոխանցվեն դասարաններն ու գործերը"],["duplicate_request","Նույն հարցումն արդեն ուղարկված է"],["other","Այլ"]];
+const REJECTION_NOTE_MAX=300;
+let rejectingId=null;
 
 
 function fmtDate(value) {
@@ -81,6 +86,9 @@ function friendlyError(error) {if(rateLimitMessage(error))return rateLimitMessag
     school_not_found: "Դպրոցը չի գտնվել։",
     class_not_found: "Դասարանը չի գտնվել։",
     deletion_execution_started:"Վերջնական ջնջումն արդեն սկսված է։ Այն հնարավոր չէ չեղարկել։",
+    // «Այլ» needs the updated server function; until it is deployed the earlier function refuses it.
+    invalid_rejection:"Այս պատճառը դեռ հասանելի չէ։ Ընտրեք այլ պատճառ կամ փորձեք ավելի ուշ։",
+    resolution_note_too_long:"Պատճառը պետք է լինի մինչև 300 նիշ։",
     deletion_client_update_required:"Թարմացրեք էջը՝ ջնջման ընթացքն ու ավարտը ճիշտ տեսնելու համար։",
     task_privacy_storage_unavailable:"Ֆայլերի ջնջումը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
     task_privacy_unavailable:"Ջնջման արդյունքը դեռ չի հաստատվել։ Շարունակեք նույն հարցումը։",
@@ -250,11 +258,47 @@ function renderDeletionRequests(data) {
     let actions = "—";
     if (request.status === "pending") actions = `<div class="admin-actions"><button data-delete-approve="${esc(request.id)}">Հաստատել հարցումը</button><button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել</button></div>`;
     if (request.status === "processing") {const state=erasurePresentation(request);actions = `<div class="admin-actions"><button class="danger-btn" data-delete-execute="${esc(request.id)}" data-delete-started="${state.started}"${pendingDeletionIds.has(request.id)?' disabled':''}>${state.action}</button>${state.canReject?`<button class="secondary" data-delete-reject="${esc(request.id)}">Մերժել / վերադարձնել</button>`:''}</div>`;}
+    if (rejectingId === request.id && ["pending", "processing"].includes(request.status)) actions = rejectionForm(request);
     return `<tr><td><code>${esc(request.id.slice(0, 8))}</code></td><td>${esc(displayUser(user))}</td><td><span class="status-chip ${esc(request.status)}">${esc(statusLabel(request.status))}</span>${request.resolution_code ? `<div class="subtle small">${esc(request.resolution_code)}</div>` : ""}</td><td>${esc(fmtDate(request.requested_at))}</td><td>${actions}</td></tr>`;
   }).join("") : '<tr><td colspan="5" class="empty-row">Ջնջման բաց հարցում չկա։</td></tr>';
   $("deletionRows").querySelectorAll("[data-delete-approve]").forEach((button) => button.addEventListener("click", () => approveDeletion(button.dataset.deleteApprove)));
   $("deletionRows").querySelectorAll("[data-delete-execute]").forEach((button) => button.addEventListener("click", () => executeDeletion(button.dataset.deleteExecute,button.dataset.deleteStarted==='true')));
-  $("deletionRows").querySelectorAll("[data-delete-reject]").forEach((button) => button.addEventListener("click", () => rejectDeletion(button.dataset.deleteReject)));
+  $("deletionRows").querySelectorAll("[data-delete-reject]").forEach((button) => button.addEventListener("click", () => openRejection(data, button.dataset.deleteReject)));
+  bindRejectionForm(data);
+}
+
+function rejectionForm(request) {
+  const id = esc(request.id);
+  return `<form class="admin-rejection" data-testid="deletion-reject-form" data-reject-form="${id}" novalidate>
+    <label for="rejectReason-${id}">Մերժման պատճառը</label>
+    <select id="rejectReason-${id}" data-testid="deletion-reject-reason">${REJECTION_REASONS.map(([code, label]) => `<option value="${code}">${esc(label)}</option>`).join("")}</select>
+    <div data-reject-note hidden>
+      <label for="rejectNote-${id}">Գրեք պատճառը (ըստ ցանկության)</label>
+      <textarea id="rejectNote-${id}" data-testid="deletion-reject-note" rows="3" maxlength="${REJECTION_NOTE_MAX}" aria-describedby="rejectNoteHint-${id}"></textarea>
+      <p class="subtle small" id="rejectNoteHint-${id}">Այս տեքստը կտեսնի հաշվի տերը։ Մինչև ${REJECTION_NOTE_MAX} նիշ։</p>
+    </div>
+    <div class="admin-actions"><button type="submit" data-testid="deletion-reject-submit">Մերժել հարցումը</button><button type="button" class="secondary" data-testid="deletion-reject-back">Վերադառնալ</button></div>
+  </form>`;
+}
+
+function openRejection(data, requestId) {
+  rejectingId = requestId;
+  renderDeletionRequests(data);
+  document.querySelector(`[data-reject-form="${CSS.escape(requestId)}"] select`)?.focus();
+}
+
+function bindRejectionForm(data) {
+  const form = $("deletionRows").querySelector("[data-reject-form]");
+  if (!form) return;
+  const requestId = form.dataset.rejectForm, reason = form.querySelector("select"), note = form.querySelector("[data-reject-note]");
+  const close = () => { rejectingId = null; renderDeletionRequests(data); $("deletionRows").querySelector(`[data-delete-reject="${CSS.escape(requestId)}"]`)?.focus(); };
+  reason.addEventListener("change", () => { note.hidden = reason.value !== "other"; });
+  form.querySelector('[data-testid="deletion-reject-back"]').addEventListener("click", close);
+  form.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    void rejectDeletion(requestId, reason.value, reason.value === "other" ? form.querySelector("textarea").value : "", form.querySelector('[type="submit"]'));
+  });
 }
 
 function renderAudit(data) {
@@ -410,10 +454,16 @@ async function executeDeletion(requestId,started=false) {
   finally{pendingDeletionIds.delete(requestId);if(await current())document.querySelectorAll('[data-delete-execute],[data-delete-reject]').forEach(b=>{if(b.dataset.deleteExecute===requestId||b.dataset.deleteReject===requestId)b.disabled=false;});}
 }
 
-async function rejectDeletion(requestId) {
-  const resolutionCode = prompt("Մերժման կոդ՝ not_verified, legal_hold կամ duplicate_request", "not_verified") || "not_verified";
-  try { await invoke("manage-admin-account", { action:"reject_deletion", requestId, resolutionCode }); await loadDeletions(); setMessage("Հարցումը մերժվել է։"); }
-  catch (error) { setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); }
+async function rejectDeletion(requestId, resolutionCode, resolutionNote, button) {
+  // One request at a time for a deletion request: a second press while the first is pending does nothing.
+  if (pendingDeletionIds.has(requestId)) return;
+  pendingDeletionIds.add(requestId); if (button) button.disabled = true;
+  try {
+    await invoke("manage-admin-account", { action:"reject_deletion", requestId, resolutionCode, resolutionNote });
+    rejectingId = null;
+    await loadDeletions(); setMessage("Հարցումը մերժվել է։");
+  } catch (error) { setMessage((rateLimitMessage(error) ?? (friendlyError(error))), true); if (button?.isConnected) button.disabled = false; }
+  finally { pendingDeletionIds.delete(requestId); }
 }
 
 let adminEntryPromise = null;

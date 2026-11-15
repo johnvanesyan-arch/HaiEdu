@@ -36,6 +36,8 @@ on:
       - web/student-teacher-tasks.mjs
       - web/student-teacher-task-client.mjs
       - web/account-signout.mjs
+      - web/account-core.mjs
+      - web/teacher-account.css
       - web/task-privacy-view.mjs
       - web/teacher-*.mjs
       - scripts/build-teacher-entry.mjs

@@ -1,5 +1,6 @@
 import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { displayNameError, normalizeDisplayName } from "../_shared/display-name.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -74,14 +75,16 @@ Deno.serve(async (req) => {
     }
 
     if (action === "update_display_name") {
-      const displayName = String(body.displayName ?? "").trim();
-      if (displayName.length > 80) return json({ error: "display_name_too_long" }, 400);
+      // The same rule for every role: a name is required and cannot be cleared.
+      const displayName = normalizeDisplayName(body.displayName);
+      const nameError = displayNameError(displayName);
+      if (nameError) return json({ error: nameError }, 400);
       const { data, error } = await admin.from("profiles").update({
-        display_name: displayName || null,
+        display_name: displayName,
         updated_at: new Date().toISOString(),
       }).eq("id", userId).select("display_name").single();
       if (error) return json({ error: "display_name_update_failed", detail: error.message }, 500);
-      await audit(admin, userId, String(profile.role), "profile.display_name_updated", { hasDisplayName: Boolean(displayName) });
+      await audit(admin, userId, String(profile.role), "profile.display_name_updated", { hasDisplayName: true });
       return json({ profile: data });
     }
 

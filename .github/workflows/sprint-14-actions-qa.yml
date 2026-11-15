@@ -20,6 +20,13 @@ on:
       - web/writing-assignments.mjs
       - web/student-work-hub.mjs
       - web/account-signout.mjs
+      - web/account-core.mjs
+      - web/auth-challenge-config.mjs
+      - web/auth-challenge.css
+      - web/auth-challenge.mjs
+      - web/auth-feedback.mjs
+      - web/task-privacy-view.mjs
+      - web/teacher-account.css
       - web/teacher-*.mjs
       - web/keyboard-focus.mjs
       - web/text-safety.mjs

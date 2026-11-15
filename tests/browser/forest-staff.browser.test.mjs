@@ -100,7 +100,8 @@ for(const [file,gate] of pages)test(`Forest staff ${file}: role layout, compact 
         assert.deepEqual(await page.evaluate(teacherHomeReadability),[],`${file}/${width}/${scale}: readable Home`);
         if(scale===200&&width!==768){await page.evaluate(()=>window.scrollTo(0,0));await snapshot(page,`teacher-large-${width}`);}
       }
-      const account=page.locator('.hm-role-foot a[href="./privacy.html"]');
+      // The teacher's one account entry opens inside the teacher layout; other staff roles keep the shared account page.
+      const account=page.locator(file==='teacher.html'?'.hm-role-foot a[href="./teacher.html?view=account"]':'.hm-role-foot a[href="./privacy.html"]');
       await expect(account).toBeVisible();await account.focus();
       assert.equal(await account.evaluate(e=>e===document.activeElement),true);
       assert.ok(await account.evaluate(e=>e.getBoundingClientRect().height>=44));

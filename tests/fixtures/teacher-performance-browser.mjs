@@ -18,7 +18,8 @@ export const installTeacherPerformanceFixture = ({archives,initialFailure,analyt
     if(state.fail.includes(key))return {error:new Error('Synthetic read unavailable')};
     if(fn==='get-teacher-workspace')return {data:{version:'teacher-workspace-v1',snapshotAt:new Date().toISOString(),pendingCount:0,queue:[],cards:[],classCount:2,coverage:'active_writable_school_contexts'}};
     if(fn==='get-teacher-dashboard'){
-      const result={teacher:{id:actor,displayName:'Ուսուցիչ'},institutionalTeacher,institutionalOptions:[],totals:{students:null,studentsNeedingSupport:null},...(!institutionalTeacher?{skills:state.analytics?.skills??[]}: {})};
+      // A second synthetic account has its own name, so tests can see in the page which account's reply was used.
+      const result={teacher:{id:actor,displayName:actor==='teacher-b'?'Երկրորդ ուսուցիչ':'Ուսուցիչ'},institutionalTeacher,institutionalOptions:[],totals:{students:null,studentsNeedingSupport:null},...(!institutionalTeacher?{skills:state.analytics?.skills??[]}: {})};
       if(state.badDashboard)return {data:null};
       if(body.readMode==='directory'){const all=rows.filter(c=>c.isActive===!body.archive&&(!body.search||c.name.includes(body.search))),offset=body.offset??0;return {data:{...result,classes:all.slice(offset,offset+24),directory:{archive:!!body.archive,offset,matching:all.length,hasMore:offset+24<all.length,activeCount:2,archiveCount:archives}}};}
       const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],...state.analytics,...(!institutionalTeacher?{skills:undefined}: {}),analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};

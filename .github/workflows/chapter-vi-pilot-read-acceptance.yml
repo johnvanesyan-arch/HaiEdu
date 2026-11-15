@@ -26,6 +26,13 @@ on:
       - web/student-teacher-tasks.mjs
       - web/student-teacher-task-client.mjs
       - web/account-signout.mjs
+      - web/account-core.mjs
+      - web/auth-challenge-config.mjs
+      - web/auth-challenge.css
+      - web/auth-challenge.mjs
+      - web/auth-feedback.mjs
+      - web/task-privacy-view.mjs
+      - web/teacher-account.css
       - web/teacher-*.mjs
       - scripts/build-teacher-entry.mjs
       - supabase/functions/_shared/teacher-read-identity.mjs

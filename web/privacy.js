@@ -1,5 +1,6 @@
 import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {taskPrivacyRows,erasurePresentation} from './task-privacy-view.mjs';
+import {roleLabel,statusLabel,inventoryPresentation,deletionLabel,normalizeDisplayName,displayNameError,displayNameMessage} from './account-core.mjs';
 import { signOutAccount, showSessionReadFailure, clearSessionReadFailure } from './account-signout.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -64,103 +65,6 @@ async function invoke(name, body = {}) {
   if (error) throw (rateLimitMessage(error) ? error : (new Error(data?.detail || data?.error || error.message)));
   if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(data.detail || data.error)));
   return data;
-}
-
-function roleLabel(role) {
-  return ({ student: "Աշակերտ", teacher: "Ուսուցիչ", school_admin: "Դպրոցի ադմին", content_admin: "Բովանդակության ստուգող", admin: "Master admin", parent: "Ծնող" })[role] || role;
-}
-
-function statusLabel(status) {
-  return ({ active: "Ակտիվ", suspended: "Կասեցված", deletion_pending: "Ջնջման հաստատման փուլում" })[status] || status;
-}
-
-function inventoryPresentation(role, inventory) {
-  const minimization = "Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ այս պրոֆիլում չենք պահում։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։";
-  const views = {
-    student: {
-      title: "Ինչ տվյալներ ենք պահում աշակերտի մասին",
-      description: "Աշակերտի պրոֆիլում պահվում են հաշվի տվյալները և ուսուցման համար անհրաժեշտ դասարանային, հրավերների ու առաջընթացի գրառումները։",
-      rows: [
-        ["Դասարաններ", inventory.classMemberships ?? 0],
-        ["Ստացված հրավերների գրառումներ", inventory.invitationsReceived ?? 0],
-        ["Ուսուցչից ստացված նյութային առաջադրանքներ", inventory.materialAssignmentsReceived ?? 0],
-        ["Ուսուցչից ստացված գրավոր առաջադրանքներ", inventory.writingAssignmentsReceived ?? 0],
-        ["Պատասխանների փորձեր", inventory.attempts ?? 0],
-        ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
-        ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
-        ["Ամրապնդման գրառումներ", inventory.remediationEvents ?? 0],
-        ["Գրավոր աշխատանքներ՝ սևագրեր, պատասխաններ, ստուգումներ", inventory.writtenWork ?? 0],
-        ["Չուղարկված պատասխանների սևագրեր", inventory.responseDrafts ?? 0],
-        ["Ձայնանյութերի օգտագործման գրառումներ", inventory.audioDeliveries ?? 0],
-        ["Գնահատման ընթացքում ձայնանյութերի օգտագործման գրառումներ", inventory.assessedAudioRecordings ?? 0],
-        ["Ընդհանուր նյութերի դիտման գրառումներ", inventory.sourceFamilyExposures ?? 0],
-      ],
-    },
-    teacher: {
-      title: "Ինչ տվյալներ ենք պահում ուսուցչի մասին",
-      description: "Ուսուցչի պրոֆիլում պահվում են հաշվի տվյալները, դպրոցի անդամակցության պատմությունը, դասավանդման նշանակումները, ստեղծված հրավերներն ու կոդերը և գործողությունների աուդիտը։ Աշակերտների արդյունքները այստեղ չեն ներկայացվում։",
-      rows: [
-        ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
-        ["Դասավանդման նշանակումներ", inventory.teachingAssignments ?? 0],
-        ["Ուղարկված նյութային առաջադրանքներ", inventory.materialAssignmentsSent ?? 0],
-        ["Ուղարկված գրավոր առաջադրանքներ", inventory.writingAssignmentsSent ?? 0],
-        ["Գրավոր աշխատանքների գնահատումներ ու նշումներ", inventory.writtenReviews ?? 0],
-        ["Գնահատման անձնական սևագրեր", inventory.feedbackDrafts ?? 0],
-        ["Պատրաստի անձնական գրառումներ՝ ներառյալ արխիվը", inventory.feedbackSnippets ?? 0],
-        ["Գնահատման ուղարկման հաստատումներ", inventory.feedbackReceipts ?? 0],
-        ["Ստեղծված հրավերներ և կոդեր", inventory.invitationRecords ?? 0],
-        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
-      ],
-    },
-    school_admin: {
-      title: "Ինչ տվյալներ ենք պահում դպրոցի ադմինի մասին",
-      description: "Դպրոցի ադմինի պրոֆիլում պահվում են հաշվի տվյալները, դպրոցի անդամակցության պատմությունը, ուղարկված հրավերները և վարչական գործողությունների աուդիտը։",
-      rows: [
-        ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
-        ["Ուղարկված հրավերներ", inventory.invitationRecords ?? 0],
-        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
-      ],
-    },
-    content_admin: {
-      title: "Ինչ տվյալներ ենք պահում բովանդակության ստուգողի մասին",
-      description: "Բովանդակության ստուգողի պրոֆիլում պահվում են հաշվի տվյալները, կատարված ստուգումների և գործողությունների աուդիտային գրառումները։",
-      rows: [
-        ["Բովանդակության ստուգումներ", inventory.contentReviews ?? 0],
-        ["Գրավորի ստուգումներ", inventory.writtenTaskReviews ?? 0],
-        ["Ուսումնական նյութերի տարբերակներ", inventory.materialVersions ?? 0],
-        ["Ուսումնական նյութերի հաստատումներ", inventory.materialReviews ?? 0],
-        ["Նյութերի ստուգման գործողություններ", inventory.materialEvents ?? 0],
-        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
-      ],
-    },
-    admin: {
-      title: "Ինչ տվյալներ ենք պահում Master admin-ի մասին",
-      description: "Master admin-ի պրոֆիլում պահվում են հաշվի տվյալները և անվտանգության ու վարչական գործողությունների աուդիտային գրառումները։",
-      rows: [["Գրավորի ստուգումներ", inventory.writtenTaskReviews ?? 0],
-        ["Ուսումնական նյութերի տարբերակներ", inventory.materialVersions ?? 0],
-        ["Ուսումնական նյութերի հաստատումներ", inventory.materialReviews ?? 0],
-        ["Նյութերի ստուգման գործողություններ", inventory.materialEvents ?? 0], ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
-    },
-  };
-  return views[role] || {
-    title: "Ինչ տվյալներ ենք պահում հաշվի մասին",
-    description: "Պահվում են հաշվի հիմնական տվյալները և անվտանգության համար անհրաժեշտ աուդիտային գրառումները։",
-    rows: [["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
-    minimization,
-  };
-}
-
-function deletionLabel(request) {
-  if (!request) return "Ակտիվ ջնջման հարցում չկա։";
-  if(request.status==="processing"&&erasurePresentation(request).started)return erasurePresentation(request).progress;
-  const labels = {
-    pending: "Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։",
-    processing: "Ադմինը հաստատել է հարցումը, բայց վերջնական ջնջումը դեռ չի իրականացվել։ Դուք դեռ կարող եք չեղարկել այն։",
-    completed: "Վերջին ջնջման հարցումն ավարտվել է։",
-    rejected: "Վերջին ջնջման հարցումը մերժվել է։",
-    cancelled: "Վերջին ջնջման հարցումը չեղարկվել է։",
-  };
-  return labels[request.status] || request.status;
 }
 
 function render(data) {
@@ -233,11 +137,16 @@ async function refresh() {
 
 $("saveNameBtn").addEventListener("click", async () => {
   try {
+    // The same rule for every role: a name is required, 2–80 characters. The server repeats the check.
+    const displayName = normalizeDisplayName($("displayNameInput").value), invalid = displayNameError(displayName);
+    if (invalid) $("displayNameInput").setAttribute("aria-invalid", "true"); else $("displayNameInput").removeAttribute("aria-invalid");
+    if (invalid) { setMessage("nameMessage", displayNameMessage(invalid), true); $("displayNameInput").focus(); return; }
     setMessage("nameMessage", "Պահվում է…");
-    const result = await invoke("manage-my-privacy", { action: "update_display_name", displayName: $("displayNameInput").value });
+    const result = await invoke("manage-my-privacy", { action: "update_display_name", displayName });
     setMessage("nameMessage", "Անունը պահպանվեց։");
     if (state) state.account.displayName = result.profile.display_name;
-  } catch (err) { setMessage("nameMessage", (rateLimitMessage(err) ?? (err.message)), true); }
+    $("displayNameInput").value = result.profile.display_name ?? displayName;
+  } catch (err) { setMessage("nameMessage", (rateLimitMessage(err) ?? displayNameMessage(err.message) ?? (err.message)), true); }
 });
 
 $("changeEmailForm").addEventListener("submit", async (event) => {

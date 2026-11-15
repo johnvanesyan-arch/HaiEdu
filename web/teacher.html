@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="./written-work.css" />
   <link rel="stylesheet" href="./writing-assignments.css" />
   <link rel="stylesheet" href="./teacher-today.css" />
+  <link rel="stylesheet" href="./auth-challenge.css" />
+  <link rel="stylesheet" href="./teacher-account.css" />
 </head>
 <body data-role-workspace="teacher">
   <a class="skip-link" href="#mainContent">Անցնել հիմնական բովանդակությանը</a>
@@ -31,7 +33,7 @@
       </div>
       <div class="teacher-header-actions">
         <a class="ghost button-link" href="./teacher.html?view=home">Ուսուցչի գլխավոր էջ</a>
-        <a class="ghost button-link" href="./privacy.html">Հաշիվ և գաղտնիություն</a>
+        <a class="ghost button-link" href="./teacher.html?view=account">Իմ հաշիվը</a>
         <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
       </div>
     </header>
@@ -60,7 +62,6 @@
         </div>
         <div class="teacher-quick-actions">
           <a id="createClassShortcut" class="button-link" href="?view=create">+ Նոր դասարան</a>
-          <a class="secondary button-link" href="?view=profile">Իմ պրոֆիլը</a>
           <button id="refreshBtn" class="ghost">Թարմացնել տվյալները</button>
         </div>
       </section>
@@ -108,30 +109,8 @@
       <section class="teacher-view hidden" data-teacher-view="assign-writing" aria-label="Հանձնարարել գրավոր աշխատանք"><div id="teacherAssignWritingRoot"></div></section>
       <section id="teacherReviewView" class="teacher-view hidden" data-teacher-view="review" aria-label="Գրավորի ստուգում"><div id="teacherReviewRoot"></div></section>
 
-      <section id="teacherProfileView" class="teacher-view hidden" data-teacher-view="profile" aria-labelledby="teacherPageTitle">
-      <section id="profileCard" class="card teacher-profile-card" aria-labelledby="teacherProfileTitle">
-        <div class="teacher-card-copy">
-          <span class="mode-kicker">ԻՄ ՊՐՈՖԻԼԸ</span>
-          <h2 id="teacherProfileTitle">Ուսուցչի անուն</h2>
-          <p class="subtle">Այս անունը երևում է ձեր ուսուցչական աշխատասեղանում։</p>
-        </div>
-        <div class="teacher-profile-form">
-          <label>Անուն և ազգանուն<input id="teacherDisplayNameInput" maxlength="100" autocomplete="name" placeholder="Օր.՝ Աննա Մարտիրոսյան" /></label>
-          <label>Էլ. հասցե<input id="teacherEmail" type="email" readonly aria-readonly="true" /></label>
-          <button id="saveProfileBtn" type="button">Պահպանել անունը</button>
-        </div>
-        <p id="profileMessage" class="message" aria-live="polite"></p>
-      </section>
-
-        <section class="card teacher-account-card" aria-labelledby="teacherAccountTitle">
-          <div>
-            <span class="mode-kicker">ՀԱՇԻՎ</span>
-            <h2 id="teacherAccountTitle">Մուտքի տվյալներ և գաղտնաբառ</h2>
-            <p class="subtle">Էլ. հասցեի կամ գաղտնաբառի փոփոխությունը կատարվում է պաշտպանված հաշվի բաժնում։</p>
-          </div>
-          <a class="button-link" href="./privacy.html">Բացել հաշվի կարգավորումները</a>
-        </section>
-      </section>
+      <!-- One account entry for the teacher (T1–T7): mounted by teacher-account.mjs when this view opens. -->
+      <section id="teacherAccountView" class="teacher-view hidden" data-teacher-view="account" aria-labelledby="teacherPageTitle"><div id="teacherAccountRoot" class="teacher-account" data-testid="teacher-account"></div></section>
 
       <section id="teacherCreateView" class="teacher-view hidden" data-teacher-view="create" aria-labelledby="teacherPageTitle">
         <div class="teacher-view-heading">

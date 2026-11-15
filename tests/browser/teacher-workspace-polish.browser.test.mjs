@@ -59,8 +59,9 @@ test('C2: writing mode buttons stay hidden until a class and unit exist, then sh
   assert.deepEqual(f.errors, []);
 });
 
-test('C3: profile, create and archive have one page title and an ordered heading outline', async t => {
-  for (const view of ['profile', 'create', 'archive']) {
+// «Իմ պրոֆիլը» became «Իմ հաշիվը» (T1, 15 November 2026); its content is covered by teacher-account.browser.test.mjs.
+test('C3: account, create and archive have one page title and an ordered heading outline', async t => {
+  for (const view of ['account', 'create', 'archive']) {
     const { page, errors } = await open(t, view);
     const title = (await page.locator('#teacherPageTitle').innerText()).trim();
     const headings = await page.evaluate(() => [...document.querySelectorAll('h1,h2,h3,h4')]

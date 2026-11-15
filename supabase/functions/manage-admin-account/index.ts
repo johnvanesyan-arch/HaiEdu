@@ -2,6 +2,7 @@ import { enforceRateBudget } from "../_shared/rate-budget.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import {taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing} from "../_shared/teacher-task-privacy.mjs";
+import { rejectionResolution } from "../_shared/deletion-rejection.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -257,17 +258,18 @@ Deno.serve(async (req) => {
 
     if (action === "reject_deletion") {
       const requestId = String(body.requestId ?? "");
-      const resolutionCode = String(body.resolutionCode ?? "not_verified");
-      const allowedCodes = new Set(["not_verified", "staff_offboarding_required", "legal_hold", "duplicate_request"]);
-      if (!requestId || !allowedCodes.has(resolutionCode)) return json({ error: "invalid_rejection" }, 400);
+      const resolution = rejectionResolution(body.resolutionCode ?? "not_verified", body.resolutionNote);
+      if (resolution.error) return json({ error: resolution.error }, 400);
+      if (!requestId) return json({ error: "invalid_rejection" }, 400);
+      const resolutionCode = resolution.code;
       const { data: request } = await admin.from("account_deletion_requests").select("id, user_id, status, resolution_code, execution_started_at")
         .eq("id", requestId).maybeSingle();
       if (!request || !["pending", "processing"].includes(request.status)) return json({ error: "request_not_open" }, 409);
       if(request.execution_started_at)return json({error:"deletion_execution_started"},409);
       const { data: updated, error } = await admin.from("account_deletion_requests").update({
         status: "rejected", resolved_at: new Date().toISOString(), resolved_by: actorId,
-        resolution_code: resolutionCode, auth_user_id: null,
-      }).eq("id", requestId).select("id, status, resolution_code, resolved_at").single();
+        resolution_code: resolutionCode, resolution_note: resolution.note, auth_user_id: null,
+      }).eq("id", requestId).select("id, status, resolution_code, resolution_note, resolved_at").single();
       if (error) return String(error.message).includes("deletion_execution_started")
         ? json({error:"deletion_execution_started"},409)
         : json({ error: "deletion_reject_failed", detail: error.message }, 500);
@@ -281,7 +283,8 @@ Deno.serve(async (req) => {
       await writeAudit(admin, {
         actor_user_id: actorId, actor_role: "admin", action: "admin.deletion_rejected", outcome: "success",
         target_user_id: request.user_id, target_type: "deletion_request", target_key: requestId,
-        details: { resolutionCode },
+        // The written reason is the account owner's to read on their own page; the audit records only that one exists.
+        details: { resolutionCode, hasNote: Boolean(resolution.note) },
       });
       return json({ request: updated });
     }

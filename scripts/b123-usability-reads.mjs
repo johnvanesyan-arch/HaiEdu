@@ -57,6 +57,9 @@ export function createUsabilityReads({fixture,roles,sides,request,browserContext
     const p=await bc.newPage();p.setDefaultTimeout(45000);await p.goto('https://www.haiedu.am/privacy.html');await p.locator('#accountRole').filter({hasText:role==='student'?'Աշակերտ':role==='teacher'?'Ուսուցիչ':'Դպրոցի ադմին'}).waitFor();
     const expected=role==='student'?'/index.html':role==='teacher'?'/teacher.html':'/school-admin.html',back=new URL(await p.locator('#accountHomeLink').getAttribute('href'),p.url());check(actor+': account returns to its own role',back.pathname===expected);
     check(actor+': account theme keeps student/staff separation',await p.locator('body').evaluate((e,student)=>e.hasAttribute('data-haiedu-student')===student&&e.hasAttribute('data-staff-account')===!student,role==='student'));
+    // Since 15 November 2026 the teacher's one account entry opens inside the teacher layout. Read-only: nothing is saved.
+    if(role==='teacher'){await p.goto('https://www.haiedu.am/teacher.html?view=account');await p.locator('[data-testid="account-role"]').filter({hasText:'Ուսուցիչ'}).waitFor();
+     check(actor+': teacher account opens inside the teacher layout',await p.locator('.hm-role-foot a[data-role-account][aria-current="page"]').count()===1&&await p.locator('[data-testid="account-name-input"]').count()===1);}
    }finally{await bc.close();}
   }
  }

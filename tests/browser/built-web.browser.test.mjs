@@ -8,6 +8,7 @@ import { buildWebAssets, projectRoot } from '../../scripts/build-web-assets.mjs'
 import { serveWeb, installSignedOutClient } from '../fixtures/built-web-server.mjs';
 import { installStudentHomeFixture } from '../fixtures/student-home-fixture.mjs';
 import { installTeacherPerformanceFixture } from '../fixtures/teacher-performance-browser.mjs';
+import { installTeacherAccountFixture } from '../fixtures/teacher-account-browser.mjs';
 import { mobileNavigationLayout } from '../../scripts/mobile-navigation-layout.mjs';
 import { installSyntheticTurnstile } from '../fixtures/turnstile-browser.mjs';
 
@@ -57,6 +58,13 @@ test('compiled signed-in Home and lazy teacher class tools use the shared fixtur
   await teacher.page.locator('.hm-role-nav a[href$="view=classes"]').click();
   await teacher.page.locator('#classList .teacher-class-button').first().click();
   await expect(teacher.page.locator('#rosterAnalyticsCard')).toBeVisible();
+  // The account view's code is loaded on demand from the compiled build when the view first opens.
+  await teacher.page.addInitScript(installTeacherAccountFixture, {});
+  await teacher.page.goto(server.origin + '/teacher.html?view=home');
+  await expect(teacher.page.locator('#dashboardPanel')).toBeVisible();
+  await teacher.page.locator('.hm-role-foot a[data-role-account]').click();
+  await expect(teacher.page.locator('[data-testid="account-name-input"]')).toHaveValue('Աննա Մարտիրոսյան');
+  await expect(teacher.page.locator('#teacherPageTitle')).toHaveText('Իմ հաշիվը');
   assert.deepEqual(teacher.errors, []); assert.deepEqual(teacher.external, []);
 });
 

@@ -6,9 +6,9 @@ installNavigationFocus();
 const page = document.body.dataset.roleWorkspace;
 const configs = {
   teacher: {
-    gate: "dashboardPanel", label: "Ուսուցիչ", links: [
+    // The teacher's one account entry opens inside the teacher layout; other roles keep the shared account page.
+    gate: "dashboardPanel", label: "Ուսուցիչ", account: ["Իմ հաշիվը", "./teacher.html?view=account"], links: [
       ["Գլխավոր", "./teacher.html?view=home", "home"],
-      ["Իմ պրոֆիլը", "./teacher.html?view=profile"],
       ["Դասարաններ", "./teacher.html?view=classes"],
       ["Հանձնարարել գրավոր", "./teacher.html?view=assign-writing"],
       ["Գրավորի ստուգում", "./teacher.html?view=review"],
@@ -273,10 +273,12 @@ function syncTeacherSections() {
   const sidebar = document.querySelector(".hm-role-sidebar");
   if (sidebar?.dataset.workspace !== configs.teacher.label) return;
   const params = new URLSearchParams(window.location.search);
-  const requested = params.get("view");
+  const requested = params.get("view") === "profile" ? "account" : params.get("view");
   const selected = requested === "class"
     ? (params.get("source") === "archive" ? "archive" : "classes")
-    : (["home", "profile", "classes", "archive", "create", "review", "assign-writing"].includes(requested) ? requested : "home");
+    : (["home", "account", "classes", "archive", "create", "review", "assign-writing"].includes(requested) ? requested : "home");
+  const account = sidebar.querySelector(".hm-role-foot a[data-role-account]");
+  if (account) { if (selected === "account") account.setAttribute("aria-current", "page"); else account.removeAttribute("aria-current"); }
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const linkUrl = new URL(link.href, window.location.href);
     const linkView = linkUrl.searchParams.get("view") || "home";
@@ -345,7 +347,7 @@ function syncWorkspaceBreadcrumb() {
   }
   const current = page === "teacher" && new URLSearchParams(location.search).get("view") === "class"
     ? "Ընտրված դասարան"
-    : sidebar.querySelector('.hm-role-nav [aria-current="page"]')?.textContent || config.links[0][0];
+    : sidebar.querySelector('.hm-role-nav [aria-current="page"], .hm-role-foot a[data-role-account][aria-current="page"]')?.textContent || config.links[0][0];
   // Only rebuild when the presentation changes; never observe or change auth state.
   if (breadcrumb.dataset.current === `${config.label}:${current}`) return;
   breadcrumb.dataset.current = `${config.label}:${current}`;
@@ -419,8 +421,9 @@ function syncRoleSidebar() {
   const pilot = document.createElement("span");
   pilot.textContent = "Փորձնական տարբերակ";
   const account = document.createElement("a");
-  account.href = "./privacy.html";
-  account.textContent = "Հաշիվ և գաղտնիություն";
+  account.href = config.account?.[1] ?? "./privacy.html";
+  account.textContent = config.account?.[0] ?? "Հաշիվ և գաղտնիություն";
+  if (config.account) account.dataset.roleAccount = "";
   footer.append(pilot, account);
   const existingSignOut = document.getElementById("signOutBtn");
   if (existingSignOut) {

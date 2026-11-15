@@ -10,6 +10,7 @@ import { AcademicContextDenied } from '../supabase/functions/_shared/academic-co
 import { roleDestination } from '../web/account-roles.js';
 import { loadInitialDiagnostics } from '../supabase/functions/_shared/initial-diagnostic.ts';
 
+import {displayNameError, normalizeDisplayName} from '../supabase/functions/_shared/display-name.mjs';
 const functions = ['get-teacher-dashboard', 'get-teacher-student', 'manage-teacher-class', 'manage-teacher-profile'];
 async function callEndpoint(name, role, active = true, authenticated = true, institutional = false) {
   let handler;
@@ -28,7 +29,7 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
   };
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), Object.assign({...rateBudgetBindings,
-    AcademicContextDenied, createClient: () => client, hasActiveLiveSession: async () => active,
+    AcademicContextDenied, createClient: () => client, hasActiveLiveSession: async () => active, displayNameError, normalizeDisplayName,
     loadInitialDiagnostics,
     resolveActiveCurriculumRelease: async () => 'release-test',
     getInstitutionalTeacherDashboard: async () => ({

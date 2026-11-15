@@ -21,14 +21,17 @@ test("public entry shows three roles with a shared sign-in and student registrat
   assert.doesNotMatch(shell, /service_role/i);
 });
 
-test("teacher workspace exposes profile, class onboarding, roster search and class controls", () => {
+test("teacher workspace exposes the account view, class onboarding, roster search and class controls", () => {
   const html = read("web/teacher.html");
   const js = read("web/teacher.js");
-  assert.match(html, /teacherDisplayNameInput/);
+  // One account entry: the profile view and its separate name service call are gone from the teacher page.
+  assert.match(html, /id="teacherAccountRoot"/);
+  assert.doesNotMatch(html, /teacherDisplayNameInput|teacherProfileView|Իմ պրոֆիլը/);
+  assert.doesNotMatch(js, /manage-teacher-profile/);
+  assert.match(read("web/teacher-account.mjs"), /action: 'update_display_name'/);
   assert.match(html, /copyInviteBtn/);
   assert.match(html, /toggleClassBtn/);
   assert.match(html, /studentSearchInput/);
-  assert.match(js, /manage-teacher-profile/);
   assert.match(js, /remove_student/);
   assert.match(js, /action: "archive"|"archive" : "activate"/);
   assert.match(js, /buildInviteUrl/);

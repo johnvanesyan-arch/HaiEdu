@@ -2,6 +2,8 @@ import {readFileSync} from 'node:fs';
 import {compile} from './learning-acceptance.mjs';
 import {studentTaskFixture,id,context,pdf,textDefinition} from './teacher-task-student-api.mjs';
 import {taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing} from '../../supabase/functions/_shared/teacher-task-privacy.mjs';
+import {rejectionResolution} from '../../supabase/functions/_shared/deletion-rejection.mjs';
+import {displayNameError,normalizeDisplayName} from '../../supabase/functions/_shared/display-name.mjs';
 export {id,context,pdf,textDefinition};
 export const privacyToken=(actor=40,aal='aal2')=>'fixture.'+Buffer.from(JSON.stringify({session_id:id(({10:401,12:9212,20:420,21:421,30:430,40:440})[actor]),aal})).toString('base64url')+'.'+actor;
 // Existing legacy privacy DDL/procedure, without unrelated policy replacement.
@@ -38,6 +40,7 @@ export async function privacyFixture(){
  await f.db.query("insert into profiles(id,role,account_status,display_name) values($1,'admin','active','Synthetic administrator')",[id(40)]);
  await f.db.query('insert into auth.users(id) values($1)',[id(40)]);await f.db.query('insert into auth.sessions(id,user_id) values($1,$2)',[id(440),id(40)]);
  await f.db.exec(readFileSync('supabase/migrations/20261030214222_teacher_task_privacy.sql','utf8'));
+ await f.db.exec(readFileSync('supabase/migrations/20261115093000_deletion_rejection_note.sql','utf8'));
  f.admin.from=crud(f.db);const baseRpc=f.admin.rpc.bind(f.admin);let lostRpc=null,removeMode='ok',authDeleteMode='ok',removes=0;
  f.admin.rpc=async(name,args)=>{const r=await baseRpc(name,args);if(!r.error&&(lostRpc===args.p_action||lostRpc===name)){lostRpc=null;return{data:null,error:{message:'fixture_lost_reply'}};}return r;};
  f.admin.auth={getUser:async token=>{const actor=Number(token.split('.').at(-1));return token.startsWith('fixture.')&&[10,12,20,21,30,40].includes(actor)?{data:{user:{id:id(actor)}}}:{error:{message:'Invalid fixture credential'}};},admin:{
@@ -49,10 +52,10 @@ export async function privacyFixture(){
   async list(prefix,{search}){return{data:[...f.objects.keys()].filter(p=>p.startsWith(prefix+'/')&&!p.slice(prefix.length+1).includes('/')&&p.slice(prefix.length+1).includes(search)).map(p=>({name:p.slice(prefix.length+1)})),error:null};}
  };}};
  const {hasActiveLiveSession}=compile(readFileSync('supabase/functions/_shared/auth.ts','utf8'),{},['hasActiveLiveSession']);let handleAdmin,handleMine;
- const bindings={createClient:()=>f.admin,hasActiveLiveSession,taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing,
+ const bindings={createClient:()=>f.admin,hasActiveLiveSession,taskPrivacyRpc,removeTeacherTaskFiles,taskAuthUserMissing,rejectionResolution,
   Deno:{env:{get:()=> 'fixture'},serve:fn=>{handleAdmin=fn;}}};
  compile(readFileSync('supabase/functions/manage-admin-account/index.ts','utf8'),bindings,[]);
- compile(readFileSync('supabase/functions/manage-my-privacy/index.ts','utf8'),{createClient:()=>f.admin,Deno:{env:{get:()=> 'fixture'},serve:fn=>{handleMine=fn;}}},[]);
+ compile(readFileSync('supabase/functions/manage-my-privacy/index.ts','utf8'),{createClient:()=>f.admin,displayNameError,normalizeDisplayName,Deno:{env:{get:()=> 'fixture'},serve:fn=>{handleMine=fn;}}},[]);
  const request=(handler,body,actor=40,aal='aal2')=>handler(new Request('https://fixture.invalid',{method:'POST',headers:{Authorization:'Bearer '+privacyToken(actor,aal),'Content-Type':'application/json'},body:JSON.stringify(body)}));
  const privacy=(action,payload,actor=40)=>baseRpc('service_teacher_task_privacy',{p_actor:id(actor),p_auth:id(actor===40?440:420),p_action:action,p_payload:payload});
  return{...f,privacy,adminRequest:(body,actor=40,aal='aal2')=>request(handleAdmin,body,actor,aal),mineRequest:(body,actor=10)=>request(handleMine,body,actor),

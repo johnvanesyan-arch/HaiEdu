@@ -17,7 +17,9 @@ async function adminModule(){
  import{escapeHtml as esc}from'/text-safety.mjs';
  import{invokeRateAware,rateLimitMessage}from'/rate-budget-feedback.mjs';
  const supabase=window.__client,$=id=>document.getElementById(id),accountCache=new Map(),pendingDeletionIds=new Set();let actor=null;
- const approveDeletion=()=>{throw Error('Not in this execution fixture');},rejectDeletion=approveDeletion;
+ const approveDeletion=()=>{throw Error('Not in this execution fixture');},rejectDeletion=approveDeletion,openRejection=approveDeletion;
+ // The rejection step is covered by teacher-account.browser.test.mjs; here it stays closed.
+ let rejectingId=null;const rejectionForm=()=>'',bindRejectionForm=()=>{};
  ${functions}
  document.querySelector('#console').classList.remove('hidden');for(const e of document.querySelectorAll('.admin-view'))e.hidden=e.id!=='deletionsSection';
  await loadDeletions();window.__ready=true;`;

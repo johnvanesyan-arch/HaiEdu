@@ -20,10 +20,14 @@ let dashboard = null;
 let disposeToday=()=>{};
 let disposeReview=()=>{};
 let disposeAssignments=()=>{};
+let disposeAccount=()=>{};
 let todayBoot=null;
 let lastTeacherUrl=(window.location?.pathname??"")+(window.location?.search??"");
 function hasUnsavedWork(){return Boolean(disposeWriting.hasUnsaved?.()||disposeToday.hasUnsaved?.()||disposeReview.hasUnsaved?.());}
-function allowTeacherLeave(){if(disposeAssignments.canLeave&&!disposeAssignments.canLeave()){history.replaceState({},"",lastTeacherUrl);return false;}if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
+function allowTeacherLeave(){if(disposeAssignments.canLeave&&!disposeAssignments.canLeave()){history.replaceState({},"",lastTeacherUrl);return false;}
+  // Unsaved account changes (name, new email, privacy choices) ask before any in-page navigation or sign-out.
+  if(disposeAccount.hasUnsaved?.()){if(!window.confirm("Հաշվի չպահպանված փոփոխությունները կկորչեն։ Դուրս գա՞լ։")){history.replaceState({},"",lastTeacherUrl);return false;}disposeAccount.discard();}
+  if(!hasUnsavedWork()||window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։"))return true;history.replaceState({},"",lastTeacherUrl);return false;}
 let actorId = null;
 let teacherAuthGeneration = 0;
 let directoryPages = {};
@@ -49,6 +53,7 @@ const dashboardRead=async body=>{
 };
 function clearDetail() {
   disposeAssignments();disposeAssignments=()=>{};
+  disposeAccount();disposeAccount=()=>{};
   disposeReview();disposeReview=()=>{};
   disposeToday();disposeToday=()=>{};todayBoot=null;
   clearTimeout(archiveSearchTimer);directoryRequestVersion++;
@@ -93,12 +98,14 @@ let dashboardBootstrapPromise = null;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class", "review", "assign-writing"]);
+const TEACHER_VIEWS = new Set(["home", "account", "classes", "archive", "create", "class", "review", "assign-writing"]);
+// «Իմ պրոֆիլը» became part of «Իմ հաշիվը»; its old address keeps working.
+const teacherView = (view) => view === "profile" ? "account" : view;
 const TEACHER_VIEW_META = {
   home: ["Ուսուցչի գլխավոր", "Ստուգման սպասող աշխատանքները և ձեր դասարանները։"],
   "assign-writing": ["Հանձնարարել գրավոր աշխատանք", "Ընտրեք առաջադրանքը, ստացողներին և հաստատեք ուղարկումը։"],
   review: ["Գրավորի ստուգում", "Ներկայացված աշխատանքներ, գնահատում և մեկնաբանություններ՝ ըստ դասարանի ու բաժնի։"],
-  profile: ["Իմ պրոֆիլը", "Ցուցադրվող անունը և մուտքի պաշտպանված կարգավորումները։"],
+  account: ["Իմ հաշիվը", "Կառավարեք ձեր մուտքի տվյալները, գաղտնիության ընտրությունները և հաշվի տվյալները։"],
   classes: ["Իմ դասարանները", "Միայն ակտիվ դասարանները՝ աշակերտներով, հրավերներով և առաջընթացով։"],
   archive: ["Արխիվացված դասարաններ", "Ավարտված դասարանների պատմությունը՝ ընթացիկ աշխատանքից առանձին։"],
   create: ["Նոր դասարան", "Ստեղծեք դասարան ձեր թույլատրված դպրոցի, տարվա և առարկայի շրջանակում։"],
@@ -113,7 +120,7 @@ function navigationSelection() {
   const assignmentId = params.get("assignment");
   const curriculumReleaseId = params.get("release");
   const unitId = params.get("unit");
-  const requested = params.get("view");
+  const requested = teacherView(params.get("view"));
   const classId = params.get("class");
   return {
     view: ["review","assign-writing"].includes(requested) ? requested : requested === "class" || classId
@@ -150,9 +157,36 @@ function renderTeacherView(view = navigationSelection().view,initialClass=null) 
   window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
   window.scrollTo({ top: 0, behavior: "auto" });
   lastTeacherUrl=window.location.pathname+window.location.search;
+  if(selected==="account"&&dashboard){
+    // The old profile address is rewritten once, so reload and Back keep the single account address.
+    if(new URLSearchParams(window.location.search).get("view")==="profile"){window.history.replaceState({},"",teacherViewUrl("account"));lastTeacherUrl=window.location.pathname+window.location.search;}
+    mountAccountView();
+  }
   if(selected==="assign-writing"&&dashboard){disposeAssignments();const version=dashboardLoadVersion;const page=directoryPages[directoryKey(navigationSelection().source==="archive")];disposeAssignments=mountTeacherReview({root:$("teacherAssignWritingRoot"),supabase,actorId,readDashboard:dashboardRead,initialClass,assignmentMode:true,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="review"&&dashboard){disposeReview();const version=dashboardLoadVersion;const key=directoryKey(navigationSelection().source==="archive");const page=directoryPages[key];disposeReview=mountTeacherReview({root:$("teacherReviewRoot"),supabase,actorId,readDashboard:dashboardRead,initialClass,initialDirectory:page?{classes:page.items,directory:page}:null,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});}
   if(selected==="home"&&dashboard&&$("teacherToday")){disposeToday();const version=dashboardLoadVersion;disposeToday=mountTeacherToday({root:$("teacherToday"),supabase,actorId,isCurrent:()=>Boolean(dashboard)&&version===dashboardLoadVersion,initialResponse:todayBoot,onRoute:()=>{lastTeacherUrl=window.location.pathname+window.location.search;}});todayBoot=null;}
+}
+
+// The account view's code is loaded when the view first opens, so Home and the class pages start as before.
+function mountAccountView(){
+  disposeAccount();
+  const root=$("teacherAccountRoot"),version=dashboardLoadVersion,generation=teacherAuthGeneration,actor=actorId;
+  const isCurrent=()=>Boolean(dashboard)&&actor===actorId&&generation===teacherAuthGeneration&&version===dashboardLoadVersion;
+  let cancelled=false,mounted=null;
+  const dispose=()=>{cancelled=true;mounted?.();mounted=null;root.replaceChildren();};
+  dispose.hasUnsaved=()=>Boolean(mounted?.hasUnsaved());
+  dispose.discard=()=>mounted?.discard();
+  disposeAccount=dispose;
+  root.innerHTML='<p class="teacher-account-status" role="status">Տվյալները բեռնվում են…</p>';
+  import('./teacher-account.mjs').then(({mountTeacherAccount})=>{
+    if(cancelled||!isCurrent())return;
+    mounted=mountTeacherAccount({root,supabase,institutional:dashboard.institutionalTeacher===true,isCurrent,
+      onNameSaved:(name)=>{if(dashboard?.teacher)dashboard.teacher.displayName=name;$("teacherName").textContent=name;}});
+  }).catch(()=>{
+    if(cancelled||!isCurrent())return;
+    root.innerHTML='<section class="card teacher-account-card-section" role="alert"><p class="teacher-account-status">Հաշվի տվյալները չբեռնվեցին։</p><div class="teacher-account-actions"><button type="button" data-testid="account-retry">Փորձել կրկին</button></div></section>';
+    root.querySelector("button").addEventListener("click",()=>{if(disposeAccount===dispose&&isCurrent())mountAccountView();});
+  });
 }
 
 function navigateTeacherView(view, push = true) {
@@ -392,8 +426,6 @@ async function readTeacherDashboard(sessionOverride = null) {
 
   const displayName = data.teacher?.displayName || "Ուսուցիչ";
   $("teacherName").textContent = displayName;
-  $("teacherDisplayNameInput").value = displayName === "Ուսուցիչ" ? "" : displayName;
-  $("teacherEmail").value = sessionData.session?.user?.email ?? "";
 
   const classes = Array.isArray(data.classes) ? data.classes : [];
   $("classCount").textContent = data.directory?.activeCount ?? (institutional ? "—" : classes.filter(klass=>klass.isActive).length);
@@ -1247,21 +1279,6 @@ function closeDrawer({restoreFocus = true} = {}) {
   drawerFocus.close({restoreFocus});
 }
 
-async function saveProfile() {
-  const displayName = $("teacherDisplayNameInput").value.trim();
-  if (displayName.length < 2) return setMessage("profileMessage", "Մուտքագրեք ձեր անունն ու ազգանունը։", true);
-  $("saveProfileBtn").disabled = true;
-  setMessage("profileMessage", "Պահպանում ենք…");
-  const { data, error } = await invokeRateAware(supabase,"manage-teacher-profile", { body: { displayName } });
-  $("saveProfileBtn").disabled = false;
-  if (error) return setMessage("profileMessage", (rateLimitMessage(error) ?? (friendlyError(error, "Չհաջողվեց պահպանել անունը։"))), true);
-  const savedName = data?.profile?.displayName || displayName;
-  $("teacherName").textContent = savedName;
-  $("teacherDisplayNameInput").value = savedName;
-  if (dashboard?.teacher) dashboard.teacher.displayName = savedName;
-  setMessage("profileMessage", "Անունը պահպանված է։");
-}
-
 async function createClass() {
   const name = $("classNameInput").value.trim();
   if (!name) return setMessage("classMessage", "Մուտքագրեք դասարանի անունը։", true);
@@ -1421,7 +1438,6 @@ async function removeStudent(studentId, studentName) {
 
 $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", () => { void loadDashboard(); });
-$("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
 $("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);
 $("copyCodeBtn").addEventListener("click", copyJoinCode);
@@ -1470,12 +1486,14 @@ document.addEventListener("click", (event) => {
     || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   const url = new URL(link.href, window.location.href);
   if(url.origin!==window.location.origin || url.hash || !["/teacher","/teacher.html"].includes(url.pathname))return;
-  const view = url.searchParams.get("view");
+  const view = teacherView(url.searchParams.get("view"));
   if (!TEACHER_VIEWS.has(view) || view === "class") return;
   event.preventDefault();
   navigateTeacherView(view, true);
 });
 
+// Leaving the site, reloading or closing the tab with unsaved account changes asks first (the browser's own prompt).
+window.addEventListener("beforeunload", (event) => { if (disposeAccount.hasUnsaved?.()) { event.preventDefault(); event.returnValue = ""; } });
 window.addEventListener("popstate", () => {
   const nav=navigationSelection();
   if(!dashboard) return void loadDashboard();

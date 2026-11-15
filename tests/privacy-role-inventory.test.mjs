@@ -142,7 +142,9 @@ test("teacher inventory reports only teacher-owned institutional records", async
 
 test("privacy interface has role-specific inventory copy and anchors", () => {
   const html = readFileSync("web/privacy.html", "utf8");
-  const js = readFileSync("web/privacy.js", "utf8");
+  // The role wording lives in the shared account core, which the account page imports.
+  assert.match(readFileSync("web/privacy.js", "utf8"), /import \{[^}]*inventoryPresentation[^}]*\} from '\.\/account-core\.mjs'/);
+  const js = readFileSync("web/account-core.mjs", "utf8");
   assert.match(html, /id="inventoryTitle"/);
   assert.match(html, /id="inventoryDescription"/);
   assert.match(html, /id="inventoryMinimization"/);

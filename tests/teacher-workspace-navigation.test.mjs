@@ -8,13 +8,15 @@ test("teacher workspace uses URL-addressable views instead of dashboard anchors"
   const html = read("web/teacher.html");
   const roleLayout = read("web/role-layout.js");
   const views = [...html.matchAll(/data-teacher-view="([^"]+)"/g)].map((match) => match[1]);
-  assert.deepEqual(views, ["home", "assign-writing", "review", "profile", "create", "classes", "archive", "class"]);
+  assert.deepEqual(views, ["home", "assign-writing", "review", "account", "create", "classes", "archive", "class"]);
   assert.match(roleLayout, /\.\/teacher\.html\?view=home/);
-  assert.match(roleLayout, /\.\/teacher\.html\?view=profile/);
+  // «Իմ պրոֆիլը» is no longer a menu item; the account is the teacher's one footer entry.
+  assert.doesNotMatch(roleLayout, /Իմ պրոֆիլը|view=profile"/);
+  assert.match(roleLayout, /account: \["Իմ հաշիվը", "\.\/teacher\.html\?view=account"\]/);
   assert.match(roleLayout, /\.\/teacher\.html\?view=classes/);
   assert.match(roleLayout, /\.\/teacher\.html\?view=archive/);
   assert.doesNotMatch(roleLayout, /\["Նոր դասարան",/);
-  assert.doesNotMatch(roleLayout, /\["Իմ պրոֆիլը", "#|\["Դասարաններ", "#/);
+  assert.doesNotMatch(roleLayout, /\["Դասարաններ", "#/);
 });
 
 test("active and archived classrooms have separate dedicated collections", () => {

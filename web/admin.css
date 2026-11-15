@@ -24,3 +24,10 @@ body[data-role-workspace="platform"] .admin-shell .admin-topbar h1{font-size:cla
   .person-card > summary, .person-card-static { grid-template-columns: minmax(0, 1fr); }
   .person-card > summary .admin-actions button { flex: 0 0 auto; min-width: max-content; }
 }
+/* Rejecting a deletion request: reason choice and optional written reason, in the request's own row. */
+.admin-rejection{display:grid;gap:8px;min-width:min(100%,280px);max-width:420px;text-align:left}
+.admin-rejection label{font-weight:600;font-size:.875rem}
+.admin-rejection :is(select,textarea){width:100%;min-height:44px;font:inherit}
+.admin-rejection [data-reject-note]{display:grid;gap:6px}
+.admin-rejection [data-reject-note][hidden]{display:none}
+.admin-rejection p{margin:0}
