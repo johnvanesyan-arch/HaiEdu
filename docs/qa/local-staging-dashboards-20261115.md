@@ -1,6 +1,6 @@
 # BF-21 — real dashboards in owned local staging
 
-The owner authorized the next bounded BF-21 slice: real student, teacher and school-admin dashboards with fictional schools, correct data separation and sign-out checks. This extends [stage 1](local-staging-20261115.md); assessment/file journeys and hosted adoption remain separate. Local qualification passed on 15 November 2026; exact-head CI and merge approval remain pending.
+The owner authorized the next bounded BF-21 slice: real student, teacher and school-admin dashboards with fictional schools, correct data separation and sign-out checks. This extends [stage 1](local-staging-20261115.md); assessment/file journeys and hosted adoption remain separate. **Merged and verified on 15 November 2026.** Owner-approved [PR494](https://github.com/johnvanesyan-arch/HaiEdu/pull/494) merged at `3f363562d550bfa41de2c3b1df84861ef4e42080`, preserving approved tree `818906990651594bfd8bcb55e4c9cb28668a7e8e`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43748725643) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43750629473) pass. This completes the real-dashboard local slice; wider BF-21 remains open.
 
 ## What changes
 
@@ -33,3 +33,11 @@ Production QA not run (paused by owner). Affected production QA: none. Applicati
 ## Remaining boundaries
 
 This slice does not test assessment completion, file upload/download, populated marking queues, every dashboard filter or master/content-admin workflows. It does not migrate the 21 credential-bearing QA workflows or prove exclusion of synthetic rows from hosted reports. No hosted project is converted/reset; `haiedu-bf16-test` is preserved. Production databases, functions, settings and Cloudflare are untouched. BF-21 remains open; BF-02 recovery is deferred, BF-22 is on hold, BF-16 limits stay off and paid stolen-password protection remains declined.
+
+## Release verification
+
+Exact PR-head and merged-source CI both pass with 1,853 code tests and 696 browser checks, with zero failures/skips/cancellations in those counted suites. Both runs pass all 28 local dashboard/service check groups across six fictional accounts, owned cleanup and the retained database qualifications. The approved head is `11bba7bdc80c56cf8b34ecd49be9aaccfee98732`; the merge preserves its tree.
+
+The three public addresses serve `3f363562d550bfa41de2c3b1df84861ef4e42080`. Twelve fresh checks verify release identity, exact asset manifest, representative account-access HTML/JavaScript hashes, MIME, cache rules and enforcing security headers. The package inputs update the manifest/build identity; all 127 browser asset byte hashes remain unchanged. This is representative hosted static verification, not a fresh full browser or hosted service test. Only static files were fetched; no page scripts, sign-in, Supabase requests or production QA ran. Normal Git integration updated the site; no manual promotion or hosting-setting change occurred.
+
+The release receipt records the approved head/tree, exact PR/main checks and public static observations while preserving the original local working-tree receipt. No hosted test-project reset, backend deployment, production data change or paid action occurred.

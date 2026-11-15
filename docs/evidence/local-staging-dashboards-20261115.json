@@ -172,5 +172,197 @@
     "browserAssetsUnchanged": 127,
     "renderedViewsReviewed": 9
   },
-  "releaseStatus": "Local qualification passed; exact-head CI and owner merge approval pending."
+  "releaseStatus": "real-dashboard-local-slice-merged-and-verified; broader-BF21-open",
+  "release": {
+    "pr": 494,
+    "approvedHead": "11bba7bdc80c56cf8b34ecd49be9aaccfee98732",
+    "mergedCommit": "3f363562d550bfa41de2c3b1df84861ef4e42080",
+    "approvedTree": "818906990651594bfd8bcb55e4c9cb28668a7e8e",
+    "mergedTreePreserved": true,
+    "prCiRun": 43748725643,
+    "mainCi": {
+      "head": "3f363562d550bfa41de2c3b1df84861ef4e42080",
+      "tree": "818906990651594bfd8bcb55e4c9cb28668a7e8e",
+      "run": 43750629473,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43750629473",
+      "attempt": 1,
+      "conclusion": "success",
+      "codeTests": 1853,
+      "browserTests": 696,
+      "failures": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "jobs": [
+        {
+          "id": 132923552629,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 132923552806,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 132923552822,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 132923552834,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 132925768727,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "localStagingJourneyGroups": 28,
+      "localStagingJourney": "All six fictional accounts, real dashboards through eleven services, three delayed cross-tab sign-out checks and owned cleanup passed."
+    },
+    "publicStatic": {
+      "observedAt": "2026-11-15T19:15:47.013Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. All 127 browser asset hashes are unchanged; the release manifest and page build identifiers reflect the reviewed development-dependency change. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "3f363562d550bfa41de2c3b1df84861ef4e42080",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "16a6d03b058cbbb1fc289a2229612e94f62ba3669355e25165ed4cb306196cff",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "3f363562d550bfa41de2c3b1df84861ef4e42080",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "16a6d03b058cbbb1fc289a2229612e94f62ba3669355e25165ed4cb306196cff",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "3f363562d550bfa41de2c3b1df84861ef4e42080",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "16a6d03b058cbbb1fc289a2229612e94f62ba3669355e25165ed4cb306196cff",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "verificationBoundary": "Real disposable local sign-in and student/teacher/school-admin dashboards through eleven repository services; six fictional accounts and 28 check groups. Fresh public static files/headers only; all browser asset hashes unchanged. No hosted Supabase request, production sign-in/QA, backend deployment, settings change or manual promotion. Assessment/file journeys and wider BF21 remain open."
+  }
 }
