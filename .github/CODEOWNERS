@@ -1,0 +1,10 @@
+# Default accountable maintainer. This covers all roles, subjects, runtime code,
+# migrations, release workflows, documentation, and this ownership file itself.
+# Verified repository permission: admin (2026-11-05).
+* @johnvanesyan-arch
+
+# BF-01 remains open: this ownership entry is not independent approval.
+# Before enabling required code-owner reviews, John must designate an available
+# independent reviewer with write access and add them to the applicable owners.
+# Do not invent a reviewer, use an author self-review, or add a bypass exception.
+# Review scope and evidence: docs/qa/risky-change-review.md
