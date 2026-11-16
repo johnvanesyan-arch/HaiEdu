@@ -1,0 +1,91 @@
+name: Production failure observer
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Inspect only, or notify when BF22_FAILURE_ALERTS is enabled
+        type: choice
+        options: [inspect, notify]
+        default: inspect
+
+permissions:
+  contents: read
+
+# Only this observer is serialized. Classroom/acceptance runs are never cancelled.
+concurrency:
+  group: bf22-production-failure-observer
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    if: >-
+      github.repository == 'johnvanesyan-arch/HaiEdu' &&
+      github.ref == 'refs/heads/main' &&
+      (vars.BF22_FAILURE_ALERTS == 'true' ||
+        (github.event_name == 'workflow_dispatch' && inputs.mode == 'inspect')) &&
+      (github.event_name != 'workflow_run' ||
+        (github.event.workflow_run.event == 'push' &&
+         github.event.workflow_run.head_branch == 'main' &&
+         github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      report: ${{ steps.observe.outputs.report }}
+    steps:
+      # github.sha is the observer's trusted default-branch commit, never the
+      # triggering run's head. Do not download or execute triggering artifacts.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Observe public files and latest main CI
+        id: observe
+        run: node scripts/observe-production.mjs collect
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BF22_FAILURE_ALERTS: ${{ vars.BF22_FAILURE_ALERTS }}
+          BF22_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'notify' }}
+      - name: Keep sanitized observations for seven days
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: failure-observation-${{ github.run_attempt }}
+          path: artifacts/failure-observer/report.json
+          if-no-files-found: error
+          retention-days: 7
+
+  notify:
+    needs: observe
+    if: vars.BF22_FAILURE_ALERTS == 'true' && (github.event_name != 'workflow_dispatch' || inputs.mode == 'notify')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Open one incident or resolve its recovery
+        run: node scripts/observe-production.mjs publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BF22_FAILURE_ALERTS: ${{ vars.BF22_FAILURE_ALERTS }}
+          BF22_MODE: notify
+          BF22_REPORT: ${{ needs.observe.outputs.report }}

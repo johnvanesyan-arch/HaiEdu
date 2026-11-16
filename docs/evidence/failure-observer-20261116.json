@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "task": "BF-22",
+  "slice": "Public static availability and latest main CI incidents",
+  "status": "Locally qualified; complete PR publication, required hosted CI, merge and activation pending",
+  "baseCommit": "5aa0ceee5023285304b6c95b73aa893a85eb84f0",
+  "notificationDestination": "GitHub notifications using the existing owner account",
+  "productionSettingsChanged": false,
+  "realAlertsSent": false,
+  "productionQa": "not run (paused by owner)",
+  "affectedProductionQa": [],
+  "clientErrorCollectionImplemented": false,
+  "localCodeSuite": {
+    "command": "npm test",
+    "tests": 1875,
+    "pass": 1875,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "sha256": "88757f03a0bf41e7bbb4df2129b87447c084dad080672325dfc04440ba76aaa3"
+  },
+  "focusedControls": {
+    "tests": 18,
+    "pass": 18,
+    "includedInFullSuite": true,
+    "realLocalHttpFaultAndRecovery": true,
+    "realGitHubWrites": false
+  },
+  "otherChecks": {
+    "typecheck": "pass",
+    "actionlint": "pass",
+    "productionQaDependencyCoverage": "pass",
+    "publicEmailScan": "pass"
+  },
+  "publicStaticObservation": {
+    "observedAt": "2026-11-16T16:26:50.820Z",
+    "scope": "Public static files through the configured workspace proxy; no browser scripts, sign-in or Supabase calls",
+    "samples": [
+      {
+        "signal": "site_apex",
+        "state": "healthy",
+        "kind": "healthy",
+        "release": "5aa0ceee5023285304b6c95b73aa893a85eb84f0"
+      },
+      {
+        "signal": "site_www",
+        "state": "healthy",
+        "kind": "healthy",
+        "release": "5aa0ceee5023285304b6c95b73aa893a85eb84f0"
+      },
+      {
+        "signal": "site_vercel",
+        "state": "healthy",
+        "kind": "healthy",
+        "release": "5aa0ceee5023285304b6c95b73aa893a85eb84f0"
+      }
+    ]
+  },
+  "sourceSha256": {
+    ".github/workflows/failure-observer.yml": "6f69b2866ffa47d93418518b233da44847e2a8933100b22989954858d0fcbbef",
+    "scripts/failure-observer.mjs": "a3c2d44d1e59153a9b3c2ea84b2f4fe1ae61211f63670674cd69d96b2bdf2815",
+    "scripts/failure-incidents.mjs": "a00245b8d8c74c8735baae67a71809207c135fe72b2fb942144989f7215c8a76",
+    "scripts/observe-production.mjs": "e5daf0b0a80df6b56d55c71a47fe50fe24abd813f0b0596154376794dab2c3dd",
+    "tests/failure-observer.test.mjs": "bbff01bed42a07f7020feff7e513e6c0b016250dac4769aeb15e07ed63855b2e"
+  },
+  "boundaries": [
+    "Public HTML is fetched without executing page scripts.",
+    "No sign-in, Supabase request, learner data or production QA.",
+    "Local HTTP GitHub substitute verifies incident transitions; personal delivery is unverified.",
+    "Existing external coverage and personal notification settings remain unverified.",
+    "Artifacts retain seven days; Actions logs keep existing retention and public issues persist."
+  ],
+  "exploratoryFindings": [
+    "Initial direct connection failed because this workspace requires its configured proxy.",
+    "Proxy-based static smoke check caught obsolete page identifiers in the draft observer; actual-page fixtures and observer were corrected before activation."
+  ]
+}
