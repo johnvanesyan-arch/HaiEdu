@@ -13,7 +13,7 @@ from psycopg import sql
 from psycopg.types.json import Jsonb
 
 
-def seed_navigation_curriculum(connection, school, *, assessment_files=False):
+def seed_navigation_curriculum(connection, school, *, assessment_files=False, mastery=False):
     label = school['label']
     prefix = 'bf21_' + label.lower()
     title = 'Synthetic unit ' + label
@@ -63,7 +63,7 @@ def seed_navigation_curriculum(connection, school, *, assessment_files=False):
            subject_program_id=school['programme'], release_number=1, version_label='fixture-v2',
            status='draft', provenance_quality='exact', source_snapshot=evidence,
            content_fingerprint=hashlib.sha256(prefix.encode()).hexdigest(),
-           notes=('Synthetic local assessment/file qualification.' if assessment_files
+           notes=('Synthetic local Mastery lifecycle qualification.' if mastery else 'Synthetic local assessment/file qualification.' if assessment_files
                   else 'Synthetic dashboard navigation only; assessments are unconfigured.'))
     insert('curriculum_release_units', curriculum_release_id=ids['release'], unit_id=ids['unit'],
            unit_code_snapshot=prefix.upper() + '_U1', title_hy_snapshot=title, sequence_order_snapshot=1)
@@ -82,9 +82,9 @@ def seed_navigation_curriculum(connection, school, *, assessment_files=False):
            item_family_id=ids['family'], skill_id=ids['skill'], family_code_snapshot=prefix.upper() + '_F1',
            primary_learning_outcome_id=ids['outcome'], disposition_snapshot='synthetic',
            mapping_type_snapshot='synthetic', rationale_snapshot='Synthetic fixture')
-    if assessment_files:
+    if assessment_files or mastery:
         from staging_assessments import seed_assessments
-        seed_assessments(connection, school, ids, insert, now)
+        seed_assessments(connection, school, ids, insert, now, mastery=mastery)
     else:
         # Navigation has no questions, scoring policy or learning-model binding.
         # The UI must accurately show unavailable assessments, never start a session.

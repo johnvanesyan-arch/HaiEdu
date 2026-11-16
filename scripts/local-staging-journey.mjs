@@ -8,6 +8,7 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '@playwright/test';
 import {execFileSync} from 'node:child_process';
 import {runAssessmentFilesJourney} from './local-staging-assessment-files.mjs';
+import {runMasteryJourney} from './local-staging-mastery.mjs';
 import {dashboardReady,dashboardInteraction,dashboardSignedOut,dashboardScreenshots,dashboardLateLogout} from './local-staging-dashboard-checks.mjs';
 import {buildWebAssets,digest} from './build-web-assets.mjs';
 import {serveWeb} from '../tests/fixtures/built-web-server.mjs';
@@ -19,7 +20,7 @@ const fixture=JSON.parse(await readFile(process.argv[2],'utf8'));
 loopbackOrigin(fixture.backendOrigin);
 assert.match(fixture.runId,/^[a-f0-9]{24}$/);
 assert.match(fixture.sourceCommit,/^[a-f0-9]{40}$/);
-assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3'].includes(fixture.fixtureVersion));
+assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3','two-school-mastery-v4'].includes(fixture.fixtureVersion));
 assert.equal(fixture.accounts.length,6);
 assert.equal(fixture.schools.length,2);
 for(const account of fixture.accounts) {
@@ -94,7 +95,9 @@ try {
   });
   });
   const page=await context.newPage();
-  if(fixture.fixtureVersion==='two-school-assessment-files-v3') {
+  if(fixture.fixtureVersion==='two-school-mastery-v4') {
+    await runMasteryJourney({page,fixture,target,check,diagnostics});
+  } else if(fixture.fixtureVersion==='two-school-assessment-files-v3') {
     await runAssessmentFilesJourney({page,fixture,target,check,diagnostics});
   } else for(const account of ['student','teacher','school_admin'].flatMap(role=>['A','B'].map(school=>fixture.accounts.find(a=>a.role===role&&a.school===school)))) {
     const school=fixture.schools.find(s=>s.label===account.school);
@@ -194,7 +197,7 @@ try {
   assert.equal(blocked.length,0,'unexpected_browser_network_destination');
   await writeFile(process.argv[3],JSON.stringify({passed:true,buildId:manifest.buildId,
     checks,accounts:6,schools:2,subjects:2,browserNetworkRefusals:blocked.length,
-    boundary:fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'},null,2)+'\n');
+    boundary:fixture.fixtureVersion==='two-school-mastery-v4'?'Real local sign-in and native selected-response Mastery/Chapter Review lifecycle, with two fictional schools and unchanged services. No hosted, capacity, content or production acceptance claim.':fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'},null,2)+'\n');
 } finally {
   await browser?.close();await server?.close();await rm(temporary,{recursive:true,force:true});
 }

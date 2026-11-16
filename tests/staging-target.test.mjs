@@ -7,10 +7,12 @@ import {STAGING_VERSION,validateStagingTarget,guardedStagingFetch,stagingUrl} fr
 const target = {schemaVersion:STAGING_VERSION,kind:'owned-local',runId:'a'.repeat(24),sourceCommit:'b'.repeat(40),
   fixtureVersion:'two-school-dashboards-v2',buildId:'c'.repeat(64),backendOrigin:'http://127.0.0.1:32110',frontendOrigin:'http://127.0.0.1:32111'};
 
-test('both reviewed fixture versions require independent ownership and unknown versions are refused',()=>{
-  const assessment={...target,fixtureVersion:'two-school-assessment-files-v3'};
-  assert.equal(validateStagingTarget(assessment,assessment).fixtureVersion,assessment.fixtureVersion);
-  assert.throws(()=>validateStagingTarget(assessment,target),/ownership_mismatch/);
+test('reviewed fixture versions require independent ownership and unknown versions are refused',()=>{
+  for(const fixtureVersion of ['two-school-assessment-files-v3','two-school-mastery-v4']) {
+    const assessment={...target,fixtureVersion};
+    assert.equal(validateStagingTarget(assessment,assessment).fixtureVersion,assessment.fixtureVersion);
+    assert.throws(()=>validateStagingTarget(assessment,target),/ownership_mismatch/);
+  }
   for(const fixtureVersion of ['two-school-assessment-files-v4','two-school-auth-v1','production',null]) {
     const invalid={...target,fixtureVersion};
     assert.throws(()=>validateStagingTarget(invalid,invalid),/manifest_invalid/);
