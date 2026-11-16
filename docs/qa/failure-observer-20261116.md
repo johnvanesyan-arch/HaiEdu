@@ -1,5 +1,21 @@
 # BF-22 — useful failure alerts: public website and main CI
 
+## Activation and delivery verified
+
+On 16 November 2026 (Asia/Yerevan), John explicitly approved activation and the one-time notification test, then confirmed that `BF22_FAILURE_ALERTS=true` and repository **Watch → Custom → Issues** were saved. The [enabled main observer](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43937012240), attempt 1, passed both `observe` and `notify`. The collected report at `2026-11-16T19:13:18.615Z` found all three public addresses and latest main CI healthy at `0ec47e91c0b8cac52552e4c2cec713c752af6b5a`. The publisher reported both incident categories unchanged; no real incident was opened, edited or closed.
+
+This proves effective activation through the workflow and script guards, which require the variable to equal `true`. Administrative variable readback is still unavailable through the connection. The hourly schedule and main-CI completion trigger are enabled. The first scheduled event after activation has not yet been observed; GitHub scheduling remains best effort. These checks read static public pages and GitHub CI metadata, without signing in or calling Supabase.
+
+A minimal manual-only workflow on temporary branch `codex/bf22-notification-delivery-20261116`, at commit `b28e97c772a771cd4c81bd49bce4a14636645dd1`, created one clearly labelled test issue using the GitHub Actions bot. It has an exact repository/branch/event guard, requires the activation variable, grants only issue-write permission, performs no checkout or production requests, and avoids duplicate test issues. The [delivery test](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43937111485) passed. John confirmed receiving [test issue #510](https://github.com/johnvanesyan-arch/HaiEdu/issues/510) in GitHub notifications. The issue was then closed and the temporary branch deleted. No actual outage or managed production incident was fabricated; personal email or mobile push delivery is not claimed.
+
+The main observer source is unchanged from the verified release. The prior eighteen fault controls and required CI remain source-equivalent evidence; this delivery adds actual enabled execution and owner-confirmed notification receipt. [Activation receipt](../evidence/failure-observer-activation-20261116.json).
+
+Activation and GitHub notification delivery for this first layer are complete. Broader BF-22 client-error capture, authenticated/abuse-limited collection, privacy/retention controls and independent coverage remain open. Production QA not run (paused by owner); affected suites: none. BF-16 stays off and paid stolen-password protection stays declined. To deactivate this observer, set `BF22_FAILURE_ALERTS=false`; existing incidents remain and already sent notifications cannot be recalled.
+
+## Initial implementation and release history
+
+The following sections retain the initial disabled-state qualification and release history; the activation status above supersedes their pending-activation statements.
+
 John selected BF-22 on 16 November 2026 and chose GitHub notifications using his existing account. Owner-approved [PR508](https://github.com/johnvanesyan-arch/HaiEdu/pull/508) is merged at `2d6f14f7bac6d85df44e27cf334275f252911c7f`. PR/main CI, public static release checks and actual GitHub read-only observer runs pass. This first delivery provides an hourly public-site check and event-driven observation of the latest main CI, with incident publication still disabled. Activation and personal notification delivery remain open.
 
 ## Inventory and scope
