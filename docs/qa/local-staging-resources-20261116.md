@@ -1,6 +1,6 @@
 # BF-21 — local material assignments and recipient isolation
 
-John requested this test on 16 November 2026. The new owned local journey passes 41 browser/service groups and eight independent private-storage checks. Integration checks pass; publication and merge are pending, as recorded below. No application implementation, production service or hosted setting is changed.
+John requested this test on 16 November 2026. The new owned local journey passes 41 browser/service groups and eight independent private-storage checks. The change is merged and verified in owner-approved [PR504](https://github.com/johnvanesyan-arch/HaiEdu/pull/504) at `72d0ec60eb0af17c06e62f76299d3b8e2ebec324`; exact release evidence is below. No application implementation, production service or hosted setting is changed.
 
 ## What was exercised
 
@@ -32,7 +32,7 @@ python scripts/run-local-staging.py --journey resource-assignments --evidence-di
 
 Use the prerequisites in [the local staging guide](local-staging-20261115.md). The `two-school-resources-v6` fixture remains bound to the parent-owned origins, source and browser build. The fixed service registry now bundles 31 unchanged repository functions, adding the two resource services. The local gateway allows only the reviewed private PDF path shape, retains caller authorization and refuses redirects; the private server key is never passed to the browser. Existing ownership, method, body-size and destination checks remain in place. The new journey is added to the required PostgreSQL CI job, retaining the five-job release aggregate.
 
-All **1,857 code tests** pass with no failures, skips or cancellations. The 41 resource groups and all 109 retained groups (28 dashboards, 25 assessment/files, 21 Mastery and 35 writing/audio) pass: **150 local browser/service groups and five verified cleanups**, plus eight independent private-storage checks. Ten gateway/target controls, the setup-redirect control, typecheck, teacher-bundle parity, web asset/archive integrity and production-QA dependency coverage pass. The [sanitized receipt](../evidence/local-staging-resources-20261116.json) preserves source hashes, component pins, assertions, cleanup and the distinction between exploratory failure and passing qualification. Earlier retained runs differ only in an unused resource-journey helper before its final direct-library assertions; their executed journeys and all 31 service bundles are unchanged. Exact PR-head CI and merge approval remain pending.
+All **1,857 code tests** pass with no failures, skips or cancellations. The 41 resource groups and all 109 retained groups (28 dashboards, 25 assessment/files, 21 Mastery and 35 writing/audio) pass: **150 local browser/service groups and five verified cleanups**, plus eight independent private-storage checks. Ten gateway/target controls, the setup-redirect control, typecheck, teacher-bundle parity, web asset/archive integrity and production-QA dependency coverage pass. The [sanitized receipt](../evidence/local-staging-resources-20261116.json) preserves source hashes, component pins, assertions, cleanup and the distinction between exploratory failure and passing qualification. Earlier retained runs differ only in an unused resource-journey helper before its final direct-library assertions; their executed journeys and all 31 service bundles are unchanged. Exact PR-head and merged-source CI also pass, as recorded below.
 
 ## Boundaries
 
@@ -40,4 +40,12 @@ This is a fresh local browser/service test using fictional data. It does not est
 
 No product/browser implementation, schema migration, package pin, hosted test project or production setting changes. Production QA not run (paused by owner). Affected production QA: none. BF-16 stays off, BF-02 recovery stays deferred, BF-22 stays on hold and paid stolen-password protection stays declined.
 
-Owner usability acceptance: not given. Wider BF-21 remains open. Merge approval is not yet given for this delivery.
+Owner usability acceptance: not given. Wider BF-21 remains open. The owner approved publication and merge of this delivery.
+
+## Release verification
+
+The owner approved publishing and merging the 17 reviewed files, explicitly sanctioned publication of the roadmap with its existing public history, and confirmed merge coordination. Approved head `5bcf8923b987702bf10b38daf88c371e8e739df8` and merged commit `72d0ec60eb0af17c06e62f76299d3b8e2ebec324` preserve tree `d8ef6f3742c3903dd0a6f649aa52e145f3f7177c`. All five required jobs pass in [PR CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43872336017) and [merged-source CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43874007734). Both runs contain 1,857 passing code tests, 702 passing browser checks, all 150 expected local journey-group labels, five owned cleanups and the independent private-storage verification. Code/browser suites have zero failures, skips or cancellations. Run attempts and exact job identities are preserved in the receipt.
+
+Twelve fresh public static checks at `2026-11-16T13:27:05.196Z` verify the merged source, exact asset manifest, representative account-access HTML/JavaScript hashes, MIME, cache rules and enforcing security headers on `haiedu.am`, `www.haiedu.am` and `armenian-mastery-platform.vercel.app`. The unchanged 29-page/127-asset product build retains identity `c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a`. Normal Git integration updated the site. Only static files were requested; no page scripts, sign-in, Supabase requests or production QA ran. No manual promotion or hosted setting change occurred.
+
+This is local PDF workflow qualification, not hosted student acceptance, parallel-stack capacity certification or closure of wider BF-21. Earlier manual production-QA access-precheck failures remain separately recorded in [the Mastery delivery](local-staging-mastery-20261116.md#earlier-production-qa-failures). This task does not investigate or claim to resolve those failures.
