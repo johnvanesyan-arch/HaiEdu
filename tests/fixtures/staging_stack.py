@@ -81,7 +81,7 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
             assert not docker('inspect', '--format', '{{.Name}}', name, check=False)
 
 
-def seed_roles(database, *, assessment_files=False, mastery=False):
+def seed_roles(database, *, assessment_files=False, mastery=False, pilot=False):
     """Create only fictional rows, through intact constraints and triggers."""
     stack = database.stack
     accounts = []
@@ -101,6 +101,14 @@ def seed_roles(database, *, assessment_files=False, mastery=False):
                 assert connection.execute('SELECT role::text,account_status FROM profiles WHERE id=%s',
                                           [user['id']]).fetchone() == ('student', 'active')
                 accounts.append(account)
+        reviewer = None
+        if pilot:
+            # A non-login content reviewer is fixture setup, not an account-role
+            # transition. No constraints, triggers or authorization are disabled.
+            reviewer = str(uuid.uuid4())
+            connection.execute('INSERT INTO auth.users(id) VALUES (%s)', [reviewer])
+            connection.execute('DELETE FROM profiles WHERE id=%s', [reviewer])
+            connection.execute("INSERT INTO profiles(id,role,display_name) VALUES (%s,'content_admin','Synthetic non-login reviewer')", [reviewer])
         schools = []
         with connection.transaction():
             for number, label in enumerate(('A', 'B')):
@@ -146,9 +154,11 @@ def seed_roles(database, *, assessment_files=False, mastery=False):
                                    [ids[k] for k in ('invitation', 'school', 'year', 'class', 'assignment', 'programme')] + [actors['student']['id'], hashlib.sha256(secrets.token_bytes(32)).hexdigest(), admin])
                 connection.execute("INSERT INTO institutional_class_enrollments(id,school_id,academic_year_id,class_id,student_membership_id,student_id,invitation_id,teacher_assignment_id,subject_program_id,created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                                    [ids[k] for k in ('enrollment', 'school', 'year', 'class', 'studentMember')] + [actors['student']['id']] + [ids[k] for k in ('invitation', 'assignment', 'programme')] + [admin])
-                school = {'label': label, **ids}
-                seed_navigation_curriculum(connection, school, assessment_files=assessment_files, mastery=mastery)
+                school = {'label': label, **ids, **({'reviewer': reviewer} if pilot else {})}
+                seed_navigation_curriculum(connection, school, assessment_files=assessment_files, mastery=mastery, pilot=pilot)
                 schools.append(school)
+            if pilot:
+                connection.execute("INSERT INTO storage.buckets(id,name,public,file_size_limit,allowed_mime_types) VALUES ('bf21-audio','bf21-audio',false,8388608,ARRAY['audio/wav'])")
             if assessment_files:
                 connection.execute("INSERT INTO storage.buckets(id,name,public,file_size_limit,allowed_mime_types) VALUES ('teacher-task-files','teacher-task-files',false,10485760,ARRAY['application/pdf','application/vnd.openxmlformats-officedocument.wordprocessingml.document'])")
             connection.execute("NOTIFY pgrst,'reload schema'")

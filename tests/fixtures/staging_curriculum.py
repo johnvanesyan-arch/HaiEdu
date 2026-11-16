@@ -13,7 +13,7 @@ from psycopg import sql
 from psycopg.types.json import Jsonb
 
 
-def seed_navigation_curriculum(connection, school, *, assessment_files=False, mastery=False):
+def seed_navigation_curriculum(connection, school, *, assessment_files=False, mastery=False, pilot=False):
     label = school['label']
     prefix = 'bf21_' + label.lower()
     title = 'Synthetic unit ' + label
@@ -82,9 +82,9 @@ def seed_navigation_curriculum(connection, school, *, assessment_files=False, ma
            item_family_id=ids['family'], skill_id=ids['skill'], family_code_snapshot=prefix.upper() + '_F1',
            primary_learning_outcome_id=ids['outcome'], disposition_snapshot='synthetic',
            mapping_type_snapshot='synthetic', rationale_snapshot='Synthetic fixture')
-    if assessment_files or mastery:
+    if assessment_files or mastery or pilot:
         from staging_assessments import seed_assessments
-        seed_assessments(connection, school, ids, insert, now, mastery=mastery)
+        seed_assessments(connection, school, ids, insert, now, mastery=mastery, pilot=pilot)
     else:
         # Navigation has no questions, scoring policy or learning-model binding.
         # The UI must accurately show unavailable assessments, never start a session.
@@ -104,3 +104,6 @@ def seed_navigation_curriculum(connection, school, *, assessment_files=False, ma
                status='passed', evidence=evidence, notes='Synthetic fixture only; no real content acceptance.', checked_at=now)
     connection.execute("UPDATE curriculum_releases SET status='pilot' WHERE id=%s", [ids['release']])
     school.update(unit=ids['unit'], release=ids['release'])
+    if pilot:
+        from staging_pilot import seed_writing
+        seed_writing(connection, school)

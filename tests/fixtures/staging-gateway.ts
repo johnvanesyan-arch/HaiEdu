@@ -26,6 +26,7 @@ Deno.serve(async req=>{
   else if(url.pathname==='/auth/v1/admin/users' && req.headers.get('apikey')===configuration.serviceKey && req.method==='GET') upstream='http://auth:9999/admin/users'+url.search;
   else if(url.pathname.startsWith('/rest/v1/')) upstream='http://rest:3000'+url.pathname.slice('/rest/v1'.length)+url.search;
   else if(/^\/storage\/v1\/object\/(?:authenticated\/|public\/)?teacher-task-files\/[a-zA-Z0-9_/-]+\.(?:pdf|docx)$/.test(url.pathname)) upstream='http://storage:5000'+url.pathname.slice('/storage/v1'.length)+url.search;
+  else if(req.method==='GET' && (/^\/storage\/v1\/object\/(?:authenticated\/|public\/)?bf21-audio\/[a-f0-9]{64}\.wav$/.test(url.pathname) || url.pathname==='/storage/v1/bucket/bf21-audio')) upstream='http://storage:5000'+url.pathname.slice('/storage/v1'.length);
   else if(url.pathname.startsWith('/functions/v1/')) {
     const name=url.pathname.slice('/functions/v1/'.length);
     if(routeNames.includes(name))service=name;

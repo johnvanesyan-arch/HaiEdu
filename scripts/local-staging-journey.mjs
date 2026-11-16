@@ -8,11 +8,14 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '@playwright/test';
 import {execFileSync} from 'node:child_process';
 import {runAssessmentFilesJourney} from './local-staging-assessment-files.mjs';
+import {runPilotJourney} from './local-staging-pilot.mjs';
 import {runMasteryJourney} from './local-staging-mastery.mjs';
 import {dashboardReady,dashboardInteraction,dashboardSignedOut,dashboardScreenshots,dashboardLateLogout} from './local-staging-dashboard-checks.mjs';
 import {buildWebAssets,digest} from './build-web-assets.mjs';
 import {serveWeb} from '../tests/fixtures/built-web-server.mjs';
-import {STAGING_VERSION,loopbackOrigin,guardedStagingFetch,stagingUrl} from './staging-target.mjs';
+import {STAGING_VERSION,loopbackOrigin,guardedStagingFetch} from './staging-target.mjs';
+
+import {guardStagingBrowser} from './local-staging-browser-network.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 assert.equal(process.argv.length,4,'Expected private owned fixture and output paths');
@@ -20,7 +23,7 @@ const fixture=JSON.parse(await readFile(process.argv[2],'utf8'));
 loopbackOrigin(fixture.backendOrigin);
 assert.match(fixture.runId,/^[a-f0-9]{24}$/);
 assert.match(fixture.sourceCommit,/^[a-f0-9]{40}$/);
-assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3','two-school-mastery-v4'].includes(fixture.fixtureVersion));
+assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3','two-school-mastery-v4','two-school-pilot-v5'].includes(fixture.fixtureVersion));
 assert.equal(fixture.accounts.length,6);
 assert.equal(fixture.schools.length,2);
 for(const account of fixture.accounts) {
@@ -33,7 +36,7 @@ await mkdir(fixture.screenshotDir,{recursive:true});
 const checks=[];
 const check=name=>{checks.push(name);console.log('PASS '+name);};
 const temporary=await mkdtemp(path.join(tmpdir(),'haiedu-bf21-web-'));
-let server,browser;
+let server,browser,network,result,failure;
 try {
   await cp(path.join(root,'web'),path.join(temporary,'web'),{recursive:true});
   await mkdir(path.join(temporary,'scripts'));
@@ -74,18 +77,9 @@ try {
   }
   check('owned target identity and separate browser build verified before sign-in');
   browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});
-  const blocked=[];
   const context=await browser.newContext({serviceWorkers:'block'});
-  await context.routeWebSocket('**/*',websocket=>{blocked.push('websocket-outside-dashboard-scope');websocket.close();});
-  await context.route('**/*',async route=>{
-    try {stagingUrl(target,route.request().url());}
-    catch {blocked.push('outside-owned-origins');await route.abort('blockedbyclient');return;}
-    const response=await route.fetch({maxRedirects:0});
-    if(response.status()>=300&&response.status()<400) {
-      blocked.push('http-redirect');await route.abort('blockedbyclient');return;
-    }
-    await route.fulfill({response});
-  });
+  network=await guardStagingBrowser(context,target);
+  const blocked=network.blocked;
   const diagnostics=[];
   context.on('page',page=>{
   page.on('pageerror',error=>diagnostics.push({pageError:error.name,message:error.message}));
@@ -95,7 +89,9 @@ try {
   });
   });
   const page=await context.newPage();
-  if(fixture.fixtureVersion==='two-school-mastery-v4') {
+  if(fixture.fixtureVersion==='two-school-pilot-v5') {
+    await runPilotJourney({page,fixture,target,check,diagnostics});
+  } else if(fixture.fixtureVersion==='two-school-mastery-v4') {
     await runMasteryJourney({page,fixture,target,check,diagnostics});
   } else if(fixture.fixtureVersion==='two-school-assessment-files-v3') {
     await runAssessmentFilesJourney({page,fixture,target,check,diagnostics});
@@ -195,9 +191,17 @@ try {
     } finally {diagnostics.length=0;retainedToken=null;}
   }
   assert.equal(blocked.length,0,'unexpected_browser_network_destination');
-  await writeFile(process.argv[3],JSON.stringify({passed:true,buildId:manifest.buildId,
+  result={passed:true,buildId:manifest.buildId,
     checks,accounts:6,schools:2,subjects:2,browserNetworkRefusals:blocked.length,
-    boundary:fixture.fixtureVersion==='two-school-mastery-v4'?'Real local sign-in and native selected-response Mastery/Chapter Review lifecycle, with two fictional schools and unchanged services. No hosted, capacity, content or production acceptance claim.':fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'},null,2)+'\n');
-} finally {
-  await browser?.close();await server?.close();await rm(temporary,{recursive:true,force:true});
+    boundary:fixture.fixtureVersion==='two-school-pilot-v5'?'Real local native writing assignment, draft, revision, grading and protected audio playback in two fictional schools. No hosted, content, capacity or production acceptance claim.':fixture.fixtureVersion==='two-school-mastery-v4'?'Real local sign-in and native selected-response Mastery/Chapter Review lifecycle, with two fictional schools and unchanged services. No hosted, capacity, content or production acceptance claim.':fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'};
+} catch(error) {failure=error;}
+finally {
+  for(const cleanup of [()=>network?.drain(),()=>browser?.close(),()=>network?.verify(),()=>server?.close(),()=>rm(temporary,{recursive:true,force:true})]) {
+    try {await cleanup();}
+    catch(error) {failure=failure?new AggregateError([failure,error],'Local journey and cleanup failed'):error;}
+  }
 }
+if(failure)throw failure;
+
+// Success is durable only after guarded requests and browser teardown finish.
+await writeFile(process.argv[3],JSON.stringify({...result,browserShutdownVerified:true},null,2)+'\n');
