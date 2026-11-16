@@ -46,6 +46,28 @@ test('private storage routes preserve caller authorization and reject other buck
   assert.equal(g.requests.length,1);
 });
 
+test('local resource files retain caller identity and exclude unrelated storage routes',async()=>{
+  const g=await gateway(),object='11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222.pdf';
+  const headers={apikey:'local-public',Authorization:'Bearer limited-session'};
+  for(const prefix of ['authenticated/','public/','']) {
+    const path='/storage/v1/object/'+prefix+'supplementary-materials/'+object;
+    assert.equal((await g.raw(new Request('http://api:8080'+path,{headers}))).status,200);
+    assert.equal(g.requests.at(-1)[0],'http://storage:5000'+path.slice('/storage/v1'.length));
+    assert.equal(g.requests.at(-1)[1].headers.get('authorization'),'Bearer limited-session');
+    assert.equal(g.requests.at(-1)[1].redirect,'error');
+  }
+  for(const path of ['/storage/v1/bucket/supplementary-materials','/storage/v1/object/sign/supplementary-materials/'+object,
+    '/storage/v1/object/public/supplementary-materials/'+object.replace('.pdf','.exe'),'/storage/v1/object/public/other-materials/'+object]) {
+    assert.equal((await g.raw(new Request('http://api:8080'+path,{headers}))).status,404);
+  }
+  const path='/storage/v1/object/supplementary-materials/'+object;
+  for(const method of ['PUT','PATCH','DELETE'])assert.equal((await g.raw(new Request('http://api:8080'+path,{headers,method}))).status,404);
+  assert.equal(g.requests.length,3);
+  const oversized=new Request('http://api:8080/functions/v1/manage-supplementary-resources',{
+    method:'POST',headers:{...headers,'content-length':'5275649'},body:'x'});
+  assert.equal((await g.raw(oversized)).status,413);assert.equal(g.workers.length,0);
+});
+
 test('body limits refuse oversized declared and streamed requests before creating workers',async()=>{
   const g=await gateway(),url='http://api:8080/functions/v1/manage-teacher-task-student-files';
   const declared=new Request(url,{method:'POST',headers:{apikey:'local-public','content-length':'10551297'},body:'x'});

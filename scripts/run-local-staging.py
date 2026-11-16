@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tests/fixtures'))
 from fresh_update_bridge import load_plan, owned_database
 from staging_stack import EDGE_IMAGE, FIXTURE_VERSION, seed_roles, service_runtime
+from staging_resources import seed_resource_recipients, verify_resources, verify_resource_storage
 from staging_mastery import verify_mastery
 from staging_pilot import upload_audio, verify_pilot
 
@@ -20,12 +21,13 @@ from staging_pilot import upload_audio, verify_pilot
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-dir', type=Path, required=True)
-    parser.add_argument('--journey', choices=('dashboards', 'assessment-files', 'mastery', 'pilot-activities'), default='dashboards')
+    parser.add_argument('--journey', choices=('dashboards', 'assessment-files', 'mastery', 'pilot-activities', 'resource-assignments'), default='dashboards')
     args = parser.parse_args()
+    resources = args.journey == 'resource-assignments'
     assessment_files = args.journey == 'assessment-files'
     pilot = args.journey == 'pilot-activities'
     mastery = args.journey == 'mastery'
-    fixture_version = 'two-school-pilot-v5' if pilot else 'two-school-mastery-v4' if mastery else 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
+    fixture_version = 'two-school-resources-v6' if resources else 'two-school-pilot-v5' if pilot else 'two-school-mastery-v4' if mastery else 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
     output = args.evidence_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
@@ -36,7 +38,7 @@ def main():
              'startedAt': datetime.now(timezone.utc).isoformat(), 'passed': False}
     proof['workingTreeClean'] = not subprocess.check_output(
         ['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=ROOT, text=True).strip()
-    runner_files = ['scripts/run-local-staging.py', 'scripts/local-staging-pilot.mjs', 'scripts/local-staging-browser-network.mjs', 'tests/fixtures/staging_pilot.py', 'scripts/local-staging-journey.mjs',
+    runner_files = ['scripts/local-staging-resources.mjs', 'tests/fixtures/staging_resources.py', 'scripts/run-local-staging.py', 'scripts/local-staging-pilot.mjs', 'scripts/local-staging-browser-network.mjs', 'tests/fixtures/staging_pilot.py', 'scripts/local-staging-journey.mjs',
                     'scripts/local-staging-assessment-files.mjs', 'tests/fixtures/staging_assessments.py',
                     'scripts/local-staging-mastery.mjs', 'tests/fixtures/staging_mastery.py',
                     'tests/fixtures/synthetic-task-documents.mjs', 'tests/fixtures/governed-runtime-model.json',
@@ -56,9 +58,11 @@ def main():
             with owned_database(load_plan(), output / 'private-diagnostics', staging_gateway=True) as database:
                 proof['componentImages'] = {**database.stack['images'], 'database': database.stack['image']}
                 fixture = seed_roles(database, assessment_files=assessment_files, mastery=mastery, pilot=pilot)
+                if resources:
+                    seed_resource_recipients(database, fixture)
                 if pilot:
                     upload_audio(database, fixture)
-                print('PASS complete baseline and six fictional accounts in two schools', flush=True)
+                print('PASS complete baseline and ' + str(len(fixture['accounts'])) + ' fictional accounts in two schools', flush=True)
                 with service_runtime(database, bundle, run_id, source, output / 'private-diagnostics') as backend:
                     fixture.update({'runId': run_id, 'sourceCommit': source, 'fixtureVersion': fixture_version,
                                     'backendOrigin': backend, 'anonKey': database.stack['anonToken'],
@@ -79,6 +83,8 @@ def main():
                         attempt_count = connection.execute('SELECT count(*) FROM public.attempts').fetchone()[0]
                         assert learning_count == (14 if mastery else 4 if assessment_files or pilot else 0)
                         assert attempt_count == (28 if mastery else 8 if assessment_files or pilot else 0)
+                        if resources:
+                            proof.update(verify_resources(connection, fixture))
                         if pilot:
                             proof.update(verify_pilot(connection, fixture))
                         if mastery:
@@ -115,6 +121,9 @@ def main():
                             proof['taskSubmissionsCreated'] = 2
                             proof['publishedTaskReviews'] = 2
 
+                    if resources:
+                        proof.update(verify_resource_storage(database, fixture))
+                        print('PASS exact private objects verified; public and direct learner downloads refused', flush=True)
                     proof['allTestSessionsClosed'] = True
                     proof['rateBudgetCountersCreated'] = 0
                     proof['learningSessionsCreated'] = learning_count
