@@ -10,8 +10,11 @@ async function fixture(t){const db=await sessionDatabase();t.after(()=>db.close(
 
 test('every Edge entrypoint is explicitly inventoried and connected, including aliases',()=>{
   const names=readdirSync('supabase/functions').filter(x=>x!=='_shared').sort();
-  assert.equal(names.length,65);assert.deepEqual([...RATE_BUDGET_ROUTES],names);
-  for(const name of names){const source=readFileSync(`supabase/functions/${name}/index.ts`,'utf8');
+  const independent=['get-client-failure-summary','record-client-failure'];
+  assert.equal(names.length,67);assert.deepEqual([...RATE_BUDGET_ROUTES,...independent].sort(),names);
+  assert.match(readFileSync('supabase/functions/record-client-failure/index.ts','utf8'),/createClientFailureHandler/);
+  assert.match(readFileSync('supabase/functions/get-client-failure-summary/index.ts','utf8'),/createClientSummaryHandler/);
+  for(const name of RATE_BUDGET_ROUTES){const source=readFileSync(`supabase/functions/${name}/index.ts`,'utf8');
     assert.ok(source.includes(`"${name}"`)||source.includes(`'${name}'`),name);
     assert.match(source,/enforceRateBudget|rateBudgetRoute:/,name);
   }

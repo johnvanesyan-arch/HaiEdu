@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only BF22 client-failure source and design audit",
+  "localDate": "2026-11-17",
+  "timezone": "Asia/Yerevan",
+  "sourceCommit": "493f4c1310d82247f46c05b30a456c1264704fa3",
+  "implementationStatus": "proposal only",
+  "sourceInventory": {
+    "sourceCommit": "493f4c1310d82247f46c05b30a456c1264704fa3",
+    "method": "Static source scan of top-level authored web JS/MJS; bundles excluded. Literal call inventory is a lower bound; dynamic route dispatch is listed separately in the audit.",
+    "rateAwareDirectImporters": [
+      "web/writing-assignments.mjs",
+      "web/supplementary-resources.mjs",
+      "web/written-work.mjs",
+      "web/content-review-workflow.js",
+      "web/multi-subject-home.js",
+      "web/recommendation-telemetry.js",
+      "web/teacher-review.mjs",
+      "web/teacher-task-editor.mjs",
+      "web/student-work-list.mjs",
+      "web/student-teacher-task-client.mjs",
+      "web/class-join.js",
+      "web/content-pilot-analytics.js",
+      "web/home-assessment-router.js",
+      "web/school-analytics-view.mjs",
+      "web/content-guides.js",
+      "web/course-page.js",
+      "web/admin.js",
+      "web/school-admin.js",
+      "web/assessment.js",
+      "web/content-workspace.js",
+      "web/teacher-task-draft-workspace.mjs",
+      "web/learner-access.mjs",
+      "web/answer-response-recovery.mjs",
+      "web/progress.js",
+      "web/home-practice-router.js",
+      "web/account-access.js",
+      "web/physics-7.js",
+      "web/teacher-feedback.mjs",
+      "web/teacher.js",
+      "web/school-teacher.js",
+      "web/teacher-task-source-client.mjs",
+      "web/privacy.js",
+      "web/resource-assignments.mjs",
+      "web/teacher-task-send.mjs",
+      "web/unit-guides.mjs",
+      "web/teacher-task-review.mjs",
+      "web/home-dashboard.js",
+      "web/teacher-today.mjs",
+      "web/mastery-dashboard.js",
+      "web/join.js",
+      "web/content.js"
+    ],
+    "learnerHelperImporters": [
+      "web/practice.js",
+      "web/app.js",
+      "web/learning-player.mjs",
+      "web/remediation-request.mjs",
+      "web/mastery.js",
+      "web/diagnostic.js"
+    ],
+    "sdkDirectInvokeFiles": [
+      "web/rate-budget-feedback.mjs"
+    ],
+    "literalRoutes": [
+      "accept-staff-account",
+      "complete-student-invitation",
+      "get-chapter-mastery-lifecycle",
+      "get-mastery-check-status",
+      "get-school-admin-overview",
+      "get-school-performance-analytics",
+      "get-school-subject-options",
+      "get-school-teachers",
+      "get-session-item",
+      "get-student-classes",
+      "get-student-dashboard",
+      "get-student-work",
+      "get-teacher-dashboard",
+      "get-teacher-student",
+      "get-teacher-workspace",
+      "get-unit-guides",
+      "join-class",
+      "manage-institutional-teacher-class",
+      "manage-remediation-guides",
+      "manage-resource-assignments",
+      "manage-school-academic-year",
+      "manage-school-teacher",
+      "manage-staff-invitation",
+      "manage-student-invitation",
+      "manage-supplementary-resources",
+      "manage-teacher-class",
+      "manage-teacher-feedback",
+      "manage-teacher-profile",
+      "manage-teacher-task-delivery",
+      "manage-teacher-task-drafts",
+      "manage-teacher-task-sources",
+      "manage-writing-assignments",
+      "manage-written-work",
+      "provision-staff-account",
+      "provision-student-account",
+      "record-recommendation-event",
+      "start-learning-session",
+      "submit-answer",
+      "submit-mastery-answer"
+    ],
+    "authOrStorageConsumers": [
+      "web/writing-assignments.mjs",
+      "web/practice.js",
+      "web/supplementary-resources.mjs",
+      "web/content-review-workflow.js",
+      "web/app.js",
+      "web/admin-security.js",
+      "web/multi-subject-home.js",
+      "web/content-evidence-page.js",
+      "web/teacher-task-editor.mjs",
+      "web/ux.js",
+      "web/content-review.js",
+      "web/student-teacher-tasks.mjs",
+      "web/student-teacher-task-client.mjs",
+      "web/remediation-request.mjs",
+      "web/role-router.js",
+      "web/content-pilot-analytics.js",
+      "web/home-assessment-router.js",
+      "web/content-guides.js",
+      "web/course-page.js",
+      "web/content-material-mfa.mjs",
+      "web/admin.js",
+      "web/school-admin.js",
+      "web/assessment.js",
+      "web/content-workspace.js",
+      "web/content-misconceptions.js",
+      "web/teacher-task-draft-workspace.mjs",
+      "web/learner-access.mjs",
+      "web/content-curriculum.js",
+      "web/progress.js",
+      "web/home-practice-router.js",
+      "web/account-access.js",
+      "web/physics-7.js",
+      "web/mastery.js",
+      "web/teacher.js",
+      "web/diagnostic.js",
+      "web/school-teacher.js",
+      "web/teacher-task-source-client.mjs",
+      "web/privacy.js",
+      "web/account-signout.mjs",
+      "web/content-home.js",
+      "web/resource-assignments.mjs",
+      "web/teacher-task-send.mjs",
+      "web/remediation.js",
+      "web/teacher-task-review.mjs",
+      "web/home-dashboard.js",
+      "web/mastery-dashboard.js",
+      "web/join.js",
+      "web/content.js",
+      "web/content-materials.js"
+    ],
+    "htmlPages": 29,
+    "uxHtmlPages": [
+      "web/progress.html",
+      "web/privacy.html",
+      "web/content-bank.html",
+      "web/content-misconceptions.html",
+      "web/content-curriculum.html",
+      "web/physics-7.html",
+      "web/admin.html",
+      "web/assessment.html",
+      "web/materials.html",
+      "web/content-materials.html",
+      "web/content-guides.html",
+      "web/index.html",
+      "web/course.html",
+      "web/diagnostic.html",
+      "web/content-review.html",
+      "web/content-evidence.html",
+      "web/content.html",
+      "web/join.html",
+      "web/admin-security.html",
+      "web/practice.html",
+      "web/mastery.html",
+      "web/content-item.html",
+      "web/teacher.html",
+      "web/resource-library.html"
+    ]
+  },
+  "builtPageCoverage": {
+    "sourceCommit": "493f4c1310d82247f46c05b30a456c1264704fa3",
+    "build": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+    "method": "Traverse committed esbuild output graph, including shared chunks and bundled sources, from each of 29 HTML page asset entries.",
+    "coverage": [
+      {
+        "page": "account-access.html",
+        "rateAware": true,
+        "ux": false,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "admin-security.html",
+        "rateAware": false,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "admin.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "assessment.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-bank.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-curriculum.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-evidence.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-guides.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-item.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-materials.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-misconceptions.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content-review.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "content.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "course.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": true,
+        "teacherStartup": false
+      },
+      {
+        "page": "diagnostic.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": true,
+        "teacherStartup": false
+      },
+      {
+        "page": "index.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": true,
+        "teacherStartup": false
+      },
+      {
+        "page": "join.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "mastery.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": true,
+        "teacherStartup": false
+      },
+      {
+        "page": "materials.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "physics-7.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "practice.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": true,
+        "teacherStartup": false
+      },
+      {
+        "page": "privacy.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "progress.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "resource-library.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "school-admin.html",
+        "rateAware": true,
+        "ux": false,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "school-teacher.html",
+        "rateAware": true,
+        "ux": false,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "teacher-workflows.html",
+        "rateAware": false,
+        "ux": false,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "teacher-workspace-preview.html",
+        "rateAware": false,
+        "ux": false,
+        "learnerRecovery": false,
+        "teacherStartup": false
+      },
+      {
+        "page": "teacher.html",
+        "rateAware": true,
+        "ux": true,
+        "learnerRecovery": false,
+        "teacherStartup": true
+      }
+    ]
+  },
+  "proposedFutureQaImpact": {
+    "status": "Proposed future implementation only; audit changes no runtime or acceptance script.",
+    "affectedTargets": [
+      {
+        "workflow": ".github/workflows/mobile-browser-qa.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/teacher-feedback-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/resource-assignments-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/english-unit2-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/answer-response-recovery.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs",
+          "web/learning-audio.mjs",
+          "web/assessed-audio.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/sprint-14-actions-qa.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/ux.js",
+          "web/written-work.mjs",
+          "web/teacher-feedback.mjs"
+        ]
+      },
+      {
+        "workflow": ".github/workflows/sprint-14d-analytics-qa.yml",
+        "matches": [
+          "web/rate-budget-feedback.mjs",
+          "web/ux.js"
+        ]
+      }
+    ]
+  },
+  "additionalReviewedPaths": [
+    "web/teacher-home-startup.mjs",
+    "web/admin-security.js",
+    "web/learning-audio.mjs",
+    "web/assessed-audio.mjs",
+    "scripts/local-staging-browser-network.mjs",
+    "supabase/functions/_shared/auth.ts",
+    "supabase/functions/_shared/rate-budget.mjs",
+    "supabase/functions/_shared/written-work-handler.mjs"
+  ],
+  "monitorFollowup": {
+    "workflowId": 420417915,
+    "workflowState": "active",
+    "scheduledExecutionObserved": false,
+    "verifiedManualActivationRun": 43937012240,
+    "verifiedNotificationTestRun": 43937111485,
+    "verifiedAutomaticCiObserverRun": 43941671562,
+    "checkedAt": "2026-11-16T20:08:17Z",
+    "scheduledRunCount": 0
+  },
+  "verification": {
+    "kind": "Source inventory and committed build-graph analysis; existing unchanged-source CI reused. No implementation or new product test pass.",
+    "reusedMainCi": 43940149444,
+    "existingCodeTests": 1875,
+    "existingBrowserChecks": 702,
+    "productionQa": "not run (paused by owner)",
+    "newRuntimeChanges": false,
+    "newProductionWrites": false,
+    "newSupabaseProjectRequests": false,
+    "newAlertsSent": false,
+    "recordValidation": "JSON parses; all 63 recorded source hashes match the audited commit; only the two new audit documentation files are present."
+  },
+  "providerDocs": [
+    "https://supabase.com/changelog.md",
+    "https://supabase.com/docs/guides/functions/auth-headers",
+    "https://supabase.com/docs/guides/functions/logging",
+    "https://supabase.com/docs/guides/platform/log-drains"
+  ],
+  "sourceSha256": {
+    ".github/workflows/failure-observer.yml": "6f69b2866ffa47d93418518b233da44847e2a8933100b22989954858d0fcbbef",
+    "scripts/build-web-assets.mjs": "b032cc4e67c0e4ee73e48fbdbed52d527a6bfcc2c68944f4069ac3dc4eee5aa1",
+    "scripts/check-browser-qa-triggers.mjs": "a5a7d7cfc579d8ab8ab537803269270d369644a8bdc2317e33195aad0ca3ebab",
+    "scripts/local-staging-browser-network.mjs": "6888e7584315687594c4f34b8808507e9bcf1f18326b173dea750de3887ecbda",
+    "scripts/qa-request-diagnostics.mjs": "4b7b66f16f1013c4f9e0a45ded65004c784132ac2a3c30c0313badb4940e4924",
+    "supabase/functions/_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+    "supabase/functions/_shared/rate-budget.mjs": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+    "supabase/functions/_shared/written-work-handler.mjs": "51997fb367edc5f7b4d5b3a6c4ad2ab693a9659ff79d4941be7ba2131a213985",
+    "tests/rate-budget-feedback.test.mjs": "4ae11d13ff136e9e22ba40fa8902517dc19cb9079559f39458ae492b556b866a",
+    "web-build/current.json": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+    "web/account-access.js": "38095f21ba8baf8c514578ffaae825213e6306f9f7a1b231b2bc7232c6ecef3d",
+    "web/admin-security.js": "2ee85f615def695b38286e408f3b4b16fbe4f7e0520e4bb70041007aaf2fb079",
+    "web/admin.js": "0d747a989eadef32e090ca7b7a19ddd851cb605ea06a3ccb496de0d3c4eebc0d",
+    "web/answer-response-recovery.mjs": "973df312cf13473cbb4135ebb18962ef2d8553900984b6ccbb660ff96bd6cd76",
+    "web/app.js": "d6f20415b0ef8536428fb46fbf28fa3f3973b2304e69ce98636e6f256f516947",
+    "web/assessed-audio.mjs": "6710268540a2d1d80d36920a3f8c15de9d6218212b709d52f2d0e4a694a49cb6",
+    "web/assessment.js": "e9b492006bade980ef0f53c56e9ee6b7b2d71c2c0855580d90e3a6512e918191",
+    "web/class-join.js": "b362878cbd81539f52f247a3b1906efbb9d9419be19984511adfcbb31d0159ca",
+    "web/content-guides.js": "3e646770550f2f548c5017f310ca5c6e4f6e74a36c8f111a261643df0cb15add",
+    "web/content-pilot-analytics.js": "8551596699114b3ce051cc28fd183c3a1f44a5b3b507a93ec275929a93db9520",
+    "web/content-review-workflow.js": "5bd33c30813f20bad3e482c7bbfc0ffa96aa7c056574f37a4b719a98a9aac58a",
+    "web/content-workspace.js": "915be0734be720626e0fefb21f9def95dd634af3e7383799e6165456656475a2",
+    "web/content.js": "dc96997ab6b6ebbaed9d65dd51d9d8852abb9bbe1a6487c37d51767b9ee7fa9e",
+    "web/course-page.js": "736c56107b77c544270d065d15fd957973c2714cbe7b4468160cc7c0c880fadf",
+    "web/diagnostic.js": "9fd846218dd79e392375b16508d604c1a6c60f1f46a1a3892ce0f6435d8b30eb",
+    "web/home-assessment-router.js": "9902d17fde15ed466628adcd698ffab20772092b561b28cb16117b86f33b3f3a",
+    "web/home-dashboard.js": "33e8cc03fab997db857f83d1317992e4e6d73aae39eee63abf35d49eb5e11be9",
+    "web/home-practice-router.js": "43bc9cfcd21705212ecada42136b4dd609b1c472979a446c8f64690ab5d3f23d",
+    "web/join.js": "531d3e374e04ae3e37950b88b71c54774d1457e9fa067e5ed99aada0074c1a72",
+    "web/learner-access.mjs": "f714711f7b597e2b6487e2c17e8ed692c4be291f8428650e2884230962f69ca8",
+    "web/learning-audio.mjs": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9",
+    "web/learning-player.mjs": "2c6fe738d24ea79e3785f2216fde0787e49b2b03cd0d4b717ac13307d5650eb0",
+    "web/mastery-dashboard.js": "5f5289cf6391e4826582486797893a58e46b27a45991beb1af946d6307d6fa0c",
+    "web/mastery.js": "458fee0f3417601162eafc919664dcae26e31b0e85195dd5f60ee40bcf2703d4",
+    "web/multi-subject-home.js": "d38f8feb1d95496e854fcbfad09f813b414c0534a72709a78962d44b2424792e",
+    "web/physics-7.js": "1050e4eaef4b1554a23b605a4cccf730ecff9361377c2d9e7ef87f7d17cd50bd",
+    "web/practice.js": "79b2dec3039019cb49e6f6dc49da5a0cb8545e68fce373fa7cf7193fb28a8c64",
+    "web/privacy.js": "6009c87ca2fbbe0356fd49911a4079efd9087bebf0b6294926186fa68e094e71",
+    "web/progress.js": "b49b8c7b00ce210405d9a8e6b4c4ce402cec668c8c1a910147c3fac582e82456",
+    "web/rate-budget-feedback.mjs": "a078cd40cad881f32229dc33d6b9b99a2b6c9bcf21ad3643141c38a9801b4412",
+    "web/recommendation-telemetry.js": "a1bd75b224b24ba2d4620ebc0c97ce3123c90185ffacc8df0ed2bfc48803e409",
+    "web/remediation-request.mjs": "684af8be4c36c3aecb4a934dac7daf0b0225e701261abcbb45d84d6939d3b2ba",
+    "web/resource-assignments.mjs": "b288fb28d2c1086bcb46b69cbd36f43ccf8c99e54d715f531454265a529b66f2",
+    "web/school-admin.js": "cc608cab39d98d9155b6b96e32be780463ffaf946770ed4c498182166cd4e8b6",
+    "web/school-analytics-view.mjs": "cd7dd10a45c3ce4cd515e5b401bfe44ae248d3024d0e62b6c27eeac4b1878edf",
+    "web/school-teacher.js": "b59aa59fae7601c201ac5ceaaa243b5d88374222145c25633578f1c6ab43a4e4",
+    "web/student-teacher-task-client.mjs": "7d0798956bc3b2fe38c7e2fd8782ad0891719d303b71b434d03a99395ff1de91",
+    "web/student-work-list.mjs": "adc71ddfb51c5ee1b02bb2801e142a93166163ba166cc8b4eed538a3390d852a",
+    "web/supplementary-resources.mjs": "fc687eeb69e6c74c9915c8fb3443f3ab39d2cfd50e8ee21a5a00ff39eeda2fe1",
+    "web/teacher-feedback.mjs": "9a0c96d68cc1c249953eb7d8e3b4f61a2934036e52068fb99689516ef8350fa5",
+    "web/teacher-home-startup.mjs": "b1388821e578d7fbdf8c2bdf50fe14ab39cb786136695f52aa759d6120d9394f",
+    "web/teacher-review.mjs": "50fc8bc915744d3d033d0b91687a4461346f8f3a74f7e5aa75f19fa313680fd5",
+    "web/teacher-task-draft-workspace.mjs": "c9d27eefcdcc9b8cc3440298d5e95de956bc99fe60becb8ad7f9ec5e10ab5f56",
+    "web/teacher-task-editor.mjs": "6a6548f4d034de4f641f6a1c85f2f188480e7428ed34e7d7f30fbcda79ebbf30",
+    "web/teacher-task-review.mjs": "23c37f32dfcb7c9f0b90a1cbe289d29364ed0b7c2525ccb59cc8d6a7f057a2b2",
+    "web/teacher-task-send.mjs": "fb7b126b79414ef96f69b0ad795d1a7941023d1cc5a132e18715faeed361673c",
+    "web/teacher-task-source-client.mjs": "8ffab13b17b826d93e4364f0f2c04bc930d49e3461e3464dfabb565f1dcd834f",
+    "web/teacher-today.mjs": "ad83bcb6d2305a43aa4796f4924290d649ffe57a82abf3377a66cfe76229b39e",
+    "web/teacher.js": "53012bd75a00ab91475b008c0bfd1e8967909a47524207e19c8efcdafda4b4f6",
+    "web/unit-guides.mjs": "4fbb5377593348d6f32480f7b72954ffe2bc4724e3fcd720b0a68d56ee15d02d",
+    "web/ux.js": "e0a323ea760fa4e29d2e45461b7007e875b65bd395df8d7ba4fe8f54c065fc2b",
+    "web/writing-assignments.mjs": "900ea41812426fbb13766550d1e5fcb08d756e30aebe3e55065bb2fe3fedae92",
+    "web/written-work.mjs": "ad8db7994cb612809f7f86ae53d86cc4872dafad8c6be4338e32faf29a2d7fd9"
+  }
+}

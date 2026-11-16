@@ -197,6 +197,12 @@ jobs:
       - name: Verify local resource delivery, recipient isolation and cancellation
         timeout-minutes: 12
         run: python scripts/run-local-staging.py --journey resource-assignments --evidence-dir /tmp/haiedu-resource-assignments-evidence
+      - name: Verify private client reports, concurrent limits, erasure and retention
+        timeout-minutes: 8
+        run: python tests/client-failure-database.py
+      - name: Verify real local signed-in failure reports and sanitized alert candidates
+        timeout-minutes: 12
+        run: python scripts/run-local-staging.py --journey client-failures --evidence-dir /tmp/haiedu-client-failures-evidence
       - name: Verify isolated Phase 3 races on PostgreSQL 17.6
         run: python tests/phase3-content-concurrency.py
       - name: Verify misconception review and existing item-write races

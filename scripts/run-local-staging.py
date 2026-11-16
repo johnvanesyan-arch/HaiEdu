@@ -16,18 +16,21 @@ from staging_stack import EDGE_IMAGE, FIXTURE_VERSION, seed_roles, service_runti
 from staging_resources import seed_resource_recipients, verify_resources, verify_resource_storage
 from staging_mastery import verify_mastery
 from staging_pilot import upload_audio, verify_pilot
+from staging_client_failures import seed_reporter_roles, run_reporter_child, verify_reporter
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-dir', type=Path, required=True)
-    parser.add_argument('--journey', choices=('dashboards', 'assessment-files', 'mastery', 'pilot-activities', 'resource-assignments'), default='dashboards')
+    parser.add_argument('--journey', choices=('dashboards', 'assessment-files', 'mastery', 'pilot-activities', 'resource-assignments', 'client-failures'), default='dashboards')
     args = parser.parse_args()
+    client_failures = args.journey == 'client-failures'
+    summary_key = secrets.token_hex(32) if client_failures else None
     resources = args.journey == 'resource-assignments'
     assessment_files = args.journey == 'assessment-files'
     pilot = args.journey == 'pilot-activities'
     mastery = args.journey == 'mastery'
-    fixture_version = 'two-school-resources-v6' if resources else 'two-school-pilot-v5' if pilot else 'two-school-mastery-v4' if mastery else 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
+    fixture_version = 'two-school-client-failures-v7' if client_failures else 'two-school-resources-v6' if resources else 'two-school-pilot-v5' if pilot else 'two-school-mastery-v4' if mastery else 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
     output = args.evidence_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
@@ -38,7 +41,7 @@ def main():
              'startedAt': datetime.now(timezone.utc).isoformat(), 'passed': False}
     proof['workingTreeClean'] = not subprocess.check_output(
         ['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=ROOT, text=True).strip()
-    runner_files = ['scripts/local-staging-resources.mjs', 'tests/fixtures/staging_resources.py', 'scripts/run-local-staging.py', 'scripts/local-staging-pilot.mjs', 'scripts/local-staging-browser-network.mjs', 'tests/fixtures/staging_pilot.py', 'scripts/local-staging-journey.mjs',
+    runner_files = ['tests/fixtures/client-failure-notification.mjs', 'scripts/client-failure-incidents.mjs', 'supabase/functions/_shared/client-failure-summary.mjs', 'scripts/local-staging-client-failures.mjs', 'tests/fixtures/staging_client_failures.py', 'scripts/local-staging-resources.mjs', 'tests/fixtures/staging_resources.py', 'scripts/run-local-staging.py', 'scripts/local-staging-pilot.mjs', 'scripts/local-staging-browser-network.mjs', 'tests/fixtures/staging_pilot.py', 'scripts/local-staging-journey.mjs',
                     'scripts/local-staging-assessment-files.mjs', 'tests/fixtures/staging_assessments.py',
                     'scripts/local-staging-mastery.mjs', 'tests/fixtures/staging_mastery.py',
                     'tests/fixtures/synthetic-task-documents.mjs', 'tests/fixtures/governed-runtime-model.json',
@@ -58,13 +61,16 @@ def main():
             proof['functionSources'] = json.loads((bundle / 'source-manifest.json').read_text())
             with owned_database(load_plan(), output / 'private-diagnostics', staging_gateway=True) as database:
                 proof['componentImages'] = {**database.stack['images'], 'database': database.stack['image']}
+                proof['forwardUpdates'] = database.apply(load_plan())
                 fixture = seed_roles(database, assessment_files=assessment_files, mastery=mastery, pilot=pilot)
+                if client_failures:
+                    seed_reporter_roles(database, fixture)
                 if resources:
                     seed_resource_recipients(database, fixture)
                 if pilot:
                     upload_audio(database, fixture)
                 print('PASS complete baseline and ' + str(len(fixture['accounts'])) + ' fictional accounts in two schools', flush=True)
-                with service_runtime(database, bundle, run_id, source, output / 'private-diagnostics') as backend:
+                with service_runtime(database, bundle, run_id, source, output / 'private-diagnostics', client_failure_summary_key=summary_key) as backend:
                     fixture.update({'runId': run_id, 'sourceCommit': source, 'fixtureVersion': fixture_version,
                                     'backendOrigin': backend, 'anonKey': database.stack['anonToken'],
                                     'screenshotDir': str(output / 'private-diagnostics' / 'screenshots')})
@@ -72,7 +78,11 @@ def main():
                     private_input.write_text(json.dumps(fixture))
                     private_input.chmod(0o600)
                     result_file = temporary / 'journey-result.json'
-                    subprocess.run(['node', 'scripts/local-staging-journey.mjs', str(private_input), str(result_file)], cwd=ROOT, check=True, timeout=600)
+                    if client_failures:
+                        run_reporter_child(database, ROOT, private_input, result_file)
+                        proof.update(verify_reporter(database, backend, summary_key, output))
+                    else:
+                        subprocess.run(['node', 'scripts/local-staging-journey.mjs', str(private_input), str(result_file)], cwd=ROOT, check=True, timeout=600)
                     proof['journey'] = json.loads(result_file.read_text())
                     assert proof['journey']['passed'] and proof['journey']['browserShutdownVerified']
                     if pilot:

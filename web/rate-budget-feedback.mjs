@@ -1,3 +1,4 @@
+import {beginServiceFailure} from './client-failure-reporter.mjs';
 // Owner-approved Armenian copy, 2026-11-12. No timer, shared classroom state,
 // input clearing, automatic retry, or authorization decision belongs here.
 export const rateLimitFallback = 'Չափազանց շատ փորձեր են կատարվել։ Խնդրում ենք քիչ անց կրկին փորձել։';
@@ -15,7 +16,11 @@ export function rateLimitMessage(error) {
   return wait ? waitMessage(wait) : rateLimitFallback;
 }
 export async function invokeRateAware(client, name, options) {
-  const result = await client.functions.invoke(name, options);
+  const observation = beginServiceFailure(client, name, options);
+  let result;
+  try { result = await client.functions.invoke(name, options); }
+  catch (error) { observation.finish(null, error); throw error; }
+  observation.finish(result);
   const response = result?.error?.context ?? result?.response;
   const status = Number(response?.status ?? result?.error?.status ?? 0);
   if (status !== 429 && result?.data?.error !== 'rate_limit_exceeded') return result;

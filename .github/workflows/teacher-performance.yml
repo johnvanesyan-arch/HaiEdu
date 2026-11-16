@@ -16,6 +16,7 @@ on:
     branches: [main]
     paths:
       - web/rate-budget-feedback.mjs
+      - 'web/client-failure-*.mjs'
       - supabase/functions/_shared/rate-budget.mjs
       - supabase/migrations/20261112172643_bf16_actor_rate_budgets.sql
       - scripts/teacher-performance-acceptance.mjs

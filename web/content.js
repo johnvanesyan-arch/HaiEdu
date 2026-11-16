@@ -1,3 +1,4 @@
+import {beginClientFailure} from './client-failure-reporter.mjs';
 import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 import {escapeHtml as esc} from './text-safety.mjs';
 import { signOutAccount } from './account-signout.mjs';
@@ -184,6 +185,7 @@ function contentErrorHy(...values) {
 }
 
 async function invoke(name, body = {}) {
+  const audioObservation=beginClientFailure(supabase,'audio_load');
   const { data, error, response } = await invokeRateAware(supabase,name, { body });
   if (error) {if(rateLimitMessage(error))throw error;
     const response = error.context;
@@ -201,7 +203,7 @@ async function invoke(name, body = {}) {
     throw new Error(contentErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
   if (data?.error) throw (rateLimitMessage(data?.error) ? data?.error : (new Error(contentErrorHy(data.detail, data.error))));
-  return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
+  return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action,audioObservation):data;
 }
 
 function renderStats(stats) {

@@ -1,3 +1,4 @@
+import {beginClientFailure} from './client-failure-reporter.mjs';
 import {invokeRateAware,rateLimitMessage} from './rate-budget-feedback.mjs';
 // A timeout is an unknown write outcome, never permission to change the answer.
 export const learnerRequestTimeoutMs = 15000;
@@ -75,12 +76,14 @@ export function createAnswerRequest(supabase,name,{body},{isCurrent=()=>true,tim
       if(flight)return flight;
       flight=(async()=>{
         let initial;
+        const observation=beginClientFailure(supabase,'answer_submit');
         const result=await invokeLearnerFunction(supabase,name,{body:JSON.parse(snapshot),timeout,
           beforeRequest:async()=>{initial=await actor;return isCurrent()&&initial===await identity();},
           afterRequest:async()=>isCurrent()&&initial===await identity(),
         });
         if(isNumericFormatRejection(result.error)) uncertain=false;
         else uncertain ||= result.error?.unknown===true;
+        if(!result.stale&&result.error?.unknown===true&&isCurrent())observation.report('write_unconfirmed',result.error.status??0);
         return result;
       })().finally(()=>{flight=null;});
       return flight;

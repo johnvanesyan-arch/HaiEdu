@@ -1,4 +1,6 @@
 {
+  "record-client-failure": {"maxBodyBytes": 1024},
+  "get-client-failure-summary": {"maxBodyBytes": 1024},
   "get-student-classes": {},
   "get-student-dashboard": {},
   "get-student-work": {},
