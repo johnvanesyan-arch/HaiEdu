@@ -1,6 +1,6 @@
 # BF-21 — Mastery and Chapter Review in owned local staging
 
-The owner authorized this bounded next step on 16 November 2026, following the [assessment/private-file slice](local-staging-assessment-files-20261115.md). It adds native selected-response Mastery and Chapter Review journeys to the disposable local environment. **Locally qualified; merge pending.** Exact PR-head CI is a separate gate recorded in the pull request. No merge or hosted acceptance is claimed. Wider BF-21 remains open.
+The owner authorized this bounded next step on 16 November 2026, following the [assessment/private-file slice](local-staging-assessment-files-20261115.md). It adds native selected-response Mastery and Chapter Review journeys to the disposable local environment. **Merged and verified on 16 November 2026.** Owner-approved [PR498](https://github.com/johnvanesyan-arch/HaiEdu/pull/498) merged at `f7814f508852c78af30e88405590c1613bae0d0b`, preserving approved tree `ab5d61412a31731eeece67a87d451a4665638719`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43817353089) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43819005812) pass. This completes the bounded local Mastery/Chapter Review slice; wider BF-21 remains open. No hosted service acceptance is claimed.
 
 ## Scope
 
@@ -48,3 +48,15 @@ This slice exercises two-question, one-skill, selected-response policies through
 The prior dashboard and assessment/file fixtures retain their separate scopes. Other workflows, separately approved hosted adoption, migration of the 21 credential-bearing QA workflows and exclusion of synthetic data from hosted reports remain open. Production and `haiedu-bf16-test` are unchanged. BF-16 live limits stay off; BF-02 recovery stays deferred; BF-22 stays on hold; paid stolen-password protection remains declined.
 
 Production QA not run (paused by owner). Affected production QA: none. No application, browser, schema, package or production QA implementation changes. Owner usability acceptance: not given.
+
+## Release verification
+
+Exact PR-head and merged-source CI both pass with 1,856 code tests and 696 browser checks, with zero failures, skips or cancellations in those counted suites. Both runs contain all 21 Mastery, 28 retained dashboard and 25 retained assessment/file group labels, with three verified owned cleanups and the retained database qualifications. The approved head is `f16ba02a7f5443900d7d6baaedb030aa5bdd72ce`; the merge preserves its tree.
+
+All three public addresses serve `f7814f508852c78af30e88405590c1613bae0d0b`. Twelve fresh checks verify release identity, exact asset manifest, representative account-access HTML/JavaScript hashes, MIME, cache rules and enforcing security headers. Product, schema, browser and package source is unchanged; the 29-page/127-asset build retains identity `c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a`. This is representative hosted static verification, not fresh hosted browser/service acceptance. Only static files were fetched; no page scripts, sign-in, Supabase requests or production QA ran in this delivery. Normal Git integration updated the site; no manual promotion or hosting-setting change occurred.
+
+### Earlier production-QA failures
+
+Read-only review identified 13 failed manual production-QA runs from earlier on 16 November on base `2ab53c73e27925816ff1fafc5166e6da2867dbfb`. Twelve downloaded reports show HTTP 400 at the initial designated administrator sign-in; the mobile report stops at its initial isolation precheck without the underlying provider response. Examples: [Chapter II](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43805340831), [analytics](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43805373528) and [mobile](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43805364751). Their reports do not establish why sign-in was rejected or demonstrate a classroom-flow defect. They predate this PR and are not passing production evidence. The owner was informed before approving this merge; the earlier instruction to disregard Production QA is retained and these failures remain separately recorded. No rerun, credential use or hosted setting change was performed to investigate them.
+
+The release receipt preserves the original local working-tree evidence and adds approved-head/tree identity, exact PR/main checks and public static observations. No hosted test-project reset, backend deployment, production data change or paid action occurred.
