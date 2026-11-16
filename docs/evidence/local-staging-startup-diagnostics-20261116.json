@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "scope": "local-fixture-startup-diagnostics",
   "baseCommit": "ca8a046ff209eca42796ee9ec9cb714b7884c435",
-  "status": "locally-qualified-awaiting-exact-head-CI-and-merge-approval",
+  "status": "merged-and-verified",
   "productionTouched": false,
   "hostedTestTouched": false,
   "historicalFailureCause": "unconfirmed",
@@ -422,7 +422,7 @@
     "retentionDays": 7,
     "allowlistedJSONOnly": true,
     "privateLogsIncluded": false,
-    "actualGitHubArtifactReadback": "pending"
+    "actualGitHubArtifactReadback": "passed for PR and merged-source archives"
   },
   "ownerUsabilityAcceptance": "not given",
   "affectedProductionQA": "none",
@@ -435,5 +435,447 @@
     "reproducedWith": "actionlint 1.7.12",
     "repair": "Export report directories through GITHUB_ENV in a setup step using RUNNER_TEMP",
     "fixtureSourceChanged": false
+  },
+  "release": {
+    "pr": 506,
+    "head": "28612b883b4920761f3e01766521c8f5665582a3",
+    "mergedCommit": "03134220e69a4edcf6452c2768f94828418fe022",
+    "tree": "522ac6440404e4f17f58ee740e9d48fddbab8605",
+    "reviewedTreePreserved": true,
+    "ownerPublicationAndMergeApproved": true,
+    "coordinationConfirmed": true,
+    "prCI": {
+      "head": "28612b883b4920761f3e01766521c8f5665582a3",
+      "run": 43891315754,
+      "attempt": 1,
+      "conclusion": "success",
+      "codeTests": 1857,
+      "browserTests": 702,
+      "localStagingJourneyGroups": 150,
+      "exactLabelsVerified": true,
+      "ownedCleanups": 5,
+      "privateStorageParentCheckVerified": true,
+      "jobs": [
+        {
+          "id": 133382956787,
+          "name": "phase3-postgres-17",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133382957097,
+          "name": "institutional-concurrency",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133382957110,
+          "name": "test",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133382957287,
+          "name": "role-layout-browser",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133389621732,
+          "name": "Platform release checks",
+          "conclusion": "success",
+          "attempt": 1
+        }
+      ],
+      "earlierUnsuccessfulJobs": [],
+      "diagnosticUnitTests": 13,
+      "realDockerFaultControls": 2,
+      "actualFailureReports": 0,
+      "expectedControlReports": 2,
+      "artifactId": 14238281052,
+      "artifactReadbackPassed": true,
+      "artifactRetentionDays": 7
+    },
+    "mainCI": {
+      "head": "03134220e69a4edcf6452c2768f94828418fe022",
+      "run": 43893573220,
+      "attempt": 1,
+      "conclusion": "success",
+      "codeTests": 1857,
+      "browserTests": 702,
+      "localStagingJourneyGroups": 150,
+      "exactLabelsVerified": true,
+      "ownedCleanups": 5,
+      "privateStorageParentCheckVerified": true,
+      "jobs": [
+        {
+          "id": 133390949875,
+          "name": "phase3-postgres-17",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133390950292,
+          "name": "role-layout-browser",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133390950495,
+          "name": "institutional-concurrency",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133390950640,
+          "name": "test",
+          "conclusion": "success",
+          "attempt": 1
+        },
+        {
+          "id": 133396971550,
+          "name": "Platform release checks",
+          "conclusion": "success",
+          "attempt": 1
+        }
+      ],
+      "earlierUnsuccessfulJobs": [],
+      "diagnosticUnitTests": 13,
+      "realDockerFaultControls": 2,
+      "actualFailureReports": 0,
+      "expectedControlReports": 2,
+      "artifactId": 14238731926,
+      "artifactRetentionDays": 7
+    },
+    "prArtifactReadback": {
+      "run": 43891315754,
+      "head": "28612b883b4920761f3e01766521c8f5665582a3",
+      "artifactId": 14238281052,
+      "zipSha256": "612f3f10841c711f23fb478d53ca7549104d5ad9cfbfdf3bcd67dbb279c3c11d",
+      "passed": true,
+      "validatedExpectedControls": 2,
+      "actualFailureFiles": 0,
+      "privateFilesIncluded": false,
+      "allFieldsAllowlisted": true,
+      "records": [
+        {
+          "path": "expected-failure-controls/startup-5ab51a1896546c1ba223d820.json",
+          "sha256": "bc988b3a231899528d869b3baa93db8911e438688ea8a1623fe94a341dbc8343",
+          "report": {
+            "schemaVersion": 1,
+            "scope": "owned-local-fixture-startup",
+            "runId": "5ab51a1896546c1ba223d820",
+            "updatedAt": "2026-11-16T14:58:34.477012+00:00",
+            "status": "failed",
+            "active": null,
+            "failure": {
+              "component": "database",
+              "phase": "container-start",
+              "reason": "command-timeout",
+              "exitCode": null,
+              "osError": null
+            },
+            "cleanupFailures": [],
+            "cleanup": {
+              "network": "removed",
+              "database": "removed"
+            },
+            "observations": {
+              "database": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              }
+            },
+            "hostTemporaryFreeBytes": 92154667008,
+            "hostTemporaryFreeInodes": 17641890,
+            "reportWriteFailed": false
+          }
+        },
+        {
+          "path": "expected-failure-controls/startup-e8d1168401e29ff94ee76ab6.json",
+          "sha256": "4c6526f2f5790f765c1acd714a0cb69aea14c39f8043e5155264ca81dbf50115",
+          "report": {
+            "schemaVersion": 1,
+            "scope": "owned-local-fixture-startup",
+            "runId": "e8d1168401e29ff94ee76ab6",
+            "updatedAt": "2026-11-16T14:58:40.300472+00:00",
+            "status": "failed",
+            "active": null,
+            "failure": {
+              "component": "auth",
+              "phase": "service-ready",
+              "reason": "readiness-timeout",
+              "exitCode": null,
+              "osError": null
+            },
+            "cleanupFailures": [],
+            "cleanup": {
+              "network": "removed",
+              "database": "removed",
+              "mail": "removed",
+              "auth": "removed"
+            },
+            "observations": {
+              "auth": {
+                "state": "exited",
+                "exitCode": 23,
+                "oomKilled": false
+              },
+              "mail": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              },
+              "database": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              }
+            },
+            "hostTemporaryFreeBytes": 92095066112,
+            "hostTemporaryFreeInodes": 17640926,
+            "reportWriteFailed": false
+          }
+        }
+      ]
+    },
+    "mainArtifactReadback": {
+      "run": 43893573220,
+      "head": "03134220e69a4edcf6452c2768f94828418fe022",
+      "artifactId": 14238731926,
+      "zipSha256": "4810b67a6376c23e397583b68dd9b3719a371603b2ca6bb727cd9d1051aee2ba",
+      "passed": true,
+      "validatedExpectedControls": 2,
+      "actualFailureFiles": 0,
+      "privateFilesIncluded": false,
+      "allFieldsAllowlisted": true,
+      "records": [
+        {
+          "path": "expected-failure-controls/startup-23cea09a5b2882eb6eea411a.json",
+          "sha256": "b4373fa5c76df393319fdae57de73f8c1b5fa08c42b99784248ca4a50381151d",
+          "report": {
+            "schemaVersion": 1,
+            "scope": "owned-local-fixture-startup",
+            "runId": "23cea09a5b2882eb6eea411a",
+            "updatedAt": "2026-11-16T15:11:50.799701+00:00",
+            "status": "failed",
+            "active": null,
+            "failure": {
+              "component": "database",
+              "phase": "container-start",
+              "reason": "command-timeout",
+              "exitCode": null,
+              "osError": null
+            },
+            "cleanupFailures": [],
+            "cleanup": {
+              "network": "removed",
+              "database": "removed"
+            },
+            "observations": {
+              "database": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              }
+            },
+            "hostTemporaryFreeBytes": 95801401344,
+            "hostTemporaryFreeInodes": 17641835,
+            "reportWriteFailed": false
+          }
+        },
+        {
+          "path": "expected-failure-controls/startup-31c639489fc7ca70963a6ab9.json",
+          "sha256": "88b00c23e91b153f1261c15e37484c820eb0c7bd6a5c519dbb27bbb1b012e0a7",
+          "report": {
+            "schemaVersion": 1,
+            "scope": "owned-local-fixture-startup",
+            "runId": "31c639489fc7ca70963a6ab9",
+            "updatedAt": "2026-11-16T15:11:56.223386+00:00",
+            "status": "failed",
+            "active": null,
+            "failure": {
+              "component": "auth",
+              "phase": "service-ready",
+              "reason": "readiness-timeout",
+              "exitCode": null,
+              "osError": null
+            },
+            "cleanupFailures": [],
+            "cleanup": {
+              "network": "removed",
+              "database": "removed",
+              "mail": "removed",
+              "auth": "removed"
+            },
+            "observations": {
+              "auth": {
+                "state": "exited",
+                "exitCode": 23,
+                "oomKilled": false
+              },
+              "mail": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              },
+              "database": {
+                "state": "running",
+                "exitCode": 0,
+                "oomKilled": false
+              }
+            },
+            "hostTemporaryFreeBytes": 95741808640,
+            "hostTemporaryFreeInodes": 17640874,
+            "reportWriteFailed": false
+          }
+        }
+      ]
+    },
+    "publicStatic": {
+      "observedAt": "2026-11-16T15:21:15.492Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. Existing full-build proof is reused because app/build source is unchanged. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "03134220e69a4edcf6452c2768f94828418fe022",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "1fe71482b5423ab8a2865eec76fea16a07fa24a81074efba6c32ce13ec7f8bd3",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "03134220e69a4edcf6452c2768f94828418fe022",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "1fe71482b5423ab8a2865eec76fea16a07fa24a81074efba6c32ce13ec7f8bd3",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "03134220e69a4edcf6452c2768f94828418fe022",
+          "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+          "pagesInManifest": 29,
+          "assetsInManifest": 127,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "1fe71482b5423ab8a2865eec76fea16a07fa24a81074efba6c32ce13ec7f8bd3",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "cd01e944ed3379d95704b427de288673f3d2b7650a484f9c18276a9e79ab72eb",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "3584eece301868d5cb2073c7aa7cb7782cb54603ce0a2295be83a380bbdabf7b",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-AJDXKQ2M.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "5fc585f876f94fc78e9739eaead1552a64945ba3cded5fd6c343f514492391e8",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "manualPromotion": false,
+    "productionQA": "not run (paused by owner)",
+    "affectedProductionQA": "none"
   }
 }
