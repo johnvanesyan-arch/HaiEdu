@@ -55,7 +55,7 @@ def request(base, method, path, body=None, token=None, content_type='application
         return result.status, value
 
 
-def wait_for(check, timeout=45):
+def wait_for(check, timeout=45, *, diagnostics=None):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         try:
@@ -64,6 +64,8 @@ def wait_for(check, timeout=45):
         except (OSError, psycopg.Error):
             pass
         time.sleep(.25)
+    if diagnostics is not None:
+        raise diagnostics.error('readiness-timeout')
     raise RuntimeError('Owned local service did not become ready')
 
 
@@ -72,6 +74,7 @@ def component_stack(diagnostics, *, staging_gateway=False):
     diagnostics.mkdir(parents=True, exist_ok=True)
     with cron_database() as db:
         docker = db['docker']
+        diagnostics_report = db['diagnostics']
         names = []
         secret = secrets.token_urlsafe(40)
         auth_password = secrets.token_urlsafe(24)
@@ -86,7 +89,8 @@ def component_stack(diagnostics, *, staging_gateway=False):
 
         def start(kind, options, port=None, extra=()):
             name = db['network'] + '-bf20-' + kind
-            args = ['run','-d','--name',name,'--network',db['network'],'--network-alias',kind,'--label',label]
+            args = ['run','-d','--name',name,'--network',db['network'],'--network-alias',kind,'--label',label,
+                    '--label','haiedu.fixture-run=' + diagnostics_report.run_id]
             if port:
                 args += ['-p',f'127.0.0.1::{port}']
             for k,v in options.items():
@@ -94,21 +98,30 @@ def component_stack(diagnostics, *, staging_gateway=False):
             args += list(extra) + [IMAGES[kind]]
             # Track before starting: a slow Docker client can time out after
             # the daemon has created the container. Never leave it unowned.
-            names.append(name)
-            try:
+            names.append((kind, name))
+            with diagnostics_report.stage(kind, 'container-start'):
+                diagnostics_report.track(kind)
                 docker(*args,timeout=120)
-            except subprocess.TimeoutExpired:
-                raise RuntimeError('Owned local '+kind+' container startup timed out') from None
             if port:
-                address = docker('port',name,str(port)).splitlines()[0]
-                assert re.fullmatch(r'127\.0\.0\.1:\d+',address)
+                with diagnostics_report.stage(kind, 'port-map'):
+                    address = docker('port',name,str(port)).strip()
+                    if not re.fullmatch(r'127\.0\.0\.1:\d+',address):
+                        raise diagnostics_report.error('identity-mismatch')
                 return name, 'http://' + address
             return name, None
+
+        def ready(kind, origin, path):
+            def check():
+                status, _ = request(origin, 'GET', path)
+                diagnostics_report.http_status(kind, status)
+                return status == 200
+            with diagnostics_report.stage(kind, 'service-ready'):
+                wait_for(check, diagnostics=diagnostics_report)
 
         try:
             # The underlying fixture proves ownership, PG17.6 identity and
             # loopback mapping before exposing its generated connection URI.
-            with psycopg.connect(db['uri'], autocommit=True) as owner:
+            with diagnostics_report.stage('database', 'provider-bootstrap'), psycopg.connect(db['uri'], autocommit=True) as owner:
                 owner.execute((ROOT / 'tests/fixtures/fresh-baseline-provider.sql').read_text())
                 owner.execute(sql.SQL('ALTER ROLE supabase_auth_admin PASSWORD {}').format(sql.Literal(auth_password)))
                 owner.execute(sql.SQL('ALTER ROLE authenticator PASSWORD {}').format(sql.Literal(rest_password)))
@@ -134,7 +147,7 @@ def component_stack(diagnostics, *, staging_gateway=False):
                 auth_options['API_EXTERNAL_URL'] = 'http://api:8080/auth/v1'
                 auth_options['GOTRUE_JWT_ISSUER'] = 'http://api:8080/auth/v1'
             _, auth = start('auth',auth_options,9999)
-            wait_for(lambda: request(auth,'GET','/health')[0] == 200)
+            ready('auth', auth, '/health')
             _, storage = start('storage', {
                 'SERVER_PORT':'5000','AUTH_JWT_SECRET':secret,'AUTH_JWT_ALGORITHM':'HS256',
                 'DATABASE_URL':uri,'DATABASE_POOL_URL':uri,'DB_INSTALL_ROLES':'true',
@@ -146,11 +159,11 @@ def component_stack(diagnostics, *, staging_gateway=False):
                 'ANON_KEY':token('anon'),'SERVICE_KEY':token('service_role'),
                 'ENABLE_IMAGE_TRANSFORMATION':'false','IMAGE_TRANSFORMATION_ENABLED':'false',
             },5000,('--tmpfs','/var/lib/storage'))
-            wait_for(lambda: request(storage,'GET','/status')[0] == 200)
+            ready('storage', storage, '/status')
             # Use the provider's actual schema grants. Its standalone setup
             # also grants postgres to authenticator; remove that development
             # convenience before exposing the Data API to fixture users.
-            with psycopg.connect(db['uri'], autocommit=True) as owner:
+            with diagnostics_report.stage('database', 'provider-role-check'), psycopg.connect(db['uri'], autocommit=True) as owner:
                 owner.execute('REVOKE postgres FROM authenticator')
                 assert not owner.execute("SELECT pg_has_role('authenticator','postgres','MEMBER')").fetchone()[0]
             _, rest = start('rest', {
@@ -159,27 +172,25 @@ def component_stack(diagnostics, *, staging_gateway=False):
                 'PGRST_DB_EXTRA_SEARCH_PATH':'public,extensions','PGRST_JWT_SECRET':secret,
                 'PGRST_SERVER_PORT':'3000',
             },3000)
-            wait_for(lambda: request(rest,'GET','/')[0] == 200)
+            ready('rest', rest, '/')
+            diagnostics_report.ready()
             yield {**db,'auth':auth,'storage':storage,'rest':rest,'serviceToken':token('service_role'),
                    'anonToken':token('anon'),'images':IMAGES}
         finally:
-            for name in names:
-                if not docker('inspect','--format','{{.Name}}',name,check=False):
-                    continue
+            for kind, name in names:
                 try:
+                    if not docker('inspect','--format','{{.Name}}',name,check=False):
+                        continue
                     result = subprocess.run(['docker','--host=unix:///var/run/docker.sock','logs','--tail','60',name],
                                             capture_output=True, text=True, timeout=15)
-                except (OSError, subprocess.TimeoutExpired):
+                    raw = result.stdout + result.stderr
+                    for value in (secret,db['password'],auth_password,rest_password):
+                        raw = raw.replace(value,'[local-secret]')
+                    raw = re.sub(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}','[synthetic-email]',raw)
+                    (diagnostics / (kind + '.private.log')).write_text(raw)
+                except Exception:
                     # Diagnostics are optional; their failure must not skip
                     # removal of the owned containers below.
                     continue
-                raw = result.stdout + result.stderr
-                for value in (secret,db['password'],auth_password,rest_password):
-                    raw = raw.replace(value,'[local-secret]')
-                raw = re.sub(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}','[synthetic-email]',raw)
-                (diagnostics / (name.rsplit('-bf20-',1)[-1] + '.private.log')).write_text(raw)
-            for name in reversed(names):
-                if not docker('inspect','--format','{{.Name}}',name,check=False):
-                    continue
-                assert docker('inspect','--format','{{index .Config.Labels "haiedu.fixture"}}',name) == 'bf20-baseline'
-                docker('rm','-f',name)
+            for kind, name in reversed(names):
+                diagnostics_report.cleanup(docker, kind, name)

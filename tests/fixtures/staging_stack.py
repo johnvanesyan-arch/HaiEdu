@@ -25,9 +25,10 @@ FIXTURE_VERSION = 'two-school-dashboards-v2'
 def service_runtime(database, bundle, run_id, source, diagnostic_dir):
     stack = database.stack
     docker = stack['docker']
+    diagnostics = stack['diagnostics']
     # Ownership is rechecked before fixture work. Each runtime joins only the
     # owned network; the public gateway binds exclusively to loopback.
-    with database.connect():
+    with diagnostics.stage('runtime', 'runtime-isolation'), database.connect():
         pass
     names = []
     label = 'haiedu.staging-run=' + run_id
@@ -36,6 +37,7 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
         names.append(container)
         args = ['run', '-d', '--name', container, '--network', stack['network'],
                 '--network-alias', 'api', '--label', label,
+                '--label', 'haiedu.fixture-run=' + diagnostics.run_id,
                 '--mount', f'type=bind,src={bundle},dst=/service,readonly',
                 '--cap-drop=ALL', '--security-opt=no-new-privileges',
                 '-e', 'NO_PROXY=api,auth,rest,storage', '-e', 'no_proxy=api,auth,rest,storage',
@@ -44,41 +46,49 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
                     'anonKey': stack['anonToken'], 'serviceKey': stack['serviceToken']})]
         # A single pinned runtime creates separate workers for the fixed registry.
         # Only its owned network aliases are exempted from an inherited proxy.
-        docker(*args, EDGE_IMAGE, 'start', '--main-service', '/service/gateway',
-               '--port', '8080', timeout=120)
-        settings = json.loads(docker('inspect', container))[0]
-        assert set(settings['NetworkSettings']['Networks']) == {stack['network']}
-        assert settings['Config']['Labels']['haiedu.staging-run'] == run_id
-        try:
+        with diagnostics.stage('runtime', 'container-start'):
+            diagnostics.track('runtime')
+            docker(*args, EDGE_IMAGE, 'start', '--main-service', '/service/gateway',
+                   '--port', '8080', timeout=120)
+        with diagnostics.stage('runtime', 'runtime-isolation'):
+            settings = json.loads(docker('inspect', container))[0]
+            if (set(settings['NetworkSettings']['Networks']) != {stack['network']} or
+                    settings['Config']['Labels']['haiedu.staging-run'] != run_id):
+                raise diagnostics.error('identity-mismatch')
+        with diagnostics.stage('runtime', 'port-map'):
             address = docker('port', names[-1], '8080/tcp')
-        except RuntimeError:
-            diagnostic = docker('logs', '--tail', '25', names[-1], check=False)
-            for secret in (stack['anonToken'], stack['serviceToken']):
-                diagnostic = diagnostic.replace(secret, '[local-secret]')
-            raise RuntimeError('local_runtime_start_failed: ' + diagnostic) from None
-        assert re.fullmatch(r'127\.0\.0\.1:[1-9][0-9]{0,4}', address)
+            if not re.fullmatch(r'127\.0\.0\.1:[1-9][0-9]{0,4}', address):
+                raise diagnostics.error('identity-mismatch')
         backend = 'http://' + address
         expected = {'kind': 'owned-local', 'runId': run_id, 'sourceCommit': source}
-        wait_for(lambda: request(backend, 'GET', '/_local/identity') == (200, expected))
+        def ready():
+            status, value = request(backend, 'GET', '/_local/identity')
+            diagnostics.http_status('runtime', status)
+            return (status, value) == (200, expected)
+        with diagnostics.stage('runtime', 'runtime-ready'):
+            wait_for(ready, diagnostics=diagnostics)
+        diagnostics.ready()
         yield backend
     except Exception:
         env = os.environ.copy()
         for key in ('DOCKER_HOST', 'DOCKER_CONTEXT', 'DOCKER_TLS', 'DOCKER_TLS_VERIFY', 'DOCKER_CERT_PATH'):
             env.pop(key, None)
-        logs = subprocess.run(['docker', '--host=unix:///var/run/docker.sock', 'logs', '--tail', '100', names[-1]],
-                              env=env, capture_output=True, text=True, timeout=10)
-        diagnostic = logs.stdout + logs.stderr
-        for secret in (stack['anonToken'], stack['serviceToken']):
-            diagnostic = diagnostic.replace(secret, '[local-secret]')
-        diagnostic_dir.mkdir(parents=True, exist_ok=True)
-        (diagnostic_dir / 'staging-runtime.log').write_text(diagnostic)
+        try:
+            logs = subprocess.run(['docker', '--host=unix:///var/run/docker.sock', 'logs', '--tail', '100', names[-1]],
+                                  env=env, capture_output=True, text=True, timeout=10)
+            diagnostic = logs.stdout + logs.stderr
+            for secret in (stack['anonToken'], stack['serviceToken']):
+                diagnostic = diagnostic.replace(secret, '[local-secret]')
+            diagnostic_dir.mkdir(parents=True, exist_ok=True)
+            (diagnostic_dir / 'staging-runtime.log').write_text(diagnostic)
+        except Exception:
+            # Optional private logs must not replace the original startup error
+            # or skip owned cleanup (including when writing logs hits full disk).
+            pass
         raise
     finally:
         for name in reversed(names):
-            if docker('inspect', '--format', '{{.Name}}', name, check=False):
-                assert docker('inspect', '--format', '{{index .Config.Labels "haiedu.staging-run"}}', name) == run_id
-                docker('rm', '-f', name)
-            assert not docker('inspect', '--format', '{{.Name}}', name, check=False)
+            diagnostics.cleanup(docker, 'runtime', name)
 
 
 def seed_roles(database, *, assessment_files=False, mastery=False, pilot=False):
