@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "recordDate": "2026-11-16",
+  "recordTimezone": "Asia/Yerevan",
+  "scope": "Isolated native browser request-sharing and stale-account regression; synthetic services only",
+  "baseCommit": "8f59eddfd9dcd35d7137ecca53e2272991f6266d",
+  "status": "Local verification passed; exact-head CI and merge pending",
+  "originalFailure": {
+    "ciRun": 43838470088,
+    "browserPassed": 700,
+    "browserTotal": 701,
+    "assertion": "2 !== 1 initial legacy Home read count",
+    "cause": "Fixture assumed independently loaded modules would start within a 60ms service-delay window; settled reads intentionally are not cached."
+  },
+  "repair": {
+    "normalAndDelayedModuleOrders": true,
+    "lateModuleWaitsForActualFirstResponse": true,
+    "bothConsumersReadyBeforeRefresh": true,
+    "sharedPendingReadExplicitlyHeld": true,
+    "freshAccountCompletesBeforeOldResponseReleased": true,
+    "checksCardAndShellAfterLateOldResponse": true,
+    "longerSleepOrAutomaticRetryAdded": false
+  },
+  "targetedNative": {
+    "files": [
+      "tests/browser/request-isolation.browser.test.mjs",
+      "tests/browser/request-count.browser.test.mjs"
+    ],
+    "tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "browser": "Native /usr/bin/chromium through Playwright; unchanged application modules and synthetic identities/services"
+  },
+  "oldTestNegativeControl": {
+    "originalAssertionReproduced": true,
+    "tests": 1,
+    "expectedFailures": 1,
+    "failure": "2 !== 1 after the first class read finishes before the shell is imported"
+  },
+  "mutationControls": [
+    {
+      "mutation": "Remove pending-read coalescing from the served local learner-access module",
+      "tests": 2,
+      "expectedFailures": 2,
+      "observedFailure": "Both loading orders expose two held requests instead of one"
+    },
+    {
+      "mutation": "Keep completed authorization results cached in the served local module",
+      "tests": 2,
+      "expectedFailures": 1,
+      "passed": 1,
+      "observedFailure": "Delayed shell reuses the completed result instead of issuing a fresh read"
+    }
+  ],
+  "fullCodeTests": {
+    "tests": 1856,
+    "pass": 1856,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "supportingChecks": [
+    "Typecheck",
+    "Teacher bundle parity",
+    "Web asset/archive integrity",
+    "Browser QA dependency audit",
+    "Public-email scan",
+    "Whitespace check"
+  ],
+  "affectedFixtureConsumers": [
+    "tests/browser/request-isolation.browser.test.mjs",
+    "tests/browser/request-count.browser.test.mjs"
+  ],
+  "productionQA": "not run (paused by owner)",
+  "affectedProductionQA": [],
+  "productSourceChanged": false,
+  "hostedRequestsMade": false,
+  "ownerUsabilityAcceptance": "not given",
+  "boundary": "This repairs the identified test-ordering assumption; it does not claim every unrelated browser test is timing-independent or close wider BF21.",
+  "sourceHashes": {
+    "tests/browser/request-isolation.browser.test.mjs": "c623177733c90d3fc31270703d5a01dc4e8f405186740967e45f434c3bfa232d",
+    "tests/fixtures/request-count-browser.mjs": "41bbf5f7b65f945ee81673edb255776d442d648bfd9aa466e2135c3ec03ec822"
+  },
+  "localLogHashes": {
+    "native-tests.log": "36fa5e0247f9e66fea7bfe4ca7738090bdc4e28b1f3e0be0619202cfbbe0d9b5",
+    "old-timing-regression.log": "1398ca4e3772953fa2a5fdce421d3d638e6bdf8ddd563f38b9b116f1719c69e0",
+    "negative-duplicate-read.log": "70f647f1d3e1197e6135e4a9b6230444a2810deca34b9a62905d98313e93d131",
+    "negative-completed-cache.log": "6a2805b508e55410e10b0194a00bb213892734855a569b2fdae84a533c644a89",
+    "npm-test.log": "609eea0d4c663b0db0388bf53fff1de3e62c4f17d08d68975f655677451848e4"
+  },
+  "unchangedProductBuild": {
+    "buildId": "c3ae02a735bcb7cf7acc1cf3176dca72b5c85c61009ab855c9b965b647c0740a",
+    "pages": 29,
+    "assets": 127,
+    "manifestMatchesBase": true
+  }
+}
