@@ -14,11 +14,11 @@ from psycopg.types.json import Jsonb
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def seed_assessments(connection, school, ids, insert, now):
+def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
     prefix = 'bf21_' + school['label'].lower()
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     model_id, runtime_id, mastery_id = [str(uuid.uuid4()) for _ in range(3)]
-    evidence = {'synthetic': True, 'purpose': 'owned local assessment and file qualification'}
+    evidence = {'synthetic': True, 'purpose': 'owned local Mastery lifecycle qualification' if mastery else 'owned local assessment and file qualification'}
     existing = connection.execute("SELECT id FROM academic_mastery_policy_versions WHERE policy_key='bf21_synthetic'").fetchone()
     if existing:
         mastery_id = str(existing[0])
@@ -32,15 +32,16 @@ def seed_assessments(connection, school, ids, insert, now):
     insert('runtime_builds', id=runtime_id, build_key=prefix, source_commit=source,
            implementation_manifest=Jsonb(evidence), notes='Synthetic local runtime binding')
     policies = []
-    for mode in ('diagnostic', 'practice', 'mastery_check'):
+    modes = ('diagnostic', 'practice', 'mastery_check', 'chapter_review') if mastery else ('diagnostic', 'practice', 'mastery_check')
+    for mode in modes:
         policy = {'schemaVersion': 'haiedu-assessment-policy-v1', 'policyKey': prefix + '_' + mode,
                   'version': 1, 'mode': mode, 'subjectProgramId': school['programme'],
                   'curriculumReleaseId': ids['release'], 'unitId': ids['unit'],
                   'plannedQuestionCount': 2, 'learningModelConfigurationId': model_id,
                   'academicMasteryPolicyId': mastery_id, 'responseTypes': ['single_choice'],
-                  'scoringStrategy': 'selected-response-v1', 'hintsAllowed': mode == 'practice',
+                  'scoringStrategy': 'selected-response-v1', 'hintsAllowed': mode in ('practice', 'chapter_review'),
                   'baselineRequired': mode != 'diagnostic'}
-        if mode != 'practice':
+        if mode in ('diagnostic', 'mastery_check'):
             policy['questionCountBySkill'] = {ids['skill']: 2}
         if mode == 'diagnostic':
             policy['maximumCompletedBaselines'] = 1
@@ -67,18 +68,31 @@ def seed_assessments(connection, school, ids, insert, now):
                                        'evidenceBlueprintPolicy': 'distinct-purpose-v1',
                                        'requiredEvidencePurposes': ['core_understanding']}))
         insert('assessment_pools', id=pool, code=prefix + '_' + mode, unit_code=prefix.upper() + '_U1',
-               purpose=mode, name='Synthetic ' + mode, is_protected=mode != 'practice',
+               purpose='practice' if mode == 'chapter_review' else mode, name='Synthetic ' + mode,
+               is_protected=mode in ('diagnostic', 'mastery_check'),
                status='active', metadata=Jsonb(evidence))
+        # Keep a fourth unused form so the browser proves the attempt cap,
+        # independently of running out of protected questions.
+        forms = [str(uuid.uuid4()) for _ in range(4)] if mastery and mode == 'mastery_check' else []
+        configuration = {**evidence, 'assessmentPolicy': policy}
+        if forms:
+            configuration['masteryFormSelection'] = {
+                'schemaVersion': 'haiedu-mastery-form-selection-v1', 'formIds': forms,
+                'selectionStrategy': 'ordered-unseen-whole-form-v1'}
+            school['masteryForms'] = forms
         insert('assessment_blueprints', id=blueprint, blueprint_key=prefix + '_' + mode,
                curriculum_release_id=ids['release'], unit_id=ids['unit'], assessment_pool_id=pool,
                purpose=mode, version_number=1, status='draft', selection_policy_version='synthetic-selected-response-v1',
-               configuration_snapshot=Jsonb({**evidence, 'assessmentPolicy': policy}),
+               configuration_snapshot=Jsonb(configuration),
                item_set_fingerprint=hashlib.sha256((prefix + mode).encode()).hexdigest())
         form = str(uuid.uuid4())
         if mode == 'diagnostic':
             insert('assessment_forms', id=form, pool_id=pool, code=prefix + '_diagnostic',
                    name='Synthetic diagnostic', form_version=1, status='active', metadata=Jsonb(evidence))
-        for ordinal in (1, 2):
+        for number, mastery_form in enumerate(forms, 1):
+            insert('assessment_forms', id=mastery_form, pool_id=pool, code=prefix + '_mastery_' + str(number),
+                   name='Synthetic mastery form ' + str(number), form_version=1, status='active', metadata=Jsonb(evidence))
+        for ordinal in range(1, len(forms) * 2 + 1 if forms else 3):
             item = str(uuid.uuid4())
             code = prefix + '_' + mode + '_' + str(ordinal)
             insert('items', id=item, skill_id=ids['skill'], item_type='single_choice',
@@ -100,6 +114,9 @@ def seed_assessments(connection, school, ids, insert, now):
                    template_version_snapshot=1, item_family_id=ids['family'], variant_key_snapshot=code)
             if mode == 'diagnostic':
                 insert('assessment_form_items', form_id=form, item_id=item, slot_order=ordinal, metadata=Jsonb(evidence))
+            if forms:
+                insert('assessment_form_items', form_id=forms[(ordinal - 1) // 2], item_id=item,
+                       slot_order=(ordinal - 1) % 2 + 1, metadata=Jsonb(evidence))
             school['assessmentItems'].append(item)
         # Capture complete versions before a blueprint can refer to published
         # historical evidence. Run the real deferred guards; never disable them.

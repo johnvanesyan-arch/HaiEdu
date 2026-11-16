@@ -13,15 +13,17 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tests/fixtures'))
 from fresh_update_bridge import load_plan, owned_database
 from staging_stack import EDGE_IMAGE, FIXTURE_VERSION, seed_roles, service_runtime
+from staging_mastery import verify_mastery
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-dir', type=Path, required=True)
-    parser.add_argument('--journey', choices=('dashboards', 'assessment-files'), default='dashboards')
+    parser.add_argument('--journey', choices=('dashboards', 'assessment-files', 'mastery'), default='dashboards')
     args = parser.parse_args()
     assessment_files = args.journey == 'assessment-files'
-    fixture_version = 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
+    mastery = args.journey == 'mastery'
+    fixture_version = 'two-school-mastery-v4' if mastery else 'two-school-assessment-files-v3' if assessment_files else FIXTURE_VERSION
     output = args.evidence_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
@@ -34,6 +36,7 @@ def main():
         ['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=ROOT, text=True).strip()
     runner_files = ['scripts/run-local-staging.py', 'scripts/local-staging-journey.mjs',
                     'scripts/local-staging-assessment-files.mjs', 'tests/fixtures/staging_assessments.py',
+                    'scripts/local-staging-mastery.mjs', 'tests/fixtures/staging_mastery.py',
                     'tests/fixtures/synthetic-task-documents.mjs', 'tests/fixtures/governed-runtime-model.json',
                     'scripts/staging-target.mjs', 'scripts/build-staging-functions.mjs', 'scripts/local-staging-dashboard-checks.mjs',
                     'scripts/fresh_update_bridge.py', 'tests/fixtures/staging_stack.py', 'tests/fixtures/staging_curriculum.py',
@@ -50,7 +53,7 @@ def main():
             proof['functionSources'] = json.loads((bundle / 'source-manifest.json').read_text())
             with owned_database(load_plan(), output / 'private-diagnostics', staging_gateway=True) as database:
                 proof['componentImages'] = {**database.stack['images'], 'database': database.stack['image']}
-                fixture = seed_roles(database, assessment_files=assessment_files)
+                fixture = seed_roles(database, assessment_files=assessment_files, mastery=mastery)
                 print('PASS complete baseline and six fictional accounts in two schools', flush=True)
                 with service_runtime(database, bundle, run_id, source, output / 'private-diagnostics') as backend:
                     fixture.update({'runId': run_id, 'sourceCommit': source, 'fixtureVersion': fixture_version,
@@ -67,8 +70,10 @@ def main():
                         assert connection.execute('SELECT count(*) FROM private.actor_rate_buckets').fetchone()[0] == 0
                         learning_count = connection.execute('SELECT count(*) FROM public.learning_sessions').fetchone()[0]
                         attempt_count = connection.execute('SELECT count(*) FROM public.attempts').fetchone()[0]
-                        assert learning_count == (4 if assessment_files else 0)
-                        assert attempt_count == (8 if assessment_files else 0)
+                        assert learning_count == (14 if mastery else 4 if assessment_files else 0)
+                        assert attempt_count == (28 if mastery else 8 if assessment_files else 0)
+                        if mastery:
+                            proof.update(verify_mastery(connection, fixture))
                         if assessment_files:
                             assert connection.execute("SELECT count(*) FROM learning_sessions WHERE status<>'completed'").fetchone()[0] == 0
                             assert connection.execute('SELECT count(*) FROM teacher_task_submissions').fetchone()[0] == 2

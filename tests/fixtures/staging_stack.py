@@ -81,7 +81,7 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
             assert not docker('inspect', '--format', '{{.Name}}', name, check=False)
 
 
-def seed_roles(database, *, assessment_files=False):
+def seed_roles(database, *, assessment_files=False, mastery=False):
     """Create only fictional rows, through intact constraints and triggers."""
     stack = database.stack
     accounts = []
@@ -147,7 +147,7 @@ def seed_roles(database, *, assessment_files=False):
                 connection.execute("INSERT INTO institutional_class_enrollments(id,school_id,academic_year_id,class_id,student_membership_id,student_id,invitation_id,teacher_assignment_id,subject_program_id,created_by) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                                    [ids[k] for k in ('enrollment', 'school', 'year', 'class', 'studentMember')] + [actors['student']['id']] + [ids[k] for k in ('invitation', 'assignment', 'programme')] + [admin])
                 school = {'label': label, **ids}
-                seed_navigation_curriculum(connection, school, assessment_files=assessment_files)
+                seed_navigation_curriculum(connection, school, assessment_files=assessment_files, mastery=mastery)
                 schools.append(school)
             if assessment_files:
                 connection.execute("INSERT INTO storage.buckets(id,name,public,file_size_limit,allowed_mime_types) VALUES ('teacher-task-files','teacher-task-files',false,10485760,ARRAY['application/pdf','application/vnd.openxmlformats-officedocument.wordprocessingml.document'])")

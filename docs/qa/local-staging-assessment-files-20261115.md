@@ -1,5 +1,7 @@
 # BF-21 — assessments and private files in owned local staging
 
+**Follow-up:** the [Mastery/Chapter Review slice](local-staging-mastery-20261116.md) extends this historical assessment/file scope; its qualification and merge status are recorded separately.
+
 The owner authorized the next BF-21 slice on 15 November 2026. This extends the [real-dashboard checks](local-staging-dashboards-20261115.md) with assessment completion and private teacher-task files. **Merged and verified on 16 November 2026 (Asia/Yerevan).** Owner-approved [PR496](https://github.com/johnvanesyan-arch/HaiEdu/pull/496) merged at `d9a8d34d8357340d30cc396a5bb5edb98135bc86`, preserving approved tree `2ec24f66d3e485c9303f64c43ad4e704db5d3daf`. All five [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43756084458) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43757231332) pass. This completes the bounded local assessment/file slice; wider BF-21 remains open. No hosted service acceptance is claimed.
 
 ## Scope and boundaries
