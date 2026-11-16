@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "scope": "BF22 public-site/main-CI activation and GitHub issue delivery",
+  "sourceCommit": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a",
+  "ownerAuthorization": {
+    "activate": true,
+    "oneLabelledDeliveryTest": true,
+    "variableAndIssuesWatchSaved": true,
+    "receiptConfirmed": true,
+    "receiptResponse": "Yes, I received it"
+  },
+  "activation": {
+    "effectiveEnabled": true,
+    "administrativeVariableReadback": false,
+    "proof": "Both jobs passed on the unchanged main workflow; their guards and scripts require BF22_FAILURE_ALERTS=true.",
+    "runId": 43937012240,
+    "attempt": 1,
+    "jobs": [
+      {
+        "id": 133544162452,
+        "name": "observe",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 133544327862,
+        "name": "notify",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "report": {
+      "schemaVersion": 1,
+      "scope": "bf22-public-health-and-main-ci",
+      "observedAt": "2026-11-16T19:13:18.615Z",
+      "observerCommit": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a",
+      "runId": 43937012240,
+      "samples": [
+        {
+          "signal": "main_ci",
+          "state": "healthy",
+          "kind": "healthy",
+          "release": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a",
+          "ciRunId": 43931726867
+        },
+        {
+          "signal": "site_apex",
+          "state": "healthy",
+          "kind": "healthy",
+          "release": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a"
+        },
+        {
+          "signal": "site_www",
+          "state": "healthy",
+          "kind": "healthy",
+          "release": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a"
+        },
+        {
+          "signal": "site_vercel",
+          "state": "healthy",
+          "kind": "healthy",
+          "release": "0ec47e91c0b8cac52552e4c2cec713c752af6b5a"
+        }
+      ]
+    },
+    "transitions": [
+      {
+        "signal": "public_site",
+        "action": "unchanged"
+      },
+      {
+        "signal": "main_ci",
+        "action": "unchanged"
+      }
+    ]
+  },
+  "delivery": {
+    "runId": 43937111485,
+    "attempt": 1,
+    "sourceCommit": "b28e97c772a771cd4c81bd49bce4a14636645dd1",
+    "temporaryBranch": "codex/bf22-notification-delivery-20261116",
+    "temporaryBranchDeleted": true,
+    "jobs": [
+      {
+        "id": 133544508642,
+        "name": "delivery-test",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "issue": {
+      "number": 510,
+      "author": "github-actions[bot]",
+      "title": "[TEST] HaiEdu failure-alert notification delivery",
+      "state": "closed",
+      "closedAt": "2026-11-16T19:15:14Z",
+      "ownerReceived": true
+    },
+    "method": "One clearly labelled issue from GitHub Actions; no deliberate site failure or fabricated managed incident. Tests the Issues watch notification route."
+  },
+  "schedule": {
+    "configured": "17 * * * *",
+    "firstPostActivationScheduledRunObserved": false,
+    "bestEffort": true
+  },
+  "boundaries": {
+    "productionQa": "not run (paused by owner)",
+    "affectedProductionQa": [],
+    "supabaseRequests": false,
+    "siteDisruption": false,
+    "browserAppChanges": false,
+    "sourceWorkflowChangedOnMain": false,
+    "broaderBf22Closed": false
+  },
+  "rollback": "Set repository variable BF22_FAILURE_ALERTS=false to stop future observations/notifications; already open issues remain."
+}
