@@ -22,7 +22,7 @@ FIXTURE_VERSION = 'two-school-dashboards-v2'
 
 
 @contextmanager
-def service_runtime(database, bundle, run_id, source, diagnostic_dir):
+def service_runtime(database, bundle, run_id, source, diagnostic_dir, *, client_failure_summary_key=None):
     stack = database.stack
     docker = stack['docker']
     diagnostics = stack['diagnostics']
@@ -43,7 +43,8 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
                 '-e', 'NO_PROXY=api,auth,rest,storage', '-e', 'no_proxy=api,auth,rest,storage',
                 '-p', '127.0.0.1::8080', '-e', 'BF21_GATEWAY=' + json.dumps({
                     'runId': run_id, 'sourceCommit': source,
-                    'anonKey': stack['anonToken'], 'serviceKey': stack['serviceToken']})]
+                    'anonKey': stack['anonToken'], 'serviceKey': stack['serviceToken'],
+                    'clientFailureSummaryKey': client_failure_summary_key})]
         # A single pinned runtime creates separate workers for the fixed registry.
         # Only its owned network aliases are exempted from an inherited proxy.
         with diagnostics.stage('runtime', 'container-start'):
@@ -77,7 +78,9 @@ def service_runtime(database, bundle, run_id, source, diagnostic_dir):
             logs = subprocess.run(['docker', '--host=unix:///var/run/docker.sock', 'logs', '--tail', '100', names[-1]],
                                   env=env, capture_output=True, text=True, timeout=10)
             diagnostic = logs.stdout + logs.stderr
-            for secret in (stack['anonToken'], stack['serviceToken']):
+            for secret in (stack['anonToken'], stack['serviceToken'], client_failure_summary_key):
+                if not secret:
+                    continue
                 diagnostic = diagnostic.replace(secret, '[local-secret]')
             diagnostic_dir.mkdir(parents=True, exist_ok=True)
             (diagnostic_dir / 'staging-runtime.log').write_text(diagnostic)

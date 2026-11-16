@@ -1,3 +1,4 @@
+import {runClientFailureJourney,clientFailureDriver} from './local-staging-client-failures.mjs';
 // Child of run-local-staging.py. The parent owns the backend and supplies only
 // synthetic sign-in accounts and the public local key, never its service key.
 import assert from 'node:assert/strict';
@@ -24,13 +25,14 @@ const fixture=JSON.parse(await readFile(process.argv[2],'utf8'));
 loopbackOrigin(fixture.backendOrigin);
 assert.match(fixture.runId,/^[a-f0-9]{24}$/);
 assert.match(fixture.sourceCommit,/^[a-f0-9]{40}$/);
-assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3','two-school-mastery-v4','two-school-pilot-v5','two-school-resources-v6'].includes(fixture.fixtureVersion));
+assert.ok(['two-school-dashboards-v2','two-school-assessment-files-v3','two-school-mastery-v4','two-school-pilot-v5','two-school-resources-v6','two-school-client-failures-v7'].includes(fixture.fixtureVersion));
+const clientFailureJourney=fixture.fixtureVersion==='two-school-client-failures-v7';
 const resourceJourney=fixture.fixtureVersion==='two-school-resources-v6';
-assert.equal(fixture.accounts.length,resourceJourney?10:6);
+assert.equal(fixture.accounts.length,clientFailureJourney?8:resourceJourney?10:6);
 assert.equal(fixture.schools.length,2);
 for(const account of fixture.accounts) {
   assert.match(account.email,/^[a-f0-9]{24}@example\.invalid$/);
-  assert.ok(['student','teacher','school_admin'].includes(account.role));
+  assert.ok(['student','teacher','school_admin',...(clientFailureJourney?['admin','content_admin']:[])].includes(account.role));
   assert.ok(['A','B'].includes(account.school));
 }
 assert.equal(new Set(fixture.accounts.map(a=>a.school+':'+(a.case??a.role))).size,fixture.accounts.length);
@@ -56,8 +58,19 @@ try {
   // generated staging configuration, not a change to production's protection.
   await writeFile(path.join(temporary,'web/auth-challenge-config.mjs'),
     'export const AUTH_CHALLENGE=Object.freeze({enabled:false,provider:"turnstile",siteKey:""});\n');
+  if(clientFailureJourney){
+    await writeFile(path.join(temporary,'web/client-failure-config.mjs'),'export const CLIENT_FAILURE_REPORTING_ENABLED=true;\n');
+    await writeFile(path.join(temporary,'web/client-failure-test.mjs'),clientFailureDriver);
+    await writeFile(path.join(temporary,'web/client-failure-test.html'),'<html><script type="module" src="./client-failure-test.mjs"></script></html>');
+  }
   execFileSync(process.execPath,['scripts/build-teacher-entry.mjs'],{cwd:temporary,stdio:'pipe'});
   const manifest=await buildWebAssets({root:temporary,update:true});
+  if(clientFailureJourney){
+    console.log('REGISTER_CLIENT_BUILD '+manifest.buildId);
+    const {createInterface}=await import('node:readline');const input=createInterface({input:process.stdin});
+    const ready=await Promise.race([new Promise(resolve=>input.once('line',resolve)),new Promise((_,reject)=>{const timer=setTimeout(()=>reject(Error('local_registration_timeout')),30000);timer.unref();})]);
+    input.close();assert.equal(ready,'registered');
+  }
   server=await serveWeb(path.join(temporary,'dist-web'));
   const owned={runId:fixture.runId,sourceCommit:fixture.sourceCommit,fixtureVersion:fixture.fixtureVersion,
     backendOrigin:fixture.backendOrigin,frontendOrigin:server.origin,buildId:manifest.buildId};
@@ -91,7 +104,9 @@ try {
   });
   });
   const page=await context.newPage();
-  if(resourceJourney) {
+  if(clientFailureJourney){
+    await runClientFailureJourney({page,fixture,target,manifest,check});
+  } else if(resourceJourney) {
     await runResourceJourney({page,fixture,target,check,diagnostics});
   } else if(fixture.fixtureVersion==='two-school-pilot-v5') {
     await runPilotJourney({page,fixture,target,check,diagnostics});
@@ -197,7 +212,7 @@ try {
   assert.equal(blocked.length,0,'unexpected_browser_network_destination');
   result={passed:true,buildId:manifest.buildId,
     checks,accounts:fixture.accounts.length,schools:2,subjects:2,browserNetworkRefusals:blocked.length,
-    boundary:resourceJourney?'Real local resource creation, private PDF delivery, selected and class assignment, cancellation, withdrawal and recipient isolation through unchanged pages/services. No hosted or production acceptance claim.':fixture.fixtureVersion==='two-school-pilot-v5'?'Real local native writing assignment, draft, revision, grading and protected audio playback in two fictional schools. No hosted, content, capacity or production acceptance claim.':fixture.fixtureVersion==='two-school-mastery-v4'?'Real local sign-in and native selected-response Mastery/Chapter Review lifecycle, with two fictional schools and unchanged services. No hosted, capacity, content or production acceptance claim.':fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'};
+    boundary:clientFailureJourney?'Five real local sign-in roles, authenticated Edge collector and private database; controlled page failures and notification candidates only. No production or real GitHub notification.':resourceJourney?'Real local resource creation, private PDF delivery, selected and class assignment, cancellation, withdrawal and recipient isolation through unchanged pages/services. No hosted or production acceptance claim.':fixture.fixtureVersion==='two-school-pilot-v5'?'Real local native writing assignment, draft, revision, grading and protected audio playback in two fictional schools. No hosted, content, capacity or production acceptance claim.':fixture.fixtureVersion==='two-school-mastery-v4'?'Real local sign-in and native selected-response Mastery/Chapter Review lifecycle, with two fictional schools and unchanged services. No hosted, capacity, content or production acceptance claim.':fixture.fixtureVersion==='two-school-assessment-files-v3'?'Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.':'Real local sign-in, unmodified dashboard documents and services for two fictional schools; same-browser account switching and UI logout. Synthetic navigation curriculum only; no assessment, file, hosted or production acceptance claim.'};
 } catch(error) {failure=error;}
 finally {
   for(const cleanup of [()=>network?.drain(),()=>browser?.close(),()=>network?.verify(),()=>server?.close(),()=>rm(temporary,{recursive:true,force:true})]) {

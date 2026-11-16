@@ -8,5 +8,15 @@
     "supabase/baseline/technical-seed.sql": "4a3e08273685ad7fbf878c5a4743845da5f7a70f362fc596ab20e22c75760dc6",
     "supabase/baseline/source-history-crosswalk.json": "fe7c15d49dc00e100538154d2acd8f8ed6bffc42679dff7d7bb5b5cd9c0b8706"
   },
-  "updates": []
+  "updates": [
+    {
+      "id": "20261116201934_bf22_client_failure_reports",
+      "file": "supabase/updates/sql/20261116201934_bf22_client_failure_reports.sql",
+      "sha256": "67d744beaff31a0e64fb488356569637863fde5fb15836ba3f04775c19833a0f",
+      "beforeCatalogueSha256": "208c4589cfd1ad0db299e394e56a3b41b9d83472af2c1162183dea5f6cc0d331",
+      "afterCatalogueSha256": "c2179aa9fbc44278b200620c3edd3ffbdcac21118c552996626d08c25de236b4",
+      "requiredData": [],
+      "dataPolicy": "preserve-existing-rows"
+    }
+  ]
 }

@@ -1,3 +1,4 @@
+import {reportPageFailure} from './client-failure-reporter.mjs';
 import {rateLimitMessage} from './rate-budget-feedback.mjs';
 // Assessed playback uses one server ledger per session/recording. Controls enforce
 // the normal learner flow, not DRM or proof of attention. No transcript is sent.
@@ -90,7 +91,7 @@ export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>t
   if(!valid()||!running)return;const at=position();stop();busy=true;render();
   void serial(()=>event('complete',at)).then(result=>{if(valid()){state=result;status.textContent='Լսումն ավարտված է։ Կարող եք պատասխանել հարցերին։';}}).catch(()=>failure()).finally(()=>{if(valid()){busy=false;render();}});
  });
- audio.addEventListener('error',()=>{if(valid()&&url)void failure();});
+ audio.addEventListener('error',()=>{if(valid()&&url){reportPageFailure('audio_load','audio_playback');void failure();}});
  render();
  return ()=>{live=false;button.onclick=pause.onclick=end.onclick=null;release();wrapper.remove();};
 }

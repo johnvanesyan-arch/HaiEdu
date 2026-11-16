@@ -281,7 +281,7 @@ test('CLI refuses notifications while disabled or inspecting and refuses foreign
 
 test('workflow keeps notification permissions isolated, defaults off, and never executes triggering code', async () => {
   const workflow = await readFile(new URL('../.github/workflows/failure-observer.yml', import.meta.url), 'utf8');
-  const [observe, notify] = workflow.split('\n  notify:');
+  const [observe, notify] = workflow.split('\n  observe:')[1].split('\n  notify:');
   assert(!observe.includes('issues: write'));
   assert(notify.includes('issues: write'));
   assert.match(workflow, /vars\.BF22_FAILURE_ALERTS == 'true'/);
@@ -289,6 +289,14 @@ test('workflow keeps notification permissions isolated, defaults off, and never 
   assert.match(workflow, /retention-days: 7/);
   assert.match(workflow, /cancel-in-progress: false/);
   assert(!/ref:.*(?:head_sha|head_branch)/.test(workflow));
-  assert(!/download-artifact|secrets\.|npm (?:ci|install)/.test(workflow));
+  assert(!/download-artifact|npm (?:ci|install)/.test(workflow));
+  assert(!/secrets\./.test(observe+notify));
+  const clientCollect=workflow.split('\n  observe_client:')[1].split('\n  notify_client:')[0];
+  const clientNotify=workflow.split('\n  notify_client:')[1].split('\n  observe:')[0];
+  assert(!clientCollect.includes('issues: write'));
+  assert.match(clientCollect,/vars\.BF22_CLIENT_FAILURE_ALERTS == 'true'/);
+  assert.deepEqual([...clientCollect.matchAll(/secrets\.(\w+)/g)].map(m=>m[1]),['BF22_CLIENT_FAILURE_SUMMARY_KEY']);
+  assert(!clientNotify.includes('secrets.'));
+  assert.match(clientNotify,/issues: write/);
   assert.equal([...workflow.matchAll(/uses: ([^\s]+)/g)].filter(m => !/@[a-f0-9]{40}$/.test(m[1])).length, 0);
 });

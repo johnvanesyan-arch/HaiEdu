@@ -9,10 +9,14 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Inspect only, or notify when BF22_FAILURE_ALERTS is enabled
+        description: Inspect only, or notify for each enabled BF22 alert layer
         type: choice
         options: [inspect, notify]
         default: inspect
+      client_reports:
+        description: Include private client reports during inspection (collector must be configured)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -23,6 +27,63 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  observe_client:
+    if: >-
+      github.repository == 'johnvanesyan-arch/HaiEdu' &&
+      github.ref == 'refs/heads/main' &&
+      (vars.BF22_CLIENT_FAILURE_ALERTS == 'true' ||
+        (github.event_name == 'workflow_dispatch' && inputs.mode == 'inspect' && inputs.client_reports)) &&
+      github.event_name != 'workflow_run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      summary: ${{ steps.client.outputs.summary }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Read only the private collector's fixed summary
+        id: client
+        run: node scripts/observe-client-failures.mjs collect
+        env:
+          BF22_CLIENT_FAILURE_ALERTS: ${{ vars.BF22_CLIENT_FAILURE_ALERTS }}
+          BF22_CLIENT_FAILURE_SUMMARY_KEY: ${{ secrets.BF22_CLIENT_FAILURE_SUMMARY_KEY }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: client-failure-summary-${{ github.run_attempt }}
+          path: artifacts/client-failure-observer/summary.json
+          if-no-files-found: error
+          retention-days: 7
+
+  notify_client:
+    needs: observe_client
+    if: >-
+      vars.BF22_CLIENT_FAILURE_ALERTS == 'true' &&
+      (github.event_name != 'workflow_dispatch' || inputs.mode == 'notify')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Group reports without closing incidents from silence
+        run: node scripts/observe-client-failures.mjs publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BF22_CLIENT_FAILURE_ALERTS: ${{ vars.BF22_CLIENT_FAILURE_ALERTS }}
+          BF22_CLIENT_SUMMARY: ${{ needs.observe_client.outputs.summary }}
+
   observe:
     if: >-
       github.repository == 'johnvanesyan-arch/HaiEdu' &&

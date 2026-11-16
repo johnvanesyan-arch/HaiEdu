@@ -1,3 +1,4 @@
+import {beginClientFailure} from './client-failure-reporter.mjs';
 import {invokeRateAware,rateLimitMessage,isRateBudgetRefusal} from './rate-budget-feedback.mjs';
 import {feedbackApi,teacherFeedbackMarkup,mountTeacherFeedback} from './teacher-feedback.mjs';
 import {escapeHtml as esc} from './learning-navigation.mjs';
@@ -17,10 +18,11 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
  const unload=e=>{if(current()&&(dirty()||saving||busy)){e.preventDefault();e.returnValue='';}};
  window.addEventListener('beforeunload',unload);
  async function api(action,payload={}) {
+  const observation=beginClientFailure(supabase,'learning_load');
   const {data,error}=await invokeRateAware(supabase,'manage-written-work',{body:{action,context,payload}});
   if(error||data?.error){if(rateLimitMessage(error))throw error;let code=data?.error;if(!code&&error?.context?.json){try{code=(await error.context.json()).error;}catch{}}
    const problem=new Error(errors[code]??'Չհաջողվեց պահպանել կամ բեռնել տվյալները։ Փորձեք նորից։');problem.code=code;throw problem;}
-  if(data?.version!=='written-work-v1')throw new Error('Չհաջողվեց բեռնել գրավոր աշխատանքները։');
+  if(data?.version!=='written-work-v1'){observation.report('invalid_response',200);throw new Error('Չհաջողվեց բեռնել գրավոր աշխատանքները։');}
   return data;
  }
  function shell(content){feedbackEditor();feedbackEditor=()=>{};root.innerHTML=`<section class="card written-work"><h2>${teacher?'Գրավոր աշխատանքների ստուգում':'Գրավոր աշխատանքներ'}</h2><p data-writing-message role="status" aria-live="polite"></p><p class="subtle" data-writing-scope>Գրավոր աշխատանքի գնահատականը ներկայացվում է առանձին։ Այն չի գումարվում ավտոմատ ստուգարքի միավորներին և չի որոշում դրա արդյունքը։</p>${content}</section>`;}
@@ -92,7 +94,7 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
  async function recoverSubmission(){
   if(busy||!current()||!pendingSubmission)return;
   busy=true;controls();message('Ստուգվում է՝ արդյոք աշխատանքը ներկայացված է ուսուցչին…');
-  const pending=pendingSubmission,request=sequence;
+  const pending=pendingSubmission,request=sequence,observation=beginClientFailure(supabase,'writing_submit');
   try{
    const data=await api('open',{taskId:pending.taskId});
    if(!current()||request!==sequence||pending!==pendingSubmission)return;
@@ -102,10 +104,11 @@ export function mountWrittenWork({root,supabase,context,actorId,teacher=false,is
    const confirmed=data.submissions.some(s=>!pending.submissionIds.includes(s.id)&&s.text===pending.text);
    if(confirmed){pendingSubmission=null;model=data;savedText=data.draftText;conflict=false;render();message('Աշխատանքի ներկայացումը հաստատված է։ Ստորև կարող եք տեսնել ներկայացված տարբերակն ու ստուգման կարգավիճակը։');return;}
    const unchanged=data.work?.revision===pending.expectedRevision&&data.work?.currentSubmissionId===pending.previousSubmissionId&&data.draftText===pending.text&&!data.readOnly&&['draft','changes_requested'].includes(data.work?.state);
+   observation.report('write_unconfirmed');
    pendingSubmission=null;
    if(unchanged){model=data;conflict=false;message('Ներկայացումը դեռ չի հաստատվել։ Ձեր սևագիրը պահպանված է։ Կարող եք կրկին սեղմել «Ներկայացնել ուսուցչին»։',true);}
    else{conflict=true;message('Աշխատանքի պահպանված տարբերակը փոխվել է։ Այս պատուհանի տեքստը մնացել է տեսանելի․ պատճենեք այն, ապա բեռնեք վերջին պահպանված տարբերակը։',true);}
-  }catch(rateError){if(current()&&request===sequence&&pending===pendingSubmission){message((rateLimitMessage(rateError) ?? ('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։')),true);}}
+  }catch(rateError){if(current()&&request===sequence&&pending===pendingSubmission){if(!rateLimitMessage(rateError))observation.report('write_unconfirmed');message((rateLimitMessage(rateError) ?? ('Չհաջողվեց հաստատել ներկայացման կարգավիճակը։ Ձեր տեքստը մնացել է այս պատուհանում։ Մի փակեք էջը․ կապը վերականգնելուց հետո սեղմեք «Ստուգել ներկայացման կարգավիճակը»։')),true);}}
   finally{busy=false;controls();if(current()&&request===sequence){const next=pendingSubmission?$('[data-writing-recover]'):conflict?$('[data-writing-reload]'):$('[data-writing-message]');if(next){if(next.matches('[data-writing-message]'))next.tabIndex=-1;next.focus();}}}
  }
  async function submit(){

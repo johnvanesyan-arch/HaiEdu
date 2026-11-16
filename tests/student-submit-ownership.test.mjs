@@ -1,3 +1,4 @@
+import {beginClientFailure} from '../web/client-failure-reporter.mjs';
 import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import {escapeHtml} from '../web/text-safety.mjs';
 import assert from "node:assert/strict";
@@ -131,7 +132,7 @@ function createFixture({ file, handler }) {
     showGate: (...args) => gates.push(args),
     status: () => { throw new Error("Unexpected post-answer status read"); },
     renderFinalResult: (result) => finalResults.push(result),
-  },rateFeedbackBindings));
+  },rateFeedbackBindings,{beginClientFailure}));
   vm.runInContext([
     recoverySource,
     ownershipState,

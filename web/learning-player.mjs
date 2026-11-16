@@ -1,3 +1,4 @@
+import {beginClientFailure} from './client-failure-reporter.mjs';
 import {rateLimitMessage} from './rate-budget-feedback.mjs';
 import {assessmentRules,assessmentResultMarkup} from './assessment-reporting.mjs';
 import { escapeHtml as esc } from './learning-navigation.mjs';
@@ -23,12 +24,13 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
   };
   window.addEventListener('beforeunload',guardUnsaved);
   const invoke = async(name,body) => {
+    const audioObservation=beginClientFailure(supabase,'audio_load');
     // Bound stalled transport without racing the server's playback lease or
     // rejecting a healthy, slow initial state/begin response.
     const {data,error,response}=await invokeLearnerFunction(supabase,name,{body,...(name==='get-learning-audio'?{timeout:body.action==='load'?60000:15000}:{})});
     if(!valid())throw new Error('stale_context');
     if(error || data?.error){if(rateLimitMessage(error))throw error;const detail=data?.error??error?.error??(error?.context instanceof Response?await error.context.clone().json().then(x=>x.error).catch(()=>null):null);throw new Error(['typed_fields_draft_conflict','response_draft_conflict'].includes(detail)?'Պատասխանը փոփոխվել է մեկ այլ պատուհանում։ Պահպանեք ձեր պատասխանի պատճենը և վերաբեռնեք էջը՝ վերջին տարբերակը տեսնելու համար։':'Այս գործողությունն այս պահին հասանելի չէ։ Ձեր պատասխանը պահպանեք և կրկին փորձեք։');}
-    return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
+    return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action,audioObservation):data;
   };
   const fail = error => { if(valid()) { const p=document.createElement('p');p.textContent=error.message;root.appendChild(p); } };
   async function serve(refreshed, focusHandoff) {

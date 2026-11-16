@@ -49,7 +49,10 @@ Deno.serve(async req=>{
       const worker=await EdgeRuntime.userWorkers.create({servicePath:'/service/'+service,
         memoryLimitMb:150,workerTimeoutMs:60000,noModuleCache:false,forceCreate:false,
         envVars:[['SUPABASE_URL','http://api:8080'],['SUPABASE_SERVICE_ROLE_KEY',configuration.serviceKey],
-          ['HAIEDU_RATE_BUDGETS_MODE','off'],['NO_PROXY','api,auth,rest,storage'],['no_proxy','api,auth,rest,storage']]});
+          ['HAIEDU_RATE_BUDGETS_MODE','off'],
+          ['HAIEDU_CLIENT_FAILURE_REPORTS_MODE',/^[a-f0-9]{64}$/.test(configuration.clientFailureSummaryKey??'')?'observe':'off'],
+          ['HAIEDU_CLIENT_FAILURE_SUMMARY_KEY',configuration.clientFailureSummaryKey??''],
+          ['NO_PROXY','api,auth,rest,storage'],['no_proxy','api,auth,rest,storage']]});
       // The pinned runtime attaches transport metadata to the original request.
       // Inspect a clone above; retain that original request and its unread body.
       response=await worker.fetch(req);

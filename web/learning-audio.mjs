@@ -1,10 +1,11 @@
+import {reportPageFailure} from './client-failure-reporter.mjs';
 // Short private recordings are fetched through the authenticated Edge handler.
 // No object path, storage token, transcript or signed URL enters the page.
 import {mountAssessedAudio} from './assessed-audio.mjs';
-export function decodeLearningAudio(data,response,action){
+export function decodeLearningAudio(data,response,action,observation){
  if(!['load','preview'].includes(action))return data;
  const mime=response?.headers?.get('X-HaiEdu-Audio-Type');
- if(!(data instanceof Blob)||data.type!=='application/octet-stream'||!data.size||data.size>8388608||!['audio/mpeg','audio/wav'].includes(mime))throw new Error('Ձայնագրությունը հասանելի չէ։');
+ if(!(data instanceof Blob)||data.type!=='application/octet-stream'||!data.size||data.size>8388608||!['audio/mpeg','audio/wav'].includes(mime)){observation?.report('invalid_response',200);throw new Error('Ձայնագրությունը հասանելի չէ։');}
  return data.slice(0,data.size,mime);
 }
 export function mountLearningAudio(options){
@@ -39,7 +40,7 @@ export function mountLearningAudio(options){
  };
  audio.addEventListener('playing',()=>{if(valid()&&!failed){status.textContent='Լսեք ձայնագրությունը մինչև վերջ։';if(!preview)void record('started').catch(()=>{});}});
  audio.addEventListener('ended',()=>{if(!valid()||failed)return;void record('completed').then(()=>{if(valid()&&!failed){completed=true;ready(true);status.textContent='Ձայնագրությունն ավարտված է։ Կարող եք պատասխանել կամ կրկին լսել։';}}).catch(()=>{});});
- audio.addEventListener('error',()=>{if(!valid()||!url)return;error();if(!preview)void record('failed').catch(()=>{});});
+ audio.addEventListener('error',()=>{if(!valid()||!url)return;reportPageFailure('audio_load','audio_playback');error();if(!preview)void record('failed').catch(()=>{});});
  // This replayable practice policy uses normal speed. Controls are usability
  // conditions, not DRM or proof that a person paid attention.
  audio.addEventListener('ratechange',()=>{if(audio.playbackRate!==1)audio.playbackRate=1;});

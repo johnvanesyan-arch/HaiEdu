@@ -24,13 +24,13 @@ test('browser dependency guard parses static and lazy imports, not comments or A
   assert.doesNotThrow(() => assertLocalBrowserImports(result.metafile.outputs));
 });
 
-test('committed browser SDK matches the exact installed pin and has no app or role modules', async () => {
+test('committed browser SDK matches the exact installed pin and includes only the reviewed diagnostic boundary', async () => {
   const result = await buildBrowserSdk({ check: true });
   const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url)));
   const lock = JSON.parse(await readFile(new URL('../package-lock.json', import.meta.url)));
   assert.match(pkg.devDependencies['@supabase/supabase-js'], /^\d+\.\d+\.\d+$/);
   assert.equal(pkg.devDependencies['@supabase/supabase-js'], lock.packages['node_modules/@supabase/supabase-js'].version);
-  assert.deepEqual(result.inputs.filter(file => !/(^|\/)node_modules\//.test(file)), ['web/supabase-browser.mjs']);
+  assert.deepEqual(result.inputs.filter(file => !/(^|\/)node_modules\//.test(file)).sort(), ['web/supabase-browser.mjs','web/client-failure-catalog.mjs','web/client-failure-config.mjs','web/client-failure-contract.mjs','web/client-failure-reporter.mjs'].sort());
 });
 
 test('learner, resource, school and teacher entry graphs retain the same local SDK and build inputs', async () => {
