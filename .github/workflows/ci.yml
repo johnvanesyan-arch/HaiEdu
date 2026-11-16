@@ -132,6 +132,10 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
+      - name: Set owned fixture report directories
+        run: |
+          echo "HAIEDU_FIXTURE_DIAGNOSTICS_DIR=$RUNNER_TEMP/haiedu-fixture-startup-reports" >> "$GITHUB_ENV"
+          echo "HAIEDU_FIXTURE_CONTROLS_DIR=$RUNNER_TEMP/haiedu-fixture-startup-controls" >> "$GITHUB_ENV"
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
@@ -147,6 +151,11 @@ jobs:
       - name: Verify bounded rate-counter housekeeping and real scheduler isolation
         timeout-minutes: 5
         run: python tests/actor-rate-maintenance-concurrency.py
+      - name: Verify safe startup diagnostics and real cleanup after injected failures
+        timeout-minutes: 5
+        run: |
+          python tests/fixture-diagnostics-unit.py
+          python tests/fixture-diagnostics-integration.py --reports-dir "$HAIEDU_FIXTURE_CONTROLS_DIR"
       - name: Verify fresh-baseline comparison negative controls
         run: python tests/fresh-baseline-unit.py
       - name: Rebuild the complete application schema and verify local provider access
@@ -245,6 +254,20 @@ jobs:
         run: node --test tests/item-snapshot-integrity.test.mjs
       - name: Verify governed whole-form mastery selection races
         run: python tests/governed-mastery-forms-concurrency.py
+      - name: Validate public startup diagnostics separately from private logs
+        id: fixture_diagnostic_collection
+        if: ${{ always() }}
+        run: |
+          python scripts/collect-fixture-startup-diagnostics.py --source "$HAIEDU_FIXTURE_DIAGNOSTICS_DIR" --output "$RUNNER_TEMP/haiedu-fixture-public/failures"
+          python scripts/collect-fixture-startup-diagnostics.py --source "$HAIEDU_FIXTURE_CONTROLS_DIR" --output "$RUNNER_TEMP/haiedu-fixture-public/expected-failure-controls"
+      - name: Retain only validated startup summaries and expected-failure controls
+        if: ${{ always() && steps.fixture_diagnostic_collection.outcome == 'success' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: fixture-startup-diagnostics-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/haiedu-fixture-public/**/*.json
+          if-no-files-found: ignore
+          retention-days: 7
 
   platform-release-checks:
     name: Platform release checks

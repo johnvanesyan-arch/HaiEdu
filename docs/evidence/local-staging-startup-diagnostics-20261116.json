@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "scope": "local-fixture-startup-diagnostics",
+  "baseCommit": "ca8a046ff209eca42796ee9ec9cb714b7884c435",
+  "status": "locally-qualified-awaiting-exact-head-CI-and-merge-approval",
+  "productionTouched": false,
+  "hostedTestTouched": false,
+  "historicalFailureCause": "unconfirmed",
+  "sourceSha256": {
+    ".github/workflows/ci.yml": "00ff1c99ecc07db7e2e2945e530128bce911bc70b02730a3d75a3dfc7f238449",
+    "scripts/run-local-staging.py": "ef7c006b60149b15ea6db7c55e28e8984248e55dd977ad8c11e25a698e01ad2a",
+    "scripts/collect-fixture-startup-diagnostics.py": "4d28644b12f45fcf1f512e4fcff5bb2e9f4429bc0c56a4a3c7091970865fca75",
+    "tests/fixtures/fixture_diagnostics.py": "2398e08586aefdae0a3dd3947344652e2ea1d99b66a8db895bdf388570850e5c",
+    "tests/fixtures/bf16_maintenance_postgres.py": "c94ecfe7df856d84ee6b82539faf19423bfa6591e4608071af34ab8a57a28ee9",
+    "tests/fixtures/fresh_baseline_stack.py": "02c51f54768fec1b9318b78da26b0c1360d7e77a566fa6b7660155f51f9c068c",
+    "tests/fixtures/staging_stack.py": "dfae95563b48d99311cf37008dbbb9e83848d1ba1ff235c366a07fa85a85d8b5",
+    "tests/fixture-diagnostics-unit.py": "e60558f2a3cb222c1e8c994065145efdc983735068f6481bb02eedbfa974bc23",
+    "tests/fixture-diagnostics-integration.py": "5b575fb8f880c66dde51ddd622dee8f35418dcb4a9d1fb0f495ef378d359b645"
+  },
+  "unitTests": 13,
+  "realDockerFaultControls": [
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "5c4bf1af088f3c183d7cd544",
+      "updatedAt": "2026-11-16T14:32:23.444287+00:00",
+      "status": "failed",
+      "active": null,
+      "failure": {
+        "component": "database",
+        "phase": "container-start",
+        "reason": "command-timeout",
+        "exitCode": null,
+        "osError": null
+      },
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed"
+      },
+      "observations": {
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 8690614272,
+      "hostTemporaryFreeInodes": 1353404,
+      "reportWriteFailed": false
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "9b3c844ad2a77b2e93f4d073",
+      "updatedAt": "2026-11-16T14:32:33.747444+00:00",
+      "status": "failed",
+      "active": null,
+      "failure": {
+        "component": "auth",
+        "phase": "service-ready",
+        "reason": "readiness-timeout",
+        "exitCode": null,
+        "osError": null
+      },
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed",
+        "mail": "removed",
+        "auth": "removed"
+      },
+      "observations": {
+        "auth": {
+          "state": "exited",
+          "exitCode": 23,
+          "oomKilled": false
+        },
+        "mail": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 8690597888,
+      "hostTemporaryFreeInodes": 1353403,
+      "reportWriteFailed": false
+    }
+  ],
+  "oldSourceNegativeControl": {
+    "sourceCommit": "ca8a046ff209eca42796ee9ec9cb714b7884c435",
+    "scenario": "client timeout after daemon created the database container",
+    "originalExceptionEscaped": true,
+    "structuredReportProduced": false,
+    "simulatedOwnedObjectsLeft": 2,
+    "actualDockerUsed": false,
+    "expectedRegressionDetected": true,
+    "privateCommandArgumentsPrinted": false
+  },
+  "normalFixtureReports": [
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "1eba03890cc7dbcb538d2add",
+      "updatedAt": "2026-11-16T14:40:57.480934+00:00",
+      "status": "complete",
+      "active": null,
+      "failure": null,
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed",
+        "mail": "removed",
+        "auth": "removed",
+        "storage": "removed",
+        "rest": "removed",
+        "runtime": "removed"
+      },
+      "observations": {
+        "auth": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "storage": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "rest": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "runtime": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "mail": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 9241440256,
+      "hostTemporaryFreeInodes": 1360599,
+      "reportWriteFailed": false
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "43ee4edd0b02d6680b4553aa",
+      "updatedAt": "2026-11-16T14:35:39.024304+00:00",
+      "status": "complete",
+      "active": null,
+      "failure": null,
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed"
+      },
+      "observations": {
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 9263792128,
+      "hostTemporaryFreeInodes": 1360717,
+      "reportWriteFailed": false
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "7b17385dfcd3f1655fbc9c41",
+      "updatedAt": "2026-11-16T14:36:30.457000+00:00",
+      "status": "complete",
+      "active": null,
+      "failure": null,
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed",
+        "mail": "removed",
+        "auth": "removed",
+        "storage": "removed",
+        "rest": "removed"
+      },
+      "observations": {
+        "auth": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "storage": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "rest": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "mail": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 9263730688,
+      "hostTemporaryFreeInodes": 1360709,
+      "reportWriteFailed": false
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "owned-local-fixture-startup",
+      "runId": "82a44936dbc6e3f5ef39ab39",
+      "updatedAt": "2026-11-16T14:38:13.686422+00:00",
+      "status": "complete",
+      "active": null,
+      "failure": null,
+      "cleanupFailures": [],
+      "cleanup": {
+        "network": "removed",
+        "database": "removed",
+        "mail": "removed",
+        "auth": "removed",
+        "storage": "removed",
+        "rest": "removed",
+        "runtime": "removed"
+      },
+      "observations": {
+        "auth": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "storage": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "rest": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "runtime": {
+          "httpStatus": 200,
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "mail": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        },
+        "database": {
+          "state": "running",
+          "exitCode": 0,
+          "oomKilled": false
+        }
+      },
+      "hostTemporaryFreeBytes": 9244753920,
+      "hostTemporaryFreeInodes": 1360618,
+      "reportWriteFailed": false
+    }
+  ],
+  "normalQualification": {
+    "maintenanceChecks": 10,
+    "baselineProviderChecks": 18,
+    "journeys": {
+      "dashboards": {
+        "journeyKind": "dashboards",
+        "startedAt": "2026-11-16T14:36:30.672350+00:00",
+        "finishedAt": "2026-11-16T14:38:13.756536+00:00",
+        "workingTreeClean": false,
+        "runnerSources": {
+          "scripts/local-staging-resources.mjs": "54b521072e130345a0c653ebdfd979d6fb01cffb2cea414ac20a98aa4649c224",
+          "tests/fixtures/staging_resources.py": "cea498142c1fd11138a173bf38f2ef2c300f9ce4acfd3c1e44d03440c567f256",
+          "scripts/run-local-staging.py": "ef7c006b60149b15ea6db7c55e28e8984248e55dd977ad8c11e25a698e01ad2a",
+          "scripts/local-staging-pilot.mjs": "d96a16c93feba04d82a26e5b9b28dda5a61d0bf64bcda5a707a5577307e227fb",
+          "scripts/local-staging-browser-network.mjs": "6888e7584315687594c4f34b8808507e9bcf1f18326b173dea750de3887ecbda",
+          "tests/fixtures/staging_pilot.py": "e592dc600cc76f2a8bfd2b4210be91c8f580405542d9a606bf81799408e426c2",
+          "scripts/local-staging-journey.mjs": "e0d1e8b5ec891779cd88a755a39e0d48562332c3cceb0fcb240c7fc8a8251330",
+          "scripts/local-staging-assessment-files.mjs": "2abf8cd19e3fee73433c8a9df0bc4b5d0ab66ae15b1cd1c301b9f669531e4ad3",
+          "tests/fixtures/staging_assessments.py": "44c96293d7f9e94fc49973cc15452a90bfc9e028831364bb78d84f9d406a2086",
+          "scripts/local-staging-mastery.mjs": "0ce0af8bd0744c79317de2413b6e24b866ad2e78f1d9ea39f5516f96e166bb19",
+          "tests/fixtures/staging_mastery.py": "05d30e5b2c825b3bfddd143cab885bc4f57c5b9ff95a758974f4ab1ea9acc564",
+          "tests/fixtures/synthetic-task-documents.mjs": "68917194e167cbc52a2fb1a7d106284c63a6711fe1399fefa089916b2bd6fe16",
+          "tests/fixtures/governed-runtime-model.json": "8c1c7a2845f284379caf43d4cb33f515b4629bc0d566c2fb0d45eaada9d5f7d7",
+          "scripts/staging-target.mjs": "f05255474e11ec73fbd4cda6b0ccdc94f35727f837f5e0894eaa7dc83d27ec32",
+          "scripts/build-staging-functions.mjs": "3e59931b824148596e5d980c48e091fb9541ce53787bd7ce04c34f547e00bd73",
+          "scripts/local-staging-dashboard-checks.mjs": "a29c5557982e975b9613cf047b24ef83d6fd29809e5d92d32e79e580eb33fb4f",
+          "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+          "tests/fixtures/staging_stack.py": "dfae95563b48d99311cf37008dbbb9e83848d1ba1ff235c366a07fa85a85d8b5",
+          "tests/fixtures/staging_curriculum.py": "4bbc883a64371f7f2769a2328699c5cca96ecf4495f7cd1de1c17aa2be20fe10",
+          "tests/fixtures/staging-gateway.ts": "d8eed85f47b18af25a09dcd66a4a3c07ac4b7aec2f187f591a7a9e2b2273958d",
+          "tests/fixtures/staging-services.json": "160e9c1e0ef2051e7d8e0f1daab7e165daa92f137f7f5e980e440c47bf46a73b",
+          "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+          "tests/fixtures/fresh_baseline_stack.py": "02c51f54768fec1b9318b78da26b0c1360d7e77a566fa6b7660155f51f9c068c",
+          "tests/fixtures/bf16_maintenance_postgres.py": "c94ecfe7df856d84ee6b82539faf19423bfa6591e4608071af34ab8a57a28ee9",
+          "tests/fixtures/fixture_diagnostics.py": "2398e08586aefdae0a3dd3947344652e2ea1d99b66a8db895bdf388570850e5c"
+        },
+        "componentImages": {
+          "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+          "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+          "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+          "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+          "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+        },
+        "passed": true,
+        "ownedCleanupVerified": true,
+        "allTestSessionsClosed": true,
+        "groups": 28,
+        "browserShutdownVerified": true
+      },
+      "resources": {
+        "journeyKind": "resource-assignments",
+        "startedAt": "2026-11-16T14:38:14.016878+00:00",
+        "finishedAt": "2026-11-16T14:40:57.579557+00:00",
+        "workingTreeClean": false,
+        "runnerSources": {
+          "scripts/local-staging-resources.mjs": "54b521072e130345a0c653ebdfd979d6fb01cffb2cea414ac20a98aa4649c224",
+          "tests/fixtures/staging_resources.py": "cea498142c1fd11138a173bf38f2ef2c300f9ce4acfd3c1e44d03440c567f256",
+          "scripts/run-local-staging.py": "ef7c006b60149b15ea6db7c55e28e8984248e55dd977ad8c11e25a698e01ad2a",
+          "scripts/local-staging-pilot.mjs": "d96a16c93feba04d82a26e5b9b28dda5a61d0bf64bcda5a707a5577307e227fb",
+          "scripts/local-staging-browser-network.mjs": "6888e7584315687594c4f34b8808507e9bcf1f18326b173dea750de3887ecbda",
+          "tests/fixtures/staging_pilot.py": "e592dc600cc76f2a8bfd2b4210be91c8f580405542d9a606bf81799408e426c2",
+          "scripts/local-staging-journey.mjs": "e0d1e8b5ec891779cd88a755a39e0d48562332c3cceb0fcb240c7fc8a8251330",
+          "scripts/local-staging-assessment-files.mjs": "2abf8cd19e3fee73433c8a9df0bc4b5d0ab66ae15b1cd1c301b9f669531e4ad3",
+          "tests/fixtures/staging_assessments.py": "44c96293d7f9e94fc49973cc15452a90bfc9e028831364bb78d84f9d406a2086",
+          "scripts/local-staging-mastery.mjs": "0ce0af8bd0744c79317de2413b6e24b866ad2e78f1d9ea39f5516f96e166bb19",
+          "tests/fixtures/staging_mastery.py": "05d30e5b2c825b3bfddd143cab885bc4f57c5b9ff95a758974f4ab1ea9acc564",
+          "tests/fixtures/synthetic-task-documents.mjs": "68917194e167cbc52a2fb1a7d106284c63a6711fe1399fefa089916b2bd6fe16",
+          "tests/fixtures/governed-runtime-model.json": "8c1c7a2845f284379caf43d4cb33f515b4629bc0d566c2fb0d45eaada9d5f7d7",
+          "scripts/staging-target.mjs": "f05255474e11ec73fbd4cda6b0ccdc94f35727f837f5e0894eaa7dc83d27ec32",
+          "scripts/build-staging-functions.mjs": "3e59931b824148596e5d980c48e091fb9541ce53787bd7ce04c34f547e00bd73",
+          "scripts/local-staging-dashboard-checks.mjs": "a29c5557982e975b9613cf047b24ef83d6fd29809e5d92d32e79e580eb33fb4f",
+          "scripts/fresh_update_bridge.py": "2e2253a256b70149629fa961ad576c3c1eec1df23f8601371298b4ab38d678ed",
+          "tests/fixtures/staging_stack.py": "dfae95563b48d99311cf37008dbbb9e83848d1ba1ff235c366a07fa85a85d8b5",
+          "tests/fixtures/staging_curriculum.py": "4bbc883a64371f7f2769a2328699c5cca96ecf4495f7cd1de1c17aa2be20fe10",
+          "tests/fixtures/staging-gateway.ts": "d8eed85f47b18af25a09dcd66a4a3c07ac4b7aec2f187f591a7a9e2b2273958d",
+          "tests/fixtures/staging-services.json": "160e9c1e0ef2051e7d8e0f1daab7e165daa92f137f7f5e980e440c47bf46a73b",
+          "tests/fixtures/staging-egress.js": "6f05d672e8a563666012caee3d00f1e5ec18eae23f04ef0ed4e80b6e3e1da0ca",
+          "tests/fixtures/fresh_baseline_stack.py": "02c51f54768fec1b9318b78da26b0c1360d7e77a566fa6b7660155f51f9c068c",
+          "tests/fixtures/bf16_maintenance_postgres.py": "c94ecfe7df856d84ee6b82539faf19423bfa6591e4608071af34ab8a57a28ee9",
+          "tests/fixtures/fixture_diagnostics.py": "2398e08586aefdae0a3dd3947344652e2ea1d99b66a8db895bdf388570850e5c"
+        },
+        "componentImages": {
+          "auth": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+          "rest": "public.ecr.aws/supabase/postgrest:v16.5@sha256:1347d7552b88f17832912c06afbf7c43209af6eeeb60834b04aae12c9bd9d5cc",
+          "storage": "public.ecr.aws/supabase/storage-api:v1.90.1@sha256:b2a04ca607b6cfdeafc47f5fa8cc22fc386d40cc25e7f11bbfda65954f3ae949",
+          "mail": "axllent/mailpit:v1.27.7@sha256:cae83a33cd9b9598e4acb210be673dda7e741d5271ed4045310ab456950a136a",
+          "database": "haiedu-bf16-cron-fixture:7db0a355134f5027"
+        },
+        "passed": true,
+        "ownedCleanupVerified": true,
+        "allTestSessionsClosed": true,
+        "groups": 41,
+        "browserShutdownVerified": true
+      }
+    },
+    "privateStorageChecks": 8,
+    "setupRedirectControl": 1,
+    "teacherBundleParity": true,
+    "webAssetArchiveIntegrity": true,
+    "productionQATriggerCoverage": true
+  },
+  "logSha256": {
+    "unit.log": "d42f48f4ab8f47033f818f8520e48b8a3cb71979b79b69b80a3847a3451e04b0",
+    "maintenance.log": "1548800c8b2691f4105f93449682b74bb2bed165d00e2933f240ac61c64534af",
+    "baseline.log": "e61db0e647b857d44c0ec23baf94b262467c3c5e7a994a086d45d316788be9ff",
+    "dashboards.log": "77a33db4da75040fdf2f331a66ff6b44e9e45e092853b894fea4a125e30f105e",
+    "resources.log": "d70074ea349de301efaaddac461ba497c1e6df567d018c8285fe2e5ec8c1c44d",
+    "fault-controls-qualified.log": "eb39282ea416f70dbecd6f57cd037d24c5a3a5fd2d9a34a56dde3b6325c74068"
+  },
+  "exploratoryControls": [
+    {
+      "file": "fault-controls.log",
+      "sha256": "7bf95352e9a33b00561402e752b4f1830bb068de5db1ccd8ca4bcec5fb9366dc",
+      "outcome": "failed",
+      "cause": "test detector treated a password-length setting as a credential; corrected actual credential key set"
+    },
+    {
+      "file": "fault-controls-final.log",
+      "sha256": "f37813d8929a95ad7f6611a9d046112870a7b68e3ec0d34e32b57c0088b607ed",
+      "outcome": "failed",
+      "cause": "intentional service exit raced port mapping; corrected with explicit exit barrier"
+    }
+  ],
+  "artifactPolicy": {
+    "retentionDays": 7,
+    "allowlistedJSONOnly": true,
+    "privateLogsIncluded": false,
+    "actualGitHubArtifactReadback": "pending"
+  },
+  "ownerUsabilityAcceptance": "not given",
+  "affectedProductionQA": "none",
+  "productionQA": "not run (paused by owner)",
+  "initialGitHubWorkflowFailure": {
+    "head": "adadc9ef277644b83cb9396b5c70d2da3502b081",
+    "run": 43890844885,
+    "jobsStarted": 0,
+    "cause": "runner context is unavailable in job-level env",
+    "reproducedWith": "actionlint 1.7.12",
+    "repair": "Export report directories through GITHUB_ENV in a setup step using RUNNER_TEMP",
+    "fixtureSourceChanged": false
+  }
+}

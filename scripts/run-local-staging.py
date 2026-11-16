@@ -45,7 +45,8 @@ def main():
                     'scripts/staging-target.mjs', 'scripts/build-staging-functions.mjs', 'scripts/local-staging-dashboard-checks.mjs',
                     'scripts/fresh_update_bridge.py', 'tests/fixtures/staging_stack.py', 'tests/fixtures/staging_curriculum.py',
                     'tests/fixtures/staging-gateway.ts', 'tests/fixtures/staging-services.json', 'tests/fixtures/staging-egress.js',
-                    'tests/fixtures/fresh_baseline_stack.py', 'tests/fixtures/bf16_maintenance_postgres.py']
+                    'tests/fixtures/fresh_baseline_stack.py', 'tests/fixtures/bf16_maintenance_postgres.py',
+                    'tests/fixtures/fixture_diagnostics.py']
     proof['runnerSources'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in runner_files}
     # Generated identities, service keys and data exist only in private temporary
     # files/owned containers. Only the sanitized result survives cleanup.
