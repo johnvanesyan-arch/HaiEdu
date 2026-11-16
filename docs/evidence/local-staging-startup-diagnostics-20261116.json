@@ -7,7 +7,7 @@
   "hostedTestTouched": false,
   "historicalFailureCause": "unconfirmed",
   "sourceSha256": {
-    ".github/workflows/ci.yml": "8dbca096b78c506ecfe2ab4f3893fc463ed88954c29744b18e5b780e7bcf4a3c",
+    ".github/workflows/ci.yml": "00ff1c99ecc07db7e2e2945e530128bce911bc70b02730a3d75a3dfc7f238449",
     "scripts/run-local-staging.py": "ef7c006b60149b15ea6db7c55e28e8984248e55dd977ad8c11e25a698e01ad2a",
     "scripts/collect-fixture-startup-diagnostics.py": "4d28644b12f45fcf1f512e4fcff5bb2e9f4429bc0c56a4a3c7091970865fca75",
     "tests/fixtures/fixture_diagnostics.py": "2398e08586aefdae0a3dd3947344652e2ea1d99b66a8db895bdf388570850e5c",
@@ -426,5 +426,14 @@
   },
   "ownerUsabilityAcceptance": "not given",
   "affectedProductionQA": "none",
-  "productionQA": "not run (paused by owner)"
+  "productionQA": "not run (paused by owner)",
+  "initialGitHubWorkflowFailure": {
+    "head": "adadc9ef277644b83cb9396b5c70d2da3502b081",
+    "run": 43890844885,
+    "jobsStarted": 0,
+    "cause": "runner context is unavailable in job-level env",
+    "reproducedWith": "actionlint 1.7.12",
+    "repair": "Export report directories through GITHUB_ENV in a setup step using RUNNER_TEMP",
+    "fixtureSourceChanged": false
+  }
 }

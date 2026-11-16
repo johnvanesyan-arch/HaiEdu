@@ -33,6 +33,10 @@ Normal local qualification passes ten real scheduler checks, eighteen fresh-base
 
 Two exploratory control failures were test-harness issues: a credential detector incorrectly treated a password-length setting as a secret, and immediate service exit raced port mapping. The detector now checks actual credential fields; an explicit exit barrier replaces the race. The final controls pass without weakening the expected failure or cleanup assertions. Evidence hashes and sanitized reports are preserved in the [receipt](../evidence/local-staging-startup-diagnostics-20261116.json).
 
+## Initial GitHub workflow correction
+
+The first published head `adadc9ef277644b83cb9396b5c70d2da3502b081` was rejected before any CI jobs ran ([run 43890844885](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/43890844885)). The new directory settings referenced `runner.temp` in job-level `env`, where GitHub does not allow the runner context. Actionlint reproduced both errors. A setup step now exports the same paths through `GITHUB_ENV` using `RUNNER_TEMP`; actionlint passes afterward. This is a workflow configuration defect, not a failed application test or a recurrence of PR505's unknown startup failure. Local fixture results remain valid because fixture/test source is unchanged; the corrected head must complete all required CI jobs and artifact verification.
+
 ## Boundaries
 
 All five required CI jobs remain in the release aggregate. Production QA not run (paused by owner). Affected production QA: none. No product/browser implementation, package pin, schema, hosted service or deployment setting changes. This is local infrastructure qualification, not production acceptance, classroom-capacity certification or proof of the historical failure's cause.

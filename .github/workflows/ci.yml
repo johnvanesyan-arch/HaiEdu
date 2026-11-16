@@ -128,12 +128,14 @@ jobs:
           --health-interval 5s --health-timeout 5s --health-retries 12
     env:
       PHASE3_POSTGRES_17_CI: '1'
-      HAIEDU_FIXTURE_DIAGNOSTICS_DIR: ${{ runner.temp }}/haiedu-fixture-startup-reports
-      HAIEDU_FIXTURE_CONTROLS_DIR: ${{ runner.temp }}/haiedu-fixture-startup-controls
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
+      - name: Set owned fixture report directories
+        run: |
+          echo "HAIEDU_FIXTURE_DIAGNOSTICS_DIR=$RUNNER_TEMP/haiedu-fixture-startup-reports" >> "$GITHUB_ENV"
+          echo "HAIEDU_FIXTURE_CONTROLS_DIR=$RUNNER_TEMP/haiedu-fixture-startup-controls" >> "$GITHUB_ENV"
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
