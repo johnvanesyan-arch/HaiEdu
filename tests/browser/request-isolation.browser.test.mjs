@@ -19,13 +19,34 @@ test('Home refuses a stale SDK account snapshot and recovers only after current 
  await page.evaluate(()=>{window.__client.auth.getSession=window.__originalGetSession;window.__homeFixture.recover();});
  await expect(page.locator('.amp-subject-card')).toHaveCount(1);await expect(page.locator('.amp-subject-card')).toContainText('Մաթեմատիկա');assert.deepEqual(errors,[]);
 });
-test('legacy Home card and shell share one pending read and discard old membership after account change',async t=>{
- const {page,errors}=await learnerFixture(browser,t,{route:'legacy-class.html'});await page.locator('#homeClassCard').waitFor();await settle(page);
- assert.equal(await page.evaluate(()=>window.__requestCounts.calls.filter(c=>c.name==='get-student-classes').length),1);
- await page.evaluate(()=>{window.__requestCounts.joined=true;window.__requestCounts.holds.push('get-student-classes');window.__homeFixture.recover();});
- await page.waitForFunction(()=>window.__requestCounts.pending.length===1);
- await page.evaluate(()=>{window.__requestCounts.joined=false;window.__homeFixture.switchAccount();window.__requestCounts.release('get-student-classes');});
- await expect(page.locator('#homeClassTitle')).toContainText('Միացեք');await expect(page.locator('#homeClassList')).toBeEmpty();assert.deepEqual(errors,[]);
+for(const legacyShellAfterFirstRead of [false,true])test('legacy Home shares a held read and discards late old membership: '+(legacyShellAfterFirstRead?'shell loads after completed read':'normal module loading'),async t=>{
+ const {page,errors}=await learnerFixture(browser,t,{route:'legacy-class.html',legacyShellAfterFirstRead});
+ await expect(page.locator('#homeClassTitle')).toContainText('Միացեք');
+ await page.waitForFunction(()=>window.HaiEduCourseAccess?.navigationVersion==='authorized-learning-navigation-v1');
+ await settle(page);
+ // Only pending reads are shared. A shell loaded after completion must make a
+ // fresh read; startup request counts must not assume a 60ms loading window.
+ const startup=await page.evaluate(()=>window.__requestCounts.calls.filter(c=>c.name==='get-student-classes').map(c=>({wave:c.wave,done:c.done})));
+ if(legacyShellAfterFirstRead)assert.deepEqual(startup,[{wave:1,done:true},{wave:2,done:true}]);
+ const before=await page.evaluate(()=>{
+  const state=window.__requestCounts,count=state.calls.filter(c=>c.name==='get-student-classes').length;
+  state.joined=true;state.holds.push('get-student-classes');window.__homeFixture.recover();return count;
+ });
+ await page.waitForFunction(()=>window.__requestCounts.pending.length>0);
+ assert.deepEqual(await page.evaluate(n=>window.__requestCounts.calls.filter(c=>c.name==='get-student-classes').slice(n).map(c=>Boolean(c.done)),before),[false]);
+ // Let the new account finish first, while retaining the old account's held
+ // response. Releasing stale membership last must not restore it in either UI.
+ await page.evaluate(()=>{
+  const state=window.__requestCounts;state.joined=false;
+  state.holds=state.holds.filter(name=>name!=='get-student-classes');window.__homeFixture.switchAccount();
+ });
+ await expect(page.locator('#homeClassTitle')).toContainText('Միացեք');
+ await page.waitForFunction(enrollment=>window.HaiEduCourseAccess?.contexts?.length===1&&window.HaiEduCourseAccess.contexts[0].enrollmentId===enrollment,id(11));
+ assert.deepEqual(await page.evaluate(n=>({done:window.__requestCounts.calls.filter(c=>c.name==='get-student-classes').slice(n).map(c=>Boolean(c.done)),held:window.__requestCounts.pending.length}),before),{done:[false,true],held:1});
+ await page.evaluate(()=>window.__requestCounts.release('get-student-classes'));await settle(page);
+ await expect(page.locator('#homeClassTitle')).toContainText('Միացեք');await expect(page.locator('#homeClassList')).toBeEmpty();
+ assert.deepEqual(await page.evaluate(()=>({enrollments:window.HaiEduCourseAccess.contexts.map(c=>c.enrollmentId),classes:window.HaiEduCourseAccess.classes})),{enrollments:[id(11)],classes:[]});
+ assert.deepEqual(errors,[]);
 });
 test('Home refresh, revocation and restored page use fresh navigation without multiplying access readers',async t=>{
  const {page,errors}=await learnerFixture(browser,t);await page.locator('.student-continue').waitFor();await settle(page);
