@@ -14,7 +14,7 @@ from psycopg.types.json import Jsonb
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
+def seed_assessments(connection, school, ids, insert, now, *, mastery=False, pilot=False):
     prefix = 'bf21_' + school['label'].lower()
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     model_id, runtime_id, mastery_id = [str(uuid.uuid4()) for _ in range(3)]
@@ -47,7 +47,20 @@ def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
             policy['maximumCompletedBaselines'] = 1
         if mode == 'mastery_check':
             policy.update(minimumPercent=80, minimumCorrectBySkill={ids['skill']: 1})
+        if pilot and mode == 'diagnostic':
+            policy.update(schemaVersion='haiedu-assessment-policy-v4', scoringStrategy='normalized-item-score-v1',
+                          responseCapabilities={}, itemWeight=1, deliveredSkillIds=[ids['skill']],
+                          reportingGroups=[{'key': 'synthetic', 'label': 'Synthetic audio evidence', 'skillIds': [ids['skill']]}], audioPlayback={
+                          'schemaVersion': 'haiedu-assessed-audio-v1', 'maximumPlays': 2, 'playbackRate': 1,
+                          'transcriptAvailable': False, 'scope': 'session-recording',
+                          'questionVisibility': 'whole-recording', 'interruption': 'resume-or-unscored-v1'})
         policies.append(policy)
+    # Validate the generated contracts with the real parser before booting pages.
+    subprocess.run(['node', '--input-type=module', '-e',
+                    "import {readAssessmentPolicy} from './supabase/functions/_shared/assessment-policy.mjs';"
+                    "let text='';for await(const chunk of process.stdin)text+=chunk;"
+                    "for(const policy of JSON.parse(text))readAssessmentPolicy({assessmentPolicy:policy},policy);"],
+                   input=json.dumps(policies), text=True, cwd=ROOT, check=True)
     model = json.loads((ROOT / 'tests/fixtures/governed-runtime-model.json').read_text())
     model['assessmentPolicyContracts'] = policies
     insert('learning_model_configurations', id=model_id, model_key=prefix, version_label='fixture-v3',
@@ -92,6 +105,7 @@ def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
         for number, mastery_form in enumerate(forms, 1):
             insert('assessment_forms', id=mastery_form, pool_id=pool, code=prefix + '_mastery_' + str(number),
                    name='Synthetic mastery form ' + str(number), form_version=1, status='active', metadata=Jsonb(evidence))
+        mode_items = []
         for ordinal in range(1, len(forms) * 2 + 1 if forms else 3):
             item = str(uuid.uuid4())
             code = prefix + '_' + mode + '_' + str(ordinal)
@@ -105,7 +119,8 @@ def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
             for key, text, order in [('A', 'Correct ' + school['label'], 1), ('B', 'Other ' + school['label'], 2)]:
                 insert('item_options', item_id=item, option_key=key, content_hy=text, display_order=order)
             insert('item_answer_keys', item_id=item, answer=Jsonb({'value': 'A'}))
-            connection.execute("UPDATE items SET status='published' WHERE id=%s", [item])
+            if not pilot:
+                connection.execute("UPDATE items SET status='published' WHERE id=%s", [item])
             insert('item_curriculum_scopes', item_id=item, subject_program_id=school['programme'],
                    unit_id=ids['unit'], is_primary=True)
             insert('assessment_pool_items', pool_id=pool, item_id=item, enabled=True, metadata=Jsonb(evidence))
@@ -118,6 +133,13 @@ def seed_assessments(connection, school, ids, insert, now, *, mastery=False):
                 insert('assessment_form_items', form_id=forms[(ordinal - 1) // 2], item_id=item,
                        slot_order=(ordinal - 1) % 2 + 1, metadata=Jsonb(evidence))
             school['assessmentItems'].append(item)
+            mode_items.append(item)
+        if pilot and mode in ('diagnostic', 'practice'):
+            from staging_pilot import seed_audio
+            seed_audio(connection, school, ids, insert, now, mode, mode_items)
+        if pilot:
+            for item in mode_items:
+                connection.execute("UPDATE items SET status='published' WHERE id=%s", [item])
         # Capture complete versions before a blueprint can refer to published
         # historical evidence. Run the real deferred guards; never disable them.
         connection.execute('SET CONSTRAINTS published_item_snapshot,published_option_snapshot,published_answer_snapshot IMMEDIATE')
