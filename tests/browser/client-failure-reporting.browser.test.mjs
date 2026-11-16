@@ -2,21 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
-import path from 'node:path';
 import {chromium} from '@playwright/test';
 import {guardStagingBrowser} from '../../scripts/local-staging-browser-network.mjs';
 const build='a'.repeat(64);
 async function setup(t,{delay=0}={}){
  const reports=[];
+ const modules=new Map(await Promise.all(['client-failure-config.mjs','client-failure-contract.mjs','client-failure-catalog.mjs','client-failure-reporter.mjs','rate-budget-feedback.mjs'].map(async name=>['/'+name,await readFile(new URL('../../web/'+name,import.meta.url),'utf8')])));
  const server=createServer(async(req,res)=>{
   if(req.url==='/functions/v1/record-client-failure'){
    let body='';for await(const chunk of req)body+=chunk;reports.push(JSON.parse(body));
    if(delay){const timer=setTimeout(()=>res.writeHead(204).end(),delay);res.on('close',()=>clearTimeout(timer));}else res.writeHead(204).end();return;
   }
   if(req.url==='/_assets/owned.js'){res.setHeader('content-type','text/javascript');res.end('window.failOwned=()=>{throw new Error("answer-private-canary")}; window.rejectOwned=()=>Promise.reject(new Error("password-private-canary"));');return;}
-  if(/^\/[a-z-]+\.mjs$/.test(req.url)){
-   try{res.setHeader('content-type','text/javascript');res.end(await readFile(path.resolve('web',req.url.slice(1))));}catch{res.writeHead(404).end();}return;
+  if(modules.has(req.url)){
+   res.setHeader('content-type','text/javascript');res.end(modules.get(req.url));return;
   }
+  if(req.url!=='/index'){res.writeHead(404).end();return;}
   res.setHeader('content-type','text/html');res.end(`<html><head><meta name="haiedu-build" content="${build}"></head><body><script src="/_assets/owned.js"></script></body></html>`);
  });
  await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(()=>new Promise(r=>{server.close(r);server.closeAllConnections();}));
@@ -38,6 +39,7 @@ async function setup(t,{delay=0}={}){
 }
 test('native browser transport preserves result identity, one business call and privacy',async t=>{
  const {page,reports,guard}=await setup(t);
+ assert.equal(await page.evaluate(()=>fetch('/package.json').then(r=>r.status)),404,'fixture requests cannot select filesystem paths');
  const result=await page.evaluate(async()=>{const r=await window.invoke(window.client,'get-student-dashboard',{body:{answer:'answer-private-canary'}});await window.reporter.settled();return {same:r===window.returned,body:await r.error.context.text(),calls:window.calls,installedOnce:window.same};});
  assert.deepEqual(result,{same:true,body:'{}',calls:1,installedOnce:true});assert.equal(reports.length,1);assert.equal(reports[0].category,'service_failure');
  assert.doesNotMatch(JSON.stringify(reports),/canary|signature|student-a|session_id/);await guard.drain();guard.verify();

@@ -95,7 +95,7 @@
     "supabase/updates/sql/20261116201934_bf22_client_failure_reports.sql": "67d744beaff31a0e64fb488356569637863fde5fb15836ba3f04775c19833a0f",
     "tests/browser-sdk.test.mjs": "249a8c16bce975457f9364e8bfae8d028b01117543b1e1918d286d744360607d",
     "tests/browser/answer-response-recovery.browser.test.mjs": "5c1990c27c9b67a7dcdfe954f95c1296b3f1c6bc68d9013ba2fbc249d98ab0b3",
-    "tests/browser/client-failure-reporting.browser.test.mjs": "34806e9b1f5b132e0a38c16e0094e14490ef5bc15acdd1207d1ddb09a4cebe0a",
+    "tests/browser/client-failure-reporting.browser.test.mjs": "e8df51b552d228fdaa1bbc359c1672f61db05a4232060a345c1e2276059d2344",
     "tests/browser/content-observer.browser.test.mjs": "8d8b75216ba2f9fd7828358a5a4f14e7e32c1d5ffd89a001ae4985b4207210ca",
     "tests/browser/remediation-validation.browser.test.mjs": "954e92f096a29afd945281bd164c753e0efd434eee5526badfa11535578fcc6c",
     "tests/client-failure-database.py": "c6d6e5483e5efb30d81072a01a1cd235bfdb1f2012e70d8b710816c4cd915b2d",
@@ -130,7 +130,8 @@
     "Fixture-version allowlist and build-manifest lookup repaired.",
     "Stripped-import VM fixtures and explicit browser-source allowlists updated without changing assertions.",
     "Pinned Chromium installed in a writable cache for fixtures without executable overrides.",
-    "Final local run preceded a small child-process-group timeout cleanup hardening; exact-head CI will exercise that final harness."
+    "Final local run preceded a small child-process-group timeout cleanup hardening; exact-head CI will exercise that final harness.",
+    "PR512 CodeQL flagged URL-derived file paths in the new local browser test server. Replaced request-derived filesystem access with five preloaded literal module names and a 404 control for unrelated files; rescanning is required."
   ],
   "boundaries": [
     "Real services and synthetic users locally; not production QA or 100 simultaneous browsers.",
