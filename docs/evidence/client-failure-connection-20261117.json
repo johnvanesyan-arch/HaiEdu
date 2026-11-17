@@ -1,0 +1,64 @@
+{
+  "reviewedCommit": "ebbac695dc394dd04ebd04c1cc28e28a944bdb9a",
+  "currentBuild": "2c92dcbb2420e22b13cf658388c49c499a84cf558a3ee2491d6074919acd44b1",
+  "matchingRepositoryInputHashes": 193,
+  "dependencyInputsNotRechecked": 43,
+  "reportingEnabled": false,
+  "localFocusedTests": 14,
+  "hostedRows": {
+    "builds": 0,
+    "events": 0,
+    "hours": 0,
+    "buckets": 0
+  },
+  "activeRetentionJobs": 1,
+  "credentialSetup": {
+    "source": "owner confirmation in conversation",
+    "reportedSavedIn": [
+      "Supabase Edge Function secret HAIEDU_CLIENT_FAILURE_SUMMARY_KEY",
+      "GitHub Actions secret BF22_CLIENT_FAILURE_SUMMARY_KEY"
+    ],
+    "reportedMode": "off",
+    "secretValuesRead": false,
+    "administrativeReadback": false,
+    "liveKeyMatchVerified": false
+  },
+  "registrationExecuted": false,
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "timezone": "Asia/Yerevan",
+  "scope": "Owner-reported credential setup and prepared release/renewal procedure; no activation",
+  "disabledProbe": {
+    "observedAt": "2026-11-17T08:30:02.885Z",
+    "method": "unsigned POST with empty JSON",
+    "status": 503,
+    "body": {
+      "error": "summary_unavailable"
+    },
+    "cacheControl": "no-store",
+    "scope": "Disabled response only; no key match or signed-in access tested"
+  },
+  "renewal": {
+    "procedurePrepared": true,
+    "proposedReviewAfterDays": 21,
+    "registrationLifetimeDays": 30,
+    "maintenanceOwnershipAccepted": false,
+    "maintenanceDateSet": false,
+    "automaticReminderOrRenewalInstalled": false
+  },
+  "productionQA": "not run (paused by owner)",
+  "affectedProductionQA": [],
+  "productionWritesByAgent": false,
+  "ownerSettingsChanged": true,
+  "localSetupHelperVerification": {
+    "execution": "local HTML content in real Chromium; file navigation blocked by managed browser",
+    "keyFormat": true,
+    "singleGeneration": true,
+    "copyAndFallback": true,
+    "pagehideClearsKey": true,
+    "mobileFits": true,
+    "networkRequests": 0,
+    "pageErrors": 0,
+    "secretsRecorded": false
+  }
+}
