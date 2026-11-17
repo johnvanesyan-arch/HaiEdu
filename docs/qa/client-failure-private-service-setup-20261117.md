@@ -24,4 +24,4 @@ The browser flag remains false, the deployed reporting mode is disabled, and the
 
 Production QA not run (paused by owner). Affected production QA: none for this disabled backend installation/documentation; no existing route or browser source changed. PR512's shared-browser suite list remains in its release record. No paid plan, provider setting, frontend deployment or domain configuration was changed by this installation. Owner usability acceptance: not applicable; no visible page changes.
 
-[Machine-readable evidence](../evidence/client-failure-private-service-setup-20261117.json). Publication/merge of this delivery record is pending; that does not change the already verified backend installation.
+[Machine-readable evidence](../evidence/client-failure-private-service-setup-20261117.json). Documentation publication and frontend release checks are tracked in the pull request and Notion update; they do not change the already verified backend installation.
