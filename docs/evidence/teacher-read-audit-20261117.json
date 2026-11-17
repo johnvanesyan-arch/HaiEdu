@@ -7,7 +7,7 @@
   "finishedAt": "2026-11-17T12:15:24.783578+00:00",
   "passed": true,
   "decision": "No confirmed database performance defect in measured paths; no production repair proposed",
-  "releaseStatus": "Prepared; publication and merge pending",
+  "releaseStatus": "PR519 merged and verified; subsequent documentation-record merge is recorded separately",
   "production": {
     "access": "Read-only schema/advisor/statistical/log aggregates; no learner records or raw request logs",
     "writes": false,
@@ -2514,5 +2514,177 @@
     "No production index or policy warning is claimed cleared",
     "Local setup failures retained privately: missing Node dependencies, unset installed browser path; corrected before final qualification"
   ],
-  "affectedProductionQA": []
+  "affectedProductionQA": [],
+  "release": {
+    "pullRequest": 519,
+    "approvedHead": "8dcfba542fc7ebf2e2659934eae13efa6220019e",
+    "mergeCommit": "40a912668ba4045ecd571c83e377aa64031a751d",
+    "reviewedTree": "52e66204abee94bf775ac9d499f9923db7470477",
+    "prCiRun": 44082684159,
+    "mainCiRun": 44085429699,
+    "requiredPrJobsPassed": 5,
+    "requiredMainJobsPassed": 5,
+    "securityAnalyses": [
+      {
+        "name": "Analyze (python)",
+        "conclusion": "success"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "conclusion": "success"
+      },
+      {
+        "name": "Analyze (actions)",
+        "conclusion": "success"
+      }
+    ],
+    "productionQA": "not run (paused by owner)",
+    "affectedProductionQA": [],
+    "staticVerification": {
+      "observedAt": "2026-11-17T12:52:43.445Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. Full 29-page/128-asset verification is recorded separately for PR517; these are fresh bounded cross-domain checks. Documentation-only follow-up releases may reuse that exact unchanged full-build evidence. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "40a912668ba4045ecd571c83e377aa64031a751d",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "174145f4936263a2bc6b6c917b621236e0720801bc5397971b18939182700e2e",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "40a912668ba4045ecd571c83e377aa64031a751d",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "174145f4936263a2bc6b6c917b621236e0720801bc5397971b18939182700e2e",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "40a912668ba4045ecd571c83e377aa64031a751d",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "174145f4936263a2bc6b6c917b621236e0720801bc5397971b18939182700e2e",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "unchangedFullBuildEvidence": "PR517: all 29 pages and 128 current assets; exact manifest and product sources unchanged",
+    "manualPromotion": false,
+    "backendOrSettingsChanged": false,
+    "premergeCoordination": "Owner explicitly approved PR519 and confirmed no other agent merging or releasing; main quiet and latest production QA skipped; reviewed branch current with main",
+    "preparationFailures": "The initial direct Node static request failed; subsequent requests used the existing configured proxy. The bare-domain canonical redirect was handled by the full static verifier. No network/proxy restriction was bypassed."
+  }
 }
