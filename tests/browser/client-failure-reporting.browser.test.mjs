@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
 import {guardStagingBrowser} from '../../scripts/local-staging-browser-network.mjs';
 const build='a'.repeat(64);
-async function setup(t,{delay=0}={}){
+async function setup(t,{delay=0,deploymentDefault=false}={}){
  const reports=[];
  const modules=new Map(await Promise.all(['client-failure-config.mjs','client-failure-contract.mjs','client-failure-catalog.mjs','client-failure-reporter.mjs','rate-budget-feedback.mjs'].map(async name=>['/'+name,await readFile(new URL('../../web/'+name,import.meta.url),'utf8')])));
  const server=createServer(async(req,res)=>{
@@ -25,18 +25,26 @@ async function setup(t,{delay=0}={}){
  const browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});t.after(()=>browser.close());
  const context=await browser.newContext({serviceWorkers:'block'});const guard=await guardStagingBrowser(context,{frontendOrigin:origin,backendOrigin:origin});
  const page=await context.newPage();await page.goto(origin+'/index');
- await page.evaluate(async origin=>{
+ await page.evaluate(async ({origin,deploymentDefault})=>{
   const module=await import('/client-failure-reporter.mjs');const api=await import('/rate-budget-feedback.mjs');
   window.invoke=api.invokeRateAware;window.semantic=module.beginClientFailure;
   const token='e30.'+btoa(JSON.stringify({session_id:crypto.randomUUID()}))+'.signature';
   window.session={user:{id:'student-a'},access_token:token};window.calls=0;window.returned={data:null,error:{context:new Response('{}',{status:503})}};
   window.client={auth:{getSession:async()=>({data:{session:window.session}}),onAuthStateChange(fn){window.authChange=fn;return {data:{subscription:{unsubscribe(){window.authChange=null;}}}};}},functions:{invoke:async()=>{window.calls++;return window.returned;}}};
-  window.reporter=module.installClientFailureReporter(window.client,origin,'local-public',{enabled:true});
-  window.same=module.installClientFailureReporter(window.client,origin,'local-public',{enabled:true})===window.reporter;
- },origin);
+  const options=deploymentDefault?{}:{enabled:true};
+  window.reporter=module.installClientFailureReporter(window.client,origin,'local-public',options);
+  window.same=module.installClientFailureReporter(window.client,origin,'local-public',options)===window.reporter;
+ },{origin,deploymentDefault});
+ assert.equal(await page.evaluate(()=>Boolean(window.reporter)),true,'the selected configuration installs reporting');
  await page.waitForFunction(()=>window.reporter.active());
  return {page,reports,guard,browser};
 }
+test('shipped configuration reports a controlled failure without an activation override',async t=>{
+ const {page,reports,guard}=await setup(t,{deploymentDefault:true});
+ await page.evaluate(async()=>{await window.invoke(window.client,'get-student-dashboard',{});await window.reporter.settled();});
+ assert.equal(reports.length,1);assert.equal(reports[0].category,'service_failure');
+ assert.equal(await page.evaluate(()=>window.calls),1);await guard.drain();guard.verify();
+});
 test('native browser transport preserves result identity, one business call and privacy',async t=>{
  const {page,reports,guard}=await setup(t);
  assert.equal(await page.evaluate(()=>fetch('/package.json').then(r=>r.status)),404,'fixture requests cannot select filesystem paths');

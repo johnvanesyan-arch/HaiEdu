@@ -1,2 +1,3 @@
-// Activation is a separate reviewed release. Isolated fixtures replace this file.
-export const CLIENT_FAILURE_REPORTING_ENABLED = false;
+// Enabled builds also require an active backend and a current build registration.
+// Isolated fixtures replace this file; reporting never retries business requests.
+export const CLIENT_FAILURE_REPORTING_ENABLED = true;
