@@ -1,6 +1,6 @@
 # BF-23 — remaining database and teacher-read audit
 
-The 17 November 2026 audit found **no confirmed slowdown requiring a production change in the measured teacher-read paths**. This is a bounded audit result, not a claim that every database workload is fast. Publication and merge of this record remain pending. The [sanitized receipt](../evidence/teacher-read-audit-20261117.json) records exact observations and source identity.
+The 17 November 2026 audit found **no confirmed slowdown requiring a production change in the measured teacher-read paths**. This is a bounded audit result, not a claim that every database workload is fast. Owner-approved [PR519](https://github.com/johnvanesyan-arch/HaiEdu/pull/519) merged at `40a912668ba4045ecd571c83e377aa64031a751d` and its release is verified. The [sanitized receipt](../evidence/teacher-read-audit-20261117.json) records exact observations and source identity.
 
 ## Scope and evidence
 
@@ -71,3 +71,11 @@ The output directory must be new. The profiler accepts no hosted project, DSN, s
 Raw plans, database logs and screenshots are private diagnostic artifacts. Publish only a reviewed sanitized receipt. Cleanup closes local sessions and removes only the run's containers, network and temporary credentials. The successful run verifies cleanup. Earlier local preparation failures—missing Node dependencies and an unset path to an already-installed browser—are retained in private diagnostics and are not product failures. No provider upgrade, protection bypass or production retry was used.
 
 Production QA not run (paused by owner). Affected production QA: none. Browser, server, schema, migration, package and production QA implementation are unchanged. The new profiler is an optional local diagnostic tool and does not alter required CI jobs. Owner usability acceptance: not given; no user-facing design changed.
+
+## Release verification
+
+Owner-approved [PR519](https://github.com/johnvanesyan-arch/HaiEdu/pull/519) merged at `40a912668ba4045ecd571c83e377aa64031a751d`, preserving approved tree `52e66204abee94bf775ac9d499f9923db7470477`. All five required [PR checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44082684159) and [merged-source checks](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44085429699) pass, as do the three security analyses. Hosted test counts are not inferred from job status; the separately recorded local measurements and regression counts remain unchanged.
+
+Twelve fresh static checks verify the merged source, exact build manifest, account-access page, one built JavaScript file, MIME types and reviewed cache/security headers on all three public addresses. The bare domain redirects to the canonical www address. The build remains the exact PR517 build; its full 29-page/128-asset verification is reused for unchanged files. Hosting waited for required checks, then updated through the normal Git integration. No manual promotion, account sign-in, page script execution or Supabase request was used for these checks. An initial direct Node connection failed; honoring the environment's configured proxy restored ordinary static access, without bypassing a network restriction.
+
+This release adds the optional local profiler and audit record. Product, browser, server, database, settings, packages and production QA implementation remain unchanged. Production QA not run (paused by owner); affected suites: none. The bounded database audit is complete; the advisory inventory and wider workload limitations remain explicit. BF-24 has not started.
