@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "timezone": "Asia/Yerevan",
+  "baseCommit": "f395d1067fe7a75c920c88e58cb30ee57c34701c",
+  "scope": "Prepared browser activation; live private connection and labelled notification delivery verified; no fresh signed-in production capture",
+  "browserBuildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+  "browserPublished": false,
+  "registrationExecuted": false,
+  "registrationSqlSha256": "f9c8e7ea23221cdc2a8151c9c23edbde067f4cb4546c725933b4c98c8c154fa5",
+  "renewal": {
+    "ownerAccepted": true,
+    "reviewAfterDays": 21,
+    "registrationLifetimeDays": 30,
+    "reminderCreated": false,
+    "automaticProductionWrites": false
+  },
+  "liveConnection": {
+    "inspectRun": 44062770075,
+    "passed": true,
+    "secretReadByOperator": false,
+    "unsignedStatus": 401
+  },
+  "delivery": {
+    "reviewedHead": "cc85da340ad02434ac81eec7cf699f997fb7f568",
+    "run": 44063798870,
+    "issue": 516,
+    "ownerReceived": true,
+    "issueClosed": true,
+    "temporaryBranchRemoved": true,
+    "syntheticExample": true,
+    "productionReportsInserted": 0,
+    "initialGuardRefusalRun": 44063734462
+  },
+  "enabledObserverRun": 44065658809,
+  "enabledObserverJobs": [
+    "observe",
+    "notify",
+    "observe_client",
+    "notify_client"
+  ],
+  "backend": [
+    {
+      "slug": "record-client-failure",
+      "version": 4,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "bundleSha256": "a5f4577fadb062acb07d0dd38d3e1f29cbefc9f13479411eb314d047776f3bd7",
+      "files": [
+        {
+          "path": "supabase/functions/record-client-failure/index.ts",
+          "sha256": "23f4ee83b91b14b86364af85d90843feeab932176fd430309a60b17ae38bb7bc"
+        },
+        {
+          "path": "supabase/functions/_shared/auth.ts",
+          "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        },
+        {
+          "path": "supabase/functions/_shared/client-failure-handler.mjs",
+          "sha256": "dcec2723a5bbdc1a55027cb16354562058574f28a0cc2ad81e22ce2251533ba1"
+        },
+        {
+          "path": "supabase/functions/_shared/client-failure-contract.mjs",
+          "sha256": "3e073cf7b24c9df9372aa9d9ec2a5318cbe46074a1ac567aaf8852c866cdf905"
+        }
+      ],
+      "allSourceBytesMatch": true
+    },
+    {
+      "slug": "get-client-failure-summary",
+      "version": 4,
+      "status": "ACTIVE",
+      "verifyJwt": false,
+      "bundleSha256": "b4e54dda7da9acfdcc879b2f4d1e992c1c47835f79fe84bd57c44151ea797998",
+      "files": [
+        {
+          "path": "supabase/functions/get-client-failure-summary/index.ts",
+          "sha256": "205ef5cbc46b81d0ff9e83b41fe9d4303b71c4474e578f017805d1ca62b1ccb8"
+        },
+        {
+          "path": "supabase/functions/_shared/client-failure-summary.mjs",
+          "sha256": "436c02c72487174e79aff1a59eb8d3e739860ff49d64990ec0992a129b342012"
+        },
+        {
+          "path": "supabase/functions/_shared/client-failure-contract.mjs",
+          "sha256": "3e073cf7b24c9df9372aa9d9ec2a5318cbe46074a1ac567aaf8852c866cdf905"
+        }
+      ],
+      "allSourceBytesMatch": true
+    }
+  ],
+  "localValidation": {
+    "finalFullCodePassed": 1889,
+    "finalFullCodeFailed": 0,
+    "nativeBrowserPassed": 26,
+    "nativeBrowserMethod": "24 cases retained from first batch; both launch-dependent cases passed after optional browser-path repair",
+    "negativeDefaultRegression": true,
+    "sdkControlsAfterRebuild": 3,
+    "archiveCurrentAssets": 128,
+    "archiveCurrentPages": 29,
+    "newAssets": 53,
+    "unchangedAssets": 75
+  },
+  "productionQA": "not run (paused by owner)",
+  "freshSignedInProductionCapture": false,
+  "BF16Mode": "off",
+  "paidStolenPasswordProtection": "declined",
+  "pending": [
+    "exact-head CI and PR merge approval/coordination",
+    "register exact build and set renewal reminder",
+    "publish frontend",
+    "verify merged CI and hosted static source",
+    "final record and Notion sync"
+  ]
+}

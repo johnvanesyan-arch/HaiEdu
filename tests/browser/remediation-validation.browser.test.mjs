@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import { chromium } from "@playwright/test";
 
 test("guide filter actions align with dropdowns and fit responsive layouts", { timeout: 30_000 }, async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM ? { executablePath: process.env.WRITING_QA_CHROMIUM } : {}) });
   try {
     const page = await browser.newPage();
     const errors = [];
@@ -56,7 +56,7 @@ test("guide filter actions align with dropdowns and fit responsive layouts", { t
 });
 
 test("reviewer validation identifies all failing questions and safely renders their codes", { timeout: 30_000 }, async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM ? { executablePath: process.env.WRITING_QA_CHROMIUM } : {}) });
   try {
     const page = await browser.newPage();
     const errors = [];
