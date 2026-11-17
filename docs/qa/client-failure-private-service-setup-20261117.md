@@ -1,0 +1,27 @@
+# BF-22 — private reporting service installed, collection disabled
+
+17 November 2026, Asia/Yerevan. Reviewed implementation source: `7ea3d9806d4d0e646959b158ddf14e032f334c76` (PR512 and its PR513 release record). This delivery installs the private backend from that source. It does not activate reporting or notifications.
+
+## Installed and verified
+
+Migration `20261117051215_bf22_private_client_failure_reporting` installs four private diagnostic tables, four database functions and the `haiedu-bf22-client-failure-retention` schedule. The [exact installation SQL](../evidence/client-failure-private-service-installation-20261117.sql) wraps the unchanged reviewed schema and retention SQL in one atomic statement, requires the observed existing catalogue, and refuses existing BF-22 objects. The tested local wrapper rejects a changed catalogue and repeat installation; an injected failure rolls back both tables and scheduling. The local test substitutes only its own catalogue hash and uses PostgreSQL 17.6 with real pg_cron; it is not a production data rehearsal.
+
+The pre-existing catalogue of 148 public/private tables and 346 database functions has the same SHA-256 before and after: `2967964ab656b681444d4d6dd20281401755921db9b5e8832ca7f001b60d7dd5`. All 218 prior migration entries and the existing BF-16 cleanup schedule are preserved. The new function bodies match the reviewed SQL exactly. All four tables have RLS and owner-only table privileges; twelve table-permission and twelve function-permission assertions pass. Only the two public service wrappers grant execution to service_role. No learning rows are changed and no frontend build is registered; all new tables remain empty.
+
+Two new Edge Functions are ACTIVE at version 1: `record-client-failure` with gateway JWT verification on, and `get-client-failure-summary` with gateway JWT verification off and its own mandatory dedicated capability when enabled. All seven returned source files (six unique files) match the reviewed upload bytes, including pinned Supabase SDK 2.118.0. Only these new routes consume the new reporting helpers; existing `auth.ts` is unchanged. Metadata confirms all 65 existing deployed functions retain their version, gateway setting and active state. This is not a fresh download of all 65 existing bundles.
+
+The new cleanup schedule runs every 15 minutes. Its first observed run succeeded at 05:15 UTC (09:15 Asia/Yerevan) on 17 November. The installed command exactly matches the reviewed retention script and prunes only its own completed scheduler history. The tables were empty: this proves hosted scheduler execution, while deletion of expired synthetic rows is covered by the earlier owned local qualification.
+
+Four bounded unsigned HTTP requests were used across the two routes, including the pre-collector disabled-mode check. The collector gateway rejects an unsigned POST with 401; the summary rejects GET with 405 and POST with 503/no-store. Given the verified handler's check order, unsigned POST returning 503 confirms the shared reporting mode is not `observe`; no database read is reached. No real user account, sign-in or diagnostic report was used. Fourteen focused reporting controls also pass locally. The previous full five-role/local-service and browser evidence is reused because implementation bytes are unchanged.
+
+Supabase's security advisor adds four informational “RLS enabled, no policy” findings for the deliberately owner-only private tables, with no new warnings or errors. The existing stolen-password warning remains the owner's declined paid-plan decision. The current changelog was checked: CLI v3 changes do not affect this MCP deployment, and current TLS clients require no change for the retired TLS 1.2 ciphers.
+
+## Approval and limits
+
+Automatic approval review initially rejected installation, interpreting the earlier instruction as preparation and inspection. Readback then confirmed no new objects or cleanup job. The owner subsequently explicitly approved proceeding past that block at this stage. The same installation was resubmitted through the normal approval process and succeeded; no alternate route or workaround was used.
+
+The browser flag remains false, the deployed reporting mode is disabled, and the new GitHub notification flag was not changed. No summary credential was created or transferred, no build was registered, and no new-layer notification was sent. Credential setup, build registration/renewal responsibility, reviewed activation, hosted authenticated acceptance and new-layer delivery verification remain separate. Existing public-site/main-CI alerts remain active. BF-16 limits remain off. Wider BF-22 gaps remain as listed in the [implementation record](client-failure-alerts-20261117.md).
+
+Production QA not run (paused by owner). Affected production QA: none for this disabled backend installation/documentation; no existing route or browser source changed. PR512's shared-browser suite list remains in its release record. No paid plan, provider setting, frontend deployment or domain configuration was changed by this installation. Owner usability acceptance: not applicable; no visible page changes.
+
+[Machine-readable evidence](../evidence/client-failure-private-service-setup-20261117.json). Publication/merge of this delivery record is pending; that does not change the already verified backend installation.

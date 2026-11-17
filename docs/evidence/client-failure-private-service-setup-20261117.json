@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "timezone": "Asia/Yerevan",
+  "scope": "Production installation of disabled BF22 private reporting; no activation or signed-in production acceptance",
+  "reviewedSourceCommit": "7ea3d9806d4d0e646959b158ddf14e032f334c76",
+  "migration": {
+    "version": "20261117051215",
+    "name": "bf22_private_client_failure_reporting"
+  },
+  "installationSqlSha256": "2bf7431dd13ebd17cadabc78f5fdc2765e7a8ae8c72da4b1a64682e294660f4b",
+  "sourceSqlSha256": "67d744beaff31a0e64fb488356569637863fde5fb15836ba3f04775c19833a0f",
+  "retentionSqlSha256": "d01cfb3704eb6ef5fb90c61df29de5180bbd77c38fa86702287417f1b0661bb7",
+  "existingCatalogue": {
+    "objects": 494,
+    "tables": 148,
+    "functions": 346,
+    "catalogue_sha256": "2967964ab656b681444d4d6dd20281401755921db9b5e8832ca7f001b60d7dd5"
+  },
+  "existingCataloguePreserved": true,
+  "previousMigrationsPreserved": 218,
+  "existingEdgeFunctionsPreserved": 65,
+  "newTableCount": 4,
+  "newDatabaseFunctionCount": 4,
+  "functionBodiesMatch": true,
+  "tablePrivilegeAssertions": 12,
+  "functionPrivilegeAssertions": 12,
+  "newTableCounts": {
+    "hours": 0,
+    "builds": 0,
+    "events": 0,
+    "buckets": 0
+  },
+  "runtime": [
+    {
+      "slug": "record-client-failure",
+      "version": 1,
+      "verifyJwt": true,
+      "status": "ACTIVE",
+      "files": {
+        "supabase/functions/record-client-failure/index.ts": "23f4ee83b91b14b86364af85d90843feeab932176fd430309a60b17ae38bb7bc",
+        "supabase/functions/_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "supabase/functions/_shared/client-failure-handler.mjs": "dcec2723a5bbdc1a55027cb16354562058574f28a0cc2ad81e22ce2251533ba1",
+        "supabase/functions/_shared/client-failure-contract.mjs": "3e073cf7b24c9df9372aa9d9ec2a5318cbe46074a1ac567aaf8852c866cdf905"
+      },
+      "allFileBytesMatch": true
+    },
+    {
+      "slug": "get-client-failure-summary",
+      "version": 1,
+      "verifyJwt": false,
+      "status": "ACTIVE",
+      "files": {
+        "supabase/functions/get-client-failure-summary/index.ts": "205ef5cbc46b81d0ff9e83b41fe9d4303b71c4474e578f017805d1ca62b1ccb8",
+        "supabase/functions/_shared/client-failure-summary.mjs": "436c02c72487174e79aff1a59eb8d3e739860ff49d64990ec0992a129b342012",
+        "supabase/functions/_shared/client-failure-contract.mjs": "3e073cf7b24c9df9372aa9d9ec2a5318cbe46074a1ac567aaf8852c866cdf905"
+      },
+      "allFileBytesMatch": true
+    }
+  ],
+  "hostedUnsignedProbes": [
+    {
+      "route": "record-client-failure",
+      "method": "POST",
+      "authorization": "none",
+      "status": 401,
+      "body": {
+        "code": "UNAUTHORIZED_NO_AUTH_HEADER",
+        "message": "Missing authorization header"
+      }
+    },
+    {
+      "route": "get-client-failure-summary",
+      "method": "GET",
+      "authorization": "none",
+      "status": 405,
+      "body": {
+        "error": "summary_unavailable"
+      }
+    },
+    {
+      "route": "get-client-failure-summary",
+      "method": "POST",
+      "authorization": "none",
+      "status": 503,
+      "body": {
+        "error": "summary_unavailable"
+      }
+    }
+  ],
+  "summaryDisabledProof": {
+    "route": "get-client-failure-summary",
+    "method": "POST",
+    "authorization": "none",
+    "status": 503,
+    "body": {
+      "error": "summary_unavailable"
+    },
+    "cacheControl": "no-store",
+    "meaning": "Deployed handler confirms common reporting mode is not observe; no database read is reached."
+  },
+  "cron": {
+    "jobid": 2,
+    "jobname": "haiedu-bf22-client-failure-retention",
+    "schedule": "*/15 * * * *",
+    "active": true,
+    "latest_run": {
+      "status": "succeeded",
+      "ended_at": "2026-11-17T05:15:00.227071+00:00",
+      "started_at": "2026-11-17T05:15:00.196008+00:00"
+    }
+  },
+  "previousCronPreserved": true,
+  "localInstallationWrapper": {
+    "scope": "Owned local PostgreSQL 17.6 + real pg_cron; installation wrapper only; exact reviewed DDL/retention bytes, locally substituted catalogue identity",
+    "productionTouched": false,
+    "installationSha256": "2bf7431dd13ebd17cadabc78f5fdc2765e7a8ae8c72da4b1a64682e294660f4b",
+    "passed": true,
+    "wrongCatalogueRefusedWithoutChanges": true,
+    "forcedFailureRollsBackTablesAndCron": true,
+    "existingCataloguePreserved": true,
+    "privateTablesAndServiceOnlyFunctions": true,
+    "newRetentionScheduledAndExistingJobPreserved": true,
+    "repeatInstallationRefused": true,
+    "ownedFixtureRemoved": true
+  },
+  "focusedControls": {
+    "passed": 14,
+    "failed": 0
+  },
+  "securityAdvisor": {
+    "before": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 82
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1
+      }
+    ],
+    "after": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 86
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1
+      }
+    ],
+    "newWarningsOrErrors": 0,
+    "newInfoExplanation": "Four owner-only private tables intentionally have no public/user policies or table grants."
+  },
+  "approvalHistory": [
+    "Initial installation request rejected by automatic approval review because it interpreted the earlier go-ahead as preparation/inspection only; no change applied.",
+    "Owner then explicitly approved proceeding past the block at this installation stage; the same reviewed installation was resubmitted through normal approval review and succeeded."
+  ],
+  "reportingEnabled": false,
+  "newNotificationFlagChanged": false,
+  "newSummaryCredentialConfigured": false,
+  "buildRegistered": false,
+  "productionQa": "not run (paused by owner)",
+  "signedInAccountsUsed": 0,
+  "remaining": [
+    "Private summary credential configuration",
+    "Build registration and renewal ownership",
+    "Separately reviewed frontend/backend/notification activation",
+    "Hosted authenticated acceptance and new-layer delivery verification",
+    "Wider BF22 coverage"
+  ]
+}
