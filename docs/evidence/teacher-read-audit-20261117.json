@@ -1,0 +1,2518 @@
+{
+  "schemaVersion": 1,
+  "audit": "BF-23 bounded teacher database-read audit",
+  "sourceCommit": "b4fb545f747c8b9b2c13dce255366f28f48bbe3b",
+  "profilerSha256": "2c5bf9eb20e0bf8a18d4e3107ff123256b006e5489ad462e0960b34bbec33c4b",
+  "startedAt": "2026-11-17T12:13:21.474178+00:00",
+  "finishedAt": "2026-11-17T12:15:24.783578+00:00",
+  "passed": true,
+  "decision": "No confirmed database performance defect in measured paths; no production repair proposed",
+  "releaseStatus": "Prepared; publication and merge pending",
+  "production": {
+    "access": "Read-only schema/advisor/statistical/log aggregates; no learner records or raw request logs",
+    "writes": false,
+    "explainAnalyze": false,
+    "signIn": false,
+    "productionQA": "not run (paused by owner)",
+    "postgresVersion": "17.6",
+    "foreignKeysInventoried": 429,
+    "policiesInventoried": 154,
+    "selectedIndexDefinitionsMatched": 69,
+    "functionDefinitionsMatched": 18,
+    "statisticsReset": "2026-09-13T15:52:55.075185Z",
+    "recentTeacherDashboardLogCount": 0,
+    "recentLogWindowHours": 24,
+    "performanceAdvisorCounts": {
+      "unindexed_foreign_keys": 45,
+      "auth_rls_initplan": 16,
+      "no_primary_key": 1,
+      "unused_index": 139,
+      "multiple_permissive_policies": 14
+    },
+    "securityPolicyChanges": false
+  },
+  "catalogueHashes": {
+    "production-catalog.json": "5607e543768f8171c8f63db75cb4207bbd44a0c5fe528f17d779a866af0643a7",
+    "production-functions.json": "34a7d343ce70bcd9b199c36ba88829d163006edf27dad0a44dc471585ec25ed6",
+    "advisors-1.json": "ecf6464ea75bd1dea28a4c78388349b07c0b54bcee3828eb08c39c69a7318af9"
+  },
+  "functionParity": [
+    {
+      "schema_name": "private",
+      "proname": "current_user_active",
+      "arguments": "",
+      "definition_md5": "c2c0a878ec7d997b98bcce35ec093d87",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "service_execute": true
+    },
+    {
+      "schema_name": "private",
+      "proname": "current_user_role",
+      "arguments": "",
+      "definition_md5": "63c36ade85cb3bf2575d09faf93b1bd4",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "service_execute": true
+    },
+    {
+      "schema_name": "private",
+      "proname": "is_class_member",
+      "arguments": "class_uuid uuid",
+      "definition_md5": "d68a70aa070cecea890c1716347d1a5d",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "service_execute": true
+    },
+    {
+      "schema_name": "private",
+      "proname": "is_class_teacher",
+      "arguments": "class_uuid uuid",
+      "definition_md5": "6e51f793e08b1424505d8589f5a4cc84",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "service_execute": true
+    },
+    {
+      "schema_name": "private",
+      "proname": "is_teacher_of_student",
+      "arguments": "student_uuid uuid",
+      "definition_md5": "822147cb598c78d730d7d1e27f82e7bf",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "service_execute": true
+    },
+    {
+      "schema_name": "private",
+      "proname": "service_teacher_workspace",
+      "arguments": "p_actor uuid, p_auth uuid, p_assignment uuid, p_cursor jsonb, p_work uuid, p_recent jsonb",
+      "definition_md5": "bc354244b51fbb0227fccd9b65a61b92",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "current_user_role",
+      "arguments": "",
+      "definition_md5": "370a8cd57534515d9946c26734d823a7",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "is_class_member",
+      "arguments": "class_uuid uuid",
+      "definition_md5": "533a4629bc689ee48dded41ca4b9a3b7",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "is_class_teacher",
+      "arguments": "class_uuid uuid",
+      "definition_md5": "375af0ebffc245b360a4309975d3fbac",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "is_teacher_of_student",
+      "arguments": "student_uuid uuid",
+      "definition_md5": "7d6b9caabcbf3446334cf958e627c201",
+      "security_definer": true,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_class_directory",
+      "arguments": "p_actor uuid, p_archive boolean, p_offset integer, p_search text",
+      "definition_md5": "0b31b6c82afd15065bce7ce67f94dd55",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_actor",
+      "arguments": "p_actor uuid, p_session uuid",
+      "definition_md5": "730f40f65d604f7dae853933aaabcecb",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_directory",
+      "arguments": "p_actor uuid, p_session uuid, p_archive boolean, p_offset integer, p_search text",
+      "definition_md5": "bcedef8a1f4b525e210c74e88a0d6b8e",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_evidence",
+      "arguments": "p_actor uuid, p_session uuid, p_assignment uuid, p_release uuid, p_unit uuid",
+      "definition_md5": "a2ef7d273a15053c546a49725710c8c9",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_home",
+      "arguments": "p_actor uuid, p_session uuid, p_workspace jsonb",
+      "definition_md5": "5b94a904cb3bc846962aa0fe02dafb8a",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_initial",
+      "arguments": "p_actor uuid, p_session uuid, p_class uuid, p_assignment uuid, p_release uuid, p_unit uuid",
+      "definition_md5": "37fa81a725dd7b849a81d04344a37cd8",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_dashboard_rows",
+      "arguments": "p_actor uuid, p_session uuid, p_class uuid, p_assignment uuid",
+      "definition_md5": "4e20c06e6da45c0bda721f50ee6d19a6",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    },
+    {
+      "schema_name": "public",
+      "proname": "service_teacher_workspace",
+      "arguments": "p_actor uuid, p_auth uuid, p_assignment uuid, p_cursor jsonb, p_work uuid, p_recent jsonb",
+      "definition_md5": "f8812f27c5901cfaca0e5c0077cd0688",
+      "security_definer": false,
+      "volatility": "s",
+      "anon_execute": false,
+      "authenticated_execute": false,
+      "service_execute": true
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "small",
+      "counts": {
+        "profiles": 6,
+        "classes": 2,
+        "teacher_assignments": 2,
+        "institutional_class_enrollments": 2,
+        "learning_sessions": 4,
+        "attempts": 8
+      }
+    },
+    {
+      "name": "30-per-class-500-archives",
+      "counts": {
+        "profiles": 64,
+        "classes": 1002,
+        "teacher_assignments": 1002,
+        "institutional_class_enrollments": 60,
+        "learning_sessions": 4,
+        "attempts": 8
+      }
+    },
+    {
+      "name": "30-per-class-500-archives-21-sessions-each",
+      "counts": {
+        "profiles": 64,
+        "classes": 1002,
+        "teacher_assignments": 1002,
+        "institutional_class_enrollments": 60,
+        "learning_sessions": 1260,
+        "attempts": 2520
+      }
+    }
+  ],
+  "measurementCount": 630,
+  "method": "21 sequential local EXPLAIN ANALYZE/BUFFERS JSON observations per operation/school/scenario; first sample retained; nearest-rank p95; excludes network, wire encoding, service analytics and browser rendering",
+  "measurements": [
+    {
+      "label": "small:A:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 105.796,
+      "p50Ms": 1.08,
+      "p95Ms": 105.796,
+      "executionMs": [
+        105.796,
+        68.648,
+        64.622,
+        134.9,
+        67.413,
+        70.579,
+        1.577,
+        1.368,
+        0.99,
+        1.309,
+        1.419,
+        1.08,
+        0.96,
+        1.023,
+        0.946,
+        1.001,
+        0.928,
+        1.033,
+        1.026,
+        0.953,
+        0.954
+      ],
+      "maxMs": 134.9,
+      "sharedHitBlocksRange": [
+        37,
+        2934
+      ],
+      "privatePlanSha256": [
+        "2928959b98f7a9807ce22c7bfee6aaa08eaceb6ab3b4c98fb6865ef572d6dcef",
+        "6acd7b2238fdd9a13bfb5dff40cc99e6eeb770542b1cd09904dd38eea394ed89"
+      ]
+    },
+    {
+      "label": "small:A:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 0.756,
+      "p50Ms": 0.374,
+      "p95Ms": 0.597,
+      "executionMs": [
+        0.756,
+        0.374,
+        0.597,
+        0.524,
+        0.473,
+        0.483,
+        0.354,
+        0.469,
+        0.562,
+        0.435,
+        0.432,
+        0.33,
+        0.306,
+        0.319,
+        0.303,
+        0.304,
+        0.291,
+        0.384,
+        0.308,
+        0.299,
+        0.291
+      ],
+      "maxMs": 0.756,
+      "sharedHitBlocksRange": [
+        21,
+        26
+      ],
+      "privatePlanSha256": [
+        "58075fcaa85b232fb67ebb4371abe85e24dcb50662045b014bd028eee824e25e",
+        "3379fb437fd4df0d27861c715a4344c5c2ce81a307c8b186bea21075ee539a0b"
+      ]
+    },
+    {
+      "label": "small:A:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 44.697,
+      "p50Ms": 2.387,
+      "p95Ms": 28.899,
+      "executionMs": [
+        44.697,
+        28.266,
+        25.914,
+        28.899,
+        27.004,
+        26.734,
+        2.27,
+        2.47,
+        2.413,
+        2.364,
+        2.294,
+        2.359,
+        2.508,
+        2.718,
+        2.299,
+        2.182,
+        2.281,
+        2.203,
+        2.237,
+        2.144,
+        2.387
+      ],
+      "maxMs": 44.697,
+      "sharedHitBlocksRange": [
+        55,
+        1517
+      ],
+      "privatePlanSha256": [
+        "a5b96efb3ff34f72976001c3a829f94ceddf0a90c04763831033968b97dbf8ca",
+        "dd51ba375e6533d44c448a27dd936e85144e13d3ed5c86a4dd06987a6febcd5d"
+      ]
+    },
+    {
+      "label": "small:A:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 1.101,
+      "p50Ms": 0.72,
+      "p95Ms": 0.994,
+      "executionMs": [
+        1.101,
+        0.693,
+        0.72,
+        0.668,
+        0.741,
+        0.935,
+        0.931,
+        0.994,
+        0.67,
+        0.623,
+        0.798,
+        0.818,
+        0.759,
+        0.684,
+        0.821,
+        0.696,
+        0.706,
+        0.623,
+        0.782,
+        0.628,
+        0.65
+      ],
+      "maxMs": 1.101,
+      "sharedHitBlocksRange": [
+        20,
+        25
+      ],
+      "privatePlanSha256": [
+        "69b96ad752a9514a20cde7d9509343abd1a9062e7d36f895d4c5c6e7f6002391",
+        "945e0d9fa46861e1d86da7e990f524024205f15688d1843c7ddc16caf6dd566e"
+      ]
+    },
+    {
+      "label": "small:A:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.158,
+      "p50Ms": 0.087,
+      "p95Ms": 0.156,
+      "executionMs": [
+        0.158,
+        0.137,
+        0.138,
+        0.147,
+        0.122,
+        0.14,
+        0.156,
+        0.085,
+        0.086,
+        0.081,
+        0.078,
+        0.077,
+        0.093,
+        0.084,
+        0.085,
+        0.085,
+        0.103,
+        0.087,
+        0.084,
+        0.087,
+        0.081
+      ],
+      "maxMs": 0.158,
+      "sharedHitBlocksRange": [
+        2,
+        2
+      ],
+      "privatePlanSha256": [
+        "51b44320e30764d58e91ca4905ab09fefdd396955dbd58b15303e28ae0fe8fa1",
+        "5315f9979142479f5d439eef0c5fc5d0e1ce7ff65acf780b8891c631fc4c8cb1"
+      ]
+    },
+    {
+      "label": "small:B:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 1.429,
+      "p50Ms": 1.009,
+      "p95Ms": 1.422,
+      "executionMs": [
+        1.429,
+        1.009,
+        1.422,
+        1.069,
+        1.083,
+        0.97,
+        0.954,
+        1.026,
+        0.977,
+        0.97,
+        0.926,
+        1.256,
+        1.123,
+        1.139,
+        1.248,
+        1.104,
+        0.937,
+        0.968,
+        0.902,
+        0.985,
+        0.852
+      ],
+      "maxMs": 1.429,
+      "sharedHitBlocksRange": [
+        37,
+        42
+      ],
+      "privatePlanSha256": [
+        "25f6502b74537382c429ef43bc425a10af6b72408e5a43ba0ca0adec6afbcc22",
+        "e917c853735a6ec20be89ba3de741af2d01b00e952c6de654298359161ecf07c"
+      ]
+    },
+    {
+      "label": "small:B:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 0.665,
+      "p50Ms": 0.333,
+      "p95Ms": 0.662,
+      "executionMs": [
+        0.665,
+        0.358,
+        0.368,
+        0.334,
+        0.362,
+        0.339,
+        0.295,
+        0.662,
+        0.34,
+        0.314,
+        0.298,
+        0.284,
+        0.37,
+        0.355,
+        0.295,
+        0.326,
+        0.291,
+        0.277,
+        0.289,
+        0.28,
+        0.333
+      ],
+      "maxMs": 0.665,
+      "sharedHitBlocksRange": [
+        21,
+        26
+      ],
+      "privatePlanSha256": [
+        "dad516fd0aab111c5d1ee5ac1270f0ed1a18529eb2c918796ef6159eb7430864",
+        "c9ab67e6fac98097ebf6c3f83b05f55c29c96d9b9af180ce8aaf64bc06340033"
+      ]
+    },
+    {
+      "label": "small:B:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 2.989,
+      "p50Ms": 2.533,
+      "p95Ms": 3.074,
+      "executionMs": [
+        2.989,
+        2.928,
+        2.533,
+        2.228,
+        2.445,
+        2.128,
+        2.317,
+        2.496,
+        2.373,
+        2.771,
+        2.619,
+        3.124,
+        2.258,
+        2.638,
+        2.552,
+        2.136,
+        2.202,
+        2.584,
+        2.792,
+        3.074,
+        2.111
+      ],
+      "maxMs": 3.124,
+      "sharedHitBlocksRange": [
+        55,
+        60
+      ],
+      "privatePlanSha256": [
+        "51c1245f7f31d0eeeee4b05a11a8c0b6d05395402428318081283e3d48f65952",
+        "7174322bf4fbbd1dfacf4b8a928db66f860643a09b583c95411529368877a6f9"
+      ]
+    },
+    {
+      "label": "small:B:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 1.07,
+      "p50Ms": 0.756,
+      "p95Ms": 1.0,
+      "executionMs": [
+        1.07,
+        0.774,
+        0.951,
+        0.721,
+        0.69,
+        0.808,
+        0.816,
+        0.726,
+        0.734,
+        0.72,
+        0.839,
+        0.73,
+        0.729,
+        0.697,
+        0.798,
+        0.851,
+        0.756,
+        1.0,
+        0.878,
+        0.701,
+        0.697
+      ],
+      "maxMs": 1.07,
+      "sharedHitBlocksRange": [
+        20,
+        25
+      ],
+      "privatePlanSha256": [
+        "dd3681eda4ce0c0c38a5796c9c0577e43479394e8f0b70e2cfa58283a12ba8b9",
+        "3678bd147b6162487c156af18481ed04b990d4aca68d293c8930d86e05733375"
+      ]
+    },
+    {
+      "label": "small:B:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.107,
+      "p50Ms": 0.095,
+      "p95Ms": 0.13,
+      "executionMs": [
+        0.107,
+        0.102,
+        0.094,
+        0.105,
+        0.094,
+        0.099,
+        0.13,
+        0.091,
+        0.097,
+        0.092,
+        0.095,
+        0.095,
+        0.093,
+        0.137,
+        0.094,
+        0.095,
+        0.1,
+        0.091,
+        0.098,
+        0.091,
+        0.091
+      ],
+      "maxMs": 0.137,
+      "sharedHitBlocksRange": [
+        2,
+        2
+      ],
+      "privatePlanSha256": [
+        "26d7a971ea9291acd4e2b02830dbad3dadc8991dd740f6cb20dec0383cbfee16",
+        "9c031e5a40d51b9537209367c248840687fda7e8a456586d34f014887809cf2f"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:A:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 158.468,
+      "p50Ms": 2.634,
+      "p95Ms": 86.226,
+      "executionMs": [
+        158.468,
+        75.939,
+        86.226,
+        80.114,
+        85.162,
+        84.41,
+        2.952,
+        3.146,
+        2.597,
+        2.634,
+        3.875,
+        2.617,
+        2.401,
+        2.581,
+        5.062,
+        2.514,
+        2.634,
+        2.559,
+        2.518,
+        2.461,
+        2.435
+      ],
+      "maxMs": 158.468,
+      "sharedHitBlocksRange": [
+        1587,
+        3676
+      ],
+      "privatePlanSha256": [
+        "d67c25795151c7bc40c6141bff192e95105feaf70dc5ba0d77f78bc247d145a7",
+        "63114021234ea6e3492d200c97d628f159f306b254d92fe347c83545bda48080"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:A:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 3.821,
+      "p50Ms": 2.809,
+      "p95Ms": 3.611,
+      "executionMs": [
+        3.821,
+        3.611,
+        2.57,
+        2.773,
+        2.598,
+        2.56,
+        2.538,
+        2.986,
+        2.747,
+        2.982,
+        3.58,
+        2.912,
+        2.7,
+        2.543,
+        2.476,
+        2.877,
+        2.899,
+        2.809,
+        3.183,
+        2.7,
+        2.997
+      ],
+      "maxMs": 3.821,
+      "sharedHitBlocksRange": [
+        1538,
+        1543
+      ],
+      "privatePlanSha256": [
+        "aceecbb2becef67aad98016bd06cf4118ab0650d20c63038191df23b1b3bfa70",
+        "12c5c09f7ca1ee11a7bb15d5df22a6bb8f76d8037d528402151290915e7bdcdd"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:A:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 44.04,
+      "p50Ms": 4.529,
+      "p95Ms": 37.425,
+      "executionMs": [
+        44.04,
+        36.214,
+        34.696,
+        37.425,
+        35.216,
+        35.742,
+        4.05,
+        4.721,
+        4.222,
+        4.429,
+        5.868,
+        4.332,
+        4.529,
+        4.228,
+        4.837,
+        4.797,
+        4.177,
+        4.265,
+        4.411,
+        4.067,
+        4.278
+      ],
+      "maxMs": 44.04,
+      "sharedHitBlocksRange": [
+        236,
+        1047
+      ],
+      "privatePlanSha256": [
+        "7d7312d176cc51edec70b80fa5d65cab2a2b2a5b82de9ec915c4f944664b7582",
+        "99bc47e3b313ef89770ab68a8c9a4e59b750b3e6c8af8fad1acd1d2cf424d553"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:A:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 2.509,
+      "p50Ms": 2.179,
+      "p95Ms": 2.509,
+      "executionMs": [
+        2.509,
+        2.071,
+        2.179,
+        2.5,
+        2.502,
+        2.183,
+        2.246,
+        2.809,
+        2.268,
+        2.102,
+        2.048,
+        2.075,
+        2.229,
+        2.186,
+        2.068,
+        2.126,
+        2.178,
+        2.415,
+        2.1,
+        2.046,
+        1.998
+      ],
+      "maxMs": 2.809,
+      "sharedHitBlocksRange": [
+        38,
+        43
+      ],
+      "privatePlanSha256": [
+        "37379740ef49ad356c04bbf7fc1911c70bc83c35a3502bd1384578ab2cb7a2d5",
+        "160993885896471f8c89a80129c880319bfa73f49d2650888ef91fb339c3d109"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:A:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.21,
+      "p50Ms": 0.448,
+      "p95Ms": 2.184,
+      "executionMs": [
+        0.21,
+        0.22,
+        1.411,
+        0.429,
+        0.44,
+        0.266,
+        0.384,
+        0.339,
+        0.266,
+        0.512,
+        0.478,
+        0.529,
+        0.342,
+        0.448,
+        1.18,
+        2.976,
+        2.184,
+        1.181,
+        0.52,
+        0.339,
+        0.507
+      ],
+      "maxMs": 2.976,
+      "sharedHitBlocksRange": [
+        3,
+        3
+      ],
+      "privatePlanSha256": [
+        "c4977583c82098d2ec049ab305b077b98f10a6fe14ea06321f4649fa8f131c11",
+        "7a5739252ae9409a4afa19ea856ec6ba68cbfb3da8dbe6aa6422310fa19d9413"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:B:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 15.521,
+      "p50Ms": 2.622,
+      "p95Ms": 5.919,
+      "executionMs": [
+        15.521,
+        2.732,
+        2.545,
+        2.637,
+        3.036,
+        3.25,
+        2.987,
+        2.424,
+        2.79,
+        2.56,
+        2.622,
+        2.438,
+        5.919,
+        2.97,
+        3.303,
+        2.502,
+        2.385,
+        2.491,
+        2.483,
+        2.417,
+        2.565
+      ],
+      "maxMs": 15.521,
+      "sharedHitBlocksRange": [
+        1589,
+        1594
+      ],
+      "privatePlanSha256": [
+        "e50ffc758976f1345ede32ac1a4cbe53accafc3008a975d109c8297361ec3622",
+        "dd94668a503e303619aae72579c6b459243195cb2d2795941d078c72fb76f03b"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:B:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 4.489,
+      "p50Ms": 2.634,
+      "p95Ms": 3.243,
+      "executionMs": [
+        4.489,
+        3.243,
+        2.642,
+        2.603,
+        2.532,
+        2.596,
+        2.951,
+        2.819,
+        2.699,
+        2.938,
+        2.721,
+        2.604,
+        2.61,
+        2.637,
+        2.523,
+        2.59,
+        2.598,
+        2.938,
+        2.634,
+        2.486,
+        2.577
+      ],
+      "maxMs": 4.489,
+      "sharedHitBlocksRange": [
+        1540,
+        1545
+      ],
+      "privatePlanSha256": [
+        "a96f6af60e5dd14ab4cab533933cb8518950e3059ef6de5e115234c70510b124",
+        "889d1877f5a7afc62bec63b3e22a4b227345d3e9b858a84180b5750edabbe2e7"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:B:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 7.825,
+      "p50Ms": 4.164,
+      "p95Ms": 5.042,
+      "executionMs": [
+        7.825,
+        4.834,
+        5.042,
+        4.039,
+        4.146,
+        4.068,
+        4.082,
+        4.958,
+        4.857,
+        4.084,
+        4.099,
+        4.182,
+        4.07,
+        4.65,
+        4.36,
+        4.164,
+        4.078,
+        4.281,
+        4.095,
+        5.015,
+        4.128
+      ],
+      "maxMs": 7.825,
+      "sharedHitBlocksRange": [
+        238,
+        243
+      ],
+      "privatePlanSha256": [
+        "7d60b7bcea36dba3248c09c51dd427b2e30732877cf313e03e37f52a1ff41cac",
+        "c90464f80bad82e519418d371dbbe00f85fca3df0e43fc2e9f8e3d7bef296eb3"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:B:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 2.4,
+      "p50Ms": 2.156,
+      "p95Ms": 2.641,
+      "executionMs": [
+        2.4,
+        2.202,
+        2.184,
+        2.115,
+        2.089,
+        2.431,
+        2.684,
+        2.068,
+        2.156,
+        2.118,
+        2.091,
+        2.187,
+        2.089,
+        2.23,
+        2.114,
+        2.641,
+        2.302,
+        2.154,
+        2.064,
+        2.285,
+        2.133
+      ],
+      "maxMs": 2.684,
+      "sharedHitBlocksRange": [
+        40,
+        45
+      ],
+      "privatePlanSha256": [
+        "20805aea4e9c8989a38b2ca7ccb897ca5edf73202dc930b16b4d472822887a3e",
+        "0f65b4d1eefb03782702a9898b7798b0c5dbbe35ca0b7b980c74930c714f9fcb"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives:B:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.213,
+      "p50Ms": 0.213,
+      "p95Ms": 0.338,
+      "executionMs": [
+        0.213,
+        0.203,
+        0.202,
+        0.266,
+        0.204,
+        0.208,
+        0.203,
+        0.208,
+        0.242,
+        0.299,
+        0.336,
+        0.273,
+        0.304,
+        0.338,
+        0.374,
+        0.243,
+        0.242,
+        0.205,
+        0.209,
+        0.211,
+        0.213
+      ],
+      "maxMs": 0.374,
+      "sharedHitBlocksRange": [
+        3,
+        3
+      ],
+      "privatePlanSha256": [
+        "328ef3931ae05eb80d50f5aeb6622da7672d36f7cf4405a49db5f5cb050a6180",
+        "b3089fa5dff99f22eb988b09ab84309c0ec56e5928c0fca880920c4098c40117"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:A:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 184.154,
+      "p50Ms": 2.662,
+      "p95Ms": 72.223,
+      "executionMs": [
+        184.154,
+        72.223,
+        70.327,
+        69.033,
+        68.135,
+        71.727,
+        3.456,
+        2.584,
+        2.589,
+        2.55,
+        2.438,
+        2.662,
+        4.231,
+        3.185,
+        2.546,
+        2.614,
+        2.697,
+        2.496,
+        2.603,
+        2.437,
+        2.65
+      ],
+      "maxMs": 184.154,
+      "sharedHitBlocksRange": [
+        1587,
+        3566
+      ],
+      "privatePlanSha256": [
+        "17cab4c9db4da9bf8554944cce067126b1a687b7c3e0d26c5696bd01a0cae408",
+        "c15db0cdee612263a141030d27c6aebfbfe6a5536f17f6d7bd6353374f5db9bb"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:A:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 3.541,
+      "p50Ms": 2.601,
+      "p95Ms": 3.541,
+      "executionMs": [
+        3.541,
+        2.567,
+        2.589,
+        2.652,
+        2.626,
+        2.553,
+        2.522,
+        3.395,
+        3.187,
+        2.597,
+        2.546,
+        2.518,
+        2.601,
+        4.255,
+        3.222,
+        3.463,
+        3.057,
+        2.766,
+        2.586,
+        2.454,
+        2.555
+      ],
+      "maxMs": 4.255,
+      "sharedHitBlocksRange": [
+        1538,
+        1543
+      ],
+      "privatePlanSha256": [
+        "6dae3a31d81ddd623bd897ff535bbe97bde060632077f7fe3e2fed964a42299f",
+        "6e5831b2f4aad744685e48855bf73544ab34fcb0395e3c9e97a403db9c88edc6"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:A:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 187.117,
+      "p50Ms": 68.025,
+      "p95Ms": 100.911,
+      "executionMs": [
+        187.117,
+        100.826,
+        100.911,
+        98.666,
+        97.779,
+        98.14,
+        66.66,
+        67.997,
+        67.946,
+        70.528,
+        68.007,
+        67.915,
+        67.479,
+        68.041,
+        67.798,
+        67.906,
+        69.814,
+        68.025,
+        66.022,
+        68.948,
+        68.01
+      ],
+      "maxMs": 187.117,
+      "sharedHitBlocksRange": [
+        5418,
+        6225
+      ],
+      "privatePlanSha256": [
+        "e08944324afb8cf4087d79f44bd4e7644ba92835bf972e985669313a1268005e",
+        "7cc8196d303015a92daadace3e2d8d0eb4ad4f7b3c341c25a9ff55c135216b93"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:A:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 3.312,
+      "p50Ms": 2.151,
+      "p95Ms": 2.847,
+      "executionMs": [
+        3.312,
+        2.071,
+        2.07,
+        2.121,
+        2.151,
+        2.232,
+        2.505,
+        2.101,
+        2.426,
+        2.847,
+        2.234,
+        2.083,
+        2.143,
+        2.091,
+        2.12,
+        2.122,
+        2.15,
+        2.159,
+        2.436,
+        2.637,
+        2.174
+      ],
+      "maxMs": 3.312,
+      "sharedHitBlocksRange": [
+        38,
+        43
+      ],
+      "privatePlanSha256": [
+        "2c07f23792448d2adf8d154b4b6873fd977c34e922fae71eed6eaf37fe38605d",
+        "38eff10e5dcd0e89f095b6a69e1f1eb1572515aca3bdcda95a4da85adcd2e2ed"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:A:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.203,
+      "p50Ms": 0.206,
+      "p95Ms": 0.249,
+      "executionMs": [
+        0.203,
+        0.201,
+        0.239,
+        0.2,
+        0.195,
+        0.206,
+        0.199,
+        0.211,
+        0.191,
+        0.235,
+        0.203,
+        0.21,
+        0.209,
+        0.249,
+        0.196,
+        0.21,
+        0.199,
+        0.207,
+        0.209,
+        0.254,
+        0.204
+      ],
+      "maxMs": 0.254,
+      "sharedHitBlocksRange": [
+        3,
+        3
+      ],
+      "privatePlanSha256": [
+        "21e8088e6912b8dc0908c933731867b1c766c1a33d3fb0439a43b31273677899",
+        "186f5c0ff82d137210d9c635abc08119aea21508582d90e469fcd63ecb25a0d2"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:B:home",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 5.176,
+      "p50Ms": 2.521,
+      "p95Ms": 3.045,
+      "executionMs": [
+        5.176,
+        2.524,
+        2.415,
+        2.535,
+        2.464,
+        2.474,
+        2.458,
+        2.568,
+        2.622,
+        2.443,
+        2.558,
+        2.505,
+        2.931,
+        2.403,
+        2.484,
+        2.571,
+        2.693,
+        3.045,
+        2.485,
+        2.521,
+        2.42
+      ],
+      "maxMs": 5.176,
+      "sharedHitBlocksRange": [
+        1589,
+        1594
+      ],
+      "privatePlanSha256": [
+        "3aae9cdea88be2f32d74879983c4119cf9684624c70e0521cdeb70a8c456523c",
+        "7afb309c9a9eebc3d691cc4fe433c1af74a2493f219f6472bc17314ea8c853fd"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:B:archive",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 2.884,
+      "p50Ms": 2.662,
+      "p95Ms": 3.54,
+      "executionMs": [
+        2.884,
+        2.584,
+        2.576,
+        3.666,
+        3.379,
+        2.734,
+        2.701,
+        2.626,
+        2.841,
+        2.684,
+        2.645,
+        3.045,
+        3.54,
+        2.599,
+        2.613,
+        2.542,
+        2.662,
+        2.59,
+        2.549,
+        2.547,
+        3.143
+      ],
+      "maxMs": 3.666,
+      "sharedHitBlocksRange": [
+        1540,
+        1545
+      ],
+      "privatePlanSha256": [
+        "35a10fc1e19e62252f5dbc560eedebfea159fa00b9bec8ebd8d6b7c2e3221861",
+        "d68ed712784379921f60e381de95561131d35e12ea644361bd89c72c36ecb115"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:B:class-initial",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 69.21,
+      "p50Ms": 67.487,
+      "p95Ms": 82.531,
+      "executionMs": [
+        69.21,
+        143.221,
+        82.531,
+        68.185,
+        68.508,
+        68.351,
+        65.98,
+        66.962,
+        66.397,
+        66.194,
+        67.651,
+        67.487,
+        65.098,
+        70.68,
+        66.249,
+        66.728,
+        66.38,
+        71.587,
+        79.838,
+        66.449,
+        66.233
+      ],
+      "maxMs": 143.221,
+      "sharedHitBlocksRange": [
+        5421,
+        5426
+      ],
+      "privatePlanSha256": [
+        "9dc1e242424748ebfc609d496c36fc3002c10cf01f8d2f4a11382101234ea946",
+        "9b70f52a38037e120eda0470ae6a66d39e04b6a9c39a55b15de64157201d83ee"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:B:class-final",
+      "role": "service_role",
+      "count": 21,
+      "firstMs": 3.186,
+      "p50Ms": 2.162,
+      "p95Ms": 3.184,
+      "executionMs": [
+        3.186,
+        3.184,
+        2.937,
+        2.225,
+        2.046,
+        2.123,
+        2.13,
+        2.236,
+        2.236,
+        2.153,
+        2.106,
+        3.167,
+        2.276,
+        2.042,
+        2.091,
+        2.103,
+        2.173,
+        2.162,
+        2.084,
+        2.098,
+        2.265
+      ],
+      "maxMs": 3.186,
+      "sharedHitBlocksRange": [
+        40,
+        45
+      ],
+      "privatePlanSha256": [
+        "9eeff5f9a84f098e963b546b4e7d4dec7cf076cf69d57045d1323c9b6ab3d4bd",
+        "82f633a2b4f37835e4aaf24691609f69c033042cff86abefd6d86aca182a8200"
+      ]
+    },
+    {
+      "label": "30-per-class-500-archives-21-sessions-each:B:own-profile",
+      "role": "authenticated",
+      "count": 21,
+      "firstMs": 0.302,
+      "p50Ms": 0.201,
+      "p95Ms": 0.245,
+      "executionMs": [
+        0.302,
+        0.206,
+        0.202,
+        0.21,
+        0.195,
+        0.193,
+        0.245,
+        0.199,
+        0.206,
+        0.198,
+        0.223,
+        0.201,
+        0.197,
+        0.198,
+        0.203,
+        0.187,
+        0.229,
+        0.194,
+        0.192,
+        0.228,
+        0.193
+      ],
+      "maxMs": 0.302,
+      "sharedHitBlocksRange": [
+        3,
+        3
+      ],
+      "privatePlanSha256": [
+        "5e562a60923b331e6c8fcfc5bd7b3d9871ba6381237d6ad2108bc2e9bcf68c42",
+        "8e08863dbb8fb2dab1dddaa74ec9d8eeacef29498f2312c118fc1cc19c880cc7"
+      ]
+    }
+  ],
+  "nestedPlanSummaries": [
+    {
+      "queryKind": "directory-or-class-metadata",
+      "instrumentedDurationMs": 1.643,
+      "privatePlanSha256": "e8ef124a09abcb259474a4a9a2e783e4638639a28be9c6b0315cf17c9d9d9e4c",
+      "nodes": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 63,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subject_programs",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "teacher_subject_authorizations",
+          "Actual Rows": 0,
+          "Actual Loops": 2,
+          "Rows Removed by Filter": 2,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "academic_years",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "schools",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Bitmap Heap Scan",
+          "Relation Name": "teacher_assignments",
+          "Actual Rows": 501,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 12,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Bitmap Index Scan",
+          "Index Name": "teacher_assignments_year_school_idx",
+          "Actual Rows": 501,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "classes",
+          "Index Name": "classes_pkey",
+          "Actual Rows": 1,
+          "Actual Loops": 501,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1503,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "classes",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "schools",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "academic_years",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    {
+      "queryKind": "workspace",
+      "instrumentedDurationMs": 1.419,
+      "privatePlanSha256": "d7c6a82492f173cbc0722fd47aad98401fd2ff2741d64b83e21ebaa08a2a8581",
+      "nodes": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "classes",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 1000,
+          "Shared Hit Blocks": 22,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subject_programs",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "teacher_assignments",
+          "Index Name": "teacher_assignment_active_period_no_overlap",
+          "Actual Rows": 1,
+          "Actual Loops": 2,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 46,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "academic_years",
+          "Index Name": "academic_years_pkey",
+          "Actual Rows": 1,
+          "Actual Loops": 2,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 4,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "institutional_memberships",
+          "Index Name": "institutional_membership_active_period_no_overlap",
+          "Actual Rows": 0,
+          "Actual Loops": 2,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 43,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "teacher_subject_authorizations",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "schools",
+          "Index Name": "schools_pkey",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "teacher_subject_authorizations",
+          "Index Name": "teacher_subject_one_active",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "profiles",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "written_work",
+          "Actual Rows": 0,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "curriculum_releases",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "units",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "curriculum_release_units",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "written_task_versions",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "written_submissions",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "classes",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 0,
+          "Actual Loops": 0,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    {
+      "queryKind": "directory-or-class-metadata",
+      "instrumentedDurationMs": 1.717,
+      "privatePlanSha256": "a852b34f1915f760092de747287a7384ee53b4da88cf610d904629f69053dcfc",
+      "nodes": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 63,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "teacher_subject_authorizations",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subject_programs",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "teacher_assignments",
+          "Index Name": "teacher_assignments_class_school_year_idx",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 3,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_class_enrollments",
+          "Actual Rows": 60,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "curriculum_releases",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "academic_years",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "schools",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "subjects",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "classes",
+          "Index Name": "classes_pkey",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 3,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 60,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 4,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "profiles",
+          "Actual Rows": 60,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 4,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "grades",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "units",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "curriculum_release_units",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    {
+      "queryKind": "evidence",
+      "instrumentedDurationMs": 58.211,
+      "privatePlanSha256": "9a6408f140985f17e5bf61b69a1333fab71a085491dff171cdf76ad1c6671bd2",
+      "nodes": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "assessment_blueprints",
+          "Actual Rows": 3,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 3,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "assessment_blueprint_items",
+          "Actual Rows": 12,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_memberships",
+          "Actual Rows": 60,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 4,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "institutional_class_enrollments",
+          "Actual Rows": 30,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 30,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "teacher_assignments",
+          "Index Name": "teacher_assignments_class_school_year_idx",
+          "Actual Rows": 1,
+          "Actual Loops": 30,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 90,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "profiles",
+          "Index Name": "profiles_pkey",
+          "Actual Rows": 1,
+          "Actual Loops": 30,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 60,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "learning_sessions",
+          "Index Name": "learning_sessions_scoped_resume_idx",
+          "Actual Rows": 21,
+          "Actual Loops": 30,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 127,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "teacher_assignments",
+          "Index Name": "teacher_assignments_class_school_year_idx",
+          "Actual Rows": 1,
+          "Actual Loops": 630,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1890,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Index Scan",
+          "Relation Name": "curriculum_release_units",
+          "Index Name": "curriculum_release_units_curriculum_release_id_unit_code_sn_key",
+          "Actual Rows": 1,
+          "Actual Loops": 630,
+          "Rows Removed by Filter": 0,
+          "Shared Hit Blocks": 1260,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "item_versions",
+          "Actual Rows": 12,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 3,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "curriculum_release_skills",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Bitmap Heap Scan",
+          "Relation Name": "attempts",
+          "Actual Rows": 2,
+          "Actual Loops": 630,
+          "Shared Hit Blocks": 1915,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Bitmap Index Scan",
+          "Index Name": "idx_attempts_learning_session",
+          "Actual Rows": 2,
+          "Actual Loops": 630,
+          "Shared Hit Blocks": 1260,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "chapter_review_sessions",
+          "Actual Rows": 0,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "learning_model_configurations",
+          "Actual Rows": 2,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "academic_mastery_policy_versions",
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    }
+  ],
+  "evidencePayloadBytes": {
+    "A": 1444231,
+    "B": 1444231
+  },
+  "nativeJourney": {
+    "passed": true,
+    "buildId": "a64b3549e6adf7ff66f5571dc618cf26f1691a4acb37b407b5308c8c12bfd673",
+    "checks": [
+      "owned target identity and separate browser build verified before sign-in",
+      "A teacher: private source upload and authorized delivery; direct/public Storage access refused",
+      "A teacher: missing/malformed identity and revoked session refused for manage-teacher-task-sources",
+      "B teacher: private source upload and authorized delivery; direct/public Storage access refused",
+      "B teacher: missing/malformed identity and revoked session refused for manage-teacher-task-sources",
+      "A student: diagnostic prerequisite, foreign context and hidden answer keys enforced",
+      "A student: native diagnostic completion, reload/resume and idempotent answers",
+      "A student: native practice completion, reload/resume and idempotent answers",
+      "A student: actual PDF/DOCX upload, saved draft, reload, submission and exact private downloads",
+      "A student: invalid file and foreign source refused",
+      "A student: missing/malformed identity and revoked session refused for manage-teacher-task-student-files, get-session-item",
+      "B student: diagnostic prerequisite, foreign context and hidden answer keys enforced",
+      "B student: native diagnostic completion, reload/resume and idempotent answers",
+      "B student: native practice completion, reload/resume and idempotent answers",
+      "B student: actual PDF/DOCX upload, saved draft, reload, submission and exact private downloads",
+      "B student: invalid file and foreign source refused",
+      "B student: missing/malformed identity and revoked session refused for manage-teacher-task-student-files, get-session-item",
+      "A teacher: actual review page downloads, private feedback save and publication",
+      "A teacher: missing/malformed identity and revoked session refused for manage-teacher-task-review-files",
+      "B teacher: actual review page downloads, private feedback save and publication",
+      "B teacher: missing/malformed identity and revoked session refused for manage-teacher-task-review-files",
+      "A student: own published feedback visible; foreign history/work and teacher file access refused",
+      "B student: own published feedback visible; foreign history/work and teacher file access refused",
+      "A administrator: learner assessment and teacher-only file access refused",
+      "B administrator: learner assessment and teacher-only file access refused"
+    ],
+    "accounts": 6,
+    "schools": 2,
+    "subjects": 2,
+    "browserNetworkRefusals": 0,
+    "boundary": "Real local sign-in, native assessment completion and private file/student submission/teacher review through unchanged services in two fictional schools. No hosted or production acceptance claim.",
+    "browserShutdownVerified": true
+  },
+  "existingTeacherAuthorizationRegressions": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0
+  },
+  "exactTenantScopeAndStudentDenials": true,
+  "ownedCleanupVerified": true,
+  "foreignKeyAdvisoryTriage": [
+    {
+      "schema": "private",
+      "table": "active_curriculum_release_units",
+      "constraint": "active_curriculum_release_uni_curriculum_release_id_unit_i_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "private",
+      "table": "actor_rate_buckets",
+      "constraint": "actor_rate_buckets_policy_key_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "private",
+      "table": "client_failure_buckets",
+      "constraint": "client_failure_buckets_build_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "private",
+      "table": "client_failure_events",
+      "constraint": "client_failure_events_build_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "account_deletion_requests",
+      "constraint": "account_deletion_requests_requester_user_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "account_deletion_requests",
+      "constraint": "account_deletion_requests_resolved_by_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "assignment_skills",
+      "constraint": "assignment_skills_skill_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "assignments",
+      "constraint": "assignments_class_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "assignments",
+      "constraint": "assignments_created_by_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "attempts",
+      "constraint": "attempts_item_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "attempts",
+      "constraint": "attempts_learning_session_item_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "attempts",
+      "constraint": "attempts_skill_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "classes",
+      "constraint": "classes_academic_year_school_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "classes",
+      "constraint": "classes_grade_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "classes",
+      "constraint": "classes_school_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "classes",
+      "constraint": "classes_subject_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "item_misconception_mappings",
+      "constraint": "item_misconception_mappings_misconception_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "item_qa_runs",
+      "constraint": "item_qa_runs_run_by_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "item_reviews",
+      "constraint": "item_reviews_reviewer_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "item_versions",
+      "constraint": "item_versions_created_by_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "items",
+      "constraint": "items_last_reviewed_by_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "learning_audio_versions",
+      "constraint": "learning_audio_versions_unit_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "learning_session_items",
+      "constraint": "learning_session_items_attempt_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "learning_session_items",
+      "constraint": "learning_session_items_item_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "learning_session_items",
+      "constraint": "learning_session_items_skill_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "learning_sessions",
+      "constraint": "learning_session_enrollment_identity_14c",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "learning_sessions",
+      "constraint": "learning_sessions_target_skill_id_fkey",
+      "disposition": "Existing measured read indexes retained; FK-direction writes/deletes not profiled"
+    },
+    {
+      "schema": "public",
+      "table": "learning_task_set_versions",
+      "constraint": "learning_task_set_versions_unit_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "recommendation_events",
+      "constraint": "recommendation_events_assessment_blueprint_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "recommendation_events",
+      "constraint": "recommendation_events_target_skill_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "remediation_events",
+      "constraint": "remediation_events_item_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "remediation_events",
+      "constraint": "remediation_events_session_item_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "remediation_events",
+      "constraint": "remediation_events_skill_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "skill_prerequisites",
+      "constraint": "skill_prerequisites_prerequisite_skill_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "skills",
+      "constraint": "skills_grade_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "skills",
+      "constraint": "skills_subject_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "student_item_exposure_events",
+      "constraint": "student_item_exposure_events_attempt_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "student_item_exposure_events",
+      "constraint": "student_item_exposure_events_item_family_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "student_item_exposure_events",
+      "constraint": "student_item_exposure_events_item_template_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "student_item_exposure_events",
+      "constraint": "student_item_exposure_events_session_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "student_skill_mastery",
+      "constraint": "student_skill_mastery_skill_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "subject_programs",
+      "constraint": "subject_programs_grade_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "subject_programs",
+      "constraint": "subject_programs_subject_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "textbook_mappings",
+      "constraint": "textbook_mappings_learning_outcome_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    },
+    {
+      "schema": "public",
+      "table": "textbooks",
+      "constraint": "textbooks_grade_id_fkey",
+      "disposition": "Outside measured teacher reads; retain advisory pending a relevant workload"
+    }
+  ],
+  "limitations": [
+    "Not concurrent classroom or hosted speed acceptance",
+    "Only selected current institutional reads and own-profile lookup",
+    "Tiny synthetic question bank and selected-response history; no multi-year evidence",
+    "Historical live statement timings span old releases",
+    "No production index or policy warning is claimed cleared",
+    "Local setup failures retained privately: missing Node dependencies, unset installed browser path; corrected before final qualification"
+  ],
+  "affectedProductionQA": []
+}
