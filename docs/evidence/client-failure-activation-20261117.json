@@ -3,17 +3,21 @@
   "date": "2026-11-17",
   "timezone": "Asia/Yerevan",
   "baseCommit": "f395d1067fe7a75c920c88e58cb30ee57c34701c",
-  "scope": "Prepared browser activation; live private connection and labelled notification delivery verified; no fresh signed-in production capture",
+  "scope": "Signed-in failure reporting activated; reviewed browser build registered and published; live summary connection and synthetic notification delivery verified; no fresh signed-in production capture",
   "browserBuildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
-  "browserPublished": false,
-  "registrationExecuted": false,
+  "browserPublished": true,
+  "registrationExecuted": true,
   "registrationSqlSha256": "f9c8e7ea23221cdc2a8151c9c23edbde067f4cb4546c725933b4c98c8c154fa5",
   "renewal": {
     "ownerAccepted": true,
     "reviewAfterDays": 21,
     "registrationLifetimeDays": 30,
-    "reminderCreated": false,
-    "automaticProductionWrites": false
+    "reminderCreated": true,
+    "automaticProductionWrites": false,
+    "reminderAt": "2026-12-08T15:00:26+04:00",
+    "timezone": "Asia/Yerevan",
+    "reminderEnabled": true,
+    "privateReminderIdRecorded": true
   },
   "liveConnection": {
     "inspectRun": 44062770075,
@@ -106,10 +110,212 @@
   "BF16Mode": "off",
   "paidStolenPasswordProtection": "declined",
   "pending": [
-    "exact-head CI and PR merge approval/coordination",
-    "register exact build and set renewal reminder",
-    "publish frontend",
-    "verify merged CI and hosted static source",
-    "final record and Notion sync"
-  ]
+    "fresh signed-in production browser-to-collector acceptance",
+    "pre-auth/offline and raw Auth/CAPTCHA/Storage coverage",
+    "independent monitoring and wider BF-22 coverage",
+    "maintenance renewal before expiry or approved replacement-build registration"
+  ],
+  "registration": {
+    "build_id": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+    "registered_at": "2026-11-17 11:00:00.048897+00",
+    "expires_at": "2026-12-17 11:00:00.048897+00",
+    "observed_at": "2026-11-17 11:00:11.76209+00",
+    "builds": 1,
+    "events": 0,
+    "hours": 0,
+    "buckets": 0
+  },
+  "release": {
+    "pr": 517,
+    "reviewedHead": "8b25b10905ab40ef391dc23b73afb275d2895e66",
+    "reviewedTree": "944c99f61db988bce832f4ea3729b26bac9dc3ab",
+    "mergeCommit": "bc9487fdfcbd3bf2bbf25af846918321fea7651c",
+    "prCiRun": 44066451074,
+    "prCiRequiredJobsPassed": 5,
+    "mainCiRun": 44070068600,
+    "mainCiPending": false,
+    "observedAt": "2026-11-17T11:11:04.541483+00:00",
+    "requiredJobsPassed": 5,
+    "requiredJobs": [
+      "test",
+      "role-layout-browser",
+      "institutional-concurrency",
+      "phase3-postgres-17",
+      "Platform release checks"
+    ],
+    "securityPassed": true,
+    "security": [
+      {
+        "name": "Analyze (python)",
+        "conclusion": "success"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "conclusion": "success"
+      },
+      {
+        "name": "Analyze (actions)",
+        "conclusion": "success"
+      }
+    ],
+    "observers": [
+      {
+        "id": 44071567379,
+        "name": "Production failure observer",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "hosting": {
+    "primaryFullBuild": {
+      "commit": "bc9487fdfcbd3bf2bbf25af846918321fea7651c",
+      "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+      "pages": 29,
+      "assets": 128
+    },
+    "crossDomain": {
+      "observedAt": "2026-11-17T11:10:48.246Z",
+      "scope": "Fresh release identity, exact manifest, account-access HTML and one built JavaScript asset plus reviewed cache/security headers on three public domains. Full 29-page/128-asset verification is recorded separately for PR517; these are fresh bounded cross-domain checks. Documentation-only follow-up releases may reuse that exact unchanged full-build evidence. Static files only; no sign-in or Supabase requests.",
+      "records": [
+        {
+          "origin": "https://haiedu.am",
+          "expectedCommit": "bc9487fdfcbd3bf2bbf25af846918321fea7651c",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "acd69c06e1c6b60fb0834089187814a57c7c5909245b0a0206131c63d61f0f1a",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://www.haiedu.am",
+          "expectedCommit": "bc9487fdfcbd3bf2bbf25af846918321fea7651c",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "acd69c06e1c6b60fb0834089187814a57c7c5909245b0a0206131c63d61f0f1a",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://www.haiedu.am",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        },
+        {
+          "origin": "https://armenian-mastery-platform.vercel.app",
+          "expectedCommit": "bc9487fdfcbd3bf2bbf25af846918321fea7651c",
+          "buildId": "fe0717a1640bd5887e94171e225c2d60b4368f346f610f3bf48ffcd4e76951c9",
+          "pagesInManifest": 29,
+          "assetsInManifest": 128,
+          "probes": [
+            {
+              "path": "/release.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "acd69c06e1c6b60fb0834089187814a57c7c5909245b0a0206131c63d61f0f1a",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/asset-manifest.json",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "92f21acd133410167b8410b7b9c0b9d9689368e2723d293d745bf311b39712e5",
+              "cache": "no-store",
+              "contentType": "application/json; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/account-access.html",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "635c3f73b17fa9b406a3f3c55845f6c8ab42f3cb0f1fe98265f1cb2bc59f0cce",
+              "cache": "public, max-age=0, must-revalidate",
+              "contentType": "text/html; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            },
+            {
+              "path": "/_assets/account-access-JZGH63B4.js",
+              "status": 200,
+              "finalOrigin": "https://armenian-mastery-platform.vercel.app",
+              "sha256": "293b8bbbe0e58b6b31872563cd8a921bc882bcaf8b6286bf849eae5cce7f6b60",
+              "cache": "public, max-age=31536000, immutable",
+              "contentType": "application/javascript; charset=utf-8",
+              "reviewedSecurityHeadersMatch": true
+            }
+          ]
+        }
+      ]
+    },
+    "deploymentId": "dpl_EiTNevqBTtohBqQtnk4aY3f61cYz",
+    "manualPromotion": false
+  }
 }

@@ -1,5 +1,7 @@
 # BF-22 — private connection and build-registration handoff
 
+**Current activation update, 17 November 2026:** the setup snapshot below is historical. The owner-approved [activation and renewal receipt](client-failure-activation-20261117.md) records the now-verified private key match, backend observe mode, enabled GitHub/browser reporting, exact build registration, owner-confirmed labelled notification delivery and the created maintenance reminder. Do not use the earlier off-state instructions as the current operating configuration. Fresh signed-in production capture remains open.
+
 Recorded 17 November 2026 (Asia/Yerevan), against reviewed main `ebbac695dc394dd04ebd04c1cc28e28a944bdb9a`. The owner confirmed **“Both saved; reporting off”** after following the private connection-key setup instructions. Credential saving is owner-reported; the live key match has not been tested. The [private service installation](client-failure-private-service-setup-20261117.md) is complete; collection remains disabled. This record adds the release/renewal procedure and preserves the separate activation gate.
 
 ## Private connection setup
@@ -35,7 +37,7 @@ Registration upserts one fixed build ID and extends its expiry to 30 days from d
 
 ## Renewal when there is no new release
 
-Proposed arrangement, to be accepted before activation: record a maintenance review date 21 days after registration and its 30-day expiry in the activation handoff. John initiates that maintenance session; the agent/operator then performs the bounded check and approved renewal. This is a manual procedure, not an installed scheduler or reminder. Credential-saving confirmation is not acceptance of this maintenance responsibility. If that ownership and review date are not accepted, keep collection off until an alternative renewal arrangement is agreed.
+Accepted arrangement: record a maintenance review 21 days after each registration and its 30-day expiry in the activation handoff. John starts that maintenance session; the agent/operator performs the bounded check and separately approved renewal. The first one-time reminder is created for 8 December 2026 at 15:00 Asia/Yerevan, ahead of the 17 December expiry. It is a reminder only, not automatic database renewal. After each approved renewal or replacement-build registration, reset it to 21 days after that registration. The current [activation receipt](client-failure-activation-20261117.md#registration-and-renewal-receipt) records actual dates; private reminder identifiers stay outside the public repository.
 
 At maintenance, verify the currently served commit and manifest on all public addresses, confirm the exact checkout/build identity, and inspect the current registration. Renew only the reviewed current build using the same generator and approval/readback steps. If public addresses disagree, resolve the release state before registering a guessed build. Registration of old open-tab builds must be separately justified; it is not implied by renewal of the current site.
 
