@@ -372,4 +372,37 @@ Version 7 and 8 checks: the same 340 renders; 65 (version 7), 69 (version 8) and
 
 **Built 15 November 2026 (not released):** T1–T7 and the two additions; see the [record](teacher-account-20261115.md). Checking before the build confirmed that students see the teacher's name on work and materials the teacher sends, so the who-sees-the-name sentence was corrected and awaits John's acceptance. Prototype version 10 carries the corrected sentence and the product's existing one-letter error wording.
 
+## Appendix D — Class row and student panel: «ready», «passed» and practice evidence (19 November 2026)
+
+**Asked by John (relaying Codex's review):** show "ready to take the check", "passed the check" and "earlier practice evidence" as separate facts, because a student can pass and still have a low practice estimate. Design only; the support-count rule stays as it is.
+
+**Process.** Three standalone mocks (v1–v3) were reviewed by John and Codex before the prototype changed. Approved mock: [`design/teacher-row-mock-v3-20261119.html`](design/teacher-row-mock-v3-20261119.html) (synthetic data). John approved v3 on 19 November with these decisions:
+- skill cards inside today's student panel at every width (the panel is capped at 720 px; a comparison table would need about 960 px);
+- recent accuracy left out of the roster; shown in the panel only when HaiEdu returns a value, with the kind of work and number of answers;
+- the neutral card label «Դիտարկումները դեռ քիչ են»; progress as «Վարժությունն ընթացքի մեջ է · պատասխանել է 8 հարցից 3-ին»;
+- class-scoped wording; next steps «Այս դասարանում ավարտվել է գլխի պարտադիր կրկնություն։» (required review completed) and «Առաջարկվում է կրկնել գլուխը։» (maximum attempts in this class's records), written by the page from the existing action codes.
+
+**Why "this class".** Codex reproduced a student passing in one class while another class had no check on record, and the student's own page still recognised the pass. The teacher read derives the chapter state from the class's sessions; the learner's chapter record is keyed by student, release and unit. Every result in the row and panel is therefore labelled as a class record.
+
+**Not shown, because today's teacher data cannot support it:** readiness for the first attempt (decided per student and release on the student side, never returned to teachers); attempt numbers and retry availability (class-derived only); per-skill check scores such as 2/2 (not returned).
+
+**Prototype version 11** applies the approved design to the class roster, the student panel and the skills-tab cells:
+- roster rows use today's wrapping rules (`web/teacher.css`) and show the check result in this class, the support flag (the most recent qualifying red estimate: skill, kind of work, date of the latest answer included in it, «ստուգման ավարտից առաջ» only when that answer predates the check's completion, and «Դիտել ևս N հմտություն»), and the next step with any session progress;
+- the support count is unchanged: a student counts when any separate estimate is classified «Աջակցություն է պետք». The prototype's earlier invented rule (three weak skills) is removed;
+- the panel has the three boxes (check result; «Հաջորդ քայլը»; «Վարժության տվյալներ» or «Աջակցության հիմքերը»), recent accuracy when present, skill cards ordered red, yellow, then the rest, review history and the learning-session history («Աշխատանքների պատմություն» lists sessions, as today; a writing and own-task history is marked as proposed server work);
+- skills-tab cells follow today's rules: one estimate shows its band or neutral label; several kinds of work show «Առանձին արդյունքներ», never a combined figure;
+- the panel returns focus to the control that opened it, as today's teacher page does;
+- Physics unit 1 in the synthetic data now uses the ten real Chapter I skill names;
+- two existing defects on the class page were fixed: summary cards overflowed at 390 px with doubled text, and the breadcrumb link was under 44 px.
+
+**Other screens are unchanged in version 11.** The wider corrections listed in the [wiring audit](teacher-student-wiring-audit-20261115.md) §4.1–4.2 (Home counts, "current unit", cross-class queues, recipient states and others) are still to be made.
+
+**Open for John:**
+1. PERSONAL-1: personal-account teachers read today's older Physics 7 Chapter I path (one learner-wide estimate per skill, the learner's own chapter record). The class-record wording does not fit their data; their wording is undecided. The prototype keeps the remove-student action for them.
+2. New Armenian wording not supplied by John or Codex: «Յուրացման ստուգում՝ այս դասարանում», «Այս դասարանում գրանցված արդյունք», «Այս դասարանի գրառումները», «Այս դասարանում ավարտված կրկնություններ՝ …», «Վարժության տվյալներ», «Գլխի կրկնությունն ընթացքի մեջ է · պատասխանել է 12 հարցից 5-ին», «Այս դասարանում ավարտված կրկնություն դեռ չկա։», «վերջին N պատասխանը» (recent accuracy).
+
+**Checks (Chromium, local synthetic data; not the real teacher page, no device, Safari or screen reader):**
+- `prototype-checks/verify.mjs`: 340 renders across 17 screens, all checks pass; `paths.mjs`: all click paths pass; no script errors.
+- Roster and panel at 390 px, 768 px, the desktop frame and the phone frame, each with normal and doubled text, for school and personal teachers (16 cases): no content outside the page or panel, controls at least 44 px tall, 28 rows rendered; Enter on «Դիտել» opens the panel with focus inside; Enter and Space open and close a skill card; Escape closes the panel and returns focus to «Դիտել», to «Դիտել ևս N հմտություն» and to a skills-tab cell; «Դիտել ևս N հմտություն» moves focus to the support evidence; a skills-tab cell opens and focuses that skill's card.
+
 Owner usability acceptance: not given.
