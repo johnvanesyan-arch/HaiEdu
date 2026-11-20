@@ -5,8 +5,8 @@
 | Phase | Decision | State |
 |---|---|---|
 | 1 | II-2 (Chapter II, versioned rules), database level | **Rehearsed; results below** (revised the same day after Codex's review) |
-| 1b | II-2 through the real app in disposable local staging | **Blocked**: see "Phase 1b" |
-| 2 | I-2 (Chapter I, older path) | Read-only investigation done; see "Chapter I"; not built |
+| 1b | II-2 through the real app in disposable local staging | **Passed in Codex's local staging** (reported 20 November; see "Phase 1b"). Blocked in this container. |
+| 2 | I-2 (Chapter I, older path) | Option A scoped for approval: [build plan](chapter-i-i2-option-a-plan-20261120.md); not built |
 | 3 | B (readiness needs one independent correct answer), testable on its own | Not started |
 
 The assessment code on `main` (`f7f39df`) has not changed since this branch split: `main` added failure reporting, BF-16 counter maintenance and staging tooling, but no assessment migration or function. The rehearsal therefore tests the same assessment code production runs.
@@ -86,6 +86,28 @@ Result on 20 November: 50 of 50 pass. The full `npm test` was not run for this p
 **Blocker.** That build downloads the pg_cron source from `codeload.github.com/citusdata/pg_cron`. This session's GitHub access allows only attached repositories, and the request to attach `citusdata/pg_cron` (read-only) was refused by the session's permission check. The source was **not** fetched from any other place, because that would get around the refusal. Until John allows it (or chooses another route), the staging stack cannot start and Phase 1b has not run. Nothing on production was touched.
 
 **Prepared for Phase 1b.** The database-level rehearsal above now follows the procedure the staging journey must reproduce: new model version, four new blueprint versions, bindings and runtime switch.
+
+### Phase 1b result — Codex's local staging (recorded 20 November)
+
+**Source and status.** Reported by Codex through John; recorded here as local staging evidence. The detailed record is in Codex's **local, unpushed** commit `af36e0a4` on `codex/chapter-ii-ii2-rehearsal`. Claude Code has not seen that commit or its evidence files, so this summary is the handoff until it is pushed. Fictional students only; temporary services cleaned up; production and the hosted test project untouched; production QA stays paused.
+
+**Reported results:**
+- **Open check.** A student with an open check resumed the same check and received 10/16 under the old rule. The second attempt stayed locked until the required review was completed.
+- **Retry.** The retry automatically picked II-2, used a form with no repeated questions, and passed with 10/12 on the required skills; the 0/4 on additional skills appeared separately.
+- **New student.** Ready on only the six required skills, they could start after the switch using their existing diagnostic.
+- **Pages.** The student and teacher pages showed both the old and new score formats correctly.
+- **Follow-up:**
+  - An open practice session resumed at question five and finished under its original rule.
+  - The school admin page showed the old and new mastery results separately, with the additional skills separate under II-2.
+  - All four assessment versions switched in one database transaction.
+  - The updated Chapter II QA check passed locally.
+- **Confirmed side effect.** Teacher evidence splits at the switch.
+  - The first practice answer after the switch created a separate estimate with too little evidence to classify. After five correct answers that new estimate turned green.
+  - The older red estimate stayed red, and the student still counted as needing support.
+  - The student's own page kept one skill record with answers from both versions.
+  - Practice was covered by the browser test. Review was checked by reading the shared grouping code, not run.
+
+**Open Chapter II decision (John):** whether to accept the older red estimate continuing to count towards support during the pilot. Codex recommends keeping estimates separate and explaining the behaviour to teachers. No release decision has been made.
 
 ## Chapter I — read-only investigation (decision I-2)
 
