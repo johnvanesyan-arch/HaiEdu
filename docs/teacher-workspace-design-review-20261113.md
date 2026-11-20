@@ -405,4 +405,22 @@ Version 7 and 8 checks: the same 340 renders; 65 (version 7), 69 (version 8) and
 - `prototype-checks/verify.mjs`: 340 renders across 17 screens, all checks pass; `paths.mjs`: all click paths pass; no script errors.
 - Roster and panel at 390 px, 768 px, the desktop frame and the phone frame, each with normal and doubled text, for school and personal teachers (16 cases): no content outside the page or panel, controls at least 44 px tall, 28 rows rendered; Enter on «Դիտել» opens the panel with focus inside; Enter and Space open and close a skill card; Escape closes the panel and returns focus to «Դիտել», to «Դիտել ևս N հմտություն» and to a skills-tab cell; «Դիտել ևս N հմտություն» moves focus to the support evidence; a skills-tab cell opens and focuses that skill's card.
 
+**Codex review of version 11 (20 November, forwarded by John).** Codex checked commit `223c159`, re-ran all three scripts and confirmed Escape and «Փակել» return focus. Findings: Tab and Shift+Tab could leave the open panel; the Physics Chapter II example showed a pass at 8/10, although Chapter II passes at 13/16 with at least one correct answer in each of its eight skills; NEXT-1/NEXT-2 and the «before the check» label came from fictional states and one fixed day. Choices forwarded with the review:
+- PERSONAL-1, option B: personal-account teachers keep today's roster row and panel, including «Հեռացնել». Their older data describes the learner's record. The personal roster does return a legacy recent-accuracy value, under different rules from the school value.
+- «Դիտել ևս N հմտություն» stays a button (it opens a panel on the same page and moves focus into it).
+- Ties between red estimates: latest included answer first, then curriculum order.
+- «Հանձնարարել այս աշակերտին» moves into the B8 design notes only.
+- The summary-card wrapping and breadcrumb fixes are part of the class-page approval.
+- Recent accuracy reads «Վարժություն · վերջին 14 պատասխաններից 86%-ը ճիշտ է», in the panel only, when the school response supplies it.
+- Approval is limited to the school teacher's roster, student panel and skills tab.
+
+**Prototype version 12** applies these:
+- Physics unit 2 in the synthetic data now uses the eight real Chapter II skills (S02–S09) and its rule: 16 questions, at least 13 correct and one per skill. Unit 1 keeps the Chapter I rule (20 questions, at least 16). Examples show 13 / 16 · 81% and 18 / 20 · 90%.
+- Each student has their own check date, and some practice answers fall after the check, so «ստուգման ավարտից առաջ» appears for some flags and not for others. A design note states what is simulated: the build takes NEXT-1/NEXT-2 from the real action codes (`mastery_check_retry`, `review_chapter`) and decides the label by comparing the estimate's `lastAttemptAt` with the check's `completedAt`.
+- Personal-account teachers see today's roster row and an abridged version of today's panel.
+- «Հանձնարարել այս աշակերտին» appears only inside the B8 note, in design-notes mode.
+- Tab and Shift+Tab stay inside the open panel. The build reuses today's side-panel focus handling (`web/teacher.js`).
+
+**Version 12 checks** (same limits as above): `verify.mjs` 340 renders across 17 screens, all pass; `paths.mjs` passes; the row/panel script now covers 16 cases with Tab and Shift+Tab confinement, personal-teacher layout, the B8 note, the before-label both present and absent, and no 8/10-shaped Chapter II score. All pass, no script errors.
+
 Owner usability acceptance: not given.

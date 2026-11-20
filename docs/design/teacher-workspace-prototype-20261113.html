@@ -361,8 +361,8 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>'
 /* ---------- synthetic data (examples only: classes, students, tasks, materials and texts are invented) ---------- */
 const PROGRAMMES = {
   physics7: { subject: 'Ֆիզիկա', grade: 7, code: 'Ֆ7', units: [
-    { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Բնության ուսումնասիրության ֆիզիկական մեթոդները', skills: ['Ֆիզիկական երևույթների ճանաչում և դասակարգում', 'Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը', 'Ֆիզիկոսներ և հայ ֆիզիկոսներ', 'Դիտումը և փորձը տարբերակելը', 'Վարկած–փորձ–տվյալ–եզրակացություն շղթան', 'Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր', 'Չափման միավորների պարզ փոխարկումներ', 'Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը', 'Չափման սխալ և ճշգրտության գնահատում', 'Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում'] },
-    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', skills: ['Նյութի կառուցվածքի մոդելներ', 'Մոլեկուլների շարժում', 'Դիֆուզիա', 'Ագրեգատային վիճակներ', 'Խտություն'] }] },
+    { id: 'u1', short: 'Բաժին 1', title: 'Բաժին 1. Բնության ուսումնասիրության ֆիզիկական մեթոդները', pass: 16, skills: ['Ֆիզիկական երևույթների ճանաչում և դասակարգում', 'Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը', 'Ֆիզիկոսներ և հայ ֆիզիկոսներ', 'Դիտումը և փորձը տարբերակելը', 'Վարկած–փորձ–տվյալ–եզրակացություն շղթան', 'Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր', 'Չափման միավորների պարզ փոխարկումներ', 'Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը', 'Չափման սխալ և ճշգրտության գնահատում', 'Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում'] },
+    { id: 'u2', short: 'Բաժին 2', title: 'Բաժին 2. Նյութի կառուցվածքը և հատկությունները', pass: 13, skills: ['Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը', 'Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը', 'Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ', 'Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում', 'Դիֆուզիան բացատրել օրինակներով', 'Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում', 'Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ', 'Բացատրել ջերմաչափի աշխատանքի սկզբունքը'] }] },
   english7: { subject: 'Անգլերեն', grade: 7, code: 'Ա7', units: [
     { id: 'u2', short: 'Unit 2', title: 'Unit 2. Իմ ընտանիքը', skills: ['Բառապաշար. ընտանիք', 'Ներկա պարզ ժամանակ', 'Ընթերցանություն', 'Լսողություն', 'Կարճ նամակ'] },
     { id: 'u3', short: 'Unit 3', title: 'Unit 3. Ես աշխարհում', skills: ['Բառապաշար. հագուստ', 'Բնավորության ածականներ', 'Համեմատական աստիճան', 'Ընթերցանություն', 'Նկարագրություն'] }] },
@@ -393,7 +393,7 @@ const skillsOf = (c, uid) => unitOf(c, uid).skills.map((name, j) => ({ code: `${
 // per skill, one list of separate estimates per kind of work; nothing is combined. All records belong to this class.
 const KINDW = [['dx', 'Ախտորոշիչ'], ['pr', 'Վարժություն'], ['rv', 'Գլխի կրկնություն'], ['mc', 'Յուրացման ստուգում']];
 const EST = { secure: ['good', 'Կայուն'], developing: ['attention', 'Զարգացող'], needs: ['error', 'Աջակցություն է պետք'], few: ['calm', 'Դիտարկումները դեռ քիչ են'], unavailable: ['calm', 'Ցուցանիշը հասանելի չէ'], none: ['calm', 'Տվյալ դեռ չկա'] };
-const CHECK_DAY = 12, dayLabel = t => t < 1 ? '30.10' : String(t).padStart(2, '0') + '.11';
+const dayLabel = t => t < 1 ? '30.10' : String(t).padStart(2, '0') + '.11';
 const rosterCache = {};
 function roster(c, uid) {
   const key = c.id + uid; if (rosterCache[key]) return rosterCache[key];
@@ -403,26 +403,28 @@ function roster(c, uid) {
     const h = (i * 7 + ci * 3 + ui * 5) % 10;
     const stage = h === 0 ? 'nodiag' : h <= 2 ? 'practice' : h === 3 ? 'active' : h === 4 ? 'reviewReq' : h === 5 ? 'reviewDone' : h === 6 ? 'final' : 'passed';
     const hasCheck = ['reviewReq', 'reviewDone', 'final', 'passed'].includes(stage), passed = stage === 'passed';
+    const checkT = hasCheck ? 8 + (i * 3 + ci) % 5 : null; // simulated completion day; the build compares real timestamps
     const ev = skills.map((_, j) => {
       const e = { dx: [], pr: [], rv: [], mc: [] };
       if (stage === 'nodiag') return e;
       e.dx.push(est('few', 2, 2));
-      const n = (i * 5 + j * 3 + ci) % 11, t = 3 + (i + j) % 7;
+      const n = (i * 5 + j * 3 + ci) % 11, t = 3 + (i * 2 + j) % 12; // some practice answers fall after the check
       if (n) {
         if (n < 3) e.pr.push(est('few', n, t));
         else { const r = (i * 3 + j * 7 + ci + ui) % 10, s = r < 2 ? 'needs' : r < 5 ? 'developing' : 'secure';
           e.pr.push(est(s, n, t, s === 'needs' ? 30 + (i + j) % 14 : s === 'developing' ? 46 + (i * j) % 25 : 72 + (i + j) % 20)); }
         if ((i + j * 2 + ci) % 13 === 0) e.pr.unshift(est('developing', 4, 0, 58 + j)); // an older estimate under another content release: kept separate
       }
-      if (['reviewReq', 'reviewDone', 'final'].includes(stage) || (passed && i % 4 === 0)) e.rv.push(j % 3 === 0 ? est('unavailable', 3, 14) : est('few', 1 + j % 2, 13 + j % 3));
-      if (hasCheck) e.mc.push(est('few', 2, CHECK_DAY));
+      if (['reviewReq', 'reviewDone', 'final'].includes(stage) || (passed && i % 4 === 0)) e.rv.push(j % 3 === 0 ? est('unavailable', 3, (checkT || 12) + 2) : est('few', 1 + j % 2, (checkT || 12) + 1 + j % 3));
+      if (hasCheck) e.mc.push(est('few', 2, checkT));
       return e;
     });
     const reds = [];
     ev.forEach((e, j) => KINDW.forEach(([k, kl]) => e[k].forEach(x => { if (x.s === 'needs') reds.push({ ...x, j, k, kind: kl }); })));
     reds.sort((a, b) => b.t - a.t || a.j - b.j);
-    const total = 2 * K, correct = passed ? Math.min(total, Math.ceil(total * 0.8) + (i % 2)) : Math.ceil(total * 0.8) - 2;
-    const check = hasCheck ? { passed, date: dayLabel(CHECK_DAY) + '.2026', total, correct, percent: Math.round(correct / total * 100), counts: i % 6 !== 5 } : null;
+    const total = 2 * K, need = unitOf(c, uid).pass || Math.ceil(total * 0.8); // Chapter I: 16/20, Chapter II: 13/16, each with at least one correct per skill
+    const correct = passed ? Math.min(total, need + (i % 3)) : need - 2;
+    const check = hasCheck ? { passed, t: checkT, date: dayLabel(checkT) + '.2026', total, correct, percent: Math.round(correct / total * 100), counts: i % 6 !== 5 } : null;
     const active = stage === 'active' ? { mode: 'pr', answered: 3, planned: 8 } : passed && i % 5 === 0 ? { mode: 'rv', answered: 5, planned: 12 } : null;
     const weakSkill = reds[0] ? skills[reds[0].j] : skills.find((_, j) => ev[j].pr.some(x => x.s === 'developing'));
     const next = active ? 'Աշակերտն ունի չավարտված սեսիա. նախ ավարտել ընթացիկ աշխատանքը։'
@@ -439,7 +441,8 @@ function roster(c, uid) {
     const reviews = { required: stage === 'reviewDone' ? 1 : stage === 'final' ? 2 : 0, optional: passed && i % 4 === 0 ? 1 : 0 };
     return { id: `${c.id}-s${i}`, name: FIRST[(i + ci * 5) % FIRST.length] + ' ' + LAST[(i + ci * 2) % LAST.length], daysAgo, stage, ev, reds, check, active, next, reviews,
       acc: i % 3 === 0 || stage === 'nodiag' ? null : { value: 52 + (i * 7) % 40, kind: 'Վարժություն', n: 20 - (i % 4) * 3 },
-      support: reds.length > 0 };
+      legacyAcc: stage === 'nodiag' || i % 5 === 0 ? null : 40 + (i * 13) % 55,
+      support: reds.length > 0, redCode: reds[0] ? skills[reds[0].j].code : null };
   }).sort((a, b) => (b.support - a.support) || a.name.localeCompare(b.name, 'hy'));
   return (rosterCache[key] = list);
 }
@@ -453,7 +456,17 @@ function skillCue(e) { // strongest classified estimate with its kind of work; n
 }
 const neutralLabel = e => { const all = KINDW.flatMap(([k]) => e[k]); return all.some(x => x.s === 'few') ? EST.few[1] : all.some(x => x.s === 'unavailable') ? EST.unavailable[1] : EST.none[1]; };
 const progressText = a => a.mode === 'pr' ? `Վարժությունն ընթացքի մեջ է · պատասխանել է ${a.planned} հարցից ${a.answered}-ին` : `Գլխի կրկնությունն ընթացքի մեջ է · պատասխանել է ${a.planned} հարցից ${a.answered}-ին`;
-const beforeCheck = (s, x) => s.check && x.t < CHECK_DAY ? ' · ստուգման ավարտից առաջ' : '';
+// Personal-account teachers (PERSONAL-1, option B): today's roster row and panel, unchanged. Their older path is learner-wide.
+const legacyEst = e => e.pr.at(-1) || e.dx[0] || null;
+const legacyNext = s => s.active ? 'Աշակերտն ունի չավարտված սեսիա. նախ ավարտել ընթացիկ աշխատանքը։'
+  : s.stage === 'nodiag' ? 'Առաջին քայլ՝ անցնել Բաժին I-ի ախտորոշիչը։'
+  : s.stage === 'reviewReq' ? 'Առաջնահերթ քայլ՝ ավարտել պահանջվող Գլխի կրկնությունը։'
+  : s.stage === 'reviewDone' ? 'Պահանջվող կրկնությունն ավարտված է. յուրացման ստուգման հաջորդ փորձը հասանելի է։'
+  : s.stage === 'final' ? 'Յուրացման երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։'
+  : s.stage === 'passed' ? 'Բաժին I-ն ավարտված է․ յուրացման ստուգումն անցած է։'
+  : s.reds[0] ? 'Առաջարկվող միջամտություն՝ աշխատել ' + s.redCode + ' հմտության վրա։' : 'Շարունակել վերահսկել առաջընթացը։';
+const legacyReview = s => s.reviews.required + s.reviews.optional ? `${s.reviews.required + s.reviews.optional} կրկնություն · պարտադիր ${s.reviews.required} · լրացուցիչ ${s.reviews.optional}` : 'Գլխի կրկնության տվյալ դեռ չկա';
+const beforeCheck = (s, x) => s.check && x.t < s.check.t ? ' · ստուգման ավարտից առաջ' : ''; // build: estimate.lastAttemptAt < latestMasteryCheck.completedAt
 const supportCount = (c, uid) => roster(c, uid).filter(s => s.support).length;
 // Course writing catalog (published tasks), own tasks and library materials, per subject programme.
 const CATALOG = {
@@ -731,12 +744,23 @@ function classPage() {
         <div class="roster-actions"><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button>${personal() ? `<button type="button" class="btn quiet" style="color:var(--error)" data-proto-off>Հեռացնել</button>` : ''}</div>
       </article>`;
     };
+    const legacyRow = s => {
+      const attn = sk.filter((_, j) => ['needs', 'developing'].includes(legacyEst(s.ev[j])?.s)).map(k => k.code).join(', ') || '—';
+      return `<article class="roster-row" aria-label="${esc(s.name)}">
+        <div><button type="button" class="namebtn" data-student="${s.id}">${esc(s.name)}</button><span class="tile-meta">${s.stage === 'nodiag' ? 'Գործունեություն դեռ չկա' : 'Վերջին ակտիվություն՝ ' + ago(s.daysAgo)}</span></div>
+        <div><span class="cell-label">Վերջին պատասխանների ընդհանուր ճշգրտություն</span><strong>${s.legacyAcc == null ? '—' : s.legacyAcc + '%'}</strong></div>
+        <div><span class="cell-label">Ուշադրության հմտություններ</span><strong>${esc(attn)}</strong></div>
+        <div><span class="cell-label">Գլուխ I-ի կրկնություն</span><strong>${legacyReview(s)}</strong></div>
+        <div class="intervention-cell"><span class="cell-label">Հաջորդ առաջարկություն</span><strong>${esc(legacyNext(s))}</strong></div>
+        <div class="roster-actions"><button type="button" class="btn secondary" data-student="${s.id}" aria-label="Դիտել ${esc(s.name)}">Դիտել</button><button type="button" class="btn quiet" style="color:var(--error)" data-proto-off>Հեռացնել</button></div>
+      </article>`;
+    };
     body = `<div class="toolbar"><div class="chips" role="group" aria-label="Ֆիլտր">${[['all', `Բոլորը · ${list0.length}`], ['support', `Աջակցության կարիք · ${support}`], ['inactive', `Ոչ ակտիվ · ${inactive}`]].map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${S.rosterFilter === k}">${l}</button>`).join('')}</div>
         <label class="field" for="rq">Փնտրել աշակերտ<input id="rq" type="search" value="${esc(S.rosterQuery)}" placeholder="Անուն…"></label></div>
       <p class="tile-meta">Աջակցության կարիքը՝ ըստ «${esc(u.short)}»-ի հմտությունների</p>
-      ${note('Row · approved v3', 'Today’s roster wrapping rules. Three separate facts: this class’s recorded check result, the support flag, and the next step. The support count is unchanged: a student counts when any separate estimate is classified «Աջակցություն է պետք». The flag shows the most recent qualifying red estimate (skill, kind of work, date of the latest answer included in it); «Դիտել ևս N հմտություն» opens the panel at the support evidence. Session progress sits under «Հաջորդ քայլը» and never replaces the recorded result. Not shown: first-attempt readiness, attempt numbers, retry availability, per-skill check scores, recent accuracy.')}
-      ${personal() ? note('PERSONAL-1 · undecided', 'Personal-account teachers read today’s older Physics 7 Chapter I path: one learner-wide estimate per skill and the learner’s own chapter record, not class records. The «այս դասարանում» wording would be inaccurate for them. Shown here with the school layout only to keep the remove-student action visible; their wording needs your decision.') : ''}
-      <div class="rows">${list.map(row).join('')}</div>
+      ${personal() ? '' : note('Row · approved v3', 'Today’s roster wrapping rules. Three separate facts: this class’s recorded check result, the support flag, and the next step. The support count is unchanged: a student counts when any separate estimate is classified «Աջակցություն է պետք». The flag shows the most recent qualifying red estimate (skill, kind of work, date of the latest answer included in it); «Դիտել ևս N հմտություն» opens the panel at the support evidence. Session progress sits under «Հաջորդ քայլը» and never replaces the recorded result. Not shown: first-attempt readiness, attempt numbers, retry availability, per-skill check scores, recent accuracy.')}
+      ${personal() ? note('PERSONAL-1 · option B', 'Personal-account teachers keep today’s roster row and student panel, including «Հեռացնել». Their older Physics 7 Chapter I data describes the learner’s own record (one learner-wide estimate per skill), so the school layout would give it the wrong meaning. The roster’s recent accuracy here is the legacy value, which uses different rules from the school value.') : note('Simulated in this prototype', 'Student states and dates are fictional. The build takes the next step from the real action code (mastery_check_retry → «Այս դասարանում ավարտվել է գլխի պարտադիր կրկնություն։», review_chapter → «Առաջարկվում է կրկնել գլուխը։») and decides «ստուգման ավարտից առաջ» by comparing the estimate’s latest included answer (lastAttemptAt) with the check’s completion (completedAt). Some students here practised after their check, so the label is absent for them. Ties between red estimates: latest included answer first, then curriculum order.')}
+      <div class="rows">${list.map(personal() ? legacyRow : row).join('')}</div>
       ${list.length ? '' : '<p class="lede">Այս ֆիլտրով աշակերտ չկա։</p>'}`;
   } else if (S.classTab === 'skills') {
     const bc = { secure: 'b-secure', developing: 'b-developing', needs: 'b-needs' }, sks = skillsOf(c, uid);
@@ -1079,31 +1103,44 @@ function account() {
 }
 
 /* ---------- Drawer (item 4) ---------- */
+function legacyDrawer(c, uid, s) {
+  const sk = skillsOf(c, uid), ch = s.check, bl = { secure: 'Կայուն', developing: 'Զարգացող', needs: 'Աջակցություն է պետք' };
+  const skills = sk.map((k, j) => { const x = legacyEst(s.ev[j]); return `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center"><span>${esc(k.code)} · ${esc(k.name)}</span>${x && bl[x.s] ? `<span class="pill ${EST[x.s][0]}">${bl[x.s]} · ${x.p}%</span>` : '<span class="pill calm">Տվյալ դեռ չկա</span>'}</li>`; }).join('');
+  const mini = (label, value) => `<div class="fact"><span class="cell-label">${label}</span><strong>${value}</strong></div>`;
+  return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
+    <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
+    <div class="facts">${mini('Սկզբնական ախտորոշիչ', s.stage === 'nodiag' ? '—' : '60%')}${mini('Վարժություն', (s.stage === 'nodiag' ? 0 : 3) + ' ավարտված')}${mini('Գլխի կրկնություն', (s.reviews.required + s.reviews.optional) + ' ավարտված')}${mini('Յուրացման ստուգում', ch ? (ch.passed ? 'Անցած է' : 'Չի անցել') + ' · ' + ch.percent + '%' : '—')}</div>
+    <section class="card" style="background:var(--selected)"><strong>Առաջարկվող միջամտություն</strong><p style="margin:4px 0 0">${esc(legacyNext(s))}</p></section>
+    <section class="section"><h3>Հմտություններ</h3><ul class="queue">${skills}</ul></section>
+    <section class="section"><h3>Յուրացման ստուգում և կրկնություն</h3><div class="facts">${mini('Փորձեր', ch ? (s.stage === 'final' ? '3 / 3' : s.stage === 'passed' ? '1 / 3' : '1 / 3') : '—')}${mini('Անցած փորձ', s.stage === 'passed' ? '1' : '—')}${mini('Պարտադիր կրկնություններ', s.reviews.required)}${mini('Լրացուցիչ կրկնություններ', s.reviews.optional)}</div></section>
+    ${note('PERSONAL-1 · option B', 'Today’s panel for personal-account teachers, kept as it is (abridged here). Its figures come from the older Physics 7 Chapter I path and describe the learner’s own record: one learner-wide estimate per skill and the learner’s chapter attempts.')}
+  </aside></div>`;
+}
 function drawer() {
   const c = cls(S.classId), uid = curUnit(), s = roster(c, uid).find(x => x.id === S.drawer); if (!s) return '';
+  if (personal()) return legacyDrawer(c, uid, s);
   const sk = skillsOf(c, uid), ch = s.check;
   const box1 = `<section class="fact" aria-labelledby="dB1"><h3 id="dB1">Յուրացման ստուգում</h3>${ch ? `<span class="tile-meta">Այս դասարանում գրանցված արդյունք</span><span><span class="pill ${ch.passed ? 'good' : 'calm'}">${ch.passed ? 'Անցած է' : 'Չի անցել'}</span></span><span>${ch.counts ? `${ch.correct} / ${ch.total} · ` : ''}${ch.percent}%</span><span>Ավարտի ամսաթիվը՝ ${ch.date}</span><span class="tile-meta">Արդյունքը վերաբերում է միայն այս ստուգմամբ գնահատված հմտություններին։</span>` : '<span>Այս դասարանում ստուգման արդյունք դեռ չի գրանցվել։</span>'}</section>`;
   const box2 = `<section class="fact" aria-labelledby="dB2"><h3 id="dB2">Հաջորդ քայլը</h3>${s.active ? `<span>${progressText(s.active)}</span>` : ''}<span>${esc(s.next)}</span>${ch?.passed ? '<span>Գլխի կրկնությունը պարտադիր չէ։</span>' : ''}<span class="tile-meta">Այս դասարանում ավարտված կրկնություններ՝ ${s.reviews.required + s.reviews.optional}</span><button type="button" class="linkbtn" data-jump="dHist">Կրկնությունների պատմություն</button></section>`;
   const onlyPractice = s.reds.every(r => r.k === 'pr');
   const box3 = s.reds.length ? `<section class="fact" id="dSupport" tabindex="-1" aria-labelledby="dB3"><h3 id="dB3">${onlyPractice ? 'Վարժության տվյալներ' : 'Աջակցության հիմքերը'}</h3>${s.reds.map(r => `<div class="flagged"><span>${estPill(r)}</span><span>${esc(sk[r.j].name)}</span><span class="tile-meta">${onlyPractice ? '' : r.kind + ' · '}${r.n} պատասխան · Հաշվարկում ներառված վերջին պատասխանը՝ ${r.d}${beforeCheck(s, r)}</span></div>`).join('')}${s.reds.some(r => r.k === 'pr') ? '<span class="tile-meta">Ավելի վաղ տրված պատասխանները նույնպես կարող են ազդել վարժության ցուցանիշի վրա։ Ստուգման արդյունքը ներկայացվում է առանձին։</span>' : ''}</section>` : '';
-  const acc = s.acc && !personal() ? `<p style="margin:0">Վերջին պատասխանների ընդհանուր ճշգրտություն՝ <strong>${s.acc.value}%</strong> <span class="tile-meta">· ${s.acc.kind} · վերջին ${s.acc.n} պատասխանը</span></p>` : '';
+  const acc = s.acc ? `<p style="margin:0;display:grid;gap:2px"><span class="cell-label">Վերջին պատասխանների ընդհանուր ճշգրտություն</span><span>${s.acc.kind} · վերջին ${s.acc.n} պատասխաններից ${s.acc.value}%-ը ճիշտ է</span></p>` : '';
   const order = sk.map((k, j) => ({ k, j, cue: skillCue(s.ev[j]) })).sort((a, b) => (a.cue ? Math.min(RANK[a.cue.x.s], 2) : 2) - (b.cue ? Math.min(RANK[b.cue.x.s], 2) : 2) || a.j - b.j);
   const cards = order.map(({ k, j, cue }) => {
     const e = s.ev[j], multi = KINDW.find(([kk]) => e[kk].length > 1);
     return `<details class="skill" id="dSkill-${j}"${S.evidence === j ? ' open' : ''}><summary><span class="t">${esc(k.name)}</span><span class="cues">${cue ? `<span class="pill ${EST[cue.x.s][0]}">${cue.kl}՝ ${EST[cue.x.s][1]}${cue.x.p != null ? ` · ${cue.x.p}%` : ''}</span>` : `<span class="pill calm">${neutralLabel(e)}</span>`}${multi ? `<span class="pill sep">${multi[1]}՝ Առանձին արդյունքներ · ${e[multi[0]].length}</span>` : ''}</span></summary>
       <dl>${KINDW.map(([kk, kl]) => `<div><dt>${kl}</dt><dd>${estHtml(e[kk])}</dd></div>`).join('')}</dl></details>`;
   }).join('');
-  const reviewRows = (s.stage === 'final' ? ['06.11.2026', '09.11.2026'] : s.stage === 'reviewDone' ? ['13.11.2026'] : []).map(d => ['Պարտադիր', d]).concat(s.reviews.optional ? [['Լրացուցիչ', '14.11.2026']] : []);
+  const ct = ch?.t || 12, reviewRows = (s.stage === 'final' ? [ct - 6, ct - 3] : s.stage === 'reviewDone' ? [ct + 1] : []).map(d => ['Պարտադիր', dayLabel(d) + '.2026']).concat(s.reviews.optional ? [['Լրացուցիչ', dayLabel(ct + 2) + '.2026']] : []);
   const sessions = s.stage === 'nodiag' ? [] : [['Ախտորոշիչ', 'Ավարտված', '02.11.2026', `${Math.round(sk.length * 1.2)} / ${2 * sk.length}`], ['Վարժություն', 'Ավարտված', '05.11.2026', '6 / 8']]
     .concat(ch ? [['Յուրացման ստուգում', 'Ավարտված', ch.date, ch.passed ? 'Ստուգարքն անցած է' : 'Ստուգարքը չի անցել']] : [])
     .concat(s.active ? [[s.active.mode === 'pr' ? 'Վարժություն' : 'Գլխի կրկնություն', 'Ընթացքի մեջ', '—', `${s.active.answered} / ${s.active.planned}`]] : []);
   return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
     <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
     <p class="tile-meta" style="margin:0">Այս դասարանի գրառումները · ${esc(label(c))} · ${esc(unitOf(c, uid).title)} · Վերջին ակտիվություն՝ ${ago(s.daysAgo)}</p>
-    ${personal() ? note('PERSONAL-1', 'Personal-account teachers read one learner-wide estimate per skill and the learner’s own chapter record; the class-record labels and per-kind columns would not match their data. Wording undecided.') : ''}
     <div class="facts">${box1}${box2}${box3}</div>
     ${acc}
-    ${note('Panel · approved v3', 'Today’s panel width (up to 720 px), so skill cards are used at every width. Box 1 shows «18 / 20» only when the matching session supplies the counts, otherwise the percentage alone. Box 3 lists every red estimate behind the support flag; its title is «Աջակցության հիմքերը» when any comes from a kind of work other than practice. Recent accuracy appears only when HaiEdu returns a value (up to 20 recent answers from comparable work), with the kind of work and number of answers; not returned on the personal-account path.')}
+    ${note('Panel · approved v3', 'Today’s panel width (up to 720 px), so skill cards are used at every width. Box 1 shows «18 / 20» only when the matching session supplies the counts, otherwise the percentage alone. Box 3 lists every red estimate behind the support flag; its title is «Աջակցության հիմքերը» when any comes from a kind of work other than practice. Recent accuracy appears only when the school response supplies a value (up to 20 recent answers from comparable work), with the kind of work and number of answers. Simulated here: the scenario, the dates and whether counts are supplied.')}
     <section class="section" aria-labelledby="dSk"><h3 id="dSk">Տվյալներ ըստ հմտության</h3><div class="skill-cards">${cards}</div>
       ${note('Cards', 'Order: red, then yellow, then the rest, in curriculum order within each group. The summary shows the strongest classified result with its kind of work, and «Առանձին արդյունքներ» when one kind has several estimates; sparse, missing and unavailable evidence stays neutral. Opened, a card lists every kind of work separately.')}</section>
     <section class="section" id="dHist" tabindex="-1" aria-labelledby="dHistT"><h3 id="dHistT">Կրկնությունների պատմություն</h3>
@@ -1111,7 +1148,7 @@ function drawer() {
     <section class="section" aria-labelledby="dWorkT"><h3 id="dWorkT">Աշխատանքների պատմություն</h3>
       ${sessions.length ? `<ul class="queue">${sessions.map(([m, st, d, r]) => `<li style="padding:8px 2px;display:grid;gap:2px"><strong>${m} · ${st}</strong><span class="tile-meta">${d} · ${r}</span></li>`).join('')}</ul>` : '<p class="tile-meta">Գործունեություն դեռ չկա։</p>'}
       ${note('Item 4 · corrected', 'Today this section lists learning sessions (diagnostic, practice, review, check), not writing. ' + newData('Proposed · needs server work') + ' a list of this student’s course writing and own tasks with a link into review.')}</section>
-    <div class="actions"><button type="button" class="btn secondary" data-assign-from="${c.id}" data-pick="${s.id}">Հանձնարարել այս աշակերտին</button></div>
+    <div class="note"><b>B8 · undecided</b> · ${newData('Proposal · not available today')} One assign entry would also open from the student panel: <button type="button" data-assign-from="${c.id}" data-pick="${s.id}">Հանձնարարել այս աշակերտին</button></div>
   </aside></div>`;
 }
 
@@ -1323,6 +1360,13 @@ app.addEventListener('change', e => {
   if (A && id === 'asUnit') { A.unit = e.target.value; A.item = null; render(); }
   if (A && e.target.name === 'who') { A.who = e.target.value; render(); }
   if (A && e.target.dataset.asPick) { const sid = e.target.dataset.asPick; A.picked = e.target.checked ? [...new Set([...A.picked, sid])] : A.picked.filter(x => x !== sid); render(); }
+});
+app.addEventListener('keydown', e => {
+  if (e.key === 'Tab' && S.drawer) { // keep focus inside the open panel; the build reuses today's side-panel focus handling (web/teacher.js drawerFocus)
+    const items = [...app.querySelectorAll('.drawer button, .drawer summary, .drawer a[href], .drawer [tabindex="0"]')].filter(x => x.offsetParent !== null);
+    if (items.length) { const first = items[0], last = items.at(-1), inside = app.querySelector('.drawer').contains(document.activeElement);
+      if (!inside || (e.shiftKey && document.activeElement === first)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); return; }
+      if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); return; } } }
 });
 app.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.guard) { S.guard = null; render(); } else if (S.modal) { S.modal = null; render(); } else if (S.drawer) closeDrawer(); else if (S.confirm) closeConfirm(); else if (S.menu) { S.menu = false; render(); } } });
 function fromHash() {
