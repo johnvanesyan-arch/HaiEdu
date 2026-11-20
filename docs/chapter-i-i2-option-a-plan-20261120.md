@@ -1,8 +1,15 @@
-# Chapter I, decision I-2 — option A build plan, revision 2 (for approval before building) — 20 November 2026
+# Chapter I, decision I-2 — option A build plan, revision 3 (for approval before building) — 20 November 2026
 
 **Status:** plan only. Nothing is built, deployed or changed. **Out of scope:** readiness rule B and live activation.
 
-**Revision 2** applies John's decisions of 20 November:
+**Revision 3** (later on 20 November):
+- adopts John's Armenian wording;
+- keeps the S07 practice recommendation as it is;
+- makes today's Home and Course pages use the active rule's nine required skills;
+- defines the normal-student-route staging journey;
+- carries forward three findings explicitly (§2a).
+
+**Revision 2** applied John's decisions of 20 November:
 - an auditable database switch;
 - the rule version **and its exact criteria** saved when each check starts;
 - 15/18 shown as the score that decides the pass, with S07 shown separately;
@@ -40,6 +47,26 @@ Both items below are production changes needing John's approval. They are not pa
 
 On finish, `submit-mastery-answer` scores by the criteria **saved in the session**, never by the current switch. A check with no saved criteria is scored as `phy7-u01-v1`. A saved fingerprint that doesn't match its registry row is refused.
 
+## 2a. Three findings carried forward (verified in code, 20 November)
+
+1. **The database expects the raw score.**
+   - **Fact:** for Chapter I checks (no policy binding), `finalize_mastery_check_atomic` refuses the save (`mastery_score_mismatch`) unless the stored percentage equals the rounded raw score over **all 20 questions**.
+   - **Plan:** keep `answered_count`, `correct_count`, `score_percent` and the saved percentage **raw**. For example, 15/18 required plus 0/2 on S07 is saved as 15/20 = 75%, with `assessment_result = passed`.
+   - The **pass score 15/18** is saved in the session's result record (`assessmentResultReporting.score`), and every page that shows a pass score uses that saved record when it exists.
+   - Pages and endpoints that show the raw percentage today, and would switch to the saved pass score for I-2 results:
+     - the mastery result screen (`mastery.js`);
+     - the latest-attempt line on Progress (`progress.js`), from `get-mastery-check-status`;
+     - the teacher panels (§4);
+     - school admin (finding 2).
+2. **School admin would mix the two rules.**
+   - **Fact:** `school-performance-analytics.ts` groups results by school context plus the evidence contract (kind of work, blueprint, binding, model). None of these change under option A, so old and I-2 Chapter I results would land in **one group**: pass counts mixed, and pass scores and groups present for only some of them.
+   - **Plan:** add the saved rule version to the grouping key. This is a generic field on the session (`scoringRuleVersion`), not Chapter I code. The rule version also goes into the group's data, so the school admin and master admin pages can name it.
+   - The teacher's per-skill estimates stay as they are, because answer scoring doesn't change between versions.
+3. **Personal-account teachers see only a raw percentage.**
+   - **Fact:** the older `get-teacher-dashboard` and `get-teacher-student` paths return only pass or fail and `score_percent`. They don't read the saved result record.
+   - **Fact:** the personal-account student panel in `teacher.js` already shows a saved result record when the endpoint supplies one, through the shared result display.
+   - **Plan:** those two endpoints also return the saved `assessmentResultReporting` and `scoringRuleVersion`. **Layout unchanged.** For an I-2 result the existing check card then reads «Ստուգարքն անցած է · 15/18 · 83%» with the two group lines and the existing scope note. For older results it shows what it shows today.
+
 ## 3. Rules under each version
 
 | | `phy7-u01-v1` (today) | `phy7-u01-i2-v1` |
@@ -56,32 +83,43 @@ On finish, `submit-mastery-answer` scores by the criteria **saved in the session
 ## 4. What is shown
 
 ### Student pages and the teacher panel, for an I-2 result
-- **Score that decides the pass:** «Ստուգարքն անցած է · 15/18 · 83%». The shared result display already uses this pattern.
+- **Score that decides the pass:** «Ստուգարքն անցած է · 15/18 · 83%», read from the saved result record. The raw 15/20 stays in the database fields (§2a, finding 1).
 - **Groups** (shared result display; the deciding group gets the existing suffix «· հաշվի է առնվում ստուգարքը հանձնելիս»):
   - «Պարտադիր և օժանդակ հմտություններ՝ 15/18 · 83% · հաշվի է առնվում ստուգարքը հանձնելիս»
-  - «Լրացուցիչ վերջնարդյունք (չի ազդում հանձնման վրա)՝ 1/2 · 50%»
+  - «Լրացուցիչ վերջնարդյունք՝ 1/2 · 50%»
 - **The overall 16/20** is not shown as the pass score. It stays in the saved record for audit.
 - **Old results** keep today's display and rule text, because each result shows the rule saved with it.
 
-### Proposed Armenian labels (need John's acceptance)
-| Use | Proposed | Alternative |
-|---|---|---|
-| The nine scored skills (group label) | **«Պարտադիր և օժանդակ հմտություններ»**, followed by the existing «· հաշվի է առնվում ստուգարքը հանձնելիս» | «Հանձնման համար հաշվվող հմտություններ» (says the same as the suffix, so it reads twice) |
-| S07 (group label) | **«Լրացուցիչ վերջնարդյունք (չի ազդում հանձնման վրա)»** | «Լրացուցիչ վերջնարդյունք», relying on the missing suffix (less explicit) |
+### Armenian wording (decided by John, 20 November)
+**Group labels (shared result display):**
+- **«Պարտադիր և օժանդակ հմտություններ»** for the nine skills. The shared display adds its existing note «· հաշվի է առնվում ստուգարքը հանձնելիս».
+- **«Լրացուցիչ վերջնարդյունք»** for S07. Its role is explained in the rule text.
 
-Why "Պարտադիր և օժանդակ": the 11J reconciliation maps six of the nine skills directly to mandatory outcomes and three (S02, S04, S05) as derived supporting skills of mandatory outcomes. The label says both, and the suffix says they count.
+**Rule text**, wherever the rule appears for an I-2 check (`mastery.html`, `assessment.html`, `mastery.js`, `mastery-dashboard.js`):
+«Ստուգումն անցնելու համար պետք է ճիշտ պատասխանել պարտադիր և օժանդակ հմտություններին վերաբերող 18 հարցից առնվազն 15-ին։ Ինը հմտություններից յուրաքանչյուրի երկու հարցից առնվազն մեկին պետք է ճիշտ պատասխանել։ Չափման միավորների փոխարկման երկու հարցերին նույնպես պետք է պատասխանել։ Դրանց արդյունքը ներկայացվում է առանձին և չի ազդում ստուգումն անցնելու վրա։»
 
-### Student-facing sentences that change under I-2
-Today these sentences are fixed in the pages. They would be filled from the criteria the server returns, so old results keep today's wording.
+**Readiness, ready** (replaces «Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։» and the Progress reason line): «Ստուգմանը մասնակցելու համար անհրաժեշտ հմտություններն ամրապնդված են։»
+- Places: `home-dashboard.js`, `assessment.js`, `progress.js` (two places), `mastery-dashboard.js`.
 
-| Where today | Today | Proposed under I-2 |
-|---|---|---|
-| Rule: `mastery.html`, `assessment.html`, `mastery.js`, `mastery-dashboard.js` | «Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր և առնվազն 1/2 յուրաքանչյուր հմտությունից» | «Փորձնական անցողիկ կանոն՝ պարտադիր և օժանդակ հմտությունների 18 հարցից առնվազն 15 ճիշտ պատասխան և յուրաքանչյուր այդ հմտությունից առնվազն 1։ Չափման միավորների փոխարկման 2 հարցը ներկայացվում է առանձին և չի ազդում հանձնման վրա։» |
-| Ready: `home-dashboard.js`, `assessment.js`, `progress.js`, `mastery-dashboard.js` | «Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։» | «Հանձնման համար հաշվվող բոլոր հմտությունները պատրաստ են անկախ ստուգման։» |
-| Ready, Progress (`progress.js:166`) | «Բոլոր ընթացիկ հմտությունները բավարարել են պատրաստվածության կանոնը։» | «Հանձնման համար հաշվվող բոլոր հմտությունները բավարարել են պատրաստվածության կանոնը։» |
-| Not ready: `home-dashboard.js`, `assessment.js`, `physics-7.js` | «Ամրապնդեք բոլոր հմտությունները…» | «Ամրապնդեք հանձնման համար հաշվվող հմտությունները…» |
+**Readiness, locked** (replaces «Ամրապնդեք բոլոր հմտությունները…» and the server's `skills_not_ready` message under I-2): «Ստուգումը բացելու համար նախ ամրապնդեք պահանջվող հմտությունները։»
+- Places: `home-dashboard.js`, `assessment.js`, `physics-7.js`, and the `messageHy` of `start-learning-session` and `get-mastery-check-status`.
 
-The "20 հարց" texts stay true: 20 questions are still delivered.
+**Old results.** Each text is stored with its rule version in the registry: today's sentences under `phy7-u01-v1` and the sentences above under `phy7-u01-i2-v1`. Old results and checks keep today's wording.
+
+**One terminology point, no change proposed.** The rule text says «ստուգումն անցնելու». The shared result display, used by every chapter, says «Ստուգարքն անցած է» and «հաշվի է առնվում ստուգարքը հանձնելիս». Both terms would appear on the same screen. Aligning them would be a separate, platform-wide wording change.
+
+### Home and Course pages use the nine required skills
+**Today (fact):**
+- The older `get-student-dashboard` counts progress over all ten skills (`progress.completedSkills / totalSkills`).
+- The Chapter I Course page (`physics-7.js`) shows «Պատրաստ է ստուգման» only when all ten are complete. Otherwise it shows «N/10 ընթացիկ չափանիշը բավարարած».
+- Progress (`progress.js`) and the practice page (`app.js`) show the same count.
+
+**Plan:**
+- `get-student-dashboard` keeps the existing fields unchanged, for existing consumers and QA scripts.
+- It **adds** a per-skill `requiredForReadiness` from the active criteria, plus `progress.requiredCompleted` and `progress.requiredTotal` (9 under I-2, 10 under today's rule).
+- The Course page badge and the count text on Course, Progress and practice use the required counts.
+- S07's row on the Course page shows the newer Course page's existing note «Չի սահմանափակում ստուգարքի հասանելիությունը». The same pattern is already used for chapters on the versioned path.
+- Home already shows the check first whenever the server's readiness check says it is available. Under I-2 that check uses the nine skills.
 
 ### The student's next step when ready on the nine but weak on S07 (fact and design)
 **Fact (code):**
@@ -89,9 +127,7 @@ The "20 հարց" texts stay true: 20 questions are still delivered.
 - Under I-2 that status uses the nine skills, so this student **will see the check as available on Home**.
 - The separate practice recommendation, shown on other pages, still picks the weakest unfinished skill. For this student that is S07, so it may suggest practising S07 at the same time.
 
-**Proposal:** keep that recommendation logic unchanged in this step.
-- Sprint 12 froze the recommendation priority rules as a learning-model parameter, so changing them would go through the decision protocol.
-- A practice suggestion for S07 alongside an available check is consistent with I-2: S07 is still taught and reviewed.
+**Decided (John, 20 November):** the S07 practice recommendation stays as it is. Sprint 12 froze the recommendation priority rules as a learning-model parameter.
 
 ### Teachers
 | Where | Before activation | After, new attempt |
@@ -99,8 +135,8 @@ The "20 հարց" texts stay true: 20 questions are still delivered.
 | School teacher row and panel (approved V12) | Pass or fail and the date; panel 17 / 20 · 85% | Pass or fail and the date; panel **15 / 18 · 83%** with the two groups above |
 | School teacher Skills tab and support count | Separate estimates by kind of work | **Expected unchanged** (no new blueprint or model); to be confirmed |
 | School teacher history | Old format | Old attempts unchanged; new attempts with groups |
-| School admin | Old results | Old and new reported separately |
-| Personal-account teacher | Today's layout and percentage | Same layout; the percentage of new attempts is the deciding 15/18 figure (83%) |
+| School admin and master admin | Old results | **Grouped by the saved rule version** (finding 2), so old and I-2 results are never counted together |
+| Personal-account teacher | Today's layout: pass or fail and the raw percentage | **Same layout**; the existing check card shows the saved pass score 15/18 · 83% and the two group lines (finding 3) |
 
 ## 5. What changes, by component (when building)
 
@@ -110,9 +146,11 @@ The "20 հարց" texts stay true: 20 questions are still delivered.
 | New `_shared/chapter-i-assessment-rules.mjs` | Validates criteria objects and computes readiness, pass, groups and review targets from a criteria object. Chapter I skill codes live in the registry rows, not in shared code |
 | `start-learning-session` | Readiness from the active criteria; save version, criteria and fingerprint in the new check. Targeted review uses the last failed check's saved review-target rule; whole-chapter coverage unchanged |
 | `submit-mastery-answer` | Score by the saved criteria (default `phy7-u01-v1`); save the result record with groups; review targets from the saved rule |
-| `get-mastery-check-status`, `get-student-dashboard` | Readiness and next-check criteria from the active version; an open check reports its own saved criteria |
-| Student pages (files listed in §4) | Rule and readiness sentences from the server's criteria; the result screen shows groups for I-2 results |
-| Teacher, school and personal pages | No code change expected (they read saved results) |
+| `get-mastery-check-status`, `get-student-dashboard` | Readiness and next-check criteria from the active version; an open check reports its own saved criteria. Dashboard adds `requiredForReadiness` and required counts; status adds the saved result record of the latest check. Existing fields are unchanged |
+| `school-performance-analytics.ts` (school admin, master admin) | Group key adds the saved `scoringRuleVersion`; the group data names it (finding 2) |
+| Older `get-teacher-dashboard`, `get-teacher-student` (personal-account) | Also return the saved result record and rule version; layout unchanged (finding 3) |
+| Student pages (files listed in §4) | Rule and readiness sentences from the server's criteria. Course, Progress and practice counts use the required skills, with S07 noted. The result screen and Progress show the saved pass score and groups for I-2 results |
+| Teacher (school) pages | No code change expected (they already read the saved result record) |
 | Production QA scripts | Update any that read the Chapter I rule text or result shape, in the same change |
 
 ## 6. Test plan
@@ -140,30 +178,54 @@ Uses a new legacy Chapter I fixture: ten `PHY7-U01` skills, the Chapter I pools,
   - attempts used, required reviews and unseen-form selection carry across;
   - the three-attempt limit holds across versions.
 - **Audit:** every switch is a new activation row; registry rows cannot be changed.
+- **Carried-forward findings:**
+  - an I-2 pass with S07 at 0/2 is saved with the raw 75% and accepted by the database, while the result record holds 15/18;
+  - school admin aggregates put v1 and I-2 sessions in separate groups;
+  - the personal-account endpoints return the saved result record, and the existing panel shows it;
+  - the dashboard's required counts are 9 under I-2 and 10 under today's rule, with the existing fields unchanged.
 - **Regressions** that fail on today's source for each new behaviour.
 
-### B. Local staging through the real pages
-Uses a legacy Chapter I curriculum added to the staging fixture. Activation and rollback here are local and disposable.
-1. **Ready on the nine, weak on S07:** after the local switch, the student page's next step shows the check available («Պատրաստ եք յուրացման ստուգմանը»); before the switch it does not.
-2. **Open check through activation:** start, switch, finish → today's rule and wording.
-3. **Open check through rollback:** start under I-2, switch back, finish → I-2, with 15/18 deciding and S07 separate.
-4. **Retry after a required review:** under I-2, with unseen questions and S07 absent from targeted review.
-5. **Teacher view:** school teacher row, panel and history; the **Skills tab and support count with practice before and after the switch** (Chapter II's split should not appear); personal-account view; school admin.
+### B. Local staging through the normal student route
+Uses a legacy Chapter I curriculum added to the staging fixture. Activation and rollback are local and disposable; no live activation.
+
+**Main journey: one student, via the normal pages** (sign in → Home → Course → check → Home):
+1. **Before the local switch.** The student is ready on the nine skills and weak on S07. Home does not offer the check. The Course page shows «9/10…» and the locked text «Ստուգումը բացելու համար նախ ամրապնդեք պահանջվող հմտությունները։».
+2. **After the switch.**
+   - Home's next step is «Պատրաստ եք յուրացման ստուգմանը».
+   - The Course page shows «Պատրաստ է ստուգման», the required count 9/9, and S07 with «Չի սահմանափակում ստուգարքի հասանելիությունը».
+   - The ready text is «Ստուգմանը մասնակցելու համար անհրաժեշտ հմտություններն ամրապնդված են։».
+   - The S07 practice recommendation may still appear (decided).
+3. **Start the check from Home and fail it.** The result shows the saved pass score and «Լրացուցիչ վերջնարդյունք» separately.
+4. **A required review blocks the retry.** Home shows the required review. The check page is locked with the review message. A direct start request is refused. Targeted review does not include S07.
+5. **Complete the review through the normal page.** Home now offers «Կրկին փորձել». The retry starts, uses unseen questions, and keeps the attempt number.
+6. **Pass the retry.** It shows «Ստուգարքն անցած է · 15/18 · 83%» while the database fields hold the raw 15/20 = 75%.
+
+**Transition journeys:**
+- **Open check through activation:** start under today's rule, switch, finish → today's rule, wording and raw score.
+- **Open check through rollback:** start under I-2, switch back, finish → I-2, with 15/18 deciding and S07 separate. New checks after rollback get today's rule.
+
+**Other pages:**
+- **School teacher:** row, panel and history, plus the Skills tab and support count with practice before and after the switch. Chapter II's split should not appear.
+- **Personal-account teacher:** existing layout showing the saved pass score and groups.
+- **School admin:** old and I-2 results in separate groups named by rule version.
 
 This container could not start the staging stack, so part B may need to run where Codex ran Chapter II.
 
 ### C. Before any pull request
 `npm test`, the browser suite, the bundle, web-asset and QA-trigger checks; affected production QA scripts updated in the same change.
 
-## 7. Decisions still needed
+## 7. Decisions
 
-1. **Armenian wording:** the two group labels and the sentences in §4.
-2. **The recommendation logic:** whether leaving it unchanged is acceptable (a practice suggestion for S07 can appear while the check is available), or whether to open a separate recommendation-rule change.
+**Decided** (20 November): wording (§4), the S07 recommendation (unchanged), Home and Course readiness on the nine skills, the three findings in §2a.
+
+**Still open:**
+- **Approval of this revision to build in isolation and staging.**
+- **Optional:** whether to align «ստուգում» and «ստուգարք» across the platform later.
 
 ## 8. Effort and risk (my estimates, not measured)
 | Part | Estimate |
 |---|---|
-| Isolated build and tests (§6A) | 2.5–3.5 days |
+| Isolated build and tests (§6A) | 3–4 days (revision 3 adds the school admin, personal-account and Course page changes) |
 | Staging fixture and journeys (§6B) | 1–2 days, where staging runs |
 | Documentation and QA scripts | 0.5–1 day |
 
