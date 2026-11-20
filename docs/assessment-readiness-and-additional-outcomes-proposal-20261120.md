@@ -1,6 +1,6 @@
 # Assessment proposal: hinted answers and readiness; additional outcomes in Chapters I and II — 20 November 2026
 
-**Status:** proposal only. Two decisions for John. Nothing is built, deployed or changed. The current formula, thresholds, three-attempt lifecycle and all recorded results stay as they are. Prepared by Claude Code after Codex's review of the [scoring concerns](teacher-workspace-design-review-20261113.md#appendix-d--class-row-and-student-panel-ready-passed-and-practice-evidence-19-november-2026).
+**Status:** decided for an isolated rehearsal (see the end); not built for production. Two decisions for John. Nothing is built, deployed or changed. The current formula, thresholds, three-attempt lifecycle and all recorded results stay as they are. Prepared by Claude Code after Codex's review of the [scoring concerns](teacher-workspace-design-review-20261113.md#appendix-d--class-row-and-student-panel-ready-passed-and-practice-evidence-19-november-2026).
 
 **How the figures were checked.** "Code" means read in the repository source. "Computed" means calculated from the formula in `supabase/functions/_shared/mastery.ts` with a small script, not run through the live services. Pass rates use a simplified model: every question equally hard, answers independent, no learning between attempts. No real learner data was used; production has too few learners to measure either problem.
 
@@ -99,7 +99,7 @@ What the table shows (interpretation): with the current rules, weak results on a
 **I recommend I-2 and II-2.** They answer exactly the question asked: additional outcomes stay visible and stop blocking. They use the existing, tested policy v2 instead of new engine work, keep the 80% threshold and the 16-question and 20-question forms, and keep John's 6 October choice on the supporting skill S03.
 
 The cost is the slightly higher effective bar (83%) on the remaining questions.
-- The alternative would be to lower the threshold to 77.8% (14/18, 9/12). That changes a threshold, which Codex advised against before classroom evidence.
+- Lowering the threshold would not help as first written here. The engine compares the exact fraction (`100.0*correct/total >= minimumPercent`), so at 77.8% it still requires 15/18 (14/18 is 77.77…%) and 10/12 (9/12 is 75%). Reaching 14/18 would need a threshold of 77.7% or lower; 9/12 would need 75%. *Corrected 20 November after Codex's review.*
 - I would not use I-3: it leaves S07 able to fail a borderline student.
 - II-3 is the right choice only if John also wants supporting skills (S03) outside the pass rule, as in Chapter III. That is a separate decision.
 
@@ -126,3 +126,11 @@ The cost is the slightly higher effective bar (83%) on the remaining questions.
 1. Readiness and hints: **A**, **B** (recommended), **C** or **D**.
 2. Chapter I: **I-1**, **I-2** (recommended) or **I-3**. Chapter II: **II-1**, **II-2** (recommended) or **II-3**.
 3. If I-2 or II-2: accept the 83% effective bar on the remaining questions, or reopen the threshold.
+
+## Decisions recorded — 20 November 2026
+
+John chose **B**, **I-2** and **II-2** as the design direction and kept the **80%** threshold for the first trial, for an **isolated rehearsal only**. Production approval comes after the rehearsal shows how the change treats students who have already started. Specifics:
+- **B:** keep the score formula and the recovery route. On the score route, require at least one correct answer without a hint for that skill. Apply it to readiness and to the early finish that marks a skill ready. A student can still finish a normal practice session while the check stays locked.
+- **I-2:** S07 stays in the Chapter I check and is reported separately; it affects neither readiness nor passing. The pass is 15/18 with at least one correct answer per required skill.
+- **II-2:** S07 and S09 are reported separately and S03 stays in scope. The pass is 10/12 with at least one correct answer per required skill.
+- **Rehearsal order:** Chapter II first (versioned rules). Cases: a new student, a check already open, a student between attempts. Show that the open check finishes under its original rules, and that retries preserve attempts used, required reviews and limits on reusing questions. Then Chapter I separately (older path). Keep the readiness change independently testable.
