@@ -423,4 +423,6 @@ Version 7 and 8 checks: the same 340 renders; 65 (version 7), 69 (version 8) and
 
 **Version 12 checks** (same limits as above): `verify.mjs` 340 renders across 17 screens, all pass; `paths.mjs` passes; the row/panel script now covers 16 cases with Tab and Shift+Tab confinement, personal-teacher layout, the B8 note, the before-label both present and absent, and no 8/10-shaped Chapter II score. All pass, no script errors.
 
+**20 November 2026 — version 12 accepted as the design reference** for the school teacher's class roster, student panel and Skills tab (John, forwarding Codex's re-check of commit `35f9a65`: 340 renders, click paths and 12 independent Chromium cases passed with fictional data). This is a design decision, not owner usability acceptance. **When the school design is built, the entire personal-account view stays as it is today.** Known prototype mismatch, outside this approval: in personal-account mode the Skills tab still shows the school's separate estimates and opens on Chapter II, while the real personal-account view supplies one estimate per skill for Chapter I. The wider teacher screens stay pending until their proposed features are checked against the data HaiEdu actually supplies.
+
 Owner usability acceptance: not given.
