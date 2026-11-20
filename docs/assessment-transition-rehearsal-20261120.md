@@ -4,20 +4,27 @@
 
 | Phase | Decision | State |
 |---|---|---|
-| 1 | II-2 (Chapter II, versioned rules) | **Rehearsed; results below** |
-| 2 | I-2 (Chapter I, older path) | Not started |
+| 1 | II-2 (Chapter II, versioned rules), database level | **Rehearsed; results below** (revised the same day after Codex's review) |
+| 1b | II-2 through the real app in disposable local staging | **Blocked**: see "Phase 1b" |
+| 2 | I-2 (Chapter I, older path) | Read-only investigation done; see "Chapter I"; not built |
 | 3 | B (readiness needs one independent correct answer), testable on its own | Not started |
 
 The assessment code on `main` (`f7f39df`) has not changed since this branch split: `main` added failure reporting, BF-16 counter maintenance and staging tooling, but no assessment migration or function. The rehearsal therefore tests the same assessment code production runs.
 
 ## Phase 1 — Chapter II, II-2
 
-**Test:** `tests/assessment-transition-chapter-ii.test.mjs` (5 tests).
+**Test:** `tests/assessment-transition-chapter-ii.test.mjs` (7 tests).
 
 **Setup.**
 - **Synthetic Chapter II shape:** eight skills (S02–S09), three disjoint 16-question forms, two questions per skill.
 - **Today's rule** as the existing v1 mastery blueprint: 80% with the rounded score (so at least 13/16), at least one correct answer in every skill, readiness on all eight skills.
-- **II-2** as a second mastery blueprint in the **same curriculum release and unit**, reusing the same pool and forms. It uses policy v2:
+- **II-2**, introduced the way the database requires a release to do it (revised after Codex found that the first version edited a learning-model record the real database locks):
+  1. a **new learning-model version** with identical learning settings, whose contracts add the new policies; the existing model record is unchanged (asserted);
+  2. **new versions of all four Chapter II blueprints** in the **same curriculum release and unit**: diagnostic, practice and chapter review with unchanged rules (only the model id and policy version change), and the mastery check with II-2, reusing the same pool and forms;
+  3. each bound with the release binding function `service_bind_assessment_policy`;
+  4. the release unit's **runtime binding switched** to the new model.
+
+  The mastery policy uses v2:
   - delivered skills: all eight;
   - scored and readiness skills: S02, S03, S04, S05, S06, S08;
   - 80% on the exact fraction (10/12);
@@ -34,12 +41,19 @@ The assessment code on `main` (`f7f39df`) has not changed since this branch spli
 | Check already open | Started under today's rule; II-2 activated mid-check. Starting again returns **the same open check** (resumed, still bound to the old blueprint); no second check is created. It finishes **under today's rule**: the same answers that pass II-2 fail (10/16, S07 and S09 at zero), with the v1 result shape. The student then owes a required review. |
 | Between attempts | Attempt 1 failed under today's rule. After activation: attempt 2 is refused until the required review is done. After the review, attempt 2 starts under II-2 as **attempt number 2**, on a **different form**, with **no question from attempt 1**. It fails (6/12): attempts used 2, review required. Attempt 3, after a second review, uses the third form with no question from attempts 1–2, passes under II-2, and leaves 3 attempts used. |
 | Attempt limit | Three failed attempts across the change (one old, two new) give the final state with 3 attempts used. With a fourth unused form available, a further start is refused by the limit itself (`mastery_check_not_allowed`). |
+| Review open at activation | A required review started before the change can be finished afterwards, satisfies the requirement, and the retry starts under II-2 as attempt 2 with no question from attempt 1. |
+| Procedure | After the runtime switch, an **old-version** blueprint cannot start a new session (`assessment_policy_runtime_incompatible`): a student owing a review could not start it unless the review blueprint is re-versioned too. The new versions work. The diagnostic completed before the change still counts (no second diagnostic; practice allowed). |
+
+**What the procedure findings mean for a real release (interpretation):**
+- A rule change on one mode of a chapter is **a release of the whole chapter unit**: new model version, four new blueprint versions, four bindings and the runtime switch. If they are not activated together, students can be blocked: for example, a required review that cannot start.
+- Sessions already open keep their original binding and finish normally, because the runtime check runs only when a session is created.
+- The whole set should be prepared inactive, rehearsed, and switched in one transaction. That production step needs John's approval.
 
 **Observations (no change made):**
 1. **The refusal reason when all forms are used.** With exactly three forms and all three used, a further start is refused as `governed_mastery_forms_exhausted`, because the form check runs before the attempt-limit check. Today's system without any rule change gives the same reason (checked in the same fixture). The student is refused either way.
 2. **Mixed history.** A student's history can now hold a v1 result (no groups) and later v2 results (with groups). The shared result renderer already handles both shapes; this phase did not exercise the teacher or student pages.
 
-**Not yet rehearsed in Phase 1:**
+**Not yet rehearsed in Phase 1 (moved to Phase 1b):**
 - **Newest-version selection.** Which blueprint a new session gets is decided in the server layer (`governed-learning-runtime.mjs`: highest `version_number` among published pilot/production blueprints for the release, unit and mode; a tie is refused). The SQL rehearsal launches each blueprint explicitly. The PGlite fixture has no `version_number` or `published_at` columns, so the selection is verified by reading the code only. The local staging stack on `main` (BF-21) may be the right place to exercise it end to end.
 - **Student and teacher pages** after the change (readiness display, mixed-history rendering).
 - **The production procedure itself.** Inserting and publishing the new blueprint, binding it, form-selection binding, and release-governance records. Each is a production write needing John's approval.
@@ -54,3 +68,48 @@ node --test tests/assessment-transition-chapter-ii.test.mjs
 node --test tests/assessment-v2.test.mjs tests/assessment-transition-chapter-ii.test.mjs tests/governed-learning-runtime.test.mjs
 ```
 Result on 20 November: 50 of 50 pass. The full `npm test` was not run for this phase; only a test file was added.
+
+## Phase 1b — through the real app in local staging (blocked)
+
+**Asked:** run II-2 in the disposable local staging setup from `main` (BF-21): the normal student page selects II-2 by itself; an open check finishes under its original rule; a retry keeps its required review and gets an unseen form; the student and teacher pages show the old 13/16 and new 10/12 results with the additional outcomes separate; save the tested publication steps.
+
+**What was done (20 November):**
+- A clean working copy of `main` (`f7f39df`) was prepared in the session's scratchpad. Its JavaScript and pinned Python test requirements are installed.
+- A Docker daemon was started in this container.
+- Network:
+  - John approved a personal environment "HaiEdu" for this session. Its allowed hosts are Amazon's public-registry CDN (`d2glxqk2uabbnd.cloudfront.net`), `dl-cdn.alpinelinux.org` and `codeload.github.com`.
+  - PostgREST and storage downloaded from Amazon's registry.
+  - The edge runtime was refused there with "Data limit exceeded", Amazon's anonymous-download quota. The identical image (same content digest, `sha256:362e9177…`) was taken from Docker Hub instead and labelled locally with the name the stack expects. This was a content-identical substitute for a quota refusal, not a bypass of the network policy.
+  - GoTrue and Mailpit came from Docker Hub.
+- The staging database image (PostgreSQL 17.6 with pg_cron 1.6.7) cannot be built by the fixture's own command here, because containers have no route out. It was built by hand through the proxy, as the proxy README describes (`--network host` with explicit proxy settings).
+
+**Blocker.** That build downloads the pg_cron source from `codeload.github.com/citusdata/pg_cron`. This session's GitHub access allows only attached repositories, and the request to attach `citusdata/pg_cron` (read-only) was refused by the session's permission check. The source was **not** fetched from any other place, because that would get around the refusal. Until John allows it (or chooses another route), the staging stack cannot start and Phase 1b has not run. Nothing on production was touched.
+
+**Prepared for Phase 1b.** The database-level rehearsal above now follows the procedure the staging journey must reproduce: new model version, four new blueprint versions, bindings and runtime switch.
+
+## Chapter I — read-only investigation (decision I-2)
+
+**Facts (code and records):**
+- Chapter I runs on the registered **legacy adapter** `legacy-physics7-u01-v1`, not on the versioned (governed) path. Its pass rule is hard-coded in `supabase/functions/submit-mastery-answer/index.ts`:
+  - `PASS_PERCENT = 80` on the rounded percentage of all answered questions;
+  - `MIN_CORRECT_PER_SKILL = 1` for every skill delivered.
+- Its readiness rule is hard-coded in `get-mastery-check-status`, `start-learning-session` and `get-student-dashboard` and covers all ten skills. The adapter has no policy versions, bindings or reporting groups.
+- **Chapter I's checks contain numeric and quantity questions** ([BF-09 record](qa/numeric-answer-format.md): "The active legacy Physics 7 Chapter I adapter serves numeric and quantity items in Practice, Chapter Review, Diagnostic and Mastery Check").
+- The versioned path grades single choice and true/false (policy v1 and v2), and typed fields, matching and ordering (v3), but **not numeric or quantity** (`assessment-policy.mjs`; [API contract](api-contract.md)).
+- The chapter state (attempts used, required reviews) is shared by both paths and keyed by student, release and unit.
+
+**Options for using versioned scoring in Chapter I, from smallest to largest:**
+
+| Option | What it takes | Preserves results, open checks, retries? | Risks |
+|---|---|---|---|
+| **A. Rule version stamped inside the legacy adapter** | When a check **starts** after activation, record a rule version (for example `phy7-u01-i2-v1`) in the session. When a check **finishes**, score by the recorded version: unstamped checks keep today's rule; stamped checks pass on S01–S06 and S08–S10 (15/18, at least one correct in each) and save S07 separately in the same result format Chapter III uses, so the existing pages show groups. Readiness after activation excludes S07. | Yes, by construction: history is never recomputed, open checks are unstamped, and the shared chapter state is untouched. Must be shown in the same three cases as Chapter II. | Adds Chapter I-specific logic to an adapter meant to be retired. The "version" is a stamp, not a governed binding, so it has no immutable policy record unless one is added. Several Edge Functions need coordinated deployment. |
+| **B. Move Chapter I to the versioned path** | A numeric and quantity response capability on the versioned path (a shared core change), Chapter I blueprints, forms and bindings in its existing release, the student pages switched from the legacy pages, and legacy open sessions left to finish on the adapter. | Possible: the chapter state is shared. A larger transition surface. | The largest change: core grading, every Chapter I page, and both learning paths in parallel during the transition. |
+| **C. Defer I-2** | Keep today's Chapter I rule until B exists. | Nothing changes. | S07 keeps blocking passes in the meantime. |
+
+**Assessment (interpretation).**
+- **A is the smallest safe way.** It changes only the Chapter I adapter, and the stamp protects open checks and history by construction.
+- It should be built only after Phase 1b has passed. Phase 1b exercises the same pages and result display that A would rely on.
+- B is the right long-term direction, but it is a separate core decision.
+
+**Readiness rule B** stays separate: nothing in this rehearsal changes readiness. Chapter II's readiness changes here only because II-2 narrows the readiness skill set.
+
