@@ -1,0 +1,2260 @@
+{
+  "scope": "Isolated signed-out Home, local gzip HTTP server; browser cache, not WAN/CDN latency",
+  "buildId": "eb0dc36f5b23b936041a7482208fe81684839795d348408a28e0426330701d4b",
+  "measures": {
+    "source_cold": {
+      "requests": 63,
+      "responseBodyBytes": 269821,
+      "requestsByPath": [
+        {
+          "path": "/index.html",
+          "status": 200,
+          "bytes": 4441
+        },
+        {
+          "path": "/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+          "status": 200,
+          "bytes": 64600
+        },
+        {
+          "path": "/tokens.css",
+          "status": 200,
+          "bytes": 640
+        },
+        {
+          "path": "/base.css",
+          "status": 200,
+          "bytes": 760
+        },
+        {
+          "path": "/styles.css",
+          "status": 200,
+          "bytes": 2935
+        },
+        {
+          "path": "/ux.css",
+          "status": 200,
+          "bytes": 2334
+        },
+        {
+          "path": "/components.css",
+          "status": 200,
+          "bytes": 1745
+        },
+        {
+          "path": "/student-shell.css",
+          "status": 200,
+          "bytes": 4305
+        },
+        {
+          "path": "/home.css",
+          "status": 200,
+          "bytes": 953
+        },
+        {
+          "path": "/multi-subject.css",
+          "status": 200,
+          "bytes": 1370
+        },
+        {
+          "path": "/role-layout.css",
+          "status": 200,
+          "bytes": 3350
+        },
+        {
+          "path": "/resource-assignments.css",
+          "status": 200,
+          "bytes": 1374
+        },
+        {
+          "path": "/student-forest.css",
+          "status": 200,
+          "bytes": 8454
+        },
+        {
+          "path": "/writing-assignments.css",
+          "status": 200,
+          "bytes": 1669
+        },
+        {
+          "path": "/role-router.js",
+          "status": 200,
+          "bytes": 1434
+        },
+        {
+          "path": "/home-class.js",
+          "status": 200,
+          "bytes": 1743
+        },
+        {
+          "path": "/app.js",
+          "status": 200,
+          "bytes": 9031
+        },
+        {
+          "path": "/session-watchdog.js",
+          "status": 200,
+          "bytes": 440
+        },
+        {
+          "path": "/ux.js",
+          "status": 200,
+          "bytes": 5802
+        },
+        {
+          "path": "/student-shell.js",
+          "status": 200,
+          "bytes": 3007
+        },
+        {
+          "path": "/staff-forest.css",
+          "status": 200,
+          "bytes": 3172
+        },
+        {
+          "path": "/forest-tokens.css",
+          "status": 200,
+          "bytes": 499
+        },
+        {
+          "path": "/student-surfaces.css",
+          "status": 200,
+          "bytes": 3583
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "status": 200,
+          "bytes": 502
+        },
+        {
+          "path": "/account-signout.mjs",
+          "status": 200,
+          "bytes": 2671
+        },
+        {
+          "path": "/supabase-browser.bundle.mjs",
+          "status": 200,
+          "bytes": 58572
+        },
+        {
+          "path": "/account-roles.js",
+          "status": 200,
+          "bytes": 386
+        },
+        {
+          "path": "/config.js",
+          "status": 200,
+          "bytes": 672
+        },
+        {
+          "path": "/rate-budget-feedback.mjs",
+          "status": 200,
+          "bytes": 1098
+        },
+        {
+          "path": "/learner-access.mjs",
+          "status": 200,
+          "bytes": 1225
+        },
+        {
+          "path": "/navigation-focus.mjs",
+          "status": 200,
+          "bytes": 388
+        },
+        {
+          "path": "/student-visuals.mjs",
+          "status": 200,
+          "bytes": 1033
+        },
+        {
+          "path": "/student-signout.mjs",
+          "status": 200,
+          "bytes": 385
+        },
+        {
+          "path": "/student-mobile-navigation.mjs",
+          "status": 200,
+          "bytes": 1811
+        },
+        {
+          "path": "/text-safety.mjs",
+          "status": 200,
+          "bytes": 670
+        },
+        {
+          "path": "/remediation.js",
+          "status": 200,
+          "bytes": 2383
+        },
+        {
+          "path": "/answer-response-recovery.mjs",
+          "status": 200,
+          "bytes": 3109
+        },
+        {
+          "path": "/keyboard-focus.mjs",
+          "status": 200,
+          "bytes": 1394
+        },
+        {
+          "path": "/remediation-request.mjs",
+          "status": 200,
+          "bytes": 510
+        },
+        {
+          "path": "/remediation.css",
+          "status": 200,
+          "bytes": 336
+        },
+        {
+          "path": "/responsive-qa.css",
+          "status": 200,
+          "bytes": 989
+        },
+        {
+          "path": "/student-courses.js",
+          "status": 200,
+          "bytes": 1832
+        },
+        {
+          "path": "/learning-navigation.mjs",
+          "status": 200,
+          "bytes": 1528
+        },
+        {
+          "path": "/resource-navigation.mjs",
+          "status": 200,
+          "bytes": 147
+        },
+        {
+          "path": "/multi-subject-home.js",
+          "status": 200,
+          "bytes": 6561
+        },
+        {
+          "path": "/course-gate.js",
+          "status": 200,
+          "bytes": 772
+        },
+        {
+          "path": "/student-teacher-tasks.mjs",
+          "status": 200,
+          "bytes": 6361
+        },
+        {
+          "path": "/writing-assignments.mjs",
+          "status": 200,
+          "bytes": 7787
+        },
+        {
+          "path": "/subject-visuals.mjs",
+          "status": 200,
+          "bytes": 1437
+        },
+        {
+          "path": "/student-home-model.mjs",
+          "status": 200,
+          "bytes": 2544
+        },
+        {
+          "path": "/resource-assignments.mjs",
+          "status": 200,
+          "bytes": 7624
+        },
+        {
+          "path": "/student-work-hub.mjs",
+          "status": 200,
+          "bytes": 1988
+        },
+        {
+          "path": "/student-work-list.mjs",
+          "status": 200,
+          "bytes": 4840
+        },
+        {
+          "path": "/teacher-task-text.mjs",
+          "status": 200,
+          "bytes": 1546
+        },
+        {
+          "path": "/student-teacher-task-client.mjs",
+          "status": 200,
+          "bytes": 1037
+        },
+        {
+          "path": "/learning-extensions.mjs",
+          "status": 200,
+          "bytes": 480
+        },
+        {
+          "path": "/teacher-task-draft-workspace.mjs",
+          "status": 200,
+          "bytes": 3378
+        },
+        {
+          "path": "/resource-learner-view.mjs",
+          "status": 200,
+          "bytes": 1853
+        },
+        {
+          "path": "/teacher-task-download.mjs",
+          "status": 200,
+          "bytes": 365
+        },
+        {
+          "path": "/teacher-task-send.mjs",
+          "status": 200,
+          "bytes": 4141
+        },
+        {
+          "path": "/teacher-task-editor.mjs",
+          "status": 200,
+          "bytes": 6213
+        },
+        {
+          "path": "/teacher-task-form.mjs",
+          "status": 200,
+          "bytes": 634
+        },
+        {
+          "path": "/teacher-task-source-client.mjs",
+          "status": 200,
+          "bytes": 978
+        }
+      ],
+      "browserResources": [
+        {
+          "path": "/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+          "transferBytes": 64900,
+          "encodedBytes": 64600,
+          "durationMs": 8.300000000046566
+        },
+        {
+          "path": "/tokens.css",
+          "transferBytes": 940,
+          "encodedBytes": 640,
+          "durationMs": 8.5
+        },
+        {
+          "path": "/base.css",
+          "transferBytes": 1060,
+          "encodedBytes": 760,
+          "durationMs": 8.800000000046566
+        },
+        {
+          "path": "/styles.css",
+          "transferBytes": 3235,
+          "encodedBytes": 2935,
+          "durationMs": 9.399999999906868
+        },
+        {
+          "path": "/ux.css",
+          "transferBytes": 2634,
+          "encodedBytes": 2334,
+          "durationMs": 9.699999999953434
+        },
+        {
+          "path": "/components.css",
+          "transferBytes": 2045,
+          "encodedBytes": 1745,
+          "durationMs": 10.299999999813735
+        },
+        {
+          "path": "/student-shell.css",
+          "transferBytes": 4605,
+          "encodedBytes": 4305,
+          "durationMs": 10.800000000046566
+        },
+        {
+          "path": "/home.css",
+          "transferBytes": 1253,
+          "encodedBytes": 953,
+          "durationMs": 19.5
+        },
+        {
+          "path": "/multi-subject.css",
+          "transferBytes": 1670,
+          "encodedBytes": 1370,
+          "durationMs": 20.199999999953434
+        },
+        {
+          "path": "/role-layout.css",
+          "transferBytes": 3650,
+          "encodedBytes": 3350,
+          "durationMs": 20.5999999998603
+        },
+        {
+          "path": "/student-forest.css",
+          "transferBytes": 8754,
+          "encodedBytes": 8454,
+          "durationMs": 21.399999999906868
+        },
+        {
+          "path": "/resource-assignments.css",
+          "transferBytes": 1674,
+          "encodedBytes": 1374,
+          "durationMs": 21.199999999953434
+        },
+        {
+          "path": "/writing-assignments.css",
+          "transferBytes": 1969,
+          "encodedBytes": 1669,
+          "durationMs": 21.100000000093132
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "transferBytes": 802,
+          "encodedBytes": 502,
+          "durationMs": 31.5
+        },
+        {
+          "path": "/role-router.js",
+          "transferBytes": 1734,
+          "encodedBytes": 1434,
+          "durationMs": 26.699999999953434
+        },
+        {
+          "path": "/app.js",
+          "transferBytes": 9331,
+          "encodedBytes": 9031,
+          "durationMs": 27.5999999998603
+        },
+        {
+          "path": "/home-class.js",
+          "transferBytes": 2043,
+          "encodedBytes": 1743,
+          "durationMs": 26.800000000046566
+        },
+        {
+          "path": "/session-watchdog.js",
+          "transferBytes": 740,
+          "encodedBytes": 440,
+          "durationMs": 27
+        },
+        {
+          "path": "/student-shell.js",
+          "transferBytes": 3307,
+          "encodedBytes": 3007,
+          "durationMs": 27.0999999998603
+        },
+        {
+          "path": "/ux.js",
+          "transferBytes": 6102,
+          "encodedBytes": 5802,
+          "durationMs": 27.5
+        },
+        {
+          "path": "/staff-forest.css",
+          "transferBytes": 3472,
+          "encodedBytes": 3172,
+          "durationMs": 8.5
+        },
+        {
+          "path": "/forest-tokens.css",
+          "transferBytes": 799,
+          "encodedBytes": 499,
+          "durationMs": 7.5
+        },
+        {
+          "path": "/student-surfaces.css",
+          "transferBytes": 3883,
+          "encodedBytes": 3583,
+          "durationMs": 8
+        },
+        {
+          "path": "/account-signout.mjs",
+          "transferBytes": 2971,
+          "encodedBytes": 2671,
+          "durationMs": 5.900000000139698
+        },
+        {
+          "path": "/supabase-browser.bundle.mjs",
+          "transferBytes": 58872,
+          "encodedBytes": 58572,
+          "durationMs": 15.200000000186265
+        },
+        {
+          "path": "/account-roles.js",
+          "transferBytes": 686,
+          "encodedBytes": 386,
+          "durationMs": 12.300000000046566
+        },
+        {
+          "path": "/config.js",
+          "transferBytes": 972,
+          "encodedBytes": 672,
+          "durationMs": 12.899999999906868
+        },
+        {
+          "path": "/rate-budget-feedback.mjs",
+          "transferBytes": 1398,
+          "encodedBytes": 1098,
+          "durationMs": 12.600000000093132
+        },
+        {
+          "path": "/learner-access.mjs",
+          "transferBytes": 1525,
+          "encodedBytes": 1225,
+          "durationMs": 12.600000000093132
+        },
+        {
+          "path": "/navigation-focus.mjs",
+          "transferBytes": 688,
+          "encodedBytes": 388,
+          "durationMs": 12.399999999906868
+        },
+        {
+          "path": "/student-visuals.mjs",
+          "transferBytes": 1333,
+          "encodedBytes": 1033,
+          "durationMs": 14.5
+        },
+        {
+          "path": "/student-signout.mjs",
+          "transferBytes": 685,
+          "encodedBytes": 385,
+          "durationMs": 16.899999999906868
+        },
+        {
+          "path": "/student-mobile-navigation.mjs",
+          "transferBytes": 2111,
+          "encodedBytes": 1811,
+          "durationMs": 17.300000000046566
+        },
+        {
+          "path": "/text-safety.mjs",
+          "transferBytes": 970,
+          "encodedBytes": 670,
+          "durationMs": 17.899999999906868
+        },
+        {
+          "path": "/remediation.js",
+          "transferBytes": 2683,
+          "encodedBytes": 2383,
+          "durationMs": 18.399999999906868
+        },
+        {
+          "path": "/answer-response-recovery.mjs",
+          "transferBytes": 3409,
+          "encodedBytes": 3109,
+          "durationMs": 18.399999999906868
+        },
+        {
+          "path": "/keyboard-focus.mjs",
+          "transferBytes": 1694,
+          "encodedBytes": 1394,
+          "durationMs": 18.5999999998603
+        },
+        {
+          "path": "/remediation-request.mjs",
+          "transferBytes": 810,
+          "encodedBytes": 510,
+          "durationMs": 1.5
+        },
+        {
+          "path": "/remediation.css",
+          "transferBytes": 636,
+          "encodedBytes": 336,
+          "durationMs": 2.5
+        },
+        {
+          "path": "/responsive-qa.css",
+          "transferBytes": 1289,
+          "encodedBytes": 989,
+          "durationMs": 1.5999999998603016
+        },
+        {
+          "path": "/student-courses.js",
+          "transferBytes": 2132,
+          "encodedBytes": 1832,
+          "durationMs": 1.5
+        },
+        {
+          "path": "/resource-navigation.mjs",
+          "transferBytes": 447,
+          "encodedBytes": 147,
+          "durationMs": 3.9000000001396984
+        },
+        {
+          "path": "/learning-navigation.mjs",
+          "transferBytes": 1828,
+          "encodedBytes": 1528,
+          "durationMs": 3.7000000001862645
+        },
+        {
+          "path": "/multi-subject-home.js",
+          "transferBytes": 6861,
+          "encodedBytes": 6561,
+          "durationMs": 4.599999999860302
+        },
+        {
+          "path": "/course-gate.js",
+          "transferBytes": 1072,
+          "encodedBytes": 772,
+          "durationMs": 3.7000000001862645
+        },
+        {
+          "path": "/student-teacher-tasks.mjs",
+          "transferBytes": 6661,
+          "encodedBytes": 6361,
+          "durationMs": 5.5
+        },
+        {
+          "path": "/subject-visuals.mjs",
+          "transferBytes": 1737,
+          "encodedBytes": 1437,
+          "durationMs": 7.5
+        },
+        {
+          "path": "/student-home-model.mjs",
+          "transferBytes": 2844,
+          "encodedBytes": 2544,
+          "durationMs": 7.600000000093132
+        },
+        {
+          "path": "/writing-assignments.mjs",
+          "transferBytes": 8087,
+          "encodedBytes": 7787,
+          "durationMs": 7.899999999906868
+        },
+        {
+          "path": "/resource-assignments.mjs",
+          "transferBytes": 7924,
+          "encodedBytes": 7624,
+          "durationMs": 8.100000000093132
+        },
+        {
+          "path": "/student-work-hub.mjs",
+          "transferBytes": 2288,
+          "encodedBytes": 1988,
+          "durationMs": 7.599999999860302
+        },
+        {
+          "path": "/student-work-list.mjs",
+          "transferBytes": 5140,
+          "encodedBytes": 4840,
+          "durationMs": 12.199999999953434
+        },
+        {
+          "path": "/teacher-task-text.mjs",
+          "transferBytes": 1846,
+          "encodedBytes": 1546,
+          "durationMs": 5.7000000001862645
+        },
+        {
+          "path": "/student-teacher-task-client.mjs",
+          "transferBytes": 1337,
+          "encodedBytes": 1037,
+          "durationMs": 5.599999999860302
+        },
+        {
+          "path": "/learning-extensions.mjs",
+          "transferBytes": 780,
+          "encodedBytes": 480,
+          "durationMs": 6.399999999906868
+        },
+        {
+          "path": "/teacher-task-draft-workspace.mjs",
+          "transferBytes": 3678,
+          "encodedBytes": 3378,
+          "durationMs": 5.800000000046566
+        },
+        {
+          "path": "/resource-learner-view.mjs",
+          "transferBytes": 2153,
+          "encodedBytes": 1853,
+          "durationMs": 5.800000000046566
+        },
+        {
+          "path": "/teacher-task-download.mjs",
+          "transferBytes": 665,
+          "encodedBytes": 365,
+          "durationMs": 4
+        },
+        {
+          "path": "/teacher-task-send.mjs",
+          "transferBytes": 4441,
+          "encodedBytes": 4141,
+          "durationMs": 1.7999999998137355
+        },
+        {
+          "path": "/teacher-task-editor.mjs",
+          "transferBytes": 6513,
+          "encodedBytes": 6213,
+          "durationMs": 2.199999999953434
+        },
+        {
+          "path": "/teacher-task-form.mjs",
+          "transferBytes": 934,
+          "encodedBytes": 634,
+          "durationMs": 1.8999999999068677
+        },
+        {
+          "path": "/teacher-task-source-client.mjs",
+          "transferBytes": 1278,
+          "encodedBytes": 978,
+          "durationMs": 1.8999999999068677
+        }
+      ]
+    },
+    "source_warm": {
+      "requests": 63,
+      "responseBodyBytes": 0,
+      "requestsByPath": [
+        {
+          "path": "/index.html",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/tokens.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/base.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/styles.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/ux.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/components.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/home.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-shell.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/multi-subject.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/role-layout.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-forest.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/resource-assignments.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/writing-assignments.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/role-router.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/app.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/home-class.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/session-watchdog.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/staff-forest.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/forest-tokens.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-surfaces.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/ux.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-shell.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/account-signout.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/config.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/supabase-browser.bundle.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/account-roles.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/rate-budget-feedback.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/text-safety.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/remediation.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/learner-access.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/answer-response-recovery.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/keyboard-focus.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-signout.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/navigation-focus.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-visuals.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-mobile-navigation.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/remediation-request.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/remediation.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/responsive-qa.css",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-courses.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/learning-navigation.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/resource-navigation.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/multi-subject-home.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/course-gate.js",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-teacher-tasks.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/writing-assignments.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/subject-visuals.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-home-model.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/resource-assignments.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-work-hub.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-work-list.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-text.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/student-teacher-task-client.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-draft-workspace.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/learning-extensions.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/resource-learner-view.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-download.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-send.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-editor.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-source-client.mjs",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/teacher-task-form.mjs",
+          "status": 304,
+          "bytes": 0
+        }
+      ],
+      "browserResources": [
+        {
+          "path": "/assets/fonts/noto-sans-armenian-ui-ded672ae8d54.woff2",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.2000000001862645
+        },
+        {
+          "path": "/tokens.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 3
+        },
+        {
+          "path": "/base.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 3.6000000000931323
+        },
+        {
+          "path": "/styles.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 4.600000000093132
+        },
+        {
+          "path": "/ux.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 4.800000000046566
+        },
+        {
+          "path": "/components.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.199999999953434
+        },
+        {
+          "path": "/home.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.599999999860302
+        },
+        {
+          "path": "/student-shell.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.099999999860302
+        },
+        {
+          "path": "/multi-subject.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.399999999906868
+        },
+        {
+          "path": "/role-layout.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.700000000186265
+        },
+        {
+          "path": "/student-forest.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 10.200000000186265
+        },
+        {
+          "path": "/resource-assignments.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 14.600000000093132
+        },
+        {
+          "path": "/writing-assignments.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 15.100000000093132
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 33.39999999990687
+        },
+        {
+          "path": "/role-router.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 15.399999999906868
+        },
+        {
+          "path": "/app.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 15.699999999953434
+        },
+        {
+          "path": "/home-class.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 15.399999999906868
+        },
+        {
+          "path": "/session-watchdog.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 15.800000000046566
+        },
+        {
+          "path": "/ux.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 20.9000000001397
+        },
+        {
+          "path": "/student-shell.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 21.200000000186265
+        },
+        {
+          "path": "/staff-forest.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 10.5
+        },
+        {
+          "path": "/forest-tokens.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 10.400000000139698
+        },
+        {
+          "path": "/student-surfaces.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 10.599999999860302
+        },
+        {
+          "path": "/account-signout.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 6.100000000093132
+        },
+        {
+          "path": "/config.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8
+        },
+        {
+          "path": "/supabase-browser.bundle.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.399999999906868
+        },
+        {
+          "path": "/account-roles.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.800000000046566
+        },
+        {
+          "path": "/rate-budget-feedback.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9
+        },
+        {
+          "path": "/text-safety.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.300000000046566
+        },
+        {
+          "path": "/remediation.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.599999999860302
+        },
+        {
+          "path": "/learner-access.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 11
+        },
+        {
+          "path": "/answer-response-recovery.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 11.700000000186265
+        },
+        {
+          "path": "/keyboard-focus.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 12.200000000186265
+        },
+        {
+          "path": "/student-signout.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 12.600000000093132
+        },
+        {
+          "path": "/navigation-focus.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 6.2999999998137355
+        },
+        {
+          "path": "/student-visuals.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 6.599999999860302
+        },
+        {
+          "path": "/student-mobile-navigation.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.399999999906868
+        },
+        {
+          "path": "/remediation-request.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.699999999953434
+        },
+        {
+          "path": "/remediation.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.3000000000465661
+        },
+        {
+          "path": "/responsive-qa.css",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.6999999999534339
+        },
+        {
+          "path": "/student-courses.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.3000000000465661
+        },
+        {
+          "path": "/learning-navigation.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.6999999999534339
+        },
+        {
+          "path": "/resource-navigation.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.0999999998603016
+        },
+        {
+          "path": "/multi-subject-home.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.8000000000465661
+        },
+        {
+          "path": "/course-gate.js",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.3999999999068677
+        },
+        {
+          "path": "/student-teacher-tasks.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 7.600000000093132
+        },
+        {
+          "path": "/writing-assignments.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8
+        },
+        {
+          "path": "/subject-visuals.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.5
+        },
+        {
+          "path": "/student-home-model.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 8.899999999906868
+        },
+        {
+          "path": "/resource-assignments.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.200000000186265
+        },
+        {
+          "path": "/student-work-hub.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 9.700000000186265
+        },
+        {
+          "path": "/student-work-list.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 12
+        },
+        {
+          "path": "/teacher-task-text.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 3.800000000046566
+        },
+        {
+          "path": "/student-teacher-task-client.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 4.300000000046566
+        },
+        {
+          "path": "/teacher-task-draft-workspace.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 4.599999999860302
+        },
+        {
+          "path": "/learning-extensions.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 3.4000000001396984
+        },
+        {
+          "path": "/resource-learner-view.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 4.199999999953434
+        },
+        {
+          "path": "/teacher-task-download.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.199999999953434
+        },
+        {
+          "path": "/teacher-task-send.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.6000000000931323
+        },
+        {
+          "path": "/teacher-task-editor.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 3
+        },
+        {
+          "path": "/teacher-task-source-client.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 1.6999999999534339
+        },
+        {
+          "path": "/teacher-task-form.mjs",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.1000000000931323
+        }
+      ]
+    },
+    "compiled_cold": {
+      "requests": 50,
+      "responseBodyBytes": 234560,
+      "requestsByPath": [
+        {
+          "path": "/index.html",
+          "status": 200,
+          "bytes": 4722
+        },
+        {
+          "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+          "status": 200,
+          "bytes": 64600
+        },
+        {
+          "path": "/_assets/tokens-CRMQSGAY.css",
+          "status": 200,
+          "bytes": 557
+        },
+        {
+          "path": "/_assets/base-QRMLSLIF.css",
+          "status": 200,
+          "bytes": 642
+        },
+        {
+          "path": "/_assets/styles-T4TKJNSY.css",
+          "status": 200,
+          "bytes": 2531
+        },
+        {
+          "path": "/_assets/ux-FFXEA6D5.css",
+          "status": 200,
+          "bytes": 1796
+        },
+        {
+          "path": "/_assets/components-FKVPVA6X.css",
+          "status": 200,
+          "bytes": 1485
+        },
+        {
+          "path": "/_assets/student-shell-OK3LGJPW.css",
+          "status": 200,
+          "bytes": 3488
+        },
+        {
+          "path": "/_assets/home-VCXJ3AB6.css",
+          "status": 200,
+          "bytes": 843
+        },
+        {
+          "path": "/_assets/multi-subject-2LCRVJW7.css",
+          "status": 200,
+          "bytes": 1228
+        },
+        {
+          "path": "/_assets/role-layout-KJKKZJRJ.css",
+          "status": 200,
+          "bytes": 5217
+        },
+        {
+          "path": "/_assets/student-forest-6Y5DLWUS.css",
+          "status": 200,
+          "bytes": 8768
+        },
+        {
+          "path": "/_assets/resource-assignments-P2CQULLK.css",
+          "status": 200,
+          "bytes": 1265
+        },
+        {
+          "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+          "status": 200,
+          "bytes": 1453
+        },
+        {
+          "path": "/_assets/role-router-3RD4Z2XV.js",
+          "status": 200,
+          "bytes": 153
+        },
+        {
+          "path": "/_assets/app-47MD7AEK.js",
+          "status": 200,
+          "bytes": 7396
+        },
+        {
+          "path": "/_assets/home-class-SCMCNZJA.js",
+          "status": 200,
+          "bytes": 1487
+        },
+        {
+          "path": "/_assets/session-watchdog-BKUEKGDI.js",
+          "status": 200,
+          "bytes": 357
+        },
+        {
+          "path": "/_assets/ux-4ZR7CTZW.js",
+          "status": 200,
+          "bytes": 4376
+        },
+        {
+          "path": "/_assets/student-shell-OBWBVRZD.js",
+          "status": 200,
+          "bytes": 3447
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "status": 200,
+          "bytes": 502
+        },
+        {
+          "path": "/_assets/shared-UVHAC5IJ.js",
+          "status": 200,
+          "bytes": 289
+        },
+        {
+          "path": "/_assets/shared-YSRRNOOY.js",
+          "status": 200,
+          "bytes": 984
+        },
+        {
+          "path": "/_assets/shared-LELF3NI6.js",
+          "status": 200,
+          "bytes": 58502
+        },
+        {
+          "path": "/_assets/shared-F6UBGUSM.js",
+          "status": 200,
+          "bytes": 2039
+        },
+        {
+          "path": "/_assets/shared-OXSWS2H5.js",
+          "status": 200,
+          "bytes": 538
+        },
+        {
+          "path": "/_assets/shared-226WBVLT.js",
+          "status": 200,
+          "bytes": 334
+        },
+        {
+          "path": "/_assets/shared-7I2HJAYK.js",
+          "status": 200,
+          "bytes": 1842
+        },
+        {
+          "path": "/_assets/shared-BJI3GVCM.js",
+          "status": 200,
+          "bytes": 865
+        },
+        {
+          "path": "/_assets/shared-ZVRXT63F.js",
+          "status": 200,
+          "bytes": 407
+        },
+        {
+          "path": "/_assets/shared-WJQGUOWE.js",
+          "status": 200,
+          "bytes": 2434
+        },
+        {
+          "path": "/_assets/shared-LU2M5S7W.js",
+          "status": 200,
+          "bytes": 971
+        },
+        {
+          "path": "/_assets/shared-Q6S2FGUP.js",
+          "status": 200,
+          "bytes": 449
+        },
+        {
+          "path": "/_assets/shared-RPW3QJHQ.js",
+          "status": 200,
+          "bytes": 697
+        },
+        {
+          "path": "/_assets/shared-J5OAIOL3.js",
+          "status": 200,
+          "bytes": 243
+        },
+        {
+          "path": "/_assets/shared-2C5QJHFW.js",
+          "status": 200,
+          "bytes": 604
+        },
+        {
+          "path": "/_assets/remediation-ZO3BPHJR.css",
+          "status": 200,
+          "bytes": 306
+        },
+        {
+          "path": "/_assets/responsive-qa-QX32ARRV.css",
+          "status": 200,
+          "bytes": 647
+        },
+        {
+          "path": "/_assets/shared-JJJRFWJI.js",
+          "status": 200,
+          "bytes": 1486
+        },
+        {
+          "path": "/_assets/shared-CXD25HK7.js",
+          "status": 200,
+          "bytes": 144
+        },
+        {
+          "path": "/_assets/shared-L4QVY2LH.js",
+          "status": 200,
+          "bytes": 1161
+        },
+        {
+          "path": "/_assets/shared-MA3SZO6L.js",
+          "status": 200,
+          "bytes": 14605
+        },
+        {
+          "path": "/_assets/shared-YCXYDXD3.js",
+          "status": 200,
+          "bytes": 620
+        },
+        {
+          "path": "/_assets/shared-OZKO6444.js",
+          "status": 200,
+          "bytes": 243
+        },
+        {
+          "path": "/_assets/shared-STQWA2KW.js",
+          "status": 200,
+          "bytes": 15874
+        },
+        {
+          "path": "/_assets/shared-5H7T6EYT.js",
+          "status": 200,
+          "bytes": 1077
+        },
+        {
+          "path": "/_assets/shared-EBL74XEP.js",
+          "status": 200,
+          "bytes": 8037
+        },
+        {
+          "path": "/_assets/shared-HMMDDP6B.js",
+          "status": 200,
+          "bytes": 1265
+        },
+        {
+          "path": "/_assets/shared-YHH575T2.js",
+          "status": 200,
+          "bytes": 1226
+        },
+        {
+          "path": "/_assets/shared-SSDV4YZQ.js",
+          "status": 200,
+          "bytes": 358
+        }
+      ],
+      "browserResources": [
+        {
+          "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+          "transferBytes": 64900,
+          "encodedBytes": 64600,
+          "durationMs": 7.2000000001862645
+        },
+        {
+          "path": "/_assets/tokens-CRMQSGAY.css",
+          "transferBytes": 857,
+          "encodedBytes": 557,
+          "durationMs": 8.300000000046566
+        },
+        {
+          "path": "/_assets/base-QRMLSLIF.css",
+          "transferBytes": 942,
+          "encodedBytes": 642,
+          "durationMs": 8.699999999953434
+        },
+        {
+          "path": "/_assets/styles-T4TKJNSY.css",
+          "transferBytes": 2831,
+          "encodedBytes": 2531,
+          "durationMs": 9
+        },
+        {
+          "path": "/_assets/ux-FFXEA6D5.css",
+          "transferBytes": 2096,
+          "encodedBytes": 1796,
+          "durationMs": 9.199999999953434
+        },
+        {
+          "path": "/_assets/components-FKVPVA6X.css",
+          "transferBytes": 1785,
+          "encodedBytes": 1485,
+          "durationMs": 9.5
+        },
+        {
+          "path": "/_assets/student-shell-OK3LGJPW.css",
+          "transferBytes": 3788,
+          "encodedBytes": 3488,
+          "durationMs": 9.5
+        },
+        {
+          "path": "/_assets/home-VCXJ3AB6.css",
+          "transferBytes": 1143,
+          "encodedBytes": 843,
+          "durationMs": 14.300000000046566
+        },
+        {
+          "path": "/_assets/multi-subject-2LCRVJW7.css",
+          "transferBytes": 1528,
+          "encodedBytes": 1228,
+          "durationMs": 14.699999999953434
+        },
+        {
+          "path": "/_assets/role-layout-KJKKZJRJ.css",
+          "transferBytes": 5517,
+          "encodedBytes": 5217,
+          "durationMs": 15.099999999860302
+        },
+        {
+          "path": "/_assets/student-forest-6Y5DLWUS.css",
+          "transferBytes": 9068,
+          "encodedBytes": 8768,
+          "durationMs": 16.399999999906868
+        },
+        {
+          "path": "/_assets/resource-assignments-P2CQULLK.css",
+          "transferBytes": 1565,
+          "encodedBytes": 1265,
+          "durationMs": 16.5
+        },
+        {
+          "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+          "transferBytes": 1753,
+          "encodedBytes": 1453,
+          "durationMs": 16.4000000001397
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "transferBytes": 802,
+          "encodedBytes": 502,
+          "durationMs": 20.4000000001397
+        },
+        {
+          "path": "/_assets/role-router-3RD4Z2XV.js",
+          "transferBytes": 453,
+          "encodedBytes": 153,
+          "durationMs": 16.899999999906868
+        },
+        {
+          "path": "/_assets/app-47MD7AEK.js",
+          "transferBytes": 7696,
+          "encodedBytes": 7396,
+          "durationMs": 17.600000000093132
+        },
+        {
+          "path": "/_assets/home-class-SCMCNZJA.js",
+          "transferBytes": 1787,
+          "encodedBytes": 1487,
+          "durationMs": 19.300000000046566
+        },
+        {
+          "path": "/_assets/session-watchdog-BKUEKGDI.js",
+          "transferBytes": 657,
+          "encodedBytes": 357,
+          "durationMs": 19.4000000001397
+        },
+        {
+          "path": "/_assets/ux-4ZR7CTZW.js",
+          "transferBytes": 4676,
+          "encodedBytes": 4376,
+          "durationMs": 20.199999999953434
+        },
+        {
+          "path": "/_assets/student-shell-OBWBVRZD.js",
+          "transferBytes": 3747,
+          "encodedBytes": 3447,
+          "durationMs": 20
+        },
+        {
+          "path": "/_assets/shared-UVHAC5IJ.js",
+          "transferBytes": 589,
+          "encodedBytes": 289,
+          "durationMs": 6.300000000046566
+        },
+        {
+          "path": "/_assets/shared-YSRRNOOY.js",
+          "transferBytes": 1284,
+          "encodedBytes": 984,
+          "durationMs": 9.699999999953434
+        },
+        {
+          "path": "/_assets/shared-F6UBGUSM.js",
+          "transferBytes": 2339,
+          "encodedBytes": 2039,
+          "durationMs": 12.5
+        },
+        {
+          "path": "/_assets/shared-OXSWS2H5.js",
+          "transferBytes": 838,
+          "encodedBytes": 538,
+          "durationMs": 13.100000000093132
+        },
+        {
+          "path": "/_assets/shared-LELF3NI6.js",
+          "transferBytes": 58802,
+          "encodedBytes": 58502,
+          "durationMs": 14
+        },
+        {
+          "path": "/_assets/shared-226WBVLT.js",
+          "transferBytes": 634,
+          "encodedBytes": 334,
+          "durationMs": 12.800000000046566
+        },
+        {
+          "path": "/_assets/shared-7I2HJAYK.js",
+          "transferBytes": 2142,
+          "encodedBytes": 1842,
+          "durationMs": 12.800000000046566
+        },
+        {
+          "path": "/_assets/shared-BJI3GVCM.js",
+          "transferBytes": 1165,
+          "encodedBytes": 865,
+          "durationMs": 13.100000000093132
+        },
+        {
+          "path": "/_assets/shared-ZVRXT63F.js",
+          "transferBytes": 707,
+          "encodedBytes": 407,
+          "durationMs": 15.199999999953434
+        },
+        {
+          "path": "/_assets/shared-WJQGUOWE.js",
+          "transferBytes": 2734,
+          "encodedBytes": 2434,
+          "durationMs": 15.699999999953434
+        },
+        {
+          "path": "/_assets/shared-LU2M5S7W.js",
+          "transferBytes": 1271,
+          "encodedBytes": 971,
+          "durationMs": 15.899999999906868
+        },
+        {
+          "path": "/_assets/shared-Q6S2FGUP.js",
+          "transferBytes": 749,
+          "encodedBytes": 449,
+          "durationMs": 16.9000000001397
+        },
+        {
+          "path": "/_assets/shared-RPW3QJHQ.js",
+          "transferBytes": 997,
+          "encodedBytes": 697,
+          "durationMs": 17.100000000093132
+        },
+        {
+          "path": "/_assets/shared-J5OAIOL3.js",
+          "transferBytes": 543,
+          "encodedBytes": 243,
+          "durationMs": 17
+        },
+        {
+          "path": "/_assets/shared-2C5QJHFW.js",
+          "transferBytes": 904,
+          "encodedBytes": 604,
+          "durationMs": 20.100000000093132
+        },
+        {
+          "path": "/_assets/remediation-ZO3BPHJR.css",
+          "transferBytes": 606,
+          "encodedBytes": 306,
+          "durationMs": 1.6000000000931323
+        },
+        {
+          "path": "/_assets/responsive-qa-QX32ARRV.css",
+          "transferBytes": 947,
+          "encodedBytes": 647,
+          "durationMs": 1.5
+        },
+        {
+          "path": "/_assets/shared-JJJRFWJI.js",
+          "transferBytes": 1786,
+          "encodedBytes": 1486,
+          "durationMs": 1.2000000001862645
+        },
+        {
+          "path": "/_assets/shared-CXD25HK7.js",
+          "transferBytes": 444,
+          "encodedBytes": 144,
+          "durationMs": 2.2000000001862645
+        },
+        {
+          "path": "/_assets/shared-L4QVY2LH.js",
+          "transferBytes": 1461,
+          "encodedBytes": 1161,
+          "durationMs": 2.199999999953434
+        },
+        {
+          "path": "/_assets/shared-MA3SZO6L.js",
+          "transferBytes": 14905,
+          "encodedBytes": 14605,
+          "durationMs": 5.699999999953434
+        },
+        {
+          "path": "/_assets/shared-YCXYDXD3.js",
+          "transferBytes": 920,
+          "encodedBytes": 620,
+          "durationMs": 4.5
+        },
+        {
+          "path": "/_assets/shared-OZKO6444.js",
+          "transferBytes": 543,
+          "encodedBytes": 243,
+          "durationMs": 3
+        },
+        {
+          "path": "/_assets/shared-STQWA2KW.js",
+          "transferBytes": 16174,
+          "encodedBytes": 15874,
+          "durationMs": 5.5
+        },
+        {
+          "path": "/_assets/shared-5H7T6EYT.js",
+          "transferBytes": 1377,
+          "encodedBytes": 1077,
+          "durationMs": 5
+        },
+        {
+          "path": "/_assets/shared-EBL74XEP.js",
+          "transferBytes": 8337,
+          "encodedBytes": 8037,
+          "durationMs": 5.399999999906868
+        },
+        {
+          "path": "/_assets/shared-SSDV4YZQ.js",
+          "transferBytes": 658,
+          "encodedBytes": 358,
+          "durationMs": 8.300000000046566
+        },
+        {
+          "path": "/_assets/shared-YHH575T2.js",
+          "transferBytes": 1526,
+          "encodedBytes": 1226,
+          "durationMs": 8.100000000093132
+        },
+        {
+          "path": "/_assets/shared-HMMDDP6B.js",
+          "transferBytes": 1565,
+          "encodedBytes": 1265,
+          "durationMs": 8
+        }
+      ]
+    },
+    "compiled_warm": {
+      "requests": 2,
+      "responseBodyBytes": 0,
+      "requestsByPath": [
+        {
+          "path": "/index.html",
+          "status": 304,
+          "bytes": 0
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "status": 304,
+          "bytes": 0
+        }
+      ],
+      "browserResources": [
+        {
+          "path": "/_assets/noto-sans-armenian-ui-ded672ae8d54-GUYNGURB.woff2",
+          "transferBytes": 0,
+          "encodedBytes": 64600,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/tokens-CRMQSGAY.css",
+          "transferBytes": 0,
+          "encodedBytes": 557,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/base-QRMLSLIF.css",
+          "transferBytes": 0,
+          "encodedBytes": 642,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/styles-T4TKJNSY.css",
+          "transferBytes": 0,
+          "encodedBytes": 2531,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/ux-FFXEA6D5.css",
+          "transferBytes": 0,
+          "encodedBytes": 1796,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/components-FKVPVA6X.css",
+          "transferBytes": 0,
+          "encodedBytes": 1485,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/student-shell-OK3LGJPW.css",
+          "transferBytes": 0,
+          "encodedBytes": 3488,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/home-VCXJ3AB6.css",
+          "transferBytes": 0,
+          "encodedBytes": 843,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/multi-subject-2LCRVJW7.css",
+          "transferBytes": 0,
+          "encodedBytes": 1228,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/role-layout-KJKKZJRJ.css",
+          "transferBytes": 0,
+          "encodedBytes": 5217,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/student-forest-6Y5DLWUS.css",
+          "transferBytes": 0,
+          "encodedBytes": 8768,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/resource-assignments-P2CQULLK.css",
+          "transferBytes": 0,
+          "encodedBytes": 1265,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/haiedu-primary.svg",
+          "transferBytes": 300,
+          "encodedBytes": 0,
+          "durationMs": 2.6000000000931323
+        },
+        {
+          "path": "/_assets/writing-assignments-SVUAVM2Z.css",
+          "transferBytes": 0,
+          "encodedBytes": 1453,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/role-router-3RD4Z2XV.js",
+          "transferBytes": 0,
+          "encodedBytes": 153,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/app-47MD7AEK.js",
+          "transferBytes": 0,
+          "encodedBytes": 7396,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/home-class-SCMCNZJA.js",
+          "transferBytes": 0,
+          "encodedBytes": 1487,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/session-watchdog-BKUEKGDI.js",
+          "transferBytes": 0,
+          "encodedBytes": 357,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/ux-4ZR7CTZW.js",
+          "transferBytes": 0,
+          "encodedBytes": 4376,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/student-shell-OBWBVRZD.js",
+          "transferBytes": 0,
+          "encodedBytes": 3447,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-YSRRNOOY.js",
+          "transferBytes": 0,
+          "encodedBytes": 984,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-UVHAC5IJ.js",
+          "transferBytes": 0,
+          "encodedBytes": 289,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-F6UBGUSM.js",
+          "transferBytes": 0,
+          "encodedBytes": 2039,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-LELF3NI6.js",
+          "transferBytes": 0,
+          "encodedBytes": 58502,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-OXSWS2H5.js",
+          "transferBytes": 0,
+          "encodedBytes": 538,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-226WBVLT.js",
+          "transferBytes": 0,
+          "encodedBytes": 334,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-7I2HJAYK.js",
+          "transferBytes": 0,
+          "encodedBytes": 1842,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-BJI3GVCM.js",
+          "transferBytes": 0,
+          "encodedBytes": 865,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-ZVRXT63F.js",
+          "transferBytes": 0,
+          "encodedBytes": 407,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-WJQGUOWE.js",
+          "transferBytes": 0,
+          "encodedBytes": 2434,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-LU2M5S7W.js",
+          "transferBytes": 0,
+          "encodedBytes": 971,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-Q6S2FGUP.js",
+          "transferBytes": 0,
+          "encodedBytes": 449,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-RPW3QJHQ.js",
+          "transferBytes": 0,
+          "encodedBytes": 697,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-J5OAIOL3.js",
+          "transferBytes": 0,
+          "encodedBytes": 243,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-2C5QJHFW.js",
+          "transferBytes": 0,
+          "encodedBytes": 604,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/remediation-ZO3BPHJR.css",
+          "transferBytes": 0,
+          "encodedBytes": 306,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/responsive-qa-QX32ARRV.css",
+          "transferBytes": 0,
+          "encodedBytes": 647,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-JJJRFWJI.js",
+          "transferBytes": 0,
+          "encodedBytes": 1486,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-CXD25HK7.js",
+          "transferBytes": 0,
+          "encodedBytes": 144,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-L4QVY2LH.js",
+          "transferBytes": 0,
+          "encodedBytes": 1161,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-MA3SZO6L.js",
+          "transferBytes": 0,
+          "encodedBytes": 14605,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-YCXYDXD3.js",
+          "transferBytes": 0,
+          "encodedBytes": 620,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-OZKO6444.js",
+          "transferBytes": 0,
+          "encodedBytes": 243,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-STQWA2KW.js",
+          "transferBytes": 0,
+          "encodedBytes": 15874,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-5H7T6EYT.js",
+          "transferBytes": 0,
+          "encodedBytes": 1077,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-EBL74XEP.js",
+          "transferBytes": 0,
+          "encodedBytes": 8037,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-HMMDDP6B.js",
+          "transferBytes": 0,
+          "encodedBytes": 1265,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-SSDV4YZQ.js",
+          "transferBytes": 0,
+          "encodedBytes": 358,
+          "durationMs": 0
+        },
+        {
+          "path": "/_assets/shared-YHH575T2.js",
+          "transferBytes": 0,
+          "encodedBytes": 1226,
+          "durationMs": 0
+        }
+      ]
+    }
+  }
+}

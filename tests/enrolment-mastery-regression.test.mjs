@@ -1,6 +1,8 @@
 import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
+import * as legacyMasteryRules from '../supabase/functions/_shared/legacy-mastery-rules.mjs';
+import { registryDatabase, ruleRow } from './fixtures/legacy-mastery-rules-db.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -10,6 +12,10 @@ import vm from 'node:vm';
 const read = p => readFile(new URL(`../${p}`, import.meta.url), 'utf8');
 const accessSource = stripTypeScriptTypes(await read('supabase/functions/_shared/course-access.ts')).replaceAll('export ', '');
 const authSource = stripTypeScriptTypes(await read('supabase/functions/_shared/auth.ts')).replaceAll('export ', '');
+// Today's Chapter I rule as seeded by the registry migration (in-memory PGlite).
+const registry = await registryDatabase();
+const todayRule = await ruleRow(registry, 'phy7-u01-v1');
+await registry.close();
 const enrollment = { student_id: 'student-a', class_id: 'class-a', status: 'active', valid_from: '2026-01-01T00:00:00Z', valid_to: null };
 function database(overrides = {}, failedTable = null) {
   const tables = {
@@ -22,7 +28,7 @@ function database(overrides = {}, failedTable = null) {
   };
   return {
     auth: { getUser: async () => ({ data: { user: { id: 'student-a' } }, error: null }) },
-    rpc: async () => ({ data: true, error: null }),
+    rpc: async name => ({ data: String(name).startsWith('service_legacy_mastery_') ? todayRule : true, error: null }),
     from(table) {
       let rows = [...(tables[table] ?? [])]; let single = false;
       const query = {
@@ -72,7 +78,7 @@ async function endpoint(name, db) {
   let handler;
   const source = (await read(`supabase/functions/${name}/index.ts`)).replace(/^import .*;\n/gm, '');
   vm.runInNewContext(`${accessSource}\n${authSource}\n${stripTypeScriptTypes(source)}`, Object.assign({...rateBudgetBindings,
-    routeGovernedLearning, createClient: () => db, resolveActiveCurriculumRelease: async () => 'release',
+    routeGovernedLearning, ...legacyMasteryRules, createClient: () => db, resolveActiveCurriculumRelease: async () => 'release',
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, atob, console,
   },rateFeedbackBindings));

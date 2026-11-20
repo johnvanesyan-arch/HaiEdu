@@ -1,0 +1,67 @@
+{
+  "initial": {
+    "version": "haiedu-mobile-navigation-layout-v2",
+    "errors": [],
+    "position": "relative",
+    "height": 288.3125,
+    "reserved": 0,
+    "menuWidth": 320,
+    "scrollWidth": 320,
+    "destinations": 4,
+    "firstErrors": [],
+    "observations": 2,
+    "settled": true
+  },
+  "later": {
+    "version": "haiedu-mobile-navigation-layout-v2",
+    "errors": [],
+    "position": "relative",
+    "height": 288.3125,
+    "reserved": 0,
+    "menuWidth": 320,
+    "scrollWidth": 320,
+    "destinations": 4,
+    "firstErrors": [],
+    "observations": 2,
+    "settled": true
+  },
+  "geometry": {
+    "viewport": {
+      "width": 320,
+      "height": 844,
+      "visualWidth": 320,
+      "visualHeight": 844,
+      "scale": 1
+    },
+    "layout": "flow",
+    "textOnly": "true",
+    "navWidth": 320,
+    "navScroll": 320,
+    "links": [
+      {
+        "text": "Գլխավոր",
+        "width": 308,
+        "scroll": 308,
+        "font": "28px"
+      },
+      {
+        "text": "Դասընթացներ",
+        "width": 308,
+        "scroll": 308,
+        "font": "28px"
+      },
+      {
+        "text": "Իմ աշխատանքները",
+        "width": 308,
+        "scroll": 308,
+        "font": "28px"
+      },
+      {
+        "text": "Գրադարան",
+        "width": 308,
+        "scroll": 308,
+        "font": "28px"
+      }
+    ]
+  }
+}

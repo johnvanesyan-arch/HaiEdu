@@ -188,6 +188,23 @@ Result on 20 November: 50 of 50 pass. The full `npm test` was not run for this p
 | `tests/legacy-chapter-i-i2-reporting.test.mjs` | School admin aggregation: v1 and I-2 groups kept apart; governed groups unchanged. Personal-account endpoint fields (source checks) | 3/3 |
 | `tests/legacy-chapter-i-i2-pages.test.mjs` | Every page place in plan §4 reads the server rule or saved record, with today's fallback (source checks; pages not rendered) | 4/4 |
 
+**Full suite and browser checks (same commit):**
+- `npm test`: 1,887/1,887.
+- Native Chromium suites that load the changed pages, run one at a time:
+  - learning acceptance 12/12;
+  - student course page 11/11;
+  - student home 46/46;
+  - student workspace 69/69;
+  - keyboard focus 23/23;
+  - learning context 9/9;
+  - built web 35/35;
+  - request count 4/4.
+- `check:web-assets`, `check:teacher-bundle`, `check-web-syntax` and `check-browser-qa-triggers` pass.
+
+**Two older tests were updated, with the reason:**
+- `enrolment-mastery-regression` runs `get-mastery-check-status` in a VM. It now injects the rules module and returns today's registry row.
+- `sprint-12-5-mastery-retry-eligibility` matches the not-ready message line. That line now reads the active rule's text, with today's text as fallback. The precedence check is unchanged.
+
 **Fixture limits:**
 - The reduced fixture keeps only the columns these handlers use.
 - Doubles are used for course access, curriculum resolution, rate budgets, answer receipts and the upstream answer grader. Real numeric and quantity grading was not exercised.

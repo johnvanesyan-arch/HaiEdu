@@ -37,7 +37,8 @@ test("current skill readiness remains an Attempt 1 gate only", () => {
 
 test("retry-ready UX message outranks initial skill-readiness messaging", () => {
   const retryIndex = source.indexOf(': retryReady\n                ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Կարող եք կրկին անցնել յուրացման ստուգումը։"');
-  const incompleteIndex = source.indexOf(': incompleteSkills.length\n                    ? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"');
+  // Since I-2 option A the locked text comes from the active rule, with today's text as fallback.
+  const incompleteIndex = source.indexOf(': incompleteSkills.length\n                    ? rule.readiness.textsHy?.locked ?? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"');
   assert.ok(retryIndex >= 0, "retry-ready message missing");
   assert.ok(incompleteIndex >= 0, "initial readiness message missing");
   assert.ok(retryIndex < incompleteIndex, "retry-ready message must take precedence over initial skill readiness");
