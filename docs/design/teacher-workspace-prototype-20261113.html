@@ -443,9 +443,39 @@ function roster(c, uid) {
       acc: i % 3 === 0 || stage === 'nodiag' ? null : { value: 52 + (i * 7) % 40, kind: 'Վարժություն', n: 20 - (i % 4) * 3 },
       legacyAcc: stage === 'nodiag' || i % 5 === 0 ? null : 40 + (i * 13) % 55,
       support: reds.length > 0, redCode: reds[0] ? skills[reds[0].j].code : null };
-  }).sort((a, b) => (b.support - a.support) || a.name.localeCompare(b.name, 'hy'));
+  });
+  if (c.id === 'c1' && uid === 'u1') i2Examples(list);
+  list.sort((a, b) => ((a.pin ?? 9) - (b.pin ?? 9)) || (b.support - a.support) || a.name.localeCompare(b.name, 'hy'));
   return (rosterCache[key] = list);
 }
+// V13 (20 Nov 2026): two pinned synthetic Chapter I students in 7Ա · Ֆիզիկա, Բաժին 1.
+// A: one attempt under today's rule (phy7-u01-v1), saved 18/20 · 90%.
+// B: attempt 1 under today's rule (failed: 16/20 · 80%, S07 0/2), required review, attempt 2 under I-2
+//    (phy7-u01-i2-v1, passed: 15/18 · 83%, S07 0/2 reported separately; raw 15/20 · 75% stored, not shown),
+//    and red S07 practice after the pass. Each attempt keeps the rule it started under.
+const S07 = 6;
+function i2Examples(list) {
+  const est = (s, n, t, p) => ({ s, n, t, d: dayLabel(t), p });
+  const redsOf = ev => { const r = []; ev.forEach((e, j) => KINDW.forEach(([k, kl]) => e[k].forEach(x => { if (x.s === 'needs') r.push({ ...x, j, k, kind: kl }); }))); return r.sort((a, b) => b.t - a.t || a.j - b.j); };
+  const a = list[0], b = list[1];
+  a.ev.forEach(e => { e.pr = e.pr.map(x => x.s === 'needs' ? { ...x, s: 'developing', p: 55 } : x); e.rv = []; e.mc = [est('few', 2, 9)]; });
+  Object.assign(a, { pin: 1, stage: 'passed', active: null, daysAgo: 1, reviews: { required: 0, optional: 0 }, reviewList: [],
+    next: 'Գլուխն ավարտված է․ յուրացման ստուգումն անցած է։',
+    attempts: [{ n: 1, rule: 'v1', passed: true, date: '09.11.2026', correct: 18, total: 20, percent: 90 }] });
+  a.check = { ...a.attempts[0], t: 9, counts: true };
+  b.ev.forEach((e, j) => { e.rv = [est('few', 2, 8)]; e.mc = [est('few', 4, 12)];
+    if (j === S07) e.pr = [est('needs', 7, 14, 36)]; else e.pr = e.pr.map(x => x.s === 'needs' ? { ...x, s: 'developing', p: 58 } : x); });
+  const i2 = { n: 2, rule: 'i2', passed: true, date: '12.11.2026', correct: 15, total: 18, percent: 83,
+    groups: [['Պարտադիր և օժանդակ հմտություններ', 15, 18, 83, true], ['Լրացուցիչ վերջնարդյունք', 0, 2, 0, false]] };
+  Object.assign(b, { pin: 2, stage: 'passed', active: null, daysAgo: 0, reviews: { required: 1, optional: 0 }, reviewList: [['Պարտադիր', '08.11.2026']],
+    next: 'Ստուգարքի պահանջները կատարված են։',
+    attempts: [{ n: 1, rule: 'v1', passed: false, date: '05.11.2026', correct: 16, total: 20, percent: 80 }, i2] });
+  b.check = { ...i2, t: 12, counts: true };
+  for (const s of [a, b]) { s.reds = redsOf(s.ev); s.support = s.reds.length > 0; s.redCode = s.reds[0] ? skillsOf(cls('c1'), 'u1')[s.reds[0].j].code : null; }
+}
+// Saved result of one attempt, as the shared result display renders it (assessment-reporting.mjs).
+const groupLines = ch => (ch.groups || []).map(([l, c, a, p, d]) => `<span class="assessment-group">${esc(l)}՝ ${c}/${a} · ${p}%${d ? ' · հաշվի է առնվում ստուգարքը հանձնելիս' : ''}</span>`).join('');
+const savedScore = ch => `${ch.correct} / ${ch.total} · ${ch.percent}%`;
 const estPill = x => `<span class="pill ${EST[x.s][0]}">${EST[x.s][1]}${x.p != null ? ` · ${x.p}%` : ''}</span>`;
 const estHtml = list => !list.length ? estPill({ s: 'none' })
   : list.length === 1 ? `<span class="est">${estPill(list[0])}<small>${list[0].n} պատասխան · ${list[0].d}</small></span>`
@@ -760,6 +790,7 @@ function classPage() {
       <p class="tile-meta">Աջակցության կարիքը՝ ըստ «${esc(u.short)}»-ի հմտությունների</p>
       ${personal() ? '' : note('Row · approved v3', 'Today’s roster wrapping rules. Three separate facts: this class’s recorded check result, the support flag, and the next step. The support count is unchanged: a student counts when any separate estimate is classified «Աջակցություն է պետք». The flag shows the most recent qualifying red estimate (skill, kind of work, date of the latest answer included in it); «Դիտել ևս N հմտություն» opens the panel at the support evidence. Session progress sits under «Հաջորդ քայլը» and never replaces the recorded result. Not shown: first-attempt readiness, attempt numbers, retry availability, per-skill check scores, recent accuracy.')}
       ${personal() ? note('PERSONAL-1 · option B', 'Personal-account teachers keep today’s roster row and student panel, including «Հեռացնել». Their older Physics 7 Chapter I data describes the learner’s own record (one learner-wide estimate per skill), so the school layout would give it the wrong meaning. The roster’s recent accuracy here is the legacy value, which uses different rules from the school value.') : note('Simulated in this prototype', 'Student states and dates are fictional. The build takes the next step from the real action code (mastery_check_retry → «Այս դասարանում ավարտվել է գլխի պարտադիր կրկնություն։», review_chapter → «Առաջարկվում է կրկնել գլուխը։») and decides «ստուգման ավարտից առաջ» by comparing the estimate’s latest included answer (lastAttemptAt) with the check’s completion (completedAt). Some students here practised after their check, so the label is absent for them. Ties between red estimates: latest included answer first, then curriculum order.')}
+      ${c.id === 'c1' && uid === 'u1' ? note('V13 · synthetic I-2 example', 'The first two rows are pinned synthetic Chapter I examples (pinned in this prototype only): an older result under today’s rule and an I-2 result. The row is unchanged by I-2: pass or fail and the date, no score. The second student passed and still carries a support flag for S07 practice. First-attempt readiness is not shown; it comes from the student’s progress across the curriculum release, not from this class’s records.') : ''}
       <div class="rows">${list.map(personal() ? legacyRow : row).join('')}</div>
       ${list.length ? '' : '<p class="lede">Այս ֆիլտրով աշակերտ չկա։</p>'}`;
   } else if (S.classTab === 'skills') {
@@ -1109,18 +1140,19 @@ function legacyDrawer(c, uid, s) {
   const mini = (label, value) => `<div class="fact"><span class="cell-label">${label}</span><strong>${value}</strong></div>`;
   return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
     <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
-    <div class="facts">${mini('Սկզբնական ախտորոշիչ', s.stage === 'nodiag' ? '—' : '60%')}${mini('Վարժություն', (s.stage === 'nodiag' ? 0 : 3) + ' ավարտված')}${mini('Գլխի կրկնություն', (s.reviews.required + s.reviews.optional) + ' ավարտված')}${mini('Յուրացման ստուգում', ch ? (ch.passed ? 'Անցած է' : 'Չի անցել') + ' · ' + ch.percent + '%' : '—')}</div>
+    <div class="facts">${mini('Սկզբնական ախտորոշիչ', s.stage === 'nodiag' ? '—' : '60%')}${mini('Վարժություն', (s.stage === 'nodiag' ? 0 : 3) + ' ավարտված')}${mini('Գլխի կրկնություն', (s.reviews.required + s.reviews.optional) + ' ավարտված')}${ch?.groups ? `<div class="fact"><span class="cell-label">Յուրացման ստուգում</span><strong>Ստուգարքն անցած է · ${ch.correct}/${ch.total} · ${ch.percent}%</strong>${groupLines(ch)}</div>` : mini('Յուրացման ստուգում', ch ? (ch.passed ? 'Անցած է' : 'Չի անցել') + ' · ' + ch.percent + '%' : '—')}</div>
     <section class="card" style="background:var(--selected)"><strong>Առաջարկվող միջամտություն</strong><p style="margin:4px 0 0">${esc(legacyNext(s))}</p></section>
     <section class="section"><h3>Հմտություններ</h3><ul class="queue">${skills}</ul></section>
     <section class="section"><h3>Յուրացման ստուգում և կրկնություն</h3><div class="facts">${mini('Փորձեր', ch ? (s.stage === 'final' ? '3 / 3' : s.stage === 'passed' ? '1 / 3' : '1 / 3') : '—')}${mini('Անցած փորձ', s.stage === 'passed' ? '1' : '—')}${mini('Պարտադիր կրկնություններ', s.reviews.required)}${mini('Լրացուցիչ կրկնություններ', s.reviews.optional)}</div></section>
     ${note('PERSONAL-1 · option B', 'Today’s panel for personal-account teachers, kept as it is (abridged here). Its figures come from the older Physics 7 Chapter I path and describe the learner’s own record: one learner-wide estimate per skill and the learner’s chapter attempts.')}
+    ${ch?.groups ? note('V13 · personal account', 'Same layout. For an I-2 result the existing check card renders the saved record through the shared result display (built in commit 4e0965b: the endpoint now returns it), so it reads «Ստուգարքն անցած է · 15/18 · 83%» with the two group lines. Older results read as today.') : ''}
   </aside></div>`;
 }
 function drawer() {
   const c = cls(S.classId), uid = curUnit(), s = roster(c, uid).find(x => x.id === S.drawer); if (!s) return '';
   if (personal()) return legacyDrawer(c, uid, s);
   const sk = skillsOf(c, uid), ch = s.check;
-  const box1 = `<section class="fact" aria-labelledby="dB1"><h3 id="dB1">Յուրացման ստուգում</h3>${ch ? `<span class="tile-meta">Այս դասարանում գրանցված արդյունք</span><span><span class="pill ${ch.passed ? 'good' : 'calm'}">${ch.passed ? 'Անցած է' : 'Չի անցել'}</span></span><span>${ch.counts ? `${ch.correct} / ${ch.total} · ` : ''}${ch.percent}%</span><span>Ավարտի ամսաթիվը՝ ${ch.date}</span><span class="tile-meta">Արդյունքը վերաբերում է միայն այս ստուգմամբ գնահատված հմտություններին։</span>` : '<span>Այս դասարանում ստուգման արդյունք դեռ չի գրանցվել։</span>'}</section>`;
+  const box1 = `<section class="fact" aria-labelledby="dB1"><h3 id="dB1">Յուրացման ստուգում</h3>${ch ? `<span class="tile-meta">Այս դասարանում գրանցված արդյունք</span><span><span class="pill ${ch.passed ? 'good' : 'calm'}">${ch.passed ? 'Անցած է' : 'Չի անցել'}</span></span><span>${ch.counts ? `${ch.correct} / ${ch.total} · ` : ''}${ch.percent}%</span>${groupLines(ch)}<span>Ավարտի ամսաթիվը՝ ${ch.date}</span><span class="tile-meta">Արդյունքը վերաբերում է միայն այս ստուգմամբ գնահատված հմտություններին։</span>` : '<span>Այս դասարանում ստուգման արդյունք դեռ չի գրանցվել։</span>'}</section>`;
   const box2 = `<section class="fact" aria-labelledby="dB2"><h3 id="dB2">Հաջորդ քայլը</h3>${s.active ? `<span>${progressText(s.active)}</span>` : ''}<span>${esc(s.next)}</span>${ch?.passed ? '<span>Գլխի կրկնությունը պարտադիր չէ։</span>' : ''}<span class="tile-meta">Այս դասարանում ավարտված կրկնություններ՝ ${s.reviews.required + s.reviews.optional}</span><button type="button" class="linkbtn" data-jump="dHist">Կրկնությունների պատմություն</button></section>`;
   const onlyPractice = s.reds.every(r => r.k === 'pr');
   const box3 = s.reds.length ? `<section class="fact" id="dSupport" tabindex="-1" aria-labelledby="dB3"><h3 id="dB3">${onlyPractice ? 'Վարժության տվյալներ' : 'Աջակցության հիմքերը'}</h3>${s.reds.map(r => `<div class="flagged"><span>${estPill(r)}</span><span>${esc(sk[r.j].name)}</span><span class="tile-meta">${onlyPractice ? '' : r.kind + ' · '}${r.n} պատասխան · Հաշվարկում ներառված վերջին պատասխանը՝ ${r.d}${beforeCheck(s, r)}</span></div>`).join('')}${s.reds.some(r => r.k === 'pr') ? '<span class="tile-meta">Ավելի վաղ տրված պատասխանները նույնպես կարող են ազդել վարժության ցուցանիշի վրա։ Ստուգման արդյունքը ներկայացվում է առանձին։</span>' : ''}</section>` : '';
@@ -1131,14 +1163,17 @@ function drawer() {
     return `<details class="skill" id="dSkill-${j}"${S.evidence === j ? ' open' : ''}><summary><span class="t">${esc(k.name)}</span><span class="cues">${cue ? `<span class="pill ${EST[cue.x.s][0]}">${cue.kl}՝ ${EST[cue.x.s][1]}${cue.x.p != null ? ` · ${cue.x.p}%` : ''}</span>` : `<span class="pill calm">${neutralLabel(e)}</span>`}${multi ? `<span class="pill sep">${multi[1]}՝ Առանձին արդյունքներ · ${e[multi[0]].length}</span>` : ''}</span></summary>
       <dl>${KINDW.map(([kk, kl]) => `<div><dt>${kl}</dt><dd>${estHtml(e[kk])}</dd></div>`).join('')}</dl></details>`;
   }).join('');
-  const ct = ch?.t || 12, reviewRows = (s.stage === 'final' ? [ct - 6, ct - 3] : s.stage === 'reviewDone' ? [ct + 1] : []).map(d => ['Պարտադիր', dayLabel(d) + '.2026']).concat(s.reviews.optional ? [['Լրացուցիչ', dayLabel(ct + 2) + '.2026']] : []);
+  const ct = ch?.t || 12, reviewRows = s.reviewList || (s.stage === 'final' ? [ct - 6, ct - 3] : s.stage === 'reviewDone' ? [ct + 1] : []).map(d => ['Պարտադիր', dayLabel(d) + '.2026']).concat(s.reviews.optional ? [['Լրացուցիչ', dayLabel(ct + 2) + '.2026']] : []);
+  const attemptText = x => `${x.passed ? 'Ստուգարքն անցած է' : 'Ստուգարքը չի անցել'}${x.counts === false ? ` · ${x.percent}%` : ` · ${savedScore(x)}`}`;
   const sessions = s.stage === 'nodiag' ? [] : [['Ախտորոշիչ', 'Ավարտված', '02.11.2026', `${Math.round(sk.length * 1.2)} / ${2 * sk.length}`], ['Վարժություն', 'Ավարտված', '05.11.2026', '6 / 8']]
-    .concat(ch ? [['Յուրացման ստուգում', 'Ավարտված', ch.date, ch.passed ? 'Ստուգարքն անցած է' : 'Ստուգարքը չի անցել']] : [])
+    .concat((s.attempts || (ch ? [ch] : [])).map(x => ['Յուրացման ստուգում', 'Ավարտված', x.date, attemptText(x), groupLines(x)]))
     .concat(s.active ? [[s.active.mode === 'pr' ? 'Վարժություն' : 'Գլխի կրկնություն', 'Ընթացքի մեջ', '—', `${s.active.answered} / ${s.active.planned}`]] : []);
   return `<div class="drawer-bg" data-close-drawer><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
     <div class="section-head"><h2 id="dT">${esc(s.name)}</h2><button type="button" class="btn secondary" data-close-drawer>Փակել</button></div>
     <p class="tile-meta" style="margin:0">Այս դասարանի գրառումները · ${esc(label(c))} · ${esc(unitOf(c, uid).title)} · Վերջին ակտիվություն՝ ${ago(s.daysAgo)}</p>
     <div class="facts">${box1}${box2}${box3}</div>
+    ${s.pin === 2 ? note('V13 · flag 1 · box 1', 'Synthetic I-2 result. Box 1 shows the saved pass score «15 / 18 · 83%», then the two saved groups from the shared result display: «Պարտադիր և օժանդակ հմտություններ՝ 15/18 · 83% · հաշվի է առնվում ստուգարքը հանձնելիս» and «Լրացուցիչ վերջնարդյունք՝ 0/2 · 0%». The first group line repeats the score; the student pages drop such a line only when it is the sole group. For review: keep both lines, or drop the repeating one in teacher views. No rule-version label is shown; the groups identify an I-2 result.') + note('V13 · separate facts', 'The check result, the support flag and the next step stay separate. This student passed under I-2 and still has a red S07 practice estimate (Վարժություն, latest included answer after the check). The next step is today’s class-based action for a pass with a saved result record: «Ստուգարքի պահանջները կատարված են։» (institutional-teacher-analytics.ts, action unit_complete). It does not mention S07; the support flag does.') + note('V13 · review distinction', 'Not visible to teachers; kept here for the build. If an I-2 student owes a required review, the whole-chapter review still covers S07 like any skill. The extra attention after a failed attempt comes from the skills saved with that attempt under its own rule (I-2: the nine scored skills; today’s rule: any of the ten), including after a rollback.') : ''}
+    ${s.pin === 1 ? note('V13 · older result', 'Synthetic result under today’s Chapter I rule: «18 / 20 · 90%», no group lines, today’s next-step text. It keeps this display after any switch or rollback.') : ''}
     ${acc}
     ${note('Panel · approved v3', 'Today’s panel width (up to 720 px), so skill cards are used at every width. Box 1 shows «18 / 20» only when the matching session supplies the counts, otherwise the percentage alone. Box 3 lists every red estimate behind the support flag; its title is «Աջակցության հիմքերը» when any comes from a kind of work other than practice. Recent accuracy appears only when the school response supplies a value (up to 20 recent answers from comparable work), with the kind of work and number of answers. Simulated here: the scenario, the dates and whether counts are supplied.')}
     <section class="section" aria-labelledby="dSk"><h3 id="dSk">Տվյալներ ըստ հմտության</h3><div class="skill-cards">${cards}</div>
@@ -1146,7 +1181,8 @@ function drawer() {
     <section class="section" id="dHist" tabindex="-1" aria-labelledby="dHistT"><h3 id="dHistT">Կրկնությունների պատմություն</h3>
       ${reviewRows.length ? `<ul class="queue">${reviewRows.map(([t, d]) => `<li style="padding:8px 2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${t}</span><span class="tile-meta">Ավարտված · ${d}</span></li>`).join('')}</ul>` : '<p class="tile-meta">Այս դասարանում ավարտված կրկնություն դեռ չկա։</p>'}</section>
     <section class="section" aria-labelledby="dWorkT"><h3 id="dWorkT">Աշխատանքների պատմություն</h3>
-      ${sessions.length ? `<ul class="queue">${sessions.map(([m, st, d, r]) => `<li style="padding:8px 2px;display:grid;gap:2px"><strong>${m} · ${st}</strong><span class="tile-meta">${d} · ${r}</span></li>`).join('')}</ul>` : '<p class="tile-meta">Գործունեություն դեռ չկա։</p>'}
+      ${sessions.length ? `<ul class="queue">${sessions.map(([m, st, d, r, g]) => `<li style="padding:8px 2px;display:grid;gap:2px"><strong>${m} · ${st}</strong><span class="tile-meta">${d} · ${r}</span>${g || ''}</li>`).join('')}</ul>` : '<p class="tile-meta">Գործունեություն դեռ չկա։</p>'}
+      ${s.pin === 2 ? note('V13 · flag 2 · history', 'Each recorded attempt shows the score saved with it, so a switch or rollback never changes how an earlier attempt reads. Today’s attempt under the older rule: «16 / 20 · 80%». I-2 attempt: «15 / 18 · 83%» and the two saved group lines, as the shared result display already renders saved records in today’s panels. The 20-question total of an I-2 attempt (15 / 20 · 75%) is stored separately and is not shown.') : ''}
       ${note('Item 4 · corrected', 'Today this section lists learning sessions (diagnostic, practice, review, check), not writing. ' + newData('Proposed · needs server work') + ' a list of this student’s course writing and own tasks with a link into review.')}</section>
     <div class="note"><b>B8 · undecided</b> · ${newData('Proposal · not available today')} One assign entry would also open from the student panel: <button type="button" data-assign-from="${c.id}" data-pick="${s.id}">Հանձնարարել այս աշակերտին</button></div>
   </aside></div>`;

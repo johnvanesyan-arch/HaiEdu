@@ -426,3 +426,37 @@ Version 7 and 8 checks: the same 340 renders; 65 (version 7), 69 (version 8) and
 **20 November 2026 — version 12 accepted as the design reference** for the school teacher's class roster, student panel and Skills tab (John, forwarding Codex's re-check of commit `35f9a65`: 340 renders, click paths and 12 independent Chromium cases passed with fictional data). This is a design decision, not owner usability acceptance. **When the school design is built, the entire personal-account view stays as it is today.** Known prototype mismatch, outside this approval: in personal-account mode the Skills tab still shows the school's separate estimates and opens on Chapter II, while the real personal-account view supplies one estimate per skill for Chapter I. The wider teacher screens stay pending until their proposed features are checked against the data HaiEdu actually supplies.
 
 Owner usability acceptance: not given.
+
+**Prototype version 13 — Chapter I I-2 example (20 November 2026, design only).** John asked for one synthetic I-2 result beside an older Chapter I result. V12 stays the reference for the school teacher's roster, student panel and Skills tab. The personal-account view keeps today's layout. All data is synthetic. The change was made on a local branch (`claude/teacher-v13-i2-design`, based on `4e0965b`) so that `claude/ecstatic-goodall-fpmil4` stays unchanged while Codex tests.
+
+In 7Ա · Ֆիզիկա, Բաժին 1, the first two roster rows are pinned synthetic examples (pinned in the prototype only):
+- **Older result (today's rule):** «18 / 20 · 90%», no group lines, and today's next step «Գլուխն ավարտված է․ յուրացման ստուգումն անցած է։».
+- **I-2 result:**
+  - Attempt 1 under today's rule failed at «16 / 20 · 80%», because S07 was 0/2. A required review followed.
+  - Attempt 2 under I-2 passed. Box 1 shows «15 / 18 · 83%» and the two saved groups: «Պարտադիր և օժանդակ հմտություններ՝ 15/18 · 83% · հաշվի է առնվում ստուգարքը հանձնելիս» and «Լրացուցիչ վերջնարդյունք՝ 0/2 · 0%». The raw 15/20 · 75% is stored separately and not shown.
+  - The student still has a red S07 practice estimate after the pass: support flag, kind of work and latest-answer date, as in V12.
+  - The next step is today's class-based action for a pass with a saved record: «Ստուգարքի պահանջները կատարված են։» (`institutional-teacher-analytics.ts`, `unit_complete`).
+- **History:** each attempt in «Աշխատանքների պատմություն» shows the score saved with it. A switch or rollback leaves each result with its own rule.
+- **Personal-account view:** today's layout. The existing check card shows the saved record through the shared result display: «Ստուգարքն անցած է · 15/18 · 83%» with the two group lines.
+- **Design notes added:**
+  - The check result, support flag and next step stay separate.
+  - First-attempt readiness comes from the student's progress across the curriculum release and is not shown in the row.
+  - The review distinction (not visible to teachers): S07 stays in whole-chapter coverage, and the failed attempt's saved rule decides the skills that get extra attention, including after a rollback.
+
+**Flagged for John (layout and wording):**
+1. **Box 1 group lines.** Under «15 / 18 · 83%», box 1 lists both saved groups. The first line repeats the score; the student pages drop such a line only when it is the sole group. Keep both lines, or drop the repeating one in teacher views?
+2. **Scores in history.** Each check attempt in history now shows its saved score («Ստուգարքը չի անցել · 16 / 20 · 80%», «Ստուգարքն անցած է · 15 / 18 · 83%» plus the group lines). V12 showed only pass or fail there. The strings are the shared display's existing ones; this is a layout addition.
+3. **Not shown:**
+   - the 20-question total of an I-2 attempt;
+   - any rule-version label;
+   - a score in the roster row (unchanged: pass or fail and the date).
+   Confirm or ask for any of them.
+
+No new Armenian wording was introduced: every visible string already exists in today's code or was supplied by John.
+
+**Checks (Chromium, synthetic data; not the real teacher page):**
+- `verify.mjs`: all renders pass. `paths.mjs`: all click paths pass. No script errors.
+- Both example panels at desktop, phone 390 px and phone with doubled text: no content outside the panel or page.
+- Personal-account panel renders the saved record.
+
+Owner usability acceptance: not given. The V12 usability review and the other teacher screens remain pending.
