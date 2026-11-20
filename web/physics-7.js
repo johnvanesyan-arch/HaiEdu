@@ -67,7 +67,11 @@ function skillState(skill) {
 }
 
 function renderSummary() {
-  const progress = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  const allSkills = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  // Counts follow the skills the active check rule requires (all ten under today's rule).
+  const progress = allSkills.requiredTotal
+    ? { completedSkills: allSkills.requiredCompleted, totalSkills: allSkills.requiredTotal, percent: Math.round((allSkills.requiredCompleted / allSkills.requiredTotal) * 100) }
+    : allSkills;
   $("chapterProgressText").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
   $("chapterProgressMeta").textContent = masteryStatus?.unitComplete
     ? "Գլուխ I-ի յուրացման ստուգարքն անցած է։"
@@ -86,7 +90,8 @@ function renderSummary() {
     assessmentMeta = "Չհաջողվեց ստուգել պատրաստվածությունը։ Թարմացրեք էջը՝ կրկին փորձելու համար։";
   } else if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
     assessmentTitle = "Գլխի յուրացման ստուգարքն անցած է";
-    assessmentMeta = `Անցած է${masteryStatus.passedOnAttempt ? ` · փորձ ${masteryStatus.passedOnAttempt}/3` : ""}${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։ Գլխի կրկնությունը լրացուցիչ է։`;
+    const passPercent = masteryStatus.latestCheck?.assessmentResult?.score?.percent ?? masteryStatus.latestCheck?.percent;
+    assessmentMeta = `Անցած է${masteryStatus.passedOnAttempt ? ` · փորձ ${masteryStatus.passedOnAttempt}/3` : ""}${passPercent != null ? ` · ${passPercent}%` : ""}։ Գլխի կրկնությունը լրացուցիչ է։`;
   } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
     assessmentTitle = "Փորձերն ավարտված են";
     assessmentMeta = "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը շարունակում է հասանելի մնալ։";
@@ -96,7 +101,7 @@ function renderSummary() {
   } else if (masteryStatus?.eligible) {
     const nextAttempt = Number(masteryStatus.nextAttemptNumber ?? 1);
     assessmentTitle = nextAttempt > 1 ? `Փորձ ${nextAttempt} / 3` : "Պատրաստ է";
-    assessmentMeta = nextAttempt > 1 ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Կարող եք կրկին անցնել յուրացման ստուգումը։" : "Բոլոր հմտությունները պատրաստ են անկախ ստուգման։";
+    assessmentMeta = nextAttempt > 1 ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Կարող եք կրկին անցնել յուրացման ստուգումը։" : masteryStatus.rule?.textsHy?.ready ?? "Բոլոր հմտությունները պատրաստ են անկախ ստուգման։";
   } else if (masteryStatus?.retryBlocked) {
     assessmentTitle = "Գլխի կրկնություն է պետք";
   }
@@ -255,6 +260,7 @@ function renderTopics() {
             ${skill.id === recommendedId ? '<span class="status-badge info">Առաջարկվող հաջորդ քայլ</span>' : ""}
           </div>
           <h4>${escapeHtml(skill.nameHy)}</h4>
+          ${skill.requiredForReadiness === false ? '<small class="student-skill-note">Չի սահմանափակում ստուգարքի հասանելիությունը</small>' : ""}
           <span class="subtle small">${escapeHtml(diagnosticText)}</span>
         </div>
         <div class="skill-browser-state">

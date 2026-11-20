@@ -153,7 +153,7 @@ Deno.serve(async (req) => {
     const [{ data: masteryRows }, { data: attempts }, { data: sessions }, reviewSummaryResult, reviewSkillsResult, reviewCoverageResult] = await Promise.all([
       admin.from("student_skill_mastery").select("skill_id, mastery_score, evidence_count, status, last_attempt_at").eq("student_id", body.studentId).in("skill_id", skillIds),
       admin.from("attempts").select("id, skill_id, item_id, correct, score, hint_used, response_time_ms, error_code, created_at, items(code, prompt_hy)").eq("student_id", body.studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(50),
-      admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, assessment_result, score_percent, started_at, completed_at").eq("student_id", body.studentId).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(30),
+      admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, assessment_result, score_percent, started_at, completed_at, metadata").eq("student_id", body.studentId).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(30),
       admin.from("chapter_review_summary_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).maybeSingle(),
       admin.from("chapter_review_skill_attention_inputs_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).order("skill_code", { ascending: true }),
       admin.from("chapter_review_coverage_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).maybeSingle(),
@@ -265,8 +265,12 @@ Deno.serve(async (req) => {
         result: latestMastery.assessment_result,
         percent: latestMastery.score_percent === null ? null : Number(latestMastery.score_percent),
         completedAt: latestMastery.completed_at,
+        // The saved result record and rule version, when the check saved them (layout unchanged).
+        assessmentResult: latestMastery.metadata?.assessmentResultReporting ?? null,
+        scoringRuleVersion: latestMastery.metadata?.scoringRuleVersion ?? null,
       } : null,
-      activeSession: active,
+      // Same fields as before metadata was read for the saved result records.
+      activeSession: active ? (({ metadata: _metadata, ...rest }: any) => rest)(active) : null,
       recentAttempts: (attempts ?? []).slice(0, 20).map((a: any) => ({
         id: a.id,
         skillId: a.skill_id,
@@ -283,6 +287,8 @@ Deno.serve(async (req) => {
         id: s.id, mode: s.mode, status: s.status, answered: Number(s.answered_count), planned: Number(s.planned_item_count),
         correct: Number(s.correct_count), assessmentResult: s.assessment_result, scorePercent: s.score_percent === null ? null : Number(s.score_percent),
         startedAt: s.started_at, completedAt: s.completed_at,
+        reporting: s.status === "completed" ? s.metadata?.assessmentResultReporting ?? null : null,
+        scoringRuleVersion: s.metadata?.scoringRuleVersion ?? null,
       })),
     });
   } catch (err) {

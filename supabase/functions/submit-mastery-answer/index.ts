@@ -4,19 +4,22 @@ import { legacyAnswerReceipt, finishLegacyAnswer } from "../_shared/answer-respo
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { evaluateMastery, loadSessionCriteria, ruleErrorStatus } from "../_shared/legacy-mastery-rules.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
-const PASS_PERCENT = 80;
-const MIN_CORRECT_PER_SKILL = 1;
+// Scoring-rule version for checks that saved none (every check before the registry).
+const DEFAULT_RULE_VERSION = "phy7-u01-v1";
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 }
 
 async function evaluate(admin: any, session: any) {
+  // Scored by the criteria saved when the check started, never by the current switch.
+  const { criteria } = await loadSessionCriteria(admin, session.metadata, DEFAULT_RULE_VERSION);
   const { data: rows, error } = await admin
     .from("learning_session_items")
     .select("skill_id, correct")
@@ -45,24 +48,20 @@ async function evaluate(admin: any, session: any) {
 
   const answered = Number(session.answered_count);
   const correct = Number(session.correct_count);
-  const percent = answered ? Math.round((correct / answered) * 100) : 0;
-  const everySkillMinimum = skillResults.length > 0 && skillResults.every((r) => r.correct >= MIN_CORRECT_PER_SKILL);
-  const passed = percent >= PASS_PERCENT && everySkillMinimum;
-
-  const remediationTargets = skillResults
-    .filter((r) => r.correct < r.total)
-    .sort((a, b) => a.correct - b.correct || a.code.localeCompare(b.code))
-    .slice(0, 3);
-  const failedSkillIds = passed ? [] : remediationTargets.map((r) => r.skillId);
+  const outcome = evaluateMastery(criteria, skillResults, { correct, answered });
+  const { passed, failedSkillIds } = outcome;
+  // The database verifies the raw whole-check percentage for legacy checks.
+  const percent = outcome.rawPercent;
 
   const metadata = {
     ...(session.metadata ?? {}),
     resultVersion: 1,
     passed,
-    passPercent: PASS_PERCENT,
-    minCorrectPerSkill: MIN_CORRECT_PER_SKILL,
+    passPercent: criteria.minimumPercent,
+    minCorrectPerSkill: criteria.minimumCorrectPerScoredSkill,
     skillResults,
     failedSkillIds,
+    ...(outcome.reporting ? { assessmentResultReporting: outcome.reporting } : {}),
   };
 
   const { data: lifecycle, error: lifecycleError } = await admin.rpc("finalize_mastery_check_atomic", {
@@ -77,7 +76,10 @@ async function evaluate(admin: any, session: any) {
   return {
     passed,
     score: { correct, answered, percent },
-    passCriteria: { overallPercent: PASS_PERCENT, minCorrectPerSkill: MIN_CORRECT_PER_SKILL },
+    passCriteria: { overallPercent: criteria.minimumPercent, minCorrectPerSkill: criteria.minimumCorrectPerScoredSkill },
+    scoringRuleVersion: criteria.ruleVersion,
+    assessmentResult: outcome.reporting,
+    ruleTextsHy: criteria.textsHy,
     skillResults,
     failedSkills: skillResults.filter((r) => failedSkillIds.includes(r.skillId)),
     lifecycle,
@@ -159,7 +161,16 @@ Deno.serve(async (req) => {
     if (refreshError || !refreshed) return json({ error: "session_refresh_failed" }, 500);
 
     let finalResult = null;
-    if (refreshed.status === "completed") finalResult = await evaluate(admin, refreshed);
+    if (refreshed.status === "completed") {
+      try {
+        finalResult = await evaluate(admin, refreshed);
+      } catch (err) {
+        const code = (err as { code?: string })?.code;
+        if (!code?.startsWith("legacy_mastery_rule")) throw err;
+        console.error("mastery rule refused", err);
+        return json({ error: code }, ruleErrorStatus(err));
+      }
+    }
 
     const result = {
       accepted: true,

@@ -4,6 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
+import { incompleteReadinessSkills, loadActiveRule, loadSessionCriteria, publicRule, ruleErrorStatus } from "../_shared/legacy-mastery-rules.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -11,6 +12,8 @@ const corsHeaders = {
 };
 const UNIT_CODE = "PHY7-U01";
 const MASTERY_THRESHOLD = 0.72;
+// Scoring-rule version for checks that saved none (every check before the registry).
+const DEFAULT_RULE_VERSION = "phy7-u01-v1";
 
 type AttemptRow = { skill_id: string; item_id: string; correct: boolean; hint_used: boolean; created_at: string };
 
@@ -77,16 +80,34 @@ Deno.serve(async (req) => {
     const [{ data: masteryRows }, { data: attemptRows }, { data: activeRows }, { data: checkRows }, { data: lifecycleRows }] = await Promise.all([
       admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
       admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(1000),
-      admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
+      admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, started_at, metadata").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
       admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count, mastery_attempt_number").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
       admin.from("chapter_mastery_states").select("id, lifecycle_state, attempts_used, passed_on_attempt, academic_mastery_policy_id, history_provenance").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).limit(1),
     ]);
 
     const mastery = new Map((masteryRows ?? []).map((r) => [r.skill_id, { score: Number(r.mastery_score), evidenceCount: Number(r.evidence_count) }]));
     const attempts = (attemptRows ?? []) as AttemptRow[];
-    const incompleteSkills = skills.filter((s) => !skillComplete(mastery.get(s.id), attempts, s.id));
     const latest = checkRows?.[0] ?? null;
-    const active = activeRows?.[0] ?? null;
+    const activeRow = activeRows?.[0] ?? null;
+    const { metadata: activeMetadata, ...activeFields } = activeRow ?? { metadata: null };
+    const active = activeRow ? activeFields : null;
+
+    // Readiness uses the active rule. An open check reports the rule it saved at start.
+    let rule;
+    try {
+      const activeRule = await loadActiveRule(admin, UNIT_CODE);
+      const openCheck = activeRow?.mode === "mastery_check"
+        ? await loadSessionCriteria(admin, activeMetadata, DEFAULT_RULE_VERSION)
+        : null;
+      rule = {
+        readiness: activeRule.criteria,
+        shown: openCheck ? publicRule(openCheck.criteria, openCheck) : publicRule(activeRule.criteria, activeRule),
+      };
+    } catch (err) {
+      console.error("mastery rule unavailable", err);
+      return json({ error: (err as { code?: string })?.code ?? "legacy_mastery_rule_unavailable" }, ruleErrorStatus(err));
+    }
+    const incompleteSkills = incompleteReadinessSkills(rule.readiness, skills, (s: { id: string }) => skillComplete(mastery.get(s.id), attempts, s.id));
 
     const lifecycle = lifecycleRows?.[0] ?? null;
     const lifecycleState = lifecycle?.lifecycle_state ?? null;
@@ -146,6 +167,7 @@ Deno.serve(async (req) => {
       curriculumReleaseId,
       courseKey: "physics:7",
       passCriteria: { overallPercent: 80, minCorrectPerSkill: 1, questions: 20, hints: false },
+      rule: rule.shown,
       unitComplete,
       eligible,
       retryBlocked,
@@ -173,6 +195,8 @@ Deno.serve(async (req) => {
         completedAt: latest.completed_at,
         attemptNumber: Number(latest.mastery_attempt_number ?? latest.metadata?.attemptNumber ?? 1),
         skillResults: latestSkillResults,
+        scoringRuleVersion: latest.metadata?.scoringRuleVersion ?? DEFAULT_RULE_VERSION,
+        assessmentResult: latest.metadata?.assessmentResultReporting ?? null,
       } : null,
       messageHy: unitComplete
         ? "Բաժինը ավարտված է․ mastery check-ը հաջողությամբ անցել եք։"
@@ -187,8 +211,8 @@ Deno.serve(async (req) => {
                 : retryBlocked
                   ? "Կրկնակի փորձից առաջ ավարտեք պահանջվող Գլխի կրկնությունը։"
                   : incompleteSkills.length
-                    ? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"
-                    : "Պատրաստ եք mastery check-ին։",
+                    ? rule.readiness.textsHy?.locked ?? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"
+                    : rule.readiness.textsHy?.ready ?? "Պատրաստ եք mastery check-ին։",
     });
   } catch (err) {
     console.error("get-mastery-check-status", err);

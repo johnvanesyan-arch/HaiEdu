@@ -85,8 +85,13 @@ export function aggregateSchoolPerformanceAnalytics(args: {
   for (const session of completed) {
     const context = { schoolId: session.school_id ?? null, academicYearId: session.academic_year_id ?? null,
       classId: session.class_id ?? null, subjectProgramId: session.subject_program_id ?? null, unitCode: session.unit_code ?? null };
-    const key = JSON.stringify([context, evidenceContractKey(session)]);
-    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), context, mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0, reportingGroups: [] as any[], passScore: null as any, lastActivityAt: null as string | null };
+    // A saved result record that names its scoring-rule version keeps results of different
+    // pass rules apart even when blueprint, binding and model are unchanged. Records without
+    // one (every governed policy result and older legacy results) keep their existing grouping.
+    const ruleVersion = typeof session.metadata?.assessmentResultReporting?.scoringRuleVersion === "string"
+      ? session.metadata.assessmentResultReporting.scoringRuleVersion : null;
+    const key = JSON.stringify([context, evidenceContractKey(session), ...(ruleVersion ? [ruleVersion] : [])]);
+    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), context, mode: session.mode, ruleVersion, sessions: 0, answered: 0, correct: 0, masteryPassed: 0, reportingGroups: [] as any[], passScore: null as any, lastActivityAt: null as string | null };
     group.sessions++; group.answered += Number(session.answered_count ?? 0); group.correct += Number(session.correct_count ?? 0);
     group.lastActivityAt = latestIso([group.lastActivityAt, session.completed_at || session.started_at]);
     if (session.assessment_result === "passed") group.masteryPassed++;

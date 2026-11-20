@@ -4,7 +4,11 @@ import {invokeLearnerFunction,createAnswerRequest,showAnswerRecovery,clearAnswer
 import {captureFocusHandoff} from './keyboard-focus.mjs';
 import { createClient } from "./supabase-browser.bundle.mjs";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
-import { assessmentScopeText } from './assessment-reporting.mjs';
+import { assessmentScopeText, assessmentGroupMarkup } from './assessment-reporting.mjs';
+// A check scored by a versioned rule (I-2) brings its rule text and saved result record.
+// Without them the page keeps today's wording and scores.
+const savedScore = (record, fallback) => record?.score ?? fallback;
+const groupsMarkup = record => (record?.groups ?? []).map((g) => assessmentGroupMarkup(g)).join("");
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -79,6 +83,7 @@ async function prepare() {
   try {
     const s = await status();
     const active = s.activeSession;
+    if (s.rule?.textsHy?.rule) $("masteryRuleText").textContent = s.rule.textsHy.rule;
 
     if ((s.unitComplete || lifecycleState(s) === "mastery_passed") && s.latestCheck) {
       return renderStoredResult(s.latestCheck, true, s);
@@ -132,7 +137,7 @@ async function prepare() {
     setStateBadge("Պատրաստ է", "info");
     const nextAttempt = Number(s.nextAttemptNumber ?? s.attemptNumber ?? 1);
     $("stateTitle").textContent = nextAttempt > 1 ? "Կրկին անցնել յուրացման ստուգումը" : "Պատրաստ եք յուրացման ստուգմանը";
-    $("stateText").textContent = `${nextAttempt > 1 ? `Փորձ ${nextAttempt} / 3։ ` : ""}20 հարց։ Արդյունքը կբացահայտվի միայն ավարտից հետո։ Անցողիկ կանոնը փորձնական է՝ առնվազն 80% ընդհանուր և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։`;
+    $("stateText").textContent = `${nextAttempt > 1 ? `Փորձ ${nextAttempt} / 3։ ` : ""}20 հարց։ Արդյունքը կբացահայտվի միայն ավարտից հետո։ ${s.rule?.textsHy?.rule ?? "Անցողիկ կանոնը փորձնական է՝ առնվազն 80% ընդհանուր և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։"}`;
     $("startBtn").classList.remove("hidden");
   } catch (err) {
     setStateBadge("Սխալ", "danger");
@@ -341,9 +346,10 @@ function renderFinalResult(result) {
   $("resultTitle").textContent = result.passed
     ? "Գլխի յուրացման ստուգարքն անցած է"
     : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգարքը չի անցել";
-  $("resultScore").textContent = `${result.score.correct}/${result.score.answered} · ${result.score.percent}%`;
-  $("resultRule").textContent = "Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1/2։";
-  renderSkillResults(result.skillResults ?? []);
+  const score = savedScore(result.assessmentResult, result.score);
+  $("resultScore").textContent = `${score.correct}/${score.answered} · ${score.percent}%`;
+  $("resultRule").textContent = result.ruleTextsHy?.rule ?? "Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1/2։";
+  renderSkillResults(result.skillResults ?? [], result.assessmentResult);
 
   if (result.passed) {
     $("resultRule").textContent += ` Ստուգարքն անցած է ${attemptNumber(result) || 1}-րդ փորձով։ Գլխի կրկնությունն այժմ լրացուցիչ է և չի փոխի հաստատված արդյունքը։`;
@@ -366,13 +372,14 @@ function renderStoredResult(check, passed, statusPayload = {}) {
   $("resultTitle").textContent = passed
     ? "Գլխի յուրացման ստուգարքն անցած է"
     : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգարքը չի անցել";
-  $("resultScore").textContent = `${check.correct}/${check.answered} · ${check.percent ?? 0}%`;
+  const score = savedScore(check.assessmentResult, { correct: check.correct, answered: check.answered, percent: check.percent ?? 0 });
+  $("resultScore").textContent = `${score.correct}/${score.answered} · ${score.percent}%`;
   $("resultRule").textContent = passed
     ? `Այս գլխի յուրացման ստուգարքն անցած է${attemptNumber(check) ? ` ${attemptNumber(check)}-րդ փորձով` : ""}։ Գլխի կրկնությունը լրացուցիչ է և չի փոխի հաստատված արդյունքը։`
     : finalFailure
       ? "Դուք ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը։ Կարող եք շարունակել կրկնել գլուխը և ամրապնդել ուշադրություն պահանջող հմտությունները։"
       : "Հաջորդ փորձը բացվում է միայն պահանջվող Գլխի կրկնությունն ավարտելուց հետո։";
-  renderSkillResults(check.skillResults ?? []);
+  renderSkillResults(check.skillResults ?? [], check.assessmentResult);
   $("resultRule").textContent += ` ${assessmentScopeText}`;
   if (passed) setResultActions({ primaryHref: "./physics-7.html", primaryText: "Շարունակել", showReview: true });
   else setResultActions({
@@ -381,13 +388,16 @@ function renderStoredResult(check, passed, statusPayload = {}) {
   });
 }
 
-function renderSkillResults(results) {
-  $("resultSkills").innerHTML = results.map((r) => {
+function renderSkillResults(results, record = null) {
+  // A saved result record says which skills decide the pass; the others are shown without a pass/fail tone.
+  const scored = Array.isArray(record?.scoredSkillIds) ? new Set(record.scoredSkillIds) : null;
+  $("resultSkills").innerHTML = groupsMarkup(record) + results.map((r) => {
     const passed = Number(r.correct) >= 1;
+    const tone = scored && !scored.has(r.skillId) ? "neutral" : passed ? "success" : "danger";
     return `<article class="assessment-skill-result">
       <div class="skill-top">
         <div><div class="skill-code">${escapeHtml(r.code)}</div><div class="skill-title">${escapeHtml(r.nameHy)}</div></div>
-        <span class="status-badge ${passed ? "success" : "danger"}">${r.correct}/${r.total}</span>
+        <span class="status-badge ${tone}">${r.correct}/${r.total}</span>
       </div>
     </article>`;
   }).join("");

@@ -13,6 +13,7 @@ import {
   getStudentExposureHistory,
   type SelectableItem,
 } from "../_shared/assessment-integrity.ts";
+import { incompleteReadinessSkills, loadActiveRule, ruleErrorStatus, ruleSnapshot } from "../_shared/legacy-mastery-rules.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -546,13 +547,27 @@ Deno.serve(async (req) => {
       }, 409);
     }
 
-    const incompleteSkills = skills.filter((skill) => !isComplete(mastery.get(skill.id), attempts, skill.id));
+    // The active rule decides readiness for a new check; the check saves that rule,
+    // its exact criteria and fingerprint, and is scored by them when it finishes.
+    let activeRule;
+    try {
+      activeRule = await loadActiveRule(admin, UNIT_CODE);
+    } catch (err) {
+      console.error("mastery rule unavailable", err);
+      return json({ error: (err as { code?: string })?.code ?? "legacy_mastery_rule_unavailable" }, ruleErrorStatus(err));
+    }
+    const delivered = activeRule.criteria.deliveredSkillCodes;
+    if (activeRule.criteria.itemsPerSkill !== MASTERY_ITEMS_PER_SKILL || delivered.length !== skills.length
+      || !skills.every((skill) => delivered.includes(skill.code))) {
+      return json({ error: "legacy_mastery_rule_scope_mismatch" }, 409);
+    }
+    const incompleteSkills = incompleteReadinessSkills(activeRule.criteria, skills, (skill: { id: string }) => isComplete(mastery.get(skill.id), attempts, skill.id));
     if (!retryReady && incompleteSkills.length) {
       return json({
         masteryEligible: false,
         reason: "skills_not_ready",
         requiredSkills: incompleteSkills.map((s) => ({ id: s.id, code: s.code, nameHy: s.name_hy })),
-        messageHy: "Mastery check-ից առաջ ավարտեք դեռ չամրապնդված հմտությունների վարժանքը։",
+        messageHy: activeRule.criteria.textsHy?.locked ?? "Mastery check-ից առաջ ավարտեք դեռ չամրապնդված հմտությունների վարժանքը։",
       });
     }
 
@@ -629,6 +644,7 @@ Deno.serve(async (req) => {
       overlapCount,
       poolExhausted,
       exactRepeatFallbackUsed: overlapCount > 0,
+      ...ruleSnapshot(activeRule),
     };
     const atomicItems = ordered.map((row, index) => ({
       ordinal: index + 1,

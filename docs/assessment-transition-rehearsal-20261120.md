@@ -135,3 +135,94 @@ Result on 20 November: 50 of 50 pass. The full `npm test` was not run for this p
 
 **Readiness rule B** stays separate: nothing in this rehearsal changes readiness. Chapter II's readiness changes here only because II-2 narrows the readiness skill set.
 
+
+## Chapter I option A — isolated build and tests (§6A), 20 November 2026
+
+**Status:** built and tested in isolation only, on branch `claude/ecstatic-goodall-fpmil4`. Nothing is deployed. Production is unchanged. No rule was activated anywhere except inside in-memory test databases. Plan: [option A, revision 3](chapter-i-i2-option-a-plan-20261120.md).
+
+### What was built
+- **Registry and switch** — `supabase/migrations/20261120120000_legacy_mastery_rule_registry.sql`:
+  - immutable rule versions with a database-computed fingerprint;
+  - an append-only activation log, seeded with today's rule `phy7-u01-v1` only;
+  - service-only reads and a service-only switch, `service_activate_legacy_mastery_rule(unit, version, actor, reason)`. Rollback is a new row naming the older version.
+- **Today's Home and Course dashboard** — `supabase/migrations/20261120120100_legacy_mastery_rule_dashboard.sql` redefines `service_student_learning_dashboard`. For a registered legacy unit with an active registry rule:
+  - each skill's `requiredForReadiness` comes from that rule;
+  - the per-skill minimum lists only the scored skills;
+  - the mastery spec names the rule version.
+  Every other unit is unchanged.
+- **Shared rules module** — `supabase/functions/_shared/legacy-mastery-rules.mjs`:
+  - validates a criteria object;
+  - computes readiness, the pass decision, the saved result record (the existing `haiedu-assessment-result-v2` shape) and review targets.
+  It holds no skill codes or wording; those live in the registry rows.
+- **Edge functions:**
+  - `get-mastery-check-status`: readiness from the active rule; an open check reports its saved rule; the latest check returns its saved result record and rule version.
+  - `start-learning-session`: readiness from the active rule; each new check saves its version, criteria and fingerprint.
+  - `submit-mastery-answer`: scores by the saved criteria (default `phy7-u01-v1`); stores the raw percentage the database requires; saves the result record for I-2.
+  - `get-student-dashboard` (older pages): adds `requiredForReadiness`, `progress.requiredCompleted` and `progress.requiredTotal`, and `masteryRule`.
+  - `get-teacher-dashboard` and `get-teacher-student`: return the saved result record and rule version.
+  - `school-performance-analytics.ts`: results whose saved record names a rule version get their own group, with `ruleVersion` in the group data.
+- **Older Chapter I pages:**
+  - `mastery`: rule text from the server and the saved pass score. The result shows the two groups. S07's per-skill badge is neutral for I-2 results.
+  - `assessment`, `physics-7`, `progress` and `app.js`: the ready text comes from the server; counts use the required skills; S07 is noted «Չի սահմանափակում ստուգարքի հասանելիությունը» on the topics page.
+  - Today's wording stays wherever the server sends none (every `phy7-u01-v1` case).
+- **Trigger lists:** the Chapter III–VI pilot-read workflows now list the new shared module (`check-browser-qa-triggers` passes).
+
+### Departures from plan revision 3 (for John)
+1. **Today's Home and Course read a different dashboard than the plan named.** Home (`multi-subject-home.js`) and Course (`course-page.js`) use the SQL `service_student_learning_dashboard`, not the older Edge `get-student-dashboard`. These pages already honour `requiredForReadiness: false`, so no page change was needed there. The SQL function had to change, hence the second migration. The older Edge dashboard was changed as planned for the older pages.
+2. **Table and function names** are `legacy_mastery_rule_*`, keyed by unit code, not `chapter_i_*`. This keeps chapter names out of the shared dashboard SQL. The Chapter I content stays in the rows.
+3. **Today's rule row stores no wording and no result record.** The pages keep today's wording exactly. Storing a single copy of today's sentences would have changed several slightly different existing sentences. The I-2 row stores John's sentences verbatim.
+4. **The school admin group key** uses the rule version named in the saved result record, not the session's version stamp. Today's results from before and after the registry therefore stay in one group, while I-2 results get their own. The admin pages do not yet display the version name; showing it would be a design change.
+5. **Two design-level choices to confirm or revert:**
+   - On the result screen, S07's 0/2 badge is neutral, not red, under I-2.
+   - The existing label «ընթացիկ չափանիշը բավարարած» now counts the required skills, so it reads 9/9 under I-2. The wording is unchanged.
+6. **Not changed:**
+   - `home-dashboard.js` and `mastery-dashboard.js` are loaded by no page.
+   - The new Course page's mode card shows no I-2 rule sentence (it shows the threshold and the nine per-skill minima).
+
+### Isolated test results (20 November)
+| File | What runs | Result |
+|---|---|---|
+| `tests/legacy-mastery-rules.test.mjs` | Rules module against the seeded registry rows. Today's rule is compared with today's code on all 59,049 per-skill results of a 20-question check | 8/8 |
+| `tests/legacy-mastery-rule-registry.test.mjs` | Registry migration in PGlite: immutability, append-only log, activation and rollback, refusals, client-role denial. Dashboard SQL on the full governed fixture: required skills before, after and on rollback | 5/5 |
+| `tests/legacy-chapter-i-i2-transition.test.mjs` | Real legacy handlers (status, start, submit, dashboard) and real lifecycle SQL on a reduced fixture. Covers: ready on nine with weak S07 (locked under v1, available under I-2); pass 15/18 with S07 0/2 saved as raw 75%; failed I-2 → review required blocks the retry with nine skills ready → review completes → retry on unseen questions → pass; open check through activation and through rollback; three-attempt limit across versions; tampered or unknown saved rule refused; older unsaved checks scored by v1 | 7/7; **all 7 fail on today's source** |
+| `tests/legacy-chapter-i-i2-reporting.test.mjs` | School admin aggregation: v1 and I-2 groups kept apart; governed groups unchanged. Personal-account endpoint fields (source checks) | 3/3 |
+| `tests/legacy-chapter-i-i2-pages.test.mjs` | Every page place in plan §4 reads the server rule or saved record, with today's fallback (source checks; pages not rendered) | 4/4 |
+
+**Fixture limits:**
+- The reduced fixture keeps only the columns these handlers use.
+- Doubles are used for course access, curriculum resolution, rate budgets, answer receipts and the upstream answer grader. Real numeric and quantity grading was not exercised.
+- The chapter review was finalized by the real lifecycle function, but its questions were not served through the handler. Review targeting was checked through the saved `failedSkillIds` that the handler reads.
+- The teacher endpoint handlers and the older pages were not run.
+
+### Staging handoff (§6B, for the environment where Codex ran Chapter II)
+1. Apply both migrations to local staging. Deploy `get-mastery-check-status`, `start-learning-session`, `submit-mastery-answer`, `get-student-dashboard`, `get-teacher-dashboard`, `get-teacher-student` and `get-school-performance-analytics`. Serve this commit's `web-build`.
+2. Use a Chapter I student ready on S01–S06 and S08–S10 and weak on S07. Before the switch: Home does not offer the check; the Course page shows S07 as required; the check page is locked.
+3. Switch locally: `select service_activate_legacy_mastery_rule('PHY7-U01','phy7-u01-i2-v1','staging','I-2 staging');`. Then:
+   - Home's next step is the check;
+   - Course shows 9/9 required, with S07 noted;
+   - the check page opens with the I-2 rule text.
+4. Start from Home and fail the check. The result shows the saved pass score and «Լրացուցիչ վերջնարդյունք» separately.
+5. Check that the required review blocks the retry on Home and on the check page, and that a direct start is refused, while all nine skills stay ready.
+6. Complete the review through the normal page. Check that the retry opens, uses unseen questions and keeps the attempt number.
+7. Pass the retry. The result shows «Ստուգարքն անցած է · 15/18 · 83%» while the database holds 15/20 = 75%.
+8. Transitions:
+   - open a check under v1, switch, finish (v1);
+   - open a check under I-2, roll back with `phy7-u01-v1`, finish (I-2);
+   - the next check gets v1.
+9. Other pages:
+   - school teacher row, panel, history, Skills tab and support count (no split expected);
+   - personal-account teacher (existing layout with groups);
+   - school admin (separate groups).
+
+**Production QA:** not run (paused by owner). Suites whose explicit dependency lists include changed files:
+- Chapter III–VI pilot-read;
+- teacher feedback.
+
+Suites triggered by wildcard paths:
+- English Units 1–3 pilot-read;
+- mobile browser QA;
+- resource assignments;
+- Sprint 14 actions;
+- Sprint 14D analytics.
+
+None of these scripts read the changed Chapter I texts or fields.

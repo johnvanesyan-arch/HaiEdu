@@ -16,7 +16,7 @@ export async function endpoint(db, name = 'manage-remediation-guides', bindings 
   const token = (actor = ids.actor, aal = 'aal1') => 'fixture.' + Buffer.from(JSON.stringify({ sub: actor, aal, ...(bindings.fixtureAuthSessionId?{session_id:bindings.fixtureAuthSessionId}:{}) })).toString('base64url') + '.fixture';
   const query = table => {
     const where = [], params = [], orders = [];
-    let cols = '*', limit = null, offset = 0, single = false, mutation = null;
+    let cols = '*', limit = null, offset = 0, single = false, mutation = null, patch = null;
     const bind = value => { params.push(value); return '$' + params.length; };
     const q = {
       select(c) { cols = c; return q; },
@@ -24,17 +24,24 @@ export async function endpoint(db, name = 'manage-remediation-guides', bindings 
       neq(k, v) { where.push(`${k}<>${bind(v)}`); return q; },
       is(k, v) { if (v !== null) throw Error('fixture supports null only'); where.push(`${k} is null`); return q; },
       in(k, vs) { where.push(`${k}=any(${bind(vs)})`); return q; },
+      like(k, v) { where.push(`${k} like ${bind(v)}`); return q; },
+      gt(k, v) { where.push(`${k}>${bind(v)}`); return q; },
+      not(k, op, v) { if (op !== 'is' || v !== null) throw Error('fixture supports not is null only'); where.push(`${k} is not null`); return q; },
       order(k, o = {}) { orders.push(`${k} ${o.ascending === false ? 'desc' : 'asc'}${o.nullsFirst ? ' nulls first' : ''}`); return q; },
       limit(n) { limit = n; return q; },
       range(a, b) { offset = a; limit = b - a + 1; return q; },
       maybeSingle() { single = true; return q; },
       single() { single = true; return q; },
       insert(data) { mutation = data; return q; },
+      update(data) { patch = data; return q; },
       then(resolve, reject) {
         return (async () => {
           try {
             let sql;
-            if (mutation) {
+            if (patch) {
+              const sets = Object.entries(patch).map(([k, v]) => `${k}=${bind(v && typeof v === 'object' ? JSON.stringify(v) : v)}`);
+              sql = `update ${table} set ${sets.join(',')}${where.length ? ' where ' + where.join(' and ') : ''} returning ${cols}`;
+            } else if (mutation) {
               const rows = Array.isArray(mutation) ? mutation : [mutation];
               const keys = Object.keys(rows[0]);
               const values = rows.map(row => '(' + keys.map(k => bind(row[k] && typeof row[k] === 'object' ? JSON.stringify(row[k]) : row[k])).join(',') + ')');

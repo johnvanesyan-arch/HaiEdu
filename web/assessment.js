@@ -93,6 +93,10 @@ function renderMastery(mastery) {
     return;
   }
   const latest = mastery.latestCheck;
+  // Versioned rules (I-2) bring their own wording and a saved pass score; otherwise today's text stays.
+  const rule = mastery.rule?.textsHy ?? null;
+  if (rule) $("masteryRuleItem").textContent = rule.rule;
+  const latestScore = latest?.assessmentResult?.score ?? (latest ? { correct: latest.correct, answered: latest.answered, percent: latest.percent ?? 0 } : null);
 
   if (mastery?.unitComplete) {
     setBadge("masteryStatus", "Ստուգարքն անցած է", "success");
@@ -108,7 +112,7 @@ function renderMastery(mastery) {
     action.textContent = "Դիտել պահանջները";
   } else if (mastery?.eligible) {
     setBadge("masteryStatus", "Պատրաստ է", "info");
-    $("masterySummary").textContent = "Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։";
+    $("masterySummary").textContent = rule?.ready ?? "Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։";
     action.textContent = latest?.result === "failed" ? "Կրկին փորձել" : "Սկսել ստուգումը";
   } else {
     setBadge("masteryStatus", "Դեռ փակ է", "neutral");
@@ -118,7 +122,7 @@ function renderMastery(mastery) {
 
   action.href = "./mastery.html";
   $("masteryMeta").textContent = latest ? `Վերջին փորձ՝ ${fmtDate(latest.completedAt)}` : "Դեռ փորձ չկա";
-  $("latestMasteryScore").textContent = latest ? `${latest.correct}/${latest.answered} · ${latest.percent ?? 0}%` : "Դեռ չկա";
+  $("latestMasteryScore").textContent = latestScore ? `${latestScore.correct}/${latestScore.answered} · ${latestScore.percent}%` : "Դեռ չկա";
   $("latestMasteryDate").textContent = latest ? `${fmtDate(latest.completedAt)} · ${latest.result === "passed" ? "անցած" : "չանցած"}` : "Յուրացման ստուգում դեռ չի ավարտվել";
 }
 

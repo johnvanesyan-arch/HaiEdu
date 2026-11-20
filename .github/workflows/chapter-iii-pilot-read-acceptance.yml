@@ -69,6 +69,7 @@ on:
       - supabase/functions/_shared/institutional-teacher-analytics.ts
       - supabase/functions/_shared/institutional-teacher-dashboard.ts
       - supabase/functions/_shared/learning-model.ts
+      - supabase/functions/_shared/legacy-mastery-rules.mjs
       - supabase/functions/_shared/recommendation-telemetry.ts
       - supabase/functions/_shared/student-dashboard-handler.mjs
       - supabase/functions/_shared/student-learning-context.mjs

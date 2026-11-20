@@ -6,6 +6,7 @@ import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts
 import { resolveRuntimeLearningModel } from "../_shared/learning-model.ts";
 import { issueRecommendationEvent } from "../_shared/recommendation-telemetry.ts";
 import { routeStudentDashboard } from "../_shared/student-dashboard-handler.mjs";
+import { isReadinessSkill, loadActiveRule, publicRule, ruleErrorStatus } from "../_shared/legacy-mastery-rules.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -101,6 +102,15 @@ Deno.serve(async (req) => {
     console.error("curriculum release or learning-model binding unavailable", err);
     return json({ error: "curriculum_or_model_unavailable" }, 503);
   }
+  // The active check rule says which skills open the check. It changes no existing
+  // field and not the practice recommendation.
+  let activeRule;
+  try {
+    activeRule = await loadActiveRule(admin, UNIT_CODE);
+  } catch (err) {
+    console.error("mastery rule unavailable", err);
+    return json({ error: (err as { code?: string })?.code ?? "legacy_mastery_rule_unavailable" }, ruleErrorStatus(err));
+  }
 
   const [
     { data: masteryRows },
@@ -174,6 +184,7 @@ Deno.serve(async (req) => {
         : null,
       complete: completion.complete,
       completionSource: completion.source,
+      requiredForReadiness: isReadinessSkill(activeRule.criteria, skill.code),
     };
   });
 
@@ -201,6 +212,8 @@ Deno.serve(async (req) => {
   const active = activeRows?.find((row) => latestDiagnostic || !["practice", "chapter_review"].includes(row.mode)) ?? null;
   const activeTarget = active?.target_skill_id ? skillMap.find((s) => s.id === active.target_skill_id) : null;
   const completedSkills = skillMap.filter((s) => s.complete).length;
+  const requiredSkills = skillMap.filter((s) => s.requiredForReadiness);
+  const requiredCompleted = requiredSkills.filter((s) => s.complete).length;
 
   let recommendedAction: "resume_session" | "take_diagnostic" | "practice_skill" | "unit_complete" | "required_chapter_review" | "mastery_check_retry" | "review_chapter";
   if (active) recommendedAction = "resume_session";
@@ -297,7 +310,10 @@ Deno.serve(async (req) => {
       completedSkills,
       totalSkills: skillMap.length,
       percent: skillMap.length ? Math.round((completedSkills / skillMap.length) * 100) : 0,
+      requiredCompleted,
+      requiredTotal: requiredSkills.length,
     },
+    masteryRule: publicRule(activeRule.criteria, activeRule),
     skills: skillMap,
     recommendation: {
       ...recommendationSnapshot,

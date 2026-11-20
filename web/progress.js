@@ -71,7 +71,11 @@ function activeRoute(session) {
 }
 
 function renderSummary() {
-  const progress = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  const allSkills = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  // Counts follow the skills the active check rule requires (all ten under today's rule).
+  const progress = allSkills.requiredTotal
+    ? { completedSkills: allSkills.requiredCompleted, totalSkills: allSkills.requiredTotal, percent: Math.round((allSkills.requiredCompleted / allSkills.requiredTotal) * 100) }
+    : allSkills;
   const bar = $("chapterProgressBar");
   bar.style.width = `${progress.percent ?? 0}%`;
   bar.parentElement?.setAttribute("aria-valuenow", String(progress.percent ?? 0));
@@ -94,23 +98,25 @@ function renderSummary() {
   }
 
   const latestCheck = masteryStatus?.latestCheck;
+  const savedScore = latestCheck?.assessmentResult?.score;
+  const latestScore = savedScore ? `${savedScore.correct}/${savedScore.answered} · ${savedScore.percent}%` : `${latestCheck?.correct}/${latestCheck?.answered} · ${latestCheck?.percent ?? 0}%`;
   if (!masteryStatus) {
     $("masterySummary").textContent = "Կարգավիճակը հասանելի չէ";
     $("masterySummaryMeta").textContent = "Չհաջողվեց ստուգել յուրացման կարգավիճակը։ Թարմացրեք էջի տվյալները՝ կրկին փորձելու համար։";
   } else if (masteryStatus?.unitComplete) {
     $("masterySummary").textContent = "Ստուգարքն անցած է";
     $("masterySummaryMeta").textContent = latestCheck?.percent != null
-      ? `Վերջին անկախ ստուգում՝ ${latestCheck.correct}/${latestCheck.answered} · ${latestCheck.percent}%`
+      ? `Վերջին անկախ ստուգում՝ ${latestScore}`
       : "Անկախ յուրացման ստուգումն անցած է։";
   } else if (masteryStatus?.activeSession?.mode === "mastery_check") {
     $("masterySummary").textContent = "Ընթացքի մեջ";
     $("masterySummaryMeta").textContent = `${masteryStatus.activeSession.answered_count ?? 0}/${masteryStatus.activeSession.planned_item_count ?? 20} հարց պատասխանված է։`;
   } else if (latestCheck?.result === "failed") {
     $("masterySummary").textContent = "Դեռ չի հաստատվել";
-    $("masterySummaryMeta").textContent = `Վերջին փորձ՝ ${latestCheck.correct}/${latestCheck.answered} · ${latestCheck.percent ?? 0}%։ Պահանջվում է ամրապնդող վարժանք։`;
+    $("masterySummaryMeta").textContent = `Վերջին փորձ՝ ${latestScore}։ Պահանջվում է ամրապնդող վարժանք։`;
   } else if (masteryStatus?.eligible) {
     $("masterySummary").textContent = "Պատրաստ է";
-    $("masterySummaryMeta").textContent = "Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։";
+    $("masterySummaryMeta").textContent = masteryStatus.rule?.textsHy?.ready ?? "Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։";
   } else {
     $("masterySummary").textContent = "Դեռ փակ է";
     $("masterySummaryMeta").textContent = masteryStatus?.messageHy ?? "Նախ ամրապնդեք անհրաժեշտ հմտությունները։";
@@ -163,7 +169,7 @@ function recommendedAction() {
   if (masteryStatus?.eligible) {
     return {
       title: "Պատրաստ եք անկախ յուրացման ստուգմանը",
-      reason: "Բոլոր ընթացիկ հմտությունները բավարարել են պատրաստվածության կանոնը։ Անցողիկ շեմը դեռ փորձնական է։",
+      reason: masteryStatus.rule?.textsHy?.ready ?? "Բոլոր ընթացիկ հմտությունները բավարարել են պատրաստվածության կանոնը։ Անցողիկ շեմը դեռ փորձնական է։",
       href: "./mastery.html",
       label: "Բացել ստուգումը",
     };

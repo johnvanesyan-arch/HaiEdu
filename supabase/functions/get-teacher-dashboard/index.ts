@@ -173,7 +173,7 @@ Deno.serve(async (req) => {
         ? admin.from("attempts").select("student_id, skill_id, item_id, correct, hint_used, created_at").in("student_id", studentIds).order("created_at", { ascending: false }).limit(2000)
         : Promise.resolve({ data: [] as any[] }),
       studentIds.length
-        ? admin.from("learning_sessions").select("id, student_id, mode, status, target_skill_id, answered_count, planned_item_count, correct_count, assessment_result, score_percent, started_at, completed_at").in("student_id", studentIds).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(1000)
+        ? admin.from("learning_sessions").select("id, student_id, mode, status, target_skill_id, answered_count, planned_item_count, correct_count, assessment_result, score_percent, started_at, completed_at, metadata").in("student_id", studentIds).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(1000)
         : Promise.resolve({ data: [] as any[] }),
       studentIds.length
         ? admin.from("chapter_review_summary_v").select("*").eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).in("student_id", studentIds)
@@ -275,7 +275,7 @@ Deno.serve(async (req) => {
           answered: Number(latestDiagnostic.answered_count),
           percent: latestDiagnostic.answered_count ? Math.round(Number(latestDiagnostic.correct_count) / Number(latestDiagnostic.answered_count) * 100) : 0,
         } : null,
-        masteryCheck: passedMastery ? { passed: true, percent: Number(passedMastery.score_percent ?? 0) } : null,
+        masteryCheck: passedMastery ? { passed: true, percent: Number(passedMastery.score_percent ?? 0), assessmentResult: passedMastery.metadata?.assessmentResultReporting ?? null, scoringRuleVersion: passedMastery.metadata?.scoringRuleVersion ?? null } : null,
         chapterReview: review ? {
           masteryStatus: review.lifecycle_state === "mastery_passed" ? "confirmed" : review.lifecycle_state === "mastery_failed_final" ? "not_demonstrated" : "in_progress",
           lifecycleState: review.lifecycle_state,

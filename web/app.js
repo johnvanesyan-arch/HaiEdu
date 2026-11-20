@@ -161,7 +161,11 @@ function renderDashboard(data) {
     ? "Սկզբնական 20-հարցանոց ախտորոշիչ"
     : "Անցեք ախտորոշիչը՝ հմտությունների քարտեզ ստանալու համար";
 
-  const progress = data.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  const allSkills = data.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  // Counts follow the skills the active check rule requires (all ten under today's rule).
+  const progress = allSkills.requiredTotal
+    ? { completedSkills: allSkills.requiredCompleted, totalSkills: allSkills.requiredTotal, percent: Math.round((allSkills.requiredCompleted / allSkills.requiredTotal) * 100) }
+    : allSkills;
   $("completedSkills").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
   $("overallProgressBar").style.width = `${progress.percent}%`;
 

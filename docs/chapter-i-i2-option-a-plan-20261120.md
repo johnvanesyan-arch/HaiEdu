@@ -2,6 +2,8 @@
 
 **Status:** plan only. Nothing is built, deployed or changed. **Out of scope:** readiness rule B and live activation.
 
+**Build update (20 November, later):** §6A is built and tested in isolation. Nothing is deployed and nothing is activated. The results, the staging handoff and six departures from this plan are in the [rehearsal record](assessment-transition-rehearsal-20261120.md#chapter-i-option-a--isolated-build-and-tests-6a-20-november-2026). The main departure: today's Home and Course read the SQL `service_student_learning_dashboard`, so that function changes too.
+
 **Revision 3** (later on 20 November):
 - adopts John's Armenian wording;
 - keeps the S07 practice recommendation as it is;
