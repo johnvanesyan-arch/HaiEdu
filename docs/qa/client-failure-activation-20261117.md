@@ -1,5 +1,7 @@
 # BF-22 — signed-in reporting activation
 
+**Current registration update — 21 November 2026:** the approved teacher build is registered through **21 December 2026, 14:37:11 Asia/Yerevan**. The existing reminder is reset for **12 December 2026, 14:37:11 Asia/Yerevan**. The [verified teacher release and registration](../teacher-school-release-20261121.md) supersedes earlier build/renewal dates below; reporting settings are unchanged.
+
 Updated 17 November 2026 (Asia/Yerevan). The owner approved activation, exact-build registration, the renewal reminder and PR517, and confirmed no competing merger/releaser for this release and its record. PR517 merged at `bc9487fdfcbd3bf2bbf25af846918321fea7651c` after all five reviewed-head CI checks and security analyses passed. Registration, the reminder, merged-source CI and public release verification are complete. The exact enabled browser build is now served on all three public addresses. This does not close wider BF-22 coverage.
 
 ## Verified live connection and delivery

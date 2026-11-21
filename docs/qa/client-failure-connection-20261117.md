@@ -1,5 +1,7 @@
 # BF-22 — private connection and build-registration handoff
 
+**Current registration update — 21 November 2026:** the approved teacher build is registered through **21 December 2026, 14:37:11 Asia/Yerevan**. The existing reminder is reset for **12 December 2026, 14:37:11 Asia/Yerevan**. The [verified teacher release and registration](../teacher-school-release-20261121.md) supersedes earlier build/renewal dates below; reporting settings are unchanged.
+
 **Current activation update, 17 November 2026:** the setup snapshot below is historical. The owner-approved [activation and renewal receipt](client-failure-activation-20261117.md) records the now-verified private key match, backend observe mode, enabled GitHub/browser reporting, exact build registration, owner-confirmed labelled notification delivery and the created maintenance reminder. Do not use the earlier off-state instructions as the current operating configuration. Fresh signed-in production capture remains open.
 
 Recorded 17 November 2026 (Asia/Yerevan), against reviewed main `ebbac695dc394dd04ebd04c1cc28e28a944bdb9a`. The owner confirmed **“Both saved; reporting off”** after following the private connection-key setup instructions. Credential saving is owner-reported; the live key match has not been tested. The [private service installation](client-failure-private-service-setup-20261117.md) is complete; collection remains disabled. This record adds the release/renewal procedure and preserves the separate activation gate.
