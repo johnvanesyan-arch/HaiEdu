@@ -3,7 +3,8 @@ import {escapeHtml} from './text-safety.mjs';
 import {classNavigationHandoff} from './teacher-class-handoff.mjs';
 import {createModalFocus} from './keyboard-focus.mjs';
 import { signOutAccount } from './account-signout.mjs';
-import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,assessmentScopeMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
+import { teacherDate, teacherDateTime } from './teacher-dates.mjs';
+import {mountTeacherReview,mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent,subjectArtwork,renderArchive,mountWrittenWork,assessmentResultMarkup,assessmentScopeMarkup,contractMarkup,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,schoolCheckResultMarkup,schoolCheckStatus,schoolAttemptMarkup,schoolSkillCardsMarkup,supportEvidence,supportFlag,answeredBeforeCheck,schoolNextStep,activeWorkProgress,recentAccuracySummary,SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,roleDestination,createClient} from "./teacher-dependencies.bundle.mjs";
 
 // A delayed async head entry must not start a second read after SDK startup.
 window.__haieduTeacherHomeStartup ||= Object.freeze({claim:()=>null,cancel:()=>{}});
@@ -746,9 +747,6 @@ function renderInstitutionalStudentInvitations(invitations) {
     list.append(empty);
     return;
   }
-  const dateFormat = new Intl.DateTimeFormat("hy-AM", {
-    dateStyle: "medium", timeStyle: "short",
-  });
   for (const invitation of invitations) {
     const item = document.createElement("li");
     const copy = document.createElement("div");
@@ -757,7 +755,7 @@ function renderInstitutionalStudentInvitations(invitations) {
     email.textContent = invitation.email || "Աշակերտի էլ. հասցեն անհասանելի է";
     const expiry = document.createElement("span");
     expiry.className = "subtle small";
-    expiry.textContent = `Վավեր է մինչև ${dateFormat.format(new Date(invitation.expiresAt))}`;
+    expiry.textContent = `Վավեր է մինչև ${teacherDateTime(invitation.expiresAt) ?? "—"}`;
     const revoke = document.createElement("button");
     revoke.type = "button";
     revoke.className = "ghost small-button";
@@ -921,9 +919,6 @@ function renderInstitutionalJoinCodes(codes) {
     list.append(empty);
     return;
   }
-  const dateFormat = new Intl.DateTimeFormat("hy-AM", {
-    dateStyle: "medium", timeStyle: "short",
-  });
   for (const code of codes) {
     const item = document.createElement("li");
     const copy = document.createElement("div");
@@ -932,7 +927,7 @@ function renderInstitutionalJoinCodes(codes) {
     title.textContent = "Մեկանգամյա կոդ";
     const expiry = document.createElement("span");
     expiry.className = "subtle small";
-    expiry.textContent = `Ստեղծվել է ${dateFormat.format(new Date(code.createdAt))} · վավեր է մինչև ${dateFormat.format(new Date(code.expiresAt))}`;
+    expiry.textContent = `Ստեղծվել է ${teacherDateTime(code.createdAt) ?? "—"} · վավեր է մինչև ${teacherDateTime(code.expiresAt) ?? "—"}`;
     const revoke = document.createElement("button");
     revoke.type = "button";
     revoke.className = "ghost small-button";
@@ -1104,6 +1099,7 @@ function renderMatrix(klass) {
 }
 
 function renderRoster(klass) {
+  if (dashboard?.institutionalTeacher) return renderSchoolRoster(klass);
   const roster = $("roster");
   roster.innerHTML = "";
   const query = rosterQuery.trim().toLocaleLowerCase("hy-AM");
@@ -1122,7 +1118,7 @@ function renderRoster(klass) {
       ? `${review.totalReviewsCompleted} կրկնություն · պարտադիր ${review.requiredReviewsCompleted} · լրացուցիչ ${review.optionalReviewsCompleted}`
       : "Գլխի կրկնության տվյալ դեռ չկա";
     card.innerHTML = `
-      <div><button class="link-button roster-name" data-open-student="${student.id}">${escapeHtml(student.displayName)}</button><span class="subtle small">${student.latestActivityAt ? `Վերջին ակտիվություն՝ ${new Date(student.latestActivityAt).toLocaleString("hy-AM")}` : "Գործունեություն դեռ չկա"}</span></div>
+      <div><button class="link-button roster-name" data-open-student="${student.id}">${escapeHtml(student.displayName)}</button><span class="subtle small">${student.latestActivityAt ? `Վերջին ակտիվություն՝ ${teacherDateTime(student.latestActivityAt) ?? "—"}` : "Գործունեություն դեռ չկա"}</span></div>
       <div><span class="stat-label">Վերջին պատասխանների ընդհանուր ճշգրտություն</span><strong>${student.recentAccuracy === null ? "—" : `${student.recentAccuracy}%`}</strong></div>
       <div><span class="stat-label">Ուշադրության հմտություններ</span><strong>${escapeHtml(weak)}</strong></div>
       <div><span class="stat-label">Գլուխ I-ի կրկնություն</span><strong>${escapeHtml(reviewSummary)}</strong></div>
@@ -1141,8 +1137,106 @@ function renderRoster(klass) {
   }
 }
 
+// ---- School teacher roster row and student panel (V12/V13; provisionally accepted 20–21 Nov 2026) ----
+// Presentation of the class read's saved results and server classifications. The personal-account
+// teacher keeps renderRoster/openStudent's original rendering above and below.
+const SCHOOL_MODE_LABELS = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
+const schoolDate = teacherDate;
+const schoolCheckPassed = (check) => schoolCheckStatus(check) === true;
+function schoolSupportMeta(item, check) {
+  return [item.kind, `Հաշվարկում ներառված վերջին պատասխանը՝ ${schoolDate(item.lastAttemptAt) ?? "—"}`].filter(Boolean).join(" · ")
+    + (answeredBeforeCheck(item.lastAttemptAt, check) ? " · ստուգման ավարտից առաջ" : "");
+}
+
+function renderSchoolRoster(klass) {
+  const roster = $("roster");
+  const query = rosterQuery.trim().toLocaleLowerCase("hy-AM");
+  const students = (klass.students ?? []).filter((student) => !query || String(student.displayName).toLocaleLowerCase("hy-AM").includes(query));
+  $("rosterCount").textContent = query ? `Ցուցադրվում է ${students.length} / ${klass.students.length} աշակերտ` : `${klass.students.length} աշակերտ`;
+  roster.innerHTML = students.map((student) => {
+    const check = student.latestMasteryCheck ?? null;
+    const checkStatus = schoolCheckStatus(check);
+    const flag = supportFlag(student);
+    const progress = activeWorkProgress(student.activeSession);
+    const next = schoolNextStep(student.intervention);
+    const checkCell = check
+      ? `<span><span class="school-pill ${checkStatus === null ? "neutral" : checkStatus ? "passed" : "not-passed"}">${checkStatus === null ? "Տվյալը հասանելի չէ" : checkStatus ? "Անցած է" : "Չի անցել"}</span></span>${schoolDate(check.completedAt) ? `<span class="subtle small">Ավարտի ամսաթիվը՝ ${escapeHtml(schoolDate(check.completedAt))}</span>` : ""}`
+      : '<span>Այս դասարանում ստուգման արդյունք դեռ չի գրանցվել։</span>';
+    const supportCell = flag
+      ? `<span><span class="school-pill needs_support">${escapeHtml(flag.row.nameHy ?? flag.row.code)}</span></span><span class="subtle small">${escapeHtml(schoolSupportMeta(flag, check))}</span>${flag.moreSkills ? `<button class="link-button school-more-support" type="button" data-open-student="${escapeHtml(student.id)}" data-focus-support="true">Դիտել ևս ${flag.moreSkills} հմտություն</button>` : ""}`
+      : '<span class="subtle small">—</span>';
+    return `<article class="roster-row school-roster-row" data-testid="school-roster-row" aria-label="${escapeHtml(student.displayName)}">
+      <div><button class="link-button roster-name" type="button" data-open-student="${escapeHtml(student.id)}">${escapeHtml(student.displayName)}</button><span class="subtle small">${student.latestActivityAt ? `Վերջին ակտիվություն՝ ${teacherDateTime(student.latestActivityAt) ?? "—"}` : "Գործունեություն դեռ չկա"}</span></div>
+      <div data-testid="school-check-cell"><span class="stat-label">Յուրացման ստուգում՝ այս դասարանում</span>${checkCell}</div>
+      <div data-testid="school-support-cell"><span class="stat-label">Աջակցության կարիք</span>${supportCell}</div>
+      <div class="intervention-cell" data-testid="school-next-cell"><span class="stat-label">Հաջորդ քայլը</span>${progress ? `<span>${escapeHtml(progress)}</span>` : ""}<span>${escapeHtml(next ?? "—")}</span></div>
+      <div class="roster-actions"><button class="secondary small-button" type="button" data-open-student="${escapeHtml(student.id)}">Դիտել</button></div>
+    </article>`;
+  }).join("");
+  roster.querySelectorAll("[data-open-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.openStudent, null, el, el.dataset.focusSupport ? "support" : null)));
+  if (!students.length) {
+    roster.innerHTML = query
+      ? '<div class="teacher-empty-state"><strong>Աշակերտ չի գտնվել</strong><p class="subtle small">Փորձեք այլ անուն կամ մաքրեք որոնումը։</p></div>'
+      : '<div class="teacher-empty-state"><strong>Ցուցակը դեռ դատարկ է</strong><p class="subtle small">Աշակերտները այստեղ կհայտնվեն միանալու կոդը օգտագործելուց հետո։</p></div>';
+  }
+}
+
+function renderSchoolStudentPanel(data, klass, skillId, focusTarget) {
+  const check = data.latestMasteryCheck ?? null;
+  const review = data.chapterReview ?? null;
+  const sessions = data.sessions ?? [];
+  const evidence = supportEvidence(data);
+  const onlyPractice = evidence.length > 0 && evidence.every((item) => item.estimate.contract?.mode === "practice");
+  const progress = activeWorkProgress(data.activeSession);
+  const accuracy = recentAccuracySummary(data);
+  const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? null;
+  const box1 = `<section class="school-fact" aria-labelledby="schoolCheckTitle"><h3 id="schoolCheckTitle">Յուրացման ստուգում</h3>${schoolCheckResultMarkup(check, sessions)}</section>`;
+  const box2 = `<section class="school-fact" aria-labelledby="schoolNextTitle"><h3 id="schoolNextTitle">Հաջորդ քայլը</h3>${progress ? `<p>${escapeHtml(progress)}</p>` : ""}<p>${escapeHtml(schoolNextStep(data.intervention ?? data.recommendation) ?? "—")}</p>${check && schoolCheckPassed(check) ? "<p>Գլխի կրկնությունը պարտադիր չէ։</p>" : ""}<p class="subtle small">Այս դասարանում ավարտված կրկնություններ՝ ${Number(review?.requiredReviewsCompleted ?? 0) + Number(review?.optionalReviewsCompleted ?? 0)}</p><button class="link-button" type="button" data-school-jump="schoolReviewHistory">Կրկնությունների պատմություն</button></section>`;
+  const box3 = evidence.length ? `<section class="school-fact" id="schoolSupportEvidence" tabindex="-1" aria-labelledby="schoolSupportTitle" data-testid="school-support-evidence"><h3 id="schoolSupportTitle">${onlyPractice ? "Վարժության տվյալներ" : "Աջակցության հիմքերը"}</h3>${evidence.map((item) => `<div class="school-flagged"><span><span class="school-pill needs_support">${escapeHtml(item.estimate.percent == null ? "Աջակցություն է պետք" : `Աջակցություն է պետք · ${item.estimate.percent}%`)}</span></span><span>${escapeHtml(item.row.nameHy ?? item.row.code)}</span><span class="subtle small">${escapeHtml([item.kind, `${item.estimate.evidenceCount} պատասխան`, `Հաշվարկում ներառված վերջին պատասխանը՝ ${schoolDate(item.lastAttemptAt) ?? "—"}`].filter(Boolean).join(" · ") + (answeredBeforeCheck(item.lastAttemptAt, check) ? " · ստուգման ավարտից առաջ" : ""))}</span></div>`).join("")}${evidence.some((item) => item.estimate.contract?.mode === "practice") ? '<p class="subtle small">Ավելի վաղ տրված պատասխանները նույնպես կարող են ազդել վարժության ցուցանիշի վրա։ Ստուգման արդյունքը ներկայացվում է առանձին։</p>' : ""}</section>` : "";
+  const accuracyLine = accuracy ? `<p class="school-recent-accuracy" data-testid="school-recent-accuracy"><span class="stat-label">Վերջին պատասխանների ընդհանուր ճշգրտություն</span><span>${escapeHtml(`${accuracy.kind} · վերջին ${accuracy.count} պատասխաններից ${accuracy.percent}%-ը ճիշտ է`)}</span></p>` : "";
+  const reviewRows = (review?.history ?? []).map((row) => `<li><span>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</span><span class="subtle small">${row.completedAt ? `Ավարտված · ${escapeHtml(schoolDate(row.completedAt) ?? "—")}` : "Ընթացքի մեջ"}</span></li>`).join("");
+  const reviewTableRows = (review?.history ?? []).map((row) => `<tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${escapeHtml(row.cycleNumber ?? "—")} / ${escapeHtml(row.sessionNumber ?? "—")}</td><td>${escapeHtml(row.targetQuestions ?? "—")}</td><td>${row.completedAt ? teacherDateTime(row.completedAt) ?? "—" : "Ընթացքի մեջ"}</td></tr>`).join("");
+  const sessionRows = sessions.map((session) => {
+    const status = ({ completed: "Ավարտված", active: "Ընթացքի մեջ", abandoned: "Դադարեցված" })[session.status] ?? "Վիճակը հասանելի չէ";
+    const result = session.mode === "mastery_check" && session.status === "completed" ? schoolAttemptMarkup(session)
+      : `<p>${assessmentResultMarkup(session.reporting, { includeScope: false }) || escapeHtml(`${session.correct ?? "—"} / ${session.answered}`)}</p>`;
+    return `<li><div class="assessment-record-heading"><h4>${escapeHtml(SCHOOL_MODE_LABELS[session.mode] ?? session.mode)} · ${escapeHtml(status)}</h4><span>${session.completedAt ? escapeHtml(schoolDate(session.completedAt) ?? "—") : "Ընթացքի մեջ"}</span></div>${result}${contractMarkup(session.contract)}</li>`;
+  }).join("");
+  const coverage = review?.currentCycleEligiblePoolSize ? `${review.currentCycleUniqueSeen ?? 0} / ${review.currentCycleEligiblePoolSize}` : "—";
+  const mini = (label, value) => `<div class="mini-card"><span>${label}</span><strong>${escapeHtml(String(value))}</strong></div>`;
+  const reviewSkills = (review?.skills ?? []).map((s) => `<tr><td>${escapeHtml(shortSkillCode(s.code, data.unitCode))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
+  const attempts = (data.recentAttempts ?? []).map((a) => `<tr><td>${escapeHtml(a.itemCode ?? "—")}</td><td>${a.correct ? "✓" : "✗"}</td><td>${a.hintUsed ? "այո" : "ոչ"}</td><td>${teacherDateTime(a.createdAt) ?? "—"}</td></tr>`).join("");
+  $("studentDrawerContent").innerHTML = `
+    <div class="school-panel" data-teacher-view="school">
+    <p class="subtle small">${escapeHtml(["Այս դասարանի գրառումները", klass?.name, unitTitle].filter(Boolean).join(" · "))}</p>
+    <div class="school-facts">${box1}${box2}${box3}</div>
+    ${check?.assessmentResult ? assessmentScopeMarkup({ disclosure: true }) : ""}
+    ${accuracyLine}
+    ${schoolSkillCardsMarkup(data.matrix ?? data.skills ?? [], data.academicContext ?? {})}
+    <section class="school-section" id="schoolReviewHistory" tabindex="-1" aria-labelledby="schoolReviewHistoryTitle"><h3 id="schoolReviewHistoryTitle">Կրկնությունների պատմություն</h3>${reviewRows ? `<ul class="school-list">${reviewRows}</ul>` : '<p class="subtle small">Այս դասարանում ավարտված կրկնություն դեռ չկա։</p>'}</section>
+    <section class="school-section teacher-assessment-history" aria-labelledby="schoolWorkHistoryTitle"><h3 id="schoolWorkHistoryTitle">Աշխատանքների պատմություն</h3>
+      ${sessionRows ? `<p class="subtle small" data-testid="history-recent-notice">Ցուցադրվում են այս դասարանի վերջին աշխատանքները։</p>${assessmentScopeMarkup({ disclosure: true })}<ol class="assessment-history-list">${sessionRows}</ol>` : "<p>Աշխատանքների պատմությունը դեռ դատարկ է։</p>"}</section>
+    <p class="subtle small" data-testid="review-thresholds-note">Գլխի կրկնության «ուշադրության» շեմերը դեռ չեն հաստատվել։ Ստորև ցուցադրվում են միայն դիտարկելի փաստերը, ոչ վերջնական դասակարգում։</p>
+    <details class="school-more-details" data-testid="more-details"><summary>Լրացուցիչ մանրամասներ</summary>
+      <h4>Յուրացման ստուգում և կրկնություն</h4>
+      <section class="drawer-summary-grid">${mini("Պարտադիր կրկնություններ", review?.requiredReviewsCompleted ?? 0)}${mini("Լրացուցիչ կրկնություններ", review?.optionalReviewsCompleted ?? 0)}${mini("Ընթացիկ ծածկույթ", coverage)}${mini("Ծածկույթի տոկոս", review?.currentCycleCoveragePercent == null ? "—" : `${review.currentCycleCoveragePercent}%`)}${mini("Տեսած տարբեր հարցեր", review?.lifetimeUniqueItemsSeen ?? 0)}${mini("Նույն հարցի կրկնություններ", review?.exactRepeatCount ?? 0)}${mini("Դեպքեր, երբ նոր հարց չէր մնացել", review?.poolExhaustionEventCount ?? "—")}${mini("Ինքնուրույն ճիշտ պատասխանների տոկոս", review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`)}${mini("Օգնություն օգտագործած պատասխաններ", review?.hintAssistedResponses ?? 0)}</section>
+      <h4>Կրկնությունների պատմություն</h4>
+      <div class="matrix-wrap" tabindex="0" role="region" aria-label="Կրկնությունների պատմություն"><table class="attempt-table" data-testid="school-review-history-details"><thead><tr><th>Տեսակ</th><th>Ցիկլ / սեսիա</th><th>Հարցեր</th><th>Ավարտ</th></tr></thead><tbody>${reviewTableRows || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
+      <h4>Գլխի կրկնության հմտությունների տվյալներ</h4>
+      <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
+      <h4>Վերջին փորձերը</h4>
+      <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
+    </details>
+    </div>`;
+  $("studentDrawerContent").querySelectorAll("[data-school-jump]").forEach((button) => button.addEventListener("click", () => $(button.dataset.schoolJump)?.focus()));
+  if (skillId) {
+    const card = [...$("studentDrawerContent").querySelectorAll("[data-skill-evidence]")].find((node) => node.dataset.skillEvidence === skillId);
+    if (card) { card.open = true; card.querySelector("summary").focus(); }
+  } else if (focusTarget === "support") $("schoolSupportEvidence")?.focus();
+}
+
 let drawerLoadVersion=0;
-async function openStudent(studentId, skillId = null, opener = document.activeElement) {
+async function openStudent(studentId, skillId = null, opener = document.activeElement, focusTarget = null) {
   const request=++drawerLoadVersion;
   const dashboardVersion=dashboardLoadVersion;
   if (!studentId) return;
@@ -1169,11 +1263,12 @@ async function openStudent(studentId, skillId = null, opener = document.activeEl
   }
 
   $("studentDrawerName").textContent = data.student.displayName;
+  if (dashboard?.institutionalTeacher) { renderSchoolStudentPanel(data, klass, skillId, focusTarget); return; }
   const attempts = data.recentAttempts.map((a) => `
-    <tr><td>${escapeHtml(a.itemCode ?? "—")}</td><td>${a.correct ? "✓" : "✗"}</td><td>${a.hintUsed ? "այո" : "ոչ"}</td><td>${new Date(a.createdAt).toLocaleString("hy-AM")}</td></tr>`).join("");
+    <tr><td>${escapeHtml(a.itemCode ?? "—")}</td><td>${a.correct ? "✓" : "✗"}</td><td>${a.hintUsed ? "այո" : "ոչ"}</td><td>${teacherDateTime(a.createdAt) ?? "—"}</td></tr>`).join("");
   const review = data.chapterReview;
   const reviewHistory = (review?.history ?? []).map((row) => `
-    <tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${row.cycleNumber ?? "—"} / ${row.sessionNumber ?? "—"}</td><td>${row.targetQuestions}</td><td>${row.completedAt ? new Date(row.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`).join("");
+    <tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${row.cycleNumber ?? "—"} / ${row.sessionNumber ?? "—"}</td><td>${row.targetQuestions}</td><td>${row.completedAt ? teacherDateTime(row.completedAt) ?? "—" : "Ընթացքի մեջ"}</td></tr>`).join("");
   const reviewSkills = (review?.skills ?? []).map((s) => `
     <tr><td>${escapeHtml(shortSkillCode(s.code, data.unitCode))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
   const masteryStatus = review?.masteryStatus === "confirmed" ? "Ստուգարքն անցած է"
@@ -1186,7 +1281,7 @@ async function openStudent(studentId, skillId = null, opener = document.activeEl
   const modeSummary = data.modeSummary ?? {};
   const recentSessions = (data.sessions ?? []).map((session) => {
     const labels = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
-    return `<li><div class="assessment-record-heading"><h4>${escapeHtml(labels[session.mode] ?? session.mode)} · ${escapeHtml(({completed:"Ավարտված",active:"Ընթացքի մեջ",abandoned:"Դադարեցված"})[session.status] ?? "Վիճակը հասանելի չէ")}</h4><span>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</span></div><div>${assessmentResultMarkup(session.reporting,{includeScope:false}) || `${session.correct ?? "—"} / ${session.answered}`}</div>${contractMarkup(session.contract)}</li>`;
+    return `<li><div class="assessment-record-heading"><h4>${escapeHtml(labels[session.mode] ?? session.mode)} · ${escapeHtml(({completed:"Ավարտված",active:"Ընթացքի մեջ",abandoned:"Դադարեցված"})[session.status] ?? "Վիճակը հասանելի չէ")}</h4><span>${session.completedAt ? teacherDateTime(session.completedAt) ?? "—" : "Ընթացքի մեջ"}</span></div><div>${assessmentResultMarkup(session.reporting,{includeScope:false}) || `${session.correct ?? "—"} / ${session.answered}`}</div>${contractMarkup(session.contract)}</li>`;
   }).join("");
   const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? "—";
   const contextKicker = dashboard?.institutionalTeacher

@@ -41,6 +41,7 @@ on:
       - web/text-safety.mjs
       - web/analytics-provenance.mjs
       - web/assessment-reporting.mjs
+      - web/teacher-dates.mjs
       - web/school-analytics-view.mjs
       - web/class-history.mjs
       - web/config.js

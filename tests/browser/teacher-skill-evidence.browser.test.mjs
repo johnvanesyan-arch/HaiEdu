@@ -149,13 +149,16 @@ test('actual teacher matrix exposes split evidence, support counts and direct ke
  await expect(p.locator('#matrixStudentTotal')).toHaveText('1');await expect(p.locator('#matrixMasteredTotal')).toHaveText('1');await expect(p.locator('#matrixNeedsSupportTotal')).toHaveText('1');
  const cells=p.locator('#matrixWrap td');
  for(const [i,text] of ['Առանձին արդյունքներՎարժություն · Ախտորոշիչ','Դիտարկումները դեռ քիչ են','Ցուցանիշը հասանելի չէ','Տվյալ դեռ չկա'].entries())await expect(cells.nth(i)).toHaveText(text);
- await expect(p.locator('#roster')).toContainText('S01');assert.doesNotMatch(await p.locator('#roster .stat-label').filter({hasText:'Ուշադրության հմտություններ'}).locator('..').innerText(),/S02|S03|S04/);
+ // School roster (V12): the support flag names the one skill with a classified red estimate; sparse, unavailable and empty skills never flag.
+ const support=p.locator('#roster [data-testid="school-support-cell"]');await expect(support).toContainText('Առաջին հմտություն');await expect(support).toContainText('Վարժություն');
+ assert.doesNotMatch(await support.innerText(),/Երկրորդ|Երրորդ|Չորրորդ|Դիտել ևս/);
  await p.locator('#matrixStudentFilter').selectOption('needs_support');await expect(p.locator('#matrixWrap tbody tr')).toHaveCount(1);
  const open=cells.first().getByRole('button');await open.focus();await p.keyboard.press('Enter');
  const detail=p.locator('[data-skill-evidence="s1"]');await expect(detail).toHaveAttribute('open','');
  await expect(detail.locator(':scope > summary')).toBeFocused();
  await expect(detail).toContainText('Կայուն · 88%');await expect(detail).toContainText('Աջակցություն է պետք · 38%');await expect(detail).toContainText('Ախտորոշիչ');await expect(detail).toContainText('Վարժություն');
- assert.equal(await p.locator('#studentDrawerContent').evaluate(e=>[...e.querySelectorAll('h3')].map(n=>n.textContent).indexOf('Հմտությունների տվյալներ')<[...e.querySelectorAll('h3')].map(n=>n.textContent).indexOf('Յուրացման ստուգում և կրկնություն')),true);
+ // School panel (V12): skill cards come before the histories and the closed «Լրացուցիչ մանրամասներ».
+ assert.equal(await p.locator('#studentDrawerContent').evaluate(e=>{const h=[...e.querySelectorAll('h3')].map(n=>n.textContent);return h.indexOf('Տվյալներ ըստ հմտության')>=0&&h.indexOf('Տվյալներ ըստ հմտության')<h.indexOf('Աշխատանքների պատմություն');}),true);
  assert.equal(await p.locator('#studentDrawerContent .teacher-skill-grid').count(),0);
  for(const width of [1280,768,390]){
   await p.setViewportSize({width,height:1000});await p.evaluate(()=>document.documentElement.style.fontSize='200%');

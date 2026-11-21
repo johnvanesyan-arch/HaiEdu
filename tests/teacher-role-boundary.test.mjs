@@ -1,6 +1,7 @@
 import * as rateFeedbackBindings from '../web/rate-budget-feedback.mjs';
 import * as rateBudgetBindings from '../supabase/functions/_shared/rate-budget.mjs';
 import {escapeHtml} from '../web/text-safety.mjs';
+import {teacherDate, teacherDateTime} from '../web/teacher-dates.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -105,7 +106,7 @@ async function openTeacherPage(profile, profileError = null) {
     // This import-stripping VM checks routing, not DOM focus. Native Chromium
     // keyboard-focus cases exercise the actual drawer controller separately.
     createModalFocus:()=>({open(){},close(){}}),
-    todayRequest:()=>({recent:[]}),escapeHtml,roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout },rateFeedbackBindings));
+    todayRequest:()=>({recent:[]}),escapeHtml,teacherDate,teacherDateTime,roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console, clearTimeout },rateFeedbackBindings));
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, workspaceCalls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };

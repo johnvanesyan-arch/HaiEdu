@@ -141,3 +141,34 @@
 .matrix-skill-names dt{font-weight:700}
 body[data-role-workspace] .institutional-email-count.is-over-limit{color:var(--forest-error)}
 @media(max-width:560px){.matrix-skill-names dl>div{grid-template-columns:minmax(0,1fr)}}
+
+/* School teacher roster row and student panel (V12/V13, provisionally accepted 20–21 Nov 2026).
+   Every rule is scoped to school-only class names; the personal-account layout is untouched. */
+.school-roster-row>div{display:grid;gap:4px;align-content:center}
+.school-pill{display:inline-flex;align-items:center;border-radius:999px;padding:2px 10px;font-size:.875rem;font-weight:600;max-width:100%;overflow-wrap:anywhere;background:var(--forest-quiet);color:var(--forest-muted)}
+.school-pill.passed,.school-pill.secure{background:var(--forest-success-bg);color:var(--forest-success)}
+.school-pill.developing{background:var(--forest-attention-bg);color:var(--forest-attention)}
+.school-pill.needs_support{background:var(--forest-error-bg);color:var(--forest-error)}
+.school-pill.separate{background:var(--forest-selected);color:var(--forest-accent)}
+.school-more-support{justify-self:start;min-height:44px}
+.school-panel{display:grid;gap:14px;min-width:0}
+.school-panel>*{min-width:0}
+.school-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:10px}
+.school-fact{border:1px solid var(--forest-divider);border-radius:12px;padding:12px;display:grid;gap:5px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.school-fact h3{margin:0;font-size:1.0625rem}
+.school-fact p{margin:0}
+.school-fact:focus,.school-section:focus{outline:3px solid var(--forest-focus);outline-offset:2px}
+.school-flagged{border-top:1px solid var(--forest-divider);padding-top:6px;display:grid;gap:2px}
+.school-recent-accuracy{display:grid;gap:2px;margin:0}
+.school-skill-cards{display:grid;gap:8px}
+.school-skill-card{border:1px solid var(--forest-divider);border-radius:12px;min-width:0}
+.school-skill-card>summary{padding:8px 12px;display:grid;gap:4px;justify-items:start;min-height:44px;cursor:pointer}
+.school-skill-card>*:not(summary){margin-inline:12px}
+.school-skill-code{overflow-wrap:anywhere}
+.school-cues{display:flex;flex-wrap:wrap;gap:4px}
+.school-section{display:grid;gap:8px;min-width:0}
+.school-list{list-style:none;margin:0;padding:0;display:grid}
+.school-list li{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:8px 2px;border-top:1px solid var(--forest-divider)}
+.school-more-details{border:1px solid var(--forest-divider);border-radius:12px;padding:4px 12px 12px;min-width:0}
+.school-more-details>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:600}
+.school-more-details h4{margin:12px 0 6px}

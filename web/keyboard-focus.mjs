@@ -40,7 +40,15 @@ export function createModalFocus({ container, dialog, initialFocus, fallbackFocu
   let active = false, opener = null, url = null;
   const background = new Map();
   const controls = () => [...dialog.querySelectorAll('a[href], button, input, select, textarea, summary, [tabindex]')]
-    .filter(node => node.tabIndex >= 0 && visible(node));
+    .filter(node => {
+      if (node.tabIndex < 0 || !visible(node)) return false;
+      // Closed details content can retain client rects but cannot receive focus.
+      // Keep its first summary available, including inside nested disclosures.
+      for (let details = node.closest('details:not([open])'); details; details = details.parentElement?.closest('details:not([open])')) {
+        if (!details.querySelector(':scope > summary')?.contains(node)) return false;
+      }
+      return true;
+    });
   const containFocus = event => {
     if (active && !dialog.contains(event.target)) focus(initialFocus) || focus(dialog);
   };
@@ -49,7 +57,9 @@ export function createModalFocus({ container, dialog, initialFocus, fallbackFocu
     const items = controls(), first = items[0], last = items.at(-1);
     if (!first) { event.preventDefault(); focus(dialog); return; }
     const current = document.activeElement;
-    if (!dialog.contains(current) || (event.shiftKey ? current === first : current === last)) {
+    // The dialog container itself (focused after a click on its text) counts as outside its controls:
+    // otherwise Shift+Tab would leave the dialog for the inert page.
+    if (!dialog.contains(current) || current === dialog || (event.shiftKey ? current === first : current === last)) {
       event.preventDefault(); focus(event.shiftKey ? last : first);
     }
   };

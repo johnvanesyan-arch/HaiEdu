@@ -12,15 +12,15 @@ after(async () => { await browser?.close(); });
 const student = { id: 'student-a', displayName: 'Փորձնական աշակերտ', matrix: [], weakSkills: [], recentAccuracy: null };
 const studentDetails = { student, skills: [], matrix: [], recentAttempts: [], sessions: [] };
 
-async function teacher(t) {
-  const f = await teacherFixture(browser, t, { analytics: { students: [student], studentCount: 1, skills: [] }, studentDetails });
+async function teacher(t, institutionalTeacher = true) {
+  const f = await teacherFixture(browser, t, { analytics: { students: [student], studentCount: 1, skills: [] }, studentDetails, institutionalTeacher });
   await f.page.locator('.hm-role-nav a[href$="view=classes"]').click();
   await f.page.locator('#classList .teacher-class-button').first().click();
   return { ...f, opener: f.page.locator('#roster [data-open-student]').first() };
 }
 
-test('teacher drawer contains Tab/Shift+Tab, inerts only its background and restores its opener', async t => {
-  const { page, opener, errors } = await teacher(t);
+for (const institutionalTeacher of [true, false]) test(`${institutionalTeacher ? 'school' : 'personal'} teacher drawer contains Tab/Shift+Tab, inerts only its background and restores its opener`, async t => {
+  const { page, opener, errors } = await teacher(t, institutionalTeacher);
   await page.evaluate(() => { const node = document.createElement('button'); node.id = 'alreadyInert'; node.inert = true; document.body.prepend(node); });
   await opener.focus(); await page.keyboard.press('Enter');
   const close = page.locator('#closeDrawerBtn');
@@ -38,6 +38,28 @@ test('teacher drawer contains Tab/Shift+Tab, inerts only its background and rest
   const second = page.locator('#roster [data-open-student]').last();
   await second.focus(); await page.keyboard.press('Enter'); await close.click();
   await expect(second).toBeFocused(); assert.deepEqual(errors, []);
+});
+
+test('teacher drawer skips collapsed review details and includes the expanded scroll region in its focus loop', async t => {
+  const { page, opener, errors } = await teacher(t);
+  await opener.click();
+  const close = page.locator('#closeDrawerBtn');
+  const details = page.getByTestId('more-details');
+  const summary = details.locator(':scope > summary');
+  const region = details.getByRole('region', { name: 'Կրկնությունների պատմություն' });
+  await expect(details).not.toHaveAttribute('open', '');
+  await close.focus(); await page.keyboard.press('Shift+Tab'); await expect(summary).toBeFocused();
+  await page.keyboard.press('Tab'); await expect(close).toBeFocused();
+  await summary.focus(); await page.keyboard.press('Enter'); await expect(details).toHaveAttribute('open', '');
+  await page.keyboard.press('Tab'); await expect(region).toBeFocused();
+  await page.keyboard.press('Tab'); await expect(close).toBeFocused();
+  await page.keyboard.press('Shift+Tab'); await expect(region).toBeFocused();
+  await page.keyboard.press('Shift+Tab'); await expect(summary).toBeFocused();
+  await page.keyboard.press('Enter'); await expect(details).not.toHaveAttribute('open', '');
+  await page.keyboard.press('Tab'); await expect(close).toBeFocused();
+  await page.keyboard.press('Shift+Tab'); await expect(summary).toBeFocused();
+  await page.keyboard.press('Escape'); await expect(opener).toBeFocused();
+  assert.deepEqual(errors, []);
 });
 
 for (const error of [false, true]) test(`teacher drawer focus works while ${error ? 'failed' : 'loading'}`, async t => {

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
-import {chromium} from '@playwright/test';
+import {chromium,expect} from '@playwright/test';
 import {guardStagingBrowser} from '../../scripts/local-staging-browser-network.mjs';
 const build='a'.repeat(64);
 async function setup(t,{delay=0,deploymentDefault=false}={}){
@@ -74,7 +74,9 @@ test('late failures after account changes and pagehide are discarded; restored p
 test('a slow collector does not delay an action or keep browser teardown running indefinitely',async t=>{
  const {page,reports,guard,browser}=await setup(t,{delay:10000});
  const ms=await page.evaluate(async()=>{const start=performance.now();await window.invoke(window.client,'get-student-dashboard',{});return performance.now()-start;});assert.ok(ms<500);
- await page.waitForTimeout(50);assert.equal(reports.length,1);
+ // Wait for request reception, not the deliberately delayed collector response.
+ // A fixed sleep can expire before browser-to-server delivery on a busy host.
+ await expect.poll(()=>reports.length,{timeout:2000}).toBe(1);
  await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide')));await page.evaluate(()=>window.reporter.settled());
  // Aborted reporting is expected here. Drain must still finish; a transport
  // refusal is reported honestly by the general guard and not swallowed by it.
