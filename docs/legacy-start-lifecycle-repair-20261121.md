@@ -1,5 +1,21 @@
 # Legacy learning start: lifecycle query repair — 21 November 2026
 
+## Deployment record — 2026-11-21
+
+**Released and source-verified.** [PR521](https://github.com/johnvanesyan-arch/HaiEdu/pull/521) merged as `bdf6142e7c05ef2ae5017f862880a08b6e8a2537`. Supabase `start-learning-session` advanced from version **34** to **35** and reports **ACTIVE**. This record supersedes the preparation-only and pending-release statements retained below as historical evidence.
+
+The fresh predeployment source matched the reviewed version 34. After deployment, all **13** source files matched the approved payload: only the two invalid lifecycle-table filters were removed; all **12** shared files and all four valid learning-session filters stayed unchanged. JWT verification remains **on** and no import map was introduced. No database migration, scoring rule, readiness rule, attempt limit, review rule, secret or environment setting changed in this repair.
+
+Live schema metadata confirmed that `chapter_mastery_states` has no `assessment_policy_binding_id` column and retains its student + curriculum release + unit unique key. The repair therefore addresses a verified deployed query/schema mismatch.
+
+This verification checked deployed source and configuration only. **No hosted learner journey, sign-in or production QA was run.** The completed synthetic local learner journey remains separate evidence. The unchanged external npm dependency's resolved binary was not independently inventoried.
+
+The sanitized deployment receipt records both versions, preserved authentication settings and all 13 source hashes. CI and merge evidence are recorded separately.
+
+All five required PR and merged-source CI jobs passed. [Combined release record](teacher-school-release-20261121.md) · [Sanitized deployed-source receipt](evidence/legacy-start-deployment-20261121.json).
+
+## Historical preparation
+
 **Prepared locally, not released.** This is a separate repair based on main `f7f39df79f448f2e9b86d4d3e42be59d5cf3fda4`, independent of the teacher view and the Chapter I I-2 proposal. It does not change scoring, readiness, attempt limits, review rules, registry settings or database structure.
 
 ## Problem and bounded repair

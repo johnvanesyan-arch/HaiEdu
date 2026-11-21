@@ -1,8 +1,8 @@
 # School teacher's roster, student panel and Skills tab: local implementation (21 November 2026)
 
-**Status:** Provisionally accepted by the owner. Final technical verification and release preparation are recorded in the finalization section below.
+**Current status:** Released in PR522; backend integration verified within the recorded local cases. Owner acceptance remains provisional. The [verified release record](teacher-school-release-20261121.md) supersedes all preparation-only and pending-release statements below; earlier evidence remains historical.
 
-**Release candidate:** prepared for repository review; no merge, production deployment or assessment activation. Production QA was not run (paused by owner).
+**Release:** merged source `5dd96d5d9f67c7dcbf95934ce2018f450cfc3928` is verified on all three public addresses. I-2 remains unactivated. Production QA not run (paused by owner).
 
 **Scope.**
 - Built: the school teacher's roster row, student panel and skill cards, to the V12 reference with the V13 Chapter I decisions and plan revision 2 (design branch `claude/teacher-v13-i2-design`, plan commit `2f6446c`, design follow-up `e8c067b`).

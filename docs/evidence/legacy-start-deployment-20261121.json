@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "scope": "legacy-start-lifecycle-query-repair",
+  "status": "deployment-source-readback-verified",
+  "recordedAt": "2026-11-21T10:41:13.144462+00:00",
+  "pullRequest": "https://github.com/johnvanesyan-arch/HaiEdu/pull/521",
+  "reviewedCommit": "c75dab7401ee9310006ccfdd8e188a3bdaedc344",
+  "reviewedTree": "ab91d1fdc885c0d0674c8a247b3f51c738ecf7b9",
+  "mergedCommit": "bdf6142e7c05ef2ae5017f862880a08b6e8a2537",
+  "function": "start-learning-session",
+  "previousVersion": 34,
+  "deployedVersion": 35,
+  "active": true,
+  "verifyJwt": true,
+  "importMap": false,
+  "sourceFiles": [
+    {
+      "name": "start-learning-session/index.ts",
+      "beforeSha256": "9222ba1af5a54e1d45bd913e00ec0fa6b991232805b15a504f190bc1c48a0124",
+      "deployedSha256": "f83c472391ceaa9b5d64390c70dd08f70a50d874165bf6a57ce36a1772c91c3a",
+      "changed": true
+    },
+    {
+      "name": "_shared/rate-budget.mjs",
+      "beforeSha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+      "deployedSha256": "d194bbb4a00b03a151dd7c019d9769af83f5e272684f213d87027d7d124a3b8e",
+      "changed": false
+    },
+    {
+      "name": "_shared/governed-learning-runtime.mjs",
+      "beforeSha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7",
+      "deployedSha256": "ff3275862ea2089119fbcbba7161dd81a66d49e895b08be85474e3807d975ab7",
+      "changed": false
+    },
+    {
+      "name": "_shared/student-learning-context.mjs",
+      "beforeSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+      "deployedSha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+      "changed": false
+    },
+    {
+      "name": "_shared/assessment-policy.mjs",
+      "beforeSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+      "deployedSha256": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+      "changed": false
+    },
+    {
+      "name": "_shared/assessed-audio-policy.mjs",
+      "beforeSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+      "deployedSha256": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+      "changed": false
+    },
+    {
+      "name": "_shared/practice-diagnostic-gate.ts",
+      "beforeSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+      "deployedSha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+      "changed": false
+    },
+    {
+      "name": "_shared/initial-diagnostic.ts",
+      "beforeSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+      "deployedSha256": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+      "changed": false
+    },
+    {
+      "name": "_shared/auth.ts",
+      "beforeSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "deployedSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+      "changed": false
+    },
+    {
+      "name": "_shared/course-access.ts",
+      "beforeSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+      "deployedSha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+      "changed": false
+    },
+    {
+      "name": "_shared/recommendation-telemetry.ts",
+      "beforeSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+      "deployedSha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+      "changed": false
+    },
+    {
+      "name": "_shared/curriculum-release.ts",
+      "beforeSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+      "deployedSha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+      "changed": false
+    },
+    {
+      "name": "_shared/assessment-integrity.ts",
+      "beforeSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+      "deployedSha256": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+      "changed": false
+    }
+  ],
+  "verification": {
+    "prewriteSourceAndMetadataMatched": true,
+    "postwriteVersionAndAllSourceHashesMatched": true,
+    "unchangedSharedFiles": 12,
+    "removedInvalidLifecycleFilters": 2,
+    "preservedLearningSessionFilters": 4,
+    "hostedLearningJourneyRun": false,
+    "productionQaRun": false,
+    "learnerDataIncluded": false,
+    "boundary": "Source readback only. No hosted learning journey, sign-in or production QA was performed as part of this verification. Local journey evidence is recorded separately.",
+    "dependencyLimit": "External npm dependency resolution was not independently inventoried; source equivalence does not establish binary bundle identity.",
+    "ciBoundary": "This receipt does not establish CI success; merge and release checks are recorded separately."
+  },
+  "privateEvidenceSha256": {
+    "manifest": "8333b78c5edec6b0f420998263307616abd2f40db7bf8a0b05eef6dce88f3e18",
+    "prewrite": "51e46533ac1dc19997a450c203a466145963323df4ae29a7e3f82b5b65d2fa64",
+    "deployment": "ccd8bf01f3fbb838794fdfa66fb035c3d2f8ced2ce9d04763205291079b68ab2",
+    "postwrite": "9b342f5053272a77f638e432542c8e487e706532582d9c074d406a4f96cb6c08"
+  }
+}

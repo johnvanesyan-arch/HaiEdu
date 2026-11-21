@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "haiedu-teacher-hosted-static-summary-v1",
+  "status": "passed",
+  "commit": "5dd96d5d9f67c7dcbf95934ce2018f450cfc3928",
+  "buildId": "7ef5840df5ede544ecfea25f2a01e44b35599afb594b36e7fb6c754a7ae0dae9",
+  "startedAt": "2026-11-21T11:00:57.207Z",
+  "completedAt": "2026-11-21T11:01:15.292Z",
+  "manifestSha256": "01b47d61f23995c97a30f47006a7e8c30030d0946b8c47b61e4ca93550f5bfaa",
+  "receiptSha256": "c70ddedfffb00427e01e4dce0131f747b054eeb74b7e3d6e5b79ff80ecfac832",
+  "scope": "Public static GETs only: HTML/JavaScript read as bytes, no page execution, cookies, authorization, sign-in, Supabase requests, production QA, settings changes or deployment promotion.",
+  "domains": [
+    {
+      "origin": "https://haiedu.am",
+      "status": "passed",
+      "finalOrigins": [
+        "https://www.haiedu.am"
+      ],
+      "pages": 29,
+      "assets": 128,
+      "uniqueVerifiedFiles": 159,
+      "exactCommitBeforeAndAfter": true,
+      "exactManifestAndAllHashes": true,
+      "securityCacheMimeMatch": true,
+      "reportOnlyAbsent": true,
+      "hstsPresent": true,
+      "logicalGets": 160,
+      "httpGets": 349
+    },
+    {
+      "origin": "https://www.haiedu.am",
+      "status": "passed",
+      "finalOrigins": [
+        "https://www.haiedu.am"
+      ],
+      "pages": 29,
+      "assets": 128,
+      "uniqueVerifiedFiles": 159,
+      "exactCommitBeforeAndAfter": true,
+      "exactManifestAndAllHashes": true,
+      "securityCacheMimeMatch": true,
+      "reportOnlyAbsent": true,
+      "hstsPresent": true,
+      "logicalGets": 160,
+      "httpGets": 189
+    },
+    {
+      "origin": "https://armenian-mastery-platform.vercel.app",
+      "status": "passed",
+      "finalOrigins": [
+        "https://armenian-mastery-platform.vercel.app"
+      ],
+      "pages": 29,
+      "assets": 128,
+      "uniqueVerifiedFiles": 159,
+      "exactCommitBeforeAndAfter": true,
+      "exactManifestAndAllHashes": true,
+      "securityCacheMimeMatch": true,
+      "reportOnlyAbsent": true,
+      "hstsPresent": true,
+      "logicalGets": 160,
+      "httpGets": 189
+    }
+  ],
+  "securityHeaderNames": [
+    "x-content-type-options",
+    "referrer-policy",
+    "x-frame-options",
+    "permissions-policy",
+    "content-security-policy"
+  ],
+  "productionQaRuns": 0,
+  "supabaseRequests": 0,
+  "signIns": 0,
+  "browserExecutions": 0
+}

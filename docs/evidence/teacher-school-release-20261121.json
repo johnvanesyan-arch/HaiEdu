@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "scope": "approved school teacher views and independent legacy start repair",
+  "teacherMergedCommit": "5dd96d5d9f67c7dcbf95934ce2018f450cfc3928",
+  "teacherBuild": "7ef5840df5ede544ecfea25f2a01e44b35599afb594b36e7fb6c754a7ae0dae9",
+  "serverMergedCommit": "bdf6142e7c05ef2ae5017f862880a08b6e8a2537",
+  "serverVersion": 35,
+  "ci": [
+    {
+      "id": 44892889825,
+      "head_sha": "c75dab7401ee9310006ccfdd8e188a3bdaedc344",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44892889825",
+      "jobs": [
+        {
+          "id": 136812316086,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136812316284,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136812316306,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136812316323,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136814677792,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 44895033445,
+      "head_sha": "bdf6142e7c05ef2ae5017f862880a08b6e8a2537",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44895033445",
+      "jobs": [
+        {
+          "id": 136818747530,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136818747626,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136818747675,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136818747715,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136821514551,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 44895152328,
+      "head_sha": "5ecaa9378329c9985cd116b6246c464a1a1c229d",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44895152328",
+      "jobs": [
+        {
+          "id": 136819097287,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136819097381,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136819097439,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136819097502,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136821592058,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 44896068810,
+      "head_sha": "5dd96d5d9f67c7dcbf95934ce2018f450cfc3928",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/44896068810",
+      "jobs": [
+        {
+          "id": 136821873820,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136821874001,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136821874093,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136821874135,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 136824465608,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "hostedStaticCompletedAt": "2026-11-21T11:01:15.292Z",
+  "hostedStatic": "teacher-school-hosted-static-20261121.json",
+  "deployment": "legacy-start-deployment-20261121.json",
+  "registration": "teacher-school-reporting-registration-20261121.json",
+  "productionQa": "not run (paused by owner)",
+  "productionSignIns": 0,
+  "hostedLearningRequests": 0,
+  "i2Activated": false,
+  "ownerUsabilityAcceptance": "provisional for school roster, student panel and Skills tab"
+}
