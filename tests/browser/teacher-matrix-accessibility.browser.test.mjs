@@ -72,7 +72,7 @@ test('skill names are available by touch at 375px and 200% text', async t => {
   const summary = page.getByText('Հմտությունների անվանումները', { exact: true });
   await expect(summary).toBeVisible();
   await summary.tap();
-  for (const skill of skills) await expect(page.getByText(skill.nameHy, { exact: true })).toBeVisible();
+  for (const skill of skills) await expect(page.locator('#matrixSkillNameList').getByText(skill.nameHy, { exact: true })).toBeVisible();
   assert.deepEqual(await wordBreaks(page, '#matrixSkillNames>summary,#matrixSkillNameList dd'), []);
   assert.deepEqual(errors, []);
 });
@@ -90,15 +90,15 @@ for (const institutionalTeacher of [true, false]) test((institutionalTeacher ? '
   const summary = page.getByText('Հմտությունների անվանումները', { exact: true });
   await summary.focus();
   await page.keyboard.press('Enter');
-  for (const skill of skills) await expect(page.getByText(skill.nameHy, { exact: true })).toBeVisible();
+  for (const skill of skills) await expect(page.locator('#matrixSkillNameList').getByText(skill.nameHy, { exact: true })).toBeVisible();
   await page.keyboard.press('Tab');
   await expect(page.locator('#matrixWrap')).toBeFocused();
   await page.keyboard.press('Shift+Tab');
   await expect(summary).toBeFocused();
   await page.keyboard.press('Space');
-  await expect(page.getByText(skills[0].nameHy, { exact: true })).toBeHidden();
+  await expect(page.locator('#matrixSkillNameList').getByText(skills[0].nameHy, { exact: true })).toBeHidden();
   await page.keyboard.press('Enter');
-  await expect(page.getByText(skills[0].nameHy, { exact: true })).toBeVisible();
+  await expect(page.locator('#matrixSkillNameList').getByText(skills[0].nameHy, { exact: true })).toBeVisible();
   const narrow = await page.locator('#matrixSkillNames').evaluate(node => ({
     ownWidth: node.scrollWidth <= node.clientWidth + 1,
     namesFit: [...node.querySelectorAll('dt,dd')].every(el => el.scrollWidth <= el.clientWidth + 1),
@@ -135,12 +135,12 @@ test('legend opening and filtering preserve matrix classifications, support coun
   const calls = await page.evaluate(() => window.__teacherFixture.calls);
   await page.getByText('Հմտությունների անվանումները', { exact: true }).tap();
   await page.locator('#matrixStudentFilter').selectOption('needs_support');
-  for (const skill of skills) await expect(page.getByText(skill.nameHy, { exact: true })).toBeVisible();
+  for (const skill of skills) await expect(page.locator('#matrixSkillNameList').getByText(skill.nameHy, { exact: true })).toBeVisible();
   assert.deepEqual(await snapshot(), before);
   assert.deepEqual(await page.locator('.matrix-summary-card strong').allTextContents(), counts);
   await page.locator('#matrixStudentFilter').selectOption('required_review');
   await expect(page.locator('.matrix-empty-filter')).toBeVisible();
-  for (const skill of skills) await expect(page.getByText(skill.nameHy, { exact: true })).toBeVisible();
+  for (const skill of skills) await expect(page.locator('#matrixSkillNameList').getByText(skill.nameHy, { exact: true })).toBeVisible();
   assert.deepEqual(await page.evaluate(() => window.__teacherFixture.calls), calls);
   assert.deepEqual(errors, []);
 });
@@ -159,7 +159,7 @@ test('a new unit replaces the legend, escapes names and keeps long labels inside
   if (!(await page.locator('#matrixSkillNames').evaluate(el => el.open))) await summary.tap();
   await expect(page.getByText(unusual, { exact: true })).toBeVisible();
   await expect(page.locator('#matrixSkillNameList dt')).toHaveText(['S01', 'S02', 'S03', 'S04']);
-  await expect(page.getByText(skills[0].nameHy, { exact: true })).toHaveCount(0);
+  await expect(page.locator('#matrixSkillNameList').getByText(skills[0].nameHy, { exact: true })).toHaveCount(0);
   assert.equal(await page.evaluate(() => Boolean(window.__unsafeName)), false);
   await expect(page.locator('#matrixSkillNameList img')).toHaveCount(0);
   assert.equal(await page.locator('#matrixSkillNameList').evaluate(el => el.scrollWidth <= el.clientWidth + 1), true);

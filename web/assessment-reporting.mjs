@@ -1,4 +1,5 @@
 import {escapeHtml as esc} from './learning-navigation.mjs';
+import {teacherDate} from './teacher-dates.mjs';
 // The saved policy/result supplies the assessed groups. Never infer additional
 // outcomes, a course grade or a separate performed task from a pass flag.
 export const assessmentScopeText = 'Արդյունքը վերաբերում է միայն այս ստուգմամբ գնահատված հմտություններին։ Այն ամբողջ դասընթացի ընդհանուր գնահատականը չէ և չի ներառում առանձին գնահատվող աշխատանքները։';
@@ -57,4 +58,87 @@ export function assessmentResultMarkup(result,{includeScope=true,hideUnassessed=
   if (result?.schemaVersion !== 'haiedu-assessment-result-v2') return '';
   const score=result.score;
   return `${score ? `<p><strong>${result.passed ? 'Ստուգարքն անցած է' : 'Ստուգարքը չի անցել'} · ${score.correct}/${score.answered} · ${score.percent}%</strong></p>` : ''}${result.groups.map(g=>assessmentGroupMarkup(g)).join('')}${scope}`;
+}
+
+// ---- School teacher check results (V12/V13; provisionally accepted 20–21 Nov 2026) ----
+// Separate from the student, personal-account and admin displays above, which are unchanged.
+// Shows the saved pass status, saved score and every saved group. Never infers a pass from a
+// percentage, never guesses counts and never replaces a saved scored result with the raw
+// whole-check figures. An unreadable saved record stays neutral.
+const SAVED_FORMATS = new Set(['haiedu-assessment-result-v2', 'haiedu-assessment-result-v3']);
+const finite = n => typeof n === 'number' && Number.isFinite(n) && n >= 0;
+function readableRecord(record) {
+  if (!record || !SAVED_FORMATS.has(record.schemaVersion) || !Array.isArray(record.groups) || typeof record.passed !== 'boolean') return null;
+  const points = record.schemaVersion === 'haiedu-assessment-result-v3', s = record.score;
+  const scoreOk = s && (points ? finite(s.earned) && finite(s.possible) && s.possible > 0 && s.earned <= s.possible
+    : Number.isInteger(s.correct) && Number.isInteger(s.answered) && s.answered > 0 && s.correct >= 0 && s.correct <= s.answered);
+  if (!scoreOk || record.groups.some(g => !g || typeof g.label !== 'string')) return null;
+  return { record, points };
+}
+const scoreText = ({ record, points }) => {
+  const s = record.score, pct = finite(s.percent) ? ` · ${s.percent}%` : '';
+  return points ? `${Number(Number(s.earned).toFixed(2))}/${s.possible} միավոր${pct}` : `${s.correct} / ${s.answered}${pct}`;
+};
+// The single pass-determining group replaces the score line only when its saved values equal the saved score.
+function scoredGroupIsScore({ record, points }) {
+  const scored = record.groups.filter(g => g.determinesPass);
+  if (scored.length !== 1) return false;
+  const g = scored[0], s = record.score;
+  return points ? g.earned === s.earned && g.possible === s.possible : g.correct === s.correct && g.answered === s.answered;
+}
+const groupsMarkup = ({ record, points }, omitScored) =>
+  record.groups.filter(g => !(omitScored && g.determinesPass)).map(g => assessmentGroupMarkup(g, { points })).join('');
+
+// Counts for an older check (no saved record) only from exactly one matching completed check session.
+export function matchedCheckCounts(check = null, sessions = []) {
+  if (!check?.completedAt) return null;
+  const matches = sessions.filter(row => row?.mode === 'mastery_check' && row.status === 'completed' && row.completedAt === check.completedAt);
+  if (matches.length !== 1) return null;
+  const { correct, answered } = matches[0];
+  return Number.isInteger(correct) && Number.isInteger(answered) && answered > 0 && correct >= 0 && correct <= answered ? { correct, answered } : null;
+}
+
+// A saved record is authoritative only when this renderer can read its format.
+// Unknown/malformed records stay neutral everywhere; legacy status is used only
+// when no saved reporting record exists.
+export function schoolCheckStatus(check = null) {
+  if (!check) return null;
+  if (check.assessmentResult != null) return readableRecord(check.assessmentResult)?.record.passed ?? null;
+  return check.result === 'passed' ? true : check.result === 'failed' ? false : null;
+}
+
+// Box 1 of the school student panel. `check` is latestMasteryCheck; `sessions` the returned recent sessions.
+export function schoolCheckResultMarkup(check = null, sessions = []) {
+  if (!check) return '<p data-testid="school-check-empty">Այս դասարանում ստուգման արդյունք դեռ չի գրանցվել։</p>';
+  const readable = readableRecord(check.assessmentResult);
+  const passed = schoolCheckStatus(check);
+  const pill = passed === null ? '' : `<p><span class="school-pill ${passed ? 'passed' : 'not-passed'}" data-testid="school-check-status">${passed ? 'Անցած է' : 'Չի անցել'}</span></p>`;
+  let body;
+  if (readable) {
+    // Box 1: when the single scored group equals the saved score, its labelled line stands in for the score line.
+    body = `${scoredGroupIsScore(readable) ? '' : `<p data-testid="school-check-score">${esc(scoreText(readable))}</p>`}${groupsMarkup(readable, false)}`;
+  } else if (check.assessmentResult != null) {
+    body = '<p data-testid="school-check-score" data-assessment-state="unavailable">Տվյալը հասանելի չէ</p>';
+  } else {
+    const counts = matchedCheckCounts(check, sessions), pct = finite(check.percent) ? `${check.percent}%` : '';
+    body = counts || pct ? `<p data-testid="school-check-score">${esc(counts ? `${counts.correct} / ${counts.answered}${pct ? ` · ${pct}` : ''}` : pct)}</p>` : '';
+  }
+  const completedDate = teacherDate(check.completedAt);
+  const date = completedDate ? `<p>Ավարտի ամսաթիվը՝ ${completedDate}</p>` : '';
+  return `<p class="subtle small">Այս դասարանում գրանցված արդյունք</p>${pill}${body}${date}<p class="subtle small">Արդյունքը վերաբերում է միայն այս ստուգմամբ գնահատված հմտություններին։</p>`;
+}
+
+// One mastery-check attempt in the school work history, with its own saved score.
+export function schoolAttemptMarkup(session = {}) {
+  const readable = readableRecord(session.reporting);
+  const passed = schoolCheckStatus({ assessmentResult: session.reporting, result: session.assessmentResult });
+  const status = passed === null ? null : passed ? 'Ստուգարքն անցած է' : 'Ստուգարքը չի անցել';
+  if (readable) {
+    // History: the status line carries the saved score; a scored group equal to it is not repeated.
+    return `<p>${esc([status, scoreText(readable)].filter(Boolean).join(' · '))}</p>${groupsMarkup(readable, scoredGroupIsScore(readable))}`;
+  }
+  if (session.reporting != null) return `<p data-assessment-state="unavailable">${esc([status, 'Տվյալը հասանելի չէ'].filter(Boolean).join(' · '))}</p>`;
+  const counts = Number.isInteger(session.correct) && Number.isInteger(session.answered) && session.answered > 0 ? `${session.correct} / ${session.answered}` : null;
+  const pct = finite(session.scorePercent) ? `${session.scorePercent}%` : null;
+  return `<p>${esc([status, [counts, pct].filter(Boolean).join(' · ')].filter(Boolean).join(' · ') || '—')}</p>`;
 }

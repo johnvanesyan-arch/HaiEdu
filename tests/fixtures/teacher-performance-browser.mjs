@@ -1,6 +1,6 @@
 import {readFile} from 'node:fs/promises';
-export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false,institutionalTeacher=true}={}){
- const context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+export async function fixture(browser,t,{archives=60,initialFailure=false,startUrl='https://teacher.test/teacher.html?view=home',analytics=null,studentDetails=null,viewport={width:1280,height:950},mobile=false,institutionalTeacher=true,timezoneId,locale}={}){
+ const context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile,timezoneId,locale});t.after(()=>context.close());const page=await context.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(installTeacherPerformanceFixture,{archives,initialFailure,analytics,studentDetails,institutionalTeacher});
  await context.route('**/*',async route=>{const u=new URL(route.request().url());if(u.origin!=='https://teacher.test')return route.abort();const name=u.pathname==='/teacher'?'/teacher.html':u.pathname;try{const body=await readFile(new URL('../../web'+name,import.meta.url));return route.fulfill({body,contentType:name.endsWith('.html')?'text/html':/\.m?js$/.test(name)?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.svg')?'image/svg+xml':'application/octet-stream'});}catch{return route.fulfill({status:404,body:''});}});
  await page.goto(startUrl);await page.locator(initialFailure?'#teacherDashboardRetry':'#dashboardPanel:not(.hidden)').waitFor();return {page,errors};
@@ -23,7 +23,7 @@ export const installTeacherPerformanceFixture = ({archives,initialFailure,analyt
       if(body.readMode==='directory'){const all=rows.filter(c=>c.isActive===!body.archive&&(!body.search||c.name.includes(body.search))),offset=body.offset??0;return {data:{...result,classes:all.slice(offset,offset+24),directory:{archive:!!body.archive,offset,matching:all.length,hasMore:offset+24<all.length,activeCount:2,archiveCount:archives}}};}
       const c=rows.find(c=>c.id===body.classId);return {data:{...result,classes:c?[{...c,studentCount:0,students:[],skills:[],...state.analytics,...(!institutionalTeacher?{skills:undefined}: {}),analyticsAvailable:true,unitOptions:[unit(1),unit(2)],selectedUnit:body.selection?unit(Number(body.selection.unitId.split('-').at(-1))):unit(1)}]:[]}};
     }
-    if(fn==='get-teacher-student')return {data:state.studentDetails};
+    if(fn==='get-teacher-student')return {data:state.studentDetailsById?.[body.studentId]??state.studentDetails};
     if(fn==='manage-writing-assignments'&&body.action==='catalog')return {data:{version:'writing-assignments-v1',tasks:[],hasMore:false,nextOffset:50}};
     if(fn==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
     if(fn==='manage-written-work'&&body.action==='queue'){state.queueStates.push(body.payload.state);return {data:{version:'written-work-v1',queue:state.queueRows,readOnly:false}};}

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-21",
+  "scope": "School teacher roster, student panel and Skills tab; synthetic local qualification",
+  "releaseBase": "f7f39df79f448f2e9b86d4d3e42be59d5cf3fda4",
+  "teacherSourceCommit": "544164eb3b3b7e3d1c6adb69323fa9114bfdf333",
+  "browserBuildId": "7ef5840df5ede544ecfea25f2a01e44b35599afb594b36e7fb6c754a7ae0dae9",
+  "productionTouched": false,
+  "productionQa": "not run (paused by owner)",
+  "i2ActivationInTeacherCandidate": false,
+  "teacherConnected": {
+    "passed": true,
+    "seeded": "Synthetic accounts, classes, legacy Chapter I catalogue, runtime contracts and initial cumulative readiness. Diagnostic answers are submitted through real compiled pages. Two historical mastery headers (16/20 failed and 18/20 passed) are explicitly seeded for display-only checks; no mastery answers are fabricated and no native legacy-start success is claimed, because the existing learner path queries an absent lifecycle column. Three explicitly malformed reporting JSON values are temporarily injected into one failed local check; its entire original metadata is restored and verified.",
+    "i2MigrationsApplied": false,
+    "i2ActivationPerformed": false,
+    "originalMetadataRestored": true,
+    "allTestSessionsClosed": true,
+    "actualAttempts": 40,
+    "actualLearningSessions": 4,
+    "ownedCleanupVerified": true
+  },
+  "phases": {
+    "diagnostic-only": {
+      "passed": true,
+      "checks": [
+        "Real diagnostic-only responses produce non-null 100% recent accuracy with the exact 20-answer sample in the compiled school panel"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "legacy-records": {
+      "passed": true,
+      "checks": [
+        "Second learner completed a real diagnostic; historical mastery records will be explicitly seeded for display-only checks because the old learner start path has its known missing-column defect"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "connected-teachers": {
+      "passed": true,
+      "checks": [
+        "Connected school A: row/panel and 2 real detail responses agree; estimates and historical saved results preserved",
+        "Connected school B: row/panel and 1 real detail responses agree; estimates and historical saved results preserved",
+        "Connected personal teacher keeps the existing panel, displays supplied saved scores, and contains keyboard focus",
+        "Connected delayed response: real successful detail stays hidden after actual sign-out in a second tab",
+        "Exact teacher-only compiled personal view renders the explicitly seeded historical pass/fail records through real personal-teacher endpoints"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "malformed-unknown-schema": {
+      "passed": true,
+      "checks": [
+        "Explicit malformed reporting fixture traversed actual backend and compiled page: row, panel and history neutral; required review stays required"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "malformed-invalid-current-score": {
+      "passed": true,
+      "checks": [
+        "Explicit malformed reporting fixture traversed actual backend and compiled page: row, panel and history neutral; required review stays required"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "malformed-false-json": {
+      "passed": true,
+      "checks": [
+        "Explicit malformed reporting fixture traversed actual backend and compiled page: row, panel and history neutral; required review stays required"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    },
+    "restored-record": {
+      "passed": true,
+      "checks": [
+        "After restoring original database metadata, the real teacher page again displays the original 16/20 failed check"
+      ],
+      "stagingBuildId": "2101b574b01c0df3a971d02cb9db51b23383dc67bc3f81176430d6d3fe7b3436"
+    }
+  },
+  "evidenceBoundary": "Actual local Auth, PostgREST, Edge Functions and compiled pages. Local-only endpoint configuration changes the staging manifest identity. Diagnostic answers submitted through pages. Two historical mastery headers explicitly seeded, not scored by the old start service. Three malformed reporting records injected only into one synthetic header, then original metadata restored.",
+  "knownSeparateDefect": {
+    "service": "start-learning-session",
+    "deployedVersion": 34,
+    "inspection": "read-only source inventory",
+    "problem": "Two chapter_mastery_states queries filter a column absent from the real schema. Reproduced locally as mastery_lifecycle_unavailable. Already repaired in the separate I-2 rehearsal; a minimal independent repair is being prepared. Teacher release does not activate assessment changes.",
+    "repair": "PR521; minimal two-filter repair separately passes 112 actual local answers, required review and unseen-question retry. Production deployment remains pending."
+  },
+  "checks": {
+    "codeTests": {
+      "passed": 1912,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "npm-test-release.log"
+    },
+    "releaseChecks": [
+      {
+        "command": "npm run check:core-parity",
+        "exit": 0
+      },
+      {
+        "command": "npm run check:browser-sdk",
+        "exit": 0
+      },
+      {
+        "command": "npm run check:teacher-bundle",
+        "exit": 0
+      },
+      {
+        "command": "npm run check:web-assets",
+        "exit": 0
+      },
+      {
+        "command": "npm run check:favicon",
+        "exit": 0
+      },
+      {
+        "command": "npm run check:ui-font",
+        "exit": 0
+      },
+      {
+        "command": "node scripts/check-browser-qa-triggers.mjs",
+        "exit": 0
+      },
+      {
+        "command": "node tests/support/public-email-scan.mjs",
+        "exit": 0
+      },
+      {
+        "command": "npm run typecheck",
+        "exit": 0
+      },
+      {
+        "command": "node scripts/check-web-syntax.mjs",
+        "exit": 0
+      }
+    ],
+    "nativeBrowser": {
+      "total": 729,
+      "initialPassed": 728,
+      "initialFailed": 1,
+      "failure": "Unchanged reporting test expected receipt after a fixed 50ms sleep; action latency assertion passed. Test-only commit 6c1a22ab replaces the sleep with bounded receipt polling, preserving the 500ms action limit, 10-second collector delay and abort/drain checks.",
+      "correctedFile": {
+        "file": "tests/browser/client-failure-reporting.browser.test.mjs",
+        "passed": 5,
+        "failed": 0,
+        "productSourceUnchanged": true
+      },
+      "coverage": "All 729 cases covered across the full run and the corrected five-test file rerun; not a single full green local run. Exact-head required CI remains a release gate."
+    }
+  },
+  "limits": [
+    "Chromium; no Safari, device or screen-reader certification",
+    "Storage/mail journeys excluded",
+    "Production signed-in behavior not exercised",
+    "No general classroom performance claim",
+    "Other teacher screens and roster filter chips outside this slice"
+  ],
+  "frontendClosureCommit": "2092749ad39b0ffa9890d96f2665840cdf1db901",
+  "backendEvidenceReuse": "Teacher connected run is fresh on 544164eb; final source 2092749 changes only modal focus visibility and generated assets. Server contracts, result rendering and analytics data code are unchanged. The final native school/personal focus and disclosure regressions exercise the repaired interaction.",
+  "i2Compatibility": {
+    "sourceCommit": "fd8918c1c0abe833eba128007262cc78040c12a8",
+    "passed": true,
+    "seeded": "Synthetic schools, users, curriculum, item banks, runtime contracts and initial readiness. After the old checks, only transition learner S07 cumulative readiness is seeded weak to permit practice; actual answer/session records are untouched. Diagnostic, practice, review and mastery results entered through real local pages.",
+    "allTestSessionsClosed": true,
+    "ownedCleanupVerified": true,
+    "phases": {
+      "v1-records": {
+        "passed": true,
+        "checks": [
+          "Transition learner entered diagnostic and failed old check at 16/20 through real pages",
+          "Second learner in school A passed old check at 18/20 through real pages"
+        ],
+        "stagingBuildId": "6863187ed4cb1b002672c41bdb5f420513de5d9c0488a559069388af6cfde318"
+      },
+      "before-practice": {
+        "passed": true,
+        "checks": [
+          "With weak cumulative S07 readiness seeded locally, learner submitted eight incorrect practice answers through the real page before activation"
+        ],
+        "stagingBuildId": "6863187ed4cb1b002672c41bdb5f420513de5d9c0488a559069388af6cfde318"
+      },
+      "i2-records": {
+        "passed": true,
+        "checks": [
+          "Required review carried over; second check passed I-2 at saved 15/18; eight post-check S07 practice answers include one correct"
+        ],
+        "stagingBuildId": "6863187ed4cb1b002672c41bdb5f420513de5d9c0488a559069388af6cfde318"
+      },
+      "connected-teachers": {
+        "passed": true,
+        "checks": [
+          "Connected school A: row/panel and 2 real detail responses agree; estimates and historical saved results preserved",
+          "Connected school B: row/panel and 1 real detail responses agree; estimates and historical saved results preserved",
+          "Connected personal teacher keeps the existing panel, displays supplied saved scores, and contains keyboard focus",
+          "Connected delayed response: real successful detail stays hidden after actual sign-out in a second tab",
+          "Connected teacher read confirms one red S07 practice estimate across the switch, plus old 80% failure and saved 15/18 pass in history",
+          "Real school admin page and API preserve separate old/I-2 mastery groups and one unchanged practice group"
+        ],
+        "stagingBuildId": "6863187ed4cb1b002672c41bdb5f420513de5d9c0488a559069388af6cfde318"
+      }
+    },
+    "scope": "Separate local rehearsal only; never a teacher release dependency or production activation. Final local modal-only follow-up 78adeb87 passes five native drawer checks; unchanged backend/data evidence is reused from fd8918c1."
+  },
+  "negativeControls": [
+    "Unambiguous-date regression fails on b2e03da (US month-first fallback).",
+    "Modal wrap regression fails on 544164eb because a hidden closed-details region is counted as focusable.",
+    "Unreadable reporting guard regressions fail on predecessor; original handoff evidence retained."
+  ],
+  "affectedProductionQa": [
+    "mobile-browser-qa",
+    "teacher-feedback-acceptance",
+    "resource-assignments-acceptance",
+    "english-unit1-pilot-read-acceptance",
+    "english-unit2-pilot-read-acceptance",
+    "english-unit3-pilot-read-acceptance",
+    "chapter-ii-pilot-read-acceptance",
+    "chapter-iii-pilot-read-acceptance",
+    "chapter-iv-pilot-read-acceptance",
+    "chapter-v-pilot-read-acceptance",
+    "chapter-vi-pilot-read-acceptance",
+    "sprint-14-actions-qa",
+    "sprint-14d-analytics-qa",
+    "teacher-loading-rollout-acceptance (consumer; existing narrow rollout triggers retained)"
+  ]
+}

@@ -3,9 +3,9 @@ export {mountTeacherToday,todayRequest,rememberTeacherClass,clearTeacherRecent} 
 export {subjectArtwork} from './subject-visuals.mjs';
 export {renderArchive} from './archive-browser.mjs';
 export {mountWrittenWork} from './written-work.mjs';
-export {assessmentResultMarkup,assessmentScopeMarkup} from './assessment-reporting.mjs';
+export {assessmentResultMarkup,assessmentScopeMarkup,schoolCheckResultMarkup,schoolCheckStatus,schoolAttemptMarkup} from './assessment-reporting.mjs';
 export {contractMarkup} from './analytics-provenance.mjs';
-export {skillEvidenceState,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup} from './teacher-skill-evidence.mjs';
+export {skillEvidenceState,skillAttentionBand,skillMatrixCell,skillEvidenceMarkup,schoolSkillCardsMarkup,supportEvidence,supportFlag,answeredBeforeCheck,schoolNextStep,activeWorkProgress,recentAccuracySummary,workKindLabel} from './teacher-skill-evidence.mjs';
 export {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from './config.js';
 export {roleDestination} from './account-roles.js';
 export {createClient} from './supabase-browser.bundle.mjs';

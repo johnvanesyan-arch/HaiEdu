@@ -86,6 +86,7 @@ on:
       - web/account-roles.js
       - web/app.js
       - web/assessment-reporting.mjs
+      - web/teacher-dates.mjs
       - web/base.css
       - web/components.css
       - web/config.js
