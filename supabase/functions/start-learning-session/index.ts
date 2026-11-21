@@ -282,7 +282,6 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .eq("curriculum_release_id", curriculumContext.releaseId)
       .eq("unit_code", UNIT_CODE)
-      .is("assessment_policy_binding_id", null)
       .maybeSingle();
     if (lifecycleError || !lifecycle) return json({ error: "chapter_review_not_available" }, 409);
 
@@ -518,7 +517,6 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .eq("curriculum_release_id", curriculumContext.releaseId)
       .eq("unit_code", UNIT_CODE)
-      .is("assessment_policy_binding_id", null)
       .maybeSingle();
     if (chapterStateError) return json({ error: "mastery_lifecycle_unavailable" }, 500);
 
